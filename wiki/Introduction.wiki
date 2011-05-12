@@ -302,6 +302,19 @@ service.retryEnabled = YES;
 
 The default errors retried are http status 408 (request timeout), 503 (service unavailable), and 504 (gateway timeout), `NSURLErrorNetworkConnectionLost`, and `NSURLErrorTimedOut`.  You may specify a maximum retry interval other than the default of 1 minute, and can provide an optional retry selector to customize the criteria for each retry attempt.
 
+== Using APIs Without Generated Classes ==
+
+The Google APIs Objective-C Client Library includes generated service, query and data classes. These are Objective-C files constructed by processing the output of the [https://code.google.com/apis/discovery/ Google APIs Discovery Service]. The generated classes are derived from `GTLServiceBase`, `GTLQueryBase`, and `GTLObject`.
+
+The library may also be used for Google and non-Google APIs without generated classes. Methods for fetching objects via REST and RPC requests are listed in the "REST Fetch Methods" and "RPC Fetch Methods" sections of `GTLServiceBase.h`.  
+
+For use with RPC queries, instances of `GTLServiceBase` should specify the request URL and API version, such as
+{{{
+GTLServiceBase *service = [[GTLServiceBase alloc] init];
+service.rpcURL = [NSURL URLWithstring:@"https://www.example.com/rpc"];
+service.apiVersion = @"v1";
+}}}
+
 == Logging HTTP Server Traffic ==
 
 Debugging query execution is often easier when you can browse the JSON and headers being sent back and forth over the network.  To make this convenient, the framework can save copies of the server traffic, including http headers, to files in a local directory.  Your application should call
