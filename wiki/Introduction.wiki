@@ -107,28 +107,38 @@ GTLServiceTicket *ticket = [service executeQuery:query
 
 === Service and Tickets ===
 
-Service objects maintain cookies and track persistent data, so it's best to reuse a service object for sequences of queries.
+Service objects maintain cookies and track other persistent data across queries. Typically, an application will create a single instance of a service object to use for executing all queries.
 
-The application may choose to retain the ticket after a query starts executing so the user can cancel the service request.
+Query execution by the service is inherently asynchronous. There is no need create an operation queue or use GCD to run queries on other threads. Callbacks are always run on the same thread that began the query execution. Generally, it's best to execute queries on the main application thread. Any number of queries may be executed either concurrently or sequentially, subject to rate limits shown in the [https://code.google.com/apis/console API Console].
+
+When a ticket is created, many of the ticket properties, such as retry settings and surrogates (both described below), are initialized from the service's properties.
+
+The application may choose to retain the ticket after a query starts executing, allowing the user to cancel the service request.
 
 To cancel a query in progress, call `[ticket cancelTicket]`.  Once the callback has been invoked, the ticket is no longer useful and may be released.
 
+The query being executed by a ticket is available as`ticket.executingQuery`. The `GTMHTTPFetcher` object used to execute the query is accessible as `ticket.objectFetcher`.
+
 === Result Pages ===
 
-A query may return an object with a subset of the results, called *pages*. When a result object includes a *nextPageToken* string, the a copy query can be executed with the token set as the *pageToken* property of the new query, fetching the next set of results. 
+A query may return an object with a subset of the results, called *pages*. When a result object includes a *nextPageToken* string, then a copy of the query can be executed with the token set as the *pageToken* property of the new query, fetching the next set of results. 
 
 For APIs that offer this style of pagination, the library can automatically fetch all pages, and return an object whose items array includes the items of all pages (up to 25 pages). This can be turned on by setting the `shouldFetchNextPages` property of a service or a ticket:
 {{{
 service.shouldFetchNextPages = YES;
 }}}
 
-Note, however, that results spread over many pages may take a long time to be retrieved, as each page fetch will lead to a new http request.  The server can be told to use a larger page size (that is, more entries in each page of the feed) by fetching a query for the feed with a maxResults value:
+Note, however, that results spread over many pages may take a long time to be retrieved, as each page fetch will lead to a new http request.  The server can be told to use a larger page size (that is, more item in each page returned) by fetching a query for the feed with a `maxResults` value:
 
 {{{
 GTLQueryTasks *query = [GTLQueryTasks queryForTasklistsList];
 query.maxResults = 1000;
 ticket = [service executeQuery:query ...
 }}}
+
+Ideally, maxResults will be large enough that, for typical user data, all results will be returned in a single page.
+
+For queries that search public data, with potentially a very large number of items resulting, `shouldFetchNextPages` should be turned off for the service or the ticket.
 
 == Query Operations ==
 
@@ -148,7 +158,7 @@ There may be custom query operations as well.  To find the Objective-C query cla
 
 == Creating GTLObjects from scratch ==
 
-Typically, GTLObjects are created by the library from JSON returned from a server, but occasionally it is useful to create one from scratch, such as when inserting a new entry.  The `+object` method creates an empty instance of a GTLObject.
+Typically, `GTLObject`s are created by the library from JSON returned from a server, but occasionally it is useful to create one from scratch, such as when inserting a new entry.  The `+object` method creates an empty instance of a `GTLObject`.
 
 This snippet shows how to create a new task list for the user's Google Tasks account:
 {{{
@@ -171,7 +181,11 @@ This snippet shows how to create a new task list for the user's Google Tasks acc
 
 == Batch Operations ==
 
-Several queries may be executed together in a *batch*. The result of  executing a batch query is two dictionaries, one for the results of successful queries, and one for the error objects returned by unsuccessful queries.
+Several queries may be executed together in a *batch*. Batch execution is faster than is executing queries individually.
+
+The result of  executing a batch query is two dictionaries, one for the results of successful queries, and one for the error objects returned by unsuccessful queries. 
+
+Note that in addition to the dictionary of error results, there is also an NSError which indicates if the execution did not succceed.
 
 {{{
 GTLBatchQuery *batchQuery = [GTLBatchQuery batchQuery];
@@ -181,10 +195,11 @@ GTLBatchQuery *batchQuery = [GTLBatchQuery batchQuery];
 [service executeQuery:batchQuery
     completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
     if (error == nil) {
-      // execute succeeded
-      GTLBatchResult *batchResults = (GTLBatchResult *)object;
+      // execute succeeded; step through the query successes
+      // and failures in the result
+      GTLBatchResult *batchResult = object;
 
-      NSDictionary *successes = batchResults.successes;
+      NSDictionary *successes = batchResult.successes;
       for (NSString *requestID in successes) {
         GTLObject *result = [successes objectForKey:requestID];
       }
@@ -193,32 +208,33 @@ GTLBatchQuery *batchQuery = [GTLBatchQuery batchQuery];
       for (NSString *requestID in failures) {
         GTLErrorObject *errorObj = [failures objectForKey:requestID];
       }
-  } else {
-    // if the execute failed, no successes or failures
-    // were obtained from the server
-  }
+    } else {
+      // if the execute failed, no successes or failures
+      // were obtained from the server
+    }
+  }];
 }}}
 
-Each query object is created with a unique requestID, though your application may replace the default with a custom requestID string for the query prior to execution. The requestID string must be non-empty, and all queries in a batch must have unique requestIDs.
+Each query object is created with a unique `requestID`, though your application may replace the default with a custom `requestID` string for the query prior to execution. The `requestID` string must be non-empty, and all queries in a batch must have unique `requestID`s.
 
 == Adding Custom Data ==
 
-Often, it is useful to add data locally to a `GTLObject`. For example, an entry used to represent a photo being uploaded would be more convenient if it also carried a path to the photo's file on the local disk.
+Often it is useful to add data locally to a `GTLObject`. For example, an entry used to represent a photo being uploaded would be more convenient if it also carried a path to the photo's file on the local disk.
 
-Your application can add data to any instance of a `GTLObject` in three ways.
+Your application can add data to any instance of a `GTLObject` in three ways. These three techniques only add data to objects _locally_ for the Objective-C code; the data will not be retained on the server.
 
-=== UserData ===
+=== userData ===
 
-Each `GTLObject` has methods `setUserData:` and `userData` to set and retrieve a single NSObject. Adding a local path string to a photo entry with `setUserData:` would look like this:
+Each `GTLObject` has a `userData` property to set and retrieve a single NSObject. Adding a local path string to a photo entry `userData` would look like this:
 
 {{{
 GTLPhoto *newPhoto = [GTLPhoto object];
-[newPhoto setUserData:localPathString];
+newPhoto.userData = localPathString;
 }}}
 
 === User Properties ===
 
-An application can set and retrieve multiple objects as named properties of any `GTLObject` instance with the methods `setProperty:forKey:` and `propertyForKey:`. This is useful when there is more than one bit of data to attach to the object:
+An application can set and retrieve multiple objects as named properties of any `GTLObject` instance with the methods `setProperty:forKey:` and `propertyForKey:`. Unlike `userData`, this is useful for attaching multiple properties.
 
 {{{
 GTLPhoto *newPhoto = [GTLPhoto object];
@@ -226,11 +242,11 @@ GTLPhoto *newPhoto = [GTLPhoto object];
 [newPhoto setProperty:thumbnailImage forKey:@"myThumbnail"];
 }}}
 
-Property names beginning with an underscore are reserved by the library and should not be used by applications.
+Property keys beginning with an underscore are reserved by the library and should not be used by applications.
 
 === Subclassing GTLObjects ===
 
-Finally, applications may subclass `GTLObject`s to add fields and methods.  To have your subclasses be instantiated in place of the standard object class during the parsing of JSON as part of query execution, set the surrogates property of the service:
+Finally, applications may subclass `GTLObject`s to add ivars and methods.  To have your subclasses be instantiated in place of the standard object class during the parsing of JSON as part of query execution, set the `surrogates` property of the service:
 
 {{{
 GTLServicePhotos *service = [[GTLServicePhotos alloc] init];
@@ -240,8 +256,6 @@ service.surrogates = [NSDictionary dictionaryWithObjectsAndKeys:
   [MyAlbum class], [GTLAlbum class],
   nil];
 }}}
-
-These three techniques only add data to objects _locally_ for the Objective-C code; the data will not be retained on the server.
 
 == Passing Objects to Query Callbacks ==
 
@@ -260,18 +274,22 @@ The callback can then access the data:
 
   id myCallbackData = [ticket propertyForKey:@"myCallbackData"];
   ...
-  }
+}
 }}}
 
 `GTLServiceTicket` also supports a `userData` property, which is a single object to be retained, without an explicit key.
 
-== Automatic retry of failed fetches ==
+== Automatic Retry ==
 
-GTL service classes and the GTMHTTPFetcher class provide a mechanism for automatic retry of a few common network and server errors, with appropriate increasing delays between each attempt.  You can turn on the automatic retry support for a GTL service by setting the `retryEnabled` property.
+GTL service classes and the `GTMHTTPFetcher` class provide a mechanism for automatic retry of a few common network and server errors, with appropriate increasing delays between each attempt.  You can turn on the automatic retry support for a GTL service by setting the `retryEnabled` property.
 
-The default errors retried are http status 408 (request timeout), 503 (service unavailable), and 504 (gateway timeout), `NSURLErrorNetworkConnectionLost`, and `NSURLErrorTimedOut`.  You may specify a maximum retry interval other than the default of 10 minutes, and can provide an optional retry selector or block to customize the criteria for each retry attempt.
+{{{
+service.retryEnabled = YES;
+}}}
 
-== Logging http Server Traffic ==
+The default errors retried are http status 408 (request timeout), 503 (service unavailable), and 504 (gateway timeout), `NSURLErrorNetworkConnectionLost`, and `NSURLErrorTimedOut`.  You may specify a maximum retry interval other than the default of 1 minute, and can provide an optional retry selector to customize the criteria for each retry attempt.
+
+== Logging HTTP Server Traffic ==
 
 Debugging query execution is often easier when you can browse the JSON and headers being sent back and forth over the network.  To make this convenient, the framework can save copies of the server traffic, including http headers, to files in a local directory.  Your application should call
 
@@ -279,15 +297,17 @@ Debugging query execution is often easier when you can browse the JSON and heade
 [GTMHTTPFetcher setLoggingEnabled:YES]
 }}}
 
-to turn on logging.  Normally, logs are written to the directory GTMHTTPDebugLogs. The logs directory is in the current user's Desktop folder for Mac applications. The path to another folder can be specified with the `+setLoggingDirectory:` method.
+to turn on logging.  Normally, logs are written to the directory GTMHTTPDebugLogs. The path to another folder can be specified with the `+setLoggingDirectory:` method.
 
-In the iPhone simulator, the default logs location is the user's home directory. On the iPhone device, the default location is the application's documents folder on the device.  To locate it with the Mac Finder, search for the file name GTMHTTPDebugLogs with the search option "System files are included".
+The logs directory is in the current user's Desktop folder for Mac applications. In the iPhone simulator, the default logs location is the user's home directory. On the iPhone device, the default location is the application's documents folder on the device.  
+
+To locate the folder with the Mac Finder, search for the file name GTMHTTPDebugLogs with the search option "System files are included".
 
 To view the most recently saved logs, use a web browser to open the symlink named !MyAppName_log_newest.html (for whatever your application's name is) in the logging directory.
 
-For each executed query, the http log is also available as the property `ticket.objectFetcher.log`
+For each executed query, when logging is enabled, the http log is also available as the property `ticket.objectFetcher.log`
 
-*_iOS Note:_* The static library build of the library strips out logging support in non-DEBUG builds by default.  This can be overridden by explicitly setting STRIP_GTM_FETCH_LOGGING=0 for the project.
+*_iOS Note:_* Logging support is stripped out in non-DEBUG builds by default.  This can be overridden by explicitly setting STRIP_GTM_FETCH_LOGGING=0 for the project.
 
 *_Tip:_* Providing a convenient way for your users to enable logging is often helpful in diagnosing problems when using the API.
 
