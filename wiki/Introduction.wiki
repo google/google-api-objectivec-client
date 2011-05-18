@@ -51,11 +51,11 @@ Google APIs rely on OAuth 2 for user sign-in. The library includes the [http://c
 
 === Queries and GTLObjects ===
 
-Servers respond to client API requests with objects.  Objects are typically either individual items, or a container with an `items` property that returns an `NSArray` of items.
+Servers respond to client API requests with objects.  Objects are typically either individual items, or a collection with an `items` property that returns an `NSArray` of items.
 
 For example, a search for products would return a `GTLShoppingProducts` container object, where the items of the object are the individual product results found by the search.
 
-Both the individual items and the container objects are derived from *GTLObject*. 
+The individual items are derived from *GTLObject*. The collection is derived from *GTLCollectionObject*, which is a `GTLObject` that also provides an `itemAtIndex:` method and implements the `NSFastEnumeration` protocol.
 
 Each request to the server is a *query*. Server interactions in the library are handled by *service objects*.  A single transaction with a service is tracked with a *service ticket*.
 
@@ -74,7 +74,8 @@ GTLServiceTicket *ticket = [service executeQuery:query
   // This callback block is run when the fetch completes
   if (error == nil) {
     GTLShoppingProducts *products = object;
-    for (GTLShoppingProduct *item in products.items) {
+
+    for (GTLShoppingProduct *item in products) {
       // Print the name of each product result item
       NSLog(@"%@", item.product.title);
     }
