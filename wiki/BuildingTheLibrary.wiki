@@ -58,6 +58,10 @@ Rather than link to the GTL framework, you can compile the GTL library sources d
 
 Also drag the folder with the class files for the services needed by your application, such as Tasks or Books, directly into your project.
 
+Application files referring to GTL objects should include either the header for a specific service, such as
+
+`#import "GTLTasks.h"`
+
 If you compile the project's source files directly into your own project file, set this build setting:
 
  C Language Dialect: `C99 [-std=c99]`
@@ -73,7 +77,3 @@ For just the Debug configuration of your target, add this compiler definition to
 Or, if the Other C Flags setting is not available in your target's build options, set the equivalent user-defined setting:
 
   `OTHER_CFLAGS=-DDEBUG=1`
-
-Source files referring to GTL objects should include either the header for a specific service, such as
-
-`#import "GTLTasks.h"`
