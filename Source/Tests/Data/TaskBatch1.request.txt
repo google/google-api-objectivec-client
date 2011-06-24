@@ -1,0 +1,32 @@
+[
+  {
+    "id" : "gtl_19",
+    "apiVersion" : "v1",
+    "params" : {
+      "tasklist" : "MDg0NTg2OTA1ODg4OTI3MzgyMzQ6NDow",
+      "task" : "MDg0NTg2OTA1ODg4OTI3MzgyMzQ6NDox",
+      "resource" : {
+        "id" : "MDg0NTg2OTA1ODg4OTI3MzgyMzQ6NDox",
+        "status" : "needsAction",
+        "title" : "task one"
+      }
+    },
+    "method" : "tasks.tasks.update",
+    "jsonrpc" : "2.0"
+  },
+  {
+    "id" : "gtl_18",
+    "apiVersion" : "v1",
+    "params" : {
+      "tasklist" : "MDg0NTg2OTA1ODg4OTI3MzgyMzQ6NDow",
+      "task" : "MDg0NTg2OTA1ODg4OTI3MzgyMzQ6NDoy",
+      "resource" : {
+        "id" : "MDg0NTg2OTA1ODg4OTI3MzgyMzQ6NDoy",
+        "status" : "needsAction",
+        "title" : "task two"
+      }
+    },
+    "method" : "tasks.tasks.update",
+    "jsonrpc" : "2.0"
+  }
+]
