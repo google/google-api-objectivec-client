@@ -88,7 +88,7 @@ Unseen by the application, the server is returning a JSON tree in response to qu
 `GTLObject`'s support for properties allows compile-time syntax checking and enables Xcode's autocompletion for each object.  The header files for each object class clearly define the fields of each objects. For example, the shopping products object interface looks in part like this:
 
 {{{
-@interface GTLShoppingProducts : GTLObject
+@interface GTLShoppingProducts : GTLCollectionObject
 @property (retain) NSString *identifier;
 @property (retain) NSArray *items;  // of GTLShoppingProduct
 @property (retain) NSNumber *currentItemCount;  // integer only
