@@ -85,13 +85,13 @@ GTLServiceTicket *ticket = [service executeQuery:query
 
 Unseen by the application, the server is returning a JSON tree in response to queries.  Each `GTLObject`, such as `GTLShoppingProducts` in the example above, is a wrapper for a tree of JSON data. The `GTLObject` allows the JSON data to be treated like a first-class Objective-C object, using normal Objective-C property notation. This is visible in the code snippet above, where the product results are accessible as `products.items`.  
 
-`GTLObject`'s support for properties allows compile-time syntax checking and enables Xcode's autocompletion for each object.  The header files for each object class clearly define the fields of each objects. For example, the shopping products object interface looks in part like this:
+`GTLObject`'s support for Objective-C properties allows compile-time syntax checking and enables Xcode's autocompletion for each object.  The header files for each object class clearly define the fields of each objects. For example, the shopping products object interface looks in part like this:
 
 {{{
 @interface GTLShoppingProducts : GTLCollectionObject
 @property (retain) NSString *identifier;
 @property (retain) NSArray *items;  // of GTLShoppingProduct
-@property (retain) NSNumber *currentItemCount;  // integer only
+@property (retain) NSNumber *currentItemCount;  // intValue
 @property (retain) GTLShoppingProductsSpelling *spelling;
 ...
 @end
