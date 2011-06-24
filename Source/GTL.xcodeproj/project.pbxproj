@@ -17,12 +17,12 @@
 		4F1817511134982E009F7FD1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F18174C1134982E009F7FD1 /* Security.framework */; };
 		4F1AD90D0B71607400DC0485 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F1AD90C0B71607400DC0485 /* main.m */; };
 		4F1ADAB10B7168F300DC0485 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
-		4F244943121F3C2B00FEE1DA /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F244940121F3C2B00FEE1DA /* SBJSON.m */; };
+		4F244943121F3C2B00FEE1DA /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F244940121F3C2B00FEE1DA /* SBJSON.m */; settings = {COMPILER_FLAGS = "-Wno-parentheses"; }; };
 		4F244944121F3C2B00FEE1DA /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F24493A121F3C2B00FEE1DA /* JSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F244949121F3C2B00FEE1DA /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F24493F121F3C2B00FEE1DA /* SBJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4F24494A121F3C2B00FEE1DA /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F244940121F3C2B00FEE1DA /* SBJSON.m */; };
-		4F24494D121F3C2B00FEE1DA /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F244940121F3C2B00FEE1DA /* SBJSON.m */; };
-		4F244950121F3C2B00FEE1DA /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F244940121F3C2B00FEE1DA /* SBJSON.m */; };
+		4F24494A121F3C2B00FEE1DA /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F244940121F3C2B00FEE1DA /* SBJSON.m */; settings = {COMPILER_FLAGS = "-Wno-parentheses"; }; };
+		4F24494D121F3C2B00FEE1DA /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F244940121F3C2B00FEE1DA /* SBJSON.m */; settings = {COMPILER_FLAGS = "-Wno-parentheses"; }; };
+		4F244950121F3C2B00FEE1DA /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F244940121F3C2B00FEE1DA /* SBJSON.m */; settings = {COMPILER_FLAGS = "-Wno-parentheses"; }; };
 		4F2449B7121F3E2A00FEE1DA /* GTMHTTPFetcherTestServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2449B4121F3E2A00FEE1DA /* GTMHTTPFetcherTestServer.m */; };
 		4F2449B8121F3E2A00FEE1DA /* GTMHTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2449B6121F3E2A00FEE1DA /* GTMHTTPServer.m */; };
 		4F35B4B11385F9270082F64E /* Task1.rest.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4F35B4B01385F9270082F64E /* Task1.rest.txt */; };
@@ -181,7 +181,7 @@
 		4F1647691370C8F80096E878 /* TaskBatch1.request.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TaskBatch1.request.txt; path = Tests/Data/TaskBatch1.request.txt; sourceTree = "<group>"; };
 		4F16476A1370C8F80096E878 /* TaskBatch1.response.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TaskBatch1.response.txt; path = Tests/Data/TaskBatch1.response.txt; sourceTree = "<group>"; };
 		4F18174C1134982E009F7FD1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
-		4F1AD9020B71603F00DC0485 /* DevelopmentTestTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DevelopmentTestTool; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F1AD9020B71603F00DC0485 /* DevelopmentTestTool */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "compiled.mach-o.executable"; path = DevelopmentTestTool; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F1AD90C0B71607400DC0485 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Tests/main.m; sourceTree = "<group>"; };
 		4F24493A121F3C2B00FEE1DA /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSON.h; path = JSON/JSON.h; sourceTree = "<group>"; };
 		4F24493F121F3C2B00FEE1DA /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJSON.h; path = JSON/SBJSON.h; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 		4F2E11F20BA778D700237907 /* GTLFramework-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; name = "GTLFramework-Info.plist"; path = "Resources/GTLFramework-Info.plist"; sourceTree = "<group>"; };
 		4F35B4B01385F9270082F64E /* Task1.rest.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Task1.rest.txt; path = Tests/Data/Task1.rest.txt; sourceTree = "<group>"; };
 		4F35D4B3117787F600BDFA97 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = /System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<absolute>"; };
-		4F38F6A60B66E91D00B24B81 /* GTL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GTL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F38F6A60B66E91D00B24B81 /* GTL */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.framework; path = GTL; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F3DE994119CCE49006926D1 /* GTLDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLDefines.h; sourceTree = "<group>"; };
 		4F4DE9071371DD6F00F5C554 /* TaskError1.request.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TaskError1.request.txt; path = Tests/Data/TaskError1.request.txt; sourceTree = "<group>"; };
 		4F4DE9081371DD6F00F5C554 /* TaskError1.response.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TaskError1.response.txt; path = Tests/Data/TaskError1.response.txt; sourceTree = "<group>"; };
@@ -361,7 +361,7 @@
 		19C28FB8FE9D52D311CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4F38F6A60B66E91D00B24B81 /* GTL.framework */,
+				4F38F6A60B66E91D00B24B81 /* GTL */,
 				4F1AD9020B71603F00DC0485 /* DevelopmentTestTool */,
 				4F12027C11A4CA2F00BEB470 /* libGTLTouchStaticLib.a */,
 				4F12027D11A4CA2F00BEB470 /* GTLUnitTests.octest */,
@@ -683,7 +683,7 @@
 			);
 			name = GTLFramework;
 			productName = GTLFramework;
-			productReference = 4F38F6A60B66E91D00B24B81 /* GTL.framework */;
+			productReference = 4F38F6A60B66E91D00B24B81 /* GTL */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -986,7 +986,6 @@
 					SenTestingKit,
 				);
 				PRODUCT_NAME = GTLUnitTests;
-				RUN_CLANG_STATIC_ANALYZER = YES;
 				STRIP_STYLE = "non-global";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -1014,7 +1013,6 @@
 					SenTestingKit,
 				);
 				PRODUCT_NAME = GTLUnitTests;
-				RUN_CLANG_STATIC_ANALYZER = YES;
 				STRIP_STYLE = "non-global";
 				WRAPPER_EXTENSION = octest;
 			};
