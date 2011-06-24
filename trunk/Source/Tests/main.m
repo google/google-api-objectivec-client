@@ -16,7 +16,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import "GTL.h"
+#import "GTLService.h"
 
 int main(int argc, char *argv[]) {
 
