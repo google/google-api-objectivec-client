@@ -120,18 +120,20 @@ A new ticket is created each time a query is executed by the service. When a tic
 
 The application may choose to retain the ticket after a query starts executing, allowing the user to cancel the service request.
 
-To cancel a query in progress, call `[ticket cancelTicket]`.  Once the callback has been invoked, the ticket is no longer useful and may be released.
+Once either a query's callback has been invoked or the query is canceled, the ticket is no longer useful and may be released. To cancel a query in progress, call `[ticket cancelTicket]`. 
 
-The query being executed by a ticket is available as`ticket.executingQuery`. The `GTMHTTPFetcher` object used to execute the query is accessible as `ticket.objectFetcher`.
+The query being executed by a ticket is available as `ticket.executingQuery`. The `GTMHTTPFetcher` object used to execute the query is accessible as `ticket.objectFetcher`.
 
 === Result Pages ===
 
-A query may return an object with a subset of the results, called *pages*. When a result object includes a *nextPageToken* string, then a copy of the query can be executed with the token set as the *pageToken* property of the new query, fetching the next set of results. 
+A query may return an object with a subset of the results, called *pages*. When a result object includes a *nextPageToken* string, then the query can be executed again with the token set as the *pageToken* property of the new query, fetching the next set of results. 
 {{{
-// Manually make a query to fetch the next page of results
-GTLQueryTasks *nextQuery = [[previousQuery copy] autorelease];
-nextQuery.pageToken = object.nextPageToken;
-ticket = [service executeQuery:nextQuery ...
+if (object.nextPageToken) {
+  // Manually make a query to fetch the next page of results
+  GTLQueryTasks *nextQuery = previousQuery;
+  nextQuery.pageToken = object.nextPageToken;
+  GTLServiceTicket *nextTicket = [service executeQuery:nextQuery ...
+}
 }}}
 
 For APIs that offer this style of pagination, the library can automatically fetch all pages, and return an object whose items array includes the items of all pages (up to 25 pages). This can be turned on by setting the `shouldFetchNextPages` property of a service or a ticket:
