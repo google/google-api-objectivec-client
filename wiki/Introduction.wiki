@@ -116,6 +116,13 @@ Service objects maintain cookies and track other persistent data across queries.
 
 Query execution by the service is inherently asynchronous. There is no need create an operation queue or use GCD to run queries on other threads. Callbacks are always run on the same thread that began the query execution. Generally, it's best to execute queries on the main application thread. Any number of queries may be executed either concurrently or sequentially, subject to rate limits shown in the [https://code.google.com/apis/console API Console].
 
+On iOS, fetches will normally be stopped once the user puts the application into the background. Fetches and fetch callbacks can be continued in the background, up to the operating system time limit, by setting the property `shouldFetchInBackground`:
+{{{
+// Enable fetches to continue in the background on iOS
+service.shouldFetchInBackground = YES;
+}}}
+
+
 A new ticket is created each time a query is executed by the service. When a ticket is created, many of the ticket properties, such as retry settings and surrogates (both described below), are initialized from the service's properties.
 
 The application may choose to retain the ticket after a query starts executing, allowing the user to cancel the service request.
