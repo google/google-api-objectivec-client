@@ -35,9 +35,9 @@ BuildingTheLibrary explains how to add the library to a Mac or iPhone applicatio
 
 The Google APIs Library for Objective-C uses the prefix `GTL`. 
 
-The library incorporates other Google libraries with the `GTM` prefix. Those provide http handling (gtm-http-fetcher) and OAuth 2 authentication (gtm-oauth2).  The library uses the SBJSON library for JSON parsing and generation.
+The library incorporates other Google libraries with the `GTM` prefix. Those provide http handling (gtm-http-fetcher) and OAuth 2 authentication (gtm-oauth2).  For systems earlier than iOS 5 and Mac OS X 10.7, the library uses the SBJSON library for JSON parsing and generation.
 
-All external libraries needed are checked out automatically with the main API library using subversion's externals facility.
+All external libraries needed are checked out automatically with the main API library using Subversion's externals facility.
 
 == Authentication and Authorization ==
 
@@ -45,7 +45,7 @@ All external libraries needed are checked out automatically with the main API li
 
 Google APIs rely on OAuth 2 for user sign-in. The library includes the [http://code.google.com/p/gtm-oauth2/ GTM OAuth 2 controllers] for iOS and Mac OS X to handle the sign-in sequence. A `GTMOAuth2Authentication` object encapsulates the resulting access tokens.
 
-*Authorization* is the use of access tokens to allow specific requests. Applications pass the OAuth 2 authorization object to a service class's `setAuthorizer:` method.
+*Authorization* is the use of access tokens to allow specific requests. Applications pass the OAuth 2 authorization object to a service class's `setAuthorizer:` method to authorize queries.
 
 == Google APIs Objective-C Client Library Basics ==
 
@@ -83,7 +83,7 @@ GTLServiceTicket *ticket = [service executeQuery:query
 };
 }}}
 
-Unseen by the application, the server is returning a JSON tree in response to queries.  Each `GTLObject`, such as `GTLShoppingProducts` in the example above, is a wrapper for a tree of JSON data. The `GTLObject` allows the JSON data to be treated like a first-class Objective-C object, using normal Objective-C property notation. This is visible in the code snippet above, where the product results are accessible as `products.items`.  
+Unseen by the application, the server is returning a JSON tree in response to queries.  Each `GTLObject`, such as `GTLShoppingProducts` in the example above, is a wrapper for a tree of JSON data. The `GTLObject` allows the JSON data to be treated like a first-class Objective-C object, using normal Objective-C property notation. This use of properties is visible in the code snippet above, where the product item result names are accessible as `item.product.title`.  
 
 `GTLObject`'s support for Objective-C properties allows compile-time syntax checking and enables Xcode's autocompletion for each object.  The header files for each object class clearly define the fields of each objects. For example, the shopping products object interface looks in part like this:
 
@@ -99,7 +99,7 @@ Unseen by the application, the server is returning a JSON tree in response to qu
 
 Each object property returns either a standard Objective-C type (NSString, NSNumber, NSArray), other `GTLObjects`, or `GTLDateTime`.
 
-When your application gets a property from a `GTLObject`, the library converts the property name to the JSON key string to get or set the result in the underlying JSON tree.  Subtrees of the JSON are returned wrapped in a new `GTLObject`s. To reduce memory overhead, the `GTLObjects` are not created for inner trees of the JSON until they are accessed by the application.
+When your application gets a property from a `GTLObject`, the library converts the property name to the JSON key string to get or set the result in the underlying JSON tree.  Subtrees of the JSON are returned wrapped in a new `GTLObject`s. To reduce memory overhead, the `GTLObjects` are not created for inner trees of the JSON until they are needed by the application.
 
 Normally, applications will not need to access the plain JSON tree, but it is available for each `GTLObject` as a dictionary with the property `JSON`.
 
@@ -114,14 +114,15 @@ GTLServiceTicket *ticket = [service executeQuery:query
 
 Service objects maintain cookies and track other persistent data across queries. Typically, an application will create a single instance of a service object to use for executing all queries.
 
-Query execution by the service is inherently asynchronous. There is no need create an operation queue or use GCD to run queries on other threads. Callbacks are always run on the same thread that began the query execution. Generally, it's best to execute queries on the main application thread. Any number of queries may be executed either concurrently or sequentially, subject to rate limits shown in the [https://code.google.com/apis/console API Console].
+The service object makes a copy of each query for execution, so changes to a query object made after calling `executeQuery:` will not affect the request.
+
+Query execution by the service is inherently asynchronous. There is no need to create an operation queue or to use GCD to run queries on other threads. Callbacks are always run on the same thread that began the query execution. Generally, it's best to execute queries on the main application thread. Any number of queries may be executed either concurrently or sequentially, subject to rate limits shown in the [https://code.google.com/apis/console API Console].
 
 On iOS, fetches will normally be stopped once the user puts the application into the background. Fetches and fetch callbacks can be continued in the background, up to the operating system time limit, by setting the property `shouldFetchInBackground`:
 {{{
 // Enable fetches to continue in the background on iOS
 service.shouldFetchInBackground = YES;
 }}}
-
 
 A new ticket is created each time a query is executed by the service. When a ticket is created, many of the ticket properties, such as retry settings and surrogates (both described below), are initialized from the service's properties.
 
@@ -133,7 +134,7 @@ The query being executed by a ticket is available as `ticket.executingQuery`. Th
 
 === Result Pages ===
 
-A query may return an object with a subset of the results, called *pages*. When a result object includes a *nextPageToken* string, then the query can be executed again with the token set as the *pageToken* property of the new query, fetching the next set of results. 
+A query may return an object with a subset of the results in the items array. The object is considered one of several *pages*. When a result object includes a *nextPageToken* string, then the query can be executed again with the token provided as the *pageToken* property of the new query, fetching the next set of results. 
 {{{
 if (object.nextPageToken) {
   // Manually make a query to fetch the next page of results
@@ -149,7 +150,7 @@ For APIs that offer this style of pagination, the library can automatically fetc
 service.shouldFetchNextPages = YES;
 }}}
 
-Note, however, that results spread over many pages may take a long time to be retrieved, as each page fetch will lead to a new http request.  The server can be told to use a larger page size (that is, more item in each page returned) by fetching a query for the feed with a `maxResults` value:
+Note, however, that results spread over many pages may take a long time to be retrieved, as each page fetch will lead to a new http request.  The server can be told to use a larger page size (that is, more items in each page returned) by fetching a query for the feed with a `maxResults` value:
 
 {{{
 // Specify a large page size to reduce the need to fetch additional result pages
@@ -160,14 +161,15 @@ ticket = [service executeQuery:query ...
 
 Ideally, maxResults will be large enough that, for typical user data, all results will be returned in a single page.
 
-For queries that search public data, with potentially a very large number of items resulting, `shouldFetchNextPages` should be turned off for the service or the ticket.
+For queries that search public data, with potentially a very large number of items resulting, `shouldFetchNextPages` should be turned off for the service or the ticket. Additional pages of large data sets can be fetched manually.
 
 == Query Operations ==
 
 Query objects typically implement these basic operations:
   * list - fetch a list of items
   * insert - add an item to a list
-  * update - replace an item in a list
+  * update - replace an entire item
+  * patch - replace fields of an item
   * delete - remove an item
 
 There may be custom query operations as well.  To find the Objective-C query class for a documented API operation, search for the *method name* shown in the JSON-RPC documentation for the API.  It is listed before each method name in the query class interface, as shown here for the method named "shopping.products.list":
@@ -207,7 +209,7 @@ Several queries may be executed together in a *batch*. Batch execution is faster
 
 The result of  executing a batch query is two dictionaries, one for the results of successful queries, and one for the error objects returned by unsuccessful queries. 
 
-Note that in addition to the dictionary of error results, there is also an NSError which indicates if the execution did not succceed.
+Note that in addition to the dictionary of error results, there is also an NSError which indicates if the execution did not succeed.
 
 {{{
 GTLBatchQuery *batchQuery = [GTLBatchQuery batchQuery];
@@ -231,13 +233,13 @@ GTLBatchQuery *batchQuery = [GTLBatchQuery batchQuery];
         GTLErrorObject *errorObj = [failures objectForKey:requestID];
       }
     } else {
-      // error is non-nil so execute failed: no success or failure
+      // Here, error is non-nil so execute failed: no success or failure
       // results were obtained from the server
     }
   }];
 }}}
 
-Each query object is created with a unique `requestID`, though your application may replace the default with a custom `requestID` string for the query prior to execution. The `requestID` string must be non-empty, and all queries in a batch must have unique `requestID`s.
+Each query object is created with a unique `requestID`, though your application may set a custom `requestID` string for the query prior to execution. The `requestID` string must be non-empty, and all queries in a batch must have unique `requestID`s.
 
 == Adding Custom Data ==
 
