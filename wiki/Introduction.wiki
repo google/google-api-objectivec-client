@@ -180,13 +180,13 @@ There may be custom query operations as well.  To find the Objective-C query cla
 + (id)queryForProductsListWithSource:(NSString *)source;
 }}}
 
-== Creating GTLObjects from scratch ==
+== Creating GTLObjects from Scratch ==
 
 Typically, `GTLObject`s are created by the library from JSON returned from a server, but occasionally it is useful to create one from scratch, such as when inserting a new entry.  The `+object` method creates an empty instance of a `GTLObject`.
 
 This snippet shows how to create a new task list for the user's Google Tasks account:
 {{{
-- (void)addATaskListWithTitle:(NSString *)title {
+- (void)changeATaskListTitle:(NSString *)title {
   GTLTasksTaskList *tasklist = [GTLTasksTaskList object];
   tasklist.title = title;
 
@@ -203,9 +203,54 @@ This snippet shows how to create a new task list for the user's Google Tasks acc
 }
 }}}
 
+== Partial Responses ==
+
+Applications can avoid fetching unneeded data by setting a query's `fields` property. Google APIs support a syntax similar to XPath for selecting fields to be included in the response.
+
+For example, to request only the IDs and author email addresses for each item in the collection, use this request:
+{{{
+query.fields = @"items(id,author/email,kind),kind";
+}}}
+
+The library may use the `kind` fields of responses to choose the proper object classes, so requests for partial responses should always include the `kind` fields for items and collections, as shown above. Otherwise, the library may be forced to incorrectly instantiate the `GTLObject` base class for the response.
+
+Refer to the [http://code.google.com/apis/buzz/v1/performance.html#partial-response documentation] for details on the fields parameter. 
+
+`GTLObject` provides a `fieldsDescription` method which returns a string describing all of the fields in an object.  The string may be useful as a starting point when making a query to request specific fields.
+
+== Partial Updates ==
+
+An update query will replace an entire item of a collection. Typically, it is more useful to replace only one or a few fields of an item. A patch query accomplishes that: it replaces only the fields specified by the patch object.
+
+Here is how to use a partial update to change only the title of a task list:
+{{{
+GTLTasksTaskList *patchObject = [GTLTasksTaskList object];
+patchObject.title = title;
+
+GTLQueryTasks *query = [GTLQueryTasks queryForTasklistsPatchWithObject:patchObject
+                                                              tasklist:taskList.identifier];
+GTLServiceTicket *ticket = [service executeQuery:query ...
+}}}
+
+An explicit *null value* indicates that a field should be deleted. For example, removing just the notes from a task looks like this:
+
+{{{
+GTLTasksTask *patchObject = [GTLTasksTask object];
+patchObject.notes = [GTLObject nullValue];
+
+GTLQueryTasks *query = [GTLQueryTasks queryForTasksPatchWithObject:patchObject
+                                                          tasklist:tasklist.identifier
+                                                              task:task.identifier];
+GTLServiceTicket *ticket = [service executeQuery:query ...
+}}}
+
+An array in a patch object field always replaces the entire array for the object on the server, as described in the [http://code.google.com/apis/buzz/v1/performance.html#partial-response documentation] for partial updates. 
+
+`GTLObject` includes a helpful method `patchObjectFromOriginal:` for making a patch object that contains just the changes from a previous version of that object.
+
 == Batch Operations ==
 
-Several queries may be executed together in a *batch*. Batch execution is faster than is executing queries individually.
+Several unrelated queries may be executed together in a *batch*. Batch execution is faster than is executing queries individually.
 
 The result of  executing a batch query is two dictionaries, one for the results of successful queries, and one for the error objects returned by unsuccessful queries. 
 
