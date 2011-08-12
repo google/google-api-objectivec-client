@@ -396,10 +396,6 @@ For each executed query, when logging is enabled, the http log is also available
 
 *_Tip:_* Providing a convenient way for your users to enable logging is often helpful in diagnosing problems when using the API.
 
-== Performance and Memory Improvements ==
-
-Once your application successfully works with Google APIs, review the tips on the [PerformanceTuning Performance Tuning] page.
-
 == Questions and Comments ==
 
 *If you have any questions or comments* about the library or this documentation, please join the [http://groups.google.com/group/google-api-objectivec-client discussion group].
