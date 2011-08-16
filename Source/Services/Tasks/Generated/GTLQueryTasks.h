@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/tasks/v1/using.html
 // Classes:
-//   GTLQueryTasks (14 custom class methods, 14 custom properties)
+//   GTLQueryTasks (14 custom class methods, 15 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -39,6 +39,16 @@
 
 @interface GTLQueryTasks : GTLQuery
 
+//
+// Parameters valid on all methods.
+//
+
+// Selector specifying which fields to include in a partial response.
+@property (retain) NSString *fields;
+
+//
+// Method-specific parameters; see the comments below for more information.
+//
 @property (retain) NSString *completedMax;
 @property (retain) NSString *completedMin;
 @property (retain) NSString *dueMax;

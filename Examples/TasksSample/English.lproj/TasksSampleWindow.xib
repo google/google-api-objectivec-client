@@ -2,18 +2,16 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1050</int>
-		<string key="IBDocument.SystemVersion">10J567</string>
+		<string key="IBDocument.SystemVersion">10J869</string>
 		<string key="IBDocument.InterfaceBuilderVersion">851</string>
 		<string key="IBDocument.AppKitVersion">1038.35</string>
-		<string key="IBDocument.HIToolboxVersion">462.00</string>
+		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			<string key="NS.object.0">851</string>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="6"/>
-			<integer value="901"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -49,7 +47,7 @@
 				<string key="NSWindowContentMaxSize">{1.79769e+308, 1.79769e+308}</string>
 				<string key="NSWindowContentMinSize">{539, 493}</string>
 				<object class="NSView" key="NSWindowView" id="456976485">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1166,7 +1164,6 @@
 						</object>
 					</object>
 					<string key="NSFrameSize">{539, 538}</string>
-					<reference key="NSSuperview"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMinSize">{539, 515}</string>
@@ -1185,7 +1182,7 @@
 				<nil key="NSViewClass"/>
 				<string key="NSWindowContentMaxSize">{1.79769e+308, 1.79769e+308}</string>
 				<object class="NSView" key="NSWindowView" id="1064823114">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1329,7 +1326,6 @@
 						</object>
 					</object>
 					<string key="NSFrameSize">{458, 284}</string>
-					<reference key="NSSuperview"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMaxSize">{1.79769e+308, 1.79769e+308}</string>
@@ -1411,22 +1407,6 @@
 					<int key="connectionID">736</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mSignedInButton</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="668835751"/>
-					</object>
-					<int key="connectionID">834</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mSignedInField</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="186251202"/>
-					</object>
-					<int key="connectionID">835</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">signInClicked:</string>
 						<reference key="source" ref="832027606"/>
@@ -1443,36 +1423,12 @@
 					<int key="connectionID">867</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mClientIDField</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="487980099"/>
-					</object>
-					<int key="connectionID">923</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mClientSecretField</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="948385865"/>
-					</object>
-					<int key="connectionID">924</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">APIConsoleClicked:</string>
 						<reference key="source" ref="832027606"/>
 						<reference key="destination" ref="856296957"/>
 					</object>
 					<int key="connectionID">925</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mClientIDSheet</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="27698075"/>
-					</object>
-					<int key="connectionID">926</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
@@ -1489,22 +1445,6 @@
 						<reference key="destination" ref="785881920"/>
 					</object>
 					<int key="connectionID">932</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mClientIDRequiredTextField</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="975671652"/>
-					</object>
-					<int key="connectionID">936</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mClientIDButton</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="948187226"/>
-					</object>
-					<int key="connectionID">938</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -1555,78 +1495,6 @@
 					<int key="connectionID">989</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mTaskListsCancelButton</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="95312417"/>
-					</object>
-					<int key="connectionID">990</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mAddTaskListButton</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="148222865"/>
-					</object>
-					<int key="connectionID">991</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mRenameTaskListButton</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="155746841"/>
-					</object>
-					<int key="connectionID">992</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mDeleteTaskListButton</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="924179543"/>
-					</object>
-					<int key="connectionID">993</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mTasksCancelButton</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="807286437"/>
-					</object>
-					<int key="connectionID">997</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mTaskListsTable</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="479016478"/>
-					</object>
-					<int key="connectionID">998</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mTaskListsProgressIndicator</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="78557691"/>
-					</object>
-					<int key="connectionID">999</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mTaskListsResultTextView</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="245764279"/>
-					</object>
-					<int key="connectionID">1000</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mTasksProgressIndicator</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="63094075"/>
-					</object>
-					<int key="connectionID">1002</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">addTaskListClicked:</string>
 						<reference key="source" ref="832027606"/>
@@ -1667,14 +1535,6 @@
 					<int key="connectionID">1010</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mTasksResultTextView</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="301096275"/>
-					</object>
-					<int key="connectionID">1011</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">getTaskListsClicked:</string>
 						<reference key="source" ref="832027606"/>
@@ -1697,46 +1557,6 @@
 						<reference key="destination" ref="832027606"/>
 					</object>
 					<int key="connectionID">1014</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mTasksOutline</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="18778375"/>
-					</object>
-					<int key="connectionID">1015</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mTaskListNameField</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="96199999"/>
-					</object>
-					<int key="connectionID">1016</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mAddTaskButton</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="576928434"/>
-					</object>
-					<int key="connectionID">1017</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mDeleteTaskButton</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="787657669"/>
-					</object>
-					<int key="connectionID">1019</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mTaskNameField</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="927675148"/>
-					</object>
-					<int key="connectionID">1020</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
@@ -1771,38 +1591,6 @@
 					<int key="connectionID">1032</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mCompleteTaskButton</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="124997185"/>
-					</object>
-					<int key="connectionID">1033</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mShowCompletedTasksCheckbox</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="793451411"/>
-					</object>
-					<int key="connectionID">1040</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mShowDeletedTasksCheckbox</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="521807521"/>
-					</object>
-					<int key="connectionID">1041</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mShowHiddenTasksCheckbox</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="45869739"/>
-					</object>
-					<int key="connectionID">1042</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">showTasksCheckboxClicked:</string>
 						<reference key="source" ref="832027606"/>
@@ -1827,14 +1615,6 @@
 					<int key="connectionID">1045</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mClearTasksButton</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="1066988842"/>
-					</object>
-					<int key="connectionID">1049</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">clearTasksClicked:</string>
 						<reference key="source" ref="832027606"/>
@@ -1851,14 +1631,6 @@
 					<int key="connectionID">1054</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">mDeleteAllTasksButton</string>
-						<reference key="source" ref="832027606"/>
-						<reference key="destination" ref="490173865"/>
-					</object>
-					<int key="connectionID">1055</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">completeAllTasksClicked:</string>
 						<reference key="source" ref="832027606"/>
@@ -1868,11 +1640,243 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">mCompleteAllTasksButton</string>
+						<string key="label">signedInField_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="186251202"/>
+					</object>
+					<int key="connectionID">1062</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">signedInButton_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="668835751"/>
+					</object>
+					<int key="connectionID">1063</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">taskListsTable__</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="479016478"/>
+					</object>
+					<int key="connectionID">1064</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">taskListsProgressIndicator_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="78557691"/>
+					</object>
+					<int key="connectionID">1065</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">taskListsResultTextView_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="245764279"/>
+					</object>
+					<int key="connectionID">1066</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">taskListsCancelButton_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="95312417"/>
+					</object>
+					<int key="connectionID">1067</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">addTaskListButton_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="148222865"/>
+					</object>
+					<int key="connectionID">1068</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">renameTaskListButton_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="155746841"/>
+					</object>
+					<int key="connectionID">1069</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">deleteTaskListButton_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="924179543"/>
+					</object>
+					<int key="connectionID">1070</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">taskListNameField_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="96199999"/>
+					</object>
+					<int key="connectionID">1071</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">tasksOutline_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="18778375"/>
+					</object>
+					<int key="connectionID">1072</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">tasksProgressIndicator_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="63094075"/>
+					</object>
+					<int key="connectionID">1073</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">tasksResultTextView_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="301096275"/>
+					</object>
+					<int key="connectionID">1074</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">showCompletedTasksCheckbox_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="793451411"/>
+					</object>
+					<int key="connectionID">1075</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">showHiddenTasksCheckbox_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="45869739"/>
+					</object>
+					<int key="connectionID">1076</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">showDeletedTasksCheckbox_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="521807521"/>
+					</object>
+					<int key="connectionID">1077</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">tasksCancelButton_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="807286437"/>
+					</object>
+					<int key="connectionID">1078</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">addTaskButton_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="576928434"/>
+					</object>
+					<int key="connectionID">1079</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">renameTaskButton_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="250147293"/>
+					</object>
+					<int key="connectionID">1080</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">deleteTaskButton_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="787657669"/>
+					</object>
+					<int key="connectionID">1081</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">completeTaskButton_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="124997185"/>
+					</object>
+					<int key="connectionID">1082</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">clearTasksButton_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="1066988842"/>
+					</object>
+					<int key="connectionID">1083</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">completeAllTasksButton_</string>
 						<reference key="source" ref="832027606"/>
 						<reference key="destination" ref="693217692"/>
 					</object>
-					<int key="connectionID">1060</int>
+					<int key="connectionID">1084</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">deleteAllTasksButton_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="490173865"/>
+					</object>
+					<int key="connectionID">1085</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">taskNameField_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="927675148"/>
+					</object>
+					<int key="connectionID">1086</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">clientIDButton_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="948187226"/>
+					</object>
+					<int key="connectionID">1087</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">clientIDRequiredTextField_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="975671652"/>
+					</object>
+					<int key="connectionID">1088</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">clientIDSheet_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="27698075"/>
+					</object>
+					<int key="connectionID">1089</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">clientIDField_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="487980099"/>
+					</object>
+					<int key="connectionID">1090</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">clientSecretField_</string>
+						<reference key="source" ref="832027606"/>
+						<reference key="destination" ref="948385865"/>
+					</object>
+					<int key="connectionID">1091</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3095,7 +3099,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">1060</int>
+			<int key="maxID">1091</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3266,36 +3270,36 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>mAddTaskButton</string>
-							<string>mAddTaskListButton</string>
-							<string>mClearTasksButton</string>
-							<string>mClientIDButton</string>
-							<string>mClientIDField</string>
-							<string>mClientIDRequiredTextField</string>
-							<string>mClientIDSheet</string>
-							<string>mClientSecretField</string>
-							<string>mCompleteAllTasksButton</string>
-							<string>mCompleteTaskButton</string>
-							<string>mDeleteAllTasksButton</string>
-							<string>mDeleteTaskButton</string>
-							<string>mDeleteTaskListButton</string>
-							<string>mRenameTaskButton</string>
-							<string>mRenameTaskListButton</string>
-							<string>mShowCompletedTasksCheckbox</string>
-							<string>mShowDeletedTasksCheckbox</string>
-							<string>mShowHiddenTasksCheckbox</string>
-							<string>mSignedInButton</string>
-							<string>mSignedInField</string>
-							<string>mTaskListNameField</string>
-							<string>mTaskListsCancelButton</string>
-							<string>mTaskListsProgressIndicator</string>
-							<string>mTaskListsResultTextView</string>
-							<string>mTaskListsTable</string>
-							<string>mTaskNameField</string>
-							<string>mTasksCancelButton</string>
-							<string>mTasksOutline</string>
-							<string>mTasksProgressIndicator</string>
-							<string>mTasksResultTextView</string>
+							<string>addTaskButton_</string>
+							<string>addTaskListButton_</string>
+							<string>clearTasksButton_</string>
+							<string>clientIDButton_</string>
+							<string>clientIDField_</string>
+							<string>clientIDRequiredTextField_</string>
+							<string>clientIDSheet_</string>
+							<string>clientSecretField_</string>
+							<string>completeAllTasksButton_</string>
+							<string>completeTaskButton_</string>
+							<string>deleteAllTasksButton_</string>
+							<string>deleteTaskButton_</string>
+							<string>deleteTaskListButton_</string>
+							<string>renameTaskButton_</string>
+							<string>renameTaskListButton_</string>
+							<string>showCompletedTasksCheckbox_</string>
+							<string>showDeletedTasksCheckbox_</string>
+							<string>showHiddenTasksCheckbox_</string>
+							<string>signedInButton_</string>
+							<string>signedInField_</string>
+							<string>taskListNameField_</string>
+							<string>taskListsCancelButton_</string>
+							<string>taskListsProgressIndicator_</string>
+							<string>taskListsResultTextView_</string>
+							<string>taskListsTable__</string>
+							<string>taskNameField_</string>
+							<string>tasksCancelButton_</string>
+							<string>tasksOutline_</string>
+							<string>tasksProgressIndicator_</string>
+							<string>tasksResultTextView_</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -3335,157 +3339,157 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>mAddTaskButton</string>
-							<string>mAddTaskListButton</string>
-							<string>mClearTasksButton</string>
-							<string>mClientIDButton</string>
-							<string>mClientIDField</string>
-							<string>mClientIDRequiredTextField</string>
-							<string>mClientIDSheet</string>
-							<string>mClientSecretField</string>
-							<string>mCompleteAllTasksButton</string>
-							<string>mCompleteTaskButton</string>
-							<string>mDeleteAllTasksButton</string>
-							<string>mDeleteTaskButton</string>
-							<string>mDeleteTaskListButton</string>
-							<string>mRenameTaskButton</string>
-							<string>mRenameTaskListButton</string>
-							<string>mShowCompletedTasksCheckbox</string>
-							<string>mShowDeletedTasksCheckbox</string>
-							<string>mShowHiddenTasksCheckbox</string>
-							<string>mSignedInButton</string>
-							<string>mSignedInField</string>
-							<string>mTaskListNameField</string>
-							<string>mTaskListsCancelButton</string>
-							<string>mTaskListsProgressIndicator</string>
-							<string>mTaskListsResultTextView</string>
-							<string>mTaskListsTable</string>
-							<string>mTaskNameField</string>
-							<string>mTasksCancelButton</string>
-							<string>mTasksOutline</string>
-							<string>mTasksProgressIndicator</string>
-							<string>mTasksResultTextView</string>
+							<string>addTaskButton_</string>
+							<string>addTaskListButton_</string>
+							<string>clearTasksButton_</string>
+							<string>clientIDButton_</string>
+							<string>clientIDField_</string>
+							<string>clientIDRequiredTextField_</string>
+							<string>clientIDSheet_</string>
+							<string>clientSecretField_</string>
+							<string>completeAllTasksButton_</string>
+							<string>completeTaskButton_</string>
+							<string>deleteAllTasksButton_</string>
+							<string>deleteTaskButton_</string>
+							<string>deleteTaskListButton_</string>
+							<string>renameTaskButton_</string>
+							<string>renameTaskListButton_</string>
+							<string>showCompletedTasksCheckbox_</string>
+							<string>showDeletedTasksCheckbox_</string>
+							<string>showHiddenTasksCheckbox_</string>
+							<string>signedInButton_</string>
+							<string>signedInField_</string>
+							<string>taskListNameField_</string>
+							<string>taskListsCancelButton_</string>
+							<string>taskListsProgressIndicator_</string>
+							<string>taskListsResultTextView_</string>
+							<string>taskListsTable__</string>
+							<string>taskNameField_</string>
+							<string>tasksCancelButton_</string>
+							<string>tasksOutline_</string>
+							<string>tasksProgressIndicator_</string>
+							<string>tasksResultTextView_</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mAddTaskButton</string>
+								<string key="name">addTaskButton_</string>
 								<string key="candidateClassName">NSButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mAddTaskListButton</string>
+								<string key="name">addTaskListButton_</string>
 								<string key="candidateClassName">NSButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mClearTasksButton</string>
+								<string key="name">clearTasksButton_</string>
 								<string key="candidateClassName">NSButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mClientIDButton</string>
+								<string key="name">clientIDButton_</string>
 								<string key="candidateClassName">NSButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mClientIDField</string>
+								<string key="name">clientIDField_</string>
 								<string key="candidateClassName">NSTextField</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mClientIDRequiredTextField</string>
+								<string key="name">clientIDRequiredTextField_</string>
 								<string key="candidateClassName">NSTextField</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mClientIDSheet</string>
+								<string key="name">clientIDSheet_</string>
 								<string key="candidateClassName">NSWindow</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mClientSecretField</string>
+								<string key="name">clientSecretField_</string>
 								<string key="candidateClassName">NSTextField</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mCompleteAllTasksButton</string>
+								<string key="name">completeAllTasksButton_</string>
 								<string key="candidateClassName">NSButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mCompleteTaskButton</string>
+								<string key="name">completeTaskButton_</string>
 								<string key="candidateClassName">NSButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mDeleteAllTasksButton</string>
+								<string key="name">deleteAllTasksButton_</string>
 								<string key="candidateClassName">NSButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mDeleteTaskButton</string>
+								<string key="name">deleteTaskButton_</string>
 								<string key="candidateClassName">NSButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mDeleteTaskListButton</string>
+								<string key="name">deleteTaskListButton_</string>
 								<string key="candidateClassName">NSButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mRenameTaskButton</string>
+								<string key="name">renameTaskButton_</string>
 								<string key="candidateClassName">NSButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mRenameTaskListButton</string>
+								<string key="name">renameTaskListButton_</string>
 								<string key="candidateClassName">NSButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mShowCompletedTasksCheckbox</string>
+								<string key="name">showCompletedTasksCheckbox_</string>
 								<string key="candidateClassName">NSButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mShowDeletedTasksCheckbox</string>
+								<string key="name">showDeletedTasksCheckbox_</string>
 								<string key="candidateClassName">NSButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mShowHiddenTasksCheckbox</string>
+								<string key="name">showHiddenTasksCheckbox_</string>
 								<string key="candidateClassName">NSButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mSignedInButton</string>
+								<string key="name">signedInButton_</string>
 								<string key="candidateClassName">NSButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mSignedInField</string>
+								<string key="name">signedInField_</string>
 								<string key="candidateClassName">NSTextField</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mTaskListNameField</string>
+								<string key="name">taskListNameField_</string>
 								<string key="candidateClassName">NSTextField</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mTaskListsCancelButton</string>
+								<string key="name">taskListsCancelButton_</string>
 								<string key="candidateClassName">NSButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mTaskListsProgressIndicator</string>
+								<string key="name">taskListsProgressIndicator_</string>
 								<string key="candidateClassName">NSProgressIndicator</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mTaskListsResultTextView</string>
+								<string key="name">taskListsResultTextView_</string>
 								<string key="candidateClassName">NSTextView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mTaskListsTable</string>
+								<string key="name">taskListsTable__</string>
 								<string key="candidateClassName">NSTableView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mTaskNameField</string>
+								<string key="name">taskNameField_</string>
 								<string key="candidateClassName">NSTextField</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mTasksCancelButton</string>
+								<string key="name">tasksCancelButton_</string>
 								<string key="candidateClassName">NSButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mTasksOutline</string>
+								<string key="name">tasksOutline_</string>
 								<string key="candidateClassName">NSOutlineView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mTasksProgressIndicator</string>
+								<string key="name">tasksProgressIndicator_</string>
 								<string key="candidateClassName">NSProgressIndicator</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mTasksResultTextView</string>
+								<string key="name">tasksResultTextView_</string>
 								<string key="candidateClassName">NSTextView</string>
 							</object>
 						</object>

@@ -228,7 +228,7 @@ static NSString *const kBatchRPCName = @"TaskBatch1.rpc";
     STAssertEqualObjects(expectedName, className, @"object member error");
 
     // test date/time member
-    STAssertEqualObjects(item.updated, @"2011-04-29T22:14:47.779Z",
+    STAssertEqualObjects(item.updated.RFC3339String, @"2011-04-29T22:14:47.779Z",
                          @"GTLDateTime member error");
 
     // test string member
@@ -302,7 +302,8 @@ static NSString *const kBatchRPCName = @"TaskBatch1.rpc";
 
     // test members
     STAssertEqualObjects(@"task one", item.title, @"NSString member error");
-    STAssertEqualObjects(@"2011-04-29T22:14:47.779Z", item.updated, @"Date");
+    STAssertEqualObjects(@"2011-04-29T22:14:47.779Z",
+                         item.updated.RFC3339String, @"Date");
   };
 
   GTLQueryTasksTest *query = [GTLQueryTasksTest queryForTasksListWithTasklist:@"MDg0NTg2OTA1ODg4OTI3MzgyMzQ6NDow"];
@@ -541,7 +542,8 @@ static NSString *const kBatchRPCName = @"TaskBatch1.rpc";
 
     STAssertEqualObjects(@"tasks#task", item.kind, @"kind field");
     STAssertEqualObjects(@"MDg0NTg2OTA1ODg4OTI3MzgyMzQ6NDox", item.identifier, @"id");
-    STAssertEqualObjects(@"2011-05-03T23:14:20.735Z", item.updated, @"date");
+    STAssertEqualObjects(@"2011-05-03T23:14:20.735Z",
+                         item.updated.RFC3339String, @"date");
 
     // failed item
     GTLErrorObject *errorObj = [failures objectForKey:@"gtl_18"];
@@ -612,8 +614,8 @@ static NSString *const kBatchRPCName = @"TaskBatch1.rpc";
 }
 
 - (void)dealloc {
-  self.value = nil;
-  self.error = nil;
+  [value_ release];
+  [error_ release];
   [super dealloc];
 }
 

@@ -27,7 +27,7 @@
 @interface GTLQuery : NSObject <GTLQueryProtocol> {
  @private
   NSString *methodName_;
-  NSMutableDictionary *parameters_;
+  NSMutableDictionary *json_;
   GTLObject *bodyObject_;
   NSMutableDictionary *childCache_;
   NSString *requestID_;
@@ -40,7 +40,7 @@
 @property (readonly) NSString *methodName;
 
 // The JSON dictionary of all the parameters set on this query.
-@property (retain) NSMutableDictionary *parameters;
+@property (retain) NSMutableDictionary *JSON;
 
 // The object set to be uploaded with the query.
 @property (retain) GTLObject *bodyObject;

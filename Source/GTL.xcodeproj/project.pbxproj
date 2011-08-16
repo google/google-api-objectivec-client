@@ -3,10 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F0C4FBC13CFA7E5007E5E92 /* GTLUploadParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F0C4FBA13CFA7E5007E5E92 /* GTLUploadParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F0C4FBD13CFA7E5007E5E92 /* GTLUploadParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C4FBB13CFA7E5007E5E92 /* GTLUploadParameters.m */; };
+		4F0C4FBE13CFA7E5007E5E92 /* GTLUploadParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C4FBB13CFA7E5007E5E92 /* GTLUploadParameters.m */; };
+		4F0C4FBF13CFA7E5007E5E92 /* GTLUploadParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C4FBB13CFA7E5007E5E92 /* GTLUploadParameters.m */; };
+		4F0C4FC013CFA7E5007E5E92 /* GTLUploadParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0C4FBB13CFA7E5007E5E92 /* GTLUploadParameters.m */; };
 		4F14A9E70B1277290072EBB8 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F14A9E60B1277290072EBB8 /* SenTestingKit.framework */; };
 		4F164608137098C80096E878 /* Task1.request.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4F164606137098C80096E878 /* Task1.request.txt */; };
 		4F164609137098C80096E878 /* Task1.response.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4F164607137098C80096E878 /* Task1.response.txt */; };
@@ -17,12 +22,12 @@
 		4F1817511134982E009F7FD1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F18174C1134982E009F7FD1 /* Security.framework */; };
 		4F1AD90D0B71607400DC0485 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F1AD90C0B71607400DC0485 /* main.m */; };
 		4F1ADAB10B7168F300DC0485 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
-		4F244943121F3C2B00FEE1DA /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F244940121F3C2B00FEE1DA /* SBJSON.m */; settings = {COMPILER_FLAGS = "-Wno-parentheses"; }; };
+		4F244943121F3C2B00FEE1DA /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F244940121F3C2B00FEE1DA /* SBJSON.m */; };
 		4F244944121F3C2B00FEE1DA /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F24493A121F3C2B00FEE1DA /* JSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F244949121F3C2B00FEE1DA /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F24493F121F3C2B00FEE1DA /* SBJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4F24494A121F3C2B00FEE1DA /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F244940121F3C2B00FEE1DA /* SBJSON.m */; settings = {COMPILER_FLAGS = "-Wno-parentheses"; }; };
-		4F24494D121F3C2B00FEE1DA /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F244940121F3C2B00FEE1DA /* SBJSON.m */; settings = {COMPILER_FLAGS = "-Wno-parentheses"; }; };
-		4F244950121F3C2B00FEE1DA /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F244940121F3C2B00FEE1DA /* SBJSON.m */; settings = {COMPILER_FLAGS = "-Wno-parentheses"; }; };
+		4F24494A121F3C2B00FEE1DA /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F244940121F3C2B00FEE1DA /* SBJSON.m */; };
+		4F24494D121F3C2B00FEE1DA /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F244940121F3C2B00FEE1DA /* SBJSON.m */; };
+		4F244950121F3C2B00FEE1DA /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F244940121F3C2B00FEE1DA /* SBJSON.m */; };
 		4F2449B7121F3E2A00FEE1DA /* GTMHTTPFetcherTestServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2449B4121F3E2A00FEE1DA /* GTMHTTPFetcherTestServer.m */; };
 		4F2449B8121F3E2A00FEE1DA /* GTMHTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2449B6121F3E2A00FEE1DA /* GTMHTTPServer.m */; };
 		4F35B4B11385F9270082F64E /* Task1.rest.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4F35B4B01385F9270082F64E /* Task1.rest.txt */; };
@@ -172,6 +177,8 @@
 
 /* Begin PBXFileReference section */
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		4F0C4FBA13CFA7E5007E5E92 /* GTLUploadParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTLUploadParameters.h; path = Objects/GTLUploadParameters.h; sourceTree = "<group>"; };
+		4F0C4FBB13CFA7E5007E5E92 /* GTLUploadParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLUploadParameters.m; path = Objects/GTLUploadParameters.m; sourceTree = "<group>"; };
 		4F12027C11A4CA2F00BEB470 /* libGTLTouchStaticLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGTLTouchStaticLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F12027D11A4CA2F00BEB470 /* GTLUnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GTLUnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F14A9E60B1277290072EBB8 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -181,7 +188,7 @@
 		4F1647691370C8F80096E878 /* TaskBatch1.request.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TaskBatch1.request.txt; path = Tests/Data/TaskBatch1.request.txt; sourceTree = "<group>"; };
 		4F16476A1370C8F80096E878 /* TaskBatch1.response.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TaskBatch1.response.txt; path = Tests/Data/TaskBatch1.response.txt; sourceTree = "<group>"; };
 		4F18174C1134982E009F7FD1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
-		4F1AD9020B71603F00DC0485 /* DevelopmentTestTool */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "compiled.mach-o.executable"; path = DevelopmentTestTool; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F1AD9020B71603F00DC0485 /* DevelopmentTestTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DevelopmentTestTool; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F1AD90C0B71607400DC0485 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Tests/main.m; sourceTree = "<group>"; };
 		4F24493A121F3C2B00FEE1DA /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSON.h; path = JSON/JSON.h; sourceTree = "<group>"; };
 		4F24493F121F3C2B00FEE1DA /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJSON.h; path = JSON/SBJSON.h; sourceTree = "<group>"; };
@@ -194,7 +201,7 @@
 		4F2E11F20BA778D700237907 /* GTLFramework-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; name = "GTLFramework-Info.plist"; path = "Resources/GTLFramework-Info.plist"; sourceTree = "<group>"; };
 		4F35B4B01385F9270082F64E /* Task1.rest.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Task1.rest.txt; path = Tests/Data/Task1.rest.txt; sourceTree = "<group>"; };
 		4F35D4B3117787F600BDFA97 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = /System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<absolute>"; };
-		4F38F6A60B66E91D00B24B81 /* GTL */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.framework; path = GTL; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F38F6A60B66E91D00B24B81 /* GTL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GTL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F3DE994119CCE49006926D1 /* GTLDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLDefines.h; sourceTree = "<group>"; };
 		4F4DE9071371DD6F00F5C554 /* TaskError1.request.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TaskError1.request.txt; path = Tests/Data/TaskError1.request.txt; sourceTree = "<group>"; };
 		4F4DE9081371DD6F00F5C554 /* TaskError1.response.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TaskError1.response.txt; path = Tests/Data/TaskError1.response.txt; sourceTree = "<group>"; };
@@ -361,7 +368,7 @@
 		19C28FB8FE9D52D311CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4F38F6A60B66E91D00B24B81 /* GTL */,
+				4F38F6A60B66E91D00B24B81 /* GTL.framework */,
 				4F1AD9020B71603F00DC0485 /* DevelopmentTestTool */,
 				4F12027C11A4CA2F00BEB470 /* libGTLTouchStaticLib.a */,
 				4F12027D11A4CA2F00BEB470 /* GTLUnitTests.octest */,
@@ -434,6 +441,8 @@
 				4FDE22581384818E005AEFAA /* GTLService.m */,
 				4FDE224B1384818E005AEFAA /* GTLBatchResult.h */,
 				4FDE224C1384818E005AEFAA /* GTLBatchResult.m */,
+				4F0C4FBA13CFA7E5007E5E92 /* GTLUploadParameters.h */,
+				4F0C4FBB13CFA7E5007E5E92 /* GTLUploadParameters.m */,
 				4FDE224D1384818E005AEFAA /* GTLDateTime.h */,
 				4FDE224E1384818E005AEFAA /* GTLDateTime.m */,
 				4FDE224F1384818E005AEFAA /* GTLErrorObject.h */,
@@ -611,6 +620,7 @@
 				4FDE226B1384818E005AEFAA /* GTLQuery.h in Headers */,
 				4FDE226D1384818E005AEFAA /* GTLRuntimeCommon.h in Headers */,
 				4FDE226F1384818E005AEFAA /* GTLService.h in Headers */,
+				4F0C4FBC13CFA7E5007E5E92 /* GTLUploadParameters.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -683,7 +693,7 @@
 			);
 			name = GTLFramework;
 			productName = GTLFramework;
-			productReference = 4F38F6A60B66E91D00B24B81 /* GTL */;
+			productReference = 4F38F6A60B66E91D00B24B81 /* GTL.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -692,7 +702,7 @@
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = 1DEB913E08733D840010E9CD /* Build configuration list for PBXProject "GTL" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -803,6 +813,7 @@
 				F40E736A138A03CA00EE3F02 /* GTLTasksTaskList.m in Sources */,
 				F40E736B138A03CA00EE3F02 /* GTLTasksTaskLists.m in Sources */,
 				F40E736C138A03CA00EE3F02 /* GTLTasksTasks.m in Sources */,
+				4F0C4FBF13CFA7E5007E5E92 /* GTLUploadParameters.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -832,6 +843,7 @@
 				4FDE227E1384818E005AEFAA /* GTLQuery.m in Sources */,
 				4FDE227F1384818E005AEFAA /* GTLRuntimeCommon.m in Sources */,
 				4FDE22801384818E005AEFAA /* GTLService.m in Sources */,
+				4F0C4FC013CFA7E5007E5E92 /* GTLUploadParameters.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -861,6 +873,7 @@
 				4FDE22761384818E005AEFAA /* GTLQuery.m in Sources */,
 				4FDE22771384818E005AEFAA /* GTLRuntimeCommon.m in Sources */,
 				4FDE22781384818E005AEFAA /* GTLService.m in Sources */,
+				4F0C4FBE13CFA7E5007E5E92 /* GTLUploadParameters.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -890,6 +903,7 @@
 				4FDE226C1384818E005AEFAA /* GTLQuery.m in Sources */,
 				4FDE226E1384818E005AEFAA /* GTLRuntimeCommon.m in Sources */,
 				4FDE22701384818E005AEFAA /* GTLService.m in Sources */,
+				4F0C4FBD13CFA7E5007E5E92 /* GTLUploadParameters.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -979,13 +993,13 @@
 				INFOPLIST_FILE = "Resources/GTLUnitTests-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_LDFLAGS = (
-					"-lxml2",
 					"-framework",
 					Cocoa,
 					"-framework",
 					SenTestingKit,
 				);
 				PRODUCT_NAME = GTLUnitTests;
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				STRIP_STYLE = "non-global";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -1006,13 +1020,13 @@
 				INFOPLIST_FILE = "Resources/GTLUnitTests-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_LDFLAGS = (
-					"-lxml2",
 					"-framework",
 					Cocoa,
 					"-framework",
 					SenTestingKit,
 				);
 				PRODUCT_NAME = GTLUnitTests;
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				STRIP_STYLE = "non-global";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -1025,7 +1039,6 @@
 				GCC_ENABLE_OBJC_GC = unsupported;
 				INFOPLIST_FILE = "Resources/DevTestTool-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = DevelopmentTestTool;
 			};
 			name = Debug;
@@ -1037,7 +1050,6 @@
 				GCC_ENABLE_OBJC_GC = unsupported;
 				INFOPLIST_FILE = "Resources/DevTestTool-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = DevelopmentTestTool;
 			};
 			name = Release;

@@ -24,55 +24,55 @@
 
 @interface TasksSampleWindowController : NSWindowController {
  @private
-  IBOutlet NSTextField *mSignedInField;
-  IBOutlet NSButton *mSignedInButton;
+  IBOutlet NSTextField *signedInField_;
+  IBOutlet NSButton *signedInButton_;
 
-  IBOutlet NSTableView *mTaskListsTable;
-  IBOutlet NSProgressIndicator *mTaskListsProgressIndicator;
-  IBOutlet NSTextView *mTaskListsResultTextView;
+  IBOutlet NSTableView *taskListsTable__;
+  IBOutlet NSProgressIndicator *taskListsProgressIndicator_;
+  IBOutlet NSTextView *taskListsResultTextView_;
 
-  IBOutlet NSButton *mTaskListsCancelButton;
+  IBOutlet NSButton *taskListsCancelButton_;
 
-  IBOutlet NSButton *mAddTaskListButton;
-  IBOutlet NSButton *mRenameTaskListButton;
-  IBOutlet NSButton *mDeleteTaskListButton;
-  IBOutlet NSTextField *mTaskListNameField;
+  IBOutlet NSButton *addTaskListButton_;
+  IBOutlet NSButton *renameTaskListButton_;
+  IBOutlet NSButton *deleteTaskListButton_;
+  IBOutlet NSTextField *taskListNameField_;
 
-  IBOutlet NSOutlineView *mTasksOutline;
-  IBOutlet NSProgressIndicator *mTasksProgressIndicator;
-  IBOutlet NSTextView *mTasksResultTextView;
+  IBOutlet NSOutlineView *tasksOutline_;
+  IBOutlet NSProgressIndicator *tasksProgressIndicator_;
+  IBOutlet NSTextView *tasksResultTextView_;
 
-  IBOutlet NSButton *mShowCompletedTasksCheckbox;
-  IBOutlet NSButton *mShowHiddenTasksCheckbox;
-  IBOutlet NSButton *mShowDeletedTasksCheckbox;
-  IBOutlet NSButton *mTasksCancelButton;
+  IBOutlet NSButton *showCompletedTasksCheckbox_;
+  IBOutlet NSButton *showHiddenTasksCheckbox_;
+  IBOutlet NSButton *showDeletedTasksCheckbox_;
+  IBOutlet NSButton *tasksCancelButton_;
 
-  IBOutlet NSButton *mAddTaskButton;
-  IBOutlet NSButton *mRenameTaskButton;
-  IBOutlet NSButton *mDeleteTaskButton;
-  IBOutlet NSButton *mCompleteTaskButton;
-  IBOutlet NSButton *mClearTasksButton;
-  IBOutlet NSButton *mCompleteAllTasksButton;
-  IBOutlet NSButton *mDeleteAllTasksButton;
-  IBOutlet NSTextField *mTaskNameField;
+  IBOutlet NSButton *addTaskButton_;
+  IBOutlet NSButton *renameTaskButton_;
+  IBOutlet NSButton *deleteTaskButton_;
+  IBOutlet NSButton *completeTaskButton_;
+  IBOutlet NSButton *clearTasksButton_;
+  IBOutlet NSButton *completeAllTasksButton_;
+  IBOutlet NSButton *deleteAllTasksButton_;
+  IBOutlet NSTextField *taskNameField_;
 
-  IBOutlet NSButton *mClientIDButton;
-  IBOutlet NSTextField *mClientIDRequiredTextField;
-  IBOutlet NSWindow *mClientIDSheet;
-  IBOutlet NSTextField *mClientIDField;
-  IBOutlet NSTextField *mClientSecretField;
+  IBOutlet NSButton *clientIDButton_;
+  IBOutlet NSTextField *clientIDRequiredTextField_;
+  IBOutlet NSWindow *clientIDSheet_;
+  IBOutlet NSTextField *clientIDField_;
+  IBOutlet NSTextField *clientSecretField_;
 
-  GTLTasksTaskLists *mTasksLists;
-  GTLServiceTicket *mTaskListsTicket;
-  NSError *mTaskListsFetchError;
+  GTLTasksTaskLists *tasksLists_;
+  GTLServiceTicket *taskListsTicket_;
+  NSError *taskListsFetchError_;
 
-  GTLServiceTicket *mEditTaskListTicket;
+  GTLServiceTicket *editTaskListTicket_;
 
-  GTLTasksTasks *mTasks;
-  GTLServiceTicket *mTasksTicket;
-  NSError *mTasksFetchError;
+  GTLTasksTasks *tasks_;
+  GTLServiceTicket *tasksTicket_;
+  NSError *tasksFetchError_;
 
-  GTLServiceTicket *mEditTaskTicket;
+  GTLServiceTicket *editTaskTicket_;
 }
 
 + (TasksSampleWindowController *)sharedWindowController;

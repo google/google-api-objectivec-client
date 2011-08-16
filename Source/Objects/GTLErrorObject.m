@@ -18,6 +18,7 @@
 //
 
 #import "GTLErrorObject.h"
+#import "GTLService.h"
 
 @implementation GTLErrorObject
 
@@ -29,6 +30,34 @@
   NSDictionary *map = [NSDictionary dictionaryWithObject:[GTLErrorObjectData class]
                                                   forKey:@"data"];
   return map;
+}
+
+- (NSError *)foundationError {
+  NSMutableDictionary *userInfo;
+
+  // This structured GTLErrorObject will be available in the error's userInfo
+  // dictionary
+  userInfo = [NSMutableDictionary dictionaryWithObject:self
+                                                forKey:kGTLStructuredErrorKey];
+
+  NSString *reasonStr = self.message;
+  if (reasonStr) {
+    // We always store an error in the userInfo key "error"
+    [userInfo setObject:reasonStr
+                 forKey:kGTLServerErrorStringKey];
+
+    // Store a user-readable "reason" to show up when an error is logged,
+    // in parentheses like NSError does it
+    NSString *parenthesized = [NSString stringWithFormat:@"(%@)", reasonStr];
+    [userInfo setObject:parenthesized
+                 forKey:NSLocalizedFailureReasonErrorKey];
+  }
+
+  NSInteger code = [self.code integerValue];
+  NSError *error = [NSError errorWithDomain:kGTLJSONRPCErrorDomain
+                                       code:code
+                                   userInfo:userInfo];
+  return error;
 }
 
 @end

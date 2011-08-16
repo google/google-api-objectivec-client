@@ -40,12 +40,12 @@
 // it to the JSON.
 
 @synthesize methodName = methodName_,
-  parameters = parameters_,
-  bodyObject = bodyObject_,
-  requestID = requestID_,
-  urlQueryParameters = urlQueryParameters_,
-  expectedObjectClass = expectedObjectClass_,
-  shouldSkipAuthorization = skipAuthorization_;
+            JSON = json_,
+            bodyObject = bodyObject_,
+            requestID = requestID_,
+            urlQueryParameters = urlQueryParameters_,
+            expectedObjectClass = expectedObjectClass_,
+            shouldSkipAuthorization = skipAuthorization_;
 
 + (id)queryWithMethodName:(NSString *)methodName {
   return [[[self alloc] initWithMethodName:methodName] autorelease];
@@ -67,12 +67,12 @@
 
 - (void)dealloc {
   [methodName_ release];
+  [json_ release];
+  [bodyObject_ release];
   [childCache_ release];
-  self.parameters = nil;
-  self.bodyObject = nil;
-  self.requestID = nil;
-  self.urlQueryParameters = nil;
-  self.expectedObjectClass = nil;
+  [requestID_ release];
+  [urlQueryParameters_ release];
+
   [super dealloc];
 }
 
@@ -81,12 +81,11 @@
   GTLQuery *query =
     [[[self class] allocWithZone:zone] initWithMethodName:self.methodName];
 
-  if ([parameters_ count] > 0) {
+  if ([json_ count] > 0) {
     // Deep copy the parameters
     CFPropertyListRef ref = CFPropertyListCreateDeepCopy(kCFAllocatorDefault,
-                                                         parameters_, kCFPropertyListMutableContainers);
-    [NSMakeCollectable(ref) autorelease];
-    query.parameters = (NSMutableDictionary*)ref;
+                                                         json_, kCFPropertyListMutableContainers);
+    query.JSON = [NSMakeCollectable(ref) autorelease];
   }
   query.bodyObject = self.bodyObject;
   query.requestID = self.requestID;
@@ -97,7 +96,7 @@
 }
 
 - (NSString *)description {
-  NSArray *keys = [self.parameters allKeys];
+  NSArray *keys = [self.JSON allKeys];
   NSArray *params = [keys sortedArrayUsingSelector:@selector(compare:)];
   NSString *paramsSummary = @"";
   if ([params count] > 0) {
@@ -112,7 +111,7 @@
     urlQParamsSummary = [NSString stringWithFormat:@" urlQParams:(%@)",
                         [urlQParams componentsJoinedByString:@","]];
   }
-  
+
   GTLObject *bodyObj = self.bodyObject;
   NSString *bodyObjSummary = @"";
   if (bodyObj != nil) {
@@ -153,16 +152,16 @@
     obj = nil;
   }
 
-  NSMutableDictionary *dict = self.parameters;
+  NSMutableDictionary *dict = self.JSON;
   if (dict == nil && obj != nil) {
     dict = [NSMutableDictionary dictionaryWithCapacity:1];
-    self.parameters = dict;
+    self.JSON = dict;
   }
   [dict setValue:obj forKey:key];
 }
 
 - (id)JSONValueForKey:(NSString *)key {
-  id obj = [self.parameters objectForKey:key];
+  id obj = [self.JSON objectForKey:key];
   if (obj == nil) {
     obj = [self defaultValueForName:key];
   }
@@ -210,13 +209,13 @@ static NSMutableDictionary *gArrayPropertyToClassMapCache = nil;
   // note that initialize is guaranteed by the runtime to be called in a
   // thread-safe manner
   if (gParameterNameMapCache == nil) {
-    gParameterNameMapCache = [GTLUtilities createStaticDictionary];
+    gParameterNameMapCache = [GTLUtilities newStaticDictionary];
   }
   if (gDefaultValueMapCache == nil) {
-    gDefaultValueMapCache = [GTLUtilities createStaticDictionary];
+    gDefaultValueMapCache = [GTLUtilities newStaticDictionary];
   }
   if (gArrayPropertyToClassMapCache == nil) {
-    gArrayPropertyToClassMapCache = [GTLUtilities createStaticDictionary];
+    gArrayPropertyToClassMapCache = [GTLUtilities newStaticDictionary];
   }
 }
 
@@ -238,7 +237,7 @@ static NSMutableDictionary *gArrayPropertyToClassMapCache = nil;
     dict = [defaultValueMap objectForKey:@"***"];
     result = [dict objectForKey:name];
   }
-  
+
   // NSNull is used to mark when some method have a default and some don't, so
   // map it back to no default here.
   if (result) {
@@ -292,7 +291,7 @@ static NSMutableDictionary *gArrayPropertyToClassMapCache = nil;
   BOOL resolved = [GTLRuntimeCommon resolveInstanceMethod:sel onClass:self];
   if (resolved)
     return YES;
-  
+
   return [super resolveInstanceMethod:sel];
 }
 

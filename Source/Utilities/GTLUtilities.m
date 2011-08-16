@@ -20,7 +20,6 @@
 @implementation GTLUtilities
 
 + (NSString *)userAgentStringForString:(NSString *)str {
-
   // make a proper token without whitespace from the given string
   //
   // per http://www.w3.org/Protocols/rfc2616/rfc2616-sec2.html
@@ -40,7 +39,6 @@
   static NSCharacterSet *charsToDelete = nil;
 
   @synchronized([GTLUtilities class]) {
-
     if (charsToDelete == nil) {
 
       // make a set of unwanted characters
@@ -102,10 +100,8 @@ const CFStringRef kCharsToForceEscape = CFSTR("!*'();:@&=+$,/?%#[]");
 }
 
 + (NSString *)stringByURLEncodingStringParameter:(NSString *)str {
-
   // For parameters, we'll explicitly leave spaces unescaped now, and replace
   // them with +'s
-
   NSString *resultStr = str;
 
   CFStringRef originalString = (CFStringRef) str;
@@ -132,18 +128,17 @@ const CFStringRef kCharsToForceEscape = CFSTR("!*'();:@&=+$,/?%#[]");
   return resultStr;
 }
 
-// percent-encoding UTF-8
-
 + (NSString *)stringByPercentEncodingUTF8ForString:(NSString *)inputStr {
 
-  // encode per http://bitworking.org/projects/atom/rfc5023.html#rfc.section.9.7
+  // Encode per http://bitworking.org/projects/atom/rfc5023.html#rfc.section.9.7
   //
-  // step through the string as UTF-8, and replace characters outside 20..7E
+  // This is used for encoding upload slug headers
+  //
+  // Step through the string as UTF-8, and replace characters outside 20..7E
   // (and the percent symbol itself, 25) with percent-encodings
   //
-  // we avoid creating an encoding string unless we encounter some characters
+  // We avoid creating an encoding string unless we encounter some characters
   // that require it
-
   const char* utf8 = [inputStr UTF8String];
   if (utf8 == NULL) {
     return nil;
@@ -157,7 +152,7 @@ const CFStringRef kCharsToForceEscape = CFSTR("!*'();:@&=+$,/?%#[]");
     if (currChar < 0x20 || currChar == 0x25 || currChar > 0x7E) {
 
       if (encoded == nil) {
-        // start encoding and catch up on the character skipped so far
+        // Start encoding and catch up on the character skipped so far
         encoded = [[[NSMutableString alloc] initWithBytes:utf8
                                                    length:idx
                                                  encoding:NSUTF8StringEncoding] autorelease];
@@ -167,9 +162,9 @@ const CFStringRef kCharsToForceEscape = CFSTR("!*'();:@&=+$,/?%#[]");
       [encoded appendFormat:@"%%%02X", currChar];
 
     } else {
-      // this character does not need encoding
+      // This character does not need encoding
       //
-      // encoded is nil here unless we've encountered a previous character
+      // Encoded is nil here unless we've encountered a previous character
       // that needed encoding
       [encoded appendFormat:@"%c", currChar];
     }
@@ -187,7 +182,7 @@ const CFStringRef kCharsToForceEscape = CFSTR("!*'();:@&=+$,/?%#[]");
 + (NSArray *)objectsFromArray:(NSArray *)sourceArray
                     withValue:(id)desiredValue
                    forKeyPath:(NSString *)keyPath {
-  // step through all entries, get the value from
+  // Step through all entries, get the value from
   // the key path, and see if it's equal to the
   // desired value
   NSMutableArray *results = [NSMutableArray array];
@@ -206,17 +201,16 @@ const CFStringRef kCharsToForceEscape = CFSTR("!*'();:@&=+$,/?%#[]");
 + (id)firstObjectFromArray:(NSArray *)sourceArray
                  withValue:(id)desiredValue
                 forKeyPath:(NSString *)keyPath {
-
   for (id obj in sourceArray) {
     id val = [obj valueForKeyPath:keyPath];
     if (GTL_AreEqualOrBothNil(val, desiredValue)) {
-
       // found a match; return it
       return obj;
     }
   }
   return nil;
 }
+
 #pragma mark Version helpers
 
 // compareVersion compares two strings in 1.2.3.4 format
@@ -294,7 +288,7 @@ const CFStringRef kCharsToForceEscape = CFSTR("!*'();:@&=+$,/?%#[]");
 
 #pragma mark Collections
 
-+ (NSMutableDictionary *)createStaticDictionary {
++ (NSMutableDictionary *)newStaticDictionary {
   NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
 
   // make the dictionary ineligible for garbage collection
@@ -327,7 +321,7 @@ const CFStringRef kCharsToForceEscape = CFSTR("!*'();:@&=+$,/?%#[]");
                                            ancestorClass:ancestorClass
                                                    cache:cache];
       }
-      
+
       // Merge this class's into the parent's so things properly override.
       NSMutableDictionary *mergeDict;
       if (parentClassMergedDict != nil) {
@@ -342,7 +336,7 @@ const CFStringRef kCharsToForceEscape = CFSTR("!*'();:@&=+$,/?%#[]");
 
       // Make an immutable version.
       result = [NSDictionary dictionaryWithDictionary:mergeDict];
-      
+
       // Save it.
       [cache setObject:result forKey:startClass];
     }
@@ -360,15 +354,7 @@ BOOL GTL_AreEqualOrBothNil(id obj1, id obj2) {
   }
   if (obj1 && obj2) {
     BOOL areEqual = [obj1 isEqual:obj2];
-
-    // the following commented-out lines are useful for finding out what
-    // comparisons are failing when XML regeneration fails in unit tests
-
-    //if (!areEqual) NSLog(@">>>\n%@\n  !=\n%@", obj1, obj2);
-
     return areEqual;
-  } else {
-    //NSLog(@">>>\n%@\n  !=\n%@", obj1, obj2);
   }
   return NO;
 }
@@ -383,8 +369,6 @@ NSNumber *GTL_EnsureNSNumber(NSNumber *num) {
   if ([num isKindOfClass:[NSString class]]) {
     NSDecimalNumber *reallyNum;
     // Force the parse to use '.' as the number seperator.
-    // 10.5+ requires that we use an NSLocale object instead of explicitly
-    // setting NSDecimalSeparator in a dictionary.
     static NSLocale *usLocale = nil;
     @synchronized([GTLUtilities class]) {
       if (usLocale == nil) {

@@ -23,6 +23,7 @@
 #import "GTLDefines.h"
 #import "GTLUtilities.h"
 #import "GTLDateTime.h"
+#import "GTLUploadParameters.h"
 
 #undef _EXTERN
 #undef _INITIALIZE_AS
@@ -51,11 +52,15 @@
   // Anything defined by the client; retained but not used internally; not
   // copied by copyWithZone:
   NSMutableDictionary *userProperties_;
+
+  // Parameters for objects used for uploading
+  GTLUploadParameters *uploadParameters_;
 }
 
 @property (nonatomic, retain) NSMutableDictionary *JSON;
 @property (nonatomic, retain) NSDictionary *surrogates;
 @property (nonatomic, retain) NSMutableDictionary *userProperties;
+@property (nonatomic, retain) GTLUploadParameters *uploadParameters;
 
 // TODO - use a subclass containing the properties of top-level "data"
 // keys, per http://google-styleguide.googlecode.com/svn/trunk/jsoncstyleguide.xml#data.etag
@@ -97,6 +102,28 @@
 // userData is stored as a property with key "_userData"
 - (void)setUserData:(id)obj;
 - (id)userData;
+
+// Makes a partial query-compatible string describing the fields present
+// in this object. (Note: only the first element of any array is examined.)
+//
+// http://code.google.com/apis/buzz/v1/performance.html#partial
+//
+- (NSString *)fieldsDescription;
+
+// Makes an object containing only the changes needed to do a partial update
+// (patch), where the patch would be to change an object from the original
+// to the receiver, such as
+//
+// GTLSomeObject *patchObject = [newVersion patchObjectFromOriginal:oldVersion];
+//
+// http://code.google.com/apis/buzz/v1/performance.html#patch
+//
+- (id)patchObjectFromOriginal:(GTLObject *)original;
+
+// Method creating a null value to set object properties for patch queries that
+// delete fields.  Do not use this except when setting an object property for
+// a patch query.
++ (id)nullValue;
 
 ///////////////////////////////////////////////////////////////////////////////
 //

@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/tasks/v1/using.html
 // Classes:
-//   GTLQueryTasks (14 custom class methods, 14 custom properties)
+//   GTLQueryTasks (14 custom class methods, 15 custom properties)
 
 #import "GTLQueryTasks.h"
 
@@ -37,9 +37,9 @@
 
 @implementation GTLQueryTasks
 
-@dynamic completedMax, completedMin, dueMax, dueMin, maxResults, pageToken,
-         parent, previous, showCompleted, showDeleted, showHidden, task,
-         tasklist, updatedMin;
+@dynamic completedMax, completedMin, dueMax, dueMin, fields, maxResults,
+         pageToken, parent, previous, showCompleted, showDeleted, showHidden,
+         task, tasklist, updatedMin;
 
 #pragma mark -
 #pragma mark "tasklists" methods

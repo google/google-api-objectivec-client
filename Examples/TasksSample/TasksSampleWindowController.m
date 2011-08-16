@@ -72,14 +72,14 @@ NSString *const kKeychainItemName = @"TasksSample: Google Tasks";
 
 @implementation TasksSampleWindowController
 
-@synthesize taskLists = mTasksLists,
-            taskListsTicket = mTaskListsTicket,
-            taskListsFetchError = mTaskListsFetchError,
-            editTaskListTicket = mEditTaskListTicket,
-            tasks = mTasks,
-            tasksTicket = mTasksTicket,
-            tasksFetchError = mTasksFetchError,
-            editTaskTicket = mEditTaskTicket;
+@synthesize taskLists = tasksLists_,
+            taskListsTicket = taskListsTicket_,
+            taskListsFetchError = taskListsFetchError_,
+            editTaskListTicket = editTaskListTicket_,
+            tasks = tasks_,
+            tasksTicket = tasksTicket_,
+            tasksFetchError = tasksFetchError_,
+            editTaskTicket = editTaskTicket_;
 
 + (TasksSampleWindowController *)sharedWindowController {
   static TasksSampleWindowController* gWindowController = nil;
@@ -95,8 +95,8 @@ NSString *const kKeychainItemName = @"TasksSample: Google Tasks";
 
 - (void)awakeFromNib {
   // Load the OAuth token from the keychain, if it was previously saved
-  NSString *clientID = [mClientIDField stringValue];
-  NSString *clientSecret = [mClientSecretField stringValue];
+  NSString *clientID = [clientIDField_ stringValue];
+  NSString *clientSecret = [clientSecretField_ stringValue];
 
   GTMOAuth2Authentication *auth;
   auth = [GTMOAuth2WindowController authForGoogleFromKeychainForName:kKeychainItemName
@@ -105,29 +105,29 @@ NSString *const kKeychainItemName = @"TasksSample: Google Tasks";
   self.tasksService.authorizer = auth;
 
   // Set the result text fields to have a distinctive color and mono-spaced font
-  [mTaskListsResultTextView setTextColor:[NSColor darkGrayColor]];
-  [mTasksResultTextView setTextColor:[NSColor darkGrayColor]];
+  [taskListsResultTextView_ setTextColor:[NSColor darkGrayColor]];
+  [tasksResultTextView_ setTextColor:[NSColor darkGrayColor]];
 
   NSFont *resultTextFont = [NSFont fontWithName:@"Monaco" size:9];
-  [mTaskListsResultTextView setFont:resultTextFont];
-  [mTasksResultTextView setFont:resultTextFont];
+  [taskListsResultTextView_ setFont:resultTextFont];
+  [tasksResultTextView_ setFont:resultTextFont];
 
-  [mTasksOutline registerForDraggedTypes:[NSArray arrayWithObject:NSPasteboardTypeString]];
+  [tasksOutline_ registerForDraggedTypes:[NSArray arrayWithObject:NSPasteboardTypeString]];
   [self updateUI];
 }
 
 - (void)dealloc {
-  self.taskLists = nil;
-  self.taskListsTicket = nil;
-  self.taskListsFetchError = nil;
+  [tasksLists_ release];
+  [taskListsTicket_ release];
+  [taskListsFetchError_ release];
 
-  self.editTaskListTicket = nil;
+  [editTaskListTicket_ release];
 
-  self.tasks = nil;
-  self.tasksTicket = nil;
-  self.tasksFetchError = nil;
+  [tasks_ release];
+  [tasksTicket_ release];
+  [tasksFetchError_ release];
 
-  self.editTaskTicket = nil;
+  [editTaskTicket_ release];
 
   [super dealloc];
 }
@@ -302,7 +302,7 @@ NSString *const kKeychainItemName = @"TasksSample: Google Tasks";
 }
 
 - (GTLTasksTaskList *)selectedTaskList {
-  int rowIndex = [mTaskListsTable selectedRow];
+  int rowIndex = [taskListsTable__ selectedRow];
   if (rowIndex > -1) {
     GTLTasksTaskList *item = [self.taskLists itemAtIndex:rowIndex];
     return item;
@@ -311,8 +311,8 @@ NSString *const kKeychainItemName = @"TasksSample: Google Tasks";
 }
 
 - (GTLTasksTask *)selectedTask {
-  int rowIndex = [mTasksOutline selectedRow];
-  GTLTasksTask *item = [mTasksOutline itemAtRow:rowIndex];
+  int rowIndex = [tasksOutline_ selectedRow];
+  GTLTasksTask *item = [tasksOutline_ itemAtRow:rowIndex];
   return item;
 }
 
@@ -426,9 +426,9 @@ static NSString *const kGTLChildTasksProperty = @"childTasks";
     NSString *tasklistID = selectedTasklist.identifier;
 
     GTLQueryTasks *query = [GTLQueryTasks queryForTasksListWithTasklist:tasklistID];
-    query.showCompleted = [mShowCompletedTasksCheckbox state];
-    query.showHidden = [mShowHiddenTasksCheckbox state];
-    query.showDeleted = [mShowDeletedTasksCheckbox state];
+    query.showCompleted = [showCompletedTasksCheckbox_ state];
+    query.showHidden = [showHiddenTasksCheckbox_ state];
+    query.showDeleted = [showDeletedTasksCheckbox_ state];
 
     self.tasksTicket = [service executeQuery:query
                            completionHandler:^(GTLServiceTicket *ticket,
@@ -449,7 +449,7 @@ static NSString *const kGTLChildTasksProperty = @"childTasks";
 #pragma mark Add a Task List
 
 - (void)addATaskList {
-  NSString *title = [mTaskListNameField stringValue];
+  NSString *title = [taskListNameField_ stringValue];
   if ([title length] > 0) {
     // Make a new task list
     GTLTasksTaskList *tasklist = [GTLTasksTaskList object];
@@ -469,7 +469,7 @@ static NSString *const kGTLChildTasksProperty = @"childTasks";
                                       [self displayAlert:@"Task List Added"
                                                   format:@"Added task list \"%@\"", tasklist.title];
                                       [self fetchTaskLists];
-                                      [mTaskListNameField setStringValue:@""];
+                                      [taskListNameField_ setStringValue:@""];
                                     } else {
                                       [self displayAlert:@"Error"
                                                   format:@"%@", error];
@@ -483,17 +483,19 @@ static NSString *const kGTLChildTasksProperty = @"childTasks";
 #pragma mark Rename a Task List
 
 - (void)renameSelectedTaskList {
-  NSString *title = [mTaskListNameField stringValue];
+  NSString *title = [taskListNameField_ stringValue];
   if ([title length] > 0) {
-    // Update the selected task list
-    //
-    // We'll modify a copy of the selected task list, so if the update fails,
-    // we haven't accidentally changed the title of the task in memory
-    GTLTasksTaskList *tasklist = [[[self selectedTaskList] copy] autorelease];
-    tasklist.title = title;
+    // Rename the selected task list
 
-    GTLQueryTasks *query = [GTLQueryTasks queryForTasklistsUpdateWithObject:tasklist
-                                                                   tasklist:tasklist.identifier];
+    // Rather than update the object with a complete replacement, we'll make
+    // a patch object containing just the changed title
+    GTLTasksTaskList *patchObject = [GTLTasksTaskList object];
+    patchObject.title = title;
+
+    GTLTasksTaskList *selectedTaskList = [self selectedTaskList];
+
+    GTLQueryTasks *query = [GTLQueryTasks queryForTasklistsPatchWithObject:patchObject
+                                                                  tasklist:selectedTaskList.identifier];
     GTLServiceTasks *service = self.tasksService;
     self.editTaskListTicket = [service executeQuery:query
                                   completionHandler:^(GTLServiceTicket *ticket,
@@ -506,7 +508,7 @@ static NSString *const kGTLChildTasksProperty = @"childTasks";
                                       [self displayAlert:@"Task List Updated"
                                                   format:@"Updated task list \"%@\"", tasklist.title];
                                       [self fetchTaskLists];
-                                      [mTaskListNameField setStringValue:@""];
+                                      [taskListNameField_ setStringValue:@""];
                                     } else {
                                       [self displayAlert:@"Error"
                                                   format:@"%@", error];
@@ -547,7 +549,7 @@ static NSString *const kGTLChildTasksProperty = @"childTasks";
 #pragma mark Add a Task
 
 - (void)addATask {
-  NSString *title = [mTaskNameField stringValue];
+  NSString *title = [taskNameField_ stringValue];
   if ([title length] > 0) {
     // Make a new task
     GTLTasksTask *task = [GTLTasksTask object];
@@ -568,7 +570,7 @@ static NSString *const kGTLChildTasksProperty = @"childTasks";
                                   [self displayAlert:@"Task Added"
                                               format:@"Added task \"%@\"", task.title];
                                   [self fetchTasksForSelectedList];
-                                  [mTaskNameField setStringValue:@""];
+                                  [taskNameField_ setStringValue:@""];
                                 } else {
                                   [self displayAlert:@"Error"
                                               format:@"%@", error];
@@ -582,19 +584,20 @@ static NSString *const kGTLChildTasksProperty = @"childTasks";
 #pragma mark Rename a Task
 
 - (void)renameSelectedTask {
-  NSString *title = [mTaskNameField stringValue];
+  NSString *title = [taskNameField_ stringValue];
   if ([title length] > 0) {
     // Rename the selected task
-    //
-    // We'll modify a copy of the task object to avoid changing the original
-    // item in memory
-    GTLTasksTask *task = [[[self selectedTask] copy] autorelease];
-    task.title = title;
 
+    // Rather than update the object with a complete replacement, we'll make
+    // a patch object containing just the changes
+    GTLTasksTask *patchObject = [GTLTasksTask object];
+    patchObject.title = title;
+
+    GTLTasksTask *task = [self selectedTask];
     GTLTasksTaskList *tasklist = [self selectedTaskList];
-    GTLQueryTasks *query = [GTLQueryTasks queryForTasksUpdateWithObject:task
-                                                               tasklist:tasklist.identifier
-                                                                   task:task.identifier];
+    GTLQueryTasks *query = [GTLQueryTasks queryForTasksPatchWithObject:patchObject
+                                                              tasklist:tasklist.identifier
+                                                                  task:task.identifier];
     GTLServiceTasks *service = self.tasksService;
     self.editTaskTicket = [service executeQuery:query
                               completionHandler:^(GTLServiceTicket *ticket,
@@ -607,7 +610,7 @@ static NSString *const kGTLChildTasksProperty = @"childTasks";
                                   [self displayAlert:@"Task Updated"
                                               format:@"Renamed task to \"%@\"", task.title];
                                   [self fetchTasksForSelectedList];
-                                  [mTaskNameField setStringValue:@""];
+                                  [taskNameField_ setStringValue:@""];
                                 } else {
                                   [self displayAlert:@"Error"
                                               format:@"%@", error];
@@ -652,23 +655,22 @@ static NSString *const kGTLChildTasksProperty = @"childTasks";
 
 - (void)completeSelectedTask {
   // Mark a task as completed or incomplete
+  GTLTasksTask *selectedTask = [self selectedTask];
+  GTLTasksTask *patchObject = [GTLTasksTask object];
 
-  // We'll modify a copy of the item to avoid changing the in-memory version
-  GTLTasksTask *task = [[[self selectedTask] copy] autorelease];
-
-  if ([task.status isEqual:kTaskStatusCompleted]) {
+  if ([selectedTask.status isEqual:kTaskStatusCompleted]) {
     // Change the status to not complete
-    task.status = kTaskStatusNeedsAction;
-    task.completed = nil; // remove the completed date
+    patchObject.status = kTaskStatusNeedsAction;
+    patchObject.completed = [GTLObject nullValue]; // remove the completed date
   } else {
     // Change the status to complete
-    task.status = kTaskStatusCompleted;
+    patchObject.status = kTaskStatusCompleted;
   }
 
   GTLTasksTaskList *tasklist = [self selectedTaskList];
-  GTLQueryTasks *query = [GTLQueryTasks queryForTasksUpdateWithObject:task
-                                                             tasklist:tasklist.identifier
-                                                                 task:task.identifier];
+  GTLQueryTasks *query = [GTLQueryTasks queryForTasksPatchWithObject:patchObject
+                                                            tasklist:tasklist.identifier
+                                                                task:selectedTask.identifier];
   GTLServiceTasks *service = self.tasksService;
   self.editTaskTicket = [service executeQuery:query
                             completionHandler:^(GTLServiceTicket *ticket,
@@ -740,21 +742,20 @@ static NSString *const kGTLChildTasksProperty = @"childTasks";
   GTLBatchQuery *batchQuery = [GTLBatchQuery batchQuery];
 
   for (GTLTasksTask *task in self.tasks) {
-    // We'll modify a copy of the item to avoid changing the in-memory version
-    GTLTasksTask *taskCopy = [[task copy] autorelease];
+    GTLTasksTask *patchObject = [GTLTasksTask object];
 
     if (wereAllTasksCompleted) {
       // Change the status to not complete
-      taskCopy.status = kTaskStatusNeedsAction;
-      taskCopy.completed = nil; // remove the completed date
+      patchObject.status = kTaskStatusNeedsAction;
+      patchObject.completed = [GTLObject nullValue]; // remove the completed date
     } else {
       // Change the status to complete
-      taskCopy.status = kTaskStatusCompleted;
+      patchObject.status = kTaskStatusCompleted;
     }
 
-    GTLQueryTasks *query = [GTLQueryTasks queryForTasksUpdateWithObject:taskCopy
-                                                               tasklist:tasklist.identifier
-                                                                   task:taskCopy.identifier];
+    GTLQueryTasks *query = [GTLQueryTasks queryForTasksPatchWithObject:patchObject
+                                                              tasklist:tasklist.identifier
+                                                                  task:task.identifier];
     [batchQuery addQuery:query];
   }
 
@@ -887,23 +888,21 @@ static NSString *const kGTLChildTasksProperty = @"childTasks";
   // Applications should have client ID and client secret strings
   // hardcoded into the source, but the sample application asks the
   // developer for the strings
-  NSString *clientID = [mClientIDField stringValue];
-  NSString *clientSecret = [mClientSecretField stringValue];
+  NSString *clientID = [clientIDField_ stringValue];
+  NSString *clientSecret = [clientSecretField_ stringValue];
 
   if ([clientID length] == 0 || [clientSecret length] == 0) {
     // Remind the developer that client ID and client secret are needed
-    [mClientIDButton performSelector:@selector(performClick:)
+    [clientIDButton_ performSelector:@selector(performClick:)
                           withObject:self
                           afterDelay:0.5];
     return;
   }
 
   // Show the OAuth 2 sign-in controller
-  NSString *scope = @"https://www.googleapis.com/auth/tasks"; // TODO - need constant
-
   NSBundle *frameworkBundle = [NSBundle bundleForClass:[GTMOAuth2WindowController class]];
   GTMOAuth2WindowController *windowController;
-  windowController = [[[GTMOAuth2WindowController alloc] initWithScope:scope
+  windowController = [[[GTMOAuth2WindowController alloc] initWithScope:kGTLAuthScopeTasks
                                                               clientID:clientID
                                                           clientSecret:clientSecret
                                                       keychainItemName:kKeychainItemName
@@ -930,18 +929,18 @@ static NSString *const kGTLChildTasksProperty = @"childTasks";
 - (void)updateUI {
   BOOL isSignedIn = [self isSignedIn];
   NSString *username = [self signedInUsername];
-  [mSignedInButton setTitle:(isSignedIn ? @"Sign Out" : @"Sign In")];
-  [mSignedInField setStringValue:(isSignedIn ? username : @"No")];
+  [signedInButton_ setTitle:(isSignedIn ? @"Sign Out" : @"Sign In")];
+  [signedInField_ setStringValue:(isSignedIn ? username : @"No")];
 
   //
   // Task lists table
   //
-  [mTaskListsTable reloadData];
+  [taskListsTable__ reloadData];
 
   if (self.taskListsTicket != nil || self.editTaskListTicket != nil) {
-    [mTaskListsProgressIndicator startAnimation:self];
+    [taskListsProgressIndicator_ startAnimation:self];
   } else {
-    [mTaskListsProgressIndicator stopAnimation:self];
+    [taskListsProgressIndicator_ stopAnimation:self];
   }
 
   // Get the description of the selected item, or the feed fetch error
@@ -965,17 +964,17 @@ static NSString *const kGTLChildTasksProperty = @"childTasks";
       resultStr = [item description];
     }
   }
-  [mTaskListsResultTextView setString:resultStr];
+  [taskListsResultTextView_ setString:resultStr];
 
   //
   // Tasks outline
   //
-  [mTasksOutline reloadData];
+  [tasksOutline_ reloadData];
 
   if (self.tasksTicket != nil) {
-    [mTasksProgressIndicator startAnimation:self];
+    [tasksProgressIndicator_ startAnimation:self];
   } else {
-    [mTasksProgressIndicator stopAnimation:self];
+    [tasksProgressIndicator_ stopAnimation:self];
   }
 
   // Get the description of the selected item, or the feed fetch error
@@ -988,56 +987,56 @@ static NSString *const kGTLChildTasksProperty = @"childTasks";
       resultStr = [item description];
     }
   }
-  [mTasksResultTextView setString:resultStr];
+  [tasksResultTextView_ setString:resultStr];
 
   // Enable task lists buttons
   BOOL hasTaskLists = (self.taskLists != nil);
   BOOL isTaskListSelected = ([self selectedTaskList] != nil);
-  BOOL hasTaskListTitle = ([[mTaskListNameField stringValue] length] > 0);
+  BOOL hasTaskListTitle = ([[taskListNameField_ stringValue] length] > 0);
 
-  [mAddTaskListButton setEnabled:(hasTaskListTitle && hasTaskLists)];
-  [mRenameTaskListButton setEnabled:(hasTaskListTitle && isTaskListSelected)];
-  [mDeleteTaskListButton setEnabled:(isTaskListSelected)];
+  [addTaskListButton_ setEnabled:(hasTaskListTitle && hasTaskLists)];
+  [renameTaskListButton_ setEnabled:(hasTaskListTitle && isTaskListSelected)];
+  [deleteTaskListButton_ setEnabled:(isTaskListSelected)];
 
   BOOL isFetchingTaskLists = (self.taskListsTicket != nil);
   BOOL isEditingTaskList = (self.editTaskListTicket != nil);
-  [mTaskListsCancelButton setEnabled:(isFetchingTaskLists || isEditingTaskList)];
+  [taskListsCancelButton_ setEnabled:(isFetchingTaskLists || isEditingTaskList)];
 
   // Enable tasks buttons
   GTLTasksTask *selectedTask = [self selectedTask];
   BOOL hasTasks = (self.tasks != nil);
   BOOL isTaskSelected = (selectedTask != nil);
-  BOOL hasTaskTitle = ([[mTaskNameField stringValue] length] > 0);
+  BOOL hasTaskTitle = ([[taskNameField_ stringValue] length] > 0);
 
-  [mAddTaskButton setEnabled:(hasTaskTitle && hasTasks)];
-  [mRenameTaskButton setEnabled:(hasTaskTitle && isTaskSelected)];
-  [mDeleteTaskButton setEnabled:(isTaskSelected)];
+  [addTaskButton_ setEnabled:(hasTaskTitle && hasTasks)];
+  [renameTaskButton_ setEnabled:(hasTaskTitle && isTaskSelected)];
+  [deleteTaskButton_ setEnabled:(isTaskSelected)];
 
   BOOL isCompleted = [selectedTask.status isEqual:kTaskStatusCompleted];
-  [mCompleteTaskButton setEnabled:isTaskSelected];
-  [mCompleteTaskButton setTitle:(isCompleted ? @"Uncomplete" : @"Complete")];
+  [completeTaskButton_ setEnabled:isTaskSelected];
+  [completeTaskButton_ setTitle:(isCompleted ? @"Uncomplete" : @"Complete")];
 
   NSArray *completedTasks = [self completedTasks];
   NSUInteger numberOfCompletedTasks = [completedTasks count];
-  [mClearTasksButton setEnabled:(numberOfCompletedTasks > 0)];
+  [clearTasksButton_ setEnabled:(numberOfCompletedTasks > 0)];
 
   NSUInteger numberOfTasks = [self.tasks.items count];
-  [mDeleteAllTasksButton setEnabled:(numberOfTasks > 0)];
+  [deleteAllTasksButton_ setEnabled:(numberOfTasks > 0)];
 
   BOOL areAllTasksCompleted = (numberOfCompletedTasks == numberOfTasks);
-  [mCompleteAllTasksButton setEnabled:(numberOfTasks > 0)];
-  [mCompleteAllTasksButton setTitle:(areAllTasksCompleted ?
+  [completeAllTasksButton_ setEnabled:(numberOfTasks > 0)];
+  [completeAllTasksButton_ setTitle:(areAllTasksCompleted ?
                                      @"Uncomplete All" : @"Complete All")];
 
   BOOL isFetchingTasks = (self.tasksTicket != nil);
   BOOL isEditingTask = (self.editTaskTicket != nil);
-  [mTasksCancelButton setEnabled:(isFetchingTasks || isEditingTask)];
+  [tasksCancelButton_ setEnabled:(isFetchingTasks || isEditingTask)];
 
   // Show or hide the text indicating that the client ID or client secret are
   // needed
-  BOOL hasClientIDStrings = [[mClientIDField stringValue] length] > 0
-    && [[mClientSecretField stringValue] length] > 0;
-  [mClientIDRequiredTextField setHidden:hasClientIDStrings];
+  BOOL hasClientIDStrings = [[clientIDField_ stringValue] length] > 0
+    && [[clientSecretField_ stringValue] length] > 0;
+  [clientIDRequiredTextField_ setHidden:hasClientIDStrings];
 }
 
 - (void)displayAlert:(NSString *)title format:(NSString *)format, ... {
@@ -1068,7 +1067,7 @@ static NSString *const kGTLChildTasksProperty = @"childTasks";
 
 - (IBAction)clientIDClicked:(id)sender {
   // Show the sheet for developers to enter their client ID and client secret
-  [NSApp beginSheet:mClientIDSheet
+  [NSApp beginSheet:clientIDSheet_
      modalForWindow:[self window]
       modalDelegate:self
      didEndSelector:@selector(clientIDSheetDidEnd:returnCode:contextInfo:)
@@ -1076,7 +1075,7 @@ static NSString *const kGTLChildTasksProperty = @"childTasks";
 }
 
 - (IBAction)clientIDDoneClicked:(id)sender {
-  [NSApp endSheet:mClientIDSheet returnCode:NSOKButton];
+  [NSApp endSheet:clientIDSheet_ returnCode:NSOKButton];
 }
 
 - (void)clientIDSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {

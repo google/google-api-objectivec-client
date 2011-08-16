@@ -43,13 +43,13 @@
 
 // Completion date of the task (as a RFC 3339 timestamp). This field is omitted
 // if the task has not been completed.
-@property (retain) NSString *completed;
+@property (retain) GTLDateTime *completed;
 
 // Flag indicating whether the task has been deleted. The default if False.
 @property (retain) NSNumber *deleted;  // boolValue
 
 // Due date of the task (as a RFC 3339 timestamp). Optional.
-@property (retain) NSString *due;
+@property (retain) GTLDateTime *due;
 
 // ETag of the resource.
 @property (retain) NSString *ETag;
@@ -92,6 +92,6 @@
 @property (retain) NSString *title;
 
 // Last modification time of the task (as a RFC 3339 timestamp).
-@property (retain) NSString *updated;
+@property (retain) GTLDateTime *updated;
 
 @end
