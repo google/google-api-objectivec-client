@@ -25,6 +25,8 @@
 @property (retain) NSNumber *code;
 @property (retain) NSString *message;
 @property (retain) NSArray *data; // of GTLErrorObjectData
+
+@property (readonly) NSError *foundationError; // convenience accessor
 @end
 
 @interface GTLErrorObjectData : GTLObject

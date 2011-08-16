@@ -1,17 +1,17 @@
 /* Copyright (c) 2011 Google Inc.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 //
 //  GTLDateTime.m
@@ -22,6 +22,16 @@
 
 @implementation GTLDateTime
 
+// A note about milliseconds_:
+// RPC 3339 has support for fractions of a second.  NSDateComponents is all
+// NSInteger based, so it can't handle a fraction of a second.  NSDate is
+// built on NSTimeInterval so it has sub-millisecond precision.  GTL takes
+// the compromise of supporting the RFC's optional fractional second support
+// by maintaining a number of milliseconds past what fits in the
+// NSDateComponents.  The parsing and to string conversions will include
+// 3 decimal digits (hence milliseconds).  When going to a string, the decimal
+// digits are only included if the milliseconds are non zero.
+
 @dynamic date;
 @dynamic calendar;
 @dynamic RFC3339String;
@@ -29,35 +39,21 @@
 @dynamic timeZone;
 @dynamic hasTime;
 
-@synthesize dateComponents = dateComponents_;
-@synthesize offsetSeconds = offsetSeconds_;
-@synthesize universalTime = isUniversalTime_;
+@synthesize dateComponents = dateComponents_,
+            milliseconds = milliseconds_,
+            offsetSeconds = offsetSeconds_,
+            universalTime = isUniversalTime_;
 
 + (GTLDateTime *)dateTimeWithRFC3339String:(NSString *)str {
-  return [[[GTLDateTime alloc] initWithRFC3339String:str] autorelease];
+  GTLDateTime *result = [[[self alloc] init] autorelease];
+  [result setFromRFC3339String:str];
+  return result;
 }
 
 + (GTLDateTime *)dateTimeWithDate:(NSDate *)date timeZone:(NSTimeZone *)tz {
- return [[[GTLDateTime alloc] initWithDate:date
-                                    timeZone:tz] autorelease];
-}
-
-- (id)initWithRFC3339String:(NSString *)str {
-
-  self = [super init];
-  if (self) {
-    [self setFromRFC3339String:str];
-  }
-  return self;
-}
-
-- (id)initWithDate:(NSDate *)date timeZone:(NSTimeZone *)tz {
-
-  self = [super init];
-  if (self) {
-    [self setFromDate:date timeZone:tz];
-  }
-  return self;
+  GTLDateTime *result = [[[self alloc] init] autorelease];
+  [result setFromDate:date timeZone:tz];
+  return result;
 }
 
 - (void)dealloc {
@@ -70,9 +66,10 @@
 
   GTLDateTime *newObj = [[GTLDateTime alloc] init];
 
-  [newObj setUniversalTime:[self isUniversalTime]];
-  [newObj setTimeZone:[self timeZone] withOffsetSeconds:[self offsetSeconds]];
-  [newObj setDateComponents:[self dateComponents]];
+  newObj.universalTime = self.isUniversalTime;
+  [newObj setTimeZone:self.timeZone withOffsetSeconds:self.offsetSeconds];
+  newObj.dateComponents = self.dateComponents;
+  newObj.milliseconds = self.milliseconds;
 
   return newObj;
 }
@@ -93,21 +90,23 @@
           && [dc1 weekdayOrdinal] == [dc2 weekdayOrdinal];
 }
 
+
 - (BOOL)isEqual:(GTLDateTime *)other {
 
   if (self == other) return YES;
   if (![other isKindOfClass:[GTLDateTime class]]) return NO;
 
-  return [self offsetSeconds] == [other offsetSeconds]
-    && [self isUniversalTime] == [other isUniversalTime]
-    && [self timeZone] == [other timeZone]
-    && [self doesDateComponents:[self dateComponents]
-            equalDateComponents:[other dateComponents]];
+  return self.offsetSeconds == other.offsetSeconds
+    && self.isUniversalTime == other.isUniversalTime
+    && self.timeZone == other.timeZone
+    && [self doesDateComponents:self.dateComponents
+            equalDateComponents:other.dateComponents]
+    && self.milliseconds == other.milliseconds;
 }
 
 - (NSString *)description {
   return [NSString stringWithFormat:@"%@ %p: {%@}",
-    [self class], self, [self RFC3339String]];
+    [self class], self, self.RFC3339String];
 }
 
 - (NSTimeZone *)timeZone {
@@ -115,12 +114,12 @@
     return timeZone_;
   }
 
-  if ([self isUniversalTime]) {
+  if (self.isUniversalTime) {
     NSTimeZone *ztz = [NSTimeZone timeZoneWithName:@"Universal"];
     return ztz;
   }
 
-  NSInteger offsetSeconds = [self offsetSeconds];
+  NSInteger offsetSeconds = self.offsetSeconds;
 
   if (offsetSeconds != NSUndefinedDateComponent) {
     NSTimeZone *tz = [NSTimeZone timeZoneForSecondsFromGMT:offsetSeconds];
@@ -134,10 +133,10 @@
   timeZone_ = [timeZone retain];
 
   if (timeZone) {
-    NSInteger offsetSeconds = [timeZone secondsFromGMTForDate:[self date]];
-    [self setOffsetSeconds:offsetSeconds];
+    NSInteger offsetSeconds = [timeZone secondsFromGMTForDate:self.date];
+    self.offsetSeconds = offsetSeconds;
   } else {
-    [self setOffsetSeconds:NSUndefinedDateComponent];
+    self.offsetSeconds = NSUndefinedDateComponent;
   }
 }
 
@@ -150,7 +149,7 @@
 
 - (NSCalendar *)calendar {
   NSCalendar *cal = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
-  NSTimeZone *tz = [self timeZone];
+  NSTimeZone *tz = self.timeZone;
   if (tz) {
     [cal setTimeZone:tz];
   }
@@ -158,10 +157,11 @@
 }
 
 - (NSDate *)date {
-  NSCalendar *cal = [self calendar];
-  NSDateComponents *dateComponents = [self dateComponents];
+  NSCalendar *cal = self.calendar;
+  NSDateComponents *dateComponents = self.dateComponents;
+  NSTimeInterval extraMillisecondsAsSeconds = 0.0;
 
-  if (![self hasTime]) {
+  if (!self.hasTime) {
     // we're not keeping track of a time, but NSDate always is based on
     // an absolute time. We want to avoid returning an NSDate where the
     // calendar date appears different from what was used to create our
@@ -175,30 +175,39 @@
     [noonDateComponents setMinute:0];
     [noonDateComponents setSecond:0];
     dateComponents = noonDateComponents;
-
+    
     NSTimeZone *gmt = [NSTimeZone timeZoneWithName:@"Universal"];
     [cal setTimeZone:gmt];
+  } else {
+    // Add in the fractional seconds that don't fit into NSDateComponents.
+    extraMillisecondsAsSeconds = ((NSTimeInterval)self.milliseconds) / 1000.0;
   }
 
   NSDate *date = [cal dateFromComponents:dateComponents];
+
+  // Add in any milliseconds that didn't fit into the dateComponents.
+  if (extraMillisecondsAsSeconds > 0.0) {
+    date = [date dateByAddingTimeInterval:extraMillisecondsAsSeconds];
+  }
+
   return date;
 }
 
 - (NSString *)stringValue {
-  return [self RFC3339String];
+  return self.RFC3339String;
 }
 
 - (NSString *)RFC3339String {
-  NSDateComponents *dateComponents = [self dateComponents];
-  NSInteger offset = [self offsetSeconds];
+  NSDateComponents *dateComponents = self.dateComponents;
+  NSInteger offset = self.offsetSeconds;
 
   NSString *timeString = @""; // timeString like "T15:10:46-08:00"
 
-  if ([self hasTime]) {
+  if (self.hasTime) {
 
     NSString *timeOffsetString; // timeOffsetString like "-08:00"
 
-    if ([self isUniversalTime]) {
+    if (self.isUniversalTime) {
      timeOffsetString = @"Z";
     } else if (offset == NSUndefinedDateComponent) {
       // unknown offset is rendered as -00:00 per
@@ -213,9 +222,15 @@
       timeOffsetString = [NSString stringWithFormat:@"%@%02ld:%02ld",
         sign, (long)(offset/(60*60)) % 24, (long)(offset / 60) % 60];
     }
-    timeString = [NSString stringWithFormat:@"T%02ld:%02ld:%02ld%@",
+
+    NSString *fractionalSecondsString = @"";
+    if (self.milliseconds > 0.0) {
+      fractionalSecondsString = [NSString stringWithFormat:@".%03ld", (long)self.milliseconds];
+    }
+
+    timeString = [NSString stringWithFormat:@"T%02ld:%02ld:%02ld%@%@",
       (long)[dateComponents hour], (long)[dateComponents minute],
-      (long)[dateComponents second], timeOffsetString];
+      (long)[dateComponents second], fractionalSecondsString, timeOffsetString];
   }
 
   // full dateString like "2006-11-17T15:10:46-08:00"
@@ -237,9 +252,14 @@
     | NSSecondCalendarUnit);
 
   NSDateComponents *components = [cal components:kComponentBits fromDate:date];
-  [self setDateComponents:components];
+  self.dateComponents = components;
 
-  [self setUniversalTime:NO];
+  // Extract the fractional seconds.
+  NSTimeInterval asTimeInterval = [date timeIntervalSince1970];
+  NSTimeInterval worker = asTimeInterval - trunc(asTimeInterval);
+  self.milliseconds = (NSInteger)round(worker * 1000.0);
+  
+  self.universalTime = NO;
 
   NSInteger offset = NSUndefinedDateComponent;
 
@@ -247,22 +267,14 @@
     offset = [tz secondsFromGMTForDate:date];
 
     if (offset == 0 && [tz isEqualToTimeZone:[NSTimeZone timeZoneWithName:@"Universal"]]) {
-      [self setUniversalTime:YES];
+      self.universalTime = YES;
     }
   }
-  [self setOffsetSeconds:offset];
+  self.offsetSeconds = offset;
 
   // though offset seconds are authoritative, we'll retain the time zone
   // since we can't regenerate it reliably from just the offset
   timeZone_ = [tz retain];
-}
-
-static inline BOOL ScanInteger(NSScanner *scanner, NSInteger *targetInteger) {
-#if MAC_OS_X_VERSION_MIN_REQUIRED <= MAC_OS_X_VERSION_10_4
-  return [scanner scanInt:targetInteger];
-#else
-  return [scanner scanInteger:targetInteger];
-#endif
 }
 
 - (void)setFromRFC3339String:(NSString *)str {
@@ -273,12 +285,15 @@ static inline BOOL ScanInteger(NSScanner *scanner, NSInteger *targetInteger) {
   NSInteger hour = NSUndefinedDateComponent;
   NSInteger minute = NSUndefinedDateComponent;
   NSInteger sec = NSUndefinedDateComponent;
-  float secFloat = -1.0f;
+  NSInteger milliseconds = 0;
+  double secDouble = -1.0;
   NSString* sign = nil;
   NSInteger offsetHour = 0;
   NSInteger offsetMinute = 0;
 
   NSScanner* scanner = [NSScanner scannerWithString:str];
+  // There should be no whitespace, so no skip characters.
+  [scanner setCharactersToBeSkipped:nil];
 
   NSCharacterSet* dashSet = [NSCharacterSet characterSetWithCharactersInString:@"-"];
   NSCharacterSet* tSet = [NSCharacterSet characterSetWithCharactersInString:@"Tt "];
@@ -288,23 +303,31 @@ static inline BOOL ScanInteger(NSScanner *scanner, NSInteger *targetInteger) {
   // for example, scan 2006-11-17T15:10:46-08:00
   //                or 2006-11-17T15:10:46Z
   if (// yyyy-mm-dd
-      ScanInteger(scanner, &year) &&
+      [scanner scanInteger:&year] &&
       [scanner scanCharactersFromSet:dashSet intoString:NULL] &&
-      ScanInteger(scanner, &month) &&
+      [scanner scanInteger:&month] &&
       [scanner scanCharactersFromSet:dashSet intoString:NULL] &&
-      ScanInteger(scanner, &day) &&
+      [scanner scanInteger:&day] &&
       // Thh:mm:ss
       [scanner scanCharactersFromSet:tSet intoString:NULL] &&
-      ScanInteger(scanner, &hour) &&
+      [scanner scanInteger:&hour] &&
       [scanner scanCharactersFromSet:colonSet intoString:NULL] &&
-      ScanInteger(scanner, &minute) &&
+      [scanner scanInteger:&minute] &&
       [scanner scanCharactersFromSet:colonSet intoString:NULL] &&
-      [scanner scanFloat:&secFloat] &&
-      // Z or +hh:mm
-      [scanner scanCharactersFromSet:plusMinusZSet intoString:&sign] &&
-      ScanInteger(scanner, &offsetHour) &&
-      [scanner scanCharactersFromSet:colonSet intoString:NULL] &&
-      ScanInteger(scanner, &offsetMinute)) {
+      [scanner scanDouble:&secDouble]) {
+
+    // At this point we got secDouble, pull it apart.
+    sec = (NSInteger)secDouble;
+    double worker = secDouble - ((double)sec);
+    milliseconds = (NSInteger)round(worker * 1000.0);
+
+    // Finish parsing, now the offset info.
+    if (// Z or +hh:mm
+        [scanner scanCharactersFromSet:plusMinusZSet intoString:&sign] &&
+        [scanner scanInteger:&offsetHour] &&
+        [scanner scanCharactersFromSet:colonSet intoString:NULL] &&
+        [scanner scanInteger:&offsetMinute]) {
+    }
   }
 
   NSDateComponents *dateComponents = [[[NSDateComponents alloc] init] autorelease];
@@ -313,22 +336,21 @@ static inline BOOL ScanInteger(NSScanner *scanner, NSInteger *targetInteger) {
   [dateComponents setDay:day];
   [dateComponents setHour:hour];
   [dateComponents setMinute:minute];
-
-  if (secFloat < -1.0f || secFloat > -1.0f) sec = (NSInteger)secFloat;
   [dateComponents setSecond:sec];
 
-  [self setDateComponents:dateComponents];
-
+  self.dateComponents = dateComponents;
+  self.milliseconds = milliseconds;
+  
   // determine the offset, like from Z, or -08:00:00.0
 
-  [self setTimeZone:nil];
+  self.timeZone = nil;
 
   NSInteger totalOffset = NSUndefinedDateComponent;
-  [self setUniversalTime:NO];
+  self.universalTime = NO;
 
   if ([sign caseInsensitiveCompare:@"Z"] == NSOrderedSame) {
 
-    [self setUniversalTime:YES];
+    self.universalTime = YES;
     totalOffset = 0;
 
   } else if (sign != nil) {
@@ -346,11 +368,11 @@ static inline BOOL ScanInteger(NSScanner *scanner, NSInteger *targetInteger) {
     }
   }
 
-  [self setOffsetSeconds:totalOffset];
+  self.offsetSeconds = totalOffset;
 }
 
 - (BOOL)hasTime {
-  NSDateComponents *dateComponents = [self dateComponents];
+  NSDateComponents *dateComponents = self.dateComponents;
 
   BOOL hasTime = ([dateComponents hour] != NSUndefinedDateComponent
                   && [dateComponents minute] != NSUndefinedDateComponent);
@@ -361,12 +383,13 @@ static inline BOOL ScanInteger(NSScanner *scanner, NSInteger *targetInteger) {
 - (void)setHasTime:(BOOL)shouldHaveTime {
 
   // we'll set time values to zero or NSUndefinedDateComponent as appropriate
-  BOOL hadTime = [self hasTime];
+  BOOL hadTime = self.hasTime;
 
   if (shouldHaveTime && !hadTime) {
     [dateComponents_ setHour:0];
     [dateComponents_ setMinute:0];
     [dateComponents_ setSecond:0];
+    milliseconds_ = 0;
     offsetSeconds_ = NSUndefinedDateComponent;
     isUniversalTime_ = NO;
 
@@ -374,9 +397,10 @@ static inline BOOL ScanInteger(NSScanner *scanner, NSInteger *targetInteger) {
     [dateComponents_ setHour:NSUndefinedDateComponent];
     [dateComponents_ setMinute:NSUndefinedDateComponent];
     [dateComponents_ setSecond:NSUndefinedDateComponent];
+    milliseconds_ = 0;
     offsetSeconds_ = NSUndefinedDateComponent;
     isUniversalTime_ = NO;
-    [self setTimeZone:nil];
+    self.timeZone = nil;
   }
 }
 

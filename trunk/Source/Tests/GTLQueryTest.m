@@ -27,12 +27,19 @@
 @property (retain) NSString *qS;
 @property (assign) NSUInteger maxResults;
 @property (assign) NSInteger aNumber;
+@property (assign) long long aLongLong;
+@property (assign) unsigned long long aULongLong;
+@property (assign) float cost;
 @property (assign) double minValue;
 @property (assign) BOOL preferred;
+@property (retain) NSArray *arrayString;
+@property (retain) NSArray *arrayNumber;
+@property (retain) NSArray *arrayDate;
 @end
 
 @implementation GTLTestingQuery
-@dynamic userId, msgId, alt, qS, maxResults, aNumber, minValue, preferred;
+@dynamic userId, msgId, alt, qS, maxResults, aNumber, aLongLong, aULongLong;
+@dynamic cost, minValue, preferred, arrayString, arrayNumber, arrayDate;
 + (NSDictionary *)parameterNameMap {
   return [NSDictionary dictionaryWithObjectsAndKeys:
           @"user-id", @"userId",
@@ -52,6 +59,13 @@
   return [NSDictionary dictionaryWithObjectsAndKeys:
           allMethods, @"***",
           mumbleMethod, @"foo.bar.mumble",
+          nil];
+}
++ (NSDictionary *)arrayPropertyToClassMap {
+  return [NSDictionary dictionaryWithObjectsAndKeys:
+          [NSString class], @"arrayString",
+          [NSNumber class], @"arrayNumber",
+          [GTLDateTime class], @"arrayDate",
           nil];
 }
 @end
@@ -92,50 +106,73 @@
               @"test user", @"user-id",
               @"12345", @"msgId",
               nil];
-  STAssertEqualObjects(query.parameters, expected, nil);
+  STAssertEqualObjects(query.JSON, expected, nil);
 
   query.alt = @"simple";
   [expected setObject:@"simple" forKey:@"alt"];
-  STAssertEqualObjects(query.parameters, expected, nil);
+  STAssertEqualObjects(query.JSON, expected, nil);
 
   query.qS = @"foo bar baz";
   [expected setObject:@"foo bar baz" forKey:@"q.s"];
-  STAssertEqualObjects(query.parameters, expected, nil);
+  STAssertEqualObjects(query.JSON, expected, nil);
 
   query.maxResults = 15;
   [expected setObject:[NSNumber numberWithUnsignedInteger:15]
                forKey:@"max_results"];
-  STAssertEqualObjects(query.parameters, expected, nil);
+  STAssertEqualObjects(query.JSON, expected, nil);
   STAssertEquals(query.maxResults, (NSUInteger)15, nil);
   
   query.aNumber = -10;
   [expected setObject:[NSNumber numberWithInteger:-10]
                forKey:@"aNumber"];
-  STAssertEqualObjects(query.parameters, expected, nil);
+  STAssertEqualObjects(query.JSON, expected, nil);
   STAssertEquals(query.aNumber, (NSInteger)-10, nil);
 
+  query.aLongLong = -1000000000;
+  [expected setObject:[NSNumber numberWithLongLong:-1000000000]
+               forKey:@"aLongLong"];
+  STAssertEqualObjects(query.JSON, expected, nil);
+  STAssertEquals(query.aLongLong, (long long)-1000000000, nil);
+
+  query.aULongLong = 1000000000;
+  [expected setObject:[NSNumber numberWithUnsignedLongLong:1000000000]
+               forKey:@"aULongLong"];
+  STAssertEqualObjects(query.JSON, expected, nil);
+#if __LP64__
+  // For reasons I can't currently explain, this fails in 32bit release only.
+  // Debug 32bit passes.  So it has to be something about how things expand
+  // and compiler settings.
+  STAssertEquals((unsigned long long)query.aULongLong, (unsigned long long)1000000000, nil);
+#endif
+  
+  query.cost = 123.4f;
+  [expected setObject:[NSNumber numberWithFloat:123.4f]
+               forKey:@"cost"];
+  STAssertEqualObjects(query.JSON, expected, nil);
+  STAssertEquals(query.cost, 123.4f, nil);
+  
   query.minValue = 20.0;
   [expected setObject:[NSNumber numberWithDouble:20]
                forKey:@"minValue"];
-  STAssertEqualObjects(query.parameters, expected, nil);
+  STAssertEqualObjects(query.JSON, expected, nil);
   STAssertEquals(query.minValue, 20.0, nil);
 
   query.preferred = NO;
   [expected setObject:[NSNumber numberWithBool:NO]
                forKey:@"preferred"];
-  STAssertEqualObjects(query.parameters, expected, nil);
+  STAssertEqualObjects(query.JSON, expected, nil);
   STAssertFalse(query.preferred, nil);
   
-  // Default values don't show up in params but still fetch.xxx
+  // Default values don't show up in params but still fetch.
   
   query.maxResults = 20;
   [expected removeObjectForKey:@"max_results"];
-  STAssertEqualObjects(query.parameters, expected, nil);
+  STAssertEqualObjects(query.JSON, expected, nil);
   STAssertEquals(query.maxResults, (NSUInteger)20, nil);
 
   query.preferred = YES;
   [expected removeObjectForKey:@"preferred"];
-  STAssertEqualObjects(query.parameters, expected, nil);
+  STAssertEqualObjects(query.JSON, expected, nil);
   STAssertTrue(query.preferred, nil);
 
   // Test method specific defaults
@@ -147,23 +184,44 @@
 
   query.alt = @"simple";
   [expected setObject:@"simple" forKey:@"alt"];
-  STAssertEqualObjects(query.parameters, expected, nil);
+  STAssertEqualObjects(query.JSON, expected, nil);
 
   query.alt = @"complex";
   [expected removeObjectForKey:@"alt"];
-  STAssertEqualObjects(query.parameters, expected, nil);
+  STAssertEqualObjects(query.JSON, expected, nil);
   
   // Test no default in an override
   
   query.maxResults = 15;
   [expected setObject:[NSNumber numberWithUnsignedInteger:15]
                forKey:@"max_results"];
-  STAssertEqualObjects(query.parameters, expected, nil);
+  STAssertEqualObjects(query.JSON, expected, nil);
 
   query.maxResults = 20;
   [expected setObject:[NSNumber numberWithUnsignedInteger:20]
                forKey:@"max_results"];
-  STAssertEqualObjects(query.parameters, expected, nil);
+  STAssertEqualObjects(query.JSON, expected, nil);
+
+  // test setting array of basic types
+  
+  // string
+  query.arrayString = [NSArray arrayWithObject:@"foo bar"];
+  [expected setObject:[NSArray arrayWithObject:@"foo bar"]
+               forKey:@"arrayString"];
+  STAssertEqualObjects(query.JSON, expected, nil);
+
+  // number
+  query.arrayNumber = [NSArray arrayWithObject:[NSNumber numberWithInteger:1234]];
+  [expected setObject:[NSArray arrayWithObject:[NSNumber numberWithInteger:1234]]
+               forKey:@"arrayNumber"];
+  STAssertEqualObjects(query.JSON, expected, nil);
+  
+  // date
+  NSString * const dateStr = @"2011-01-14T15:00:00-01:00";
+  query.arrayDate = [NSArray arrayWithObject:[GTLDateTime dateTimeWithRFC3339String:dateStr]];
+  [expected setObject:[NSArray arrayWithObject:dateStr]
+               forKey:@"arrayDate"];
+  STAssertEqualObjects(query.JSON, expected, nil);  
 }
 
 - (void)testParameterNameSubStrings {
@@ -184,7 +242,7 @@
        @"for base class", @"alt",
        @"for subclass", @"altPrime",
        nil];
-  STAssertEqualObjects(obj.parameters, expected, nil);
+  STAssertEqualObjects(obj.JSON, expected, nil);
   
   // Test lookup for a getter.
   

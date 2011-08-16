@@ -90,10 +90,6 @@ static NSString *ETagIfPresent(GTLObject *obj) {
 + (NSString *)systemVersionString;
 - (void)prepareToParseObjectForFetcher:(GTMHTTPFetcher *)fetcher;
 - (void)handleParsedObjectForFetcher:(GTMHTTPFetcher *)fetcher;
-- (NSDictionary *)userInfoForErrorResponseData:(NSData *)data
-                                   contentType:(NSString *)contentType;
-- (NSDictionary *)userInfoForErrorWithErrorJSON:(NSMutableDictionary *)errorJSON
-                                 fallbackReason:(NSString *)fallbackReason;
 - (BOOL)fetchNextPageWithQuery:(GTLQuery *)query
                       delegate:(id)delegate
            didFinishedSelector:(SEL)finishedSelector
@@ -114,26 +110,20 @@ static NSString *ETagIfPresent(GTLObject *obj) {
 @implementation GTLService
 
 @synthesize runLoopModes = runLoopModes_,
-  fetcherService = fetcherService_,
-  operationQueue = operationQueue_,
-  shouldFetchNextPages = shouldFetchNextPages_,
-  surrogates = surrogates_,
-  uploadProgressSelector = uploadProgressSelector_,
-  retryEnabled = isRetryEnabled_,
-  retrySelector = retrySelector_,
-  maxRetryInterval = maxRetryInterval_,
-  APIKey = apiKey_,
-  isRESTDataWrapperRequired = isRESTDataWrapperRequired_,
-  urlQueryParameters = urlQueryParameters_,
-  apiVersion = apiVersion_,
-  rpcURL = rpcURL_;
-
-@dynamic userAgent,
-  requestUserAgent,
-  cookieStorageMethod,
-  serviceUploadChunkSize,
-  serviceProperties,
-  serviceUserData;
+            fetcherService = fetcherService_,
+            operationQueue = operationQueue_,
+            shouldFetchNextPages = shouldFetchNextPages_,
+            surrogates = surrogates_,
+            uploadProgressSelector = uploadProgressSelector_,
+            retryEnabled = isRetryEnabled_,
+            retrySelector = retrySelector_,
+            maxRetryInterval = maxRetryInterval_,
+            APIKey = apiKey_,
+            isRESTDataWrapperRequired = isRESTDataWrapperRequired_,
+            urlQueryParameters = urlQueryParameters_,
+            additionalHTTPHeaders = additionalHTTPHeaders_,
+            apiVersion = apiVersion_,
+            rpcURL = rpcURL_;
 
 + (Class)ticketClass {
   return [GTLServiceTicket class];
@@ -170,19 +160,20 @@ static NSString *ETagIfPresent(GTLObject *obj) {
 }
 
 - (void)dealloc {
-  self.userAgent = nil;
-  self.fetcherService = nil;
-  self.serviceProperties = nil;
-  self.surrogates = nil;
-  self.APIKey = nil;
-  self.operationQueue = nil;
-  self.urlQueryParameters = nil;
-  self.apiVersion = nil;
-  self.rpcURL = nil;
-
+  [operationQueue_ release];
+  [userAgent_ release];
+  [fetcherService_ release];
+  [runLoopModes_ release];
+  [serviceProperties_ release];
+  [surrogates_ release];
 #if NS_BLOCKS_AVAILABLE
   [serviceUploadProgressBlock_ release];
 #endif
+  [apiKey_ release];
+  [apiVersion_ release];
+  [rpcURL_ release];
+  [urlQueryParameters_ release];
+  [additionalHTTPHeaders_ release];
 
   [super dealloc];
 }
@@ -362,7 +353,6 @@ static NSString *ETagIfPresent(GTLObject *obj) {
                                                 ETag:etag
                                           httpMethod:httpMethod
                                               ticket:ticket];
-
   NSString *acceptValue;
   NSString *contentTypeValue;
   if (isREST) {
@@ -376,6 +366,12 @@ static NSString *ETagIfPresent(GTLObject *obj) {
   [request setValue:contentTypeValue forHTTPHeaderField:@"Content-Type"];
 
   [request setValue:@"no-cache" forHTTPHeaderField:@"Cache-Control"];
+
+  NSDictionary *headers = self.additionalHTTPHeaders;
+  for (NSString *key in headers) {
+    NSString *value = [headers valueForKey:key];
+    [request setValue:value forHTTPHeaderField:key];
+  }
 
   return request;
 }
@@ -682,7 +678,7 @@ static NSString *ETagIfPresent(GTLObject *obj) {
   NSMutableArray *requestIDs = [NSMutableSet setWithCapacity:numberOfQueries];
   for (GTLQuery *query in queries) {
     NSString *methodName = query.methodName;
-    NSDictionary *parameters = query.parameters;
+    NSDictionary *parameters = query.JSON;
     GTLObject *bodyObject = query.bodyObject;
     NSString *requestID = query.requestID;
 
@@ -856,7 +852,7 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
       [self handleParsedObjectForFetcher:fetcher];
     }
   } else {
-    // there was an error from the fetch
+    // There was an error from the fetch
     int status = [error code];
     if (status >= 300) {
       // Return the HTTP error status code along with a more descriptive error
@@ -866,11 +862,35 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
         NSDictionary *responseHeaders = fetcher.responseHeaders;
         NSString *contentType = [responseHeaders objectForKey:@"Content-Type"];
 
-        NSDictionary *userInfo = [self userInfoForErrorResponseData:responseData
-                                                        contentType:contentType];
-        error = [NSError errorWithDomain:kGTMHTTPFetcherStatusDomain
-                                    code:status
-                                userInfo:userInfo];
+        if ([data length] > 0) {
+          if ([contentType hasPrefix:@"application/json"]) {
+            NSError *parseError = nil;
+            NSMutableDictionary *jsonWrapper = [GTLJSONParser objectWithData:data
+                                                                       error:&parseError];
+            if (parseError) {
+              // We could not parse the JSON payload
+              error = parseError;
+            } else {
+              // Convert the JSON error payload into a structured error
+              NSMutableDictionary *errorJSON = [jsonWrapper valueForKey:@"error"];
+              GTLErrorObject *errorObject = [GTLErrorObject objectWithJSON:errorJSON];
+              error = [errorObject foundationError];
+            }
+          } else {
+            // No structured JSON error was available; make a plaintext server
+            // error response visible in the error object.
+            NSString *reasonStr = [[[NSString alloc] initWithData:data
+                                                         encoding:NSUTF8StringEncoding] autorelease];
+            NSDictionary *userInfo = [NSDictionary dictionaryWithObject:reasonStr
+                                                                 forKey:NSLocalizedFailureReasonErrorKey];
+            error = [NSError errorWithDomain:kGTMHTTPFetcherStatusDomain
+                                        code:status
+                                    userInfo:userInfo];
+          }
+        } else {
+          // Response data length is zero; we'll settle for returning the
+          // fetcher's error.
+        }
       }
     }
 
@@ -1004,16 +1024,10 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
         NSMutableDictionary *errorJSON = [jsonWrapper valueForKey:@"error"];
         GTL_DEBUG_ASSERT(errorJSON != nil, @"no result or error in response:\n%@",
                          jsonWrapper);
-        NSDictionary *userInfo = [self userInfoForErrorWithErrorJSON:errorJSON
-                                                      fallbackReason:nil];
-        // if there wasn't an error object, we'll use a code of zero.
-        GTLErrorObject *errObject = [userInfo objectForKey:kGTLStructuredErrorKey];
-        NSInteger errorCode = [[errObject code] integerValue];
-        NSError *error = [NSError errorWithDomain:kGTLJSONRPCErrorDomain
-                                             code:errorCode
-                                         userInfo:userInfo];
+        GTLErrorObject *errorObject = [GTLErrorObject objectWithJSON:errorJSON];
+        NSError *error = [errorObject foundationError];
 
-        // store the error and let it go to the callback
+        // Store the error and let it go to the callback
         [fetcher setProperty:error
                       forKey:kFetcherFetchErrorKey];
       }
@@ -1184,69 +1198,6 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
   fetcher.properties = nil;
 }
 
-// create an error userInfo dictionary containing a useful reason string and,
-// for structured JSON errors, a server error group object
-- (NSDictionary *)userInfoForErrorResponseData:(NSData *)data
-                                   contentType:(NSString *)contentType {
-  NSMutableDictionary *errorJSON = nil;
-  NSString *reasonStr = nil;
-
-  if ([data length] > 0) {
-    if ([contentType hasPrefix:@"application/json"]) {
-      NSError *parseError = nil;
-      NSMutableDictionary *jsonWrapper = [GTLJSONParser objectWithData:data
-                                                                 error:&parseError];
-      if (parseError == nil) {
-        errorJSON = [jsonWrapper valueForKey:@"error"];
-      }
-    } else {
-      // no structured JSON error was available; deal with a plaintext server
-      // error response
-      reasonStr = [[[NSString alloc] initWithData:data
-                                         encoding:NSUTF8StringEncoding] autorelease];
-    }
-  }
-
-  NSDictionary *userInfo = [self userInfoForErrorWithErrorJSON:errorJSON
-                                                fallbackReason:reasonStr];
-  return userInfo;
-}
-
-// create an error userInfo dictionary containing a useful reason string and a
-// server error group object
-- (NSDictionary *)userInfoForErrorWithErrorJSON:(NSMutableDictionary *)errorJSON
-                                 fallbackReason:(NSString *)fallbackReason {
-  // NSError's default localizedReason value looks like
-  //   "(com.google.GTLServiceDomain error -4.)"
-  //
-  // The NSError domain and numeric code aren't the ones we care about
-  // so much as the error present in the server response data, so
-  // we'll try to store a more useful reason in the userInfo dictionary
-
-  NSString *reasonStr = fallbackReason;
-  NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
-
-  GTLErrorObject *errorObject = [GTLErrorObject objectWithJSON:errorJSON];
-  if (errorObject) {
-    // store the server group in the userInfo for the error
-    [userInfo setObject:errorObject forKey:kGTLStructuredErrorKey];
-
-    reasonStr = [errorObject message];
-  }
-
-  if (reasonStr != nil) {
-    // we always store an error in the userInfo key "error"
-    [userInfo setObject:reasonStr forKey:kGTLServerErrorStringKey];
-
-    // store a user-readable "reason" to show up when an error is logged,
-    // in parentheses like NSError does it
-    NSString *parenthesized = [NSString stringWithFormat:@"(%@)", reasonStr];
-    [userInfo setObject:parenthesized forKey:NSLocalizedFailureReasonErrorKey];
-  }
-
-  return userInfo;
-}
-
 #pragma mark -
 
 + (void)invokeCallback:(SEL)callbackSel
@@ -1332,7 +1283,7 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
   GTLServiceTicket *newTicket;
   newTicket = [self fetchObjectWithMethodNamed:query.methodName
                                    objectClass:query.expectedObjectClass
-                                    parameters:query.parameters
+                                    parameters:query.JSON
                                     bodyObject:query.bodyObject
                                      requestID:query.requestID
                             urlQueryParameters:query.urlQueryParameters
@@ -1391,7 +1342,7 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 
   GTLQuery *query = [[(GTLQuery *)queryObj copy] autorelease];
   NSString *methodName = query.methodName;
-  NSDictionary *params = query.parameters;
+  NSDictionary *params = query.JSON;
   GTLObject *bodyObject = query.bodyObject;
 
   return [self fetchObjectWithMethodNamed:methodName
@@ -1419,7 +1370,7 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 
   GTLQuery *query = [[(GTLQuery *)queryObj copy] autorelease];
   NSString *methodName = query.methodName;
-  NSDictionary *params = query.parameters;
+  NSDictionary *params = query.JSON;
   GTLObject *bodyObject = query.bodyObject;
 
   return [self fetchObjectWithMethodNamed:methodName
@@ -1750,6 +1701,14 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
   return self.fetcherService.cookieStorageMethod;
 }
 
+- (void)setShouldFetchInBackground:(BOOL)flag {
+  self.fetcherService.shouldFetchInBackground = flag;
+}
+
+- (BOOL)shouldFetchInBackground {
+  return self.fetcherService.shouldFetchInBackground;
+}
+
 #pragma mark -
 
 // The service properties becomes the initial value for each future ticket's
@@ -1959,20 +1918,18 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 
 - (void)dealloc {
   [service_ release];
-
-  self.properties = nil;
-  self.surrogates = nil;
-  self.objectFetcher = nil;
-  self.postedObject = nil;
-  self.fetchedObject = nil;
-  self.executingQuery = nil;
-  self.accumulatedItems = nil;
-  self.fetchError = nil;
-  self.APIKey = nil;
-
+  [ticketProperties_ release];
+  [surrogates_ release];
+  [objectFetcher_ release];
 #if NS_BLOCKS_AVAILABLE
   [uploadProgressBlock_ release];
 #endif
+  [postedObject_ release];
+  [fetchedObject_ release];
+  [accumulatedItems_ release];
+  [executingQuery_ release];
+  [fetchError_ release];
+  [apiKey_ release];
 
   [super dealloc];
 }

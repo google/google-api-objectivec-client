@@ -56,7 +56,7 @@ _EXTERN NSUInteger const kGTLStandardUploadChunkSize _INITIALIZE_AS(NSUIntegerMa
 // When servers return us structured JSON errors, the NSError will
 // contain a GTLErrorObject in the userInfo dictionary under the key
 // kGTLStructuredErrorsKey
-_EXTERN NSString* const kGTLStructuredErrorKey _INITIALIZE_AS(@"serverError");
+_EXTERN NSString* const kGTLStructuredErrorKey _INITIALIZE_AS(@"GTLStructuredError");
 
 // When specifying an ETag for updating or deleting a single entry, use
 // kGTLETagWildcard to tell the server to replace the current value
@@ -124,6 +124,7 @@ typedef void *GTLServiceUploadProgressHandler;
   NSString *apiVersion_;
   NSURL *rpcURL_;
   NSDictionary *urlQueryParameters_;
+  NSDictionary *additionalHTTPHeaders_;
 }
 
 #pragma mark Query Execution
@@ -326,6 +327,15 @@ typedef void *GTLServiceUploadProgressHandler;
 //
 @property (nonatomic, retain) NSDictionary *surrogates;
 
+// On iOS 4 and later, the fetch may optionally continue in the background
+// until finished or stopped by OS expiration.
+//
+// The default value is NO.
+//
+// For Mac OS X, background fetches are always supported, and this property
+// is ignored.
+@property (nonatomic, assign) BOOL shouldFetchInBackground;
+
 // Run loop modes are used for scheduling NSURLConnections.
 //
 // The default value, nil, schedules connections using the current run
@@ -383,6 +393,9 @@ typedef void *GTLServiceUploadProgressHandler;
 // Any url query parameters to add to urls (useful for debugging with some
 // services).
 @property (copy) NSDictionary *urlQueryParameters;
+
+// Any extra http headers to set on requests for GTLObjects.
+@property (copy) NSDictionary *additionalHTTPHeaders;
 
 // The service API version.
 @property (nonatomic, copy) NSString *apiVersion;

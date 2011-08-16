@@ -30,13 +30,19 @@ static NSString *const kUserDataPropertyKey = @"_userData";
 @interface GTLObject () <GTLRuntimeCommon>
 + (NSMutableArray *)allDeclaredProperties;
 + (NSArray *)allKnownKeys;
+
++ (NSArray *)fieldsElementsForJSON:(NSDictionary *)targetJSON;
++ (NSString *)fieldsDescriptionForJSON:(NSDictionary *)targetJSON;
+
++ (NSMutableDictionary *)patchDictionaryForJSON:(NSDictionary *)newJSON
+                               fromOriginalJSON:(NSDictionary *)originalJSON;
 @end
 
 @implementation GTLObject
 
-@synthesize JSON = json_;
-@synthesize surrogates = surrogates_;
-@synthesize userProperties = userProperties_;
+@synthesize JSON = json_,
+            surrogates = surrogates_,
+            userProperties = userProperties_;
 
 + (id)object {
   return [[[self alloc] init] autorelease];
@@ -62,8 +68,13 @@ static NSString *const kUserDataPropertyKey = @"_userData";
 
 - (BOOL)isEqual:(GTLObject *)other {
   if (self == other) return YES;
-  if (![other isKindOfClass:[self class]]) return NO;
+  if (other == nil) return NO;
 
+  // The objects should be the same class, or one should be a subclass of the
+  // other's class
+  if (![other isKindOfClass:[self class]]
+      && ![self isKindOfClass:[other class]]) return NO;
+ 
   // What we're not comparing here:
   //   properties
   return GTL_AreEqualOrBothNil(json_, [other JSON]);
@@ -82,8 +93,8 @@ static NSString *const kUserDataPropertyKey = @"_userData";
   GTLObject* newObject = [[[self class] allocWithZone:zone] init];
   CFPropertyListRef ref = CFPropertyListCreateDeepCopy(kCFAllocatorDefault,
                     json_, kCFPropertyListMutableContainers);
-  [NSMakeCollectable(ref) autorelease];
-  newObject.JSON = (NSMutableDictionary *)ref;
+  GTL_DEBUG_ASSERT(ref != NULL, @"GTLObject: copy failed (probably a non-plist type in the JSON)");
+  newObject.JSON = [NSMakeCollectable(ref) autorelease];
   newObject.surrogates = self.surrogates;
 
   // What we're not copying:
@@ -96,13 +107,30 @@ static NSString *const kUserDataPropertyKey = @"_userData";
 }
 
 - (void)dealloc {
-  self.JSON = nil;
-  self.surrogates = nil;
-  self.userProperties = nil;
-
+  [json_ release];
+  [surrogates_ release];
   [childCache_ release];
+  [userProperties_ release];
+  [uploadParameters_ release];
 
   [super dealloc];
+}
+
+#pragma mark Uploading
+
+- (GTLUploadParameters *)uploadParameters {
+  // We'll allocate this in the getter to keep it easy for users to assign
+  // the upload values, like
+  //   object.uploadParameters.fileHandle = fh;
+  if (uploadParameters_ == nil) {
+    uploadParameters_ = [[GTLUploadParameters alloc] init];
+  }
+  return uploadParameters_;
+}
+
+- (void)setUploadParameters:(GTLUploadParameters *)obj {
+  [uploadParameters_ autorelease];
+  uploadParameters_ = [obj retain];
 }
 
 #pragma mark JSON values
@@ -141,6 +169,128 @@ static NSString *const kUserDataPropertyKey = @"_userData";
     result = nil;
   }
   return result;
+}
+
+#pragma mark Partial - Fields
+
+- (NSString *)fieldsDescription {
+  NSString *str = [GTLObject fieldsDescriptionForJSON:self.JSON];
+  return str;
+}
+
++ (NSString *)fieldsDescriptionForJSON:(NSDictionary *)targetJSON {
+  // Internal routine: recursively generate a string field description
+  // by joining elements
+  NSArray *array = [self fieldsElementsForJSON:targetJSON];
+  NSString *str = [array componentsJoinedByString:@","];
+  return str;
+}
+
++ (NSArray *)fieldsElementsForJSON:(NSDictionary *)targetJSON {
+  // Internal routine: recursively generate an array of field description
+  // element strings
+  NSMutableArray *resultFields = [NSMutableArray array];
+
+  // Sorting the dictionary keys gives us deterministic results when iterating
+  NSArray *sortedKeys = [[targetJSON allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+  for (NSString *key in sortedKeys) {
+    // We'll build a comma-separated list of fields
+    id value = [targetJSON objectForKey:key];
+    if ([value isKindOfClass:[NSString class]]
+        || [value isKindOfClass:[NSNumber class]]) {
+      // Basic type (string, number), so the key is what we want
+      [resultFields addObject:key];
+    } else if ([value isKindOfClass:[NSDictionary class]]) {
+      // Object (dictionary): "parent/child1,parent/child2,parent/child3"
+      NSArray *subElements = [self fieldsElementsForJSON:value];
+      for (NSString *subElem in subElements) {
+        NSString *prepended = [NSString stringWithFormat:@"%@/%@",
+                               key, subElem];
+        [resultFields addObject:prepended];
+      }
+    } else if ([value isKindOfClass:[NSArray class]]) {
+      // Array; we'll generate from the first array entry:
+      // "parent(child1,child2,child3)"
+      //
+      // Open question: should this instead create the union of elements for
+      // all items in the array, rather than just get fields from the first
+      // array object?
+      if ([value count] > 0) {
+        id firstObj = [value objectAtIndex:0];
+        if ([firstObj isKindOfClass:[NSDictionary class]]) {
+          // An array of objects
+          NSString *contentsStr = [self fieldsDescriptionForJSON:firstObj];
+          NSString *encapsulated = [NSString stringWithFormat:@"%@(%@)",
+                                    key, contentsStr];
+          [resultFields addObject:encapsulated];
+        } else {
+          // An array of some basic type, or of arrays
+          [resultFields addObject:key];
+        }
+      }
+    } else {
+      GTL_ASSERT(0, @"GTLObject unknown field element for %@ (%@)",
+                 key, NSStringFromClass([value class]));
+    }
+  }
+  return resultFields;
+}
+
+#pragma mark Partial - Patch
+
+- (id)patchObjectFromOriginal:(GTLObject *)original {
+  NSMutableDictionary *resultJSON = [GTLObject patchDictionaryForJSON:self.JSON
+                                                     fromOriginalJSON:original.JSON];
+  id resultObj = [[self class] objectWithJSON:resultJSON];
+  return resultObj;
+}
+
++ (NSMutableDictionary *)patchDictionaryForJSON:(NSDictionary *)newJSON
+                               fromOriginalJSON:(NSDictionary *)originalJSON {
+  // Internal recursive routine to create an object suitable for
+  // our patch semantics
+  NSMutableDictionary *resultJSON = [NSMutableDictionary dictionary];
+
+  // Iterate through keys present in the old object
+  NSArray *originalKeys = [originalJSON allKeys];
+  for (NSString *key in originalKeys) {
+    id originalValue = [originalJSON objectForKey:key];
+    id newValue = [newJSON valueForKey:key];
+    if (newValue == nil) {
+      // There is no new value for this key, so set the value to NSNull
+      [resultJSON setValue:[NSNull null] forKey:key];
+    } else if (!GTL_AreEqualOrBothNil(originalValue, newValue)) {
+      // The values for this key differ
+      if ([originalValue isKindOfClass:[NSDictionary class]]
+          && [newValue isKindOfClass:[NSDictionary class]]) {
+        // Both are objects; recurse
+        NSMutableDictionary *subDict = [self patchDictionaryForJSON:newValue
+                                                   fromOriginalJSON:originalValue];
+        [resultJSON setValue:subDict forKey:key];
+      } else {
+        // They are non-object values; the new replaces the old. Per the
+        // documentation for patch, this replaces entire arrays.
+        [resultJSON setValue:newValue forKey:key];
+      }
+    } else {
+      // The values are the same; omit this key-value pair
+    }
+  }
+
+  // Iterate through keys present only in the new object, and add them to the
+  // result
+  NSMutableArray *newKeys = [NSMutableArray arrayWithArray:[newJSON allKeys]];
+  [newKeys removeObjectsInArray:originalKeys];
+
+  for (NSString *key in newKeys) {
+    id value = [newJSON objectForKey:key];
+    [resultJSON setValue:value forKey:key];
+  }
+  return resultJSON;
+}
+
++ (id)nullValue {
+  return [NSNull null];
 }
 
 #pragma mark Additional Properties
@@ -198,8 +348,8 @@ static NSString *const kUserDataPropertyKey = @"_userData";
 
 - (void)setCacheChild:(id)obj forKey:(NSString *)key {
   if (childCache_ == nil && obj != nil) {
-    childCache_ =
-    [[NSMutableDictionary alloc] initWithObjectsAndKeys:obj, key, nil];
+    childCache_ = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                   obj, key, nil];
   } else {
     [childCache_ setValue:obj forKey:key];
   }
@@ -348,7 +498,7 @@ static NSMutableDictionary *gKindMap = nil;
   NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 
   if (gKindMap == nil) {
-    gKindMap = [GTLUtilities createStaticDictionary];
+    gKindMap = [GTLUtilities newStaticDictionary];
   }
 
   Class selfClass = [self class];
@@ -440,10 +590,10 @@ static NSMutableDictionary *gArrayPropertyToClassMapCache = nil;
   // Note that initialize is guaranteed by the runtime to be called in a
   // thread-safe manner
   if (gJSONKeyMapCache == nil) {
-    gJSONKeyMapCache = [GTLUtilities createStaticDictionary];
+    gJSONKeyMapCache = [GTLUtilities newStaticDictionary];
   }
   if (gArrayPropertyToClassMapCache == nil) {
-    gArrayPropertyToClassMapCache = [GTLUtilities createStaticDictionary];
+    gArrayPropertyToClassMapCache = [GTLUtilities newStaticDictionary];
   }
 }
 

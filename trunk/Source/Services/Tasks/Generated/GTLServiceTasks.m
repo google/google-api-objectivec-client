@@ -54,9 +54,9 @@
     self.apiVersion = @"v1";
 
     // rpcPath from discovery.  Where to send JSON-RPC.
-    // Pretty print is defaulted on for the server stack. Turn it off to save
-    // bandwidth (especially on mobile).  The fetcher logging will pretty print.
-    self.rpcURL = [NSURL URLWithString:@"https://www.googleapis.com/rpc?prettyprint=false"];
+    // Turn off prettyPrint for this service to save bandwidth (especially on
+    // mobile). The fetcher logging will pretty print.
+    self.rpcURL = [NSURL URLWithString:@"https://www.googleapis.com/rpc?prettyPrint=false"];
   }
   return self;
 }

@@ -75,7 +75,8 @@ static NSString *const kJSONKey = @"jsonKey";
       result = json;
       canBeCached = NO;
     }
-  } else if ([json isKindOfClass:[NSNumber class]]) {
+  } else if ([json isKindOfClass:[NSNumber class]] ||
+             [json isKindOfClass:[NSNull class]]) {
     result = json;
     canBeCached = NO;
   } else {
@@ -98,7 +99,8 @@ static NSString *const kJSONKey = @"jsonKey";
   BOOL checkExpected = (expectedClass != Nil);
 
   if ([obj isKindOfClass:[NSString class]] ||
-      [obj isKindOfClass:[NSNumber class]]) {
+      [obj isKindOfClass:[NSNumber class]] ||
+      [obj isKindOfClass:[NSNull class]]) {
     result = obj;
     canBeCached = NO;
   } else if ([obj isKindOfClass:[GTLObject class]]) {
@@ -124,10 +126,11 @@ static NSString *const kJSONKey = @"jsonKey";
     GTL_DEBUG_LOG(@"GTLRuntimeCommon: unsupported class '%s' in JSON for property",
                   class_getName([obj class]));
   }
-  
+
   if (checkExpected) {
     // If the default was any object, then clear it to skip validation checks.
-    if ([expectedClass isEqual:[NSObject class]]) {
+    if ([expectedClass isEqual:[NSObject class]] ||
+        [obj isKindOfClass:[NSNull class]]) {
       expectedClass = nil;
     }
     if (expectedClass && ![obj isKindOfClass:expectedClass]) {
@@ -160,7 +163,7 @@ static NSMutableDictionary *gDispatchCache = nil;
   //       jsonKey
   @synchronized([GTLRuntimeCommon class]) {
     if (gDispatchCache == nil) {
-      gDispatchCache = [GTLUtilities createStaticDictionary];
+      gDispatchCache = [GTLUtilities newStaticDictionary];
     }
 
     NSMutableDictionary *classDict = [gDispatchCache objectForKey:dispatchClass];
@@ -225,8 +228,10 @@ static NSMutableDictionary *gDispatchCache = nil;
 
 #pragma mark IMPs - getters and setters for specific object types
 
-// NSInteger
-static NSInteger DynamicIntegerGetter(id self, SEL sel) {
+#if !__LP64__
+
+// NSInteger on 32bit
+static NSInteger DynamicInteger32Getter(id self, SEL sel) {
   // get an NSInteger (NSNumber) from the JSON dictionary
   NSString *jsonKey = nil;
   Class<GTLRuntimeCommon> selfClass = [self class];
@@ -243,7 +248,7 @@ static NSInteger DynamicIntegerGetter(id self, SEL sel) {
   return 0;
 }
 
-static void DynamicIntegerSetter(id self, SEL sel, NSInteger val) {
+static void DynamicInteger32Setter(id self, SEL sel, NSInteger val) {
   // save an NSInteger (NSNumber) into the JSON dictionary
   NSString *jsonKey = nil;
   Class<GTLRuntimeCommon> selfClass = [self class];
@@ -257,8 +262,8 @@ static void DynamicIntegerSetter(id self, SEL sel, NSInteger val) {
   }
 }
 
-// NSUInteger
-static NSUInteger DynamicUIntegerGetter(id self, SEL sel) {
+// NSUInteger on 32bit
+static NSUInteger DynamicUInteger32Getter(id self, SEL sel) {
   // get an NSUInteger (NSNumber) from the JSON dictionary
   NSString *jsonKey = nil;
   Class<GTLRuntimeCommon> selfClass = [self class];
@@ -275,7 +280,7 @@ static NSUInteger DynamicUIntegerGetter(id self, SEL sel) {
   return 0;
 }
 
-static void DynamicUIntegerSetter(id self, SEL sel, NSUInteger val) {
+static void DynamicUInteger32Setter(id self, SEL sel, NSUInteger val) {
   // save an NSUInteger (NSNumber) into the JSON dictionary
   NSString *jsonKey = nil;
   Class<GTLRuntimeCommon> selfClass = [self class];
@@ -285,6 +290,108 @@ static void DynamicUIntegerSetter(id self, SEL sel, NSUInteger val) {
                                    containedClass:NULL
                                           jsonKey:&jsonKey]) {
     NSNumber *num = [NSNumber numberWithUnsignedInteger:val];
+    [self setJSONValue:num forKey:jsonKey];
+  }
+}
+
+#endif  // !__LP64__
+
+// NSInteger on 64bit, long long on 32bit and 64bit
+static long long DynamicLongLongGetter(id self, SEL sel) {
+  // get a long long (NSNumber) from the JSON dictionary
+  NSString *jsonKey = nil;
+  Class<GTLRuntimeCommon> selfClass = [self class];
+  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
+                                         selector:sel
+                                      returnClass:NULL
+                                   containedClass:NULL
+                                          jsonKey:&jsonKey]) {
+    NSNumber *num = [self JSONValueForKey:jsonKey];
+    num = GTL_EnsureNSNumber(num);
+    long long result = [num longLongValue];
+    return result;
+  }
+  return 0;
+}
+
+static void DynamicLongLongSetter(id self, SEL sel, long long val) {
+  // save a long long (NSNumber) into the JSON dictionary
+  NSString *jsonKey = nil;
+  Class<GTLRuntimeCommon> selfClass = [self class];
+  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
+                                         selector:sel
+                                      returnClass:NULL
+                                   containedClass:NULL
+                                          jsonKey:&jsonKey]) {
+    NSNumber *num = [NSNumber numberWithLongLong:val];
+    [self setJSONValue:num forKey:jsonKey];
+  }
+}
+
+// NSUInteger on 64bit, unsiged long long on 32bit and 64bit
+static NSUInteger DynamicULongLongGetter(id self, SEL sel) {
+  // get an unsigned long long (NSNumber) from the JSON dictionary
+  NSString *jsonKey = nil;
+  Class<GTLRuntimeCommon> selfClass = [self class];
+  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
+                                         selector:sel
+                                      returnClass:NULL
+                                   containedClass:NULL
+                                          jsonKey:&jsonKey]) {
+    NSNumber *num = [self JSONValueForKey:jsonKey];
+    NSLog(@"TVL1: %@", num);
+    num = GTL_EnsureNSNumber(num);
+    NSLog(@"TVL2: %@", num);
+    unsigned long long result = [num unsignedLongLongValue];
+    NSLog(@"TVL?: %qu", result);
+    return result;
+  }
+  return 0;
+}
+
+static void DynamicULongLongSetter(id self, SEL sel, unsigned long long val) {
+  // save an unsigned long long (NSNumber) into the JSON dictionary
+  NSString *jsonKey = nil;
+  Class<GTLRuntimeCommon> selfClass = [self class];
+  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
+                                         selector:sel
+                                      returnClass:NULL
+                                   containedClass:NULL
+                                          jsonKey:&jsonKey]) {
+    NSNumber *num = [NSNumber numberWithUnsignedLongLong:val];
+    NSLog(@"TVL3: %@", num);
+    [self setJSONValue:num forKey:jsonKey];
+  }
+}
+
+// float
+static float DynamicFloatGetter(id self, SEL sel) {
+  // get a float (NSNumber) from the JSON dictionary
+  NSString *jsonKey = nil;
+  Class<GTLRuntimeCommon> selfClass = [self class];
+  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
+                                         selector:sel
+                                      returnClass:NULL
+                                   containedClass:NULL
+                                          jsonKey:&jsonKey]) {
+    NSNumber *num = [self JSONValueForKey:jsonKey];
+    num = GTL_EnsureNSNumber(num);
+    float result = [num floatValue];
+    return result;
+  }
+  return 0.0;
+}
+
+static void DynamicFloatSetter(id self, SEL sel, float val) {
+  // save a float (NSNumber) into the JSON dictionary
+  NSString *jsonKey = nil;
+  Class<GTLRuntimeCommon> selfClass = [self class];
+  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
+                                         selector:sel
+                                      returnClass:NULL
+                                   containedClass:NULL
+                                          jsonKey:&jsonKey]) {
+    NSNumber *num = [NSNumber numberWithFloat:val];
     [self setJSONValue:num forKey:jsonKey];
   }
 }
@@ -400,9 +507,17 @@ static GTLDateTime *DynamicDateTimeGetter(id<GTLRuntimeCommon> self, SEL sel) {
       return cachedDateTime;
     }
     NSString *str = [self JSONValueForKey:jsonKey];
-    GTLDateTime *dateTime = [GTLDateTime dateTimeWithRFC3339String:str];
-    [self setCacheChild:dateTime forKey:jsonKey];
-    return dateTime;
+    id cacheValue, resultValue;
+    if (![str isKindOfClass:[NSNull class]]) {
+      GTLDateTime *dateTime = [GTLDateTime dateTimeWithRFC3339String:str];
+      cacheValue = dateTime;
+      resultValue = dateTime;
+    } else {
+      cacheValue = nil;
+      resultValue = [NSNull null];
+    }
+    [self setCacheChild:cacheValue forKey:jsonKey];
+    return resultValue;
   }
   return nil;
 }
@@ -416,10 +531,17 @@ static void DynamicDateTimeSetter(id<GTLRuntimeCommon> self, SEL sel, GTLDateTim
                                       returnClass:NULL
                                    containedClass:NULL
                                           jsonKey:&jsonKey]) {
+    id cacheValue, jsonValue;
+    if (![dateTime isKindOfClass:[NSNull class]]) {
+      jsonValue = [dateTime stringValue];
+      cacheValue = dateTime;
+    } else {
+      jsonValue = [NSNull null];
+      cacheValue = nil;
+    }
 
-    NSString *str = [dateTime stringValue];
-    [self setJSONValue:str forKey:jsonKey];
-    [self setCacheChild:dateTime forKey:jsonKey];
+    [self setJSONValue:jsonValue forKey:jsonKey];
+    [self setCacheChild:cacheValue forKey:jsonKey];
   }
 }
 
@@ -485,6 +607,9 @@ static GTLObject *DynamicObjectGetter(id<GTLRuntimeCommon> self, SEL sel) {
                                   batchClassMap:nil];
       [self setCacheChild:obj forKey:jsonKey];
       return obj;
+    } else if ([dict isKindOfClass:[NSNull class]]) {
+      [self setCacheChild:nil forKey:jsonKey];
+      return (id) [NSNull null];
     } else if (dict != nil) {
       // unexpected; probably got a string -- let the caller figure it out
       GTL_DEBUG_LOG(@"GTLObject: unexpected JSON: %@.%@ should be a dictionary, actually is a %@:\n%@",
@@ -505,16 +630,24 @@ static void DynamicObjectSetter(id<GTLRuntimeCommon> self, SEL sel, GTLObject *o
                                       returnClass:NULL
                                    containedClass:NULL
                                           jsonKey:&jsonKey]) {
-    NSMutableDictionary *dict = [obj JSON];
-    if (dict == nil && obj != nil) {
-      // adding an empty object; it should have a JSON dictionary so it can
-      // hold future assignments
-      obj.JSON = [NSMutableDictionary dictionary];
-      dict = obj.JSON;
+    id cacheValue, jsonValue;
+    if (![obj isKindOfClass:[NSNull class]]) {
+      NSMutableDictionary *dict = [obj JSON];
+      if (dict == nil && obj != nil) {
+        // adding an empty object; it should have a JSON dictionary so it can
+        // hold future assignments
+        obj.JSON = [NSMutableDictionary dictionary];
+        jsonValue = obj.JSON;
+      } else {
+        jsonValue = dict;
+      }
+      cacheValue = obj;
+    } else {
+      jsonValue = [NSNull null];
+      cacheValue = nil;
     }
-
-    [self setJSONValue:dict forKey:jsonKey];
-    [self setCacheChild:obj forKey:jsonKey];
+    [self setJSONValue:jsonValue forKey:jsonKey];
+    [self setCacheChild:cacheValue forKey:jsonKey];
   }
 }
 
@@ -551,7 +684,7 @@ static NSMutableArray *DynamicArrayGetter(id<GTLRuntimeCommon> self, SEL sel) {
         result = (NSMutableArray *)array;
       }
     }
-    
+
     [self setCacheChild:result forKey:jsonKey];
     return result;
   }
@@ -706,7 +839,7 @@ static const GTLDynamicImpInfo *DynamicImpInfoForProperty(objc_property_t prop,
   // Get and parse the property attributes, which look something like
   //   T@"NSString",&,D,P
   //   Ti,D -- NSInteger on 32bit
-  //   Tq,D -- NSInteger on 64bit
+  //   Tq,D -- NSInteger on 64bit, long long on 32bit & 64bit
   //   Tc,D -- BOOL comes as char
   //   T@"NSString",D
   //   T@"GTLLink",D
@@ -714,35 +847,42 @@ static const GTLDynamicImpInfo *DynamicImpInfoForProperty(objc_property_t prop,
 
 
   static GTLDynamicImpInfo kImplInfo[] = {
-    { // NSInteger
-#if __LP64__
-      "Tq",
-      "v@:q", (IMP)DynamicIntegerSetter,
-      "q@:", (IMP)DynamicIntegerGetter,
-      nil, nil,
-      NO
-#else
+#if !__LP64__
+    { // NSInteger on 32bit
       "Ti",
-      "v@:i", (IMP)DynamicIntegerSetter,
-      "i@:", (IMP)DynamicIntegerGetter,
+      "v@:i", (IMP)DynamicInteger32Setter,
+      "i@:", (IMP)DynamicInteger32Getter,
       nil, nil,
       NO
-#endif
     },
-    { // NSUInteger
-#if __LP64__
-      "TQ",
-      "v@:Q", (IMP)DynamicUIntegerSetter,
-      "Q@:", (IMP)DynamicUIntegerGetter,
-      nil, nil,
-      NO
-#else
+    { // NSUInteger on 32bit
       "TI",
-      "v@:I", (IMP)DynamicUIntegerSetter,
-      "I@:", (IMP)DynamicUIntegerGetter,
+      "v@:I", (IMP)DynamicUInteger32Setter,
+      "I@:", (IMP)DynamicUInteger32Getter,
       nil, nil,
       NO
+    },
 #endif
+    { // NSInteger on 64bit, long long on 32bit and 64bit.
+      "Tq",
+      "v@:q", (IMP)DynamicLongLongSetter,
+      "q@:", (IMP)DynamicLongLongGetter,
+      nil, nil,
+      NO
+    },
+    { // NSUInteger on 64bit, long long on 32bit and 64bit.
+      "TQ",
+      "v@:Q", (IMP)DynamicULongLongSetter,
+      "Q@:", (IMP)DynamicULongLongGetter,
+      nil, nil,
+      NO
+    },
+    { // float
+      "Tf",
+      "v@:f", (IMP)DynamicFloatSetter,
+      "f@:", (IMP)DynamicFloatGetter,
+      nil, nil,
+      NO
     },
     { // double
       "Td",
@@ -888,7 +1028,7 @@ static const GTLDynamicImpInfo *DynamicImpInfoForProperty(objc_property_t prop,
   //
   // property runtimes:
   // http://developer.apple.com/library/ios/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtPropertyIntrospection.html
-  
+
   const char *selName = sel_getName(sel);
   size_t selNameLen = strlen(selName);
   char lastChar = selName[selNameLen - 1];

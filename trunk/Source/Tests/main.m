@@ -16,8 +16,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import "GTLService.h"
-
 int main(int argc, char *argv[]) {
 
   NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
