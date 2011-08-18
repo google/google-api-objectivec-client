@@ -318,26 +318,18 @@ NSString *const kKeychainItemName = @"URL Shortener Sample: Google URL Shortener
                                                         resourceBundle:frameworkBundle] autorelease];
 
   [windowController signInSheetModalForWindow:[self window]
-                                     delegate:self
-                             finishedSelector:@selector(windowController:finishedWithAuth:error:)];
+                            completionHandler:^(GTMOAuth2Authentication *auth, NSError *error) {
+                              if (error == nil) {
+                                self.URLShortenerService.authorizer = auth;
 
-  windowController.userData = NSStringFromSelector(signInDoneSel);
-}
-
-- (void)windowController:(GTMOAuth2WindowController *)windowController
-        finishedWithAuth:(GTMOAuth2Authentication *)auth
-                   error:(NSError *)error {
-  if (error == nil) {
-    self.URLShortenerService.authorizer = auth;
-
-    NSString *signInDoneSelName = windowController.userData;
-    if (signInDoneSelName) {
-      [self performSelector:NSSelectorFromString(signInDoneSelName)];
-    }
-  } else {
-    self.historyFetchError = error;
-    [self updateUI];
-  }
+                                if (signInDoneSel) {
+                                  [self performSelector:signInDoneSel];
+                                }
+                              } else {
+                                self.historyFetchError = error;
+                                [self updateUI];
+                              }
+                            }];
 }
 
 #pragma mark UI
