@@ -26,7 +26,7 @@
 // Documentation:
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
 // Classes:
-//   GTLQueryBooks (11 custom class methods, 15 custom properties)
+//   GTLQueryBooks (11 custom class methods, 17 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -50,8 +50,10 @@
 @property (retain) NSString *download;
 @property (retain) NSString *filter;
 @property (retain) NSString *langRestrict;
+@property (retain) NSString *libraryRestrict;
 @property (assign) NSUInteger maxResults;
 @property (retain) NSString *orderBy;
+@property (retain) NSString *partner;
 @property (retain) NSString *printType;
 @property (retain) NSString *projection;
 @property (retain) NSString *q;
@@ -183,9 +185,10 @@
 //   country: ISO-3166-1 code to override the IP-based location.
 //   maxResults: Maximum number of results to return
 //   projection: Restrict information returned to a set of selected fields.
-//     kGTLBooksProjectionFull: Includes all volume data.
-//     kGTLBooksProjectionLite: Includes a subset of fields in volumeInfo and
-//       accessInfo.
+//      kGTLBooksProjectionFull: Includes all volume data.
+//      kGTLBooksProjectionLite: Includes a subset of fields in volumeInfo and
+//        accessInfo.
+//   q: Full-text search query string in this bookshelf.
 //   source: String to identify the originator of this request.
 //   startIndex: Index of the first element to return (starts at 0)
 //  Authorization scope(s):
@@ -203,10 +206,11 @@
 //   volumeId: Id of volume to retrieve.
 //  Optional:
 //   country: ISO-3166-1 code to override the IP-based location.
+//   partner: Identifier of partner for whom to brand results.
 //   projection: Restrict information returned to a set of selected fields.
-//     kGTLBooksProjectionFull: Includes all volume data.
-//     kGTLBooksProjectionLite: Includes a subset of fields in volumeInfo and
-//       accessInfo.
+//      kGTLBooksProjectionFull: Includes all volume data.
+//      kGTLBooksProjectionLite: Includes a subset of fields in volumeInfo and
+//        accessInfo.
 //   source: String to identify the originator of this request.
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
@@ -220,27 +224,33 @@
 //  Optional:
 //   country: ISO-3166-1 code to override the IP-based location.
 //   download: Restrict to volumes by download availability.
-//     kGTLBooksDownloadEpub: All volumes with epub.
+//      kGTLBooksDownloadEpub: All volumes with epub.
 //   filter: Filter search results.
-//     kGTLBooksFilterEbooks: All Google eBooks.
-//     kGTLBooksFilterFreeEbooks: Google eBook with full volume text
-//       viewability.
-//     kGTLBooksFilterFull: Public can view entire volume text.
-//     kGTLBooksFilterPaidEbooks: Google eBook with a price.
-//     kGTLBooksFilterPartial: Public able to see parts of text.
+//      kGTLBooksFilterEbooks: All Google eBooks.
+//      kGTLBooksFilterFreeEbooks: Google eBook with full volume text
+//        viewability.
+//      kGTLBooksFilterFull: Public can view entire volume text.
+//      kGTLBooksFilterPaidEbooks: Google eBook with a price.
+//      kGTLBooksFilterPartial: Public able to see parts of text.
 //   langRestrict: Restrict results to books with this language code.
-//   maxResults: Maximum number of results to return.
+//   libraryRestrict: Restrict search to this user's library.
+//      kGTLBooksLibraryRestrictMyLibrary: Restrict to the user's library, any
+//        shelf.
+//      kGTLBooksLibraryRestrictNoRestrict: Do not restrict based on user's
+//        library.
+//   maxResults: Maximum number of results to return. (0-40)
 //   orderBy: Sort search results.
-//     kGTLBooksOrderByNewest: Most recently published.
-//     kGTLBooksOrderByRelevance: Relevance to search terms.
+//      kGTLBooksOrderByNewest: Most recently published.
+//      kGTLBooksOrderByRelevance: Relevance to search terms.
+//   partner: Identifier of partner for whom to restrict and brand results.
 //   printType: Restrict to books or magazines.
-//     kGTLBooksPrintTypeAll: All volume content types.
-//     kGTLBooksPrintTypeBooks: Just books.
-//     kGTLBooksPrintTypeMagazines: Just magazines.
+//      kGTLBooksPrintTypeAll: All volume content types.
+//      kGTLBooksPrintTypeBooks: Just books.
+//      kGTLBooksPrintTypeMagazines: Just magazines.
 //   projection: Restrict information returned to a set of selected fields.
-//     kGTLBooksProjectionFull: Includes all volume data.
-//     kGTLBooksProjectionLite: Includes a subset of fields in volumeInfo and
-//       accessInfo.
+//      kGTLBooksProjectionFull: Includes all volume data.
+//      kGTLBooksProjectionLite: Includes a subset of fields in volumeInfo and
+//        accessInfo.
 //   source: String to identify the originator of this request.
 //   startIndex: Index of the first result to return (starts at 0)
 //  Authorization scope(s):

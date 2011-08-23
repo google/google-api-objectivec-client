@@ -99,6 +99,32 @@
 		4F8DB61B13FDAC160001DD6C /* GTMReadMonitorInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8DB61813FDAC160001DD6C /* GTMReadMonitorInputStream.m */; };
 		4F8DB61C13FDAC160001DD6C /* GTMReadMonitorInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8DB61813FDAC160001DD6C /* GTMReadMonitorInputStream.m */; };
 		4F8DB61D13FDAC160001DD6C /* GTMReadMonitorInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8DB61813FDAC160001DD6C /* GTMReadMonitorInputStream.m */; };
+		4F8DB6DE13FDC0F50001DD6C /* GTLBatchQuery.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4FDE22491384818E005AEFAA /* GTLBatchQuery.h */; };
+		4F8DB6DF13FDC0F50001DD6C /* GTLBatchResult.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4FDE224B1384818E005AEFAA /* GTLBatchResult.h */; };
+		4F8DB6E013FDC0F50001DD6C /* GTLDateTime.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4FDE224D1384818E005AEFAA /* GTLDateTime.h */; };
+		4F8DB6E113FDC0F50001DD6C /* GTLDefines.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4F3DE994119CCE49006926D1 /* GTLDefines.h */; };
+		4F8DB6E213FDC0F50001DD6C /* GTLErrorObject.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4FDE224F1384818E005AEFAA /* GTLErrorObject.h */; };
+		4F8DB6E313FDC0F50001DD6C /* GTLFramework.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4FDE223213848173005AEFAA /* GTLFramework.h */; };
+		4F8DB6E413FDC0F50001DD6C /* GTLJSONParser.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4FDE223413848173005AEFAA /* GTLJSONParser.h */; };
+		4F8DB6E513FDC0F50001DD6C /* GTLObject.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4FDE22511384818E005AEFAA /* GTLObject.h */; };
+		4F8DB6E613FDC0F50001DD6C /* GTLQuery.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4FDE22531384818E005AEFAA /* GTLQuery.h */; };
+		4F8DB6E713FDC0F50001DD6C /* GTLRuntimeCommon.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4FDE22551384818E005AEFAA /* GTLRuntimeCommon.h */; };
+		4F8DB6E813FDC0F50001DD6C /* GTLService.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4FDE22571384818E005AEFAA /* GTLService.h */; };
+		4F8DB6E913FDC0F50001DD6C /* GTLTargetNamespace.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4FDE223613848173005AEFAA /* GTLTargetNamespace.h */; };
+		4F8DB6EA13FDC0F50001DD6C /* GTLUploadParameters.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4F0C4FBA13CFA7E5007E5E92 /* GTLUploadParameters.h */; };
+		4F8DB6EB13FDC0F50001DD6C /* GTLUtilities.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4FDE223713848173005AEFAA /* GTLUtilities.h */; };
+		4F8DB6EC13FDC0F50001DD6C /* GTMGatherInputStream.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4F69804B131C1F1D00A5AB6A /* GTMGatherInputStream.h */; };
+		4F8DB6ED13FDC0F50001DD6C /* GTMHTTPFetcher.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4F69804D131C1F1D00A5AB6A /* GTMHTTPFetcher.h */; };
+		4F8DB6EE13FDC0F50001DD6C /* GTMHTTPFetcherLogging.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4F69804F131C1F1D00A5AB6A /* GTMHTTPFetcherLogging.h */; };
+		4F8DB6EF13FDC0F50001DD6C /* GTMHTTPFetcherService.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4F698051131C1F1D00A5AB6A /* GTMHTTPFetcherService.h */; };
+		4F8DB6F013FDC0F50001DD6C /* GTMHTTPFetchHistory.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4F698053131C1F1D00A5AB6A /* GTMHTTPFetchHistory.h */; };
+		4F8DB6F113FDC0F50001DD6C /* GTMHTTPUploadFetcher.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4F698055131C1F1D00A5AB6A /* GTMHTTPUploadFetcher.h */; };
+		4F8DB6F213FDC0F50001DD6C /* GTMMIMEDocument.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4F698057131C1F1D00A5AB6A /* GTMMIMEDocument.h */; };
+		4F8DB6F313FDC0F50001DD6C /* GTMOAuth2Authentication.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4F697FA3131C1A4100A5AB6A /* GTMOAuth2Authentication.h */; };
+		4F8DB6F413FDC0F50001DD6C /* GTMOAuth2SignIn.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4F697FA5131C1A4100A5AB6A /* GTMOAuth2SignIn.h */; };
+		4F8DB6F513FDC0F50001DD6C /* GTMOAuth2ViewControllerTouch.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4F697FBB131C1A6800A5AB6A /* GTMOAuth2ViewControllerTouch.h */; };
+		4F8DB6F613FDC0F50001DD6C /* GTMOAuth2WindowController.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4F697FB4131C1A5800A5AB6A /* GTMOAuth2WindowController.h */; };
+		4F8DB6F713FDC0F50001DD6C /* GTMReadMonitorInputStream.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4F8DB61713FDAC160001DD6C /* GTMReadMonitorInputStream.h */; };
 		4F9F7E3911F5103B0033A2C1 /* GTLDateTimeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F7E3811F5103B0033A2C1 /* GTLDateTimeTest.m */; };
 		4F9F7E3C11F510430033A2C1 /* GTLFrameworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F7E3A11F510430033A2C1 /* GTLFrameworkTest.m */; };
 		4F9F7E3D11F510430033A2C1 /* GTLUtilitiesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F7E3B11F510430033A2C1 /* GTLUtilitiesTest.m */; };
@@ -180,6 +206,45 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		4F8DB6DC13FDC0240001DD6C /* Copy Static Library Headers */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Headers;
+			dstSubfolderSpec = 16;
+			files = (
+				4F8DB6DE13FDC0F50001DD6C /* GTLBatchQuery.h in Copy Static Library Headers */,
+				4F8DB6DF13FDC0F50001DD6C /* GTLBatchResult.h in Copy Static Library Headers */,
+				4F8DB6E013FDC0F50001DD6C /* GTLDateTime.h in Copy Static Library Headers */,
+				4F8DB6E113FDC0F50001DD6C /* GTLDefines.h in Copy Static Library Headers */,
+				4F8DB6E213FDC0F50001DD6C /* GTLErrorObject.h in Copy Static Library Headers */,
+				4F8DB6E313FDC0F50001DD6C /* GTLFramework.h in Copy Static Library Headers */,
+				4F8DB6E413FDC0F50001DD6C /* GTLJSONParser.h in Copy Static Library Headers */,
+				4F8DB6E513FDC0F50001DD6C /* GTLObject.h in Copy Static Library Headers */,
+				4F8DB6E613FDC0F50001DD6C /* GTLQuery.h in Copy Static Library Headers */,
+				4F8DB6E713FDC0F50001DD6C /* GTLRuntimeCommon.h in Copy Static Library Headers */,
+				4F8DB6E813FDC0F50001DD6C /* GTLService.h in Copy Static Library Headers */,
+				4F8DB6E913FDC0F50001DD6C /* GTLTargetNamespace.h in Copy Static Library Headers */,
+				4F8DB6EA13FDC0F50001DD6C /* GTLUploadParameters.h in Copy Static Library Headers */,
+				4F8DB6EB13FDC0F50001DD6C /* GTLUtilities.h in Copy Static Library Headers */,
+				4F8DB6EC13FDC0F50001DD6C /* GTMGatherInputStream.h in Copy Static Library Headers */,
+				4F8DB6ED13FDC0F50001DD6C /* GTMHTTPFetcher.h in Copy Static Library Headers */,
+				4F8DB6EE13FDC0F50001DD6C /* GTMHTTPFetcherLogging.h in Copy Static Library Headers */,
+				4F8DB6EF13FDC0F50001DD6C /* GTMHTTPFetcherService.h in Copy Static Library Headers */,
+				4F8DB6F013FDC0F50001DD6C /* GTMHTTPFetchHistory.h in Copy Static Library Headers */,
+				4F8DB6F113FDC0F50001DD6C /* GTMHTTPUploadFetcher.h in Copy Static Library Headers */,
+				4F8DB6F213FDC0F50001DD6C /* GTMMIMEDocument.h in Copy Static Library Headers */,
+				4F8DB6F313FDC0F50001DD6C /* GTMOAuth2Authentication.h in Copy Static Library Headers */,
+				4F8DB6F413FDC0F50001DD6C /* GTMOAuth2SignIn.h in Copy Static Library Headers */,
+				4F8DB6F513FDC0F50001DD6C /* GTMOAuth2ViewControllerTouch.h in Copy Static Library Headers */,
+				4F8DB6F613FDC0F50001DD6C /* GTMOAuth2WindowController.h in Copy Static Library Headers */,
+				4F8DB6F713FDC0F50001DD6C /* GTMReadMonitorInputStream.h in Copy Static Library Headers */,
+			);
+			name = "Copy Static Library Headers";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		4F0C4FBA13CFA7E5007E5E92 /* GTLUploadParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTLUploadParameters.h; path = Objects/GTLUploadParameters.h; sourceTree = "<group>"; };
@@ -193,7 +258,7 @@
 		4F1647691370C8F80096E878 /* TaskBatch1.request.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TaskBatch1.request.txt; path = Tests/Data/TaskBatch1.request.txt; sourceTree = "<group>"; };
 		4F16476A1370C8F80096E878 /* TaskBatch1.response.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TaskBatch1.response.txt; path = Tests/Data/TaskBatch1.response.txt; sourceTree = "<group>"; };
 		4F18174C1134982E009F7FD1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
-		4F1AD9020B71603F00DC0485 /* DevelopmentTestTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DevelopmentTestTool; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F1AD9020B71603F00DC0485 /* DevelopmentTestTool */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "compiled.mach-o.executable"; path = DevelopmentTestTool; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F1AD90C0B71607400DC0485 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Tests/main.m; sourceTree = "<group>"; };
 		4F24493A121F3C2B00FEE1DA /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSON.h; path = JSON/JSON.h; sourceTree = "<group>"; };
 		4F24493F121F3C2B00FEE1DA /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJSON.h; path = JSON/SBJSON.h; sourceTree = "<group>"; };
@@ -206,7 +271,7 @@
 		4F2E11F20BA778D700237907 /* GTLFramework-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; name = "GTLFramework-Info.plist"; path = "Resources/GTLFramework-Info.plist"; sourceTree = "<group>"; };
 		4F35B4B01385F9270082F64E /* Task1.rest.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Task1.rest.txt; path = Tests/Data/Task1.rest.txt; sourceTree = "<group>"; };
 		4F35D4B3117787F600BDFA97 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = /System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<absolute>"; };
-		4F38F6A60B66E91D00B24B81 /* GTL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GTL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F38F6A60B66E91D00B24B81 /* GTL */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.framework; path = GTL; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F3DE994119CCE49006926D1 /* GTLDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLDefines.h; sourceTree = "<group>"; };
 		4F4DE9071371DD6F00F5C554 /* TaskError1.request.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TaskError1.request.txt; path = Tests/Data/TaskError1.request.txt; sourceTree = "<group>"; };
 		4F4DE9081371DD6F00F5C554 /* TaskError1.response.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TaskError1.response.txt; path = Tests/Data/TaskError1.response.txt; sourceTree = "<group>"; };
@@ -375,7 +440,7 @@
 		19C28FB8FE9D52D311CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4F38F6A60B66E91D00B24B81 /* GTL.framework */,
+				4F38F6A60B66E91D00B24B81 /* GTL */,
 				4F1AD9020B71603F00DC0485 /* DevelopmentTestTool */,
 				4F12027C11A4CA2F00BEB470 /* libGTLTouchStaticLib.a */,
 				4F12027D11A4CA2F00BEB470 /* GTLUnitTests.octest */,
@@ -676,6 +741,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4F1C6E121027B3ED00B46459 /* Build configuration list for PBXNativeTarget "GTLTouchStaticLib" */;
 			buildPhases = (
+				4F8DB6DC13FDC0240001DD6C /* Copy Static Library Headers */,
 				4F1C6E0C1027B3CE00B46459 /* Sources */,
 				4F1C6E0D1027B3CE00B46459 /* Frameworks */,
 			);
@@ -703,7 +769,7 @@
 			);
 			name = GTLFramework;
 			productName = GTLFramework;
-			productReference = 4F38F6A60B66E91D00B24B81 /* GTL.framework */;
+			productReference = 4F38F6A60B66E91D00B24B81 /* GTL */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */

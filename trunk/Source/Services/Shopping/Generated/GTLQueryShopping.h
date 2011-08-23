@@ -141,13 +141,13 @@
 //   language: Language restriction (BCP 47)
 //   maxResults: Maximum number of results to return
 //   minAvailability:
-//     kGTLShoppingMinAvailabilityInStock: Only in stcok prodicts will be
-//       returned
-//     kGTLShoppingMinAvailabilityLimited: Limited availability and in stock
-//       products will be returned
-//     kGTLShoppingMinAvailabilityOutOfStock: Out of stock, limited availability
-//       and in stock products will be returned
-//     kGTLShoppingMinAvailabilityUnknown: All products will be returned
+//      kGTLShoppingMinAvailabilityInStock: Only in stcok prodicts will be
+//        returned
+//      kGTLShoppingMinAvailabilityLimited: Limited availability and in stock
+//        products will be returned
+//      kGTLShoppingMinAvailabilityOutOfStock: Out of stock, limited
+//        availability and in stock products will be returned
+//      kGTLShoppingMinAvailabilityUnknown: All products will be returned
 //   productFields: Google Internal
 //   q: Search query
 //   rankBy: Ranking specification
@@ -389,7 +389,7 @@
 @property (retain) NSNumber *enabled;  // boolValue
 
 // The maximum number of shelf space ads to return
-@property (retain) NSNumber *maxResults;  // integer only
+@property (retain) NSNumber *maxResults;  // unsignedIntValue
 
 // This parameter is currently ignored
 @property (retain) NSNumber *useGcsConfig;  // boolValue
