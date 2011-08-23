@@ -7,7 +7,31 @@
 
 The Google APIs Objective-C Client Library's core classes are provided as a built framework, suitable for inclusion in a Mac application bundle's Frameworks folder, and as a static library for iPhone applications.  Alternatively, all of the library's sources may also be compiled directly into a Mac or an iPhone application.
 
-Service-specific classes, such as for Tasks and Books, are provided in separate folders. They are not compiled into the library or framework with the core classes.
+Service-specific classes, such as for Tasks and Books, are provided in separate folders. They are not compiled into the library or framework with the core classes, so the needed service classes should should be dragged into the application project.
+
+== Linking to the iPhone Static Library ==
+
+The library project includes a target for building a static library for iPhone and iPod Touch apps
+
+To build with the static library, drag the GTL project file itself into an iPhone project to make a cross-project reference, and add the GTLTouchStaticLib target as a dependency for building the app.
+
+Drag the static library target from under the GTL.xcodeproj cross-project reference in the application project to the application target's "Link Binary With Libraries" build phase.
+
+(Xcode 4 projects may instead build the GTL project in a workspace rather than as a cross-project reference.)
+
+Next, add the [http://developer.apple.com/library/mac/#qa/qa1490/_index.html ObjC link option] to the application target's build settings, along with the all_load flag:
+
+  Other Linker Flags: `-ObjC -all_load`
+
+The static library build creates a directory of the library's header files (in its build products directory) that should be dragged into your application project.
+
+Also drag the folder with the class files for the services needed by your application, such as Tasks or Books, directly into your project.
+
+Application classes using the library should include the header for each specific service, such as
+
+`#import "GTLTasks.h"`
+
+*_Note:_* To support the OAuth 2 sign-in classes in the library, your application will need to link to Security.framework and !SystemConfiguration.framework. 
 
 == Linking to the Mac OS X Framework ==
 
@@ -19,7 +43,7 @@ For both debug and release builds of your application, add this define to your p
 
 -DGTL_BUILDS_AS_FRAMEWORK=1
 
-Application files referring to GTL objects should include either the header for a specific service, such as
+Application classes using the library should include the header for each specific service, such as
 
 `#import "GTLTasks.h"`
 
@@ -30,35 +54,13 @@ To facilitate debugging, you may choose to include the GTL.xcodeproj project fil
 
 *_Note:_* To support the OAuth 2 sign-in classes in the library, your application will need to link to Security.framework and !SystemConfiguration.framework. 
 
-== Linking to the iPhone Static Library ==
-
-The library project includes a target for building a static library for iPhone and iPod Touch apps
-
-To build with the static library, drag the GTL project file itself into an iPhone project to make a cross-project reference, and add the GTLTouchStaticLib target as a dependency for building the app.
-
-Drag the static library target from under the GTL.xcodeproj cross-project reference in the application project to the application target's "Link Binary With Libraries" build phase.
-
-Next, add the [http://developer.apple.com/library/mac/#qa/qa1490/_index.html ObjC link option] to the application target's build settings, along with the all_load flag:
-
-  Other Linker Flags: `-ObjC -all_load`
-
-The static library build creates a directory of header files (in its build products directory) that should be dragged into your application project.
-
-Also drag the folder with the class files for the services needed by your application, such as Tasks or Books, directly into your project.
-
-Application files referring to GTL objects should include either the header for a specific service, such as
-
-`#import "GTLTasks.h"`
-
-*_Note:_* To support the OAuth 2 sign-in classes in the library, your application will need to link to Security.framework and !SystemConfiguration.framework. 
-
 == Compiling the Source Files Directly into a Mac or iPhone Application ==
 
 Rather than link to the GTL framework, you can compile the GTL library sources directly into your own project. To do this, drag the GTL Sources source group from the GData Xcode project into your project's window (add by reference, not by copying the files.)  
 
 Also drag the folder with the class files for the services needed by your application, such as Tasks or Books, directly into your project.
 
-Application files referring to GTL objects should include either the header for a specific service, such as
+Application classes using the library should include the header for each specific service, such as
 
 `#import "GTLTasks.h"`
 
