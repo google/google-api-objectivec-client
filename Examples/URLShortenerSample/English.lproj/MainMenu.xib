@@ -40,7 +40,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="NSMenuItem" id="495201060">
 						<reference key="NSMenu" ref="138029514"/>
-						<string key="NSTitle">MapsSample</string>
+						<string key="NSTitle">SampleApp</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSKeyEquivModMask">1048576</int>
 						<int key="NSMnemonicLoc">2147483647</int>
@@ -54,7 +54,7 @@
 						</object>
 						<string key="NSAction">submenuAction:</string>
 						<object class="NSMenu" key="NSSubmenu" id="714417156">
-							<string key="NSTitle">MapsSample</string>
+							<string key="NSTitle">SampleApp</string>
 							<object class="NSMutableArray" key="NSMenuItems">
 								<bool key="EncodedWithXMLCoder">YES</bool>
 								<object class="NSMenuItem" id="996992197">

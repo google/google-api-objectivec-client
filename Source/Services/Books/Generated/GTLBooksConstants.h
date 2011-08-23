@@ -48,6 +48,10 @@ GTL_EXTERN NSString * const kGTLBooksFilterFull;        // "full"
 GTL_EXTERN NSString * const kGTLBooksFilterPaidEbooks;  // "paid-ebooks"
 GTL_EXTERN NSString * const kGTLBooksFilterPartial;     // "partial"
 
+// LibraryRestrict
+GTL_EXTERN NSString * const kGTLBooksLibraryRestrictMyLibrary;  // "my-library"
+GTL_EXTERN NSString * const kGTLBooksLibraryRestrictNoRestrict;  // "no-restrict"
+
 // OrderBy
 GTL_EXTERN NSString * const kGTLBooksOrderByNewest;     // "newest"
 GTL_EXTERN NSString * const kGTLBooksOrderByRelevance;  // "relevance"

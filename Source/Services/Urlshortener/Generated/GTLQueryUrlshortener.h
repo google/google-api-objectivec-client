@@ -62,11 +62,11 @@
 //   shortUrl: The short URL, including the protocol.
 //  Optional:
 //   projection: Additional information to return.
-//     kGTLUrlshortenerProjectionAnalyticsClicks: Returns only click counts.
-//     kGTLUrlshortenerProjectionAnalyticsTopStrings: Returns only top string
-//       counts.
-//     kGTLUrlshortenerProjectionFull: Returns the creation timestamp and all
-//       available analytics.
+//      kGTLUrlshortenerProjectionAnalyticsClicks: Returns only click counts.
+//      kGTLUrlshortenerProjectionAnalyticsTopStrings: Returns only top string
+//        counts.
+//      kGTLUrlshortenerProjectionFull: Returns the creation timestamp and all
+//        available analytics.
 // Fetches a GTLUrlshortenerUrl.
 + (id)queryForUrlGetWithShortUrl:(NSString *)shortUrl;
 
@@ -81,9 +81,9 @@
 // Retrieves a list of URLs shortened by a user.
 //  Optional:
 //   projection: Additional information to return.
-//     kGTLUrlshortenerProjectionAnalyticsClicks: Returns short URL click
-//       counts.
-//     kGTLUrlshortenerProjectionFull: Returns short URL click counts.
+//      kGTLUrlshortenerProjectionAnalyticsClicks: Returns short URL click
+//        counts.
+//      kGTLUrlshortenerProjectionFull: Returns short URL click counts.
 //   startToken: Token for requesting successive pages of results.
 //  Authorization scope(s):
 //   kGTLAuthScopeUrlshortener

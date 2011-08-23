@@ -41,6 +41,10 @@ NSString * const kGTLBooksFilterFull       = @"full";
 NSString * const kGTLBooksFilterPaidEbooks = @"paid-ebooks";
 NSString * const kGTLBooksFilterPartial    = @"partial";
 
+// LibraryRestrict
+NSString * const kGTLBooksLibraryRestrictMyLibrary  = @"my-library";
+NSString * const kGTLBooksLibraryRestrictNoRestrict = @"no-restrict";
+
 // OrderBy
 NSString * const kGTLBooksOrderByNewest    = @"newest";
 NSString * const kGTLBooksOrderByRelevance = @"relevance";

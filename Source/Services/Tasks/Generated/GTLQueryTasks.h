@@ -53,7 +53,7 @@
 @property (retain) NSString *completedMin;
 @property (retain) NSString *dueMax;
 @property (retain) NSString *dueMin;
-@property (assign) NSInteger maxResults;
+@property (assign) long long maxResults;
 @property (retain) NSString *pageToken;
 @property (retain) NSString *parent;
 @property (retain) NSString *previous;

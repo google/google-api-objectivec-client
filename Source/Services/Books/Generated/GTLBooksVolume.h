@@ -227,7 +227,7 @@
 @property (retain) NSString *contentVersion;
 
 // A synopsis of the volume. The text of the description is formatted in HTML
-// and includes simple formatting elements, such as , , , etc. (In LITE
+// and includes simple formatting elements, such as b, i, and br tags. (In LITE
 // projection.)
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (retain) NSString *descriptionProperty;

@@ -80,7 +80,7 @@ static NSString *const kJSONKey = @"jsonKey";
     result = json;
     canBeCached = NO;
   } else {
-    GTL_DEBUG_LOG(@"GTLRuntimeCommon: unsupported class '%s' in JSON for property",
+    GTL_DEBUG_LOG(@"GTLRuntimeCommon: unsupported class '%s' in objectFromJSON",
                   class_getName([json class]));
   }
 
@@ -123,7 +123,7 @@ static NSString *const kJSONKey = @"jsonKey";
     result = [dateTime stringValue];
   } else {
     checkExpected = NO;
-    GTL_DEBUG_LOG(@"GTLRuntimeCommon: unsupported class '%s' in JSON for property",
+    GTL_DEBUG_LOG(@"GTLRuntimeCommon: unsupported class '%s' in jsonFromAPIObject",
                   class_getName([obj class]));
   }
 
@@ -728,16 +728,18 @@ static id DynamicNSObjectGetter(id<GTLRuntimeCommon> self, SEL sel) {
     }
 
     id jsonObj = [self JSONValueForKey:jsonKey];
-    BOOL shouldCache = NO;
-    NSDictionary *surrogates = self.surrogates;
-    id result = [GTLRuntimeCommon objectFromJSON:jsonObj
-                                    defaultClass:nil
-                                      surrogates:surrogates
-                                     isCacheable:&shouldCache];
+    if (jsonObj != nil) {
+      BOOL shouldCache = NO;
+      NSDictionary *surrogates = self.surrogates;
+      id result = [GTLRuntimeCommon objectFromJSON:jsonObj
+                                      defaultClass:nil
+                                        surrogates:surrogates
+                                       isCacheable:&shouldCache];
 
-    [self setCacheChild:(shouldCache ? result : nil)
-                 forKey:jsonKey];
-    return result;
+      [self setCacheChild:(shouldCache ? result : nil)
+                   forKey:jsonKey];
+      return result;
+    }
   }
   return nil;
 }

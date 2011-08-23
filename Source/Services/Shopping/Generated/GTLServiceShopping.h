@@ -39,7 +39,8 @@
 // No new methods
 
 // Clients should create a standard query with any of the class methods in
-// GTLQueryShopping.h. The query can the be sent with GTLService's:
+// GTLQueryShopping.h. The query can the be sent with GTLService's execute
+// methods,
 //
 //   - (GTLServiceTicket *)executeQuery:(GTLQuery *)query
 //                    completionHandler:(void (^)(GTLServiceTicket *ticket,
@@ -48,11 +49,14 @@
 //   - (GTLServiceTicket *)executeQuery:(GTLQuery *)query
 //                             delegate:(id)delegate
 //                    didFinishSelector:(SEL)finishedSelector;
+//
 // where finishedSelector has a signature of:
+//
 //   - (void)serviceTicket:(GTLServiceTicket *)ticket
-//      finishedWithObject:(GTLObject *)object
+//      finishedWithObject:(id)object
 //                   error:(NSError *)error;
 //
-// The class of the returned object is determined by the query executed.
+// The object passed to the completion handler or delegate method
+// is a subclass of GTLObject, determined by the query method executed.
 
 @end
