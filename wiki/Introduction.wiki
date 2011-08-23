@@ -35,13 +35,13 @@ BuildingTheLibrary explains how to add the library to a Mac or iPhone applicatio
 
 The Google APIs Library for Objective-C uses the prefix `GTL`. 
 
-The library incorporates other Google libraries with the `GTM` prefix. Those provide http handling (gtm-http-fetcher) and OAuth 2 authentication (gtm-oauth2).  For systems earlier than iOS 5 and Mac OS X 10.7, the library uses the SBJSON library for JSON parsing and generation.
+The library incorporates other Google libraries with the `GTM` prefix. Those provide http handling ([http://code.google.com/p/gtm-http-fetcher/ gtm-http-fetcher]) and OAuth 2 authentication ([http://code.google.com/p/gtm-oauth2/ gtm-oauth2]).  For systems earlier than iOS 5 and Mac OS X 10.7, the library uses the [http://code.google.com/p/json-framework/ SBJSON] library for JSON parsing and generation.
 
 All external libraries needed are checked out automatically with the main API library using Subversion's externals facility.
 
 == Authentication and Authorization ==
 
-*Authentication* is the confirmation of a user's identity via her username, password, and possibly other data, such as captcha answers or 2-step codes provided via mobile phone. Authentication is required for access to non-public data. 
+*Authentication* is the confirmation of a user's identity using her username, password, and possibly other data, such as captcha answers or 2-step codes provided via mobile phone. Authentication is required for access to non-public data. 
 
 Google APIs rely on OAuth 2 for user sign-in. The library includes the [http://code.google.com/p/gtm-oauth2/ GTM OAuth 2 controllers] for iOS and Mac OS X to handle the sign-in sequence. A `GTMOAuth2Authentication` object encapsulates the resulting access tokens.
 
@@ -55,7 +55,7 @@ Servers respond to client API requests with objects.  Objects are typically eith
 
 For example, a search for products would return a `GTLShoppingProducts` container object, where the items of the object are the individual product results found by the search.
 
-The individual items are derived from *GTLObject*. The collection is derived from *GTLCollectionObject*, which is a `GTLObject` that also provides an `itemAtIndex:` method and implements the `NSFastEnumeration` protocol.
+The individual items are derived from *GTLObject*. The collection is derived from *GTLCollectionObject*, which is a `GTLObject` that also provides an `itemAtIndex:` method and supports `for` loops over the items by implementing the `NSFastEnumeration` protocol.
 
 Each request to the server is a *query*. Server interactions in the library are handled by *service objects*.  A single transaction with a service is tracked with a *service ticket*.
 
@@ -83,9 +83,9 @@ GTLServiceTicket *ticket = [service executeQuery:query
 };
 }}}
 
-Unseen by the application, the server is returning a JSON tree in response to queries.  Each `GTLObject`, such as `GTLShoppingProducts` in the example above, is a wrapper for a tree of JSON data. The `GTLObject` allows the JSON data to be treated like a first-class Objective-C object, using normal Objective-C property notation. This use of properties is visible in the code snippet above, where the product item result names are accessible as `item.product.title`.  
+Unseen by the application, the server is returning a JSON tree in response to queries.  Each `GTLObject`, such as `GTLShoppingProducts` in the example above, is a wrapper for a tree of JSON data. The `GTLObject` allows the JSON data to be treated like a first-class Objective-C object, using normal Objective-C property notation. This use of properties is visible in the code snippet above, where each product item result name is accessible as `item.product.title`.  
 
-`GTLObject`'s support for Objective-C properties allows compile-time syntax checking and enables Xcode's autocompletion for each object.  The header files for each object class clearly define the fields of each objects. For example, the shopping products object interface looks in part like this:
+`GTLObject`'s support for Objective-C properties allows compile-time syntax checking and enables Xcode's autocompletion for each object.  The header files for each object class clearly define the fields of each object. For example, the shopping products object interface looks in part like this:
 
 {{{
 @interface GTLShoppingProducts : GTLCollectionObject
@@ -101,7 +101,7 @@ Each object property returns either a standard Objective-C type (NSString, NSNum
 
 When your application gets a property from a `GTLObject`, the library converts the property name to the JSON key string to get or set the result in the underlying JSON tree.  Subtrees of the JSON are returned wrapped in a new `GTLObject`s. To reduce memory overhead, the `GTLObjects` are not created for inner trees of the JSON until they are needed by the application.
 
-Normally, applications will not need to access the plain JSON tree, but it is available for each `GTLObject` as a dictionary with the property `JSON`.
+Normally, applications will use `GTLObject` properties and so will not need to access the plain JSON tree, but it is available for each `GTLObject` as a dictionary with the property `JSON`.
 
 For compatibility with iOS 3 and Mac OS X 10.5, queries may also be executed with a delegate and selector for the callback:
 {{{
@@ -109,6 +109,7 @@ GTLServiceTicket *ticket = [service executeQuery:query
                                         delegate:self
                                 finishedSelector:@selector(serviceTicket:finishedWithObject:error:)];
 }}}
+The delegate is retained until the query has completed, or the ticket has been canceled.
 
 === Services and Tickets ===
 
@@ -118,7 +119,7 @@ The service object makes a copy of each query for execution, so changes to a que
 
 Query execution by the service is inherently asynchronous. There is no need to create an operation queue or to use GCD to run queries on other threads. Callbacks are always run on the same thread that began the query execution. Generally, it's best to execute queries on the main application thread. Any number of queries may be executed either concurrently or sequentially, subject to rate limits shown in the [https://code.google.com/apis/console API Console].
 
-On iOS, fetches will normally be stopped once the user puts the application into the background. Fetches and fetch callbacks can be continued in the background, up to the operating system time limit, by setting the property `shouldFetchInBackground`:
+On iOS, query fetches will normally be stopped once the user puts the application into the background. Fetches and callbacks can be continued in the background, up to the operating system time limit, by setting the property `shouldFetchInBackground`:
 {{{
 // Enable fetches to continue in the background on iOS
 service.shouldFetchInBackground = YES;
@@ -128,23 +129,23 @@ A new ticket is created each time a query is executed by the service. When a tic
 
 The application may choose to retain the ticket after a query starts executing, allowing the user to cancel the service request.
 
-Once either a query's callback has been invoked or the query is canceled, the ticket is no longer useful and may be released. To cancel a query in progress, call `[ticket cancelTicket]`. 
+Once either a query's callback has been invoked or the ticket is canceled, the ticket is no longer useful and may be released. To cancel a query in progress, call `[ticket cancelTicket]`. 
 
 The query being executed by a ticket is available as `ticket.executingQuery`. The `GTMHTTPFetcher` object used to execute the query is accessible as `ticket.objectFetcher`.
 
 === Result Pages ===
 
-A query may return an object with a subset of the results in the items array. The object is considered one of several *pages*. When a result object includes a *nextPageToken* string, then the query can be executed again with the token provided as the *pageToken* property of the new query, fetching the next set of results. 
+A query may return an object with only a subset of the results in the items array. The object is considered one of several *pages*. When a result object includes a *nextPageToken* string, then the query can be executed again with the token provided as the *pageToken* property of the new query, fetching the next set of results. 
 {{{
 if (object.nextPageToken) {
-  // Manually make a query to fetch the next page of results
+  // Manually make a query to fetch the next page of results by reusing the previous query
   GTLQueryTasks *nextQuery = previousQuery;
   nextQuery.pageToken = object.nextPageToken;
   GTLServiceTicket *nextTicket = [service executeQuery:nextQuery ...
 }
 }}}
 
-For APIs that offer this style of pagination, the library can automatically fetch all pages, and return an object whose items array includes the items of all pages (up to 25 pages). This can be turned on by setting the `shouldFetchNextPages` property of a service or a ticket:
+For APIs that provide a `nextPageToken` property, the library can automatically fetch all pages, and return an object whose items array includes the items of all pages (up to 25 pages). This can be turned on by setting the `shouldFetchNextPages` property of a service or a ticket:
 {{{
 // Turn on automatic page fetches
 service.shouldFetchNextPages = YES;
@@ -161,7 +162,7 @@ ticket = [service executeQuery:query ...
 
 Ideally, maxResults will be large enough that, for typical user data, all results will be returned in a single page.
 
-For queries that search public data, with potentially a very large number of items resulting, `shouldFetchNextPages` should be turned off for the service or the ticket. Additional pages of large data sets can be fetched manually.
+For queries that search public data, with potentially a very large number of items resulting, `shouldFetchNextPages` should not be enabled for the service or the ticket. Additional pages of large data sets can be fetched manually.
 
 == Query Operations ==
 
@@ -179,10 +180,11 @@ There may be custom query operations as well.  To find the Objective-C query cla
 // Fetches a GTLShoppingProducts.
 + (id)queryForProductsListWithSource:(NSString *)source;
 }}}
+The comments for each method also specify the type of object passed to the callback if the query succeeds. In this example, the callback object class is `GTLShoppingProducts`.
 
 == Creating GTLObjects from Scratch ==
 
-Typically, `GTLObject`s are created by the library from JSON returned from a server, but occasionally it is useful to create one from scratch, such as when inserting a new entry.  The `+object` method creates an empty instance of a `GTLObject`.
+Typically, `GTLObject`s are created by the library from JSON returned from a server, but occasionally it is useful to create one from scratch, such as when inserting a new item or patching an existing item.  The `+object` method creates an empty instance of a `GTLObject`.
 
 This snippet shows how to create a new task list for the user's Google Tasks account:
 {{{
@@ -212,7 +214,7 @@ For example, to request only the IDs and author email addresses for each item in
 query.fields = @"items(id,author/email,kind),kind";
 }}}
 
-The library may use the `kind` fields of responses to choose the proper object classes, so requests for partial responses should always include the `kind` fields for items and collections, as shown above. Otherwise, the library may be forced to incorrectly instantiate the `GTLObject` base class for the response.
+The library may use the `kind` fields of responses to choose the proper object classes, so requests for partial responses should _always_ include the `kind` fields for items and collections, as shown above. Otherwise, the library may be forced to incorrectly instantiate the `GTLObject` base class for the response.
 
 Refer to the [http://code.google.com/apis/buzz/v1/performance.html#partial-response documentation] for details on the fields parameter. 
 
