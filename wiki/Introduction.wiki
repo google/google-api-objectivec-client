@@ -25,7 +25,9 @@ The Examples directory contains example applications showing typical interaction
 
 The example applications run on Mac OS X, but the library does not provide any user interface support apart from authentication, so use of the library APIs is the same for Mac and iOS applications.
 
-In order to use the example applications, you must create client ID and client Secret strings for an *installed application* (not a web application) using the [https://code.google.com/apis/console/ API Console], as explained in the [http://code.google.com/p/gtm-oauth2/wiki/Introduction OAuth 2 controller documentation].
+In order to use the example applications that require authentication, you must create *client ID* and *client secret* strings for an *installed application* (not a web application) using the [https://code.google.com/apis/console/ API Console], as explained in the [http://code.google.com/p/gtm-oauth2/wiki/Introduction OAuth 2 controller documentation].
+
+Google APIs which do not require authentication may require an *API key*, also obtained from the [https://code.google.com/apis/console/ API Console].
 
 == Adding the Library to a Project ==
 
@@ -63,6 +65,10 @@ For example, here is how to use the API library to execute a search for hiking b
 {{{
 // Create a service object for executing queries
 GTLServiceGoogleShopping *service = [[GTLServiceGoogleShopping alloc] init];
+
+// Services which do not require sign-in may need an API key from the
+// API Console
+service.APIKey = @"AIzaSyDpzrGImFGQPOw";
 
 // Create a query
 GTLQueryShopping *query = [GTLQueryShopping queryForProductsListWithSource:@"public"];
