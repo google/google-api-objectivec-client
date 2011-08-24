@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLLatitude.h
+//  GTLLatitudeConstants.m
 //
 
 // ----------------------------------------------------------------------------
@@ -29,8 +29,8 @@
 
 #import "GTLLatitudeConstants.h"
 
-#import "GTLLatitudeLocation.h"
-#import "GTLLatitudeLocationFeed.h"
-
-#import "GTLQueryLatitude.h"
-#import "GTLServiceLatitude.h"
+// Authorization scope
+NSString * const kGTLAuthScopeLatitudeAllBest     = @"https://www.googleapis.com/auth/latitude.all.best";
+NSString * const kGTLAuthScopeLatitudeAllCity     = @"https://www.googleapis.com/auth/latitude.all.city";
+NSString * const kGTLAuthScopeLatitudeCurrentBest = @"https://www.googleapis.com/auth/latitude.current.best";
+NSString * const kGTLAuthScopeLatitudeCurrentCity = @"https://www.googleapis.com/auth/latitude.current.city";

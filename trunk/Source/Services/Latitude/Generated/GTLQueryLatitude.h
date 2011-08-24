@@ -61,17 +61,32 @@
 
 // Method: latitude.currentLocation.delete
 // Deletes the authenticated user's current location.
+//  Authorization scope(s):
+//   kGTLAuthScopeLatitudeAllBest
+//   kGTLAuthScopeLatitudeAllCity
+//   kGTLAuthScopeLatitudeCurrentBest
+//   kGTLAuthScopeLatitudeCurrentCity
 + (id)queryForCurrentLocationDelete;
 
 // Method: latitude.currentLocation.get
 // Returns the authenticated user's current location.
 //  Optional:
 //   granularity: Granularity of the requested location.
+//  Authorization scope(s):
+//   kGTLAuthScopeLatitudeAllBest
+//   kGTLAuthScopeLatitudeAllCity
+//   kGTLAuthScopeLatitudeCurrentBest
+//   kGTLAuthScopeLatitudeCurrentCity
 // Fetches a GTLLatitudeLocation.
 + (id)queryForCurrentLocationGet;
 
 // Method: latitude.currentLocation.insert
 // Updates or creates the user's current location.
+//  Authorization scope(s):
+//   kGTLAuthScopeLatitudeAllBest
+//   kGTLAuthScopeLatitudeAllCity
+//   kGTLAuthScopeLatitudeCurrentBest
+//   kGTLAuthScopeLatitudeCurrentCity
 // Fetches a GTLLatitudeLocation.
 + (id)queryForCurrentLocationInsertWithObject:(GTLLatitudeLocation *)object;
 
@@ -83,6 +98,9 @@
 // Deletes a location from the user's location history.
 //  Required:
 //   locationId: Timestamp of the location to delete (ms since epoch).
+//  Authorization scope(s):
+//   kGTLAuthScopeLatitudeAllBest
+//   kGTLAuthScopeLatitudeAllCity
 + (id)queryForLocationDeleteWithLocationId:(NSString *)locationId;
 
 // Method: latitude.location.get
@@ -91,11 +109,17 @@
 //   locationId: Timestamp of the location to read (ms since epoch).
 //  Optional:
 //   granularity: Granularity of the location to return.
+//  Authorization scope(s):
+//   kGTLAuthScopeLatitudeAllBest
+//   kGTLAuthScopeLatitudeAllCity
 // Fetches a GTLLatitudeLocation.
 + (id)queryForLocationGetWithLocationId:(NSString *)locationId;
 
 // Method: latitude.location.insert
 // Inserts or updates a location in the user's location history.
+//  Authorization scope(s):
+//   kGTLAuthScopeLatitudeAllBest
+//   kGTLAuthScopeLatitudeAllCity
 // Fetches a GTLLatitudeLocation.
 + (id)queryForLocationInsertWithObject:(GTLLatitudeLocation *)object;
 
@@ -106,6 +130,9 @@
 //   maxResults: Maximum number of locations to return.
 //   maxTime: Maximum timestamp of locations to return (ms since epoch).
 //   minTime: Minimum timestamp of locations to return (ms since epoch).
+//  Authorization scope(s):
+//   kGTLAuthScopeLatitudeAllBest
+//   kGTLAuthScopeLatitudeAllCity
 // Fetches a GTLLatitudeLocationFeed.
 + (id)queryForLocationList;
 

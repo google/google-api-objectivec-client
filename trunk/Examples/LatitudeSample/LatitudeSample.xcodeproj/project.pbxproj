@@ -10,6 +10,7 @@
 		4F22A2151186315400FFBAB6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F22A2141186315400FFBAB6 /* WebKit.framework */; };
 		4F244586121F0B8700FEE1DA /* GTL.framework in Copy GTL.framework */ = {isa = PBXBuildFile; fileRef = 4F24457F121F0B8300FEE1DA /* GTL.framework */; };
 		4F244587121F0B8A00FEE1DA /* GTL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F24457F121F0B8300FEE1DA /* GTL.framework */; };
+		4F3472A51405718C00D3CE42 /* GTLLatitudeConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3472A41405718C00D3CE42 /* GTLLatitudeConstants.m */; };
 		4F6293CE11CC193500BE36DD /* LatitudeSampleAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6293CB11CC193500BE36DD /* LatitudeSampleAppController.m */; };
 		4F6293CF11CC193500BE36DD /* LatitudeSampleWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6293CD11CC193500BE36DD /* LatitudeSampleWindowController.m */; };
 		4F6293F811CC21A000BE36DD /* LatitudeSampleWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F6293F611CC21A000BE36DD /* LatitudeSampleWindow.xib */; };
@@ -92,6 +93,8 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		4F22A2141186315400FFBAB6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
 		4F244577121F0B8300FEE1DA /* GTL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GTL.xcodeproj; path = ../../Source/GTL.xcodeproj; sourceTree = SOURCE_ROOT; };
+		4F3472A31405718C00D3CE42 /* GTLLatitudeConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLLatitudeConstants.h; sourceTree = "<group>"; };
+		4F3472A41405718C00D3CE42 /* GTLLatitudeConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLLatitudeConstants.m; sourceTree = "<group>"; };
 		4F6293CA11CC193500BE36DD /* LatitudeSampleAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LatitudeSampleAppController.h; sourceTree = "<group>"; };
 		4F6293CB11CC193500BE36DD /* LatitudeSampleAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LatitudeSampleAppController.m; sourceTree = "<group>"; };
 		4F6293CC11CC193500BE36DD /* LatitudeSampleWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LatitudeSampleWindowController.h; sourceTree = "<group>"; };
@@ -239,6 +242,8 @@
 			isa = PBXGroup;
 			children = (
 				4FA527C113F07DA100D6873C /* GTLLatitude.h */,
+				4F3472A31405718C00D3CE42 /* GTLLatitudeConstants.h */,
+				4F3472A41405718C00D3CE42 /* GTLLatitudeConstants.m */,
 				4FA527C213F07DA100D6873C /* GTLLatitudeLocation.h */,
 				4FA527C313F07DA100D6873C /* GTLLatitudeLocation.m */,
 				4FA527C413F07DA100D6873C /* GTLLatitudeLocationFeed.h */,
@@ -388,6 +393,7 @@
 				4FA527CB13F07DA100D6873C /* GTLLatitudeLocationFeed.m in Sources */,
 				4FA527CC13F07DA100D6873C /* GTLQueryLatitude.m in Sources */,
 				4FA527CD13F07DA100D6873C /* GTLServiceLatitude.m in Sources */,
+				4F3472A51405718C00D3CE42 /* GTLLatitudeConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
