@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLLatitude.h
+//  GTLLatitudeConstants.h
 //
 
 // ----------------------------------------------------------------------------
@@ -27,10 +27,20 @@
 // Documentation:
 //   http://code.google.com/apis/latitude/v1/using_rest.html
 
-#import "GTLLatitudeConstants.h"
+#import <Foundation/Foundation.h>
 
-#import "GTLLatitudeLocation.h"
-#import "GTLLatitudeLocationFeed.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLDefines.h"
+#else
+  #import "GTLDefines.h"
+#endif
 
-#import "GTLQueryLatitude.h"
-#import "GTLServiceLatitude.h"
+// Authorization scope
+// Manage your best-available location and location history
+GTL_EXTERN NSString * const kGTLAuthScopeLatitudeAllBest;      // "https://www.googleapis.com/auth/latitude.all.best"
+// Manage your city-level location and location history
+GTL_EXTERN NSString * const kGTLAuthScopeLatitudeAllCity;      // "https://www.googleapis.com/auth/latitude.all.city"
+// Manage your best-available location
+GTL_EXTERN NSString * const kGTLAuthScopeLatitudeCurrentBest;  // "https://www.googleapis.com/auth/latitude.current.best"
+// Manage your city-level location
+GTL_EXTERN NSString * const kGTLAuthScopeLatitudeCurrentCity;  // "https://www.googleapis.com/auth/latitude.current.city"

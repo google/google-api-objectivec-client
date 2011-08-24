@@ -440,10 +440,8 @@ NSString *const kKeychainItemName = @"Latitude Sample: Google Latitude";
 
 - (void)runSigninThenInvokeSelector:(SEL)signInDoneSel {
   NSString *scope = [GTMOAuth2Authentication scopeWithStrings:
-                     @"https://www.googleapis.com/auth/latitude.current.city",
-                     @"https://www.googleapis.com/auth/latitude.current.best",
-                     @"https://www.googleapis.com/auth/latitude.all.city",
-                     @"https://www.googleapis.com/auth/latitude.all.best",
+                     kGTLAuthScopeLatitudeAllBest,
+                     kGTLAuthScopeLatitudeCurrentBest,
                      nil];
 
   NSString *clientID = [clientIDField_ stringValue];
