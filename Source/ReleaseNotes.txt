@@ -1,0 +1,13 @@
+Google APIs Objective-C Library
+Release Notes
+
+Project site:     http://code.google.com/p/google-api-objectivec-client/
+Discussion group: http://groups.google.com/group/google-api-objectivec-client
+
+
+Release 2.0.0
+29-August-2011
+
+Initial public release of the JSON-based API library.  Includes standard object,
+service, and query classes, and unit tests.  Includes classes for Books,
+Latitude, Shopping, Tasks and URL Shortener.
