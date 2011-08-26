@@ -536,11 +536,11 @@ NSString *const kKeychainItemName = @"Books Sample: Google Books";
   // Show the OAuth 2 sign-in controller
   NSBundle *frameworkBundle = [NSBundle bundleForClass:[GTMOAuth2WindowController class]];
   GTMOAuth2WindowController *windowController;
-  windowController = [[[GTMOAuth2WindowController alloc] initWithScope:@"https://www.googleapis.com/auth/books"
-                                                              clientID:clientID
-                                                          clientSecret:clientSecret
-                                                      keychainItemName:kKeychainItemName
-                                                        resourceBundle:frameworkBundle] autorelease];
+  windowController = [GTMOAuth2WindowController controllerWithScope:@"https://www.googleapis.com/auth/books"
+                                                           clientID:clientID
+                                                       clientSecret:clientSecret
+                                                   keychainItemName:kKeychainItemName
+                                                     resourceBundle:frameworkBundle];
   [windowController signInSheetModalForWindow:[self window]
                             completionHandler:^(GTMOAuth2Authentication *auth,
                                                 NSError *error) {

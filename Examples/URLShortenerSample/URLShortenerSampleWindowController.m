@@ -311,11 +311,11 @@ NSString *const kKeychainItemName = @"URL Shortener Sample: Google URL Shortener
 
   NSBundle *frameworkBundle = [NSBundle bundleForClass:[GTMOAuth2WindowController class]];
   GTMOAuth2WindowController *windowController;
-  windowController = [[[GTMOAuth2WindowController alloc] initWithScope:kGTLAuthScopeUrlshortener
-                                                              clientID:clientID
-                                                          clientSecret:clientSecret
-                                                      keychainItemName:kKeychainItemName
-                                                        resourceBundle:frameworkBundle] autorelease];
+  windowController = [GTMOAuth2WindowController controllerWithScope:kGTLAuthScopeUrlshortener
+                                                           clientID:clientID
+                                                       clientSecret:clientSecret
+                                                   keychainItemName:kKeychainItemName
+                                                     resourceBundle:frameworkBundle];
 
   [windowController signInSheetModalForWindow:[self window]
                             completionHandler:^(GTMOAuth2Authentication *auth, NSError *error) {
