@@ -1,0 +1,22 @@
+#summary Samples
+
+[http://code.google.com/p/google-api-objectivec-client/source/browse/#svn%2Ftrunk%2FExamples Sample code] is available for a number of APIs.
+
+<wiki:toc/>
+
+=APIs=
+
+==Books API==
+[http://code.google.com/p/google-api-objectivec-client/source/browse/#svn%2Ftrunk%2FExamples%2FBooksSample Sample application] that uses the Books API. ||
+
+==Google Latitude API==
+[http://code.google.com/p/google-api-objectivec-client/source/browse/#svn%2Ftrunk%2FExamples%2FLatitudeSample Sample application] that uses the Google Latitude API. ||
+
+==Shopping API==
+[http://code.google.com/p/google-api-objectivec-client/source/browse/#svn%2Ftrunk%2FExamples%2FShoppingSample Sample application] that uses the Shopping API. ||
+
+==Tasks API==
+[http://code.google.com/p/google-api-objectivec-client/source/browse/#svn%2Ftrunk%2FExamples%2FTasksSample Sample application] Tasks API. ||
+
+==URL Shortener API==
+[http://code.google.com/p/google-api-objectivec-client/source/browse/#svn%2Ftrunk%2FExamples%2FURLShortenerSample Sample application] that uses the URL Shortener API. ||
