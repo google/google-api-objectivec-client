@@ -252,7 +252,7 @@ GTLQueryTasks *query = [GTLQueryTasks queryForTasksPatchWithObject:patchObject
 GTLServiceTicket *ticket = [service executeQuery:query ...
 }}}
 
-An array in a patch object field always replaces the entire array for the object on the server, as described in the [http://code.google.com/apis/buzz/v1/performance.html#partial-response documentation] for partial updates. 
+An array in a patch object field always replaces the entire array for the object on the server, as described in the [http://code.google.com/apis/buzz/v1/performance.html#patch documentation] for partial updates. 
 
 `GTLObject` includes a helpful method `patchObjectFromOriginal:` for making a patch object that contains just the changes from a previous version of that object.
 
