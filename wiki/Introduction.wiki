@@ -3,11 +3,11 @@
 
 <wiki:toc max_depth="4" />
 
-= Introduction to the Google APIs Objective-C Client Library =
+= Introduction to the Google APIs Client Library for Objective-C =
 
 Google APIs allow client software to access and manipulate data hosted by Google services.
 
-The Google APIs Objective-C Client Library is a Cocoa framework that enables developers for Mac OS X and iOS to easily write native applications using Google's JSON-RPC APIs.  The framework handles
+The Google APIs Client Library for Objective-C is a Cocoa framework that enables developers for Mac OS X and iOS to easily write native applications using Google's JSON-RPC APIs.  The framework handles
 
   * JSON parsing and generation
   * Networking
@@ -17,7 +17,7 @@ The Google APIs Objective-C Client Library is a Cocoa framework that enables dev
 
 == Requirements ==
 
-The Google APIs Objective-C Client Library requires iOS 3 or later, or Mac OS X 10.5 or later.
+The Google APIs Client Library for Objective-C requires iOS 3 or later, or Mac OS X 10.5 or later.
 
 == Example Applications ==
 
@@ -49,7 +49,7 @@ Google APIs rely on OAuth 2 for user sign-in. The library includes the [http://c
 
 *Authorization* is the use of access tokens to allow specific requests. Applications pass the OAuth 2 authorization object to a service class's `setAuthorizer:` method to authorize queries.
 
-== Google APIs Objective-C Client Library Basics ==
+== Google APIs Client Library for Objective-C Basics ==
 
 === Queries and GTLObjects ===
 
@@ -369,7 +369,7 @@ The default errors retried are http status 408 (request timeout), 503 (service u
 
 == Using APIs Without Generated Classes ==
 
-The Google APIs Objective-C Client Library includes generated service, query and data classes. These are Objective-C files constructed by processing the output of the [https://code.google.com/apis/discovery/ Google APIs Discovery Service]. The generated classes are derived from `GTLServiceBase`, `GTLQueryBase`, and `GTLObject`.
+The Google APIs Client Library for Objective-C includes generated service, query and data classes. These are Objective-C files constructed by processing the output of the [https://code.google.com/apis/discovery/ Google APIs Discovery Service]. The generated classes are derived from `GTLServiceBase`, `GTLQueryBase`, and `GTLObject`.
 
 The library may also be used for Google and non-Google APIs without generated classes. Methods for fetching objects via REST and RPC requests are listed in the "REST Fetch Methods" and "RPC Fetch Methods" sections of `GTLServiceBase.h`.  
 
