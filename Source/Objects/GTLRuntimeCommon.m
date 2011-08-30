@@ -149,6 +149,13 @@ static NSString *const kJSONKey = @"jsonKey";
 
 static NSMutableDictionary *gDispatchCache = nil;
 
+static CFStringRef SelectorKeyCopyDescriptionCallBack(const void *key) {
+  // make a CFString from the key
+  SEL sel = (SEL) key;
+  CFStringRef str = (CFStringRef) [NSStringFromSelector(sel) copy];
+  return str;
+}
+
 // save the dispatch details for the specified class and selector
 + (void)setStoredDispatchForClass:(Class<GTLRuntimeCommon>)dispatchClass
                          selector:(SEL)sel
@@ -166,27 +173,39 @@ static NSMutableDictionary *gDispatchCache = nil;
       gDispatchCache = [GTLUtilities newStaticDictionary];
     }
 
-    NSMutableDictionary *classDict = [gDispatchCache objectForKey:dispatchClass];
+    CFMutableDictionaryRef classDict =
+      (CFMutableDictionaryRef) [gDispatchCache objectForKey:dispatchClass];
     if (classDict == nil) {
-      classDict = [NSMutableDictionary dictionary];
-      [gDispatchCache setObject:classDict
+      CFDictionaryKeyCallBacks keyCallBacks = {
+        0,     // version
+        NULL,  // retain
+        NULL,  // release
+        SelectorKeyCopyDescriptionCallBack,
+        NULL,  // equals, defaults to pointer comparison
+        NULL   // hash, defaults to the pointer value
+      };
+      const CFIndex capacity = 0; // no limit
+      classDict = CFDictionaryCreateMutable(kCFAllocatorDefault, capacity,
+                                            &keyCallBacks,
+                                            &kCFTypeDictionaryValueCallBacks);
+      [gDispatchCache setObject:(id)classDict
                          forKey:dispatchClass];
+      CFRelease(classDict);
     }
 
-    NSString *selString = NSStringFromSelector(sel);
-    NSDictionary *selDict = [classDict objectForKey:selString];
+    NSDictionary *selDict = (NSDictionary *)CFDictionaryGetValue(classDict, sel);
     if (selDict == nil) {
       selDict = [NSDictionary dictionaryWithObjectsAndKeys:
                  jsonKey, kJSONKey,
-                 returnClass, kReturnClassKey, // can be nil (primative types)
+                 returnClass, kReturnClassKey, // can be nil (primitive types)
                  containedClass, kContainedClassKey, // may be nil
                  nil];
-      [classDict setObject:selDict forKey:selString];
+      CFDictionarySetValue(classDict, sel, selDict);
     } else {
       // we already have a dictionary for this selector on this class, which is
       // surprising
       GTL_DEBUG_LOG(@"Storing duplicate dispatch for %@ selector %@",
-            dispatchClass, selString);
+            dispatchClass, NSStringFromSelector(sel));
     }
   }
 }
@@ -197,27 +216,29 @@ static NSMutableDictionary *gDispatchCache = nil;
                    containedClass:(Class *)outContainedClass
                           jsonKey:(NSString **)outJsonKey {
   @synchronized([GTLRuntimeCommon class]) {
-    NSString *selString = NSStringFromSelector(sel);
-
     // walk from this class up the hierarchy to the ancestor class
     Class<GTLRuntimeCommon> topClass = class_getSuperclass([dispatchClass ancestorClass]);
     for (Class currClass = dispatchClass;
          currClass != topClass;
          currClass = class_getSuperclass(currClass)) {
 
-      NSMutableDictionary *classDict = [gDispatchCache objectForKey:currClass];
-      NSMutableDictionary *selDict = [classDict objectForKey:selString];
-      if (selDict) {
-        if (outReturnClass) {
-          *outReturnClass = [selDict objectForKey:kReturnClassKey];
+      CFMutableDictionaryRef classDict =
+        (CFMutableDictionaryRef) [gDispatchCache objectForKey:currClass];
+      if (classDict) {
+        NSMutableDictionary *selDict =
+          (NSMutableDictionary *) CFDictionaryGetValue(classDict, sel);
+        if (selDict) {
+          if (outReturnClass) {
+            *outReturnClass = [selDict objectForKey:kReturnClassKey];
+          }
+          if (outContainedClass) {
+            *outContainedClass = [selDict objectForKey:kContainedClassKey];
+          }
+          if (outJsonKey) {
+            *outJsonKey = [selDict objectForKey:kJSONKey];
+          }
+          return YES;
         }
-        if (outContainedClass) {
-          *outContainedClass = [selDict objectForKey:kContainedClassKey];
-        }
-        if (outJsonKey) {
-          *outJsonKey = [selDict objectForKey:kJSONKey];
-        }
-        return YES;
       }
     }
   }
