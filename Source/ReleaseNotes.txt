@@ -1,4 +1,4 @@
-Google APIs Objective-C Library
+Google APIs Client Library for Objective-C
 Release Notes
 
 Project site:     http://code.google.com/p/google-api-objectivec-client/

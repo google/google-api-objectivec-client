@@ -135,7 +135,7 @@ static NSString *ETagIfPresent(GTLObject *obj) {
 
 #if GTL_IPHONE || (MAC_OS_X_VERSION_MIN_REQUIRED > MAC_OS_X_VERSION_10_5)
     // For 10.6 and up, always use an operation queue
-    self.operationQueue = [[[NSOperationQueue alloc] init] autorelease];
+    operationQueue_ = [[NSOperationQueue alloc] init];
 #elif !GTL_SKIP_PARSE_THREADING
     // Avoid NSOperationQueue prior to 10.5.6, per
     // http://www.mikeash.com/?page=pyblog/use-nsoperationqueue.html
@@ -143,15 +143,14 @@ static NSString *ETagIfPresent(GTLObject *obj) {
     (void) Gestalt(gestaltSystemVersion, &bcdSystemVersion);
 
     if (bcdSystemVersion >= 0x1057) {
-      self.operationQueue = [[[NSOperationQueue alloc] init] autorelease];
+      operationQueue_ = [[NSOperationQueue alloc] init];
     }
 #else
     // operationQueue defaults to nil, so parsing will be done immediately
     // on the current thread
 #endif
 
-    GTMHTTPFetcherService *fetcherService = [[[GTMHTTPFetcherService alloc] init] autorelease];
-    self.fetcherService = fetcherService;
+    fetcherService_ = [[GTMHTTPFetcherService alloc] init];
 
     NSUInteger chunkSize = [[self class] defaultServiceUploadChunkSize];
     self.serviceUploadChunkSize = chunkSize;
@@ -1900,17 +1899,17 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
   if (self) {
     service_ = [service retain];
 
-    self.properties = service.serviceProperties;
-    self.surrogates = service.surrogates;
-    self.uploadProgressSelector = service.uploadProgressSelector;
-    self.retryEnabled = service.retryEnabled;
-    self.retrySelector = service.retrySelector;
-    self.maxRetryInterval = service.maxRetryInterval;
-    self.shouldFetchNextPages = service.shouldFetchNextPages;
-    self.APIKey = service.APIKey;
+    ticketProperties_ = [service.serviceProperties mutableCopy];
+    surrogates_ = [service.surrogates retain];
+    uploadProgressSelector_ = service.uploadProgressSelector;
+    isRetryEnabled_ = service.retryEnabled;
+    retrySelector_ = service.retrySelector;
+    maxRetryInterval_ = service.maxRetryInterval;
+    shouldFetchNextPages_ = service.shouldFetchNextPages;
+    apiKey_ = [service.APIKey copy];
 
 #if NS_BLOCKS_AVAILABLE
-    [self setUploadProgressHandler:[service serviceUploadProgressHandler]];
+    uploadProgressBlock_ = [[service serviceUploadProgressHandler] copy];
 #endif
   }
   return self;
