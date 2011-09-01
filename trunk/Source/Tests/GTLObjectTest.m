@@ -989,7 +989,7 @@ static Class gAdditionalPropsClass = Nil;
   GTLTestingObject *obj2 = [GTLTestingObject object];
 
   GTLTestingObject *resultObj = [obj1 patchObjectFromOriginal:obj2];
-  STAssertEquals((int)[resultObj.JSON count], 0, @"empty");
+  STAssertNil(resultObj, @"empty");
 
   // It might be cleaner to test against expected JSON strings rather than
   // dictionaries, but SBJSON by default doesn't sort keys so the
@@ -1014,6 +1014,12 @@ static Class gAdditionalPropsClass = Nil;
 
   expected = obj1.JSON;
   STAssertEqualObjects(resultObj.JSON, expected, @"add all");
+
+  // Equal objects should return a nil result
+  obj1 = [self objectForPartialTests];
+  obj2 = [self objectForPartialTests];
+  resultObj = [obj1 patchObjectFromOriginal:obj2];
+  STAssertNil(resultObj, @"equal objects");
 
   // Selectively add, change, and remove fields
   obj1 = [self objectForPartialTests];
