@@ -118,6 +118,8 @@
 //
 // http://code.google.com/apis/buzz/v1/performance.html#patch
 //
+// NOTE: this method returns nil if there are no changes between the original
+// and the receiver.
 - (id)patchObjectFromOriginal:(GTLObject *)original;
 
 // Method creating a null value to set object properties for patch queries that

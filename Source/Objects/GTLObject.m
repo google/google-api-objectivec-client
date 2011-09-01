@@ -239,9 +239,16 @@ static NSString *const kUserDataPropertyKey = @"_userData";
 #pragma mark Partial - Patch
 
 - (id)patchObjectFromOriginal:(GTLObject *)original {
+  id resultObj;
   NSMutableDictionary *resultJSON = [GTLObject patchDictionaryForJSON:self.JSON
                                                      fromOriginalJSON:original.JSON];
-  id resultObj = [[self class] objectWithJSON:resultJSON];
+  if ([resultJSON count] > 0) {
+    resultObj = [[self class] objectWithJSON:resultJSON];
+  } else {
+    // Client apps should not attempt to patch with an object containing
+    // empty JSON
+    resultObj = nil;
+  }
   return resultObj;
 }
 
