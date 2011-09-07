@@ -164,7 +164,7 @@ static CFStringRef SelectorKeyCopyDescriptionCallBack(const void *key) {
                           jsonKey:(NSString *)jsonKey {
   // cache structure:
   //   class ->
-  //     selector (as NSString) ->
+  //     selector ->
   //       returnClass
   //       containedClass
   //       jsonKey
@@ -176,13 +176,15 @@ static CFStringRef SelectorKeyCopyDescriptionCallBack(const void *key) {
     CFMutableDictionaryRef classDict =
       (CFMutableDictionaryRef) [gDispatchCache objectForKey:dispatchClass];
     if (classDict == nil) {
-      CFDictionaryKeyCallBacks keyCallBacks = {
-        0,     // version
-        NULL,  // retain
-        NULL,  // release
-        SelectorKeyCopyDescriptionCallBack,
-        NULL,  // equals, defaults to pointer comparison
-        NULL   // hash, defaults to the pointer value
+      // We create a CFDictionary since the keys are raw selectors rather than
+      // NSStrings
+      const CFDictionaryKeyCallBacks keyCallBacks = {
+        .version = 0,
+        .retain = NULL,
+        .release = NULL,
+        .copyDescription = SelectorKeyCopyDescriptionCallBack,
+        .equal = NULL,  // defaults to pointer comparison
+        .hash = NULL    // defaults to the pointer value
       };
       const CFIndex capacity = 0; // no limit
       classDict = CFDictionaryCreateMutable(kCFAllocatorDefault, capacity,
