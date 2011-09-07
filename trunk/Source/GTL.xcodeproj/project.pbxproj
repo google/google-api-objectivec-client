@@ -454,7 +454,6 @@
 			isa = PBXGroup;
 			children = (
 				4F346DD20D7500C9006033E0 /* Common */,
-				4F5CC8921381ED1F00D1D4CF /* Services */,
 			);
 			name = "GTL Source";
 			sourceTree = "<group>";
@@ -589,6 +588,7 @@
 				F4CC6A101239450100522D45 /* GTLQueryTest.m */,
 				4FCC7A1C11EFD9EA0097924C /* GTLServiceTest.m */,
 				4F9F7E3B11F510430033A2C1 /* GTLUtilitiesTest.m */,
+				4F5CC8921381ED1F00D1D4CF /* Services */,
 				4FCC7A3E11EFDB7E0097924C /* Data */,
 				4FCC7A2211EFDA090097924C /* Server */,
 			);
