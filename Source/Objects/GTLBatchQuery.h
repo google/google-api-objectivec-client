@@ -29,7 +29,7 @@
 // Queries included in this batch.  Each query should have a unique requestID.
 @property (retain) NSArray *queries;
 
-// Clients may set this to NO to disallow authorization. Defaults to YES.
+// Clients may set this to YES to disallow authorization. Defaults to NO.
 @property (assign) BOOL shouldSkipAuthorization;
 
 + (id)batchQuery;
