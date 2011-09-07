@@ -369,13 +369,13 @@ The default errors retried are http status 408 (request timeout), 503 (service u
 
 == Using APIs Without Generated Classes ==
 
-The Google APIs Client Library for Objective-C includes generated service, query and data classes. These are Objective-C files constructed by processing the output of the [https://code.google.com/apis/discovery/ Google APIs Discovery Service]. The generated classes are derived from `GTLServiceBase`, `GTLQueryBase`, and `GTLObject`.
+The Google APIs Client Library for Objective-C includes generated service, query and data classes. These are Objective-C files constructed by processing the output of the [https://code.google.com/apis/discovery/ Google APIs Discovery Service]. The generated classes are derived from `GTLService`, `GTLQuery`, and `GTLObject`.
 
-The library may also be used for Google and non-Google APIs without generated classes. Methods for fetching objects via REST and RPC requests are listed in the "REST Fetch Methods" and "RPC Fetch Methods" sections of `GTLServiceBase.h`.  
+The library may also be used for Google and non-Google APIs without generated classes. Methods for fetching objects via REST and RPC requests are listed in the "REST Fetch Methods" and "RPC Fetch Methods" sections of `GTLService.h`.  
 
-For use with RPC queries, instances of `GTLServiceBase` should specify the request URL and API version, such as
+For use with RPC queries, instances of `GTLService` should specify the request URL and API version, such as
 {{{
-GTLServiceBase *service = [[GTLServiceBase alloc] init];
+GTLService *service = [[GTLService alloc] init];
 service.rpcURL = [NSURL URLWithstring:@"https://www.example.com/rpc"];
 service.apiVersion = @"v1";
 }}}
