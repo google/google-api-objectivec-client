@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
-//   GTLQueryShopping (2 custom class methods, 33 custom properties)
+//   GTLQueryShopping (2 custom class methods, 34 custom properties)
 //   GTLShoppingProductsGetCategories (0 custom class methods, 3 custom properties)
 //   GTLShoppingProductsGetDebug (0 custom class methods, 4 custom properties)
 //   GTLShoppingProductsGetRecommendations (0 custom class methods, 3 custom properties)
@@ -83,6 +83,7 @@
 @property (retain) id debug;
 @property (retain) GTLShoppingProductsListFacets *facets;
 @property (retain) NSString *language;
+@property (retain) NSString *location;
 @property (assign) NSUInteger maxResults;
 @property (retain) NSString *minAvailability;
 @property (retain) NSString *productFields;
@@ -118,6 +119,7 @@
 //   productId: Id of product
 //  Optional:
 //   attributeFilter: Comma separated list of attributes to return
+//   location: Location used to determine tax and shipping
 //   productFields: Google Internal
 //   taxonomy: Merchant taxonomy
 //   thumbnails: Thumbnail specification
@@ -139,6 +141,7 @@
 //   crowdBy: Crowding specification
 //   currency: Currency restriction (ISO 4217)
 //   language: Language restriction (BCP 47)
+//   location: Location used to determine tax and shipping
 //   maxResults: Maximum number of results to return
 //   minAvailability:
 //      kGTLShoppingMinAvailabilityInStock: Only in stcok prodicts will be
