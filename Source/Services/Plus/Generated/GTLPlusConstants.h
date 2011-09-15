@@ -34,10 +34,7 @@
 
 // Authorization scope
 // View your Google+ information
-GTL_EXTERN NSString * const kGTLAuthScopePlusMe;                // "https://www.googleapis.com/auth/plus.me"
-// View a list of people from your circles, ordered based on your interactions
-// with them across Google
-GTL_EXTERN NSString * const kGTLAuthScopePlusPeopleRecommended;  // "https://www.googleapis.com/auth/plus.people.recommended"
+GTL_EXTERN NSString * const kGTLAuthScopePlusMe;  // "https://www.googleapis.com/auth/plus.me"
 
 // Alt
 GTL_EXTERN NSString * const kGTLPlusAltJson;  // "json"

@@ -65,7 +65,6 @@
 //      kGTLPlusAltJson: Use JSON format
 //  Authorization scope(s):
 //   kGTLAuthScopePlusMe
-//   kGTLAuthScopePlusPeopleRecommended
 // Fetches a GTLPlusActivity.
 + (id)queryForActivitiesGetWithActivityId:(NSString *)activityId;
 
@@ -88,7 +87,6 @@
 //     "nextPageToken" from the previous response.
 //  Authorization scope(s):
 //   kGTLAuthScopePlusMe
-//   kGTLAuthScopePlusPeopleRecommended
 // Fetches a GTLPlusActivityFeed.
 + (id)queryForActivitiesListWithUserId:(NSString *)userId
                             collection:(NSString *)collection;
@@ -104,7 +102,6 @@
 //     can be used to indicate the authenticated user.
 //  Authorization scope(s):
 //   kGTLAuthScopePlusMe
-//   kGTLAuthScopePlusPeopleRecommended
 // Fetches a GTLPlusPerson.
 + (id)queryForPeopleGetWithUserId:(NSString *)userId;
 

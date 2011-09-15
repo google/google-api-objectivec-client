@@ -30,7 +30,7 @@
 //   GTLShoppingModelProductAttributesItem (0 custom class methods, 5 custom properties)
 //   GTLShoppingModelProductAuthor (0 custom class methods, 5 custom properties)
 //   GTLShoppingModelProductImagesItem (0 custom class methods, 2 custom properties)
-//   GTLShoppingModelProductInventoriesItem (0 custom class methods, 7 custom properties)
+//   GTLShoppingModelProductInventoriesItem (0 custom class methods, 9 custom properties)
 //   GTLShoppingModelProductImagesItemThumbnailsItem (0 custom class methods, 4 custom properties)
 
 #import "GTLShoppingModelProduct.h"
@@ -112,7 +112,7 @@
 
 @implementation GTLShoppingModelProductInventoriesItem
 @dynamic availability, channel, currency, distance, distanceUnit, price,
-         storeId;
+         shipping, storeId, tax;
 @end
 
 

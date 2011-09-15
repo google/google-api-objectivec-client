@@ -30,7 +30,7 @@
 //   GTLShoppingModelProductAttributesItem (0 custom class methods, 5 custom properties)
 //   GTLShoppingModelProductAuthor (0 custom class methods, 5 custom properties)
 //   GTLShoppingModelProductImagesItem (0 custom class methods, 2 custom properties)
-//   GTLShoppingModelProductInventoriesItem (0 custom class methods, 7 custom properties)
+//   GTLShoppingModelProductInventoriesItem (0 custom class methods, 9 custom properties)
 //   GTLShoppingModelProductImagesItemThumbnailsItem (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -202,8 +202,14 @@
 // Price of product inventory.
 @property (retain) NSNumber *price;  // floatValue
 
+// Shipping cost of product inventory.
+@property (retain) NSNumber *shipping;  // floatValue
+
 // Store ID of product inventory.
 @property (retain) NSString *storeId;
+
+// Tax of product inventory.
+@property (retain) NSNumber *tax;  // floatValue
 
 @end
 
