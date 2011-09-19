@@ -81,7 +81,8 @@
 //     kGTLPlusAltJson)
 //      kGTLPlusAltJson: Use JSON format
 //   maxResults: The maximum number of activities to include in the response,
-//     used for paging. (1-100, default 20)
+//     used for paging. For any response, the actual number returned may be less
+//     than the specified maxResults. (1-100, default 20)
 //   pageToken: The continuation token, used to page through large result sets.
 //     To get the next page of results, set this parameter to the value of
 //     "nextPageToken" from the previous response.

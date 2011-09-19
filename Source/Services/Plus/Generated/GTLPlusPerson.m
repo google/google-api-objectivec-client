@@ -24,7 +24,8 @@
 // Description:
 //   Google+ API
 // Classes:
-//   GTLPlusPerson (0 custom class methods, 18 custom properties)
+//   GTLPlusPerson (0 custom class methods, 19 custom properties)
+//   GTLPlusPersonEmailsItem (0 custom class methods, 3 custom properties)
 //   GTLPlusPersonImage (0 custom class methods, 1 custom properties)
 //   GTLPlusPersonName (0 custom class methods, 6 custom properties)
 //   GTLPlusPersonOrganizationsItem (0 custom class methods, 9 custom properties)
@@ -39,8 +40,8 @@
 //
 
 @implementation GTLPlusPerson
-@dynamic aboutMe, birthday, currentLocation, displayName, gender, hasApp,
-         identifier, image, kind, languagesSpoken, name, nickname,
+@dynamic aboutMe, birthday, currentLocation, displayName, emails, gender,
+         hasApp, identifier, image, kind, languagesSpoken, name, nickname,
          organizations, placesLived, relationshipStatus, tagline, url, urls;
 
 + (NSDictionary *)propertyToJSONKeyMap {
@@ -53,6 +54,7 @@
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
+      [GTLPlusPersonEmailsItem class], @"emails",
       [NSString class], @"languagesSpoken",
       [GTLPlusPersonOrganizationsItem class], @"organizations",
       [GTLPlusPersonPlacesLivedItem class], @"placesLived",
@@ -65,6 +67,16 @@
   [self registerObjectClassForKind:@"plus#person"];
 }
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusPersonEmailsItem
+//
+
+@implementation GTLPlusPersonEmailsItem
+@dynamic primary, type, value;
 @end
 
 
