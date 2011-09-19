@@ -2,7 +2,7 @@
 
 = Downloading the Library =
 
-To download the library, visit the [http://code.google.com/p/google-api-objectivec-client/source/checkout Source Checkout] page and use the *svn* command shown in the Mac's terminal window.
+To download the library, visit the [http://code.google.com/p/google-api-objectivec-client/source/checkout Source Checkout] page, copy the *svn* command shown there, and paste the command in the Mac's terminal window.
 
 == Updating to the Latest Sources ==
 
