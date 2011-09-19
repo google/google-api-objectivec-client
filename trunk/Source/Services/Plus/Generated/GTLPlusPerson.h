@@ -24,7 +24,8 @@
 // Description:
 //   Google+ API
 // Classes:
-//   GTLPlusPerson (0 custom class methods, 18 custom properties)
+//   GTLPlusPerson (0 custom class methods, 19 custom properties)
+//   GTLPlusPersonEmailsItem (0 custom class methods, 3 custom properties)
 //   GTLPlusPersonImage (0 custom class methods, 1 custom properties)
 //   GTLPlusPersonName (0 custom class methods, 6 custom properties)
 //   GTLPlusPersonOrganizationsItem (0 custom class methods, 9 custom properties)
@@ -37,6 +38,7 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLPlusPersonEmailsItem;
 @class GTLPlusPersonImage;
 @class GTLPlusPersonName;
 @class GTLPlusPersonOrganizationsItem;
@@ -61,6 +63,9 @@
 
 // The name of this person, suitable for display.
 @property (retain) NSString *displayName;
+
+// A list of email addresses for this person.
+@property (retain) NSArray *emails;  // of GTLPlusPersonEmailsItem
 
 // The person's gender. Possible values are: - "male" - Male gender. - "female"
 // - Female gender. - "other" - Other.
@@ -114,6 +119,26 @@
 
 // A list of URLs for this person.
 @property (retain) NSArray *urls;  // of GTLPlusPersonUrlsItem
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusPersonEmailsItem
+//
+
+@interface GTLPlusPersonEmailsItem : GTLObject
+
+// If "true", indicates this email address is the person's primary one.
+@property (retain) NSNumber *primary;  // boolValue
+
+// The type of address. Possible values are: - "home" - Home email address. -
+// "work" - Work email address. - "other" - Other.
+@property (retain) NSString *type;
+
+// The email address.
+@property (retain) NSString *value;
 
 @end
 
