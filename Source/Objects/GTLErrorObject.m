@@ -60,6 +60,12 @@
   return error;
 }
 
++ (GTLErrorObject *)underlyingObjectForError:(NSError *)foundationError {
+  NSDictionary *userInfo = [foundationError userInfo];
+  GTLErrorObject *errorObj = [userInfo objectForKey:kGTLStructuredErrorKey];
+  return errorObj;
+}
+
 @end
 
 @implementation GTLErrorObjectData

@@ -7,6 +7,11 @@ Discussion group: http://groups.google.com/group/google-api-objectivec-client
 
 20-September-2011
 
+Added per-query callback blocks, especially useful for queries executes in
+a batch.
+
+Added shouldFetchNextPages support for collections fetched in batch queries
+
 Added interfaces for orkut
 
 

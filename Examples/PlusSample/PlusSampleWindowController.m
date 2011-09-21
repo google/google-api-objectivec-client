@@ -174,6 +174,11 @@ NSString *const kKeychainItemName = @"Plus Sample: Google Plus";
     // Have the service object set tickets to retry temporary error conditions
     // automatically
     service.retryEnabled = YES;
+
+    // Have the service object set tickets to automatically fetch additional
+    // pages of feeds when the feed's maxResult value is less than the number
+    // of items in the feed
+    service.shouldFetchNextPages = YES;
   }
   return service;
 }
@@ -197,10 +202,25 @@ NSString *const kKeychainItemName = @"Plus Sample: Google Plus";
 
   // Make a batch for fetching both the user's profile and the activity feed
   GTLQueryPlus *profileQuery = [GTLQueryPlus queryForPeopleGetWithUserId:@"me"];
+  profileQuery.completionBlock = ^(GTLServiceTicket *ticket, id object, NSError *error) {
+    if (error == nil) {
+      self.userProfile = object;
+    } else {
+      self.profileFetchError = error;
+    }
+  };
+
   GTLQueryPlus *activitiesQuery = [GTLQueryPlus queryForActivitiesListWithUserId:@"me"
                                                                       collection:kGTLPlusCollectionPublic];
   // Set an appropriate page size when requesting the activity items
   activitiesQuery.maxResults = 100;
+  activitiesQuery.completionBlock = ^(GTLServiceTicket *ticket, id object, NSError *error) {
+    if (error == nil) {
+      self.activityFeed = object;
+    } else {
+      self.activityFeedFetchError = error;
+    }
+  };
 
   GTLBatchQuery *batchQuery = [GTLBatchQuery batchQuery];
   [batchQuery addQuery:profileQuery];
@@ -211,33 +231,12 @@ NSString *const kKeychainItemName = @"Plus Sample: Google Plus";
                            completionHandler:^(GTLServiceTicket *ticket,
                                                id result, NSError *error) {
                              // Callback
-                             if (error == nil) {
-                               // Query execution succeeded
-                               GTLBatchResult *batchResult = result;
-
-                               // Get the objects, for the queries that
-                               // succeeeded
-                               NSDictionary *successes = batchResult.successes;
-
-                               NSString *profileRequestID = [profileQuery requestID];
-                               NSString *activitiesRequestID = [activitiesQuery requestID];
-
-                               self.userProfile = [successes valueForKey:profileRequestID];
-                               self.activityFeed = [successes valueForKey:activitiesRequestID];
-
-                               // Get the errors, for the queries that failed
-                               NSDictionary *failures = batchResult.failures;
-                               GTLErrorObject *profileError = [failures valueForKey:profileRequestID];
-                               GTLErrorObject *activityFeedError = [failures valueForKey:activitiesRequestID];
-
-                               self.profileFetchError = profileError.foundationError;
-                               self.activityFeedFetchError = activityFeedError.foundationError;
-                             } else {
-                               // Query execution failed
-                               self.profileFetchError = error;
-                               self.activityFeedFetchError = nil;
-                             }
-
+                             //
+                             // For batch queries with successful execution,
+                             // the result is a GTLBatchResult object
+                             //
+                             // At this point, the query completion blocks
+                             // have already been called
                              self.profileTicket = nil;
 
                              [self updateUI];

@@ -67,6 +67,11 @@
   return YES;
 }
 
+- (void)executionDidStop {
+  NSArray *queries = self.queries;
+  [queries makeObjectsPerformSelector:@selector(executionDidStop)];
+}
+
 - (GTLQuery *)queryForRequestID:(NSString *)requestID {
   GTLQuery *result = [requestIDMap_ objectForKey:requestID];
   if (result) return result;

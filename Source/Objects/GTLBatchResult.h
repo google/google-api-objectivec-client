@@ -21,8 +21,8 @@
 
 @interface GTLBatchResult : GTLObject {
  @private
-  NSDictionary *successes_;
-  NSDictionary *failures_;
+  NSMutableDictionary *successes_;
+  NSMutableDictionary *failures_;
 }
 
 // Dictionaries of results for all queries in the batch
@@ -52,7 +52,7 @@
 // }
 //
 
-@property (retain) NSDictionary *successes;
-@property (retain) NSDictionary *failures;
+@property (retain) NSMutableDictionary *successes;
+@property (retain) NSMutableDictionary *failures;
 
 @end
