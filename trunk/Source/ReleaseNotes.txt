@@ -5,6 +5,11 @@ Project site:     http://code.google.com/p/google-api-objectivec-client/
 Discussion group: http://groups.google.com/group/google-api-objectivec-client
 
 
+20-September-2011
+
+Added interfaces for orkut
+
+
 15-September-2011
 
 Added interfaces for Google Plus.

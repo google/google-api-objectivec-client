@@ -20,9 +20,11 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   plus/v1
+//   Google+ API (plus/v1)
 // Description:
-//   Google+ API
+//   The Google+ API enables developers to build on top of the Google+ platform.
+// Documentation:
+//   http://developers.google.com/+/api/
 // Classes:
 //   GTLQueryPlus (3 custom class methods, 7 custom properties)
 
