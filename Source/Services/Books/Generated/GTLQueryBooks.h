@@ -104,7 +104,9 @@
 //   shelf: Id of bookshelf to retrieve volumes.
 //  Optional:
 //   country: ISO-3166-1 code to override the IP-based location.
+//   maxResults: Maximum number of results to return
 //   source: String to identify the originator of this request.
+//   startIndex: Index of the first element to return (starts at 0)
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
 // Fetches a GTLBooksVolumes.
