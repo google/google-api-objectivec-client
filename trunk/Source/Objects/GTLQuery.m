@@ -47,6 +47,10 @@
             expectedObjectClass = expectedObjectClass_,
             shouldSkipAuthorization = skipAuthorization_;
 
+#if NS_BLOCKS_AVAILABLE
+@synthesize completionBlock = completionBlock_;
+#endif
+
 + (id)queryWithMethodName:(NSString *)methodName {
   return [[[self alloc] initWithMethodName:methodName] autorelease];
 }
@@ -72,6 +76,9 @@
   [childCache_ release];
   [requestID_ release];
   [urlQueryParameters_ release];
+#if NS_BLOCKS_AVAILABLE
+  [completionBlock_ release];
+#endif
 
   [super dealloc];
 }
@@ -92,6 +99,9 @@
   query.urlQueryParameters = self.urlQueryParameters;
   query.expectedObjectClass = self.expectedObjectClass;
   query.shouldSkipAuthorization = self.shouldSkipAuthorization;
+#if NS_BLOCKS_AVAILABLE
+  query.completionBlock = self.completionBlock;
+#endif
   return query;
 }
 
@@ -129,6 +139,12 @@
 
 - (BOOL)isBatchQuery {
   return NO;
+}
+
+- (void)executionDidStop {
+#if NS_BLOCKS_AVAILABLE
+  self.completionBlock = nil;
+#endif
 }
 
 + (NSString *)nextRequestID {

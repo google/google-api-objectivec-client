@@ -43,6 +43,10 @@
 
 // Error domains
 _EXTERN NSString* const kGTLServiceErrorDomain _INITIALIZE_AS(@"com.google.GTLServiceDomain");
+enum {
+  kGTLErrorQueryResultMissing = -3000
+};
+
 _EXTERN NSString* const kGTLJSONRPCErrorDomain _INITIALIZE_AS(@"com.google.GTLJSONRPCErrorDomain");
 
 // We'll consistently store the server error string in the userInfo under
@@ -104,10 +108,12 @@ typedef void *GTLServiceUploadProgressHandler;
   SEL uploadProgressSelector_; // optional
 
 #if NS_BLOCKS_AVAILABLE
+  BOOL (^retryBlock_)(GTLServiceTicket *, BOOL, NSError *);
   GTLServiceUploadProgressHandler serviceUploadProgressBlock_;
 #elif !__LP64__
   // Placeholders: for 32-bit builds, keep the size of the object's ivar section
   // the same with and without blocks
+  id retryPlaceholder_;
   id serviceUploadProgressPlaceholder_;
 #endif
 
@@ -195,6 +201,9 @@ typedef void *GTLServiceUploadProgressHandler;
 // selector, this selector's first argument is a ticket, not a fetcher.
 
 @property (nonatomic, assign) SEL retrySelector;
+#if NS_BLOCKS_AVAILABLE
+@property (copy) BOOL (^retryBlock)(GTLServiceTicket *ticket, BOOL suggestedWillRetry, NSError *error);
+#endif
 
 @property (nonatomic, assign) NSTimeInterval maxRetryInterval;
 
@@ -465,17 +474,19 @@ typedef void *GTLServiceUploadProgressHandler;
   NSTimeInterval maxRetryInterval_;
 
 #if NS_BLOCKS_AVAILABLE
+  BOOL (^retryBlock_)(GTLServiceTicket *, BOOL, NSError *);
   GTLServiceUploadProgressHandler uploadProgressBlock_;
 #elif !__LP64__
   // Placeholders: for 32-bit builds, keep the size of the object's ivar section
   // the same with and without blocks
+  id retryPlaceholder_;
   id uploadProgressPlaceholder_;
 #endif
 
   GTLObject *postedObject_;
   GTLObject *fetchedObject_;
-  NSMutableArray *accumulatedItems_;
   id<GTLQueryProtocol> executingQuery_;
+  id<GTLQueryProtocol> originalQuery_;
   NSError *fetchError_;
   BOOL hasCalledCallback_;
   NSUInteger pagesFetchedCounter_;
@@ -523,7 +534,8 @@ typedef void *GTLServiceUploadProgressHandler;
 
 @property (nonatomic, retain) GTLObject *postedObject;
 @property (nonatomic, retain) GTLObject *fetchedObject;
-@property (nonatomic, retain) id<GTLQueryProtocol> executingQuery; // Query used to create this ticket
+@property (nonatomic, retain) id<GTLQueryProtocol> executingQuery; // Query currently being fetched by this ticket
+@property (nonatomic, retain) id<GTLQueryProtocol> originalQuery;  // Query used to create this ticket
 - (GTLQuery *)queryForRequestID:(NSString *)requestID; // Returns the query from within the batch with the given id.
 
 @property (nonatomic, retain) NSDictionary *surrogates;
@@ -532,6 +544,9 @@ typedef void *GTLServiceUploadProgressHandler;
 
 @property (nonatomic, assign, getter=isRetryEnabled) BOOL retryEnabled;
 @property (nonatomic, assign) SEL retrySelector;
+#if NS_BLOCKS_AVAILABLE
+@property (copy) BOOL (^retryBlock)(GTLServiceTicket *ticket, BOOL suggestedWillRetry, NSError *error);
+#endif
 @property (nonatomic, assign) NSTimeInterval maxRetryInterval;
 
 #pragma mark Status
@@ -544,8 +559,6 @@ typedef void *GTLServiceUploadProgressHandler;
 
 @property (nonatomic, assign) BOOL shouldFetchNextPages;
 @property (nonatomic, assign) NSUInteger pagesFetchedCounter;
-@property (nonatomic, retain) NSMutableArray *accumulatedItems;
-- (void)accumulateItems:(NSArray *)items;
 
 #pragma mark Upload
 

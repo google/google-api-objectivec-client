@@ -32,8 +32,8 @@
 
 - (id)copyWithZone:(NSZone *)zone {
   GTLBatchResult* newObject = [super copyWithZone:zone];
-  newObject.successes = self.successes;
-  newObject.failures = self.failures;
+  newObject.successes = [[self.successes mutableCopyWithZone:zone] autorelease];
+  newObject.failures = [[self.failures mutableCopyWithZone:zone] autorelease];
   return newObject;
 }
 

@@ -26,7 +26,15 @@
 @property (retain) NSString *message;
 @property (retain) NSArray *data; // of GTLErrorObjectData
 
-@property (readonly) NSError *foundationError; // convenience accessor
+// Convenience accessor for creating an NSError from a GTLErrorObject.
+@property (readonly) NSError *foundationError;
+
+// Convenience accessor for extracting the GTLErrorObject that was used to
+// create an NSError.
+//
+// Returns nil if the error was not originally from a GTLErrorObject.
++ (GTLErrorObject *)underlyingObjectForError:(NSError *)foundationError;
+
 @end
 
 @interface GTLErrorObjectData : GTLObject

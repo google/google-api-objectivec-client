@@ -85,6 +85,16 @@ showDeleted, showHidden;
   return query;
 }
 
++ (id)queryForTasksGetWithTasklist:(NSString *)tasklist
+                              task:(NSString *)task {
+  NSString *methodName = @"tasks.tasks.get";
+  GTLQueryTasksTest *query = [self queryWithMethodName:methodName];
+  query.tasklist = tasklist;
+  query.task = task;
+  query.expectedObjectClass = [GTLTasksTask class];
+  return query;
+}
+
 @end
 
 //
@@ -122,17 +132,24 @@ showDeleted, showHidden;
 
 static const NSTimeInterval kTimeoutInterval = 10.0;
 
-// file available in Tests folder
+// Files available in Tests folder
 static NSString *const kRESTValidFileName = @"Task1.rest.txt";
 static NSString *const kRESTErrorFileName = @"Task1.rest.txt?status=499";
 
 static NSString *const kRPCValidName = @"Task1.rpc";
 static NSString *const kRPCInvalidName = @"TaskError1.rpc";
+
+// Token paging
 static NSString *const kRPCPageAName = @"TaskPage1a.rpc"; // page token request
 static NSString *const kRPCPageBName = @"TaskPage1b.rpc"; // page token response
+// Indexed paging
 static NSString *const kRPCPageCName = @"TaskPage1c.rpc"; // start index request
 static NSString *const kRPCPageDName = @"TaskPage1d.rpc"; // start index response
+// Batch
 static NSString *const kBatchRPCName = @"TaskBatch1.rpc";
+// Batch with paging
+static NSString *const kBatchRPCPageAName = @"TaskBatchPage1a.rpc";
+static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
 
 - (NSString *)docRootPath {
   // find a test file
@@ -511,72 +528,86 @@ static NSString *const kBatchRPCName = @"TaskBatch1.rpc";
 }
 
 - (void)testServiceRPCBatchFetch {
-
+  
   // test:  fetch query batch
   //
   // tests for files "TaskBatch1.request.txt" and "TaskBatch1.response.txt"
-
+  
   if (!isServerRunning_) return;
-
+  
   GTLService *service = [[[GTLService alloc] init] autorelease];
   service.rpcURL = [testServer_ localURLForFile:kBatchRPCName];
   service.apiVersion = @"v1";
-
+  
   GTLServiceCompletionHandler completionBlock;
-
+  
   completionBlock = ^(GTLServiceTicket *ticket, id object, NSError *error) {
     GTLBatchResult *batchResult = object;
-
+    
     // we expect the first batch item to succeed, the second to fail
     NSDictionary *successes = batchResult.successes;
     STAssertEquals((NSUInteger) 1, [successes count], @"success count");
-
+    
     NSDictionary *failures = batchResult.failures;
     STAssertEquals((NSUInteger) 1, [failures count], @"failure count");
-
+    
     // successful item
     GTLTasksTask *item = [successes objectForKey:@"gtl_19"];
     NSString *className = NSStringFromClass([item class]);
     NSString *expectedName = PREFIXED_CLASSNAME(@"GTLTasksTask");
     STAssertEqualObjects(expectedName, className, @"result class error");
-
+    
     STAssertEqualObjects(@"tasks#task", item.kind, @"kind field");
     STAssertEqualObjects(@"MDg0NTg2OTA1ODg4OTI3MzgyMzQ6NDox", item.identifier, @"id");
     STAssertEqualObjects(@"2011-05-03T23:14:20.735Z",
                          item.updated.RFC3339String, @"date");
-
+    
     // failed item
     GTLErrorObject *errorObj = [failures objectForKey:@"gtl_18"];
     className = NSStringFromClass([errorObj class]);
     expectedName = PREFIXED_CLASSNAME(@"GTLErrorObject");
     STAssertEqualObjects(expectedName, className, @"error object");
-
+    
     STAssertEquals(400, [errorObj.code intValue], @"error code");
     STAssertEqualObjects(@"Invalid Value", errorObj.message, @"error message");
-
+    
     GTLErrorObjectData *errData = [errorObj.data lastObject];
     STAssertEqualObjects(@"invalid", errData.reason, @"error reason");
   };
 
   // make a batch with two queries
+  __block NSMutableArray *queriesToCallBack = [NSMutableArray array];
+
   GTLTasksTask *task1 = [GTLTasksTask object];
   task1.identifier = @"MDg0NTg2OTA1ODg4OTI3MzgyMzQ6NDox";
   task1.status = @"needsAction";
   task1.title = @"task one";
   task1.identifier = @"MDg0NTg2OTA1ODg4OTI3MzgyMzQ6NDox";
   GTLQueryTasksTest *query1 = [GTLQueryTasksTest queryForTasksUpdateWithObject:task1
-                                                              tasklist:@"MDg0NTg2OTA1ODg4OTI3MzgyMzQ6NDow"
-                                                                  task:@"MDg0NTg2OTA1ODg4OTI3MzgyMzQ6NDox"];
+                                                                      tasklist:@"MDg0NTg2OTA1ODg4OTI3MzgyMzQ6NDow"
+                                                                          task:@"MDg0NTg2OTA1ODg4OTI3MzgyMzQ6NDox"];
   query1.requestID = @"gtl_19";
+  query1.completionBlock = ^(GTLServiceTicket *ticket, id object, NSError *error) {
+    // Remove this query from the list
+    STAssertTrue([queriesToCallBack containsObject:query1], @"callback list");
+    [queriesToCallBack removeObject:query1];
+  };
+  [queriesToCallBack addObject:query1];
 
   GTLTasksTask *task2 = [GTLTasksTask object];
   task2.status = @"needsAction";
   task2.title = @"task two";
   task2.identifier = @"MDg0NTg2OTA1ODg4OTI3MzgyMzQ6NDoy";
   GTLQueryTasksTest *query2 = [GTLQueryTasksTest queryForTasksUpdateWithObject:task2
-                                                              tasklist:@"MDg0NTg2OTA1ODg4OTI3MzgyMzQ6NDow"
-                                                                  task:@"MDg0NTg2OTA1ODg4OTI3MzgyMzQ6NDoy"];
+                                                                      tasklist:@"MDg0NTg2OTA1ODg4OTI3MzgyMzQ6NDow"
+                                                                          task:@"MDg0NTg2OTA1ODg4OTI3MzgyMzQ6NDoy"];
   query2.requestID = @"gtl_18";
+  query2.completionBlock = ^(GTLServiceTicket *ticket, id object, NSError *error) {
+    // Remove this query from the list
+    STAssertTrue([queriesToCallBack containsObject:query2], @"callback list");
+    [queriesToCallBack removeObject:query2];
+  };
+  [queriesToCallBack addObject:query2];
 
   GTLBatchQuery *batchQuery = [GTLBatchQuery batchQuery];
   [batchQuery addQuery:query1];
@@ -584,6 +615,80 @@ static NSString *const kBatchRPCName = @"TaskBatch1.rpc";
 
   GTLServiceTicket *ticket = [service executeQuery:batchQuery
                                  completionHandler:completionBlock];
+  [self service:service waitForTicket:ticket];
+  STAssertTrue(ticket.hasCalledCallback, @"callback skipped");
+
+  STAssertEquals([queriesToCallBack count], (NSUInteger) 0,
+                 @"queries not called back");
+  STAssertNil(query2.completionBlock, @"Query callback not cleared");
+}
+
+- (void)testServiceRPCPagedBatchFetch {
+  // Test token-based paging on queries in a batch fetch
+  //
+  // This tests for files "TaskBatchPage1a.request.txt" and
+  // "TaskBatchPage1a.response.txt", and for the page 1b request
+  // and response
+
+  if (!isServerRunning_) return;
+
+  GTLService *service = [[[GTLService alloc] init] autorelease];
+  service.rpcURL = [testServer_ localURLForFile:kBatchRPCPageAName];
+  service.apiVersion = @"v1";
+  service.shouldFetchNextPages = YES;
+
+  // Query for one item
+  GTLQueryTasksTest *query1 = [GTLQueryTasksTest queryForTasksGetWithTasklist:@"MTQwNzM4MjM0NzE2NDExMDgxOTM6MDow"
+                                                                         task:@"MTQwNzM4MjM0NzE2NDExMDgxOTM6MDoz"];
+  query1.requestID = @"gtl_4";
+
+  // Query for pages of items
+  GTLQueryTasksTest *query2 = [GTLQueryTasksTest queryForTasksListWithTasklist:@"MTQwNzM4MjM0NzE2NDExMDgxOTM6MDow"];
+  query2.requestID = @"gtl_3";
+  query2.showCompleted = YES;
+  query2.showHidden = NO;
+  query2.showDeleted = NO;
+  query2.maxResults = 2;
+
+  GTLBatchQuery *batchQuery = [GTLBatchQuery batchQuery];
+  [batchQuery addQuery:query1];
+  [batchQuery addQuery:query2];
+
+  GTLServiceCompletionHandler completionBlock;
+  completionBlock = ^(GTLServiceTicket *ticket, id object, NSError *error) {
+
+    STAssertNil(error, @"fetch error %@ %@", error, [error userInfo]);
+    GTLBatchResult *result = object;
+
+    NSDictionary *successes = result.successes;
+    NSDictionary *failures = result.failures;
+
+    STAssertEquals([successes count], (NSUInteger) 2, @"success count");
+    STAssertEquals([failures count], (NSUInteger) 0, @"failures count");
+
+    GTLTasksTask *task = [successes objectForKey:[query1 requestID]];
+    STAssertEqualObjects(task.title, @"Wash", @"task title");
+
+    GTLTasksTasks *taskCollection = [successes objectForKey:[query2 requestID]];
+    STAssertEquals([taskCollection.items count], (NSUInteger) 4,
+                   @"collection count");
+
+    GTLTasksTask *item0 = [taskCollection itemAtIndex:0];
+    GTLTasksTask *item3 = [taskCollection itemAtIndex:3];
+    STAssertEqualObjects(item0.title, @"task uno", @"first task");
+    STAssertEqualObjects(item3.title, @"task cuatro", @"last task");
+    STAssertEqualObjects(item3.notes, @"Notez", @"last task");
+  };
+
+  GTLServiceTicket *ticket = [service executeQuery:batchQuery
+                                 completionHandler:completionBlock];
+
+  // this executeQuery: invocation creates the first fetcher, getting
+  // the first page of the response.  We'll change the rpc URL now
+  // so when the automatic fetch of the second page occurs later, it
+  // will fetch the page B file
+  service.rpcURL = [testServer_ localURLForFile:kBatchRPCPageBName];
+
   [self service:service waitForTicket:ticket];
   STAssertTrue(ticket.hasCalledCallback, @"callback skipped");
 }

@@ -95,6 +95,12 @@ static NSString *ETagIfPresent(GTLObject *obj) {
            didFinishedSelector:(SEL)finishedSelector
              completionHandler:(GTLServiceCompletionHandler)completionHandler
                         ticket:(GTLServiceTicket *)ticket;
+- (id <GTLQueryProtocol>)nextPageQueryForQuery:(GTLQuery *)query
+                                        result:(GTLObject *)object
+                                        ticket:(GTLServiceTicket *)ticket;
+- (GTLObject *)mergedNewResultObject:(GTLObject *)newResult
+                     oldResultObject:(GTLObject *)oldResult
+                            forQuery:(GTLQuery *)query;
 - (BOOL)invokeRetrySelector:(SEL)retrySelector
                    delegate:(id)delegate
                      ticket:(GTLServiceTicket *)ticket
@@ -124,6 +130,10 @@ static NSString *ETagIfPresent(GTLObject *obj) {
             additionalHTTPHeaders = additionalHTTPHeaders_,
             apiVersion = apiVersion_,
             rpcURL = rpcURL_;
+
+#if NS_BLOCKS_AVAILABLE
+@synthesize retryBlock = retryBlock_;
+#endif
 
 + (Class)ticketClass {
   return [GTLServiceTicket class];
@@ -167,6 +177,7 @@ static NSString *ETagIfPresent(GTLObject *obj) {
   [surrogates_ release];
 #if NS_BLOCKS_AVAILABLE
   [serviceUploadProgressBlock_ release];
+  [retryBlock_ release];
 #endif
   [apiKey_ release];
   [apiVersion_ release];
@@ -449,13 +460,13 @@ static NSString *ETagIfPresent(GTLObject *obj) {
 
   // TODO: support uploading multipart MIME streams and chunked uploads
   //
-  // TODO: decide if ProgressMonitorInputStream matters,
-  // since it's needed just for iPhone 2.0 and early 10.5.x
-  //
   // TODO: enforce minimum upload chunk size
   ticket.postedObject = bodyObject;
 
   ticket.executingQuery = query;
+  if (ticket.originalQuery == nil) {
+    ticket.originalQuery = query;
+  }
 
   GTMHTTPFetcherService *fetcherService = self.fetcherService;
   GTMHTTPFetcher *fetcher = [fetcherService fetcherWithRequest:request];
@@ -479,7 +490,14 @@ static NSString *ETagIfPresent(GTLObject *obj) {
   fetcher.retryEnabled = ticket.retryEnabled;
   fetcher.maxRetryInterval = ticket.maxRetryInterval;
 
-  if (ticket.retrySelector) {
+  BOOL shouldExamineRetries;
+#if NS_BLOCKS_AVAILABLE
+  shouldExamineRetries = (ticket.retrySelector != nil
+                          || ticket.retryBlock != nil);
+#else
+  shouldExamineRetries = (ticket.retrySelector != nil);
+#endif
+  if (shouldExamineRetries) {
     [fetcher setRetrySelector:@selector(objectFetcher:willRetry:forError:)];
   }
 
@@ -666,7 +684,8 @@ static NSString *ETagIfPresent(GTLObject *obj) {
 - (GTLServiceTicket *)executeBatchQuery:(GTLBatchQuery *)batch
                                delegate:(id)delegate
                       didFinishSelector:(SEL)finishedSelector
-                      completionHandler:(id)completionHandler { // GTLServiceCompletionHandler
+                      completionHandler:(id)completionHandler // GTLServiceCompletionHandler
+                                 ticket:(GTLServiceTicket *)ticket {
   GTLBatchQuery *batchCopy = [[batch copy] autorelease];
   NSArray *queries = batchCopy.queries;
   NSUInteger numberOfQueries = [queries count];
@@ -731,9 +750,27 @@ static NSString *ETagIfPresent(GTLObject *obj) {
                                           didFinishSelector:finishedSelector
                                           completionHandler:completionHandler
                                              executingQuery:batch
-                                                     ticket:nil];
-  [resultTicket.objectFetcher setCommentWithFormat:@"batch (%lu queries)",
-   (unsigned long) numberOfQueries];
+                                                     ticket:ticket];
+
+#if !STRIP_GTM_FETCH_LOGGING
+  // Set the fetcher log comment
+  //
+  // Because this has expensive set operations, it's conditionally
+  // compiled in
+  NSArray *methodNames = [queries valueForKey:@"methodName"];
+  methodNames = [[NSSet setWithArray:methodNames] allObjects]; // de-dupe
+  NSString *methodsStr = [methodNames componentsJoinedByString:@", "];
+
+  NSUInteger pageNumber = ticket.pagesFetchedCounter;
+  NSString *pageStr = @"";
+  if (pageNumber > 0) {
+    pageStr = [NSString stringWithFormat:@"page %lu, ",
+               (unsigned long) pageNumber + 1];
+  }
+  [resultTicket.objectFetcher setCommentWithFormat:@"batch: %@ (%@%lu queries)",
+   methodsStr, pageStr, (unsigned long) numberOfQueries];
+#endif
+
   return resultTicket;
 }
 
@@ -1064,10 +1101,10 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 }
 
 - (void)handleParsedObjectForFetcher:(GTMHTTPFetcher *)fetcher {
-  // after parsing is complete, this is invoked on the thread that the
+  // After parsing is complete, this is invoked on the thread that the
   // fetch was performed on
   //
-  // there may not be an object due to a fetch or parsing error
+  // There may not be an object due to a fetch or parsing error
 
   // unpack the callback parameters
   id delegate = [fetcher propertyForKey:kFetcherDelegateKey];
@@ -1083,6 +1120,20 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
   NSError *error = [fetcher propertyForKey:kFetcherFetchErrorKey];
 
   GTLServiceTicket *ticket = [fetcher propertyForKey:kFetcherTicketKey];
+  GTLQuery *executingQuery = (GTLQuery *)ticket.executingQuery;
+
+  BOOL shouldFetchNextPages = ticket.shouldFetchNextPages;
+  GTLObject *previousObject = ticket.fetchedObject;
+
+  if (shouldFetchNextPages
+      && (previousObject != nil)
+      && (object != nil)) {
+    // Accumulate new results
+    object = [self mergedNewResultObject:object
+                         oldResultObject:previousObject
+                                forQuery:executingQuery];
+  }
+
   ticket.fetchedObject = object;
   ticket.fetchError = error;
 
@@ -1100,43 +1151,12 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
   // This assumes a pagination model where objects have entries in an "items"
   // field and a "nextPageToken" field, and queries support a "pageToken"
   // parameter.
-  GTLQuery *query = (GTLQuery *)ticket.executingQuery;
-  if (ticket.shouldFetchNextPages && ![query isBatchQuery]) {
+  if (ticket.shouldFetchNextPages) {
     // Determine if we should fetch more pages of results
-    GTLQuery *nextPageQuery = nil;
-    NSString *nextPageToken = nil;
-    NSNumber *nextStartIndex = nil;
 
-    if ([object respondsToSelector:@selector(nextPageToken)]
-      && [query respondsToSelector:@selector(pageToken)]) {
-      nextPageToken = [object performSelector:@selector(nextPageToken)];
-    }
-
-    if ([object respondsToSelector:@selector(nextStartIndex)]
-        && [query respondsToSelector:@selector(startIndex)]) {
-      nextStartIndex = [object performSelector:@selector(nextStartIndex)];
-    }
-
-    if (nextPageToken || nextStartIndex) {
-      // The ticket will accumulate the items from this fetch
-      NSArray *items = [object performSelector:@selector(items)];
-      [ticket accumulateItems:items];
-
-      // Make a query for the next page, preserving the request ID
-      nextPageQuery = [[query copy] autorelease];
-      nextPageQuery.requestID = query.requestID;
-
-      if (nextPageToken) {
-        [nextPageQuery performSelector:@selector(setPageToken:)
-                            withObject:nextPageToken];
-      } else {
-        // Use KVC to unwrap the scalar type instead of converting the
-        // NSNumber to an integer and using NSInvocation
-        [nextPageQuery setValue:nextStartIndex
-                         forKey:@"startIndex"];
-      }
-    }
-
+    GTLQuery *nextPageQuery = [self nextPageQueryForQuery:executingQuery
+                                                   result:object
+                                                   ticket:ticket];
     if (nextPageQuery) {
       BOOL isFetchingMore = [self fetchNextPageWithQuery:nextPageQuery
                                                 delegate:delegate
@@ -1147,38 +1167,87 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
         shouldCallCallbacks = NO;
       }
     } else {
-      // No more page tokens are present; if any items were previously
-      // accumulated, insert them now before these final items
-      NSMutableArray *accumulatedItems = ticket.accumulatedItems;
-      if ([accumulatedItems count] > 0) {
-        NSArray *items = [object performSelector:@selector(items)];
-        [accumulatedItems addObjectsFromArray:items];
-        [object performSelector:@selector(setItems:)
-                     withObject:accumulatedItems];
-        ticket.accumulatedItems = nil;
-
+      // No more page tokens are present
 #if DEBUG && !GTL_SKIP_PAGES_WARNING
-        // Each next page followed to accumulate all pages of a feed takes up to
-        // a few seconds.  When multiple pages are being fetched, that
-        // usually indicates that a larger page size (that is, more items per
-        // feed fetched) should be requested.
-        //
-        // To avoid fetching many pages, set query.maxResults so the feed
-        // requested is large enough to rarely need to follow next links.
-        NSUInteger pageCount = ticket.pagesFetchedCounter;
-        if (pageCount > 2) {
-          NSLog(@"Executing %@ required fetching %u pages; use a query with a"
-                @" larger maxResults for faster results",
-                query.methodName, (unsigned int) pageCount);
-        }
-#endif
-
+      // Each next page followed to accumulate all pages of a feed takes up to
+      // a few seconds.  When multiple pages are being fetched, that
+      // usually indicates that a larger page size (that is, more items per
+      // feed fetched) should be requested.
+      //
+      // To avoid fetching many pages, set query.maxResults so the feed
+      // requested is large enough to rarely need to follow next links.
+      NSUInteger pageCount = ticket.pagesFetchedCounter;
+      if (pageCount > 2) {
+        NSString *queryLabel = [executingQuery isBatchQuery] ?
+          @"batch query" : executingQuery.methodName;
+        NSLog(@"Executing %@ required fetching %u pages; use a query with a"
+              @" larger maxResults for faster results",
+              queryLabel, (unsigned int) pageCount);
       }
+#endif
     }
-
   }
 
+  // We no longer care about the queries for page 2 or later, so for the client
+  // inspecting the ticket in the callback, the executing query should be
+  // the original one
+  ticket.executingQuery = ticket.originalQuery;
+
   if (shouldCallCallbacks) {
+#if NS_BLOCKS_AVAILABLE
+    // First, call query-specific callback blocks.  We do this before the
+    // fetch callback to let applications do any final clean-up (or update
+    // their UI) in the fetch callback.
+    GTLQuery *originalQuery = (GTLQuery *)ticket.originalQuery;
+    if (![originalQuery isBatchQuery]) {
+      // Single query
+      GTLServiceCompletionHandler completionBlock = originalQuery.completionBlock;
+      if (completionBlock) {
+        completionBlock(ticket, object, error);
+      }
+    } else {
+      // Batch query
+      //
+      // We'll step through the queries of the original batch, not of the
+      // batch result
+      GTLBatchQuery *batchQuery = (GTLBatchQuery *)originalQuery;
+      GTLBatchResult *batchResult = (GTLBatchResult *)object;
+      NSDictionary *successes = batchResult.successes;
+      NSDictionary *failures = batchResult.failures;
+
+      for (GTLQuery *oneQuery in batchQuery.queries) {
+        GTLServiceCompletionHandler completionBlock = oneQuery.completionBlock;
+        if (completionBlock) {
+          // If there was no networking error, look for a query-specific
+          // error or result
+          GTLObject *oneResult = nil;
+          NSError *oneError = error;
+          if (oneError == nil) {
+            NSString *requestID = [oneQuery requestID];
+            GTLErrorObject *gtlError = [failures objectForKey:requestID];
+            if (gtlError) {
+              oneError = [gtlError foundationError];
+            } else {
+              oneResult = [successes objectForKey:requestID];
+              if (oneResult == nil) {
+                // We found neither a success nor a failure for this
+                // query, unexpectedly
+                GTL_DEBUG_LOG(@"GTLService: Batch result missing for request %@",
+                              requestID);
+                oneError = [NSError errorWithDomain:kGTLServiceErrorDomain
+                                               code:kGTLErrorQueryResultMissing
+                                           userInfo:nil];
+              }
+            }
+          }
+          completionBlock(ticket, oneResult, oneError);
+        }
+      }
+    }
+#endif
+    // Release query callback blocks
+    [originalQuery executionDidStop];
+
     if (finishedSelector) {
       [[self class] invokeCallback:finishedSelector
                             target:delegate
@@ -1195,6 +1264,13 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
     ticket.hasCalledCallback = YES;
   }
   fetcher.properties = nil;
+
+#if NS_BLOCKS_AVAILABLE
+  // Tickets don't know when the fetch has completed, so the service will
+  // release their blocks here to avoid unintended retain loops
+  ticket.retryBlock = nil;
+  [ticket setUploadProgressHandler:nil];
+#endif
 }
 
 #pragma mark -
@@ -1220,17 +1296,25 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 // selector provided by the user.
 - (BOOL)objectFetcher:(GTMHTTPFetcher *)fetcher willRetry:(BOOL)willRetry forError:(NSError *)error {
 
-  id delegate = [fetcher propertyForKey:kFetcherDelegateKey];
   GTLServiceTicket *ticket = [fetcher propertyForKey:kFetcherTicketKey];
-
   SEL retrySelector = ticket.retrySelector;
   if (retrySelector) {
+    id delegate = [fetcher propertyForKey:kFetcherDelegateKey];
+
     willRetry = [self invokeRetrySelector:retrySelector
                                  delegate:delegate
                                    ticket:ticket
                                 willRetry:willRetry
                                     error:error];
   }
+
+#if NS_BLOCKS_AVAILABLE
+  BOOL (^retryBlock)(GTLServiceTicket *, BOOL, NSError *) = ticket.retryBlock;
+  if (retryBlock) {
+    willRetry = retryBlock(ticket, willRetry, error);
+  }
+#endif
+
   return willRetry;
 }
 
@@ -1256,48 +1340,6 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
   }
   return willRetry;
 }
-
-// When a ticket is set to fetch more pages for feeds, this routine
-// initiates the fetch for each additional feed page
-- (BOOL)fetchNextPageWithQuery:(GTLQuery *)query
-                      delegate:(id)delegate
-           didFinishedSelector:(SEL)finishedSelector
-             completionHandler:(GTLServiceCompletionHandler)completionHandler
-                        ticket:(GTLServiceTicket *)ticket {
-  // Sanity check the number of pages fetched already
-  NSUInteger oldPagesFetchedCounter = ticket.pagesFetchedCounter;
-
-  if (oldPagesFetchedCounter > kMaxNumberOfNextPagesFetched) {
-    // Sanity check failed: way too many pages were fetched
-    //
-    // The client should be querying with a higher max results per page
-    // to avoid this
-    GTL_DEBUG_ASSERT(0, @"Fetched too many next pages for %@",
-                     query.methodName);
-    return NO;
-  }
-
-  ticket.pagesFetchedCounter = 1 + oldPagesFetchedCounter;
-
-  GTLServiceTicket *newTicket;
-  newTicket = [self fetchObjectWithMethodNamed:query.methodName
-                                   objectClass:query.expectedObjectClass
-                                    parameters:query.JSON
-                                    bodyObject:query.bodyObject
-                                     requestID:query.requestID
-                            urlQueryParameters:query.urlQueryParameters
-                                      delegate:delegate
-                             didFinishSelector:finishedSelector
-                             completionHandler:completionHandler
-                                executingQuery:query
-                                        ticket:ticket];
-
-  // In the bizarre case that the fetch didn't begin, newTicket will be
-  // nil.  So long as the new ticket is the same as the ticket we're
-  // continuing, then we're happy.
-  return (newTicket == ticket);
-}
-
 
 - (BOOL)waitForTicket:(GTLServiceTicket *)ticket
               timeout:(NSTimeInterval)timeoutInSeconds
@@ -1327,6 +1369,195 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 
 #pragma mark -
 
+// Given a single or batch query and its result, make a new query
+// for the next pages, if any.  Returns nil if there's no additional
+// query to make.
+//
+// This method calls itself recursively to make the individual next page
+// queries for a batch query.
+- (id <GTLQueryProtocol>)nextPageQueryForQuery:(GTLQuery *)query
+                                        result:(GTLObject *)object
+                                        ticket:(GTLServiceTicket *)ticket {
+  if (!query.isBatchQuery) {
+    // This is a single query
+
+    // Determine if we should fetch more pages of results
+    GTLQuery *nextPageQuery = nil;
+    NSString *nextPageToken = nil;
+    NSNumber *nextStartIndex = nil;
+
+    if ([object respondsToSelector:@selector(nextPageToken)]
+        && [query respondsToSelector:@selector(pageToken)]) {
+      nextPageToken = [object performSelector:@selector(nextPageToken)];
+    }
+
+    if ([object respondsToSelector:@selector(nextStartIndex)]
+        && [query respondsToSelector:@selector(startIndex)]) {
+      nextStartIndex = [object performSelector:@selector(nextStartIndex)];
+    }
+
+    if (nextPageToken || nextStartIndex) {
+      // Make a query for the next page, preserving the request ID
+      nextPageQuery = [[query copy] autorelease];
+      nextPageQuery.requestID = query.requestID;
+
+      if (nextPageToken) {
+        [nextPageQuery performSelector:@selector(setPageToken:)
+                            withObject:nextPageToken];
+      } else {
+        // Use KVC to unwrap the scalar type instead of converting the
+        // NSNumber to an integer and using NSInvocation
+        [nextPageQuery setValue:nextStartIndex
+                         forKey:@"startIndex"];
+      }
+    }
+    return nextPageQuery;
+  } else {
+    // This is a batch query
+    //
+    // Check if there's a next page to fetch for any of the success
+    // results by invoking this method recursively on each of those results
+    GTLBatchResult *batchResult = (GTLBatchResult *)object;
+    GTLBatchQuery *nextPageBatchQuery = nil;
+    NSDictionary *successes = batchResult.successes;
+
+    for (NSString *requestID in successes) {
+      GTLObject *singleObject = [successes objectForKey:requestID];
+      GTLQuery *singleQuery = [ticket queryForRequestID:requestID];
+
+      GTLQuery *newQuery = [self nextPageQueryForQuery:singleQuery
+                                                result:singleObject
+                                                ticket:ticket];
+      if (newQuery) {
+        // There is another query to fetch
+        if (nextPageBatchQuery == nil) {
+          nextPageBatchQuery = [GTLBatchQuery batchQuery];
+        }
+        [nextPageBatchQuery addQuery:newQuery];
+      }
+    }
+    return nextPageBatchQuery;
+  }
+}
+
+// When a ticket is set to fetch more pages for feeds, this routine
+// initiates the fetch for each additional feed page
+- (BOOL)fetchNextPageWithQuery:(GTLQuery *)query
+                      delegate:(id)delegate
+           didFinishedSelector:(SEL)finishedSelector
+             completionHandler:(GTLServiceCompletionHandler)completionHandler
+                        ticket:(GTLServiceTicket *)ticket {
+  // Sanity check the number of pages fetched already
+  NSUInteger oldPagesFetchedCounter = ticket.pagesFetchedCounter;
+
+  if (oldPagesFetchedCounter > kMaxNumberOfNextPagesFetched) {
+    // Sanity check failed: way too many pages were fetched
+    //
+    // The client should be querying with a higher max results per page
+    // to avoid this
+    GTL_DEBUG_ASSERT(0, @"Fetched too many next pages for %@",
+                     query.methodName);
+    return NO;
+  }
+
+  ticket.pagesFetchedCounter = 1 + oldPagesFetchedCounter;
+
+  GTLServiceTicket *newTicket;
+  if (query.isBatchQuery) {
+    newTicket = [self executeBatchQuery:(GTLBatchQuery *)query
+                               delegate:delegate
+                      didFinishSelector:finishedSelector
+                      completionHandler:completionHandler
+                                 ticket:ticket];
+  } else {
+    newTicket = [self fetchObjectWithMethodNamed:query.methodName
+                                     objectClass:query.expectedObjectClass
+                                      parameters:query.JSON
+                                      bodyObject:query.bodyObject
+                                       requestID:query.requestID
+                              urlQueryParameters:query.urlQueryParameters
+                                        delegate:delegate
+                               didFinishSelector:finishedSelector
+                               completionHandler:completionHandler
+                                  executingQuery:query
+                                          ticket:ticket];
+  }
+
+  // In the bizarre case that the fetch didn't begin, newTicket will be
+  // nil.  So long as the new ticket is the same as the ticket we're
+  // continuing, then we're happy.
+  return (newTicket == ticket);
+}
+
+// Given a new single or batch result (meaning additional pages for a previous
+// query result), merge it into the old result.
+- (GTLObject *)mergedNewResultObject:(GTLObject *)newResult
+                     oldResultObject:(GTLObject *)oldResult
+                            forQuery:(GTLQuery *)query {
+  if (query.isBatchQuery) {
+    // Batch query result
+    //
+    // The new batch results are a subset of the old result's queries, since
+    // not all queries in the batch necessarily have additional pages.
+    //
+    // New success objects replace old success objects, with the old items
+    // prepended; new failure objects replace old success objects.
+    // We will update the old batch results with accumulated items, using the
+    // new objects, and return the old batch.
+    //
+    // We reuse the old batch results object because it may include some earlier
+    // results which did not have additional pages.
+    GTLBatchResult *newBatchResult = (GTLBatchResult *)newResult;
+    GTLBatchResult *oldBatchResult = (GTLBatchResult *)oldResult;
+
+    NSMutableDictionary *newSuccesses = newBatchResult.successes;
+    NSMutableDictionary *newFailures = newBatchResult.failures;
+    NSMutableDictionary *oldSuccesses = oldBatchResult.successes;
+    NSMutableDictionary *oldFailures = oldBatchResult.failures;
+
+    for (NSString *requestID in newSuccesses) {
+      // Prepend the old items to the new response's items
+      //
+      // We can assume the objects are collections since they're present in
+      // additional pages.
+      GTLCollectionObject *newObj = [newSuccesses objectForKey:requestID];
+      GTLCollectionObject *oldObj = [oldSuccesses objectForKey:requestID];
+
+      NSMutableArray *items = [NSMutableArray arrayWithArray:oldObj.items];
+      [items addObjectsFromArray:newObj.items];
+      [newObj performSelector:@selector(setItems:) withObject:items];
+
+      // Replace the old object with the new one
+      [oldSuccesses setObject:newObj forKey:requestID];
+    }
+
+    for (NSString *requestID in newFailures) {
+      // Replace old successes or failures with the new failure
+      GTLErrorObject *newError = [newFailures objectForKey:requestID];
+      [oldFailures setObject:newError forKey:requestID];
+      [oldSuccesses removeObjectForKey:requestID];
+    }
+    return oldBatchResult;
+  } else {
+    // Single query result
+    //
+    // Merge the items into the new object, and return that.
+    //
+    // We can assume the objects are collections since they're present in
+    // additional pages.
+    GTLCollectionObject *newObj = (GTLCollectionObject *)newResult;
+    GTLCollectionObject *oldObj = (GTLCollectionObject *)oldResult;
+
+    NSMutableArray *items = [NSMutableArray arrayWithArray:oldObj.items];
+    [items addObjectsFromArray:newObj.items];
+    [newObj performSelector:@selector(setItems:) withObject:items];
+
+    return newObj;
+  }
+}
+
+#pragma mark -
+
 // GTLQuery methods.
 
 - (GTLServiceTicket *)executeQuery:(id<GTLQueryProtocol>)queryObj
@@ -1336,7 +1567,8 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
    return [self executeBatchQuery:queryObj
                          delegate:delegate
                 didFinishSelector:finishedSelector
-                completionHandler:NULL];
+                completionHandler:NULL
+                           ticket:nil];
   }
 
   GTLQuery *query = [[(GTLQuery *)queryObj copy] autorelease];
@@ -1364,7 +1596,8 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
     return [self executeBatchQuery:queryObj
                           delegate:nil
                  didFinishSelector:NULL
-                 completionHandler:handler];
+                 completionHandler:handler
+                            ticket:nil];
   }
 
   GTLQuery *query = [[(GTLQuery *)queryObj copy] autorelease];
@@ -1884,11 +2117,15 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
   postedObject = postedObject_,
   fetchedObject = fetchedObject_,
   executingQuery = executingQuery_,
+  originalQuery = originalQuery_,
   fetchError = fetchError_,
-  accumulatedItems = accumulatedItems_,
   pagesFetchedCounter = pagesFetchedCounter_,
   APIKey = apiKey_,
   isREST = isREST_;
+
+#if NS_BLOCKS_AVAILABLE
+@synthesize retryBlock = retryBlock_;
+#endif
 
 + (id)ticketForService:(GTLService *)service {
   return [[[self alloc] initWithService:service] autorelease];
@@ -1910,6 +2147,7 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 
 #if NS_BLOCKS_AVAILABLE
     uploadProgressBlock_ = [[service serviceUploadProgressHandler] copy];
+    retryBlock_ = [service.retryBlock copy];
 #endif
   }
   return self;
@@ -1922,11 +2160,12 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
   [objectFetcher_ release];
 #if NS_BLOCKS_AVAILABLE
   [uploadProgressBlock_ release];
+  [retryBlock_ release];
 #endif
   [postedObject_ release];
   [fetchedObject_ release];
-  [accumulatedItems_ release];
   [executingQuery_ release];
+  [originalQuery_ release];
   [fetchError_ release];
   [apiKey_ release];
 
@@ -1987,7 +2226,10 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 
 #if NS_BLOCKS_AVAILABLE
   [self setUploadProgressHandler:nil];
+  self.retryBlock = nil;
 #endif
+  [self.executingQuery executionDidStop];
+  self.executingQuery = self.originalQuery;
 
   [service_ autorelease];
   service_ = nil;
@@ -2089,16 +2331,6 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 
 - (NSInteger)statusCode {
   return [objectFetcher_ statusCode];
-}
-
-- (void)accumulateItems:(NSArray *)items {
-  NSMutableArray *accumulatedItems = self.accumulatedItems;
-  if (accumulatedItems == nil) {
-    accumulatedItems = [NSMutableArray arrayWithArray:items];
-    self.accumulatedItems = accumulatedItems;
-  } else {
-    [accumulatedItems addObjectsFromArray:items];
-  }
 }
 
 - (GTLQuery *)queryForRequestID:(NSString *)requestID {
