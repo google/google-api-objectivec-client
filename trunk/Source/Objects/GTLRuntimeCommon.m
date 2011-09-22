@@ -150,13 +150,13 @@ static NSString *const kJSONKey = @"jsonKey";
 static NSMutableDictionary *gDispatchCache = nil;
 
 static CFStringRef SelectorKeyCopyDescriptionCallBack(const void *key) {
-  // make a CFString from the key
-  SEL sel = (SEL) key;
-  CFStringRef str = (CFStringRef) [NSStringFromSelector(sel) copy];
+  // Make a CFString from the key
+  NSString *name = NSStringFromSelector((SEL) key);
+  CFStringRef str = CFStringCreateCopy(kCFAllocatorDefault, (CFStringRef) name);
   return str;
 }
 
-// save the dispatch details for the specified class and selector
+// Save the dispatch details for the specified class and selector
 + (void)setStoredDispatchForClass:(Class<GTLRuntimeCommon>)dispatchClass
                          selector:(SEL)sel
                       returnClass:(Class)returnClass
