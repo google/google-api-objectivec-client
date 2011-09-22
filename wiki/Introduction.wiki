@@ -260,9 +260,45 @@ An array in a patch object field always replaces the entire array for the object
 
 Several unrelated queries may be executed together in a *batch*. Batch execution is faster than is executing queries individually.
 
-The result of  executing a batch query is two dictionaries, one for the results of successful queries, and one for the error objects returned by unsuccessful queries. 
+There are two ways to obtain the results of batch queries: the unified completion handler callback (or delegate and selector) for the batch query execution, with results for all queries, and individual completion blocks for each query.
 
-Note that in addition to the dictionary of error results, there is also an NSError which indicates if the execution did not succeed.
+Typically, it is easier to use individual query completion blocks for unrelated queries, and the unified completion handler for batches of related queries.
+
+Both types of callbacks may be used; the individual query completion blocks are called before the completion handler for the batch query execution. Individual query completion blocks are optional, and may be omitted.
+
+=== Individual Query Completion Blocks ===
+
+A completion block can be specified for each query, as shown here:
+{{{
+GTLQueryPlus *query = [GTLQueryPlus queryForPeopleGetWithUserId:@"me"];
+query.completionBlock = ^(GTLServiceTicket *ticket, id object, NSError *error) {
+  if (error == nil) {
+    // This query succeeded
+  } else {
+    // This query failed
+  }
+};
+
+GTLBatchQuery *batchQuery = [GTLBatchQuery batchQuery];
+[batchQuery addQuery:query];
+...
+}}}
+
+Errors passed to the query's completion block will have an underlying `GTLErrorObject` when execution succeeded but the server returned an error for this specific query:
+{{{
+GTLErrorObject *errorObj = [GTLErrorObject underlyingObjectForError:error];
+if (errorObj) {
+    // The server returned this error for this specific query
+  } else {
+    // This error occurred because the batch execution failed
+}
+}}}
+
+=== Unified Batch Completion Handler ===
+
+The unified result of executing a batch query is a `GTLBatchResult` object with two dictionaries, one for the results of successful queries, and one for the error objects returned by unsuccessful queries. 
+
+Note that in addition to the dictionary of error results, there is also an `NSError` passed to the completion handler which indicates if the execution did not succeed.
 
 {{{
 GTLBatchQuery *batchQuery = [GTLBatchQuery batchQuery];
