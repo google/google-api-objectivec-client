@@ -30,6 +30,10 @@
 		4F244950121F3C2B00FEE1DA /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F244940121F3C2B00FEE1DA /* SBJSON.m */; settings = {COMPILER_FLAGS = "-Wno-parentheses"; }; };
 		4F2449B7121F3E2A00FEE1DA /* GTMHTTPFetcherTestServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2449B4121F3E2A00FEE1DA /* GTMHTTPFetcherTestServer.m */; };
 		4F2449B8121F3E2A00FEE1DA /* GTMHTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2449B6121F3E2A00FEE1DA /* GTMHTTPServer.m */; };
+		4F31A3D7142AA6BA00A58EAD /* TaskBatchPage1a.request.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4F31A3D3142AA6BA00A58EAD /* TaskBatchPage1a.request.txt */; };
+		4F31A3D8142AA6BA00A58EAD /* TaskBatchPage1a.response.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4F31A3D4142AA6BA00A58EAD /* TaskBatchPage1a.response.txt */; };
+		4F31A3D9142AA6BA00A58EAD /* TaskBatchPage1b.request.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4F31A3D5142AA6BA00A58EAD /* TaskBatchPage1b.request.txt */; };
+		4F31A3DA142AA6BA00A58EAD /* TaskBatchPage1b.response.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4F31A3D6142AA6BA00A58EAD /* TaskBatchPage1b.response.txt */; };
 		4F35B4B11385F9270082F64E /* Task1.rest.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4F35B4B01385F9270082F64E /* Task1.rest.txt */; };
 		4F35D4B4117787F600BDFA97 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F35D4B3117787F600BDFA97 /* SystemConfiguration.framework */; };
 		4F35D4C71177880300BDFA97 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F35D4B3117787F600BDFA97 /* SystemConfiguration.framework */; };
@@ -269,6 +273,10 @@
 		4F2449B6121F3E2A00FEE1DA /* GTMHTTPServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMHTTPServer.m; path = HTTPFetcher/Tests/GTMHTTPServer.m; sourceTree = "<group>"; };
 		4F2E11F10BA778C900237907 /* DevTestTool-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; name = "DevTestTool-Info.plist"; path = "Resources/DevTestTool-Info.plist"; sourceTree = "<group>"; };
 		4F2E11F20BA778D700237907 /* GTLFramework-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; name = "GTLFramework-Info.plist"; path = "Resources/GTLFramework-Info.plist"; sourceTree = "<group>"; };
+		4F31A3D3142AA6BA00A58EAD /* TaskBatchPage1a.request.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TaskBatchPage1a.request.txt; path = Tests/Data/TaskBatchPage1a.request.txt; sourceTree = "<group>"; };
+		4F31A3D4142AA6BA00A58EAD /* TaskBatchPage1a.response.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TaskBatchPage1a.response.txt; path = Tests/Data/TaskBatchPage1a.response.txt; sourceTree = "<group>"; };
+		4F31A3D5142AA6BA00A58EAD /* TaskBatchPage1b.request.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TaskBatchPage1b.request.txt; path = Tests/Data/TaskBatchPage1b.request.txt; sourceTree = "<group>"; };
+		4F31A3D6142AA6BA00A58EAD /* TaskBatchPage1b.response.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TaskBatchPage1b.response.txt; path = Tests/Data/TaskBatchPage1b.response.txt; sourceTree = "<group>"; };
 		4F35B4B01385F9270082F64E /* Task1.rest.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Task1.rest.txt; path = Tests/Data/Task1.rest.txt; sourceTree = "<group>"; };
 		4F35D4B3117787F600BDFA97 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = /System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<absolute>"; };
 		4F38F6A60B66E91D00B24B81 /* GTL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GTL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -624,6 +632,10 @@
 				4F76C07013B1208F009154C6 /* TaskPage1d.response.txt */,
 				4F1647691370C8F80096E878 /* TaskBatch1.request.txt */,
 				4F16476A1370C8F80096E878 /* TaskBatch1.response.txt */,
+				4F31A3D3142AA6BA00A58EAD /* TaskBatchPage1a.request.txt */,
+				4F31A3D4142AA6BA00A58EAD /* TaskBatchPage1a.response.txt */,
+				4F31A3D5142AA6BA00A58EAD /* TaskBatchPage1b.request.txt */,
+				4F31A3D6142AA6BA00A58EAD /* TaskBatchPage1b.response.txt */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -821,6 +833,10 @@
 				4F76C07813B120A6009154C6 /* TaskPage1d.request.txt in Resources */,
 				4F76C07913B120A6009154C6 /* TaskPage1d.response.txt in Resources */,
 				4F35B4B11385F9270082F64E /* Task1.rest.txt in Resources */,
+				4F31A3D7142AA6BA00A58EAD /* TaskBatchPage1a.request.txt in Resources */,
+				4F31A3D8142AA6BA00A58EAD /* TaskBatchPage1a.response.txt in Resources */,
+				4F31A3D9142AA6BA00A58EAD /* TaskBatchPage1b.request.txt in Resources */,
+				4F31A3DA142AA6BA00A58EAD /* TaskBatchPage1b.response.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1074,6 +1090,10 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
 				INFOPLIST_FILE = "Resources/GTLUnitTests-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-DGTM_UTILITIES_BASE64=1",
+				);
 				OTHER_LDFLAGS = (
 					"-framework",
 					Cocoa,
@@ -1101,6 +1121,10 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
 				INFOPLIST_FILE = "Resources/GTLUnitTests-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-DGTM_UTILITIES_BASE64=1",
+				);
 				OTHER_LDFLAGS = (
 					"-framework",
 					Cocoa,
