@@ -177,6 +177,101 @@ const CFStringRef kCharsToForceEscape = CFSTR("!*'();:@&=+$,/?%#[]");
   return inputStr;
 }
 
+#pragma mark Base64 Encoding/Decoding
+
+#if GTM_UTILITIES_BASE64
+
+// Cyrus Najmabadi elegent little encoder and decoder from
+// http://www.cocoadev.com/index.pl?BaseSixtyFour
+
+static char gEncodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+
++ (NSString *)stringWithBase64ForData:(NSData *)data {
+  if (data == nil) return nil;
+
+  const uint8_t* input = [data bytes];
+  NSUInteger length = [data length];
+
+  NSUInteger bufferSize = ((length + 2) / 3) * 4;
+  NSMutableData* buffer = [NSMutableData dataWithLength:bufferSize];
+
+  uint8_t *output = [buffer mutableBytes];
+  char *table = gEncodingTable;
+
+  for (NSUInteger i = 0; i < length; i += 3) {
+    NSUInteger value = 0;
+    for (NSUInteger j = i; j < (i + 3); j++) {
+      value <<= 8;
+
+      if (j < length) {
+        value |= (0xFF & input[j]);
+      }
+    }
+
+    NSInteger idx = (i / 3) * 4;
+    output[idx + 0] =                    table[(value >> 18) & 0x3F];
+    output[idx + 1] =                    table[(value >> 12) & 0x3F];
+    output[idx + 2] = (i + 1) < length ? table[(value >> 6)  & 0x3F] : '=';
+    output[idx + 3] = (i + 2) < length ? table[(value >> 0)  & 0x3F] : '=';
+  }
+
+  NSString *result = [[[NSString alloc] initWithData:buffer
+                                            encoding:NSASCIIStringEncoding] autorelease];
+  return result;
+}
+
++ (NSData *)dataWithBase64String:(NSString *)base64Str {
+  static char decodingTable[128];
+  static BOOL hasInited = NO;
+
+  if (!hasInited) {
+    memset(decodingTable, 0, 128);
+    for (unsigned int i = 0; i < sizeof(gEncodingTable); i++) {
+      decodingTable[(unsigned int) gEncodingTable[i]] = i;
+    }
+    hasInited = YES;
+  }
+
+  // The input string should be plain ASCII
+  const char *cString = [base64Str cStringUsingEncoding:NSASCIIStringEncoding];
+  if (cString == nil) return nil;
+
+  NSUInteger inputLength = strlen(cString);
+  if (inputLength % 4 != 0) return nil;
+  if (inputLength == 0) return [NSData data];
+
+  while (inputLength > 0 && cString[inputLength - 1] == '=') {
+    inputLength--;
+  }
+
+  NSInteger outputLength = inputLength * 3 / 4;
+  NSMutableData* data = [NSMutableData dataWithLength:outputLength];
+  uint8_t *output = [data mutableBytes];
+
+  NSInteger inputPoint = 0;
+  NSInteger outputPoint = 0;
+  char *table = decodingTable;
+
+  while (inputPoint < inputLength) {
+    int i0 = cString[inputPoint++];
+    int i1 = cString[inputPoint++];
+    int i2 = inputPoint < inputLength ? cString[inputPoint++] : 'A'; // 'A' will decode to \0
+    int i3 = inputPoint < inputLength ? cString[inputPoint++] : 'A';
+
+    output[outputPoint++] = (table[i0] << 2) | (table[i1] >> 4);
+    if (outputPoint < outputLength) {
+      output[outputPoint++] = ((table[i1] & 0xF) << 4) | (table[i2] >> 2);
+    }
+    if (outputPoint < outputLength) {
+      output[outputPoint++] = ((table[i2] & 0x3) << 6) | table[i3];
+    }
+  }
+
+  return data;
+}
+
+#endif // GTM_UTILITIES_BASE64
+
 #pragma mark Key-Value Coding Searches in an Array
 
 + (NSArray *)objectsFromArray:(NSArray *)sourceArray

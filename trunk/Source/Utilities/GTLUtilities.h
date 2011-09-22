@@ -32,12 +32,12 @@ NSNumber *GTL_EnsureNSNumber(NSNumber *num);
 
 @interface GTLUtilities : NSObject
 
-// utility for replacing whitespace and removing unsafe symbols for a
+// Utility for replacing whitespace and removing unsafe symbols for a
 // user-agent string
 + (NSString *)userAgentStringForString:(NSString *)str;
 
 //
-// string encoding
+// String encoding
 //
 
 // URL encoding, different for parts of URLs and parts of URL parameters
@@ -55,13 +55,21 @@ NSNumber *GTL_EnsureNSNumber(NSNumber *num);
 + (NSString *)stringByURLEncodingForURI:(NSString *)str;
 + (NSString *)stringByURLEncodingStringParameter:(NSString *)str;
 
-// percent-encoded UTF-8
+// Percent-encoded UTF-8
 + (NSString *)stringByPercentEncodingUTF8ForString:(NSString *)str;
 
 //
-// key-value coding searches in an array
+// Base 64
 //
-// utilities to get from an array objects having a known value (or nil)
+
+#if GTM_UTILITIES_BASE64
++ (NSString *)stringWithBase64ForData:(NSData *)data;
++ (NSData *)dataWithBase64String:(NSString *)base64Str;
+#endif
+
+// Key-value coding searches in an array
+//
+// Utilities to get from an array objects having a known value (or nil)
 // at a keyPath
 
 + (NSArray *)objectsFromArray:(NSArray *)sourceArray
@@ -73,7 +81,7 @@ NSNumber *GTL_EnsureNSNumber(NSNumber *num);
                 forKeyPath:(NSString *)keyPath;
 
 //
-// version helpers
+// Version helpers
 //
 
 + (NSComparisonResult)compareVersion:(NSString *)ver1 toVersion:(NSString *)ver2;
