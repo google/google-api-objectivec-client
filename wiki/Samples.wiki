@@ -9,6 +9,10 @@
 ==Books API==
 [http://code.google.com/p/google-api-objectivec-client/source/browse/#svn%2Ftrunk%2FExamples%2FBooksSample Sample application] that uses the Books API. ||
 
+==Calendar API==
+
+[http://code.google.com/p/google-api-objectivec-client/source/browse/#svn%2Ftrunk%2FExamples%2FCalendarSample Sample application] that uses the Calendar API. ||
+
 ==Google Latitude API==
 [http://code.google.com/p/google-api-objectivec-client/source/browse/#svn%2Ftrunk%2FExamples%2FLatitudeSample Sample application] that uses the Google Latitude API. ||
 
