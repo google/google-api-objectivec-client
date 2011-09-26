@@ -1,0 +1,180 @@
+/* Copyright (c) 2011 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+//
+//  GTLCalendarEvent.m
+//
+
+// ----------------------------------------------------------------------------
+// NOTE: This file is generated from Google APIs Discovery Service.
+// Service:
+//   Calendar API (calendar/v3)
+// Description:
+//   Lets you manipulate events and other calendar data.
+// Documentation:
+//   https://code.google.com/apis/calendar/v3/using.html
+// Classes:
+//   GTLCalendarEvent (0 custom class methods, 32 custom properties)
+//   GTLCalendarEventAttendees (0 custom class methods, 0 custom properties)
+//   GTLCalendarEventCreator (0 custom class methods, 2 custom properties)
+//   GTLCalendarEventExtendedProperties (0 custom class methods, 2 custom properties)
+//   GTLCalendarEventGadget (0 custom class methods, 8 custom properties)
+//   GTLCalendarEventOrganizer (0 custom class methods, 2 custom properties)
+//   GTLCalendarEventReminders (0 custom class methods, 2 custom properties)
+//   GTLCalendarEventExtendedPropertiesPrivate (0 custom class methods, 0 custom properties)
+//   GTLCalendarEventExtendedPropertiesShared (0 custom class methods, 0 custom properties)
+//   GTLCalendarEventGadgetPreferences (0 custom class methods, 0 custom properties)
+
+#import "GTLCalendarEvent.h"
+
+#import "GTLCalendarEventAttendee.h"
+#import "GTLCalendarEventDateTime.h"
+#import "GTLCalendarEventReminder.h"
+
+// ----------------------------------------------------------------------------
+//
+//   GTLCalendarEvent
+//
+
+@implementation GTLCalendarEvent
+@dynamic anyoneCanAddSelf, attendees, attendeesOmitted, color, created, creator,
+         descriptionProperty, end, ETag, extendedProperties, gadget,
+         guestsCanInviteOthers, guestsCanModify, guestsCanSeeOtherGuests,
+         htmlLink, iCalUID, identifier, kind, location, organizer,
+         originalStartTime, privateCopy, recurrence, recurringEventId,
+         reminders, sequence, start, status, summary, transparency, updated,
+         visibility;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      @"description", @"descriptionProperty",
+      @"etag", @"ETag",
+      @"id", @"identifier",
+      nil];
+  return map;
+}
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[NSString class]
+                                forKey:@"recurrence"];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"calendar#event"];
+}
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLCalendarEventAttendees
+//
+
+@implementation GTLCalendarEventAttendees
+
++ (Class)classForAdditionalProperties {
+  return [GTLCalendarEventAttendee class];
+}
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLCalendarEventCreator
+//
+
+@implementation GTLCalendarEventCreator
+@dynamic displayName, email;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLCalendarEventExtendedProperties
+//
+
+@implementation GTLCalendarEventExtendedProperties
+@dynamic private, shared;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLCalendarEventGadget
+//
+
+@implementation GTLCalendarEventGadget
+@dynamic display, height, iconLink, link, preferences, title, type, width;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLCalendarEventOrganizer
+//
+
+@implementation GTLCalendarEventOrganizer
+@dynamic displayName, email;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLCalendarEventReminders
+//
+
+@implementation GTLCalendarEventReminders
+@dynamic overrides, useDefault;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLCalendarEventReminder class]
+                                forKey:@"overrides"];
+  return map;
+}
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLCalendarEventExtendedPropertiesPrivate
+//
+
+@implementation GTLCalendarEventExtendedPropertiesPrivate
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLCalendarEventExtendedPropertiesShared
+//
+
+@implementation GTLCalendarEventExtendedPropertiesShared
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLCalendarEventGadgetPreferences
+//
+
+@implementation GTLCalendarEventGadgetPreferences
+@end
