@@ -5,11 +5,6 @@ Project site:     http://code.google.com/p/google-api-objectivec-client/
 Discussion group: http://groups.google.com/group/google-api-objectivec-client
 
 
-26-September-2011
-
-Added Calendar API interfaces and sample app.
-
-
 20-September-2011
 
 Added per-query callback blocks, especially useful for queries executes in
