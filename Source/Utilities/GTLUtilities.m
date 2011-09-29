@@ -179,7 +179,7 @@ const CFStringRef kCharsToForceEscape = CFSTR("!*'();:@&=+$,/?%#[]");
 
 #pragma mark Base64 Encoding/Decoding
 
-#if GTM_UTILITIES_BASE64
+#if GTL_UTILITIES_BASE64
 
 // Cyrus Najmabadi elegent little encoder and decoder from
 // http://www.cocoadev.com/index.pl?BaseSixtyFour
@@ -270,7 +270,7 @@ static char gEncodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuv
   return data;
 }
 
-#endif // GTM_UTILITIES_BASE64
+#endif // GTL_UTILITIES_BASE64
 
 #pragma mark Key-Value Coding Searches in an Array
 

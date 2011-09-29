@@ -1092,7 +1092,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CFLAGS = (
 					"$(inherited)",
-					"-DGTM_UTILITIES_BASE64=1",
+					"-DGTL_UTILITIES_BASE64=1",
 				);
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -1123,7 +1123,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CFLAGS = (
 					"$(inherited)",
-					"-DGTM_UTILITIES_BASE64=1",
+					"-DGTL_UTILITIES_BASE64=1",
 				);
 				OTHER_LDFLAGS = (
 					"-framework",
