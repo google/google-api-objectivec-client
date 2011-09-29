@@ -90,18 +90,22 @@
           && [dc1 weekdayOrdinal] == [dc2 weekdayOrdinal];
 }
 
-
 - (BOOL)isEqual:(GTLDateTime *)other {
 
   if (self == other) return YES;
   if (![other isKindOfClass:[GTLDateTime class]]) return NO;
 
+  BOOL areDateComponentsEqual = [self doesDateComponents:self.dateComponents
+                                     equalDateComponents:other.dateComponents];
+  NSTimeZone *tz1 = self.timeZone;
+  NSTimeZone *tz2 = other.timeZone;
+  BOOL areTimeZonesEqual = (tz1 == tz2 || (tz2 && [tz1 isEqual:tz2]));
+
   return self.offsetSeconds == other.offsetSeconds
     && self.isUniversalTime == other.isUniversalTime
-    && self.timeZone == other.timeZone
-    && [self doesDateComponents:self.dateComponents
-            equalDateComponents:other.dateComponents]
-    && self.milliseconds == other.milliseconds;
+    && self.milliseconds == other.milliseconds
+    && areDateComponentsEqual
+    && areTimeZonesEqual;
 }
 
 - (NSString *)description {

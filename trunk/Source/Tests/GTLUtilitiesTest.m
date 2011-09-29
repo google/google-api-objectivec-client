@@ -178,7 +178,7 @@
 
 #pragma mark -
 
-#if GTM_UTILITIES_BASE64
+#if GTL_UTILITIES_BASE64
 - (void)testBase64Conversion {
   NSString *dolphinStr = @"¿Dónde están los delfines?";
   NSString *dolphinEncoded = @"wr9Ew7NuZGUgZXN0w6FuIGxvcyBkZWxmaW5lcz8=";
@@ -217,14 +217,14 @@
   NSData *expectedData = [dolphinStr dataUsingEncoding:NSUTF8StringEncoding];
   STAssertEqualObjects(data, expectedData, @"dolphin string");
 }
-#endif // GTM_UTILITIES_BASE64
+#endif // GTL_UTILITIES_BASE64
 
 #pragma mark -
 
 - (void)testEnsureNSNumber {
   NSNumber *num;
   NSNumber *result;
-  
+
   // Give it a number, get the same thing back
   num = [NSNumber numberWithInteger:12];
   result = GTL_EnsureNSNumber(num);
