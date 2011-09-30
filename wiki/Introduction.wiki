@@ -151,7 +151,9 @@ if (object.nextPageToken) {
 }
 }}}
 
-For APIs that provide a `nextPageToken` property, the library can automatically fetch all pages, and return an object whose items array includes the items of all pages (up to 25 pages). This can be turned on by setting the `shouldFetchNextPages` property of a service or a ticket:
+Some APIs instead support a *nextStartIndex* in result objects, and a *startIndex* property for queries, but using those is similar.
+
+For APIs that provide a `nextPageToken` or `nextStartIndex` property, the library can automatically fetch all pages, and return an object whose items array includes the items of all pages (up to 25 pages). This can be turned on by setting the `shouldFetchNextPages` property of a service or a ticket:
 {{{
 // Turn on automatic page fetches
 service.shouldFetchNextPages = YES;
