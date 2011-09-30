@@ -49,6 +49,8 @@ Google APIs rely on OAuth 2 for user sign-in. The library includes the [http://c
 
 *Authorization* is the use of access tokens to allow specific requests. Applications pass the OAuth 2 authorization object to a service class's `setAuthorizer:` method to authorize queries.
 
+Be sure to read the introduction wiki page for [http://code.google.com/p/gtm-oauth2/ gtm-oauth2], as adding authentication support to your project is likely to require more effort than is using the API client library.
+
 == Google APIs Client Library for Objective-C Basics ==
 
 === Queries and GTLObjects ===
