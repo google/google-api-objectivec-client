@@ -62,7 +62,7 @@ NSNumber *GTL_EnsureNSNumber(NSNumber *num);
 // Base 64
 //
 
-#if GTM_UTILITIES_BASE64
+#if GTL_UTILITIES_BASE64
 + (NSString *)stringWithBase64ForData:(NSData *)data;
 + (NSData *)dataWithBase64String:(NSString *)base64Str;
 #endif
