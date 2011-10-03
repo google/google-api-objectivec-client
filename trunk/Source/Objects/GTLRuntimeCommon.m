@@ -362,11 +362,8 @@ static NSUInteger DynamicULongLongGetter(id self, SEL sel) {
                                    containedClass:NULL
                                           jsonKey:&jsonKey]) {
     NSNumber *num = [self JSONValueForKey:jsonKey];
-    NSLog(@"TVL1: %@", num);
     num = GTL_EnsureNSNumber(num);
-    NSLog(@"TVL2: %@", num);
     unsigned long long result = [num unsignedLongLongValue];
-    NSLog(@"TVL?: %qu", result);
     return result;
   }
   return 0;
@@ -382,7 +379,6 @@ static void DynamicULongLongSetter(id self, SEL sel, unsigned long long val) {
                                    containedClass:NULL
                                           jsonKey:&jsonKey]) {
     NSNumber *num = [NSNumber numberWithUnsignedLongLong:val];
-    NSLog(@"TVL3: %@", num);
     [self setJSONValue:num forKey:jsonKey];
   }
 }
@@ -701,9 +697,13 @@ static NSMutableArray *DynamicArrayGetter(id<GTLRuntimeCommon> self, SEL sel) {
                                        surrogates:surrogates
                                       isCacheable:NULL];
       } else {
-        GTL_DEBUG_LOG(@"GTLObject: unexpected JSON: %@.%@ should be an array, actually is a %@:\n%@",
-                      NSStringFromClass(selfClass), NSStringFromSelector(sel),
-                      NSStringFromClass([array class]), array);
+#if DEBUG
+        if (![array isKindOfClass:[NSNull class]]) {
+          GTL_DEBUG_LOG(@"GTLObject: unexpected JSON: %@.%@ should be an array, actually is a %@:\n%@",
+                        NSStringFromClass(selfClass), NSStringFromSelector(sel),
+                        NSStringFromClass([array class]), array);
+        }
+#endif
         result = (NSMutableArray *)array;
       }
     }

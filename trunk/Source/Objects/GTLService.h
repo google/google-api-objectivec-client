@@ -493,6 +493,8 @@ typedef void *GTLServiceUploadProgressHandler;
 
   NSString *apiKey_;
   BOOL isREST_;
+
+  NSOperation *parseOperation_;
 }
 
 + (id)ticketForService:(GTLService *)service;

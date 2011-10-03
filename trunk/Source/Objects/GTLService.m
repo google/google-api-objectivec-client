@@ -56,6 +56,7 @@ static NSString *ETagIfPresent(GTLObject *obj) {
 }
 
 @interface GTLServiceTicket ()
+@property (retain) NSOperation *parseOperation;
 @property (assign) BOOL isREST;
 @end
 
@@ -990,6 +991,7 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
     op = [[[NSInvocationOperation alloc] initWithTarget:self
                                                selector:parseSel
                                                  object:fetcher] autorelease];
+    ticket.parseOperation = op;
     [queue addOperation:op];
     // the fetcher now belongs to the parsing thread
   } else {
@@ -1001,12 +1003,26 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 }
 
 - (void)parseObjectFromDataOfFetcher:(GTMHTTPFetcher *)fetcher {
+  // This method runs in a separate thread
 
-  GTLServiceTicket *ticket = [fetcher propertyForKey:kFetcherTicketKey];
+  // Generally protect the fetcher properties, since canceling a ticket would
+  // release the fetcher properties dictionary
+  NSMutableDictionary *properties = [[fetcher.properties retain] autorelease];
+
+  // The callback thread is retaining the fetcher, so the fetcher shouldn't keep
+  // retaining the callback thread
+  NSThread *callbackThread = [properties valueForKey:kFetcherCallbackThreadKey];
+  [[callbackThread retain] autorelease];
+  [properties removeObjectForKey:kFetcherCallbackThreadKey];
+
+  GTLServiceTicket *ticket = [properties valueForKey:kFetcherTicketKey];
+  [[ticket retain] autorelease];
 
   NSDictionary *responseHeaders = fetcher.responseHeaders;
   NSString *contentType = [responseHeaders objectForKey:@"Content-Type"];
   NSData *data = fetcher.downloadedData;
+
+  NSOperation *parseOperation = ticket.parseOperation;
 
   GTL_DEBUG_ASSERT([contentType hasPrefix:@"application/json"],
                    @"Got unexpected content type '%@'", contentType);
@@ -1019,8 +1035,10 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
     NSError *parseError = nil;
     NSMutableDictionary *jsonWrapper = [GTLJSONParser objectWithData:data
                                                                error:&parseError];
+    if ([parseOperation isCancelled]) return;
+
     if (parseError != nil) {
-      [fetcher setProperty:parseError forKey:kFetcherFetchErrorKey];
+      [properties setValue:parseError forKey:kFetcherFetchErrorKey];
     } else {
       NSMutableDictionary *json;
       NSDictionary *batchClassMap = nil;
@@ -1037,7 +1055,7 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
           json = jsonWrapper;
         }
       } else {
-        batchClassMap = [fetcher propertyForKey:kFetcherBatchClassMapKey];
+        batchClassMap = [properties valueForKey:kFetcherBatchClassMapKey];
         if (batchClassMap) {
           // A batch gets the whole array as it's json.
           json = jsonWrapper;
@@ -1047,15 +1065,15 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
       }
 
       if (json != nil) {
-        Class defaultClass = [fetcher propertyForKey:kFetcherObjectClassKey];
+        Class defaultClass = [properties valueForKey:kFetcherObjectClassKey];
         NSDictionary *surrogates = ticket.surrogates;
 
-        GTLObject* parsedObject = [GTLObject objectForJSON:json
+        GTLObject *parsedObject = [GTLObject objectForJSON:json
                                               defaultClass:defaultClass
                                                 surrogates:surrogates
                                              batchClassMap:batchClassMap];
 
-        [fetcher setProperty:parsedObject forKey:kFetcherParsedObjectKey];
+        [properties setValue:parsedObject forKey:kFetcherParsedObjectKey];
       } else if (!isREST) {
         NSMutableDictionary *errorJSON = [jsonWrapper valueForKey:@"error"];
         GTL_DEBUG_ASSERT(errorJSON != nil, @"no result or error in response:\n%@",
@@ -1064,7 +1082,7 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
         NSError *error = [errorObject foundationError];
 
         // Store the error and let it go to the callback
-        [fetcher setProperty:error
+        [properties setValue:error
                       forKey:kFetcherFetchErrorKey];
       }
     }
@@ -1075,15 +1093,10 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 #endif
   }
 
+  if ([parseOperation isCancelled]) return;
+
   SEL parseDoneSel = @selector(handleParsedObjectForFetcher:);
-
-  NSThread *callbackThread = [[[fetcher propertyForKey:kFetcherCallbackThreadKey] retain] autorelease];
-
-  // the callback thread is retaining the fetcher, so the fetcher shouldn't keep
-  // retaining the callback thread
-  [fetcher setProperty:nil forKey:kFetcherCallbackThreadKey];
-
-  NSArray *runLoopModes = [fetcher propertyForKey:kFetcherCallbackRunLoopModesKey];
+  NSArray *runLoopModes = [properties valueForKey:kFetcherCallbackRunLoopModesKey];
   if (runLoopModes) {
     [self performSelector:parseDoneSel
                  onThread:callbackThread
@@ -1097,6 +1110,7 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
                withObject:fetcher
             waitUntilDone:NO];
   }
+
   // the fetcher now belongs to the callback thread
 }
 
@@ -1105,6 +1119,9 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
   // fetch was performed on
   //
   // There may not be an object due to a fetch or parsing error
+
+  GTLServiceTicket *ticket = [fetcher propertyForKey:kFetcherTicketKey];
+  ticket.parseOperation = nil;
 
   // unpack the callback parameters
   id delegate = [fetcher propertyForKey:kFetcherDelegateKey];
@@ -1119,7 +1136,6 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
   GTLObject *object = [fetcher propertyForKey:kFetcherParsedObjectKey];
   NSError *error = [fetcher propertyForKey:kFetcherFetchErrorKey];
 
-  GTLServiceTicket *ticket = [fetcher propertyForKey:kFetcherTicketKey];
   GTLQuery *executingQuery = (GTLQuery *)ticket.executingQuery;
 
   BOOL shouldFetchNextPages = ticket.shouldFetchNextPages;
@@ -2121,6 +2137,7 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
   fetchError = fetchError_,
   pagesFetchedCounter = pagesFetchedCounter_,
   APIKey = apiKey_,
+  parseOperation = parseOperation_,
   isREST = isREST_;
 
 #if NS_BLOCKS_AVAILABLE
@@ -2168,6 +2185,7 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
   [originalQuery_ release];
   [fetchError_ release];
   [apiKey_ release];
+  [parseOperation_ release];
 
   [super dealloc];
 }
@@ -2217,6 +2235,10 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 }
 
 - (void)cancelTicket {
+  NSOperation *parseOperation = self.parseOperation;
+  [parseOperation cancel];
+  self.parseOperation = nil;
+
   [objectFetcher_ stopFetching];
   objectFetcher_.properties = nil;
 
