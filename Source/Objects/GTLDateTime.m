@@ -23,12 +23,12 @@
 @implementation GTLDateTime
 
 // A note about milliseconds_:
-// RPC 3339 has support for fractions of a second.  NSDateComponents is all
+// RFC 3339 has support for fractions of a second.  NSDateComponents is all
 // NSInteger based, so it can't handle a fraction of a second.  NSDate is
 // built on NSTimeInterval so it has sub-millisecond precision.  GTL takes
 // the compromise of supporting the RFC's optional fractional second support
 // by maintaining a number of milliseconds past what fits in the
-// NSDateComponents.  The parsing and to string conversions will include
+// NSDateComponents.  The parsing and string conversions will include
 // 3 decimal digits (hence milliseconds).  When going to a string, the decimal
 // digits are only included if the milliseconds are non zero.
 
