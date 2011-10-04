@@ -26,7 +26,7 @@
 // Documentation:
 //   http://developers.google.com/+/api/
 // Classes:
-//   GTLQueryPlus (3 custom class methods, 7 custom properties)
+//   GTLQueryPlus (8 custom class methods, 10 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -49,8 +49,11 @@
 @property (retain) NSString *activityId;
 @property (retain) NSString *alt;
 @property (retain) NSString *collection;
+@property (retain) NSString *commentId;
 @property (assign) NSUInteger maxResults;
+@property (retain) NSString *orderBy;
 @property (retain) NSString *pageToken;
+@property (retain) NSString *query;
 @property (retain) NSString *userId;
 
 #pragma mark -
@@ -94,6 +97,60 @@
 + (id)queryForActivitiesListWithUserId:(NSString *)userId
                             collection:(NSString *)collection;
 
+// Method: plus.activities.search
+// Search public activities.
+//  Optional:
+//   maxResults: The maximum number of activities to include in the response,
+//     used for paging. For any response, the actual number returned may be less
+//     than the specified maxResults. (1-20, default 10)
+//   orderBy: Specifies how to order search results. (Default
+//     kGTLPlusOrderByRecent)
+//      kGTLPlusOrderByBest: Sort activities by relevance to the user, most
+//        relevant first.
+//      kGTLPlusOrderByRecent: Sort activities by published date, most recent
+//        first.
+//   pageToken: The continuation token, used to page through large result sets.
+//     To get the next page of results, set this parameter to the value of
+//     "nextPageToken" from the previous response. This token may be of any
+//     length.
+//   query: Full-text search query string.
+//  Authorization scope(s):
+//   kGTLAuthScopePlusMe
+// Fetches a GTLPlusActivityFeed.
++ (id)queryForActivitiesSearch;
+
+#pragma mark -
+#pragma mark "comments" methods
+// These create a GTLQueryPlus object.
+
+// Method: plus.comments.get
+// Get a comment.
+//  Required:
+//   commentId: The ID of the comment to get.
+//  Authorization scope(s):
+//   kGTLAuthScopePlusMe
+// Fetches a GTLPlusComment.
++ (id)queryForCommentsGetWithCommentId:(NSString *)commentId;
+
+// Method: plus.comments.list
+// List all of the comments for an activity.
+//  Required:
+//   activityId: The ID of the activity to get comments for.
+//  Optional:
+//   alt: Specifies an alternative representation type. (Default
+//     kGTLPlusAltJson)
+//      kGTLPlusAltJson: Use JSON format
+//   maxResults: The maximum number of comments to include in the response, used
+//     for paging. For any response, the actual number returned may be less than
+//     the specified maxResults. (0-100, default 20)
+//   pageToken: The continuation token, used to page through large result sets.
+//     To get the next page of results, set this parameter to the value of
+//     "nextPageToken" from the previous response.
+//  Authorization scope(s):
+//   kGTLAuthScopePlusMe
+// Fetches a GTLPlusCommentFeed.
++ (id)queryForCommentsListWithActivityId:(NSString *)activityId;
+
 #pragma mark -
 #pragma mark "people" methods
 // These create a GTLQueryPlus object.
@@ -107,5 +164,43 @@
 //   kGTLAuthScopePlusMe
 // Fetches a GTLPlusPerson.
 + (id)queryForPeopleGetWithUserId:(NSString *)userId;
+
+// Method: plus.people.listByActivity
+// List all of the people in the specified collection for a particular activity.
+//  Required:
+//   activityId: The ID of the activity to get the list of people for.
+//   collection: The collection of people to list.
+//      kGTLPlusCollectionPlusoners: List all people who have +1'd this
+//        activity.
+//      kGTLPlusCollectionResharers: List all people who have reshared this
+//        activity.
+//  Optional:
+//   maxResults: The maximum number of people to include in the response, used
+//     for paging. For any response, the actual number returned may be less than
+//     the specified maxResults. (1-100, default 20)
+//   pageToken: The continuation token, used to page through large result sets.
+//     To get the next page of results, set this parameter to the value of
+//     "nextPageToken" from the previous response.
+//  Authorization scope(s):
+//   kGTLAuthScopePlusMe
+// Fetches a GTLPlusPeopleFeed.
++ (id)queryForPeopleListByActivityWithActivityId:(NSString *)activityId
+                                      collection:(NSString *)collection;
+
+// Method: plus.people.search
+// Search all public profiles.
+//  Optional:
+//   maxResults: The maximum number of activities to include in the response,
+//     used for paging. For any response, the actual number returned may be less
+//     than the specified maxResults. (1-20, default 10)
+//   pageToken: The continuation token, used to page through large result sets.
+//     To get the next page of results, set this parameter to the value of
+//     "nextPageToken" from the previous response. This token may be of any
+//     length.
+//   query: Full-text search query string.
+//  Authorization scope(s):
+//   kGTLAuthScopePlusMe
+// Fetches a GTLPlusPeopleFeed.
++ (id)queryForPeopleSearch;
 
 @end

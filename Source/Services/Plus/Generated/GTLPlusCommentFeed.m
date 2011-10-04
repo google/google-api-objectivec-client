@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLPlusAcl.h
+//  GTLPlusCommentFeed.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,35 +26,36 @@
 // Documentation:
 //   http://developers.google.com/+/api/
 // Classes:
-//   GTLPlusAcl (0 custom class methods, 3 custom properties)
+//   GTLPlusCommentFeed (0 custom class methods, 7 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLPlusCommentFeed.h"
 
-@class GTLPlusAclentryResource;
+#import "GTLPlusComment.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLPlusAcl
+//   GTLPlusCommentFeed
 //
 
-// This class supports NSFastEnumeration over its "items" property. It also
-// supports -itemAtIndex: to retrieve individual objects from "items".
+@implementation GTLPlusCommentFeed
+@dynamic identifier, items, kind, nextLink, nextPageToken, title, updated;
 
-@interface GTLPlusAcl : GTLCollectionObject
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"id"
+                                forKey:@"identifier"];
+  return map;
+}
 
-// Description of the access granted, suitable for display.
-// Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (retain) NSString *descriptionProperty;
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLPlusComment class]
+                                forKey:@"items"];
+  return map;
+}
 
-// The list of access entries.
-@property (retain) NSArray *items;  // of GTLPlusAclentryResource
-
-// Identifies this resource as a collection of access controls. Value:
-// "plus#acl".
-@property (retain) NSString *kind;
++ (void)load {
+  [self registerObjectClassForKind:@"plus#commentFeed"];
+}
 
 @end

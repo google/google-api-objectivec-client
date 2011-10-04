@@ -33,9 +33,9 @@
 //   GTLPlusActivityActorImage (0 custom class methods, 1 custom properties)
 //   GTLPlusActivityObjectActor (0 custom class methods, 4 custom properties)
 //   GTLPlusActivityObjectAttachmentsItem (0 custom class methods, 8 custom properties)
-//   GTLPlusActivityObjectPlusoners (0 custom class methods, 1 custom properties)
-//   GTLPlusActivityObjectReplies (0 custom class methods, 1 custom properties)
-//   GTLPlusActivityObjectResharers (0 custom class methods, 1 custom properties)
+//   GTLPlusActivityObjectPlusoners (0 custom class methods, 2 custom properties)
+//   GTLPlusActivityObjectReplies (0 custom class methods, 2 custom properties)
+//   GTLPlusActivityObjectResharers (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectActorImage (0 custom class methods, 1 custom properties)
 //   GTLPlusActivityObjectAttachmentsItemEmbed (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectAttachmentsItemFullImage (0 custom class methods, 4 custom properties)
@@ -176,7 +176,7 @@
 //
 
 @implementation GTLPlusActivityObjectPlusoners
-@dynamic totalItems;
+@dynamic selfLink, totalItems;
 @end
 
 
@@ -186,7 +186,7 @@
 //
 
 @implementation GTLPlusActivityObjectReplies
-@dynamic totalItems;
+@dynamic selfLink, totalItems;
 @end
 
 
@@ -196,7 +196,7 @@
 //
 
 @implementation GTLPlusActivityObjectResharers
-@dynamic totalItems;
+@dynamic selfLink, totalItems;
 @end
 
 

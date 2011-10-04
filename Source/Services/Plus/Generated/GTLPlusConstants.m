@@ -35,4 +35,10 @@ NSString * const kGTLAuthScopePlusMe = @"https://www.googleapis.com/auth/plus.me
 NSString * const kGTLPlusAltJson = @"json";
 
 // Collection
-NSString * const kGTLPlusCollectionPublic = @"public";
+NSString * const kGTLPlusCollectionPlusoners = @"plusoners";
+NSString * const kGTLPlusCollectionPublic    = @"public";
+NSString * const kGTLPlusCollectionResharers = @"resharers";
+
+// OrderBy
+NSString * const kGTLPlusOrderByBest   = @"best";
+NSString * const kGTLPlusOrderByRecent = @"recent";

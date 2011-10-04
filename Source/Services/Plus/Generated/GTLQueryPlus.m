@@ -26,28 +26,42 @@
 // Documentation:
 //   http://developers.google.com/+/api/
 // Classes:
-//   GTLQueryPlus (3 custom class methods, 7 custom properties)
+//   GTLQueryPlus (8 custom class methods, 10 custom properties)
 
 #import "GTLQueryPlus.h"
 
 #import "GTLPlusActivity.h"
 #import "GTLPlusActivityFeed.h"
+#import "GTLPlusComment.h"
+#import "GTLPlusCommentFeed.h"
+#import "GTLPlusPeopleFeed.h"
 #import "GTLPlusPerson.h"
 
 @implementation GTLQueryPlus
 
-@dynamic activityId, alt, collection, fields, maxResults, pageToken, userId;
+@dynamic activityId, alt, collection, commentId, fields, maxResults, orderBy,
+         pageToken, query, userId;
 
 + (NSDictionary *)defaultValueMap {
   NSDictionary *allMethodsMap =
     [NSDictionary dictionaryWithObjectsAndKeys:
       @"json", @"alt",
       [NSNumber numberWithInteger:20], @"maxResults",
+      @"recent", @"orderBy",
       nil];
+  NSDictionary *plusActivitiesSearchMap =
+    [NSDictionary dictionaryWithObject:[NSNumber numberWithInteger:10]
+                                forKey:@"maxResults"];
+  NSDictionary *plusPeopleSearchMap =
+    [NSDictionary dictionaryWithObject:[NSNumber numberWithInteger:10]
+                                forKey:@"maxResults"];
 
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:allMethodsMap
-                                forKey:@"***"];
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      allMethodsMap, @"***",
+      plusActivitiesSearchMap, @"plus.activities.search",
+      plusPeopleSearchMap, @"plus.people.search",
+      nil];
   return map;
 }
 
@@ -73,6 +87,33 @@
   return query;
 }
 
++ (id)queryForActivitiesSearch {
+  NSString *methodName = @"plus.activities.search";
+  GTLQueryPlus *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLPlusActivityFeed class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "comments" methods
+// These create a GTLQueryPlus object.
+
++ (id)queryForCommentsGetWithCommentId:(NSString *)commentId {
+  NSString *methodName = @"plus.comments.get";
+  GTLQueryPlus *query = [self queryWithMethodName:methodName];
+  query.commentId = commentId;
+  query.expectedObjectClass = [GTLPlusComment class];
+  return query;
+}
+
++ (id)queryForCommentsListWithActivityId:(NSString *)activityId {
+  NSString *methodName = @"plus.comments.list";
+  GTLQueryPlus *query = [self queryWithMethodName:methodName];
+  query.activityId = activityId;
+  query.expectedObjectClass = [GTLPlusCommentFeed class];
+  return query;
+}
+
 #pragma mark -
 #pragma mark "people" methods
 // These create a GTLQueryPlus object.
@@ -82,6 +123,23 @@
   GTLQueryPlus *query = [self queryWithMethodName:methodName];
   query.userId = userId;
   query.expectedObjectClass = [GTLPlusPerson class];
+  return query;
+}
+
++ (id)queryForPeopleListByActivityWithActivityId:(NSString *)activityId
+                                      collection:(NSString *)collection {
+  NSString *methodName = @"plus.people.listByActivity";
+  GTLQueryPlus *query = [self queryWithMethodName:methodName];
+  query.activityId = activityId;
+  query.collection = collection;
+  query.expectedObjectClass = [GTLPlusPeopleFeed class];
+  return query;
+}
+
++ (id)queryForPeopleSearch {
+  NSString *methodName = @"plus.people.search";
+  GTLQueryPlus *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLPlusPeopleFeed class];
   return query;
 }
 

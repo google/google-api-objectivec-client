@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLPlusAcl.h
+//  GTLPlusPeopleFeed.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,35 +26,29 @@
 // Documentation:
 //   http://developers.google.com/+/api/
 // Classes:
-//   GTLPlusAcl (0 custom class methods, 3 custom properties)
+//   GTLPlusPeopleFeed (0 custom class methods, 5 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLPlusPeopleFeed.h"
 
-@class GTLPlusAclentryResource;
+#import "GTLPlusPerson.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLPlusAcl
+//   GTLPlusPeopleFeed
 //
 
-// This class supports NSFastEnumeration over its "items" property. It also
-// supports -itemAtIndex: to retrieve individual objects from "items".
+@implementation GTLPlusPeopleFeed
+@dynamic items, kind, nextPageToken, selfLink, title;
 
-@interface GTLPlusAcl : GTLCollectionObject
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLPlusPerson class]
+                                forKey:@"items"];
+  return map;
+}
 
-// Description of the access granted, suitable for display.
-// Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (retain) NSString *descriptionProperty;
-
-// The list of access entries.
-@property (retain) NSArray *items;  // of GTLPlusAclentryResource
-
-// Identifies this resource as a collection of access controls. Value:
-// "plus#acl".
-@property (retain) NSString *kind;
++ (void)load {
+  [self registerObjectClassForKind:@"plus#peopleFeed"];
+}
 
 @end

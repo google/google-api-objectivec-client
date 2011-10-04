@@ -221,7 +221,7 @@
 // The person's job title or role within the organization.
 @property (retain) NSString *title;
 
-// The type of organization. Possible values are: - "job" - Job. - "school" -
+// The type of organization. Possible values are: - "work" - Work. - "school" -
 // School.
 @property (retain) NSString *type;
 

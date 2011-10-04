@@ -57,12 +57,14 @@
 // "plus#activityFeed".
 @property (retain) NSString *kind;
 
+// Link to the next page of activities.
 @property (retain) NSString *nextLink;
 
 // The continuation token, used to page through large result sets. Provide this
 // value in a subsequent request to return the next page of results.
 @property (retain) NSString *nextPageToken;
 
+// Link to this activity resource.
 @property (retain) NSString *selfLink;
 
 // The title of this collection of activities.

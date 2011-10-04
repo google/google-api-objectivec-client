@@ -35,11 +35,17 @@
 #endif
 
 // Authorization scope
-// View your Google+ information
+// Know who you are on Google
 GTL_EXTERN NSString * const kGTLAuthScopePlusMe;  // "https://www.googleapis.com/auth/plus.me"
 
 // Alt
 GTL_EXTERN NSString * const kGTLPlusAltJson;  // "json"
 
 // Collection
-GTL_EXTERN NSString * const kGTLPlusCollectionPublic;  // "public"
+GTL_EXTERN NSString * const kGTLPlusCollectionPlusoners;  // "plusoners"
+GTL_EXTERN NSString * const kGTLPlusCollectionPublic;     // "public"
+GTL_EXTERN NSString * const kGTLPlusCollectionResharers;  // "resharers"
+
+// OrderBy
+GTL_EXTERN NSString * const kGTLPlusOrderByBest;    // "best"
+GTL_EXTERN NSString * const kGTLPlusOrderByRecent;  // "recent"

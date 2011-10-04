@@ -31,6 +31,9 @@
 #import "GTLPlusAcl.h"
 #import "GTLPlusActivity.h"
 #import "GTLPlusActivityFeed.h"
+#import "GTLPlusComment.h"
+#import "GTLPlusCommentFeed.h"
+#import "GTLPlusPeopleFeed.h"
 #import "GTLPlusPerson.h"
 #import "GTLPlusAclentryResource.h"
 
