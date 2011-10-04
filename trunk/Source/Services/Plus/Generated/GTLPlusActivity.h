@@ -33,9 +33,9 @@
 //   GTLPlusActivityActorImage (0 custom class methods, 1 custom properties)
 //   GTLPlusActivityObjectActor (0 custom class methods, 4 custom properties)
 //   GTLPlusActivityObjectAttachmentsItem (0 custom class methods, 8 custom properties)
-//   GTLPlusActivityObjectPlusoners (0 custom class methods, 1 custom properties)
-//   GTLPlusActivityObjectReplies (0 custom class methods, 1 custom properties)
-//   GTLPlusActivityObjectResharers (0 custom class methods, 1 custom properties)
+//   GTLPlusActivityObjectPlusoners (0 custom class methods, 2 custom properties)
+//   GTLPlusActivityObjectReplies (0 custom class methods, 2 custom properties)
+//   GTLPlusActivityObjectResharers (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectActorImage (0 custom class methods, 1 custom properties)
 //   GTLPlusActivityObjectAttachmentsItemEmbed (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectAttachmentsItemFullImage (0 custom class methods, 4 custom properties)
@@ -100,6 +100,7 @@
 // The object of this activity.
 @property (retain) GTLPlusActivityObject *object;
 
+// True if this activity is a placeholder.
 @property (retain) NSNumber *placeholder;  // boolValue
 
 // ID of the place where this activity occurred.
@@ -126,6 +127,7 @@
 // timestamp.
 @property (retain) GTLDateTime *updated;
 
+// The link to this activity.
 @property (retain) NSString *url;
 
 // This activity's verb, indicating what action was performed. Possible values
@@ -305,6 +307,9 @@
 
 @interface GTLPlusActivityObjectPlusoners : GTLObject
 
+// The URL for collection of people who +1'd this activity.
+@property (retain) NSString *selfLink;
+
 // Total number of people who +1'd this activity.
 @property (retain) NSNumber *totalItems;  // unsignedIntValue
 
@@ -318,6 +323,9 @@
 
 @interface GTLPlusActivityObjectReplies : GTLObject
 
+// The URL for the collection of comments in reply to this activity.
+@property (retain) NSString *selfLink;
+
 // Total number of comments on this activity.
 @property (retain) NSNumber *totalItems;  // unsignedIntValue
 
@@ -330,6 +338,9 @@
 //
 
 @interface GTLPlusActivityObjectResharers : GTLObject
+
+// The URL for the collection of resharers.
+@property (retain) NSString *selfLink;
 
 // Total number of people who reshared this activity.
 @property (retain) NSNumber *totalItems;  // unsignedIntValue

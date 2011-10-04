@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLPlusAcl.h
+//  GTLPlusPeopleFeed.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   http://developers.google.com/+/api/
 // Classes:
-//   GTLPlusAcl (0 custom class methods, 3 custom properties)
+//   GTLPlusPeopleFeed (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,27 +34,34 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLPlusAclentryResource;
+@class GTLPlusPerson;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLPlusAcl
+//   GTLPlusPeopleFeed
 //
 
 // This class supports NSFastEnumeration over its "items" property. It also
 // supports -itemAtIndex: to retrieve individual objects from "items".
 
-@interface GTLPlusAcl : GTLCollectionObject
+@interface GTLPlusPeopleFeed : GTLCollectionObject
 
-// Description of the access granted, suitable for display.
-// Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (retain) NSString *descriptionProperty;
+// The people in this page of results. Each item will include the id,
+// displayName, image, and url for the person. To retrieve additional profile
+// data, see the people.get method.
+@property (retain) NSArray *items;  // of GTLPlusPerson
 
-// The list of access entries.
-@property (retain) NSArray *items;  // of GTLPlusAclentryResource
-
-// Identifies this resource as a collection of access controls. Value:
-// "plus#acl".
+// Identifies this resource as a collection of people. Value: "plus#peopleFeed".
 @property (retain) NSString *kind;
+
+// The continuation token, used to page through large result sets. Provide this
+// value in a subsequent request to return the next page of results.
+@property (retain) NSString *nextPageToken;
+
+// Link to this resource.
+@property (retain) NSString *selfLink;
+
+// The title of this collection of people.
+@property (retain) NSString *title;
 
 @end

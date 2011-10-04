@@ -41,6 +41,9 @@
                       [GTLPlusAcl class],
                       [GTLPlusActivity class],
                       [GTLPlusActivityFeed class],
+                      [GTLPlusComment class],
+                      [GTLPlusCommentFeed class],
+                      [GTLPlusPeopleFeed class],
                       [GTLPlusPerson class],
                       [GTLPlusAclentryResource class],
                       nil];
