@@ -1131,6 +1131,8 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 #if NS_BLOCKS_AVAILABLE
   GTLServiceCompletionHandler completionHandler;
   completionHandler = [fetcher propertyForKey:kFetcherCompletionHandlerKey];
+#else  
+  id completionHandler = nil;
 #endif
 
   GTLObject *object = [fetcher propertyForKey:kFetcherParsedObjectKey];
@@ -1210,11 +1212,11 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
   ticket.executingQuery = ticket.originalQuery;
 
   if (shouldCallCallbacks) {
-#if NS_BLOCKS_AVAILABLE
     // First, call query-specific callback blocks.  We do this before the
     // fetch callback to let applications do any final clean-up (or update
     // their UI) in the fetch callback.
     GTLQuery *originalQuery = (GTLQuery *)ticket.originalQuery;
+#if NS_BLOCKS_AVAILABLE
     if (![originalQuery isBatchQuery]) {
       // Single query
       GTLServiceCompletionHandler completionBlock = originalQuery.completionBlock;

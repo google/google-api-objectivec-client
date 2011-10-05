@@ -191,7 +191,11 @@
 
   // Add in any milliseconds that didn't fit into the dateComponents.
   if (extraMillisecondsAsSeconds > 0.0) {
+#if GTL_IPHONE || (MAC_OS_X_VERSION_MIN_REQUIRED > MAC_OS_X_VERSION_10_5)
     date = [date dateByAddingTimeInterval:extraMillisecondsAsSeconds];
+#else
+    date = [date addTimeInterval:extraMillisecondsAsSeconds];
+#endif
   }
 
   return date;
