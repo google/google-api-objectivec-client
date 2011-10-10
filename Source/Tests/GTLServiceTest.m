@@ -748,6 +748,10 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
 - (void)stopAuthorization {
 }
 
+- (BOOL)isAuthorizingRequest:(NSURLRequest *)request {
+  return NO;
+}
+
 - (BOOL)isAuthorizedRequest:(NSURLRequest *)request {
   NSString *requestValue = [request valueForHTTPHeaderField:@"Authorization"];
   NSString *str = [self authorizationValue];

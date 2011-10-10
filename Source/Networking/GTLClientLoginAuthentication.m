@@ -139,7 +139,7 @@ static void XorPlainMutableData(NSMutableData *mutableData) {
 - (id)init {
   self = [super init];
   if (self) {
-    self.authorizationQueue = [NSMutableArray array];
+    authorizationQueue_ = [[NSMutableArray alloc] init];
   }
   return self;
 }
@@ -150,17 +150,17 @@ static void XorPlainMutableData(NSMutableData *mutableData) {
 }
 
 - (void)dealloc {
-  self.serviceID = nil;
-  self.source = nil;
-  self.domain = nil;
-  self.additionalParams = nil;
-  self.customHeaders = nil;
-  self.userEmail = nil;
-  self.password = nil;
-  self.fetcher = nil;
-  self.authorizationQueue = nil;
-  self.token = nil;
-  self.tokenIssueDate = nil;
+  [serviceID_ release];
+  [source_ release];
+  [domain_ release];
+  [additionalParams_ release];
+  [customHeaders_ release];
+  [userEmail_ release];
+  [password_ release];
+  [fetcher_ release];
+  [authorizationQueue_ release];
+  [token_ release];
+  [tokenIssueDate_ release];
 
   [super dealloc];
 }
@@ -416,6 +416,19 @@ static void XorPlainMutableData(NSMutableData *mutableData) {
 - (void)stopAuthorization {
   [self.fetcher stopFetching];
   self.fetcher = nil;
+}
+
+- (BOOL)isAuthorizingRequest:(NSURLRequest *)request {
+  BOOL wasFound = NO;
+  @synchronized(authorizationQueue_) {
+    for (GTLClientLoginAuthorizationArgs *args in authorizationQueue_) {
+      if ([args request] == request) {
+        wasFound = YES;
+        break;
+      }
+    }
+  }
+  return wasFound;
 }
 
 - (BOOL)isAuthorizedRequest:(NSURLRequest *)request {
