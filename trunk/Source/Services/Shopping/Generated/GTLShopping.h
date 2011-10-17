@@ -28,11 +28,11 @@
 
 #import "GTLShoppingConstants.h"
 
-#import "GTLShoppingProduct.h"
-#import "GTLShoppingProducts.h"
 #import "GTLShoppingModelCategory.h"
 #import "GTLShoppingModelDebug.h"
 #import "GTLShoppingModelProduct.h"
+#import "GTLShoppingProduct.h"
+#import "GTLShoppingProducts.h"
 
 #import "GTLQueryShopping.h"
 #import "GTLServiceShopping.h"

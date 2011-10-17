@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
-//   GTLQueryShopping (2 custom class methods, 34 custom properties)
+//   GTLQueryShopping (2 custom class methods, 35 custom properties)
 //   GTLShoppingProductsGetCategories (0 custom class methods, 3 custom properties)
 //   GTLShoppingProductsGetDebug (0 custom class methods, 4 custom properties)
 //   GTLShoppingProductsGetRecommendations (0 custom class methods, 3 custom properties)
@@ -46,7 +46,6 @@
   #import "GTLQuery.h"
 #endif
 
-// Method Parameter Classes
 @class GTLShoppingProductsGetCategories;
 @class GTLShoppingProductsGetDebug;
 @class GTLShoppingProductsGetRecommendations;
@@ -86,6 +85,7 @@
 @property (retain) NSString *location;
 @property (assign) NSUInteger maxResults;
 @property (retain) NSString *minAvailability;
+@property (retain) NSString *plusOne;
 @property (retain) NSString *productFields;
 @property (retain) NSString *productId;
 @property (retain) NSString *productIdType;
@@ -120,6 +120,7 @@
 //  Optional:
 //   attributeFilter: Comma separated list of attributes to return
 //   location: Location used to determine tax and shipping
+//   plusOne: +1 rendering specification.
 //   productFields: Google Internal
 //   taxonomy: Merchant taxonomy
 //   thumbnails: Thumbnail specification
@@ -151,6 +152,7 @@
 //      kGTLShoppingMinAvailabilityOutOfStock: Out of stock, limited
 //        availability and in stock products will be returned
 //      kGTLShoppingMinAvailabilityUnknown: All products will be returned
+//   plusOne: +1 rendering specification.
 //   productFields: Google Internal
 //   q: Search query
 //   rankBy: Ranking specification

@@ -26,7 +26,8 @@
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
-//   GTLShoppingModelDebug (0 custom class methods, 3 custom properties)
+//   GTLShoppingModelDebug (0 custom class methods, 5 custom properties)
+//   GTLShoppingModelDebugBackendTimesItem (0 custom class methods, 4 custom properties)
 
 #import "GTLShoppingModelDebug.h"
 
@@ -36,5 +37,24 @@
 //
 
 @implementation GTLShoppingModelDebug
-@dynamic rdcResponse, searchRequest, searchResponse;
+@dynamic backendTimes, elapsedMillis, rdcResponse, searchRequest,
+         searchResponse;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLShoppingModelDebugBackendTimesItem class]
+                                forKey:@"backendTimes"];
+  return map;
+}
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLShoppingModelDebugBackendTimesItem
+//
+
+@implementation GTLShoppingModelDebugBackendTimesItem
+@dynamic elapsedMillis, hostName, name, serverMillis;
 @end

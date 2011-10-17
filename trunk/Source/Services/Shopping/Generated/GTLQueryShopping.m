@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
-//   GTLQueryShopping (2 custom class methods, 34 custom properties)
+//   GTLQueryShopping (2 custom class methods, 35 custom properties)
 //   GTLShoppingProductsGetCategories (0 custom class methods, 3 custom properties)
 //   GTLShoppingProductsGetDebug (0 custom class methods, 4 custom properties)
 //   GTLShoppingProductsGetRecommendations (0 custom class methods, 3 custom properties)
@@ -49,10 +49,10 @@
 
 @dynamic accountId, attributeFilter, boostBy, categories, channels, country,
          crowdBy, currency, debug, facets, fields, language, location,
-         maxResults, minAvailability, productFields, productId, productIdType,
-         promotions, q, rankBy, recommendations, redirects, relatedQueries,
-         restrictBy, safe, sayt, shelfSpaceAds, source, spelling, startIndex,
-         taxonomy, thumbnails, useCase;
+         maxResults, minAvailability, plusOne, productFields, productId,
+         productIdType, promotions, q, rankBy, recommendations, redirects,
+         relatedQueries, restrictBy, safe, sayt, shelfSpaceAds, source,
+         spelling, startIndex, taxonomy, thumbnails, useCase;
 
 #pragma mark -
 #pragma mark "products" methods

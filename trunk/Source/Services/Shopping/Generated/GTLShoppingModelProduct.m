@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
-//   GTLShoppingModelProduct (0 custom class methods, 18 custom properties)
+//   GTLShoppingModelProduct (0 custom class methods, 19 custom properties)
 //   GTLShoppingModelProductAttributesItem (0 custom class methods, 5 custom properties)
 //   GTLShoppingModelProductAuthor (0 custom class methods, 5 custom properties)
 //   GTLShoppingModelProductImagesItem (0 custom class methods, 2 custom properties)
@@ -43,7 +43,8 @@
 @implementation GTLShoppingModelProduct
 @dynamic attributes, author, brand, categories, condition, country,
          creationTime, descriptionProperty, googleId, gtin, gtins, images,
-         inventories, language, link, modificationTime, providedId, title;
+         inventories, language, link, modificationTime, plusOne, providedId,
+         title;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
