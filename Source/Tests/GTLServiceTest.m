@@ -330,12 +330,21 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   query.showDeleted = NO;
   query.requestID = @"gtl_12";
 
+  // test adding http headers to the query
+  query.additionalHTTPHeaders = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 @"Fluffy", @"X-Feline",
+                                 @"Spot", @"X-Canine", nil];
+
   // tell the test server to look for an oauth authorization header
   query.urlQueryParameters = [NSDictionary dictionaryWithObject:@"catpaws"
                                                          forKey:@"oauth"];
 
   GTLServiceTicket *ticket = [service executeQuery:query
                                  completionHandler:completionBlock];
+
+  NSString *headerValue = [ticket.objectFetcher.mutableRequest valueForHTTPHeaderField:@"X-Feline"];
+  STAssertEqualObjects(headerValue, @"Fluffy", @"query http headers");
+
   [self service:service waitForTicket:ticket];
   STAssertTrue(ticket.hasCalledCallback, @"callback skipped");
 

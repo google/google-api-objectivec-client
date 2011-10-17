@@ -24,6 +24,7 @@
   NSMutableArray *queries_;
   NSMutableDictionary *requestIDMap_;
   BOOL skipAuthorization_;
+  NSDictionary *additionalHTTPHeaders_;
 }
 
 // Queries included in this batch.  Each query should have a unique requestID.
@@ -31,6 +32,12 @@
 
 // Clients may set this to YES to disallow authorization. Defaults to NO.
 @property (assign) BOOL shouldSkipAuthorization;
+
+// Any additional HTTP headers for this batch.
+//
+// These headers override the same keys from the service object's
+// additionalHTTPHeaders.
+@property (copy) NSDictionary *additionalHTTPHeaders;
 
 + (id)batchQuery;
 + (id)batchQueryWithQueries:(NSArray *)array;

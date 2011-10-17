@@ -43,11 +43,12 @@ static NSString* const kFetcherBatchClassMapKey        = @"_batchClassMap";
 static NSString* const kFetcherCallbackThreadKey       = @"_callbackThread";
 static NSString* const kFetcherCallbackRunLoopModesKey = @"_runLoopModes";
 
-const NSUInteger kMaxNumberOfNextPagesFetched = 25;
+static const NSUInteger kMaxNumberOfNextPagesFetched = 25;
 
 // we'll enforce 50K chunks minimum just to avoid the server getting hit
 // with too many small upload chunks
-const NSUInteger kMinimumUploadChunkSize = 50000;
+static const NSUInteger kMinimumUploadChunkSize = 50000;
+static const NSUInteger kStandardUploadChunkSize = NSUIntegerMax;
 
 // Helper to get the ETag if it is defined on an object.
 static NSString *ETagIfPresent(GTLObject *obj) {
@@ -73,13 +74,20 @@ static NSString *ETagIfPresent(GTLObject *obj) {
 // do not need to import the header, as some projects may not have it available
 @interface GTMHTTPUploadFetcher : GTMHTTPFetcher
 + (GTMHTTPUploadFetcher *)uploadFetcherWithRequest:(NSURLRequest *)request
-                                          uploadData:(NSData *)data
-                                      uploadMIMEType:(NSString *)uploadMIMEType
-                                           chunkSize:(NSUInteger)chunkSize;
+                                        uploadData:(NSData *)data
+                                    uploadMIMEType:(NSString *)uploadMIMEType
+                                         chunkSize:(NSUInteger)chunkSize
+                                    fetcherService:(GTMHTTPFetcherService *)fetcherService;
 + (GTMHTTPUploadFetcher *)uploadFetcherWithRequest:(NSURLRequest *)request
-                                    uploadFileHandle:(NSFileHandle *)uploadFileHandle
-                                      uploadMIMEType:(NSString *)uploadMIMEType
-                                           chunkSize:(NSUInteger)chunkSize;
+                                  uploadFileHandle:(NSFileHandle *)uploadFileHandle
+                                    uploadMIMEType:(NSString *)uploadMIMEType
+                                         chunkSize:(NSUInteger)chunkSize
+                                    fetcherService:(GTMHTTPFetcherService *)fetcherService;
++ (GTMHTTPUploadFetcher *)uploadFetcherWithLocation:(NSURL *)location
+                                   uploadFileHandle:(NSFileHandle *)fileHandle
+                                     uploadMIMEType:(NSString *)uploadMIMEType
+                                          chunkSize:(NSUInteger)chunkSize
+                                     fetcherService:(GTMHTTPFetcherService *)fetcherService;
 - (void)pauseFetching;
 - (void)resumeFetchingWithDelegate:(id)delegate;
 - (BOOL)isPaused;
@@ -102,7 +110,10 @@ static NSString *ETagIfPresent(GTLObject *obj) {
 - (GTLObject *)mergedNewResultObject:(GTLObject *)newResult
                      oldResultObject:(GTLObject *)oldResult
                             forQuery:(GTLQuery *)query;
-- (BOOL)invokeRetrySelector:(SEL)retrySelector
+- (GTMHTTPUploadFetcher *)uploadFetcherWithRequest:(NSURLRequest *)request
+                                    fetcherService:(GTMHTTPFetcherService *)fetcherService
+                                            params:(GTLUploadParameters *)uploadParams;
+  - (BOOL)invokeRetrySelector:(SEL)retrySelector
                    delegate:(id)delegate
                      ticket:(GTLServiceTicket *)ticket
                   willRetry:(BOOL)willRetry
@@ -130,10 +141,12 @@ static NSString *ETagIfPresent(GTLObject *obj) {
             urlQueryParameters = urlQueryParameters_,
             additionalHTTPHeaders = additionalHTTPHeaders_,
             apiVersion = apiVersion_,
-            rpcURL = rpcURL_;
+            rpcURL = rpcURL_,
+            rpcUploadURL = rpcUploadURL_;
 
 #if NS_BLOCKS_AVAILABLE
-@synthesize retryBlock = retryBlock_;
+@synthesize retryBlock = retryBlock_,
+            uploadProgressBlock = uploadProgressBlock_;
 #endif
 
 + (Class)ticketClass {
@@ -177,12 +190,13 @@ static NSString *ETagIfPresent(GTLObject *obj) {
   [serviceProperties_ release];
   [surrogates_ release];
 #if NS_BLOCKS_AVAILABLE
-  [serviceUploadProgressBlock_ release];
+  [uploadProgressBlock_ release];
   [retryBlock_ release];
 #endif
   [apiKey_ release];
   [apiVersion_ release];
   [rpcURL_ release];
+  [rpcUploadURL_ release];
   [urlQueryParameters_ release];
   [additionalHTTPHeaders_ release];
 
@@ -344,6 +358,7 @@ static NSString *ETagIfPresent(GTLObject *obj) {
                                         ETag:(NSString *)etag
                                   httpMethod:(NSString *)httpMethod
                                       isREST:(BOOL)isREST
+                           additionalHeaders:(NSDictionary *)additionalHeaders
                                       ticket:(GTLServiceTicket *)ticket {
   if (object) {
     // if the object being sent has an etag, add it to the request header to
@@ -378,7 +393,14 @@ static NSString *ETagIfPresent(GTLObject *obj) {
 
   [request setValue:@"no-cache" forHTTPHeaderField:@"Cache-Control"];
 
+  // Add the additional http headers from the service, and then from the query
   NSDictionary *headers = self.additionalHTTPHeaders;
+  for (NSString *key in headers) {
+    NSString *value = [headers valueForKey:key];
+    [request setValue:value forHTTPHeaderField:key];
+  }
+
+  headers = additionalHeaders;
   for (NSString *key in headers) {
     NSString *value = [headers valueForKey:key];
     [request setValue:value forHTTPHeaderField:key];
@@ -443,12 +465,14 @@ static NSString *ETagIfPresent(GTLObject *obj) {
                             queryParameters:queryParameters];
   }
 
+  NSDictionary *additionalHeaders = query.additionalHTTPHeaders;
 
   NSMutableURLRequest *request = [self objectRequestForURL:targetURL
                                                     object:bodyObject
                                                       ETag:etag
                                                 httpMethod:httpMethod
                                                     isREST:isREST
+                                         additionalHeaders:additionalHeaders
                                                     ticket:ticket];
 
   GTMAssertSelectorNilOrImplementedWithArgs(delegate, ticket.uploadProgressSelector,
@@ -459,9 +483,6 @@ static NSString *ETagIfPresent(GTLObject *obj) {
 
   SEL finishedSel = @selector(objectFetcher:finishedWithData:error:);
 
-  // TODO: support uploading multipart MIME streams and chunked uploads
-  //
-  // TODO: enforce minimum upload chunk size
   ticket.postedObject = bodyObject;
 
   ticket.executingQuery = query;
@@ -470,7 +491,18 @@ static NSString *ETagIfPresent(GTLObject *obj) {
   }
 
   GTMHTTPFetcherService *fetcherService = self.fetcherService;
-  GTMHTTPFetcher *fetcher = [fetcherService fetcherWithRequest:request];
+  GTMHTTPFetcher *fetcher;
+
+  GTLUploadParameters *uploadParams = query.uploadParameters;
+  if (uploadParams == nil) {
+    // Not uploading a file with this request
+    fetcher = [fetcherService fetcherWithRequest:request];
+  } else {
+    fetcher = [self uploadFetcherWithRequest:request
+                              fetcherService:fetcherService
+                                      params:uploadParams];
+  }
+
   if (finishedSelector) {
     // if we don't have a method name, default to the finished selector as
     // a useful fetcher log comment
@@ -543,6 +575,59 @@ static NSString *ETagIfPresent(GTLObject *obj) {
   }
 
   return ticket;
+}
+
+- (GTMHTTPUploadFetcher *)uploadFetcherWithRequest:(NSURLRequest *)request
+                                    fetcherService:(GTMHTTPFetcherService *)fetcherService
+                                            params:(GTLUploadParameters *)uploadParams {
+  // Hang on to the user's requested chunk size, and ensure it's not tiny
+  NSUInteger uploadChunkSize = [self serviceUploadChunkSize];
+  if (uploadChunkSize < kMinimumUploadChunkSize) {
+    uploadChunkSize = kMinimumUploadChunkSize;
+  }
+
+#ifdef GTL_TARGET_NAMESPACE
+  // Prepend the class name prefix
+  Class uploadClass = NSClassFromString(@GTL_TARGET_NAMESPACE_STRING
+                                        "_GTMHTTPUploadFetcher");
+#else
+  Class uploadClass = NSClassFromString(@"GTMHTTPUploadFetcher");
+#endif
+  GTL_ASSERT(uploadClass != nil, @"GTMHTTPUploadFetcher needed");
+
+  NSString *uploadMIMEType = uploadParams.MIMEType;
+  NSData *uploadData = uploadParams.data;
+  NSFileHandle *uploadFileHandle = uploadParams.fileHandle;
+  NSURL *uploadLocationURL = uploadParams.uploadLocationURL;
+
+  GTMHTTPUploadFetcher *fetcher;
+  if (uploadData) {
+    fetcher = [uploadClass uploadFetcherWithRequest:request
+                                         uploadData:uploadData
+                                     uploadMIMEType:uploadMIMEType
+                                          chunkSize:uploadChunkSize
+                                     fetcherService:fetcherService];
+  } else if (uploadLocationURL) {
+    GTL_DEBUG_ASSERT(uploadFileHandle != nil,
+                     @"Resume requires a file handle");
+    fetcher = [uploadClass uploadFetcherWithLocation:uploadLocationURL
+                                    uploadFileHandle:uploadFileHandle
+                                      uploadMIMEType:uploadMIMEType
+                                           chunkSize:uploadChunkSize
+                                      fetcherService:fetcherService];
+  } else {
+    fetcher = [uploadClass uploadFetcherWithRequest:request
+                                   uploadFileHandle:uploadFileHandle
+                                     uploadMIMEType:uploadMIMEType
+                                          chunkSize:uploadChunkSize
+                                     fetcherService:fetcherService];
+  }
+
+  NSString *slug = [uploadParams slug];
+  if ([slug length] > 0) {
+    [[fetcher mutableRequest] setValue:slug forHTTPHeaderField:@"Slug"];
+  }
+  return fetcher;
 }
 
 #pragma mark -
@@ -628,25 +713,31 @@ static NSString *ETagIfPresent(GTLObject *obj) {
     requestID = [GTLQuery nextRequestID];
   }
 
-  NSDictionary *rpcPayload = [self rpcPayloadForMethodNamed:methodName
-                                                 parameters:parameters
-                                                 bodyObject:bodyObject
-                                                  requestID:requestID];
-
-  NSError *error = nil;
   NSData *dataToPost = nil;
-  NSString *jsonStr = [GTLJSONParser stringWithObject:rpcPayload
-                                        humanReadable:NO
-                                                error:&error];
-  if (error == nil) {
-    dataToPost = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
-  } else {
-    // There is the chance something went into parameters that wasn't valid.
-    GTL_DEBUG_LOG(@"JSON generation error: %@", error);
-    return nil;
+  GTLUploadParameters *uploadParameters = executingQuery.uploadParameters;
+  BOOL shouldSendBody = !uploadParameters.shouldSendUploadOnly;
+  if (shouldSendBody) {
+    NSDictionary *rpcPayload = [self rpcPayloadForMethodNamed:methodName
+                                                   parameters:parameters
+                                                   bodyObject:bodyObject
+                                                    requestID:requestID];
+
+    NSError *error = nil;
+    NSString *jsonStr = [GTLJSONParser stringWithObject:rpcPayload
+                                          humanReadable:NO
+                                                  error:&error];
+    if (error == nil) {
+      dataToPost = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
+    } else {
+      // There is the chance something went into parameters that wasn't valid.
+      GTL_DEBUG_LOG(@"JSON generation error: %@", error);
+      return nil;
+    }
   }
 
-  NSURL *rpcURL = self.rpcURL;
+  BOOL isUploading = (uploadParameters != nil);
+  NSURL *rpcURL = (isUploading ? self.rpcUploadURL : self.rpcURL);
+
   if ([urlQueryParameters count] > 0) {
     rpcURL = [GTLUtilities URLWithString:[rpcURL absoluteString]
                          queryParameters:urlQueryParameters];
@@ -706,6 +797,14 @@ static NSString *ETagIfPresent(GTLObject *obj) {
                        requestID, methodName);
       return nil;
     }
+
+    GTL_DEBUG_ASSERT(query.additionalHTTPHeaders == nil,
+                     @"additionalHTTPHeaders disallowed on queries added to a batch - query %@ (%@)",
+                     requestID, methodName);
+
+    GTL_DEBUG_ASSERT(query.uploadParameters == nil,
+                     @"uploadParameters disallowed on queries added to a batch - query %@ (%@)",
+                     requestID, methodName);
 
     NSDictionary *rpcPayload = [self rpcPayloadForMethodNamed:methodName
                                                    parameters:parameters
@@ -859,7 +958,7 @@ static NSString *ETagIfPresent(GTLObject *obj) {
   }
 
 #if NS_BLOCKS_AVAILABLE
-  GTLServiceUploadProgressHandler block = [ticket uploadProgressHandler];
+  GTLServiceUploadProgressBlock block = ticket.uploadProgressBlock;
   if (block) {
     block(ticket, numReadSoFar, total);
   }
@@ -1131,7 +1230,7 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 #if NS_BLOCKS_AVAILABLE
   GTLServiceCompletionHandler completionHandler;
   completionHandler = [fetcher propertyForKey:kFetcherCompletionHandlerKey];
-#else  
+#else
   id completionHandler = nil;
 #endif
 
@@ -1287,7 +1386,7 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
   // Tickets don't know when the fetch has completed, so the service will
   // release their blocks here to avoid unintended retain loops
   ticket.retryBlock = nil;
-  [ticket setUploadProgressHandler:nil];
+  ticket.uploadProgressBlock = nil;
 #endif
 }
 
@@ -2012,20 +2111,9 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
   return self.fetcherService.authorizer;
 }
 
-#if NS_BLOCKS_AVAILABLE
-- (void)setServiceUploadProgressHandler:(GTLServiceUploadProgressHandler)block {
-  [serviceUploadProgressBlock_ autorelease];
-  serviceUploadProgressBlock_ = [block copy];
-}
-
-- (GTLServiceUploadProgressHandler)serviceUploadProgressHandler {
-  return serviceUploadProgressBlock_;
-}
-#endif
-
 + (NSUInteger)defaultServiceUploadChunkSize {
   // subclasses may override
-  return 0;
+  return kStandardUploadChunkSize;
 }
 
 - (NSUInteger)serviceUploadChunkSize {
@@ -2165,7 +2253,7 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
     apiKey_ = [service.APIKey copy];
 
 #if NS_BLOCKS_AVAILABLE
-    uploadProgressBlock_ = [[service serviceUploadProgressHandler] copy];
+    uploadProgressBlock_ = [service.uploadProgressBlock copy];
     retryBlock_ = [service.retryBlock copy];
 #endif
   }
@@ -2249,7 +2337,7 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
   self.uploadProgressSelector = nil;
 
 #if NS_BLOCKS_AVAILABLE
-  [self setUploadProgressHandler:nil];
+  self.uploadProgressBlock = nil;
   self.retryBlock = nil;
 #endif
   [self.executingQuery executionDidStop];
@@ -2337,18 +2425,18 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 }
 
 #if NS_BLOCKS_AVAILABLE
-- (void)setUploadProgressHandler:(GTLServiceUploadProgressHandler)block {
+- (void)setUploadProgressBlock:(GTLServiceUploadProgressBlock)block {
   [uploadProgressBlock_ autorelease];
   uploadProgressBlock_ = [block copy];
 
   if (uploadProgressBlock_) {
-    // as above, we need the fetcher to call us back when bytes are sent
+    // As above, we need the fetcher to call us back when bytes are sent.
     SEL sentDataSel = @selector(objectFetcher:didSendBytes:totalBytesSent:totalBytesExpectedToSend:);
     [[self objectFetcher] setSentDataSelector:sentDataSel];
   }
 }
 
-- (GTLServiceUploadProgressHandler)uploadProgressHandler {
+- (GTLServiceUploadProgressBlock)uploadProgressBlock {
   return uploadProgressBlock_;
 }
 #endif
