@@ -82,11 +82,11 @@ _EXTERN NSString* const kGTLServiceTicketParsingStoppedNotification _INITIALIZE_
 #if NS_BLOCKS_AVAILABLE
 typedef void (^GTLServiceCompletionHandler)(GTLServiceTicket *ticket, id object, NSError *error);
 
-typedef void (^GTLServiceUploadProgressHandler)(GTLServiceTicket *ticket, unsigned long long numberOfBytesRead, unsigned long long dataLength);
+typedef void (^GTLServiceUploadProgressBlock)(GTLServiceTicket *ticket, unsigned long long numberOfBytesRead, unsigned long long dataLength);
 #else
 typedef void *GTLServiceCompletionHandler;
 
-typedef void *GTLServiceUploadProgressHandler;
+typedef void *GTLServiceUploadProgressBlock;
 #endif // NS_BLOCKS_AVAILABLE
 
 #pragma mark -
@@ -109,12 +109,14 @@ typedef void *GTLServiceUploadProgressHandler;
 
 #if NS_BLOCKS_AVAILABLE
   BOOL (^retryBlock_)(GTLServiceTicket *, BOOL, NSError *);
-  GTLServiceUploadProgressHandler serviceUploadProgressBlock_;
+  void (^uploadProgressBlock_)(GTLServiceTicket *ticket,
+                               unsigned long long numberOfBytesRead,
+                               unsigned long long dataLength);
 #elif !__LP64__
   // Placeholders: for 32-bit builds, keep the size of the object's ivar section
   // the same with and without blocks
   id retryPlaceholder_;
-  id serviceUploadProgressPlaceholder_;
+  id uploadProgressPlaceholder_;
 #endif
 
   NSUInteger uploadChunkSize_;      // zero when uploading via multi-part MIME http body
@@ -129,6 +131,7 @@ typedef void *GTLServiceUploadProgressHandler;
   BOOL isRESTDataWrapperRequired_;
   NSString *apiVersion_;
   NSURL *rpcURL_;
+  NSURL *rpcUploadURL_;
   NSDictionary *urlQueryParameters_;
   NSDictionary *additionalHTTPHeaders_;
 }
@@ -379,6 +382,7 @@ typedef void *GTLServiceUploadProgressHandler;
                                         ETag:(NSString *)etag
                                   httpMethod:(NSString *)httpMethod
                                       isREST:(BOOL)isREST
+                           additionalHeaders:(NSDictionary *)additionalHeaders
                                       ticket:(GTLServiceTicket *)ticket;
 
 // The queue used for parsing JSON responses
@@ -409,8 +413,11 @@ typedef void *GTLServiceUploadProgressHandler;
 // The service API version.
 @property (nonatomic, copy) NSString *apiVersion;
 
-// The URL for sending RPC request for this service.
+// The URL for sending RPC requests for this service.
 @property (nonatomic, retain) NSURL *rpcURL;
+
+// The URL for sending RPC requests which initiate file upload.
+@property (nonatomic, retain) NSURL *rpcUploadURL;
 
 // Set a non-zero value to enable uploading via chunked fetches
 // (resumable uploads); typically this defaults to kGTLStandardUploadChunkSize
@@ -432,8 +439,7 @@ typedef void *GTLServiceUploadProgressHandler;
 @property (nonatomic, assign) SEL uploadProgressSelector;
 
 #if NS_BLOCKS_AVAILABLE
-- (void)setServiceUploadProgressHandler:(void (^) (GTLServiceTicket *ticket, unsigned long long numberOfBytesRead, unsigned long long dataLength))handler;
-- (GTLServiceUploadProgressHandler)serviceUploadProgressHandler;
+@property (copy) void (^uploadProgressBlock)(GTLServiceTicket *ticket, unsigned long long numberOfBytesRead, unsigned long long dataLength);
 #endif
 
 // Wait synchronously for fetch to complete (strongly discouraged)
@@ -475,7 +481,9 @@ typedef void *GTLServiceUploadProgressHandler;
 
 #if NS_BLOCKS_AVAILABLE
   BOOL (^retryBlock_)(GTLServiceTicket *, BOOL, NSError *);
-  GTLServiceUploadProgressHandler uploadProgressBlock_;
+  void (^uploadProgressBlock_)(GTLServiceTicket *ticket,
+                               unsigned long long numberOfBytesRead,
+                               unsigned long long dataLength);
 #elif !__LP64__
   // Placeholders: for 32-bit builds, keep the size of the object's ivar section
   // the same with and without blocks
@@ -565,8 +573,7 @@ typedef void *GTLServiceUploadProgressHandler;
 #pragma mark Upload
 
 #if NS_BLOCKS_AVAILABLE
-- (void)setUploadProgressHandler:(void (^) (GTLServiceTicket *ticket, unsigned long long numberOfBytesRead, unsigned long long dataLength))handler;
-- (GTLServiceUploadProgressHandler)uploadProgressHandler;
+@property (copy) void (^uploadProgressBlock)(GTLServiceTicket *ticket, unsigned long long numberOfBytesRead, unsigned long long dataLength);
 #endif
 
 @end

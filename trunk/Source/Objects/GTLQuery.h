@@ -18,11 +18,14 @@
 //
 
 #import "GTLObject.h"
+#import "GTLUploadParameters.h"
 
 @protocol GTLQueryProtocol <NSObject, NSCopying>
 - (BOOL)isBatchQuery;
 - (BOOL)shouldSkipAuthorization;
 - (void)executionDidStop;
+- (NSDictionary *)additionalHTTPHeaders;
+- (GTLUploadParameters *)uploadParameters;
 @end
 
 @class GTLServiceTicket;
@@ -34,7 +37,9 @@
   GTLObject *bodyObject_;
   NSMutableDictionary *childCache_;
   NSString *requestID_;
+  GTLUploadParameters *uploadParameters_;
   NSDictionary *urlQueryParameters_;
+  NSDictionary *additionalHTTPHeaders_;
   Class expectedObjectClass_;
   BOOL skipAuthorization_;
 #if NS_BLOCKS_AVAILABLE
@@ -60,9 +65,20 @@
 // used in a batch query, all request IDs in the batch must be unique.
 @property (copy) NSString *requestID;
 
+// For queries which support file upload, the MIME type and file handle
+// or data must be provided.
+@property (copy) GTLUploadParameters *uploadParameters;
+
 // Any url query parameters to add to the query (useful for debugging with some
 // services).
 @property (copy) NSDictionary *urlQueryParameters;
+
+// Any additional HTTP headers for this query.  Not valid when this query
+// is added to a batch.
+//
+// These headers override the same keys from the service object's
+// additionalHTTPHeaders.
+@property (copy) NSDictionary *additionalHTTPHeaders;
 
 // The GTLObject subclass expected for results (used if the result doesn't
 // include a kind attribute).

@@ -21,7 +21,8 @@
 
 @implementation GTLBatchQuery
 
-@synthesize shouldSkipAuthorization = skipAuthorization_;
+@synthesize shouldSkipAuthorization = skipAuthorization_,
+            additionalHTTPHeaders = additionalHTTPHeaders_;
 
 + (id)batchQuery {
   GTLBatchQuery *obj = [[[self alloc] init] autorelease];
@@ -41,11 +42,13 @@
   GTLBatchQuery *newBatch = [[[self class] allocWithZone:zone] init];
   newBatch.queries = copiesOfQueries;
   newBatch.shouldSkipAuthorization = self.shouldSkipAuthorization;
+  newBatch.additionalHTTPHeaders = self.additionalHTTPHeaders;
   return newBatch;
 }
 
 - (void)dealloc {
   [queries_ release];
+  [additionalHTTPHeaders_ release];
   [requestIDMap_ release];
 
   [super dealloc];
@@ -65,6 +68,11 @@
 
 - (BOOL)isBatchQuery {
   return YES;
+}
+
+- (GTLUploadParameters *)uploadParameters {
+  // File upload is not supported for batches
+  return nil;
 }
 
 - (void)executionDidStop {

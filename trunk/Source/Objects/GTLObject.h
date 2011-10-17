@@ -23,7 +23,6 @@
 #import "GTLDefines.h"
 #import "GTLUtilities.h"
 #import "GTLDateTime.h"
-#import "GTLUploadParameters.h"
 
 #undef _EXTERN
 #undef _INITIALIZE_AS
@@ -52,15 +51,11 @@
   // Anything defined by the client; retained but not used internally; not
   // copied by copyWithZone:
   NSMutableDictionary *userProperties_;
-
-  // Parameters for objects used for uploading
-  GTLUploadParameters *uploadParameters_;
 }
 
 @property (nonatomic, retain) NSMutableDictionary *JSON;
 @property (nonatomic, retain) NSDictionary *surrogates;
 @property (nonatomic, retain) NSMutableDictionary *userProperties;
-@property (nonatomic, retain) GTLUploadParameters *uploadParameters;
 
 // TODO - use a subclass containing the properties of top-level "data"
 // keys, per http://google-styleguide.googlecode.com/svn/trunk/jsoncstyleguide.xml#data.etag

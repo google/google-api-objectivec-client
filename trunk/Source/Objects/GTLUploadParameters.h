@@ -26,18 +26,32 @@
   NSString *MIMEType_;
   NSData *data_;
   NSFileHandle *fileHandle_;
+  NSURL *uploadLocationURL_;
+  NSString *slug_;
   BOOL shouldSendUploadOnly_;
 }
 
+// Uploading requires MIME type and one of
+// - data to be uploaded
+// - file handle for uploading
 @property (copy) NSString *MIMEType;
 @property (retain) NSData *data;
 @property (retain) NSFileHandle *fileHandle;
+
+// Resuming an in-progress upload is done with the upload location URL,
+// and requires a file handle for uploading
+@property (retain) NSURL *uploadLocationURL;
+
+// Some services need a slug (filename) header
+@property (copy) NSString *slug;
+
+// Uploads may be done without a JSON body in the initial request
 @property (assign) BOOL shouldSendUploadOnly;
 
 + (GTLUploadParameters *)uploadParametersWithData:(NSData *)data
                                          MIMEType:(NSString *)mimeType;
 
-+ (GTLUploadParameters *)uploadParametersWithFileHandleData:(NSFileHandle *)fileHandle
-                                                   MIMEType:(NSString *)mimeType;
++ (GTLUploadParameters *)uploadParametersWithFileHandle:(NSFileHandle *)fileHandle
+                                               MIMEType:(NSString *)mimeType;
 
 @end

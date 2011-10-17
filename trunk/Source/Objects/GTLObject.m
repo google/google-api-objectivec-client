@@ -111,26 +111,8 @@ static NSString *const kUserDataPropertyKey = @"_userData";
   [surrogates_ release];
   [childCache_ release];
   [userProperties_ release];
-  [uploadParameters_ release];
 
   [super dealloc];
-}
-
-#pragma mark Uploading
-
-- (GTLUploadParameters *)uploadParameters {
-  // We'll allocate this in the getter to keep it easy for users to assign
-  // the upload values, like
-  //   object.uploadParameters.fileHandle = fh;
-  if (uploadParameters_ == nil) {
-    uploadParameters_ = [[GTLUploadParameters alloc] init];
-  }
-  return uploadParameters_;
-}
-
-- (void)setUploadParameters:(GTLUploadParameters *)obj {
-  [uploadParameters_ autorelease];
-  uploadParameters_ = [obj retain];
 }
 
 #pragma mark JSON values

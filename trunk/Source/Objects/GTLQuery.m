@@ -43,7 +43,9 @@
             JSON = json_,
             bodyObject = bodyObject_,
             requestID = requestID_,
+            uploadParameters = uploadParameters_,
             urlQueryParameters = urlQueryParameters_,
+            additionalHTTPHeaders = additionalHTTPHeaders_,
             expectedObjectClass = expectedObjectClass_,
             shouldSkipAuthorization = skipAuthorization_;
 
@@ -75,7 +77,9 @@
   [bodyObject_ release];
   [childCache_ release];
   [requestID_ release];
+  [uploadParameters_ release];
   [urlQueryParameters_ release];
+  [additionalHTTPHeaders_ release];
 #if NS_BLOCKS_AVAILABLE
   [completionBlock_ release];
 #endif
@@ -96,7 +100,9 @@
   }
   query.bodyObject = self.bodyObject;
   query.requestID = self.requestID;
+  query.uploadParameters = self.uploadParameters;
   query.urlQueryParameters = self.urlQueryParameters;
+  query.additionalHTTPHeaders = self.additionalHTTPHeaders;
   query.expectedObjectClass = self.expectedObjectClass;
   query.shouldSkipAuthorization = self.shouldSkipAuthorization;
 #if NS_BLOCKS_AVAILABLE
@@ -128,9 +134,15 @@
     bodyObjSummary = [NSString stringWithFormat:@" bodyObject:%@", [bodyObj class]];
   }
 
-  return [NSString stringWithFormat:@"%@ %p: {method:%@%@%@%@}",
+  NSString *uploadStr = @"";
+  GTLUploadParameters *uploadParams = self.uploadParameters;
+  if (uploadParams) {
+    uploadStr = [NSString stringWithFormat:@" %@", uploadParams];
+  }
+
+  return [NSString stringWithFormat:@"%@ %p: {method:%@%@%@%@%@}",
           [self class], self, self.methodName,
-          paramsSummary, urlQParamsSummary, bodyObjSummary];
+          paramsSummary, urlQParamsSummary, bodyObjSummary, uploadStr];
 }
 
 - (void)setCustomParameter:(id)obj forKey:(NSString *)key {

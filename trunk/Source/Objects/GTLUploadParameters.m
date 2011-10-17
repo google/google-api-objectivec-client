@@ -26,6 +26,8 @@
 @synthesize MIMEType = MIMEType_,
             data = data_,
             fileHandle = fileHandle_,
+            uploadLocationURL = uploadLocationURL_,
+            slug = slug_,
             shouldSendUploadOnly = shouldSendUploadOnly_;
 
 + (GTLUploadParameters *)uploadParametersWithData:(NSData *)data
@@ -36,8 +38,8 @@
   return params;
 }
 
-+ (GTLUploadParameters *)uploadParametersWithFileHandleData:(NSFileHandle *)fileHandle
-                                                   MIMEType:(NSString *)mimeType {
++ (GTLUploadParameters *)uploadParametersWithFileHandle:(NSFileHandle *)fileHandle
+                                               MIMEType:(NSString *)mimeType {
   GTLUploadParameters *params = [[[GTLUploadParameters alloc] init] autorelease];
   params.fileHandle = fileHandle;
   params.MIMEType = mimeType;
@@ -49,6 +51,8 @@
   newParams.MIMEType = self.MIMEType;
   newParams.data = self.data;
   newParams.fileHandle = self.fileHandle;
+  newParams.uploadLocationURL = self.uploadLocationURL;
+  newParams.slug = self.slug;
   newParams.shouldSendUploadOnly = self.shouldSendUploadOnly;
   return newParams;
 }
@@ -57,8 +61,45 @@
   [MIMEType_ release];
   [data_ release];
   [fileHandle_ release];
+  [uploadLocationURL_ release];
+  [slug_ release];
 
   [super dealloc];
+}
+
+- (NSString *)description {
+  NSMutableArray *array = [NSMutableArray array];
+  NSString *str = [NSString stringWithFormat:@"MIMEType:%@", MIMEType_];
+  [array addObject:str];
+
+  if (data_) {
+    str = [NSString stringWithFormat:@"data:%lu bytes", [data_ length]];
+    [array addObject:str];
+  }
+
+  if (fileHandle_) {
+    str = [NSString stringWithFormat:@"fileHandle:%@", fileHandle_];
+  }
+
+  if (uploadLocationURL_) {
+    str = [NSString stringWithFormat:@"uploadLocation:%@",
+           [uploadLocationURL_ absoluteString]];
+    [array addObject:str];
+  }
+
+  if (slug_) {
+    str = [NSString stringWithFormat:@"slug:%@", slug_];
+    [array addObject:str];
+  }
+
+  if (shouldSendUploadOnly_) {
+    [array addObject:@"shouldSendUploadOnly"];
+  }
+
+  NSString *descStr = [array componentsJoinedByString:@", "];
+  str = [NSString stringWithFormat:@"%@ %p: {%@}",
+         [self class], self, descStr];
+  return str;
 }
 
 @end
