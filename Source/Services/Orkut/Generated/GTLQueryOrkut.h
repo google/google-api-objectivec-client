@@ -103,7 +103,7 @@
 //   hl: Specifies the interface language (host language) of your user
 //     interface.
 //   maxResults: The maximum number of activities to include in the response.
-//     (1-100)
+//     (1..100)
 //   pageToken: A continuation token that allows pagination.
 //  Authorization scope(s):
 //   kGTLAuthScopeOrkut

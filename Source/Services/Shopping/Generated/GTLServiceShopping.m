@@ -38,11 +38,11 @@
 + (NSArray *)checkClasses {
   NSArray *classes = [NSArray arrayWithObjects:
                       [GTLQueryShopping class],
-                      [GTLShoppingProduct class],
-                      [GTLShoppingProducts class],
                       [GTLShoppingModelCategory class],
                       [GTLShoppingModelDebug class],
                       [GTLShoppingModelProduct class],
+                      [GTLShoppingProduct class],
+                      [GTLShoppingProducts class],
                       nil];
   return classes;
 }

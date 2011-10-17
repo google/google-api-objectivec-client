@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
-//   GTLShoppingModelProduct (0 custom class methods, 18 custom properties)
+//   GTLShoppingModelProduct (0 custom class methods, 19 custom properties)
 //   GTLShoppingModelProductAttributesItem (0 custom class methods, 5 custom properties)
 //   GTLShoppingModelProductAuthor (0 custom class methods, 5 custom properties)
 //   GTLShoppingModelProductImagesItem (0 custom class methods, 2 custom properties)
@@ -101,6 +101,9 @@
 
 // RFC 3339 formatted modification time and date of product.
 @property (retain) GTLDateTime *modificationTime;
+
+// Code to add to the page to render the +1 content.
+@property (retain) NSString *plusOne;
 
 // Merchant-provided id of product (available only with a cx source).
 @property (retain) NSString *providedId;

@@ -240,7 +240,7 @@
 //        shelf.
 //      kGTLBooksLibraryRestrictNoRestrict: Do not restrict based on user's
 //        library.
-//   maxResults: Maximum number of results to return. (0-40)
+//   maxResults: Maximum number of results to return. (0..40)
 //   orderBy: Sort search results.
 //      kGTLBooksOrderByNewest: Most recently published.
 //      kGTLBooksOrderByRelevance: Relevance to search terms.

@@ -26,7 +26,8 @@
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
-//   GTLShoppingModelDebug (0 custom class methods, 3 custom properties)
+//   GTLShoppingModelDebug (0 custom class methods, 5 custom properties)
+//   GTLShoppingModelDebugBackendTimesItem (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,12 +35,20 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLShoppingModelDebugBackendTimesItem;
+
 // ----------------------------------------------------------------------------
 //
 //   GTLShoppingModelDebug
 //
 
 @interface GTLShoppingModelDebug : GTLObject
+
+// Google internal
+@property (retain) NSArray *backendTimes;  // of GTLShoppingModelDebugBackendTimesItem
+
+// Google internal.
+@property (retain) NSNumber *elapsedMillis;  // longLongValue
 
 // Google internal.
 @property (retain) NSString *rdcResponse;
@@ -49,5 +58,27 @@
 
 // Google internal.
 @property (retain) NSString *searchResponse;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLShoppingModelDebugBackendTimesItem
+//
+
+@interface GTLShoppingModelDebugBackendTimesItem : GTLObject
+
+// Google internal
+@property (retain) NSNumber *elapsedMillis;  // longLongValue
+
+// Google internal
+@property (retain) NSString *hostName;
+
+// Google internal
+@property (retain) NSString *name;
+
+// Google internal
+@property (retain) NSNumber *serverMillis;  // longLongValue
 
 @end
