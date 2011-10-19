@@ -79,6 +79,7 @@
 
   if (fileHandle_) {
     str = [NSString stringWithFormat:@"fileHandle:%@", fileHandle_];
+    [array addObject:str];
   }
 
   if (uploadLocationURL_) {
