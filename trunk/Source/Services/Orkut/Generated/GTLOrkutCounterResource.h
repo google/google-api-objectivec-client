@@ -22,12 +22,12 @@
 // Service:
 //   Orkut API (orkut/v2)
 // Description:
-//   Lets you manage activities, comments and badges in orkut. More stuff coming
+//   Lets you manage activities, comments and badges in Orkut. More stuff coming
 //   in time.
 // Documentation:
 //   http://code.google.com/apis/orkut/v2/reference.html
 // Classes:
-//   GTLOrkutCounterResource (0 custom class methods, 2 custom properties)
+//   GTLOrkutCounterResource (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -35,12 +35,24 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLOrkutLinkResource;
+
 // ----------------------------------------------------------------------------
 //
 //   GTLOrkutCounterResource
 //
 
 @interface GTLOrkutCounterResource : GTLObject
+
+// Link to the collection being counted.
+@property (retain) GTLOrkutLinkResource *link;
+
+// The name of the counted collection. Currently supported collections are: -
+// scraps - The scraps of the user. - photos - The photos of the user. - videos
+// - The videos of the user.
 @property (retain) NSString *name;
+
+// The number of resources on the counted collection.
 @property (retain) NSNumber *total;  // intValue
+
 @end

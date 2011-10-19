@@ -22,18 +22,20 @@
 // Service:
 //   Orkut API (orkut/v2)
 // Description:
-//   Lets you manage activities, comments and badges in orkut. More stuff coming
+//   Lets you manage activities, comments and badges in Orkut. More stuff coming
 //   in time.
 // Documentation:
 //   http://code.google.com/apis/orkut/v2/reference.html
 // Classes:
-//   GTLOrkutVisibility (0 custom class methods, 2 custom properties)
+//   GTLOrkutVisibility (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
 #else
   #import "GTLObject.h"
 #endif
+
+@class GTLOrkutLinkResource;
 
 // ----------------------------------------------------------------------------
 //
@@ -44,6 +46,9 @@
 
 // Identifies this resource as a visibility item. Value: "orkut#visibility"
 @property (retain) NSString *kind;
+
+// List of resources for the visibility item.
+@property (retain) NSArray *links;  // of GTLOrkutLinkResource
 
 // The visibility of the resource. Possible values are: - default: not hidden by
 // the user - hidden: hidden

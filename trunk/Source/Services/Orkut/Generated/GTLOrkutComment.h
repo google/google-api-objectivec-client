@@ -22,13 +22,13 @@
 // Service:
 //   Orkut API (orkut/v2)
 // Description:
-//   Lets you manage activities, comments and badges in orkut. More stuff coming
+//   Lets you manage activities, comments and badges in Orkut. More stuff coming
 //   in time.
 // Documentation:
 //   http://code.google.com/apis/orkut/v2/reference.html
 // Classes:
 //   GTLOrkutComment (0 custom class methods, 7 custom properties)
-//   GTLOrkutCommentInReplyTo (0 custom class methods, 5 custom properties)
+//   GTLOrkutCommentInReplyTo (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -88,10 +88,6 @@
 // Relationship between the comment and the post on activity stream being
 // commented. Always inReplyTo.
 @property (retain) NSString *rel;
-
-// URL of the source of the post in the activity stream identified by
-// inReplyTo.ref. [not yet implemented].
-@property (retain) NSString *source;
 
 // Type of the post on activity stream being commented. Always text/html.
 @property (retain) NSString *type;

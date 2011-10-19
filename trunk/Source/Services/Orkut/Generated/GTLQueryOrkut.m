@@ -22,7 +22,7 @@
 // Service:
 //   Orkut API (orkut/v2)
 // Description:
-//   Lets you manage activities, comments and badges in orkut. More stuff coming
+//   Lets you manage activities, comments and badges in Orkut. More stuff coming
 //   in time.
 // Documentation:
 //   http://code.google.com/apis/orkut/v2/reference.html
@@ -46,7 +46,7 @@
 
 + (NSDictionary *)defaultValueMap {
   NSDictionary *allMethodsMap =
-    [NSDictionary dictionaryWithObject:@"descending"
+    [NSDictionary dictionaryWithObject:@"DESCENDING_SORT"
                                 forKey:@"orderBy"];
 
   NSDictionary *map =

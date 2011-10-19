@@ -22,7 +22,7 @@
 // Service:
 //   Orkut API (orkut/v2)
 // Description:
-//   Lets you manage activities, comments and badges in orkut. More stuff coming
+//   Lets you manage activities, comments and badges in Orkut. More stuff coming
 //   in time.
 // Documentation:
 //   http://code.google.com/apis/orkut/v2/reference.html
@@ -47,7 +47,7 @@
 // URL of the link.
 @property (retain) NSString *href;
 
-// Relation between the resurce and the parent object.
+// Relation between the resource and the parent object.
 @property (retain) NSString *rel;
 
 // Title of the link.
