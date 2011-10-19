@@ -22,14 +22,16 @@
 // Service:
 //   Orkut API (orkut/v2)
 // Description:
-//   Lets you manage activities, comments and badges in orkut. More stuff coming
+//   Lets you manage activities, comments and badges in Orkut. More stuff coming
 //   in time.
 // Documentation:
 //   http://code.google.com/apis/orkut/v2/reference.html
 // Classes:
-//   GTLOrkutVisibility (0 custom class methods, 2 custom properties)
+//   GTLOrkutVisibility (0 custom class methods, 3 custom properties)
 
 #import "GTLOrkutVisibility.h"
+
+#import "GTLOrkutLinkResource.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -37,7 +39,14 @@
 //
 
 @implementation GTLOrkutVisibility
-@dynamic kind, visibility;
+@dynamic kind, links, visibility;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLOrkutLinkResource class]
+                                forKey:@"links"];
+  return map;
+}
 
 + (void)load {
   [self registerObjectClassForKind:@"orkut#visibility"];

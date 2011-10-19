@@ -22,13 +22,13 @@
 // Service:
 //   Orkut API (orkut/v2)
 // Description:
-//   Lets you manage activities, comments and badges in orkut. More stuff coming
+//   Lets you manage activities, comments and badges in Orkut. More stuff coming
 //   in time.
 // Documentation:
 //   http://code.google.com/apis/orkut/v2/reference.html
 // Classes:
 //   GTLOrkutComment (0 custom class methods, 7 custom properties)
-//   GTLOrkutCommentInReplyTo (0 custom class methods, 5 custom properties)
+//   GTLOrkutCommentInReplyTo (0 custom class methods, 4 custom properties)
 
 #import "GTLOrkutComment.h"
 
@@ -70,5 +70,5 @@
 //
 
 @implementation GTLOrkutCommentInReplyTo
-@dynamic href, ref, rel, source, type;
+@dynamic href, ref, rel, type;
 @end

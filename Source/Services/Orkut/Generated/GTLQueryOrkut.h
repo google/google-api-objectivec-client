@@ -22,7 +22,7 @@
 // Service:
 //   Orkut API (orkut/v2)
 // Description:
-//   Lets you manage activities, comments and badges in orkut. More stuff coming
+//   Lets you manage activities, comments and badges in Orkut. More stuff coming
 //   in time.
 // Documentation:
 //   http://code.google.com/apis/orkut/v2/reference.html
@@ -218,7 +218,7 @@
 //   hl: Specifies the interface language (host language) of your user
 //     interface.
 //   maxResults: The maximum number of activities to include in the response.
-//   orderBy: Sort search results. (Default kGTLOrkutOrderByDescending)
+//   orderBy: Sort search results. (Default "DESCENDING_SORT")
 //      kGTLOrkutOrderByAscending: Use ascending sort order.
 //      kGTLOrkutOrderByDescending: Use descending sort order.
 //   pageToken: A continuation token that allows pagination.
@@ -239,6 +239,7 @@
 //     refer to caller.
 //  Authorization scope(s):
 //   kGTLAuthScopeOrkut
+//   kGTLAuthScopeOrkutReadonly
 // Fetches a GTLOrkutCounters.
 + (id)queryForCountersListWithUserId:(NSString *)userId;
 
