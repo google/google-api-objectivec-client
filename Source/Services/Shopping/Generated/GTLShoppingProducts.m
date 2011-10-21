@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
-//   GTLShoppingProducts (0 custom class methods, 20 custom properties)
+//   GTLShoppingProducts (0 custom class methods, 21 custom properties)
 //   GTLShoppingProductsFacetsItem (0 custom class methods, 7 custom properties)
 //   GTLShoppingProductsPromotionsItem (0 custom class methods, 9 custom properties)
 //   GTLShoppingProductsShelfSpaceAdsItem (0 custom class methods, 1 custom properties)
@@ -50,8 +50,8 @@
 @implementation GTLShoppingProducts
 @dynamic categories, currentItemCount, debug, ETag, facets, identifier, items,
          itemsPerPage, kind, nextLink, previousLink, promotions, redirects,
-         relatedQueries, selfLink, shelfSpaceAds, spelling, startIndex, stores,
-         totalItems;
+         relatedQueries, requestId, selfLink, shelfSpaceAds, spelling,
+         startIndex, stores, totalItems;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

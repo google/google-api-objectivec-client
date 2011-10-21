@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
-//   GTLShoppingProducts (0 custom class methods, 20 custom properties)
+//   GTLShoppingProducts (0 custom class methods, 21 custom properties)
 //   GTLShoppingProductsFacetsItem (0 custom class methods, 7 custom properties)
 //   GTLShoppingProductsPromotionsItem (0 custom class methods, 9 custom properties)
 //   GTLShoppingProductsShelfSpaceAdsItem (0 custom class methods, 1 custom properties)
@@ -105,6 +105,9 @@
 
 // Related queries.
 @property (retain) NSArray *relatedQueries;  // of NSString
+
+// Unique identifier for this request.
+@property (retain) NSString *requestId;
 
 // Self link of feed.
 @property (retain) NSString *selfLink;
