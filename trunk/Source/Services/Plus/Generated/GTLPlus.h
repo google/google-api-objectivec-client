@@ -29,13 +29,13 @@
 #import "GTLPlusConstants.h"
 
 #import "GTLPlusAcl.h"
+#import "GTLPlusAclentryResource.h"
 #import "GTLPlusActivity.h"
 #import "GTLPlusActivityFeed.h"
 #import "GTLPlusComment.h"
 #import "GTLPlusCommentFeed.h"
 #import "GTLPlusPeopleFeed.h"
 #import "GTLPlusPerson.h"
-#import "GTLPlusAclentryResource.h"
 
 #import "GTLQueryPlus.h"
 #import "GTLServicePlus.h"

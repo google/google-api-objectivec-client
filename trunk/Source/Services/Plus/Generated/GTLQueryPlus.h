@@ -87,7 +87,7 @@
 //      kGTLPlusAltJson: Use JSON format
 //   maxResults: The maximum number of activities to include in the response,
 //     used for paging. For any response, the actual number returned may be less
-//     than the specified maxResults. (1-100, default 20)
+//     than the specified maxResults. (1..100, default 20)
 //   pageToken: The continuation token, used to page through large result sets.
 //     To get the next page of results, set this parameter to the value of
 //     "nextPageToken" from the previous response.
@@ -102,7 +102,7 @@
 //  Optional:
 //   maxResults: The maximum number of activities to include in the response,
 //     used for paging. For any response, the actual number returned may be less
-//     than the specified maxResults. (1-20, default 10)
+//     than the specified maxResults. (1..20, default 10)
 //   orderBy: Specifies how to order search results. (Default
 //     kGTLPlusOrderByRecent)
 //      kGTLPlusOrderByBest: Sort activities by relevance to the user, most
@@ -142,7 +142,7 @@
 //      kGTLPlusAltJson: Use JSON format
 //   maxResults: The maximum number of comments to include in the response, used
 //     for paging. For any response, the actual number returned may be less than
-//     the specified maxResults. (0-100, default 20)
+//     the specified maxResults. (0..100, default 20)
 //   pageToken: The continuation token, used to page through large result sets.
 //     To get the next page of results, set this parameter to the value of
 //     "nextPageToken" from the previous response.
@@ -177,7 +177,7 @@
 //  Optional:
 //   maxResults: The maximum number of people to include in the response, used
 //     for paging. For any response, the actual number returned may be less than
-//     the specified maxResults. (1-100, default 20)
+//     the specified maxResults. (1..100, default 20)
 //   pageToken: The continuation token, used to page through large result sets.
 //     To get the next page of results, set this parameter to the value of
 //     "nextPageToken" from the previous response.
@@ -192,7 +192,7 @@
 //  Optional:
 //   maxResults: The maximum number of activities to include in the response,
 //     used for paging. For any response, the actual number returned may be less
-//     than the specified maxResults. (1-20, default 10)
+//     than the specified maxResults. (1..20, default 10)
 //   pageToken: The continuation token, used to page through large result sets.
 //     To get the next page of results, set this parameter to the value of
 //     "nextPageToken" from the previous response. This token may be of any
