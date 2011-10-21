@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
-//   GTLShoppingProduct (0 custom class methods, 7 custom properties)
+//   GTLShoppingProduct (0 custom class methods, 8 custom properties)
 //   GTLShoppingProductRecommendationsItem (0 custom class methods, 2 custom properties)
 //   GTLShoppingProductRecommendationsItemRecommendationListItem (0 custom class methods, 1 custom properties)
 
@@ -67,6 +67,9 @@
 
 // Recommendations for product.
 @property (retain) NSArray *recommendations;  // of GTLShoppingProductRecommendationsItem
+
+// Unique identifier for this request.
+@property (retain) NSString *requestId;
 
 // Self link of product.
 @property (retain) NSString *selfLink;
