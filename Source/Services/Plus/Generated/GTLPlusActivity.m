@@ -32,11 +32,13 @@
 //   GTLPlusActivityProvider (0 custom class methods, 1 custom properties)
 //   GTLPlusActivityActorImage (0 custom class methods, 1 custom properties)
 //   GTLPlusActivityObjectActor (0 custom class methods, 4 custom properties)
-//   GTLPlusActivityObjectAttachmentsItem (0 custom class methods, 8 custom properties)
+//   GTLPlusActivityObjectAttachmentsItem (0 custom class methods, 10 custom properties)
 //   GTLPlusActivityObjectPlusoners (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectReplies (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectResharers (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectActorImage (0 custom class methods, 1 custom properties)
+//   GTLPlusActivityObjectAttachmentsItemCategoriesItem (0 custom class methods, 3 custom properties)
+//   GTLPlusActivityObjectAttachmentsItemContentsource (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectAttachmentsItemEmbed (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectAttachmentsItemFullImage (0 custom class methods, 4 custom properties)
 //   GTLPlusActivityObjectAttachmentsItemImage (0 custom class methods, 4 custom properties)
@@ -157,13 +159,20 @@
 //
 
 @implementation GTLPlusActivityObjectAttachmentsItem
-@dynamic content, displayName, embed, fullImage, identifier, image, objectType,
-         url;
+@dynamic categories, content, contentsource, displayName, embed, fullImage,
+         identifier, image, objectType, url;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObject:@"id"
                                 forKey:@"identifier"];
+  return map;
+}
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLPlusActivityObjectAttachmentsItemCategoriesItem class]
+                                forKey:@"categories"];
   return map;
 }
 
@@ -207,6 +216,26 @@
 
 @implementation GTLPlusActivityObjectActorImage
 @dynamic url;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusActivityObjectAttachmentsItemCategoriesItem
+//
+
+@implementation GTLPlusActivityObjectAttachmentsItemCategoriesItem
+@dynamic label, schema, term;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusActivityObjectAttachmentsItemContentsource
+//
+
+@implementation GTLPlusActivityObjectAttachmentsItemContentsource
+@dynamic type, url;
 @end
 
 

@@ -39,13 +39,13 @@
   NSArray *classes = [NSArray arrayWithObjects:
                       [GTLQueryPlus class],
                       [GTLPlusAcl class],
+                      [GTLPlusAclentryResource class],
                       [GTLPlusActivity class],
                       [GTLPlusActivityFeed class],
                       [GTLPlusComment class],
                       [GTLPlusCommentFeed class],
                       [GTLPlusPeopleFeed class],
                       [GTLPlusPerson class],
-                      [GTLPlusAclentryResource class],
                       nil];
   return classes;
 }
