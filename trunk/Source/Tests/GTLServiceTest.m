@@ -337,7 +337,7 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
 
   // tell the test server to look for an oauth authorization header
   query.urlQueryParameters = [NSDictionary dictionaryWithObject:@"catpaws"
-                                                         forKey:@"oauth"];
+                                                         forKey:@"oauth2"];
 
   GTLServiceTicket *ticket = [service executeQuery:query
                                  completionHandler:completionBlock];
@@ -397,7 +397,7 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
 
   // tell the test server to look for an oauth authorization header
   query.urlQueryParameters = [NSDictionary dictionaryWithObject:@"dogpaws"
-                                                         forKey:@"oauth"];
+                                                         forKey:@"oauth2"];
 
   ticket = [service executeQuery:query
                completionHandler:completionBlock];
@@ -734,7 +734,7 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
 }
 
 - (NSString *)authorizationValue {
-  NSString *str = [NSString stringWithFormat:@"OAuth %@", value_];
+  NSString *str = [NSString stringWithFormat:@"Bearer %@", value_];
   return str;
 }
 

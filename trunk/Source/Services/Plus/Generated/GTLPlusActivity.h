@@ -378,7 +378,7 @@
 
 @interface GTLPlusActivityObjectAttachmentsItemCategoriesItem : GTLObject
 
-// Human readable label, e.g "album cover.
+// The category label, suitable for display (e.g. "album cover").
 @property (retain) NSString *label;
 
 // Domain of schema, e.g. http://google.com.
