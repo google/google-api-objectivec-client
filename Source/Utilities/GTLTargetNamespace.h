@@ -12,7 +12,7 @@
 //
 
 //
-// com.google.GTLFramework v. 2.0 (28 classes) 2011-08-17 13:38:47 -0700
+// com.google.GTLFramework v. 2.0 (29 classes) 2011-10-25 19:25:36 -0700
 //
 
 #if defined(__OBJC__) && defined(GTL_TARGET_NAMESPACE)
@@ -52,6 +52,7 @@
   #define GTMOAuth2AuthorizationArgs _GTL_NS_SYMBOL(GTMOAuth2AuthorizationArgs)
   #define GTMOAuth2SignIn            _GTL_NS_SYMBOL(GTMOAuth2SignIn)
   #define GTMOAuth2WindowController  _GTL_NS_SYMBOL(GTMOAuth2WindowController)
+  #define GTMReadMonitorInputStream  _GTL_NS_SYMBOL(GTMReadMonitorInputStream)
   #define GTMURLCache                _GTL_NS_SYMBOL(GTMURLCache)
 
 #endif

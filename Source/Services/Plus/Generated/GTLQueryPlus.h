@@ -190,9 +190,9 @@
 // Method: plus.people.search
 // Search all public profiles.
 //  Optional:
-//   maxResults: The maximum number of activities to include in the response,
-//     used for paging. For any response, the actual number returned may be less
-//     than the specified maxResults. (1..20, default 10)
+//   maxResults: The maximum number of people to include in the response, used
+//     for paging. For any response, the actual number returned may be less than
+//     the specified maxResults. (1..20, default 10)
 //   pageToken: The continuation token, used to page through large result sets.
 //     To get the next page of results, set this parameter to the value of
 //     "nextPageToken" from the previous response. This token may be of any
