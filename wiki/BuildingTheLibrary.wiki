@@ -41,7 +41,7 @@ Drag the folder with the class files for the services needed by your application
 
 For both debug and release builds of your application, add this define to your project file:
 
--DGTL_BUILDS_AS_FRAMEWORK=1
+-DGTL_BUILT_AS_FRAMEWORK=1
 
 Application classes using the library should include the header for each specific service, such as
 
