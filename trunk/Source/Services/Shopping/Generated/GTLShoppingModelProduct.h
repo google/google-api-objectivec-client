@@ -26,11 +26,12 @@
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
-//   GTLShoppingModelProduct (0 custom class methods, 19 custom properties)
+//   GTLShoppingModelProduct (0 custom class methods, 22 custom properties)
 //   GTLShoppingModelProductAttributesItem (0 custom class methods, 5 custom properties)
 //   GTLShoppingModelProductAuthor (0 custom class methods, 5 custom properties)
 //   GTLShoppingModelProductImagesItem (0 custom class methods, 2 custom properties)
 //   GTLShoppingModelProductInventoriesItem (0 custom class methods, 9 custom properties)
+//   GTLShoppingModelProductVariantsItem (0 custom class methods, 1 custom properties)
 //   GTLShoppingModelProductImagesItemThumbnailsItem (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -39,11 +40,13 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLShoppingModelProduct;
 @class GTLShoppingModelProductAttributesItem;
 @class GTLShoppingModelProductAuthor;
 @class GTLShoppingModelProductImagesItem;
 @class GTLShoppingModelProductImagesItemThumbnailsItem;
 @class GTLShoppingModelProductInventoriesItem;
+@class GTLShoppingModelProductVariantsItem;
 
 // ----------------------------------------------------------------------------
 //
@@ -108,8 +111,18 @@
 // Merchant-provided id of product (available only with a cx source).
 @property (retain) NSString *providedId;
 
+// Whether this product matched the user query. Only set for the variant offers
+// (if any) attached to a product offer.
+@property (retain) NSNumber *queryMatched;  // boolValue
+
 // Title of product.
 @property (retain) NSString *title;
+
+// The number of variant offers returned that matched the query.
+@property (retain) NSNumber *totalMatchingVariants;  // intValue
+
+// A list of variant offers associated with this product.
+@property (retain) NSArray *variants;  // of GTLShoppingModelProductVariantsItem
 
 @end
 
@@ -213,6 +226,19 @@
 
 // Tax of product inventory.
 @property (retain) NSNumber *tax;  // floatValue
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLShoppingModelProductVariantsItem
+//
+
+@interface GTLShoppingModelProductVariantsItem : GTLObject
+
+// The detailed offer data for a particular variant offer.
+@property (retain) GTLShoppingModelProduct *variant;
 
 @end
 

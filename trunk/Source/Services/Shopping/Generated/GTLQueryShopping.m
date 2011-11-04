@@ -37,7 +37,6 @@
 //   GTLShoppingProductsListRedirects (0 custom class methods, 2 custom properties)
 //   GTLShoppingProductsListRelatedQueries (0 custom class methods, 2 custom properties)
 //   GTLShoppingProductsListSayt (0 custom class methods, 2 custom properties)
-//   GTLShoppingProductsListShelfSpaceAds (0 custom class methods, 3 custom properties)
 //   GTLShoppingProductsListSpelling (0 custom class methods, 2 custom properties)
 
 #import "GTLQueryShopping.h"
@@ -49,10 +48,10 @@
 
 @dynamic accountId, attributeFilter, boostBy, categories, channels, country,
          crowdBy, currency, debug, facets, fields, language, location,
-         maxResults, minAvailability, plusOne, productFields, productId,
-         productIdType, promotions, q, rankBy, recommendations, redirects,
-         relatedQueries, restrictBy, safe, sayt, shelfSpaceAds, source,
-         spelling, startIndex, taxonomy, thumbnails, useCase;
+         maxResults, maxVariants, minAvailability, plusOne, productFields,
+         productId, productIdType, promotions, q, rankBy, recommendations,
+         redirects, relatedQueries, restrictBy, safe, sayt, source, spelling,
+         startIndex, taxonomy, thumbnails, useCase;
 
 #pragma mark -
 #pragma mark "products" methods
@@ -176,15 +175,6 @@
 
 @implementation GTLShoppingProductsListSayt
 @dynamic enabled, useGcsConfig;
-@end
-
-// ----------------------------------------------------------------------------
-//
-//   GTLShoppingProductsListShelfSpaceAds
-//
-
-@implementation GTLShoppingProductsListShelfSpaceAds
-@dynamic enabled, maxResults, useGcsConfig;
 @end
 
 // ----------------------------------------------------------------------------
