@@ -37,4 +37,6 @@
 
 // Authorization scope
 // View and manage your AdSense data
-GTL_EXTERN NSString * const kGTLAuthScopeAdsense;  // "https://www.googleapis.com/auth/adsense"
+GTL_EXTERN NSString * const kGTLAuthScopeAdsense;          // "https://www.googleapis.com/auth/adsense"
+// View your AdSense data
+GTL_EXTERN NSString * const kGTLAuthScopeAdsenseReadonly;  // "https://www.googleapis.com/auth/adsense.readonly"
