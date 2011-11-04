@@ -27,10 +27,11 @@
 // Documentation:
 //   http://code.google.com/apis/orkut/v2/reference.html
 // Classes:
-//   GTLQueryOrkut (13 custom class methods, 10 custom properties)
+//   GTLQueryOrkut (14 custom class methods, 10 custom properties)
 
 #import "GTLQueryOrkut.h"
 
+#import "GTLOrkutActivity.h"
 #import "GTLOrkutActivityList.h"
 #import "GTLOrkutBadge.h"
 #import "GTLOrkutBadgeList.h"
@@ -201,6 +202,22 @@
   GTLQueryOrkut *query = [self queryWithMethodName:methodName];
   query.userId = userId;
   query.expectedObjectClass = [GTLOrkutCounters class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "scraps" methods
+// These create a GTLQueryOrkut object.
+
++ (id)queryForScrapsInsertWithObject:(GTLOrkutActivity *)object {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"orkut.scraps.insert";
+  GTLQueryOrkut *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.expectedObjectClass = [GTLOrkutActivity class];
   return query;
 }
 

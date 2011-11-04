@@ -75,6 +75,7 @@
 //     "nextPageToken" from the previous response.
 //  Authorization scope(s):
 //   kGTLAuthScopeAdsense
+//   kGTLAuthScopeAdsenseReadonly
 // Fetches a GTLAdsenseAdClients.
 + (id)queryForAdclientsList;
 
@@ -95,6 +96,7 @@
 //     the previous response.
 //  Authorization scope(s):
 //   kGTLAuthScopeAdsense
+//   kGTLAuthScopeAdsenseReadonly
 // Fetches a GTLAdsenseAdUnits.
 + (id)queryForAdunitsListWithAdClientId:(NSString *)adClientId;
 
@@ -114,6 +116,7 @@
 //     "nextPageToken" from the previous response.
 //  Authorization scope(s):
 //   kGTLAuthScopeAdsense
+//   kGTLAuthScopeAdsenseReadonly
 // Fetches a GTLAdsenseCustomChannels.
 + (id)queryForCustomchannelsListWithAdClientId:(NSString *)adClientId;
 
@@ -145,6 +148,7 @@
 //   startIndex: Index of the first row of report data to return. (0..5000)
 //  Authorization scope(s):
 //   kGTLAuthScopeAdsense
+//   kGTLAuthScopeAdsenseReadonly
 // Fetches a GTLAdsenseReportsGenerateResponse.
 + (id)queryForReportsGenerateWithStartDate:(NSString *)startDate
                                    endDate:(NSString *)endDate;
@@ -165,6 +169,7 @@
 //     "nextPageToken" from the previous response.
 //  Authorization scope(s):
 //   kGTLAuthScopeAdsense
+//   kGTLAuthScopeAdsenseReadonly
 // Fetches a GTLAdsenseUrlChannels.
 + (id)queryForUrlchannelsListWithAdClientId:(NSString *)adClientId;
 

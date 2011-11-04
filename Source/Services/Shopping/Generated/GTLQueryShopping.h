@@ -37,7 +37,6 @@
 //   GTLShoppingProductsListRedirects (0 custom class methods, 2 custom properties)
 //   GTLShoppingProductsListRelatedQueries (0 custom class methods, 2 custom properties)
 //   GTLShoppingProductsListSayt (0 custom class methods, 2 custom properties)
-//   GTLShoppingProductsListShelfSpaceAds (0 custom class methods, 3 custom properties)
 //   GTLShoppingProductsListSpelling (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -56,7 +55,6 @@
 @class GTLShoppingProductsListRedirects;
 @class GTLShoppingProductsListRelatedQueries;
 @class GTLShoppingProductsListSayt;
-@class GTLShoppingProductsListShelfSpaceAds;
 @class GTLShoppingProductsListSpelling;
 
 @interface GTLQueryShopping : GTLQuery
@@ -84,6 +82,7 @@
 @property (retain) NSString *language;
 @property (retain) NSString *location;
 @property (assign) NSUInteger maxResults;
+@property (assign) NSUInteger maxVariants;
 @property (retain) NSString *minAvailability;
 @property (retain) NSString *plusOne;
 @property (retain) NSString *productFields;
@@ -98,7 +97,6 @@
 @property (retain) NSString *restrictBy;
 @property (assign) BOOL safe;
 @property (retain) GTLShoppingProductsListSayt *sayt;
-@property (retain) GTLShoppingProductsListShelfSpaceAds *shelfSpaceAds;
 @property (retain) NSString *source;
 @property (retain) GTLShoppingProductsListSpelling *spelling;
 @property (assign) NSUInteger startIndex;
@@ -144,6 +142,7 @@
 //   language: Language restriction (BCP 47)
 //   location: Location used to determine tax and shipping
 //   maxResults: Maximum number of results to return
+//   maxVariants: Maximum number of variant results to return per result
 //   minAvailability:
 //      kGTLShoppingMinAvailabilityInStock: Only in stcok prodicts will be
 //        returned
@@ -377,26 +376,6 @@
 @property (retain) NSNumber *enabled;  // boolValue
 
 // Google Internal
-@property (retain) NSNumber *useGcsConfig;  // boolValue
-
-@end
-
-// ----------------------------------------------------------------------------
-//
-//   GTLShoppingProductsListShelfSpaceAds
-//
-
-// Used for 'shelfSpaceAds' parameter on 'shopping.products.list'.
-
-@interface GTLShoppingProductsListShelfSpaceAds : GTLObject
-
-// Whether to return shelf space ads
-@property (retain) NSNumber *enabled;  // boolValue
-
-// The maximum number of shelf space ads to return
-@property (retain) NSNumber *maxResults;  // unsignedIntValue
-
-// This parameter is currently ignored
 @property (retain) NSNumber *useGcsConfig;  // boolValue
 
 @end

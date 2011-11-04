@@ -27,7 +27,7 @@
 // Documentation:
 //   http://code.google.com/apis/orkut/v2/reference.html
 // Classes:
-//   GTLQueryOrkut (13 custom class methods, 10 custom properties)
+//   GTLQueryOrkut (14 custom class methods, 10 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -35,6 +35,7 @@
   #import "GTLQuery.h"
 #endif
 
+@class GTLOrkutActivity;
 @class GTLOrkutComment;
 @class GTLOrkutVisibility;
 
@@ -242,5 +243,16 @@
 //   kGTLAuthScopeOrkutReadonly
 // Fetches a GTLOrkutCounters.
 + (id)queryForCountersListWithUserId:(NSString *)userId;
+
+#pragma mark -
+#pragma mark "scraps" methods
+// These create a GTLQueryOrkut object.
+
+// Method: orkut.scraps.insert
+// Creates a new scrap.
+//  Authorization scope(s):
+//   kGTLAuthScopeOrkut
+// Fetches a GTLOrkutActivity.
++ (id)queryForScrapsInsertWithObject:(GTLOrkutActivity *)object;
 
 @end
