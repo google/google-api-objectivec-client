@@ -30,4 +30,5 @@
 #import "GTLAdsenseConstants.h"
 
 // Authorization scope
-NSString * const kGTLAuthScopeAdsense = @"https://www.googleapis.com/auth/adsense";
+NSString * const kGTLAuthScopeAdsense         = @"https://www.googleapis.com/auth/adsense";
+NSString * const kGTLAuthScopeAdsenseReadonly = @"https://www.googleapis.com/auth/adsense.readonly";
