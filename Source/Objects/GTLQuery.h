@@ -122,6 +122,5 @@
 
 // Methods for subclasses to override.
 + (NSDictionary *)parameterNameMap;
-+ (NSDictionary *)defaultValueMap;
 + (NSDictionary *)arrayPropertyToClassMap;
 @end

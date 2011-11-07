@@ -45,17 +45,6 @@
 @dynamic activityId, badgeId, collection, commentId, fields, hl, maxResults,
          orderBy, pageToken, userId;
 
-+ (NSDictionary *)defaultValueMap {
-  NSDictionary *allMethodsMap =
-    [NSDictionary dictionaryWithObject:@"DESCENDING_SORT"
-                                forKey:@"orderBy"];
-
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:allMethodsMap
-                                forKey:@"***"];
-  return map;
-}
-
 #pragma mark -
 #pragma mark "acl" methods
 // These create a GTLQueryOrkut object.

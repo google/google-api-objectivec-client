@@ -47,20 +47,6 @@
           @"max_results", @"maxResults",
           nil];
 }
-+ (NSDictionary *)defaultValueMap {
-  NSDictionary *allMethods = [NSDictionary dictionaryWithObjectsAndKeys:
-                              [NSNumber numberWithUnsignedInteger:20], @"max_results",
-                              [NSNumber numberWithBool:YES], @"preferred",
-                              nil];
-  NSDictionary *mumbleMethod = [NSDictionary dictionaryWithObjectsAndKeys:
-                                [NSNull null], @"max_results",
-                                @"complex", @"alt",
-                                nil];
-  return [NSDictionary dictionaryWithObjectsAndKeys:
-          allMethods, @"***",
-          mumbleMethod, @"foo.bar.mumble",
-          nil];
-}
 + (NSDictionary *)arrayPropertyToClassMap {
   return [NSDictionary dictionaryWithObjectsAndKeys:
           [NSString class], @"arrayString",
@@ -163,45 +149,6 @@
   STAssertEqualObjects(query.JSON, expected, nil);
   STAssertFalse(query.preferred, nil);
   
-  // Default values don't show up in params but still fetch.
-  
-  query.maxResults = 20;
-  [expected removeObjectForKey:@"max_results"];
-  STAssertEqualObjects(query.JSON, expected, nil);
-  STAssertEquals(query.maxResults, (NSUInteger)20, nil);
-
-  query.preferred = YES;
-  [expected removeObjectForKey:@"preferred"];
-  STAssertEqualObjects(query.JSON, expected, nil);
-  STAssertTrue(query.preferred, nil);
-
-  // Test method specific defaults
-  
-  methodName = @"foo.bar.mumble";
-  query = [GTLTestingQuery queryWithMethodName:methodName];
-  STAssertNotNil(query, @"failed to make query");
-  [expected removeAllObjects];
-
-  query.alt = @"simple";
-  [expected setObject:@"simple" forKey:@"alt"];
-  STAssertEqualObjects(query.JSON, expected, nil);
-
-  query.alt = @"complex";
-  [expected removeObjectForKey:@"alt"];
-  STAssertEqualObjects(query.JSON, expected, nil);
-  
-  // Test no default in an override
-  
-  query.maxResults = 15;
-  [expected setObject:[NSNumber numberWithUnsignedInteger:15]
-               forKey:@"max_results"];
-  STAssertEqualObjects(query.JSON, expected, nil);
-
-  query.maxResults = 20;
-  [expected setObject:[NSNumber numberWithUnsignedInteger:20]
-               forKey:@"max_results"];
-  STAssertEqualObjects(query.JSON, expected, nil);
-
   // test setting array of basic types
   
   // string
