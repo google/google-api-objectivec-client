@@ -42,29 +42,6 @@
 @dynamic activityId, alt, collection, commentId, fields, maxResults, orderBy,
          pageToken, query, userId;
 
-+ (NSDictionary *)defaultValueMap {
-  NSDictionary *allMethodsMap =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"json", @"alt",
-      [NSNumber numberWithInteger:20], @"maxResults",
-      @"recent", @"orderBy",
-      nil];
-  NSDictionary *plusActivitiesSearchMap =
-    [NSDictionary dictionaryWithObject:[NSNumber numberWithInteger:10]
-                                forKey:@"maxResults"];
-  NSDictionary *plusPeopleSearchMap =
-    [NSDictionary dictionaryWithObject:[NSNumber numberWithInteger:10]
-                                forKey:@"maxResults"];
-
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      allMethodsMap, @"***",
-      plusActivitiesSearchMap, @"plus.activities.search",
-      plusPeopleSearchMap, @"plus.people.search",
-      nil];
-  return map;
-}
-
 #pragma mark -
 #pragma mark "activities" methods
 // These create a GTLQueryPlus object.

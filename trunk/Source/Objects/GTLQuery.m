@@ -24,10 +24,7 @@
 #import "GTLUtilities.h"
 
 @interface GTLQuery () <GTLRuntimeCommon>
-- (NSString *)defaultValueForName:(NSString *)name;
-+ (NSDictionary *)defaultValueMapForClass:(Class)aClass;
 @end
-
 
 @implementation GTLQuery
 
@@ -174,12 +171,6 @@
 #pragma mark GTLRuntimeCommon Support
 
 - (void)setJSONValue:(id)obj forKey:(NSString *)key {
-  NSString *defaultValue = [self defaultValueForName:key];
-  if (defaultValue != nil && [obj isEqual:defaultValue]) {
-    // It's the default, clear it from the parameters.
-    obj = nil;
-  }
-
   NSMutableDictionary *dict = self.JSON;
   if (dict == nil && obj != nil) {
     dict = [NSMutableDictionary dictionaryWithCapacity:1];
@@ -190,9 +181,6 @@
 
 - (id)JSONValueForKey:(NSString *)key {
   id obj = [self.JSON objectForKey:key];
-  if (obj == nil) {
-    obj = [self defaultValueForName:key];
-  }
   return obj;
 }
 
@@ -219,10 +207,6 @@
   return nil;
 }
 
-+ (NSDictionary *)defaultValueMap {
-  return nil;
-}
-
 + (NSDictionary *)arrayPropertyToClassMap {
   return nil;
 }
@@ -230,7 +214,6 @@
 #pragma mark Runtime Utilities
 
 static NSMutableDictionary *gParameterNameMapCache = nil;
-static NSMutableDictionary *gDefaultValueMapCache = nil;
 static NSMutableDictionary *gArrayPropertyToClassMapCache = nil;
 
 + (void)initialize {
@@ -239,42 +222,9 @@ static NSMutableDictionary *gArrayPropertyToClassMapCache = nil;
   if (gParameterNameMapCache == nil) {
     gParameterNameMapCache = [GTLUtilities newStaticDictionary];
   }
-  if (gDefaultValueMapCache == nil) {
-    gDefaultValueMapCache = [GTLUtilities newStaticDictionary];
-  }
   if (gArrayPropertyToClassMapCache == nil) {
     gArrayPropertyToClassMapCache = [GTLUtilities newStaticDictionary];
   }
-}
-
-- (NSString *)defaultValueForName:(NSString *)name {
-  NSString *result = nil;
-
-  // This makes use of the fact that we know we don't make a tree of query
-  // classes.  If we did, then the dictionary tree would need to be merged in
-  // these sub dictionaries; right now, they replace.
-
-  NSDictionary *defaultValueMap =
-    [GTLQuery defaultValueMapForClass:[self class]];
-
-  NSDictionary *dict = [defaultValueMap objectForKey:self.methodName];
-  result = [dict objectForKey:name];
-
-  if (result == nil) {
-    // The defaults for all methods is stored under the key "***".
-    dict = [defaultValueMap objectForKey:@"***"];
-    result = [dict objectForKey:name];
-  }
-
-  // NSNull is used to mark when some method have a default and some don't, so
-  // map it back to no default here.
-  if (result) {
-    if ([result isEqual:[NSNull null]]) {
-      result = nil;
-    }
-  }
-
-  return result;
 }
 
 + (NSDictionary *)propertyToJSONKeyMapForClass:(Class<GTLRuntimeCommon>)aClass {
@@ -283,15 +233,6 @@ static NSMutableDictionary *gArrayPropertyToClassMapCache = nil;
                                       startClass:aClass
                                    ancestorClass:[GTLQuery class]
                                            cache:gParameterNameMapCache];
-  return resultMap;
-}
-
-+ (NSDictionary *)defaultValueMapForClass:(Class)aClass {
-  NSDictionary *resultMap =
-    [GTLUtilities mergedClassDictionaryForSelector:@selector(defaultValueMap)
-                                        startClass:aClass
-                                     ancestorClass:[GTLQuery class]
-                                             cache:gDefaultValueMapCache];
   return resultMap;
 }
 
