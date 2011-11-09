@@ -101,7 +101,7 @@
 // Makes a partial query-compatible string describing the fields present
 // in this object. (Note: only the first element of any array is examined.)
 //
-// http://code.google.com/apis/buzz/v1/performance.html#partial
+// http://code.google.com/apis/tasks/v1/performance.html#partial
 //
 - (NSString *)fieldsDescription;
 
@@ -111,7 +111,7 @@
 //
 // GTLSomeObject *patchObject = [newVersion patchObjectFromOriginal:oldVersion];
 //
-// http://code.google.com/apis/buzz/v1/performance.html#patch
+// http://code.google.com/apis/tasks/v1/performance.html#patch
 //
 // NOTE: this method returns nil if there are no changes between the original
 // and the receiver.
