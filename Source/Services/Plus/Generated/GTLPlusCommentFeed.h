@@ -50,6 +50,7 @@
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (retain) NSString *identifier;
 
+// The comments in this page of results.
 @property (retain) NSArray *items;  // of GTLPlusComment
 
 // Identifies this resource as a collection of comments. Value:

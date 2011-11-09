@@ -26,7 +26,7 @@
 // Documentation:
 //   http://developers.google.com/+/api/
 // Classes:
-//   GTLQueryPlus (8 custom class methods, 10 custom properties)
+//   GTLQueryPlus (8 custom class methods, 11 custom properties)
 
 #import "GTLQueryPlus.h"
 
@@ -39,8 +39,8 @@
 
 @implementation GTLQueryPlus
 
-@dynamic activityId, alt, collection, commentId, fields, maxResults, orderBy,
-         pageToken, query, userId;
+@dynamic activityId, alt, collection, commentId, fields, language, maxResults,
+         orderBy, pageToken, query, userId;
 
 #pragma mark -
 #pragma mark "activities" methods
@@ -64,9 +64,10 @@
   return query;
 }
 
-+ (id)queryForActivitiesSearch {
++ (id)queryForActivitiesSearchWithQuery:(NSString *)query_param {
   NSString *methodName = @"plus.activities.search";
   GTLQueryPlus *query = [self queryWithMethodName:methodName];
+  query.query = query_param;
   query.expectedObjectClass = [GTLPlusActivityFeed class];
   return query;
 }
@@ -113,9 +114,10 @@
   return query;
 }
 
-+ (id)queryForPeopleSearch {
++ (id)queryForPeopleSearchWithQuery:(NSString *)query_param {
   NSString *methodName = @"plus.people.search";
   GTLQueryPlus *query = [self queryWithMethodName:methodName];
+  query.query = query_param;
   query.expectedObjectClass = [GTLPlusPeopleFeed class];
   return query;
 }

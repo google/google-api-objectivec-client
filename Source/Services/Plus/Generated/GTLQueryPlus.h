@@ -26,7 +26,7 @@
 // Documentation:
 //   http://developers.google.com/+/api/
 // Classes:
-//   GTLQueryPlus (8 custom class methods, 10 custom properties)
+//   GTLQueryPlus (8 custom class methods, 11 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -50,6 +50,7 @@
 @property (retain) NSString *alt;
 @property (retain) NSString *collection;
 @property (retain) NSString *commentId;
+@property (retain) NSString *language;
 @property (assign) NSUInteger maxResults;
 @property (retain) NSString *orderBy;
 @property (retain) NSString *pageToken;
@@ -99,7 +100,11 @@
 
 // Method: plus.activities.search
 // Search public activities.
+//  Required:
+//   query: Full-text search query string.
 //  Optional:
+//   language: Specify the preferred language to search with. See Language Codes
+//     for available values.
 //   maxResults: The maximum number of activities to include in the response,
 //     used for paging. For any response, the actual number returned may be less
 //     than the specified maxResults. (1..20, default 10)
@@ -113,11 +118,10 @@
 //     To get the next page of results, set this parameter to the value of
 //     "nextPageToken" from the previous response. This token may be of any
 //     length.
-//   query: Full-text search query string.
 //  Authorization scope(s):
 //   kGTLAuthScopePlusMe
 // Fetches a GTLPlusActivityFeed.
-+ (id)queryForActivitiesSearch;
++ (id)queryForActivitiesSearchWithQuery:(NSString *)query;
 
 #pragma mark -
 #pragma mark "comments" methods
@@ -189,7 +193,11 @@
 
 // Method: plus.people.search
 // Search all public profiles.
+//  Required:
+//   query: Full-text search query string.
 //  Optional:
+//   language: Specify the preferred language to search with. See Language Codes
+//     for available values.
 //   maxResults: The maximum number of people to include in the response, used
 //     for paging. For any response, the actual number returned may be less than
 //     the specified maxResults. (1..20, default 10)
@@ -197,10 +205,9 @@
 //     To get the next page of results, set this parameter to the value of
 //     "nextPageToken" from the previous response. This token may be of any
 //     length.
-//   query: Full-text search query string.
 //  Authorization scope(s):
 //   kGTLAuthScopePlusMe
 // Fetches a GTLPlusPeopleFeed.
-+ (id)queryForPeopleSearch;
++ (id)queryForPeopleSearchWithQuery:(NSString *)query;
 
 @end
