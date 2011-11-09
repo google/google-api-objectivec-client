@@ -26,11 +26,12 @@
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
-//   GTLShoppingModelProduct (0 custom class methods, 19 custom properties)
+//   GTLShoppingModelProduct (0 custom class methods, 22 custom properties)
 //   GTLShoppingModelProductAttributesItem (0 custom class methods, 5 custom properties)
 //   GTLShoppingModelProductAuthor (0 custom class methods, 5 custom properties)
 //   GTLShoppingModelProductImagesItem (0 custom class methods, 2 custom properties)
 //   GTLShoppingModelProductInventoriesItem (0 custom class methods, 9 custom properties)
+//   GTLShoppingModelProductVariantsItem (0 custom class methods, 1 custom properties)
 //   GTLShoppingModelProductImagesItemThumbnailsItem (0 custom class methods, 4 custom properties)
 
 #import "GTLShoppingModelProduct.h"
@@ -44,7 +45,7 @@
 @dynamic attributes, author, brand, categories, condition, country,
          creationTime, descriptionProperty, googleId, gtin, gtins, images,
          inventories, language, link, modificationTime, plusOne, providedId,
-         title;
+         queryMatched, title, totalMatchingVariants, variants;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -61,6 +62,7 @@
       [NSString class], @"gtins",
       [GTLShoppingModelProductImagesItem class], @"images",
       [GTLShoppingModelProductInventoriesItem class], @"inventories",
+      [GTLShoppingModelProductVariantsItem class], @"variants",
       nil];
   return map;
 }
@@ -114,6 +116,16 @@
 @implementation GTLShoppingModelProductInventoriesItem
 @dynamic availability, channel, currency, distance, distanceUnit, price,
          shipping, storeId, tax;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLShoppingModelProductVariantsItem
+//
+
+@implementation GTLShoppingModelProductVariantsItem
+@dynamic variant;
 @end
 
 
