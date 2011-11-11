@@ -26,7 +26,7 @@
 // Documentation:
 //   http://developers.google.com/+/api/
 // Classes:
-//   GTLPlusPerson (0 custom class methods, 19 custom properties)
+//   GTLPlusPerson (0 custom class methods, 20 custom properties)
 //   GTLPlusPersonEmailsItem (0 custom class methods, 3 custom properties)
 //   GTLPlusPersonImage (0 custom class methods, 1 custom properties)
 //   GTLPlusPersonName (0 custom class methods, 6 custom properties)
@@ -97,6 +97,10 @@
 
 // The nickname of this person.
 @property (retain) NSString *nickname;
+
+// Type of person within Google+. Possible values are: - "person" - represents
+// an actual person. - "page" - represents a page.
+@property (retain) NSString *objectType;
 
 // A list of current or past organizations with which this person is associated.
 @property (retain) NSArray *organizations;  // of GTLPlusPersonOrganizationsItem
