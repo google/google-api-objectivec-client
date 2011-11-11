@@ -26,7 +26,7 @@
 // Documentation:
 //   http://developers.google.com/+/api/
 // Classes:
-//   GTLPlusPerson (0 custom class methods, 19 custom properties)
+//   GTLPlusPerson (0 custom class methods, 20 custom properties)
 //   GTLPlusPersonEmailsItem (0 custom class methods, 3 custom properties)
 //   GTLPlusPersonImage (0 custom class methods, 1 custom properties)
 //   GTLPlusPersonName (0 custom class methods, 6 custom properties)
@@ -44,7 +44,8 @@
 @implementation GTLPlusPerson
 @dynamic aboutMe, birthday, currentLocation, displayName, emails, gender,
          hasApp, identifier, image, kind, languagesSpoken, name, nickname,
-         organizations, placesLived, relationshipStatus, tagline, url, urls;
+         objectType, organizations, placesLived, relationshipStatus, tagline,
+         url, urls;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
