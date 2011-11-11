@@ -30,6 +30,7 @@
 
 #import "GTLAnalyticsAccount.h"
 #import "GTLAnalyticsAccounts.h"
+#import "GTLAnalyticsGaReport.h"
 #import "GTLAnalyticsGoal.h"
 #import "GTLAnalyticsGoals.h"
 #import "GTLAnalyticsProfile.h"
