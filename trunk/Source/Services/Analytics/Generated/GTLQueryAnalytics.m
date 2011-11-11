@@ -26,11 +26,12 @@
 // Documentation:
 //   http://code.google.com/apis/analytics
 // Classes:
-//   GTLQueryAnalytics (5 custom class methods, 6 custom properties)
+//   GTLQueryAnalytics (6 custom class methods, 14 custom properties)
 
 #import "GTLQueryAnalytics.h"
 
 #import "GTLAnalyticsAccounts.h"
+#import "GTLAnalyticsGaReport.h"
 #import "GTLAnalyticsGoals.h"
 #import "GTLAnalyticsProfiles.h"
 #import "GTLAnalyticsSegments.h"
@@ -38,12 +39,16 @@
 
 @implementation GTLQueryAnalytics
 
-@dynamic accountId, fields, maxResults, profileId, startIndex, webPropertyId;
+@dynamic accountId, dimensions, endDate, fields, filters, ids, maxResults,
+         metrics, profileId, segment, sort, startDate, startIndex,
+         webPropertyId;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
+      @"end-date", @"endDate",
       @"max-results", @"maxResults",
+      @"start-date", @"startDate",
       @"start-index", @"startIndex",
       nil];
   return map;
@@ -110,6 +115,24 @@
   GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
   query.accountId = accountId;
   query.expectedObjectClass = [GTLAnalyticsWebproperties class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "report" methods
+// These create a GTLQueryAnalytics object.
+
++ (id)queryForReportGetWithEndDate:(NSString *)endDate
+                         startDate:(NSString *)startDate
+                           metrics:(NSString *)metrics
+                               ids:(NSString *)ids {
+  NSString *methodName = @"analytics.report.get";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.endDate = endDate;
+  query.startDate = startDate;
+  query.metrics = metrics;
+  query.ids = ids;
+  query.expectedObjectClass = [GTLAnalyticsGaReport class];
   return query;
 }
 

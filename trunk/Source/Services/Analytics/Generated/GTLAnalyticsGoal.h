@@ -122,6 +122,8 @@
 //
 
 @interface GTLAnalyticsGoalEventDetails : GTLObject
+
+// List of event conditions.
 @property (retain) NSArray *eventConditions;  // of GTLAnalyticsGoalEventDetailsEventConditionsItem
 
 // Determines if the event value should be used as the value for this goal.
@@ -136,8 +138,13 @@
 //
 
 @interface GTLAnalyticsGoalParentLink : GTLObject
+
+// Link to the profile to which this goal belongs.
 @property (retain) NSString *href;
+
+// Value is "analytics#profile".
 @property (retain) NSString *type;
+
 @end
 
 

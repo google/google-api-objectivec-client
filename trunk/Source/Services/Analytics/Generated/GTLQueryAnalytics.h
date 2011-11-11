@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/analytics
 // Classes:
-//   GTLQueryAnalytics (5 custom class methods, 6 custom properties)
+//   GTLQueryAnalytics (6 custom class methods, 14 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -47,8 +47,16 @@
 // Method-specific parameters; see the comments below for more information.
 //
 @property (retain) NSString *accountId;
-@property (retain) NSString *maxResults;
+@property (retain) NSString *dimensions;
+@property (retain) NSString *endDate;
+@property (retain) NSString *filters;
+@property (retain) NSString *ids;
+@property (retain) id maxResults;
+@property (retain) NSString *metrics;
 @property (retain) NSString *profileId;
+@property (retain) NSString *segment;
+@property (retain) NSString *sort;
+@property (retain) NSString *startDate;
 @property (assign) NSInteger startIndex;
 @property (retain) NSString *webPropertyId;
 
@@ -150,5 +158,40 @@
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsWebproperties.
 + (id)queryForManagementWebpropertiesListWithAccountId:(NSString *)accountId;
+
+#pragma mark -
+#pragma mark "report" methods
+// These create a GTLQueryAnalytics object.
+
+// Method: analytics.report.get
+// Returns Analytics report data for a profile.
+//  Required:
+//   endDate: End date for fetching report data. All requests should specify an
+//     end date formatted as YYYY-MM-DD.
+//   startDate: Start date for fetching report data. All requests should specify
+//     a start date formatted as YYYY-MM-DD.
+//   metrics: A comma-separated list of Analytics metrics. E.g.,
+//     'ga:visits,ga:pageviews'. At least one metric must be specified to
+//     retrieve a valid Analytics report.
+//   ids: Unique table ID for retrieving report data. Table ID is of the form
+//     ga:XXXX, where XXXX is the Analytics profile ID.
+//  Optional:
+//   dimensions: A comma-separated list of Analytics dimensions. E.g.,
+//     'ga:browser,ga:city'.
+//   filters: A comma-separated list of dimension or metric filters to be
+//     applied to the report data.
+//   maxResults: The maximum number of entries to include in this feed.
+//   segment: An Analytics advanced segment to be applied to the report data.
+//   sort: A comma-separated list of dimensions or metrics that determine the
+//     sort order for the report data.
+//   startIndex: An index of the first entity to retrieve. Use this parameter as
+//     a pagination mechanism along with the max-results parameter.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsReadonly
+// Fetches a GTLAnalyticsGaReport.
++ (id)queryForReportGetWithEndDate:(NSString *)endDate
+                         startDate:(NSString *)startDate
+                           metrics:(NSString *)metrics
+                               ids:(NSString *)ids;
 
 @end

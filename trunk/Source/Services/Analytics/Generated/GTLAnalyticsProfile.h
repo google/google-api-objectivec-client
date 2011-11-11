@@ -108,8 +108,13 @@
 //
 
 @interface GTLAnalyticsProfileChildLink : GTLObject
+
+// Link to the list of goals for this profile.
 @property (retain) NSString *href;
+
+// Value is "analytics#goals".
 @property (retain) NSString *type;
+
 @end
 
 
@@ -119,6 +124,11 @@
 //
 
 @interface GTLAnalyticsProfileParentLink : GTLObject
+
+// Link to the web property to which this profile belongs.
 @property (retain) NSString *href;
+
+// Value is "analytics#webproperty".
 @property (retain) NSString *type;
+
 @end

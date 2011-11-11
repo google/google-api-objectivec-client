@@ -40,6 +40,7 @@
                       [GTLQueryAnalytics class],
                       [GTLAnalyticsAccount class],
                       [GTLAnalyticsAccounts class],
+                      [GTLAnalyticsGaReport class],
                       [GTLAnalyticsGoal class],
                       [GTLAnalyticsGoals class],
                       [GTLAnalyticsProfile class],
