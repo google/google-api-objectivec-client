@@ -57,9 +57,6 @@
 @property (nonatomic, retain) NSDictionary *surrogates;
 @property (nonatomic, retain) NSMutableDictionary *userProperties;
 
-// TODO - use a subclass containing the properties of top-level "data"
-// keys, per http://google-styleguide.googlecode.com/svn/trunk/jsoncstyleguide.xml#data.etag
-
 ///////////////////////////////////////////////////////////////////////////////
 //
 // Public methods
@@ -90,7 +87,6 @@
 
 // User properties are supported for client convenience, but are not copied by
 // copyWithZone.  User Properties keys beginning with _ are reserved by the library.
-// TODO: revisit these two names due to additionalProperties vs. userProperties.
 - (void)setProperty:(id)obj forKey:(NSString *)key; // pass nil obj to remove property
 - (id)propertyForKey:(NSString *)key;
 
