@@ -5,6 +5,11 @@ Project site:     http://code.google.com/p/google-api-objectivec-client/
 Discussion group: http://groups.google.com/group/google-api-objectivec-client
 
 
+17-November-2011
+
+Added interfaces for Calendar.
+
+
 17-October-2011
 
 Added chunked (resumable) upload support and additional http headers to
