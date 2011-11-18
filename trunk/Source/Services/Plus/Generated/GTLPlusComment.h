@@ -78,7 +78,8 @@
 @property (retain) GTLDateTime *updated;
 
 // This comment's verb, indicating what action was performed. Possible values
-// are: - "post" - Publish content to the stream.
+// are:
+// - "post" - Publish content to the stream.
 @property (retain) NSString *verb;
 
 @end
@@ -134,8 +135,8 @@
 // The content of this comment.
 @property (retain) NSString *content;
 
-// The object type of this comment. Possible values are: - "comment" - A comment
-// in reply to an activity.
+// The object type of this comment. Possible values are:
+// - "comment" - A comment in reply to an activity.
 @property (retain) NSString *objectType;
 
 @end

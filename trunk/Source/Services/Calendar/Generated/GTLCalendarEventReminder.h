@@ -41,9 +41,10 @@
 
 @interface GTLCalendarEventReminder : GTLObject
 
-// The method used by this reminder. Possible values are: - "email" - Reminders
-// are sent via email. - "sms" - Reminders are sent via SMS. - "popup" -
-// Reminders are sent via a UI popup.
+// The method used by this reminder. Possible values are:
+// - "email" - Reminders are sent via email.
+// - "sms" - Reminders are sent via SMS.
+// - "popup" - Reminders are sent via a UI popup.
 @property (retain) NSString *method;
 
 // Number of minutes before the start of the event when the reminder should

@@ -64,11 +64,11 @@
 // Whether the attendee is a resource. Read-only. The default is False.
 @property (retain) NSNumber *resource;  // boolValue
 
-// The attendee's response status. Possible values are: - "needsAction" - The
-// attendee has not responded to the invitation. - "declined" - The attendee has
-// declined the invitation. - "tentative" - The attendee has tentatively
-// accepted the invitation. - "accepted" - The attendee has accepted the
-// invitation.
+// The attendee's response status. Possible values are:
+// - "needsAction" - The attendee has not responded to the invitation.
+// - "declined" - The attendee has declined the invitation.
+// - "tentative" - The attendee has tentatively accepted the invitation.
+// - "accepted" - The attendee has accepted the invitation.
 @property (retain) NSString *responseStatus;
 
 // Whether this entry represents the calendar on which this copy of the event

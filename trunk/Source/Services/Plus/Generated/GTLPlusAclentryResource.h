@@ -47,10 +47,12 @@
 @property (retain) NSString *identifier;
 
 // The type of entry describing to whom access is granted. Possible values are:
-// - "person" - Access to an individual. - "circle" - Access to members of a
-// circle. - "myCircles" - Access to members of all the person's circles. -
-// "extendedCircles" - Access to members of everyone in a person's circles, plus
-// all of the people in their circles. - "public" - Access to anyone on the web.
+// - "person" - Access to an individual.
+// - "circle" - Access to members of a circle.
+// - "myCircles" - Access to members of all the person's circles.
+// - "extendedCircles" - Access to members of everyone in a person's circles,
+// plus all of the people in their circles.
+// - "public" - Access to anyone on the web.
 @property (retain) NSString *type;
 
 @end

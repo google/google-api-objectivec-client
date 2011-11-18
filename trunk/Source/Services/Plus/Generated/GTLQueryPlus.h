@@ -103,8 +103,8 @@
 //  Required:
 //   query: Full-text search query string.
 //  Optional:
-//   language: Specify the preferred language to search with. See Language Codes
-//     for available values.
+//   language: Specify the preferred language to search with. See search
+//     language code for available values.
 //   maxResults: The maximum number of activities to include in the response,
 //     used for paging. For any response, the actual number returned may be less
 //     than the specified maxResults. (1..20, default 10)
@@ -196,8 +196,8 @@
 //  Required:
 //   query: Full-text search query string.
 //  Optional:
-//   language: Specify the preferred language to search with. See Language Codes
-//     for available values.
+//   language: Specify the preferred language to search with. See search
+//     language codes for available values.
 //   maxResults: The maximum number of people to include in the response, used
 //     for paging. For any response, the actual number returned may be less than
 //     the specified maxResults. (1..20, default 10)

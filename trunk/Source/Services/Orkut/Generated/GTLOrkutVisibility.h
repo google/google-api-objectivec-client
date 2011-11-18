@@ -50,8 +50,9 @@
 // List of resources for the visibility item.
 @property (retain) NSArray *links;  // of GTLOrkutLinkResource
 
-// The visibility of the resource. Possible values are: - default: not hidden by
-// the user - hidden: hidden
+// The visibility of the resource. Possible values are:
+// - default: not hidden by the user
+// - hidden: hidden
 @property (retain) NSString *visibility;
 
 @end

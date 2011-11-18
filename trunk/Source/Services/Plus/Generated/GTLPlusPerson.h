@@ -69,8 +69,10 @@
 // A list of email addresses for this person.
 @property (retain) NSArray *emails;  // of GTLPlusPersonEmailsItem
 
-// The person's gender. Possible values are: - "male" - Male gender. - "female"
-// - Female gender. - "other" - Other.
+// The person's gender. Possible values are:
+// - "male" - Male gender.
+// - "female" - Female gender.
+// - "other" - Other.
 @property (retain) NSString *gender;
 
 // If "true", indicates that the person has installed the app that is making the
@@ -98,8 +100,9 @@
 // The nickname of this person.
 @property (retain) NSString *nickname;
 
-// Type of person within Google+. Possible values are: - "person" - represents
-// an actual person. - "page" - represents a page.
+// Type of person within Google+. Possible values are:
+// - "person" - represents an actual person.
+// - "page" - represents a page.
 @property (retain) NSString *objectType;
 
 // A list of current or past organizations with which this person is associated.
@@ -108,13 +111,16 @@
 // A list of places where this person has lived.
 @property (retain) NSArray *placesLived;  // of GTLPlusPersonPlacesLivedItem
 
-// The person's relationship status. Possible values are: - "single" - Person is
-// single. - "in_a_relationship" - Person is in a relationship. - "engaged" -
-// Person is engaged. - "married" - Person is married. - "its_complicated" - The
-// relationship is complicated. - "open_relationship" - Person is in an open
-// relationship. - "widowed" - Person is widowed. - "in_domestic_partnership" -
-// Person is in a domestic partnership. - "in_civil_union" - Person is in a
-// civil union.
+// The person's relationship status. Possible values are:
+// - "single" - Person is single.
+// - "in_a_relationship" - Person is in a relationship.
+// - "engaged" - Person is engaged.
+// - "married" - Person is married.
+// - "its_complicated" - The relationship is complicated.
+// - "open_relationship" - Person is in an open relationship.
+// - "widowed" - Person is widowed.
+// - "in_domestic_partnership" - Person is in a domestic partnership.
+// - "in_civil_union" - Person is in a civil union.
 @property (retain) NSString *relationshipStatus;
 
 // The brief description (tagline) of this person.
@@ -139,8 +145,10 @@
 // If "true", indicates this email address is the person's primary one.
 @property (retain) NSNumber *primary;  // boolValue
 
-// The type of address. Possible values are: - "home" - Home email address. -
-// "work" - Work email address. - "other" - Other.
+// The type of address. Possible values are:
+// - "home" - Home email address.
+// - "work" - Work email address.
+// - "other" - Other.
 @property (retain) NSString *type;
 
 // The email address.
@@ -225,8 +233,9 @@
 // The person's job title or role within the organization.
 @property (retain) NSString *title;
 
-// The type of organization. Possible values are: - "work" - Work. - "school" -
-// School.
+// The type of organization. Possible values are:
+// - "work" - Work.
+// - "school" - School.
 @property (retain) NSString *type;
 
 @end
@@ -259,9 +268,12 @@
 // If "true", this URL is the person's primary URL.
 @property (retain) NSNumber *primary;  // boolValue
 
-// The type of URL. Possible values are: - "home" - URL for home. - "work" - URL
-// for work. - "blog" - URL for blog. - "profile" - URL for profile. - "other" -
-// Other.
+// The type of URL. Possible values are:
+// - "home" - URL for home.
+// - "work" - URL for work.
+// - "blog" - URL for blog.
+// - "profile" - URL for profile.
+// - "other" - Other.
 @property (retain) NSString *type;
 
 // The URL value.

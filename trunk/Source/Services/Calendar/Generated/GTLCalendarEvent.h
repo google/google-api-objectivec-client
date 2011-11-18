@@ -161,9 +161,10 @@
 // the first instance.
 @property (retain) GTLCalendarEventDateTime *start;
 
-// Status of the event. Optional. Possible values are: - "confirmed" - The event
-// is confirmed. This is the default status. - "tentative" - The event is
-// tentatively confirmed. - "cancelled" - The event is cancelled.
+// Status of the event. Optional. Possible values are:
+// - "confirmed" - The event is confirmed. This is the default status.
+// - "tentative" - The event is tentatively confirmed.
+// - "cancelled" - The event is cancelled.
 @property (retain) NSString *status;
 
 // Title of the event.
@@ -171,18 +172,22 @@
 
 // Whether the event blocks time on the calendar. Optional. Possible values are:
 // - "opaque" - The event blocks time on the calendar. This is the default
-// value. - "transparent" - The event does not block time on the calendar.
+// value.
+// - "transparent" - The event does not block time on the calendar.
 @property (retain) NSString *transparency;
 
 // Last modification time of the event (as a RFC 3339 timestamp). Read-only.
 @property (retain) GTLDateTime *updated;
 
-// Visibility of the event. Optional. Possible values are: - "default" - Uses
-// the default visibility for events on the calendar. This is the default value.
+// Visibility of the event. Optional. Possible values are:
+// - "default" - Uses the default visibility for events on the calendar. This is
+// the default value.
 // - "public" - The event is public and event details are visible to all readers
-// of the calendar. - "private" - The event is private and only event attendees
-// may view event details. - "confidential" - The event is private. This value
-// is provided for compatibility reasons.
+// of the calendar.
+// - "private" - The event is private and only event attendees may view event
+// details.
+// - "confidential" - The event is private. This value is provided for
+// compatibility reasons.
 @property (retain) NSString *visibility;
 
 @end
@@ -229,9 +234,10 @@
 
 @interface GTLCalendarEventGadget : GTLObject
 
-// The gadget's display mode. Optional. Possible values are: - "icon" - The
-// gadget displays next to the event's title in the calendar view. - "chip" -
-// The gadget displays when the event is clicked.
+// The gadget's display mode. Optional. Possible values are:
+// - "icon" - The gadget displays next to the event's title in the calendar
+// view.
+// - "chip" - The gadget displays when the event is clicked.
 @property (retain) NSString *display;
 
 // The gadget's height in pixels. Optional.

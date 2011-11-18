@@ -135,8 +135,10 @@
 @property (retain) NSString *url;
 
 // This activity's verb, indicating what action was performed. Possible values
-// are: - "post" - Publish content to the stream. - "checkin" - Check in to a
-// location. - "share" - Reshare an activity.
+// are:
+// - "post" - Publish content to the stream.
+// - "checkin" - Check in to a location.
+// - "share" - Reshare an activity.
 @property (retain) NSString *verb;
 
 @end
@@ -192,8 +194,9 @@
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (retain) NSString *identifier;
 
-// The type of the object. Possible values are: - "note" - Textual content. -
-// "activity" - A Google+ activity.
+// The type of the object. Possible values are:
+// - "note" - Textual content.
+// - "activity" - A Google+ activity.
 @property (retain) NSString *objectType;
 
 // The content (text) as provided by the author, stored without any HTML
@@ -300,8 +303,10 @@
 // The preview image for photos or videos.
 @property (retain) GTLPlusActivityObjectAttachmentsItemImage *image;
 
-// The type of media object. Possible values are: - "photo" - A photo. - "video"
-// - A video. - "article" - An article, specified by a link.
+// The type of media object. Possible values are:
+// - "photo" - A photo.
+// - "video" - A video.
+// - "article" - An article, specified by a link.
 @property (retain) NSString *objectType;
 
 // The link to the attachment, should be of type text/html.
