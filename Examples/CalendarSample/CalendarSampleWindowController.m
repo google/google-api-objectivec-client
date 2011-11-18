@@ -781,11 +781,18 @@ NSString *const kKeychainItemName = @"CalendarSample: Google Calendar";
 
         GTLCalendarFreeBusyResponse *response = object;
         GTLCalendarFreeBusyResponseCalendars *responseCals = response.calendars;
-        NSDictionary *calendarProps = responseCals.additionalProperties;
+        NSDictionary *props = responseCals.additionalProperties;
 
-        for (NSString *accountName in calendarProps) {
-          [displayStr appendFormat:@"%@: ", accountName];
-          GTLCalendarFreeBusyCalendar *calResponse = [calendarProps objectForKey:accountName];
+        // Step through the free-busy calendar IDs, and display each calendar
+        // name (the summary field) and free/busy times
+        for (NSString *calendarID in props) {
+          GTLCalendarCalendarListEntry *calendar;
+          calendar = [GTLUtilities firstObjectFromArray:self.calendarList.items
+                                              withValue:calendarID
+                                             forKeyPath:@"identifier"];
+          [displayStr appendFormat:@"%@: ", calendar.summary];
+
+          GTLCalendarFreeBusyCalendar *calResponse = [props objectForKey:calendarID];
           NSArray *busyArray = calResponse.busy;
           for (GTLCalendarTimePeriod *period in busyArray) {
             GTLDateTime *startTime = period.start;
