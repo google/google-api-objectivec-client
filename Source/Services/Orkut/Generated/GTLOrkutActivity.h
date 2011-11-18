@@ -81,10 +81,12 @@
 @property (retain) GTLDateTime *updated;
 
 // This activity's verb, indicating what action was performed. Possible values
-// are: - add - User added new content to profile or album, e.g. video, photo. -
-// post - User publish content to the stream, e.g. status, scrap. - update -
-// User commented on an activity. - make-friend - User added a new friend. -
-// birthday - User has a birthday.
+// are:
+// - add - User added new content to profile or album, e.g. video, photo.
+// - post - User publish content to the stream, e.g. status, scrap.
+// - update - User commented on an activity.
+// - make-friend - User added a new friend.
+// - birthday - User has a birthday.
 @property (retain) NSString *verb;
 
 @end

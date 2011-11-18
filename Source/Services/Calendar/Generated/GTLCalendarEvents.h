@@ -47,15 +47,17 @@
 
 @interface GTLCalendarEvents : GTLCollectionObject
 
-// The user's access role for this calendar. Read-only. Possible values are: -
-// "none" - The user has no access. - "freeBusyReader" - The user has read
-// access to free/busy information. - "reader" - The user has read access to the
-// calendar. Private events will appear to users with reader access, but event
-// details will be hidden. - "writer" - The user has read and write access to
-// the calendar. Private events will appear to users with writer access, and
-// event details will be visible. - "owner" - The user has ownership of the
-// calendar. This role has all of the permissions of the writer role with the
-// additional ability to see and manipulate ACLs.
+// The user's access role for this calendar. Read-only. Possible values are:
+// - "none" - The user has no access.
+// - "freeBusyReader" - The user has read access to free/busy information.
+// - "reader" - The user has read access to the calendar. Private events will
+// appear to users with reader access, but event details will be hidden.
+// - "writer" - The user has read and write access to the calendar. Private
+// events will appear to users with writer access, and event details will be
+// visible.
+// - "owner" - The user has ownership of the calendar. This role has all of the
+// permissions of the writer role with the additional ability to see and
+// manipulate ACLs.
 @property (retain) NSString *accessRole;
 
 // The default reminders on the calendar for the authenticated user. These

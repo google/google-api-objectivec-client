@@ -54,14 +54,16 @@
 // Type of the resource ("calendar#aclRule").
 @property (retain) NSString *kind;
 
-// The role assigned to the scope. Possible values are: - "none" - Provides no
-// access. - "freeBusyReader" - Provides read access to free/busy information. -
-// "reader" - Provides read access to the calendar. Private events will appear
-// to users with reader access, but event details will be hidden. - "writer" -
-// Provides read and write access to the calendar. Private events will appear to
-// users with writer access, and event details will be visible. - "owner" -
-// Provides ownership of the calendar. This role has all of the permissions of
-// the writer role with the additional ability to see and manipulate ACLs.
+// The role assigned to the scope. Possible values are:
+// - "none" - Provides no access.
+// - "freeBusyReader" - Provides read access to free/busy information.
+// - "reader" - Provides read access to the calendar. Private events will appear
+// to users with reader access, but event details will be hidden.
+// - "writer" - Provides read and write access to the calendar. Private events
+// will appear to users with writer access, and event details will be visible.
+// - "owner" - Provides ownership of the calendar. This role has all of the
+// permissions of the writer role with the additional ability to see and
+// manipulate ACLs.
 @property (retain) NSString *role;
 
 // The scope of the rule.
@@ -77,11 +79,12 @@
 
 @interface GTLCalendarAclRuleScope : GTLObject
 
-// The type of the scope. Possible values are: - "default" - The public scope.
-// This is the default value. - "user" - Limits the scope to a single user. -
-// "group" - Limits the scope to a group. - "domain" - Limits the scope to a
-// domain. Note: The permissions granted to the "default", or public, scope
-// apply to any user, authenticated or not.
+// The type of the scope. Possible values are:
+// - "default" - The public scope. This is the default value.
+// - "user" - Limits the scope to a single user.
+// - "group" - Limits the scope to a group.
+// - "domain" - Limits the scope to a domain. Note: The permissions granted to
+// the "default", or public, scope apply to any user, authenticated or not.
 @property (retain) NSString *type;
 
 // The email address of a user or group, or the name of a domain, depending on

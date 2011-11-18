@@ -47,9 +47,10 @@
 // Link to the collection being counted.
 @property (retain) GTLOrkutLinkResource *link;
 
-// The name of the counted collection. Currently supported collections are: -
-// scraps - The scraps of the user. - photos - The photos of the user. - videos
-// - The videos of the user.
+// The name of the counted collection. Currently supported collections are:
+// - scraps - The scraps of the user.
+// - photos - The photos of the user.
+// - videos - The videos of the user.
 @property (retain) NSString *name;
 
 // The number of resources on the counted collection.
