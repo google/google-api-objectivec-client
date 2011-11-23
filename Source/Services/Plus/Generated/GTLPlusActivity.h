@@ -378,41 +378,6 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLPlusActivityObjectAttachmentsItemCategoriesItem
-//
-
-@interface GTLPlusActivityObjectAttachmentsItemCategoriesItem : GTLObject
-
-// The category label, suitable for display (e.g. "album cover").
-@property (retain) NSString *label;
-
-// Domain of schema, e.g. http://google.com.
-@property (retain) NSString *schema;
-
-// The tag, e.g. album.
-@property (retain) NSString *term;
-
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLPlusActivityObjectAttachmentsItemContentsource
-//
-
-@interface GTLPlusActivityObjectAttachmentsItemContentsource : GTLObject
-
-// Media type of the link.
-@property (retain) NSString *type;
-
-// URL of the link.
-@property (retain) NSString *url;
-
-@end
-
-
-// ----------------------------------------------------------------------------
-//
 //   GTLPlusActivityObjectAttachmentsItemEmbed
 //
 
