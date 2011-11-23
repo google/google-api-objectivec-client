@@ -10,18 +10,21 @@
 		4F22A2151186315400FFBAB6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F22A2141186315400FFBAB6 /* WebKit.framework */; };
 		4F2445C8121F0D2900FEE1DA /* GTL.framework in Copy GTL Framework */ = {isa = PBXBuildFile; fileRef = 4F2445BE121F0CF600FEE1DA /* GTL.framework */; };
 		4F2445C9121F0D2C00FEE1DA /* GTL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2445BE121F0CF600FEE1DA /* GTL.framework */; };
+		4F29EB9C147D7B94009E625E /* GTLBooksAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F29EB83147D7B94009E625E /* GTLBooksAnnotation.m */; };
+		4F29EB9D147D7B94009E625E /* GTLBooksAnnotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F29EB85147D7B94009E625E /* GTLBooksAnnotations.m */; };
+		4F29EB9E147D7B94009E625E /* GTLBooksAnnotationsRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F29EB87147D7B94009E625E /* GTLBooksAnnotationsRange.m */; };
+		4F29EB9F147D7B94009E625E /* GTLBooksBookshelf.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F29EB89147D7B94009E625E /* GTLBooksBookshelf.m */; };
+		4F29EBA0147D7B94009E625E /* GTLBooksBookshelves.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F29EB8B147D7B94009E625E /* GTLBooksBookshelves.m */; };
+		4F29EBA1147D7B94009E625E /* GTLBooksConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F29EB8D147D7B94009E625E /* GTLBooksConstants.m */; };
+		4F29EBA2147D7B94009E625E /* GTLBooksDownloadAccessRestriction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F29EB8F147D7B94009E625E /* GTLBooksDownloadAccessRestriction.m */; };
+		4F29EBA3147D7B94009E625E /* GTLBooksReadingPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F29EB91147D7B94009E625E /* GTLBooksReadingPosition.m */; };
+		4F29EBA4147D7B94009E625E /* GTLBooksReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F29EB93147D7B94009E625E /* GTLBooksReview.m */; };
+		4F29EBA5147D7B94009E625E /* GTLBooksVolume.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F29EB95147D7B94009E625E /* GTLBooksVolume.m */; };
+		4F29EBA6147D7B94009E625E /* GTLBooksVolumes.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F29EB97147D7B94009E625E /* GTLBooksVolumes.m */; };
+		4F29EBA7147D7B94009E625E /* GTLQueryBooks.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F29EB99147D7B94009E625E /* GTLQueryBooks.m */; };
+		4F29EBA8147D7B94009E625E /* GTLServiceBooks.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F29EB9B147D7B94009E625E /* GTLServiceBooks.m */; };
 		4F82A5140FCDFECC00C477D4 /* BooksSampleAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F82A5100FCDFECC00C477D4 /* BooksSampleAppController.m */; };
 		4F82A5150FCDFECC00C477D4 /* BooksSampleWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F82A5120FCDFECC00C477D4 /* BooksSampleWindowController.m */; };
-		4F8B69BC13D744DE0067CE96 /* GTLBooksBookshelf.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B69A913D744DE0067CE96 /* GTLBooksBookshelf.m */; };
-		4F8B69BD13D744DE0067CE96 /* GTLBooksBookshelves.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B69AB13D744DE0067CE96 /* GTLBooksBookshelves.m */; };
-		4F8B69BE13D744DE0067CE96 /* GTLBooksConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B69AD13D744DE0067CE96 /* GTLBooksConstants.m */; };
-		4F8B69BF13D744DE0067CE96 /* GTLBooksDownloadAccessRestriction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B69AF13D744DE0067CE96 /* GTLBooksDownloadAccessRestriction.m */; };
-		4F8B69C013D744DE0067CE96 /* GTLBooksReadingPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B69B113D744DE0067CE96 /* GTLBooksReadingPosition.m */; };
-		4F8B69C113D744DE0067CE96 /* GTLBooksReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B69B313D744DE0067CE96 /* GTLBooksReview.m */; };
-		4F8B69C213D744DE0067CE96 /* GTLBooksVolume.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B69B513D744DE0067CE96 /* GTLBooksVolume.m */; };
-		4F8B69C313D744DE0067CE96 /* GTLBooksVolumes.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B69B713D744DE0067CE96 /* GTLBooksVolumes.m */; };
-		4F8B69C413D744DE0067CE96 /* GTLQueryBooks.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B69B913D744DE0067CE96 /* GTLQueryBooks.m */; };
-		4F8B69C513D744DE0067CE96 /* GTLServiceBooks.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B69BB13D744DE0067CE96 /* GTLServiceBooks.m */; };
 		4FA6F3D31034AEC400C5DFA5 /* BooksSampleWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FA6F3CF1034AEC400C5DFA5 /* BooksSampleWindow.xib */; };
 		4FA6F3D41034AEC400C5DFA5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FA6F3D11034AEC400C5DFA5 /* MainMenu.xib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -89,31 +92,37 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		4F22A2141186315400FFBAB6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
 		4F2445B6121F0CF600FEE1DA /* GTL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GTL.xcodeproj; path = ../../Source/GTL.xcodeproj; sourceTree = SOURCE_ROOT; };
+		4F29EB81147D7B94009E625E /* GTLBooks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBooks.h; sourceTree = "<group>"; };
+		4F29EB82147D7B94009E625E /* GTLBooksAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBooksAnnotation.h; sourceTree = "<group>"; };
+		4F29EB83147D7B94009E625E /* GTLBooksAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBooksAnnotation.m; sourceTree = "<group>"; };
+		4F29EB84147D7B94009E625E /* GTLBooksAnnotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBooksAnnotations.h; sourceTree = "<group>"; };
+		4F29EB85147D7B94009E625E /* GTLBooksAnnotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBooksAnnotations.m; sourceTree = "<group>"; };
+		4F29EB86147D7B94009E625E /* GTLBooksAnnotationsRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBooksAnnotationsRange.h; sourceTree = "<group>"; };
+		4F29EB87147D7B94009E625E /* GTLBooksAnnotationsRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBooksAnnotationsRange.m; sourceTree = "<group>"; };
+		4F29EB88147D7B94009E625E /* GTLBooksBookshelf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBooksBookshelf.h; sourceTree = "<group>"; };
+		4F29EB89147D7B94009E625E /* GTLBooksBookshelf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBooksBookshelf.m; sourceTree = "<group>"; };
+		4F29EB8A147D7B94009E625E /* GTLBooksBookshelves.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBooksBookshelves.h; sourceTree = "<group>"; };
+		4F29EB8B147D7B94009E625E /* GTLBooksBookshelves.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBooksBookshelves.m; sourceTree = "<group>"; };
+		4F29EB8C147D7B94009E625E /* GTLBooksConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBooksConstants.h; sourceTree = "<group>"; };
+		4F29EB8D147D7B94009E625E /* GTLBooksConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBooksConstants.m; sourceTree = "<group>"; };
+		4F29EB8E147D7B94009E625E /* GTLBooksDownloadAccessRestriction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBooksDownloadAccessRestriction.h; sourceTree = "<group>"; };
+		4F29EB8F147D7B94009E625E /* GTLBooksDownloadAccessRestriction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBooksDownloadAccessRestriction.m; sourceTree = "<group>"; };
+		4F29EB90147D7B94009E625E /* GTLBooksReadingPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBooksReadingPosition.h; sourceTree = "<group>"; };
+		4F29EB91147D7B94009E625E /* GTLBooksReadingPosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBooksReadingPosition.m; sourceTree = "<group>"; };
+		4F29EB92147D7B94009E625E /* GTLBooksReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBooksReview.h; sourceTree = "<group>"; };
+		4F29EB93147D7B94009E625E /* GTLBooksReview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBooksReview.m; sourceTree = "<group>"; };
+		4F29EB94147D7B94009E625E /* GTLBooksVolume.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBooksVolume.h; sourceTree = "<group>"; };
+		4F29EB95147D7B94009E625E /* GTLBooksVolume.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBooksVolume.m; sourceTree = "<group>"; };
+		4F29EB96147D7B94009E625E /* GTLBooksVolumes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBooksVolumes.h; sourceTree = "<group>"; };
+		4F29EB97147D7B94009E625E /* GTLBooksVolumes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBooksVolumes.m; sourceTree = "<group>"; };
+		4F29EB98147D7B94009E625E /* GTLQueryBooks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLQueryBooks.h; sourceTree = "<group>"; };
+		4F29EB99147D7B94009E625E /* GTLQueryBooks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLQueryBooks.m; sourceTree = "<group>"; };
+		4F29EB9A147D7B94009E625E /* GTLServiceBooks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLServiceBooks.h; sourceTree = "<group>"; };
+		4F29EB9B147D7B94009E625E /* GTLServiceBooks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLServiceBooks.m; sourceTree = "<group>"; };
 		4F82A5100FCDFECC00C477D4 /* BooksSampleAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooksSampleAppController.m; sourceTree = "<group>"; };
 		4F82A5110FCDFECC00C477D4 /* BooksSampleAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooksSampleAppController.h; sourceTree = "<group>"; };
 		4F82A5120FCDFECC00C477D4 /* BooksSampleWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooksSampleWindowController.m; sourceTree = "<group>"; };
 		4F82A5130FCDFECC00C477D4 /* BooksSampleWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooksSampleWindowController.h; sourceTree = "<group>"; };
-		4F8B69A713D744DE0067CE96 /* GTLBooks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBooks.h; sourceTree = "<group>"; };
-		4F8B69A813D744DE0067CE96 /* GTLBooksBookshelf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBooksBookshelf.h; sourceTree = "<group>"; };
-		4F8B69A913D744DE0067CE96 /* GTLBooksBookshelf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBooksBookshelf.m; sourceTree = "<group>"; };
-		4F8B69AA13D744DE0067CE96 /* GTLBooksBookshelves.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBooksBookshelves.h; sourceTree = "<group>"; };
-		4F8B69AB13D744DE0067CE96 /* GTLBooksBookshelves.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBooksBookshelves.m; sourceTree = "<group>"; };
-		4F8B69AC13D744DE0067CE96 /* GTLBooksConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBooksConstants.h; sourceTree = "<group>"; };
-		4F8B69AD13D744DE0067CE96 /* GTLBooksConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBooksConstants.m; sourceTree = "<group>"; };
-		4F8B69AE13D744DE0067CE96 /* GTLBooksDownloadAccessRestriction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBooksDownloadAccessRestriction.h; sourceTree = "<group>"; };
-		4F8B69AF13D744DE0067CE96 /* GTLBooksDownloadAccessRestriction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBooksDownloadAccessRestriction.m; sourceTree = "<group>"; };
-		4F8B69B013D744DE0067CE96 /* GTLBooksReadingPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBooksReadingPosition.h; sourceTree = "<group>"; };
-		4F8B69B113D744DE0067CE96 /* GTLBooksReadingPosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBooksReadingPosition.m; sourceTree = "<group>"; };
-		4F8B69B213D744DE0067CE96 /* GTLBooksReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBooksReview.h; sourceTree = "<group>"; };
-		4F8B69B313D744DE0067CE96 /* GTLBooksReview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBooksReview.m; sourceTree = "<group>"; };
-		4F8B69B413D744DE0067CE96 /* GTLBooksVolume.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBooksVolume.h; sourceTree = "<group>"; };
-		4F8B69B513D744DE0067CE96 /* GTLBooksVolume.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBooksVolume.m; sourceTree = "<group>"; };
-		4F8B69B613D744DE0067CE96 /* GTLBooksVolumes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBooksVolumes.h; sourceTree = "<group>"; };
-		4F8B69B713D744DE0067CE96 /* GTLBooksVolumes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBooksVolumes.m; sourceTree = "<group>"; };
-		4F8B69B813D744DE0067CE96 /* GTLQueryBooks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLQueryBooks.h; sourceTree = "<group>"; };
-		4F8B69B913D744DE0067CE96 /* GTLQueryBooks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLQueryBooks.m; sourceTree = "<group>"; };
-		4F8B69BA13D744DE0067CE96 /* GTLServiceBooks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLServiceBooks.h; sourceTree = "<group>"; };
-		4F8B69BB13D744DE0067CE96 /* GTLServiceBooks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLServiceBooks.m; sourceTree = "<group>"; };
 		4FA6F3D01034AEC400C5DFA5 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/BooksSampleWindow.xib; sourceTree = "<group>"; };
 		4FA6F3D21034AEC400C5DFA5 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		4FD0F1DA0CBC68F300059DC1 /* buildStripHeaders */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.script.sh; path = buildStripHeaders; sourceTree = "<group>"; };
@@ -226,49 +235,55 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4FB25425138C421100B5C1AE /* API Services */ = {
+		4F29EB7F147D7B94009E625E /* Books */ = {
 			isa = PBXGroup;
 			children = (
-				4FB2542E138C421F00B5C1AE /* Books */,
-			);
-			name = "API Services";
-			sourceTree = "<group>";
-		};
-		4FB2542E138C421F00B5C1AE /* Books */ = {
-			isa = PBXGroup;
-			children = (
-				4FB2542F138C421F00B5C1AE /* Generated */,
+				4F29EB80147D7B94009E625E /* Generated */,
 			);
 			name = Books;
 			path = ../../Source/Services/Books;
 			sourceTree = SOURCE_ROOT;
 		};
-		4FB2542F138C421F00B5C1AE /* Generated */ = {
+		4F29EB80147D7B94009E625E /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				4F8B69A713D744DE0067CE96 /* GTLBooks.h */,
-				4F8B69A813D744DE0067CE96 /* GTLBooksBookshelf.h */,
-				4F8B69A913D744DE0067CE96 /* GTLBooksBookshelf.m */,
-				4F8B69AA13D744DE0067CE96 /* GTLBooksBookshelves.h */,
-				4F8B69AB13D744DE0067CE96 /* GTLBooksBookshelves.m */,
-				4F8B69AC13D744DE0067CE96 /* GTLBooksConstants.h */,
-				4F8B69AD13D744DE0067CE96 /* GTLBooksConstants.m */,
-				4F8B69AE13D744DE0067CE96 /* GTLBooksDownloadAccessRestriction.h */,
-				4F8B69AF13D744DE0067CE96 /* GTLBooksDownloadAccessRestriction.m */,
-				4F8B69B013D744DE0067CE96 /* GTLBooksReadingPosition.h */,
-				4F8B69B113D744DE0067CE96 /* GTLBooksReadingPosition.m */,
-				4F8B69B213D744DE0067CE96 /* GTLBooksReview.h */,
-				4F8B69B313D744DE0067CE96 /* GTLBooksReview.m */,
-				4F8B69B413D744DE0067CE96 /* GTLBooksVolume.h */,
-				4F8B69B513D744DE0067CE96 /* GTLBooksVolume.m */,
-				4F8B69B613D744DE0067CE96 /* GTLBooksVolumes.h */,
-				4F8B69B713D744DE0067CE96 /* GTLBooksVolumes.m */,
-				4F8B69B813D744DE0067CE96 /* GTLQueryBooks.h */,
-				4F8B69B913D744DE0067CE96 /* GTLQueryBooks.m */,
-				4F8B69BA13D744DE0067CE96 /* GTLServiceBooks.h */,
-				4F8B69BB13D744DE0067CE96 /* GTLServiceBooks.m */,
+				4F29EB81147D7B94009E625E /* GTLBooks.h */,
+				4F29EB82147D7B94009E625E /* GTLBooksAnnotation.h */,
+				4F29EB83147D7B94009E625E /* GTLBooksAnnotation.m */,
+				4F29EB84147D7B94009E625E /* GTLBooksAnnotations.h */,
+				4F29EB85147D7B94009E625E /* GTLBooksAnnotations.m */,
+				4F29EB86147D7B94009E625E /* GTLBooksAnnotationsRange.h */,
+				4F29EB87147D7B94009E625E /* GTLBooksAnnotationsRange.m */,
+				4F29EB88147D7B94009E625E /* GTLBooksBookshelf.h */,
+				4F29EB89147D7B94009E625E /* GTLBooksBookshelf.m */,
+				4F29EB8A147D7B94009E625E /* GTLBooksBookshelves.h */,
+				4F29EB8B147D7B94009E625E /* GTLBooksBookshelves.m */,
+				4F29EB8C147D7B94009E625E /* GTLBooksConstants.h */,
+				4F29EB8D147D7B94009E625E /* GTLBooksConstants.m */,
+				4F29EB8E147D7B94009E625E /* GTLBooksDownloadAccessRestriction.h */,
+				4F29EB8F147D7B94009E625E /* GTLBooksDownloadAccessRestriction.m */,
+				4F29EB90147D7B94009E625E /* GTLBooksReadingPosition.h */,
+				4F29EB91147D7B94009E625E /* GTLBooksReadingPosition.m */,
+				4F29EB92147D7B94009E625E /* GTLBooksReview.h */,
+				4F29EB93147D7B94009E625E /* GTLBooksReview.m */,
+				4F29EB94147D7B94009E625E /* GTLBooksVolume.h */,
+				4F29EB95147D7B94009E625E /* GTLBooksVolume.m */,
+				4F29EB96147D7B94009E625E /* GTLBooksVolumes.h */,
+				4F29EB97147D7B94009E625E /* GTLBooksVolumes.m */,
+				4F29EB98147D7B94009E625E /* GTLQueryBooks.h */,
+				4F29EB99147D7B94009E625E /* GTLQueryBooks.m */,
+				4F29EB9A147D7B94009E625E /* GTLServiceBooks.h */,
+				4F29EB9B147D7B94009E625E /* GTLServiceBooks.m */,
 			);
 			path = Generated;
+			sourceTree = "<group>";
+		};
+		4FB25425138C421100B5C1AE /* API Services */ = {
+			isa = PBXGroup;
+			children = (
+				4F29EB7F147D7B94009E625E /* Books */,
+			);
+			name = "API Services";
 			sourceTree = "<group>";
 		};
 		4FD0F1D80CBC68E100059DC1 /* Build Scripts */ = {
@@ -402,16 +417,19 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				4F82A5140FCDFECC00C477D4 /* BooksSampleAppController.m in Sources */,
 				4F82A5150FCDFECC00C477D4 /* BooksSampleWindowController.m in Sources */,
-				4F8B69BC13D744DE0067CE96 /* GTLBooksBookshelf.m in Sources */,
-				4F8B69BD13D744DE0067CE96 /* GTLBooksBookshelves.m in Sources */,
-				4F8B69BE13D744DE0067CE96 /* GTLBooksConstants.m in Sources */,
-				4F8B69BF13D744DE0067CE96 /* GTLBooksDownloadAccessRestriction.m in Sources */,
-				4F8B69C013D744DE0067CE96 /* GTLBooksReadingPosition.m in Sources */,
-				4F8B69C113D744DE0067CE96 /* GTLBooksReview.m in Sources */,
-				4F8B69C213D744DE0067CE96 /* GTLBooksVolume.m in Sources */,
-				4F8B69C313D744DE0067CE96 /* GTLBooksVolumes.m in Sources */,
-				4F8B69C413D744DE0067CE96 /* GTLQueryBooks.m in Sources */,
-				4F8B69C513D744DE0067CE96 /* GTLServiceBooks.m in Sources */,
+				4F29EB9C147D7B94009E625E /* GTLBooksAnnotation.m in Sources */,
+				4F29EB9D147D7B94009E625E /* GTLBooksAnnotations.m in Sources */,
+				4F29EB9E147D7B94009E625E /* GTLBooksAnnotationsRange.m in Sources */,
+				4F29EB9F147D7B94009E625E /* GTLBooksBookshelf.m in Sources */,
+				4F29EBA0147D7B94009E625E /* GTLBooksBookshelves.m in Sources */,
+				4F29EBA1147D7B94009E625E /* GTLBooksConstants.m in Sources */,
+				4F29EBA2147D7B94009E625E /* GTLBooksDownloadAccessRestriction.m in Sources */,
+				4F29EBA3147D7B94009E625E /* GTLBooksReadingPosition.m in Sources */,
+				4F29EBA4147D7B94009E625E /* GTLBooksReview.m in Sources */,
+				4F29EBA5147D7B94009E625E /* GTLBooksVolume.m in Sources */,
+				4F29EBA6147D7B94009E625E /* GTLBooksVolumes.m in Sources */,
+				4F29EBA7147D7B94009E625E /* GTLQueryBooks.m in Sources */,
+				4F29EBA8147D7B94009E625E /* GTLServiceBooks.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
