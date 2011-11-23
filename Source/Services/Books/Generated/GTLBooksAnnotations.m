@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLBooks.h
+//  GTLBooksAnnotations.m
 //
 
 // ----------------------------------------------------------------------------
@@ -25,19 +25,30 @@
 //   Lets you search for books and manage your Google Books library.
 // Documentation:
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
+// Classes:
+//   GTLBooksAnnotations (0 custom class methods, 4 custom properties)
 
-#import "GTLBooksConstants.h"
+#import "GTLBooksAnnotations.h"
 
 #import "GTLBooksAnnotation.h"
-#import "GTLBooksAnnotations.h"
-#import "GTLBooksAnnotationsRange.h"
-#import "GTLBooksBookshelf.h"
-#import "GTLBooksBookshelves.h"
-#import "GTLBooksDownloadAccessRestriction.h"
-#import "GTLBooksReadingPosition.h"
-#import "GTLBooksReview.h"
-#import "GTLBooksVolume.h"
-#import "GTLBooksVolumes.h"
 
-#import "GTLQueryBooks.h"
-#import "GTLServiceBooks.h"
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksAnnotations
+//
+
+@implementation GTLBooksAnnotations
+@dynamic items, kind, nextPageToken, totalItems;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLBooksAnnotation class]
+                                forKey:@"items"];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"books#annotations"];
+}
+
+@end

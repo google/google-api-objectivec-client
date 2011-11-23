@@ -30,7 +30,7 @@
 //   GTLBooksVolumeAccessInfo (0 custom class methods, 9 custom properties)
 //   GTLBooksVolumeSaleInfo (0 custom class methods, 7 custom properties)
 //   GTLBooksVolumeUserInfo (0 custom class methods, 5 custom properties)
-//   GTLBooksVolumeVolumeInfo (0 custom class methods, 19 custom properties)
+//   GTLBooksVolumeVolumeInfo (0 custom class methods, 20 custom properties)
 //   GTLBooksVolumeAccessInfoEpub (0 custom class methods, 2 custom properties)
 //   GTLBooksVolumeAccessInfoPdf (0 custom class methods, 2 custom properties)
 //   GTLBooksVolumeSaleInfoListPrice (0 custom class methods, 2 custom properties)
@@ -225,6 +225,10 @@
 
 // The mean review rating for this volume. (min = 1.0, max = 5.0)
 @property (retain) NSNumber *averageRating;  // doubleValue
+
+// Canonical URL for a volume. Use this URL to plus one a Google Book. (In LITE
+// projection)
+@property (retain) NSString *canonicalVolumeLink;
 
 // A list of subject categories, such as "Fiction", "Suspense", etc.
 @property (retain) NSArray *categories;  // of NSString

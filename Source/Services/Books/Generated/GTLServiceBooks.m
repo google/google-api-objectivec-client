@@ -38,6 +38,9 @@
 + (NSArray *)checkClasses {
   NSArray *classes = [NSArray arrayWithObjects:
                       [GTLQueryBooks class],
+                      [GTLBooksAnnotation class],
+                      [GTLBooksAnnotations class],
+                      [GTLBooksAnnotationsRange class],
                       [GTLBooksBookshelf class],
                       [GTLBooksBookshelves class],
                       [GTLBooksDownloadAccessRestriction class],

@@ -26,13 +26,15 @@
 // Documentation:
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
 // Classes:
-//   GTLQueryBooks (11 custom class methods, 18 custom properties)
+//   GTLQueryBooks (16 custom class methods, 23 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
 #else
   #import "GTLQuery.h"
 #endif
+
+@class GTLBooksAnnotation;
 
 @interface GTLQueryBooks : GTLQuery
 
@@ -46,13 +48,18 @@
 //
 // Method-specific parameters; see the comments below for more information.
 //
+@property (retain) NSString *annotationId;
+@property (retain) NSString *contentVersion;
 @property (retain) NSString *country;
 @property (retain) NSString *download;
 @property (retain) NSString *filter;
 @property (retain) NSString *langRestrict;
+@property (retain) NSString *layerId;
 @property (retain) NSString *libraryRestrict;
 @property (assign) NSUInteger maxResults;
 @property (retain) NSString *orderBy;
+@property (retain) NSArray *pageIds;  // of NSString
+@property (retain) NSString *pageToken;
 @property (retain) NSString *partner;
 @property (retain) NSString *printType;
 @property (retain) NSString *projection;
@@ -114,6 +121,72 @@
 // Fetches a GTLBooksVolumes.
 + (id)queryForBookshelvesVolumesListWithUserId:(NSString *)userId
                                          shelf:(NSString *)shelf;
+
+#pragma mark -
+#pragma mark "mylibrary.annotations" methods
+// These create a GTLQueryBooks object.
+
+// Method: books.mylibrary.annotations.delete
+// Deletes an annotation.
+//  Required:
+//   annotationId: The annotation identifier for the annotation to delete.
+//  Optional:
+//   country: ISO-3166-1 code to override the IP-based location.
+//   source: String to identify the originator of this request.
+//  Authorization scope(s):
+//   kGTLAuthScopeBooks
++ (id)queryForMylibraryAnnotationsDeleteWithAnnotationId:(NSString *)annotationId;
+
+// Method: books.mylibrary.annotations.get
+// Gets an annotation by its id.
+//  Required:
+//   annotationId: The annotation identifier for the annotation to retrieve.
+//  Optional:
+//   country: ISO-3166-1 code to override the IP-based location.
+//   source: String to identify the originator of this request.
+//  Authorization scope(s):
+//   kGTLAuthScopeBooks
+// Fetches a GTLBooksAnnotation.
++ (id)queryForMylibraryAnnotationsGetWithAnnotationId:(NSString *)annotationId;
+
+// Method: books.mylibrary.annotations.insert
+// Inserts a new annotation.
+//  Optional:
+//   country: ISO-3166-1 code to override the IP-based location.
+//   source: String to identify the originator of this request.
+//  Authorization scope(s):
+//   kGTLAuthScopeBooks
+// Fetches a GTLBooksAnnotation.
++ (id)queryForMylibraryAnnotationsInsertWithObject:(GTLBooksAnnotation *)object;
+
+// Method: books.mylibrary.annotations.list
+// Retrieves a list of annotations, possibly filtered.
+//  Optional:
+//   contentVersion: The content version for the requested volume.
+//   country: ISO-3166-1 code to override the IP-based location.
+//   layerId: The layer id to limit annotation by.
+//   maxResults: Maximum number of results to return (0..40)
+//   pageIds: The page id(s) for the volume that is being queried.
+//   pageToken: The value of the nextToken from the previous page.
+//   source: String to identify the originator of this request.
+//   volumeId: The volume to restrict annotations to.
+//  Authorization scope(s):
+//   kGTLAuthScopeBooks
+// Fetches a GTLBooksAnnotations.
++ (id)queryForMylibraryAnnotationsList;
+
+// Method: books.mylibrary.annotations.update
+// Updates an existing annotation.
+//  Required:
+//   annotationId: The annotation identifier for the annotation to update.
+//  Optional:
+//   country: ISO-3166-1 code to override the IP-based location.
+//   source: String to identify the originator of this request.
+//  Authorization scope(s):
+//   kGTLAuthScopeBooks
+// Fetches a GTLBooksAnnotation.
++ (id)queryForMylibraryAnnotationsUpdateWithObject:(GTLBooksAnnotation *)object
+                                      annotationId:(NSString *)annotationId;
 
 #pragma mark -
 #pragma mark "mylibrary.bookshelves" methods

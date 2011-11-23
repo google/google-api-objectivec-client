@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLBooks.h
+//  GTLBooksAnnotationsRange.h
 //
 
 // ----------------------------------------------------------------------------
@@ -25,19 +25,32 @@
 //   Lets you search for books and manage your Google Books library.
 // Documentation:
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
+// Classes:
+//   GTLBooksAnnotationsRange (0 custom class methods, 4 custom properties)
 
-#import "GTLBooksConstants.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLBooksAnnotation.h"
-#import "GTLBooksAnnotations.h"
-#import "GTLBooksAnnotationsRange.h"
-#import "GTLBooksBookshelf.h"
-#import "GTLBooksBookshelves.h"
-#import "GTLBooksDownloadAccessRestriction.h"
-#import "GTLBooksReadingPosition.h"
-#import "GTLBooksReview.h"
-#import "GTLBooksVolume.h"
-#import "GTLBooksVolumes.h"
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksAnnotationsRange
+//
 
-#import "GTLQueryBooks.h"
-#import "GTLServiceBooks.h"
+@interface GTLBooksAnnotationsRange : GTLObject
+
+// The offset from the ending position.
+@property (retain) NSString *endOffset;
+
+// The ending position for the range.
+@property (retain) NSString *endPosition;
+
+// The offset from the starting position.
+@property (retain) NSString *startOffset;
+
+// The starting position for the range.
+@property (retain) NSString *startPosition;
+
+@end
