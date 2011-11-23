@@ -23,7 +23,7 @@
   // make a proper token without whitespace from the given string
   //
   // per http://www.w3.org/Protocols/rfc2616/rfc2616-sec2.html
-  // and http://www.mozilla.org/build/user-agent-strings.html
+  // and http://www-archive.mozilla.org/build/user-agent-strings.html
 
   if (str == nil) return nil;
 

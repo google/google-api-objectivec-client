@@ -128,6 +128,7 @@ static NSString *ETagIfPresent(GTLObject *obj) {
 @implementation GTLService
 
 @synthesize runLoopModes = runLoopModes_,
+            userAgentAddition = userAgentAddition_,
             fetcherService = fetcherService_,
             operationQueue = operationQueue_,
             shouldFetchNextPages = shouldFetchNextPages_,
@@ -187,6 +188,7 @@ static NSString *ETagIfPresent(GTLObject *obj) {
   [userAgent_ release];
   [fetcherService_ release];
   [runLoopModes_ release];
+  [userAgentAddition_ release];
   [serviceProperties_ release];
   [surrogates_ release];
 #if NS_BLOCKS_AVAILABLE
@@ -280,10 +282,16 @@ static NSString *ETagIfPresent(GTLObject *obj) {
 
     NSString *systemString = [[self class] systemVersionString];
 
+    // We don't clean this with userAgentStringForString: so spaces are
+    // preserved
+    NSString *userAgentAddition = self.userAgentAddition;
+    NSString *customString = userAgentAddition ?
+      [@" " stringByAppendingString:userAgentAddition] : @"";
+
     // Google servers look for gzip in the user agent before sending gzip-
     // encoded responses.  See Service.java
-    requestUserAgent = [NSString stringWithFormat:@"%@ %@/%@ %@ (gzip)",
-      userAgent, libraryString, libVersionString, systemString];
+    requestUserAgent = [NSString stringWithFormat:@"%@ %@/%@ %@%@ (gzip)",
+      userAgent, libraryString, libVersionString, systemString, customString];
   }
   return requestUserAgent;
 }

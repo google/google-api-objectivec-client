@@ -32,13 +32,11 @@
 //   GTLPlusActivityProvider (0 custom class methods, 1 custom properties)
 //   GTLPlusActivityActorImage (0 custom class methods, 1 custom properties)
 //   GTLPlusActivityObjectActor (0 custom class methods, 4 custom properties)
-//   GTLPlusActivityObjectAttachmentsItem (0 custom class methods, 10 custom properties)
+//   GTLPlusActivityObjectAttachmentsItem (0 custom class methods, 8 custom properties)
 //   GTLPlusActivityObjectPlusoners (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectReplies (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectResharers (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectActorImage (0 custom class methods, 1 custom properties)
-//   GTLPlusActivityObjectAttachmentsItemCategoriesItem (0 custom class methods, 3 custom properties)
-//   GTLPlusActivityObjectAttachmentsItemContentsource (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectAttachmentsItemEmbed (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectAttachmentsItemFullImage (0 custom class methods, 4 custom properties)
 //   GTLPlusActivityObjectAttachmentsItemImage (0 custom class methods, 4 custom properties)
@@ -56,8 +54,6 @@
 @class GTLPlusActivityObjectActor;
 @class GTLPlusActivityObjectActorImage;
 @class GTLPlusActivityObjectAttachmentsItem;
-@class GTLPlusActivityObjectAttachmentsItemCategoriesItem;
-@class GTLPlusActivityObjectAttachmentsItemContentsource;
 @class GTLPlusActivityObjectAttachmentsItemEmbed;
 @class GTLPlusActivityObjectAttachmentsItemFullImage;
 @class GTLPlusActivityObjectAttachmentsItemImage;
@@ -277,15 +273,9 @@
 
 @interface GTLPlusActivityObjectAttachmentsItem : GTLObject
 
-// Specifies zero or more categories the attachment belongs to.
-@property (retain) NSArray *categories;  // of GTLPlusActivityObjectAttachmentsItemCategoriesItem
-
 // If the attachment is an article, this property contains a snippet of text
 // from the article.
 @property (retain) NSString *content;
-
-// If the attachment is audio, the link to the content.
-@property (retain) GTLPlusActivityObjectAttachmentsItemContentsource *contentsource;
 
 // The title of the attachment (such as a photo caption or an article title).
 @property (retain) NSString *displayName;

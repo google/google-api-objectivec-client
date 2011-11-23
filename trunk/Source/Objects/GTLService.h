@@ -96,10 +96,12 @@ typedef void *GTLServiceUploadProgressBlock;
 //
 
 @interface GTLService : NSObject {
+ @private
   NSOperationQueue *operationQueue_;
   NSString *userAgent_;
   GTMHTTPFetcherService *fetcherService_;
   NSArray *runLoopModes_;
+  NSString *userAgentAddition_;
 
   NSMutableDictionary *serviceProperties_; // initial values for properties in future tickets
 
@@ -355,14 +357,17 @@ typedef void *GTLServiceUploadProgressBlock;
 // NSModalPanelRunLoopMode as one of the modes.
 @property (nonatomic, retain) NSArray *runLoopModes;
 
-// Applications have a default user-agent based on their Info.plist settings,
-// but it can be customized if necessary.  User-agents should include the
-// application name, company name, and application version. Most applications
-// should not use this property.
+// Applications needing an additional identifier in the server logs may specify
+// one.
+@property (nonatomic, copy) NSString *userAgentAddition;
+
+// Applications have a default user-agent based on the application signature
+// in the Info.plist settings.  Most applications should not explicitly set
+// this property.
 @property (nonatomic, copy) NSString *userAgent;
 
 // The request user agent includes the library and OS version appended to the
-// base userAgent
+// base userAgent, along with the optional addition string.
 @property (nonatomic, readonly) NSString *requestUserAgent;
 
 // Applications may call requestForURL:httpMethod to get a request with the
