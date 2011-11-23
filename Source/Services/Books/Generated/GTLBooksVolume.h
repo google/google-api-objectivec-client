@@ -28,8 +28,8 @@
 // Classes:
 //   GTLBooksVolume (0 custom class methods, 8 custom properties)
 //   GTLBooksVolumeAccessInfo (0 custom class methods, 9 custom properties)
-//   GTLBooksVolumeSaleInfo (0 custom class methods, 6 custom properties)
-//   GTLBooksVolumeUserInfo (0 custom class methods, 4 custom properties)
+//   GTLBooksVolumeSaleInfo (0 custom class methods, 7 custom properties)
+//   GTLBooksVolumeUserInfo (0 custom class methods, 5 custom properties)
 //   GTLBooksVolumeVolumeInfo (0 custom class methods, 19 custom properties)
 //   GTLBooksVolumeAccessInfoEpub (0 custom class methods, 2 custom properties)
 //   GTLBooksVolumeAccessInfoPdf (0 custom class methods, 2 custom properties)
@@ -167,6 +167,9 @@
 // Suggested retail price. (In LITE projection.)
 @property (retain) GTLBooksVolumeSaleInfoListPrice *listPrice;
 
+// The date on which this book is available for sale.
+@property (retain) GTLDateTime *onSaleDate;
+
 // The actual selling price of the book. This is the same as the suggested
 // retail or list price unless there are offers or discounts on this volume. (In
 // LITE projection.)
@@ -186,6 +189,10 @@
 //
 
 @interface GTLBooksVolumeUserInfo : GTLObject
+
+// Whether or not this volume was pre-ordered by the authenticated user making
+// the request. (In LITE projection.)
+@property (retain) NSNumber *isPreordered;  // boolValue
 
 // Whether or not this volume was purchased by the authenticated user making the
 // request. (In LITE projection.)

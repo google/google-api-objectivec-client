@@ -26,7 +26,7 @@
 // Documentation:
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
 // Classes:
-//   GTLQueryBooks (11 custom class methods, 17 custom properties)
+//   GTLQueryBooks (11 custom class methods, 18 custom properties)
 
 #import "GTLQueryBooks.h"
 
@@ -38,8 +38,8 @@
 @implementation GTLQueryBooks
 
 @dynamic country, download, fields, filter, langRestrict, libraryRestrict,
-         maxResults, orderBy, partner, printType, projection, q, shelf, source,
-         startIndex, userId, volumeId;
+         maxResults, orderBy, partner, printType, projection, q, shelf,
+         showPreorders, source, startIndex, userId, volumeId;
 
 #pragma mark -
 #pragma mark "bookshelves" methods

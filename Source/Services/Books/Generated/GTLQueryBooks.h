@@ -26,7 +26,7 @@
 // Documentation:
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
 // Classes:
-//   GTLQueryBooks (11 custom class methods, 17 custom properties)
+//   GTLQueryBooks (11 custom class methods, 18 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -58,6 +58,7 @@
 @property (retain) NSString *projection;
 @property (retain) NSString *q;
 @property (retain) NSString *shelf;
+@property (assign) BOOL showPreorders;
 @property (retain) NSString *source;
 @property (assign) NSUInteger startIndex;
 @property (retain) NSString *userId;
@@ -105,6 +106,7 @@
 //  Optional:
 //   country: ISO-3166-1 code to override the IP-based location.
 //   maxResults: Maximum number of results to return
+//   showPreorders: Set to true to show pre-ordered books. Defaults to false.
 //   source: String to identify the originator of this request.
 //   startIndex: Index of the first element to return (starts at 0)
 //  Authorization scope(s):
@@ -191,6 +193,7 @@
 //      kGTLBooksProjectionLite: Includes a subset of fields in volumeInfo and
 //        accessInfo.
 //   q: Full-text search query string in this bookshelf.
+//   showPreorders: Set to true to show pre-ordered books. Defaults to false.
 //   source: String to identify the originator of this request.
 //   startIndex: Index of the first element to return (starts at 0)
 //  Authorization scope(s):
@@ -253,6 +256,8 @@
 //      kGTLBooksProjectionFull: Includes all volume data.
 //      kGTLBooksProjectionLite: Includes a subset of fields in volumeInfo and
 //        accessInfo.
+//   showPreorders: Set to true to show books available for preorder. Defaults
+//     to false.
 //   source: String to identify the originator of this request.
 //   startIndex: Index of the first result to return (starts at 0)
 //  Authorization scope(s):
