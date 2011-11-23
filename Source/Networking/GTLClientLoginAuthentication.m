@@ -444,6 +444,16 @@ static void XorPlainMutableData(NSMutableData *mutableData) {
   [fetcher waitForCompletionWithTimeout:timeoutInSeconds];
 }
 
+- (BOOL)primeForRefresh {
+  if (self.userEmail == nil || self.password == nil) {
+    // Cannot refresh without username and password
+    return NO;
+  }
+  self.token = nil;
+  self.tokenIssueDate = nil;
+  return YES;
+}
+
 #pragma mark -
 
 - (NSString *)userEmail {
