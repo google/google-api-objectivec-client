@@ -26,10 +26,12 @@
 // Documentation:
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
 // Classes:
-//   GTLQueryBooks (11 custom class methods, 18 custom properties)
+//   GTLQueryBooks (16 custom class methods, 23 custom properties)
 
 #import "GTLQueryBooks.h"
 
+#import "GTLBooksAnnotation.h"
+#import "GTLBooksAnnotations.h"
 #import "GTLBooksBookshelf.h"
 #import "GTLBooksBookshelves.h"
 #import "GTLBooksVolume.h"
@@ -37,9 +39,17 @@
 
 @implementation GTLQueryBooks
 
-@dynamic country, download, fields, filter, langRestrict, libraryRestrict,
-         maxResults, orderBy, partner, printType, projection, q, shelf,
-         showPreorders, source, startIndex, userId, volumeId;
+@dynamic annotationId, contentVersion, country, download, fields, filter,
+         langRestrict, layerId, libraryRestrict, maxResults, orderBy, pageIds,
+         pageToken, partner, printType, projection, q, shelf, showPreorders,
+         source, startIndex, userId, volumeId;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[NSString class]
+                                forKey:@"pageIds"];
+  return map;
+}
 
 #pragma mark -
 #pragma mark "bookshelves" methods
@@ -74,6 +84,58 @@
   query.userId = userId;
   query.shelf = shelf;
   query.expectedObjectClass = [GTLBooksVolumes class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "mylibrary.annotations" methods
+// These create a GTLQueryBooks object.
+
++ (id)queryForMylibraryAnnotationsDeleteWithAnnotationId:(NSString *)annotationId {
+  NSString *methodName = @"books.mylibrary.annotations.delete";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.annotationId = annotationId;
+  return query;
+}
+
++ (id)queryForMylibraryAnnotationsGetWithAnnotationId:(NSString *)annotationId {
+  NSString *methodName = @"books.mylibrary.annotations.get";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.annotationId = annotationId;
+  query.expectedObjectClass = [GTLBooksAnnotation class];
+  return query;
+}
+
++ (id)queryForMylibraryAnnotationsInsertWithObject:(GTLBooksAnnotation *)object {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"books.mylibrary.annotations.insert";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.expectedObjectClass = [GTLBooksAnnotation class];
+  return query;
+}
+
++ (id)queryForMylibraryAnnotationsList {
+  NSString *methodName = @"books.mylibrary.annotations.list";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLBooksAnnotations class];
+  return query;
+}
+
++ (id)queryForMylibraryAnnotationsUpdateWithObject:(GTLBooksAnnotation *)object
+                                      annotationId:(NSString *)annotationId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"books.mylibrary.annotations.update";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.annotationId = annotationId;
+  query.expectedObjectClass = [GTLBooksAnnotation class];
   return query;
 }
 

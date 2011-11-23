@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLBooks.h
+//  GTLBooksAnnotationsRange.m
 //
 
 // ----------------------------------------------------------------------------
@@ -25,19 +25,16 @@
 //   Lets you search for books and manage your Google Books library.
 // Documentation:
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
+// Classes:
+//   GTLBooksAnnotationsRange (0 custom class methods, 4 custom properties)
 
-#import "GTLBooksConstants.h"
-
-#import "GTLBooksAnnotation.h"
-#import "GTLBooksAnnotations.h"
 #import "GTLBooksAnnotationsRange.h"
-#import "GTLBooksBookshelf.h"
-#import "GTLBooksBookshelves.h"
-#import "GTLBooksDownloadAccessRestriction.h"
-#import "GTLBooksReadingPosition.h"
-#import "GTLBooksReview.h"
-#import "GTLBooksVolume.h"
-#import "GTLBooksVolumes.h"
 
-#import "GTLQueryBooks.h"
-#import "GTLServiceBooks.h"
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksAnnotationsRange
+//
+
+@implementation GTLBooksAnnotationsRange
+@dynamic endOffset, endPosition, startOffset, startPosition;
+@end
