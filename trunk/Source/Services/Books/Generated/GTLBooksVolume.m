@@ -28,8 +28,8 @@
 // Classes:
 //   GTLBooksVolume (0 custom class methods, 8 custom properties)
 //   GTLBooksVolumeAccessInfo (0 custom class methods, 9 custom properties)
-//   GTLBooksVolumeSaleInfo (0 custom class methods, 6 custom properties)
-//   GTLBooksVolumeUserInfo (0 custom class methods, 4 custom properties)
+//   GTLBooksVolumeSaleInfo (0 custom class methods, 7 custom properties)
+//   GTLBooksVolumeUserInfo (0 custom class methods, 5 custom properties)
 //   GTLBooksVolumeVolumeInfo (0 custom class methods, 19 custom properties)
 //   GTLBooksVolumeAccessInfoEpub (0 custom class methods, 2 custom properties)
 //   GTLBooksVolumeAccessInfoPdf (0 custom class methods, 2 custom properties)
@@ -87,7 +87,8 @@
 //
 
 @implementation GTLBooksVolumeSaleInfo
-@dynamic buyLink, country, isEbook, listPrice, retailPrice, saleability;
+@dynamic buyLink, country, isEbook, listPrice, onSaleDate, retailPrice,
+         saleability;
 @end
 
 
@@ -97,7 +98,7 @@
 //
 
 @implementation GTLBooksVolumeUserInfo
-@dynamic isPurchased, readingPosition, review, updated;
+@dynamic isPreordered, isPurchased, readingPosition, review, updated;
 @end
 
 
