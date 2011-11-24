@@ -334,6 +334,33 @@ GTLBatchQuery *batchQuery = [GTLBatchQuery batchQuery];
 
 Each query object is created with a unique `requestID`, though your application may set a custom `requestID` string for the query prior to execution. The `requestID` string must be non-empty, and all queries in a batch must have unique `requestID`s.
 
+== Saving Objects (Serialization) ==
+
+A `GTLObject` has an underlying NSDictionary accessible through its `JSON` property. The dictionary may be saved as a property list:
+{{{
+// Saving to disk
+NSMutableDictionary *dict = tasklist.JSON;
+BOOL didSave = [dict writeToFile:path atomically:YES];
+}}}
+An object's JSON can also be expressed as a string with the `JSONString` method.
+
+The object may later be recreated with the class method `+objectWithJSON:` The dictionary used be constructed with mutable containers:
+{{{
+// Reading from disk
+NSData *data = [NSData dataWithContentsOfFile:path
+                                      options:0
+                                        error:&error];
+if (data) {
+  NSMutableDictionary *dict = [NSPropertyListSerialization propertyListWithData:data
+                                                                        options:NSPropertyListMutableContainers
+                                                                         format:NULL
+                                                                          error:&error];
+  if (dict) {
+    GTLTasksTaskList *tasklist = [GTLTasksTaskList objectWithJSON:dict];
+  }
+}
+}}}
+
 == Adding Custom Data ==
 
 Often it is useful to add data locally to a `GTLObject`. For example, an entry used to represent a photo being uploaded would be more convenient if it also carried a path to the photo's file on the local disk.
