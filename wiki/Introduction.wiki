@@ -344,7 +344,7 @@ BOOL didSave = [dict writeToFile:path atomically:YES];
 }}}
 An object's JSON can also be expressed as a string with the `JSONString` method.
 
-The object may later be recreated with the class method `+objectWithJSON:` The dictionary used be constructed with mutable containers:
+The object may later be recreated with the class method `+objectWithJSON:` The JSON dictionary should be constructed with mutable containers:
 {{{
 // Reading from disk
 NSData *data = [NSData dataWithContentsOfFile:path
