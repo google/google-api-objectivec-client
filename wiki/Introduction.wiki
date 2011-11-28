@@ -51,6 +51,14 @@ Google APIs rely on OAuth 2 for user sign-in. The library includes the [http://c
 
 Be sure to read the introduction wiki page for [http://code.google.com/p/gtm-oauth2/ gtm-oauth2], as adding authentication support to your project is likely to require more effort than is using the API client library.
 
+== API Quotas ==
+
+For each API used by your application, enable the API and check its default *quota* in the Services section of the [https://code.google.com/apis/console/ API Console]. 
+
+Applications which make frequent API requests or have many users may need more than the default limit. The specific API documentation or the service's control in the API Console will explain how to request a larger quota. 
+
+*Note:* Be sure to estimate your application's total queries per day for all users and request an appropriate quota _before_ releasing your application to a large audience. An inadequate quota may lead to errors on API requests after your application ships.
+
 == Google APIs Client Library for Objective-C Basics ==
 
 === Queries and GTLObjects ===
