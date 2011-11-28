@@ -15,11 +15,13 @@ The Google APIs Client Library for Objective-C is a Cocoa framework that enables
   * Service-specific protocols and query generation
 
 
-== Requirements ==
+== Preparing to Use the Library ==
+
+=== Requirements ===
 
 The Google APIs Client Library for Objective-C requires iOS 3 or later, or Mac OS X 10.5 or later.
 
-== Example Applications ==
+=== Example Applications ===
 
 The Examples directory contains example applications showing typical interactions with Google services using the framework.  The applications act as simple browsers for the data classes for each service.  The !WindowController source files of the samples were written with typical Cocoa idioms to serve as quick introductions to use of the APIs.  
 
@@ -29,11 +31,11 @@ In order to use the example applications that require authentication, you must c
 
 Google APIs which do not require authentication may require an *API key*, also obtained from the [https://code.google.com/apis/console/ API Console].
 
-== Adding the Library to a Project ==
+=== Adding the Library to a Project ===
 
 BuildingTheLibrary explains how to add the library to a Mac or iPhone application project.
 
-== Subsidiary Libraries ==
+=== Subsidiary Libraries ===
 
 The Google APIs Library for Objective-C uses the prefix `GTL`. 
 
@@ -41,7 +43,7 @@ The library incorporates other Google libraries with the `GTM` prefix. Those pro
 
 All external libraries needed are checked out automatically with the main API library using Subversion's externals facility.
 
-== Authentication and Authorization ==
+=== Authentication and Authorization ===
 
 *Authentication* is the confirmation of a user's identity using her username, password, and possibly other data, such as captcha answers or 2-step codes provided via mobile phone. Authentication is required for access to non-public data. 
 
@@ -51,7 +53,7 @@ Google APIs rely on OAuth 2 for user sign-in. The library includes the [http://c
 
 Be sure to read the introduction wiki page for [http://code.google.com/p/gtm-oauth2/ gtm-oauth2], as adding authentication support to your project is likely to require more effort than is using the API client library.
 
-== API Quotas ==
+=== API Quotas ===
 
 For each API used by your application, enable the API and check its default *quota* in the Services section of the [https://code.google.com/apis/console/ API Console]. 
 
@@ -59,15 +61,15 @@ Applications which make frequent API requests or have many users may need more t
 
 *Note:* Be sure to estimate your application's total queries per day for all users and request an appropriate quota _before_ releasing your application to a large audience. An inadequate quota may lead to errors on API requests after your application ships.
 
-== Google APIs Client Library for Objective-C Basics ==
+== Basics ==
 
-=== Queries and GTLObjects ===
+=== Objects and Queries ===
 
-Servers respond to client API requests with objects.  Objects are typically either individual items, or a collection with an `items` property that returns an `NSArray` of items.
+Servers respond to client API requests with an object.  The object is typically either an individual item, or a collection with an `items` property that accesses an `NSArray` of items.
 
-For example, a search for products would return a `GTLShoppingProducts` container object, where the items of the object are the individual product results found by the search.
+For example, a search for products would return a `GTLShoppingProducts` collection, where the items of the collection are the individual product results found by the search.
 
-The individual items are derived from *GTLObject*. The collection is derived from *GTLCollectionObject*, which is a `GTLObject` that also provides an `itemAtIndex:` method and supports `for` loops over the items by implementing the `NSFastEnumeration` protocol.
+The individual items are derived from *GTLObject*. The collection is derived from *GTLCollectionObject*, which is a `GTLObject` that also provides an `itemAtIndex:` method and supports `for` loops over the collection items by implementing the `NSFastEnumeration` protocol.
 
 Each request to the server is a *query*. Server interactions in the library are handled by *service objects*.  A single transaction with a service is tracked with a *service ticket*.
 
@@ -125,7 +127,7 @@ GTLServiceTicket *ticket = [service executeQuery:query
                                         delegate:self
                                 finishedSelector:@selector(serviceTicket:finishedWithObject:error:)];
 }}}
-The delegate is retained until the query has completed, or the ticket has been canceled.
+The delegate is retained until the query has completed, or until the ticket has been canceled.
 
 === Services and Tickets ===
 
@@ -182,14 +184,14 @@ Ideally, maxResults will be large enough that, for typical user data, all result
 
 For queries that search public data, with potentially a very large number of items resulting, `shouldFetchNextPages` should not be enabled for the service or the ticket. Additional pages of large data sets can be fetched manually.
 
-== Query Operations ==
+=== Query Operations ===
 
 Query objects typically implement these basic operations:
-  * list - fetch a list of items
-  * insert - add an item to a list
-  * update - replace an entire item
-  * patch - replace fields of an item
-  * delete - remove an item
+  * *list* - fetch a list of items
+  * *insert* - add an item to a list
+  * *update* - replace an entire item
+  * *patch* - replace fields of an item
+  * *delete* - remove an item
 
 There may be custom query operations as well.  To find the Objective-C query class for a documented API operation, search for the *method name* shown in the JSON-RPC documentation for the API.  It is listed before each method name in the query class interface, as shown here for the method named "shopping.products.list":
 {{{
@@ -200,7 +202,7 @@ There may be custom query operations as well.  To find the Objective-C query cla
 }}}
 The comments for each method also specify the type of object passed to the callback if the query succeeds. In this example, the callback object class is `GTLShoppingProducts`.
 
-== Creating GTLObjects from Scratch ==
+=== Creating GTLObjects from Scratch ===
 
 Typically, `GTLObject`s are created by the library from JSON returned from a server, but occasionally it is useful to create one from scratch, such as when inserting a new item or patching an existing item.  The `+object` method creates an empty instance of a `GTLObject`.
 
@@ -223,7 +225,8 @@ This snippet shows how to create a new task list for the user's Google Tasks acc
 }
 }}}
 
-== Partial Responses ==
+== Performance and Memory Optimizations ==
+=== Partial Responses ===
 
 Applications can avoid fetching unneeded data by setting a query's `fields` property. Google APIs support a syntax similar to XPath for selecting fields to be included in the response.
 
@@ -238,7 +241,7 @@ Refer to the [http://code.google.com/apis/buzz/v1/performance.html#partial-respo
 
 `GTLObject` provides a `fieldsDescription` method which returns a string describing all of the fields in an object.  The string may be useful as a starting point when making a query to request specific fields.
 
-== Partial Updates ==
+=== Partial Updates ===
 
 An update query will replace an entire item of a collection. Typically, it is more useful to replace only one or a few fields of an item. A patch query accomplishes that: it replaces only the fields specified by the patch object.
 
@@ -268,7 +271,7 @@ An array in a patch object field always replaces the entire array for the object
 
 `GTLObject` includes a helpful method `patchObjectFromOriginal:` for making a patch object that contains just the changes from a previous version of that object.
 
-== Batch Operations ==
+=== Batch Operations ===
 
 Several unrelated queries may be executed together in a *batch*. Batch execution is faster than is executing queries individually.
 
@@ -278,7 +281,7 @@ Typically, it is easier to use individual query completion blocks for unrelated 
 
 Both types of callbacks may be used; the individual query completion blocks are called before the completion handler for the batch query execution. Individual query completion blocks are optional, and may be omitted.
 
-=== Individual Query Completion Blocks ===
+==== Individual Query Completion Blocks ====
 
 A completion block can be specified for each query, as shown here:
 {{{
@@ -306,7 +309,7 @@ if (errorObj) {
 }
 }}}
 
-=== Unified Batch Completion Handler ===
+==== Unified Batch Completion Handler ====
 
 The unified result of executing a batch query is a `GTLBatchResult` object with two dictionaries, one for the results of successful queries, and one for the error objects returned by unsuccessful queries. 
 
@@ -342,7 +345,9 @@ GTLBatchQuery *batchQuery = [GTLBatchQuery batchQuery];
 
 Each query object is created with a unique `requestID`, though your application may set a custom `requestID` string for the query prior to execution. The `requestID` string must be non-empty, and all queries in a batch must have unique `requestID`s.
 
-== Saving Objects (Serialization) ==
+== Convenience Features ==
+
+=== Saving Objects (Serialization) ===
 
 A `GTLObject` has an underlying NSDictionary accessible through its `JSON` property. The dictionary may be saved as a property list:
 {{{
@@ -369,13 +374,13 @@ if (data) {
 }
 }}}
 
-== Adding Custom Data ==
+=== Adding Custom Data ===
 
 Often it is useful to add data locally to a `GTLObject`. For example, an entry used to represent a photo being uploaded would be more convenient if it also carried a path to the photo's file on the local disk.
 
 Your application can add data to any instance of a `GTLObject` in three ways. These three techniques only add data to objects _locally_ for the Objective-C code; the data will not be retained on the server.
 
-=== userData ===
+==== !UserData ====
 
 Each `GTLObject` has a `userData` property to set and retrieve a single NSObject. Adding a local path string to a photo entry `userData` would look like this:
 
@@ -384,7 +389,7 @@ GTLPhoto *newPhoto = [GTLPhoto object];
 newPhoto.userData = localPathString;
 }}}
 
-=== User Properties ===
+==== User Properties ====
 
 An application can set and retrieve multiple objects as named properties of any `GTLObject` instance with the methods `setProperty:forKey:` and `propertyForKey:`. Unlike `userData`, this is useful for attaching multiple properties.
 
@@ -396,7 +401,7 @@ GTLPhoto *newPhoto = [GTLPhoto object];
 
 Property keys beginning with an underscore are reserved by the library and should not be used by applications.
 
-=== Subclassing GTLObjects ===
+==== Subclassing GTLObjects ====
 
 Finally, applications may subclass `GTLObject`s to add ivars and methods.  To have your subclasses be instantiated in place of the standard object class during the parsing of JSON as part of query execution, set the `surrogates` property of the service:
 
@@ -409,9 +414,9 @@ service.surrogates = [NSDictionary dictionaryWithObjectsAndKeys:
   nil];
 }}}
 
-== Passing Objects to Query Callbacks ==
+=== Passing Data to Query Callbacks ===
 
-It is often useful to pass an object to a callback, particularly when using selector callbacks rather than blocks. 
+It is often useful to pass an NSObject to a callback, particularly when using selector callbacks rather than blocks. 
 
 To retain an object from query execution until its callback is invoked, use `GTLServiceTicket`'s `setProperty:forKey:` methods.  For example:
 
@@ -431,7 +436,7 @@ The callback can then access the data:
 
 `GTLServiceTicket` also supports a `userData` property, which is a single object to be retained, without an explicit key.
 
-== Automatic Retry ==
+=== Automatic Retry ===
 
 GTL service classes and the `GTMHTTPFetcher` class provide a mechanism for automatic retry of a few common network and server errors, with appropriate increasing delays between each attempt.  You can turn on the automatic retry support for a GTL service by setting the `retryEnabled` property.
 
@@ -442,7 +447,7 @@ service.retryEnabled = YES;
 
 The default errors retried are http status 408 (request timeout), 503 (service unavailable), and 504 (gateway timeout), `NSURLErrorNetworkConnectionLost`, and `NSURLErrorTimedOut`.  You may specify a maximum retry interval other than the default of 1 minute, and can provide an optional retry selector to customize the criteria for each retry attempt.
 
-== Using APIs Without Generated Classes ==
+=== Using APIs Without Generated Classes ===
 
 The Google APIs Client Library for Objective-C includes generated service, query and data classes. These are Objective-C files constructed by processing the output of the [https://code.google.com/apis/discovery/ Google APIs Discovery Service]. The generated classes are derived from `GTLService`, `GTLQuery`, and `GTLObject`.
 
