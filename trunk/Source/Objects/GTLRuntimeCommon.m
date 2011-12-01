@@ -528,7 +528,12 @@ static GTLDateTime *DynamicDateTimeGetter(id<GTLRuntimeCommon> self, SEL sel) {
     NSString *str = [self JSONValueForKey:jsonKey];
     id cacheValue, resultValue;
     if (![str isKindOfClass:[NSNull class]]) {
-      GTLDateTime *dateTime = [GTLDateTime dateTimeWithRFC3339String:str];
+      GTLDateTime *dateTime;
+      if (str != nil) {
+        dateTime = [GTLDateTime dateTimeWithRFC3339String:str];
+      } else {
+        dateTime = nil;
+      }
       cacheValue = dateTime;
       resultValue = dateTime;
     } else {

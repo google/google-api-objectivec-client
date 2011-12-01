@@ -299,42 +299,44 @@
   NSInteger offsetHour = 0;
   NSInteger offsetMinute = 0;
 
-  NSScanner* scanner = [NSScanner scannerWithString:str];
-  // There should be no whitespace, so no skip characters.
-  [scanner setCharactersToBeSkipped:nil];
+  if ([str length] > 0) {
+    NSScanner* scanner = [NSScanner scannerWithString:str];
+    // There should be no whitespace, so no skip characters.
+    [scanner setCharactersToBeSkipped:nil];
 
-  NSCharacterSet* dashSet = [NSCharacterSet characterSetWithCharactersInString:@"-"];
-  NSCharacterSet* tSet = [NSCharacterSet characterSetWithCharactersInString:@"Tt "];
-  NSCharacterSet* colonSet = [NSCharacterSet characterSetWithCharactersInString:@":"];
-  NSCharacterSet* plusMinusZSet = [NSCharacterSet characterSetWithCharactersInString:@"+-zZ"];
+    NSCharacterSet* dashSet = [NSCharacterSet characterSetWithCharactersInString:@"-"];
+    NSCharacterSet* tSet = [NSCharacterSet characterSetWithCharactersInString:@"Tt "];
+    NSCharacterSet* colonSet = [NSCharacterSet characterSetWithCharactersInString:@":"];
+    NSCharacterSet* plusMinusZSet = [NSCharacterSet characterSetWithCharactersInString:@"+-zZ"];
 
-  // for example, scan 2006-11-17T15:10:46-08:00
-  //                or 2006-11-17T15:10:46Z
-  if (// yyyy-mm-dd
-      [scanner scanInteger:&year] &&
-      [scanner scanCharactersFromSet:dashSet intoString:NULL] &&
-      [scanner scanInteger:&month] &&
-      [scanner scanCharactersFromSet:dashSet intoString:NULL] &&
-      [scanner scanInteger:&day] &&
-      // Thh:mm:ss
-      [scanner scanCharactersFromSet:tSet intoString:NULL] &&
-      [scanner scanInteger:&hour] &&
-      [scanner scanCharactersFromSet:colonSet intoString:NULL] &&
-      [scanner scanInteger:&minute] &&
-      [scanner scanCharactersFromSet:colonSet intoString:NULL] &&
-      [scanner scanDouble:&secDouble]) {
-
-    // At this point we got secDouble, pull it apart.
-    sec = (NSInteger)secDouble;
-    double worker = secDouble - ((double)sec);
-    milliseconds = (NSInteger)round(worker * 1000.0);
-
-    // Finish parsing, now the offset info.
-    if (// Z or +hh:mm
-        [scanner scanCharactersFromSet:plusMinusZSet intoString:&sign] &&
-        [scanner scanInteger:&offsetHour] &&
+    // for example, scan 2006-11-17T15:10:46-08:00
+    //                or 2006-11-17T15:10:46Z
+    if (// yyyy-mm-dd
+        [scanner scanInteger:&year] &&
+        [scanner scanCharactersFromSet:dashSet intoString:NULL] &&
+        [scanner scanInteger:&month] &&
+        [scanner scanCharactersFromSet:dashSet intoString:NULL] &&
+        [scanner scanInteger:&day] &&
+        // Thh:mm:ss
+        [scanner scanCharactersFromSet:tSet intoString:NULL] &&
+        [scanner scanInteger:&hour] &&
         [scanner scanCharactersFromSet:colonSet intoString:NULL] &&
-        [scanner scanInteger:&offsetMinute]) {
+        [scanner scanInteger:&minute] &&
+        [scanner scanCharactersFromSet:colonSet intoString:NULL] &&
+        [scanner scanDouble:&secDouble]) {
+
+      // At this point we got secDouble, pull it apart.
+      sec = (NSInteger)secDouble;
+      double worker = secDouble - ((double)sec);
+      milliseconds = (NSInteger)round(worker * 1000.0);
+
+      // Finish parsing, now the offset info.
+      if (// Z or +hh:mm
+          [scanner scanCharactersFromSet:plusMinusZSet intoString:&sign] &&
+          [scanner scanInteger:&offsetHour] &&
+          [scanner scanCharactersFromSet:colonSet intoString:NULL] &&
+          [scanner scanInteger:&offsetMinute]) {
+      }
     }
   }
 

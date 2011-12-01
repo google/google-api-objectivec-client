@@ -29,6 +29,7 @@
 @property (retain) NSString *str2;
 @property (retain) NSNumber *aNum;
 @property (retain) GTLDateTime *aDate;
+@property (retain) GTLDateTime *date2;
 // Object
 @property (retain) GTLTestingObject *child;
 // Anything
@@ -42,7 +43,7 @@
 @end
 
 @implementation GTLTestingObject
-@dynamic aStr, str2, aNum, aDate, child, anything;
+@dynamic aStr, str2, aNum, aDate, date2, child, anything;
 @dynamic arrayString, arrayNumber, arrayDate, arrayKids, arrayAnything;
 + (NSDictionary *)propertyToJSONKeyMap {
   // Use the name mapping on a few...
@@ -163,6 +164,7 @@ static Class gAdditionalPropsClass = Nil;
   NSString * const dateStr = @"2011-01-14T15:00:00-01:00";
   STAssertEqualObjects(obj.aDate,
                        [GTLDateTime dateTimeWithRFC3339String:dateStr], nil);
+  STAssertNil(obj.date2, @"unexpected dateTime: %@", obj.date2);
 }
 
 - (void)testSetArrayBasicTypes {
