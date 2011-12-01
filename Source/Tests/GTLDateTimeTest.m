@@ -55,6 +55,14 @@
     { nil, 0, 0, 0, 0, 0, 0, 0, 0 }
   };
 
+  GTLDateTime *dateTimeFromNil = [GTLDateTime dateTimeWithRFC3339String:nil];
+  STAssertEquals([dateTimeFromNil.dateComponents year],
+                 (NSInteger) NSUndefinedDateComponent, nil);
+
+  GTLDateTime *dateTimeFromEmpty = [GTLDateTime dateTimeWithRFC3339String:@""];
+  STAssertEquals([dateTimeFromEmpty.dateComponents year],
+                 (NSInteger) NSUndefinedDateComponent, nil);
+
   int idx;
   for (idx = 0; tests[idx].dateTimeStr != nil; idx++) {
     NSString *testString1 = tests[idx].dateTimeStr;
