@@ -149,7 +149,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdsense
 //   kGTLAuthScopeAdsenseReadonly
-// Fetches a GTLAdsenseReportsGenerateResponse.
+// Fetches a GTLAdsenseAdsenseReportsGenerateResponse.
 + (id)queryForReportsGenerateWithStartDate:(NSString *)startDate
                                    endDate:(NSString *)endDate;
 

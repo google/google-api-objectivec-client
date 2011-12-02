@@ -32,9 +32,9 @@
 #import "GTLQueryAdsense.h"
 
 #import "GTLAdsenseAdClients.h"
+#import "GTLAdsenseAdsenseReportsGenerateResponse.h"
 #import "GTLAdsenseAdUnits.h"
 #import "GTLAdsenseCustomChannels.h"
-#import "GTLAdsenseReportsGenerateResponse.h"
 #import "GTLAdsenseUrlChannels.h"
 
 @implementation GTLQueryAdsense
@@ -99,7 +99,7 @@
   GTLQueryAdsense *query = [self queryWithMethodName:methodName];
   query.startDate = startDate;
   query.endDate = endDate;
-  query.expectedObjectClass = [GTLAdsenseReportsGenerateResponse class];
+  query.expectedObjectClass = [GTLAdsenseAdsenseReportsGenerateResponse class];
   return query;
 }
 

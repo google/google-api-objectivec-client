@@ -41,11 +41,11 @@
                       [GTLQueryAdsense class],
                       [GTLAdsenseAdClient class],
                       [GTLAdsenseAdClients class],
+                      [GTLAdsenseAdsenseReportsGenerateResponse class],
                       [GTLAdsenseAdUnit class],
                       [GTLAdsenseAdUnits class],
                       [GTLAdsenseCustomChannel class],
                       [GTLAdsenseCustomChannels class],
-                      [GTLAdsenseReportsGenerateResponse class],
                       [GTLAdsenseUrlChannel class],
                       [GTLAdsenseUrlChannels class],
                       nil];

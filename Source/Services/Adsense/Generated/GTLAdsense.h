@@ -31,11 +31,11 @@
 
 #import "GTLAdsenseAdClient.h"
 #import "GTLAdsenseAdClients.h"
+#import "GTLAdsenseAdsenseReportsGenerateResponse.h"
 #import "GTLAdsenseAdUnit.h"
 #import "GTLAdsenseAdUnits.h"
 #import "GTLAdsenseCustomChannel.h"
 #import "GTLAdsenseCustomChannels.h"
-#import "GTLAdsenseReportsGenerateResponse.h"
 #import "GTLAdsenseUrlChannel.h"
 #import "GTLAdsenseUrlChannels.h"
 
