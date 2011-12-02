@@ -45,12 +45,16 @@
             universalTime = isUniversalTime_;
 
 + (GTLDateTime *)dateTimeWithRFC3339String:(NSString *)str {
+  if (str == nil) return nil;
+
   GTLDateTime *result = [[[self alloc] init] autorelease];
   [result setFromRFC3339String:str];
   return result;
 }
 
 + (GTLDateTime *)dateTimeWithDate:(NSDate *)date timeZone:(NSTimeZone *)tz {
+  if (date == nil) return nil;
+
   GTLDateTime *result = [[[self alloc] init] autorelease];
   [result setFromDate:date timeZone:tz];
   return result;
