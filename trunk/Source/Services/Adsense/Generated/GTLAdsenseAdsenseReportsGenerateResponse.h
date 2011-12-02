@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAdsenseReportsGenerateResponse.h
+//  GTLAdsenseAdsenseReportsGenerateResponse.h
 //
 
 // ----------------------------------------------------------------------------
@@ -27,8 +27,8 @@
 // Documentation:
 //   https://code.google.com/apis/adsense/management/
 // Classes:
-//   GTLAdsenseReportsGenerateResponse (0 custom class methods, 6 custom properties)
-//   GTLAdsenseReportsGenerateResponseHeadersItem (0 custom class methods, 3 custom properties)
+//   GTLAdsenseAdsenseReportsGenerateResponse (0 custom class methods, 7 custom properties)
+//   GTLAdsenseAdsenseReportsGenerateResponseHeadersItem (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,14 +36,14 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLAdsenseReportsGenerateResponseHeadersItem;
+@class GTLAdsenseAdsenseReportsGenerateResponseHeadersItem;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAdsenseReportsGenerateResponse
+//   GTLAdsenseAdsenseReportsGenerateResponse
 //
 
-@interface GTLAdsenseReportsGenerateResponse : GTLObject
+@interface GTLAdsenseAdsenseReportsGenerateResponse : GTLObject
 
 // The averages of the report. This is the same length as any other row in the
 // report; cells corresponding to dimension columns are empty.
@@ -52,7 +52,10 @@
 // The header information of the columns requested in the report. This is a list
 // of headers; one for each dimension in the request, followed by one for each
 // metric in the request.
-@property (retain) NSArray *headers;  // of GTLAdsenseReportsGenerateResponseHeadersItem
+@property (retain) NSArray *headers;  // of GTLAdsenseAdsenseReportsGenerateResponseHeadersItem
+
+// Kind this is, in this case adsense#report.
+@property (retain) NSString *kind;
 
 // The output rows of the report. Each row is a list of cells; one for each
 // dimension in the request, followed by one for each metric in the request. The
@@ -76,10 +79,10 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAdsenseReportsGenerateResponseHeadersItem
+//   GTLAdsenseAdsenseReportsGenerateResponseHeadersItem
 //
 
-@interface GTLAdsenseReportsGenerateResponseHeadersItem : GTLObject
+@interface GTLAdsenseAdsenseReportsGenerateResponseHeadersItem : GTLObject
 
 // The currency of this column. Only present if the header type is
 // METRIC_CURRENCY.

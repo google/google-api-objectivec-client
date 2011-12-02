@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAdsenseReportsGenerateResponse.m
+//  GTLAdsenseAdsenseReportsGenerateResponse.m
 //
 
 // ----------------------------------------------------------------------------
@@ -27,24 +27,24 @@
 // Documentation:
 //   https://code.google.com/apis/adsense/management/
 // Classes:
-//   GTLAdsenseReportsGenerateResponse (0 custom class methods, 6 custom properties)
-//   GTLAdsenseReportsGenerateResponseHeadersItem (0 custom class methods, 3 custom properties)
+//   GTLAdsenseAdsenseReportsGenerateResponse (0 custom class methods, 7 custom properties)
+//   GTLAdsenseAdsenseReportsGenerateResponseHeadersItem (0 custom class methods, 3 custom properties)
 
-#import "GTLAdsenseReportsGenerateResponse.h"
+#import "GTLAdsenseAdsenseReportsGenerateResponse.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAdsenseReportsGenerateResponse
+//   GTLAdsenseAdsenseReportsGenerateResponse
 //
 
-@implementation GTLAdsenseReportsGenerateResponse
-@dynamic averages, headers, rows, totalMatchedRows, totals, warnings;
+@implementation GTLAdsenseAdsenseReportsGenerateResponse
+@dynamic averages, headers, kind, rows, totalMatchedRows, totals, warnings;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
       [NSString class], @"averages",
-      [GTLAdsenseReportsGenerateResponseHeadersItem class], @"headers",
+      [GTLAdsenseAdsenseReportsGenerateResponseHeadersItem class], @"headers",
       [NSString class], @"rows",
       [NSString class], @"totals",
       [NSString class], @"warnings",
@@ -52,14 +52,18 @@
   return map;
 }
 
++ (void)load {
+  [self registerObjectClassForKind:@"adsense#report"];
+}
+
 @end
 
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAdsenseReportsGenerateResponseHeadersItem
+//   GTLAdsenseAdsenseReportsGenerateResponseHeadersItem
 //
 
-@implementation GTLAdsenseReportsGenerateResponseHeadersItem
+@implementation GTLAdsenseAdsenseReportsGenerateResponseHeadersItem
 @dynamic currency, name, type;
 @end
