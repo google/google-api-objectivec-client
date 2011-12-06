@@ -28,6 +28,12 @@
 - (GTLUploadParameters *)uploadParameters;
 @end
 
+@protocol GTLQueryCollectionProtocol
+@optional
+@property (retain) NSString *pageToken;
+@property (retain) NSNumber *startIndex;
+@end
+
 @class GTLServiceTicket;
 
 @interface GTLQuery : NSObject <GTLQueryProtocol> {

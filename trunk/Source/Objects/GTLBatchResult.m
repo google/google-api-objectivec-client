@@ -21,10 +21,6 @@
 
 #import "GTLErrorObject.h"
 
-@interface GTLBatchResult()
-- (void)createItemsWithClassMap:(NSDictionary *)batchClassMap;
-@end
-
 @implementation GTLBatchResult
 
 @synthesize successes = successes_,

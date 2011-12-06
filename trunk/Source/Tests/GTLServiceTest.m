@@ -126,6 +126,7 @@ showDeleted, showHidden;
 @interface GTLServiceTest ()
 - (void)service:(GTLService *)service
   waitForTicket:(GTLServiceTicket *)ticket;
+- (void)parseStateChanged:(NSNotification *)note;
 @end
 
 @implementation GTLServiceTest

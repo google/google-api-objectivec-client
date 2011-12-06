@@ -113,16 +113,23 @@ static NSString *ETagIfPresent(GTLObject *obj) {
 - (GTMHTTPUploadFetcher *)uploadFetcherWithRequest:(NSURLRequest *)request
                                     fetcherService:(GTMHTTPFetcherService *)fetcherService
                                             params:(GTLUploadParameters *)uploadParams;
-  - (BOOL)invokeRetrySelector:(SEL)retrySelector
-                   delegate:(id)delegate
-                     ticket:(GTLServiceTicket *)ticket
-                  willRetry:(BOOL)willRetry
-                      error:(NSError *)error;
 + (void)invokeCallback:(SEL)callbackSel
                 target:(id)target
                 ticket:(id)ticket
                 object:(id)object
                  error:(id)error;
+- (BOOL)invokeRetrySelector:(SEL)retrySelector
+                   delegate:(id)delegate
+                     ticket:(GTLServiceTicket *)ticket
+                  willRetry:(BOOL)willRetry
+                      error:(NSError *)error;
+- (BOOL)objectFetcher:(GTMHTTPFetcher *)fetcher
+            willRetry:(BOOL)willRetry
+             forError:(NSError *)error;
+- (void)objectFetcher:(GTMHTTPFetcher *)fetcher
+     finishedWithData:(NSData *)data
+                error:(NSError *)error;
+- (void)parseObjectFromDataOfFetcher:(GTMHTTPFetcher *)fetcher;
 @end
 
 @implementation GTLService
