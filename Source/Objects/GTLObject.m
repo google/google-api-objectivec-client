@@ -562,9 +562,10 @@ static NSMutableDictionary *gKindMap = nil;
   parsedObject.JSON = json;
 
   // it's time to instantiate inner items
-  if ([parsedObject respondsToSelector:@selector(createItemsWithClassMap:)]) {
-    [parsedObject performSelector:@selector(createItemsWithClassMap:)
-                       withObject:batchClassMap];
+  if ([parsedObject conformsToProtocol:@protocol(GTLBatchItemCreationProtocol)]) {
+    id <GTLBatchItemCreationProtocol> batch =
+      (id <GTLBatchItemCreationProtocol>) parsedObject;
+    [batch createItemsWithClassMap:batchClassMap];
   }
 
   return parsedObject;

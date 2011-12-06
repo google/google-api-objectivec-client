@@ -19,7 +19,7 @@
 
 #import "GTLObject.h"
 
-@interface GTLBatchResult : GTLObject {
+@interface GTLBatchResult : GTLObject <GTLBatchItemCreationProtocol> {
  @private
   NSMutableDictionary *successes_;
   NSMutableDictionary *failures_;

@@ -34,6 +34,22 @@
 #define _INITIALIZE_AS(x)
 #endif
 
+@protocol GTLCollectionProtocol
+@optional
+@property (retain) NSArray *items;
+@property (retain) NSString *nextPageToken;
+@property (retain) NSNumber *nextStartIndex;
+@end
+
+@protocol GTLBatchItemCreationProtocol
+- (void)createItemsWithClassMap:(NSDictionary *)batchClassMap;
+@end
+
+@protocol GTLETagProtocol
+@optional
+@property (retain) NSString *ETag;
+@end
+
 @interface GTLObject : NSObject <NSCopying> {
 
  @private
@@ -151,7 +167,7 @@
 // itemAtIndex: convenience method.
 //
 // Subclasses must implement the items method dynamically.
-@interface GTLCollectionObject : GTLObject <NSFastEnumeration>
+@interface GTLCollectionObject : GTLObject <GTLCollectionProtocol, NSFastEnumeration>
 
 // itemAtIndex: returns nil when the index exceeds the bounds of the items array
 - (id)itemAtIndex:(NSUInteger)idx;
