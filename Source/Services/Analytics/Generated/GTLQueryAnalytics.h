@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/analytics
 // Classes:
-//   GTLQueryAnalytics (6 custom class methods, 14 custom properties)
+//   GTLQueryAnalytics (7 custom class methods, 14 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -51,7 +51,7 @@
 @property (retain) NSString *endDate;
 @property (retain) NSString *filters;
 @property (retain) NSString *ids;
-@property (retain) id maxResults;
+@property (assign) NSInteger maxResults;
 @property (retain) NSString *metrics;
 @property (retain) NSString *profileId;
 @property (retain) NSString *segment;
@@ -59,6 +59,74 @@
 @property (retain) NSString *startDate;
 @property (assign) NSInteger startIndex;
 @property (retain) NSString *webPropertyId;
+
+#pragma mark -
+#pragma mark "data.ga" methods
+// These create a GTLQueryAnalytics object.
+
+// Method: analytics.data.ga.get
+// Returns Analytics data for a profile.
+//  Required:
+//   endDate: End date for fetching Analytics data. All requests should specify
+//     an end date formatted as YYYY-MM-DD.
+//   startDate: Start date for fetching Analytics data. All requests should
+//     specify a start date formatted as YYYY-MM-DD.
+//   metrics: A comma-separated list of Analytics metrics. E.g.,
+//     'ga:visits,ga:pageviews'. At least one metric must be specified.
+//   ids: Unique table ID for retrieving Analytics data. Table ID is of the form
+//     ga:XXXX, where XXXX is the Analytics profile ID.
+//  Optional:
+//   dimensions: A comma-separated list of Analytics dimensions. E.g.,
+//     'ga:browser,ga:city'.
+//   filters: A comma-separated list of dimension or metric filters to be
+//     applied to Analytics data.
+//   maxResults: The maximum number of entries to include in this feed.
+//   segment: An Analytics advanced segment to be applied to data.
+//   sort: A comma-separated list of dimensions or metrics that determine the
+//     sort order for Analytics data.
+//   startIndex: An index of the first entity to retrieve. Use this parameter as
+//     a pagination mechanism along with the max-results parameter.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsReadonly
+// Fetches a GTLAnalyticsGaData.
++ (id)queryForDataGaGetWithEndDate:(NSString *)endDate
+                         startDate:(NSString *)startDate
+                           metrics:(NSString *)metrics
+                               ids:(NSString *)ids;
+
+#pragma mark -
+#pragma mark "data.mcf" methods
+// These create a GTLQueryAnalytics object.
+
+// Method: analytics.data.mcf.get
+// Returns Analytics Multi-Channel Funnels data for a profile.
+//  Required:
+//   endDate: End date for fetching Analytics data. All requests should specify
+//     an end date formatted as YYYY-MM-DD.
+//   startDate: Start date for fetching Analytics data. All requests should
+//     specify a start date formatted as YYYY-MM-DD.
+//   metrics: A comma-separated list of Multi-Channel Funnels metrics. E.g.,
+//     'mcf:totalConversions,mcf:totalConversionValue'. At least one metric must
+//     be specified.
+//   ids: Unique table ID for retrieving Analytics data. Table ID is of the form
+//     ga:XXXX, where XXXX is the Analytics profile ID.
+//  Optional:
+//   dimensions: A comma-separated list of Multi-Channel Funnels dimensions.
+//     E.g., 'mcf:source,mcf:medium'.
+//   filters: A comma-separated list of dimension or metric filters to be
+//     applied to the Analytics data.
+//   maxResults: The maximum number of entries to include in this feed.
+//   sort: A comma-separated list of dimensions or metrics that determine the
+//     sort order for the Analytics data.
+//   startIndex: An index of the first entity to retrieve. Use this parameter as
+//     a pagination mechanism along with the max-results parameter.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsReadonly
+// Fetches a GTLAnalyticsMcfData.
++ (id)queryForDataMcfGetWithEndDate:(NSString *)endDate
+                          startDate:(NSString *)startDate
+                            metrics:(NSString *)metrics
+                                ids:(NSString *)ids;
 
 #pragma mark -
 #pragma mark "management.accounts" methods
@@ -158,40 +226,5 @@
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsWebproperties.
 + (id)queryForManagementWebpropertiesListWithAccountId:(NSString *)accountId;
-
-#pragma mark -
-#pragma mark "report" methods
-// These create a GTLQueryAnalytics object.
-
-// Method: analytics.report.get
-// Returns Analytics report data for a profile.
-//  Required:
-//   endDate: End date for fetching report data. All requests should specify an
-//     end date formatted as YYYY-MM-DD.
-//   startDate: Start date for fetching report data. All requests should specify
-//     a start date formatted as YYYY-MM-DD.
-//   metrics: A comma-separated list of Analytics metrics. E.g.,
-//     'ga:visits,ga:pageviews'. At least one metric must be specified to
-//     retrieve a valid Analytics report.
-//   ids: Unique table ID for retrieving report data. Table ID is of the form
-//     ga:XXXX, where XXXX is the Analytics profile ID.
-//  Optional:
-//   dimensions: A comma-separated list of Analytics dimensions. E.g.,
-//     'ga:browser,ga:city'.
-//   filters: A comma-separated list of dimension or metric filters to be
-//     applied to the report data.
-//   maxResults: The maximum number of entries to include in this feed.
-//   segment: An Analytics advanced segment to be applied to the report data.
-//   sort: A comma-separated list of dimensions or metrics that determine the
-//     sort order for the report data.
-//   startIndex: An index of the first entity to retrieve. Use this parameter as
-//     a pagination mechanism along with the max-results parameter.
-//  Authorization scope(s):
-//   kGTLAuthScopeAnalyticsReadonly
-// Fetches a GTLAnalyticsGaReport.
-+ (id)queryForReportGetWithEndDate:(NSString *)endDate
-                         startDate:(NSString *)startDate
-                           metrics:(NSString *)metrics
-                               ids:(NSString *)ids;
 
 @end

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAnalyticsGaReport.m
+//  GTLAnalyticsMcfData.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,20 +26,22 @@
 // Documentation:
 //   http://code.google.com/apis/analytics
 // Classes:
-//   GTLAnalyticsGaReport (0 custom class methods, 13 custom properties)
-//   GTLAnalyticsGaReportColumnHeadersItem (0 custom class methods, 3 custom properties)
-//   GTLAnalyticsGaReportProfileInfo (0 custom class methods, 5 custom properties)
-//   GTLAnalyticsGaReportQuery (0 custom class methods, 10 custom properties)
-//   GTLAnalyticsGaReportTotalsForAllResults (0 custom class methods, 0 custom properties)
+//   GTLAnalyticsMcfData (0 custom class methods, 13 custom properties)
+//   GTLAnalyticsMcfDataColumnHeadersItem (0 custom class methods, 3 custom properties)
+//   GTLAnalyticsMcfDataProfileInfo (0 custom class methods, 6 custom properties)
+//   GTLAnalyticsMcfDataQuery (0 custom class methods, 10 custom properties)
+//   GTLAnalyticsMcfDataRowsItem (0 custom class methods, 2 custom properties)
+//   GTLAnalyticsMcfDataTotalsForAllResults (0 custom class methods, 0 custom properties)
+//   GTLAnalyticsMcfDataRowsItemConversionPathValueItem (0 custom class methods, 2 custom properties)
 
-#import "GTLAnalyticsGaReport.h"
+#import "GTLAnalyticsMcfData.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAnalyticsGaReport
+//   GTLAnalyticsMcfData
 //
 
-@implementation GTLAnalyticsGaReport
+@implementation GTLAnalyticsMcfData
 @dynamic columnHeaders, containsSampledData, identifier, itemsPerPage, kind,
          nextLink, previousLink, profileInfo, query, rows, selfLink,
          totalResults, totalsForAllResults;
@@ -54,14 +56,14 @@
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
-      [GTLAnalyticsGaReportColumnHeadersItem class], @"columnHeaders",
-      [NSString class], @"rows",
+      [GTLAnalyticsMcfDataColumnHeadersItem class], @"columnHeaders",
+      [GTLAnalyticsMcfDataRowsItem class], @"rows",
       nil];
   return map;
 }
 
 + (void)load {
-  [self registerObjectClassForKind:@"analytics#gaReport"];
+  [self registerObjectClassForKind:@"analytics#mcfData"];
 }
 
 @end
@@ -69,30 +71,31 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAnalyticsGaReportColumnHeadersItem
+//   GTLAnalyticsMcfDataColumnHeadersItem
 //
 
-@implementation GTLAnalyticsGaReportColumnHeadersItem
+@implementation GTLAnalyticsMcfDataColumnHeadersItem
 @dynamic columnType, dataType, name;
 @end
 
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAnalyticsGaReportProfileInfo
+//   GTLAnalyticsMcfDataProfileInfo
 //
 
-@implementation GTLAnalyticsGaReportProfileInfo
-@dynamic accountId, profileId, profileName, tableId, webPropertyId;
+@implementation GTLAnalyticsMcfDataProfileInfo
+@dynamic accountId, internalWebPropertyId, profileId, profileName, tableId,
+         webPropertyId;
 @end
 
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAnalyticsGaReportQuery
+//   GTLAnalyticsMcfDataQuery
 //
 
-@implementation GTLAnalyticsGaReportQuery
+@implementation GTLAnalyticsMcfDataQuery
 @dynamic dimensions, endDate, filters, ids, maxResults, metrics, segment, sort,
          startDate, startIndex;
 
@@ -110,7 +113,6 @@
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSString class], @"dimensions",
       [NSString class], @"metrics",
       [NSString class], @"sort",
       nil];
@@ -122,8 +124,36 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAnalyticsGaReportTotalsForAllResults
+//   GTLAnalyticsMcfDataRowsItem
 //
 
-@implementation GTLAnalyticsGaReportTotalsForAllResults
+@implementation GTLAnalyticsMcfDataRowsItem
+@dynamic conversionPathValue, primitiveValue;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLAnalyticsMcfDataRowsItemConversionPathValueItem class]
+                                forKey:@"conversionPathValue"];
+  return map;
+}
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAnalyticsMcfDataTotalsForAllResults
+//
+
+@implementation GTLAnalyticsMcfDataTotalsForAllResults
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAnalyticsMcfDataRowsItemConversionPathValueItem
+//
+
+@implementation GTLAnalyticsMcfDataRowsItemConversionPathValueItem
+@dynamic interactionType, nodeValue;
 @end

@@ -26,13 +26,14 @@
 // Documentation:
 //   http://code.google.com/apis/analytics
 // Classes:
-//   GTLQueryAnalytics (6 custom class methods, 14 custom properties)
+//   GTLQueryAnalytics (7 custom class methods, 14 custom properties)
 
 #import "GTLQueryAnalytics.h"
 
 #import "GTLAnalyticsAccounts.h"
-#import "GTLAnalyticsGaReport.h"
+#import "GTLAnalyticsGaData.h"
 #import "GTLAnalyticsGoals.h"
+#import "GTLAnalyticsMcfData.h"
 #import "GTLAnalyticsProfiles.h"
 #import "GTLAnalyticsSegments.h"
 #import "GTLAnalyticsWebproperties.h"
@@ -52,6 +53,42 @@
       @"start-index", @"startIndex",
       nil];
   return map;
+}
+
+#pragma mark -
+#pragma mark "data.ga" methods
+// These create a GTLQueryAnalytics object.
+
++ (id)queryForDataGaGetWithEndDate:(NSString *)endDate
+                         startDate:(NSString *)startDate
+                           metrics:(NSString *)metrics
+                               ids:(NSString *)ids {
+  NSString *methodName = @"analytics.data.ga.get";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.endDate = endDate;
+  query.startDate = startDate;
+  query.metrics = metrics;
+  query.ids = ids;
+  query.expectedObjectClass = [GTLAnalyticsGaData class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "data.mcf" methods
+// These create a GTLQueryAnalytics object.
+
++ (id)queryForDataMcfGetWithEndDate:(NSString *)endDate
+                          startDate:(NSString *)startDate
+                            metrics:(NSString *)metrics
+                                ids:(NSString *)ids {
+  NSString *methodName = @"analytics.data.mcf.get";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.endDate = endDate;
+  query.startDate = startDate;
+  query.metrics = metrics;
+  query.ids = ids;
+  query.expectedObjectClass = [GTLAnalyticsMcfData class];
+  return query;
 }
 
 #pragma mark -
@@ -115,24 +152,6 @@
   GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
   query.accountId = accountId;
   query.expectedObjectClass = [GTLAnalyticsWebproperties class];
-  return query;
-}
-
-#pragma mark -
-#pragma mark "report" methods
-// These create a GTLQueryAnalytics object.
-
-+ (id)queryForReportGetWithEndDate:(NSString *)endDate
-                         startDate:(NSString *)startDate
-                           metrics:(NSString *)metrics
-                               ids:(NSString *)ids {
-  NSString *methodName = @"analytics.report.get";
-  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
-  query.endDate = endDate;
-  query.startDate = startDate;
-  query.metrics = metrics;
-  query.ids = ids;
-  query.expectedObjectClass = [GTLAnalyticsGaReport class];
   return query;
 }
 

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAnalyticsGaReport.h
+//  GTLAnalyticsMcfData.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,11 +26,13 @@
 // Documentation:
 //   http://code.google.com/apis/analytics
 // Classes:
-//   GTLAnalyticsGaReport (0 custom class methods, 13 custom properties)
-//   GTLAnalyticsGaReportColumnHeadersItem (0 custom class methods, 3 custom properties)
-//   GTLAnalyticsGaReportProfileInfo (0 custom class methods, 5 custom properties)
-//   GTLAnalyticsGaReportQuery (0 custom class methods, 10 custom properties)
-//   GTLAnalyticsGaReportTotalsForAllResults (0 custom class methods, 0 custom properties)
+//   GTLAnalyticsMcfData (0 custom class methods, 13 custom properties)
+//   GTLAnalyticsMcfDataColumnHeadersItem (0 custom class methods, 3 custom properties)
+//   GTLAnalyticsMcfDataProfileInfo (0 custom class methods, 6 custom properties)
+//   GTLAnalyticsMcfDataQuery (0 custom class methods, 10 custom properties)
+//   GTLAnalyticsMcfDataRowsItem (0 custom class methods, 2 custom properties)
+//   GTLAnalyticsMcfDataTotalsForAllResults (0 custom class methods, 0 custom properties)
+//   GTLAnalyticsMcfDataRowsItemConversionPathValueItem (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -38,26 +40,28 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLAnalyticsGaReportColumnHeadersItem;
-@class GTLAnalyticsGaReportProfileInfo;
-@class GTLAnalyticsGaReportQuery;
-@class GTLAnalyticsGaReportTotalsForAllResults;
+@class GTLAnalyticsMcfDataColumnHeadersItem;
+@class GTLAnalyticsMcfDataProfileInfo;
+@class GTLAnalyticsMcfDataQuery;
+@class GTLAnalyticsMcfDataRowsItem;
+@class GTLAnalyticsMcfDataRowsItemConversionPathValueItem;
+@class GTLAnalyticsMcfDataTotalsForAllResults;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAnalyticsGaReport
+//   GTLAnalyticsMcfData
 //
 
-@interface GTLAnalyticsGaReport : GTLObject
+@interface GTLAnalyticsMcfData : GTLObject
 
 // Column headers that list dimension names followed by the metric names. The
 // order of dimensions and metrics is same as specified in the request.
-@property (retain) NSArray *columnHeaders;  // of GTLAnalyticsGaReportColumnHeadersItem
+@property (retain) NSArray *columnHeaders;  // of GTLAnalyticsMcfDataColumnHeadersItem
 
-// Determines if the report contains sampled data.
+// Determines if the Analytics data contains sampled data.
 @property (retain) NSNumber *containsSampledData;  // boolValue
 
-// Report ID.
+// Unique ID for this data response.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (retain) NSString *identifier;
 
@@ -69,22 +73,22 @@
 // Resource type.
 @property (retain) NSString *kind;
 
-// Link to next page for this report query.
+// Link to next page for this Analytics data query.
 @property (retain) NSString *nextLink;
 
-// Link to previous page for this report query.
+// Link to previous page for this Analytics data query.
 @property (retain) NSString *previousLink;
 
-// Information for the profile, for which the report data was requested.
-@property (retain) GTLAnalyticsGaReportProfileInfo *profileInfo;
+// Information for the profile, for which the Analytics data was requested.
+@property (retain) GTLAnalyticsMcfDataProfileInfo *profileInfo;
 
-// Report request query parameters.
-@property (retain) GTLAnalyticsGaReportQuery *query;
+// Analytics data request query parameters.
+@property (retain) GTLAnalyticsMcfDataQuery *query;
 
-// Report data rows, where each row contains a list of dimension values followed
-// by the metric values. The order of dimensions and metrics is same as
+// Analytics data rows, where each row contains a list of dimension values
+// followed by the metric values. The order of dimensions and metrics is same as
 // specified in the request.
-@property (retain) NSArray *rows;  // of NSArray of NSString
+@property (retain) NSArray *rows;  // of NSArray of GTLAnalyticsMcfDataRowsItem
 
 // Link to this page.
 @property (retain) NSString *selfLink;
@@ -96,24 +100,23 @@
 // Total values for the requested metrics over all the results, not just the
 // results returned in this response. The order of the metric totals is same as
 // the metric order specified in the request.
-@property (retain) GTLAnalyticsGaReportTotalsForAllResults *totalsForAllResults;
+@property (retain) GTLAnalyticsMcfDataTotalsForAllResults *totalsForAllResults;
 
 @end
 
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAnalyticsGaReportColumnHeadersItem
+//   GTLAnalyticsMcfDataColumnHeadersItem
 //
 
-@interface GTLAnalyticsGaReportColumnHeadersItem : GTLObject
+@interface GTLAnalyticsMcfDataColumnHeadersItem : GTLObject
 
 // Column Type. Either DIMENSION or METRIC.
 @property (retain) NSString *columnType;
 
-// Data type. Dimension column headers have only STRING as the data type. Metric
-// column headers have data types for metric values such as INTEGER, DOUBLE,
-// CURRENCY etc.
+// Data type. Dimension and metric values data types such as INTEGER, DOUBLE,
+// CURRENCY, MCF_SEQUENCE etc.
 @property (retain) NSString *dataType;
 
 // Column name.
@@ -124,13 +127,16 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAnalyticsGaReportProfileInfo
+//   GTLAnalyticsMcfDataProfileInfo
 //
 
-@interface GTLAnalyticsGaReportProfileInfo : GTLObject
+@interface GTLAnalyticsMcfDataProfileInfo : GTLObject
 
 // Account ID to which this profile belongs.
 @property (retain) NSString *accountId;
+
+// Internal ID for the web property to which this profile belongs.
+@property (retain) NSString *internalWebPropertyId;
 
 // Profile ID.
 @property (retain) NSString *profileId;
@@ -149,13 +155,13 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAnalyticsGaReportQuery
+//   GTLAnalyticsMcfDataQuery
 //
 
-@interface GTLAnalyticsGaReportQuery : GTLObject
+@interface GTLAnalyticsMcfDataQuery : GTLObject
 
 // List of analytics dimensions.
-@property (retain) NSArray *dimensions;  // of NSString
+@property (retain) NSString *dimensions;
 
 // End date.
 @property (retain) NSString *endDate;
@@ -175,7 +181,7 @@
 // Analytics advanced segment.
 @property (retain) NSString *segment;
 
-// List of dimensions or metrics based on which report data is sorted.
+// List of dimensions or metrics based on which Analytics data is sorted.
 @property (retain) NSArray *sort;  // of NSString
 
 // Start date.
@@ -189,12 +195,42 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAnalyticsGaReportTotalsForAllResults
+//   GTLAnalyticsMcfDataRowsItem
 //
 
-@interface GTLAnalyticsGaReportTotalsForAllResults : GTLObject
+@interface GTLAnalyticsMcfDataRowsItem : GTLObject
+
+// A conversion path, containing a list of interactions with their attributes.
+@property (retain) NSArray *conversionPathValue;  // of GTLAnalyticsMcfDataRowsItemConversionPathValueItem
+
+@property (retain) NSString *primitiveValue;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAnalyticsMcfDataTotalsForAllResults
+//
+
+@interface GTLAnalyticsMcfDataTotalsForAllResults : GTLObject
 // This object is documented as having more properties that are NSString. Use
 // -additionalJSONKeys and -additionalPropertyForName: to get the list of
 // properties and then fetch them; or -additionalProperties to fetch them all at
 // once.
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAnalyticsMcfDataRowsItemConversionPathValueItem
+//
+
+@interface GTLAnalyticsMcfDataRowsItemConversionPathValueItem : GTLObject
+
+// Type of an interaction on conversion path. Such as CLICK, IMPRESSION etc.
+@property (retain) NSString *interactionType;
+
+// Node value of an interaction on conversion path. Such as source, medium etc.
+@property (retain) NSString *nodeValue;
+
 @end

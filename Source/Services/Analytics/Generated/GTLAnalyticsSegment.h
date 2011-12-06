@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/analytics
 // Classes:
-//   GTLAnalyticsSegment (0 custom class methods, 7 custom properties)
+//   GTLAnalyticsSegment (0 custom class methods, 8 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -56,6 +56,9 @@
 
 // Advanced segment name.
 @property (retain) NSString *name;
+
+// Segment ID. Can be used with the 'segment' parameter in Data Feed.
+@property (retain) NSString *segmentId;
 
 // Link for this advanced segment.
 @property (retain) NSString *selfLink;

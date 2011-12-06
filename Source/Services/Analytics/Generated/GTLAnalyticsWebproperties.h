@@ -55,7 +55,7 @@
 // parameter.
 @property (retain) NSNumber *itemsPerPage;  // intValue
 
-// Resource type.
+// Collection type.
 @property (retain) NSString *kind;
 
 // Link to next page for this web property collection.

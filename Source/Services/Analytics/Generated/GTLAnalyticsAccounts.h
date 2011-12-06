@@ -55,7 +55,7 @@
 // parameter.
 @property (retain) NSNumber *itemsPerPage;  // intValue
 
-// Resource type.
+// Collection type.
 @property (retain) NSString *kind;
 
 // Next link for this account collection.
