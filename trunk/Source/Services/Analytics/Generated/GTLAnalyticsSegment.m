@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/analytics
 // Classes:
-//   GTLAnalyticsSegment (0 custom class methods, 7 custom properties)
+//   GTLAnalyticsSegment (0 custom class methods, 8 custom properties)
 
 #import "GTLAnalyticsSegment.h"
 
@@ -36,7 +36,8 @@
 //
 
 @implementation GTLAnalyticsSegment
-@dynamic created, definition, identifier, kind, name, selfLink, updated;
+@dynamic created, definition, identifier, kind, name, segmentId, selfLink,
+         updated;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

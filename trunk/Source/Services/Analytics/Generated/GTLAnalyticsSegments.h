@@ -55,7 +55,7 @@
 // parameter.
 @property (retain) NSNumber *itemsPerPage;  // intValue
 
-// Resource type for advanced segments.
+// Collection type for advanced segments.
 @property (retain) NSString *kind;
 
 // Link to next page for this advanced segment collection.
