@@ -132,6 +132,12 @@ static NSString *ETagIfPresent(GTLObject *obj) {
 - (void)parseObjectFromDataOfFetcher:(GTMHTTPFetcher *)fetcher;
 @end
 
+@interface GTLObject (StandardProperties)
+@property (retain) NSString *ETag;
+@property (retain) NSString *nextPageToken;
+@property (retain) NSNumber *nextStartIndex;
+@end
+
 @implementation GTLService
 
 @synthesize runLoopModes = runLoopModes_,

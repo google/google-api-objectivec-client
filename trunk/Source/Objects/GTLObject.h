@@ -37,17 +37,10 @@
 @protocol GTLCollectionProtocol
 @optional
 @property (retain) NSArray *items;
-@property (retain) NSString *nextPageToken;
-@property (retain) NSNumber *nextStartIndex;
 @end
 
 @protocol GTLBatchItemCreationProtocol
 - (void)createItemsWithClassMap:(NSDictionary *)batchClassMap;
-@end
-
-@protocol GTLETagProtocol
-@optional
-@property (retain) NSString *ETag;
 @end
 
 @interface GTLObject : NSObject <NSCopying> {
