@@ -56,13 +56,13 @@
 @property (retain) NSNumber *itemsPerPage;  // intValue
 
 // Collection type.
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Next link for this account collection.
-@property (retain) NSString *nextLink;
+@property (copy) NSString *nextLink;
 
 // Previous link for this account collection.
-@property (retain) NSString *previousLink;
+@property (copy) NSString *previousLink;
 
 // The starting index of the entries, which is 1 by default or otherwise
 // specified by the start-index query parameter.
@@ -73,6 +73,6 @@
 @property (retain) NSNumber *totalResults;  // intValue
 
 // Email ID of the authenticated user
-@property (retain) NSString *username;
+@property (copy) NSString *username;
 
 @end

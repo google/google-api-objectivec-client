@@ -47,7 +47,7 @@
 @interface GTLAnalyticsProfile : GTLObject
 
 // Account ID to which this profile belongs.
-@property (retain) NSString *accountId;
+@property (copy) NSString *accountId;
 
 // Child link for this profile. Points to the list of goals for this profile.
 @property (retain) GTLAnalyticsProfileChildLink *childLink;
@@ -56,48 +56,48 @@
 @property (retain) GTLDateTime *created;
 
 // The currency type associated with this profile.
-@property (retain) NSString *currency;
+@property (copy) NSString *currency;
 
 // Default page for this profile.
-@property (retain) NSString *defaultPage;
+@property (copy) NSString *defaultPage;
 
 // The query parameters that are excluded from this profile.
-@property (retain) NSString *excludeQueryParameters;
+@property (copy) NSString *excludeQueryParameters;
 
 // Profile ID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // Internal ID for the web property to which this profile belongs.
-@property (retain) NSString *internalWebPropertyId;
+@property (copy) NSString *internalWebPropertyId;
 
 // Resource type for Analytics profile.
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Name of this profile.
-@property (retain) NSString *name;
+@property (copy) NSString *name;
 
 // Parent link for this profile. Points to the web property to which this
 // profile belongs.
 @property (retain) GTLAnalyticsProfileParentLink *parentLink;
 
 // Link for this profile.
-@property (retain) NSString *selfLink;
+@property (copy) NSString *selfLink;
 
 // Site search category parameters for this profile.
-@property (retain) NSString *siteSearchCategoryParameters;
+@property (copy) NSString *siteSearchCategoryParameters;
 
 // The site search query parameters for this profile.
-@property (retain) NSString *siteSearchQueryParameters;
+@property (copy) NSString *siteSearchQueryParameters;
 
 // Time zone for which this profile has been configured.
-@property (retain) NSString *timezone;
+@property (copy) NSString *timezone;
 
 // Time this profile was last modified.
 @property (retain) GTLDateTime *updated;
 
 // Web property ID of the form UA-XXXXX-YY to which this profile belongs.
-@property (retain) NSString *webPropertyId;
+@property (copy) NSString *webPropertyId;
 
 @end
 
@@ -110,10 +110,10 @@
 @interface GTLAnalyticsProfileChildLink : GTLObject
 
 // Link to the list of goals for this profile.
-@property (retain) NSString *href;
+@property (copy) NSString *href;
 
 // Value is "analytics#goals".
-@property (retain) NSString *type;
+@property (copy) NSString *type;
 
 @end
 
@@ -126,9 +126,9 @@
 @interface GTLAnalyticsProfileParentLink : GTLObject
 
 // Link to the web property to which this profile belongs.
-@property (retain) NSString *href;
+@property (copy) NSString *href;
 
 // Value is "analytics#webproperty".
-@property (retain) NSString *type;
+@property (copy) NSString *type;
 
 @end

@@ -43,7 +43,6 @@
                       [GTLAnalyticsGaData class],
                       [GTLAnalyticsGoal class],
                       [GTLAnalyticsGoals class],
-                      [GTLAnalyticsMcfData class],
                       [GTLAnalyticsProfile class],
                       [GTLAnalyticsProfiles class],
                       [GTLAnalyticsSegment class],

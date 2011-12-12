@@ -57,7 +57,7 @@
 @interface GTLAnalyticsGoal : GTLObject
 
 // Account ID to which this goal belongs.
-@property (retain) NSString *accountId;
+@property (copy) NSString *accountId;
 
 // Determines whether this goal is active.
 @property (retain) NSNumber *active;  // boolValue
@@ -70,29 +70,29 @@
 
 // Goal ID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // Internal ID for the web property to which this goal belongs.
-@property (retain) NSString *internalWebPropertyId;
+@property (copy) NSString *internalWebPropertyId;
 
 // Resource type for an Analytics goal.
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Goal name.
-@property (retain) NSString *name;
+@property (copy) NSString *name;
 
 // Parent link for a goal. Points to the profile to which this goal belongs.
 @property (retain) GTLAnalyticsGoalParentLink *parentLink;
 
 // Profile ID to which this goal belongs.
-@property (retain) NSString *profileId;
+@property (copy) NSString *profileId;
 
 // Link for this goal.
-@property (retain) NSString *selfLink;
+@property (copy) NSString *selfLink;
 
 // Goal type. Possible values are URL_DESTINATION, VISIT_TIME_ON_SITE,
 // VISIT_NUM_PAGES, AND EVENT.
-@property (retain) NSString *type;
+@property (copy) NSString *type;
 
 // Time this goal was last modified.
 @property (retain) GTLDateTime *updated;
@@ -111,7 +111,7 @@
 
 // Web property ID to which this goal belongs. The web property ID is of the
 // form UA-XXXXX-YY.
-@property (retain) NSString *webPropertyId;
+@property (copy) NSString *webPropertyId;
 
 @end
 
@@ -140,10 +140,10 @@
 @interface GTLAnalyticsGoalParentLink : GTLObject
 
 // Link to the profile to which this goal belongs.
-@property (retain) NSString *href;
+@property (copy) NSString *href;
 
 // Value is "analytics#profile".
-@property (retain) NSString *type;
+@property (copy) NSString *type;
 
 @end
 
@@ -163,13 +163,13 @@
 @property (retain) NSNumber *firstStepRequired;  // boolValue
 
 // Match type for the goal URL. Possible values are HEAD, EXACT, or REGEX.
-@property (retain) NSString *matchType;
+@property (copy) NSString *matchType;
 
 // List of steps configured for this goal funnel.
 @property (retain) NSArray *steps;  // of GTLAnalyticsGoalUrlDestinationDetailsStepsItem
 
 // URL for this goal.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end
 
@@ -182,7 +182,7 @@
 @interface GTLAnalyticsGoalVisitNumPagesDetails : GTLObject
 
 // Type of comparison. Possible values are LESS_THAN, GREATER_THAN, or EQUAL.
-@property (retain) NSString *comparisonType;
+@property (copy) NSString *comparisonType;
 
 // Value used for this comparison.
 @property (retain) NSNumber *comparisonValue;  // longLongValue
@@ -198,7 +198,7 @@
 @interface GTLAnalyticsGoalVisitTimeOnSiteDetails : GTLObject
 
 // Type of comparison. Possible values are LESS_THAN or GREATER_THAN.
-@property (retain) NSString *comparisonType;
+@property (copy) NSString *comparisonType;
 
 // Value used for this comparison.
 @property (retain) NSNumber *comparisonValue;  // longLongValue
@@ -214,21 +214,21 @@
 @interface GTLAnalyticsGoalEventDetailsEventConditionsItem : GTLObject
 
 // Type of comparison. Possible values are LESS_THAN, GREATER_THAN or EQUAL.
-@property (retain) NSString *comparisonType;
+@property (copy) NSString *comparisonType;
 
 // Value used for this comparison.
 @property (retain) NSNumber *comparisonValue;  // longLongValue
 
 // Expression used for this match.
-@property (retain) NSString *expression;
+@property (copy) NSString *expression;
 
 // Type of the match to be performed. Possible values are REGEXP, BEGINS_WITH,
 // or EXACT.
-@property (retain) NSString *matchType;
+@property (copy) NSString *matchType;
 
 // Type of this event condition. Possible values are CATEGORY, ACTION, LABEL, or
 // VALUE.
-@property (retain) NSString *type;
+@property (copy) NSString *type;
 
 @end
 
@@ -241,12 +241,12 @@
 @interface GTLAnalyticsGoalUrlDestinationDetailsStepsItem : GTLObject
 
 // Step name.
-@property (retain) NSString *name;
+@property (copy) NSString *name;
 
 // Step number.
 @property (retain) NSNumber *number;  // intValue
 
 // URL for this step.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end

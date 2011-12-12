@@ -26,14 +26,13 @@
 // Documentation:
 //   http://code.google.com/apis/analytics
 // Classes:
-//   GTLQueryAnalytics (7 custom class methods, 14 custom properties)
+//   GTLQueryAnalytics (6 custom class methods, 14 custom properties)
 
 #import "GTLQueryAnalytics.h"
 
 #import "GTLAnalyticsAccounts.h"
 #import "GTLAnalyticsGaData.h"
 #import "GTLAnalyticsGoals.h"
-#import "GTLAnalyticsMcfData.h"
 #import "GTLAnalyticsProfiles.h"
 #import "GTLAnalyticsSegments.h"
 #import "GTLAnalyticsWebproperties.h"
@@ -59,35 +58,17 @@
 #pragma mark "data.ga" methods
 // These create a GTLQueryAnalytics object.
 
-+ (id)queryForDataGaGetWithEndDate:(NSString *)endDate
-                         startDate:(NSString *)startDate
-                           metrics:(NSString *)metrics
-                               ids:(NSString *)ids {
++ (id)queryForDataGaGetWithIds:(NSString *)ids
+                     startDate:(NSString *)startDate
+                       endDate:(NSString *)endDate
+                       metrics:(NSString *)metrics {
   NSString *methodName = @"analytics.data.ga.get";
   GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
-  query.endDate = endDate;
-  query.startDate = startDate;
-  query.metrics = metrics;
   query.ids = ids;
+  query.startDate = startDate;
+  query.endDate = endDate;
+  query.metrics = metrics;
   query.expectedObjectClass = [GTLAnalyticsGaData class];
-  return query;
-}
-
-#pragma mark -
-#pragma mark "data.mcf" methods
-// These create a GTLQueryAnalytics object.
-
-+ (id)queryForDataMcfGetWithEndDate:(NSString *)endDate
-                          startDate:(NSString *)startDate
-                            metrics:(NSString *)metrics
-                                ids:(NSString *)ids {
-  NSString *methodName = @"analytics.data.mcf.get";
-  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
-  query.endDate = endDate;
-  query.startDate = startDate;
-  query.metrics = metrics;
-  query.ids = ids;
-  query.expectedObjectClass = [GTLAnalyticsMcfData class];
   return query;
 }
 

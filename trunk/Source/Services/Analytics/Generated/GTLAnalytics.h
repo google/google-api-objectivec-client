@@ -33,7 +33,6 @@
 #import "GTLAnalyticsGaData.h"
 #import "GTLAnalyticsGoal.h"
 #import "GTLAnalyticsGoals.h"
-#import "GTLAnalyticsMcfData.h"
 #import "GTLAnalyticsProfile.h"
 #import "GTLAnalyticsProfiles.h"
 #import "GTLAnalyticsSegment.h"
