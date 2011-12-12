@@ -65,6 +65,6 @@
 @property (retain) GTLDateTime *timeMin;
 
 // Time zone used in the response. Optional. The default is UTC.
-@property (retain) NSString *timeZone;
+@property (copy) NSString *timeZone;
 
 @end

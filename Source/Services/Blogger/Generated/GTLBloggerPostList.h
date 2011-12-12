@@ -50,12 +50,12 @@
 @property (retain) NSArray *items;  // of GTLBloggerPost
 
 // The kind of this entity. Always blogger#postList
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Pagination token to fetch the next page, if one exists.
-@property (retain) NSString *nextPageToken;
+@property (copy) NSString *nextPageToken;
 
 // Pagination token to fetch the previous page, if one exists.
-@property (retain) NSString *prevPageToken;
+@property (copy) NSString *prevPageToken;
 
 @end

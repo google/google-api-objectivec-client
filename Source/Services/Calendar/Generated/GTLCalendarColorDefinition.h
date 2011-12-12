@@ -42,10 +42,10 @@
 @interface GTLCalendarColorDefinition : GTLObject
 
 // The background color associated with this color definition.
-@property (retain) NSString *background;
+@property (copy) NSString *background;
 
 // The foreground color that can be used to write on top of a background with
 // 'background' color.
-@property (retain) NSString *foreground;
+@property (copy) NSString *foreground;
 
 @end

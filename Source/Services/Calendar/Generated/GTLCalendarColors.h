@@ -58,7 +58,7 @@
 @property (retain) GTLCalendarColorsEvent *event;
 
 // Type of the resource ("calendar#colors").
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Last modification time of the color palette (as a RFC 3339 timestamp).
 // Read-only.

@@ -48,16 +48,16 @@
 @interface GTLAdsenseUrlChannels : GTLCollectionObject
 
 // ETag of this response for caching purposes.
-@property (retain) NSString *ETag;
+@property (copy) NSString *ETag;
 
 // The URL channels returned in this list response.
 @property (retain) NSArray *items;  // of GTLAdsenseUrlChannel
 
 // Kind of list this is, in this case adsense#urlChannels.
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Continuation token used to page through URL channels. To retrieve the next
 // page of results, set the next request's "pageToken" value to this.
-@property (retain) NSString *nextPageToken;
+@property (copy) NSString *nextPageToken;
 
 @end

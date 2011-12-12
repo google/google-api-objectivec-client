@@ -42,7 +42,7 @@
 @interface GTLBooksBookshelf : GTLObject
 
 // Whether this bookshelf is PUBLIC or PRIVATE.
-@property (retain) NSString *access;
+@property (copy) NSString *access;
 
 // Created time for this bookshelf (formatted UTC timestamp with millisecond
 // resolution).
@@ -50,20 +50,20 @@
 
 // Description of this bookshelf.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (retain) NSString *descriptionProperty;
+@property (copy) NSString *descriptionProperty;
 
 // Id of this bookshelf, only unique by user.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (retain) NSNumber *identifier;  // intValue
 
 // Resource type for bookshelf metadata.
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // URL to this resource.
-@property (retain) NSString *selfLink;
+@property (copy) NSString *selfLink;
 
 // Title of this bookshelf.
-@property (retain) NSString *title;
+@property (copy) NSString *title;
 
 // Last modified time of this bookshelf (formatted UTC timestamp with
 // millisecond resolution).

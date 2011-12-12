@@ -43,6 +43,6 @@
 
 // The identifier of a calendar or a group.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 @end

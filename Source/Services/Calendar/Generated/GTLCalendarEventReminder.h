@@ -45,7 +45,7 @@
 // - "email" - Reminders are sent via email.
 // - "sms" - Reminders are sent via SMS.
 // - "popup" - Reminders are sent via a UI popup.
-@property (retain) NSString *method;
+@property (copy) NSString *method;
 
 // Number of minutes before the start of the event when the reminder should
 // trigger.

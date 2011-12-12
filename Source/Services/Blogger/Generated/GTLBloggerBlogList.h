@@ -50,6 +50,6 @@
 @property (retain) NSArray *items;  // of GTLBloggerBlog
 
 // The kind of this entity. Always blogger#blogList
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 @end

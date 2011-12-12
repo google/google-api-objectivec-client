@@ -47,15 +47,15 @@
 @interface GTLCalendarCalendarList : GTLCollectionObject
 
 // ETag of the collection.
-@property (retain) NSString *ETag;
+@property (copy) NSString *ETag;
 
 // Calendars that are present on the user's calendar list.
 @property (retain) NSArray *items;  // of GTLCalendarCalendarListEntry
 
 // Type of the collection ("calendar#calendarList").
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Token used to access the next page of this result.
-@property (retain) NSString *nextPageToken;
+@property (copy) NSString *nextPageToken;
 
 @end

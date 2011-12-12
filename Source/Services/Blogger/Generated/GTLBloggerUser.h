@@ -47,7 +47,7 @@
 @interface GTLBloggerUser : GTLObject
 
 // Profile summary information.
-@property (retain) NSString *about;
+@property (copy) NSString *about;
 
 // The container of blogs for this user.
 @property (retain) GTLBloggerUserBlogs *blogs;
@@ -56,23 +56,23 @@
 @property (retain) GTLDateTime *created;
 
 // The display name.
-@property (retain) NSString *displayName;
+@property (copy) NSString *displayName;
 
 // The identifier for this User.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (retain) NSNumber *identifier;  // longLongValue
 
 // The kind of this entity. Always blogger#user
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // This user's locale
 @property (retain) GTLBloggerUserLocale *locale;
 
 // The API REST URL to fetch this resource from.
-@property (retain) NSString *selfLink;
+@property (copy) NSString *selfLink;
 
 // The user's profile page.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end
 
@@ -85,7 +85,7 @@
 @interface GTLBloggerUserBlogs : GTLObject
 
 // The URL of the Blogs for this user.
-@property (retain) NSString *selfLink;
+@property (copy) NSString *selfLink;
 
 @end
 
@@ -98,12 +98,12 @@
 @interface GTLBloggerUserLocale : GTLObject
 
 // The user's country setting.
-@property (retain) NSString *country;
+@property (copy) NSString *country;
 
 // The user's language setting.
-@property (retain) NSString *language;
+@property (copy) NSString *language;
 
 // The user's language variant setting.
-@property (retain) NSString *variant;
+@property (copy) NSString *variant;
 
 @end

@@ -50,34 +50,34 @@
 @property (retain) GTLBooksReviewAuthor *author;
 
 // Review text.
-@property (retain) NSString *content;
+@property (copy) NSString *content;
 
 // Date of this review.
-@property (retain) NSString *date;
+@property (copy) NSString *date;
 
 // URL for the full review text, for reviews gathered from the web.
-@property (retain) NSString *fullTextUrl;
+@property (copy) NSString *fullTextUrl;
 
 // Resource type for a review.
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Star rating for this review. Possible values are ONE, TWO, THREE, FOUR, FIVE
 // or NOT_RATED.
-@property (retain) NSString *rating;
+@property (copy) NSString *rating;
 
 // Information regarding the source of this review, when the review is not from
 // a Google Books user.
 @property (retain) GTLBooksReviewSource *source;
 
 // Title for this review.
-@property (retain) NSString *title;
+@property (copy) NSString *title;
 
 // Source type for this review. Possible values are EDITORIAL, WEB_USER or
 // GOOGLE_USER.
-@property (retain) NSString *type;
+@property (copy) NSString *type;
 
 // Volume that this review is for.
-@property (retain) NSString *volumeId;
+@property (copy) NSString *volumeId;
 
 @end
 
@@ -90,7 +90,7 @@
 @interface GTLBooksReviewAuthor : GTLObject
 
 // Name of this person.
-@property (retain) NSString *displayName;
+@property (copy) NSString *displayName;
 
 @end
 
@@ -104,12 +104,12 @@
 
 // Name of the source.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (retain) NSString *descriptionProperty;
+@property (copy) NSString *descriptionProperty;
 
 // Extra text about the source of the review.
-@property (retain) NSString *extraDescription;
+@property (copy) NSString *extraDescription;
 
 // URL of the source of the review.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end

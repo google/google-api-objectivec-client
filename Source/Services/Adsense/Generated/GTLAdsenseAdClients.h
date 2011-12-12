@@ -48,16 +48,16 @@
 @interface GTLAdsenseAdClients : GTLCollectionObject
 
 // ETag of this response for caching purposes.
-@property (retain) NSString *ETag;
+@property (copy) NSString *ETag;
 
 // The ad clients returned in this list response.
 @property (retain) NSArray *items;  // of GTLAdsenseAdClient
 
 // Kind of list this is, in this case adsense#adClients.
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Continuation token used to page through ad clients. To retrieve the next page
 // of results, set the next request's "pageToken" value to this.
-@property (retain) NSString *nextPageToken;
+@property (copy) NSString *nextPageToken;
 
 @end

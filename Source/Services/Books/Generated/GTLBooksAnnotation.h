@@ -48,10 +48,10 @@
 @interface GTLBooksAnnotation : GTLObject
 
 // Anchor text after excerpt.
-@property (retain) NSString *afterSelectedText;
+@property (copy) NSString *afterSelectedText;
 
 // Anchor text before excerpt.
-@property (retain) NSString *beforeSelectedText;
+@property (copy) NSString *beforeSelectedText;
 
 // Selection ranges sent from the client.
 @property (retain) GTLBooksAnnotationClientVersionRanges *clientVersionRanges;
@@ -63,35 +63,35 @@
 @property (retain) GTLBooksAnnotationCurrentVersionRanges *currentVersionRanges;
 
 // User-created data for this annotation.
-@property (retain) NSString *data;
+@property (copy) NSString *data;
 
 // The highlight style for this annotation.
-@property (retain) NSString *highlightStyle;
+@property (copy) NSString *highlightStyle;
 
 // Id of this annotation, in the form of a GUID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // Resource type.
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // The layer this annotation is for.
-@property (retain) NSString *layerId;
+@property (copy) NSString *layerId;
 
 // Pages that this annotation spans.
 @property (retain) NSArray *pageIds;  // of NSString
 
 // Excerpt from the volume.
-@property (retain) NSString *selectedText;
+@property (copy) NSString *selectedText;
 
 // URL to this resource.
-@property (retain) NSString *selfLink;
+@property (copy) NSString *selfLink;
 
 // Timestamp for the last time this annotation was modified.
 @property (retain) GTLDateTime *updated;
 
 // The volume that this annotation belongs to.
-@property (retain) NSString *volumeId;
+@property (copy) NSString *volumeId;
 
 @end
 
@@ -107,7 +107,7 @@
 @property (retain) GTLBooksAnnotationsRange *cfiRange;
 
 // Content version the client sent in.
-@property (retain) NSString *contentVersion;
+@property (copy) NSString *contentVersion;
 
 // Range in GB image format for this annotation sent by client.
 @property (retain) GTLBooksAnnotationsRange *gbImageRange;
@@ -129,7 +129,7 @@
 @property (retain) GTLBooksAnnotationsRange *cfiRange;
 
 // Content version applicable to ranges below.
-@property (retain) NSString *contentVersion;
+@property (copy) NSString *contentVersion;
 
 // Range in GB image format for this annotation for version above.
 @property (retain) GTLBooksAnnotationsRange *gbImageRange;
