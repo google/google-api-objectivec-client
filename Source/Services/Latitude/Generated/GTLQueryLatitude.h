@@ -44,16 +44,16 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (retain) NSString *fields;
+@property (copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (retain) NSString *granularity;
-@property (retain) NSString *locationId;
-@property (retain) NSString *maxResults;
-@property (retain) NSString *maxTime;
-@property (retain) NSString *minTime;
+@property (copy) NSString *granularity;
+@property (copy) NSString *locationId;
+@property (copy) NSString *maxResults;
+@property (copy) NSString *maxTime;
+@property (copy) NSString *minTime;
 
 #pragma mark -
 #pragma mark "currentLocation" methods

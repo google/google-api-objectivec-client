@@ -46,20 +46,20 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (retain) NSString *fields;
+@property (copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (retain) NSString *activityId;
+@property (copy) NSString *activityId;
 @property (assign) long long badgeId;
-@property (retain) NSString *collection;
-@property (retain) NSString *commentId;
-@property (retain) NSString *hl;
+@property (copy) NSString *collection;
+@property (copy) NSString *commentId;
+@property (copy) NSString *hl;
 @property (assign) NSUInteger maxResults;
-@property (retain) NSString *orderBy;
-@property (retain) NSString *pageToken;
-@property (retain) NSString *userId;
+@property (copy) NSString *orderBy;
+@property (copy) NSString *pageToken;
+@property (copy) NSString *userId;
 
 #pragma mark -
 #pragma mark "acl" methods

@@ -50,13 +50,13 @@
 
 // Human readable description of the access granted.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (retain) NSString *descriptionProperty;
+@property (copy) NSString *descriptionProperty;
 
 // The list of ACL entries.
 @property (retain) NSArray *items;  // of GTLOrkutAclItemsItem
 
 // Identifies this resource as an access control list. Value: "orkut#acl"
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // The total count of participants of the parent resource.
 @property (retain) NSNumber *totalParticipants;  // intValue
@@ -74,9 +74,9 @@
 // The ID of the entity. For entities of type "person" or "circle", this is the
 // ID of the resource. For other types, this will be unset.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // The type of entity to whom access is granted.
-@property (retain) NSString *type;
+@property (copy) NSString *type;
 
 @end

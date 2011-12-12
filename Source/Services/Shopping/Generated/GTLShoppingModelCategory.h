@@ -43,15 +43,15 @@
 
 // Id of category.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // Ids of the parents of the category.
 @property (retain) NSArray *parents;  // of NSString
 
 // Short name of category.
-@property (retain) NSString *shortName;
+@property (copy) NSString *shortName;
 
 // URL of category.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end

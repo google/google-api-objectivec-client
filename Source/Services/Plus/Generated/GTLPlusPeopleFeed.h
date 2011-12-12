@@ -52,16 +52,16 @@
 @property (retain) NSArray *items;  // of GTLPlusPerson
 
 // Identifies this resource as a collection of people. Value: "plus#peopleFeed".
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // The continuation token, used to page through large result sets. Provide this
 // value in a subsequent request to return the next page of results.
-@property (retain) NSString *nextPageToken;
+@property (copy) NSString *nextPageToken;
 
 // Link to this resource.
-@property (retain) NSString *selfLink;
+@property (copy) NSString *selfLink;
 
 // The title of this collection of people.
-@property (retain) NSString *title;
+@property (copy) NSString *title;
 
 @end

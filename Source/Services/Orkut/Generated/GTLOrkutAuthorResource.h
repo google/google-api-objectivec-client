@@ -46,18 +46,18 @@
 @interface GTLOrkutAuthorResource : GTLObject
 
 // The name of the author, suitable for display.
-@property (retain) NSString *displayName;
+@property (copy) NSString *displayName;
 
 // Unique identifier of the person who posted the comment. This is the person's
 // OpenSocial ID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // Image data about the actor.
 @property (retain) GTLOrkutAuthorResourceImage *image;
 
 // The URL of the author who posted the comment [not yet implemented]
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end
 
@@ -70,6 +70,6 @@
 @interface GTLOrkutAuthorResourceImage : GTLObject
 
 // A URL that points to a thumbnail photo of the author.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end

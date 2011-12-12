@@ -48,14 +48,14 @@
 @interface GTLOrkutActivitypersonResource : GTLObject
 
 // The person's date of birth, represented as YYYY-MM-DD.
-@property (retain) NSString *birthday;
+@property (copy) NSString *birthday;
 
 // The person's gender. Values include "male", "female", and "other".
-@property (retain) NSString *gender;
+@property (copy) NSString *gender;
 
 // The person's opensocial ID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // The person's profile photo. This is adapted from Google+ and was originaly
 // introduced as extra OpenSocial convenience fields.
@@ -66,7 +66,7 @@
 
 // The person's profile url. This is adapted from Google+ and was originaly
 // introduced as extra OpenSocial convenience fields.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end
 
@@ -79,7 +79,7 @@
 @interface GTLOrkutActivitypersonResourceImage : GTLObject
 
 // The URL of the person's profile photo.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end
 
@@ -92,9 +92,9 @@
 @interface GTLOrkutActivitypersonResourceName : GTLObject
 
 // The family name (last name) of this person.
-@property (retain) NSString *familyName;
+@property (copy) NSString *familyName;
 
 // The given name (first name) of this person.
-@property (retain) NSString *givenName;
+@property (copy) NSString *givenName;
 
 @end

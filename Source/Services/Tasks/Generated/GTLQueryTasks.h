@@ -44,25 +44,25 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (retain) NSString *fields;
+@property (copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (retain) NSString *completedMax;
-@property (retain) NSString *completedMin;
-@property (retain) NSString *dueMax;
-@property (retain) NSString *dueMin;
+@property (copy) NSString *completedMax;
+@property (copy) NSString *completedMin;
+@property (copy) NSString *dueMax;
+@property (copy) NSString *dueMin;
 @property (assign) long long maxResults;
-@property (retain) NSString *pageToken;
-@property (retain) NSString *parent;
-@property (retain) NSString *previous;
+@property (copy) NSString *pageToken;
+@property (copy) NSString *parent;
+@property (copy) NSString *previous;
 @property (assign) BOOL showCompleted;
 @property (assign) BOOL showDeleted;
 @property (assign) BOOL showHidden;
-@property (retain) NSString *task;
-@property (retain) NSString *tasklist;
-@property (retain) NSString *updatedMin;
+@property (copy) NSString *task;
+@property (copy) NSString *tasklist;
+@property (copy) NSString *updatedMin;
 
 #pragma mark -
 #pragma mark "tasklists" methods

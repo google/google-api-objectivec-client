@@ -64,45 +64,45 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (retain) NSString *fields;
+@property (copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
 @property (assign) NSUInteger accountId;
-@property (retain) NSString *attributeFilter;
-@property (retain) NSString *boostBy;
+@property (copy) NSString *attributeFilter;
+@property (copy) NSString *boostBy;
 @property (retain) id categories;
-@property (retain) NSString *channels;
-@property (retain) NSString *country;
-@property (retain) NSString *crowdBy;
-@property (retain) NSString *currency;
+@property (copy) NSString *channels;
+@property (copy) NSString *country;
+@property (copy) NSString *crowdBy;
+@property (copy) NSString *currency;
 @property (retain) id debug;
 @property (retain) GTLShoppingProductsListFacets *facets;
-@property (retain) NSString *language;
-@property (retain) NSString *location;
+@property (copy) NSString *language;
+@property (copy) NSString *location;
 @property (assign) NSUInteger maxResults;
 @property (assign) NSUInteger maxVariants;
-@property (retain) NSString *minAvailability;
-@property (retain) NSString *plusOne;
-@property (retain) NSString *productFields;
-@property (retain) NSString *productId;
-@property (retain) NSString *productIdType;
+@property (copy) NSString *minAvailability;
+@property (copy) NSString *plusOne;
+@property (copy) NSString *productFields;
+@property (copy) NSString *productId;
+@property (copy) NSString *productIdType;
 @property (retain) GTLShoppingProductsListPromotions *promotions;
-@property (retain) NSString *q;
-@property (retain) NSString *rankBy;
+@property (copy) NSString *q;
+@property (copy) NSString *rankBy;
 @property (retain) GTLShoppingProductsGetRecommendations *recommendations;
 @property (retain) GTLShoppingProductsListRedirects *redirects;
 @property (retain) GTLShoppingProductsListRelatedQueries *relatedQueries;
-@property (retain) NSString *restrictBy;
+@property (copy) NSString *restrictBy;
 @property (assign) BOOL safe;
 @property (retain) GTLShoppingProductsListSayt *sayt;
-@property (retain) NSString *source;
+@property (copy) NSString *source;
 @property (retain) GTLShoppingProductsListSpelling *spelling;
 @property (assign) NSUInteger startIndex;
-@property (retain) NSString *taxonomy;
-@property (retain) NSString *thumbnails;
-@property (retain) NSString *useCase;
+@property (copy) NSString *taxonomy;
+@property (copy) NSString *thumbnails;
+@property (copy) NSString *useCase;
 
 #pragma mark -
 #pragma mark "products" methods
@@ -184,7 +184,7 @@
 @property (retain) NSNumber *enabled;  // boolValue
 
 // Category specification
-@property (retain) NSString *include;
+@property (copy) NSString *include;
 
 // This parameter is currently ignored
 @property (retain) NSNumber *useGcsConfig;  // boolValue
@@ -227,7 +227,7 @@
 @property (retain) NSNumber *enabled;  // boolValue
 
 // Recommendation specification
-@property (retain) NSString *include;
+@property (copy) NSString *include;
 
 // This parameter is currently ignored
 @property (retain) NSNumber *useGcsConfig;  // boolValue
@@ -247,7 +247,7 @@
 @property (retain) NSNumber *enabled;  // boolValue
 
 // Category specification
-@property (retain) NSString *include;
+@property (copy) NSString *include;
 
 // This parameter is currently ignored
 @property (retain) NSNumber *useGcsConfig;  // boolValue
@@ -299,13 +299,13 @@
 @interface GTLShoppingProductsListFacets : GTLObject
 
 // Facets to discover
-@property (retain) NSString *discover;
+@property (copy) NSString *discover;
 
 // Whether to return facet information
 @property (retain) NSNumber *enabled;  // boolValue
 
 // Facets to include (applies when useGcsConfig == false)
-@property (retain) NSString *include;
+@property (copy) NSString *include;
 
 // Whether to return facet information as configured in the GCS account
 @property (retain) NSNumber *useGcsConfig;  // boolValue

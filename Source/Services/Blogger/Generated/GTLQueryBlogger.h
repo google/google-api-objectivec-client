@@ -41,20 +41,20 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (retain) NSString *fields;
+@property (copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (retain) NSString *blogId;
-@property (retain) NSString *commentId;
+@property (copy) NSString *blogId;
+@property (copy) NSString *commentId;
 @property (assign) BOOL fetchBodies;
 @property (assign) NSUInteger maxResults;
-@property (retain) NSString *pageId;
-@property (retain) NSString *pageToken;
-@property (retain) NSString *postId;
-@property (retain) NSString *startDate;
-@property (retain) NSString *userId;
+@property (copy) NSString *pageId;
+@property (copy) NSString *pageToken;
+@property (copy) NSString *postId;
+@property (copy) NSString *startDate;
+@property (copy) NSString *userId;
 
 #pragma mark -
 #pragma mark "blogs" methods

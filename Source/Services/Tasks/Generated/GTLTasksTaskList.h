@@ -42,20 +42,20 @@
 @interface GTLTasksTaskList : GTLObject
 
 // ETag of the resource.
-@property (retain) NSString *ETag;
+@property (copy) NSString *ETag;
 
 // Task list identifier.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // Type of the resource. This is always "tasks#taskList".
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // URL pointing to this task list. Used to retrieve, update, or delete this task
 // list.
-@property (retain) NSString *selfLink;
+@property (copy) NSString *selfLink;
 
 // Title of the task list.
-@property (retain) NSString *title;
+@property (copy) NSString *title;
 
 @end

@@ -51,13 +51,13 @@
 @property (retain) NSNumber *elapsedMillis;  // longLongValue
 
 // Google internal.
-@property (retain) NSString *rdcResponse;
+@property (copy) NSString *rdcResponse;
 
 // Google internal.
-@property (retain) NSString *searchRequest;
+@property (copy) NSString *searchRequest;
 
 // Google internal.
-@property (retain) NSString *searchResponse;
+@property (copy) NSString *searchResponse;
 
 @end
 
@@ -73,10 +73,10 @@
 @property (retain) NSNumber *elapsedMillis;  // longLongValue
 
 // Google internal
-@property (retain) NSString *hostName;
+@property (copy) NSString *hostName;
 
 // Google internal
-@property (retain) NSString *name;
+@property (copy) NSString *name;
 
 // Google internal
 @property (retain) NSNumber *serverMillis;  // longLongValue

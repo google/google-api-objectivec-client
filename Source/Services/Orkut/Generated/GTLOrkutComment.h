@@ -51,17 +51,17 @@
 @property (retain) GTLOrkutAuthorResource *actor;
 
 // The content of the comment in text/html
-@property (retain) NSString *content;
+@property (copy) NSString *content;
 
 // The unique ID for the comment.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // Link to the original activity where this comment was posted.
 @property (retain) GTLOrkutCommentInReplyTo *inReplyTo;
 
 // Identifies this resource as a comment. Value: "orkut#comment"
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // List of resources for the comment.
 @property (retain) NSArray *links;  // of GTLOrkutLinkResource
@@ -80,16 +80,16 @@
 @interface GTLOrkutCommentInReplyTo : GTLObject
 
 // Link to the post on activity stream being commented.
-@property (retain) NSString *href;
+@property (copy) NSString *href;
 
 // Unique identifier of the post on activity stream being commented.
-@property (retain) NSString *ref;
+@property (copy) NSString *ref;
 
 // Relationship between the comment and the post on activity stream being
 // commented. Always inReplyTo.
-@property (retain) NSString *rel;
+@property (copy) NSString *rel;
 
 // Type of the post on activity stream being commented. Always text/html.
-@property (retain) NSString *type;
+@property (copy) NSString *type;
 
 @end

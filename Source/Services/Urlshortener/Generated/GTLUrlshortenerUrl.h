@@ -49,22 +49,22 @@
 
 // Time the short URL was created; ISO 8601 representation using the
 // yyyy-MM-dd'T'HH:mm:ss.SSSZZ format, e.g. "2010-10-14T19:01:24.944+00:00".
-@property (retain) NSString *created;
+@property (copy) NSString *created;
 
 // Short URL, e.g. "http://goo.gl/l6MS".
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // The fixed string "urlshortener#url".
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Long URL, e.g. "http://www.google.com/". Might not be present if the status
 // is "REMOVED".
-@property (retain) NSString *longUrl;
+@property (copy) NSString *longUrl;
 
 // Status of the target URL. Possible values: "OK", "MALWARE", "PHISHING", or
 // "REMOVED". A URL might be marked "REMOVED" if it was flagged as spam, for
 // example.
-@property (retain) NSString *status;
+@property (copy) NSString *status;
 
 @end

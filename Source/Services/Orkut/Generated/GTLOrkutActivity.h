@@ -60,10 +60,10 @@
 
 // The ID for the activity.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // The kind of activity. Always orkut#activity.
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Links to resources related to this activity.
 @property (retain) NSArray *links;  // of GTLOrkutLinkResource
@@ -75,7 +75,7 @@
 @property (retain) GTLDateTime *published;
 
 // Title of the activity.
-@property (retain) NSString *title;
+@property (copy) NSString *title;
 
 // The time at which the activity was last updated.
 @property (retain) GTLDateTime *updated;
@@ -87,7 +87,7 @@
 // - update - User commented on an activity.
 // - make-friend - User added a new friend.
 // - birthday - User has a birthday.
-@property (retain) NSString *verb;
+@property (copy) NSString *verb;
 
 @end
 
@@ -106,7 +106,7 @@
 // content, post the changes to this property, using the value of
 // originalContent as a starting point. If the update is successful, the server
 // adds HTML formatting and responds with this formatted content.
-@property (retain) NSString *content;
+@property (copy) NSString *content;
 
 // The list of additional items.
 @property (retain) NSArray *items;  // of GTLOrkutActivityobjectsResource
@@ -114,7 +114,7 @@
 // The type of the object affected by the activity. Clients can use this
 // information to style the rendered activity object differently depending on
 // the content.
-@property (retain) NSString *objectType;
+@property (copy) NSString *objectType;
 
 // Comments in reply to this activity.
 @property (retain) GTLOrkutActivityObjectReplies *replies;
@@ -139,6 +139,6 @@
 @property (retain) NSNumber *totalItems;  // unsignedLongLongValue
 
 // URL for the collection of comments in reply to this activity.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end

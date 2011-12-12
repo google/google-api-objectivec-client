@@ -47,5 +47,5 @@
 
 @interface GTLLatitudeLocationFeed : GTLCollectionObject
 @property (retain) NSArray *items;  // of GTLLatitudeLocation
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 @end

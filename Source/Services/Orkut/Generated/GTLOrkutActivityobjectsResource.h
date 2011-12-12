@@ -49,20 +49,20 @@
 // content, post the changes to this property, using the value of
 // originalContent as a starting point. If the update is successful, the server
 // adds HTML formatting and responds with this formatted content.
-@property (retain) NSString *content;
+@property (copy) NSString *content;
 
 // The title of the object.
-@property (retain) NSString *displayName;
+@property (copy) NSString *displayName;
 
 // The ID for the object.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // Links to other resources related to this object.
 @property (retain) NSArray *links;  // of GTLOrkutLinkResource
 
 // The object type.
-@property (retain) NSString *objectType;
+@property (copy) NSString *objectType;
 
 // The person who is related with this activity, e.g. an Added User.
 @property (retain) GTLOrkutActivitypersonResource *person;

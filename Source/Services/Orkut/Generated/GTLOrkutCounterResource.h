@@ -51,7 +51,7 @@
 // - scraps - The scraps of the user.
 // - photos - The photos of the user.
 // - videos - The videos of the user.
-@property (retain) NSString *name;
+@property (copy) NSString *name;
 
 // The number of resources on the counted collection.
 @property (retain) NSNumber *total;  // intValue

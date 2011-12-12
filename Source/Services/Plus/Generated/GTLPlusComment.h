@@ -55,13 +55,13 @@
 
 // The ID of this comment.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // The activity this comment replied to.
 @property (retain) NSArray *inReplyTo;  // of GTLPlusCommentInReplyToItem
 
 // Identifies this resource as a comment. Value: "plus#comment".
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // The object of this comment.
 @property (retain) GTLPlusCommentObject *object;
@@ -71,7 +71,7 @@
 @property (retain) GTLDateTime *published;
 
 // Link to this comment resource.
-@property (retain) NSString *selfLink;
+@property (copy) NSString *selfLink;
 
 // The time at which this comment was last updated. Formatted as an RFC 3339
 // timestamp.
@@ -80,7 +80,7 @@
 // This comment's verb, indicating what action was performed. Possible values
 // are:
 // - "post" - Publish content to the stream.
-@property (retain) NSString *verb;
+@property (copy) NSString *verb;
 
 @end
 
@@ -93,17 +93,17 @@
 @interface GTLPlusCommentActor : GTLObject
 
 // The name of this actor, suitable for display.
-@property (retain) NSString *displayName;
+@property (copy) NSString *displayName;
 
 // The ID of the actor.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // The image representation of this actor.
 @property (retain) GTLPlusCommentActorImage *image;
 
 // A link to the person resource for this actor.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end
 
@@ -117,10 +117,10 @@
 
 // The id of the activity.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // The url of the activity.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end
 
@@ -133,11 +133,11 @@
 @interface GTLPlusCommentObject : GTLObject
 
 // The content of this comment.
-@property (retain) NSString *content;
+@property (copy) NSString *content;
 
 // The object type of this comment. Possible values are:
 // - "comment" - A comment in reply to an activity.
-@property (retain) NSString *objectType;
+@property (copy) NSString *objectType;
 
 @end
 
@@ -152,6 +152,6 @@
 // The URL of the actor's profile photo. To re-size the image and crop it to a
 // square, append the query string ?sz=x, where x is the dimension in pixels of
 // each side.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end

@@ -48,13 +48,13 @@
 
 // Description of the access granted, suitable for display.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (retain) NSString *descriptionProperty;
+@property (copy) NSString *descriptionProperty;
 
 // The list of access entries.
 @property (retain) NSArray *items;  // of GTLPlusAclentryResource
 
 // Identifies this resource as a collection of access controls. Value:
 // "plus#acl".
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 @end

@@ -51,6 +51,6 @@
 @property (retain) NSArray *items;  // of GTLOrkutCounterResource
 
 // Identifies this resource as a collection of counters. Value: "orkut#counters"
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 @end

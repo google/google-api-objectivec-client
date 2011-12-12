@@ -45,15 +45,15 @@
 @interface GTLOrkutLinkResource : GTLObject
 
 // URL of the link.
-@property (retain) NSString *href;
+@property (copy) NSString *href;
 
 // Relation between the resource and the parent object.
-@property (retain) NSString *rel;
+@property (copy) NSString *rel;
 
 // Title of the link.
-@property (retain) NSString *title;
+@property (copy) NSString *title;
 
 // Media type of the link.
-@property (retain) NSString *type;
+@property (copy) NSString *type;
 
 @end

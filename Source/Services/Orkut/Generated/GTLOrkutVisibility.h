@@ -45,7 +45,7 @@
 @interface GTLOrkutVisibility : GTLObject
 
 // Identifies this resource as a visibility item. Value: "orkut#visibility"
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // List of resources for the visibility item.
 @property (retain) NSArray *links;  // of GTLOrkutLinkResource
@@ -53,6 +53,6 @@
 // The visibility of the resource. Possible values are:
 // - default: not hidden by the user
 // - hidden: hidden
-@property (retain) NSString *visibility;
+@property (copy) NSString *visibility;
 
 @end
