@@ -57,10 +57,10 @@
 
 // Id of product.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // The kind of item, always shopping#product.
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Product.
 @property (retain) GTLShoppingModelProduct *product;
@@ -69,10 +69,10 @@
 @property (retain) NSArray *recommendations;  // of GTLShoppingProductRecommendationsItem
 
 // Unique identifier for this request.
-@property (retain) NSString *requestId;
+@property (copy) NSString *requestId;
 
 // Self link of product.
-@property (retain) NSString *selfLink;
+@property (copy) NSString *selfLink;
 
 @end
 
@@ -89,7 +89,7 @@
 
 // Type of recommendation list (one of: all, purchaseToPurchase, visitToVisit,
 // visitToPurchase).
-@property (retain) NSString *type;
+@property (copy) NSString *type;
 
 @end
 

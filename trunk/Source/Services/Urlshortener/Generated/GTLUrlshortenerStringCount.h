@@ -47,6 +47,6 @@
 
 // Label assigned to this top entry, e.g. "US" or "Chrome".
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 @end

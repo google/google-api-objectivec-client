@@ -54,10 +54,10 @@
 @property (retain) NSNumber *itemsPerPage;  // intValue
 
 // The fixed string "urlshortener#urlHistory".
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // A token to provide to get the next page of results.
-@property (retain) NSString *nextPageToken;
+@property (copy) NSString *nextPageToken;
 
 // Total number of short URLs associated with this user (may be approximate).
 @property (retain) NSNumber *totalItems;  // intValue

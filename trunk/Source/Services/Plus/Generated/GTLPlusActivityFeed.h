@@ -48,27 +48,27 @@
 
 // The ID of this collection of activities.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // The activities in this page of results.
 @property (retain) NSArray *items;  // of GTLPlusActivity
 
 // Identifies this resource as a collection of activities. Value:
 // "plus#activityFeed".
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Link to the next page of activities.
-@property (retain) NSString *nextLink;
+@property (copy) NSString *nextLink;
 
 // The continuation token, used to page through large result sets. Provide this
 // value in a subsequent request to return the next page of results.
-@property (retain) NSString *nextPageToken;
+@property (copy) NSString *nextPageToken;
 
 // Link to this activity resource.
-@property (retain) NSString *selfLink;
+@property (copy) NSString *selfLink;
 
 // The title of this collection of activities.
-@property (retain) NSString *title;
+@property (copy) NSString *title;
 
 // The time at which this collection of activities was last updated. Formatted
 // as an RFC 3339 timestamp.

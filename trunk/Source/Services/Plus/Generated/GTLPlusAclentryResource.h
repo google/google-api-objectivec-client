@@ -44,7 +44,7 @@
 // The ID of the entry. For entries of type "person" or "circle", this is the ID
 // of the resource. For other types, this property is not set.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // The type of entry describing to whom access is granted. Possible values are:
 // - "person" - Access to an individual.
@@ -53,6 +53,6 @@
 // - "extendedCircles" - Access to members of everyone in a person's circles,
 // plus all of the people in their circles.
 // - "public" - Access to anyone on the web.
-@property (retain) NSString *type;
+@property (copy) NSString *type;
 
 @end

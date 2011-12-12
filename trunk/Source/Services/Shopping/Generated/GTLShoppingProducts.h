@@ -73,14 +73,14 @@
 @property (retain) GTLShoppingModelDebug *debug;
 
 // Etag of feed.
-@property (retain) NSString *ETag;
+@property (copy) NSString *ETag;
 
 // List of facets.
 @property (retain) NSArray *facets;  // of GTLShoppingProductsFacetsItem
 
 // Id of feed.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // List of returned products.
 @property (retain) NSArray *items;  // of GTLShoppingProduct
@@ -89,13 +89,13 @@
 @property (retain) NSNumber *itemsPerPage;  // intValue
 
 // The fixed string "shopping#products". The kind of feed returned.
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Next link of feed.
-@property (retain) NSString *nextLink;
+@property (copy) NSString *nextLink;
 
 // Previous link of feed.
-@property (retain) NSString *previousLink;
+@property (copy) NSString *previousLink;
 
 // List of promotions.
 @property (retain) NSArray *promotions;  // of GTLShoppingProductsPromotionsItem
@@ -107,10 +107,10 @@
 @property (retain) NSArray *relatedQueries;  // of NSString
 
 // Unique identifier for this request.
-@property (retain) NSString *requestId;
+@property (copy) NSString *requestId;
 
 // Self link of feed.
-@property (retain) NSString *selfLink;
+@property (copy) NSString *selfLink;
 
 @property (retain) NSArray *shelfSpaceAds;  // of GTLShoppingProductsShelfSpaceAdsItem
 
@@ -144,21 +144,21 @@
 @property (retain) NSNumber *count;  // intValue
 
 // Display name of facet.
-@property (retain) NSString *displayName;
+@property (copy) NSString *displayName;
 
 // Name of the facet's attribute (omitted for property facets).
-@property (retain) NSString *name;
+@property (copy) NSString *name;
 
 // Property of facet (omitted for attribute facets).
-@property (retain) NSString *property;
+@property (copy) NSString *property;
 
 // Type of facet's attribute (omitted for property facets, one of: text, bool,
 // int, float).
-@property (retain) NSString *type;
+@property (copy) NSString *type;
 
 // Unit of the facet's property or attribute (omitted if the facet's property or
 // attribute has no unit).
-@property (retain) NSString *unit;
+@property (copy) NSString *unit;
 
 @end
 
@@ -174,30 +174,30 @@
 @property (retain) NSArray *customFields;  // of GTLShoppingProductsPromotionsItemCustomFieldsItem
 
 // Custom HTML of promotion (omitted if type is not custom).
-@property (retain) NSString *customHtml;
+@property (copy) NSString *customHtml;
 
 // Description of promotion (omitted if type is not standard).
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (retain) NSString *descriptionProperty;
+@property (copy) NSString *descriptionProperty;
 
 // Link to promotion (omitted if type is not standard).
-@property (retain) NSString *destLink;
+@property (copy) NSString *destLink;
 
 // Link to promotion image (omitted if type is not standard).
-@property (retain) NSString *imageLink;
+@property (copy) NSString *imageLink;
 
 // Link to promotion without scheme. DEPRECATED. WILL BE REMOVED SOON. USE
 // destLink.
-@property (retain) NSString *link;
+@property (copy) NSString *link;
 
 // Name of promotion (omitted if type is not standard).
-@property (retain) NSString *name;
+@property (copy) NSString *name;
 
 // Product of promotion (omitted if type is not product).
 @property (retain) GTLShoppingModelProduct *product;
 
 // Type of promotion (one of: standard, product, custom).
-@property (retain) NSString *type;
+@property (copy) NSString *type;
 
 @end
 
@@ -220,7 +220,7 @@
 @interface GTLShoppingProductsSpelling : GTLObject
 
 // Suggestion for spelling.
-@property (retain) NSString *suggestion;
+@property (copy) NSString *suggestion;
 
 @end
 
@@ -233,22 +233,22 @@
 @interface GTLShoppingProductsStoresItem : GTLObject
 
 // Address of store.
-@property (retain) NSString *address;
+@property (copy) NSString *address;
 
 // Location of store.
-@property (retain) NSString *location;
+@property (copy) NSString *location;
 
 // Name of store.
-@property (retain) NSString *name;
+@property (copy) NSString *name;
 
 // Merchant-supplied store code.
-@property (retain) NSString *storeCode;
+@property (copy) NSString *storeCode;
 
 // Id of store.
-@property (retain) NSString *storeId;
+@property (copy) NSString *storeId;
 
 // Telephone number of store.
-@property (retain) NSString *telephone;
+@property (copy) NSString *telephone;
 
 @end
 
@@ -294,9 +294,9 @@
 @interface GTLShoppingProductsPromotionsItemCustomFieldsItem : GTLObject
 
 // Name of field.
-@property (retain) NSString *name;
+@property (copy) NSString *name;
 
 // Value of field.
-@property (retain) NSString *value;
+@property (copy) NSString *value;
 
 @end

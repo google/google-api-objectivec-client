@@ -52,10 +52,10 @@
 
 // Identifies this resource as a collection of activities. Value:
 // "orkut#activityList"
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // The value of pageToken query parameter in activities.list request to get the
 // next page, if there are more to retrieve.
-@property (retain) NSString *nextPageToken;
+@property (copy) NSString *nextPageToken;
 
 @end

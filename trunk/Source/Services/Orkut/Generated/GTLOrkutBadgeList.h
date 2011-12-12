@@ -51,6 +51,6 @@
 @property (retain) NSArray *items;  // of GTLOrkutBadge
 
 // Identifies this resource as a collection of badges. Value: "orkut#badgeList"
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 @end

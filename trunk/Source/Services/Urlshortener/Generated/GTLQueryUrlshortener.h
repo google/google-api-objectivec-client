@@ -43,14 +43,14 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (retain) NSString *fields;
+@property (copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (retain) NSString *projection;
-@property (retain) NSString *shortUrl;
-@property (retain) NSString *startToken;
+@property (copy) NSString *projection;
+@property (copy) NSString *shortUrl;
+@property (copy) NSString *startToken;
 
 #pragma mark -
 #pragma mark "url" methods

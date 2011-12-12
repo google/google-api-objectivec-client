@@ -76,26 +76,26 @@
 @property (retain) GTLPlusActivityActor *actor;
 
 // Street address where this activity occurred.
-@property (retain) NSString *address;
+@property (copy) NSString *address;
 
 // Additional content added by the person who shared this activity, applicable
 // only when resharing an activity.
-@property (retain) NSString *annotation;
+@property (copy) NSString *annotation;
 
 // If this activity is a crosspost from another system, this property specifies
 // the ID of the original activity.
-@property (retain) NSString *crosspostSource;
+@property (copy) NSString *crosspostSource;
 
 // Latitude and longitude where this activity occurred. Format is latitude
 // followed by longitude, space separated.
-@property (retain) NSString *geocode;
+@property (copy) NSString *geocode;
 
 // The ID of this activity.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // Identifies this resource as an activity. Value: "plus#activity".
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // The object of this activity.
 @property (retain) GTLPlusActivityObject *object;
@@ -104,10 +104,10 @@
 @property (retain) NSNumber *placeholder;  // boolValue
 
 // ID of the place where this activity occurred.
-@property (retain) NSString *placeId;
+@property (copy) NSString *placeId;
 
 // Name of the place where this activity occurred.
-@property (retain) NSString *placeName;
+@property (copy) NSString *placeName;
 
 // The service provider that initially published this activity.
 @property (retain) GTLPlusActivityProvider *provider;
@@ -118,24 +118,24 @@
 
 // Radius, in meters, of the region where this activity occurred, centered at
 // the latitude and longitude identified in geocode.
-@property (retain) NSString *radius;
+@property (copy) NSString *radius;
 
 // Title of this activity.
-@property (retain) NSString *title;
+@property (copy) NSString *title;
 
 // The time at which this activity was last updated. Formatted as an RFC 3339
 // timestamp.
 @property (retain) GTLDateTime *updated;
 
 // The link to this activity.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 // This activity's verb, indicating what action was performed. Possible values
 // are:
 // - "post" - Publish content to the stream.
 // - "checkin" - Check in to a location.
 // - "share" - Reshare an activity.
-@property (retain) NSString *verb;
+@property (copy) NSString *verb;
 
 @end
 
@@ -148,17 +148,17 @@
 @interface GTLPlusActivityActor : GTLObject
 
 // The name of the actor, suitable for display.
-@property (retain) NSString *displayName;
+@property (copy) NSString *displayName;
 
 // The ID of the actor's person resource.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // The image representation of the actor.
 @property (retain) GTLPlusActivityActorImage *image;
 
 // The link to the actor's Google profile.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end
 
@@ -183,22 +183,22 @@
 // successful, the response will contain the HTML-formatted content. When
 // updating an activity, use originalContent as the starting value, then assign
 // the updated text to this property.
-@property (retain) NSString *content;
+@property (copy) NSString *content;
 
 // The ID of the object. When resharing an activity, this is the ID of the
 // activity being reshared.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // The type of the object. Possible values are:
 // - "note" - Textual content.
 // - "activity" - A Google+ activity.
-@property (retain) NSString *objectType;
+@property (copy) NSString *objectType;
 
 // The content (text) as provided by the author, stored without any HTML
 // formatting. When updating an activity's content, use the value of
 // originalContent as the starting point from which to make edits.
-@property (retain) NSString *originalContent;
+@property (copy) NSString *originalContent;
 
 // People who +1'd this activity.
 @property (retain) GTLPlusActivityObjectPlusoners *plusoners;
@@ -210,7 +210,7 @@
 @property (retain) GTLPlusActivityObjectResharers *resharers;
 
 // The URL that points to the linked resource.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end
 
@@ -223,7 +223,7 @@
 @interface GTLPlusActivityProvider : GTLObject
 
 // Name of the service provider.
-@property (retain) NSString *title;
+@property (copy) NSString *title;
 
 @end
 
@@ -238,7 +238,7 @@
 // The URL of the actor's profile photo. To re-size the image and crop it to a
 // square, append the query string ?sz=x, where x is the dimension in pixels of
 // each side.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end
 
@@ -251,17 +251,17 @@
 @interface GTLPlusActivityObjectActor : GTLObject
 
 // The original actor's name, suitable for display.
-@property (retain) NSString *displayName;
+@property (copy) NSString *displayName;
 
 // ID of the original actor.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // The image representation of the original actor.
 @property (retain) GTLPlusActivityObjectActorImage *image;
 
 // A link to the original actor's Google profile.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end
 
@@ -275,10 +275,10 @@
 
 // If the attachment is an article, this property contains a snippet of text
 // from the article.
-@property (retain) NSString *content;
+@property (copy) NSString *content;
 
 // The title of the attachment (such as a photo caption or an article title).
-@property (retain) NSString *displayName;
+@property (copy) NSString *displayName;
 
 // If the attachment is a video, the embeddable link.
 @property (retain) GTLPlusActivityObjectAttachmentsItemEmbed *embed;
@@ -288,7 +288,7 @@
 
 // The ID of the media object's resource.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // The preview image for photos or videos.
 @property (retain) GTLPlusActivityObjectAttachmentsItemImage *image;
@@ -297,10 +297,10 @@
 // - "photo" - A photo.
 // - "video" - A video.
 // - "article" - An article, specified by a link.
-@property (retain) NSString *objectType;
+@property (copy) NSString *objectType;
 
 // The link to the attachment, should be of type text/html.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end
 
@@ -313,7 +313,7 @@
 @interface GTLPlusActivityObjectPlusoners : GTLObject
 
 // The URL for the collection of people who +1'd this activity.
-@property (retain) NSString *selfLink;
+@property (copy) NSString *selfLink;
 
 // Total number of people who +1'd this activity.
 @property (retain) NSNumber *totalItems;  // unsignedIntValue
@@ -329,7 +329,7 @@
 @interface GTLPlusActivityObjectReplies : GTLObject
 
 // The URL for the collection of comments in reply to this activity.
-@property (retain) NSString *selfLink;
+@property (copy) NSString *selfLink;
 
 // Total number of comments on this activity.
 @property (retain) NSNumber *totalItems;  // unsignedIntValue
@@ -345,7 +345,7 @@
 @interface GTLPlusActivityObjectResharers : GTLObject
 
 // The URL for the collection of resharers.
-@property (retain) NSString *selfLink;
+@property (copy) NSString *selfLink;
 
 // Total number of people who reshared this activity.
 @property (retain) NSNumber *totalItems;  // unsignedIntValue
@@ -361,7 +361,7 @@
 @interface GTLPlusActivityObjectActorImage : GTLObject
 
 // A URL that points to a thumbnail photo of the original actor.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end
 
@@ -374,10 +374,10 @@
 @interface GTLPlusActivityObjectAttachmentsItemEmbed : GTLObject
 
 // Media type of the link.
-@property (retain) NSString *type;
+@property (copy) NSString *type;
 
 // URL of the link.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end
 
@@ -393,10 +393,10 @@
 @property (retain) NSNumber *height;  // unsignedIntValue
 
 // Media type of the link.
-@property (retain) NSString *type;
+@property (copy) NSString *type;
 
 // URL of the link.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 // The width, in pixels, of the linked resource.
 @property (retain) NSNumber *width;  // unsignedIntValue
@@ -415,10 +415,10 @@
 @property (retain) NSNumber *height;  // unsignedIntValue
 
 // Media type of the link.
-@property (retain) NSString *type;
+@property (copy) NSString *type;
 
 // URL of the link.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 // The width, in pixels, of the linked resource.
 @property (retain) NSNumber *width;  // unsignedIntValue

@@ -42,86 +42,86 @@
 @interface GTLGroupssettingsGroups : GTLObject
 
 // Are external members allowed to join the group.
-@property (retain) NSString *allowExternalMembers;
+@property (copy) NSString *allowExternalMembers;
 
 // Is google allowed to contact admins.
-@property (retain) NSString *allowGoogleCommunication;
+@property (copy) NSString *allowGoogleCommunication;
 
 // If posting from web is allowed.
-@property (retain) NSString *allowWebPosting;
+@property (copy) NSString *allowWebPosting;
 
 // If the group is archive only
-@property (retain) NSString *archiveOnly;
+@property (copy) NSString *archiveOnly;
 
 // Default email to which reply to any message should go.
-@property (retain) NSString *customReplyTo;
+@property (copy) NSString *customReplyTo;
 
 // Default message deny notification message
-@property (retain) NSString *defaultMessageDenyNotificationText;
+@property (copy) NSString *defaultMessageDenyNotificationText;
 
 // Description of the group
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (retain) NSString *descriptionProperty;
+@property (copy) NSString *descriptionProperty;
 
 // Email id of the group
-@property (retain) NSString *email;
+@property (copy) NSString *email;
 
 // If the contents of the group are archived.
-@property (retain) NSString *isArchived;
+@property (copy) NSString *isArchived;
 
 // The type of the resource.
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Maximum message size allowed.
 @property (retain) NSNumber *maxMessageBytes;  // intValue
 
 // Can members post using the group email address.
-@property (retain) NSString *membersCanPostAsTheGroup;
+@property (copy) NSString *membersCanPostAsTheGroup;
 
 // Default message display font. Possible values are: DEFAULT_FONT
 // FIXED_WIDTH_FONT
-@property (retain) NSString *messageDisplayFont;
+@property (copy) NSString *messageDisplayFont;
 
 // Moderation level for messages. Possible values are: MODERATE_ALL_MESSAGES
 // MODERATE_NON_MEMBERS MODERATE_NEW_MEMBERS MODERATE_NONE
-@property (retain) NSString *messageModerationLevel;
+@property (copy) NSString *messageModerationLevel;
 
 // Name of the Group
-@property (retain) NSString *name;
+@property (copy) NSString *name;
 
 // Primary language for the group.
-@property (retain) NSString *primaryLanguage;
+@property (copy) NSString *primaryLanguage;
 
 // Whome should the default reply to a message go to. Possible values are:
 // REPLY_TO_CUSTOM REPLY_TO_SENDER REPLY_TO_LIST REPLY_TO_OWNER REPLY_TO_IGNORE
 // REPLY_TO_MANAGERS
-@property (retain) NSString *replyTo;
+@property (copy) NSString *replyTo;
 
 // Should the member be notified if his message is denied by owner.
-@property (retain) NSString *sendMessageDenyNotification;
+@property (copy) NSString *sendMessageDenyNotification;
 
 // Is the group listed in groups directory
-@property (retain) NSString *showInGroupDirectory;
+@property (copy) NSString *showInGroupDirectory;
 
 // Permissions to invite members. Possbile values are: ALL_MEMBERS_CAN_INVITE
 // ALL_MANAGERS_CAN_INVITE
-@property (retain) NSString *whoCanInvite;
+@property (copy) NSString *whoCanInvite;
 
 // Permissions to join the group. Possible values are: ANYONE_CAN_JOIN
 // ALL_IN_DOMAIN_CAN_JOIN INVITED_CAN_JOIN CAN_REQUEST_TO_JOIN
-@property (retain) NSString *whoCanJoin;
+@property (copy) NSString *whoCanJoin;
 
 // Permissions to post messages to the group. Possible values are: NONE_CAN_POST
 // ALL_MANAGERS_CAN_POST ALL_MEMBERS_CAN_POST ALL_IN_DOMAIN_CAN_POST
 // ANYONE_CAN_POST
-@property (retain) NSString *whoCanPostMessage;
+@property (copy) NSString *whoCanPostMessage;
 
 // Permissions to view group. Possbile values are: ANYONE_CAN_VIEW
 // ALL_IN_DOMAIN_CAN_VIEW ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW
-@property (retain) NSString *whoCanViewGroup;
+@property (copy) NSString *whoCanViewGroup;
 
 // Permissions to view membership. Possbile values are: ALL_IN_DOMAIN_CAN_VIEW
 // ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW
-@property (retain) NSString *whoCanViewMembership;
+@property (copy) NSString *whoCanViewMembership;
 
 @end

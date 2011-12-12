@@ -42,23 +42,23 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (retain) NSString *fields;
+@property (copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (retain) NSString *adClientId;
-@property (retain) NSString *currency;
+@property (copy) NSString *adClientId;
+@property (copy) NSString *currency;
 @property (retain) NSArray *dimension;  // of NSString
-@property (retain) NSString *endDate;
+@property (copy) NSString *endDate;
 @property (retain) NSArray *filter;  // of NSString
 @property (assign) BOOL includeInactive;
-@property (retain) NSString *locale;
+@property (copy) NSString *locale;
 @property (assign) NSInteger maxResults;
 @property (retain) NSArray *metric;  // of NSString
-@property (retain) NSString *pageToken;
+@property (copy) NSString *pageToken;
 @property (retain) NSArray *sort;  // of NSString
-@property (retain) NSString *startDate;
+@property (copy) NSString *startDate;
 @property (assign) NSInteger startIndex;
 
 #pragma mark -

@@ -62,30 +62,30 @@
 @property (retain) GTLShoppingModelProductAuthor *author;
 
 // Brand of product.
-@property (retain) NSString *brand;
+@property (copy) NSString *brand;
 
 // Categories of product according to the selected taxonomy, omitted if no
 // taxonomy is selected.
 @property (retain) NSArray *categories;  // of NSString
 
 // Condition of product (one of: new, refurbished, used).
-@property (retain) NSString *condition;
+@property (copy) NSString *condition;
 
 // ISO 3166 code of target country of product.
-@property (retain) NSString *country;
+@property (copy) NSString *country;
 
 // RFC 3339 formatted creation time and date of product.
 @property (retain) GTLDateTime *creationTime;
 
 // Description of product.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (retain) NSString *descriptionProperty;
+@property (copy) NSString *descriptionProperty;
 
 // Google id of product.
-@property (retain) NSString *googleId;
+@property (copy) NSString *googleId;
 
 // The first GTIN of the product. Deprecated in favor of "gtins".
-@property (retain) NSString *gtin;
+@property (copy) NSString *gtin;
 
 // List of all the product's GTINs (in GTIN-14 format).
 @property (retain) NSArray *gtins;  // of NSString
@@ -97,26 +97,26 @@
 @property (retain) NSArray *inventories;  // of GTLShoppingModelProductInventoriesItem
 
 // BCP 47 language tag of language of product.
-@property (retain) NSString *language;
+@property (copy) NSString *language;
 
 // Link to product.
-@property (retain) NSString *link;
+@property (copy) NSString *link;
 
 // RFC 3339 formatted modification time and date of product.
 @property (retain) GTLDateTime *modificationTime;
 
 // Code to add to the page to render the +1 content.
-@property (retain) NSString *plusOne;
+@property (copy) NSString *plusOne;
 
 // Merchant-provided id of product (available only with a cx source).
-@property (retain) NSString *providedId;
+@property (copy) NSString *providedId;
 
 // Whether this product matched the user query. Only set for the variant offers
 // (if any) attached to a product offer.
 @property (retain) NSNumber *queryMatched;  // boolValue
 
 // Title of product.
-@property (retain) NSString *title;
+@property (copy) NSString *title;
 
 // The number of variant offers returned that matched the query.
 @property (retain) NSNumber *totalMatchingVariants;  // intValue
@@ -135,16 +135,16 @@
 @interface GTLShoppingModelProductAttributesItem : GTLObject
 
 // Display Name of prodct attribute.
-@property (retain) NSString *displayName;
+@property (copy) NSString *displayName;
 
 // Name of product attribute.
-@property (retain) NSString *name;
+@property (copy) NSString *name;
 
 // Type of product attribute (one of: text, bool, int, float, dateRange, url).
-@property (retain) NSString *type;
+@property (copy) NSString *type;
 
 // Unit of product attribute.
-@property (retain) NSString *unit;
+@property (copy) NSString *unit;
 
 // Value of product attribute.
 @property (retain) id value;
@@ -160,19 +160,19 @@
 @interface GTLShoppingModelProductAuthor : GTLObject
 
 // Account id of product author.
-@property (retain) NSString *accountId;
+@property (copy) NSString *accountId;
 
 // Aggregator id of product author.
-@property (retain) NSString *aggregatorId;
+@property (copy) NSString *aggregatorId;
 
 // Email address of product author.
-@property (retain) NSString *email;
+@property (copy) NSString *email;
 
 // Name of product author.
-@property (retain) NSString *name;
+@property (copy) NSString *name;
 
 // URI of product author.
-@property (retain) NSString *uri;
+@property (copy) NSString *uri;
 
 @end
 
@@ -185,7 +185,7 @@
 @interface GTLShoppingModelProductImagesItem : GTLObject
 
 // Link to product image.
-@property (retain) NSString *link;
+@property (copy) NSString *link;
 
 // Thumbnails of product image.
 @property (retain) NSArray *thumbnails;  // of GTLShoppingModelProductImagesItemThumbnailsItem
@@ -201,19 +201,19 @@
 @interface GTLShoppingModelProductInventoriesItem : GTLObject
 
 // Availability of product inventory.
-@property (retain) NSString *availability;
+@property (copy) NSString *availability;
 
 // Channel of product inventory (one of: online, local).
-@property (retain) NSString *channel;
+@property (copy) NSString *channel;
 
 // Currency of product inventory (an ISO 4217 alphabetic code).
-@property (retain) NSString *currency;
+@property (copy) NSString *currency;
 
 // Distance of product inventory.
 @property (retain) NSNumber *distance;  // floatValue
 
 // Distance unit of product inventory.
-@property (retain) NSString *distanceUnit;
+@property (copy) NSString *distanceUnit;
 
 // Price of product inventory.
 @property (retain) NSNumber *price;  // floatValue
@@ -222,7 +222,7 @@
 @property (retain) NSNumber *shipping;  // floatValue
 
 // Store ID of product inventory.
-@property (retain) NSString *storeId;
+@property (copy) NSString *storeId;
 
 // Tax of product inventory.
 @property (retain) NSNumber *tax;  // floatValue
@@ -252,13 +252,13 @@
 
 // Content of thumbnail (only available for the first thumbnail of the top
 // results if SAYT is enabled).
-@property (retain) NSString *content;
+@property (copy) NSString *content;
 
 // Height of thumbnail (omitted if not specified in the request).
 @property (retain) NSNumber *height;  // intValue
 
 // Link to thumbnail.
-@property (retain) NSString *link;
+@property (copy) NSString *link;
 
 // Width of thumbnail (omitted if not specified in the request).
 @property (retain) NSNumber *width;  // intValue

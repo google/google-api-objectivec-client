@@ -52,14 +52,14 @@
 
 // Identifies this resource as a collection of comments. Value:
 // "orkut#commentList"
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // The value of pageToken query parameter in comments.list request to get the
 // next page, if there are more to retrieve.
-@property (retain) NSString *nextPageToken;
+@property (copy) NSString *nextPageToken;
 
 // The value of pageToken query parameter in comments.list request to get the
 // previous page, if there are more to retrieve.
-@property (retain) NSString *previousPageToken;
+@property (copy) NSString *previousPageToken;
 
 @end

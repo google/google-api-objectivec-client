@@ -43,33 +43,33 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (retain) NSString *fields;
+@property (copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (retain) NSString *annotationId;
-@property (retain) NSString *contentVersion;
-@property (retain) NSString *country;
-@property (retain) NSString *download;
-@property (retain) NSString *filter;
-@property (retain) NSString *langRestrict;
-@property (retain) NSString *layerId;
-@property (retain) NSString *libraryRestrict;
+@property (copy) NSString *annotationId;
+@property (copy) NSString *contentVersion;
+@property (copy) NSString *country;
+@property (copy) NSString *download;
+@property (copy) NSString *filter;
+@property (copy) NSString *langRestrict;
+@property (copy) NSString *layerId;
+@property (copy) NSString *libraryRestrict;
 @property (assign) NSUInteger maxResults;
-@property (retain) NSString *orderBy;
+@property (copy) NSString *orderBy;
 @property (retain) NSArray *pageIds;  // of NSString
-@property (retain) NSString *pageToken;
-@property (retain) NSString *partner;
-@property (retain) NSString *printType;
-@property (retain) NSString *projection;
-@property (retain) NSString *q;
-@property (retain) NSString *shelf;
+@property (copy) NSString *pageToken;
+@property (copy) NSString *partner;
+@property (copy) NSString *printType;
+@property (copy) NSString *projection;
+@property (copy) NSString *q;
+@property (copy) NSString *shelf;
 @property (assign) BOOL showPreorders;
-@property (retain) NSString *source;
+@property (copy) NSString *source;
 @property (assign) NSUInteger startIndex;
-@property (retain) NSString *userId;
-@property (retain) NSString *volumeId;
+@property (copy) NSString *userId;
+@property (copy) NSString *volumeId;
 
 #pragma mark -
 #pragma mark "bookshelves" methods

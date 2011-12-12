@@ -65,7 +65,7 @@
 @property (retain) id heading;
 
 // Kind of this item.
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Latitude of the location, in decimal degrees.
 @property (retain) id latitude;

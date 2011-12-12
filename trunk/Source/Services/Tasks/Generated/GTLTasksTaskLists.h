@@ -47,15 +47,15 @@
 @interface GTLTasksTaskLists : GTLCollectionObject
 
 // ETag of the resource.
-@property (retain) NSString *ETag;
+@property (copy) NSString *ETag;
 
 // Collection of task lists.
 @property (retain) NSArray *items;  // of GTLTasksTaskList
 
 // Type of the resource. This is always "tasks#taskLists".
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Token that can be used to request the next page of this result.
-@property (retain) NSString *nextPageToken;
+@property (copy) NSString *nextPageToken;
 
 @end

@@ -47,37 +47,37 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (retain) NSString *fields;
+@property (copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
 @property (assign) NSInteger calendarExpansionMax;
-@property (retain) NSString *calendarId;
-@property (retain) NSString *destination;
-@property (retain) NSString *eventId;
+@property (copy) NSString *calendarId;
+@property (copy) NSString *destination;
+@property (copy) NSString *eventId;
 @property (assign) NSInteger groupExpansionMax;
-@property (retain) NSString *iCalUID;
+@property (copy) NSString *iCalUID;
 @property (retain) NSArray *items;  // of GTLCalendarFreeBusyRequestItem
 @property (assign) NSInteger maxAttendees;
 @property (assign) NSInteger maxResults;
-@property (retain) NSString *minAccessRole;
-@property (retain) NSString *orderBy;
-@property (retain) NSString *originalStart;
-@property (retain) NSString *pageToken;
-@property (retain) NSString *q;
-@property (retain) NSString *ruleId;
+@property (copy) NSString *minAccessRole;
+@property (copy) NSString *orderBy;
+@property (copy) NSString *originalStart;
+@property (copy) NSString *pageToken;
+@property (copy) NSString *q;
+@property (copy) NSString *ruleId;
 @property (assign) BOOL sendNotifications;
-@property (retain) NSString *setting;
+@property (copy) NSString *setting;
 @property (assign) BOOL showDeleted;
 @property (assign) BOOL showHidden;
 @property (assign) BOOL showHiddenInvitations;
 @property (assign) BOOL singleEvents;
-@property (retain) NSString *text;
+@property (copy) NSString *text;
 @property (retain) id timeMax;
 @property (retain) id timeMin;
-@property (retain) NSString *timeZone;
-@property (retain) NSString *updatedMin;
+@property (copy) NSString *timeZone;
+@property (copy) NSString *updatedMin;
 
 #pragma mark -
 #pragma mark "acl" methods

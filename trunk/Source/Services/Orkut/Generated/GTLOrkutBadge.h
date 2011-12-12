@@ -43,32 +43,32 @@
 @interface GTLOrkutBadge : GTLObject
 
 // The URL for the 64x64 badge logo.
-@property (retain) NSString *badgeLargeLogo;
+@property (copy) NSString *badgeLargeLogo;
 
 // The URL for the 24x24 badge logo.
-@property (retain) NSString *badgeSmallLogo;
+@property (copy) NSString *badgeSmallLogo;
 
 // The name of the badge, suitable for display.
-@property (retain) NSString *caption;
+@property (copy) NSString *caption;
 
 // The description for the badge, suitable for display.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (retain) NSString *descriptionProperty;
+@property (copy) NSString *descriptionProperty;
 
 // The unique ID for the badge.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (retain) NSNumber *identifier;  // longLongValue
 
 // Identifies this resource as a badge. Value: "orkut#badge"
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // The URL for the 32x32 badge sponsor logo.
-@property (retain) NSString *sponsorLogo;
+@property (copy) NSString *sponsorLogo;
 
 // The name of the badge sponsor, suitable for display.
-@property (retain) NSString *sponsorName;
+@property (copy) NSString *sponsorName;
 
 // The URL for the badge sponsor.
-@property (retain) NSString *sponsorUrl;
+@property (copy) NSString *sponsorUrl;
 
 @end
