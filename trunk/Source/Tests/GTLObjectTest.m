@@ -25,8 +25,8 @@
 @class GTLTestingObject;
 @interface GTLTestingObject : GTLObject
 // Basic types
-@property (retain) NSString *aStr;
-@property (retain) NSString *str2;
+@property (copy) NSString *aStr;
+@property (copy) NSString *str2;
 @property (retain) NSNumber *aNum;
 @property (retain) GTLDateTime *aDate;
 @property (retain) GTLDateTime *date2;
@@ -65,7 +65,7 @@
 @end
 
 @interface GTLTestingObjectWithPrimeKey : GTLTestingObject
-@property (retain) NSString *str2Prime;
+@property (copy) NSString *str2Prime;
 @end
 
 @implementation GTLTestingObjectWithPrimeKey
