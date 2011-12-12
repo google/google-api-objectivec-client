@@ -98,11 +98,13 @@ static NSString *const kJSONKey = @"jsonKey";
   BOOL canBeCached = YES;
   BOOL checkExpected = (expectedClass != Nil);
 
-  if ([obj isKindOfClass:[NSString class]] ||
-      [obj isKindOfClass:[NSNumber class]] ||
-      [obj isKindOfClass:[NSNull class]]) {
-    result = obj;
+  if ([obj isKindOfClass:[NSString class]]) {
+    result = [[obj copy] autorelease];
     canBeCached = NO;
+  } else if ([obj isKindOfClass:[NSNumber class]] ||
+             [obj isKindOfClass:[NSNull class]]) {
+      result = obj;
+      canBeCached = NO;
   } else if ([obj isKindOfClass:[GTLObject class]]) {
     result = [obj JSON];
   } else if ([obj isKindOfClass:[NSArray class]]) {
@@ -504,8 +506,9 @@ static void DynamicStringSetter(id<GTLRuntimeCommon> self, SEL sel, NSString *st
                                       returnClass:NULL
                                    containedClass:NULL
                                           jsonKey:&jsonKey]) {
-
-    [self setJSONValue:str forKey:jsonKey];
+    NSString *copiedStr = [str copy];
+    [self setJSONValue:copiedStr forKey:jsonKey];
+    [copiedStr release];
   }
 }
 

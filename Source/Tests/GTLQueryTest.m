@@ -21,10 +21,10 @@
 
 // Custom subclass for testing the property handling.
 @interface GTLTestingQuery : GTLQuery
-@property (retain) NSString *userId;
-@property (retain) NSString *msgId;
-@property (retain) NSString *alt;
-@property (retain) NSString *qS;
+@property (copy) NSString *userId;
+@property (copy) NSString *msgId;
+@property (copy) NSString *alt;
+@property (copy) NSString *qS;
 @property (assign) NSUInteger maxResults;
 @property (assign) NSInteger aNumber;
 @property (assign) long long aLongLong;
@@ -57,7 +57,7 @@
 @end
 
 @interface GTLTestingQueryWithPrimeKey : GTLTestingQuery
-@property (retain) NSString *altPrime;
+@property (copy) NSString *altPrime;
 @end
 
 @implementation GTLTestingQueryWithPrimeKey
