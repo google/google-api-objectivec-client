@@ -43,18 +43,18 @@
 @interface GTLAdsenseAdUnit : GTLObject
 
 // Identity code of this ad unit, not necessarily unique across ad clients.
-@property (retain) NSString *code;
+@property (copy) NSString *code;
 
 // Unique identifier of this ad unit. This should be considered an opaque
 // identifier; it is not safe to rely on it being in any particular format.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // Kind of resource this is, in this case adsense#adUnit.
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Name of this ad unit.
-@property (retain) NSString *name;
+@property (copy) NSString *name;
 
 // Status of this ad unit. Possible values are:
 // NEW: Indicates that the ad unit was created within the last seven days and
@@ -63,6 +63,6 @@
 // seven days.
 // INACTIVE: Indicates that there has been no activity on this ad unit in the
 // last seven days.
-@property (retain) NSString *status;
+@property (copy) NSString *status;
 
 @end

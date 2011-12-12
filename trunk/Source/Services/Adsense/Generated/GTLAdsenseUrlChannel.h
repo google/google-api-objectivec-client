@@ -45,13 +45,13 @@
 // Unique identifier of this URL channel. This should be considered an opaque
 // identifier; it is not safe to rely on it being in any particular format.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // Kind of resource this is, in this case adsense#urlChannel.
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // URL Pattern of this URL channel. Does not include "http://" or "https://".
 // Example: www.example.com/home
-@property (retain) NSString *urlPattern;
+@property (copy) NSString *urlPattern;
 
 @end

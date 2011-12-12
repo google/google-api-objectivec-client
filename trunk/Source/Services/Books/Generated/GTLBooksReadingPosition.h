@@ -42,25 +42,25 @@
 @interface GTLBooksReadingPosition : GTLObject
 
 // Position in an EPUB as a CFI.
-@property (retain) NSString *epubCfiPosition;
+@property (copy) NSString *epubCfiPosition;
 
 // Position in a volume for image-based content.
-@property (retain) NSString *gbImagePosition;
+@property (copy) NSString *gbImagePosition;
 
 // Position in a volume for text-based content.
-@property (retain) NSString *gbTextPosition;
+@property (copy) NSString *gbTextPosition;
 
 // Resource type for a reading position.
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Position in a PDF file.
-@property (retain) NSString *pdfPosition;
+@property (copy) NSString *pdfPosition;
 
 // Timestamp when this reading position was last updated (formatted UTC
 // timestamp with millisecond resolution).
 @property (retain) GTLDateTime *updated;
 
 // Volume id associated with this reading position.
-@property (retain) NSString *volumeId;
+@property (copy) NSString *volumeId;
 
 @end

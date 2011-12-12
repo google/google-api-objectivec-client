@@ -42,7 +42,7 @@
 @interface GTLCalendarError : GTLObject
 
 // Domain, or broad category, of the error.
-@property (retain) NSString *domain;
+@property (copy) NSString *domain;
 
 // Specific reason for the error. Some of the possible values are:
 // - "groupTooBig" - The group of users requested is too large for a single
@@ -53,6 +53,6 @@
 // - "internalError" - The API service has encountered an internal error.
 // Additional error types may be added in the future, so clients should
 // gracefully handle additional error statuses not included in this list.
-@property (retain) NSString *reason;
+@property (copy) NSString *reason;
 
 @end

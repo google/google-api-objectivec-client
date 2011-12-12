@@ -43,25 +43,25 @@
 
 // Description of the calendar. Optional.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (retain) NSString *descriptionProperty;
+@property (copy) NSString *descriptionProperty;
 
 // ETag of the resource.
-@property (retain) NSString *ETag;
+@property (copy) NSString *ETag;
 
 // Identifier of the calendar.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // Type of the resource ("calendar#calendar").
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Geographic location of the calendar as free-form text. Optional.
-@property (retain) NSString *location;
+@property (copy) NSString *location;
 
 // Title of the calendar.
-@property (retain) NSString *summary;
+@property (copy) NSString *summary;
 
 // The time zone of the calendar. Optional.
-@property (retain) NSString *timeZone;
+@property (copy) NSString *timeZone;
 
 @end

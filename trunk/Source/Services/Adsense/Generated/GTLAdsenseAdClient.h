@@ -44,14 +44,14 @@
 
 // Unique identifier of this ad client.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // Kind of resource this is, in this case adsense#adClient.
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // This ad client's product code, which corresponds to the PRODUCT_CODE report
 // dimension.
-@property (retain) NSString *productCode;
+@property (copy) NSString *productCode;
 
 // Whether this ad client supports being reported on.
 @property (retain) NSNumber *supportsReporting;  // boolValue

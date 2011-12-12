@@ -50,6 +50,6 @@
 @property (retain) NSArray *items;  // of GTLBooksBookshelf
 
 // Resource type.
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 @end

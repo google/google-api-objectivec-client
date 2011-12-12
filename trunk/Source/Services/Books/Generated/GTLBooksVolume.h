@@ -74,14 +74,14 @@
 
 // Opaque identifier for a specific version of a volume resource. (In LITE
 // projection)
-@property (retain) NSString *ETag;
+@property (copy) NSString *ETag;
 
 // Unique identifier for a volume. (In LITE projection.)
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // Resource type for a volume. (In LITE projection.)
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Any information about a volume related to the eBookstore and/or
 // purchaseability. This information can depend on the country where the request
@@ -89,7 +89,7 @@
 @property (retain) GTLBooksVolumeSaleInfo *saleInfo;
 
 // URL to this resource. (In LITE projection.)
-@property (retain) NSString *selfLink;
+@property (copy) NSString *selfLink;
 
 // User specific information related to this volume. (e.g. page this user last
 // read or whether they purchased this book)
@@ -111,11 +111,11 @@
 // Combines the access and viewability of this volume into a single status field
 // for this user. Values can be FULL_PURCHASED, FULL_PUBLIC_DOMAIN, SAMPLE or
 // NONE. (In LITE projection.)
-@property (retain) NSString *accessViewStatus;
+@property (copy) NSString *accessViewStatus;
 
 // The two-letter ISO_3166-1 country code for which this access information is
 // valid. (In LITE projection.)
-@property (retain) NSString *country;
+@property (copy) NSString *country;
 
 // Information about a volume's download license access restrictions.
 @property (retain) GTLBooksDownloadAccessRestriction *downloadAccess;
@@ -135,14 +135,14 @@
 
 // Whether text-to-speech is permitted for this volume. Values can be ALLOWED,
 // ALLOWED_FOR_ACCESSIBILITY, or NOT_ALLOWED.
-@property (retain) NSString *textToSpeechPermission;
+@property (copy) NSString *textToSpeechPermission;
 
 // The read access of a volume. Possible values are PARTIAL, ALL_PAGES, NO_PAGES
 // or UNKNOWN. This value depends on the country listed above. A value of
 // PARTIAL means that the publisher has allowed some portion of the volume to be
 // viewed publicly, without purchase. This can apply to eBooks as well as
 // non-eBooks. Public domain books will always have a value of ALL_PAGES.
-@property (retain) NSString *viewability;
+@property (copy) NSString *viewability;
 
 @end
 
@@ -155,11 +155,11 @@
 @interface GTLBooksVolumeSaleInfo : GTLObject
 
 // URL to purchase this volume on the Google Books site. (In LITE projection)
-@property (retain) NSString *buyLink;
+@property (copy) NSString *buyLink;
 
 // The two-letter ISO_3166-1 country code for which this sale information is
 // valid. (In LITE projection.)
-@property (retain) NSString *country;
+@property (copy) NSString *country;
 
 // Whether or not this volume is an eBook (can be added to the My eBooks shelf).
 @property (retain) NSNumber *isEbook;  // boolValue
@@ -178,7 +178,7 @@
 // Whether or not this book is available for sale or offered for free in the
 // Google eBookstore for the country listed above. Possible values are FOR_SALE,
 // FREE, NOT_FOR_SALE, or FOR_PREORDER.
-@property (retain) NSString *saleability;
+@property (copy) NSString *saleability;
 
 @end
 
@@ -228,20 +228,20 @@
 
 // Canonical URL for a volume. Use this URL to plus one a Google Book. (In LITE
 // projection)
-@property (retain) NSString *canonicalVolumeLink;
+@property (copy) NSString *canonicalVolumeLink;
 
 // A list of subject categories, such as "Fiction", "Suspense", etc.
 @property (retain) NSArray *categories;  // of NSString
 
 // An identifier for the version of the volume content (text & images). (In LITE
 // projection)
-@property (retain) NSString *contentVersion;
+@property (copy) NSString *contentVersion;
 
 // A synopsis of the volume. The text of the description is formatted in HTML
 // and includes simple formatting elements, such as b, i, and br tags. (In LITE
 // projection.)
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (retain) NSString *descriptionProperty;
+@property (copy) NSString *descriptionProperty;
 
 // Physical dimensions of this volume.
 @property (retain) GTLBooksVolumeVolumeInfoDimensions *dimensions;
@@ -255,39 +255,39 @@
 
 // URL to view information about this volume on the Google Books site. (In LITE
 // projection)
-@property (retain) NSString *infoLink;
+@property (copy) NSString *infoLink;
 
 // Best language for this volume (based on content). It is the two-letter ISO
 // 639-1 code such as 'fr', 'en', etc.
-@property (retain) NSString *language;
+@property (copy) NSString *language;
 
 // The main category to which this volume belongs. It will be the category from
 // the categories list returned below that has the highest weight.
-@property (retain) NSString *mainCategory;
+@property (copy) NSString *mainCategory;
 
 // Total number of pages.
 @property (retain) NSNumber *pageCount;  // intValue
 
 // URL to preview this volume on the Google Books site.
-@property (retain) NSString *previewLink;
+@property (copy) NSString *previewLink;
 
 // Type of publication of this volume. Possible values are BOOK or MAGAZINE.
-@property (retain) NSString *printType;
+@property (copy) NSString *printType;
 
 // Date of publication. (In LITE projection.)
-@property (retain) NSString *publishedDate;
+@property (copy) NSString *publishedDate;
 
 // Publisher of this volume. (In LITE projection.)
-@property (retain) NSString *publisher;
+@property (copy) NSString *publisher;
 
 // The number of review ratings for this volume.
 @property (retain) NSNumber *ratingsCount;  // intValue
 
 // Volume subtitle. (In LITE projection.)
-@property (retain) NSString *subtitle;
+@property (copy) NSString *subtitle;
 
 // Volume title. (In LITE projection.)
-@property (retain) NSString *title;
+@property (copy) NSString *title;
 
 @end
 
@@ -300,10 +300,10 @@
 @interface GTLBooksVolumeAccessInfoEpub : GTLObject
 
 // URL to retrieve ACS token for epub download. (In LITE projection.)
-@property (retain) NSString *acsTokenLink;
+@property (copy) NSString *acsTokenLink;
 
 // URL to download epub. (In LITE projection.)
-@property (retain) NSString *downloadLink;
+@property (copy) NSString *downloadLink;
 
 @end
 
@@ -316,10 +316,10 @@
 @interface GTLBooksVolumeAccessInfoPdf : GTLObject
 
 // URL to retrieve ACS token for pdf download. (In LITE projection.)
-@property (retain) NSString *acsTokenLink;
+@property (copy) NSString *acsTokenLink;
 
 // URL to download pdf. (In LITE projection.)
-@property (retain) NSString *downloadLink;
+@property (copy) NSString *downloadLink;
 
 @end
 
@@ -335,7 +335,7 @@
 @property (retain) NSNumber *amount;  // doubleValue
 
 // An ISO 4217, three-letter currency code. (In LITE projection.)
-@property (retain) NSString *currencyCode;
+@property (copy) NSString *currencyCode;
 
 @end
 
@@ -351,7 +351,7 @@
 @property (retain) NSNumber *amount;  // doubleValue
 
 // An ISO 4217, three-letter currency code. (In LITE projection.)
-@property (retain) NSString *currencyCode;
+@property (copy) NSString *currencyCode;
 
 @end
 
@@ -364,13 +364,13 @@
 @interface GTLBooksVolumeVolumeInfoDimensions : GTLObject
 
 // Height or length of this volume (in cm).
-@property (retain) NSString *height;
+@property (copy) NSString *height;
 
 // Thickness of this volume (in cm).
-@property (retain) NSString *thickness;
+@property (copy) NSString *thickness;
 
 // Width of this volume (in cm).
-@property (retain) NSString *width;
+@property (copy) NSString *width;
 
 @end
 
@@ -383,23 +383,23 @@
 @interface GTLBooksVolumeVolumeInfoImageLinks : GTLObject
 
 // Image link for extra large size (width of ~1280 pixels). (In LITE projection)
-@property (retain) NSString *extraLarge;
+@property (copy) NSString *extraLarge;
 
 // Image link for large size (width of ~800 pixels). (In LITE projection)
-@property (retain) NSString *large;
+@property (copy) NSString *large;
 
 // Image link for medium size (width of ~575 pixels). (In LITE projection)
-@property (retain) NSString *medium;
+@property (copy) NSString *medium;
 
 // Image link for small size (width of ~300 pixels). (In LITE projection)
-@property (retain) NSString *small;
+@property (copy) NSString *small;
 
 // Image link for small thumbnail size (width of ~80 pixels). (In LITE
 // projection)
-@property (retain) NSString *smallThumbnail;
+@property (copy) NSString *smallThumbnail;
 
 // Image link for thumbnail size (width of ~128 pixels). (In LITE projection)
-@property (retain) NSString *thumbnail;
+@property (copy) NSString *thumbnail;
 
 @end
 
@@ -414,9 +414,9 @@
 // Industry specific volume identifier.
 // identifierProperty property maps to 'identifier' in JSON ('identifier' is
 // reserved for remapping 'id').
-@property (retain) NSString *identifierProperty;
+@property (copy) NSString *identifierProperty;
 
 // Identifier type. Possible values are ISBN_10, ISBN_13, ISSN and OTHER.
-@property (retain) NSString *type;
+@property (copy) NSString *type;
 
 @end

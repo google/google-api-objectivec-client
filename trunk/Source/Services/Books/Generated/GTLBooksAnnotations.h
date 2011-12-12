@@ -50,11 +50,11 @@
 @property (retain) NSArray *items;  // of GTLBooksAnnotation
 
 // Resource type.
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Token to pass in for pagination for the next page. This will not be present
 // if this request does not have more results.
-@property (retain) NSString *nextPageToken;
+@property (copy) NSString *nextPageToken;
 
 // Total number of annotations found. This may be greater than the number of
 // notes returned in this response if results have been paginated.

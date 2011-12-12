@@ -52,34 +52,34 @@
 @property (retain) NSNumber *justAcquired;  // boolValue
 
 // Resource type.
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // If restricted, the maximum number of content download licenses for this
 // volume.
 @property (retain) NSNumber *maxDownloadDevices;  // intValue
 
 // Error/warning message.
-@property (retain) NSString *message;
+@property (copy) NSString *message;
 
 // Client nonce for verification. Download access and client-validation only.
-@property (retain) NSString *nonce;
+@property (copy) NSString *nonce;
 
 // Error/warning reason code. Additional codes may be added in the future. 0 OK
 // 100 ACCESS_DENIED_PUBLISHER_LIMIT 101 ACCESS_DENIED_LIMIT 200
 // WARNING_USED_LAST_ACCESS
-@property (retain) NSString *reasonCode;
+@property (copy) NSString *reasonCode;
 
 // Whether this volume has any download access restrictions.
 @property (retain) NSNumber *restricted;  // boolValue
 
 // Response signature.
-@property (retain) NSString *signature;
+@property (copy) NSString *signature;
 
 // Client app identifier for verification. Download access and client-validation
 // only.
-@property (retain) NSString *source;
+@property (copy) NSString *source;
 
 // Identifies the volume for which this entry applies.
-@property (retain) NSString *volumeId;
+@property (copy) NSString *volumeId;
 
 @end

@@ -55,30 +55,30 @@
 @property (retain) GTLBloggerPageBlog *blog;
 
 // The body content of this Page, in HTML.
-@property (retain) NSString *content;
+@property (copy) NSString *content;
 
 // The identifier for this resource.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (retain) NSNumber *identifier;  // longLongValue
 
 // The kind of this entity. Always blogger#page
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // RFC 3339 date-time when this Page was published.
 @property (retain) GTLDateTime *published;
 
 // The API REST URL to fetch this resource from.
-@property (retain) NSString *selfLink;
+@property (copy) NSString *selfLink;
 
 // The title of this entity. This is the name displayed in the Admin user
 // interface.
-@property (retain) NSString *title;
+@property (copy) NSString *title;
 
 // RFC 3339 date-time when this Page was last updated.
 @property (retain) GTLDateTime *updated;
 
 // The URL that this Page is displayed at.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end
 
@@ -91,7 +91,7 @@
 @interface GTLBloggerPageAuthor : GTLObject
 
 // The display name.
-@property (retain) NSString *displayName;
+@property (copy) NSString *displayName;
 
 // The identifier of the Page creator.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
@@ -101,7 +101,7 @@
 @property (retain) GTLBloggerPageAuthorImage *image;
 
 // The URL of the Page creator's Profile page.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end
 
@@ -128,6 +128,6 @@
 @interface GTLBloggerPageAuthorImage : GTLObject
 
 // The page author's avatar URL.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end

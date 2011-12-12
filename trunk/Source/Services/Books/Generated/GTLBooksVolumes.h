@@ -50,7 +50,7 @@
 @property (retain) NSArray *items;  // of GTLBooksVolume
 
 // Resource type.
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Total number of volumes found. This might be greater than the number of
 // volumes returned in this response if results have been paginated.

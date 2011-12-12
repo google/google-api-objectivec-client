@@ -42,15 +42,15 @@
 @interface GTLBooksAnnotationsRange : GTLObject
 
 // The offset from the ending position.
-@property (retain) NSString *endOffset;
+@property (copy) NSString *endOffset;
 
 // The ending position for the range.
-@property (retain) NSString *endPosition;
+@property (copy) NSString *endPosition;
 
 // The offset from the starting position.
-@property (retain) NSString *startOffset;
+@property (copy) NSString *startOffset;
 
 // The starting position for the range.
-@property (retain) NSString *startPosition;
+@property (copy) NSString *startPosition;
 
 @end

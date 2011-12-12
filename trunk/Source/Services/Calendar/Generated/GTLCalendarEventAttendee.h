@@ -45,14 +45,14 @@
 @property (retain) NSNumber *additionalGuests;  // intValue
 
 // The attendee's response comment. Optional.
-@property (retain) NSString *comment;
+@property (copy) NSString *comment;
 
 // The attendee's name, if available. Optional.
-@property (retain) NSString *displayName;
+@property (copy) NSString *displayName;
 
 // The attendee's email address, if available. This field must be present when
 // adding an attendee.
-@property (retain) NSString *email;
+@property (copy) NSString *email;
 
 // Whether this is an optional attendee. Optional. The default is False.
 @property (retain) NSNumber *optional;  // boolValue
@@ -69,7 +69,7 @@
 // - "declined" - The attendee has declined the invitation.
 // - "tentative" - The attendee has tentatively accepted the invitation.
 // - "accepted" - The attendee has accepted the invitation.
-@property (retain) NSString *responseStatus;
+@property (copy) NSString *responseStatus;
 
 // Whether this entry represents the calendar on which this copy of the event
 // appears. Read-only. The default is False.

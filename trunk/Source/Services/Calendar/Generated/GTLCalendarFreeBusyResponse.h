@@ -55,7 +55,7 @@
 @property (retain) GTLCalendarFreeBusyResponseGroups *groups;
 
 // Type of the resource ("calendar#freeBusy").
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // The end of the interval.
 @property (retain) GTLDateTime *timeMax;

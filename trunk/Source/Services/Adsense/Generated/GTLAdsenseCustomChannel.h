@@ -43,17 +43,17 @@
 @interface GTLAdsenseCustomChannel : GTLObject
 
 // Code of this custom channel, not necessarily unique across ad clients.
-@property (retain) NSString *code;
+@property (copy) NSString *code;
 
 // Unique identifier of this custom channel. This should be considered an opaque
 // identifier; it is not safe to rely on it being in any particular format.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // Kind of resource this is, in this case adsense#customChannel.
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Name of this custom channel.
-@property (retain) NSString *name;
+@property (copy) NSString *name;
 
 @end

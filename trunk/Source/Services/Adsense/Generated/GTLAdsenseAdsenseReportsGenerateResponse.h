@@ -55,7 +55,7 @@
 @property (retain) NSArray *headers;  // of GTLAdsenseAdsenseReportsGenerateResponseHeadersItem
 
 // Kind this is, in this case adsense#report.
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // The output rows of the report. Each row is a list of cells; one for each
 // dimension in the request, followed by one for each metric in the request. The
@@ -86,13 +86,13 @@
 
 // The currency of this column. Only present if the header type is
 // METRIC_CURRENCY.
-@property (retain) NSString *currency;
+@property (copy) NSString *currency;
 
 // The name of the header.
-@property (retain) NSString *name;
+@property (copy) NSString *name;
 
 // The type of the header; one of DIMENSION, METRIC_TALLY, METRIC_RATIO, or
 // METRIC_CURRENCY.
-@property (retain) NSString *type;
+@property (copy) NSString *type;
 
 @end

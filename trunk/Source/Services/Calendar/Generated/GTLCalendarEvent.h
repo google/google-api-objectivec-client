@@ -76,7 +76,7 @@
 
 // The color of the event. This is an ID referring to an entry in the "event"
 // section of the colors definition (see the "colors" endpoint). Optional.
-@property (retain) NSString *colorId;
+@property (copy) NSString *colorId;
 
 // Creation time of the event (as a RFC 3339 timestamp). Read-only.
 @property (retain) GTLDateTime *created;
@@ -86,14 +86,14 @@
 
 // Description of the event. Optional.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (retain) NSString *descriptionProperty;
+@property (copy) NSString *descriptionProperty;
 
 // The end time of the event. For a recurring event, this is the end time of the
 // first instance.
 @property (retain) GTLCalendarEventDateTime *end;
 
 // ETag of the resource.
-@property (retain) NSString *ETag;
+@property (copy) NSString *ETag;
 
 // Extended properties of the event.
 @property (retain) GTLCalendarEventExtendedProperties *extendedProperties;
@@ -114,20 +114,20 @@
 @property (retain) NSNumber *guestsCanSeeOtherGuests;  // boolValue
 
 // An absolute link to this event in the Google Calendar Web UI. Read-only.
-@property (retain) NSString *htmlLink;
+@property (copy) NSString *htmlLink;
 
 // Event ID in the iCalendar format.
-@property (retain) NSString *iCalUID;
+@property (copy) NSString *iCalUID;
 
 // Identifier of the event.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // Type of the resource ("calendar#event").
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Geographic location of the event as free-form text. Optional.
-@property (retain) NSString *location;
+@property (copy) NSString *location;
 
 // The organizer of the event. If the organizer is also an attendee, this is
 // indicated with a separate entry in 'attendees' with the 'organizer' field set
@@ -149,7 +149,7 @@
 
 // For an instance of a recurring event, this is the event ID of the recurring
 // event itself. Immutable.
-@property (retain) NSString *recurringEventId;
+@property (copy) NSString *recurringEventId;
 
 // Information about the event's reminders for the authenticated user.
 @property (retain) GTLCalendarEventReminders *reminders;
@@ -165,16 +165,16 @@
 // - "confirmed" - The event is confirmed. This is the default status.
 // - "tentative" - The event is tentatively confirmed.
 // - "cancelled" - The event is cancelled.
-@property (retain) NSString *status;
+@property (copy) NSString *status;
 
 // Title of the event.
-@property (retain) NSString *summary;
+@property (copy) NSString *summary;
 
 // Whether the event blocks time on the calendar. Optional. Possible values are:
 // - "opaque" - The event blocks time on the calendar. This is the default
 // value.
 // - "transparent" - The event does not block time on the calendar.
-@property (retain) NSString *transparency;
+@property (copy) NSString *transparency;
 
 // Last modification time of the event (as a RFC 3339 timestamp). Read-only.
 @property (retain) GTLDateTime *updated;
@@ -188,7 +188,7 @@
 // details.
 // - "confidential" - The event is private. This value is provided for
 // compatibility reasons.
-@property (retain) NSString *visibility;
+@property (copy) NSString *visibility;
 
 @end
 
@@ -201,10 +201,10 @@
 @interface GTLCalendarEventCreator : GTLObject
 
 // The creator's name, if available.
-@property (retain) NSString *displayName;
+@property (copy) NSString *displayName;
 
 // The creator's email address, if available.
-@property (retain) NSString *email;
+@property (copy) NSString *email;
 
 @end
 
@@ -238,25 +238,25 @@
 // - "icon" - The gadget displays next to the event's title in the calendar
 // view.
 // - "chip" - The gadget displays when the event is clicked.
-@property (retain) NSString *display;
+@property (copy) NSString *display;
 
 // The gadget's height in pixels. Optional.
 @property (retain) NSNumber *height;  // intValue
 
 // The gadget's icon URL.
-@property (retain) NSString *iconLink;
+@property (copy) NSString *iconLink;
 
 // The gadget's URL.
-@property (retain) NSString *link;
+@property (copy) NSString *link;
 
 // Preferences.
 @property (retain) GTLCalendarEventGadgetPreferences *preferences;
 
 // The gadget's title.
-@property (retain) NSString *title;
+@property (copy) NSString *title;
 
 // The gadget's type.
-@property (retain) NSString *type;
+@property (copy) NSString *type;
 
 // The gadget's width in pixels. Optional.
 @property (retain) NSNumber *width;  // intValue
@@ -272,10 +272,10 @@
 @interface GTLCalendarEventOrganizer : GTLObject
 
 // The organizer's name, if available.
-@property (retain) NSString *displayName;
+@property (copy) NSString *displayName;
 
 // The organizer's email address, if available.
-@property (retain) NSString *email;
+@property (copy) NSString *email;
 
 @end
 

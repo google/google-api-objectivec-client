@@ -53,22 +53,22 @@
 // - "owner" - Provides ownership of the calendar. This role has all of the
 // permissions of the writer role with the additional ability to see and
 // manipulate ACLs.
-@property (retain) NSString *accessRole;
+@property (copy) NSString *accessRole;
 
 // The color of the calendar. This is an ID referring to an entry in the
 // "calendar" section of the colors definition (see the "colors" endpoint).
 // Optional.
-@property (retain) NSString *colorId;
+@property (copy) NSString *colorId;
 
 // The default reminders that the authenticated user has for this calendar.
 @property (retain) NSArray *defaultReminders;  // of GTLCalendarEventReminder
 
 // Description of the calendar. Optional. Read-only.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (retain) NSString *descriptionProperty;
+@property (copy) NSString *descriptionProperty;
 
 // ETag of the resource.
-@property (retain) NSString *ETag;
+@property (copy) NSString *ETag;
 
 // Whether the calendar has been hidden from the list. Optional. The default is
 // False.
@@ -76,25 +76,25 @@
 
 // Identifier of the calendar.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // Type of the resource ("calendar#calendarListEntry").
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Geographic location of the calendar as free-form text. Optional. Read-only.
-@property (retain) NSString *location;
+@property (copy) NSString *location;
 
 // Whether the calendar content shows up in the calendar UI. Optional. The
 // default is True.
 @property (retain) NSNumber *selected;  // boolValue
 
 // Title of the calendar. Read-only.
-@property (retain) NSString *summary;
+@property (copy) NSString *summary;
 
 // The summary that the authenticated user has set for this calendar. Optional.
-@property (retain) NSString *summaryOverride;
+@property (copy) NSString *summaryOverride;
 
 // The time zone of the calendar. Optional. Read-only.
-@property (retain) NSString *timeZone;
+@property (copy) NSString *timeZone;
 
 @end

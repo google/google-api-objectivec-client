@@ -47,12 +47,12 @@
 @interface GTLCalendarSettings : GTLCollectionObject
 
 // Etag of the collection.
-@property (retain) NSString *ETag;
+@property (copy) NSString *ETag;
 
 // List of user settings.
 @property (retain) NSArray *items;  // of GTLCalendarSetting
 
 // Type of the collection ("calendar#settings").
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 @end

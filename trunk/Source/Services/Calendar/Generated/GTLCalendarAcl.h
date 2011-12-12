@@ -47,16 +47,16 @@
 @interface GTLCalendarAcl : GTLCollectionObject
 
 // ETag of the collection.
-@property (retain) NSString *ETag;
+@property (copy) NSString *ETag;
 
 // List of rules on the access control list.
 @property (retain) NSArray *items;  // of GTLCalendarAclRule
 
 // Type of the collection ("calendar#acl").
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Token used to access the next page of this result. Omitted if no further
 // results are available.
-@property (retain) NSString *nextPageToken;
+@property (copy) NSString *nextPageToken;
 
 @end

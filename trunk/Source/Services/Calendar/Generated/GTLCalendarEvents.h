@@ -58,7 +58,7 @@
 // - "owner" - The user has ownership of the calendar. This role has all of the
 // permissions of the writer role with the additional ability to see and
 // manipulate ACLs.
-@property (retain) NSString *accessRole;
+@property (copy) NSString *accessRole;
 
 // The default reminders on the calendar for the authenticated user. These
 // reminders apply to all events on this calendar that do not explicitly
@@ -67,26 +67,26 @@
 
 // Description of the calendar. Read-only.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (retain) NSString *descriptionProperty;
+@property (copy) NSString *descriptionProperty;
 
 // ETag of the collection.
-@property (retain) NSString *ETag;
+@property (copy) NSString *ETag;
 
 // List of events on the calendar.
 @property (retain) NSArray *items;  // of GTLCalendarEvent
 
 // Type of the collection ("calendar#events").
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Token used to access the next page of this result. Omitted if no further
 // results are available.
-@property (retain) NSString *nextPageToken;
+@property (copy) NSString *nextPageToken;
 
 // Title of the calendar. Read-only.
-@property (retain) NSString *summary;
+@property (copy) NSString *summary;
 
 // The time zone of the calendar. Read-only.
-@property (retain) NSString *timeZone;
+@property (copy) NSString *timeZone;
 
 // Last modification time of the calendar (as a RFC 3339 timestamp). Read-only.
 @property (retain) GTLDateTime *updated;

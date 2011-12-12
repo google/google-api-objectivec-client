@@ -50,20 +50,20 @@
 
 // The description of this blog. This is displayed underneath the title.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (retain) NSString *descriptionProperty;
+@property (copy) NSString *descriptionProperty;
 
 // The identifier for this resource.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (retain) NSNumber *identifier;  // longLongValue
 
 // The kind of this entry. Always blogger#blog
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // The locale this Blog is set to.
 @property (retain) GTLBloggerBlogLocale *locale;
 
 // The name of this blog. This is displayed as the title.
-@property (retain) NSString *name;
+@property (copy) NSString *name;
 
 // The container of pages in this blog.
 @property (retain) GTLBloggerBlogPages *pages;
@@ -75,13 +75,13 @@
 @property (retain) GTLDateTime *published;
 
 // The API REST URL to fetch this resource from.
-@property (retain) NSString *selfLink;
+@property (copy) NSString *selfLink;
 
 // RFC 3339 date-time when this blog was last updated.
 @property (retain) GTLDateTime *updated;
 
 // The URL where this blog is published.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end
 
@@ -94,13 +94,13 @@
 @interface GTLBloggerBlogLocale : GTLObject
 
 // The country this blog's locale is set to.
-@property (retain) NSString *country;
+@property (copy) NSString *country;
 
 // The language this blog is authored in.
-@property (retain) NSString *language;
+@property (copy) NSString *language;
 
 // The language variant this blog is authored in.
-@property (retain) NSString *variant;
+@property (copy) NSString *variant;
 
 @end
 
@@ -113,7 +113,7 @@
 @interface GTLBloggerBlogPages : GTLObject
 
 // The URL of the container for pages in this blog.
-@property (retain) NSString *selfLink;
+@property (copy) NSString *selfLink;
 
 // The count of pages in this blog.
 @property (retain) NSNumber *totalItems;  // intValue
@@ -129,7 +129,7 @@
 @interface GTLBloggerBlogPosts : GTLObject
 
 // The URL of the container for posts in this blog.
-@property (retain) NSString *selfLink;
+@property (copy) NSString *selfLink;
 
 // The count of posts in this blog.
 @property (retain) NSNumber *totalItems;  // intValue

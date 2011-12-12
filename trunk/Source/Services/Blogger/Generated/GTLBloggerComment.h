@@ -57,14 +57,14 @@
 @property (retain) GTLBloggerCommentBlog *blog;
 
 // The actual content of the comment. May include HTML markup.
-@property (retain) NSString *content;
+@property (copy) NSString *content;
 
 // The identifier for this resource.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (retain) NSNumber *identifier;  // longLongValue
 
 // The kind of this entry. Always blogger#comment
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Data about the post containing this comment.
 @property (retain) GTLBloggerCommentPost *post;
@@ -73,7 +73,7 @@
 @property (retain) GTLDateTime *published;
 
 // The API REST URL to fetch this resource from.
-@property (retain) NSString *selfLink;
+@property (copy) NSString *selfLink;
 
 // RFC 3339 date-time when this comment was last updated.
 @property (retain) GTLDateTime *updated;
@@ -89,7 +89,7 @@
 @interface GTLBloggerCommentAuthor : GTLObject
 
 // The display name.
-@property (retain) NSString *displayName;
+@property (copy) NSString *displayName;
 
 // The identifier of the Comment creator.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
@@ -99,7 +99,7 @@
 @property (retain) GTLBloggerCommentAuthorImage *image;
 
 // The URL of the Comment creator's Profile page.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end
 
@@ -140,6 +140,6 @@
 @interface GTLBloggerCommentAuthorImage : GTLObject
 
 // The comment creator's avatar URL.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end

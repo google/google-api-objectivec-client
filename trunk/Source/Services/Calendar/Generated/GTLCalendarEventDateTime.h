@@ -51,6 +51,6 @@
 
 // The name of the time zone in which the time is specified (e.g.
 // "Europe/Zurich"). Optional. The default is the time zone of the calendar.
-@property (retain) NSString *timeZone;
+@property (copy) NSString *timeZone;
 
 @end

@@ -45,14 +45,14 @@
 @interface GTLCalendarAclRule : GTLObject
 
 // ETag of the resource.
-@property (retain) NSString *ETag;
+@property (copy) NSString *ETag;
 
 // Identifier of the ACL rule.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // Type of the resource ("calendar#aclRule").
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // The role assigned to the scope. Possible values are:
 // - "none" - Provides no access.
@@ -64,7 +64,7 @@
 // - "owner" - Provides ownership of the calendar. This role has all of the
 // permissions of the writer role with the additional ability to see and
 // manipulate ACLs.
-@property (retain) NSString *role;
+@property (copy) NSString *role;
 
 // The scope of the rule.
 @property (retain) GTLCalendarAclRuleScope *scope;
@@ -85,10 +85,10 @@
 // - "group" - Limits the scope to a group.
 // - "domain" - Limits the scope to a domain. Note: The permissions granted to
 // the "default", or public, scope apply to any user, authenticated or not.
-@property (retain) NSString *type;
+@property (copy) NSString *type;
 
 // The email address of a user or group, or the name of a domain, depending on
 // the scope type. Omitted for type "default".
-@property (retain) NSString *value;
+@property (copy) NSString *value;
 
 @end

@@ -42,17 +42,17 @@
 @interface GTLCalendarSetting : GTLObject
 
 // ETag of the resource.
-@property (retain) NSString *ETag;
+@property (copy) NSString *ETag;
 
 // Name of the user setting.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // Type of the resource ("calendar#setting").
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Value of the user setting. The format of the value depends on the ID of the
 // setting.
-@property (retain) NSString *value;
+@property (copy) NSString *value;
 
 @end

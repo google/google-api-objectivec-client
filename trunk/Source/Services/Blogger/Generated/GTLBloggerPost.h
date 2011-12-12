@@ -57,14 +57,14 @@
 @property (retain) GTLBloggerPostBlog *blog;
 
 // The content of the Post. May contain HTML markup.
-@property (retain) NSString *content;
+@property (copy) NSString *content;
 
 // The identifier of this Post.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (retain) NSNumber *identifier;  // longLongValue
 
 // The kind of this entity. Always blogger#post
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // The list of labels this Post was tagged with.
 @property (retain) NSArray *labels;  // of NSString
@@ -76,16 +76,16 @@
 @property (retain) GTLBloggerPostReplies *replies;
 
 // The API REST URL to fetch this resource from.
-@property (retain) NSString *selfLink;
+@property (copy) NSString *selfLink;
 
 // The title of the Post.
-@property (retain) NSString *title;
+@property (copy) NSString *title;
 
 // RFC 3339 date-time when this Post was last updated.
 @property (retain) GTLDateTime *updated;
 
 // The URL where this Post is displayed.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end
 
@@ -98,7 +98,7 @@
 @interface GTLBloggerPostAuthor : GTLObject
 
 // The display name.
-@property (retain) NSString *displayName;
+@property (copy) NSString *displayName;
 
 // The identifier of the Post creator.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
@@ -108,7 +108,7 @@
 @property (retain) GTLBloggerPostAuthorImage *image;
 
 // The URL of the Post creator's Profile page.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end
 
@@ -135,7 +135,7 @@
 @interface GTLBloggerPostReplies : GTLObject
 
 // The URL of the comments on this post.
-@property (retain) NSString *selfLink;
+@property (copy) NSString *selfLink;
 
 // The count of comments on this post.
 @property (retain) NSNumber *totalItems;  // longLongValue
@@ -151,6 +151,6 @@
 @interface GTLBloggerPostAuthorImage : GTLObject
 
 // The Post author's avatar URL.
-@property (retain) NSString *url;
+@property (copy) NSString *url;
 
 @end
