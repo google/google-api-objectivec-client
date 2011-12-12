@@ -45,23 +45,23 @@
 @property (retain) GTLDateTime *created;
 
 // Advanced segment definition.
-@property (retain) NSString *definition;
+@property (copy) NSString *definition;
 
 // Advanced segment ID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // Resource type for Analytics advanced segment.
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Advanced segment name.
-@property (retain) NSString *name;
+@property (copy) NSString *name;
 
 // Segment ID. Can be used with the 'segment' parameter in Data Feed.
-@property (retain) NSString *segmentId;
+@property (copy) NSString *segmentId;
 
 // Link for this advanced segment.
-@property (retain) NSString *selfLink;
+@property (copy) NSString *selfLink;
 
 // Time the advanced segment was last modified.
 @property (retain) GTLDateTime *updated;

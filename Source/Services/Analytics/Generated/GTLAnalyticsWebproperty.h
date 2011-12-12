@@ -47,7 +47,7 @@
 @interface GTLAnalyticsWebproperty : GTLObject
 
 // Account ID to which this web property belongs.
-@property (retain) NSString *accountId;
+@property (copy) NSString *accountId;
 
 // Child link for this web property. Points to the list of profiles for this web
 // property.
@@ -58,29 +58,29 @@
 
 // Web property ID of the form UA-XXXXX-YY.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // Internal ID for this web property.
-@property (retain) NSString *internalWebPropertyId;
+@property (copy) NSString *internalWebPropertyId;
 
 // Resource type for Analytics WebProperty.
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Name of this web property.
-@property (retain) NSString *name;
+@property (copy) NSString *name;
 
 // Parent link for this web property. Points to the account to which this web
 // property belongs.
 @property (retain) GTLAnalyticsWebpropertyParentLink *parentLink;
 
 // Link for this web property.
-@property (retain) NSString *selfLink;
+@property (copy) NSString *selfLink;
 
 // Time this web property was last modified.
 @property (retain) GTLDateTime *updated;
 
 // Website url for this web property.
-@property (retain) NSString *websiteUrl;
+@property (copy) NSString *websiteUrl;
 
 @end
 
@@ -93,10 +93,10 @@
 @interface GTLAnalyticsWebpropertyChildLink : GTLObject
 
 // Link to the list of profiles for this web property.
-@property (retain) NSString *href;
+@property (copy) NSString *href;
 
 // Type of the parent link. Its value is "analytics#profiles".
-@property (retain) NSString *type;
+@property (copy) NSString *type;
 
 @end
 
@@ -109,9 +109,9 @@
 @interface GTLAnalyticsWebpropertyParentLink : GTLObject
 
 // Link to the account for this web property.
-@property (retain) NSString *href;
+@property (copy) NSString *href;
 
 // Type of the parent link. Its value is "analytics#account".
-@property (retain) NSString *type;
+@property (copy) NSString *type;
 
 @end

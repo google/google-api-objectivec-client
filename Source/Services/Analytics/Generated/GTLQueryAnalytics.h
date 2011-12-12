@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/analytics
 // Classes:
-//   GTLQueryAnalytics (7 custom class methods, 14 custom properties)
+//   GTLQueryAnalytics (6 custom class methods, 14 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -41,24 +41,24 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (retain) NSString *fields;
+@property (copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (retain) NSString *accountId;
-@property (retain) NSString *dimensions;
-@property (retain) NSString *endDate;
-@property (retain) NSString *filters;
-@property (retain) NSString *ids;
+@property (copy) NSString *accountId;
+@property (copy) NSString *dimensions;
+@property (copy) NSString *endDate;
+@property (copy) NSString *filters;
+@property (copy) NSString *ids;
 @property (assign) NSInteger maxResults;
-@property (retain) NSString *metrics;
-@property (retain) NSString *profileId;
-@property (retain) NSString *segment;
-@property (retain) NSString *sort;
-@property (retain) NSString *startDate;
+@property (copy) NSString *metrics;
+@property (copy) NSString *profileId;
+@property (copy) NSString *segment;
+@property (copy) NSString *sort;
+@property (copy) NSString *startDate;
 @property (assign) NSInteger startIndex;
-@property (retain) NSString *webPropertyId;
+@property (copy) NSString *webPropertyId;
 
 #pragma mark -
 #pragma mark "data.ga" methods
@@ -67,14 +67,14 @@
 // Method: analytics.data.ga.get
 // Returns Analytics data for a profile.
 //  Required:
-//   endDate: End date for fetching Analytics data. All requests should specify
-//     an end date formatted as YYYY-MM-DD.
-//   startDate: Start date for fetching Analytics data. All requests should
-//     specify a start date formatted as YYYY-MM-DD.
-//   metrics: A comma-separated list of Analytics metrics. E.g.,
-//     'ga:visits,ga:pageviews'. At least one metric must be specified.
 //   ids: Unique table ID for retrieving Analytics data. Table ID is of the form
 //     ga:XXXX, where XXXX is the Analytics profile ID.
+//   startDate: Start date for fetching Analytics data. All requests should
+//     specify a start date formatted as YYYY-MM-DD.
+//   endDate: End date for fetching Analytics data. All requests should specify
+//     an end date formatted as YYYY-MM-DD.
+//   metrics: A comma-separated list of Analytics metrics. E.g.,
+//     'ga:visits,ga:pageviews'. At least one metric must be specified.
 //  Optional:
 //   dimensions: A comma-separated list of Analytics dimensions. E.g.,
 //     'ga:browser,ga:city'.
@@ -89,44 +89,10 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsGaData.
-+ (id)queryForDataGaGetWithEndDate:(NSString *)endDate
-                         startDate:(NSString *)startDate
-                           metrics:(NSString *)metrics
-                               ids:(NSString *)ids;
-
-#pragma mark -
-#pragma mark "data.mcf" methods
-// These create a GTLQueryAnalytics object.
-
-// Method: analytics.data.mcf.get
-// Returns Analytics Multi-Channel Funnels data for a profile.
-//  Required:
-//   endDate: End date for fetching Analytics data. All requests should specify
-//     an end date formatted as YYYY-MM-DD.
-//   startDate: Start date for fetching Analytics data. All requests should
-//     specify a start date formatted as YYYY-MM-DD.
-//   metrics: A comma-separated list of Multi-Channel Funnels metrics. E.g.,
-//     'mcf:totalConversions,mcf:totalConversionValue'. At least one metric must
-//     be specified.
-//   ids: Unique table ID for retrieving Analytics data. Table ID is of the form
-//     ga:XXXX, where XXXX is the Analytics profile ID.
-//  Optional:
-//   dimensions: A comma-separated list of Multi-Channel Funnels dimensions.
-//     E.g., 'mcf:source,mcf:medium'.
-//   filters: A comma-separated list of dimension or metric filters to be
-//     applied to the Analytics data.
-//   maxResults: The maximum number of entries to include in this feed.
-//   sort: A comma-separated list of dimensions or metrics that determine the
-//     sort order for the Analytics data.
-//   startIndex: An index of the first entity to retrieve. Use this parameter as
-//     a pagination mechanism along with the max-results parameter.
-//  Authorization scope(s):
-//   kGTLAuthScopeAnalyticsReadonly
-// Fetches a GTLAnalyticsMcfData.
-+ (id)queryForDataMcfGetWithEndDate:(NSString *)endDate
-                          startDate:(NSString *)startDate
-                            metrics:(NSString *)metrics
-                                ids:(NSString *)ids;
++ (id)queryForDataGaGetWithIds:(NSString *)ids
+                     startDate:(NSString *)startDate
+                       endDate:(NSString *)endDate
+                       metrics:(NSString *)metrics;
 
 #pragma mark -
 #pragma mark "management.accounts" methods

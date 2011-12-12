@@ -59,7 +59,7 @@
 
 // Unique ID for this data response.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // The maximum number of rows the response can contain, regardless of the actual
 // number of rows returned. Its value ranges from 1 to 10,000 with a value of
@@ -67,13 +67,13 @@
 @property (retain) NSNumber *itemsPerPage;  // intValue
 
 // Resource type.
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Link to next page for this Analytics data query.
-@property (retain) NSString *nextLink;
+@property (copy) NSString *nextLink;
 
 // Link to previous page for this Analytics data query.
-@property (retain) NSString *previousLink;
+@property (copy) NSString *previousLink;
 
 // Information for the profile, for which the Analytics data was requested.
 @property (retain) GTLAnalyticsGaDataProfileInfo *profileInfo;
@@ -87,7 +87,7 @@
 @property (retain) NSArray *rows;  // of NSArray of NSString
 
 // Link to this page.
-@property (retain) NSString *selfLink;
+@property (copy) NSString *selfLink;
 
 // The total number of rows for the query, regardless of the number of rows in
 // the response.
@@ -109,15 +109,15 @@
 @interface GTLAnalyticsGaDataColumnHeadersItem : GTLObject
 
 // Column Type. Either DIMENSION or METRIC.
-@property (retain) NSString *columnType;
+@property (copy) NSString *columnType;
 
 // Data type. Dimension column headers have only STRING as the data type. Metric
 // column headers have data types for metric values such as INTEGER, DOUBLE,
 // CURRENCY etc.
-@property (retain) NSString *dataType;
+@property (copy) NSString *dataType;
 
 // Column name.
-@property (retain) NSString *name;
+@property (copy) NSString *name;
 
 @end
 
@@ -130,22 +130,22 @@
 @interface GTLAnalyticsGaDataProfileInfo : GTLObject
 
 // Account ID to which this profile belongs.
-@property (retain) NSString *accountId;
+@property (copy) NSString *accountId;
 
 // Internal ID for the web property to which this profile belongs.
-@property (retain) NSString *internalWebPropertyId;
+@property (copy) NSString *internalWebPropertyId;
 
 // Profile ID.
-@property (retain) NSString *profileId;
+@property (copy) NSString *profileId;
 
 // Profile name.
-@property (retain) NSString *profileName;
+@property (copy) NSString *profileName;
 
 // Table ID for profile.
-@property (retain) NSString *tableId;
+@property (copy) NSString *tableId;
 
 // Web Property ID to which this profile belongs.
-@property (retain) NSString *webPropertyId;
+@property (copy) NSString *webPropertyId;
 
 @end
 
@@ -158,16 +158,16 @@
 @interface GTLAnalyticsGaDataQuery : GTLObject
 
 // List of analytics dimensions.
-@property (retain) NSString *dimensions;
+@property (copy) NSString *dimensions;
 
 // End date.
-@property (retain) NSString *endDate;
+@property (copy) NSString *endDate;
 
 // Comma-separated list of dimension or metric filters.
-@property (retain) NSString *filters;
+@property (copy) NSString *filters;
 
 // Unique table ID.
-@property (retain) NSString *ids;
+@property (copy) NSString *ids;
 
 // Maximum results per page.
 @property (retain) NSNumber *maxResults;  // intValue
@@ -176,13 +176,13 @@
 @property (retain) NSArray *metrics;  // of NSString
 
 // Analytics advanced segment.
-@property (retain) NSString *segment;
+@property (copy) NSString *segment;
 
 // List of dimensions or metrics based on which Analytics data is sorted.
 @property (retain) NSArray *sort;  // of NSString
 
 // Start date.
-@property (retain) NSString *startDate;
+@property (copy) NSString *startDate;
 
 // Start index.
 @property (retain) NSNumber *startIndex;  // intValue

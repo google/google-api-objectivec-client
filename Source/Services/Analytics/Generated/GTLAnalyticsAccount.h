@@ -53,16 +53,16 @@
 
 // Account ID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSString *identifier;
+@property (copy) NSString *identifier;
 
 // Resource type for Analytics account.
-@property (retain) NSString *kind;
+@property (copy) NSString *kind;
 
 // Account name.
-@property (retain) NSString *name;
+@property (copy) NSString *name;
 
 // Link for this account.
-@property (retain) NSString *selfLink;
+@property (copy) NSString *selfLink;
 
 // Time the account was last modified.
 @property (retain) GTLDateTime *updated;
@@ -78,9 +78,9 @@
 @interface GTLAnalyticsAccountChildLink : GTLObject
 
 // Link to the list of web properties for this account.
-@property (retain) NSString *href;
+@property (copy) NSString *href;
 
 // Type of the child link. Its value is "analytics#webproperties".
-@property (retain) NSString *type;
+@property (copy) NSString *type;
 
 @end
