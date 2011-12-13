@@ -97,10 +97,9 @@ typedef void *GTLServiceUploadProgressBlock;
 
 @interface GTLService : NSObject {
  @private
-  NSOperationQueue *operationQueue_;
+  NSOperationQueue *parseQueue_;
   NSString *userAgent_;
   GTMHTTPFetcherService *fetcherService_;
-  NSArray *runLoopModes_;
   NSString *userAgentAddition_;
 
   NSMutableDictionary *serviceProperties_; // initial values for properties in future tickets
@@ -390,8 +389,9 @@ typedef void *GTLServiceUploadProgressBlock;
                            additionalHeaders:(NSDictionary *)additionalHeaders
                                       ticket:(GTLServiceTicket *)ticket;
 
-// The queue used for parsing JSON responses
-@property (nonatomic, retain) NSOperationQueue *operationQueue;
+// The queue used for parsing JSON responses (previously this property
+// was called operationQueue)
+@property (nonatomic, retain) NSOperationQueue *parseQueue;
 
 // The fetcher service object issues the GTMHTTPFetcher instances
 // for this API service

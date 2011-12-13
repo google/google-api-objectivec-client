@@ -140,10 +140,9 @@ static NSString *ETagIfPresent(GTLObject *obj) {
 
 @implementation GTLService
 
-@synthesize runLoopModes = runLoopModes_,
-            userAgentAddition = userAgentAddition_,
+@synthesize userAgentAddition = userAgentAddition_,
             fetcherService = fetcherService_,
-            operationQueue = operationQueue_,
+            parseQueue = parseQueue_,
             shouldFetchNextPages = shouldFetchNextPages_,
             surrogates = surrogates_,
             uploadProgressSelector = uploadProgressSelector_,
@@ -173,7 +172,7 @@ static NSString *ETagIfPresent(GTLObject *obj) {
 
 #if GTL_IPHONE || (MAC_OS_X_VERSION_MIN_REQUIRED > MAC_OS_X_VERSION_10_5)
     // For 10.6 and up, always use an operation queue
-    operationQueue_ = [[NSOperationQueue alloc] init];
+    parseQueue_ = [[NSOperationQueue alloc] init];
 #elif !GTL_SKIP_PARSE_THREADING
     // Avoid NSOperationQueue prior to 10.5.6, per
     // http://www.mikeash.com/?page=pyblog/use-nsoperationqueue.html
@@ -197,10 +196,9 @@ static NSString *ETagIfPresent(GTLObject *obj) {
 }
 
 - (void)dealloc {
-  [operationQueue_ release];
+  [parseQueue_ release];
   [userAgent_ release];
   [fetcherService_ release];
-  [runLoopModes_ release];
   [userAgentAddition_ release];
   [serviceProperties_ release];
   [surrogates_ release];
@@ -1105,7 +1103,7 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
   // if there's an operation queue, then use that to schedule parsing on another
   // thread
   SEL parseSel = @selector(parseObjectFromDataOfFetcher:);
-  NSOperationQueue *queue = self.operationQueue;
+  NSOperationQueue *queue = self.parseQueue;
   if (queue) {
     NSInvocationOperation *op;
     op = [[[NSInvocationOperation alloc] initWithTarget:self
@@ -2063,6 +2061,10 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
   [self setExactUserAgent:str];
 }
 
+//
+// The following methods pass through to the fetcher service object
+//
+
 - (void)setCookieStorageMethod:(NSInteger)method {
   self.fetcherService.cookieStorageMethod = method;
 }
@@ -2077,6 +2079,14 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 
 - (BOOL)shouldFetchInBackground {
   return self.fetcherService.shouldFetchInBackground;
+}
+
+- (void)setRunLoopModes:(NSArray *)array {
+  self.fetcherService.runLoopModes = array;
+}
+
+- (NSArray *)runLoopModes {
+  return self.fetcherService.runLoopModes;
 }
 
 #pragma mark -
