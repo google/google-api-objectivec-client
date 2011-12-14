@@ -180,10 +180,10 @@ static NSString *ETagIfPresent(GTLObject *obj) {
     (void) Gestalt(gestaltSystemVersion, &bcdSystemVersion);
 
     if (bcdSystemVersion >= 0x1057) {
-      operationQueue_ = [[NSOperationQueue alloc] init];
+      parseQueue_ = [[NSOperationQueue alloc] init];
     }
 #else
-    // operationQueue defaults to nil, so parsing will be done immediately
+    // parseQueue_ defaults to nil, so parsing will be done immediately
     // on the current thread
 #endif
 
