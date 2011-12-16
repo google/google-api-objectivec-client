@@ -52,7 +52,7 @@
     // Version from discovery.
     self.apiVersion = @"v1";
 
-    // rpcPath from discovery.  Where to send JSON-RPC.
+    // From discovery.  Where to send JSON-RPC.
     // Turn off prettyPrint for this service to save bandwidth (especially on
     // mobile). The fetcher logging will pretty print.
     self.rpcURL = [NSURL URLWithString:@"https://www.googleapis.com/rpc?prettyPrint=false"];
