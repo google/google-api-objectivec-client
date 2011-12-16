@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLBooks.h
+//  GTLBooksDownloadAccesses.h
 //
 
 // ----------------------------------------------------------------------------
@@ -25,22 +25,28 @@
 //   Lets you search for books and manage your Google Books library.
 // Documentation:
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
+// Classes:
+//   GTLBooksDownloadAccesses (0 custom class methods, 2 custom properties)
 
-#import "GTLBooksConstants.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLBooksAnnotation.h"
-#import "GTLBooksAnnotations.h"
-#import "GTLBooksAnnotationsRange.h"
-#import "GTLBooksBookshelf.h"
-#import "GTLBooksBookshelves.h"
-#import "GTLBooksConcurrentAccessRestriction.h"
-#import "GTLBooksDownloadAccesses.h"
-#import "GTLBooksDownloadAccessRestriction.h"
-#import "GTLBooksReadingPosition.h"
-#import "GTLBooksRequestAccess.h"
-#import "GTLBooksReview.h"
-#import "GTLBooksVolume.h"
-#import "GTLBooksVolumes.h"
+@class GTLBooksDownloadAccessRestriction;
 
-#import "GTLQueryBooks.h"
-#import "GTLServiceBooks.h"
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksDownloadAccesses
+//
+
+@interface GTLBooksDownloadAccesses : GTLObject
+
+// A list of download access responses.
+@property (retain) NSArray *downloadAccessList;  // of GTLBooksDownloadAccessRestriction
+
+// Resource type.
+@property (copy) NSString *kind;
+
+@end

@@ -26,7 +26,7 @@
 // Documentation:
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
 // Classes:
-//   GTLQueryBooks (16 custom class methods, 23 custom properties)
+//   GTLQueryBooks (19 custom class methods, 27 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -51,12 +51,15 @@
 @property (copy) NSString *annotationId;
 @property (copy) NSString *contentVersion;
 @property (copy) NSString *country;
+@property (copy) NSString *cpksver;
 @property (copy) NSString *download;
 @property (copy) NSString *filter;
 @property (copy) NSString *langRestrict;
 @property (copy) NSString *layerId;
 @property (copy) NSString *libraryRestrict;
+@property (copy) NSString *locale;
 @property (assign) NSUInteger maxResults;
+@property (copy) NSString *nonce;
 @property (copy) NSString *orderBy;
 @property (retain) NSArray *pageIds;  // of NSString
 @property (copy) NSString *pageToken;
@@ -70,6 +73,7 @@
 @property (assign) NSUInteger startIndex;
 @property (copy) NSString *userId;
 @property (copy) NSString *volumeId;
+@property (retain) NSArray *volumeIds;  // of NSString
 
 #pragma mark -
 #pragma mark "bookshelves" methods
@@ -121,6 +125,64 @@
 // Fetches a GTLBooksVolumes.
 + (id)queryForBookshelvesVolumesListWithUserId:(NSString *)userId
                                          shelf:(NSString *)shelf;
+
+#pragma mark -
+#pragma mark "myconfig" methods
+// These create a GTLQueryBooks object.
+
+// Method: books.myconfig.releaseDownloadAccess
+// Release downloaded content access restriction.
+//  Required:
+//   volumeIds: The volume(s) to release restrictions for.
+//   cpksver: The device/version identifier from which to release the
+//     restriction.
+//  Optional:
+//   country: ISO-3166-1 code to override the IP-based location.
+//   locale: ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US.
+//   source: String to identify the originator of this request.
+//  Authorization scope(s):
+//   kGTLAuthScopeBooks
+// Fetches a GTLBooksDownloadAccesses.
++ (id)queryForMyconfigReleaseDownloadAccessWithVolumeIds:(NSArray *)volumeIds
+                                                 cpksver:(NSString *)cpksver;
+
+// Method: books.myconfig.requestAccess
+// Request concurrent and download access restrictions.
+//  Required:
+//   source: String to identify the originator of this request.
+//   volumeId: The volume to request concurrent/download restrictions for.
+//   nonce: The client nonce value.
+//   cpksver: The device/version identifier from which to request the
+//     restrictions.
+//  Optional:
+//   country: ISO-3166-1 code to override the IP-based location.
+//   locale: ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US.
+//  Authorization scope(s):
+//   kGTLAuthScopeBooks
+// Fetches a GTLBooksRequestAccess.
++ (id)queryForMyconfigRequestAccessWithSource:(NSString *)source
+                                     volumeId:(NSString *)volumeId
+                                        nonce:(NSString *)nonce
+                                      cpksver:(NSString *)cpksver;
+
+// Method: books.myconfig.syncVolumeLicenses
+// Request downloaded content access for specified volumes on the My eBooks
+// shelf.
+//  Required:
+//   source: String to identify the originator of this request.
+//   nonce: The client nonce value.
+//   cpksver: The device/version identifier from which to release the
+//     restriction.
+//  Optional:
+//   country: ISO-3166-1 code to override the IP-based location.
+//   locale: ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US.
+//   volumeIds: The volume(s) to request download restrictions for.
+//  Authorization scope(s):
+//   kGTLAuthScopeBooks
+// Fetches a GTLBooksVolumes.
++ (id)queryForMyconfigSyncVolumeLicensesWithSource:(NSString *)source
+                                             nonce:(NSString *)nonce
+                                           cpksver:(NSString *)cpksver;
 
 #pragma mark -
 #pragma mark "mylibrary.annotations" methods

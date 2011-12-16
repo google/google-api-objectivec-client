@@ -53,7 +53,8 @@
 @property (copy) NSString *kind;
 
 // Total number of volumes found. This might be greater than the number of
-// volumes returned in this response if results have been paginated.
+// volumes returned in this response if results have been paginated. Total
+// number of volumes found.
 @property (retain) NSNumber *totalItems;  // intValue
 
 @end

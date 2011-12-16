@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLBooks.h
+//  GTLBooksConcurrentAccessRestriction.m
 //
 
 // ----------------------------------------------------------------------------
@@ -25,22 +25,22 @@
 //   Lets you search for books and manage your Google Books library.
 // Documentation:
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
+// Classes:
+//   GTLBooksConcurrentAccessRestriction (0 custom class methods, 11 custom properties)
 
-#import "GTLBooksConstants.h"
-
-#import "GTLBooksAnnotation.h"
-#import "GTLBooksAnnotations.h"
-#import "GTLBooksAnnotationsRange.h"
-#import "GTLBooksBookshelf.h"
-#import "GTLBooksBookshelves.h"
 #import "GTLBooksConcurrentAccessRestriction.h"
-#import "GTLBooksDownloadAccesses.h"
-#import "GTLBooksDownloadAccessRestriction.h"
-#import "GTLBooksReadingPosition.h"
-#import "GTLBooksRequestAccess.h"
-#import "GTLBooksReview.h"
-#import "GTLBooksVolume.h"
-#import "GTLBooksVolumes.h"
 
-#import "GTLQueryBooks.h"
-#import "GTLServiceBooks.h"
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksConcurrentAccessRestriction
+//
+
+@implementation GTLBooksConcurrentAccessRestriction
+@dynamic deviceAllowed, kind, maxConcurrentDevices, message, nonce, reasonCode,
+         restricted, signature, source, timeWindowSeconds, volumeId;
+
++ (void)load {
+  [self registerObjectClassForKind:@"books#concurrentAccessRestriction"];
+}
+
+@end

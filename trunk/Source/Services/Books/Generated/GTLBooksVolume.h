@@ -226,8 +226,7 @@
 // The mean review rating for this volume. (min = 1.0, max = 5.0)
 @property (retain) NSNumber *averageRating;  // doubleValue
 
-// Canonical URL for a volume. Use this URL to plus one a Google Book. (In LITE
-// projection)
+// Canonical URL for a volume. (In LITE projection.)
 @property (copy) NSString *canonicalVolumeLink;
 
 // A list of subject categories, such as "Fiction", "Suspense", etc.

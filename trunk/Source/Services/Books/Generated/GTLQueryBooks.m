@@ -26,7 +26,7 @@
 // Documentation:
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
 // Classes:
-//   GTLQueryBooks (16 custom class methods, 23 custom properties)
+//   GTLQueryBooks (19 custom class methods, 27 custom properties)
 
 #import "GTLQueryBooks.h"
 
@@ -34,20 +34,24 @@
 #import "GTLBooksAnnotations.h"
 #import "GTLBooksBookshelf.h"
 #import "GTLBooksBookshelves.h"
+#import "GTLBooksDownloadAccesses.h"
+#import "GTLBooksRequestAccess.h"
 #import "GTLBooksVolume.h"
 #import "GTLBooksVolumes.h"
 
 @implementation GTLQueryBooks
 
-@dynamic annotationId, contentVersion, country, download, fields, filter,
-         langRestrict, layerId, libraryRestrict, maxResults, orderBy, pageIds,
-         pageToken, partner, printType, projection, q, shelf, showPreorders,
-         source, startIndex, userId, volumeId;
+@dynamic annotationId, contentVersion, country, cpksver, download, fields,
+         filter, langRestrict, layerId, libraryRestrict, locale, maxResults,
+         nonce, orderBy, pageIds, pageToken, partner, printType, projection, q,
+         shelf, showPreorders, source, startIndex, userId, volumeId, volumeIds;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[NSString class]
-                                forKey:@"pageIds"];
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      [NSString class], @"pageIds",
+      [NSString class], @"volumeIds",
+      nil];
   return map;
 }
 
@@ -83,6 +87,46 @@
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.userId = userId;
   query.shelf = shelf;
+  query.expectedObjectClass = [GTLBooksVolumes class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "myconfig" methods
+// These create a GTLQueryBooks object.
+
++ (id)queryForMyconfigReleaseDownloadAccessWithVolumeIds:(NSArray *)volumeIds
+                                                 cpksver:(NSString *)cpksver {
+  NSString *methodName = @"books.myconfig.releaseDownloadAccess";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.volumeIds = volumeIds;
+  query.cpksver = cpksver;
+  query.expectedObjectClass = [GTLBooksDownloadAccesses class];
+  return query;
+}
+
++ (id)queryForMyconfigRequestAccessWithSource:(NSString *)source
+                                     volumeId:(NSString *)volumeId
+                                        nonce:(NSString *)nonce
+                                      cpksver:(NSString *)cpksver {
+  NSString *methodName = @"books.myconfig.requestAccess";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.source = source;
+  query.volumeId = volumeId;
+  query.nonce = nonce;
+  query.cpksver = cpksver;
+  query.expectedObjectClass = [GTLBooksRequestAccess class];
+  return query;
+}
+
++ (id)queryForMyconfigSyncVolumeLicensesWithSource:(NSString *)source
+                                             nonce:(NSString *)nonce
+                                           cpksver:(NSString *)cpksver {
+  NSString *methodName = @"books.myconfig.syncVolumeLicenses";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.source = source;
+  query.nonce = nonce;
+  query.cpksver = cpksver;
   query.expectedObjectClass = [GTLBooksVolumes class];
   return query;
 }
