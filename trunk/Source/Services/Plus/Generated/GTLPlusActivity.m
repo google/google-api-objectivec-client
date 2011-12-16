@@ -26,7 +26,7 @@
 // Documentation:
 //   http://developers.google.com/+/api/
 // Classes:
-//   GTLPlusActivity (0 custom class methods, 19 custom properties)
+//   GTLPlusActivity (0 custom class methods, 20 custom properties)
 //   GTLPlusActivityActor (0 custom class methods, 4 custom properties)
 //   GTLPlusActivityObject (0 custom class methods, 10 custom properties)
 //   GTLPlusActivityProvider (0 custom class methods, 1 custom properties)
@@ -51,14 +51,16 @@
 //
 
 @implementation GTLPlusActivity
-@dynamic access, actor, address, annotation, crosspostSource, geocode,
+@dynamic access, actor, address, annotation, crosspostSource, ETag, geocode,
          identifier, kind, object, placeholder, placeId, placeName, provider,
          published, radius, title, updated, url, verb;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      @"etag", @"ETag",
+      @"id", @"identifier",
+      nil];
   return map;
 }
 

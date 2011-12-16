@@ -26,7 +26,7 @@
 // Documentation:
 //   http://developers.google.com/+/api/
 // Classes:
-//   GTLPlusActivityFeed (0 custom class methods, 8 custom properties)
+//   GTLPlusActivityFeed (0 custom class methods, 9 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -45,6 +45,9 @@
 // supports -itemAtIndex: to retrieve individual objects from "items".
 
 @interface GTLPlusActivityFeed : GTLCollectionObject
+
+// ETag of this response for caching purposes.
+@property (copy) NSString *ETag;
 
 // The ID of this collection of activities.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').

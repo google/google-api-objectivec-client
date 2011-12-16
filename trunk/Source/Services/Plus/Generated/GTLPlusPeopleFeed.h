@@ -26,7 +26,7 @@
 // Documentation:
 //   http://developers.google.com/+/api/
 // Classes:
-//   GTLPlusPeopleFeed (0 custom class methods, 5 custom properties)
+//   GTLPlusPeopleFeed (0 custom class methods, 6 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -45,6 +45,9 @@
 // supports -itemAtIndex: to retrieve individual objects from "items".
 
 @interface GTLPlusPeopleFeed : GTLCollectionObject
+
+// ETag of this response for caching purposes.
+@property (copy) NSString *ETag;
 
 // The people in this page of results. Each item will include the id,
 // displayName, image, and url for the person. To retrieve additional profile

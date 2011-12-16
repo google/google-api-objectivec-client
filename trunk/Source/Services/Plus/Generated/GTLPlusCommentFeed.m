@@ -26,7 +26,7 @@
 // Documentation:
 //   http://developers.google.com/+/api/
 // Classes:
-//   GTLPlusCommentFeed (0 custom class methods, 7 custom properties)
+//   GTLPlusCommentFeed (0 custom class methods, 8 custom properties)
 
 #import "GTLPlusCommentFeed.h"
 
@@ -38,12 +38,14 @@
 //
 
 @implementation GTLPlusCommentFeed
-@dynamic identifier, items, kind, nextLink, nextPageToken, title, updated;
+@dynamic ETag, identifier, items, kind, nextLink, nextPageToken, title, updated;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      @"etag", @"ETag",
+      @"id", @"identifier",
+      nil];
   return map;
 }
 

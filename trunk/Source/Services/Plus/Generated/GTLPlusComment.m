@@ -26,7 +26,7 @@
 // Documentation:
 //   http://developers.google.com/+/api/
 // Classes:
-//   GTLPlusComment (0 custom class methods, 9 custom properties)
+//   GTLPlusComment (0 custom class methods, 10 custom properties)
 //   GTLPlusCommentActor (0 custom class methods, 4 custom properties)
 //   GTLPlusCommentInReplyToItem (0 custom class methods, 2 custom properties)
 //   GTLPlusCommentObject (0 custom class methods, 2 custom properties)
@@ -40,13 +40,15 @@
 //
 
 @implementation GTLPlusComment
-@dynamic actor, identifier, inReplyTo, kind, object, published, selfLink,
+@dynamic actor, ETag, identifier, inReplyTo, kind, object, published, selfLink,
          updated, verb;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      @"etag", @"ETag",
+      @"id", @"identifier",
+      nil];
   return map;
 }
 

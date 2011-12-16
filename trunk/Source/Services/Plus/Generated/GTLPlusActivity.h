@@ -26,7 +26,7 @@
 // Documentation:
 //   http://developers.google.com/+/api/
 // Classes:
-//   GTLPlusActivity (0 custom class methods, 19 custom properties)
+//   GTLPlusActivity (0 custom class methods, 20 custom properties)
 //   GTLPlusActivityActor (0 custom class methods, 4 custom properties)
 //   GTLPlusActivityObject (0 custom class methods, 10 custom properties)
 //   GTLPlusActivityProvider (0 custom class methods, 1 custom properties)
@@ -85,6 +85,9 @@
 // If this activity is a crosspost from another system, this property specifies
 // the ID of the original activity.
 @property (copy) NSString *crosspostSource;
+
+// ETag of this response for caching purposes.
+@property (copy) NSString *ETag;
 
 // Latitude and longitude where this activity occurred. Format is latitude
 // followed by longitude, space separated.
