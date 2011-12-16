@@ -26,7 +26,8 @@
 // Documentation:
 //   http://code.google.com/apis/tasks/v1/using.html
 // Classes:
-//   GTLTasksTask (0 custom class methods, 14 custom properties)
+//   GTLTasksTask (0 custom class methods, 15 custom properties)
+//   GTLTasksTaskLinksItem (0 custom class methods, 3 custom properties)
 
 #import "GTLTasksTask.h"
 
@@ -36,8 +37,8 @@
 //
 
 @implementation GTLTasksTask
-@dynamic completed, deleted, due, ETag, hidden, identifier, kind, notes, parent,
-         position, selfLink, status, title, updated;
+@dynamic completed, deleted, due, ETag, hidden, identifier, kind, links, notes,
+         parent, position, selfLink, status, title, updated;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -48,8 +49,33 @@
   return map;
 }
 
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLTasksTaskLinksItem class]
+                                forKey:@"links"];
+  return map;
+}
+
 + (void)load {
   [self registerObjectClassForKind:@"tasks#task"];
+}
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLTasksTaskLinksItem
+//
+
+@implementation GTLTasksTaskLinksItem
+@dynamic descriptionProperty, link, type;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"description"
+                                forKey:@"descriptionProperty"];
+  return map;
 }
 
 @end

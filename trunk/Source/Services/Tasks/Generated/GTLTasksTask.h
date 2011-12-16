@@ -26,13 +26,16 @@
 // Documentation:
 //   http://code.google.com/apis/tasks/v1/using.html
 // Classes:
-//   GTLTasksTask (0 custom class methods, 14 custom properties)
+//   GTLTasksTask (0 custom class methods, 15 custom properties)
+//   GTLTasksTaskLinksItem (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
 #else
   #import "GTLObject.h"
 #endif
+
+@class GTLTasksTaskLinksItem;
 
 // ----------------------------------------------------------------------------
 //
@@ -66,6 +69,9 @@
 // Type of the resource. This is always "tasks#task".
 @property (copy) NSString *kind;
 
+// Collection of links. This collection is read-only.
+@property (retain) NSArray *links;  // of GTLTasksTaskLinksItem
+
 // Notes describing the task. Optional.
 @property (copy) NSString *notes;
 
@@ -93,5 +99,25 @@
 
 // Last modification time of the task (as a RFC 3339 timestamp).
 @property (retain) GTLDateTime *updated;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLTasksTaskLinksItem
+//
+
+@interface GTLTasksTaskLinksItem : GTLObject
+
+// The description. In HTML speak: Everything between <a> and </a>.
+// Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
+@property (copy) NSString *descriptionProperty;
+
+// The URL.
+@property (copy) NSString *link;
+
+// Type of the link, e.g. "email".
+@property (copy) NSString *type;
 
 @end
