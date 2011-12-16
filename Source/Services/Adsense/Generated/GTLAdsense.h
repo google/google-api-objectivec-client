@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   AdSense Management API (adsense/v1)
+//   AdSense Management API (adsense/v1.1)
 // Description:
 //   Gives AdSense publishers access to their inventory and the ability to
 //   generate reports
@@ -29,6 +29,8 @@
 
 #import "GTLAdsenseConstants.h"
 
+#import "GTLAdsenseAccount.h"
+#import "GTLAdsenseAccounts.h"
 #import "GTLAdsenseAdClient.h"
 #import "GTLAdsenseAdClients.h"
 #import "GTLAdsenseAdsenseReportsGenerateResponse.h"

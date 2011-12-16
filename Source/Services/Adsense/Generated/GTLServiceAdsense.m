@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   AdSense Management API (adsense/v1)
+//   AdSense Management API (adsense/v1.1)
 // Description:
 //   Gives AdSense publishers access to their inventory and the ability to
 //   generate reports
@@ -39,6 +39,8 @@
 + (NSArray *)checkClasses {
   NSArray *classes = [NSArray arrayWithObjects:
                       [GTLQueryAdsense class],
+                      [GTLAdsenseAccount class],
+                      [GTLAdsenseAccounts class],
                       [GTLAdsenseAdClient class],
                       [GTLAdsenseAdClients class],
                       [GTLAdsenseAdsenseReportsGenerateResponse class],
@@ -57,7 +59,7 @@
   self = [super init];
   if (self) {
     // Version from discovery.
-    self.apiVersion = @"v1";
+    self.apiVersion = @"v1.1";
 
     // rpcPath from discovery.  Where to send JSON-RPC.
     // Turn off prettyPrint for this service to save bandwidth (especially on
