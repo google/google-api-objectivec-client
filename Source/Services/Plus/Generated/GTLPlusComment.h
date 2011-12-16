@@ -26,7 +26,7 @@
 // Documentation:
 //   http://developers.google.com/+/api/
 // Classes:
-//   GTLPlusComment (0 custom class methods, 9 custom properties)
+//   GTLPlusComment (0 custom class methods, 10 custom properties)
 //   GTLPlusCommentActor (0 custom class methods, 4 custom properties)
 //   GTLPlusCommentInReplyToItem (0 custom class methods, 2 custom properties)
 //   GTLPlusCommentObject (0 custom class methods, 2 custom properties)
@@ -52,6 +52,9 @@
 
 // The person who posted this comment.
 @property (retain) GTLPlusCommentActor *actor;
+
+// ETag of this response for caching purposes.
+@property (copy) NSString *ETag;
 
 // The ID of this comment.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').

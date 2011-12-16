@@ -26,7 +26,7 @@
 // Documentation:
 //   http://developers.google.com/+/api/
 // Classes:
-//   GTLPlusPerson (0 custom class methods, 20 custom properties)
+//   GTLPlusPerson (0 custom class methods, 21 custom properties)
 //   GTLPlusPersonEmailsItem (0 custom class methods, 3 custom properties)
 //   GTLPlusPersonImage (0 custom class methods, 1 custom properties)
 //   GTLPlusPersonName (0 custom class methods, 6 custom properties)
@@ -68,6 +68,9 @@
 
 // A list of email addresses for this person.
 @property (retain) NSArray *emails;  // of GTLPlusPersonEmailsItem
+
+// ETag of this response for caching purposes.
+@property (copy) NSString *ETag;
 
 // The person's gender. Possible values are:
 // - "male" - Male gender.

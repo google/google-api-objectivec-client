@@ -26,7 +26,7 @@
 // Documentation:
 //   http://developers.google.com/+/api/
 // Classes:
-//   GTLPlusActivityFeed (0 custom class methods, 8 custom properties)
+//   GTLPlusActivityFeed (0 custom class methods, 9 custom properties)
 
 #import "GTLPlusActivityFeed.h"
 
@@ -38,13 +38,15 @@
 //
 
 @implementation GTLPlusActivityFeed
-@dynamic identifier, items, kind, nextLink, nextPageToken, selfLink, title,
-         updated;
+@dynamic ETag, identifier, items, kind, nextLink, nextPageToken, selfLink,
+         title, updated;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      @"etag", @"ETag",
+      @"id", @"identifier",
+      nil];
   return map;
 }
 
