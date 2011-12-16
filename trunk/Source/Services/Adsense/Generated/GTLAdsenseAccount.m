@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAdsenseAdUnits.h
+//  GTLAdsenseAccount.m
 //
 
 // ----------------------------------------------------------------------------
@@ -27,37 +27,34 @@
 // Documentation:
 //   https://code.google.com/apis/adsense/management/
 // Classes:
-//   GTLAdsenseAdUnits (0 custom class methods, 4 custom properties)
+//   GTLAdsenseAccount (0 custom class methods, 4 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
-
-@class GTLAdsenseAdUnit;
+#import "GTLAdsenseAccount.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAdsenseAdUnits
+//   GTLAdsenseAccount
 //
 
-// This class supports NSFastEnumeration over its "items" property. It also
-// supports -itemAtIndex: to retrieve individual objects from "items".
+@implementation GTLAdsenseAccount
+@dynamic identifier, kind, name, subAccounts;
 
-@interface GTLAdsenseAdUnits : GTLCollectionObject
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"id"
+                                forKey:@"identifier"];
+  return map;
+}
 
-// ETag of this response for caching purposes.
-@property (copy) NSString *ETag;
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLAdsenseAccount class]
+                                forKey:@"subAccounts"];
+  return map;
+}
 
-// The ad units returned in this list response.
-@property (retain) NSArray *items;  // of GTLAdsenseAdUnit
-
-// Kind of list this is, in this case adsense#adUnits.
-@property (copy) NSString *kind;
-
-// Continuation token used to page through ad units. To retrieve the next page
-// of results, set the next request's "pageToken" value to this.
-@property (copy) NSString *nextPageToken;
++ (void)load {
+  [self registerObjectClassForKind:@"adsense#account"];
+}
 
 @end

@@ -20,20 +20,23 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   AdSense Management API (adsense/v1)
+//   AdSense Management API (adsense/v1.1)
 // Description:
 //   Gives AdSense publishers access to their inventory and the ability to
 //   generate reports
 // Documentation:
 //   https://code.google.com/apis/adsense/management/
 // Classes:
-//   GTLAdsenseCustomChannel (0 custom class methods, 4 custom properties)
+//   GTLAdsenseCustomChannel (0 custom class methods, 5 custom properties)
+//   GTLAdsenseCustomChannelTargetingInfo (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
 #else
   #import "GTLObject.h"
 #endif
+
+@class GTLAdsenseCustomChannelTargetingInfo;
 
 // ----------------------------------------------------------------------------
 //
@@ -55,5 +58,35 @@
 
 // Name of this custom channel.
 @property (copy) NSString *name;
+
+// The targeting information of this custom channel, if activated.
+@property (retain) GTLAdsenseCustomChannelTargetingInfo *targetingInfo;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAdsenseCustomChannelTargetingInfo
+//
+
+@interface GTLAdsenseCustomChannelTargetingInfo : GTLObject
+
+// The name used to describe this channel externally.
+@property (copy) NSString *adsAppearOn;
+
+// The external description of the channel.
+// Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
+@property (copy) NSString *descriptionProperty;
+
+// The locations in which ads appear. (Only valid for content and mobile content
+// ads). Acceptable values for content ads are: TOP_LEFT, TOP_CENTER, TOP_RIGHT,
+// MIDDLE_LEFT, MIDDLE_CENTER, MIDDLE_RIGHT, BOTTOM_LEFT, BOTTOM_CENTER,
+// BOTTOM_RIGHT, MULTIPLE_LOCATIONS. Acceptable values for mobile content ads
+// are: TOP, MIDDLE, BOTTOM, MULTIPLE_LOCATIONS.
+@property (copy) NSString *location;
+
+// The language of the sites ads will be displayed on.
+@property (copy) NSString *siteLanguage;
 
 @end

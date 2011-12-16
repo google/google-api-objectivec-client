@@ -20,14 +20,15 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   AdSense Management API (adsense/v1)
+//   AdSense Management API (adsense/v1.1)
 // Description:
 //   Gives AdSense publishers access to their inventory and the ability to
 //   generate reports
 // Documentation:
 //   https://code.google.com/apis/adsense/management/
 // Classes:
-//   GTLAdsenseCustomChannel (0 custom class methods, 4 custom properties)
+//   GTLAdsenseCustomChannel (0 custom class methods, 5 custom properties)
+//   GTLAdsenseCustomChannelTargetingInfo (0 custom class methods, 4 custom properties)
 
 #import "GTLAdsenseCustomChannel.h"
 
@@ -37,7 +38,7 @@
 //
 
 @implementation GTLAdsenseCustomChannel
-@dynamic code, identifier, kind, name;
+@dynamic code, identifier, kind, name, targetingInfo;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -48,6 +49,24 @@
 
 + (void)load {
   [self registerObjectClassForKind:@"adsense#customChannel"];
+}
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAdsenseCustomChannelTargetingInfo
+//
+
+@implementation GTLAdsenseCustomChannelTargetingInfo
+@dynamic adsAppearOn, descriptionProperty, location, siteLanguage;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"description"
+                                forKey:@"descriptionProperty"];
+  return map;
 }
 
 @end
