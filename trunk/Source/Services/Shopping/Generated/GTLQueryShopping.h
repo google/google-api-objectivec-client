@@ -72,11 +72,15 @@
 @property (assign) NSUInteger accountId;
 @property (copy) NSString *attributeFilter;
 @property (copy) NSString *boostBy;
+// "categories" has different types for some query methods; see the
+// documentation for the right type for each query method.
 @property (retain) id categories;
 @property (copy) NSString *channels;
 @property (copy) NSString *country;
 @property (copy) NSString *crowdBy;
 @property (copy) NSString *currency;
+// "debug" has different types for some query methods; see the documentation for
+// the right type for each query method.
 @property (retain) id debug;
 @property (retain) GTLShoppingProductsListFacets *facets;
 @property (copy) NSString *language;

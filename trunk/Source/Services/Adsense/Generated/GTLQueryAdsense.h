@@ -47,6 +47,8 @@
 //
 // Method-specific parameters; see the comments below for more information.
 //
+// "accountId" has different types for some query methods; see the documentation
+// for the right type for each query method.
 @property (retain) id accountId;
 @property (copy) NSString *adClientId;
 @property (copy) NSString *adUnitId;
