@@ -4,6 +4,20 @@ Release Notes
 Project site:     http://code.google.com/p/google-api-objectivec-client/
 Discussion group: http://groups.google.com/group/google-api-objectivec-client
 
+22-December-2011
+
+Fixed waitForTicket's return value on delete fetches.
+
+
+12-December-2011
+
+String properties in objects are now copied rather than retained.
+
+
+1-December-2011
+
+Fixed handling of nil date-time fields in server responses.
+
 
 17-November-2011
 

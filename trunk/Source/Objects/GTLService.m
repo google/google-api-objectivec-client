@@ -1495,12 +1495,12 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
     [[NSRunLoop currentRunLoop] runUntilDate:stopDate];
   }
 
-  GTLObject *fetchedObject = ticket.fetchedObject;
+  NSError *fetchError = ticket.fetchError;
 
-  if (outObjectOrNil) *outObjectOrNil = fetchedObject;
-  if (outErrorOrNil)  *outErrorOrNil = ticket.fetchError;
+  if (outObjectOrNil) *outObjectOrNil = ticket.fetchedObject;
+  if (outErrorOrNil)  *outErrorOrNil = fetchError;
 
-  return (fetchedObject != nil);
+  return (fetchError == nil);
 }
 
 #pragma mark -
