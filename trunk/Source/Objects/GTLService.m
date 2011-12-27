@@ -1497,6 +1497,12 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 
   NSError *fetchError = ticket.fetchError;
 
+  if (![ticket hasCalledCallback] && fetchError == nil) {
+    fetchError = [NSError errorWithDomain:kGTLServiceErrorDomain
+                                     code:kGTLErrorWaitTimedOut
+                                 userInfo:nil];
+  }
+
   if (outObjectOrNil) *outObjectOrNil = ticket.fetchedObject;
   if (outErrorOrNil)  *outErrorOrNil = fetchError;
 
