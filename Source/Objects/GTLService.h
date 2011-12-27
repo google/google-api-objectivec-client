@@ -44,7 +44,8 @@
 // Error domains
 _EXTERN NSString* const kGTLServiceErrorDomain _INITIALIZE_AS(@"com.google.GTLServiceDomain");
 enum {
-  kGTLErrorQueryResultMissing = -3000
+  kGTLErrorQueryResultMissing = -3000,
+  kGTLErrorWaitTimedOut       = -3001
 };
 
 _EXTERN NSString* const kGTLJSONRPCErrorDomain _INITIALIZE_AS(@"com.google.GTLJSONRPCErrorDomain");
