@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,6 +33,10 @@
 #else
   #import "GTLDefines.h"
 #endif
+
+// Authorization scope
+// View your product data
+GTL_EXTERN NSString * const kGTLAuthScopeShoppingShoppingapi;  // "https://www.googleapis.com/auth/shoppingapi"
 
 // MinAvailability
 GTL_EXTERN NSString * const kGTLShoppingMinAvailabilityInStock;  // "inStock"

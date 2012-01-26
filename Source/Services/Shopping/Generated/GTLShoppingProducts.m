@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,10 +26,9 @@
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
-//   GTLShoppingProducts (0 custom class methods, 21 custom properties)
+//   GTLShoppingProducts (0 custom class methods, 20 custom properties)
 //   GTLShoppingProductsFacetsItem (0 custom class methods, 7 custom properties)
 //   GTLShoppingProductsPromotionsItem (0 custom class methods, 9 custom properties)
-//   GTLShoppingProductsShelfSpaceAdsItem (0 custom class methods, 1 custom properties)
 //   GTLShoppingProductsSpelling (0 custom class methods, 1 custom properties)
 //   GTLShoppingProductsStoresItem (0 custom class methods, 6 custom properties)
 //   GTLShoppingProductsFacetsItemBucketsItem (0 custom class methods, 6 custom properties)
@@ -50,8 +49,8 @@
 @implementation GTLShoppingProducts
 @dynamic categories, currentItemCount, debug, ETag, facets, identifier, items,
          itemsPerPage, kind, nextLink, previousLink, promotions, redirects,
-         relatedQueries, requestId, selfLink, shelfSpaceAds, spelling,
-         startIndex, stores, totalItems;
+         relatedQueries, requestId, selfLink, spelling, startIndex, stores,
+         totalItems;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -71,7 +70,6 @@
       [GTLShoppingProductsPromotionsItem class], @"promotions",
       [NSString class], @"redirects",
       [NSString class], @"relatedQueries",
-      [GTLShoppingProductsShelfSpaceAdsItem class], @"shelfSpaceAds",
       [GTLShoppingProductsStoresItem class], @"stores",
       nil];
   return map;
@@ -125,16 +123,6 @@
   return map;
 }
 
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLShoppingProductsShelfSpaceAdsItem
-//
-
-@implementation GTLShoppingProductsShelfSpaceAdsItem
-@dynamic product;
 @end
 
 

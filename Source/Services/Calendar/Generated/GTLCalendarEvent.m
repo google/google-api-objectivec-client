@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -98,7 +98,15 @@
 //
 
 @implementation GTLCalendarEventExtendedProperties
-@dynamic private, shared;
+@dynamic privateProperty, shared;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"private"
+                                forKey:@"privateProperty"];
+  return map;
+}
+
 @end
 
 

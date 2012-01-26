@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -95,7 +95,7 @@
 
 // The identifier of the Page creator.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSNumber *identifier;  // longLongValue
+@property (copy) NSString *identifier;
 
 // The page author's avatar.
 @property (retain) GTLBloggerPageAuthorImage *image;

@@ -26,10 +26,11 @@
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
-//   GTLShoppingModelProduct (0 custom class methods, 22 custom properties)
+//   GTLShoppingModelProduct (0 custom class methods, 33 custom properties)
 //   GTLShoppingModelProductAttributesItem (0 custom class methods, 5 custom properties)
-//   GTLShoppingModelProductAuthor (0 custom class methods, 5 custom properties)
+//   GTLShoppingModelProductAuthor (0 custom class methods, 2 custom properties)
 //   GTLShoppingModelProductImagesItem (0 custom class methods, 2 custom properties)
+//   GTLShoppingModelProductInternal4Item (0 custom class methods, 2 custom properties)
 //   GTLShoppingModelProductInventoriesItem (0 custom class methods, 9 custom properties)
 //   GTLShoppingModelProductVariantsItem (0 custom class methods, 1 custom properties)
 //   GTLShoppingModelProductImagesItemThumbnailsItem (0 custom class methods, 4 custom properties)
@@ -44,8 +45,10 @@
 @implementation GTLShoppingModelProduct
 @dynamic attributes, author, brand, categories, condition, country,
          creationTime, descriptionProperty, googleId, gtin, gtins, images,
-         inventories, language, link, modificationTime, plusOne, providedId,
-         queryMatched, title, totalMatchingVariants, variants;
+         internal1, internal10, internal12, internal13, internal14, internal15,
+         internal3, internal4, internal6, internal7, internal8, inventories,
+         language, link, modificationTime, plusOne, providedId, queryMatched,
+         title, totalMatchingVariants, variants;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -61,6 +64,10 @@
       [NSString class], @"categories",
       [NSString class], @"gtins",
       [GTLShoppingModelProductImagesItem class], @"images",
+      [NSString class], @"internal1",
+      [NSString class], @"internal10",
+      [GTLShoppingModelProductInternal4Item class], @"internal4",
+      [NSString class], @"internal8",
       [GTLShoppingModelProductInventoriesItem class], @"inventories",
       [GTLShoppingModelProductVariantsItem class], @"variants",
       nil];
@@ -86,7 +93,7 @@
 //
 
 @implementation GTLShoppingModelProductAuthor
-@dynamic accountId, aggregatorId, email, name, uri;
+@dynamic accountId, name;
 @end
 
 
@@ -105,6 +112,16 @@
   return map;
 }
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLShoppingModelProductInternal4Item
+//
+
+@implementation GTLShoppingModelProductInternal4Item
+@dynamic confidence, node;
 @end
 
 

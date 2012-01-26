@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
 // Classes:
-//   GTLQueryBooks (19 custom class methods, 27 custom properties)
+//   GTLQueryBooks (22 custom class methods, 31 custom properties)
 
 #import "GTLQueryBooks.h"
 
@@ -35,16 +35,18 @@
 #import "GTLBooksBookshelf.h"
 #import "GTLBooksBookshelves.h"
 #import "GTLBooksDownloadAccesses.h"
+#import "GTLBooksReadingPosition.h"
 #import "GTLBooksRequestAccess.h"
 #import "GTLBooksVolume.h"
 #import "GTLBooksVolumes.h"
 
 @implementation GTLQueryBooks
 
-@dynamic annotationId, contentVersion, country, cpksver, download, fields,
-         filter, langRestrict, layerId, libraryRestrict, locale, maxResults,
-         nonce, orderBy, pageIds, pageToken, partner, printType, projection, q,
-         shelf, showPreorders, source, startIndex, userId, volumeId, volumeIds;
+@dynamic action, annotationId, contentVersion, country, cpksver, download,
+         fields, filter, langRestrict, layerId, libraryRestrict, locale,
+         maxResults, nonce, orderBy, pageIds, pageToken, partner, position,
+         printType, projection, q, shelf, showPreorders, source, startIndex,
+         timestamp, userId, volumeId, volumeIds, volumePosition;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
@@ -218,6 +220,17 @@
   return query;
 }
 
++ (id)queryForMylibraryBookshelvesMoveVolumeWithShelf:(NSString *)shelf
+                                             volumeId:(NSString *)volumeId
+                                       volumePosition:(NSInteger)volumePosition {
+  NSString *methodName = @"books.mylibrary.bookshelves.moveVolume";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.shelf = shelf;
+  query.volumeId = volumeId;
+  query.volumePosition = volumePosition;
+  return query;
+}
+
 + (id)queryForMylibraryBookshelvesRemoveVolumeWithShelf:(NSString *)shelf
                                                volumeId:(NSString *)volumeId {
   NSString *methodName = @"books.mylibrary.bookshelves.removeVolume";
@@ -235,6 +248,29 @@
   NSString *methodName = @"books.mylibrary.bookshelves.volumes.list";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLBooksVolumes class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "mylibrary.readingpositions" methods
+// These create a GTLQueryBooks object.
+
++ (id)queryForMylibraryReadingpositionsGetWithVolumeId:(NSString *)volumeId {
+  NSString *methodName = @"books.mylibrary.readingpositions.get";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.volumeId = volumeId;
+  query.expectedObjectClass = [GTLBooksReadingPosition class];
+  return query;
+}
+
++ (id)queryForMylibraryReadingpositionsSetPositionWithVolumeId:(NSString *)volumeId
+                                                     timestamp:(NSString *)timestamp
+                                                      position:(NSString *)position {
+  NSString *methodName = @"books.mylibrary.readingpositions.setPosition";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.volumeId = volumeId;
+  query.timestamp = timestamp;
+  query.position = position;
   return query;
 }
 

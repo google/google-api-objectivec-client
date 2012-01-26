@@ -77,6 +77,8 @@
 // "timeMax" has different types for some query methods; see the documentation
 // for the right type for each query method.
 @property (retain) id timeMax;
+// "timeMin" has different types for some query methods; see the documentation
+// for the right type for each query method.
 @property (retain) id timeMin;
 @property (copy) NSString *timeZone;
 @property (copy) NSString *updatedMin;

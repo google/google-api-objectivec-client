@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
 // Classes:
-//   GTLQueryBooks (19 custom class methods, 27 custom properties)
+//   GTLQueryBooks (22 custom class methods, 31 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -48,6 +48,7 @@
 //
 // Method-specific parameters; see the comments below for more information.
 //
+@property (copy) NSString *action;
 @property (copy) NSString *annotationId;
 @property (copy) NSString *contentVersion;
 @property (copy) NSString *country;
@@ -64,6 +65,7 @@
 @property (retain) NSArray *pageIds;  // of NSString
 @property (copy) NSString *pageToken;
 @property (copy) NSString *partner;
+@property (copy) NSString *position;
 @property (copy) NSString *printType;
 @property (copy) NSString *projection;
 @property (copy) NSString *q;
@@ -71,9 +73,11 @@
 @property (assign) BOOL showPreorders;
 @property (copy) NSString *source;
 @property (assign) NSUInteger startIndex;
+@property (copy) NSString *timestamp;
 @property (copy) NSString *userId;
 @property (copy) NSString *volumeId;
 @property (retain) NSArray *volumeIds;  // of NSString
+@property (assign) NSInteger volumePosition;
 
 #pragma mark -
 #pragma mark "bookshelves" methods
@@ -176,6 +180,7 @@
 //  Optional:
 //   country: ISO-3166-1 code to override the IP-based location.
 //   locale: ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US.
+//   showPreorders: Set to true to show pre-ordered books. Defaults to false.
 //   volumeIds: The volume(s) to request download restrictions for.
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
@@ -300,6 +305,23 @@
 // Fetches a GTLBooksBookshelves.
 + (id)queryForMylibraryBookshelvesList;
 
+// Method: books.mylibrary.bookshelves.moveVolume
+// Moves a volume within a bookshelf.
+//  Required:
+//   shelf: Id of bookshelf with the volume.
+//   volumeId: Id of volume to move.
+//   volumePosition: Position on shelf to move the item (0 puts the item before
+//     the current first item, 1 puts it between the first and the second and so
+//     on.)
+//  Optional:
+//   country: ISO-3166-1 code to override the IP-based location.
+//   source: String to identify the originator of this request.
+//  Authorization scope(s):
+//   kGTLAuthScopeBooks
++ (id)queryForMylibraryBookshelvesMoveVolumeWithShelf:(NSString *)shelf
+                                             volumeId:(NSString *)volumeId
+                                       volumePosition:(NSInteger)volumePosition;
+
 // Method: books.mylibrary.bookshelves.removeVolume
 // Removes a volume from a bookshelf.
 //  Required:
@@ -335,6 +357,49 @@
 //   kGTLAuthScopeBooks
 // Fetches a GTLBooksVolumes.
 + (id)queryForMylibraryBookshelvesVolumesList;
+
+#pragma mark -
+#pragma mark "mylibrary.readingpositions" methods
+// These create a GTLQueryBooks object.
+
+// Method: books.mylibrary.readingpositions.get
+// Retrieves my reading position information for a volume.
+//  Required:
+//   volumeId: Id of volume for which to retrieve a reading position.
+//  Optional:
+//   contentVersion: Volume content version for which this reading position is
+//     requested.
+//   country: ISO-3166-1 code to override the IP-based location.
+//   source: String to identify the originator of this request.
+//  Authorization scope(s):
+//   kGTLAuthScopeBooks
+// Fetches a GTLBooksReadingPosition.
++ (id)queryForMylibraryReadingpositionsGetWithVolumeId:(NSString *)volumeId;
+
+// Method: books.mylibrary.readingpositions.setPosition
+// Sets my reading position information for a volume.
+//  Required:
+//   volumeId: Id of volume for which to update the reading position.
+//   timestamp: RFC 3339 UTC format timestamp associated with this reading
+//     position.
+//   position: Position string for the new volume reading position.
+//  Optional:
+//   action: Action that caused this reading position to be set.
+//      kGTLBooksActionBookmark: User chose bookmark within volume.
+//      kGTLBooksActionChapter: User selected chapter from list.
+//      kGTLBooksActionNextPage: Next page event.
+//      kGTLBooksActionPrevPage: Previous page event.
+//      kGTLBooksActionScroll: User navigated to page.
+//      kGTLBooksActionSearch: User chose search results within volume.
+//   contentVersion: Volume content version for which this reading position
+//     applies.
+//   country: ISO-3166-1 code to override the IP-based location.
+//   source: String to identify the originator of this request.
+//  Authorization scope(s):
+//   kGTLAuthScopeBooks
++ (id)queryForMylibraryReadingpositionsSetPositionWithVolumeId:(NSString *)volumeId
+                                                     timestamp:(NSString *)timestamp
+                                                      position:(NSString *)position;
 
 #pragma mark -
 #pragma mark "volumes" methods

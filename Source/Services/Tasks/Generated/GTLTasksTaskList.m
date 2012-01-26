@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/tasks/v1/using.html
 // Classes:
-//   GTLTasksTaskList (0 custom class methods, 5 custom properties)
+//   GTLTasksTaskList (0 custom class methods, 6 custom properties)
 
 #import "GTLTasksTaskList.h"
 
@@ -36,7 +36,7 @@
 //
 
 @implementation GTLTasksTaskList
-@dynamic ETag, identifier, kind, selfLink, title;
+@dynamic ETag, identifier, kind, selfLink, title, updated;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

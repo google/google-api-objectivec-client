@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,6 +27,9 @@
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 
 #import "GTLShoppingConstants.h"
+
+// Authorization scope
+NSString * const kGTLAuthScopeShoppingShoppingapi = @"https://www.googleapis.com/auth/shoppingapi";
 
 // MinAvailability
 NSString * const kGTLShoppingMinAvailabilityInStock    = @"inStock";

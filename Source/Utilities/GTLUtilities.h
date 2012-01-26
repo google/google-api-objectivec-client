@@ -32,10 +32,6 @@ NSNumber *GTL_EnsureNSNumber(NSNumber *num);
 
 @interface GTLUtilities : NSObject
 
-// Utility for replacing whitespace and removing unsafe symbols for a
-// user-agent string
-+ (NSString *)userAgentStringForString:(NSString *)str;
-
 //
 // String encoding
 //

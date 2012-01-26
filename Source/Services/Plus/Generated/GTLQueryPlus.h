@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   http://developers.google.com/+/api/
 // Classes:
-//   GTLQueryPlus (8 custom class methods, 11 custom properties)
+//   GTLQueryPlus (8 custom class methods, 12 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -55,6 +55,7 @@
 @property (copy) NSString *orderBy;
 @property (copy) NSString *pageToken;
 @property (copy) NSString *query;
+@property (assign) BOOL reverse;
 @property (copy) NSString *userId;
 
 #pragma mark -
@@ -150,6 +151,8 @@
 //   pageToken: The continuation token, used to page through large result sets.
 //     To get the next page of results, set this parameter to the value of
 //     "nextPageToken" from the previous response.
+//   reverse: Whether to return comments in reverse chronological order, newest
+//     first. (Default false)
 //  Authorization scope(s):
 //   kGTLAuthScopePlusMe
 // Fetches a GTLPlusCommentFeed.
@@ -166,6 +169,7 @@
 //     can be used to indicate the authenticated user.
 //  Authorization scope(s):
 //   kGTLAuthScopePlusMe
+//   kGTLAuthScopePlusUserinfoEmail
 // Fetches a GTLPlusPerson.
 + (id)queryForPeopleGetWithUserId:(NSString *)userId;
 

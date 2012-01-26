@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,6 +39,21 @@
 #import "GTLOrkutBadgeList.h"
 #import "GTLOrkutComment.h"
 #import "GTLOrkutCommentList.h"
+#import "GTLOrkutCommunity.h"
+#import "GTLOrkutCommunityList.h"
+#import "GTLOrkutCommunityMembers.h"
+#import "GTLOrkutCommunityMembershipStatus.h"
+#import "GTLOrkutCommunityMembersList.h"
+#import "GTLOrkutCommunityMessage.h"
+#import "GTLOrkutCommunityMessageList.h"
+#import "GTLOrkutCommunityPoll.h"
+#import "GTLOrkutCommunityPollComment.h"
+#import "GTLOrkutCommunityPollCommentList.h"
+#import "GTLOrkutCommunityPollList.h"
+#import "GTLOrkutCommunitypolloptionResource.h"
+#import "GTLOrkutCommunityPollVote.h"
+#import "GTLOrkutCommunityTopic.h"
+#import "GTLOrkutCommunityTopicList.h"
 #import "GTLOrkutCounterResource.h"
 #import "GTLOrkutCounters.h"
 #import "GTLOrkutLinkResource.h"

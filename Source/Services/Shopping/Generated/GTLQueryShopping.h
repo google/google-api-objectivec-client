@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -126,6 +126,8 @@
 //   productFields: Google Internal
 //   taxonomy: Merchant taxonomy
 //   thumbnails: Thumbnail specification
+//  Authorization scope(s):
+//   kGTLAuthScopeShoppingShoppingapi
 // Fetches a GTLShoppingProduct.
 + (id)queryForProductsGetWithSource:(NSString *)source
                           accountId:(NSUInteger)accountId
@@ -165,6 +167,8 @@
 //   taxonomy: Taxonomy name
 //   thumbnails: Image thumbnails specification
 //   useCase: One of CommerceSearchUseCase, ShoppingApiUseCase
+//  Authorization scope(s):
+//   kGTLAuthScopeShoppingShoppingapi
 // Fetches a GTLShoppingProducts.
 + (id)queryForProductsListWithSource:(NSString *)source;
 

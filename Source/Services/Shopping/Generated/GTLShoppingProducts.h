@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,10 +26,9 @@
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
-//   GTLShoppingProducts (0 custom class methods, 21 custom properties)
+//   GTLShoppingProducts (0 custom class methods, 20 custom properties)
 //   GTLShoppingProductsFacetsItem (0 custom class methods, 7 custom properties)
 //   GTLShoppingProductsPromotionsItem (0 custom class methods, 9 custom properties)
-//   GTLShoppingProductsShelfSpaceAdsItem (0 custom class methods, 1 custom properties)
 //   GTLShoppingProductsSpelling (0 custom class methods, 1 custom properties)
 //   GTLShoppingProductsStoresItem (0 custom class methods, 6 custom properties)
 //   GTLShoppingProductsFacetsItemBucketsItem (0 custom class methods, 6 custom properties)
@@ -49,7 +48,6 @@
 @class GTLShoppingProductsFacetsItemBucketsItem;
 @class GTLShoppingProductsPromotionsItem;
 @class GTLShoppingProductsPromotionsItemCustomFieldsItem;
-@class GTLShoppingProductsShelfSpaceAdsItem;
 @class GTLShoppingProductsSpelling;
 @class GTLShoppingProductsStoresItem;
 
@@ -111,8 +109,6 @@
 
 // Self link of feed.
 @property (copy) NSString *selfLink;
-
-@property (retain) NSArray *shelfSpaceAds;  // of GTLShoppingProductsShelfSpaceAdsItem
 
 // Spelling.
 @property (retain) GTLShoppingProductsSpelling *spelling;
@@ -199,16 +195,6 @@
 // Type of promotion (one of: standard, product, custom).
 @property (copy) NSString *type;
 
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLShoppingProductsShelfSpaceAdsItem
-//
-
-@interface GTLShoppingProductsShelfSpaceAdsItem : GTLObject
-@property (retain) GTLShoppingModelProduct *product;
 @end
 
 

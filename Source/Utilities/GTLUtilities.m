@@ -19,50 +19,6 @@
 
 @implementation GTLUtilities
 
-+ (NSString *)userAgentStringForString:(NSString *)str {
-  // make a proper token without whitespace from the given string
-  //
-  // per http://www.w3.org/Protocols/rfc2616/rfc2616-sec2.html
-  // and http://www-archive.mozilla.org/build/user-agent-strings.html
-
-  if (str == nil) return nil;
-
-  NSMutableString *result = [NSMutableString stringWithString:str];
-
-  // replace spaces with underscores
-  [result replaceOccurrencesOfString:@" "
-                          withString:@"_"
-                             options:0
-                               range:NSMakeRange(0, [result length])];
-
-  // delete http token separators and remaining whitespace
-  static NSCharacterSet *charsToDelete = nil;
-
-  @synchronized([GTLUtilities class]) {
-    if (charsToDelete == nil) {
-
-      // make a set of unwanted characters
-      NSString *const kSeparators = @"()<>@,;:\\\"/[]?={}";
-
-      NSMutableCharacterSet *mutableChars
-        = [[[NSCharacterSet whitespaceAndNewlineCharacterSet] mutableCopy] autorelease];
-
-      [mutableChars addCharactersInString:kSeparators];
-
-      charsToDelete = [mutableChars copy]; // hang on to an immutable copy
-    }
-  }
-
-  while (1) {
-    NSRange separatorRange = [result rangeOfCharacterFromSet:charsToDelete];
-    if (separatorRange.location == NSNotFound) break;
-
-    [result deleteCharactersInRange:separatorRange];
-  };
-
-  return result;
-}
-
 #pragma mark String encoding
 
 // URL Encoding

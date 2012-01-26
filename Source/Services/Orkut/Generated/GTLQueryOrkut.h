@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@
 // Documentation:
 //   http://code.google.com/apis/orkut/v2/reference.html
 // Classes:
-//   GTLQueryOrkut (14 custom class methods, 10 custom properties)
+//   GTLQueryOrkut (35 custom class methods, 16 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -37,6 +37,10 @@
 
 @class GTLOrkutActivity;
 @class GTLOrkutComment;
+@class GTLOrkutCommunityMessage;
+@class GTLOrkutCommunityPollComment;
+@class GTLOrkutCommunityPollVote;
+@class GTLOrkutCommunityTopic;
 @class GTLOrkutVisibility;
 
 @interface GTLQueryOrkut : GTLQuery
@@ -55,10 +59,18 @@
 @property (assign) long long badgeId;
 @property (copy) NSString *collection;
 @property (copy) NSString *commentId;
+// "communityId" has different types for some query methods; see the
+// documentation for the right type for each query method.
+@property (retain) id communityId;
+@property (assign) BOOL friendsOnly;
 @property (copy) NSString *hl;
+@property (assign) BOOL isShout;
 @property (assign) NSUInteger maxResults;
+@property (assign) unsigned long long messageId;
 @property (copy) NSString *orderBy;
 @property (copy) NSString *pageToken;
+@property (copy) NSString *pollId;
+@property (assign) unsigned long long topicId;
 @property (copy) NSString *userId;
 
 #pragma mark -
@@ -228,6 +240,333 @@
 //   kGTLAuthScopeOrkutReadonly
 // Fetches a GTLOrkutCommentList.
 + (id)queryForCommentsListWithActivityId:(NSString *)activityId;
+
+#pragma mark -
+#pragma mark "communities" methods
+// These create a GTLQueryOrkut object.
+
+// Method: orkut.communities.get
+// Retrieves the profile of a community.
+//  Required:
+//   communityId: The ID of the community to get.
+//  Optional:
+//   hl: Specifies the interface language (host language) of your user
+//     interface.
+//  Authorization scope(s):
+//   kGTLAuthScopeOrkut
+//   kGTLAuthScopeOrkutReadonly
+// Fetches a GTLOrkutCommunity.
++ (id)queryForCommunitiesGetWithCommunityId:(NSInteger)communityId;
+
+// Method: orkut.communities.list
+// Retrieves the communities an user is member of.
+//  Required:
+//   userId: The ID of the user whose communities will be listed. Can be me to
+//     refer to caller.
+//  Optional:
+//   hl: Specifies the interface language (host language) of your user
+//     interface.
+//   maxResults: The maximum number of communities to include in the response.
+//   orderBy: How to order the communities by.
+//      kGTLOrkutOrderById: Returns the communities sorted by a fixed, natural
+//        order.
+//      kGTLOrkutOrderByRanked: Returns the communities ranked accordingly to
+//        how they are displayed on the orkut web application.
+//  Authorization scope(s):
+//   kGTLAuthScopeOrkut
+//   kGTLAuthScopeOrkutReadonly
+// Fetches a GTLOrkutCommunityList.
++ (id)queryForCommunitiesListWithUserId:(NSString *)userId;
+
+#pragma mark -
+#pragma mark "communityFollow" methods
+// These create a GTLQueryOrkut object.
+
+// Method: orkut.communityFollow.delete
+// Removes an user from the followers of a community.
+//  Required:
+//   communityId: ID of the community.
+//   userId: ID of the user.
+//  Authorization scope(s):
+//   kGTLAuthScopeOrkut
++ (id)queryForCommunityFollowDeleteWithCommunityId:(NSInteger)communityId
+                                            userId:(NSString *)userId;
+
+// Method: orkut.communityFollow.insert
+// Adds an user as a follower of a community.
+//  Required:
+//   communityId: ID of the community.
+//   userId: ID of the user.
+//  Authorization scope(s):
+//   kGTLAuthScopeOrkut
+// Fetches a GTLOrkutCommunityMembers.
++ (id)queryForCommunityFollowInsertWithCommunityId:(NSInteger)communityId
+                                            userId:(NSString *)userId;
+
+#pragma mark -
+#pragma mark "communityMembers" methods
+// These create a GTLQueryOrkut object.
+
+// Method: orkut.communityMembers.delete
+// Makes the user leave a community.
+//  Required:
+//   communityId: ID of the community.
+//   userId: ID of the user.
+//  Authorization scope(s):
+//   kGTLAuthScopeOrkut
++ (id)queryForCommunityMembersDeleteWithCommunityId:(NSInteger)communityId
+                                             userId:(NSString *)userId;
+
+// Method: orkut.communityMembers.get
+// Retrieves the relationship between a user and a community.
+//  Required:
+//   communityId: ID of the community.
+//   userId: ID of the user.
+//  Optional:
+//   hl: Specifies the interface language (host language) of your user
+//     interface.
+//  Authorization scope(s):
+//   kGTLAuthScopeOrkut
+//   kGTLAuthScopeOrkutReadonly
+// Fetches a GTLOrkutCommunityMembers.
++ (id)queryForCommunityMembersGetWithCommunityId:(NSInteger)communityId
+                                          userId:(NSString *)userId;
+
+// Method: orkut.communityMembers.insert
+// Makes the user join a community.
+//  Required:
+//   communityId: ID of the community.
+//   userId: ID of the user.
+//  Authorization scope(s):
+//   kGTLAuthScopeOrkut
+// Fetches a GTLOrkutCommunityMembers.
++ (id)queryForCommunityMembersInsertWithCommunityId:(NSInteger)communityId
+                                             userId:(NSString *)userId;
+
+// Method: orkut.communityMembers.list
+// Lists members of a community.
+//  Required:
+//   communityId: The ID of the community whose members will be listed.
+//  Optional:
+//   friendsOnly: Whether to list only community members who are friends of the
+//     user.
+//   hl: Specifies the interface language (host language) of your user
+//     interface.
+//   maxResults: The maximum number of members to include in the response.
+//   pageToken: A continuation token that allows pagination.
+//  Authorization scope(s):
+//   kGTLAuthScopeOrkut
+//   kGTLAuthScopeOrkutReadonly
+// Fetches a GTLOrkutCommunityMembersList.
++ (id)queryForCommunityMembersListWithCommunityId:(NSInteger)communityId;
+
+#pragma mark -
+#pragma mark "communityMessages" methods
+// These create a GTLQueryOrkut object.
+
+// Method: orkut.communityMessages.delete
+// Moves a message of the community to the trash folder.
+//  Required:
+//   communityId: The ID of the community whose message will be moved to the
+//     trash folder.
+//   topicId: The ID of the topic whose message will be moved to the trash
+//     folder.
+//   messageId: The ID of the message to be moved to the trash folder.
+//  Authorization scope(s):
+//   kGTLAuthScopeOrkut
++ (id)queryForCommunityMessagesDeleteWithCommunityId:(NSInteger)communityId
+                                             topicId:(unsigned long long)topicId
+                                           messageId:(unsigned long long)messageId;
+
+// Method: orkut.communityMessages.insert
+// Adds a message to a given community topic.
+//  Required:
+//   communityId: The ID of the community the message should be added to.
+//   topicId: The ID of the topic the message should be added to.
+//  Authorization scope(s):
+//   kGTLAuthScopeOrkut
+// Fetches a GTLOrkutCommunityMessage.
++ (id)queryForCommunityMessagesInsertWithObject:(GTLOrkutCommunityMessage *)object
+                                    communityId:(NSInteger)communityId
+                                        topicId:(unsigned long long)topicId;
+
+// Method: orkut.communityMessages.list
+// Retrieves the messages of a topic of a community.
+//  Required:
+//   communityId: The ID of the community which messages will be listed.
+//   topicId: The ID of the topic which messages will be listed.
+//  Optional:
+//   hl: Specifies the interface language (host language) of your user
+//     interface.
+//   maxResults: The maximum number of messages to include in the response.
+//     (1..100)
+//   pageToken: A continuation token that allows pagination.
+//  Authorization scope(s):
+//   kGTLAuthScopeOrkut
+//   kGTLAuthScopeOrkutReadonly
+// Fetches a GTLOrkutCommunityMessageList.
++ (id)queryForCommunityMessagesListWithCommunityId:(NSInteger)communityId
+                                           topicId:(unsigned long long)topicId;
+
+#pragma mark -
+#pragma mark "communityPollComments" methods
+// These create a GTLQueryOrkut object.
+
+// Method: orkut.communityPollComments.insert
+// Adds a comment on a community poll.
+//  Required:
+//   communityId: The ID of the community whose poll is being commented.
+//   pollId: The ID of the poll being commented.
+//  Authorization scope(s):
+//   kGTLAuthScopeOrkut
+// Fetches a GTLOrkutCommunityPollComment.
++ (id)queryForCommunityPollCommentsInsertWithObject:(GTLOrkutCommunityPollComment *)object
+                                        communityId:(NSInteger)communityId
+                                             pollId:(NSString *)pollId;
+
+// Method: orkut.communityPollComments.list
+// Retrieves the comments of a community poll.
+//  Required:
+//   communityId: The ID of the community whose poll is having its comments
+//     listed.
+//   pollId: The ID of the community whose polls will be listed.
+//  Optional:
+//   hl: Specifies the interface language (host language) of your user
+//     interface.
+//   maxResults: The maximum number of comments to include in the response.
+//   pageToken: A continuation token that allows pagination.
+//  Authorization scope(s):
+//   kGTLAuthScopeOrkut
+//   kGTLAuthScopeOrkutReadonly
+// Fetches a GTLOrkutCommunityPollCommentList.
++ (id)queryForCommunityPollCommentsListWithCommunityId:(NSInteger)communityId
+                                                pollId:(NSString *)pollId;
+
+#pragma mark -
+#pragma mark "communityPolls" methods
+// These create a GTLQueryOrkut object.
+
+// Method: orkut.communityPolls.get
+// Retrieves one specific poll of a community.
+//  Required:
+//   communityId: The ID of the community for whose poll will be retrieved.
+//   pollId: The ID of the poll to get.
+//  Optional:
+//   hl: Specifies the interface language (host language) of your user
+//     interface.
+//  Authorization scope(s):
+//   kGTLAuthScopeOrkut
+//   kGTLAuthScopeOrkutReadonly
+// Fetches a GTLOrkutCommunityPoll.
++ (id)queryForCommunityPollsGetWithCommunityId:(NSInteger)communityId
+                                        pollId:(NSString *)pollId;
+
+// Method: orkut.communityPolls.list
+// Retrieves the polls of a community.
+//  Required:
+//   communityId: The ID of the community which polls will be listed.
+//  Optional:
+//   hl: Specifies the interface language (host language) of your user
+//     interface.
+//   maxResults: The maximum number of polls to include in the response.
+//   pageToken: A continuation token that allows pagination.
+//  Authorization scope(s):
+//   kGTLAuthScopeOrkut
+//   kGTLAuthScopeOrkutReadonly
+// Fetches a GTLOrkutCommunityPollList.
++ (id)queryForCommunityPollsListWithCommunityId:(NSString *)communityId;
+
+#pragma mark -
+#pragma mark "communityPollVotes" methods
+// These create a GTLQueryOrkut object.
+
+// Method: orkut.communityPollVotes.insert
+// Votes on a community poll.
+//  Required:
+//   communityId: The ID of the community whose poll is being voted.
+//   pollId: The ID of the poll being voted.
+//  Authorization scope(s):
+//   kGTLAuthScopeOrkut
+// Fetches a GTLOrkutCommunityPollVote.
++ (id)queryForCommunityPollVotesInsertWithObject:(GTLOrkutCommunityPollVote *)object
+                                     communityId:(NSInteger)communityId
+                                          pollId:(NSString *)pollId;
+
+#pragma mark -
+#pragma mark "communityRelated" methods
+// These create a GTLQueryOrkut object.
+
+// Method: orkut.communityRelated.list
+// Retrieves the communities related to another one.
+//  Required:
+//   communityId: The ID of the community whose related communities will be
+//     listed.
+//  Optional:
+//   hl: Specifies the interface language (host language) of your user
+//     interface.
+//  Authorization scope(s):
+//   kGTLAuthScopeOrkut
+//   kGTLAuthScopeOrkutReadonly
+// Fetches a GTLOrkutCommunityList.
++ (id)queryForCommunityRelatedListWithCommunityId:(NSInteger)communityId;
+
+#pragma mark -
+#pragma mark "communityTopics" methods
+// These create a GTLQueryOrkut object.
+
+// Method: orkut.communityTopics.delete
+// Moves a topic of the community to the trash folder.
+//  Required:
+//   communityId: The ID of the community whose topic will be moved to the trash
+//     folder.
+//   topicId: The ID of the topic to be moved to the trash folder.
+//  Authorization scope(s):
+//   kGTLAuthScopeOrkut
++ (id)queryForCommunityTopicsDeleteWithCommunityId:(NSInteger)communityId
+                                           topicId:(unsigned long long)topicId;
+
+// Method: orkut.communityTopics.get
+// Retrieves a topic of a community.
+//  Required:
+//   communityId: The ID of the community whose topic will be retrieved.
+//   topicId: The ID of the topic to get.
+//  Optional:
+//   hl: Specifies the interface language (host language) of your user
+//     interface.
+//  Authorization scope(s):
+//   kGTLAuthScopeOrkut
+//   kGTLAuthScopeOrkutReadonly
+// Fetches a GTLOrkutCommunityTopic.
++ (id)queryForCommunityTopicsGetWithCommunityId:(NSInteger)communityId
+                                        topicId:(unsigned long long)topicId;
+
+// Method: orkut.communityTopics.insert
+// Adds a topic to a given community.
+//  Required:
+//   communityId: The ID of the community the topic should be added to.
+//  Optional:
+//   isShout: Whether this topic is a shout.
+//  Authorization scope(s):
+//   kGTLAuthScopeOrkut
+// Fetches a GTLOrkutCommunityTopic.
++ (id)queryForCommunityTopicsInsertWithObject:(GTLOrkutCommunityTopic *)object
+                                  communityId:(NSInteger)communityId;
+
+// Method: orkut.communityTopics.list
+// Retrieves the topics of a community.
+//  Required:
+//   communityId: The ID of the community which topics will be listed.
+//  Optional:
+//   hl: Specifies the interface language (host language) of your user
+//     interface.
+//   maxResults: The maximum number of topics to include in the response.
+//     (1..100)
+//   pageToken: A continuation token that allows pagination.
+//  Authorization scope(s):
+//   kGTLAuthScopeOrkut
+//   kGTLAuthScopeOrkutReadonly
+// Fetches a GTLOrkutCommunityTopicList.
++ (id)queryForCommunityTopicsListWithCommunityId:(NSInteger)communityId;
 
 #pragma mark -
 #pragma mark "counters" methods

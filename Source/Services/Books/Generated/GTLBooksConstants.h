@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,6 +37,14 @@
 // Authorization scope
 // Manage your books
 GTL_EXTERN NSString * const kGTLAuthScopeBooks;  // "https://www.googleapis.com/auth/books"
+
+// Action
+GTL_EXTERN NSString * const kGTLBooksActionBookmark;  // "bookmark"
+GTL_EXTERN NSString * const kGTLBooksActionChapter;   // "chapter"
+GTL_EXTERN NSString * const kGTLBooksActionNextPage;  // "next-page"
+GTL_EXTERN NSString * const kGTLBooksActionPrevPage;  // "prev-page"
+GTL_EXTERN NSString * const kGTLBooksActionScroll;    // "scroll"
+GTL_EXTERN NSString * const kGTLBooksActionSearch;    // "search"
 
 // Download
 GTL_EXTERN NSString * const kGTLBooksDownloadEpub;  // "epub"

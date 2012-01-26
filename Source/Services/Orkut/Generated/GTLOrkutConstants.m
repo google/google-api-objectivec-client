@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,3 +41,5 @@ NSString * const kGTLOrkutCollectionStream = @"stream";
 // OrderBy
 NSString * const kGTLOrkutOrderByAscending  = @"ascending";
 NSString * const kGTLOrkutOrderByDescending = @"descending";
+NSString * const kGTLOrkutOrderById         = @"id";
+NSString * const kGTLOrkutOrderByRanked     = @"ranked";
