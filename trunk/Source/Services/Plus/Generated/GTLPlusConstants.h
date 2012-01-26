@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,9 @@
 
 // Authorization scope
 // Know who you are on Google
-GTL_EXTERN NSString * const kGTLAuthScopePlusMe;  // "https://www.googleapis.com/auth/plus.me"
+GTL_EXTERN NSString * const kGTLAuthScopePlusMe;             // "https://www.googleapis.com/auth/plus.me"
+// View your email address
+GTL_EXTERN NSString * const kGTLAuthScopePlusUserinfoEmail;  // "https://www.googleapis.com/auth/userinfo.email"
 
 // Alt
 GTL_EXTERN NSString * const kGTLPlusAltJson;  // "json"

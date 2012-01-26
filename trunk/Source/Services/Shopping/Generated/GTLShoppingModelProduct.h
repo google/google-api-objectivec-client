@@ -26,10 +26,11 @@
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
-//   GTLShoppingModelProduct (0 custom class methods, 22 custom properties)
+//   GTLShoppingModelProduct (0 custom class methods, 33 custom properties)
 //   GTLShoppingModelProductAttributesItem (0 custom class methods, 5 custom properties)
-//   GTLShoppingModelProductAuthor (0 custom class methods, 5 custom properties)
+//   GTLShoppingModelProductAuthor (0 custom class methods, 2 custom properties)
 //   GTLShoppingModelProductImagesItem (0 custom class methods, 2 custom properties)
+//   GTLShoppingModelProductInternal4Item (0 custom class methods, 2 custom properties)
 //   GTLShoppingModelProductInventoriesItem (0 custom class methods, 9 custom properties)
 //   GTLShoppingModelProductVariantsItem (0 custom class methods, 1 custom properties)
 //   GTLShoppingModelProductImagesItemThumbnailsItem (0 custom class methods, 4 custom properties)
@@ -45,6 +46,7 @@
 @class GTLShoppingModelProductAuthor;
 @class GTLShoppingModelProductImagesItem;
 @class GTLShoppingModelProductImagesItemThumbnailsItem;
+@class GTLShoppingModelProductInternal4Item;
 @class GTLShoppingModelProductInventoriesItem;
 @class GTLShoppingModelProductVariantsItem;
 
@@ -92,6 +94,39 @@
 
 // Images of product.
 @property (retain) NSArray *images;  // of GTLShoppingModelProductImagesItem
+
+// Google Internal.
+@property (retain) NSArray *internal1;  // of NSString
+
+// Google Internal.
+@property (retain) NSArray *internal10;  // of NSString
+
+// Google Internal.
+@property (copy) NSString *internal12;
+
+// Google Internal.
+@property (retain) NSNumber *internal13;  // doubleValue
+
+// Google Internal.
+@property (retain) NSNumber *internal14;  // doubleValue
+
+// Google Internal.
+@property (retain) NSNumber *internal15;  // doubleValue
+
+// Google Internal.
+@property (copy) NSString *internal3;
+
+// Google Internal.
+@property (retain) NSArray *internal4;  // of GTLShoppingModelProductInternal4Item
+
+// Google Internal.
+@property (copy) NSString *internal6;
+
+// Google Internal.
+@property (retain) NSNumber *internal7;  // boolValue
+
+// Google Internal.
+@property (retain) NSArray *internal8;  // of NSString
 
 // Inventories of product.
 @property (retain) NSArray *inventories;  // of GTLShoppingModelProductInventoriesItem
@@ -162,17 +197,8 @@
 // Account id of product author.
 @property (copy) NSString *accountId;
 
-// Aggregator id of product author.
-@property (copy) NSString *aggregatorId;
-
-// Email address of product author.
-@property (copy) NSString *email;
-
 // Name of product author.
 @property (copy) NSString *name;
-
-// URI of product author.
-@property (copy) NSString *uri;
 
 @end
 
@@ -190,6 +216,17 @@
 // Thumbnails of product image.
 @property (retain) NSArray *thumbnails;  // of GTLShoppingModelProductImagesItemThumbnailsItem
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLShoppingModelProductInternal4Item
+//
+
+@interface GTLShoppingModelProductInternal4Item : GTLObject
+@property (retain) NSNumber *confidence;  // doubleValue
+@property (retain) NSNumber *node;  // intValue
 @end
 
 

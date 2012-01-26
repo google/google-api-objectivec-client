@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -88,8 +88,8 @@
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
 
-// The end time of the event. For a recurring event, this is the end time of the
-// first instance.
+// The (exclusive) end time of the event. For a recurring event, this is the end
+// time of the first instance.
 @property (retain) GTLCalendarEventDateTime *end;
 
 // ETag of the resource.
@@ -131,7 +131,8 @@
 
 // The organizer of the event. If the organizer is also an attendee, this is
 // indicated with a separate entry in 'attendees' with the 'organizer' field set
-// to True.
+// to True. To change the organizer, use the "move" operation. Read-only, except
+// when importing an event.
 @property (retain) GTLCalendarEventOrganizer *organizer;
 
 // For an instance of a recurring event, this is the time at which this event
@@ -157,8 +158,8 @@
 // Sequence number as per iCalendar.
 @property (retain) NSNumber *sequence;  // intValue
 
-// The start time of the event. For a recurring event, this is the start time of
-// the first instance.
+// The (inclusive) start time of the event. For a recurring event, this is the
+// start time of the first instance.
 @property (retain) GTLCalendarEventDateTime *start;
 
 // Status of the event. Optional. Possible values are:
@@ -218,7 +219,8 @@
 
 // Properties that are private to the copy of the event that appears on this
 // calendar.
-@property (retain) GTLCalendarEventExtendedPropertiesPrivate *private;
+// Remapped to 'privateProperty' to avoid language reserved word 'private'.
+@property (retain) GTLCalendarEventExtendedPropertiesPrivate *privateProperty;
 
 // Properties that are shared between copies of the event on other attendees'
 // calendars.

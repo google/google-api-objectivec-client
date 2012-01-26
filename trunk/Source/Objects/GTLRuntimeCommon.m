@@ -400,7 +400,7 @@ static float DynamicFloatGetter(id self, SEL sel) {
     float result = [num floatValue];
     return result;
   }
-  return 0.0;
+  return 0.0f;
 }
 
 static void DynamicFloatSetter(id self, SEL sel, float val) {

@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -73,7 +73,7 @@
 
 // Whether this entry represents the calendar on which this copy of the event
 // appears. Read-only. The default is False.
-// Remapped to 'selfProperty' to avoid the word 'self'.
+// Remapped to 'selfProperty' to avoid language reserved word 'self'.
 @property (retain) NSNumber *selfProperty;  // boolValue
 
 @end

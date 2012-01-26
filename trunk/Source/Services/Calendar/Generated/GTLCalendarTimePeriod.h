@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,10 +41,10 @@
 
 @interface GTLCalendarTimePeriod : GTLObject
 
-// The end of the time period.
+// The (exclusive) end of the time period.
 @property (retain) GTLDateTime *end;
 
-// The start of the time period.
+// The (inclusive) start of the time period.
 @property (retain) GTLDateTime *start;
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   http://developers.google.com/+/api/
 // Classes:
-//   GTLQueryPlus (8 custom class methods, 11 custom properties)
+//   GTLQueryPlus (8 custom class methods, 12 custom properties)
 
 #import "GTLQueryPlus.h"
 
@@ -40,7 +40,7 @@
 @implementation GTLQueryPlus
 
 @dynamic activityId, alt, collection, commentId, fields, language, maxResults,
-         orderBy, pageToken, query, userId;
+         orderBy, pageToken, query, reverse, userId;
 
 #pragma mark -
 #pragma mark "activities" methods

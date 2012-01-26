@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@
 //   http://developers.google.com/+/api/
 // Classes:
 //   GTLPlusActivity (0 custom class methods, 20 custom properties)
-//   GTLPlusActivityActor (0 custom class methods, 4 custom properties)
+//   GTLPlusActivityActor (0 custom class methods, 6 custom properties)
 //   GTLPlusActivityObject (0 custom class methods, 10 custom properties)
 //   GTLPlusActivityProvider (0 custom class methods, 1 custom properties)
 //   GTLPlusActivityActorImage (0 custom class methods, 1 custom properties)
@@ -152,6 +152,12 @@
 
 // The name of the actor, suitable for display.
 @property (copy) NSString *displayName;
+
+// The family name of the actor.
+@property (copy) NSString *familyName;
+
+// The given name of the actor.
+@property (copy) NSString *givenName;
 
 // The ID of the actor's person resource.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').

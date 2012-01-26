@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -101,9 +101,9 @@
 // Method: analytics.management.accounts.list
 // Lists all accounts to which the user has access.
 //  Optional:
-//   maxResults: The maximum number of entries to include in this response.
-//   startIndex: An index of the first entity to retrieve. Use this parameter as
-//     a pagination mechanism along with the max-results parameter.
+//   maxResults: The maximum number of accounts to include in this response.
+//   startIndex: An index of the first account to retrieve. Use this parameter
+//     as a pagination mechanism along with the max-results parameter.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsAccounts.
@@ -116,19 +116,19 @@
 // Method: analytics.management.goals.list
 // Lists goals to which the user has access.
 //  Required:
-//   accountId: Account ID for the web properties to retrieve. Can either be a
-//     specific account ID or '~all', which refers to all the accounts to which
-//     the user has access.
-//   webPropertyId: Web property ID for the web properties to retrieve. Can
-//     either be a specific web property ID or '~all', which refers to all the
-//     web properties to which the user has access.
-//   profileId: Profile ID for the web properties to retrieve. Can either be a
-//     specific profile ID or '~all', which refers to all the profiles to which
-//     the user has access.
+//   accountId: Account ID to retrieve goals for. Can either be a specific
+//     account ID or '~all', which refers to all the accounts that user has
+//     access to.
+//   webPropertyId: Web property ID to retrieve goals for. Can either be a
+//     specific web property ID or '~all', which refers to all the web
+//     properties that user has access to.
+//   profileId: Profile ID to retrieve goals for. Can either be a specific
+//     profile ID or '~all', which refers to all the profiles that user has
+//     access to.
 //  Optional:
-//   maxResults: The maximum number of entries to include in this response.
-//   startIndex: An index of the first entity to retrieve. Use this parameter as
-//     a pagination mechanism along with the max-results parameter.
+//   maxResults: The maximum number of goals to include in this response.
+//   startIndex: An index of the first goal to retrieve. Use this parameter as a
+//     pagination mechanism along with the max-results parameter.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsGoals.
@@ -143,14 +143,14 @@
 // Method: analytics.management.profiles.list
 // Lists profiles to which the user has access.
 //  Required:
-//   accountId: Account ID for the web properties to retrieve. Can either be a
+//   accountId: Account ID for the profiles to retrieve. Can either be a
 //     specific account ID or '~all', which refers to all the accounts to which
 //     the user has access.
-//   webPropertyId: Web property ID for the web properties to retrieve. Can
-//     either be a specific web property ID or '~all', which refers to all the
-//     web properties to which the user has access.
+//   webPropertyId: Web property ID for the profiles to retrieve. Can either be
+//     a specific web property ID or '~all', which refers to all the web
+//     properties to which the user has access.
 //  Optional:
-//   maxResults: The maximum number of entries to include in this response.
+//   maxResults: The maximum number of profiles to include in this response.
 //   startIndex: An index of the first entity to retrieve. Use this parameter as
 //     a pagination mechanism along with the max-results parameter.
 //  Authorization scope(s):
@@ -166,9 +166,10 @@
 // Method: analytics.management.segments.list
 // Lists advanced segments to which the user has access.
 //  Optional:
-//   maxResults: The maximum number of entries to include in this response.
-//   startIndex: An index of the first entity to retrieve. Use this parameter as
-//     a pagination mechanism along with the max-results parameter.
+//   maxResults: The maximum number of advanced segments to include in this
+//     response.
+//   startIndex: An index of the first advanced segment to retrieve. Use this
+//     parameter as a pagination mechanism along with the max-results parameter.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsSegments.
@@ -181,11 +182,12 @@
 // Method: analytics.management.webproperties.list
 // Lists web properties to which the user has access.
 //  Required:
-//   accountId: Account ID for the web properties to retrieve. Can either be a
-//     specific account ID or '~all', which refers to all the accounts to which
-//     user has access.
+//   accountId: Account ID to retrieve web properties for. Can either be a
+//     specific account ID or '~all', which refers to all the accounts that user
+//     has access to.
 //  Optional:
-//   maxResults: The maximum number of entries to include in this response.
+//   maxResults: The maximum number of web properties to include in this
+//     response.
 //   startIndex: An index of the first entity to retrieve. Use this parameter as
 //     a pagination mechanism along with the max-results parameter.
 //  Authorization scope(s):

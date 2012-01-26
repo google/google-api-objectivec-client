@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,9 +26,10 @@
 // Documentation:
 //   https://code.google.com/apis/blogger/docs/2.0/json/getting_started.html
 // Classes:
-//   GTLBloggerComment (0 custom class methods, 9 custom properties)
+//   GTLBloggerComment (0 custom class methods, 10 custom properties)
 //   GTLBloggerCommentAuthor (0 custom class methods, 4 custom properties)
 //   GTLBloggerCommentBlog (0 custom class methods, 1 custom properties)
+//   GTLBloggerCommentInReplyTo (0 custom class methods, 1 custom properties)
 //   GTLBloggerCommentPost (0 custom class methods, 1 custom properties)
 //   GTLBloggerCommentAuthorImage (0 custom class methods, 1 custom properties)
 
@@ -41,6 +42,7 @@
 @class GTLBloggerCommentAuthor;
 @class GTLBloggerCommentAuthorImage;
 @class GTLBloggerCommentBlog;
+@class GTLBloggerCommentInReplyTo;
 @class GTLBloggerCommentPost;
 
 // ----------------------------------------------------------------------------
@@ -62,6 +64,9 @@
 // The identifier for this resource.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (retain) NSNumber *identifier;  // longLongValue
+
+// Data about the comment this is in reply to.
+@property (retain) GTLBloggerCommentInReplyTo *inReplyTo;
 
 // The kind of this entry. Always blogger#comment
 @property (copy) NSString *kind;
@@ -93,7 +98,7 @@
 
 // The identifier of the Comment creator.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSNumber *identifier;  // longLongValue
+@property (copy) NSString *identifier;
 
 // The comment creator's avatar.
 @property (retain) GTLBloggerCommentAuthorImage *image;
@@ -112,6 +117,20 @@
 @interface GTLBloggerCommentBlog : GTLObject
 
 // The identifier of the blog containing this comment.
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+@property (retain) NSNumber *identifier;  // longLongValue
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLBloggerCommentInReplyTo
+//
+
+@interface GTLBloggerCommentInReplyTo : GTLObject
+
+// The identified of the parent of this comment.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (retain) NSNumber *identifier;  // longLongValue
 
