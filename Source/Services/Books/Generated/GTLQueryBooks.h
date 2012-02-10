@@ -26,7 +26,7 @@
 // Documentation:
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
 // Classes:
-//   GTLQueryBooks (22 custom class methods, 31 custom properties)
+//   GTLQueryBooks (22 custom class methods, 33 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -74,6 +74,8 @@
 @property (copy) NSString *source;
 @property (assign) NSUInteger startIndex;
 @property (copy) NSString *timestamp;
+@property (copy) NSString *updatedMax;
+@property (copy) NSString *updatedMin;
 @property (copy) NSString *userId;
 @property (copy) NSString *volumeId;
 @property (retain) NSArray *volumeIds;  // of NSString
@@ -84,7 +86,7 @@
 // These create a GTLQueryBooks object.
 
 // Method: books.bookshelves.get
-// Retrieves a specific bookshelf for the specified user.
+// Retrieves metadata for a specific bookshelf for the specified user.
 //  Required:
 //   userId: Id of user for whom to retrieve bookshelves.
 //   shelf: Id of bookshelf to retrieve.
@@ -236,6 +238,10 @@
 //   pageIds: The page id(s) for the volume that is being queried.
 //   pageToken: The value of the nextToken from the previous page.
 //   source: String to identify the originator of this request.
+//   updatedMax: RFC 3339 timestamp to restrict to items updated prior to this
+//     timestamp (exclusive).
+//   updatedMin: RFC 3339 timestamp to restrict to items updated since this
+//     timestamp (inclusive).
 //   volumeId: The volume to restrict annotations to.
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
@@ -284,7 +290,8 @@
 + (id)queryForMylibraryBookshelvesClearVolumesWithShelf:(NSString *)shelf;
 
 // Method: books.mylibrary.bookshelves.get
-// Retrieves a specific bookshelf belonging to the authenticated user.
+// Retrieves metadata for a specific bookshelf belonging to the authenticated
+// user.
 //  Required:
 //   shelf: Id of bookshelf to retrieve.
 //  Optional:

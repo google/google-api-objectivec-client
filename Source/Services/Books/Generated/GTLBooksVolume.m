@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,13 +26,14 @@
 // Documentation:
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
 // Classes:
-//   GTLBooksVolume (0 custom class methods, 8 custom properties)
-//   GTLBooksVolumeAccessInfo (0 custom class methods, 9 custom properties)
+//   GTLBooksVolume (0 custom class methods, 9 custom properties)
+//   GTLBooksVolumeAccessInfo (0 custom class methods, 10 custom properties)
 //   GTLBooksVolumeSaleInfo (0 custom class methods, 7 custom properties)
+//   GTLBooksVolumeSearchInfo (0 custom class methods, 1 custom properties)
 //   GTLBooksVolumeUserInfo (0 custom class methods, 5 custom properties)
 //   GTLBooksVolumeVolumeInfo (0 custom class methods, 20 custom properties)
-//   GTLBooksVolumeAccessInfoEpub (0 custom class methods, 2 custom properties)
-//   GTLBooksVolumeAccessInfoPdf (0 custom class methods, 2 custom properties)
+//   GTLBooksVolumeAccessInfoEpub (0 custom class methods, 3 custom properties)
+//   GTLBooksVolumeAccessInfoPdf (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeSaleInfoListPrice (0 custom class methods, 2 custom properties)
 //   GTLBooksVolumeSaleInfoRetailPrice (0 custom class methods, 2 custom properties)
 //   GTLBooksVolumeVolumeInfoDimensions (0 custom class methods, 3 custom properties)
@@ -51,8 +52,8 @@
 //
 
 @implementation GTLBooksVolume
-@dynamic accessInfo, ETag, identifier, kind, saleInfo, selfLink, userInfo,
-         volumeInfo;
+@dynamic accessInfo, ETag, identifier, kind, saleInfo, searchInfo, selfLink,
+         userInfo, volumeInfo;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -77,7 +78,7 @@
 
 @implementation GTLBooksVolumeAccessInfo
 @dynamic accessViewStatus, country, downloadAccess, embeddable, epub, pdf,
-         publicDomain, textToSpeechPermission, viewability;
+         publicDomain, textToSpeechPermission, viewability, webReaderLink;
 @end
 
 
@@ -89,6 +90,16 @@
 @implementation GTLBooksVolumeSaleInfo
 @dynamic buyLink, country, isEbook, listPrice, onSaleDate, retailPrice,
          saleability;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksVolumeSearchInfo
+//
+
+@implementation GTLBooksVolumeSearchInfo
+@dynamic textSnippet;
 @end
 
 
@@ -140,7 +151,7 @@
 //
 
 @implementation GTLBooksVolumeAccessInfoEpub
-@dynamic acsTokenLink, downloadLink;
+@dynamic acsTokenLink, downloadLink, isAvailable;
 @end
 
 
@@ -150,7 +161,7 @@
 //
 
 @implementation GTLBooksVolumeAccessInfoPdf
-@dynamic acsTokenLink, downloadLink;
+@dynamic acsTokenLink, downloadLink, isAvailable;
 @end
 
 

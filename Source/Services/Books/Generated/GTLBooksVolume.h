@@ -26,13 +26,14 @@
 // Documentation:
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
 // Classes:
-//   GTLBooksVolume (0 custom class methods, 8 custom properties)
-//   GTLBooksVolumeAccessInfo (0 custom class methods, 9 custom properties)
+//   GTLBooksVolume (0 custom class methods, 9 custom properties)
+//   GTLBooksVolumeAccessInfo (0 custom class methods, 10 custom properties)
 //   GTLBooksVolumeSaleInfo (0 custom class methods, 7 custom properties)
+//   GTLBooksVolumeSearchInfo (0 custom class methods, 1 custom properties)
 //   GTLBooksVolumeUserInfo (0 custom class methods, 5 custom properties)
 //   GTLBooksVolumeVolumeInfo (0 custom class methods, 20 custom properties)
-//   GTLBooksVolumeAccessInfoEpub (0 custom class methods, 2 custom properties)
-//   GTLBooksVolumeAccessInfoPdf (0 custom class methods, 2 custom properties)
+//   GTLBooksVolumeAccessInfoEpub (0 custom class methods, 3 custom properties)
+//   GTLBooksVolumeAccessInfoPdf (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeSaleInfoListPrice (0 custom class methods, 2 custom properties)
 //   GTLBooksVolumeSaleInfoRetailPrice (0 custom class methods, 2 custom properties)
 //   GTLBooksVolumeVolumeInfoDimensions (0 custom class methods, 3 custom properties)
@@ -54,6 +55,7 @@
 @class GTLBooksVolumeSaleInfo;
 @class GTLBooksVolumeSaleInfoListPrice;
 @class GTLBooksVolumeSaleInfoRetailPrice;
+@class GTLBooksVolumeSearchInfo;
 @class GTLBooksVolumeUserInfo;
 @class GTLBooksVolumeVolumeInfo;
 @class GTLBooksVolumeVolumeInfoDimensions;
@@ -87,6 +89,9 @@
 // purchaseability. This information can depend on the country where the request
 // originates from (i.e. books may not be for sale in certain countries).
 @property (retain) GTLBooksVolumeSaleInfo *saleInfo;
+
+// Search result information related to this volume.
+@property (retain) GTLBooksVolumeSearchInfo *searchInfo;
 
 // URL to this resource. (In LITE projection.)
 @property (copy) NSString *selfLink;
@@ -144,6 +149,10 @@
 // non-eBooks. Public domain books will always have a value of ALL_PAGES.
 @property (copy) NSString *viewability;
 
+// URL to read this volume on the Google Books site. Link will not allow users
+// to read non-viewable volumes.
+@property (copy) NSString *webReaderLink;
+
 @end
 
 
@@ -179,6 +188,19 @@
 // Google eBookstore for the country listed above. Possible values are FOR_SALE,
 // FREE, NOT_FOR_SALE, or FOR_PREORDER.
 @property (copy) NSString *saleability;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksVolumeSearchInfo
+//
+
+@interface GTLBooksVolumeSearchInfo : GTLObject
+
+// A text snippet containing the search query.
+@property (copy) NSString *textSnippet;
 
 @end
 
@@ -304,6 +326,10 @@
 // URL to download epub. (In LITE projection.)
 @property (copy) NSString *downloadLink;
 
+// Is a flowing text epub available either as public domain or for purchase. (In
+// LITE projection.)
+@property (retain) NSNumber *isAvailable;  // boolValue
+
 @end
 
 
@@ -319,6 +345,10 @@
 
 // URL to download pdf. (In LITE projection.)
 @property (copy) NSString *downloadLink;
+
+// Is a scanned image pdf available either as public domain or for purchase. (In
+// LITE projection.)
+@property (retain) NSNumber *isAvailable;  // boolValue
 
 @end
 
