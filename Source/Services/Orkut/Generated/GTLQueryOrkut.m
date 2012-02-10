@@ -203,7 +203,7 @@
 + (id)queryForCommunitiesGetWithCommunityId:(NSInteger)communityId {
   NSString *methodName = @"orkut.communities.get";
   GTLQueryOrkut *query = [self queryWithMethodName:methodName];
-  query.communityId = [NSNumber numberWithInteger:communityId];
+  query.communityId = communityId;
   query.expectedObjectClass = [GTLOrkutCommunity class];
   return query;
 }
@@ -224,7 +224,7 @@
                                             userId:(NSString *)userId {
   NSString *methodName = @"orkut.communityFollow.delete";
   GTLQueryOrkut *query = [self queryWithMethodName:methodName];
-  query.communityId = [NSNumber numberWithInteger:communityId];
+  query.communityId = communityId;
   query.userId = userId;
   return query;
 }
@@ -233,7 +233,7 @@
                                             userId:(NSString *)userId {
   NSString *methodName = @"orkut.communityFollow.insert";
   GTLQueryOrkut *query = [self queryWithMethodName:methodName];
-  query.communityId = [NSNumber numberWithInteger:communityId];
+  query.communityId = communityId;
   query.userId = userId;
   query.expectedObjectClass = [GTLOrkutCommunityMembers class];
   return query;
@@ -247,7 +247,7 @@
                                              userId:(NSString *)userId {
   NSString *methodName = @"orkut.communityMembers.delete";
   GTLQueryOrkut *query = [self queryWithMethodName:methodName];
-  query.communityId = [NSNumber numberWithInteger:communityId];
+  query.communityId = communityId;
   query.userId = userId;
   return query;
 }
@@ -256,7 +256,7 @@
                                           userId:(NSString *)userId {
   NSString *methodName = @"orkut.communityMembers.get";
   GTLQueryOrkut *query = [self queryWithMethodName:methodName];
-  query.communityId = [NSNumber numberWithInteger:communityId];
+  query.communityId = communityId;
   query.userId = userId;
   query.expectedObjectClass = [GTLOrkutCommunityMembers class];
   return query;
@@ -266,7 +266,7 @@
                                              userId:(NSString *)userId {
   NSString *methodName = @"orkut.communityMembers.insert";
   GTLQueryOrkut *query = [self queryWithMethodName:methodName];
-  query.communityId = [NSNumber numberWithInteger:communityId];
+  query.communityId = communityId;
   query.userId = userId;
   query.expectedObjectClass = [GTLOrkutCommunityMembers class];
   return query;
@@ -275,7 +275,7 @@
 + (id)queryForCommunityMembersListWithCommunityId:(NSInteger)communityId {
   NSString *methodName = @"orkut.communityMembers.list";
   GTLQueryOrkut *query = [self queryWithMethodName:methodName];
-  query.communityId = [NSNumber numberWithInteger:communityId];
+  query.communityId = communityId;
   query.expectedObjectClass = [GTLOrkutCommunityMembersList class];
   return query;
 }
@@ -285,11 +285,11 @@
 // These create a GTLQueryOrkut object.
 
 + (id)queryForCommunityMessagesDeleteWithCommunityId:(NSInteger)communityId
-                                             topicId:(unsigned long long)topicId
-                                           messageId:(unsigned long long)messageId {
+                                             topicId:(long long)topicId
+                                           messageId:(long long)messageId {
   NSString *methodName = @"orkut.communityMessages.delete";
   GTLQueryOrkut *query = [self queryWithMethodName:methodName];
-  query.communityId = [NSNumber numberWithInteger:communityId];
+  query.communityId = communityId;
   query.topicId = topicId;
   query.messageId = messageId;
   return query;
@@ -297,7 +297,7 @@
 
 + (id)queryForCommunityMessagesInsertWithObject:(GTLOrkutCommunityMessage *)object
                                     communityId:(NSInteger)communityId
-                                        topicId:(unsigned long long)topicId {
+                                        topicId:(long long)topicId {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -305,17 +305,17 @@
   NSString *methodName = @"orkut.communityMessages.insert";
   GTLQueryOrkut *query = [self queryWithMethodName:methodName];
   query.bodyObject = object;
-  query.communityId = [NSNumber numberWithInteger:communityId];
+  query.communityId = communityId;
   query.topicId = topicId;
   query.expectedObjectClass = [GTLOrkutCommunityMessage class];
   return query;
 }
 
 + (id)queryForCommunityMessagesListWithCommunityId:(NSInteger)communityId
-                                           topicId:(unsigned long long)topicId {
+                                           topicId:(long long)topicId {
   NSString *methodName = @"orkut.communityMessages.list";
   GTLQueryOrkut *query = [self queryWithMethodName:methodName];
-  query.communityId = [NSNumber numberWithInteger:communityId];
+  query.communityId = communityId;
   query.topicId = topicId;
   query.expectedObjectClass = [GTLOrkutCommunityMessageList class];
   return query;
@@ -335,7 +335,7 @@
   NSString *methodName = @"orkut.communityPollComments.insert";
   GTLQueryOrkut *query = [self queryWithMethodName:methodName];
   query.bodyObject = object;
-  query.communityId = [NSNumber numberWithInteger:communityId];
+  query.communityId = communityId;
   query.pollId = pollId;
   query.expectedObjectClass = [GTLOrkutCommunityPollComment class];
   return query;
@@ -345,7 +345,7 @@
                                                 pollId:(NSString *)pollId {
   NSString *methodName = @"orkut.communityPollComments.list";
   GTLQueryOrkut *query = [self queryWithMethodName:methodName];
-  query.communityId = [NSNumber numberWithInteger:communityId];
+  query.communityId = communityId;
   query.pollId = pollId;
   query.expectedObjectClass = [GTLOrkutCommunityPollCommentList class];
   return query;
@@ -359,13 +359,13 @@
                                         pollId:(NSString *)pollId {
   NSString *methodName = @"orkut.communityPolls.get";
   GTLQueryOrkut *query = [self queryWithMethodName:methodName];
-  query.communityId = [NSNumber numberWithInteger:communityId];
+  query.communityId = communityId;
   query.pollId = pollId;
   query.expectedObjectClass = [GTLOrkutCommunityPoll class];
   return query;
 }
 
-+ (id)queryForCommunityPollsListWithCommunityId:(NSString *)communityId {
++ (id)queryForCommunityPollsListWithCommunityId:(NSInteger)communityId {
   NSString *methodName = @"orkut.communityPolls.list";
   GTLQueryOrkut *query = [self queryWithMethodName:methodName];
   query.communityId = communityId;
@@ -387,7 +387,7 @@
   NSString *methodName = @"orkut.communityPollVotes.insert";
   GTLQueryOrkut *query = [self queryWithMethodName:methodName];
   query.bodyObject = object;
-  query.communityId = [NSNumber numberWithInteger:communityId];
+  query.communityId = communityId;
   query.pollId = pollId;
   query.expectedObjectClass = [GTLOrkutCommunityPollVote class];
   return query;
@@ -400,7 +400,7 @@
 + (id)queryForCommunityRelatedListWithCommunityId:(NSInteger)communityId {
   NSString *methodName = @"orkut.communityRelated.list";
   GTLQueryOrkut *query = [self queryWithMethodName:methodName];
-  query.communityId = [NSNumber numberWithInteger:communityId];
+  query.communityId = communityId;
   query.expectedObjectClass = [GTLOrkutCommunityList class];
   return query;
 }
@@ -410,19 +410,19 @@
 // These create a GTLQueryOrkut object.
 
 + (id)queryForCommunityTopicsDeleteWithCommunityId:(NSInteger)communityId
-                                           topicId:(unsigned long long)topicId {
+                                           topicId:(long long)topicId {
   NSString *methodName = @"orkut.communityTopics.delete";
   GTLQueryOrkut *query = [self queryWithMethodName:methodName];
-  query.communityId = [NSNumber numberWithInteger:communityId];
+  query.communityId = communityId;
   query.topicId = topicId;
   return query;
 }
 
 + (id)queryForCommunityTopicsGetWithCommunityId:(NSInteger)communityId
-                                        topicId:(unsigned long long)topicId {
+                                        topicId:(long long)topicId {
   NSString *methodName = @"orkut.communityTopics.get";
   GTLQueryOrkut *query = [self queryWithMethodName:methodName];
-  query.communityId = [NSNumber numberWithInteger:communityId];
+  query.communityId = communityId;
   query.topicId = topicId;
   query.expectedObjectClass = [GTLOrkutCommunityTopic class];
   return query;
@@ -437,7 +437,7 @@
   NSString *methodName = @"orkut.communityTopics.insert";
   GTLQueryOrkut *query = [self queryWithMethodName:methodName];
   query.bodyObject = object;
-  query.communityId = [NSNumber numberWithInteger:communityId];
+  query.communityId = communityId;
   query.expectedObjectClass = [GTLOrkutCommunityTopic class];
   return query;
 }
@@ -445,7 +445,7 @@
 + (id)queryForCommunityTopicsListWithCommunityId:(NSInteger)communityId {
   NSString *methodName = @"orkut.communityTopics.list";
   GTLQueryOrkut *query = [self queryWithMethodName:methodName];
-  query.communityId = [NSNumber numberWithInteger:communityId];
+  query.communityId = communityId;
   query.expectedObjectClass = [GTLOrkutCommunityTopicList class];
   return query;
 }

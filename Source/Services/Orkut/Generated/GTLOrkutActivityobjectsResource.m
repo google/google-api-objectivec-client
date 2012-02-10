@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,11 +27,12 @@
 // Documentation:
 //   http://code.google.com/apis/orkut/v2/reference.html
 // Classes:
-//   GTLOrkutActivityobjectsResource (0 custom class methods, 6 custom properties)
+//   GTLOrkutActivityobjectsResource (0 custom class methods, 7 custom properties)
 
 #import "GTLOrkutActivityobjectsResource.h"
 
 #import "GTLOrkutActivitypersonResource.h"
+#import "GTLOrkutCommunity.h"
 #import "GTLOrkutLinkResource.h"
 
 // ----------------------------------------------------------------------------
@@ -40,7 +41,7 @@
 //
 
 @implementation GTLOrkutActivityobjectsResource
-@dynamic content, displayName, identifier, links, objectType, person;
+@dynamic community, content, displayName, identifier, links, objectType, person;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

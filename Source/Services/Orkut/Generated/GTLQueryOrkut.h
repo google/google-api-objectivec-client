@@ -59,18 +59,16 @@
 @property (assign) long long badgeId;
 @property (copy) NSString *collection;
 @property (copy) NSString *commentId;
-// "communityId" has different types for some query methods; see the
-// documentation for the right type for each query method.
-@property (retain) id communityId;
+@property (assign) NSInteger communityId;
 @property (assign) BOOL friendsOnly;
 @property (copy) NSString *hl;
 @property (assign) BOOL isShout;
 @property (assign) NSUInteger maxResults;
-@property (assign) unsigned long long messageId;
+@property (assign) long long messageId;
 @property (copy) NSString *orderBy;
 @property (copy) NSString *pageToken;
 @property (copy) NSString *pollId;
-@property (assign) unsigned long long topicId;
+@property (assign) long long topicId;
 @property (copy) NSString *userId;
 
 #pragma mark -
@@ -375,8 +373,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeOrkut
 + (id)queryForCommunityMessagesDeleteWithCommunityId:(NSInteger)communityId
-                                             topicId:(unsigned long long)topicId
-                                           messageId:(unsigned long long)messageId;
+                                             topicId:(long long)topicId
+                                           messageId:(long long)messageId;
 
 // Method: orkut.communityMessages.insert
 // Adds a message to a given community topic.
@@ -388,7 +386,7 @@
 // Fetches a GTLOrkutCommunityMessage.
 + (id)queryForCommunityMessagesInsertWithObject:(GTLOrkutCommunityMessage *)object
                                     communityId:(NSInteger)communityId
-                                        topicId:(unsigned long long)topicId;
+                                        topicId:(long long)topicId;
 
 // Method: orkut.communityMessages.list
 // Retrieves the messages of a topic of a community.
@@ -406,7 +404,7 @@
 //   kGTLAuthScopeOrkutReadonly
 // Fetches a GTLOrkutCommunityMessageList.
 + (id)queryForCommunityMessagesListWithCommunityId:(NSInteger)communityId
-                                           topicId:(unsigned long long)topicId;
+                                           topicId:(long long)topicId;
 
 #pragma mark -
 #pragma mark "communityPollComments" methods
@@ -474,7 +472,7 @@
 //   kGTLAuthScopeOrkut
 //   kGTLAuthScopeOrkutReadonly
 // Fetches a GTLOrkutCommunityPollList.
-+ (id)queryForCommunityPollsListWithCommunityId:(NSString *)communityId;
++ (id)queryForCommunityPollsListWithCommunityId:(NSInteger)communityId;
 
 #pragma mark -
 #pragma mark "communityPollVotes" methods
@@ -523,7 +521,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeOrkut
 + (id)queryForCommunityTopicsDeleteWithCommunityId:(NSInteger)communityId
-                                           topicId:(unsigned long long)topicId;
+                                           topicId:(long long)topicId;
 
 // Method: orkut.communityTopics.get
 // Retrieves a topic of a community.
@@ -538,7 +536,7 @@
 //   kGTLAuthScopeOrkutReadonly
 // Fetches a GTLOrkutCommunityTopic.
 + (id)queryForCommunityTopicsGetWithCommunityId:(NSInteger)communityId
-                                        topicId:(unsigned long long)topicId;
+                                        topicId:(long long)topicId;
 
 // Method: orkut.communityTopics.insert
 // Adds a topic to a given community.

@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,6 +51,7 @@
 // - scraps - The scraps of the user.
 // - photos - The photos of the user.
 // - videos - The videos of the user.
+// - pendingTestimonials - The pending testimonials of the user.
 @property (copy) NSString *name;
 
 // The number of resources on the counted collection.
