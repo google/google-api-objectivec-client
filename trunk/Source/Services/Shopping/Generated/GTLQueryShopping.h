@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
-//   GTLQueryShopping (2 custom class methods, 35 custom properties)
+//   GTLQueryShopping (2 custom class methods, 36 custom properties)
 //   GTLShoppingProductsGetCategories (0 custom class methods, 3 custom properties)
 //   GTLShoppingProductsGetDebug (0 custom class methods, 4 custom properties)
 //   GTLShoppingProductsGetRecommendations (0 custom class methods, 3 custom properties)
@@ -70,6 +70,7 @@
 // Method-specific parameters; see the comments below for more information.
 //
 @property (assign) NSUInteger accountId;
+@property (copy) NSString *app;
 @property (copy) NSString *attributeFilter;
 @property (copy) NSString *boostBy;
 // "categories" has different types for some query methods; see the
@@ -121,6 +122,10 @@
 //   productId: Id of product
 //  Optional:
 //   attributeFilter: Comma separated list of attributes to return
+//   categories: For this method, "categories" should be of type
+//     GTLShoppingProductsGetCategories.
+//   debug: For this method, "debug" should be of type
+//     GTLShoppingProductsGetDebug.
 //   location: Location used to determine tax and shipping
 //   plusOne: +1 rendering specification.
 //   productFields: Google Internal
@@ -139,12 +144,17 @@
 //  Required:
 //   source: Query source
 //  Optional:
+//   app: The internal application that generated the request (if any).
 //   attributeFilter: Comma separated list of attributes to return
 //   boostBy: Boosting specification
+//   categories: For this method, "categories" should be of type
+//     GTLShoppingProductsListCategories.
 //   channels: Channels specification
 //   country: Country restriction (ISO 3166)
 //   crowdBy: Crowding specification
 //   currency: Currency restriction (ISO 4217)
+//   debug: For this method, "debug" should be of type
+//     GTLShoppingProductsListDebug.
 //   language: Language restriction (BCP 47)
 //   location: Location used to determine tax and shipping
 //   maxResults: Maximum number of results to return

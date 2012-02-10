@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -257,6 +257,7 @@
 //     inclusive.
 //  Optional:
 //   accountId: Account upon which to report.
+//     Note: For this method, "accountId" should be of type NSString.
 //   currency: Optional currency to use when reporting on monetary metrics.
 //     Defaults to the account's currency if not set.
 //   dimension: Dimensions to base the report on.
@@ -441,6 +442,7 @@
 //     inclusive.
 //  Optional:
 //   accountId: Accounts upon which to report.
+//     Note: For this method, "accountId" should be of type NSArray.
 //   currency: Optional currency to use when reporting on monetary metrics.
 //     Defaults to the account's currency if not set.
 //   dimension: Dimensions to base the report on.
