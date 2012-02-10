@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
-//   GTLQueryShopping (2 custom class methods, 35 custom properties)
+//   GTLQueryShopping (2 custom class methods, 36 custom properties)
 //   GTLShoppingProductsGetCategories (0 custom class methods, 3 custom properties)
 //   GTLShoppingProductsGetDebug (0 custom class methods, 4 custom properties)
 //   GTLShoppingProductsGetRecommendations (0 custom class methods, 3 custom properties)
@@ -46,8 +46,8 @@
 
 @implementation GTLQueryShopping
 
-@dynamic accountId, attributeFilter, boostBy, categories, channels, country,
-         crowdBy, currency, debug, facets, fields, language, location,
+@dynamic accountId, app, attributeFilter, boostBy, categories, channels,
+         country, crowdBy, currency, debug, facets, fields, language, location,
          maxResults, maxVariants, minAvailability, plusOne, productFields,
          productId, productIdType, promotions, q, rankBy, recommendations,
          redirects, relatedQueries, restrictBy, safe, sayt, source, spelling,

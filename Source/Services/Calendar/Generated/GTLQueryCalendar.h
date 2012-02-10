@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -404,8 +404,10 @@
 //     False.
 //   timeMax: Upper bound (exclusive) for an event's start time to filter by.
 //     Optional. The default is not to filter by start time.
+//     Note: For this method, "timeMax" should be of type NSString.
 //   timeMin: Lower bound (inclusive) for an event's end time to filter by.
 //     Optional. The default is not to filter by end time.
+//     Note: For this method, "timeMin" should be of type NSString.
 //   timeZone: Time zone used in the response. Optional. The default is the time
 //     zone of the calendar.
 //   updatedMin: Lower bound for an event's last modification time (as a RFC
@@ -509,7 +511,9 @@
 //     more members than this value.
 //   items: List of calendars and/or groups to query.
 //   timeMax: The end of the interval for the query.
+//     Note: For this method, "timeMax" should be of type GTLDateTime.
 //   timeMin: The start of the interval for the query.
+//     Note: For this method, "timeMin" should be of type GTLDateTime.
 //   timeZone: Time zone used in the response. Optional. The default is UTC.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
