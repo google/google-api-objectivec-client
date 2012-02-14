@@ -22,24 +22,6 @@
 
 @implementation GTLUtilitiesTest
 
-- (void)testUserAgentStringCleansing {
-
-  NSString *input;
-  NSString *output;
-
-  input = nil;
-  output = [GTLUtilities userAgentStringForString:input];
-  STAssertNil(output, @"nil test");
-
-  input = @"";
-  output = [GTLUtilities userAgentStringForString:input];
-  STAssertEqualObjects(output, @"", @"empty string");
-
-  input = @"\\iPod ({Touch])\n\r";
-  output = [GTLUtilities userAgentStringForString:input];
-  STAssertEqualObjects(output, @"iPod_Touch", @"user agent is unclean");
-}
-
 - (void)testPercentEncodingUTF8 {
 
   NSString *input;
