@@ -289,6 +289,9 @@
 
 // Method: calendar.colors.get
 // Returns the color definitions for calendars and events.
+//  Authorization scope(s):
+//   kGTLAuthScopeCalendar
+//   kGTLAuthScopeCalendarReadonly
 // Fetches a GTLCalendarColors.
 + (id)queryForColorsGet;
 
