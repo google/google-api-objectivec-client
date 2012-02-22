@@ -40,7 +40,7 @@
 @implementation GTLQueryPlus
 
 @dynamic activityId, alt, collection, commentId, fields, language, maxResults,
-         orderBy, pageToken, query, reverse, userId;
+         orderBy, pageToken, query, sortOrder, userId;
 
 #pragma mark -
 #pragma mark "activities" methods

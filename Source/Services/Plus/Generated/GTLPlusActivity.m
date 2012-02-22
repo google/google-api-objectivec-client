@@ -27,10 +27,11 @@
 //   http://developers.google.com/+/api/
 // Classes:
 //   GTLPlusActivity (0 custom class methods, 20 custom properties)
-//   GTLPlusActivityActor (0 custom class methods, 6 custom properties)
+//   GTLPlusActivityActor (0 custom class methods, 5 custom properties)
 //   GTLPlusActivityObject (0 custom class methods, 10 custom properties)
 //   GTLPlusActivityProvider (0 custom class methods, 1 custom properties)
 //   GTLPlusActivityActorImage (0 custom class methods, 1 custom properties)
+//   GTLPlusActivityActorName (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectActor (0 custom class methods, 4 custom properties)
 //   GTLPlusActivityObjectAttachmentsItem (0 custom class methods, 8 custom properties)
 //   GTLPlusActivityObjectPlusoners (0 custom class methods, 2 custom properties)
@@ -77,7 +78,7 @@
 //
 
 @implementation GTLPlusActivityActor
-@dynamic displayName, familyName, givenName, identifier, image, url;
+@dynamic displayName, identifier, image, name, url;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -132,6 +133,16 @@
 
 @implementation GTLPlusActivityActorImage
 @dynamic url;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusActivityActorName
+//
+
+@implementation GTLPlusActivityActorName
+@dynamic familyName, givenName;
 @end
 
 

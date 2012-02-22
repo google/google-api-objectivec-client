@@ -43,3 +43,7 @@ NSString * const kGTLPlusCollectionResharers = @"resharers";
 // OrderBy
 NSString * const kGTLPlusOrderByBest   = @"best";
 NSString * const kGTLPlusOrderByRecent = @"recent";
+
+// SortOrder
+NSString * const kGTLPlusSortOrderAscending  = @"ascending";
+NSString * const kGTLPlusSortOrderDescending = @"descending";
