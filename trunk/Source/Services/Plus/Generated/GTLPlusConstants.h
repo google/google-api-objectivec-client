@@ -51,3 +51,7 @@ GTL_EXTERN NSString * const kGTLPlusCollectionResharers;  // "resharers"
 // OrderBy
 GTL_EXTERN NSString * const kGTLPlusOrderByBest;    // "best"
 GTL_EXTERN NSString * const kGTLPlusOrderByRecent;  // "recent"
+
+// SortOrder
+GTL_EXTERN NSString * const kGTLPlusSortOrderAscending;   // "ascending"
+GTL_EXTERN NSString * const kGTLPlusSortOrderDescending;  // "descending"

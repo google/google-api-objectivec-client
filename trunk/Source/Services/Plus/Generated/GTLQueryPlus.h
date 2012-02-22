@@ -55,7 +55,7 @@
 @property (copy) NSString *orderBy;
 @property (copy) NSString *pageToken;
 @property (copy) NSString *query;
-@property (assign) BOOL reverse;
+@property (copy) NSString *sortOrder;
 @property (copy) NSString *userId;
 
 #pragma mark -
@@ -151,8 +151,10 @@
 //   pageToken: The continuation token, used to page through large result sets.
 //     To get the next page of results, set this parameter to the value of
 //     "nextPageToken" from the previous response.
-//   reverse: Whether to return comments in reverse chronological order, newest
-//     first. (Default false)
+//   sortOrder: The order in which to sort the list of comments. (Default
+//     kGTLPlusSortOrderAscending)
+//      kGTLPlusSortOrderAscending: Sort oldest comments first.
+//      kGTLPlusSortOrderDescending: Sort newest comments first.
 //  Authorization scope(s):
 //   kGTLAuthScopePlusMe
 // Fetches a GTLPlusCommentFeed.
