@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -85,7 +85,7 @@
 @property (copy) NSString *location;
 
 // Whether the calendar content shows up in the calendar UI. Optional. The
-// default is True.
+// default is False.
 @property (retain) NSNumber *selected;  // boolValue
 
 // Title of the calendar. Read-only.
