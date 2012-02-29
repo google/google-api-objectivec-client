@@ -26,7 +26,7 @@
 // Documentation:
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
 // Classes:
-//   GTLQueryBooks (22 custom class methods, 33 custom properties)
+//   GTLQueryBooks (22 custom class methods, 34 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -70,6 +70,7 @@
 @property (copy) NSString *projection;
 @property (copy) NSString *q;
 @property (copy) NSString *shelf;
+@property (assign) BOOL showDeleted;
 @property (assign) BOOL showPreorders;
 @property (copy) NSString *source;
 @property (assign) NSUInteger startIndex;
@@ -237,6 +238,8 @@
 //   maxResults: Maximum number of results to return (0..40)
 //   pageIds: The page id(s) for the volume that is being queried.
 //   pageToken: The value of the nextToken from the previous page.
+//   showDeleted: Set to true to return deleted annotations. updatedMin must be
+//     in the request to use this. Defaults to false.
 //   source: String to identify the originator of this request.
 //   updatedMax: RFC 3339 timestamp to restrict to items updated prior to this
 //     timestamp (exclusive).
@@ -348,8 +351,9 @@
 
 // Method: books.mylibrary.bookshelves.volumes.list
 // Gets volume information for volumes on a bookshelf.
-//  Optional:
+//  Required:
 //   shelf: The bookshelf id or name retrieve volumes for.
+//  Optional:
 //   country: ISO-3166-1 code to override the IP-based location.
 //   maxResults: Maximum number of results to return
 //   projection: Restrict information returned to a set of selected fields.
@@ -363,7 +367,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
 // Fetches a GTLBooksVolumes.
-+ (id)queryForMylibraryBookshelvesVolumesList;
++ (id)queryForMylibraryBookshelvesVolumesListWithShelf:(NSString *)shelf;
 
 #pragma mark -
 #pragma mark "mylibrary.readingpositions" methods

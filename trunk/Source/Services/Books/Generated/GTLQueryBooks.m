@@ -26,7 +26,7 @@
 // Documentation:
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
 // Classes:
-//   GTLQueryBooks (22 custom class methods, 33 custom properties)
+//   GTLQueryBooks (22 custom class methods, 34 custom properties)
 
 #import "GTLQueryBooks.h"
 
@@ -45,9 +45,9 @@
 @dynamic action, annotationId, contentVersion, country, cpksver, download,
          fields, filter, langRestrict, layerId, libraryRestrict, locale,
          maxResults, nonce, orderBy, pageIds, pageToken, partner, position,
-         printType, projection, q, shelf, showPreorders, source, startIndex,
-         timestamp, updatedMax, updatedMin, userId, volumeId, volumeIds,
-         volumePosition;
+         printType, projection, q, shelf, showDeleted, showPreorders, source,
+         startIndex, timestamp, updatedMax, updatedMin, userId, volumeId,
+         volumeIds, volumePosition;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
@@ -245,9 +245,10 @@
 #pragma mark "mylibrary.bookshelves.volumes" methods
 // These create a GTLQueryBooks object.
 
-+ (id)queryForMylibraryBookshelvesVolumesList {
++ (id)queryForMylibraryBookshelvesVolumesListWithShelf:(NSString *)shelf {
   NSString *methodName = @"books.mylibrary.bookshelves.volumes.list";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.shelf = shelf;
   query.expectedObjectClass = [GTLBooksVolumes class];
   return query;
 }
