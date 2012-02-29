@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
 // Classes:
-//   GTLBooksAnnotation (0 custom class methods, 15 custom properties)
+//   GTLBooksAnnotation (0 custom class methods, 16 custom properties)
 //   GTLBooksAnnotationClientVersionRanges (0 custom class methods, 4 custom properties)
 //   GTLBooksAnnotationCurrentVersionRanges (0 custom class methods, 4 custom properties)
 
@@ -64,6 +64,9 @@
 
 // User-created data for this annotation.
 @property (copy) NSString *data;
+
+// Indicates that this annotation is deleted.
+@property (retain) NSNumber *deleted;  // boolValue
 
 // The highlight style for this annotation.
 @property (copy) NSString *highlightStyle;
