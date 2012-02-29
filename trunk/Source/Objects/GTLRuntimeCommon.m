@@ -354,7 +354,7 @@ static void DynamicLongLongSetter(id self, SEL sel, long long val) {
 }
 
 // NSUInteger on 64bit, unsiged long long on 32bit and 64bit
-static NSUInteger DynamicULongLongGetter(id self, SEL sel) {
+static unsigned long long DynamicULongLongGetter(id self, SEL sel) {
   // get an unsigned long long (NSNumber) from the JSON dictionary
   NSString *jsonKey = nil;
   Class<GTLRuntimeCommon> selfClass = [self class];
@@ -450,7 +450,7 @@ static void DynamicDoubleSetter(id self, SEL sel, double val) {
 }
 
 // BOOL
-static double DynamicBooleanGetter(id self, SEL sel) {
+static BOOL DynamicBooleanGetter(id self, SEL sel) {
   // get a BOOL (NSNumber) from the JSON dictionary
   NSString *jsonKey = nil;
   Class<GTLRuntimeCommon> selfClass = [self class];
@@ -497,7 +497,8 @@ static NSString *DynamicStringGetter(id<GTLRuntimeCommon> self, SEL sel) {
   return nil;
 }
 
-static void DynamicStringSetter(id<GTLRuntimeCommon> self, SEL sel, NSString *str) {
+static void DynamicStringSetter(id<GTLRuntimeCommon> self, SEL sel,
+                                NSString *str) {
   // save an NSString into the JSON dictionary
   NSString *jsonKey = nil;
   Class<GTLRuntimeCommon> selfClass = [self class];
@@ -545,7 +546,8 @@ static GTLDateTime *DynamicDateTimeGetter(id<GTLRuntimeCommon> self, SEL sel) {
   return nil;
 }
 
-static void DynamicDateTimeSetter(id<GTLRuntimeCommon> self, SEL sel, GTLDateTime *dateTime) {
+static void DynamicDateTimeSetter(id<GTLRuntimeCommon> self, SEL sel,
+                                  GTLDateTime *dateTime) {
   // save an GTLDateTime into the JSON dictionary
   NSString *jsonKey = nil;
   Class<GTLRuntimeCommon> selfClass = [self class];
@@ -586,7 +588,8 @@ static NSNumber *DynamicNumberGetter(id<GTLRuntimeCommon> self, SEL sel) {
   return nil;
 }
 
-static void DynamicNumberSetter(id<GTLRuntimeCommon> self, SEL sel, NSNumber *num) {
+static void DynamicNumberSetter(id<GTLRuntimeCommon> self, SEL sel,
+                                NSNumber *num) {
   // save an NSNumber into the JSON dictionary
   NSString *jsonKey = nil;
   Class<GTLRuntimeCommon> selfClass = [self class];
@@ -644,7 +647,8 @@ static GTLObject *DynamicObjectGetter(id<GTLRuntimeCommon> self, SEL sel) {
   return nil;
 }
 
-static void DynamicObjectSetter(id<GTLRuntimeCommon> self, SEL sel, GTLObject *obj) {
+static void DynamicObjectSetter(id<GTLRuntimeCommon> self, SEL sel,
+                                GTLObject *obj) {
   // save a GTLObject into the JSON dictionary
   NSString *jsonKey = nil;
   Class<GTLRuntimeCommon> selfClass = [self class];
@@ -718,8 +722,8 @@ static NSMutableArray *DynamicArrayGetter(id<GTLRuntimeCommon> self, SEL sel) {
   return nil;
 }
 
-static void DynamicArraySetter(id<GTLRuntimeCommon> self,
-                               SEL sel, NSMutableArray *array) {
+static void DynamicArraySetter(id<GTLRuntimeCommon> self, SEL sel,
+                               NSMutableArray *array) {
   // save an array of GTLObjects objects into the JSON dictionary
   NSString *jsonKey = nil;
   Class selfClass = [self class];
@@ -791,7 +795,8 @@ static void DynamicNSObjectSetter(id<GTLRuntimeCommon> self, SEL sel, id obj) {
 
 #pragma mark Runtime lookup support
 
-static objc_property_t PropertyForSel(Class<GTLRuntimeCommon> startClass, SEL sel, BOOL isSetter,
+static objc_property_t PropertyForSel(Class<GTLRuntimeCommon> startClass,
+                                      SEL sel, BOOL isSetter,
                                       Class<GTLRuntimeCommon> *outFoundClass) {
   const char *baseName = sel_getName(sel);
   size_t baseNameLen = strlen(baseName);
