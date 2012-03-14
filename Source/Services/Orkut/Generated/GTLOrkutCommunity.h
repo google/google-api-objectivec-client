@@ -74,10 +74,11 @@
 // The location of the community.
 @property (copy) NSString *location;
 
-// The count of members on the community.
+// The number of users who are part of the community. This number may be
+// approximate, so do not rely on it for iteration.
 @property (retain) NSNumber *memberCount;  // intValue
 
-// The moderator of the community.
+// The list of moderators of the community.
 @property (retain) NSArray *moderators;  // of GTLOrkutAuthorResource
 
 // The name of the community.
