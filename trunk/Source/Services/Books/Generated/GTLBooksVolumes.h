@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,8 +53,7 @@
 @property (copy) NSString *kind;
 
 // Total number of volumes found. This might be greater than the number of
-// volumes returned in this response if results have been paginated. Total
-// number of volumes found.
+// volumes returned in this response if results have been paginated.
 @property (retain) NSNumber *totalItems;  // intValue
 
 @end
