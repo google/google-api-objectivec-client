@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/calendar/v3/using.html
 // Classes:
-//   GTLQueryCalendar (33 custom class methods, 27 custom properties)
+//   GTLQueryCalendar (32 custom class methods, 27 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -469,20 +469,6 @@
 // Fetches a GTLCalendarEvent.
 + (id)queryForEventsQuickAddWithCalendarId:(NSString *)calendarId
                                       text:(NSString *)text;
-
-// Method: calendar.events.reset
-// Resets a specialized instance of a recurring event to its original state.
-//  Required:
-//   calendarId: Calendar identifier.
-//   eventId: Event identifier.
-//  Optional:
-//   sendNotifications: Whether to send notifications about the event update.
-//     Optional. The default is False.
-//  Authorization scope(s):
-//   kGTLAuthScopeCalendar
-// Fetches a GTLCalendarEvent.
-+ (id)queryForEventsResetWithCalendarId:(NSString *)calendarId
-                                eventId:(NSString *)eventId;
 
 // Method: calendar.events.update
 // Updates an event.
