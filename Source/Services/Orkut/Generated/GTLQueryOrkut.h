@@ -244,7 +244,7 @@
 // These create a GTLQueryOrkut object.
 
 // Method: orkut.communities.get
-// Retrieves the profile of a community.
+// Retrieves the basic information (aka. profile) of a community.
 //  Required:
 //   communityId: The ID of the community to get.
 //  Optional:
@@ -257,7 +257,7 @@
 + (id)queryForCommunitiesGetWithCommunityId:(NSInteger)communityId;
 
 // Method: orkut.communities.list
-// Retrieves the communities an user is member of.
+// Retrieves the list of communities the current user is a member of.
 //  Required:
 //   userId: The ID of the user whose communities will be listed. Can be me to
 //     refer to caller.
@@ -281,7 +281,7 @@
 // These create a GTLQueryOrkut object.
 
 // Method: orkut.communityFollow.delete
-// Removes an user from the followers of a community.
+// Removes a user from the followers of a community.
 //  Required:
 //   communityId: ID of the community.
 //   userId: ID of the user.
@@ -291,7 +291,7 @@
                                             userId:(NSString *)userId;
 
 // Method: orkut.communityFollow.insert
-// Adds an user as a follower of a community.
+// Adds a user as a follower of a community.
 //  Required:
 //   communityId: ID of the community.
 //   userId: ID of the user.
@@ -342,7 +342,9 @@
                                              userId:(NSString *)userId;
 
 // Method: orkut.communityMembers.list
-// Lists members of a community.
+// Lists members of a community. Use the pagination tokens to retrieve the full
+// list; do not rely on the member count available in the community profile
+// information to know when to stop iterating, as that count may be approximate.
 //  Required:
 //   communityId: The ID of the community whose members will be listed.
 //  Optional:
@@ -571,7 +573,7 @@
 // These create a GTLQueryOrkut object.
 
 // Method: orkut.counters.list
-// Retrieves the counters of an user.
+// Retrieves the counters of a user.
 //  Required:
 //   userId: The ID of the user whose counters will be listed. Can be me to
 //     refer to caller.
