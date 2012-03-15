@@ -160,49 +160,6 @@
 
 #pragma mark -
 
-#if GTL_UTILITIES_BASE64
-- (void)testBase64Conversion {
-  NSString *dolphinStr = @"¿Dónde están los delfines?";
-  NSString *dolphinEncoded = @"wr9Ew7NuZGUgZXN0w6FuIGxvcyBkZWxmaW5lcz8=";
-
-  // Encoding
-  NSData *data = nil;
-  NSString *result = [GTLUtilities stringWithBase64ForData:data];
-  STAssertNil(result, @"nil base64 data");
-
-  data = [NSData data];
-  result = [GTLUtilities stringWithBase64ForData:data];
-  NSString *expected = @"";
-  STAssertEqualObjects(result, expected, @"empty base64 data");
-
-  NSString *str = dolphinStr;
-  data = [str dataUsingEncoding:NSUTF8StringEncoding];
-  result = [GTLUtilities stringWithBase64ForData:data];
-  expected = dolphinEncoded;
-  STAssertEqualObjects(result, expected, @"dolphin data");
-
-  // Decoding
-  str = nil;
-  data = [GTLUtilities dataWithBase64String:str];
-  STAssertNil(data, @"nil string");
-
-  str = @"kjh"; // not valid base64
-  data = [GTLUtilities dataWithBase64String:str];
-  STAssertNil(data, @"invalid string");
-
-  str = @"";
-  data = [GTLUtilities dataWithBase64String:str];
-  STAssertEqualObjects(data, [NSData data], @"empty string");
-
-  str = dolphinEncoded;
-  data = [GTLUtilities dataWithBase64String:str];
-  NSData *expectedData = [dolphinStr dataUsingEncoding:NSUTF8StringEncoding];
-  STAssertEqualObjects(data, expectedData, @"dolphin string");
-}
-#endif // GTL_UTILITIES_BASE64
-
-#pragma mark -
-
 - (void)testEnsureNSNumber {
   NSNumber *num;
   NSNumber *result;
