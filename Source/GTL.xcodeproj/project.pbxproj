@@ -129,6 +129,13 @@
 		4F8DB6F513FDC0F50001DD6C /* GTMOAuth2ViewControllerTouch.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4F697FBB131C1A6800A5AB6A /* GTMOAuth2ViewControllerTouch.h */; };
 		4F8DB6F613FDC0F50001DD6C /* GTMOAuth2WindowController.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4F697FB4131C1A5800A5AB6A /* GTMOAuth2WindowController.h */; };
 		4F8DB6F713FDC0F50001DD6C /* GTMReadMonitorInputStream.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4F8DB61713FDAC160001DD6C /* GTMReadMonitorInputStream.h */; };
+		4F934E671512712100C4EA34 /* GTLBase64.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F934E651512712100C4EA34 /* GTLBase64.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F934E681512712100C4EA34 /* GTLBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F934E661512712100C4EA34 /* GTLBase64.m */; };
+		4F934E691512712100C4EA34 /* GTLBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F934E661512712100C4EA34 /* GTLBase64.m */; };
+		4F934E6A1512712100C4EA34 /* GTLBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F934E661512712100C4EA34 /* GTLBase64.m */; };
+		4F934E6B1512712100C4EA34 /* GTLBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F934E661512712100C4EA34 /* GTLBase64.m */; };
+		4F934E6C1512713000C4EA34 /* GTLBase64.h in Copy Static Library Headers */ = {isa = PBXBuildFile; fileRef = 4F934E651512712100C4EA34 /* GTLBase64.h */; };
+		4F934F51151286FE00C4EA34 /* GTLBase64Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F934F50151286FE00C4EA34 /* GTLBase64Test.m */; };
 		4F9F7E3911F5103B0033A2C1 /* GTLDateTimeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F7E3811F5103B0033A2C1 /* GTLDateTimeTest.m */; };
 		4F9F7E3C11F510430033A2C1 /* GTLFrameworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F7E3A11F510430033A2C1 /* GTLFrameworkTest.m */; };
 		4F9F7E3D11F510430033A2C1 /* GTLUtilitiesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F7E3B11F510430033A2C1 /* GTLUtilitiesTest.m */; };
@@ -217,6 +224,7 @@
 			dstPath = Headers;
 			dstSubfolderSpec = 16;
 			files = (
+				4F934E6C1512713000C4EA34 /* GTLBase64.h in Copy Static Library Headers */,
 				4F8DB6DE13FDC0F50001DD6C /* GTLBatchQuery.h in Copy Static Library Headers */,
 				4F8DB6DF13FDC0F50001DD6C /* GTLBatchResult.h in Copy Static Library Headers */,
 				4F8DB6E013FDC0F50001DD6C /* GTLDateTime.h in Copy Static Library Headers */,
@@ -318,6 +326,9 @@
 		4F76C07013B1208F009154C6 /* TaskPage1d.response.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TaskPage1d.response.txt; path = Tests/Data/TaskPage1d.response.txt; sourceTree = "<group>"; };
 		4F8DB61713FDAC160001DD6C /* GTMReadMonitorInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMReadMonitorInputStream.h; path = HTTPFetcher/GTMReadMonitorInputStream.h; sourceTree = SOURCE_ROOT; };
 		4F8DB61813FDAC160001DD6C /* GTMReadMonitorInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMReadMonitorInputStream.m; path = HTTPFetcher/GTMReadMonitorInputStream.m; sourceTree = SOURCE_ROOT; };
+		4F934E651512712100C4EA34 /* GTLBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTLBase64.h; path = Utilities/GTLBase64.h; sourceTree = "<group>"; };
+		4F934E661512712100C4EA34 /* GTLBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLBase64.m; path = Utilities/GTLBase64.m; sourceTree = "<group>"; };
+		4F934F50151286FE00C4EA34 /* GTLBase64Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLBase64Test.m; path = Tests/GTLBase64Test.m; sourceTree = "<group>"; };
 		4F9F7E3811F5103B0033A2C1 /* GTLDateTimeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLDateTimeTest.m; path = Tests/GTLDateTimeTest.m; sourceTree = "<group>"; };
 		4F9F7E3A11F510430033A2C1 /* GTLFrameworkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLFrameworkTest.m; path = Tests/GTLFrameworkTest.m; sourceTree = "<group>"; };
 		4F9F7E3B11F510430033A2C1 /* GTLUtilitiesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLUtilitiesTest.m; path = Tests/GTLUtilitiesTest.m; sourceTree = "<group>"; };
@@ -544,6 +555,8 @@
 				4FDE223613848173005AEFAA /* GTLTargetNamespace.h */,
 				4FDE223713848173005AEFAA /* GTLUtilities.h */,
 				4FDE223813848173005AEFAA /* GTLUtilities.m */,
+				4F934E651512712100C4EA34 /* GTLBase64.h */,
+				4F934E661512712100C4EA34 /* GTLBase64.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -596,6 +609,7 @@
 				F4CC6A101239450100522D45 /* GTLQueryTest.m */,
 				4FCC7A1C11EFD9EA0097924C /* GTLServiceTest.m */,
 				4F9F7E3B11F510430033A2C1 /* GTLUtilitiesTest.m */,
+				4F934F50151286FE00C4EA34 /* GTLBase64Test.m */,
 				4F5CC8921381ED1F00D1D4CF /* Services */,
 				4FCC7A3E11EFDB7E0097924C /* Data */,
 				4FCC7A2211EFDA090097924C /* Server */,
@@ -710,6 +724,7 @@
 				4FDE226F1384818E005AEFAA /* GTLService.h in Headers */,
 				4F0C4FBC13CFA7E5007E5E92 /* GTLUploadParameters.h in Headers */,
 				4F8DB61913FDAC160001DD6C /* GTMReadMonitorInputStream.h in Headers */,
+				4F934E671512712100C4EA34 /* GTLBase64.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -912,6 +927,8 @@
 				F40E736C138A03CA00EE3F02 /* GTLTasksTasks.m in Sources */,
 				4F0C4FBF13CFA7E5007E5E92 /* GTLUploadParameters.m in Sources */,
 				4F8DB61C13FDAC160001DD6C /* GTMReadMonitorInputStream.m in Sources */,
+				4F934E6A1512712100C4EA34 /* GTLBase64.m in Sources */,
+				4F934F51151286FE00C4EA34 /* GTLBase64Test.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -943,6 +960,7 @@
 				4FDE22801384818E005AEFAA /* GTLService.m in Sources */,
 				4F0C4FC013CFA7E5007E5E92 /* GTLUploadParameters.m in Sources */,
 				4F8DB61D13FDAC160001DD6C /* GTMReadMonitorInputStream.m in Sources */,
+				4F934E6B1512712100C4EA34 /* GTLBase64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -974,6 +992,7 @@
 				4FDE22781384818E005AEFAA /* GTLService.m in Sources */,
 				4F0C4FBE13CFA7E5007E5E92 /* GTLUploadParameters.m in Sources */,
 				4F8DB61B13FDAC160001DD6C /* GTMReadMonitorInputStream.m in Sources */,
+				4F934E691512712100C4EA34 /* GTLBase64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1005,6 +1024,7 @@
 				4FDE22701384818E005AEFAA /* GTLService.m in Sources */,
 				4F0C4FBD13CFA7E5007E5E92 /* GTLUploadParameters.m in Sources */,
 				4F8DB61A13FDAC160001DD6C /* GTMReadMonitorInputStream.m in Sources */,
+				4F934E681512712100C4EA34 /* GTLBase64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

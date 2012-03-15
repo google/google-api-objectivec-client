@@ -54,15 +54,6 @@ NSNumber *GTL_EnsureNSNumber(NSNumber *num);
 // Percent-encoded UTF-8
 + (NSString *)stringByPercentEncodingUTF8ForString:(NSString *)str;
 
-//
-// Base 64
-//
-
-#if GTL_UTILITIES_BASE64
-+ (NSString *)stringWithBase64ForData:(NSData *)data;
-+ (NSData *)dataWithBase64String:(NSString *)base64Str;
-#endif
-
 // Key-value coding searches in an array
 //
 // Utilities to get from an array objects having a known value (or nil)
