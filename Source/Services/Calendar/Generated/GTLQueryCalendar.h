@@ -125,7 +125,6 @@
 //   calendarId: Calendar identifier.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
-//   kGTLAuthScopeCalendarReadonly
 // Fetches a GTLCalendarAcl.
 + (id)queryForAclListWithCalendarId:(NSString *)calendarId;
 
