@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -164,7 +164,8 @@
 // Method: blogger.users.blogs.list
 // Retrieves a list of blogs, possibly filtered.
 //  Required:
-//   userId: ID of the user whose blogs are to be fetched.
+//   userId: ID of the user whose blogs are to be fetched. Either the word
+//     'self' (sans quote marks) or the user's profile identifier.
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 // Fetches a GTLBloggerBlogList.
