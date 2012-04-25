@@ -692,12 +692,10 @@ static NSString *ETagIfPresent(GTLObject *obj) {
                                                     requestID:requestID];
 
     NSError *error = nil;
-    NSString *jsonStr = [GTLJSONParser stringWithObject:rpcPayload
-                                          humanReadable:NO
-                                                  error:&error];
-    if (error == nil) {
-      dataToPost = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
-    } else {
+    dataToPost = [GTLJSONParser dataWithObject:rpcPayload
+                                 humanReadable:NO
+                                         error:&error];
+    if (dataToPost == nil) {
       // There is the chance something went into parameters that wasn't valid.
       GTL_DEBUG_LOG(@"JSON generation error: %@", error);
       return nil;
@@ -790,12 +788,10 @@ static NSString *ETagIfPresent(GTLObject *obj) {
 
   NSError *error = nil;
   NSData *dataToPost = nil;
-  NSString *jsonStr = [GTLJSONParser stringWithObject:rpcPayloads
-                                        humanReadable:NO
-                                                error:&error];
-  if (error == nil) {
-    dataToPost = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
-  } else {
+  dataToPost = [GTLJSONParser dataWithObject:rpcPayloads
+                               humanReadable:NO
+                                       error:&error];
+  if (dataToPost == nil) {
     // There is the chance something went into parameters that wasn't valid.
     GTL_DEBUG_LOG(@"JSON generation error: %@", error);
     return nil;
@@ -880,12 +876,10 @@ static NSString *ETagIfPresent(GTLObject *obj) {
     } else {
       whatToSend = json;
     }
-    NSString *jsonStr = [GTLJSONParser stringWithObject:whatToSend
-                                          humanReadable:NO
-                                                  error:&error];
-    if (error == nil) {
-      dataToPost = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
-    } else {
+    dataToPost = [GTLJSONParser dataWithObject:whatToSend
+                                 humanReadable:NO
+                                         error:&error];
+    if (dataToPost == nil) {
       GTL_DEBUG_LOG(@"JSON generation error: %@", error);
     }
   }
