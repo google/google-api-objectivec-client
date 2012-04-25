@@ -29,6 +29,10 @@
                 humanReadable:(BOOL)humanReadable
                         error:(NSError**)error;
 
++ (NSData *)dataWithObject:(id)obj
+             humanReadable:(BOOL)humanReadable
+                     error:(NSError**)error;
+
 + (id)objectWithString:(NSString *)jsonStr
                  error:(NSError **)error;
 
