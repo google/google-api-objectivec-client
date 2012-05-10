@@ -27,10 +27,10 @@
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
 // Classes:
 //   GTLBooksVolume (0 custom class methods, 9 custom properties)
-//   GTLBooksVolumeAccessInfo (0 custom class methods, 10 custom properties)
+//   GTLBooksVolumeAccessInfo (0 custom class methods, 11 custom properties)
 //   GTLBooksVolumeSaleInfo (0 custom class methods, 7 custom properties)
 //   GTLBooksVolumeSearchInfo (0 custom class methods, 1 custom properties)
-//   GTLBooksVolumeUserInfo (0 custom class methods, 5 custom properties)
+//   GTLBooksVolumeUserInfo (0 custom class methods, 6 custom properties)
 //   GTLBooksVolumeVolumeInfo (0 custom class methods, 20 custom properties)
 //   GTLBooksVolumeAccessInfoEpub (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeAccessInfoPdf (0 custom class methods, 3 custom properties)
@@ -149,6 +149,10 @@
 // non-eBooks. Public domain books will always have a value of ALL_PAGES.
 @property (copy) NSString *viewability;
 
+// For ordered but not yet processed orders, we give a URL that can be used to
+// go to the appropriate Google Wallet page.
+@property (copy) NSString *viewOrderUrl;
+
 // URL to read this volume on the Google Books site. Link will not allow users
 // to read non-viewable volumes.
 @property (copy) NSString *webReaderLink;
@@ -211,6 +215,9 @@
 //
 
 @interface GTLBooksVolumeUserInfo : GTLObject
+
+// Whether or not this volume is currently in "my books."
+@property (retain) NSNumber *isInMyBooks;  // boolValue
 
 // Whether or not this volume was pre-ordered by the authenticated user making
 // the request. (In LITE projection.)

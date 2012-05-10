@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLBooks.h
+//  GTLBooksLayersummary.m
 //
 
 // ----------------------------------------------------------------------------
@@ -25,29 +25,37 @@
 //   Lets you search for books and manage your Google Books library.
 // Documentation:
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
+// Classes:
+//   GTLBooksLayersummary (0 custom class methods, 12 custom properties)
 
-#import "GTLBooksConstants.h"
-
-#import "GTLBooksAnnotation.h"
-#import "GTLBooksAnnotationdata.h"
-#import "GTLBooksAnnotations.h"
-#import "GTLBooksAnnotationsdata.h"
-#import "GTLBooksAnnotationsRange.h"
-#import "GTLBooksBookshelf.h"
-#import "GTLBooksBookshelves.h"
-#import "GTLBooksConcurrentAccessRestriction.h"
-#import "GTLBooksDownloadAccesses.h"
-#import "GTLBooksDownloadAccessRestriction.h"
-#import "GTLBooksLayerGeoData.h"
-#import "GTLBooksLayersummaries.h"
 #import "GTLBooksLayersummary.h"
-#import "GTLBooksReadingPosition.h"
-#import "GTLBooksRequestAccess.h"
-#import "GTLBooksReview.h"
-#import "GTLBooksVolume.h"
-#import "GTLBooksVolumeannotation.h"
-#import "GTLBooksVolumeannotations.h"
-#import "GTLBooksVolumes.h"
 
-#import "GTLQueryBooks.h"
-#import "GTLServiceBooks.h"
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksLayersummary
+//
+
+@implementation GTLBooksLayersummary
+@dynamic annotationCount, annotationsDataLink, annotationsLink, annotationTypes,
+         contentVersion, dataCount, identifier, kind, layerId, selfLink,
+         updated, volumeId;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"id"
+                                forKey:@"identifier"];
+  return map;
+}
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[NSString class]
+                                forKey:@"annotationTypes"];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"books#layersummary"];
+}
+
+@end
