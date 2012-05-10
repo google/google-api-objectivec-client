@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLShoppingProduct.m
+//  GTLShoppingModelRecommendations.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,42 +26,36 @@
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
-//   GTLShoppingProduct (0 custom class methods, 8 custom properties)
+//   GTLShoppingModelRecommendations (0 custom class methods, 2 custom properties)
+//   GTLShoppingModelRecommendationsRecommendationListItem (0 custom class methods, 1 custom properties)
 
-#import "GTLShoppingProduct.h"
-
-#import "GTLShoppingModelCategory.h"
-#import "GTLShoppingModelDebug.h"
-#import "GTLShoppingModelProduct.h"
 #import "GTLShoppingModelRecommendations.h"
+
+#import "GTLShoppingModelProduct.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLShoppingProduct
+//   GTLShoppingModelRecommendations
 //
 
-@implementation GTLShoppingProduct
-@dynamic categories, debug, identifier, kind, product, recommendations,
-         requestId, selfLink;
-
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
-  return map;
-}
+@implementation GTLShoppingModelRecommendations
+@dynamic recommendationList, type;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [GTLShoppingModelCategory class], @"categories",
-      [GTLShoppingModelRecommendations class], @"recommendations",
-      nil];
+    [NSDictionary dictionaryWithObject:[GTLShoppingModelRecommendationsRecommendationListItem class]
+                                forKey:@"recommendationList"];
   return map;
 }
 
-+ (void)load {
-  [self registerObjectClassForKind:@"shopping#product"];
-}
+@end
 
+
+// ----------------------------------------------------------------------------
+//
+//   GTLShoppingModelRecommendationsRecommendationListItem
+//
+
+@implementation GTLShoppingModelRecommendationsRecommendationListItem
+@dynamic product;
 @end

@@ -26,17 +26,17 @@
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
-//   GTLQueryShopping (2 custom class methods, 36 custom properties)
+//   GTLQueryShopping (2 custom class methods, 34 custom properties)
 //   GTLShoppingProductsGetCategories (0 custom class methods, 3 custom properties)
-//   GTLShoppingProductsGetDebug (0 custom class methods, 4 custom properties)
+//   GTLShoppingProductsGetPlusOne (0 custom class methods, 3 custom properties)
 //   GTLShoppingProductsGetRecommendations (0 custom class methods, 3 custom properties)
 //   GTLShoppingProductsListCategories (0 custom class methods, 3 custom properties)
-//   GTLShoppingProductsListDebug (0 custom class methods, 8 custom properties)
+//   GTLShoppingProductsListCategoryRecommendations (0 custom class methods, 4 custom properties)
 //   GTLShoppingProductsListFacets (0 custom class methods, 4 custom properties)
+//   GTLShoppingProductsListPlusOne (0 custom class methods, 3 custom properties)
 //   GTLShoppingProductsListPromotions (0 custom class methods, 2 custom properties)
 //   GTLShoppingProductsListRedirects (0 custom class methods, 2 custom properties)
 //   GTLShoppingProductsListRelatedQueries (0 custom class methods, 2 custom properties)
-//   GTLShoppingProductsListSayt (0 custom class methods, 2 custom properties)
 //   GTLShoppingProductsListSpelling (0 custom class methods, 2 custom properties)
 
 #import "GTLQueryShopping.h"
@@ -46,12 +46,12 @@
 
 @implementation GTLQueryShopping
 
-@dynamic accountId, app, attributeFilter, boostBy, categories, channels,
-         country, crowdBy, currency, debug, facets, fields, language, location,
-         maxResults, maxVariants, minAvailability, plusOne, productFields,
-         productId, productIdType, promotions, q, rankBy, recommendations,
-         redirects, relatedQueries, restrictBy, safe, sayt, source, spelling,
-         startIndex, taxonomy, thumbnails, useCase;
+@dynamic accountId, attributeFilter, availability, boostBy, categories,
+         categoryRecommendations, channels, clickTracking, country, crowdBy,
+         currency, facets, fields, language, location, maxResults, maxVariants,
+         plusOne, productId, productIdType, promotions, q, rankBy,
+         recommendations, redirects, relatedQueries, restrictBy, safe, source,
+         spelling, startIndex, taxonomy, thumbnails, useCase;
 
 #pragma mark -
 #pragma mark "products" methods
@@ -97,11 +97,11 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLShoppingProductsGetDebug
+//   GTLShoppingProductsGetPlusOne
 //
 
-@implementation GTLShoppingProductsGetDebug
-@dynamic enabled, enableLogging, searchRequest, searchResponse;
+@implementation GTLShoppingProductsGetPlusOne
+@dynamic enabled, options, useGcsConfig;
 @end
 
 // ----------------------------------------------------------------------------
@@ -124,12 +124,11 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLShoppingProductsListDebug
+//   GTLShoppingProductsListCategoryRecommendations
 //
 
-@implementation GTLShoppingProductsListDebug
-@dynamic enabled, enableLogging, geocodeRequest, geocodeResponse, rdcRequest,
-         rdcResponse, searchRequest, searchResponse;
+@implementation GTLShoppingProductsListCategoryRecommendations
+@dynamic category, enabled, include, useGcsConfig;
 @end
 
 // ----------------------------------------------------------------------------
@@ -139,6 +138,15 @@
 
 @implementation GTLShoppingProductsListFacets
 @dynamic discover, enabled, include, useGcsConfig;
+@end
+
+// ----------------------------------------------------------------------------
+//
+//   GTLShoppingProductsListPlusOne
+//
+
+@implementation GTLShoppingProductsListPlusOne
+@dynamic enabled, options, useGcsConfig;
 @end
 
 // ----------------------------------------------------------------------------
@@ -165,15 +173,6 @@
 //
 
 @implementation GTLShoppingProductsListRelatedQueries
-@dynamic enabled, useGcsConfig;
-@end
-
-// ----------------------------------------------------------------------------
-//
-//   GTLShoppingProductsListSayt
-//
-
-@implementation GTLShoppingProductsListSayt
 @dynamic enabled, useGcsConfig;
 @end
 

@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,8 +27,6 @@
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
 //   GTLShoppingProduct (0 custom class methods, 8 custom properties)
-//   GTLShoppingProductRecommendationsItem (0 custom class methods, 2 custom properties)
-//   GTLShoppingProductRecommendationsItemRecommendationListItem (0 custom class methods, 1 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -39,8 +37,7 @@
 @class GTLShoppingModelCategory;
 @class GTLShoppingModelDebug;
 @class GTLShoppingModelProduct;
-@class GTLShoppingProductRecommendationsItem;
-@class GTLShoppingProductRecommendationsItemRecommendationListItem;
+@class GTLShoppingModelRecommendations;
 
 // ----------------------------------------------------------------------------
 //
@@ -52,7 +49,6 @@
 // List of categories for product.
 @property (retain) NSArray *categories;  // of GTLShoppingModelCategory
 
-// Google internal.
 @property (retain) GTLShoppingModelDebug *debug;
 
 // Id of product.
@@ -62,46 +58,15 @@
 // The kind of item, always shopping#product.
 @property (copy) NSString *kind;
 
-// Product.
 @property (retain) GTLShoppingModelProduct *product;
 
 // Recommendations for product.
-@property (retain) NSArray *recommendations;  // of GTLShoppingProductRecommendationsItem
+@property (retain) NSArray *recommendations;  // of GTLShoppingModelRecommendations
 
 // Unique identifier for this request.
 @property (copy) NSString *requestId;
 
 // Self link of product.
 @property (copy) NSString *selfLink;
-
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLShoppingProductRecommendationsItem
-//
-
-@interface GTLShoppingProductRecommendationsItem : GTLObject
-
-// List of recommendations.
-@property (retain) NSArray *recommendationList;  // of GTLShoppingProductRecommendationsItemRecommendationListItem
-
-// Type of recommendation list (one of: all, purchaseToPurchase, visitToVisit,
-// visitToPurchase).
-@property (copy) NSString *type;
-
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLShoppingProductRecommendationsItemRecommendationListItem
-//
-
-@interface GTLShoppingProductRecommendationsItemRecommendationListItem : GTLObject
-
-// Recommended product.
-@property (retain) GTLShoppingModelProduct *product;
 
 @end

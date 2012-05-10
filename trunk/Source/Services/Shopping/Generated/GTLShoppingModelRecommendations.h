@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLShoppingModelDebug.h
+//  GTLShoppingModelRecommendations.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,8 +26,8 @@
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
-//   GTLShoppingModelDebug (0 custom class methods, 7 custom properties)
-//   GTLShoppingModelDebugBackendTimesItem (0 custom class methods, 4 custom properties)
+//   GTLShoppingModelRecommendations (0 custom class methods, 2 custom properties)
+//   GTLShoppingModelRecommendationsRecommendationListItem (0 custom class methods, 1 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -35,56 +35,36 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLShoppingModelDebugBackendTimesItem;
+@class GTLShoppingModelProduct;
+@class GTLShoppingModelRecommendationsRecommendationListItem;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLShoppingModelDebug
+//   GTLShoppingModelRecommendations
 //
 
-@interface GTLShoppingModelDebug : GTLObject
+@interface GTLShoppingModelRecommendations : GTLObject
 
-// Google internal
-@property (retain) NSArray *backendTimes;  // of GTLShoppingModelDebugBackendTimesItem
+// List of recommendations.
+@property (retain) NSArray *recommendationList;  // of GTLShoppingModelRecommendationsRecommendationListItem
 
-// Google internal.
-@property (retain) NSNumber *elapsedMillis;  // longLongValue
-
-// Google internal.
-@property (copy) NSString *facetsRequest;
-
-// Google internal.
-@property (copy) NSString *facetsResponse;
-
-// Google internal.
-@property (copy) NSString *rdcResponse;
-
-// Google internal.
-@property (copy) NSString *searchRequest;
-
-// Google internal.
-@property (copy) NSString *searchResponse;
+// Type of recommendation list (for offer-based recommendations, one of: all,
+// purchaseToPurchase, visitToVisit, visitToPurchase, relatedItems; for
+// category-based recommendations, one of: all, categoryMostVisited,
+// categoryBestSeller).
+@property (copy) NSString *type;
 
 @end
 
 
 // ----------------------------------------------------------------------------
 //
-//   GTLShoppingModelDebugBackendTimesItem
+//   GTLShoppingModelRecommendationsRecommendationListItem
 //
 
-@interface GTLShoppingModelDebugBackendTimesItem : GTLObject
+@interface GTLShoppingModelRecommendationsRecommendationListItem : GTLObject
 
-// Google internal
-@property (retain) NSNumber *elapsedMillis;  // longLongValue
-
-// Google internal
-@property (copy) NSString *hostName;
-
-// Google internal
-@property (copy) NSString *name;
-
-// Google internal
-@property (retain) NSNumber *serverMillis;  // longLongValue
+// Recommended product.
+@property (retain) GTLShoppingModelProduct *product;
 
 @end

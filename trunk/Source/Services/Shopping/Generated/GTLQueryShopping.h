@@ -26,17 +26,17 @@
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
-//   GTLQueryShopping (2 custom class methods, 36 custom properties)
+//   GTLQueryShopping (2 custom class methods, 34 custom properties)
 //   GTLShoppingProductsGetCategories (0 custom class methods, 3 custom properties)
-//   GTLShoppingProductsGetDebug (0 custom class methods, 4 custom properties)
+//   GTLShoppingProductsGetPlusOne (0 custom class methods, 3 custom properties)
 //   GTLShoppingProductsGetRecommendations (0 custom class methods, 3 custom properties)
 //   GTLShoppingProductsListCategories (0 custom class methods, 3 custom properties)
-//   GTLShoppingProductsListDebug (0 custom class methods, 8 custom properties)
+//   GTLShoppingProductsListCategoryRecommendations (0 custom class methods, 4 custom properties)
 //   GTLShoppingProductsListFacets (0 custom class methods, 4 custom properties)
+//   GTLShoppingProductsListPlusOne (0 custom class methods, 3 custom properties)
 //   GTLShoppingProductsListPromotions (0 custom class methods, 2 custom properties)
 //   GTLShoppingProductsListRedirects (0 custom class methods, 2 custom properties)
 //   GTLShoppingProductsListRelatedQueries (0 custom class methods, 2 custom properties)
-//   GTLShoppingProductsListSayt (0 custom class methods, 2 custom properties)
 //   GTLShoppingProductsListSpelling (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -46,15 +46,15 @@
 #endif
 
 @class GTLShoppingProductsGetCategories;
-@class GTLShoppingProductsGetDebug;
+@class GTLShoppingProductsGetPlusOne;
 @class GTLShoppingProductsGetRecommendations;
 @class GTLShoppingProductsListCategories;
-@class GTLShoppingProductsListDebug;
+@class GTLShoppingProductsListCategoryRecommendations;
 @class GTLShoppingProductsListFacets;
+@class GTLShoppingProductsListPlusOne;
 @class GTLShoppingProductsListPromotions;
 @class GTLShoppingProductsListRedirects;
 @class GTLShoppingProductsListRelatedQueries;
-@class GTLShoppingProductsListSayt;
 @class GTLShoppingProductsListSpelling;
 
 @interface GTLQueryShopping : GTLQuery
@@ -70,27 +70,26 @@
 // Method-specific parameters; see the comments below for more information.
 //
 @property (assign) NSUInteger accountId;
-@property (copy) NSString *app;
 @property (copy) NSString *attributeFilter;
+@property (copy) NSString *availability;
 @property (copy) NSString *boostBy;
 // "categories" has different types for some query methods; see the
 // documentation for the right type for each query method.
 @property (retain) id categories;
+@property (retain) GTLShoppingProductsListCategoryRecommendations *categoryRecommendations;
 @property (copy) NSString *channels;
+@property (assign) BOOL clickTracking;
 @property (copy) NSString *country;
 @property (copy) NSString *crowdBy;
 @property (copy) NSString *currency;
-// "debug" has different types for some query methods; see the documentation for
-// the right type for each query method.
-@property (retain) id debug;
 @property (retain) GTLShoppingProductsListFacets *facets;
 @property (copy) NSString *language;
 @property (copy) NSString *location;
 @property (assign) NSUInteger maxResults;
-@property (assign) NSUInteger maxVariants;
-@property (copy) NSString *minAvailability;
-@property (copy) NSString *plusOne;
-@property (copy) NSString *productFields;
+@property (assign) NSInteger maxVariants;
+// "plusOne" has different types for some query methods; see the documentation
+// for the right type for each query method.
+@property (retain) id plusOne;
 @property (copy) NSString *productId;
 @property (copy) NSString *productIdType;
 @property (retain) GTLShoppingProductsListPromotions *promotions;
@@ -101,7 +100,6 @@
 @property (retain) GTLShoppingProductsListRelatedQueries *relatedQueries;
 @property (copy) NSString *restrictBy;
 @property (assign) BOOL safe;
-@property (retain) GTLShoppingProductsListSayt *sayt;
 @property (copy) NSString *source;
 @property (retain) GTLShoppingProductsListSpelling *spelling;
 @property (assign) NSUInteger startIndex;
@@ -124,11 +122,10 @@
 //   attributeFilter: Comma separated list of attributes to return
 //   categories: For this method, "categories" should be of type
 //     GTLShoppingProductsGetCategories.
-//   debug: For this method, "debug" should be of type
-//     GTLShoppingProductsGetDebug.
 //   location: Location used to determine tax and shipping
-//   plusOne: +1 rendering specification.
-//   productFields: Google Internal
+//   plusOne: For this method, "plusOne" should be of type
+//     GTLShoppingProductsGetPlusOne.
+//   recommendations: GTLShoppingProductsGetRecommendations
 //   taxonomy: Merchant taxonomy
 //   thumbnails: Thumbnail specification
 //  Authorization scope(s):
@@ -144,35 +141,33 @@
 //  Required:
 //   source: Query source
 //  Optional:
-//   app: The internal application that generated the request (if any).
 //   attributeFilter: Comma separated list of attributes to return
+//   availability: Comma separated list of availabilities (outOfStock, limited,
+//     inStock, backOrder, preOrder, onDisplayToOrder) to return
 //   boostBy: Boosting specification
 //   categories: For this method, "categories" should be of type
 //     GTLShoppingProductsListCategories.
+//   categoryRecommendations: GTLShoppingProductsListCategoryRecommendations
 //   channels: Channels specification
+//   clickTracking: Whether to add a click tracking parameter to offer URLs
 //   country: Country restriction (ISO 3166)
 //   crowdBy: Crowding specification
 //   currency: Currency restriction (ISO 4217)
-//   debug: For this method, "debug" should be of type
-//     GTLShoppingProductsListDebug.
+//   facets: GTLShoppingProductsListFacets
 //   language: Language restriction (BCP 47)
 //   location: Location used to determine tax and shipping
 //   maxResults: Maximum number of results to return
 //   maxVariants: Maximum number of variant results to return per result
-//   minAvailability:
-//      kGTLShoppingMinAvailabilityInStock: Only in stcok prodicts will be
-//        returned
-//      kGTLShoppingMinAvailabilityLimited: Limited availability and in stock
-//        products will be returned
-//      kGTLShoppingMinAvailabilityOutOfStock: Out of stock, limited
-//        availability and in stock products will be returned
-//      kGTLShoppingMinAvailabilityUnknown: All products will be returned
-//   plusOne: +1 rendering specification.
-//   productFields: Google Internal
+//   plusOne: For this method, "plusOne" should be of type
+//     GTLShoppingProductsListPlusOne.
+//   promotions: GTLShoppingProductsListPromotions
 //   q: Search query
 //   rankBy: Ranking specification
+//   redirects: GTLShoppingProductsListRedirects
+//   relatedQueries: GTLShoppingProductsListRelatedQueries
 //   restrictBy: Restriction specification
 //   safe: Whether safe search is enabled. Default: true
+//   spelling: GTLShoppingProductsListSpelling
 //   startIndex: Index (1-based) of first product to return
 //   taxonomy: Taxonomy name
 //   thumbnails: Image thumbnails specification
@@ -211,24 +206,21 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLShoppingProductsGetDebug
+//   GTLShoppingProductsGetPlusOne
 //
 
-// Used for 'debug' parameter on 'shopping.products.get'.
+// Used for 'plusOne' parameter on 'shopping.products.get'.
 
-@interface GTLShoppingProductsGetDebug : GTLObject
+@interface GTLShoppingProductsGetPlusOne : GTLObject
 
-// Google Internal
+// Whether to return +1 button code
 @property (retain) NSNumber *enabled;  // boolValue
 
-// Google Internal
-@property (retain) NSNumber *enableLogging;  // boolValue
+// +1 button rendering specification
+@property (copy) NSString *options;
 
-// Google Internal
-@property (retain) NSNumber *searchRequest;  // boolValue
-
-// Google Internal
-@property (retain) NSNumber *searchResponse;  // boolValue
+// Whether to use +1 button styles configured in the GCS account
+@property (retain) NSNumber *useGcsConfig;  // boolValue
 
 @end
 
@@ -274,36 +266,24 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLShoppingProductsListDebug
+//   GTLShoppingProductsListCategoryRecommendations
 //
 
-// Used for 'debug' parameter on 'shopping.products.list'.
+// Used for 'categoryRecommendations' parameter on 'shopping.products.list'.
 
-@interface GTLShoppingProductsListDebug : GTLObject
+@interface GTLShoppingProductsListCategoryRecommendations : GTLObject
 
-// Google Internal
+// Category for which to retrieve recommendations
+@property (copy) NSString *category;
+
+// Whether to return category recommendation information
 @property (retain) NSNumber *enabled;  // boolValue
 
-// Google Internal
-@property (retain) NSNumber *enableLogging;  // boolValue
+// Category recommendation specification
+@property (copy) NSString *include;
 
-// Google Internal
-@property (retain) NSNumber *geocodeRequest;  // boolValue
-
-// Google Internal
-@property (retain) NSNumber *geocodeResponse;  // boolValue
-
-// Google Internal
-@property (retain) NSNumber *rdcRequest;  // boolValue
-
-// Google Internal
-@property (retain) NSNumber *rdcResponse;  // boolValue
-
-// Google Internal
-@property (retain) NSNumber *searchRequest;  // boolValue
-
-// Google Internal
-@property (retain) NSNumber *searchResponse;  // boolValue
+// This parameter is currently ignored
+@property (retain) NSNumber *useGcsConfig;  // boolValue
 
 @end
 
@@ -326,6 +306,26 @@
 @property (copy) NSString *include;
 
 // Whether to return facet information as configured in the GCS account
+@property (retain) NSNumber *useGcsConfig;  // boolValue
+
+@end
+
+// ----------------------------------------------------------------------------
+//
+//   GTLShoppingProductsListPlusOne
+//
+
+// Used for 'plusOne' parameter on 'shopping.products.list'.
+
+@interface GTLShoppingProductsListPlusOne : GTLObject
+
+// Whether to return +1 button code
+@property (retain) NSNumber *enabled;  // boolValue
+
+// +1 button rendering specification
+@property (copy) NSString *options;
+
+// Whether to use +1 button styles configured in the GCS account
 @property (retain) NSNumber *useGcsConfig;  // boolValue
 
 @end
@@ -377,23 +377,6 @@
 @property (retain) NSNumber *enabled;  // boolValue
 
 // This parameter is currently ignored
-@property (retain) NSNumber *useGcsConfig;  // boolValue
-
-@end
-
-// ----------------------------------------------------------------------------
-//
-//   GTLShoppingProductsListSayt
-//
-
-// Used for 'sayt' parameter on 'shopping.products.list'.
-
-@interface GTLShoppingProductsListSayt : GTLObject
-
-// Google Internal
-@property (retain) NSNumber *enabled;  // boolValue
-
-// Google Internal
 @property (retain) NSNumber *useGcsConfig;  // boolValue
 
 @end
