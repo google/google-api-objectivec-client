@@ -26,11 +26,11 @@
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
-//   GTLShoppingProducts (0 custom class methods, 20 custom properties)
+//   GTLShoppingProducts (0 custom class methods, 21 custom properties)
 //   GTLShoppingProductsFacetsItem (0 custom class methods, 7 custom properties)
 //   GTLShoppingProductsPromotionsItem (0 custom class methods, 9 custom properties)
 //   GTLShoppingProductsSpelling (0 custom class methods, 1 custom properties)
-//   GTLShoppingProductsStoresItem (0 custom class methods, 6 custom properties)
+//   GTLShoppingProductsStoresItem (0 custom class methods, 7 custom properties)
 //   GTLShoppingProductsFacetsItemBucketsItem (0 custom class methods, 6 custom properties)
 //   GTLShoppingProductsPromotionsItemCustomFieldsItem (0 custom class methods, 2 custom properties)
 
@@ -39,6 +39,7 @@
 #import "GTLShoppingModelCategory.h"
 #import "GTLShoppingModelDebug.h"
 #import "GTLShoppingModelProduct.h"
+#import "GTLShoppingModelRecommendations.h"
 #import "GTLShoppingProduct.h"
 
 // ----------------------------------------------------------------------------
@@ -47,10 +48,10 @@
 //
 
 @implementation GTLShoppingProducts
-@dynamic categories, currentItemCount, debug, ETag, facets, identifier, items,
-         itemsPerPage, kind, nextLink, previousLink, promotions, redirects,
-         relatedQueries, requestId, selfLink, spelling, startIndex, stores,
-         totalItems;
+@dynamic categories, categoryRecommendations, currentItemCount, debug, ETag,
+         facets, identifier, items, itemsPerPage, kind, nextLink, previousLink,
+         promotions, redirects, relatedQueries, requestId, selfLink, spelling,
+         startIndex, stores, totalItems;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -65,6 +66,7 @@
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
       [GTLShoppingModelCategory class], @"categories",
+      [GTLShoppingModelRecommendations class], @"categoryRecommendations",
       [GTLShoppingProductsFacetsItem class], @"facets",
       [GTLShoppingProduct class], @"items",
       [GTLShoppingProductsPromotionsItem class], @"promotions",
@@ -142,7 +144,7 @@
 //
 
 @implementation GTLShoppingProductsStoresItem
-@dynamic address, location, name, storeCode, storeId, telephone;
+@dynamic address, location, name, storeCode, storeId, storeName, telephone;
 @end
 
 

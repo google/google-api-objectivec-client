@@ -30,9 +30,3 @@
 
 // Authorization scope
 NSString * const kGTLAuthScopeShoppingShoppingapi = @"https://www.googleapis.com/auth/shoppingapi";
-
-// MinAvailability
-NSString * const kGTLShoppingMinAvailabilityInStock    = @"inStock";
-NSString * const kGTLShoppingMinAvailabilityLimited    = @"limited";
-NSString * const kGTLShoppingMinAvailabilityOutOfStock = @"outOfStock";
-NSString * const kGTLShoppingMinAvailabilityUnknown    = @"unknown";

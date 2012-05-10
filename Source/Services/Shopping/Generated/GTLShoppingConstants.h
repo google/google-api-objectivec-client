@@ -37,9 +37,3 @@
 // Authorization scope
 // View your product data
 GTL_EXTERN NSString * const kGTLAuthScopeShoppingShoppingapi;  // "https://www.googleapis.com/auth/shoppingapi"
-
-// MinAvailability
-GTL_EXTERN NSString * const kGTLShoppingMinAvailabilityInStock;  // "inStock"
-GTL_EXTERN NSString * const kGTLShoppingMinAvailabilityLimited;  // "limited"
-GTL_EXTERN NSString * const kGTLShoppingMinAvailabilityOutOfStock;  // "outOfStock"
-GTL_EXTERN NSString * const kGTLShoppingMinAvailabilityUnknown;  // "unknown"

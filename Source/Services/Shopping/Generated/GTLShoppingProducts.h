@@ -26,11 +26,11 @@
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
-//   GTLShoppingProducts (0 custom class methods, 20 custom properties)
+//   GTLShoppingProducts (0 custom class methods, 21 custom properties)
 //   GTLShoppingProductsFacetsItem (0 custom class methods, 7 custom properties)
 //   GTLShoppingProductsPromotionsItem (0 custom class methods, 9 custom properties)
 //   GTLShoppingProductsSpelling (0 custom class methods, 1 custom properties)
-//   GTLShoppingProductsStoresItem (0 custom class methods, 6 custom properties)
+//   GTLShoppingProductsStoresItem (0 custom class methods, 7 custom properties)
 //   GTLShoppingProductsFacetsItemBucketsItem (0 custom class methods, 6 custom properties)
 //   GTLShoppingProductsPromotionsItemCustomFieldsItem (0 custom class methods, 2 custom properties)
 
@@ -43,6 +43,7 @@
 @class GTLShoppingModelCategory;
 @class GTLShoppingModelDebug;
 @class GTLShoppingModelProduct;
+@class GTLShoppingModelRecommendations;
 @class GTLShoppingProduct;
 @class GTLShoppingProductsFacetsItem;
 @class GTLShoppingProductsFacetsItemBucketsItem;
@@ -63,6 +64,9 @@
 
 // List of categories.
 @property (retain) NSArray *categories;  // of GTLShoppingModelCategory
+
+// Recommendations for category.
+@property (retain) NSArray *categoryRecommendations;  // of GTLShoppingModelRecommendations
 
 // Current item count.
 @property (retain) NSNumber *currentItemCount;  // intValue
@@ -224,7 +228,7 @@
 // Location of store.
 @property (copy) NSString *location;
 
-// Name of store.
+// Name of merchant.
 @property (copy) NSString *name;
 
 // Merchant-supplied store code.
@@ -232,6 +236,9 @@
 
 // Id of store.
 @property (copy) NSString *storeId;
+
+// Name of store.
+@property (copy) NSString *storeName;
 
 // Telephone number of store.
 @property (copy) NSString *telephone;

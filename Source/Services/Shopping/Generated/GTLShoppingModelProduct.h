@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -84,7 +84,7 @@
 @property (copy) NSString *descriptionProperty;
 
 // Google id of product.
-@property (copy) NSString *googleId;
+@property (retain) NSNumber *googleId;  // unsignedLongLongValue
 
 // The first GTIN of the product. Deprecated in favor of "gtins".
 @property (copy) NSString *gtin;
@@ -139,6 +139,9 @@
 
 // RFC 3339 formatted modification time and date of product.
 @property (retain) GTLDateTime *modificationTime;
+
+// List of all the product's MPNs.
+@property (retain) NSArray *mpns;  // of NSString
 
 // Code to add to the page to render the +1 content.
 @property (copy) NSString *plusOne;
@@ -195,7 +198,7 @@
 @interface GTLShoppingModelProductAuthor : GTLObject
 
 // Account id of product author.
-@property (copy) NSString *accountId;
+@property (retain) NSNumber *accountId;  // unsignedLongLongValue
 
 // Name of product author.
 @property (copy) NSString *name;
@@ -225,8 +228,13 @@
 //
 
 @interface GTLShoppingModelProductInternal4Item : GTLObject
+
+// Google Internal.
 @property (retain) NSNumber *confidence;  // doubleValue
+
+// Google Internal.
 @property (retain) NSNumber *node;  // intValue
+
 @end
 
 
