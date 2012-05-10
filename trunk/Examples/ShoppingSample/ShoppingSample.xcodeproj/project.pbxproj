@@ -14,14 +14,15 @@
 		4F6293CF11CC193500BE36DD /* ShoppingSampleWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6293CD11CC193500BE36DD /* ShoppingSampleWindowController.m */; };
 		4F6293F811CC21A000BE36DD /* ShoppingSampleWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F6293F611CC21A000BE36DD /* ShoppingSampleWindow.xib */; };
 		4FA6F3D41034AEC400C5DFA5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FA6F3D11034AEC400C5DFA5 /* MainMenu.xib */; };
-		4FB25523138C456400B5C1AE /* GTLQueryShopping.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB25513138C456400B5C1AE /* GTLQueryShopping.m */; };
-		4FB25524138C456400B5C1AE /* GTLServiceShopping.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB25515138C456400B5C1AE /* GTLServiceShopping.m */; };
-		4FB25525138C456400B5C1AE /* GTLShoppingConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB25518138C456400B5C1AE /* GTLShoppingConstants.m */; };
-		4FB25526138C456400B5C1AE /* GTLShoppingModelCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB2551A138C456400B5C1AE /* GTLShoppingModelCategory.m */; };
-		4FB25527138C456400B5C1AE /* GTLShoppingModelDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB2551C138C456400B5C1AE /* GTLShoppingModelDebug.m */; };
-		4FB25528138C456400B5C1AE /* GTLShoppingModelProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB2551E138C456400B5C1AE /* GTLShoppingModelProduct.m */; };
-		4FB25529138C456400B5C1AE /* GTLShoppingProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB25520138C456400B5C1AE /* GTLShoppingProduct.m */; };
-		4FB2552A138C456400B5C1AE /* GTLShoppingProducts.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB25522138C456400B5C1AE /* GTLShoppingProducts.m */; };
+		4FCCF56A155C519B009947E5 /* GTLQueryShopping.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCCF558155C519B009947E5 /* GTLQueryShopping.m */; };
+		4FCCF56B155C519B009947E5 /* GTLServiceShopping.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCCF55A155C519B009947E5 /* GTLServiceShopping.m */; };
+		4FCCF56C155C519B009947E5 /* GTLShoppingConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCCF55D155C519B009947E5 /* GTLShoppingConstants.m */; };
+		4FCCF56D155C519B009947E5 /* GTLShoppingModelCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCCF55F155C519B009947E5 /* GTLShoppingModelCategory.m */; };
+		4FCCF56E155C519B009947E5 /* GTLShoppingModelDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCCF561155C519B009947E5 /* GTLShoppingModelDebug.m */; };
+		4FCCF56F155C519B009947E5 /* GTLShoppingModelProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCCF563155C519B009947E5 /* GTLShoppingModelProduct.m */; };
+		4FCCF570155C519B009947E5 /* GTLShoppingModelRecommendations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCCF565155C519B009947E5 /* GTLShoppingModelRecommendations.m */; };
+		4FCCF571155C519B009947E5 /* GTLShoppingProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCCF567155C519B009947E5 /* GTLShoppingProduct.m */; };
+		4FCCF572155C519B009947E5 /* GTLShoppingProducts.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCCF569155C519B009947E5 /* GTLShoppingProducts.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -102,23 +103,25 @@
 		4F6293CD11CC193500BE36DD /* ShoppingSampleWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingSampleWindowController.m; sourceTree = "<group>"; };
 		4F6293F711CC21A000BE36DD /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/ShoppingSampleWindow.xib; sourceTree = "<group>"; };
 		4FA6F3D21034AEC400C5DFA5 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		4FB25512138C456400B5C1AE /* GTLQueryShopping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLQueryShopping.h; sourceTree = "<group>"; };
-		4FB25513138C456400B5C1AE /* GTLQueryShopping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLQueryShopping.m; sourceTree = "<group>"; };
-		4FB25514138C456400B5C1AE /* GTLServiceShopping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLServiceShopping.h; sourceTree = "<group>"; };
-		4FB25515138C456400B5C1AE /* GTLServiceShopping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLServiceShopping.m; sourceTree = "<group>"; };
-		4FB25516138C456400B5C1AE /* GTLShopping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLShopping.h; sourceTree = "<group>"; };
-		4FB25517138C456400B5C1AE /* GTLShoppingConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLShoppingConstants.h; sourceTree = "<group>"; };
-		4FB25518138C456400B5C1AE /* GTLShoppingConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLShoppingConstants.m; sourceTree = "<group>"; };
-		4FB25519138C456400B5C1AE /* GTLShoppingModelCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLShoppingModelCategory.h; sourceTree = "<group>"; };
-		4FB2551A138C456400B5C1AE /* GTLShoppingModelCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLShoppingModelCategory.m; sourceTree = "<group>"; };
-		4FB2551B138C456400B5C1AE /* GTLShoppingModelDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLShoppingModelDebug.h; sourceTree = "<group>"; };
-		4FB2551C138C456400B5C1AE /* GTLShoppingModelDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLShoppingModelDebug.m; sourceTree = "<group>"; };
-		4FB2551D138C456400B5C1AE /* GTLShoppingModelProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLShoppingModelProduct.h; sourceTree = "<group>"; };
-		4FB2551E138C456400B5C1AE /* GTLShoppingModelProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLShoppingModelProduct.m; sourceTree = "<group>"; };
-		4FB2551F138C456400B5C1AE /* GTLShoppingProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLShoppingProduct.h; sourceTree = "<group>"; };
-		4FB25520138C456400B5C1AE /* GTLShoppingProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLShoppingProduct.m; sourceTree = "<group>"; };
-		4FB25521138C456400B5C1AE /* GTLShoppingProducts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLShoppingProducts.h; sourceTree = "<group>"; };
-		4FB25522138C456400B5C1AE /* GTLShoppingProducts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLShoppingProducts.m; sourceTree = "<group>"; };
+		4FCCF557155C519B009947E5 /* GTLQueryShopping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLQueryShopping.h; sourceTree = "<group>"; };
+		4FCCF558155C519B009947E5 /* GTLQueryShopping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLQueryShopping.m; sourceTree = "<group>"; };
+		4FCCF559155C519B009947E5 /* GTLServiceShopping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLServiceShopping.h; sourceTree = "<group>"; };
+		4FCCF55A155C519B009947E5 /* GTLServiceShopping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLServiceShopping.m; sourceTree = "<group>"; };
+		4FCCF55B155C519B009947E5 /* GTLShopping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLShopping.h; sourceTree = "<group>"; };
+		4FCCF55C155C519B009947E5 /* GTLShoppingConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLShoppingConstants.h; sourceTree = "<group>"; };
+		4FCCF55D155C519B009947E5 /* GTLShoppingConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLShoppingConstants.m; sourceTree = "<group>"; };
+		4FCCF55E155C519B009947E5 /* GTLShoppingModelCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLShoppingModelCategory.h; sourceTree = "<group>"; };
+		4FCCF55F155C519B009947E5 /* GTLShoppingModelCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLShoppingModelCategory.m; sourceTree = "<group>"; };
+		4FCCF560155C519B009947E5 /* GTLShoppingModelDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLShoppingModelDebug.h; sourceTree = "<group>"; };
+		4FCCF561155C519B009947E5 /* GTLShoppingModelDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLShoppingModelDebug.m; sourceTree = "<group>"; };
+		4FCCF562155C519B009947E5 /* GTLShoppingModelProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLShoppingModelProduct.h; sourceTree = "<group>"; };
+		4FCCF563155C519B009947E5 /* GTLShoppingModelProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLShoppingModelProduct.m; sourceTree = "<group>"; };
+		4FCCF564155C519B009947E5 /* GTLShoppingModelRecommendations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLShoppingModelRecommendations.h; sourceTree = "<group>"; };
+		4FCCF565155C519B009947E5 /* GTLShoppingModelRecommendations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLShoppingModelRecommendations.m; sourceTree = "<group>"; };
+		4FCCF566155C519B009947E5 /* GTLShoppingProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLShoppingProduct.h; sourceTree = "<group>"; };
+		4FCCF567155C519B009947E5 /* GTLShoppingProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLShoppingProduct.m; sourceTree = "<group>"; };
+		4FCCF568155C519B009947E5 /* GTLShoppingProducts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLShoppingProducts.h; sourceTree = "<group>"; };
+		4FCCF569155C519B009947E5 /* GTLShoppingProducts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLShoppingProducts.m; sourceTree = "<group>"; };
 		4FD0F1D90CBC68F300059DC1 /* buildCopyScript */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.script.sh; path = buildCopyScript; sourceTree = "<group>"; };
 		4FD0F1DA0CBC68F300059DC1 /* buildStripHeaders */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.script.sh; path = buildStripHeaders; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -233,35 +236,11 @@
 		4FB25510138C456400B5C1AE /* Shopping */ = {
 			isa = PBXGroup;
 			children = (
-				4FB25511138C456400B5C1AE /* Generated */,
+				4FCCF556155C519B009947E5 /* Generated */,
 			);
 			name = Shopping;
 			path = ../../Source/Services/Shopping;
 			sourceTree = SOURCE_ROOT;
-		};
-		4FB25511138C456400B5C1AE /* Generated */ = {
-			isa = PBXGroup;
-			children = (
-				4FB25512138C456400B5C1AE /* GTLQueryShopping.h */,
-				4FB25513138C456400B5C1AE /* GTLQueryShopping.m */,
-				4FB25514138C456400B5C1AE /* GTLServiceShopping.h */,
-				4FB25515138C456400B5C1AE /* GTLServiceShopping.m */,
-				4FB25516138C456400B5C1AE /* GTLShopping.h */,
-				4FB25517138C456400B5C1AE /* GTLShoppingConstants.h */,
-				4FB25518138C456400B5C1AE /* GTLShoppingConstants.m */,
-				4FB25519138C456400B5C1AE /* GTLShoppingModelCategory.h */,
-				4FB2551A138C456400B5C1AE /* GTLShoppingModelCategory.m */,
-				4FB2551B138C456400B5C1AE /* GTLShoppingModelDebug.h */,
-				4FB2551C138C456400B5C1AE /* GTLShoppingModelDebug.m */,
-				4FB2551D138C456400B5C1AE /* GTLShoppingModelProduct.h */,
-				4FB2551E138C456400B5C1AE /* GTLShoppingModelProduct.m */,
-				4FB2551F138C456400B5C1AE /* GTLShoppingProduct.h */,
-				4FB25520138C456400B5C1AE /* GTLShoppingProduct.m */,
-				4FB25521138C456400B5C1AE /* GTLShoppingProducts.h */,
-				4FB25522138C456400B5C1AE /* GTLShoppingProducts.m */,
-			);
-			path = Generated;
-			sourceTree = "<group>";
 		};
 		4FB2552C138C456800B5C1AE /* API Services */ = {
 			isa = PBXGroup;
@@ -269,6 +248,32 @@
 				4FB25510138C456400B5C1AE /* Shopping */,
 			);
 			name = "API Services";
+			sourceTree = "<group>";
+		};
+		4FCCF556155C519B009947E5 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				4FCCF557155C519B009947E5 /* GTLQueryShopping.h */,
+				4FCCF558155C519B009947E5 /* GTLQueryShopping.m */,
+				4FCCF559155C519B009947E5 /* GTLServiceShopping.h */,
+				4FCCF55A155C519B009947E5 /* GTLServiceShopping.m */,
+				4FCCF55B155C519B009947E5 /* GTLShopping.h */,
+				4FCCF55C155C519B009947E5 /* GTLShoppingConstants.h */,
+				4FCCF55D155C519B009947E5 /* GTLShoppingConstants.m */,
+				4FCCF55E155C519B009947E5 /* GTLShoppingModelCategory.h */,
+				4FCCF55F155C519B009947E5 /* GTLShoppingModelCategory.m */,
+				4FCCF560155C519B009947E5 /* GTLShoppingModelDebug.h */,
+				4FCCF561155C519B009947E5 /* GTLShoppingModelDebug.m */,
+				4FCCF562155C519B009947E5 /* GTLShoppingModelProduct.h */,
+				4FCCF563155C519B009947E5 /* GTLShoppingModelProduct.m */,
+				4FCCF564155C519B009947E5 /* GTLShoppingModelRecommendations.h */,
+				4FCCF565155C519B009947E5 /* GTLShoppingModelRecommendations.m */,
+				4FCCF566155C519B009947E5 /* GTLShoppingProduct.h */,
+				4FCCF567155C519B009947E5 /* GTLShoppingProduct.m */,
+				4FCCF568155C519B009947E5 /* GTLShoppingProducts.h */,
+				4FCCF569155C519B009947E5 /* GTLShoppingProducts.m */,
+			);
+			path = Generated;
 			sourceTree = "<group>";
 		};
 		4FD0F1D80CBC68E100059DC1 /* Build Scripts */ = {
@@ -404,14 +409,15 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				4F6293CE11CC193500BE36DD /* ShoppingSampleAppController.m in Sources */,
 				4F6293CF11CC193500BE36DD /* ShoppingSampleWindowController.m in Sources */,
-				4FB25523138C456400B5C1AE /* GTLQueryShopping.m in Sources */,
-				4FB25524138C456400B5C1AE /* GTLServiceShopping.m in Sources */,
-				4FB25525138C456400B5C1AE /* GTLShoppingConstants.m in Sources */,
-				4FB25526138C456400B5C1AE /* GTLShoppingModelCategory.m in Sources */,
-				4FB25527138C456400B5C1AE /* GTLShoppingModelDebug.m in Sources */,
-				4FB25528138C456400B5C1AE /* GTLShoppingModelProduct.m in Sources */,
-				4FB25529138C456400B5C1AE /* GTLShoppingProduct.m in Sources */,
-				4FB2552A138C456400B5C1AE /* GTLShoppingProducts.m in Sources */,
+				4FCCF56A155C519B009947E5 /* GTLQueryShopping.m in Sources */,
+				4FCCF56B155C519B009947E5 /* GTLServiceShopping.m in Sources */,
+				4FCCF56C155C519B009947E5 /* GTLShoppingConstants.m in Sources */,
+				4FCCF56D155C519B009947E5 /* GTLShoppingModelCategory.m in Sources */,
+				4FCCF56E155C519B009947E5 /* GTLShoppingModelDebug.m in Sources */,
+				4FCCF56F155C519B009947E5 /* GTLShoppingModelProduct.m in Sources */,
+				4FCCF570155C519B009947E5 /* GTLShoppingModelRecommendations.m in Sources */,
+				4FCCF571155C519B009947E5 /* GTLShoppingProduct.m in Sources */,
+				4FCCF572155C519B009947E5 /* GTLShoppingProducts.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,10 +463,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
-				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../../Source/build/$(CONFIGURATION)/";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_MODEL_TUNING = G5;
@@ -475,14 +477,6 @@
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
-				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../../Source/build/$(CONFIGURATION)/";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;

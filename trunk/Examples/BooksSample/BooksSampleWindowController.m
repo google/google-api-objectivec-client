@@ -371,11 +371,12 @@ NSString *const kKeychainItemName = @"Books Sample: Google Books";
   self.myVolumes = nil;
   self.myVolumesFetchError = nil;
 
-  GTLQueryBooks *query = [GTLQueryBooks queryForMylibraryBookshelvesVolumesList];
   GTLBooksBookshelf *shelf = [self selectedBookshelf];
-
+  
   // per b/4444470 bookshelf ID should be a string type, not a number
-  query.shelf = [shelf.identifier stringValue];
+  NSString *shelfID = [shelf.identifier stringValue];
+
+  GTLQueryBooks *query = [GTLQueryBooks queryForMylibraryBookshelvesVolumesListWithShelf:shelfID];
 
   GTLServiceBooks *service = self.booksService;
   self.myVolumesTicket = [service executeQuery:query
