@@ -63,7 +63,7 @@ static NSString *const kUserDataPropertyKey = @"_userData";
 }
 
 + (Class)classForAdditionalProperties {
-  return [GTLObject class];
+  return Nil;
 }
 
 - (BOOL)isEqual:(GTLObject *)other {

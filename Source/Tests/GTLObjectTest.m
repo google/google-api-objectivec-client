@@ -440,7 +440,7 @@ static Class gAdditionalPropsClass = Nil;
   child2.aStr = @"I'm the any kid";
   obj.child = child;
   obj.anything = child2;
-  STAssertNotNil(obj.child, @"woow");  
+  STAssertNotNil(obj.child, @"woow");
 
   NSString *jsonStr = obj.JSONString;
   STAssertNotNil(jsonStr, nil);
@@ -769,6 +769,81 @@ static Class gAdditionalPropsClass = Nil;
   STAssertNotNil(child, @"failed to get kid");
   STAssertTrue([child isKindOfClass:[GTLTestingObject class]], @"wrong class");
   STAssertEqualObjects(child.aStr, @"I'm a kid", nil);
+}
+
+- (void)testSetAdditionalPropertiesAnything {
+  GTLTestingAdditionalPropertiesObject *obj =
+    [GTLTestingAdditionalPropertiesObject object];
+  STAssertNotNil(obj, @"failed to make object");
+  NSMutableDictionary *expected;
+
+  // test setting when it can be anything
+  [GTLTestingAdditionalPropertiesObject setAdditionalPropsClass:[NSObject class]];
+
+  // string
+  [obj setAdditionalProperty:@"foo bar" forName:@"ap1"];
+  expected = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+              @"foo bar", @"ap1",
+              nil];
+  STAssertEqualObjects(obj.JSON, expected, nil);
+
+  // number
+  [obj setAdditionalProperty:[NSNumber numberWithInteger:987]
+                     forName:@"ap2"];
+  [expected setObject:[NSNumber numberWithInteger:987] forKey:@"ap2"];
+  STAssertEqualObjects(obj.JSON, expected, nil);
+
+  // date
+  NSString * const dateStr = @"2011-01-14T15:00:00-01:00";
+  [obj setAdditionalProperty:[GTLDateTime dateTimeWithRFC3339String:dateStr]
+                     forName:@"ap3"];
+  [expected setObject:dateStr forKey:@"ap3"];
+  STAssertEqualObjects(obj.JSON, expected, nil);
+
+  // object
+  GTLTestingObject *child = [GTLTestingObject object];
+  STAssertNotNil(child, @"failed to make object");
+
+  child.aStr = @"I'm a kid";
+
+  [obj setAdditionalProperty:child forName:@"aKid"];
+  [expected setObject:child.JSON forKey:@"aKid"];
+  STAssertEqualObjects(obj.JSON, expected, nil);
+}
+
+- (void)testGetAdditionalPropertiesAnything {
+  NSString * const jsonStr =
+    @"{\"ap3\":\"2011-01-14T15:00:00-01:00\",\"ap2\":1234,\"ap1\":\"foo bar\", \"aKid\":{ \"a_str\": \"I'm a kid\" } }";
+  NSError *err = nil;
+  NSMutableDictionary *json = [GTLJSONParser objectWithString:jsonStr
+                                                        error:&err];
+  STAssertNil(err, @"got error parsing");
+  STAssertNotNil(json, @"didn't get object parsing");
+
+  GTLTestingObject *obj = [GTLTestingAdditionalPropertiesObject objectWithJSON:json];
+  STAssertNotNil(obj, @"failed to make object");
+
+  // test getting when it can be anything
+  [GTLTestingAdditionalPropertiesObject setAdditionalPropsClass:[NSObject class]];
+
+  // string
+  STAssertEqualObjects([obj additionalPropertyForName:@"ap1"],
+                       @"foo bar", nil);
+
+  // number
+  STAssertEqualObjects([obj additionalPropertyForName:@"ap2"],
+                       [NSNumber numberWithInteger:1234], nil);
+
+  // date - just get the string back, nothing tells it to conver to a date.
+  NSString * const dateStr = @"2011-01-14T15:00:00-01:00";
+  STAssertEqualObjects([obj additionalPropertyForName:@"ap3"],
+                       dateStr, nil);
+
+  GTLObject *child = [obj additionalPropertyForName:@"aKid"];
+  STAssertNotNil(child, @"failed to get kid");
+  STAssertTrue([child isMemberOfClass:[GTLObject class]], @"wrong class");
+  STAssertEqualObjects([child additionalPropertyForName:@"a_str"],
+                       @"I'm a kid", nil);
 }
 
 - (void)testSetAdditionalPropertiesArraysOfBasicTypes {

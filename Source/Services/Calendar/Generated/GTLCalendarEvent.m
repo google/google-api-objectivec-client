@@ -154,6 +154,11 @@
 //
 
 @implementation GTLCalendarEventExtendedPropertiesPrivate
+
++ (Class)classForAdditionalProperties {
+  return [NSString class];
+}
+
 @end
 
 
@@ -163,6 +168,11 @@
 //
 
 @implementation GTLCalendarEventExtendedPropertiesShared
+
++ (Class)classForAdditionalProperties {
+  return [NSString class];
+}
+
 @end
 
 
@@ -172,4 +182,9 @@
 //
 
 @implementation GTLCalendarEventGadgetPreferences
+
++ (Class)classForAdditionalProperties {
+  return [NSString class];
+}
+
 @end

@@ -45,7 +45,7 @@ static NSString *const kJSONKey = @"jsonKey";
   // TODO(TVL): use defaultClass to validate things like expectedClass is
   // done in jsonFromAPIObject:expectedClass:isCacheable:?
 
-  if ([json isKindOfClass:[NSMutableDictionary class]]) {
+  if ([json isKindOfClass:[NSDictionary class]]) {
     // If no default, or the default was any object, then default to base
     // object here (and hope there is a kind to get the right thing).
     if ((defaultClass == Nil) || [defaultClass isEqual:[NSObject class]]) {
@@ -55,7 +55,7 @@ static NSString *const kJSONKey = @"jsonKey";
                          defaultClass:defaultClass
                            surrogates:surrogates
                         batchClassMap:nil];
-  } else if ([json isKindOfClass:[NSMutableArray class]]) {
+  } else if ([json isKindOfClass:[NSArray class]]) {
     NSArray *jsonArray = json;
     // make an object for each JSON dictionary in the array
     NSMutableArray *resultArray = [NSMutableArray arrayWithCapacity:[jsonArray count]];
@@ -91,6 +91,7 @@ static NSString *const kJSONKey = @"jsonKey";
 }
 
 // Helper to generically convert an api object type to JSON.
+// |expectedClass| is the type that was expected for |obj|.
 + (id)jsonFromAPIObject:(id)obj
           expectedClass:(Class)expectedClass
             isCacheable:(BOOL*)isCacheable {
