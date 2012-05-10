@@ -26,7 +26,7 @@
 // Documentation:
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
 // Classes:
-//   GTLQueryBooks (22 custom class methods, 34 custom properties)
+//   GTLQueryBooks (28 custom class methods, 42 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -49,12 +49,18 @@
 // Method-specific parameters; see the comments below for more information.
 //
 @property (copy) NSString *action;
+// "annotationDataId" has different types for some query methods; see the
+// documentation for the right type for each query method.
+@property (retain) id annotationDataId;
 @property (copy) NSString *annotationId;
 @property (copy) NSString *contentVersion;
 @property (copy) NSString *country;
 @property (copy) NSString *cpksver;
 @property (copy) NSString *download;
+@property (copy) NSString *endOffset;
+@property (copy) NSString *endPosition;
 @property (copy) NSString *filter;
+@property (assign) NSInteger h;
 @property (copy) NSString *langRestrict;
 @property (copy) NSString *layerId;
 @property (copy) NSString *libraryRestrict;
@@ -74,6 +80,9 @@
 @property (assign) BOOL showPreorders;
 @property (copy) NSString *source;
 @property (assign) NSUInteger startIndex;
+@property (copy) NSString *startOffset;
+@property (copy) NSString *startPosition;
+@property (copy) NSString *summaryId;
 @property (copy) NSString *timestamp;
 @property (copy) NSString *updatedMax;
 @property (copy) NSString *updatedMin;
@@ -81,6 +90,7 @@
 @property (copy) NSString *volumeId;
 @property (retain) NSArray *volumeIds;  // of NSString
 @property (assign) NSInteger volumePosition;
+@property (assign) NSInteger w;
 
 #pragma mark -
 #pragma mark "bookshelves" methods
@@ -89,10 +99,9 @@
 // Method: books.bookshelves.get
 // Retrieves metadata for a specific bookshelf for the specified user.
 //  Required:
-//   userId: Id of user for whom to retrieve bookshelves.
-//   shelf: Id of bookshelf to retrieve.
+//   userId: ID of user for whom to retrieve bookshelves.
+//   shelf: ID of bookshelf to retrieve.
 //  Optional:
-//   country: ISO-3166-1 code to override the IP-based location.
 //   source: String to identify the originator of this request.
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
@@ -103,9 +112,8 @@
 // Method: books.bookshelves.list
 // Retrieves a list of public bookshelves for the specified user.
 //  Required:
-//   userId: Id of user for whom to retrieve bookshelves.
+//   userId: ID of user for whom to retrieve bookshelves.
 //  Optional:
-//   country: ISO-3166-1 code to override the IP-based location.
 //   source: String to identify the originator of this request.
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
@@ -119,10 +127,9 @@
 // Method: books.bookshelves.volumes.list
 // Retrieves volumes in a specific bookshelf for the specified user.
 //  Required:
-//   userId: Id of user for whom to retrieve bookshelf volumes.
-//   shelf: Id of bookshelf to retrieve volumes.
+//   userId: ID of user for whom to retrieve bookshelf volumes.
+//   shelf: ID of bookshelf to retrieve volumes.
 //  Optional:
-//   country: ISO-3166-1 code to override the IP-based location.
 //   maxResults: Maximum number of results to return
 //   showPreorders: Set to true to show pre-ordered books. Defaults to false.
 //   source: String to identify the originator of this request.
@@ -134,6 +141,146 @@
                                          shelf:(NSString *)shelf;
 
 #pragma mark -
+#pragma mark "layers.annotationData" methods
+// These create a GTLQueryBooks object.
+
+// Method: books.layers.annotationData.get
+// Gets the annotation data.
+//  Required:
+//   volumeId: The volume to retrieve annotations for.
+//   layerId: The ID for the layer to get the annotations.
+//   annotationDataId: The ID of the annotation data to retrieve.
+//   contentVersion: The content version for the volume you are trying to
+//     retrieve.
+//  Optional:
+//   h: The requested pixel height for any images. If height is provided width
+//     must also be provided.
+//   locale: The locale information for the data. ISO-639-1 language and
+//     ISO-3166-1 country code. Ex: 'en_US'.
+//   source: String to identify the originator of this request.
+//   w: The requested pixel width for any images. If width is provided height
+//     must also be provided.
+//  Authorization scope(s):
+//   kGTLAuthScopeBooks
+// Fetches a GTLBooksAnnotationdata.
++ (id)queryForLayersAnnotationDataGetWithVolumeId:(NSString *)volumeId
+                                          layerId:(NSString *)layerId
+                                 annotationDataId:(NSString *)annotationDataId
+                                   contentVersion:(NSString *)contentVersion;
+
+// Method: books.layers.annotationData.list
+// Gets the annotation data for a volume and layer.
+//  Required:
+//   volumeId: The volume to retrieve annotation data for.
+//   layerId: The ID for the layer to get the annotation data.
+//   contentVersion: The content version for the requested volume.
+//  Optional:
+//   annotationDataId: The list of Annotation Data Ids to retrieve. Pagination
+//     is ignored if this is set.
+//     Note: For this method, "annotationDataId" should be of type NSArray.
+//   h: The requested pixel height for any images. If height is provided width
+//     must also be provided.
+//   locale: The locale information for the data. ISO-639-1 language and
+//     ISO-3166-1 country code. Ex: 'en_US'.
+//   maxResults: Maximum number of results to return (0..200)
+//   pageToken: The value of the nextToken from the previous page.
+//   source: String to identify the originator of this request.
+//   updatedMax: RFC 3339 timestamp to restrict to items updated prior to this
+//     timestamp (exclusive).
+//   updatedMin: RFC 3339 timestamp to restrict to items updated since this
+//     timestamp (inclusive).
+//   w: The requested pixel width for any images. If width is provided height
+//     must also be provided.
+//  Authorization scope(s):
+//   kGTLAuthScopeBooks
+// Fetches a GTLBooksAnnotationsdata.
++ (id)queryForLayersAnnotationDataListWithVolumeId:(NSString *)volumeId
+                                           layerId:(NSString *)layerId
+                                    contentVersion:(NSString *)contentVersion;
+
+#pragma mark -
+#pragma mark "layers" methods
+// These create a GTLQueryBooks object.
+
+// Method: books.layers.get
+// Gets the layer summary for a volume.
+//  Required:
+//   volumeId: The volume to retrieve layers for.
+//   summaryId: The ID for the layer to get the summary for.
+//  Optional:
+//   contentVersion: The content version for the requested volume.
+//   source: String to identify the originator of this request.
+//  Authorization scope(s):
+//   kGTLAuthScopeBooks
+// Fetches a GTLBooksLayersummary.
++ (id)queryForLayersGetWithVolumeId:(NSString *)volumeId
+                          summaryId:(NSString *)summaryId;
+
+// Method: books.layers.list
+// List the layer summaries for a volume.
+//  Required:
+//   volumeId: The volume to retrieve layers for.
+//  Optional:
+//   contentVersion: The content version for the requested volume.
+//   maxResults: Maximum number of results to return (0..200)
+//   pageToken: The value of the nextToken from the previous page.
+//   source: String to identify the originator of this request.
+//  Authorization scope(s):
+//   kGTLAuthScopeBooks
+// Fetches a GTLBooksLayersummaries.
++ (id)queryForLayersListWithVolumeId:(NSString *)volumeId;
+
+#pragma mark -
+#pragma mark "layers.volumeAnnotations" methods
+// These create a GTLQueryBooks object.
+
+// Method: books.layers.volumeAnnotations.get
+// Gets the volume annotation.
+//  Required:
+//   volumeId: The volume to retrieve annotations for.
+//   layerId: The ID for the layer to get the annotations.
+//   annotationId: The ID of the volume annotation to retrieve.
+//  Optional:
+//   locale: The locale information for the data. ISO-639-1 language and
+//     ISO-3166-1 country code. Ex: 'en_US'.
+//   source: String to identify the originator of this request.
+//  Authorization scope(s):
+//   kGTLAuthScopeBooks
+// Fetches a GTLBooksVolumeannotation.
++ (id)queryForLayersVolumeAnnotationsGetWithVolumeId:(NSString *)volumeId
+                                             layerId:(NSString *)layerId
+                                        annotationId:(NSString *)annotationId;
+
+// Method: books.layers.volumeAnnotations.list
+// Gets the volume annotations for a volume and layer.
+//  Required:
+//   volumeId: The volume to retrieve annotations for.
+//   layerId: The ID for the layer to get the annotations.
+//   contentVersion: The content version for the requested volume.
+//  Optional:
+//   endOffset: The end offset to end retrieving data from.
+//   endPosition: The end position to end retrieving data from.
+//   locale: The locale information for the data. ISO-639-1 language and
+//     ISO-3166-1 country code. Ex: 'en_US'.
+//   maxResults: Maximum number of results to return (0..200)
+//   pageToken: The value of the nextToken from the previous page.
+//   showDeleted: Set to true to return deleted annotations. updatedMin must be
+//     in the request to use this. Defaults to false.
+//   source: String to identify the originator of this request.
+//   startOffset: The start offset to start retrieving data from.
+//   startPosition: The start position to start retrieving data from.
+//   updatedMax: RFC 3339 timestamp to restrict to items updated prior to this
+//     timestamp (exclusive).
+//   updatedMin: RFC 3339 timestamp to restrict to items updated since this
+//     timestamp (inclusive).
+//  Authorization scope(s):
+//   kGTLAuthScopeBooks
+// Fetches a GTLBooksVolumeannotations.
++ (id)queryForLayersVolumeAnnotationsListWithVolumeId:(NSString *)volumeId
+                                              layerId:(NSString *)layerId
+                                       contentVersion:(NSString *)contentVersion;
+
+#pragma mark -
 #pragma mark "myconfig" methods
 // These create a GTLQueryBooks object.
 
@@ -141,10 +288,8 @@
 // Release downloaded content access restriction.
 //  Required:
 //   volumeIds: The volume(s) to release restrictions for.
-//   cpksver: The device/version identifier from which to release the
-//     restriction.
+//   cpksver: The device/version ID from which to release the restriction.
 //  Optional:
-//   country: ISO-3166-1 code to override the IP-based location.
 //   locale: ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US.
 //   source: String to identify the originator of this request.
 //  Authorization scope(s):
@@ -159,10 +304,8 @@
 //   source: String to identify the originator of this request.
 //   volumeId: The volume to request concurrent/download restrictions for.
 //   nonce: The client nonce value.
-//   cpksver: The device/version identifier from which to request the
-//     restrictions.
+//   cpksver: The device/version ID from which to request the restrictions.
 //  Optional:
-//   country: ISO-3166-1 code to override the IP-based location.
 //   locale: ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US.
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
@@ -178,10 +321,8 @@
 //  Required:
 //   source: String to identify the originator of this request.
 //   nonce: The client nonce value.
-//   cpksver: The device/version identifier from which to release the
-//     restriction.
+//   cpksver: The device/version ID from which to release the restriction.
 //  Optional:
-//   country: ISO-3166-1 code to override the IP-based location.
 //   locale: ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US.
 //   showPreorders: Set to true to show pre-ordered books. Defaults to false.
 //   volumeIds: The volume(s) to request download restrictions for.
@@ -199,20 +340,18 @@
 // Method: books.mylibrary.annotations.delete
 // Deletes an annotation.
 //  Required:
-//   annotationId: The annotation identifier for the annotation to delete.
+//   annotationId: The ID for the annotation to delete.
 //  Optional:
-//   country: ISO-3166-1 code to override the IP-based location.
 //   source: String to identify the originator of this request.
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
 + (id)queryForMylibraryAnnotationsDeleteWithAnnotationId:(NSString *)annotationId;
 
 // Method: books.mylibrary.annotations.get
-// Gets an annotation by its id.
+// Gets an annotation by its ID.
 //  Required:
-//   annotationId: The annotation identifier for the annotation to retrieve.
+//   annotationId: The ID for the annotation to retrieve.
 //  Optional:
-//   country: ISO-3166-1 code to override the IP-based location.
 //   source: String to identify the originator of this request.
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
@@ -222,7 +361,6 @@
 // Method: books.mylibrary.annotations.insert
 // Inserts a new annotation.
 //  Optional:
-//   country: ISO-3166-1 code to override the IP-based location.
 //   source: String to identify the originator of this request.
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
@@ -233,10 +371,9 @@
 // Retrieves a list of annotations, possibly filtered.
 //  Optional:
 //   contentVersion: The content version for the requested volume.
-//   country: ISO-3166-1 code to override the IP-based location.
-//   layerId: The layer id to limit annotation by.
+//   layerId: The layer ID to limit annotation by.
 //   maxResults: Maximum number of results to return (0..40)
-//   pageIds: The page id(s) for the volume that is being queried.
+//   pageIds: The page ID(s) for the volume that is being queried.
 //   pageToken: The value of the nextToken from the previous page.
 //   showDeleted: Set to true to return deleted annotations. updatedMin must be
 //     in the request to use this. Defaults to false.
@@ -254,9 +391,8 @@
 // Method: books.mylibrary.annotations.update
 // Updates an existing annotation.
 //  Required:
-//   annotationId: The annotation identifier for the annotation to update.
+//   annotationId: The ID for the annotation to update.
 //  Optional:
-//   country: ISO-3166-1 code to override the IP-based location.
 //   source: String to identify the originator of this request.
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
@@ -271,10 +407,9 @@
 // Method: books.mylibrary.bookshelves.addVolume
 // Adds a volume to a bookshelf.
 //  Required:
-//   shelf: Id of bookshelf to which to add a volume.
-//   volumeId: Id of volume to add.
+//   shelf: ID of bookshelf to which to add a volume.
+//   volumeId: ID of volume to add.
 //  Optional:
-//   country: ISO-3166-1 code to override the IP-based location.
 //   source: String to identify the originator of this request.
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
@@ -284,9 +419,8 @@
 // Method: books.mylibrary.bookshelves.clearVolumes
 // Clears all volumes from a bookshelf.
 //  Required:
-//   shelf: Id of bookshelf from which to remove a volume.
+//   shelf: ID of bookshelf from which to remove a volume.
 //  Optional:
-//   country: ISO-3166-1 code to override the IP-based location.
 //   source: String to identify the originator of this request.
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
@@ -296,9 +430,8 @@
 // Retrieves metadata for a specific bookshelf belonging to the authenticated
 // user.
 //  Required:
-//   shelf: Id of bookshelf to retrieve.
+//   shelf: ID of bookshelf to retrieve.
 //  Optional:
-//   country: ISO-3166-1 code to override the IP-based location.
 //   source: String to identify the originator of this request.
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
@@ -308,7 +441,6 @@
 // Method: books.mylibrary.bookshelves.list
 // Retrieves a list of bookshelves belonging to the authenticated user.
 //  Optional:
-//   country: ISO-3166-1 code to override the IP-based location.
 //   source: String to identify the originator of this request.
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
@@ -318,13 +450,12 @@
 // Method: books.mylibrary.bookshelves.moveVolume
 // Moves a volume within a bookshelf.
 //  Required:
-//   shelf: Id of bookshelf with the volume.
-//   volumeId: Id of volume to move.
+//   shelf: ID of bookshelf with the volume.
+//   volumeId: ID of volume to move.
 //   volumePosition: Position on shelf to move the item (0 puts the item before
 //     the current first item, 1 puts it between the first and the second and so
 //     on.)
 //  Optional:
-//   country: ISO-3166-1 code to override the IP-based location.
 //   source: String to identify the originator of this request.
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
@@ -335,10 +466,9 @@
 // Method: books.mylibrary.bookshelves.removeVolume
 // Removes a volume from a bookshelf.
 //  Required:
-//   shelf: Id of bookshelf from which to remove a volume.
-//   volumeId: Id of volume to remove.
+//   shelf: ID of bookshelf from which to remove a volume.
+//   volumeId: ID of volume to remove.
 //  Optional:
-//   country: ISO-3166-1 code to override the IP-based location.
 //   source: String to identify the originator of this request.
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
@@ -352,7 +482,7 @@
 // Method: books.mylibrary.bookshelves.volumes.list
 // Gets volume information for volumes on a bookshelf.
 //  Required:
-//   shelf: The bookshelf id or name retrieve volumes for.
+//   shelf: The bookshelf ID or name retrieve volumes for.
 //  Optional:
 //   country: ISO-3166-1 code to override the IP-based location.
 //   maxResults: Maximum number of results to return
@@ -376,11 +506,10 @@
 // Method: books.mylibrary.readingpositions.get
 // Retrieves my reading position information for a volume.
 //  Required:
-//   volumeId: Id of volume for which to retrieve a reading position.
+//   volumeId: ID of volume for which to retrieve a reading position.
 //  Optional:
 //   contentVersion: Volume content version for which this reading position is
 //     requested.
-//   country: ISO-3166-1 code to override the IP-based location.
 //   source: String to identify the originator of this request.
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
@@ -390,7 +519,7 @@
 // Method: books.mylibrary.readingpositions.setPosition
 // Sets my reading position information for a volume.
 //  Required:
-//   volumeId: Id of volume for which to update the reading position.
+//   volumeId: ID of volume for which to update the reading position.
 //   timestamp: RFC 3339 UTC format timestamp associated with this reading
 //     position.
 //   position: Position string for the new volume reading position.
@@ -404,7 +533,6 @@
 //      kGTLBooksActionSearch: User chose search results within volume.
 //   contentVersion: Volume content version for which this reading position
 //     applies.
-//   country: ISO-3166-1 code to override the IP-based location.
 //   source: String to identify the originator of this request.
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
@@ -419,10 +547,10 @@
 // Method: books.volumes.get
 // Gets volume information for a single volume.
 //  Required:
-//   volumeId: Id of volume to retrieve.
+//   volumeId: ID of volume to retrieve.
 //  Optional:
 //   country: ISO-3166-1 code to override the IP-based location.
-//   partner: Identifier of partner for whom to brand results.
+//   partner: Brand results for partner ID.
 //   projection: Restrict information returned to a set of selected fields.
 //      kGTLBooksProjectionFull: Includes all volume data.
 //      kGTLBooksProjectionLite: Includes a subset of fields in volumeInfo and
@@ -438,7 +566,6 @@
 //  Required:
 //   q: Full-text search query string.
 //  Optional:
-//   country: ISO-3166-1 code to override the IP-based location.
 //   download: Restrict to volumes by download availability.
 //      kGTLBooksDownloadEpub: All volumes with epub.
 //   filter: Filter search results.
@@ -458,7 +585,7 @@
 //   orderBy: Sort search results.
 //      kGTLBooksOrderByNewest: Most recently published.
 //      kGTLBooksOrderByRelevance: Relevance to search terms.
-//   partner: Identifier of partner for whom to restrict and brand results.
+//   partner: Restrict and brand results for partner ID.
 //   printType: Restrict to books or magazines.
 //      kGTLBooksPrintTypeAll: All volume content types.
 //      kGTLBooksPrintTypeBooks: Just books.

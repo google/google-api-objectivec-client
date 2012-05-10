@@ -26,28 +26,35 @@
 // Documentation:
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
 // Classes:
-//   GTLQueryBooks (22 custom class methods, 34 custom properties)
+//   GTLQueryBooks (28 custom class methods, 42 custom properties)
 
 #import "GTLQueryBooks.h"
 
 #import "GTLBooksAnnotation.h"
+#import "GTLBooksAnnotationdata.h"
 #import "GTLBooksAnnotations.h"
+#import "GTLBooksAnnotationsdata.h"
 #import "GTLBooksBookshelf.h"
 #import "GTLBooksBookshelves.h"
 #import "GTLBooksDownloadAccesses.h"
+#import "GTLBooksLayersummaries.h"
+#import "GTLBooksLayersummary.h"
 #import "GTLBooksReadingPosition.h"
 #import "GTLBooksRequestAccess.h"
 #import "GTLBooksVolume.h"
+#import "GTLBooksVolumeannotation.h"
+#import "GTLBooksVolumeannotations.h"
 #import "GTLBooksVolumes.h"
 
 @implementation GTLQueryBooks
 
-@dynamic action, annotationId, contentVersion, country, cpksver, download,
-         fields, filter, langRestrict, layerId, libraryRestrict, locale,
-         maxResults, nonce, orderBy, pageIds, pageToken, partner, position,
-         printType, projection, q, shelf, showDeleted, showPreorders, source,
-         startIndex, timestamp, updatedMax, updatedMin, userId, volumeId,
-         volumeIds, volumePosition;
+@dynamic action, annotationDataId, annotationId, contentVersion, country,
+         cpksver, download, endOffset, endPosition, fields, filter, h,
+         langRestrict, layerId, libraryRestrict, locale, maxResults, nonce,
+         orderBy, pageIds, pageToken, partner, position, printType, projection,
+         q, shelf, showDeleted, showPreorders, source, startIndex, startOffset,
+         startPosition, summaryId, timestamp, updatedMax, updatedMin, userId,
+         volumeId, volumeIds, volumePosition, w;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
@@ -91,6 +98,86 @@
   query.userId = userId;
   query.shelf = shelf;
   query.expectedObjectClass = [GTLBooksVolumes class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "layers.annotationData" methods
+// These create a GTLQueryBooks object.
+
++ (id)queryForLayersAnnotationDataGetWithVolumeId:(NSString *)volumeId
+                                          layerId:(NSString *)layerId
+                                 annotationDataId:(NSString *)annotationDataId
+                                   contentVersion:(NSString *)contentVersion {
+  NSString *methodName = @"books.layers.annotationData.get";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.volumeId = volumeId;
+  query.layerId = layerId;
+  query.annotationDataId = annotationDataId;
+  query.contentVersion = contentVersion;
+  query.expectedObjectClass = [GTLBooksAnnotationdata class];
+  return query;
+}
+
++ (id)queryForLayersAnnotationDataListWithVolumeId:(NSString *)volumeId
+                                           layerId:(NSString *)layerId
+                                    contentVersion:(NSString *)contentVersion {
+  NSString *methodName = @"books.layers.annotationData.list";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.volumeId = volumeId;
+  query.layerId = layerId;
+  query.contentVersion = contentVersion;
+  query.expectedObjectClass = [GTLBooksAnnotationsdata class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "layers" methods
+// These create a GTLQueryBooks object.
+
++ (id)queryForLayersGetWithVolumeId:(NSString *)volumeId
+                          summaryId:(NSString *)summaryId {
+  NSString *methodName = @"books.layers.get";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.volumeId = volumeId;
+  query.summaryId = summaryId;
+  query.expectedObjectClass = [GTLBooksLayersummary class];
+  return query;
+}
+
++ (id)queryForLayersListWithVolumeId:(NSString *)volumeId {
+  NSString *methodName = @"books.layers.list";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.volumeId = volumeId;
+  query.expectedObjectClass = [GTLBooksLayersummaries class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "layers.volumeAnnotations" methods
+// These create a GTLQueryBooks object.
+
++ (id)queryForLayersVolumeAnnotationsGetWithVolumeId:(NSString *)volumeId
+                                             layerId:(NSString *)layerId
+                                        annotationId:(NSString *)annotationId {
+  NSString *methodName = @"books.layers.volumeAnnotations.get";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.volumeId = volumeId;
+  query.layerId = layerId;
+  query.annotationId = annotationId;
+  query.expectedObjectClass = [GTLBooksVolumeannotation class];
+  return query;
+}
+
++ (id)queryForLayersVolumeAnnotationsListWithVolumeId:(NSString *)volumeId
+                                              layerId:(NSString *)layerId
+                                       contentVersion:(NSString *)contentVersion {
+  NSString *methodName = @"books.layers.volumeAnnotations.list";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.volumeId = volumeId;
+  query.layerId = layerId;
+  query.contentVersion = contentVersion;
+  query.expectedObjectClass = [GTLBooksVolumeannotations class];
   return query;
 }
 

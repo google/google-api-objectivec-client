@@ -27,10 +27,10 @@
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
 // Classes:
 //   GTLBooksVolume (0 custom class methods, 9 custom properties)
-//   GTLBooksVolumeAccessInfo (0 custom class methods, 10 custom properties)
+//   GTLBooksVolumeAccessInfo (0 custom class methods, 11 custom properties)
 //   GTLBooksVolumeSaleInfo (0 custom class methods, 7 custom properties)
 //   GTLBooksVolumeSearchInfo (0 custom class methods, 1 custom properties)
-//   GTLBooksVolumeUserInfo (0 custom class methods, 5 custom properties)
+//   GTLBooksVolumeUserInfo (0 custom class methods, 6 custom properties)
 //   GTLBooksVolumeVolumeInfo (0 custom class methods, 20 custom properties)
 //   GTLBooksVolumeAccessInfoEpub (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeAccessInfoPdf (0 custom class methods, 3 custom properties)
@@ -78,7 +78,8 @@
 
 @implementation GTLBooksVolumeAccessInfo
 @dynamic accessViewStatus, country, downloadAccess, embeddable, epub, pdf,
-         publicDomain, textToSpeechPermission, viewability, webReaderLink;
+         publicDomain, textToSpeechPermission, viewability, viewOrderUrl,
+         webReaderLink;
 @end
 
 
@@ -109,7 +110,8 @@
 //
 
 @implementation GTLBooksVolumeUserInfo
-@dynamic isPreordered, isPurchased, readingPosition, review, updated;
+@dynamic isInMyBooks, isPreordered, isPurchased, readingPosition, review,
+         updated;
 @end
 
 

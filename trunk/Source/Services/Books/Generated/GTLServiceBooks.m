@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,17 +39,24 @@
   NSArray *classes = [NSArray arrayWithObjects:
                       [GTLQueryBooks class],
                       [GTLBooksAnnotation class],
+                      [GTLBooksAnnotationdata class],
                       [GTLBooksAnnotations class],
+                      [GTLBooksAnnotationsdata class],
                       [GTLBooksAnnotationsRange class],
                       [GTLBooksBookshelf class],
                       [GTLBooksBookshelves class],
                       [GTLBooksConcurrentAccessRestriction class],
                       [GTLBooksDownloadAccesses class],
                       [GTLBooksDownloadAccessRestriction class],
+                      [GTLBooksLayerGeoData class],
+                      [GTLBooksLayersummaries class],
+                      [GTLBooksLayersummary class],
                       [GTLBooksReadingPosition class],
                       [GTLBooksRequestAccess class],
                       [GTLBooksReview class],
                       [GTLBooksVolume class],
+                      [GTLBooksVolumeannotation class],
+                      [GTLBooksVolumeannotations class],
                       [GTLBooksVolumes class],
                       nil];
   return classes;
