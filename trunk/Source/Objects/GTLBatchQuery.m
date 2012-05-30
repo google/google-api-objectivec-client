@@ -101,8 +101,11 @@
 - (void)setQueries:(NSArray *)array {
 #if DEBUG
   for (id obj in array) {
-    GTL_DEBUG_ASSERT([obj isKindOfClass:[GTLQuery class]],
+    GTLQuery *query = obj;
+    GTL_DEBUG_ASSERT([query isKindOfClass:[GTLQuery class]],
                      @"unexpected query class: %@", [obj class]);
+    GTL_DEBUG_ASSERT(query.uploadParameters == nil,
+                     @"batch may not contain upload: %@", query);
   }
 #endif
 
@@ -117,6 +120,8 @@
 - (void)addQuery:(GTLQuery *)query {
   GTL_DEBUG_ASSERT([query isKindOfClass:[GTLQuery class]],
                    @"unexpected query class: %@", [query class]);
+  GTL_DEBUG_ASSERT(query.uploadParameters == nil,
+                   @"batch may not contain upload: %@", query);
 
   if (queries_ == nil) {
     queries_ = [[NSMutableArray alloc] init];
