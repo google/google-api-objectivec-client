@@ -27,10 +27,10 @@
 //   http://code.google.com/apis/calendar/v3/using.html
 // Classes:
 //   GTLCalendarEvent (0 custom class methods, 32 custom properties)
-//   GTLCalendarEventCreator (0 custom class methods, 2 custom properties)
+//   GTLCalendarEventCreator (0 custom class methods, 3 custom properties)
 //   GTLCalendarEventExtendedProperties (0 custom class methods, 2 custom properties)
 //   GTLCalendarEventGadget (0 custom class methods, 8 custom properties)
-//   GTLCalendarEventOrganizer (0 custom class methods, 2 custom properties)
+//   GTLCalendarEventOrganizer (0 custom class methods, 3 custom properties)
 //   GTLCalendarEventReminders (0 custom class methods, 2 custom properties)
 //   GTLCalendarEventExtendedPropertiesPrivate (0 custom class methods, 0 custom properties)
 //   GTLCalendarEventExtendedPropertiesShared (0 custom class methods, 0 custom properties)
@@ -88,7 +88,15 @@
 //
 
 @implementation GTLCalendarEventCreator
-@dynamic displayName, email;
+@dynamic displayName, email, selfProperty;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"self"
+                                forKey:@"selfProperty"];
+  return map;
+}
+
 @end
 
 
@@ -126,7 +134,15 @@
 //
 
 @implementation GTLCalendarEventOrganizer
-@dynamic displayName, email;
+@dynamic displayName, email, selfProperty;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"self"
+                                forKey:@"selfProperty"];
+  return map;
+}
+
 @end
 
 
