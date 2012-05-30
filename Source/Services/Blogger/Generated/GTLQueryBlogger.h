@@ -24,7 +24,7 @@
 // Description:
 //   API for access to the data within Blogger.
 // Documentation:
-//   https://code.google.com/apis/blogger/docs/2.0/json/getting_started.html
+//   https://developers.google.com/blogger/docs/2.0/json/getting_started
 // Classes:
 //   GTLQueryBlogger (9 custom class methods, 10 custom properties)
 

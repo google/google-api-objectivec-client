@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@
 // Description:
 //   API for access to the data within Blogger.
 // Documentation:
-//   https://code.google.com/apis/blogger/docs/2.0/json/getting_started.html
+//   https://developers.google.com/blogger/docs/2.0/json/getting_started
 // Classes:
 //   GTLBloggerBlog (0 custom class methods, 11 custom properties)
 //   GTLBloggerBlogLocale (0 custom class methods, 3 custom properties)
