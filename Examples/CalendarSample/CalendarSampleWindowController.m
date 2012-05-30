@@ -726,8 +726,8 @@ NSString *const kKeychainItemName = @"CalendarSample: Google Calendar";
 
     GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:calendarID];
     query.maxResults = 10;
-    query.timeMin = [startOfDay RFC3339String];
-    query.timeMax = [endOfDay RFC3339String];
+    query.timeMin = startOfDay;
+    query.timeMax = endOfDay;
 
     GTLServiceCalendar *service = self.calendarService;
     GTLServiceTicket *ticket = [service executeQuery:query
@@ -768,8 +768,8 @@ NSString *const kKeychainItemName = @"CalendarSample: Google Calendar";
     GTLQueryCalendar *query = [GTLQueryCalendar queryForFreebusyQuery];
     query.items = [NSArray arrayWithObject:requestItem];
     query.maxResults = 10;
-    query.timeMin = [startOfDay RFC3339String];
-    query.timeMax = [endOfDay RFC3339String];
+    query.timeMin = startOfDay;
+    query.timeMax = endOfDay;
 
     GTLServiceCalendar *service = self.calendarService;
     GTLServiceTicket *ticket = [service executeQuery:query

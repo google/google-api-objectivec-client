@@ -5,6 +5,11 @@ Project site:     http://code.google.com/p/google-api-objectivec-client/
 Discussion group: http://groups.google.com/group/google-api-objectivec-client
 
 
+30-May-2012
+
+Calendar API now properly exposes GTLDateTimes for max/min times.
+
+
 15-March-2012
 
 Moved base64 encoding and decoding support to GTLBase64 file.
