@@ -26,7 +26,7 @@
 // Documentation:
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
 // Classes:
-//   GTLQueryBooks (28 custom class methods, 42 custom properties)
+//   GTLQueryBooks (29 custom class methods, 43 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -53,6 +53,7 @@
 // documentation for the right type for each query method.
 @property (retain) id annotationDataId;
 @property (copy) NSString *annotationId;
+@property (copy) NSString *association;
 @property (copy) NSString *contentVersion;
 @property (copy) NSString *country;
 @property (copy) NSString *cpksver;
@@ -539,6 +540,37 @@
 + (id)queryForMylibraryReadingpositionsSetPositionWithVolumeId:(NSString *)volumeId
                                                      timestamp:(NSString *)timestamp
                                                       position:(NSString *)position;
+
+#pragma mark -
+#pragma mark "volumes.associated" methods
+// These create a GTLQueryBooks object.
+
+// Method: books.volumes.associated.list
+// Return a list of associated books.
+//  Required:
+//   volumeId: ID of the source volume.
+//  Optional:
+//   association: Association type.
+//      kGTLBooksAssociationComplementary: Books that are complementary for
+//        additional reading.
+//   filter: Filter search results.
+//      kGTLBooksFilterEbooks: All Google eBooks.
+//      kGTLBooksFilterFreeEbooks: Google eBook with full volume text
+//        viewability.
+//      kGTLBooksFilterFull: Public can view entire volume text.
+//      kGTLBooksFilterPaidEbooks: Google eBook with a price.
+//      kGTLBooksFilterPartial: Public able to see parts of text.
+//   maxResults: Maximum number of results to return. (0..40)
+//   projection: Restrict information returned to a set of selected fields.
+//      kGTLBooksProjectionFull: Includes all volume data.
+//      kGTLBooksProjectionLite: Includes a subset of fields in volumeInfo and
+//        accessInfo.
+//   source: String to identify the originator of this request.
+//   startIndex: Index of the first result to return (starts at 0)
+//  Authorization scope(s):
+//   kGTLAuthScopeBooks
+// Fetches a GTLBooksVolumes.
++ (id)queryForVolumesAssociatedListWithVolumeId:(NSString *)volumeId;
 
 #pragma mark -
 #pragma mark "volumes" methods

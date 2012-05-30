@@ -46,6 +46,9 @@ GTL_EXTERN NSString * const kGTLBooksActionPrevPage;  // "prev-page"
 GTL_EXTERN NSString * const kGTLBooksActionScroll;    // "scroll"
 GTL_EXTERN NSString * const kGTLBooksActionSearch;    // "search"
 
+// Association
+GTL_EXTERN NSString * const kGTLBooksAssociationComplementary;  // "complementary"
+
 // Download
 GTL_EXTERN NSString * const kGTLBooksDownloadEpub;  // "epub"
 
