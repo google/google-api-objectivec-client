@@ -74,14 +74,10 @@
 @property (assign) BOOL showHiddenInvitations;
 @property (assign) BOOL singleEvents;
 @property (copy) NSString *text;
-// "timeMax" has different types for some query methods; see the documentation
-// for the right type for each query method.
-@property (retain) id timeMax;
-// "timeMin" has different types for some query methods; see the documentation
-// for the right type for each query method.
-@property (retain) id timeMin;
+@property (retain) GTLDateTime *timeMax;
+@property (retain) GTLDateTime *timeMin;
 @property (copy) NSString *timeZone;
-@property (copy) NSString *updatedMin;
+@property (retain) GTLDateTime *updatedMin;
 
 #pragma mark -
 #pragma mark "acl" methods
@@ -406,10 +402,8 @@
 //     False.
 //   timeMax: Upper bound (exclusive) for an event's start time to filter by.
 //     Optional. The default is not to filter by start time.
-//     Note: For this method, "timeMax" should be of type NSString.
 //   timeMin: Lower bound (inclusive) for an event's end time to filter by.
 //     Optional. The default is not to filter by end time.
-//     Note: For this method, "timeMin" should be of type NSString.
 //   timeZone: Time zone used in the response. Optional. The default is the time
 //     zone of the calendar.
 //   updatedMin: Lower bound for an event's last modification time (as a RFC
@@ -499,9 +493,7 @@
 //     more members than this value.
 //   items: List of calendars and/or groups to query.
 //   timeMax: The end of the interval for the query.
-//     Note: For this method, "timeMax" should be of type GTLDateTime.
 //   timeMin: The start of the interval for the query.
-//     Note: For this method, "timeMin" should be of type GTLDateTime.
 //   timeZone: Time zone used in the response. Optional. The default is UTC.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
