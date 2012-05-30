@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   http://developers.google.com/+/api/
 // Classes:
-//   GTLPlusPeopleFeed (0 custom class methods, 6 custom properties)
+//   GTLPlusPeopleFeed (0 custom class methods, 7 custom properties)
 
 #import "GTLPlusPeopleFeed.h"
 
@@ -38,7 +38,7 @@
 //
 
 @implementation GTLPlusPeopleFeed
-@dynamic ETag, items, kind, nextPageToken, selfLink, title;
+@dynamic ETag, items, kind, nextPageToken, selfLink, title, totalItems;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

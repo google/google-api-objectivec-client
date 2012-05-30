@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   http://developers.google.com/+/api/
 // Classes:
-//   GTLPlusPeopleFeed (0 custom class methods, 6 custom properties)
+//   GTLPlusPeopleFeed (0 custom class methods, 7 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -66,5 +66,10 @@
 
 // The title of this collection of people.
 @property (copy) NSString *title;
+
+// The total number of people available in this list. The number of people in a
+// response may be smaller due to paging. This may not be set for all
+// collections.
+@property (retain) NSNumber *totalItems;  // intValue
 
 @end
