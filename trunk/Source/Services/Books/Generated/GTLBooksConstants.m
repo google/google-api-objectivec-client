@@ -39,6 +39,9 @@ NSString * const kGTLBooksActionPrevPage = @"prev-page";
 NSString * const kGTLBooksActionScroll   = @"scroll";
 NSString * const kGTLBooksActionSearch   = @"search";
 
+// Association
+NSString * const kGTLBooksAssociationComplementary = @"complementary";
+
 // Download
 NSString * const kGTLBooksDownloadEpub = @"epub";
 
