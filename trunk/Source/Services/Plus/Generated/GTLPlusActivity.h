@@ -26,7 +26,7 @@
 // Documentation:
 //   http://developers.google.com/+/api/
 // Classes:
-//   GTLPlusActivity (0 custom class methods, 20 custom properties)
+//   GTLPlusActivity (0 custom class methods, 19 custom properties)
 //   GTLPlusActivityActor (0 custom class methods, 5 custom properties)
 //   GTLPlusActivityObject (0 custom class methods, 10 custom properties)
 //   GTLPlusActivityProvider (0 custom class methods, 1 custom properties)
@@ -104,9 +104,6 @@
 
 // The object of this activity.
 @property (retain) GTLPlusActivityObject *object;
-
-// True if this activity is a placeholder.
-@property (retain) NSNumber *placeholder;  // boolValue
 
 // ID of the place where this activity occurred.
 @property (copy) NSString *placeId;
