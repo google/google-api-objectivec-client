@@ -225,6 +225,55 @@ This snippet shows how to create a new task list for the user's Google Tasks acc
 }
 }}}
 
+=== Uploading Files ===
+
+Queries that can upload files will take a `GTLUploadParameters` object. The upload parameters object requests a MIME type describing the file data, and either an `NSData` with the file's contents, or an `NSFileHandle` for reading from the file. 
+
+Typically, the query will also take an object with additional metadata for the upload file, such as the file's title.
+
+{{{
+NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:path];
+if (fileHandle) {
+  NSString *mimeType = @"image/jpeg";
+  GTLUploadParameters *uploadParameters = [GTLUploadParameters uploadParametersWithFileHandle:fileHandle
+                                                                                     MIMEType:mimeType];
+  GTLDriveFile *fileObj = [GTLDriveFile object];
+  fileObj.title = [path lastPathComponent];
+
+  GTLQueryDrive *query = [GTLQueryDrive queryForFilesInsertWithObject:fileObj
+                                                     uploadParameters:uploadParameters];
+
+  GTLServiceTicket *ticket = [service executeQuery:query ... 
+}}}
+
+The library uses Google's resumable (chunked) upload protocol for transferring the file to the server.
+
+==== Progress Monitoring ====
+
+The application can supply a block to be called for displaying progress during uploads.
+{{{
+ticket.uploadProgressBlock = ^(GTLServiceTicket *ticket,
+                               unsigned long long numberOfBytesRead,
+                               unsigned long long dataLength) {
+      [progressIndicator setMaxValue:(double)dataLength];
+      [progressIndicator setDoubleValue:(double)numberOfBytesRead];
+};
+}}}
+
+==== Pause and Resume ====
+
+Uploads in progress can be paused and resumed.
+
+{{{
+if ([ticket isUploadPaused]) {
+  [ticket resumeUpload];
+} else {
+  [ticket pauseUpload];
+}
+}}}
+
+Uploads can be cancelled with the ticket's `cancelTicket` method.
+
 == Performance and Memory Optimizations ==
 === Partial Responses ===
 
