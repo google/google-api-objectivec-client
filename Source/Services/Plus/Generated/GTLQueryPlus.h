@@ -200,7 +200,8 @@
 // Method: plus.people.search
 // Search all public profiles.
 //  Required:
-//   query: Full-text search query string.
+//   query: Specify a query string for full text search of public text in all
+//     profiles.
 //  Optional:
 //   language: Specify the preferred language to search with. See search
 //     language codes for available values.

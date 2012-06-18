@@ -53,7 +53,7 @@
 @property (copy) NSString *pageId;
 @property (copy) NSString *pageToken;
 @property (copy) NSString *postId;
-@property (copy) NSString *startDate;
+@property (retain) GTLDateTime *startDate;
 @property (copy) NSString *userId;
 
 #pragma mark -
@@ -95,7 +95,8 @@
 //   fetchBodies: Whether the body content of the comments is included.
 //   maxResults: Maximum number of comments to include in the result.
 //   pageToken: Continuation token if request is paged.
-//   startDate: Earliest date of comment to fetch.
+//   startDate: Earliest date of comment to fetch, a date-time with RFC 3339
+//     formatting.
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 // Fetches a GTLBloggerCommentList.
@@ -151,7 +152,8 @@
 //   fetchBodies: Whether the body content of posts is included.
 //   maxResults: Maximum number of posts to fetch.
 //   pageToken: Continuation token if the request is paged.
-//   startDate: Earliest post date to fetch.
+//   startDate: Earliest post date to fetch, a date-time with RFC 3339
+//     formatting.
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 // Fetches a GTLBloggerPostList.
