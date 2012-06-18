@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,3 +44,7 @@ GTL_EXTERN NSString * const kGTLAuthScopeLatitudeAllCity;      // "https://www.g
 GTL_EXTERN NSString * const kGTLAuthScopeLatitudeCurrentBest;  // "https://www.googleapis.com/auth/latitude.current.best"
 // Manage your city-level location
 GTL_EXTERN NSString * const kGTLAuthScopeLatitudeCurrentCity;  // "https://www.googleapis.com/auth/latitude.current.city"
+
+// Granularity
+GTL_EXTERN NSString * const kGTLLatitudeGranularityBest;  // "best"
+GTL_EXTERN NSString * const kGTLLatitudeGranularityCity;  // "city"
