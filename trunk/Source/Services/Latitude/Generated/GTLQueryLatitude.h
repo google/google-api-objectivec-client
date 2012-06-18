@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -71,7 +71,10 @@
 // Method: latitude.currentLocation.get
 // Returns the authenticated user's current location.
 //  Optional:
-//   granularity: Granularity of the requested location.
+//   granularity: Granularity of the requested location. (Default
+//     kGTLLatitudeGranularityCity)
+//      kGTLLatitudeGranularityBest: Request best available granularity.
+//      kGTLLatitudeGranularityCity: Request city-level granularty.
 //  Authorization scope(s):
 //   kGTLAuthScopeLatitudeAllBest
 //   kGTLAuthScopeLatitudeAllCity
@@ -108,7 +111,10 @@
 //  Required:
 //   locationId: Timestamp of the location to read (ms since epoch).
 //  Optional:
-//   granularity: Granularity of the location to return.
+//   granularity: Granularity of the location to return. (Default
+//     kGTLLatitudeGranularityCity)
+//      kGTLLatitudeGranularityBest: Request best available granularity.
+//      kGTLLatitudeGranularityCity: Request city-level granularty.
 //  Authorization scope(s):
 //   kGTLAuthScopeLatitudeAllBest
 //   kGTLAuthScopeLatitudeAllCity
@@ -126,7 +132,10 @@
 // Method: latitude.location.list
 // Lists the user's location history.
 //  Optional:
-//   granularity: Granularity of the requested locations.
+//   granularity: Granularity of the requested locations. (Default
+//     kGTLLatitudeGranularityCity)
+//      kGTLLatitudeGranularityBest: Request best available granularity.
+//      kGTLLatitudeGranularityCity: Request city-level granularty.
 //   maxResults: Maximum number of locations to return.
 //   maxTime: Maximum timestamp of locations to return (ms since epoch).
 //   minTime: Minimum timestamp of locations to return (ms since epoch).
