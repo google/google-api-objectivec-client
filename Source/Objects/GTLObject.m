@@ -528,11 +528,14 @@ static NSMutableDictionary *gKindMap = nil;
   // feeds of heterogenous entries can use the defaultClass as a
   // fallback
   Class classToCreate = defaultClass;
-  NSString *kind = [json valueForKey:@"kind"];
-  if ([kind isKindOfClass:[NSString class]] && [kind length] > 0) {
-    Class dynamicClass = [GTLObject registeredObjectClassForKind:kind];
-    if (dynamicClass) {
-      classToCreate = dynamicClass;
+  NSString *kind = nil;
+  if ([json isKindOfClass:[NSDictionary class]]) {
+    kind = [json valueForKey:@"kind"];
+    if ([kind isKindOfClass:[NSString class]] && [kind length] > 0) {
+      Class dynamicClass = [GTLObject registeredObjectClassForKind:kind];
+      if (dynamicClass) {
+        classToCreate = dynamicClass;
+      }
     }
   }
 
@@ -641,6 +644,43 @@ static NSMutableDictionary *gArrayPropertyToClassMapCache = nil;
   NSUInteger result = [items countByEnumeratingWithState:state
                                                  objects:stackbuf
                                                    count:len];
+  return result;
+}
+
+@end
+
+@implementation GTLResultArray
+
+- (NSArray *)itemsWithItemClass:(Class)itemClass {
+  // Return the cached array before creating on demand.
+  NSString *cacheKey = @"result_array_items";
+  NSMutableArray *cachedArray = [self cacheChildForKey:cacheKey];
+  if (cachedArray != nil) {
+    return cachedArray;
+  }
+  NSArray *result = nil;
+  NSArray *array = (NSArray *)[self JSON];
+  if (array != nil) {
+    if ([array isKindOfClass:[NSArray class]]) {
+      NSDictionary *surrogates = self.surrogates;
+      result = [GTLRuntimeCommon objectFromJSON:array
+                                   defaultClass:itemClass
+                                     surrogates:surrogates
+                                    isCacheable:NULL];
+    } else {
+#if DEBUG
+      if (![array isKindOfClass:[NSNull class]]) {
+        GTL_DEBUG_LOG(@"GTLObject: unexpected JSON: %@ should be an array, actually is a %@:\n%@",
+                      NSStringFromClass([self class]),
+                      NSStringFromClass([array class]),
+                      array);
+      }
+#endif
+      result = array;
+    }
+  }
+  
+  [self setCacheChild:result forKey:cacheKey];
   return result;
 }
 

@@ -90,6 +90,25 @@ static Class gAdditionalPropsClass = Nil;
 }
 @end
 
+@interface GTLTestingResultArray : GTLResultArray
+@property (retain, readonly) NSArray *items;
+@end
+
+@implementation GTLTestingResultArray
+- (NSArray *)items {
+  return [self itemsWithItemClass:[GTLTestingObject class]];
+}
+@end
+
+@interface GTLTestingResultArray2 : GTLResultArray
+@property (retain, readonly) NSArray *items;
+@end
+
+@implementation GTLTestingResultArray2
+- (NSArray *)items {
+  return [self itemsWithItemClass:[NSString class]];
+}
+@end
 
 @interface GTLObjectTest : SenTestCase
 @end
@@ -1203,4 +1222,62 @@ static Class gAdditionalPropsClass = Nil;
   STAssertEqualObjects(obj2.arrayKids, [NSNull null], @"NSNull getter");
   STAssertEqualObjects(obj2.arrayAnything, [NSNull null], @"NSNull getter");
 }
+
+#pragma mark GTLResultArray Parsing
+
+- (void)testResultArrayParsing {
+
+  // Of Object
+  
+  NSString * const jsonStr =
+    @"[ {\"a_str\":\"obj 1\"}, {\"a_str\":\"obj 2\"} ]";
+  NSError *err = nil;
+  NSMutableDictionary *json = [GTLJSONParser objectWithString:jsonStr
+                                                        error:&err];
+  STAssertNil(err, @"got error parsing");
+  STAssertNotNil(json, @"didn't get object parsing");
+  
+  GTLTestingResultArray *arrayResult = (GTLTestingResultArray *)
+    [GTLObject objectForJSON:json
+                defaultClass:[GTLTestingResultArray class]
+                  surrogates:nil
+               batchClassMap:nil];
+  STAssertTrue([arrayResult isKindOfClass:[GTLTestingResultArray class]], nil);
+  NSArray *items = arrayResult.items;
+  STAssertEquals([items count], (NSUInteger)2, nil);
+
+  GTLTestingObject *obj = [items objectAtIndex:0];
+  STAssertTrue([obj isKindOfClass:[GTLTestingObject class]], nil);
+  STAssertEqualObjects(obj.aStr, @"obj 1", nil);
+
+  obj = [items objectAtIndex:1];
+  STAssertTrue([obj isKindOfClass:[GTLTestingObject class]], nil);
+  STAssertEqualObjects(obj.aStr, @"obj 2", nil);
+  
+  // Of String
+  
+  NSString * const jsonStr2 = @"[ \"str 1\", \"str 2\" ]";
+  err = nil;
+  json = [GTLJSONParser objectWithString:jsonStr2 error:&err];
+  STAssertNil(err, @"got error parsing");
+  STAssertNotNil(json, @"didn't get object parsing");
+  
+  GTLTestingResultArray2 *arrayResult2 = (GTLTestingResultArray2 *)
+    [GTLObject objectForJSON:json
+                defaultClass:[GTLTestingResultArray2 class]
+                  surrogates:nil
+               batchClassMap:nil];
+  STAssertTrue([arrayResult2 isKindOfClass:[GTLTestingResultArray2 class]], nil);
+  items = arrayResult2.items;
+  STAssertEquals([items count], (NSUInteger)2, nil);
+
+  NSString *str = [items objectAtIndex:0];
+  STAssertTrue([str isKindOfClass:[NSString class]], nil);
+  STAssertEqualObjects(str, @"str 1", nil);
+
+  str = [items objectAtIndex:1];
+  STAssertTrue([str isKindOfClass:[NSString class]], nil);
+  STAssertEqualObjects(str, @"str 2", nil);
+}
+
 @end

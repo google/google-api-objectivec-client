@@ -170,3 +170,11 @@
 @interface GTLCollectionObject (DynamicMethods)
 - (NSArray *)items;
 @end
+
+// Base object use for when an service method directly returns an array instead
+// of an object. Normally methods should return an object with an 'items'
+// property, this exists for the methods not up to spec.
+@interface GTLResultArray : GTLCollectionObject
+// This method should only be called by subclasses.
+- (NSArray *)itemsWithItemClass:(Class)itemClass;
+@end

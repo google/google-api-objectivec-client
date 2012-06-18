@@ -89,7 +89,7 @@ static NSString *ETagIfPresent(GTLObject *obj) {
                                           chunkSize:(NSUInteger)chunkSize
                                      fetcherService:(GTMHTTPFetcherService *)fetcherService;
 - (void)pauseFetching;
-- (void)resumeFetchingWithDelegate:(id)delegate;
+- (void)resumeFetching;
 - (BOOL)isPaused;
 @end
 
@@ -2233,11 +2233,11 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 }
 
 - (void)resumeUpload {
-  BOOL canResume = [objectFetcher_ respondsToSelector:@selector(resumeFetchingWithDelegate:)];
+  BOOL canResume = [objectFetcher_ respondsToSelector:@selector(resumeFetching)];
   GTL_DEBUG_ASSERT(canResume, @"unresumable ticket");
 
   if (canResume) {
-    [(GTMHTTPUploadFetcher *)objectFetcher_ resumeFetchingWithDelegate:[self service]];
+    [(GTMHTTPUploadFetcher *)objectFetcher_ resumeFetching];
   }
 }
 
