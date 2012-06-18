@@ -26,7 +26,7 @@
 // Documentation:
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
 // Classes:
-//   GTLQueryBooks (29 custom class methods, 43 custom properties)
+//   GTLQueryBooks (29 custom class methods, 44 custom properties)
 
 #import "GTLQueryBooks.h"
 
@@ -52,9 +52,9 @@
          country, cpksver, download, endOffset, endPosition, fields, filter, h,
          langRestrict, layerId, libraryRestrict, locale, maxResults, nonce,
          orderBy, pageIds, pageToken, partner, position, printType, projection,
-         q, shelf, showDeleted, showPreorders, source, startIndex, startOffset,
-         startPosition, summaryId, timestamp, updatedMax, updatedMin, userId,
-         volumeId, volumeIds, volumePosition, w;
+         q, scale, shelf, showDeleted, showPreorders, source, startIndex,
+         startOffset, startPosition, summaryId, timestamp, updatedMax,
+         updatedMin, userId, volumeId, volumeIds, volumePosition, w;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =

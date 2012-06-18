@@ -26,7 +26,7 @@
 // Documentation:
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
 // Classes:
-//   GTLQueryBooks (29 custom class methods, 43 custom properties)
+//   GTLQueryBooks (29 custom class methods, 44 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -76,6 +76,7 @@
 @property (copy) NSString *printType;
 @property (copy) NSString *projection;
 @property (copy) NSString *q;
+@property (assign) NSInteger scale;
 @property (copy) NSString *shelf;
 @property (assign) BOOL showDeleted;
 @property (assign) BOOL showPreorders;
@@ -158,6 +159,7 @@
 //     must also be provided.
 //   locale: The locale information for the data. ISO-639-1 language and
 //     ISO-3166-1 country code. Ex: 'en_US'.
+//   scale: The requested scale for the image.
 //   source: String to identify the originator of this request.
 //   w: The requested pixel width for any images. If width is provided height
 //     must also be provided.
@@ -185,6 +187,7 @@
 //     ISO-3166-1 country code. Ex: 'en_US'.
 //   maxResults: Maximum number of results to return (0..200)
 //   pageToken: The value of the nextToken from the previous page.
+//   scale: The requested scale for the image.
 //   source: String to identify the originator of this request.
 //   updatedMax: RFC 3339 timestamp to restrict to items updated prior to this
 //     timestamp (exclusive).
