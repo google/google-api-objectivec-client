@@ -994,7 +994,7 @@ static const GTLDynamicImpInfo *DynamicImpInfoForProperty(objc_property_t prop,
       if (kImplInfo[idx].returnClassName) {
         kImplInfo[idx].returnClass = objc_getClass(kImplInfo[idx].returnClassName);
         NSCAssert1(kImplInfo[idx].returnClass != nil,
-                   @"GTLRuntimeCommon: class lookup failed: %@", kImplInfo[idx].returnClassName);
+                   @"GTLRuntimeCommon: class lookup failed: %s", kImplInfo[idx].returnClassName);
       }
     }
   }
