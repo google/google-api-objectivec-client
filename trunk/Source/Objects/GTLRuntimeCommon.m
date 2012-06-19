@@ -194,7 +194,7 @@ static CFStringRef SelectorKeyCopyDescriptionCallBack(const void *key) {
                                             &keyCallBacks,
                                             &kCFTypeDictionaryValueCallBacks);
       [gDispatchCache setObject:(id)classDict
-                         forKey:dispatchClass];
+                         forKey:(id<NSCopying>)dispatchClass];
       CFRelease(classDict);
     }
 

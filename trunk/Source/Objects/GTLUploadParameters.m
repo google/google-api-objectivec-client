@@ -73,7 +73,8 @@
   [array addObject:str];
 
   if (data_) {
-    str = [NSString stringWithFormat:@"data:%lu bytes", [data_ length]];
+    str = [NSString stringWithFormat:@"data:%llu bytes",
+           (unsigned long long)[data_ length]];
     [array addObject:str];
   }
 

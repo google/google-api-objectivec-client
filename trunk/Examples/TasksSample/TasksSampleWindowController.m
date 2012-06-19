@@ -1049,7 +1049,7 @@ static NSString *const kGTLChildTasksProperty = @"childTasks";
     va_end(argList);
   }
   NSBeginAlertSheet(title, nil, nil, nil, [self window], nil, nil,
-                    nil, nil, result);
+                    nil, nil, @"%@", result);
 }
 
 #pragma mark Client ID Sheet

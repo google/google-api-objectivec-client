@@ -455,7 +455,7 @@ static NSString *const kUserDataPropertyKey = @"_userData";
     } else if ([rawValue isKindOfClass:[NSArray class]]) {
       // for arrays, show the number of items in the array:
       //   [3]
-      value = [NSString stringWithFormat:@"[%lu]", [rawValue count]];
+      value = [NSString stringWithFormat:@"[%lu]", (unsigned long)[rawValue count]];
     } else if ([rawValue isKindOfClass:[NSString class]]) {
       // for strings, show the string in quotes:
       //   "Hi mom."

@@ -294,7 +294,7 @@ const CFStringRef kCharsToForceEscape = CFSTR("!*'();:@&=+$,/?%#[]");
       result = [NSDictionary dictionaryWithDictionary:mergeDict];
 
       // Save it.
-      [cache setObject:result forKey:startClass];
+      [cache setObject:result forKey:(id<NSCopying>)startClass];
     }
   }
   return result;
