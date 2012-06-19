@@ -407,7 +407,7 @@ NSString *const kKeychainItemName = @"URL Shortener Sample: Google URL Shortener
     va_end(argList);
   }
   NSBeginAlertSheet(title, nil, nil, nil, [self window], nil, nil,
-                    nil, nil, result);
+                    nil, nil, @"%@", result);
 }
 
 #pragma mark Client ID Sheet

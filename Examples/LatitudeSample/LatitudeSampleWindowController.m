@@ -268,9 +268,9 @@ NSString *const kKeychainItemName = @"Latitude Sample: Google Latitude";
 
   NSString *granularity;
   if ([self isBestGranularitySelected]) {
-    granularity = @"best";
+    granularity = kGTLLatitudeGranularityBest;
   } else {
-    granularity = @"city";
+    granularity = kGTLLatitudeGranularityCity;
   }
   [query setGranularity:granularity];
 
@@ -548,7 +548,7 @@ NSString *const kKeychainItemName = @"Latitude Sample: Google Latitude";
     va_end(argList);
   }
   NSBeginAlertSheet(title, nil, nil, nil, [self window], nil, nil,
-                    nil, nil, result);
+                    nil, nil, @"%@", result);
 }
 
 #pragma mark Text field delegate methods
