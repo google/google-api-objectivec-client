@@ -26,7 +26,7 @@
 // Documentation:
 //   http://developers.google.com/+/api/
 // Classes:
-//   GTLPlusPeopleFeed (0 custom class methods, 7 custom properties)
+//   GTLPlusPeopleFeed (0 custom class methods, 6 custom properties)
 
 #import "GTLPlusPeopleFeed.h"
 
@@ -38,7 +38,7 @@
 //
 
 @implementation GTLPlusPeopleFeed
-@dynamic ETag, items, kind, nextPageToken, selfLink, title, totalItems;
+@dynamic ETag, items, kind, nextPageToken, selfLink, title;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
