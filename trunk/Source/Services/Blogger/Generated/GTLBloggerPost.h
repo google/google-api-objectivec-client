@@ -20,16 +20,17 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Blogger API (blogger/v2)
+//   Blogger API (blogger/v3)
 // Description:
 //   API for access to the data within Blogger.
 // Documentation:
-//   https://developers.google.com/blogger/docs/2.0/json/getting_started
+//   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLBloggerPost (0 custom class methods, 12 custom properties)
+//   GTLBloggerPost (0 custom class methods, 14 custom properties)
 //   GTLBloggerPostAuthor (0 custom class methods, 4 custom properties)
 //   GTLBloggerPostBlog (0 custom class methods, 1 custom properties)
-//   GTLBloggerPostReplies (0 custom class methods, 2 custom properties)
+//   GTLBloggerPostLocation (0 custom class methods, 4 custom properties)
+//   GTLBloggerPostReplies (0 custom class methods, 3 custom properties)
 //   GTLBloggerPostAuthorImage (0 custom class methods, 1 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -38,9 +39,11 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLBloggerComment;
 @class GTLBloggerPostAuthor;
 @class GTLBloggerPostAuthorImage;
 @class GTLBloggerPostBlog;
+@class GTLBloggerPostLocation;
 @class GTLBloggerPostReplies;
 
 // ----------------------------------------------------------------------------
@@ -59,6 +62,9 @@
 // The content of the Post. May contain HTML markup.
 @property (copy) NSString *content;
 
+// The JSON meta-data for the Post.
+@property (copy) NSString *customMetaData;
+
 // The identifier of this Post.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (retain) NSNumber *identifier;  // longLongValue
@@ -68,6 +74,9 @@
 
 // The list of labels this Post was tagged with.
 @property (retain) NSArray *labels;  // of NSString
+
+// The location for geotagged posts.
+@property (retain) GTLBloggerPostLocation *location;
 
 // RFC 3339 date-time when this Post was published.
 @property (retain) GTLDateTime *published;
@@ -129,10 +138,38 @@
 
 // ----------------------------------------------------------------------------
 //
+//   GTLBloggerPostLocation
+//
+
+@interface GTLBloggerPostLocation : GTLObject
+
+// Location's latitude.
+@property (retain) NSNumber *lat;  // doubleValue
+
+// Location's longitude.
+@property (retain) NSNumber *lng;  // doubleValue
+
+// Location name.
+@property (copy) NSString *name;
+
+// Location's viewport span. Can be used when rendering a map preview.
+@property (copy) NSString *span;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
 //   GTLBloggerPostReplies
 //
 
-@interface GTLBloggerPostReplies : GTLObject
+// This class supports NSFastEnumeration over its "items" property. It also
+// supports -itemAtIndex: to retrieve individual objects from "items".
+
+@interface GTLBloggerPostReplies : GTLCollectionObject
+
+// The List of Comments for this Post.
+@property (retain) NSArray *items;  // of GTLBloggerComment
 
 // The URL of the comments on this post.
 @property (copy) NSString *selfLink;

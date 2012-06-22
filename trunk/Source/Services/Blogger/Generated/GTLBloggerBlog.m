@@ -20,18 +20,20 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Blogger API (blogger/v2)
+//   Blogger API (blogger/v3)
 // Description:
 //   API for access to the data within Blogger.
 // Documentation:
-//   https://developers.google.com/blogger/docs/2.0/json/getting_started
+//   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLBloggerBlog (0 custom class methods, 11 custom properties)
+//   GTLBloggerBlog (0 custom class methods, 12 custom properties)
 //   GTLBloggerBlogLocale (0 custom class methods, 3 custom properties)
 //   GTLBloggerBlogPages (0 custom class methods, 2 custom properties)
-//   GTLBloggerBlogPosts (0 custom class methods, 2 custom properties)
+//   GTLBloggerBlogPosts (0 custom class methods, 3 custom properties)
 
 #import "GTLBloggerBlog.h"
+
+#import "GTLBloggerPost.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -39,8 +41,8 @@
 //
 
 @implementation GTLBloggerBlog
-@dynamic descriptionProperty, identifier, kind, locale, name, pages, posts,
-         published, selfLink, updated, url;
+@dynamic customMetaData, descriptionProperty, identifier, kind, locale, name,
+         pages, posts, published, selfLink, updated, url;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -84,5 +86,13 @@
 //
 
 @implementation GTLBloggerBlogPosts
-@dynamic selfLink, totalItems;
+@dynamic items, selfLink, totalItems;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLBloggerPost class]
+                                forKey:@"items"];
+  return map;
+}
+
 @end
