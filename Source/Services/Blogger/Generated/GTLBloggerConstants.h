@@ -20,11 +20,11 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Blogger API (blogger/v2)
+//   Blogger API (blogger/v3)
 // Description:
 //   API for access to the data within Blogger.
 // Documentation:
-//   https://developers.google.com/blogger/docs/2.0/json/getting_started
+//   https://developers.google.com/blogger/docs/3.0/getting_started
 
 #import <Foundation/Foundation.h>
 
@@ -36,4 +36,6 @@
 
 // Authorization scope
 // Manage your Blogger account
-GTL_EXTERN NSString * const kGTLAuthScopeBlogger;  // "https://www.googleapis.com/auth/blogger"
+GTL_EXTERN NSString * const kGTLAuthScopeBlogger;          // "https://www.googleapis.com/auth/blogger"
+// View your Blogger account
+GTL_EXTERN NSString * const kGTLAuthScopeBloggerReadonly;  // "https://www.googleapis.com/auth/blogger.readonly"

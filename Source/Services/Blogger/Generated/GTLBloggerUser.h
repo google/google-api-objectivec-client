@@ -20,11 +20,11 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Blogger API (blogger/v2)
+//   Blogger API (blogger/v3)
 // Description:
 //   API for access to the data within Blogger.
 // Documentation:
-//   https://developers.google.com/blogger/docs/2.0/json/getting_started
+//   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
 //   GTLBloggerUser (0 custom class methods, 9 custom properties)
 //   GTLBloggerUserBlogs (0 custom class methods, 1 custom properties)

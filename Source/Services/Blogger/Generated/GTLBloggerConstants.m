@@ -20,13 +20,14 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Blogger API (blogger/v2)
+//   Blogger API (blogger/v3)
 // Description:
 //   API for access to the data within Blogger.
 // Documentation:
-//   https://developers.google.com/blogger/docs/2.0/json/getting_started
+//   https://developers.google.com/blogger/docs/3.0/getting_started
 
 #import "GTLBloggerConstants.h"
 
 // Authorization scope
-NSString * const kGTLAuthScopeBlogger = @"https://www.googleapis.com/auth/blogger";
+NSString * const kGTLAuthScopeBlogger         = @"https://www.googleapis.com/auth/blogger";
+NSString * const kGTLAuthScopeBloggerReadonly = @"https://www.googleapis.com/auth/blogger.readonly";

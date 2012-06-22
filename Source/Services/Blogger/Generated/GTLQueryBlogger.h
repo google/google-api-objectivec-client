@@ -20,19 +20,21 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Blogger API (blogger/v2)
+//   Blogger API (blogger/v3)
 // Description:
 //   API for access to the data within Blogger.
 // Documentation:
-//   https://developers.google.com/blogger/docs/2.0/json/getting_started
+//   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLQueryBlogger (9 custom class methods, 10 custom properties)
+//   GTLQueryBlogger (16 custom class methods, 17 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
 #else
   #import "GTLQuery.h"
 #endif
+
+@class GTLBloggerPost;
 
 @interface GTLQueryBlogger : GTLQuery
 
@@ -48,12 +50,19 @@
 //
 @property (copy) NSString *blogId;
 @property (copy) NSString *commentId;
+@property (retain) GTLDateTime *endDate;
 @property (assign) BOOL fetchBodies;
+@property (copy) NSString *labels;
+@property (assign) NSUInteger maxComments;
+@property (assign) NSUInteger maxPosts;
 @property (assign) NSUInteger maxResults;
 @property (copy) NSString *pageId;
 @property (copy) NSString *pageToken;
+@property (copy) NSString *path;
 @property (copy) NSString *postId;
+@property (copy) NSString *q;
 @property (retain) GTLDateTime *startDate;
+@property (copy) NSString *url;
 @property (copy) NSString *userId;
 
 #pragma mark -
@@ -64,10 +73,34 @@
 // Gets one blog by id.
 //  Required:
 //   blogId: The ID of the blog to get.
+//  Optional:
+//   maxPosts: Maximum number of posts to pull back with the blog.
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
+//   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerBlog.
 + (id)queryForBlogsGetWithBlogId:(NSString *)blogId;
+
+// Method: blogger.blogs.getByUrl
+// Retrieve a Blog by URL.
+//  Optional:
+//   url: The URL of the blog to retrieve.
+//  Authorization scope(s):
+//   kGTLAuthScopeBlogger
+//   kGTLAuthScopeBloggerReadonly
+// Fetches a GTLBloggerBlog.
++ (id)queryForBlogsGetByUrl;
+
+// Method: blogger.blogs.listByUser
+// Retrieves a list of blogs, possibly filtered.
+//  Required:
+//   userId: ID of the user whose blogs are to be fetched. Either the word
+//     'self' (sans quote marks) or the user's profile identifier.
+//  Authorization scope(s):
+//   kGTLAuthScopeBlogger
+//   kGTLAuthScopeBloggerReadonly
+// Fetches a GTLBloggerBlogList.
++ (id)queryForBlogsListByUserWithUserId:(NSString *)userId;
 
 #pragma mark -
 #pragma mark "comments" methods
@@ -81,6 +114,7 @@
 //   commentId: The ID of the comment to get.
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
+//   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerComment.
 + (id)queryForCommentsGetWithBlogId:(NSString *)blogId
                              postId:(NSString *)postId
@@ -92,6 +126,8 @@
 //   blogId: ID of the blog to fetch comments from.
 //   postId: ID of the post to fetch posts from.
 //  Optional:
+//   endDate: Latest date of comment to fetch, a date-time with RFC 3339
+//     formatting.
 //   fetchBodies: Whether the body content of the comments is included.
 //   maxResults: Maximum number of comments to include in the result.
 //   pageToken: Continuation token if request is paged.
@@ -99,6 +135,7 @@
 //     formatting.
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
+//   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerCommentList.
 + (id)queryForCommentsListWithBlogId:(NSString *)blogId
                               postId:(NSString *)postId;
@@ -114,6 +151,7 @@
 //   pageId: The ID of the page to get.
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
+//   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerPage.
 + (id)queryForPagesGetWithBlogId:(NSString *)blogId
                           pageId:(NSString *)pageId;
@@ -126,6 +164,7 @@
 //   fetchBodies: Whether to retrieve the Page bodies.
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
+//   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerPageList.
 + (id)queryForPagesListWithBlogId:(NSString *)blogId;
 
@@ -133,45 +172,106 @@
 #pragma mark "posts" methods
 // These create a GTLQueryBlogger object.
 
+// Method: blogger.posts.delete
+// Delete a post by id.
+//  Required:
+//   blogId: The Id of the Blog.
+//   postId: The ID of the Post.
+//  Authorization scope(s):
+//   kGTLAuthScopeBlogger
++ (id)queryForPostsDeleteWithBlogId:(NSString *)blogId
+                             postId:(NSString *)postId;
+
 // Method: blogger.posts.get
 // Get a post by id.
 //  Required:
 //   blogId: ID of the blog to fetch the post from.
 //   postId: The ID of the post
+//  Optional:
+//   maxComments: Maximum number of comments to pull back on a post.
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
+//   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerPost.
 + (id)queryForPostsGetWithBlogId:(NSString *)blogId
                           postId:(NSString *)postId;
+
+// Method: blogger.posts.getByPath
+// Retrieve a Post by Path.
+//  Required:
+//   blogId: ID of the blog to fetch the post from.
+//  Optional:
+//   maxComments: Maximum number of comments to pull back on a post.
+//   path: Path of the Post to retrieve.
+//  Authorization scope(s):
+//   kGTLAuthScopeBlogger
+//   kGTLAuthScopeBloggerReadonly
+// Fetches a GTLBloggerPost.
++ (id)queryForPostsGetByPathWithBlogId:(NSString *)blogId;
+
+// Method: blogger.posts.insert
+// Add a post.
+//  Required:
+//   blogId: ID of the blog to fetch the post from.
+//  Authorization scope(s):
+//   kGTLAuthScopeBlogger
+// Fetches a GTLBloggerPost.
++ (id)queryForPostsInsertWithObject:(GTLBloggerPost *)object
+                             blogId:(NSString *)blogId;
 
 // Method: blogger.posts.list
 // Retrieves a list of posts, possibly filtered.
 //  Required:
 //   blogId: ID of the blog to fetch posts from.
 //  Optional:
+//   endDate: Latest post date to fetch, a date-time with RFC 3339 formatting.
 //   fetchBodies: Whether the body content of posts is included.
+//   labels: Comma-separated list of labels to search for.
 //   maxResults: Maximum number of posts to fetch.
 //   pageToken: Continuation token if the request is paged.
 //   startDate: Earliest post date to fetch, a date-time with RFC 3339
 //     formatting.
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
+//   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerPostList.
 + (id)queryForPostsListWithBlogId:(NSString *)blogId;
 
-#pragma mark -
-#pragma mark "users.blogs" methods
-// These create a GTLQueryBlogger object.
-
-// Method: blogger.users.blogs.list
-// Retrieves a list of blogs, possibly filtered.
+// Method: blogger.posts.patch
+// Update a post. This method supports patch semantics.
 //  Required:
-//   userId: ID of the user whose blogs are to be fetched. Either the word
-//     'self' (sans quote marks) or the user's profile identifier.
+//   blogId: The ID of the Blog.
+//   postId: The ID of the Post.
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
-// Fetches a GTLBloggerBlogList.
-+ (id)queryForUsersBlogsListWithUserId:(NSString *)userId;
+// Fetches a GTLBloggerPost.
++ (id)queryForPostsPatchWithObject:(GTLBloggerPost *)object
+                            blogId:(NSString *)blogId
+                            postId:(NSString *)postId;
+
+// Method: blogger.posts.search
+// Search for a post.
+//  Required:
+//   blogId: ID of the blog to fetch the post from.
+//  Optional:
+//   q: Query terms to search this blog for matching posts.
+//  Authorization scope(s):
+//   kGTLAuthScopeBlogger
+//   kGTLAuthScopeBloggerReadonly
+// Fetches a GTLBloggerPostList.
++ (id)queryForPostsSearchWithBlogId:(NSString *)blogId;
+
+// Method: blogger.posts.update
+// Update a post.
+//  Required:
+//   blogId: The ID of the Blog.
+//   postId: The ID of the Post.
+//  Authorization scope(s):
+//   kGTLAuthScopeBlogger
+// Fetches a GTLBloggerPost.
++ (id)queryForPostsUpdateWithObject:(GTLBloggerPost *)object
+                             blogId:(NSString *)blogId
+                             postId:(NSString *)postId;
 
 #pragma mark -
 #pragma mark "users" methods
@@ -183,6 +283,7 @@
 //   userId: The ID of the user to get.
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
+//   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerUser.
 + (id)queryForUsersGetWithUserId:(NSString *)userId;
 

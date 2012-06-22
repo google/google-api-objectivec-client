@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Blogger API (blogger/v2)
+//   Blogger API (blogger/v3)
 // Description:
 //   API for access to the data within Blogger.
 // Documentation:
-//   https://developers.google.com/blogger/docs/2.0/json/getting_started
+//   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLQueryBlogger (9 custom class methods, 10 custom properties)
+//   GTLQueryBlogger (16 custom class methods, 17 custom properties)
 
 #import "GTLQueryBlogger.h"
 
@@ -42,8 +42,9 @@
 
 @implementation GTLQueryBlogger
 
-@dynamic blogId, commentId, fetchBodies, fields, maxResults, pageId, pageToken,
-         postId, startDate, userId;
+@dynamic blogId, commentId, endDate, fetchBodies, fields, labels, maxComments,
+         maxPosts, maxResults, pageId, pageToken, path, postId, q, startDate,
+         url, userId;
 
 #pragma mark -
 #pragma mark "blogs" methods
@@ -54,6 +55,21 @@
   GTLQueryBlogger *query = [self queryWithMethodName:methodName];
   query.blogId = blogId;
   query.expectedObjectClass = [GTLBloggerBlog class];
+  return query;
+}
+
++ (id)queryForBlogsGetByUrl {
+  NSString *methodName = @"blogger.blogs.getByUrl";
+  GTLQueryBlogger *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLBloggerBlog class];
+  return query;
+}
+
++ (id)queryForBlogsListByUserWithUserId:(NSString *)userId {
+  NSString *methodName = @"blogger.blogs.listByUser";
+  GTLQueryBlogger *query = [self queryWithMethodName:methodName];
+  query.userId = userId;
+  query.expectedObjectClass = [GTLBloggerBlogList class];
   return query;
 }
 
@@ -109,12 +125,43 @@
 #pragma mark "posts" methods
 // These create a GTLQueryBlogger object.
 
++ (id)queryForPostsDeleteWithBlogId:(NSString *)blogId
+                             postId:(NSString *)postId {
+  NSString *methodName = @"blogger.posts.delete";
+  GTLQueryBlogger *query = [self queryWithMethodName:methodName];
+  query.blogId = blogId;
+  query.postId = postId;
+  return query;
+}
+
 + (id)queryForPostsGetWithBlogId:(NSString *)blogId
                           postId:(NSString *)postId {
   NSString *methodName = @"blogger.posts.get";
   GTLQueryBlogger *query = [self queryWithMethodName:methodName];
   query.blogId = blogId;
   query.postId = postId;
+  query.expectedObjectClass = [GTLBloggerPost class];
+  return query;
+}
+
++ (id)queryForPostsGetByPathWithBlogId:(NSString *)blogId {
+  NSString *methodName = @"blogger.posts.getByPath";
+  GTLQueryBlogger *query = [self queryWithMethodName:methodName];
+  query.blogId = blogId;
+  query.expectedObjectClass = [GTLBloggerPost class];
+  return query;
+}
+
++ (id)queryForPostsInsertWithObject:(GTLBloggerPost *)object
+                             blogId:(NSString *)blogId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"blogger.posts.insert";
+  GTLQueryBlogger *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.blogId = blogId;
   query.expectedObjectClass = [GTLBloggerPost class];
   return query;
 }
@@ -127,15 +174,43 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "users.blogs" methods
-// These create a GTLQueryBlogger object.
-
-+ (id)queryForUsersBlogsListWithUserId:(NSString *)userId {
-  NSString *methodName = @"blogger.users.blogs.list";
++ (id)queryForPostsPatchWithObject:(GTLBloggerPost *)object
+                            blogId:(NSString *)blogId
+                            postId:(NSString *)postId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"blogger.posts.patch";
   GTLQueryBlogger *query = [self queryWithMethodName:methodName];
-  query.userId = userId;
-  query.expectedObjectClass = [GTLBloggerBlogList class];
+  query.bodyObject = object;
+  query.blogId = blogId;
+  query.postId = postId;
+  query.expectedObjectClass = [GTLBloggerPost class];
+  return query;
+}
+
++ (id)queryForPostsSearchWithBlogId:(NSString *)blogId {
+  NSString *methodName = @"blogger.posts.search";
+  GTLQueryBlogger *query = [self queryWithMethodName:methodName];
+  query.blogId = blogId;
+  query.expectedObjectClass = [GTLBloggerPostList class];
+  return query;
+}
+
++ (id)queryForPostsUpdateWithObject:(GTLBloggerPost *)object
+                             blogId:(NSString *)blogId
+                             postId:(NSString *)postId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"blogger.posts.update";
+  GTLQueryBlogger *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.blogId = blogId;
+  query.postId = postId;
+  query.expectedObjectClass = [GTLBloggerPost class];
   return query;
 }
 
