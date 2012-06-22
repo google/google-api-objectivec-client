@@ -20,9 +20,9 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Search API for Shopping (shopping/v1)
+//   Search API For Shopping (shopping/v1)
 // Description:
-//   Lets you search over product data
+//   Lets you search over product data.
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
@@ -49,6 +49,7 @@
 // List of categories for product.
 @property (retain) NSArray *categories;  // of GTLShoppingModelCategory
 
+// Google internal.
 @property (retain) GTLShoppingModelDebug *debug;
 
 // Id of product.
@@ -58,6 +59,7 @@
 // The kind of item, always shopping#product.
 @property (copy) NSString *kind;
 
+// Product.
 @property (retain) GTLShoppingModelProduct *product;
 
 // Recommendations for product.
@@ -66,7 +68,5 @@
 // Unique identifier for this request.
 @property (copy) NSString *requestId;
 
-// Self link of product.
 @property (copy) NSString *selfLink;
-
 @end

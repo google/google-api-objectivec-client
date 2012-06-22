@@ -20,18 +20,18 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Search API for Shopping (shopping/v1)
+//   Search API For Shopping (shopping/v1)
 // Description:
-//   Lets you search over product data
+//   Lets you search over product data.
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
-//   GTLShoppingModelProduct (0 custom class methods, 34 custom properties)
+//   GTLShoppingModelProduct (0 custom class methods, 35 custom properties)
 //   GTLShoppingModelProductAttributesItem (0 custom class methods, 5 custom properties)
 //   GTLShoppingModelProductAuthor (0 custom class methods, 2 custom properties)
-//   GTLShoppingModelProductImagesItem (0 custom class methods, 2 custom properties)
+//   GTLShoppingModelProductImagesItem (0 custom class methods, 3 custom properties)
 //   GTLShoppingModelProductInternal4Item (0 custom class methods, 2 custom properties)
-//   GTLShoppingModelProductInventoriesItem (0 custom class methods, 9 custom properties)
+//   GTLShoppingModelProductInventoriesItem (0 custom class methods, 15 custom properties)
 //   GTLShoppingModelProductVariantsItem (0 custom class methods, 1 custom properties)
 //   GTLShoppingModelProductImagesItemThumbnailsItem (0 custom class methods, 4 custom properties)
 
@@ -48,7 +48,7 @@
          internal1, internal10, internal12, internal13, internal14, internal15,
          internal3, internal4, internal6, internal7, internal8, inventories,
          language, link, modificationTime, mpns, plusOne, providedId,
-         queryMatched, title, totalMatchingVariants, variants;
+         queryMatched, score, title, totalMatchingVariants, variants;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -104,7 +104,7 @@
 //
 
 @implementation GTLShoppingModelProductImagesItem
-@dynamic link, thumbnails;
+@dynamic link, status, thumbnails;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
@@ -132,8 +132,9 @@
 //
 
 @implementation GTLShoppingModelProductInventoriesItem
-@dynamic availability, channel, currency, distance, distanceUnit, price,
-         shipping, storeId, tax;
+@dynamic availability, channel, currency, distance, distanceUnit,
+         installmentMonths, installmentPrice, originalPrice, price, saleEndDate,
+         salePrice, saleStartDate, shipping, storeId, tax;
 @end
 
 

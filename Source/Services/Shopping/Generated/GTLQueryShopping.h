@@ -20,9 +20,9 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Search API for Shopping (shopping/v1)
+//   Search API For Shopping (shopping/v1)
 // Description:
-//   Lets you search over product data
+//   Lets you search over product data.
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
@@ -216,8 +216,8 @@
 // Whether to return +1 button code
 @property (retain) NSNumber *enabled;  // boolValue
 
-// +1 button rendering specification
-@property (copy) NSString *options;
+// +1 button rendering styles
+@property (copy) NSString *styles;
 
 // Whether to use +1 button styles configured in the GCS account
 @property (retain) NSNumber *useGcsConfig;  // boolValue
@@ -322,8 +322,8 @@
 // Whether to return +1 button code
 @property (retain) NSNumber *enabled;  // boolValue
 
-// +1 button rendering specification
-@property (copy) NSString *options;
+// +1 button rendering styles
+@property (copy) NSString *styles;
 
 // Whether to use +1 button styles configured in the GCS account
 @property (retain) NSNumber *useGcsConfig;  // boolValue

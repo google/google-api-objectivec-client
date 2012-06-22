@@ -20,18 +20,18 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Search API for Shopping (shopping/v1)
+//   Search API For Shopping (shopping/v1)
 // Description:
-//   Lets you search over product data
+//   Lets you search over product data.
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
-//   GTLShoppingModelProduct (0 custom class methods, 33 custom properties)
+//   GTLShoppingModelProduct (0 custom class methods, 35 custom properties)
 //   GTLShoppingModelProductAttributesItem (0 custom class methods, 5 custom properties)
 //   GTLShoppingModelProductAuthor (0 custom class methods, 2 custom properties)
-//   GTLShoppingModelProductImagesItem (0 custom class methods, 2 custom properties)
+//   GTLShoppingModelProductImagesItem (0 custom class methods, 3 custom properties)
 //   GTLShoppingModelProductInternal4Item (0 custom class methods, 2 custom properties)
-//   GTLShoppingModelProductInventoriesItem (0 custom class methods, 9 custom properties)
+//   GTLShoppingModelProductInventoriesItem (0 custom class methods, 15 custom properties)
 //   GTLShoppingModelProductVariantsItem (0 custom class methods, 1 custom properties)
 //   GTLShoppingModelProductImagesItemThumbnailsItem (0 custom class methods, 4 custom properties)
 
@@ -153,6 +153,9 @@
 // (if any) attached to a product offer.
 @property (retain) NSNumber *queryMatched;  // boolValue
 
+// Google Internal
+@property (retain) NSNumber *score;  // floatValue
+
 // Title of product.
 @property (copy) NSString *title;
 
@@ -216,6 +219,8 @@
 // Link to product image.
 @property (copy) NSString *link;
 
+@property (copy) NSString *status;
+
 // Thumbnails of product image.
 @property (retain) NSArray *thumbnails;  // of GTLShoppingModelProductImagesItemThumbnailsItem
 
@@ -260,8 +265,27 @@
 // Distance unit of product inventory.
 @property (copy) NSString *distanceUnit;
 
+// Number of months for installment price.
+@property (retain) NSNumber *installmentMonths;  // intValue
+
+// Installment price of product inventory.
+@property (retain) NSNumber *installmentPrice;  // floatValue
+
+// Original price of product inventory. Only returned for products that are on
+// sale.
+@property (retain) NSNumber *originalPrice;  // floatValue
+
 // Price of product inventory.
 @property (retain) NSNumber *price;  // floatValue
+
+// Sale end date.
+@property (retain) GTLDateTime *saleEndDate;
+
+// Sale price of product inventory.
+@property (retain) NSNumber *salePrice;  // floatValue
+
+// Sale start date.
+@property (retain) GTLDateTime *saleStartDate;
 
 // Shipping cost of product inventory.
 @property (retain) NSNumber *shipping;  // floatValue
