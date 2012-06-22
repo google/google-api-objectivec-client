@@ -20,15 +20,15 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Search API for Shopping (shopping/v1)
+//   Search API For Shopping (shopping/v1)
 // Description:
-//   Lets you search over product data
+//   Lets you search over product data.
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
 //   GTLShoppingProducts (0 custom class methods, 21 custom properties)
 //   GTLShoppingProductsFacetsItem (0 custom class methods, 7 custom properties)
-//   GTLShoppingProductsPromotionsItem (0 custom class methods, 9 custom properties)
+//   GTLShoppingProductsPromotionsItem (0 custom class methods, 8 custom properties)
 //   GTLShoppingProductsSpelling (0 custom class methods, 1 custom properties)
 //   GTLShoppingProductsStoresItem (0 custom class methods, 7 custom properties)
 //   GTLShoppingProductsFacetsItemBucketsItem (0 custom class methods, 6 custom properties)
@@ -109,7 +109,7 @@
 
 @implementation GTLShoppingProductsPromotionsItem
 @dynamic customFields, customHtml, descriptionProperty, destLink, imageLink,
-         link, name, product, type;
+         name, product, type;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
