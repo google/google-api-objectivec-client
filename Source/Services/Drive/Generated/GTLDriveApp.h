@@ -1,0 +1,113 @@
+/* Copyright (c) 2012 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+//
+//  GTLDriveApp.h
+//
+
+// ----------------------------------------------------------------------------
+// NOTE: This file is generated from Google APIs Discovery Service.
+// Service:
+//   Drive API (drive/v2)
+// Description:
+//   The API to interact with Drive.
+// Classes:
+//   GTLDriveApp (0 custom class methods, 14 custom properties)
+//   GTLDriveAppIconsItem (0 custom class methods, 3 custom properties)
+
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
+
+@class GTLDriveAppIconsItem;
+
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveApp
+//
+
+// Information about a third-party application which the user has installed or
+// given access to Google Drive.
+
+@interface GTLDriveApp : GTLObject
+
+// Whether the app is authorized to access data on the user's Drive.
+@property (retain) NSNumber *authorized;  // boolValue
+
+// The various icons for the app.
+@property (retain) NSArray *icons;  // of GTLDriveAppIconsItem
+
+// The ID of the app.
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+@property (copy) NSString *identifier;
+
+// Whether the app is installed.
+@property (retain) NSNumber *installed;  // boolValue
+
+// This is always drive#app.
+@property (copy) NSString *kind;
+
+// The name of the app.
+@property (copy) NSString *name;
+
+// The name of the type of object this app creates.
+@property (copy) NSString *objectType;
+
+// The list of primary file extensions.
+@property (retain) NSArray *primaryFileExtensions;  // of NSString
+
+// The list of primary mime types.
+@property (retain) NSArray *primaryMimeTypes;  // of NSString
+
+// The product URL.
+@property (copy) NSString *productUrl;
+
+// The list of secondary file extensions.
+@property (retain) NSArray *secondaryFileExtensions;  // of NSString
+
+// The list of secondary mime types.
+@property (retain) NSArray *secondaryMimeTypes;  // of NSString
+
+// Whether this app supports creating new objects.
+@property (retain) NSNumber *supportsCreate;  // boolValue
+
+// Whether this app supports importing Google Docs.
+@property (retain) NSNumber *supportsImport;  // boolValue
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveAppIconsItem
+//
+
+@interface GTLDriveAppIconsItem : GTLObject
+
+// Category of the icon. Allowed values are:
+// - application - icon for the application
+// - document - icon for a file associated with the app
+// - documentShared - icon for a shared file associated with the app
+@property (copy) NSString *category;
+
+// URL for the icon.
+@property (copy) NSString *iconUrl;
+
+// Size of the icon. Represented as the maximum of the width and height.
+@property (retain) NSNumber *size;  // intValue
+
+@end
