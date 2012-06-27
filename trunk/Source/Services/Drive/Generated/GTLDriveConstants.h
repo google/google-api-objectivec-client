@@ -35,7 +35,7 @@
 // Authorization scope
 // View and manage the files and documents in your Google Drive
 GTL_EXTERN NSString * const kGTLAuthScopeDrive;                 // "https://www.googleapis.com/auth/drive"
-// New service: https://www.googleapis.com/auth/drive.apps.readonly
+// View your Google Drive apps
 GTL_EXTERN NSString * const kGTLAuthScopeDriveAppsReadonly;     // "https://www.googleapis.com/auth/drive.apps.readonly"
 // View and manage Google Drive files that you have opened or created with this
 // app
