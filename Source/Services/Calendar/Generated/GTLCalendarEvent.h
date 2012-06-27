@@ -27,10 +27,10 @@
 //   http://code.google.com/apis/calendar/v3/using.html
 // Classes:
 //   GTLCalendarEvent (0 custom class methods, 32 custom properties)
-//   GTLCalendarEventCreator (0 custom class methods, 3 custom properties)
+//   GTLCalendarEventCreator (0 custom class methods, 4 custom properties)
 //   GTLCalendarEventExtendedProperties (0 custom class methods, 2 custom properties)
 //   GTLCalendarEventGadget (0 custom class methods, 8 custom properties)
-//   GTLCalendarEventOrganizer (0 custom class methods, 3 custom properties)
+//   GTLCalendarEventOrganizer (0 custom class methods, 4 custom properties)
 //   GTLCalendarEventReminders (0 custom class methods, 2 custom properties)
 //   GTLCalendarEventExtendedPropertiesPrivate (0 custom class methods, 0 custom properties)
 //   GTLCalendarEventExtendedPropertiesShared (0 custom class methods, 0 custom properties)
@@ -207,6 +207,9 @@
 // The creator's email address, if available.
 @property (copy) NSString *email;
 
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+@property (copy) NSString *identifier;
+
 // Whether the creator corresponds to the calendar on which this copy of the
 // event appears. Read-only. The default is False.
 // Remapped to 'selfProperty' to avoid language reserved word 'self'.
@@ -283,6 +286,9 @@
 
 // The organizer's email address, if available.
 @property (copy) NSString *email;
+
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+@property (copy) NSString *identifier;
 
 // Whether the organizer corresponds to the calendar on which this copy of the
 // event appears. Read-only. The default is False.

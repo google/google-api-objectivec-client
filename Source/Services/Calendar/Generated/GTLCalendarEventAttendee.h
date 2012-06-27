@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/calendar/v3/using.html
 // Classes:
-//   GTLCalendarEventAttendee (0 custom class methods, 9 custom properties)
+//   GTLCalendarEventAttendee (0 custom class methods, 10 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -53,6 +53,9 @@
 // The attendee's email address, if available. This field must be present when
 // adding an attendee.
 @property (copy) NSString *email;
+
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+@property (copy) NSString *identifier;
 
 // Whether this is an optional attendee. Optional. The default is False.
 @property (retain) NSNumber *optional;  // boolValue

@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/calendar/v3/using.html
 // Classes:
-//   GTLCalendarEventAttendee (0 custom class methods, 9 custom properties)
+//   GTLCalendarEventAttendee (0 custom class methods, 10 custom properties)
 
 #import "GTLCalendarEventAttendee.h"
 
@@ -36,13 +36,15 @@
 //
 
 @implementation GTLCalendarEventAttendee
-@dynamic additionalGuests, comment, displayName, email, optional, organizer,
-         resource, responseStatus, selfProperty;
+@dynamic additionalGuests, comment, displayName, email, identifier, optional,
+         organizer, resource, responseStatus, selfProperty;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"self"
-                                forKey:@"selfProperty"];
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      @"id", @"identifier",
+      @"self", @"selfProperty",
+      nil];
   return map;
 }
 
