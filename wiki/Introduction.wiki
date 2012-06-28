@@ -274,6 +274,41 @@ if ([ticket isUploadPaused]) {
 
 Uploads can be cancelled with the ticket's `cancelTicket` method.
 
+=== Downloading Files ===
+
+The library includes `GTMHTTPFetcher`, a class that supports convenient http downloading and uploading.
+
+Download of any individual user’s data from Google services requires that the request be authorized.
+
+{{{
+// Fetchers can be created from an NSURLRequest, an NSURL, or an NSString.
+NSString *urlString = [NSURL URLWithString:@"http://example.com/file.bin"];
+GTMHTTPFetcher *fetcher = [GTMHTTPFetcher fetcherWithURLString:urlString];
+
+// For downloads requiring authorization, set the authorizer.
+fetcher.authorizer = self.authorizer;
+
+// The fetcher can optionally download directly to a file. When downloading to a file, 
+fetcher.downloadPath = savePath;
+
+// Applications may also specify a receivedDataBlock to be notified as data is received.
+
+// Fetcher http logs can include useful comments.
+[fetcher setCommentWithFormat:@"Downloading \"%@\"", [urlString lastPathComponent]];
+
+[fetcher beginFetchWithCompletionHandler:^(NSData *data, NSError *error) {
+  // Callback
+  if (error == nil) {
+    // Successfully received the file data.
+    //
+    // Since a downloadPath property was specified, the data argument is
+    // nil, and the file data has been written to disk.
+  } else {
+    // Error downloading or saving file.
+  }
+}];
+}}}
+
 == Performance and Memory Optimizations ==
 === Partial Responses ===
 
