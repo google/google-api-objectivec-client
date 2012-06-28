@@ -988,7 +988,9 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 
   if (!GTL_AreEqualOrBothNil(gDisplayedURLStr, thumbnailURLStr)) {
     [thumbnailView_ setImage:nil];
-    gDisplayedURLStr = [[thumbnailURLStr copy] autorelease];
+
+    [gDisplayedURLStr autorelease];
+    gDisplayedURLStr = [thumbnailURLStr copy];
 
     if (thumbnailURLStr) {
       GTMHTTPFetcher *fetcher = [GTMHTTPFetcher fetcherWithURLString:thumbnailURLStr];
