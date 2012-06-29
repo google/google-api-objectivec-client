@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/calendar/v3/using.html
 // Classes:
-//   GTLCalendarEvent (0 custom class methods, 32 custom properties)
+//   GTLCalendarEvent (0 custom class methods, 34 custom properties)
 //   GTLCalendarEventCreator (0 custom class methods, 4 custom properties)
 //   GTLCalendarEventExtendedProperties (0 custom class methods, 2 custom properties)
 //   GTLCalendarEventGadget (0 custom class methods, 8 custom properties)
@@ -49,12 +49,12 @@
 
 @implementation GTLCalendarEvent
 @dynamic anyoneCanAddSelf, attendees, attendeesOmitted, colorId, created,
-         creator, descriptionProperty, end, ETag, extendedProperties, gadget,
-         guestsCanInviteOthers, guestsCanModify, guestsCanSeeOtherGuests,
-         htmlLink, iCalUID, identifier, kind, location, organizer,
-         originalStartTime, privateCopy, recurrence, recurringEventId,
-         reminders, sequence, start, status, summary, transparency, updated,
-         visibility;
+         creator, descriptionProperty, end, endTimeUnspecified, ETag,
+         extendedProperties, gadget, guestsCanInviteOthers, guestsCanModify,
+         guestsCanSeeOtherGuests, htmlLink, iCalUID, identifier, kind, location,
+         locked, organizer, originalStartTime, privateCopy, recurrence,
+         recurringEventId, reminders, sequence, start, status, summary,
+         transparency, updated, visibility;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

@@ -54,6 +54,7 @@
 // adding an attendee.
 @property (copy) NSString *email;
 
+// The attendee's Profile ID, if available.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
