@@ -738,16 +738,31 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
         NSURL *url = [NSURL URLWithString:exportURLStr];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         GTMHTTPFetcher *fetcher = [GTMHTTPFetcher fetcherWithRequest:request];
+
+        // Requests of user data from Google services must be authorized.
         fetcher.authorizer = self.driveService.authorizer;
+
+        // The fetcher can save data directly to a file.
         fetcher.downloadPath = savePath;
+
+        // Fetcher logging can include comments.
         [fetcher setCommentWithFormat:@"Downloading \"%@\"", file.title];
+
+        fetcher.receivedDataBlock = ^(NSData *receivedData) {
+          // The fetcher will call the received data block periodically.
+          // When a download path has been specified, the received data
+          // parameter will be nil.
+        };
+
         [fetcher beginFetchWithCompletionHandler:^(NSData *data, NSError *error) {
           // Callback
           if (error == nil) {
-            // Successfully saved the document
+            // Successfully saved the file.
             //
             // Since a downloadPath property was specified, the data argument is
             // nil, and the file data has been written to disk.
+            [self displayAlert:@"Downloaded"
+                        format:@"%@", savePath];
           } else {
             [self displayAlert:@"Error Downloading File"
                         format:@"%@", error];
