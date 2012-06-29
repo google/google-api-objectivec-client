@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/calendar/v3/using.html
 // Classes:
-//   GTLCalendarEvent (0 custom class methods, 32 custom properties)
+//   GTLCalendarEvent (0 custom class methods, 34 custom properties)
 //   GTLCalendarEventCreator (0 custom class methods, 4 custom properties)
 //   GTLCalendarEventExtendedProperties (0 custom class methods, 2 custom properties)
 //   GTLCalendarEventGadget (0 custom class methods, 8 custom properties)
@@ -92,6 +92,8 @@
 // time of the first instance.
 @property (retain) GTLCalendarEventDateTime *end;
 
+@property (retain) NSNumber *endTimeUnspecified;  // boolValue
+
 // ETag of the resource.
 @property (copy) NSString *ETag;
 
@@ -128,6 +130,11 @@
 
 // Geographic location of the event as free-form text. Optional.
 @property (copy) NSString *location;
+
+// Whether this is a locked event copy where no changes can be made to the main
+// event fields "summary", "description", "location", "start", "end" or
+// "recurrence". The default is False. Read-Only.
+@property (retain) NSNumber *locked;  // boolValue
 
 // The organizer of the event. If the organizer is also an attendee, this is
 // indicated with a separate entry in 'attendees' with the 'organizer' field set
@@ -207,6 +214,7 @@
 // The creator's email address, if available.
 @property (copy) NSString *email;
 
+// The creator's Profile ID, if available.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
@@ -287,6 +295,7 @@
 // The organizer's email address, if available.
 @property (copy) NSString *email;
 
+// The organizer's Profile ID, if available.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 

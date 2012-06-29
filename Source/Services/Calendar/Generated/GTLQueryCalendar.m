@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/calendar/v3/using.html
 // Classes:
-//   GTLQueryCalendar (32 custom class methods, 27 custom properties)
+//   GTLQueryCalendar (32 custom class methods, 28 custom properties)
 
 #import "GTLQueryCalendar.h"
 
@@ -45,10 +45,10 @@
 
 @implementation GTLQueryCalendar
 
-@dynamic calendarExpansionMax, calendarId, destination, eventId, fields,
-         groupExpansionMax, iCalUID, items, maxAttendees, maxResults,
-         minAccessRole, orderBy, originalStart, pageToken, q, ruleId,
-         sendNotifications, setting, showDeleted, showHidden,
+@dynamic alwaysIncludeEmail, calendarExpansionMax, calendarId, destination,
+         eventId, fields, groupExpansionMax, iCalUID, items, maxAttendees,
+         maxResults, minAccessRole, orderBy, originalStart, pageToken, q,
+         ruleId, sendNotifications, setting, showDeleted, showHidden,
          showHiddenInvitations, singleEvents, text, timeMax, timeMin, timeZone,
          updatedMin;
 
