@@ -417,7 +417,7 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
   // care about. Specifying the fields we want here reduces the network
   // bandwidth and memory needed for the collection.
   //
-  // For example, leave query.files as nil during development.
+  // For example, leave query.fields as nil during development.
   // When ready to test and optimize your app, specify just the fields needed.
   // For example, this sample app might use
   //
@@ -624,9 +624,9 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
   // To create a folder in a specific parent folder, specify the identifier
   // of the parent:
   //
-  //  GTLDriveFileParentsCollectionItem *parentItem = [GTLDriveFileParentsCollectionItem object];
   //  GTLDriveParentReference *parentRef = [GTLDriveParentReference object];
   //  parentRef.identifier = parentID;
+  //  folderObj.parents = [NSArray arrayWithObject:parentRef];
 
   GTLQueryDrive *query = [GTLQueryDrive queryForFilesInsertWithObject:folderObj
                                                      uploadParameters:nil];
