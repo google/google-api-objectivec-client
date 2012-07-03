@@ -27,7 +27,7 @@ The Examples directory contains example applications showing typical interaction
 
 The example applications run on Mac OS X, but the library does not provide any user interface support apart from authentication, so use of the library APIs is the same for Mac and iOS applications.
 
-In order to use the example applications that require authentication, you must create *client ID* and *client secret* strings for an *installed application* (not a web application) using the [https://code.google.com/apis/console/ API Console], as explained in the [http://code.google.com/p/gtm-oauth2/wiki/Introduction OAuth 2 controller documentation].
+In order to use the example applications that require authentication, you must create *client ID* and *client secret* strings for an *installed application* (not a web application) type *other* (not iOS) using the [https://code.google.com/apis/console/ API Console], as explained in the [http://code.google.com/p/gtm-oauth2/wiki/Introduction OAuth 2 controller documentation].
 
 Google APIs which do not require authentication may require an *API key*, also obtained from the [https://code.google.com/apis/console/ API Console].
 
