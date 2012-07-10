@@ -5,9 +5,13 @@
 
 = Adding the Google APIs Objective-C Client Library to a Project =
 
-The Google APIs Objective-C Client Library's core classes are provided as a built framework, suitable for inclusion in a Mac application bundle's Frameworks folder, and as a static library for iOS applications.  Alternatively, all of the library's sources may also be compiled directly into a Mac or an iOS application.
+The Google APIs Objective-C Client Library's core classes are provided as a built framework, suitable for inclusion in a Mac application bundle's Frameworks folder, and as a static library for iOS applications.  
 
-Service-specific classes, such as for Tasks and Books, are provided in separate folders. They are not compiled into the library or framework with the core classes, so the needed service classes should should be dragged into the application project.
+Alternatively, all of the library's sources may also be compiled directly into a Mac or an iOS application.
+
+Service-specific classes, such as for Tasks and Drive, are provided in separate folders. They are not compiled into the library or framework with the core classes, so the needed service classes should should be dragged into the application project.
+
+*Use one of the following three approaches* to add the library to your project. Do not attempt to build and link the framework target for iOS applications.
 
 == Linking to the iOS Static Library ==
 
@@ -74,4 +78,4 @@ Or, if the Other C Flags setting is not available in your target's build options
 
 When the library source files are compiled directly into a project that has ARC enabled, then ARC must be disabled specifically for the library source files.
 
-To disable ARC for source files in Xcode 4, select the project and the target in Xcode. Under the target "Build Phases" tab, expand the Compile Sources build phase, select the library source files, then press Enter to open an edit field, and type  `-fno-objc-arc`  as the compiler flag for those files.
+*To disable ARC for source files in Xcode 4*, select the project and the target in Xcode. Under the target "Build Phases" tab, expand the Compile Sources build phase, select the library source files, then press Enter to open an edit field, and type  `-fno-objc-arc`  as the compiler flag for those files.
