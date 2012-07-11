@@ -24,7 +24,7 @@
 // Description:
 //   The Google+ API enables developers to build on top of the Google+ platform.
 // Documentation:
-//   http://developers.google.com/+/api/
+//   https://developers.google.com/+/api/
 // Classes:
 //   GTLPlusActivity (0 custom class methods, 19 custom properties)
 //   GTLPlusActivityActor (0 custom class methods, 5 custom properties)

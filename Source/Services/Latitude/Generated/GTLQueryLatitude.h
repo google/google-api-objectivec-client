@@ -25,7 +25,7 @@
 //   Lets you read and update your current location and work with your location
 //   history
 // Documentation:
-//   http://code.google.com/apis/latitude/v1/using_rest.html
+//   https://developers.google.com/latitude/v1/using
 // Classes:
 //   GTLQueryLatitude (7 custom class methods, 6 custom properties)
 

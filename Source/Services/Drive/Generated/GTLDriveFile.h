@@ -23,6 +23,8 @@
 //   Drive API (drive/v2)
 // Description:
 //   The API to interact with Drive.
+// Documentation:
+//   https://developers.google.com/drive/
 // Classes:
 //   GTLDriveFile (0 custom class methods, 31 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
@@ -126,9 +128,9 @@
 @property (retain) NSArray *ownerNames;  // of NSString
 
 // Collection of parent folders which contain this file.
-// On insert, setting this field will put the file in all of the provided
-// folders. If no folders are provided, the file will be placed in the default
-// root folder. On update, this field is ignored.
+// Setting this field will put the file in all of the provided folders. On
+// insert, if no folders are provided, the file will be placed in the default
+// root folder.
 @property (retain) NSArray *parents;  // of GTLDriveParentReference
 
 // A link to the permissions collection.

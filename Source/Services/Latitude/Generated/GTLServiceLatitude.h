@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@
 //   Lets you read and update your current location and work with your location
 //   history
 // Documentation:
-//   http://code.google.com/apis/latitude/v1/using_rest.html
+//   https://developers.google.com/latitude/v1/using
 // Classes:
 //   GTLServiceLatitude (0 custom class methods, 0 custom properties)
 
