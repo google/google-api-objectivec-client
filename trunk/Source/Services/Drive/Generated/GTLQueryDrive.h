@@ -23,6 +23,8 @@
 //   Drive API (drive/v2)
 // Description:
 //   The API to interact with Drive.
+// Documentation:
+//   https://developers.google.com/drive/
 // Classes:
 //   GTLQueryDrive (33 custom class methods, 28 custom properties)
 
@@ -212,6 +214,7 @@
 //   ocr: Whether to attempt OCR on .jpg, .png, or .gif uploads. (Default false)
 //   ocrLanguage: If ocr is true, hints at the language to use. Valid values are
 //     ISO 639-1 codes.
+//   pinned: Whether to pin the head revision of the new copy. (Default false)
 //   sourceLanguage: The language of the original file to be translated.
 //   targetLanguage: Target language to translate the file to. If no
 //     sourceLanguage is provided, the API will attempt to detect the language.

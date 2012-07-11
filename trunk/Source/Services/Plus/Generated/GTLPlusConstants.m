@@ -24,7 +24,7 @@
 // Description:
 //   The Google+ API enables developers to build on top of the Google+ platform.
 // Documentation:
-//   http://developers.google.com/+/api/
+//   https://developers.google.com/+/api/
 
 #import "GTLPlusConstants.h"
 

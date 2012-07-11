@@ -23,6 +23,8 @@
 //   Drive API (drive/v2)
 // Description:
 //   The API to interact with Drive.
+// Documentation:
+//   https://developers.google.com/drive/
 // Classes:
 //   GTLQueryDrive (33 custom class methods, 28 custom properties)
 

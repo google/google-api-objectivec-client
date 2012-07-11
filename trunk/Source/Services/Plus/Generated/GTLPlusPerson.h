@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@
 // Description:
 //   The Google+ API enables developers to build on top of the Google+ platform.
 // Documentation:
-//   http://developers.google.com/+/api/
+//   https://developers.google.com/+/api/
 // Classes:
 //   GTLPlusPerson (0 custom class methods, 21 custom properties)
 //   GTLPlusPersonEmailsItem (0 custom class methods, 3 custom properties)
@@ -210,17 +210,17 @@
 
 @interface GTLPlusPersonOrganizationsItem : GTLObject
 
-// The department within the organization.
+// The department within the organization. Deprecated.
 @property (copy) NSString *department;
 
-// A short description of the person's role in this organization.
+// A short description of the person's role in this organization. Deprecated.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
 
 // The date the person left this organization.
 @property (copy) NSString *endDate;
 
-// The location of this organization.
+// The location of this organization. Deprecated.
 @property (copy) NSString *location;
 
 // The name of the organization.
