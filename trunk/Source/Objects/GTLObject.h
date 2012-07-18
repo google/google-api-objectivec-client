@@ -17,6 +17,8 @@
 //  GTLObject.h
 //
 
+// GTLObject documentation:
+// https://code.google.com/p/google-api-objectivec-client/wiki/Introduction#Objects_and_Queries
 
 #import <Foundation/Foundation.h>
 
