@@ -501,6 +501,18 @@ static Class gAdditionalPropsClass = Nil;
 
   GTLTestingObject *obj2 = [GTLTestingObject objectWithJSON:json];
   STAssertEqualObjects(obj2.child.child.aStr, @"froglegs", @"nested setters");
+
+  // ensure that the internal JSON tree is built even when adding to an
+  // object of ambiguous type
+  obj = [GTLTestingObject object];
+
+  obj2 = [GTLTestingObject object];
+  obj.anything = obj2;
+  obj2.child = [GTLTestingObject object];
+  obj2.child.aStr = @"froglegs";
+
+  json = obj.JSON;
+  STAssertNotNil(json, @"nester setters json");
 }
 
 - (void)testArraySubObjectSupport {
@@ -1228,7 +1240,7 @@ static Class gAdditionalPropsClass = Nil;
 - (void)testResultArrayParsing {
 
   // Of Object
-  
+
   NSString * const jsonStr =
     @"[ {\"a_str\":\"obj 1\"}, {\"a_str\":\"obj 2\"} ]";
   NSError *err = nil;
@@ -1236,7 +1248,7 @@ static Class gAdditionalPropsClass = Nil;
                                                         error:&err];
   STAssertNil(err, @"got error parsing");
   STAssertNotNil(json, @"didn't get object parsing");
-  
+
   GTLTestingResultArray *arrayResult = (GTLTestingResultArray *)
     [GTLObject objectForJSON:json
                 defaultClass:[GTLTestingResultArray class]
@@ -1253,15 +1265,15 @@ static Class gAdditionalPropsClass = Nil;
   obj = [items objectAtIndex:1];
   STAssertTrue([obj isKindOfClass:[GTLTestingObject class]], nil);
   STAssertEqualObjects(obj.aStr, @"obj 2", nil);
-  
+
   // Of String
-  
+
   NSString * const jsonStr2 = @"[ \"str 1\", \"str 2\" ]";
   err = nil;
   json = [GTLJSONParser objectWithString:jsonStr2 error:&err];
   STAssertNil(err, @"got error parsing");
   STAssertNotNil(json, @"didn't get object parsing");
-  
+
   GTLTestingResultArray2 *arrayResult2 = (GTLTestingResultArray2 *)
     [GTLObject objectForJSON:json
                 defaultClass:[GTLTestingResultArray2 class]
