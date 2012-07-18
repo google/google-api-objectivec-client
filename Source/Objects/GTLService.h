@@ -17,6 +17,9 @@
 //  GTLService.h
 //
 
+// Service object documentation:
+// https://code.google.com/p/google-api-objectivec-client/wiki/Introduction#Services_and_Tickets
+
 #import <Foundation/Foundation.h>
 
 #import "GTLDefines.h"
@@ -123,8 +126,8 @@ typedef void *GTLServiceUploadProgressBlock;
 
   NSUInteger uploadChunkSize_;      // zero when uploading via multi-part MIME http body
 
-  BOOL isRetryEnabled_;      // user allows auto-retries
-  SEL retrySelector_;             // optional; set with setServiceRetrySelector
+  BOOL isRetryEnabled_;             // user allows auto-retries
+  SEL retrySelector_;               // optional; set with setServiceRetrySelector
   NSTimeInterval maxRetryInterval_; // default to 600. seconds
 
   BOOL shouldFetchNextPages_;
@@ -152,7 +155,8 @@ typedef void *GTLServiceUploadProgressBlock;
 // be nil.)
 //
 // If the query object is a GTLBatchQuery, the object passed to the callback
-// will be a GTLBatchResult
+// will be a GTLBatchResult; see the batch query documentation:
+// https://code.google.com/p/google-api-objectivec-client/wiki/Introduction#Batch_Operations
 
 - (GTLServiceTicket *)executeQuery:(id<GTLQueryProtocol>)query
                           delegate:(id)delegate
