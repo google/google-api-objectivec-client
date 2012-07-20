@@ -552,9 +552,9 @@ Debugging query execution is often easier when you can browse the JSON and heade
 [GTMHTTPFetcher setLoggingEnabled:YES]
 }}}
 
-to turn on logging.  Normally, logs are written to the directory GTMHTTPDebugLogs in the logs directory.
+to turn on logging.  The project building the fetcher class must also include `GTMHTTPFetcherLogging.h` and `.m`.
 
-The logs directory is in the current user's Desktop folder for Mac applications. In the iPhone simulator, the default logs location is the user's home directory. On the iPhone device, the default location is the application's documents folder on the device.  
+Normally, logs are written to the directory GTMHTTPDebugLogs in the logs directory. The logs directory is in the current user's Desktop folder for Mac applications. In the iPhone simulator, the default logs location is the user's home directory. On the iPhone device, the default location is the application's documents folder on the device.  
 
 To locate the folder with the Mac Finder, search for the file name GTMHTTPDebugLogs with the search option "System files are included".
 
