@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,6 +40,10 @@
 //
 //   GTLAnalyticsWebproperties
 //
+
+// A web property collection lists Analytics web properties to which the user
+// has access. Each resource in the collection corresponds to a single Analytics
+// web property.
 
 // This class supports NSFastEnumeration over its "items" property. It also
 // supports -itemAtIndex: to retrieve individual objects from "items".

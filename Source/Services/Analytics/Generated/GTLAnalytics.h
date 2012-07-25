@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,6 +33,7 @@
 #import "GTLAnalyticsGaData.h"
 #import "GTLAnalyticsGoal.h"
 #import "GTLAnalyticsGoals.h"
+#import "GTLAnalyticsMcfData.h"
 #import "GTLAnalyticsProfile.h"
 #import "GTLAnalyticsProfiles.h"
 #import "GTLAnalyticsSegment.h"

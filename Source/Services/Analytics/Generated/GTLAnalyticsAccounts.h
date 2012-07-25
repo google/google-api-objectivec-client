@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,6 +40,11 @@
 //
 //   GTLAnalyticsAccounts
 //
+
+// An account collection provides a list of Analytics accounts to which a user
+// has access. The account collection is the entry point to all management
+// information. Each resource in the collection corresponds to a single
+// Analytics account.
 
 // This class supports NSFastEnumeration over its "items" property. It also
 // supports -itemAtIndex: to retrieve individual objects from "items".
