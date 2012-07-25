@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,13 +26,14 @@
 // Documentation:
 //   http://code.google.com/apis/analytics
 // Classes:
-//   GTLQueryAnalytics (6 custom class methods, 14 custom properties)
+//   GTLQueryAnalytics (7 custom class methods, 14 custom properties)
 
 #import "GTLQueryAnalytics.h"
 
 #import "GTLAnalyticsAccounts.h"
 #import "GTLAnalyticsGaData.h"
 #import "GTLAnalyticsGoals.h"
+#import "GTLAnalyticsMcfData.h"
 #import "GTLAnalyticsProfiles.h"
 #import "GTLAnalyticsSegments.h"
 #import "GTLAnalyticsWebproperties.h"
@@ -69,6 +70,24 @@
   query.endDate = endDate;
   query.metrics = metrics;
   query.expectedObjectClass = [GTLAnalyticsGaData class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "data.mcf" methods
+// These create a GTLQueryAnalytics object.
+
++ (id)queryForDataMcfGetWithIds:(NSString *)ids
+                      startDate:(NSString *)startDate
+                        endDate:(NSString *)endDate
+                        metrics:(NSString *)metrics {
+  NSString *methodName = @"analytics.data.mcf.get";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.ids = ids;
+  query.startDate = startDate;
+  query.endDate = endDate;
+  query.metrics = metrics;
+  query.expectedObjectClass = [GTLAnalyticsMcfData class];
   return query;
 }
 

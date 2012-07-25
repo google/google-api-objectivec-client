@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/analytics
 // Classes:
-//   GTLQueryAnalytics (6 custom class methods, 14 custom properties)
+//   GTLQueryAnalytics (7 custom class methods, 14 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -93,6 +93,40 @@
                      startDate:(NSString *)startDate
                        endDate:(NSString *)endDate
                        metrics:(NSString *)metrics;
+
+#pragma mark -
+#pragma mark "data.mcf" methods
+// These create a GTLQueryAnalytics object.
+
+// Method: analytics.data.mcf.get
+// Returns Analytics Multi-Channel Funnels data for a profile.
+//  Required:
+//   ids: Unique table ID for retrieving Analytics data. Table ID is of the form
+//     ga:XXXX, where XXXX is the Analytics profile ID.
+//   startDate: Start date for fetching Analytics data. All requests should
+//     specify a start date formatted as YYYY-MM-DD.
+//   endDate: End date for fetching Analytics data. All requests should specify
+//     an end date formatted as YYYY-MM-DD.
+//   metrics: A comma-separated list of Multi-Channel Funnels metrics. E.g.,
+//     'mcf:totalConversions,mcf:totalConversionValue'. At least one metric must
+//     be specified.
+//  Optional:
+//   dimensions: A comma-separated list of Multi-Channel Funnels dimensions.
+//     E.g., 'mcf:source,mcf:medium'.
+//   filters: A comma-separated list of dimension or metric filters to be
+//     applied to the Analytics data.
+//   maxResults: The maximum number of entries to include in this feed.
+//   sort: A comma-separated list of dimensions or metrics that determine the
+//     sort order for the Analytics data.
+//   startIndex: An index of the first entity to retrieve. Use this parameter as
+//     a pagination mechanism along with the max-results parameter.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsReadonly
+// Fetches a GTLAnalyticsMcfData.
++ (id)queryForDataMcfGetWithIds:(NSString *)ids
+                      startDate:(NSString *)startDate
+                        endDate:(NSString *)endDate
+                        metrics:(NSString *)metrics;
 
 #pragma mark -
 #pragma mark "management.accounts" methods
