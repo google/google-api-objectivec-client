@@ -26,10 +26,12 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 31 custom properties)
+//   GTLDriveFile (0 custom class methods, 32 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
+//   GTLDriveFileImageMediaMetadata (0 custom class methods, 4 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
 //   GTLDriveFileLabels (0 custom class methods, 5 custom properties)
+//   GTLDriveFileImageMediaMetadataLocation (0 custom class methods, 3 custom properties)
 
 #import "GTLDriveFile.h"
 
@@ -44,11 +46,11 @@
 @implementation GTLDriveFile
 @dynamic alternateLink, createdDate, descriptionProperty, downloadUrl, editable,
          embedLink, ETag, exportLinks, fileExtension, fileSize, identifier,
-         indexableText, kind, labels, lastModifyingUserName, lastViewedByMeDate,
-         md5Checksum, mimeType, modifiedByMeDate, modifiedDate,
-         originalFilename, ownerNames, parents, permissionsLink, quotaBytesUsed,
+         imageMediaMetadata, indexableText, kind, labels, lastModifyingUserName,
+         lastViewedByMeDate, md5Checksum, mimeType, modifiedByMeDate,
+         modifiedDate, originalFilename, ownerNames, parents, quotaBytesUsed,
          selfLink, sharedWithMeDate, thumbnailLink, title, userPermission,
-         writersCanShare;
+         webContentLink, writersCanShare;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -92,6 +94,16 @@
 
 // ----------------------------------------------------------------------------
 //
+//   GTLDriveFileImageMediaMetadata
+//
+
+@implementation GTLDriveFileImageMediaMetadata
+@dynamic height, location, rotation, width;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
 //   GTLDriveFileIndexableText
 //
 
@@ -107,4 +119,14 @@
 
 @implementation GTLDriveFileLabels
 @dynamic hidden, restricted, starred, trashed, viewed;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveFileImageMediaMetadataLocation
+//
+
+@implementation GTLDriveFileImageMediaMetadataLocation
+@dynamic altitude, latitude, longitude;
 @end

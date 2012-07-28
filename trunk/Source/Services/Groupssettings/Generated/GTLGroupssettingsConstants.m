@@ -22,7 +22,9 @@
 // Service:
 //   Groups Settings API (groupssettings/v1)
 // Description:
-//   Lets you manage permission levels and related settings of a group
+//   Lets you manage permission levels and related settings of a group.
+// Documentation:
+//   https://developers.google.com/google-apps/groups-settings/get_started
 
 #import "GTLGroupssettingsConstants.h"
 

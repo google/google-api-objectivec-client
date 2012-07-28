@@ -241,9 +241,9 @@
 //  Required:
 //   fileId: The ID for the file in question.
 //  Optional:
-//   projection: Restrict information returned for simplicity and optimization.
-//      kGTLDriveProjectionBasic: Includes only the basic metadata fields
-//      kGTLDriveProjectionFull: Includes all metadata fields
+//   projection: This parameter is deprecated and has no function.
+//      kGTLDriveProjectionBasic: Deprecated
+//      kGTLDriveProjectionFull: Deprecated
 //   updateViewedDate: Whether to update the view date after successfully
 //     retrieving the file. (Default false)
 //  Authorization scope(s):
@@ -284,9 +284,9 @@
 //  Optional:
 //   maxResults: Maximum number of files to return. (Default 100)
 //   pageToken: Page token for files.
-//   projection: Restrict information returned for simplicity and optimization.
-//      kGTLDriveProjectionBasic: Includes only the basic metadata fields
-//      kGTLDriveProjectionFull: Includes all metadata fields
+//   projection: This parameter is deprecated and has no function.
+//      kGTLDriveProjectionBasic: Deprecated
+//      kGTLDriveProjectionFull: Deprecated
 //   q: Query string for searching files.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive

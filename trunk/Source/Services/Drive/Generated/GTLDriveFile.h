@@ -26,10 +26,12 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 31 custom properties)
+//   GTLDriveFile (0 custom class methods, 32 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
+//   GTLDriveFileImageMediaMetadata (0 custom class methods, 4 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
 //   GTLDriveFileLabels (0 custom class methods, 5 custom properties)
+//   GTLDriveFileImageMediaMetadataLocation (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -38,6 +40,8 @@
 #endif
 
 @class GTLDriveFileExportLinks;
+@class GTLDriveFileImageMediaMetadata;
+@class GTLDriveFileImageMediaMetadataLocation;
 @class GTLDriveFileIndexableText;
 @class GTLDriveFileLabels;
 @class GTLDriveParentReference;
@@ -52,7 +56,7 @@
 
 @interface GTLDriveFile : GTLObject
 
-// A link for opening the file in a browser.
+// A link for opening the file in using a relevant Google editor or viewer.
 @property (copy) NSString *alternateLink;
 
 // Create time for this file (formatted ISO8601 timestamp).
@@ -78,9 +82,9 @@
 // Links for exporting Google Docs to specific formats.
 @property (retain) GTLDriveFileExportLinks *exportLinks;
 
-// The file extension used when downloading this file. This field is read only.
-// To set the extension, include it on title when creating the file. This will
-// only be populated on files with content stored in Drive.
+// The file extension used when downloading this file. This field is set from
+// the title when inserting or uploading new content. This will only be
+// populated on files with content stored in Drive.
 @property (copy) NSString *fileExtension;
 
 // The size of the file in bytes. This will only be populated on files with
@@ -90,6 +94,10 @@
 // The id of the file.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
+
+// Metadata about image media. This will only be present for image types, and
+// its contents will depend on what can be parsed from the image content.
+@property (retain) GTLDriveFileImageMediaMetadata *imageMediaMetadata;
 
 // Indexable text attributes for the file (can only be written)
 @property (retain) GTLDriveFileIndexableText *indexableText;
@@ -111,17 +119,24 @@
 // files with content stored in Drive.
 @property (copy) NSString *md5Checksum;
 
-// The MIME type of the file.
+// The MIME type of the file. This is only mutable on update when uploading new
+// content. This field can be left blank, and the mimetype will be determined
+// from the uploaded content's MIME type.
 @property (copy) NSString *mimeType;
 
 // Last time this file was modified by the user (formatted RFC 3339 timestamp).
+// Note that setting modifiedDate will also update the modifiedByMe date for the
+// user which set the date.
 @property (retain) GTLDateTime *modifiedByMeDate;
 
 // Last time this file was modified by anyone (formatted RFC 3339 timestamp).
+// This is only mutable on update when the setModifiedDate parameter is set.
 @property (retain) GTLDateTime *modifiedDate;
 
-// The filename when uploading this file. This will only be populated on files
-// with content stored in Drive.
+// The original filename if the file was uploaded manually, or the original
+// title if the file was inserted through the API. Note that renames of the
+// title will not change the original filename. This will only be populated on
+// files with content stored in Drive.
 @property (copy) NSString *originalFilename;
 
 // Name(s) of the owner(s) of this file.
@@ -132,9 +147,6 @@
 // insert, if no folders are provided, the file will be placed in the default
 // root folder.
 @property (retain) NSArray *parents;  // of GTLDriveParentReference
-
-// A link to the permissions collection.
-@property (copy) NSString *permissionsLink;
 
 // The number of quota bytes used by this file.
 @property (retain) NSNumber *quotaBytesUsed;  // longLongValue
@@ -155,6 +167,11 @@
 // The permissions for the authenticated user on this file.
 @property (retain) GTLDrivePermission *userPermission;
 
+// A link for downloading the content of the file in a browser using cookie
+// based authentication. In cases where the content is shared publicly, the
+// content can be downloaded without any credentials.
+@property (copy) NSString *webContentLink;
+
 // Whether writers can share the document with other users.
 @property (retain) NSNumber *writersCanShare;  // boolValue
 
@@ -171,6 +188,28 @@
 // -additionalJSONKeys and -additionalPropertyForName: to get the list of
 // properties and then fetch them; or -additionalProperties to fetch them all at
 // once.
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveFileImageMediaMetadata
+//
+
+@interface GTLDriveFileImageMediaMetadata : GTLObject
+
+// The height of the image in pixels.
+@property (retain) NSNumber *height;  // intValue
+
+// Geographic location information stored in the image.
+@property (retain) GTLDriveFileImageMediaMetadataLocation *location;
+
+// The rotation in clockwise degrees from the image's original orientation.
+@property (retain) NSNumber *rotation;  // intValue
+
+// The width of the image in pixels.
+@property (retain) NSNumber *width;  // intValue
+
 @end
 
 
@@ -208,5 +247,24 @@
 
 // Whether this file has been viewed by this user.
 @property (retain) NSNumber *viewed;  // boolValue
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveFileImageMediaMetadataLocation
+//
+
+@interface GTLDriveFileImageMediaMetadataLocation : GTLObject
+
+// The altitude stored in the image.
+@property (retain) NSNumber *altitude;  // doubleValue
+
+// The latitude stored in the image.
+@property (retain) NSNumber *latitude;  // doubleValue
+
+// The longitude stored in the image.
+@property (retain) NSNumber *longitude;  // doubleValue
 
 @end
