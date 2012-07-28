@@ -85,19 +85,25 @@
 @property (copy) NSString *originalFilename;
 
 // Whether this revision is pinned to prevent automatic purging. This will only
-// be populated on files with content stored in Drive.
+// be populated and can only be modified on files with content stored in Drive
+// which are not Google Docs. Revisions can also be pinned when they are created
+// through the drive.files.insert/update/copy by using the pinned query
+// parameter.
 @property (retain) NSNumber *pinned;  // boolValue
 
-// Whether subsequent revisions will be automatically republished.
+// Whether subsequent revisions will be automatically republished. This is only
+// populated and can only be modified for Google Docs.
 @property (retain) NSNumber *publishAuto;  // boolValue
 
-// Whether this revision is published. This is only populated for Google Docs.
+// Whether this revision is published. This is only populated and can only be
+// modified for Google Docs.
 @property (retain) NSNumber *published;  // boolValue
 
 // A link to the published revision.
 @property (copy) NSString *publishedLink;
 
-// Whether this revision is published outside the domain.
+// Whether this revision is published outside the domain. This is only populated
+// and can only be modified for Google Docs.
 @property (retain) NSNumber *publishedOutsideDomain;  // boolValue
 
 // A link back to this revision.

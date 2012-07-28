@@ -68,8 +68,8 @@
 // The attendees of the event.
 @property (retain) NSArray *attendees;  // of GTLCalendarEventAttendee
 
-// Whether attendees have been omitted from the event's representation. When
-// retrieving an event, this is due to a restriction specified by the
+// Whether attendees may have been omitted from the event's representation. When
+// retrieving an event, this may be due to a restriction specified by the
 // 'maxAttendee' query parameter. When updating an event, this can be used to
 // only update the participant's response. Optional. The default is False.
 @property (retain) NSNumber *attendeesOmitted;  // boolValue
@@ -92,6 +92,9 @@
 // time of the first instance.
 @property (retain) GTLCalendarEventDateTime *end;
 
+// Whether the end time is really unspecified. An end time is still provided for
+// compatibility reasons, even if this attribute is set to True. The default is
+// False.
 @property (retain) NSNumber *endTimeUnspecified;  // boolValue
 
 // ETag of the resource.

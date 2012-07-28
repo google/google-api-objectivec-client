@@ -56,7 +56,8 @@
 
 @interface GTLDriveAbout : GTLObject
 
-// Additional ACL role info.
+// Information about supported additional roles per file type. The most specific
+// type takes precedence.
 @property (retain) NSArray *additionalRoleInfo;  // of GTLDriveAboutAdditionalRoleInfoItem
 
 // The domain sharing policy for the current user.
@@ -84,7 +85,8 @@
 // The largest change id.
 @property (retain) NSNumber *largestChangeId;  // longLongValue
 
-// List of max upload sizes for each file type.
+// List of max upload sizes for each file type. The most specific type takes
+// precedence.
 @property (retain) NSArray *maxUploadSizes;  // of GTLDriveAboutMaxUploadSizesItem
 
 // The name of the current user.
@@ -121,10 +123,10 @@
 
 @interface GTLDriveAboutAdditionalRoleInfoItem : GTLObject
 
-// The role sets for this role info item.
+// The supported additional roles per primary role.
 @property (retain) NSArray *roleSets;  // of GTLDriveAboutAdditionalRoleInfoItemRoleSetsItem
 
-// The content type for this ACL role info item.
+// The content type that this additional role info applies to.
 @property (copy) NSString *type;
 
 @end
@@ -201,10 +203,10 @@
 
 @interface GTLDriveAboutAdditionalRoleInfoItemRoleSetsItem : GTLObject
 
-// The list of additional roles for this role set.
+// The supported additional roles with the primary role.
 @property (retain) NSArray *additionalRoles;  // of NSString
 
-// The primary role for this role set.
+// A primary permission role.
 @property (copy) NSString *primaryRole;
 
 @end
