@@ -26,11 +26,12 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLQueryDrive (33 custom class methods, 28 custom properties)
+//   GTLQueryDrive (34 custom class methods, 29 custom properties)
 
 #import "GTLQueryDrive.h"
 
 #import "GTLDriveAbout.h"
+#import "GTLDriveApp.h"
 #import "GTLDriveAppList.h"
 #import "GTLDriveChange.h"
 #import "GTLDriveChangeList.h"
@@ -47,12 +48,12 @@
 
 @implementation GTLQueryDrive
 
-@dynamic changeId, childId, convert, fields, fileId, folderId, includeDeleted,
-         includeSubscribed, maxChangeIdCount, maxResults, newRevision, ocr,
-         ocrLanguage, pageToken, parentId, permissionId, pinned, projection, q,
-         revisionId, sendNotificationEmails, setModifiedDate, sourceLanguage,
-         startChangeId, targetLanguage, timedTextLanguage, timedTextTrackName,
-         updateViewedDate;
+@dynamic appId, changeId, childId, convert, fields, fileId, folderId,
+         includeDeleted, includeSubscribed, maxChangeIdCount, maxResults,
+         newRevision, ocr, ocrLanguage, pageToken, parentId, permissionId,
+         pinned, projection, q, revisionId, sendNotificationEmails,
+         setModifiedDate, sourceLanguage, startChangeId, targetLanguage,
+         timedTextLanguage, timedTextTrackName, updateViewedDate;
 
 #pragma mark -
 #pragma mark "about" methods
@@ -68,6 +69,14 @@
 #pragma mark -
 #pragma mark "apps" methods
 // These create a GTLQueryDrive object.
+
++ (id)queryForAppsGetWithAppId:(NSString *)appId {
+  NSString *methodName = @"drive.apps.get";
+  GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.appId = appId;
+  query.expectedObjectClass = [GTLDriveApp class];
+  return query;
+}
 
 + (id)queryForAppsList {
   NSString *methodName = @"drive.apps.list";
