@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/calendar/v3/using.html
 // Classes:
-//   GTLQueryCalendar (32 custom class methods, 28 custom properties)
+//   GTLQueryCalendar (32 custom class methods, 29 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -55,6 +55,7 @@
 @property (assign) BOOL alwaysIncludeEmail;
 @property (assign) NSInteger calendarExpansionMax;
 @property (copy) NSString *calendarId;
+@property (assign) BOOL colorRgbFormat;
 @property (copy) NSString *destination;
 @property (copy) NSString *eventId;
 @property (assign) NSInteger groupExpansionMax;
@@ -173,6 +174,11 @@
 
 // Method: calendar.calendarList.insert
 // Adds an entry to the user's calendar list.
+//  Optional:
+//   colorRgbFormat: Whether to use the 'frontendColor' and 'backgroundColor'
+//     fields to write the calendar colors (RGB). If this feature is used, the
+//     index-based 'color' field will be set to the best matching option
+//     automatically. Optional. The default is False.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarCalendarListEntry.
@@ -205,6 +211,11 @@
 // semantics.
 //  Required:
 //   calendarId: Calendar identifier.
+//  Optional:
+//   colorRgbFormat: Whether to use the 'frontendColor' and 'backgroundColor'
+//     fields to write the calendar colors (RGB). If this feature is used, the
+//     index-based 'color' field will be set to the best matching option
+//     automatically. Optional. The default is False.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarCalendarListEntry.
@@ -215,6 +226,11 @@
 // Updates an entry on the user's calendar list.
 //  Required:
 //   calendarId: Calendar identifier.
+//  Optional:
+//   colorRgbFormat: Whether to use the 'frontendColor' and 'backgroundColor'
+//     fields to write the calendar colors (RGB). If this feature is used, the
+//     index-based 'color' field will be set to the best matching option
+//     automatically. Optional. The default is False.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarCalendarListEntry.

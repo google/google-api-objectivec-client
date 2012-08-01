@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/calendar/v3/using.html
 // Classes:
-//   GTLCalendarCalendarListEntry (0 custom class methods, 13 custom properties)
+//   GTLCalendarCalendarListEntry (0 custom class methods, 15 custom properties)
 
 #import "GTLCalendarCalendarListEntry.h"
 
@@ -38,9 +38,9 @@
 //
 
 @implementation GTLCalendarCalendarListEntry
-@dynamic accessRole, colorId, defaultReminders, descriptionProperty, ETag,
-         hidden, identifier, kind, location, selected, summary, summaryOverride,
-         timeZone;
+@dynamic accessRole, backgroundColor, colorId, defaultReminders,
+         descriptionProperty, ETag, foregroundColor, hidden, identifier, kind,
+         location, selected, summary, summaryOverride, timeZone;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

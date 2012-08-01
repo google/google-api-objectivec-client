@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/calendar/v3/using.html
 // Classes:
-//   GTLCalendarCalendarListEntry (0 custom class methods, 13 custom properties)
+//   GTLCalendarCalendarListEntry (0 custom class methods, 15 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -55,6 +55,10 @@
 // manipulate ACLs.
 @property (copy) NSString *accessRole;
 
+// The main color of the calendar in the format '#0088aa'. This property
+// supersedes the index-based colorId property. Optional.
+@property (copy) NSString *backgroundColor;
+
 // The color of the calendar. This is an ID referring to an entry in the
 // "calendar" section of the colors definition (see the "colors" endpoint).
 // Optional.
@@ -69,6 +73,10 @@
 
 // ETag of the resource.
 @property (copy) NSString *ETag;
+
+// The foreground color of the calendar in the format '#ffffff'. This property
+// supersedes the index-based colorId property. Optional.
+@property (copy) NSString *foregroundColor;
 
 // Whether the calendar has been hidden from the list. Optional. The default is
 // False.

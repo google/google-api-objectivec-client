@@ -92,9 +92,9 @@
 // time of the first instance.
 @property (retain) GTLCalendarEventDateTime *end;
 
-// Whether the end time is really unspecified. An end time is still provided for
-// compatibility reasons, even if this attribute is set to True. The default is
-// False.
+// Whether the end time is actually unspecified. An end time is still provided
+// for compatibility reasons, even if this attribute is set to True. The default
+// is False.
 @property (retain) NSNumber *endTimeUnspecified;  // boolValue
 
 // ETag of the resource.
