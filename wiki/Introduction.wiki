@@ -316,10 +316,12 @@ Applications can avoid fetching unneeded data by setting a query's `fields` prop
 
 For example, to request only the IDs and author email addresses for each item in the collection, use this request:
 {{{
-query.fields = @"items(id,author/email,kind),kind";
+query.fields = @"items(id,author/email,kind),kind,nextPageToken";
 }}}
 
-The library may use the `kind` fields of responses to choose the proper object classes, so requests for partial responses should _always_ include the `kind` fields for items and collections, as shown above. Otherwise, the library may be forced to incorrectly instantiate the `GTLObject` base class for the response.
+The library may use the `kind` fields of responses to choose the proper object classes, so requests for partial responses should _always_ include the `kind` fields for both items and collections, as shown above. Otherwise, the library may be forced to incorrectly instantiate the `GTLObject` base class for the response.
+
+Queries for collections should also accept the `nextPageToken` or `nextStartIndex` field, as one of those is returned when an additional result page should be fetched. The service API documentation should specify which type of paging field is returned with collection responses.
 
 Refer to the [http://code.google.com/apis/calendar/v3/performance.html#partial documentation] for details on the fields parameter. 
 
