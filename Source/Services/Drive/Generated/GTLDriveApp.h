@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveApp (0 custom class methods, 14 custom properties)
+//   GTLDriveApp (0 custom class methods, 15 custom properties)
 //   GTLDriveAppIconsItem (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -89,6 +89,9 @@
 
 // Whether this app supports importing Google Docs.
 @property (retain) NSNumber *supportsImport;  // boolValue
+
+// Whether the app is selected as the default handler for the types it supports.
+@property (retain) NSNumber *useByDefault;  // boolValue
 
 @end
 

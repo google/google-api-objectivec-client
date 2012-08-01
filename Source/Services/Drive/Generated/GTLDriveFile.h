@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 32 custom properties)
+//   GTLDriveFile (0 custom class methods, 33 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
 //   GTLDriveFileImageMediaMetadata (0 custom class methods, 4 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
@@ -78,6 +78,10 @@
 
 // ETag of the file.
 @property (copy) NSString *ETag;
+
+// Whether this file has been explicitly trashed, as opposed to recursively
+// trashed. This will only be populated if the file is trashed.
+@property (retain) NSNumber *explicitlyTrashed;  // boolValue
 
 // Links for exporting Google Docs to specific formats.
 @property (retain) GTLDriveFileExportLinks *exportLinks;

@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 32 custom properties)
+//   GTLDriveFile (0 custom class methods, 33 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
 //   GTLDriveFileImageMediaMetadata (0 custom class methods, 4 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
@@ -45,12 +45,12 @@
 
 @implementation GTLDriveFile
 @dynamic alternateLink, createdDate, descriptionProperty, downloadUrl, editable,
-         embedLink, ETag, exportLinks, fileExtension, fileSize, identifier,
-         imageMediaMetadata, indexableText, kind, labels, lastModifyingUserName,
-         lastViewedByMeDate, md5Checksum, mimeType, modifiedByMeDate,
-         modifiedDate, originalFilename, ownerNames, parents, quotaBytesUsed,
-         selfLink, sharedWithMeDate, thumbnailLink, title, userPermission,
-         webContentLink, writersCanShare;
+         embedLink, ETag, explicitlyTrashed, exportLinks, fileExtension,
+         fileSize, identifier, imageMediaMetadata, indexableText, kind, labels,
+         lastModifyingUserName, lastViewedByMeDate, md5Checksum, mimeType,
+         modifiedByMeDate, modifiedDate, originalFilename, ownerNames, parents,
+         quotaBytesUsed, selfLink, sharedWithMeDate, thumbnailLink, title,
+         userPermission, webContentLink, writersCanShare;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLQueryDrive (33 custom class methods, 28 custom properties)
+//   GTLQueryDrive (34 custom class methods, 29 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -52,6 +52,7 @@
 //
 // Method-specific parameters; see the comments below for more information.
 //
+@property (copy) NSString *appId;
 @property (copy) NSString *changeId;
 @property (copy) NSString *childId;
 @property (assign) BOOL convert;
@@ -104,6 +105,15 @@
 #pragma mark -
 #pragma mark "apps" methods
 // These create a GTLQueryDrive object.
+
+// Method: drive.apps.get
+// Gets a specific app.
+//  Required:
+//   appId: The ID of the app.
+//  Authorization scope(s):
+//   kGTLAuthScopeDriveAppsReadonly
+// Fetches a GTLDriveApp.
++ (id)queryForAppsGetWithAppId:(NSString *)appId;
 
 // Method: drive.apps.list
 // Lists a user's apps.
