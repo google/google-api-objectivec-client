@@ -17,6 +17,15 @@
 //  DriveSampleWindowController.h
 //
 
+// The sample app controllers are built with ARC, though the sources of
+// the GTL library should be built without ARC using the compiler flag
+// -fno-objc-arc in the Compile Sources build phase of the application
+// target.
+
+#if !defined(__has_feature) || !__has_feature(objc_arc)
+#error "This file requires ARC support."
+#endif
+
 #import <Cocoa/Cocoa.h>
 
 #import "GTLDrive.h"
@@ -24,61 +33,39 @@
 
 @interface DriveSampleWindowController : NSWindowController {
  @private
-  IBOutlet NSTextField *signedInField_;
-  IBOutlet NSButton *signedInButton_;
+  IBOutlet NSTextField *_signedInField;
+  IBOutlet NSButton *_signedInButton;
 
-  IBOutlet NSTableView *fileListTable_;
-  IBOutlet NSProgressIndicator *fileListProgressIndicator_;
-  IBOutlet NSTextView *fileListResultTextField_;
-  IBOutlet NSButton *fileListCancelButton_;
-  IBOutlet NSImageView *thumbnailView_;
+  IBOutlet NSTableView *_fileListTable;
+  IBOutlet NSProgressIndicator *_fileListProgressIndicator;
+  IBOutlet NSTextView *_fileListResultTextField;
+  IBOutlet NSButton *_fileListCancelButton;
+  IBOutlet NSImageView *_thumbnailView;
 
-  IBOutlet NSPopUpButton *downloadButton_;
-  IBOutlet NSButton *viewButton_;
-  IBOutlet NSButton *duplicateButton_;
-  IBOutlet NSButton *trashButton_;
-  IBOutlet NSButton *deleteButton_;
+  IBOutlet NSPopUpButton *_downloadButton;
+  IBOutlet NSButton *_viewButton;
+  IBOutlet NSButton *_duplicateButton;
+  IBOutlet NSButton *_trashButton;
+  IBOutlet NSButton *_deleteButton;
 
-  IBOutlet NSButton *uploadButton_;
-  IBOutlet NSProgressIndicator *uploadProgressIndicator_;
-  IBOutlet NSButton *pauseUploadButton_;
-  IBOutlet NSButton *stopUploadButton_;
-  IBOutlet NSButton *newFolderButton_;
+  IBOutlet NSButton *_uploadButton;
+  IBOutlet NSProgressIndicator *_uploadProgressIndicator;
+  IBOutlet NSButton *_pauseUploadButton;
+  IBOutlet NSButton *_stopUploadButton;
+  IBOutlet NSButton *_newFolderButton;
 
-  IBOutlet NSSegmentedControl *segmentedControl_;
-  IBOutlet NSTableView *detailTable_;
-  IBOutlet NSProgressIndicator *detailProgressIndicator_;
-  IBOutlet NSTextView *detailResultTextField_;
-  IBOutlet NSButton *detailCancelButton_;
+  IBOutlet NSSegmentedControl *_segmentedControl;
+  IBOutlet NSTableView *_detailTable;
+  IBOutlet NSProgressIndicator *_detailProgressIndicator;
+  IBOutlet NSTextView *_detailResultTextField;
+  IBOutlet NSButton *_detailCancelButton;
 
   // Client ID Sheet (Not needed by real applications)
-  IBOutlet NSButton *clientIDButton_;
-  IBOutlet NSTextField *clientIDRequiredTextField_;
-  IBOutlet NSWindow *clientIDSheet_;
-  IBOutlet NSTextField *clientIDField_;
-  IBOutlet NSTextField *clientSecretField_;
-
-
-  GTLDriveFileList *fileList_;
-  GTLServiceTicket *fileListTicket_;
-  NSError *fileListFetchError_;
-  GTLServiceTicket *editFileListTicket_;
-  GTLServiceTicket *uploadFileTicket_;
-
-  GTLDriveRevisionList *revisionList_;
-  NSError *revisionListFetchError_;
-
-  GTLDrivePermissionList *permissionList_;
-  NSError *permissionListFetchError_;
-
-  GTLDriveChildList *childList_;
-  NSError *childListFetchError_;
-
-  GTLDriveParentList *parentsList_;
-  NSError *parentsListFetchError_;
-
-  GTLServiceTicket *detailsTicket_;
-  NSError *detailsFetchError_;
+  IBOutlet NSButton *_clientIDButton;
+  IBOutlet NSTextField *_clientIDRequiredTextField;
+  IBOutlet NSWindow *_clientIDSheet;
+  IBOutlet NSTextField *_clientIDField;
+  IBOutlet NSTextField *_clientSecretField;
 }
 
 + (DriveSampleWindowController *)sharedWindowController;

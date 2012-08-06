@@ -33,56 +33,36 @@ enum {
 // Menu item title for downloading the original file.
 static NSString *const kOriginalFile = @"Original File";
 
-@interface DriveSampleWindowController ()
-
-@property (readonly) GTLServiceDrive *driveService;
-
-// File List
-@property (retain) GTLDriveFileList *fileList;
-@property (retain) GTLServiceTicket *fileListTicket;
-@property (retain) NSError *fileListFetchError;
-@property (retain) GTLServiceTicket *editFileListTicket;
-@property (retain) GTLServiceTicket *uploadFileTicket;
-
-// Details
-@property (retain) GTLDriveRevisionList *revisionList;
-@property (retain) NSError *revisionListFetchError;
-
-@property (retain) GTLDrivePermissionList *permissionList;
-@property (retain) NSError *permissionListFetchError;
-
-@property (retain) GTLDriveChildList *childList;
-@property (retain) NSError *childListFetchError;
-
-@property (retain) GTLDriveParentList *parentsList;
-@property (retain) NSError *parentsListFetchError;
-
-@property (retain) GTLServiceTicket *detailsTicket;
-@property (retain) NSError *detailsFetchError;
-
-@end
-
 // Keychain item name for saving the user's authentication information.
 NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 
-@implementation DriveSampleWindowController
+@interface DriveSampleWindowController ()
+@property (nonatomic, readonly) GTLServiceDrive *driveService;
+@end
 
-@synthesize fileList = fileList_,
-            fileListTicket = fileListTicket_,
-            fileListFetchError = fileListFetchError_,
-            editFileListTicket = editFileListTicket_,
-            uploadFileTicket = uploadFileTicket_;
-
-@synthesize revisionList = revisionList_,
-            revisionListFetchError = revisionListFetchError_,
-            permissionList = permissionList_,
-            permissionListFetchError = permissionListFetchError_,
-            childList = childList_,
-            childListFetchError = childListFetchError_,
-            parentsList = parentsList_,
-            parentsListFetchError = parentsListFetchError_,
-            detailsTicket = detailsTicket_,
-            detailsFetchError = detailsFetchError_;
+@implementation DriveSampleWindowController {
+  GTLDriveFileList *_fileList;
+  GTLServiceTicket *_fileListTicket;
+  NSError *_fileListFetchError;
+  GTLServiceTicket *_editFileListTicket;
+  GTLServiceTicket *_uploadFileTicket;
+  
+  // Details
+  GTLDriveRevisionList *_revisionList;
+  NSError *_revisionListFetchError;
+  
+  GTLDrivePermissionList *_permissionList;
+  NSError *_permissionListFetchError;
+  
+  GTLDriveChildList *_childList;
+  NSError *_childListFetchError;
+  
+  GTLDriveParentList *_parentsList;
+  NSError *_parentsListFetchError;
+  
+  GTLServiceTicket *_detailsTicket;
+  NSError *_detailsFetchError;
+}
 
 + (DriveSampleWindowController *)sharedWindowController {
   static DriveSampleWindowController* gWindowController = nil;
@@ -98,8 +78,8 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 
 - (void)awakeFromNib {
   // Load the OAuth 2 token from the keychain, if it was previously saved.
-  NSString *clientID = [clientIDField_ stringValue];
-  NSString *clientSecret = [clientSecretField_ stringValue];
+  NSString *clientID = [_clientIDField stringValue];
+  NSString *clientSecret = [_clientSecretField stringValue];
 
   GTMOAuth2Authentication *auth;
   auth = [GTMOAuth2WindowController authForGoogleFromKeychainForName:kKeychainItemName
@@ -108,35 +88,14 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
   self.driveService.authorizer = auth;
 
   // Set the result text fields to have a distinctive color and mono-spaced font.
-  [fileListResultTextField_ setTextColor:[NSColor darkGrayColor]];
-  [detailResultTextField_ setTextColor:[NSColor darkGrayColor]];
+  [_fileListResultTextField setTextColor:[NSColor darkGrayColor]];
+  [_detailResultTextField setTextColor:[NSColor darkGrayColor]];
 
   NSFont *resultTextFont = [NSFont fontWithName:@"Monaco" size:9];
-  [fileListResultTextField_ setFont:resultTextFont];
-  [detailResultTextField_ setFont:resultTextFont];
+  [_fileListResultTextField setFont:resultTextFont];
+  [_detailResultTextField setFont:resultTextFont];
 
   [self updateUI];
-}
-
-- (void)dealloc {
-  [fileList_ release];
-  [fileListTicket_ release];
-  [fileListFetchError_ release];
-  [editFileListTicket_ release];
-  [uploadFileTicket_ release];
-
-  [revisionList_ release];
-  [revisionListFetchError_ release];
-  [permissionList_ release];
-  [permissionListFetchError_ release];
-  [childList_ release];
-  [childListFetchError_ release];
-  [parentsList_ release];
-  [parentsListFetchError_ release];
-  [detailsTicket_ release];
-  [detailsFetchError_ release];
-
-  [super dealloc];
 }
 
 #pragma mark -
@@ -162,7 +121,9 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 - (IBAction)signInClicked:(id)sender {
   if (![self isSignedIn]) {
     // Sign in
-    [self runSigninThenInvokeSelector:@selector(updateUI)];
+    [self runSigninThenHandler:^{
+      [self updateUI];
+    }];
   } else {
     // Sign out
     GTLServiceDrive *service = self.driveService;
@@ -179,18 +140,20 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 
 - (IBAction)getFileList:(id)sender {
   if (![self isSignedIn]) {
-    [self runSigninThenInvokeSelector:@selector(fetchFileList)];
+    [self runSigninThenHandler:^{
+      [self fetchFileList];
+    }];
   } else {
     [self fetchFileList];
   }
 }
 
 - (IBAction)cancelFileListFetch:(id)sender {
-  [self.fileListTicket cancelTicket];
-  self.fileListTicket = nil;
+  [_fileListTicket cancelTicket];
+  _fileListTicket = nil;
 
-  [self.editFileListTicket cancelTicket];
-  self.editFileListTicket = nil;
+  [_editFileListTicket cancelTicket];
+  _editFileListTicket = nil;
 
   [self updateUI];
 }
@@ -252,17 +215,17 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 }
 
 - (IBAction)pauseUploadClicked:(id)sender {
-  if ([self.uploadFileTicket isUploadPaused]) {
-    [self.uploadFileTicket resumeUpload];
+  if ([_uploadFileTicket isUploadPaused]) {
+    [_uploadFileTicket resumeUpload];
   } else {
-    [self.uploadFileTicket pauseUpload];
+    [_uploadFileTicket pauseUpload];
   }
   [self updateUI];
 }
 
 - (IBAction)stopUploadClicked:(id)sender {
-  [self.uploadFileTicket cancelTicket];
-  self.uploadFileTicket = nil;
+  [_uploadFileTicket cancelTicket];
+  _uploadFileTicket = nil;
 
   [self updateUI];
 }
@@ -290,9 +253,10 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 // fetched data.)
 
 - (GTLServiceDrive *)driveService {
-  static GTLServiceDrive *service = nil;
+  static GTLServiceDrive *service;
 
-  if (!service) {
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
     service = [[GTLServiceDrive alloc] init];
 
     // Have the service object set tickets to fetch consecutive pages
@@ -302,40 +266,42 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
     // Have the service object set tickets to retry temporary error conditions
     // automatically
     service.retryEnabled = YES;
-  }
+  });
   return service;
 }
 
 - (GTLDriveFile *)selectedFileListEntry {
-  int rowIndex = [fileListTable_ selectedRow];
+  int rowIndex = [_fileListTable selectedRow];
   if (rowIndex > -1) {
-    GTLDriveFile *item = [self.fileList itemAtIndex:rowIndex];
+    // GTLCollectionObjects like GTLDriveFileList support indexed
+    // access to the collection items
+    GTLDriveFile *item = _fileList[rowIndex];
     return item;
   }
   return nil;
 }
 
 - (id)detailCollection {
-  NSInteger segment = [segmentedControl_ selectedSegment];
+  NSInteger segment = [_segmentedControl selectedSegment];
   switch (segment) {
     case kRevisionsSegment:
-      return self.revisionList;
+      return _revisionList;
     case kPermissionsSegment:
-      return self.permissionList;
+      return _permissionList;
     case kChildrenSegment:
-      return self.childList;
+      return _childList;
     case kParentsSegment:
-      return self.parentsList;
+      return _parentsList;
     default:
       return nil;
   }
 }
 
 - (id)selectedDetailItem {
-  int rowIndex = [detailTable_ selectedRow];
+  int rowIndex = [_detailTable selectedRow];
   if (rowIndex > -1) {
     GTLCollectionObject *collection = [self detailCollection];
-    GTLObject *item = [collection itemAtIndex:rowIndex];
+    GTLObject *item = collection[rowIndex];
     return item;
   }
   return nil;
@@ -343,19 +309,19 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 
 - (NSError *)detailsError {
   // First, check if the query execution succeeded.
-  NSError *error = self.detailsFetchError;
+  NSError *error = _detailsFetchError;
   if (error == nil) {
     // Next, check if there was an error for the selected detail.
-    NSInteger segment = [segmentedControl_ selectedSegment];
+    NSInteger segment = [_segmentedControl selectedSegment];
     switch (segment) {
       case kRevisionsSegment:
-        return self.revisionListFetchError;
+        return _revisionListFetchError;
       case kPermissionsSegment:
-        return self.permissionListFetchError;
+        return _permissionListFetchError;
       case kChildrenSegment:
-        return self.childListFetchError;
+        return _childListFetchError;
       case kParentsSegment:
-        return self.parentsListFetchError;
+        return _parentsListFetchError;
       default:
         return nil;
     }
@@ -364,7 +330,7 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 }
 
 - (NSString *)descriptionForFileID:(NSString *)fileID {
-  NSArray *files = self.fileList.items;
+  NSArray *files = _fileList.items;
   GTLDriveFile *file = [GTLUtilities firstObjectFromArray:files
                                                 withValue:fileID
                                                forKeyPath:@"identifier"];
@@ -400,8 +366,8 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 #pragma mark Fetch File List
 
 - (void)fetchFileList {
-  self.fileList = nil;
-  self.fileListFetchError = nil;
+  _fileList = nil;
+  _fileListFetchError = nil;
 
   GTLServiceDrive *service = self.driveService;
 
@@ -423,14 +389,14 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
   //
   // query.fields = @"kind,etag,items(id,downloadUrl,editable,etag,exportLinks,kind,labels,originalFilename,title)";
 
-  self.fileListTicket = [service executeQuery:query
-                            completionHandler:^(GTLServiceTicket *ticket,
-                                                GTLDriveFileList *fileList,
-                                                NSError *error) {
+  _fileListTicket = [service executeQuery:query
+                        completionHandler:^(GTLServiceTicket *ticket,
+                                            GTLDriveFileList *fileList,
+                                            NSError *error) {
     // Callback
-    self.fileList = fileList;
-    self.fileListFetchError = error;
-    self.fileListTicket = nil;
+    _fileList = fileList;
+    _fileListFetchError = error;
+    _fileListTicket = nil;
 
     [self updateUI];
   }];
@@ -441,16 +407,16 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 #pragma mark Fetch File Details
 
 - (void)fetchSelectedFileDetails {
-  self.revisionList = nil;
-  self.revisionListFetchError = nil;
-  self.permissionList = nil;
-  self.permissionListFetchError = nil;
-  self.childList = nil;
-  self.childListFetchError = nil;
-  self.parentsList = nil;
-  self.parentsListFetchError = nil;
+  _revisionList = nil;
+  _revisionListFetchError = nil;
+  _permissionList = nil;
+  _permissionListFetchError = nil;
+  _childList = nil;
+  _childListFetchError = nil;
+  _parentsList = nil;
+  _parentsListFetchError = nil;
 
-  self.detailsFetchError = nil;
+  _detailsFetchError = nil;
 
   GTLServiceDrive *service = self.driveService;
 
@@ -464,22 +430,22 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
     GTLQueryDrive *revisionQuery = [GTLQueryDrive queryForRevisionsListWithFileId:fileID];
     revisionQuery.completionBlock = ^(GTLServiceTicket *ticket, GTLDriveRevisionList *obj,
                                       NSError *error) {
-      self.revisionList = obj;
-      self.revisionListFetchError = error;
+      _revisionList = obj;
+      _revisionListFetchError = error;
     };
 
     GTLQueryDrive *permissionQuery = [GTLQueryDrive queryForPermissionsListWithFileId:fileID];
     permissionQuery.completionBlock = ^(GTLServiceTicket *ticket, GTLDrivePermissionList *obj,
                                       NSError *error) {
-      self.permissionList = obj;
-      self.permissionListFetchError = error;
+      _permissionList = obj;
+      _permissionListFetchError = error;
     };
 
     GTLQueryDrive *childQuery = [GTLQueryDrive queryForChildrenListWithFolderId:fileID];
     childQuery.completionBlock = ^(GTLServiceTicket *ticket, GTLDriveChildList *obj,
                                       NSError *error) {
-      self.childList = obj;
-      self.childListFetchError = error;
+      _childList = obj;
+      _childListFetchError = error;
     };
 
     GTLQueryDrive *parentsQuery = [GTLQueryDrive queryForParentsListWithFileId:fileID];
@@ -487,8 +453,8 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
                                       NSError *error) {
       // Note that we could obtain the parents list for a file item from the
       // main file list feed, too.
-      self.parentsList = obj;
-      self.parentsListFetchError = error;
+      _parentsList = obj;
+      _parentsListFetchError = error;
     };
 
     // Combine the separate queries into one batch.
@@ -498,15 +464,15 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
     [batchQuery addQuery:childQuery];
     [batchQuery addQuery:parentsQuery];
 
-    self.detailsTicket = [service executeQuery:batchQuery
-                             completionHandler:^(GTLServiceTicket *ticket,
-                                                 GTLBatchResult *batchResult, NSError *error) {
+    _detailsTicket = [service executeQuery:batchQuery
+                         completionHandler:^(GTLServiceTicket *ticket,
+                                             GTLBatchResult *batchResult, NSError *error) {
        // Callback
        //
        // The batch query execution completionHandler runs after the individual
        // query completion handlers have been called.
-       self.detailsTicket = nil;
-       self.detailsFetchError = error;
+       _detailsTicket = nil;
+       _detailsFetchError = error;
 
        [self updateUI];
      }];
@@ -523,12 +489,12 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
   NSString *fileID = selectedFile.identifier;
   if (fileID) {
     GTLQueryDrive *query = [GTLQueryDrive queryForFilesDeleteWithFileId:fileID];
-    self.editFileListTicket = [service executeQuery:query
-                                  completionHandler:^(GTLServiceTicket *ticket,
-                                                      id nilObject,
-                                                      NSError *error) {
+    _editFileListTicket = [service executeQuery:query
+                              completionHandler:^(GTLServiceTicket *ticket,
+                                                  id nilObject,
+                                                  NSError *error) {
       // Callback
-      self.editFileListTicket = nil;
+      _editFileListTicket = nil;
       if (error == nil) {
         [self displayAlert:@"Deleted"
                     format:@"Deleted \"%@\"",
@@ -558,12 +524,12 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
     } else {
       query = [GTLQueryDrive queryForFilesTrashWithFileId:fileID];
     }
-    self.editFileListTicket = [service executeQuery:query
-                                  completionHandler:^(GTLServiceTicket *ticket,
-                                                      id nilObject,
-                                                      NSError *error) {
-      // Callback
-      self.editFileListTicket = nil;
+    _editFileListTicket = [service executeQuery:query
+                              completionHandler:^(GTLServiceTicket *ticket,
+                                                  id nilObject,
+                                                  NSError *error) {
+                                // Callback
+      _editFileListTicket = nil;
       if (error == nil) {
         NSString *fmt = (isInTrash ? @"Moved \"%@\" out of trash" : @"Moved \"%@\" to trash");
         [self displayAlert:@"Updated"
@@ -592,12 +558,12 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 
     GTLQueryDrive *query = [GTLQueryDrive queryForFilesCopyWithObject:fileObj
                                                                fileId:fileID];
-    self.editFileListTicket = [service executeQuery:query
-                                  completionHandler:^(GTLServiceTicket *ticket,
-                                                      GTLDriveFile *copiedFile,
-                                                      NSError *error) {
+    _editFileListTicket = [service executeQuery:query
+                              completionHandler:^(GTLServiceTicket *ticket,
+                                                  GTLDriveFile *copiedFile,
+                                                  NSError *error) {
       // Callback
-      self.editFileListTicket = nil;
+      _editFileListTicket = nil;
       if (error == nil) {
         [self displayAlert:@"Copied"
                     format:@"Created copy \"%@\"",
@@ -630,12 +596,12 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 
   GTLQueryDrive *query = [GTLQueryDrive queryForFilesInsertWithObject:folderObj
                                                      uploadParameters:nil];
-  self.editFileListTicket = [service executeQuery:query
-                                completionHandler:^(GTLServiceTicket *ticket,
-                                                    GTLDriveFile *folderItem,
-                                                    NSError *error) {
-    // Callback
-    self.editFileListTicket = nil;
+  _editFileListTicket = [service executeQuery:query
+                            completionHandler:^(GTLServiceTicket *ticket,
+                                                GTLDriveFile *folderItem,
+                                                NSError *error) {
+                              // Callback
+    _editFileListTicket = nil;
     if (error == nil) {
       [self displayAlert:@"Created"
                   format:@"Created folder \"%@\"",
@@ -670,12 +636,12 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 
     GTLQueryDrive *query = [GTLQueryDrive queryForFilesInsertWithObject:newFile
                                                        uploadParameters:uploadParameters];
-    self.uploadFileTicket = [service executeQuery:query
-                                  completionHandler:^(GTLServiceTicket *ticket,
-                                                      GTLDriveFile *uploadedFile,
-                                                      NSError *error) {
+    _uploadFileTicket = [service executeQuery:query
+                            completionHandler:^(GTLServiceTicket *ticket,
+                                                GTLDriveFile *uploadedFile,
+                                                NSError *error) {
       // Callback
-      self.uploadFileTicket = nil;
+      _uploadFileTicket = nil;
       if (error == nil) {
         [self displayAlert:@"Created"
                     format:@"Uploaded file \"%@\"",
@@ -685,15 +651,16 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
         [self displayAlert:@"Upload Failed"
                     format:@"%@", error];
       }
-      [uploadProgressIndicator_ setDoubleValue:0.0];
+      [_uploadProgressIndicator setDoubleValue:0.0];
       [self updateUI];
     }];
 
-    self.uploadFileTicket.uploadProgressBlock = ^(GTLServiceTicket *ticket,
-                                                    unsigned long long numberOfBytesRead,
-                                                    unsigned long long dataLength) {
-      [uploadProgressIndicator_ setMaxValue:(double)dataLength];
-      [uploadProgressIndicator_ setDoubleValue:(double)numberOfBytesRead];
+    NSProgressIndicator *uploadProgressIndicator = _uploadProgressIndicator;
+    _uploadFileTicket.uploadProgressBlock = ^(GTLServiceTicket *ticket,
+                                              unsigned long long numberOfBytesRead,
+                                              unsigned long long dataLength) {
+      [uploadProgressIndicator setMaxValue:(double)dataLength];
+      [uploadProgressIndicator setDoubleValue:(double)numberOfBytesRead];
     };
     [self updateUI];
   } else {
@@ -776,13 +743,11 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 - (NSString *)extensionForMIMEType:(NSString *)mimeType {
   NSString *result = nil;
   CFStringRef uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType,
-                                                          (CFStringRef)mimeType,
-                                                          NULL);
+      (__bridge CFStringRef)mimeType, NULL);
   if (uti) {
     CFStringRef cfExtn = UTTypeCopyPreferredTagWithClass(uti, kUTTagClassFilenameExtension);
     if (cfExtn) {
-      result = [NSString stringWithString:(NSString *)cfExtn];
-      CFRelease(cfExtn);
+      result = CFBridgingRelease(cfExtn);
     }
     CFRelease(uti);
   }
@@ -792,16 +757,16 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 #pragma mark -
 #pragma mark Sign In
 
-- (void)runSigninThenInvokeSelector:(SEL)signInDoneSel {
+- (void)runSigninThenHandler:(void (^)(void))handler {
   // Applications should have client ID and client secret strings
   // hardcoded into the source, but the sample application asks the
   // developer for the strings.
-  NSString *clientID = [clientIDField_ stringValue];
-  NSString *clientSecret = [clientSecretField_ stringValue];
+  NSString *clientID = [_clientIDField stringValue];
+  NSString *clientSecret = [_clientSecretField stringValue];
 
   if ([clientID length] == 0 || [clientSecret length] == 0) {
     // Remind the developer that client ID and client secret are needed
-    [clientIDButton_ performSelector:@selector(performClick:)
+    [_clientIDButton performSelector:@selector(performClick:)
                           withObject:self
                           afterDelay:0.5];
     return;
@@ -825,11 +790,9 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
     // Callback
     if (error == nil) {
       self.driveService.authorizer = auth;
-      if (signInDoneSel) {
-        [self performSelector:signInDoneSel];
-      }
+      if (handler) handler();
     } else {
-      self.fileListFetchError = error;
+      _fileListFetchError = error;
       [self updateUI];
     }
   }];
@@ -841,32 +804,33 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 - (void)updateUI {
   BOOL isSignedIn = [self isSignedIn];
   NSString *username = [self signedInUsername];
-  [signedInButton_ setTitle:(isSignedIn ? @"Sign Out" : @"Sign In")];
-  [signedInField_ setStringValue:(isSignedIn ? username : @"No")];
+  [_signedInButton setTitle:(isSignedIn ? @"Sign Out" : @"Sign In")];
+  [_signedInField setStringValue:(isSignedIn ? username : @"No")];
 
   //
   // File list table
   //
-  [fileListTable_ reloadData];
+  [_fileListTable reloadData];
 
-  if (self.fileListTicket != nil || self.editFileListTicket != nil) {
-    [fileListProgressIndicator_ startAnimation:self];
+  if (_fileListTicket != nil || _editFileListTicket != nil) {
+    [_fileListProgressIndicator startAnimation:self];
   } else {
-    [fileListProgressIndicator_ stopAnimation:self];
+    [_fileListProgressIndicator stopAnimation:self];
   }
 
   // Get the description of the selected item, or the feed fetch error
   NSString *resultStr = @"";
 
-  if (self.fileListFetchError) {
+  if (_fileListFetchError) {
     // Display the error
-    resultStr = [self.fileListFetchError description];
+    resultStr = [_fileListFetchError description];
 
     // Also display any server data present
-    NSData *errData = [[self.fileListFetchError userInfo] objectForKey:kGTMHTTPFetcherStatusDataKey];
+    NSDictionary *errorInfo = [_fileListFetchError userInfo];
+    NSData *errData = errorInfo[kGTMHTTPFetcherStatusDataKey];
     if (errData) {
-      NSString *dataStr = [[[NSString alloc] initWithData:errData
-                                                 encoding:NSUTF8StringEncoding] autorelease];
+      NSString *dataStr = [[NSString alloc] initWithData:errData
+                                                encoding:NSUTF8StringEncoding];
       resultStr = [resultStr stringByAppendingFormat:@"\n%@", dataStr];
     }
   } else {
@@ -876,7 +840,7 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
       resultStr = [item description];
     }
   }
-  [fileListResultTextField_ setString:resultStr];
+  [_fileListResultTextField setString:resultStr];
 
   [self updateThumbnailImage];
 
@@ -884,12 +848,12 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
   // Details table
   //
 
-  [detailTable_ reloadData];
+  [_detailTable reloadData];
 
-  if (self.detailsTicket != nil) {
-    [detailProgressIndicator_ startAnimation:self];
+  if (_detailsTicket != nil) {
+    [_detailProgressIndicator startAnimation:self];
   } else {
-    [detailProgressIndicator_ stopAnimation:self];
+    [_detailProgressIndicator stopAnimation:self];
   }
 
   // Get the description of the selected item, or the feed fetch error
@@ -905,67 +869,67 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
     }
   }
 
-  [detailResultTextField_ setString:resultStr];
+  [_detailResultTextField setString:resultStr];
 
   // Update the counts in the segmented control
-  NSUInteger numberOfRevisions = [self.revisionList.items count];
-  NSUInteger numberOfPermissions = [self.permissionList.items count];
-  NSUInteger numberOfChildren = [self.childList.items count];
-  NSUInteger numberOfParents = [self.parentsList.items count];
+  NSUInteger numberOfRevisions = [_revisionList.items count];
+  NSUInteger numberOfPermissions = [_permissionList.items count];
+  NSUInteger numberOfChildren = [_childList.items count];
+  NSUInteger numberOfParents = [_parentsList.items count];
 
-  NSString *revisionsStr = [NSString stringWithFormat:@"Revisions %u", numberOfRevisions];
-  NSString *permissionsStr = [NSString stringWithFormat:@"Permissions %u", numberOfPermissions];
-  NSString *childrenStr = [NSString stringWithFormat:@"Children %u", numberOfChildren];
-  NSString *parentsStr = [NSString stringWithFormat:@"Parents %u", numberOfParents];
+  NSString *revisionsStr = [NSString stringWithFormat:@"Revisions %lu", numberOfRevisions];
+  NSString *permissionsStr = [NSString stringWithFormat:@"Permissions %lu", numberOfPermissions];
+  NSString *childrenStr = [NSString stringWithFormat:@"Children %lu", numberOfChildren];
+  NSString *parentsStr = [NSString stringWithFormat:@"Parents %lu", numberOfParents];
 
-  [segmentedControl_ setLabel:revisionsStr forSegment:kRevisionsSegment];
-  [segmentedControl_ setLabel:permissionsStr forSegment:kPermissionsSegment];
-  [segmentedControl_ setLabel:childrenStr forSegment:kChildrenSegment];
-  [segmentedControl_ setLabel:parentsStr forSegment:kParentsSegment];
+  [_segmentedControl setLabel:revisionsStr forSegment:kRevisionsSegment];
+  [_segmentedControl setLabel:permissionsStr forSegment:kPermissionsSegment];
+  [_segmentedControl setLabel:childrenStr forSegment:kChildrenSegment];
+  [_segmentedControl setLabel:parentsStr forSegment:kParentsSegment];
 
   // Enable buttons
-  BOOL isFetchingFileList = (self.fileListTicket != nil);
-  BOOL isEditingFileList = (self.editFileListTicket != nil);
-  [fileListCancelButton_ setEnabled:(isFetchingFileList || isEditingFileList)];
+  BOOL isFetchingFileList = (_fileListTicket != nil);
+  BOOL isEditingFileList = (_editFileListTicket != nil);
+  [_fileListCancelButton setEnabled:(isFetchingFileList || isEditingFileList)];
 
-  BOOL isFetchingDetails = (self.detailsTicket != nil);
-  [detailCancelButton_ setEnabled:isFetchingDetails];
+  BOOL isFetchingDetails = (_detailsTicket != nil);
+  [_detailCancelButton setEnabled:isFetchingDetails];
 
   GTLDriveFile *selectedFile = [self selectedFileListEntry];
   BOOL isFileSelected = (selectedFile != nil);
   BOOL isFileViewable = (selectedFile.alternateLink != nil);
-  [viewButton_ setEnabled:isFileViewable];
+  [_viewButton setEnabled:isFileViewable];
 
   BOOL isEditable = [selectedFile.editable boolValue];
-  [deleteButton_ setEnabled:isEditable];
-  [trashButton_ setEnabled:isEditable];
+  [_deleteButton setEnabled:isEditable];
+  [_trashButton setEnabled:isEditable];
 
   BOOL isInTrash = [selectedFile.labels.trashed boolValue];
   NSString *trashTitle = (isInTrash ? @"Untrash" : @"Trash");
-  [trashButton_ setTitle:trashTitle];
+  [_trashButton setTitle:trashTitle];
 
-  [duplicateButton_ setEnabled:isFileSelected];
+  [_duplicateButton setEnabled:isFileSelected];
 
-  BOOL hasFileList = (self.fileList != nil);
-  [newFolderButton_ setEnabled:hasFileList];
+  BOOL hasFileList = (_fileList != nil);
+  [_newFolderButton setEnabled:hasFileList];
 
-  BOOL isUploading = (self.uploadFileTicket != nil);
-  [uploadButton_ setEnabled:(hasFileList && !isUploading)];
-  [pauseUploadButton_ setEnabled:isUploading];
-  [stopUploadButton_ setEnabled:isUploading];
+  BOOL isUploading = (_uploadFileTicket != nil);
+  [_uploadButton setEnabled:(hasFileList && !isUploading)];
+  [_pauseUploadButton setEnabled:isUploading];
+  [_stopUploadButton setEnabled:isUploading];
 
-  BOOL isUploadPaused = [self.uploadFileTicket isUploadPaused];
+  BOOL isUploadPaused = [_uploadFileTicket isUploadPaused];
   NSString *pauseTitle = (isUploadPaused ? @"Resume" : @"Pause");
-  [pauseUploadButton_ setTitle:pauseTitle];
+  [_pauseUploadButton setTitle:pauseTitle];
 
   // Fill in the download menu with the available download formats.
   BOOL hasDownloadURL = ([selectedFile.downloadUrl length] > 0);
   GTLDriveFileExportLinks *exportLinks = selectedFile.exportLinks;
   NSArray *exportLinkKeys = [exportLinks additionalJSONKeys];
   BOOL hasExportLinks = ([exportLinkKeys count] > 0);
-  [downloadButton_ setEnabled:(hasDownloadURL || hasExportLinks)];
+  [_downloadButton setEnabled:(hasDownloadURL || hasExportLinks)];
 
-  NSMenu *menu = [[[NSMenu alloc] init] autorelease];
+  NSMenu *menu = [[NSMenu alloc] init];
   [menu addItemWithTitle:@"Download" action:NULL keyEquivalent:@""];
 
   // Add an "Original File" menu item only if there's a download URL.
@@ -985,13 +949,13 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 
     [menuItem setRepresentedObject:selectedFile];
   }
-  [downloadButton_ setMenu:menu];
+  [_downloadButton setMenu:menu];
 
   // Show or hide the text indicating that the client ID or client secret are
   // needed
-  BOOL hasClientIDStrings = [[clientIDField_ stringValue] length] > 0
-    && [[clientSecretField_ stringValue] length] > 0;
-  [clientIDRequiredTextField_ setHidden:hasClientIDStrings];
+  BOOL hasClientIDStrings = [[_clientIDField stringValue] length] > 0
+    && [[_clientSecretField stringValue] length] > 0;
+  [_clientIDRequiredTextField setHidden:hasClientIDStrings];
 }
 
 - (void)updateThumbnailImage {
@@ -1002,9 +966,8 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
   NSString *thumbnailURLStr = selectedFile.thumbnailLink;
 
   if (!GTL_AreEqualOrBothNil(gDisplayedURLStr, thumbnailURLStr)) {
-    [thumbnailView_ setImage:nil];
+    [_thumbnailView setImage:nil];
 
-    [gDisplayedURLStr autorelease];
     gDisplayedURLStr = [thumbnailURLStr copy];
 
     if (thumbnailURLStr) {
@@ -1013,9 +976,9 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
       [fetcher setCommentWithFormat:@"Thumbnail for \"%@\"", selectedFile.title];
       [fetcher beginFetchWithCompletionHandler:^(NSData *data, NSError *error) {
         if (data) {
-          NSImage *image = [[[NSImage alloc] initWithData:data] autorelease];
+          NSImage *image = [[NSImage alloc] initWithData:data];
           if (image) {
-            [thumbnailView_ setImage:image];
+            [_thumbnailView setImage:image];
           } else {
             NSLog(@"Failed to make image from %lu bytes for \"%@\"",
                   (unsigned long) [data length], selectedFile.title);
@@ -1034,8 +997,8 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
   if (format) {
     va_list argList;
     va_start(argList, format);
-    result = [[[NSString alloc] initWithFormat:format
-                                     arguments:argList] autorelease];
+    result = [[NSString alloc] initWithFormat:format
+                                    arguments:argList];
     va_end(argList);
   }
   NSBeginAlertSheet(title, nil, nil, nil, [self window], nil, nil,
@@ -1057,7 +1020,7 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 
 - (IBAction)clientIDClicked:(id)sender {
   // Show the sheet for developers to enter their client ID and client secret
-  [NSApp beginSheet:clientIDSheet_
+  [NSApp beginSheet:_clientIDSheet
      modalForWindow:[self window]
       modalDelegate:self
      didEndSelector:@selector(clientIDSheetDidEnd:returnCode:contextInfo:)
@@ -1065,7 +1028,7 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 }
 
 - (IBAction)clientIDDoneClicked:(id)sender {
-  [NSApp endSheet:clientIDSheet_ returnCode:NSOKButton];
+  [NSApp endSheet:_clientIDSheet returnCode:NSOKButton];
 }
 
 - (void)clientIDSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
@@ -1083,7 +1046,7 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
   [self updateUI];
-  if ([notification object] == fileListTable_) {
+  if ([notification object] == _fileListTable) {
     [self fetchSelectedFileDetails];
   }
 }
@@ -1091,8 +1054,8 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 // Table view data source methods
 - (int)numberOfRowsInTableView:(NSTableView *)tableView {
   GTLCollectionObject *collection;
-  if (tableView == fileListTable_) {
-    collection = self.fileList;
+  if (tableView == _fileListTable) {
+    collection = _fileList;
   } else {
     collection = [self detailCollection];
   }
@@ -1102,37 +1065,33 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 - (id)tableView:(NSTableView *)tableView
 objectValueForTableColumn:(NSTableColumn *)tableColumn
             row:(NSInteger)row {
-  if (tableView == fileListTable_) {
-    GTLDriveFile *file = [self.fileList itemAtIndex:row];
+  if (tableView == _fileListTable) {
+    // GTLCollectionObjects support indexed access to the collection items
+    GTLDriveFile *file = _fileList[row];
     return [self fileTitleWithLabelsForFile:file];
   } else {
     GTLCollectionObject *collection = [self detailCollection];
-    GTLObject *item = [collection itemAtIndex:row];
+    GTLObject *item = collection[row];
     return [self descriptionForDetailItem:item];
   }
 }
 
 - (NSString *)fileTitleWithLabelsForFile:(GTLDriveFile *)file {
 
-  const UniChar kStarChar = 0x2605;
-  const UniChar kQuarterMoon = 0x263D;
-  const UniChar kTrashedX = 0x2717;
-  const UniChar kCrossedDownArrow = 0x21DF;
-
   NSMutableString *title = [NSMutableString stringWithString:file.title];
   GTLDriveFileLabels *labels = file.labels;
 
   if ([labels.starred boolValue]) {
-    [title appendFormat:@" %C", kStarChar];
+    [title appendString:@" \u2605"]; // star character
   }
   if ([labels.trashed boolValue]) {
-    title = [NSMutableString stringWithFormat:@"%C %@", kTrashedX, title];
+    title = [NSString stringWithFormat:@"\u2717 %@", title]; // X character
   }
   if ([labels.hidden boolValue]) {
-    [title appendFormat:@" %C", kQuarterMoon];
+    [title appendString:@" \u263D"]; // quarter moon character
   }
   if ([labels.restricted boolValue]) {
-    [title appendFormat:@" %C", kCrossedDownArrow];
+    [title appendString:@" \u21DF"]; // crossed down arrow character
   }
   return title;
 }
