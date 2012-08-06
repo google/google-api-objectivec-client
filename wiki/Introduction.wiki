@@ -69,7 +69,7 @@ Servers respond to client API requests with an object.  The object is typically 
 
 For example, a search for products would return a `GTLShoppingProducts` collection, where the items of the collection are the individual product results found by the search.
 
-The individual items are derived from *GTLObject*. The collection is derived from *GTLCollectionObject*, which is a `GTLObject` that also provides an `itemAtIndex:` method and supports `for` loops over the collection items by implementing the `NSFastEnumeration` protocol.
+The individual items are derived from *GTLObject*. The collection is derived from *GTLCollectionObject*, which is a `GTLObject` that also provides for indexed access to items via subscripts and an `itemAtIndex:` method. `GTLCollectionObject` also supports `for` loops over the collection items by implementing the `NSFastEnumeration` protocol, as shown in the next code snippet.
 
 Each request to the server is a *query*. Server interactions in the library are handled by *service objects*.  A single transaction with a service is tracked with a *service ticket*.
 
@@ -93,6 +93,8 @@ GTLServiceTicket *ticket = [service executeQuery:query
   if (error == nil) {
     GTLShoppingProducts *products = object;
 
+    // GTLShoppingProducts derives from GTLCollectionObject, so it supports
+    // iteration of items and subscript access to items.
     for (GTLShoppingProduct *item in products) {
       // Print the name of each product result item
       NSLog(@"%@", item.product.title);
