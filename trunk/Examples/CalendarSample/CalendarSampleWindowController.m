@@ -709,10 +709,9 @@ NSString *const kKeychainItemName = @"CalendarSample: Google Calendar";
   [dateComponents setHour:hour];
   [dateComponents setMinute:minute];
   [dateComponents setSecond:second];
+  [dateComponents setTimeZone:[NSTimeZone localTimeZone]];
 
-  GTLDateTime *dateTime = [GTLDateTime dateTimeWithDate:[NSDate date]
-                                               timeZone:[NSTimeZone systemTimeZone]];
-  [dateTime setDateComponents:dateComponents];
+  GTLDateTime *dateTime = [GTLDateTime dateTimeWithDateComponents:dateComponents];
   return dateTime;
 }
 

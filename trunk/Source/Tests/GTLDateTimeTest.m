@@ -94,24 +94,6 @@
     STAssertEquals([dateTime.timeZone secondsFromGMT], tests[idx].timeZoneOffsetSeconds, @"bad timezone");
     STAssertEquals(dateTime.isUniversalTime, tests[idx].isUniversalTime, @"bad Zulu value");
     STAssertEquals(dateTime.hasTime, tests[idx].hasTime, @"bad hasTime value");
-
-    if (dateTime.hasTime) {
-      // remove the time, test the output
-      dateTime.hasTime = NO;
-      NSString *outputStringWithoutTime = dateTime.RFC3339String;
-      STAssertFalse(dateTime.hasTime, @"should have time removed");
-      STAssertTrue([testString1 hasPrefix:outputStringWithoutTime]
-                   && [testString1 length] > [outputStringWithoutTime length],
-                   @"bad string after time removed");
-    } else {
-      // add time, test the output
-      dateTime.hasTime = YES;
-      NSString *outputStringWithTime = dateTime.RFC3339String;
-      STAssertTrue(dateTime.hasTime, @"should have time added");
-      STAssertTrue([outputStringWithTime hasPrefix:testString1]
-                   && [testString1 length] < [outputStringWithTime length],
-                   @"bad string after time removed");
-    }
   }
 }
 

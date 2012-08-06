@@ -640,6 +640,13 @@ static NSMutableDictionary *gArrayPropertyToClassMapCache = nil;
   return nil;
 }
 
+- (id)objectAtIndexedSubscript:(NSInteger)idx {
+  if (idx >= 0) {
+    return [self itemAtIndex:(NSUInteger)idx];
+  }
+  return nil;
+}
+
 // NSFastEnumeration protocol
 - (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state
                                   objects:(id *)stackbuf

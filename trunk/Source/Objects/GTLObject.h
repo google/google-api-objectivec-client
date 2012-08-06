@@ -158,14 +158,17 @@
 @end
 
 // Collection objects with an "items" property should derive from GTLCollection
-// object.  This provides support for fast object enumeration and the
-// itemAtIndex: convenience method.
+// object.  This provides support for fast object enumeration, the
+// itemAtIndex: convenience method, and indexed subscripts.
 //
 // Subclasses must implement the items method dynamically.
 @interface GTLCollectionObject : GTLObject <GTLCollectionProtocol, NSFastEnumeration>
 
-// itemAtIndex: returns nil when the index exceeds the bounds of the items array
+// itemAtIndex: and objectAtIndexedSubscript: return nil when the index exceeds
+// the bounds of the items array.
 - (id)itemAtIndex:(NSUInteger)idx;
+
+- (id)objectAtIndexedSubscript:(NSInteger)idx;
 
 @end
 
