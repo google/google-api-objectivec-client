@@ -4,6 +4,13 @@ Release Notes
 Project site:     http://code.google.com/p/google-api-objectivec-client/
 Discussion group: http://groups.google.com/group/google-api-objectivec-client
 
+6-Aug-2012
+
+GTLObject now supports indexed subscript access to items as a synonym for itemAtIndex:
+
+GTLDateTime is now an immutable class, to avoid accidental changes to instances
+that have been added to an object tree.
+
 
 30-May-2012
 

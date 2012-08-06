@@ -93,6 +93,8 @@
   newEvent.descriptionProperty = desc;
 
   // Times
+  //
+  // For all-day events, use the GTLDateTime method +dateTimeForAllDayWithDate:
   GTLDateTime *startDateTime = [GTLDateTime dateTimeWithDate:[startDatePicker_ dateValue]
                                                     timeZone:[startDatePicker_ timeZone]];
   GTLDateTime *endDateTime = [GTLDateTime dateTimeWithDate:[endDatePicker_ dateValue]
