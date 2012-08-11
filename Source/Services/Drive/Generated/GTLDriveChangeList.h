@@ -58,7 +58,7 @@
 @property (copy) NSString *kind;
 
 // The current largest change ID.
-@property (retain) NSNumber *largestChangeId;  // unsignedLongLongValue
+@property (retain) NSNumber *largestChangeId;  // longLongValue
 
 // A link to the next page of changes.
 @property (copy) NSString *nextLink;

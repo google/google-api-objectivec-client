@@ -60,7 +60,7 @@
 @property (copy) NSString *folderId;
 @property (assign) BOOL includeDeleted;
 @property (assign) BOOL includeSubscribed;
-@property (assign) unsigned long long maxChangeIdCount;
+@property (assign) long long maxChangeIdCount;
 @property (assign) NSInteger maxResults;
 @property (assign) BOOL newRevision;
 @property (assign) BOOL ocr;
@@ -75,7 +75,7 @@
 @property (assign) BOOL sendNotificationEmails;
 @property (assign) BOOL setModifiedDate;
 @property (copy) NSString *sourceLanguage;
-@property (assign) unsigned long long startChangeId;
+@property (assign) long long startChangeId;
 @property (copy) NSString *targetLanguage;
 @property (copy) NSString *timedTextLanguage;
 @property (copy) NSString *timedTextTrackName;

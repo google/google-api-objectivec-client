@@ -56,7 +56,7 @@
 
 // The ID of the change.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSNumber *identifier;  // unsignedLongLongValue
+@property (retain) NSNumber *identifier;  // longLongValue
 
 // This is always drive#change.
 @property (copy) NSString *kind;
