@@ -66,7 +66,8 @@
 // The name of the app.
 @property (copy) NSString *name;
 
-// The name of the type of object this app creates.
+// The type of object this app creates (e.g. Chart). If empty, the app name
+// should be used instead.
 @property (copy) NSString *objectType;
 
 // The list of primary file extensions.
