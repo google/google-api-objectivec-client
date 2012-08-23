@@ -251,13 +251,12 @@
 // parameters. Returns the result as JSON; to retrieve output in CSV format
 // specify "alt=csv" as a query parameter.
 //  Required:
+//   accountId: Account upon which to report.
 //   startDate: Start of the date range to report on in "YYYY-MM-DD" format,
 //     inclusive.
 //   endDate: End of the date range to report on in "YYYY-MM-DD" format,
 //     inclusive.
 //  Optional:
-//   accountId: Account upon which to report.
-//     Note: For this method, "accountId" should be of type NSString.
 //   currency: Optional currency to use when reporting on monetary metrics.
 //     Defaults to the account's currency if not set.
 //   dimension: Dimensions to base the report on.
@@ -274,7 +273,8 @@
 //   kGTLAuthScopeAdsense
 //   kGTLAuthScopeAdsenseReadonly
 // Fetches a GTLAdsenseAdsenseReportsGenerateResponse.
-+ (id)queryForAccountsReportsGenerateWithStartDate:(NSString *)startDate
++ (id)queryForAccountsReportsGenerateWithAccountId:(NSString *)accountId
+                                         startDate:(NSString *)startDate
                                            endDate:(NSString *)endDate;
 
 #pragma mark -

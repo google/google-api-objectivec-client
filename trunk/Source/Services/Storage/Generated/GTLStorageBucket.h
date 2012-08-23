@@ -24,7 +24,7 @@
 // Description:
 //   Lets you store and retrieve potentially-large, immutable data objects.
 // Documentation:
-//   https://code.google.com/apis/storage/docs/developer-guide.html
+//   https://developers.google.com/storage/docs/json_api/
 // Classes:
 //   GTLStorageBucket (0 custom class methods, 10 custom properties)
 //   GTLStorageBucketOwner (0 custom class methods, 2 custom properties)

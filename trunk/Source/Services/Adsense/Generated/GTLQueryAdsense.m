@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -177,10 +177,12 @@
 #pragma mark "accounts.reports" methods
 // These create a GTLQueryAdsense object.
 
-+ (id)queryForAccountsReportsGenerateWithStartDate:(NSString *)startDate
++ (id)queryForAccountsReportsGenerateWithAccountId:(NSString *)accountId
+                                         startDate:(NSString *)startDate
                                            endDate:(NSString *)endDate {
   NSString *methodName = @"adsense.accounts.reports.generate";
   GTLQueryAdsense *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
   query.startDate = startDate;
   query.endDate = endDate;
   query.expectedObjectClass = [GTLAdsenseAdsenseReportsGenerateResponse class];
