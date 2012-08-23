@@ -63,7 +63,7 @@
 
 @implementation GTLBooksLayerGeoDataGeo
 @dynamic boundary, cachePolicy, countryCode, latitude, longitude, mapType,
-         resolution, viewport, zoom;
+         title, viewport, zoom;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =

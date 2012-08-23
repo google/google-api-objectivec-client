@@ -107,8 +107,9 @@
 // SATELLITE, TERRAIN
 @property (copy) NSString *mapType;
 
-// The resolution of the location. Ex: POI_LEVEL
-@property (copy) NSString *resolution;
+// The display title and localized canonical name to use when searching for this
+// entity on Google search.
+@property (copy) NSString *title;
 
 // The viewport for showing this location. This is a latitude, longitude
 // rectangle.
