@@ -24,9 +24,9 @@
 // Description:
 //   Lets you store and retrieve potentially-large, immutable data objects.
 // Documentation:
-//   https://code.google.com/apis/storage/docs/developer-guide.html
+//   https://developers.google.com/storage/docs/json_api/
 // Classes:
-//   GTLStorageObject (0 custom class methods, 12 custom properties)
+//   GTLStorageObject (0 custom class methods, 13 custom properties)
 //   GTLStorageObjectMedia (0 custom class methods, 7 custom properties)
 //   GTLStorageObjectMetadata (0 custom class methods, 0 custom properties)
 //   GTLStorageObjectOwner (0 custom class methods, 2 custom properties)
@@ -65,6 +65,9 @@
 
 // Content-Encoding of the object data.
 @property (copy) NSString *contentEncoding;
+
+// Content-Language of the object data.
+@property (copy) NSString *contentLanguage;
 
 // The ID of the object.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
