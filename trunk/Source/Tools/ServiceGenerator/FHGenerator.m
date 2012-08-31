@@ -439,11 +439,11 @@ static NSArray *DictionaryObjectsSortedByKeys(NSDictionary *dict) {
                                    [methodUnknowns componentsJoinedByString:@", "]];
       messageHandler(kFHGeneratorHandlerMessageWarning, warning);
     }
-    if ([method.supportsMediaDownload boolValue]) {
-      NSString *warning =
+    if ((verboseLevel_ > 0) && [method.supportsMediaDownload boolValue]) {
+      NSString *info =
         [NSString stringWithFormat:@"method '%@' supports media download.",
          method.name];
-      messageHandler(kFHGeneratorHandlerMessageWarning, warning);
+      messageHandler(kFHGeneratorHandlerMessageInfo, info);
     }
   }
 
@@ -460,7 +460,7 @@ static NSArray *DictionaryObjectsSortedByKeys(NSDictionary *dict) {
     }
   }
 
-  // That all the preflighting we can do. Any errors from here out are
+  // That's all the preflighting we can do. Any errors from here out are
   // thrown as NSExceptions.
   if (gotError) return nil;
 
@@ -558,8 +558,22 @@ static NSArray *DictionaryObjectsSortedByKeys(NSDictionary *dict) {
 
 - (NSString *)formattedApiName {
   if (formattedName_ == nil) {
-    formattedName_ =
-      [[FHUtils objcName:self.api.name shouldCapitalize:YES] retain];
+    NSString *canonicalName = self.api.canonicalName;
+    if ([canonicalName length] > 0) {
+      // If there was a canonical name, remove the spaces and run it through
+      // the objcName cleanup just to make sure there aren't any invalid
+      // characters.
+      NSString *worker =
+        [canonicalName stringByReplacingOccurrencesOfString:@" "
+                                                 withString:@""];
+      formattedName_ = [[FHUtils objcName:worker
+                         shouldCapitalize:YES
+                       allowLeadingDigits:YES] retain];
+    }
+    if (formattedName_ == nil) {
+      formattedName_ =
+        [[FHUtils objcName:self.api.name shouldCapitalize:YES] retain];
+    }
   }
   return formattedName_;
 }
@@ -2261,7 +2275,7 @@ static NSString *MappedParamName(NSString *name) {
       NSString *aScope =
         [NSString stringWithFormat:@"%@NSString * const %-*s %@%@%@\n",
          externStr,
-         maxLen, [name UTF8String],
+         (int)maxLen, [name UTF8String],
          beforeValue, scope, afterValue];
 
       if (mode == kGenerateInterface) {
@@ -2309,7 +2323,7 @@ static NSString *MappedParamName(NSString *name) {
         NSString *line =
           [NSString stringWithFormat:@"%@NSString * const %-*s %@%@%@\n",
            externStr,
-           maxLen, [name UTF8String],
+           (int)maxLen, [name UTF8String],
            beforeValue, value, afterValue];
         [subParts addObject:line];
       }
@@ -2837,7 +2851,7 @@ static NSString *MappedParamName(NSString *name) {
           && [rootUrlString hasSuffix:@".sandbox.google.com/"]) {
         NSString *str =
           [NSString stringWithFormat:@"API rootUrl (%@) seems to be a Google test system, overriding with googleapis, use --rootURLOverrides NO to disable.",
-           rootUrlString, rpcPathString, result];
+           rootUrlString];
         [generator addInfo:str];
         rootUrlString = @"https://www.googleapis.com/";
         didOverride = YES;

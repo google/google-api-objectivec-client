@@ -19,6 +19,14 @@
 @implementation FHUtils
 
 + (NSString *)objcName:(NSString *)str shouldCapitalize:(BOOL)shouldCapitalize {
+  return [self objcName:str
+       shouldCapitalize:shouldCapitalize
+     allowLeadingDigits:NO];
+}
+
++ (NSString *)objcName:(NSString *)str
+      shouldCapitalize:(BOOL)shouldCapitalize
+    allowLeadingDigits:(BOOL)allowLeadingDigits {
   // Cache the character sets because this is done a lot...
   static NSCharacterSet *letterSet = nil;
   if (!letterSet) {
@@ -37,6 +45,10 @@
     letterNumSet = [setBuilder copy];
   }
 
+  if ([str length] == 0) {
+    return nil;
+  }
+
   // Do the transform...
 
   NSMutableString *worker = [NSMutableString string];
@@ -44,7 +56,8 @@
   BOOL isNewWord = shouldCapitalize;
 
   // If it doesn't start with a letter, put 'x' on the front.
-  if (![letterSet characterIsMember:[str characterAtIndex:0]]) {
+  if (!allowLeadingDigits
+      && ![letterSet characterIsMember:[str characterAtIndex:0]]) {
     [worker appendString:(isNewWord ? @"X" : @"x")];
     isNewWord = NO;
   }

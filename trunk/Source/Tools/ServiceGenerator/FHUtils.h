@@ -31,6 +31,9 @@
 //     "userID"       -> "userID" (no change)
 //     "800_number"   -> "x800Number" (ensure it starts with a letter)
 + (NSString *)objcName:(NSString *)str shouldCapitalize:(BOOL)shouldCapitalize;
++ (NSString *)objcName:(NSString *)str
+      shouldCapitalize:(BOOL)shouldCapitalize
+    allowLeadingDigits:(BOOL)allowLeadingDigits;
 
 // Helper that takes all the elements in an array, and breaks them into lines
 // word wrapped at 80 columns using the requested prefix/suffixes on the lines.
