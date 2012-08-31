@@ -87,6 +87,7 @@
 //   startIndex: An index of the first entity to retrieve. Use this parameter as
 //     a pagination mechanism along with the max-results parameter.
 //  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsGaData.
 + (id)queryForDataGaGetWithIds:(NSString *)ids
@@ -121,6 +122,7 @@
 //   startIndex: An index of the first entity to retrieve. Use this parameter as
 //     a pagination mechanism along with the max-results parameter.
 //  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsMcfData.
 + (id)queryForDataMcfGetWithIds:(NSString *)ids
@@ -139,6 +141,7 @@
 //   startIndex: An index of the first account to retrieve. Use this parameter
 //     as a pagination mechanism along with the max-results parameter.
 //  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsAccounts.
 + (id)queryForManagementAccountsList;
@@ -164,6 +167,7 @@
 //   startIndex: An index of the first goal to retrieve. Use this parameter as a
 //     pagination mechanism along with the max-results parameter.
 //  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsGoals.
 + (id)queryForManagementGoalsListWithAccountId:(NSString *)accountId
@@ -188,6 +192,7 @@
 //   startIndex: An index of the first entity to retrieve. Use this parameter as
 //     a pagination mechanism along with the max-results parameter.
 //  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsProfiles.
 + (id)queryForManagementProfilesListWithAccountId:(NSString *)accountId
@@ -205,6 +210,7 @@
 //   startIndex: An index of the first advanced segment to retrieve. Use this
 //     parameter as a pagination mechanism along with the max-results parameter.
 //  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsSegments.
 + (id)queryForManagementSegmentsList;
@@ -225,6 +231,7 @@
 //   startIndex: An index of the first entity to retrieve. Use this parameter as
 //     a pagination mechanism along with the max-results parameter.
 //  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsWebproperties.
 + (id)queryForManagementWebpropertiesListWithAccountId:(NSString *)accountId;

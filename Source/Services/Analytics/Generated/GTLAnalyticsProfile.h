@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/analytics
 // Classes:
-//   GTLAnalyticsProfile (0 custom class methods, 17 custom properties)
+//   GTLAnalyticsProfile (0 custom class methods, 18 custom properties)
 //   GTLAnalyticsProfileChildLink (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsProfileParentLink (0 custom class methods, 2 custom properties)
 
@@ -100,6 +100,9 @@
 
 // Web property ID of the form UA-XXXXX-YY to which this profile belongs.
 @property (copy) NSString *webPropertyId;
+
+// Website URL for this profile.
+@property (copy) NSString *websiteUrl;
 
 @end
 

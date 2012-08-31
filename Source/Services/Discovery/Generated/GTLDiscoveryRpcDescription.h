@@ -27,7 +27,7 @@
 // Documentation:
 //   http://code.google.com/apis/discovery
 // Classes:
-//   GTLDiscoveryRpcDescription (0 custom class methods, 20 custom properties)
+//   GTLDiscoveryRpcDescription (0 custom class methods, 21 custom properties)
 //   GTLDiscoveryRpcDescriptionAuth (0 custom class methods, 1 custom properties)
 //   GTLDiscoveryRpcDescriptionIcons (0 custom class methods, 2 custom properties)
 //   GTLDiscoveryRpcDescriptionMethods (0 custom class methods, 0 custom properties)
@@ -63,6 +63,10 @@
 
 // Authentication information.
 @property (retain) GTLDiscoveryRpcDescriptionAuth *auth;
+
+// Indicates how the API name should be capitalized and split into various
+// parts. Useful for generating pretty class names.
+@property (copy) NSString *canonicalName;
 
 // The description of this API.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.

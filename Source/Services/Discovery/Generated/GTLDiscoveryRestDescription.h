@@ -27,7 +27,7 @@
 // Documentation:
 //   http://code.google.com/apis/discovery
 // Classes:
-//   GTLDiscoveryRestDescription (0 custom class methods, 23 custom properties)
+//   GTLDiscoveryRestDescription (0 custom class methods, 24 custom properties)
 //   GTLDiscoveryRestDescriptionAuth (0 custom class methods, 1 custom properties)
 //   GTLDiscoveryRestDescriptionIcons (0 custom class methods, 2 custom properties)
 //   GTLDiscoveryRestDescriptionMethods (0 custom class methods, 0 custom properties)
@@ -75,6 +75,10 @@
 
 // The path for REST batch requests.
 @property (copy) NSString *batchPath;
+
+// Indicates how the API name should be capitalized and split into various
+// parts. Useful for generating pretty class names.
+@property (copy) NSString *canonicalName;
 
 // The description of this API.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.

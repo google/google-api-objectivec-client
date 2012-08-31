@@ -27,7 +27,7 @@
 // Documentation:
 //   http://code.google.com/apis/discovery
 // Classes:
-//   GTLDiscoveryRestDescription (0 custom class methods, 23 custom properties)
+//   GTLDiscoveryRestDescription (0 custom class methods, 24 custom properties)
 //   GTLDiscoveryRestDescriptionAuth (0 custom class methods, 1 custom properties)
 //   GTLDiscoveryRestDescriptionIcons (0 custom class methods, 2 custom properties)
 //   GTLDiscoveryRestDescriptionMethods (0 custom class methods, 0 custom properties)
@@ -50,7 +50,7 @@
 //
 
 @implementation GTLDiscoveryRestDescription
-@dynamic auth, basePath, baseUrl, batchPath, descriptionProperty,
+@dynamic auth, basePath, baseUrl, batchPath, canonicalName, descriptionProperty,
          discoveryVersion, documentationLink, features, icons, identifier, kind,
          labels, methods, name, parameters, protocol, resources, revision,
          rootUrl, schemas, servicePath, title, version;

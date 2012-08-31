@@ -26,7 +26,7 @@
 // Documentation:
 //   http://code.google.com/apis/shopping/search/v1/getting_started.html
 // Classes:
-//   GTLShoppingModelDebug (0 custom class methods, 7 custom properties)
+//   GTLShoppingModelDebug (0 custom class methods, 9 custom properties)
 //   GTLShoppingModelDebugBackendTimesItem (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -58,6 +58,12 @@
 
 // Google internal.
 @property (copy) NSString *rdcResponse;
+
+// Google internal.
+@property (copy) NSString *recommendedItemsRequest;
+
+// Google internal.
+@property (copy) NSString *recommendedItemsResponse;
 
 // Google internal.
 @property (copy) NSString *searchRequest;
