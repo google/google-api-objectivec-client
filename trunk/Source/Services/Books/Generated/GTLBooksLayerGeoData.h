@@ -27,8 +27,8 @@
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
 // Classes:
 //   GTLBooksLayerGeoData (0 custom class methods, 2 custom properties)
-//   GTLBooksLayerGeoDataCommon (0 custom class methods, 4 custom properties)
-//   GTLBooksLayerGeoDataGeo (0 custom class methods, 9 custom properties)
+//   GTLBooksLayerGeoDataCommon (0 custom class methods, 5 custom properties)
+//   GTLBooksLayerGeoDataGeo (0 custom class methods, 8 custom properties)
 //   GTLBooksLayerGeoDataGeoBoundaryItem (0 custom class methods, 2 custom properties)
 //   GTLBooksLayerGeoDataGeoViewport (0 custom class methods, 2 custom properties)
 //   GTLBooksLayerGeoDataGeoViewportHi (0 custom class methods, 2 custom properties)
@@ -77,6 +77,10 @@
 // The URL for information for this location. Ex: wikipedia link.
 @property (copy) NSString *snippetUrl;
 
+// The display title and localized canonical name to use when searching for this
+// entity on Google search.
+@property (copy) NSString *title;
+
 @end
 
 
@@ -106,10 +110,6 @@
 // The type of map that should be used for this location. EX: HYBRID, ROADMAP,
 // SATELLITE, TERRAIN
 @property (copy) NSString *mapType;
-
-// The display title and localized canonical name to use when searching for this
-// entity on Google search.
-@property (copy) NSString *title;
 
 // The viewport for showing this location. This is a latitude, longitude
 // rectangle.

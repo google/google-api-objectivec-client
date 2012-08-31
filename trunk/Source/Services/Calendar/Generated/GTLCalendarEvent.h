@@ -24,9 +24,9 @@
 // Description:
 //   Lets you manipulate events and other calendar data.
 // Documentation:
-//   http://code.google.com/apis/calendar/v3/using.html
+//   https://developers.google.com/google-apps/calendar/firstapp
 // Classes:
-//   GTLCalendarEvent (0 custom class methods, 34 custom properties)
+//   GTLCalendarEvent (0 custom class methods, 35 custom properties)
 //   GTLCalendarEventCreator (0 custom class methods, 4 custom properties)
 //   GTLCalendarEventExtendedProperties (0 custom class methods, 2 custom properties)
 //   GTLCalendarEventGadget (0 custom class methods, 8 custom properties)
@@ -117,6 +117,10 @@
 // Whether attendees other than the organizer can see who the event's attendees
 // are. Optional. The default is False.
 @property (retain) NSNumber *guestsCanSeeOtherGuests;  // boolValue
+
+// An absolute link to the Google+ hangout associated with this event.
+// Read-only.
+@property (copy) NSString *hangoutLink;
 
 // An absolute link to this event in the Google Calendar Web UI. Read-only.
 @property (copy) NSString *htmlLink;

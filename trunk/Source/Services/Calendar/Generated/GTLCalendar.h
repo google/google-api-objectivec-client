@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@
 // Description:
 //   Lets you manipulate events and other calendar data.
 // Documentation:
-//   http://code.google.com/apis/calendar/v3/using.html
+//   https://developers.google.com/google-apps/calendar/firstapp
 
 #import "GTLCalendarConstants.h"
 
@@ -43,7 +43,6 @@
 #import "GTLCalendarEvents.h"
 #import "GTLCalendarFreeBusyCalendar.h"
 #import "GTLCalendarFreeBusyGroup.h"
-#import "GTLCalendarFreeBusyRequest.h"
 #import "GTLCalendarFreeBusyRequestItem.h"
 #import "GTLCalendarFreeBusyResponse.h"
 #import "GTLCalendarSetting.h"

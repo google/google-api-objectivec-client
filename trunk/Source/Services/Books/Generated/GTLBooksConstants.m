@@ -40,7 +40,8 @@ NSString * const kGTLBooksActionScroll   = @"scroll";
 NSString * const kGTLBooksActionSearch   = @"search";
 
 // Association
-NSString * const kGTLBooksAssociationComplementary = @"complementary";
+NSString * const kGTLBooksAssociationEndOfSample = @"end-of-sample";
+NSString * const kGTLBooksAssociationEndOfVolume = @"end-of-volume";
 
 // Download
 NSString * const kGTLBooksDownloadEpub = @"epub";

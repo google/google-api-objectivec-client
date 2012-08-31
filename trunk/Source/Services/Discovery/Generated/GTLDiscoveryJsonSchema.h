@@ -99,7 +99,8 @@
 // The minimum value of this parameter.
 @property (copy) NSString *minimum;
 
-// The regular expression this parameter must conform to.
+// The regular expression this parameter must conform to. Uses Java 6 regex
+// format: http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html
 @property (copy) NSString *pattern;
 
 // If this is a schema for an object, list the schema for each property of this

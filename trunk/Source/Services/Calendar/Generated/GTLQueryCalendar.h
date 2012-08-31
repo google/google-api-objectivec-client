@@ -24,7 +24,7 @@
 // Description:
 //   Lets you manipulate events and other calendar data.
 // Documentation:
-//   http://code.google.com/apis/calendar/v3/using.html
+//   https://developers.google.com/google-apps/calendar/firstapp
 // Classes:
 //   GTLQueryCalendar (32 custom class methods, 29 custom properties)
 
@@ -427,8 +427,10 @@
 //   pageToken: Token specifying which result page to return. Optional.
 //   q: Free text search terms to find events that match these terms in any
 //     field, except for extended properties. Optional.
-//   showDeleted: Whether to include deleted events (with 'eventStatus' equals
-//     'cancelled') in the result. Optional. The default is False.
+//   showDeleted: Whether to include deleted single events (with 'status' equals
+//     'cancelled') in the result. Cancelled instances of recurring events will
+//     still be included if 'singleEvents' is False. Optional. The default is
+//     False.
 //   showHiddenInvitations: Whether to include hidden invitations in the result.
 //     Optional. The default is False.
 //   singleEvents: Whether to expand recurring events into instances and only

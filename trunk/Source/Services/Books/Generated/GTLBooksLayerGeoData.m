@@ -27,8 +27,8 @@
 //   https://code.google.com/apis/books/docs/v1/getting_started.html
 // Classes:
 //   GTLBooksLayerGeoData (0 custom class methods, 2 custom properties)
-//   GTLBooksLayerGeoDataCommon (0 custom class methods, 4 custom properties)
-//   GTLBooksLayerGeoDataGeo (0 custom class methods, 9 custom properties)
+//   GTLBooksLayerGeoDataCommon (0 custom class methods, 5 custom properties)
+//   GTLBooksLayerGeoDataGeo (0 custom class methods, 8 custom properties)
 //   GTLBooksLayerGeoDataGeoBoundaryItem (0 custom class methods, 2 custom properties)
 //   GTLBooksLayerGeoDataGeoViewport (0 custom class methods, 2 custom properties)
 //   GTLBooksLayerGeoDataGeoViewportHi (0 custom class methods, 2 custom properties)
@@ -52,7 +52,7 @@
 //
 
 @implementation GTLBooksLayerGeoDataCommon
-@dynamic lang, previewImageUrl, snippet, snippetUrl;
+@dynamic lang, previewImageUrl, snippet, snippetUrl, title;
 @end
 
 
@@ -63,7 +63,7 @@
 
 @implementation GTLBooksLayerGeoDataGeo
 @dynamic boundary, cachePolicy, countryCode, latitude, longitude, mapType,
-         title, viewport, zoom;
+         viewport, zoom;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =

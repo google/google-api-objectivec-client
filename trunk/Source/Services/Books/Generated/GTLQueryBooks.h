@@ -554,22 +554,13 @@
 //   volumeId: ID of the source volume.
 //  Optional:
 //   association: Association type.
-//      kGTLBooksAssociationComplementary: Books that are complementary for
-//        additional reading.
-//   filter: Filter search results.
-//      kGTLBooksFilterEbooks: All Google eBooks.
-//      kGTLBooksFilterFreeEbooks: Google eBook with full volume text
-//        viewability.
-//      kGTLBooksFilterFull: Public can view entire volume text.
-//      kGTLBooksFilterPaidEbooks: Google eBook with a price.
-//      kGTLBooksFilterPartial: Public able to see parts of text.
-//   maxResults: Maximum number of results to return. (0..40)
-//   projection: Restrict information returned to a set of selected fields.
-//      kGTLBooksProjectionFull: Includes all volume data.
-//      kGTLBooksProjectionLite: Includes a subset of fields in volumeInfo and
-//        accessInfo.
+//      kGTLBooksAssociationEndOfSample: Recommendations for display
+//        end-of-sample.
+//      kGTLBooksAssociationEndOfVolume: Recommendations for display
+//        end-of-volume.
+//   locale: ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used
+//     for generating recommendations.
 //   source: String to identify the originator of this request.
-//   startIndex: Index of the first result to return (starts at 0)
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
 // Fetches a GTLBooksVolumes.

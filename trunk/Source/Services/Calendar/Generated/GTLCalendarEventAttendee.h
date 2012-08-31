@@ -24,7 +24,7 @@
 // Description:
 //   Lets you manipulate events and other calendar data.
 // Documentation:
-//   http://code.google.com/apis/calendar/v3/using.html
+//   https://developers.google.com/google-apps/calendar/firstapp
 // Classes:
 //   GTLCalendarEventAttendee (0 custom class methods, 10 custom properties)
 
