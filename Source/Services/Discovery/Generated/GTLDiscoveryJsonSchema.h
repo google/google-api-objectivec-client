@@ -25,7 +25,7 @@
 //   Lets you discover information about other Google APIs, such as what APIs
 //   are available, the resource and method details for each API
 // Documentation:
-//   http://code.google.com/apis/discovery
+//   https://developers.google.com/discovery/
 // Classes:
 //   GTLDiscoveryJsonSchema (0 custom class methods, 18 custom properties)
 //   GTLDiscoveryJsonSchemaAnnotations (0 custom class methods, 1 custom properties)

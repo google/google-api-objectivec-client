@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/google-apps/groups-settings/get_started
 // Classes:
-//   GTLGroupssettingsGroups (0 custom class methods, 24 custom properties)
+//   GTLGroupssettingsGroups (0 custom class methods, 26 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -68,6 +68,9 @@
 // Email id of the group
 @property (copy) NSString *email;
 
+// If this groups should be included in global address list or not.
+@property (copy) NSString *includeInGlobalAddressList;
+
 // If the contents of the group are archived.
 @property (copy) NSString *isArchived;
 
@@ -104,6 +107,10 @@
 
 // Is the group listed in groups directory
 @property (copy) NSString *showInGroupDirectory;
+
+// Moderation level for messages detected as spam. Possible values are: ALLOW
+// MODERATE SILENTLY_MODERATE REJECT
+@property (copy) NSString *spamModerationLevel;
 
 // Permissions to invite members. Possbile values are: ALL_MEMBERS_CAN_INVITE
 // ALL_MANAGERS_CAN_INVITE

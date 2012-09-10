@@ -25,7 +25,7 @@
 //   Gives AdSense publishers access to their inventory and the ability to
 //   generate reports
 // Documentation:
-//   https://code.google.com/apis/adsense/management/
+//   https://developers.google.com/adsense/management/
 // Classes:
 //   GTLQueryAdsense (20 custom class methods, 18 custom properties)
 

@@ -24,7 +24,7 @@
 // Description:
 //   Lets you search over product data.
 // Documentation:
-//   http://code.google.com/apis/shopping/search/v1/getting_started.html
+//   https://developers.google.com/shopping-search/v1/getting_started
 // Classes:
 //   GTLQueryShopping (2 custom class methods, 34 custom properties)
 //   GTLShoppingProductsGetCategories (0 custom class methods, 3 custom properties)
