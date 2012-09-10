@@ -516,13 +516,10 @@ static NSMutableDictionary *gKindMap = nil;
                 defaultClass:(Class)defaultClass
                   surrogates:(NSDictionary *)surrogates
                batchClassMap:(NSDictionary *)batchClassMap {
-  if ([json isEqual:[NSNull null]]) {
+  if ([json count] == 0 || [json isEqual:[NSNull null]]) {
     // no actual result, such as the response from a delete
     return nil;
   }
-
-  GTL_ASSERT([json count] != 0, @"Creating object from empty json");
-  if ([json count] == 0) return nil;
 
   // Determine the class to instantiate, based on the original fetch
   // request or by looking up "kind" string from the registration at
