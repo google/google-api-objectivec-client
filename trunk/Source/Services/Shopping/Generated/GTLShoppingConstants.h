@@ -24,7 +24,7 @@
 // Description:
 //   Lets you search over product data.
 // Documentation:
-//   http://code.google.com/apis/shopping/search/v1/getting_started.html
+//   https://developers.google.com/shopping-search/v1/getting_started
 
 #import <Foundation/Foundation.h>
 

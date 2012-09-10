@@ -24,7 +24,7 @@
 // Description:
 //   Lets you search over product data.
 // Documentation:
-//   http://code.google.com/apis/shopping/search/v1/getting_started.html
+//   https://developers.google.com/shopping-search/v1/getting_started
 // Classes:
 //   GTLShoppingModelRecommendations (0 custom class methods, 2 custom properties)
 //   GTLShoppingModelRecommendationsRecommendationListItem (0 custom class methods, 1 custom properties)

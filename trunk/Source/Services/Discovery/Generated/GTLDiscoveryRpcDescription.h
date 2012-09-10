@@ -25,7 +25,7 @@
 //   Lets you discover information about other Google APIs, such as what APIs
 //   are available, the resource and method details for each API
 // Documentation:
-//   http://code.google.com/apis/discovery
+//   https://developers.google.com/discovery/
 // Classes:
 //   GTLDiscoveryRpcDescription (0 custom class methods, 21 custom properties)
 //   GTLDiscoveryRpcDescriptionAuth (0 custom class methods, 1 custom properties)

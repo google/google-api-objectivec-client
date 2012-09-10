@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/google-apps/groups-settings/get_started
 // Classes:
-//   GTLGroupssettingsGroups (0 custom class methods, 24 custom properties)
+//   GTLGroupssettingsGroups (0 custom class methods, 26 custom properties)
 
 #import "GTLGroupssettingsGroups.h"
 
@@ -38,11 +38,12 @@
 @implementation GTLGroupssettingsGroups
 @dynamic allowExternalMembers, allowGoogleCommunication, allowWebPosting,
          archiveOnly, customReplyTo, defaultMessageDenyNotificationText,
-         descriptionProperty, email, isArchived, kind, maxMessageBytes,
-         membersCanPostAsTheGroup, messageDisplayFont, messageModerationLevel,
-         name, primaryLanguage, replyTo, sendMessageDenyNotification,
-         showInGroupDirectory, whoCanInvite, whoCanJoin, whoCanPostMessage,
-         whoCanViewGroup, whoCanViewMembership;
+         descriptionProperty, email, includeInGlobalAddressList, isArchived,
+         kind, maxMessageBytes, membersCanPostAsTheGroup, messageDisplayFont,
+         messageModerationLevel, name, primaryLanguage, replyTo,
+         sendMessageDenyNotification, showInGroupDirectory, spamModerationLevel,
+         whoCanInvite, whoCanJoin, whoCanPostMessage, whoCanViewGroup,
+         whoCanViewMembership;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
