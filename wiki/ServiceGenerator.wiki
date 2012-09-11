@@ -1,5 +1,6 @@
 #summary Help page for ServiceGenerator tool.
 
+<code language="xml">
 {{{
 Usage: ServiceGenerator [FLAGS] [ARGS]
 
@@ -76,3 +77,4 @@ Usage: ServiceGenerator [FLAGS] [ARGS]
         The path to a text file containing the description of a service to
         generate.
 }}}
+</code>
