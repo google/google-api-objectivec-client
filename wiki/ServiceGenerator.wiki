@@ -4,7 +4,7 @@
 {{{
 Usage: ServiceGenerator [FLAGS] [ARGS]
 
-  Requried Flags:
+  Required Flags:
 
     --outputDir PATH
         The destination directory for writing the generated files.
