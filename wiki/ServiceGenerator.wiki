@@ -11,7 +11,7 @@ Usage: ServiceGenerator [FLAGS] [ARGS]
   Optional Flags:
 
     --discoveryService URL
-        Instead of discovery's default URL, use the specified URL as the
+        Instead of discovery’s default URL, use the specified URL as the
         location to send the JSON-RPC requests. This is useful for running
         against a custom or prerelease server.
 
