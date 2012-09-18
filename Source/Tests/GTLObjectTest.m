@@ -27,6 +27,7 @@
 // Basic types
 @property (copy) NSString *aStr;
 @property (copy) NSString *str2;
+@property (copy) NSString *identifier;
 @property (retain) NSNumber *aNum;
 @property (retain) GTLDateTime *aDate;
 @property (retain) GTLDateTime *date2;
@@ -43,24 +44,20 @@
 @end
 
 @implementation GTLTestingObject
-@dynamic aStr, str2, aNum, aDate, date2, child, anything;
+@dynamic aStr, str2, identifier, aNum, aDate, date2, child, anything;
 @dynamic arrayString, arrayNumber, arrayDate, arrayKids, arrayAnything;
 + (NSDictionary *)propertyToJSONKeyMap {
   // Use the name mapping on a few...
-  return [NSDictionary dictionaryWithObjectsAndKeys:
-          @"a_str", @"aStr",
-          @"a.num", @"aNum",  // Test property names with '.' to be safe.
-          @"a_date", @"aDate",
-          nil];
+  return @{ @"aStr" : @"a_str",
+            @"aNum" : @"a.num",  // Test property names with '.' to be safe.
+            @"aDate" : @"a_date" };
 }
 + (NSDictionary *)arrayPropertyToClassMap {
-  return [NSDictionary dictionaryWithObjectsAndKeys:
-          [NSString class], @"arrayString",
-          [NSNumber class], @"arrayNumber",
-          [GTLDateTime class], @"arrayDate",
-          [GTLTestingObject class], @"arrayKids",
-          [NSObject class], @"arrayAnything",
-          nil];
+  return @{ @"arrayString" : [NSString class],
+            @"arrayNumber" : [NSNumber class],
+            @"arrayDate" : [GTLDateTime class],
+            @"arrayKids" : [GTLTestingObject class],
+            @"arrayAnything" : [NSObject class] };
 }
 @end
 
@@ -70,6 +67,14 @@
 
 @implementation GTLTestingObjectWithPrimeKey
 @dynamic str2Prime;
+@end
+
+@interface GTLTestingCollection : GTLCollectionObject
+@property (retain) NSArray *items;  // of GTLTestingObject
+@end
+
+@implementation GTLTestingCollection
+@dynamic items;
 @end
 
 // Subclass we can change the default type for additonal properies to make
@@ -119,20 +124,20 @@ static Class gAdditionalPropsClass = Nil;
   GTLTestingObject *obj;
 
   obj = [GTLTestingObject object];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
 
   obj = [GTLTestingObject objectWithJSON:nil];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
 
   obj = [GTLTestingObject objectWithJSON:[NSMutableDictionary dictionary]];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
 }
 
 #pragma mark Getters and Setters
 
 - (void)testSetBasicTypes {
   GTLTestingObject *obj = [GTLTestingObject object];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
   NSMutableDictionary *expected;
 
   // test setting basic types
@@ -140,21 +145,19 @@ static Class gAdditionalPropsClass = Nil;
   // string
   obj.aStr = @"foo bar";
   obj.str2 = @"mumble";
-  expected = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-              @"foo bar", @"a_str",
-              @"mumble", @"str2",
-              nil];
+  expected = [[@{ @"a_str" : @"foo bar",
+                  @"str2" : @"mumble" } mutableCopy] autorelease];
   STAssertEqualObjects(obj.JSON, expected, nil);
 
   // number
-  obj.aNum = [NSNumber numberWithInteger:1234];
-  [expected setObject:[NSNumber numberWithInteger:1234] forKey:@"a.num"];
+  obj.aNum = @1234;
+  expected[@"a.num"] = @1234;
   STAssertEqualObjects(obj.JSON, expected, nil);
 
   // date
   NSString * const dateStr = @"2011-01-14T15:00:00-01:00";
   obj.aDate = [GTLDateTime dateTimeWithRFC3339String:dateStr];
-  [expected setObject:dateStr forKey:@"a_date"];
+  expected[@"a_date"] = dateStr;
   STAssertEqualObjects(obj.JSON, expected, nil);
 }
 
@@ -164,11 +167,11 @@ static Class gAdditionalPropsClass = Nil;
   NSError *err = nil;
   NSMutableDictionary *json = [GTLJSONParser objectWithString:jsonStr
                                                         error:&err];
-  STAssertNil(err, @"got error parsing");
-  STAssertNotNil(json, @"didn't get object parsing");
+  STAssertNil(err, nil);
+  STAssertNotNil(json, nil);
 
   GTLTestingObject *obj = [GTLTestingObject objectWithJSON:json];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
 
   // test getting basic types
 
@@ -177,7 +180,7 @@ static Class gAdditionalPropsClass = Nil;
   STAssertNil(obj.str2, nil);
 
   // number
-  STAssertEqualObjects(obj.aNum, [NSNumber numberWithInteger:1234], nil);
+  STAssertEqualObjects(obj.aNum, @1234, nil);
 
   // date
   NSString * const dateStr = @"2011-01-14T15:00:00-01:00";
@@ -188,28 +191,25 @@ static Class gAdditionalPropsClass = Nil;
 
 - (void)testSetArrayBasicTypes {
   GTLTestingObject *obj = [GTLTestingObject object];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
   NSMutableDictionary *expected = [NSMutableDictionary dictionary];
 
   // test setting array of basic types
 
   // string
-  obj.arrayString = [NSArray arrayWithObject:@"foo bar"];
-  [expected setObject:[NSArray arrayWithObject:@"foo bar"]
-               forKey:@"arrayString"];
+  obj.arrayString = @[ @"foo bar" ];
+  expected[@"arrayString"] = @[ @"foo bar" ];
   STAssertEqualObjects(obj.JSON, expected, nil);
 
   // number
-  obj.arrayNumber = [NSArray arrayWithObject:[NSNumber numberWithInteger:1234]];
-  [expected setObject:[NSArray arrayWithObject:[NSNumber numberWithInteger:1234]]
-               forKey:@"arrayNumber"];
+  obj.arrayNumber = @[ @1234 ];
+  expected[@"arrayNumber"] = @[ @1234 ];
   STAssertEqualObjects(obj.JSON, expected, nil);
 
   // date
   NSString * const dateStr = @"2011-01-14T15:00:00-01:00";
-  obj.arrayDate = [NSArray arrayWithObject:[GTLDateTime dateTimeWithRFC3339String:dateStr]];
-  [expected setObject:[NSArray arrayWithObject:dateStr]
-               forKey:@"arrayDate"];
+  obj.arrayDate = @[ [GTLDateTime dateTimeWithRFC3339String:dateStr] ];
+  expected[@"arrayDate"] = @[ dateStr ];
   STAssertEqualObjects(obj.JSON, expected, nil);
 }
 
@@ -219,58 +219,54 @@ static Class gAdditionalPropsClass = Nil;
   NSError *err = nil;
   NSMutableDictionary *json = [GTLJSONParser objectWithString:jsonStr
                                                         error:&err];
-  STAssertNil(err, @"got error parsing");
-  STAssertNotNil(json, @"didn't get object parsing");
+  STAssertNil(err, nil);
+  STAssertNotNil(json, nil);
 
   GTLTestingObject *obj = [GTLTestingObject objectWithJSON:json];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
 
   // test getting basic types
 
   // string
-  STAssertEqualObjects(obj.arrayString,
-                       [NSArray arrayWithObject:@"foo bar"],
-                       nil);
+  STAssertEqualObjects(obj.arrayString, @[ @"foo bar" ], nil);
 
   // number
-  STAssertEqualObjects(obj.arrayNumber,
-                       [NSArray arrayWithObject:[NSNumber numberWithInteger:1234]],
-                       nil);
+  STAssertEqualObjects(obj.arrayNumber, @[ @1234 ], nil);
 
   // date
   NSString * const dateStr = @"2011-01-14T15:00:00-01:00";
   STAssertEqualObjects(obj.arrayDate,
-                       [NSArray arrayWithObject:[GTLDateTime dateTimeWithRFC3339String:dateStr]],
+                       @[ [GTLDateTime dateTimeWithRFC3339String:dateStr] ],
                        nil);
 }
 
 - (void)testSetAnyTypeProperty {
   GTLTestingObject *obj = [GTLTestingObject object];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
   NSMutableDictionary *expected = [NSMutableDictionary dictionary];
 
   NSString *anythingStr = @"as string";
-  NSNumber *anythingNumber = [NSNumber numberWithInteger:9876];
+  NSNumber *anythingNumber = @9876;
   NSString * const dateStr = @"2011-01-14T15:00:00-01:00";
   GTLDateTime *anythingDate = [GTLDateTime dateTimeWithRFC3339String:dateStr];
-  NSArray *anythingArray = [NSArray arrayWithObject:@"array of string"];
+  NSArray *anythingArray = @[ @"array of string" ];
 
   // string
 
   obj.anything = anythingStr;
-  [expected setObject:anythingStr forKey:@"anything"];
+  expected[@"anything"] = anythingStr;
   STAssertEqualObjects(obj.JSON, expected, nil);
 
   // number
 
   obj.anything = anythingNumber;
-  [expected setObject:anythingNumber forKey:@"anything"];
+  expected[@"anything"] = anythingNumber;
   STAssertEqualObjects(obj.JSON, expected, nil);
 
   // date
 
   obj.anything = anythingDate;
-  [expected setObject:dateStr forKey:@"anything"];
+  expected[@"anything"] = dateStr;
   STAssertEqualObjects(obj.JSON, expected, nil);
 
   // GTLObject support tested in the SubObjectSupport test.
@@ -278,7 +274,7 @@ static Class gAdditionalPropsClass = Nil;
   // array (just test of string as plumbing is generic)
 
   obj.anything = anythingArray;
-  [expected setObject:anythingArray forKey:@"anything"];
+  expected[@"anything"] = anythingArray;
   STAssertEqualObjects(obj.JSON, expected, nil);
 }
 
@@ -300,11 +296,11 @@ static Class gAdditionalPropsClass = Nil;
 
   json = [GTLJSONParser objectWithString:jsonStrAnyString
                                    error:&err];
-  STAssertNil(err, @"got error parsing");
-  STAssertNotNil(json, @"didn't get object parsing");
+  STAssertNil(err, nil);
+  STAssertNotNil(json, nil);
 
   obj = [GTLTestingObject objectWithJSON:json];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
 
   STAssertEqualObjects(obj.anything, @"as string", nil);
 
@@ -312,24 +308,24 @@ static Class gAdditionalPropsClass = Nil;
 
   json = [GTLJSONParser objectWithString:jsonStrAnyNumber
                                    error:&err];
-  STAssertNil(err, @"got error parsing");
-  STAssertNotNil(json, @"didn't get object parsing");
+  STAssertNil(err, nil);
+  STAssertNotNil(json, nil);
 
   obj = [GTLTestingObject objectWithJSON:json];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
 
-  STAssertEqualObjects(obj.anything, [NSNumber numberWithInteger:9876], nil);
+  STAssertEqualObjects(obj.anything, @9876, nil);
 
   // date (there is nothing in the JSON to know it's a date, so it comes
   // back as a string.
 
   json = [GTLJSONParser objectWithString:jsonStrAnyDate
                                    error:&err];
-  STAssertNil(err, @"got error parsing");
-  STAssertNotNil(json, @"didn't get object parsing");
+  STAssertNil(err, nil);
+  STAssertNotNil(json, nil);
 
   obj = [GTLTestingObject objectWithJSON:json];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
 
   NSString * const dateStr = @"2011-01-14T15:00:00-01:00";
   STAssertEqualObjects(obj.anything, dateStr, nil);
@@ -340,46 +336,42 @@ static Class gAdditionalPropsClass = Nil;
 
   json = [GTLJSONParser objectWithString:jsonStrAnyArray
                                    error:&err];
-  STAssertNil(err, @"got error parsing");
-  STAssertNotNil(json, @"didn't get object parsing");
+  STAssertNil(err, nil);
+  STAssertNotNil(json, nil);
 
   obj = [GTLTestingObject objectWithJSON:json];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
 
-  STAssertEqualObjects(obj.anything,
-                       [NSArray arrayWithObject:@"array of string"],
-                       nil);
+  STAssertEqualObjects(obj.anything, @[ @"array of string" ], nil);
 }
 
 - (void)testSetArrayAnyTypeProperty {
   GTLTestingObject *obj = [GTLTestingObject object];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
   NSMutableDictionary *expected = [NSMutableDictionary dictionary];
 
-  NSArray *arrayAnythingStr = [NSArray arrayWithObject:@"as string"];
-  NSArray *arrayAnythingNumber =
-    [NSArray arrayWithObject:[NSNumber numberWithInteger:9876]];
+  NSArray *arrayAnythingStr = @[ @"as string" ];
+  NSArray *arrayAnythingNumber = @[ @9876 ];
   NSString * const dateStr = @"2011-01-14T15:00:00-01:00";
   NSArray *arrayAnythingDate =
-    [NSArray arrayWithObject:[GTLDateTime dateTimeWithRFC3339String:dateStr]];
+    @[ [GTLDateTime dateTimeWithRFC3339String:dateStr] ];
 
   // string
 
   obj.arrayAnything = arrayAnythingStr;
-  [expected setObject:arrayAnythingStr forKey:@"arrayAnything"];
+  expected[@"arrayAnything"] = arrayAnythingStr;
   STAssertEqualObjects(obj.JSON, expected, nil);
 
   // number
 
   obj.arrayAnything = arrayAnythingNumber;
-  [expected setObject:arrayAnythingNumber forKey:@"arrayAnything"];
+  expected[@"arrayAnything"] = arrayAnythingNumber;
   STAssertEqualObjects(obj.JSON, expected, nil);
 
   // date
 
   obj.arrayAnything = arrayAnythingDate;
-  [expected setObject:[NSArray arrayWithObject:dateStr]
-               forKey:@"arrayAnything"];
+  expected[@"arrayAnything"] = @[ dateStr ];
   STAssertEqualObjects(obj.JSON, expected, nil);
 
   // GTLObject support tested in the ArraySubObjectSupport test.
@@ -401,45 +393,39 @@ static Class gAdditionalPropsClass = Nil;
 
   json = [GTLJSONParser objectWithString:jsonStrArrayAnyString
                                    error:&err];
-  STAssertNil(err, @"got error parsing");
-  STAssertNotNil(json, @"didn't get object parsing");
+  STAssertNil(err, nil);
+  STAssertNotNil(json, nil);
 
   obj = [GTLTestingObject objectWithJSON:json];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
 
-  STAssertEqualObjects(obj.anything,
-                       [NSArray arrayWithObject:@"as string"],
-                       nil);
+  STAssertEqualObjects(obj.anything, @[ @"as string" ], nil);
 
   // number
 
   json = [GTLJSONParser objectWithString:jsonStrArrayAnyNumber
                                    error:&err];
-  STAssertNil(err, @"got error parsing");
-  STAssertNotNil(json, @"didn't get object parsing");
+  STAssertNil(err, nil);
+  STAssertNotNil(json, nil);
 
   obj = [GTLTestingObject objectWithJSON:json];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
 
-  STAssertEqualObjects(obj.anything,
-                       [NSArray arrayWithObject:[NSNumber numberWithInteger:9876]],
-                       nil);
+  STAssertEqualObjects(obj.anything, @[ @9876 ], nil);
 
   // date (there is nothing in the JSON to know it's a date, so it comes
   // back as a string.
 
   json = [GTLJSONParser objectWithString:jsonStrArrayAnyDate
                                    error:&err];
-  STAssertNil(err, @"got error parsing");
-  STAssertNotNil(json, @"didn't get object parsing");
+  STAssertNil(err, nil);
+  STAssertNotNil(json, nil);
 
   obj = [GTLTestingObject objectWithJSON:json];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
 
   NSString * const dateStr = @"2011-01-14T15:00:00-01:00";
-  STAssertEqualObjects(obj.anything,
-                       [NSArray arrayWithObject:dateStr],
-                       nil);
+  STAssertEqualObjects(obj.anything, @[ dateStr ], nil);
 
   // GTLObject support tested in the ArraySubObjectSupport test.
 }
@@ -449,28 +435,28 @@ static Class gAdditionalPropsClass = Nil;
   // test sub (child) objects
 
   GTLTestingObject *obj = [GTLTestingObject object];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
   GTLTestingObject *child = [GTLTestingObject object];
-  STAssertNotNil(child, @"failed to make object");
+  STAssertNotNil(child, nil);
   GTLTestingObject *child2 = [GTLTestingObject object];
-  STAssertNotNil(child2, @"failed to make object");
+  STAssertNotNil(child2, nil);
 
   child.aStr = @"I'm the kid";
   child2.aStr = @"I'm the any kid";
   obj.child = child;
   obj.anything = child2;
-  STAssertNotNil(obj.child, @"woow");
+  STAssertNotNil(obj.child, nil);
 
   NSString *jsonStr = obj.JSONString;
   STAssertNotNil(jsonStr, nil);
   NSError *err = nil;
   NSMutableDictionary *json = [GTLJSONParser objectWithString:jsonStr
                                                         error:&err];
-  STAssertNil(err, @"got error parsing");
-  STAssertNotNil(json, @"didn't get object parsing");
+  STAssertNil(err, nil);
+  STAssertNotNil(json, nil);
 
   GTLTestingObject *obj2 = [GTLTestingObject objectWithJSON:json];
-  STAssertNotNil(obj2, @"failed to make object");
+  STAssertNotNil(obj2, nil);
 
   // object matches (including kids)
   STAssertEqualObjects(obj, obj2, nil);
@@ -481,9 +467,9 @@ static Class gAdditionalPropsClass = Nil;
   STAssertNotNil(obj2.anything, nil);
 
   // kids match and wasn't same pointer
-  STAssertTrue(obj2.child != child, @"got same ptr?");
+  STAssertTrue(obj2.child != child, nil);
   STAssertEqualObjects(obj2.child, child, nil);
-  STAssertTrue(obj2.anything != child2, @"got same ptr?");
+  STAssertTrue(obj2.anything != child2, nil);
   STAssertEqualObjects(obj2.anything, child2, nil);
 }
 
@@ -497,10 +483,10 @@ static Class gAdditionalPropsClass = Nil;
   obj.child.child.aStr = @"froglegs";
 
   NSMutableDictionary *json = obj.JSON;
-  STAssertNotNil(json, @"nester setters json");
+  STAssertNotNil(json, nil);
 
   GTLTestingObject *obj2 = [GTLTestingObject objectWithJSON:json];
-  STAssertEqualObjects(obj2.child.child.aStr, @"froglegs", @"nested setters");
+  STAssertEqualObjects(obj2.child.child.aStr, @"froglegs", nil);
 
   // ensure that the internal JSON tree is built even when adding to an
   // object of ambiguous type
@@ -512,7 +498,7 @@ static Class gAdditionalPropsClass = Nil;
   obj2.child.aStr = @"froglegs";
 
   json = obj.JSON;
-  STAssertNotNil(json, @"nester setters json");
+  STAssertNotNil(json, nil);
 }
 
 - (void)testArraySubObjectSupport {
@@ -520,27 +506,27 @@ static Class gAdditionalPropsClass = Nil;
   // test array of sub (child) objects
 
   GTLTestingObject *obj = [GTLTestingObject object];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
   GTLTestingObject *child = [GTLTestingObject object];
-  STAssertNotNil(child, @"failed to make object");
+  STAssertNotNil(child, nil);
   GTLTestingObject *child2 = [GTLTestingObject object];
-  STAssertNotNil(child2, @"failed to make object");
+  STAssertNotNil(child2, nil);
 
   child.aStr = @"I'm a kid";
   child2.aStr = @"I'm a any kid";
-  obj.arrayKids = [NSArray arrayWithObject:child];
-  obj.arrayAnything = [NSArray arrayWithObject:child2];
+  obj.arrayKids = @[ child ];
+  obj.arrayAnything = @[ child2 ];
 
   NSString *jsonStr = obj.JSONString;
   STAssertNotNil(jsonStr, nil);
   NSError *err = nil;
   NSMutableDictionary *json = [GTLJSONParser objectWithString:jsonStr
                                                         error:&err];
-  STAssertNil(err, @"got error parsing");
-  STAssertNotNil(json, @"didn't get object parsing");
+  STAssertNil(err, nil);
+  STAssertNotNil(json, nil);
 
   GTLTestingObject *obj2 = [GTLTestingObject objectWithJSON:json];
-  STAssertNotNil(obj2, @"failed to make object");
+  STAssertNotNil(obj2, nil);
 
   // object matches (including kids)
   STAssertEqualObjects(obj, obj2, nil);
@@ -551,10 +537,10 @@ static Class gAdditionalPropsClass = Nil;
   STAssertNotNil(obj2.arrayAnything, nil);
 
   // kids match and wasn't same pointer
-  STAssertTrue([obj2.arrayKids objectAtIndex:0] != child, @"got same ptr?");
-  STAssertEqualObjects([obj2.arrayKids objectAtIndex:0], child, nil);
-  STAssertTrue([obj2.arrayAnything objectAtIndex:0] != child2, @"got same ptr?");
-  STAssertEqualObjects([obj2.arrayAnything objectAtIndex:0], child2, nil);
+  STAssertTrue(obj2.arrayKids[0] != child, nil);
+  STAssertEqualObjects(obj2.arrayKids[0], child, nil);
+  STAssertTrue(obj2.arrayAnything[0] != child2, nil);
+  STAssertEqualObjects(obj2.arrayAnything[0], child2, nil);
 }
 
 - (void)testPropertyNameSubStrings {
@@ -566,14 +552,11 @@ static Class gAdditionalPropsClass = Nil;
 
   // Test lookup for a setter.
 
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
   obj.str2 = @"for base class";
   obj.str2Prime = @"for subclass";
-  NSDictionary *expected =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-       @"for base class", @"str2",
-       @"for subclass", @"str2Prime",
-       nil];
+  NSDictionary *expected = [[@{ @"str2" : @"for base class",
+                                @"str2Prime" : @"for subclass" } mutableCopy] autorelease];
   STAssertEqualObjects(obj.JSON, expected, nil);
 
   // Test lookup for a getter.
@@ -584,52 +567,44 @@ static Class gAdditionalPropsClass = Nil;
 
 - (void)testSetArrayOfArrayOfDotDotDot {
   GTLTestingObject *obj = [GTLTestingObject object];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
   NSMutableDictionary *expected = [NSMutableDictionary dictionary];
 
   // test setting arrays of arrays of...
 
-  obj.arrayString = [NSArray arrayWithObject:[NSArray arrayWithObject:@"foo"]];
-  [expected setObject:[NSArray arrayWithObject:[NSArray arrayWithObject:@"foo"]]
-               forKey:@"arrayString"];
+  obj.arrayString = @[ @[ @"foo" ] ];
+  expected[@"arrayString"] = @[ @[ @"foo" ] ];
   STAssertEqualObjects(obj.JSON, expected, nil);
 
-  obj.arrayNumber =
-    [NSArray arrayWithObject:[NSArray arrayWithObject:[NSArray arrayWithObject:[NSNumber numberWithInteger:987]]]];
-  [expected setObject:[NSArray arrayWithObject:[NSArray arrayWithObject:[NSArray arrayWithObject:[NSNumber numberWithInteger:987]]]]
-               forKey:@"arrayNumber"];
+  obj.arrayNumber = @[ @[ @[ @987 ] ] ];
+  expected[@"arrayNumber"] = @[ @[ @[ @987 ] ] ];
   STAssertEqualObjects(obj.JSON, expected, nil);
 
   NSString * const dateStr = @"2011-01-14T15:00:00-01:00";
-  obj.arrayDate =
-    [NSArray arrayWithObject:[NSArray arrayWithObject:[GTLDateTime dateTimeWithRFC3339String:dateStr]]];
-  [expected setObject:[NSArray arrayWithObject:[NSArray arrayWithObject:dateStr]]
-               forKey:@"arrayDate"];
+  obj.arrayDate = @[ @[ [GTLDateTime dateTimeWithRFC3339String:dateStr] ] ];
+  expected[@"arrayDate"] = @[ @[ dateStr ] ];
   STAssertEqualObjects(obj.JSON, expected, nil);
 
   GTLTestingObject *child = [GTLTestingObject object];
-  STAssertNotNil(child, @"failed to make object");
+  STAssertNotNil(child, nil);
   child.aStr = @"I'm a kid";
 
-  obj.arrayKids = [NSArray arrayWithObject:[NSArray arrayWithObject:child]];
-  [expected setObject:[NSArray arrayWithObject:[NSArray arrayWithObject:child.JSON]]
-               forKey:@"arrayKids"];
+  obj.arrayKids = @[ @[ child ] ];
+  expected[@"arrayKids"] = @[ @[ child.JSON ] ];
   STAssertEqualObjects(obj.JSON, expected, nil);
 
   // Array of anything as a string.
-  obj.arrayAnything = [NSArray arrayWithObject:[NSArray arrayWithObject:@"a string"]];
-  [expected setObject:[NSArray arrayWithObject:[NSArray arrayWithObject:@"a string"]]
-               forKey:@"arrayAnything"];
+  obj.arrayAnything = @[ @[ @"a string" ] ];
+  expected[@"arrayAnything"] = @[ @[ @"a string" ] ];
   STAssertEqualObjects(obj.JSON, expected, nil);
 
   GTLTestingObject *child2 = [GTLTestingObject object];
-  STAssertNotNil(child2, @"failed to make object");
+  STAssertNotNil(child2, nil);
   child2.aStr = @"I'm a any kid";
 
   // Array of anything as an object.
-  obj.arrayAnything = [NSArray arrayWithObject:[NSArray arrayWithObject:child2]];
-  [expected setObject:[NSArray arrayWithObject:[NSArray arrayWithObject:child2.JSON]]
-               forKey:@"arrayAnything"];
+  obj.arrayAnything = @[ @[ child2 ] ];
+  expected[@"arrayAnything"] = @[ @[ child2.JSON ] ];
   STAssertEqualObjects(obj.JSON, expected, nil);
 }
 
@@ -645,37 +620,35 @@ static Class gAdditionalPropsClass = Nil;
   NSMutableDictionary *json = [GTLJSONParser objectWithString:jsonStr
                                                         error:&err];
   STAssertNil(err, @"got error parsing: %@", err);
-  STAssertNotNil(json, @"didn't get object parsing");
+  STAssertNotNil(json, nil);
 
   GTLTestingObject *obj = [GTLTestingObject objectWithJSON:json];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
 
   // test getting arrays of arrays of...
 
-  STAssertEqualObjects(obj.arrayString,
-                       [NSArray arrayWithObject:[NSArray arrayWithObject:@"foo"]],
+  STAssertEqualObjects(obj.arrayString, @[ @[ @"foo" ] ],
                        @"array of array of string");
 
-  STAssertEqualObjects(obj.arrayNumber,
-                       [NSArray arrayWithObject:[NSArray arrayWithObject:[NSArray arrayWithObject:[NSNumber numberWithInteger:987]]]],
+  STAssertEqualObjects(obj.arrayNumber, @[ @[ @[ @987 ] ] ],
                        @"array of array of array of number");
 
   NSString * const dateStr = @"2011-01-14T15:00:00-01:00";
   STAssertEqualObjects(obj.arrayDate,
-                       [NSArray arrayWithObject:[NSArray arrayWithObject:[GTLDateTime dateTimeWithRFC3339String:dateStr]]],
+                       @[ @[ [GTLDateTime dateTimeWithRFC3339String:dateStr] ] ],
                        @"array of array of datetime");
 
   // Kid in array of array.
   NSArray *aArray = obj.arrayKids;
   STAssertEquals([aArray count], (NSUInteger)1, nil);
-  aArray = [aArray objectAtIndex:0];
+  aArray = aArray[0];
   STAssertEquals([aArray count], (NSUInteger)1, nil);
-  GTLTestingObject *child = [aArray objectAtIndex:0];
+  GTLTestingObject *child = aArray[0];
   STAssertEqualObjects(child.aStr, @"I'm a kid", nil);
 
   // Anything (string) in array of array.
   STAssertEqualObjects(obj.arrayAnything,
-                       [NSArray arrayWithObject:[NSArray arrayWithObject:@"a string"]],
+                       @[ @[ @"a string" ] ],
                        @"array of array of anything as string");
 
   // anything (kid) in array of array.
@@ -685,16 +658,16 @@ static Class gAdditionalPropsClass = Nil;
   err = nil;
   json = [GTLJSONParser objectWithString:jsonStr2 error:&err];
   STAssertNil(err, @"got error parsing: %@", err);
-  STAssertNotNil(json, @"didn't get object parsing");
+  STAssertNotNil(json, nil);
   obj = [GTLTestingObject objectWithJSON:json];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
 
   aArray = obj.arrayAnything;
   STAssertEquals([aArray count], (NSUInteger)1, nil);
-  aArray = [aArray objectAtIndex:0];
+  aArray = aArray[0];
   STAssertEquals([aArray count], (NSUInteger)1, nil);
   // Test doesn't use kinds, so this comes in as a generic object.
-  GTLObject *anyChild = [aArray objectAtIndex:0];
+  GTLObject *anyChild = aArray[0];
   STAssertEqualObjects([anyChild additionalPropertyForName:@"a_str"],
                        @"I'm a any kid", nil);
 }
@@ -704,7 +677,7 @@ static Class gAdditionalPropsClass = Nil;
 - (void)testSetAdditionalPropertiesBasicTypes {
   GTLTestingAdditionalPropertiesObject *obj =
     [GTLTestingAdditionalPropertiesObject object];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
   NSMutableDictionary *expected;
 
   // test setting basic types
@@ -712,16 +685,14 @@ static Class gAdditionalPropsClass = Nil;
   // string
   [GTLTestingAdditionalPropertiesObject setAdditionalPropsClass:[NSString class]];
   [obj setAdditionalProperty:@"foo bar" forName:@"ap1"];
-  expected = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-              @"foo bar", @"ap1",
-              nil];
+  expected = [[@{ @"ap1" : @"foo bar" } mutableCopy] autorelease];
   STAssertEqualObjects(obj.JSON, expected, nil);
 
   // number
   [GTLTestingAdditionalPropertiesObject setAdditionalPropsClass:[NSNumber class]];
-  [obj setAdditionalProperty:[NSNumber numberWithInteger:987]
+  [obj setAdditionalProperty:@987
                      forName:@"ap2"];
-  [expected setObject:[NSNumber numberWithInteger:987] forKey:@"ap2"];
+  expected[@"ap2"] = @987;
   STAssertEqualObjects(obj.JSON, expected, nil);
 
   // date
@@ -729,7 +700,7 @@ static Class gAdditionalPropsClass = Nil;
   NSString * const dateStr = @"2011-01-14T15:00:00-01:00";
   [obj setAdditionalProperty:[GTLDateTime dateTimeWithRFC3339String:dateStr]
                      forName:@"ap3"];
-  [expected setObject:dateStr forKey:@"ap3"];
+  expected[@"ap3"] = dateStr;
   STAssertEqualObjects(obj.JSON, expected, nil);
 }
 
@@ -739,11 +710,11 @@ static Class gAdditionalPropsClass = Nil;
   NSError *err = nil;
   NSMutableDictionary *json = [GTLJSONParser objectWithString:jsonStr
                                                         error:&err];
-  STAssertNil(err, @"got error parsing");
-  STAssertNotNil(json, @"didn't get object parsing");
+  STAssertNil(err, nil);
+  STAssertNotNil(json, nil);
 
   GTLTestingObject *obj = [GTLTestingAdditionalPropertiesObject objectWithJSON:json];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
 
   // test getting basic types
 
@@ -755,7 +726,7 @@ static Class gAdditionalPropsClass = Nil;
   // number
   [GTLTestingAdditionalPropertiesObject setAdditionalPropsClass:[NSNumber class]];
   STAssertEqualObjects([obj additionalPropertyForName:@"ap2"],
-                       [NSNumber numberWithInteger:1234], nil);
+                       @1234, nil);
 
   // date
   [GTLTestingAdditionalPropertiesObject setAdditionalPropsClass:[GTLDateTime class]];
@@ -767,19 +738,17 @@ static Class gAdditionalPropsClass = Nil;
 - (void)testSetAdditionalPropertiesObject {
   GTLTestingAdditionalPropertiesObject *obj =
     [GTLTestingAdditionalPropertiesObject object];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
   NSMutableDictionary *expected;
 
   GTLTestingObject *child = [GTLTestingObject object];
-  STAssertNotNil(child, @"failed to make object");
+  STAssertNotNil(child, nil);
 
   child.aStr = @"I'm a kid";
 
   [GTLTestingAdditionalPropertiesObject setAdditionalPropsClass:[GTLTestingObject class]];
   [obj setAdditionalProperty:child forName:@"aKid"];
-  expected = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-              child.JSON, @"aKid",
-              nil];
+  expected = [[@{ @"aKid" : child.JSON } mutableCopy] autorelease];
   STAssertEqualObjects(obj.JSON, expected, nil);
 }
 
@@ -789,23 +758,23 @@ static Class gAdditionalPropsClass = Nil;
   NSError *err = nil;
   NSMutableDictionary *json = [GTLJSONParser objectWithString:jsonStr
                                                         error:&err];
-  STAssertNil(err, @"got error parsing");
-  STAssertNotNil(json, @"didn't get object parsing");
+  STAssertNil(err, nil);
+  STAssertNotNil(json, nil);
 
   GTLTestingObject *obj = [GTLTestingAdditionalPropertiesObject objectWithJSON:json];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
 
   [GTLTestingAdditionalPropertiesObject setAdditionalPropsClass:[GTLTestingObject class]];
   GTLTestingObject *child = [obj additionalPropertyForName:@"aKid"];
-  STAssertNotNil(child, @"failed to get kid");
-  STAssertTrue([child isKindOfClass:[GTLTestingObject class]], @"wrong class");
+  STAssertNotNil(child, nil);
+  STAssertTrue([child isKindOfClass:[GTLTestingObject class]], nil);
   STAssertEqualObjects(child.aStr, @"I'm a kid", nil);
 }
 
 - (void)testSetAdditionalPropertiesAnything {
   GTLTestingAdditionalPropertiesObject *obj =
     [GTLTestingAdditionalPropertiesObject object];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
   NSMutableDictionary *expected;
 
   // test setting when it can be anything
@@ -813,32 +782,30 @@ static Class gAdditionalPropsClass = Nil;
 
   // string
   [obj setAdditionalProperty:@"foo bar" forName:@"ap1"];
-  expected = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-              @"foo bar", @"ap1",
-              nil];
+  expected = [[@{ @"ap1": @"foo bar" } mutableCopy] autorelease];
   STAssertEqualObjects(obj.JSON, expected, nil);
 
   // number
-  [obj setAdditionalProperty:[NSNumber numberWithInteger:987]
+  [obj setAdditionalProperty:@987
                      forName:@"ap2"];
-  [expected setObject:[NSNumber numberWithInteger:987] forKey:@"ap2"];
+  expected[@"ap2"] = @987;
   STAssertEqualObjects(obj.JSON, expected, nil);
 
   // date
   NSString * const dateStr = @"2011-01-14T15:00:00-01:00";
   [obj setAdditionalProperty:[GTLDateTime dateTimeWithRFC3339String:dateStr]
                      forName:@"ap3"];
-  [expected setObject:dateStr forKey:@"ap3"];
+  expected[@"ap3"] = dateStr;
   STAssertEqualObjects(obj.JSON, expected, nil);
 
   // object
   GTLTestingObject *child = [GTLTestingObject object];
-  STAssertNotNil(child, @"failed to make object");
+  STAssertNotNil(child, nil);
 
   child.aStr = @"I'm a kid";
 
   [obj setAdditionalProperty:child forName:@"aKid"];
-  [expected setObject:child.JSON forKey:@"aKid"];
+  expected[@"aKid"] = child.JSON;
   STAssertEqualObjects(obj.JSON, expected, nil);
 }
 
@@ -848,11 +815,11 @@ static Class gAdditionalPropsClass = Nil;
   NSError *err = nil;
   NSMutableDictionary *json = [GTLJSONParser objectWithString:jsonStr
                                                         error:&err];
-  STAssertNil(err, @"got error parsing");
-  STAssertNotNil(json, @"didn't get object parsing");
+  STAssertNil(err, nil);
+  STAssertNotNil(json, nil);
 
   GTLTestingObject *obj = [GTLTestingAdditionalPropertiesObject objectWithJSON:json];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
 
   // test getting when it can be anything
   [GTLTestingAdditionalPropertiesObject setAdditionalPropsClass:[NSObject class]];
@@ -863,7 +830,7 @@ static Class gAdditionalPropsClass = Nil;
 
   // number
   STAssertEqualObjects([obj additionalPropertyForName:@"ap2"],
-                       [NSNumber numberWithInteger:1234], nil);
+                       @1234, nil);
 
   // date - just get the string back, nothing tells it to conver to a date.
   NSString * const dateStr = @"2011-01-14T15:00:00-01:00";
@@ -871,8 +838,8 @@ static Class gAdditionalPropsClass = Nil;
                        dateStr, nil);
 
   GTLObject *child = [obj additionalPropertyForName:@"aKid"];
-  STAssertNotNil(child, @"failed to get kid");
-  STAssertTrue([child isMemberOfClass:[GTLObject class]], @"wrong class");
+  STAssertNotNil(child, nil);
+  STAssertTrue([child isMemberOfClass:[GTLObject class]], nil);
   STAssertEqualObjects([child additionalPropertyForName:@"a_str"],
                        @"I'm a kid", nil);
 }
@@ -880,34 +847,31 @@ static Class gAdditionalPropsClass = Nil;
 - (void)testSetAdditionalPropertiesArraysOfBasicTypes {
   GTLTestingAdditionalPropertiesObject *obj =
     [GTLTestingAdditionalPropertiesObject object];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
   NSMutableDictionary *expected;
 
   // test setting arrays of basic types
 
   // string
   [GTLTestingAdditionalPropertiesObject setAdditionalPropsClass:[NSString class]];
-  [obj setAdditionalProperty:[NSArray arrayWithObject:@"foo bar"]
+  [obj setAdditionalProperty:@[ @"foo bar" ]
                      forName:@"apArray1"];
-  expected = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-              [NSArray arrayWithObject:@"foo bar"], @"apArray1",
-              nil];
+  expected = [[@{ @"apArray1": @[ @"foo bar" ] } mutableCopy] autorelease];
   STAssertEqualObjects(obj.JSON, expected, nil);
 
   // number
   [GTLTestingAdditionalPropertiesObject setAdditionalPropsClass:[NSNumber class]];
-  [obj setAdditionalProperty:[NSArray arrayWithObject:[NSNumber numberWithInteger:987]]
+  [obj setAdditionalProperty:@[ @987 ]
                      forName:@"apArray2"];
-  [expected setObject:[NSArray arrayWithObject:[NSNumber numberWithInteger:987]]
-               forKey:@"apArray2"];
+  expected[@"apArray2"] = @[ @987 ];
   STAssertEqualObjects(obj.JSON, expected, nil);
 
   // date
   [GTLTestingAdditionalPropertiesObject setAdditionalPropsClass:[GTLDateTime class]];
   NSString * const dateStr = @"2011-01-14T15:00:00-01:00";
-  [obj setAdditionalProperty:[NSArray arrayWithObject:[GTLDateTime dateTimeWithRFC3339String:dateStr]]
+  [obj setAdditionalProperty:@[ [GTLDateTime dateTimeWithRFC3339String:dateStr] ]
                      forName:@"apArray3"];
-  [expected setObject:[NSArray arrayWithObject:dateStr] forKey:@"apArray3"];
+  expected[@"apArray3"] = @[ dateStr ];
   STAssertEqualObjects(obj.JSON, expected, nil);
 }
 
@@ -917,50 +881,47 @@ static Class gAdditionalPropsClass = Nil;
   NSError *err = nil;
   NSMutableDictionary *json = [GTLJSONParser objectWithString:jsonStr
                                                         error:&err];
-  STAssertNil(err, @"got error parsing");
-  STAssertNotNil(json, @"didn't get object parsing");
+  STAssertNil(err, nil);
+  STAssertNotNil(json, nil);
 
   GTLTestingObject *obj = [GTLTestingAdditionalPropertiesObject objectWithJSON:json];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
 
   // test getting arrays of basic types
 
   // string
   [GTLTestingAdditionalPropertiesObject setAdditionalPropsClass:[NSString class]];
   STAssertEqualObjects([obj additionalPropertyForName:@"apArray1"],
-                       [NSArray arrayWithObject:@"foo bar"], nil);
+                       @[ @"foo bar" ], nil);
 
   // number
   [GTLTestingAdditionalPropertiesObject setAdditionalPropsClass:[NSNumber class]];
   STAssertEqualObjects([obj additionalPropertyForName:@"apArray2"],
-                       [NSArray arrayWithObject:[NSNumber numberWithInteger:1234]],
-                       nil);
+                       @[ @1234 ], nil);
 
   // date
   [GTLTestingAdditionalPropertiesObject setAdditionalPropsClass:[GTLDateTime class]];
   NSString * const dateStr = @"2011-01-14T15:00:00-01:00";
   STAssertEqualObjects([obj additionalPropertyForName:@"apArray3"],
-                       [NSArray arrayWithObject:[GTLDateTime dateTimeWithRFC3339String:dateStr]],
+                       @[ [GTLDateTime dateTimeWithRFC3339String:dateStr] ],
                        nil);
 }
 
 - (void)testSetAdditionalPropertiesArraysOfObject {
   GTLTestingAdditionalPropertiesObject *obj =
     [GTLTestingAdditionalPropertiesObject object];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
   NSMutableDictionary *expected;
 
   GTLTestingObject *child = [GTLTestingObject object];
-  STAssertNotNil(child, @"failed to make object");
+  STAssertNotNil(child, nil);
 
   child.aStr = @"I'm a kid";
 
   [GTLTestingAdditionalPropertiesObject setAdditionalPropsClass:[GTLTestingObject class]];
-  [obj setAdditionalProperty:[NSArray arrayWithObject:child]
+  [obj setAdditionalProperty:@[ child ]
                      forName:@"aKidArray"];
-  expected = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-              [NSArray arrayWithObject:child.JSON], @"aKidArray",
-              nil];
+  expected = [[@{ @"aKidArray": @[ child.JSON ] } mutableCopy] autorelease];
   STAssertEqualObjects(obj.JSON, expected, nil);
 }
 
@@ -970,28 +931,28 @@ static Class gAdditionalPropsClass = Nil;
   NSError *err = nil;
   NSMutableDictionary *json = [GTLJSONParser objectWithString:jsonStr
                                                         error:&err];
-  STAssertNil(err, @"got error parsing");
-  STAssertNotNil(json, @"didn't get object parsing");
+  STAssertNil(err, nil);
+  STAssertNotNil(json, nil);
 
   GTLTestingObject *obj = [GTLTestingAdditionalPropertiesObject objectWithJSON:json];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
 
   [GTLTestingAdditionalPropertiesObject setAdditionalPropsClass:[GTLTestingObject class]];
   NSArray *kidArray = [obj additionalPropertyForName:@"aKidArray"];
-  STAssertNotNil(kidArray, @"failed to get kid array");
-  STAssertTrue([kidArray isKindOfClass:[NSArray class]], @"wrong class");
-  STAssertEquals([kidArray count], (NSUInteger)1, @"wrong number of kids");
+  STAssertNotNil(kidArray, nil);
+  STAssertTrue([kidArray isKindOfClass:[NSArray class]], nil);
+  STAssertEquals([kidArray count], (NSUInteger)1, nil);
 
-  GTLTestingObject *child = [kidArray objectAtIndex:0];
-  STAssertNotNil(child, @"failed to get kid");
-  STAssertTrue([child isKindOfClass:[GTLTestingObject class]], @"wrong class");
+  GTLTestingObject *child = kidArray[0];
+  STAssertNotNil(child, nil);
+  STAssertTrue([child isKindOfClass:[GTLTestingObject class]], nil);
   STAssertEqualObjects(child.aStr, @"I'm a kid", nil);
 }
 
 - (void)testSetAdditionalPropertiesArraysOfArrayOfDotDotDot {
   GTLTestingAdditionalPropertiesObject *obj =
     [GTLTestingAdditionalPropertiesObject object];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
   NSMutableDictionary *expected;
 
   // test setting arrays of arrays of...
@@ -1001,18 +962,15 @@ static Class gAdditionalPropsClass = Nil;
 
   [GTLTestingAdditionalPropertiesObject setAdditionalPropsClass:[NSString class]];
 
-  [obj setAdditionalProperty:[NSArray arrayWithObject:[NSArray arrayWithObject:@"foo"]]
+  [obj setAdditionalProperty:@[ @[ @"foo" ] ]
                      forName:@"apArray1"];
-  expected = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-              [NSArray arrayWithObject:[NSArray arrayWithObject:@"foo"]], @"apArray1",
-              nil];
-  STAssertEqualObjects(obj.JSON, expected, @"array of array of string");
+  expected = [[@{ @"apArray1": @[ @[ @"foo" ] ] } mutableCopy] autorelease];
+  STAssertEqualObjects(obj.JSON, expected, nil);
 
-  [obj setAdditionalProperty:[NSArray arrayWithObject:[NSArray arrayWithObject:[NSArray arrayWithObject:@"bar"]]]
+  [obj setAdditionalProperty:@[ @[ @[ @"bar" ] ] ]
                      forName:@"apArray2"];
-  [expected setObject:[NSArray arrayWithObject:[NSArray arrayWithObject:[NSArray arrayWithObject:@"bar"]]]
-               forKey:@"apArray2"];
-  STAssertEqualObjects(obj.JSON, expected, @"array of array of array of string");
+  expected[@"apArray2"] = @[ @[ @[ @"bar" ] ] ];
+  STAssertEqualObjects(obj.JSON, expected, nil);
 }
 
 - (void)testGetAdditionalPropertiesArraysOfArraysOfDotDotDot {
@@ -1021,11 +979,11 @@ static Class gAdditionalPropsClass = Nil;
   NSError *err = nil;
   NSMutableDictionary *json = [GTLJSONParser objectWithString:jsonStr
                                                         error:&err];
-  STAssertNil(err, @"got error parsing");
-  STAssertNotNil(json, @"didn't get object parsing");
+  STAssertNil(err, nil);
+  STAssertNotNil(json, nil);
 
   GTLTestingObject *obj = [GTLTestingAdditionalPropertiesObject objectWithJSON:json];
-  STAssertNotNil(obj, @"failed to make object");
+  STAssertNotNil(obj, nil);
 
   // test getting arrays of arrays of...
 
@@ -1034,11 +992,11 @@ static Class gAdditionalPropsClass = Nil;
 
   [GTLTestingAdditionalPropertiesObject setAdditionalPropsClass:[NSString class]];
   STAssertEqualObjects([obj additionalPropertyForName:@"apArray1"],
-                       [NSArray arrayWithObject:[NSArray arrayWithObject:@"foo"]],
+                       @[ @[ @"foo" ] ],
                        @"array of array of string");
 
   STAssertEqualObjects([obj additionalPropertyForName:@"apArray2"],
-                       [NSArray arrayWithObject:[NSArray arrayWithObject:[NSArray arrayWithObject:@"bar"]]],
+                       @[ @[ @[ @"bar" ] ] ],
                        @"array of array of array of string");
 }
 
@@ -1051,7 +1009,7 @@ static Class gAdditionalPropsClass = Nil;
 
   // Object hierarchy
   obj.aStr = @"green";
-  obj.aNum = [NSNumber numberWithInt:123];
+  obj.aNum = @123;
   obj.aDate = [GTLDateTime dateTimeWithRFC3339String:@"2011-05-04T23:28:20.888Z"];
   // Nested child object
   obj.child = [GTLTestingObject object];
@@ -1065,12 +1023,10 @@ static Class gAdditionalPropsClass = Nil;
   a1.str2 = @"yellow-gold-indigo";
   GTLTestingObject *a2 = [GTLTestingObject object];
   a2.aStr = @"yellow-gold";
-  obj.child.child.arrayKids = [NSArray arrayWithObjects:a1, a2, nil];
+  obj.child.child.arrayKids = @[ a1, a2 ];
   // Arrays of basic types
-  obj.child.child.arrayString = [NSArray arrayWithObjects:@"cat", @"dog", nil];
-  obj.child.child.arrayNumber = [NSArray arrayWithObjects:
-                                 [NSNumber numberWithInt:111],
-                                 [NSNumber numberWithInt:222], nil];
+  obj.child.child.arrayString = @[ @"cat", @"dog" ];
+  obj.child.child.arrayNumber = @[ @111, @222 ];
   return obj;
 }
 
@@ -1078,7 +1034,7 @@ static Class gAdditionalPropsClass = Nil;
   // Empty object
   GTLTestingObject *obj = [GTLTestingObject object];
   NSString *fields = [obj fieldsDescription];
-  STAssertEqualObjects(fields, @"", @"empty");
+  STAssertEqualObjects(fields, @"", nil);
 
   // Object hierarchy
   obj = [self objectForPartialTests];
@@ -1089,7 +1045,7 @@ static Class gAdditionalPropsClass = Nil;
     @"child/child/arrayKids(a_str,child/str2,str2),"
     @"child/child/arrayNumber,"
     @"child/child/arrayString";
-  STAssertEqualObjects(fields, expected, @"many fields");
+  STAssertEqualObjects(fields, expected, nil);
 }
 
 - (void)testPatchObjectGeneration {
@@ -1097,7 +1053,7 @@ static Class gAdditionalPropsClass = Nil;
   GTLTestingObject *obj2 = [GTLTestingObject object];
 
   GTLTestingObject *resultObj = [obj1 patchObjectFromOriginal:obj2];
-  STAssertNil(resultObj, @"empty");
+  STAssertNil(resultObj, nil);
 
   // It might be cleaner to test against expected JSON strings rather than
   // dictionaries, but SBJSON by default doesn't sort keys so the
@@ -1109,83 +1065,78 @@ static Class gAdditionalPropsClass = Nil;
   obj2 = [GTLTestingObject object];
   resultObj = [obj2 patchObjectFromOriginal:obj1];
 
-  NSDictionary *expected = [NSDictionary dictionaryWithObjectsAndKeys:
-                                [NSNull null], @"a_str",
-                                [NSNull null], @"a_date",
-                                [NSNull null], @"a.num",
-                                [NSNull null], @"child", nil];
-  STAssertEqualObjects(resultObj.JSON, expected, @"delete all");
+  NSDictionary *expected = @{ @"a_str" : [NSNull null],
+                              @"a_date" : [NSNull null],
+                              @"a.num" : [NSNull null],
+                              @"child" : [NSNull null] };
+  STAssertEqualObjects(resultObj.JSON, expected, nil);
 
   // Reverse: compare an empty object to the testing object,
   // and everything should be added
   resultObj = [obj1 patchObjectFromOriginal:obj2];
 
   expected = obj1.JSON;
-  STAssertEqualObjects(resultObj.JSON, expected, @"add all");
+  STAssertEqualObjects(resultObj.JSON, expected, nil);
 
   // Equal objects should return a nil result
   obj1 = [self objectForPartialTests];
   obj2 = [self objectForPartialTests];
   resultObj = [obj1 patchObjectFromOriginal:obj2];
-  STAssertNil(resultObj, @"equal objects");
+  STAssertNil(resultObj, nil);
 
   // Selectively add, change, and remove fields
   obj1 = [self objectForPartialTests];
   obj2 = [self objectForPartialTests];
 
-  obj1.aNum = [NSNumber numberWithFloat:9.87];
+  obj1.aNum = @9.87f;
   obj1.aStr = nil;
   obj1.str2 = @"raven";
   resultObj = [obj1 patchObjectFromOriginal:obj2];
-  expected = [NSDictionary dictionaryWithObjectsAndKeys:
-              [NSNumber numberWithFloat:9.87], @"a.num",
-              [NSNull null], @"a_str",
-              @"raven", @"str2",
-              nil];
+  expected = @{ @"a.num" : @9.87f,
+                @"a_str" : [NSNull null],
+                @"str2" : @"raven" };
 
-  STAssertEqualObjects(resultObj.JSON, expected, @"selective 1");
+  STAssertEqualObjects(resultObj.JSON, expected, nil);
 
   // Reverse the comparison direction
   resultObj = [obj2 patchObjectFromOriginal:obj1];
-  expected = [NSDictionary dictionaryWithObjectsAndKeys:
-              [NSNumber numberWithFloat:123], @"a.num",
-              @"green", @"a_str",
-              [NSNull null], @"str2",
-              nil];
-  STAssertEqualObjects(resultObj.JSON, expected, @"selective 2");
+  expected = @{ @"a.num" : @123.0f,
+                @"a_str" : @"green",
+                @"str2" : [NSNull null] };
+  STAssertEqualObjects(resultObj.JSON, expected, nil);
 
   // Change the array of strings; we'll expect the patch to be only the new
   // array
   obj1 = [self objectForPartialTests];
   obj2 = [self objectForPartialTests];
 
-  obj1.child.child.arrayString = [NSArray arrayWithObject:@"monkey"];
+  obj1.child.child.arrayString = @[ @"monkey" ];
 
   resultObj = [obj1 patchObjectFromOriginal:obj2];
 
   GTLTestingObject *expectedObj = [GTLTestingObject object];
   expectedObj.child = [GTLTestingObject object];
   expectedObj.child.child = [GTLTestingObject object];
-  expectedObj.child.child.arrayString = [NSArray arrayWithObject:@"monkey"];
+  expectedObj.child.child.arrayString = @[ @"monkey" ];
 
-  STAssertEqualObjects(resultObj.JSON, expectedObj.JSON, @"array 1");
+  STAssertEqualObjects(resultObj.JSON, expectedObj.JSON, nil);
 
   // Change the array of child objects by omitting the second child;
   // the result should be only an array with the first child
   obj1 = [self objectForPartialTests];
   obj2 = [self objectForPartialTests];
 
-  GTLObject *firstKid = [obj1.child.child.arrayKids objectAtIndex:0];
-  obj1.child.child.arrayKids = [NSArray arrayWithObject:firstKid];
+  GTLObject *firstKid = obj1.child.child.arrayKids[0];
+  obj1.child.child.arrayKids = @[ firstKid ];
 
   resultObj = [obj1 patchObjectFromOriginal:obj2];
 
   expectedObj = [GTLTestingObject object];
   expectedObj.child = [GTLTestingObject object];
   expectedObj.child.child = [GTLTestingObject object];
-  expectedObj.child.child.arrayKids = [NSArray arrayWithObject:firstKid];
+  expectedObj.child.child.arrayKids = @[ firstKid ];
 
-  STAssertEqualObjects(resultObj.JSON, expectedObj.JSON, @"array 2");
+  STAssertEqualObjects(resultObj.JSON, expectedObj.JSON, nil);
 }
 
 - (void)testNullPatchValues {
@@ -1202,37 +1153,92 @@ static Class gAdditionalPropsClass = Nil;
   obj.arrayKids = [GTLObject nullValue];
   obj.arrayAnything = [GTLObject nullValue];
 
-  STAssertEqualObjects(obj.aStr, [NSNull null], @"NSNull getter");
-  STAssertEqualObjects(obj.str2, [NSNull null], @"NSNull getter");
-  STAssertEqualObjects(obj.aNum, [NSNull null], @"NSNull getter");
-  STAssertEqualObjects(obj.aDate, [NSNull null], @"NSNull getter");
-  STAssertEqualObjects(obj.child, [NSNull null], @"NSNull getter");
-  STAssertEqualObjects(obj.arrayString, [NSNull null], @"NSNull getter");
-  STAssertEqualObjects(obj.arrayNumber, [NSNull null], @"NSNull getter");
-  STAssertEqualObjects(obj.arrayDate, [NSNull null], @"NSNull getter");
-  STAssertEqualObjects(obj.arrayKids, [NSNull null], @"NSNull getter");
-  STAssertEqualObjects(obj.arrayAnything, [NSNull null], @"NSNull getter");
+  STAssertEqualObjects(obj.aStr, [NSNull null], nil);
+  STAssertEqualObjects(obj.str2, [NSNull null], nil);
+  STAssertEqualObjects(obj.aNum, [NSNull null], nil);
+  STAssertEqualObjects(obj.aDate, [NSNull null], nil);
+  STAssertEqualObjects(obj.child, [NSNull null], nil);
+  STAssertEqualObjects(obj.arrayString, [NSNull null], nil);
+  STAssertEqualObjects(obj.arrayNumber, [NSNull null], nil);
+  STAssertEqualObjects(obj.arrayDate, [NSNull null], nil);
+  STAssertEqualObjects(obj.arrayKids, [NSNull null], nil);
+  STAssertEqualObjects(obj.arrayAnything, [NSNull null], nil);
 
   NSError *error = nil;
   NSString *jsonStr = obj.JSONString;
 
-  STAssertNil(error, @"json string");
+  STAssertNil(error, nil);
   NSMutableDictionary *jsonDict = [GTLJSONParser objectWithString:jsonStr
                                                             error:&error];
-  STAssertNil(error, @"json parse");
+  STAssertNil(error, nil);
 
   GTLTestingObject *obj2 = [GTLTestingObject objectWithJSON:jsonDict];
 
-  STAssertEqualObjects(obj2.aStr, [NSNull null], @"NSNull getter");
-  STAssertEqualObjects(obj2.str2, [NSNull null], @"NSNull getter");
-  STAssertEqualObjects(obj2.aNum, [NSNull null], @"NSNull getter");
-  STAssertEqualObjects(obj2.aDate, [NSNull null], @"NSNull getter");
-  STAssertEqualObjects(obj2.child, [NSNull null], @"NSNull getter");
-  STAssertEqualObjects(obj2.arrayString, [NSNull null], @"NSNull getter");
-  STAssertEqualObjects(obj2.arrayNumber, [NSNull null], @"NSNull getter");
-  STAssertEqualObjects(obj2.arrayDate, [NSNull null], @"NSNull getter");
-  STAssertEqualObjects(obj2.arrayKids, [NSNull null], @"NSNull getter");
-  STAssertEqualObjects(obj2.arrayAnything, [NSNull null], @"NSNull getter");
+  STAssertEqualObjects(obj2.aStr, [NSNull null], nil);
+  STAssertEqualObjects(obj2.str2, [NSNull null], nil);
+  STAssertEqualObjects(obj2.aNum, [NSNull null], nil);
+  STAssertEqualObjects(obj2.aDate, [NSNull null], nil);
+  STAssertEqualObjects(obj2.child, [NSNull null], nil);
+  STAssertEqualObjects(obj2.arrayString, [NSNull null], nil);
+  STAssertEqualObjects(obj2.arrayNumber, [NSNull null], nil);
+  STAssertEqualObjects(obj2.arrayDate, [NSNull null], nil);
+  STAssertEqualObjects(obj2.arrayKids, [NSNull null], nil);
+  STAssertEqualObjects(obj2.arrayAnything, [NSNull null], nil);
+}
+
+#pragma mark GTLCollectionObject
+
+- (void)testCollection {
+  GTLTestingCollection *collection = [GTLTestingCollection object];
+
+  // Test enumeration and subscripts on empty collection.
+  for (id foundItem in collection) {
+    STFail(nil);
+  }
+  STAssertNil(collection[0], nil);
+  STAssertNil([collection itemForIdentifier:@"foo"], nil);
+
+  // Put two items in the collection.
+  GTLTestingObject *obj0 = [GTLTestingObject object];
+  obj0.aStr = @"aaa";
+  obj0.identifier = @"obj0";
+  GTLTestingObject *obj1 = [GTLTestingObject object];
+  obj1.aStr = @"bbb";
+  obj1.identifier = @"obj1";
+  NSArray *items = @[ obj0, obj1 ];
+
+  collection.items = [[items copy] autorelease];
+
+  // Test fast enumeration.
+  int counter = 0;
+  for (id foundItem in collection) {
+    STAssertEqualObjects(foundItem, items[counter], nil);
+    counter++;
+  }
+  STAssertEquals(counter, 2, nil);
+
+  // Test indexed subscripts.
+  STAssertEqualObjects(collection[0], items[0], nil);
+  STAssertEqualObjects(collection[1], items[1], nil);
+  STAssertNil(collection[3], nil);
+
+  // Test itemForIdentifier:.
+  [collection resetIdentifierMap];
+  STAssertEqualObjects([collection itemForIdentifier:@"obj0"], items[0], nil);
+  STAssertEqualObjects([collection itemForIdentifier:@"obj1"], items[1], nil);
+  STAssertNil([collection itemForIdentifier:@"obj2"], nil);
+
+  // Verify that the first item with a non-unique identifier is returned.
+  GTLTestingObject *obj2 = [GTLTestingObject object];
+  obj2.aStr = @"ccc";
+  obj2.identifier = @"obj0";  // Same identifier as obj0.
+  items = [items arrayByAddingObject:obj2];
+  collection.items = [[items copy] autorelease];
+
+  [collection resetIdentifierMap];
+  STAssertEquals([collection.items count], (NSUInteger)3, nil);
+  STAssertEqualObjects(collection[2], items[2], nil);
+  STAssertEqualObjects([collection itemForIdentifier:@"obj0"], items[0], nil);
 }
 
 #pragma mark GTLResultArray Parsing
@@ -1246,8 +1252,8 @@ static Class gAdditionalPropsClass = Nil;
   NSError *err = nil;
   NSMutableDictionary *json = [GTLJSONParser objectWithString:jsonStr
                                                         error:&err];
-  STAssertNil(err, @"got error parsing");
-  STAssertNotNil(json, @"didn't get object parsing");
+  STAssertNil(err, nil);
+  STAssertNotNil(json, nil);
 
   GTLTestingResultArray *arrayResult = (GTLTestingResultArray *)
     [GTLObject objectForJSON:json
@@ -1258,11 +1264,11 @@ static Class gAdditionalPropsClass = Nil;
   NSArray *items = arrayResult.items;
   STAssertEquals([items count], (NSUInteger)2, nil);
 
-  GTLTestingObject *obj = [items objectAtIndex:0];
+  GTLTestingObject *obj = items[0];
   STAssertTrue([obj isKindOfClass:[GTLTestingObject class]], nil);
   STAssertEqualObjects(obj.aStr, @"obj 1", nil);
 
-  obj = [items objectAtIndex:1];
+  obj = items[1];
   STAssertTrue([obj isKindOfClass:[GTLTestingObject class]], nil);
   STAssertEqualObjects(obj.aStr, @"obj 2", nil);
 
@@ -1271,8 +1277,8 @@ static Class gAdditionalPropsClass = Nil;
   NSString * const jsonStr2 = @"[ \"str 1\", \"str 2\" ]";
   err = nil;
   json = [GTLJSONParser objectWithString:jsonStr2 error:&err];
-  STAssertNil(err, @"got error parsing");
-  STAssertNotNil(json, @"didn't get object parsing");
+  STAssertNil(err, nil);
+  STAssertNotNil(json, nil);
 
   GTLTestingResultArray2 *arrayResult2 = (GTLTestingResultArray2 *)
     [GTLObject objectForJSON:json
@@ -1283,11 +1289,11 @@ static Class gAdditionalPropsClass = Nil;
   items = arrayResult2.items;
   STAssertEquals([items count], (NSUInteger)2, nil);
 
-  NSString *str = [items objectAtIndex:0];
+  NSString *str = items[0];
   STAssertTrue([str isKindOfClass:[NSString class]], nil);
   STAssertEqualObjects(str, @"str 1", nil);
 
-  str = [items objectAtIndex:1];
+  str = items[1];
   STAssertTrue([str isKindOfClass:[NSString class]], nil);
   STAssertEqualObjects(str, @"str 2", nil);
 }
