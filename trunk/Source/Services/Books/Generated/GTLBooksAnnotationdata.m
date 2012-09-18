@@ -24,13 +24,11 @@
 // Description:
 //   Lets you search for books and manage your Google Books library.
 // Documentation:
-//   https://code.google.com/apis/books/docs/v1/getting_started.html
+//   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
 //   GTLBooksAnnotationdata (0 custom class methods, 9 custom properties)
 
 #import "GTLBooksAnnotationdata.h"
-
-#import "GTLBooksLayerGeoData.h"
 
 // ----------------------------------------------------------------------------
 //

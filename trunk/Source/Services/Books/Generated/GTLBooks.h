@@ -24,7 +24,7 @@
 // Description:
 //   Lets you search for books and manage your Google Books library.
 // Documentation:
-//   https://code.google.com/apis/books/docs/v1/getting_started.html
+//   https://developers.google.com/books/docs/v1/getting_started
 
 #import "GTLBooksConstants.h"
 
@@ -38,7 +38,6 @@
 #import "GTLBooksConcurrentAccessRestriction.h"
 #import "GTLBooksDownloadAccesses.h"
 #import "GTLBooksDownloadAccessRestriction.h"
-#import "GTLBooksLayerGeoData.h"
 #import "GTLBooksLayersummaries.h"
 #import "GTLBooksLayersummary.h"
 #import "GTLBooksReadingPosition.h"

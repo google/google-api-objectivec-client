@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@
 // Description:
 //   Lets you search for books and manage your Google Books library.
 // Documentation:
-//   https://code.google.com/apis/books/docs/v1/getting_started.html
+//   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
 //   GTLBooksBookshelves (0 custom class methods, 2 custom properties)
 

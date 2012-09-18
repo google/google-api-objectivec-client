@@ -24,7 +24,7 @@
 // Description:
 //   Lets you search for books and manage your Google Books library.
 // Documentation:
-//   https://code.google.com/apis/books/docs/v1/getting_started.html
+//   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
 //   GTLBooksAnnotationdata (0 custom class methods, 9 custom properties)
 
@@ -33,8 +33,6 @@
 #else
   #import "GTLObject.h"
 #endif
-
-@class GTLBooksLayerGeoData;
 
 // ----------------------------------------------------------------------------
 //
@@ -46,8 +44,7 @@
 // The type of annotation this data is for.
 @property (copy) NSString *annotationType;
 
-// JSON encoded data for this annotation data.
-@property (retain) GTLBooksLayerGeoData *data;
+@property (retain) id data;
 
 // Base64 encoded data for this annotation data.
 @property (copy) NSString *encodedData;  // GTLBase64 can encode/decode (probably web-safe format)
