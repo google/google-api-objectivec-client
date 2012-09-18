@@ -24,7 +24,7 @@
 // Description:
 //   View and manage your Google Analytics data
 // Documentation:
-//   http://code.google.com/apis/analytics
+//   https://developers.google.com/analytics/
 // Classes:
 //   GTLAnalyticsWebproperty (0 custom class methods, 11 custom properties)
 //   GTLAnalyticsWebpropertyChildLink (0 custom class methods, 2 custom properties)

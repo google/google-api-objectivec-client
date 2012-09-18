@@ -24,7 +24,7 @@
 // Description:
 //   View and manage your Google Analytics data
 // Documentation:
-//   http://code.google.com/apis/analytics
+//   https://developers.google.com/analytics/
 // Classes:
 //   GTLAnalyticsProfiles (0 custom class methods, 8 custom properties)
 
@@ -53,7 +53,7 @@
 @property (retain) NSArray *items;  // of GTLAnalyticsProfile
 
 // The maximum number of resources the response can contain, regardless of the
-// actual number of resources returned. Its value ranges from 1 to 10,000 with a
+// actual number of resources returned. Its value ranges from 1 to 1000 with a
 // value of 1000 by default, or otherwise specified by the max-results query
 // parameter.
 @property (retain) NSNumber *itemsPerPage;  // intValue

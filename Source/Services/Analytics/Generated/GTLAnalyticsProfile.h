@@ -24,9 +24,9 @@
 // Description:
 //   View and manage your Google Analytics data
 // Documentation:
-//   http://code.google.com/apis/analytics
+//   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsProfile (0 custom class methods, 18 custom properties)
+//   GTLAnalyticsProfile (0 custom class methods, 19 custom properties)
 //   GTLAnalyticsProfileChildLink (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsProfileParentLink (0 custom class methods, 2 custom properties)
 
@@ -62,6 +62,9 @@
 
 // Default page for this profile.
 @property (copy) NSString *defaultPage;
+
+// E-commerce tracking parameter for this profile.
+@property (retain) NSNumber *eCommerceTracking;  // boolValue
 
 // The query parameters that are excluded from this profile.
 @property (copy) NSString *excludeQueryParameters;
