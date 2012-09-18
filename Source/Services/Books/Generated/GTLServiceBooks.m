@@ -24,7 +24,7 @@
 // Description:
 //   Lets you search for books and manage your Google Books library.
 // Documentation:
-//   https://code.google.com/apis/books/docs/v1/getting_started.html
+//   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
 //   GTLServiceBooks (0 custom class methods, 0 custom properties)
 
@@ -48,7 +48,6 @@
                       [GTLBooksConcurrentAccessRestriction class],
                       [GTLBooksDownloadAccesses class],
                       [GTLBooksDownloadAccessRestriction class],
-                      [GTLBooksLayerGeoData class],
                       [GTLBooksLayersummaries class],
                       [GTLBooksLayersummary class],
                       [GTLBooksReadingPosition class],
