@@ -24,9 +24,9 @@
 // Description:
 //   View and manage your Google Analytics data
 // Documentation:
-//   http://code.google.com/apis/analytics
+//   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsProfile (0 custom class methods, 18 custom properties)
+//   GTLAnalyticsProfile (0 custom class methods, 19 custom properties)
 //   GTLAnalyticsProfileChildLink (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsProfileParentLink (0 custom class methods, 2 custom properties)
 
@@ -39,10 +39,10 @@
 
 @implementation GTLAnalyticsProfile
 @dynamic accountId, childLink, created, currency, defaultPage,
-         excludeQueryParameters, identifier, internalWebPropertyId, kind, name,
-         parentLink, selfLink, siteSearchCategoryParameters,
-         siteSearchQueryParameters, timezone, updated, webPropertyId,
-         websiteUrl;
+         eCommerceTracking, excludeQueryParameters, identifier,
+         internalWebPropertyId, kind, name, parentLink, selfLink,
+         siteSearchCategoryParameters, siteSearchQueryParameters, timezone,
+         updated, webPropertyId, websiteUrl;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

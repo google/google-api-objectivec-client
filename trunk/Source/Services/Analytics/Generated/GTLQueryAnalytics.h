@@ -24,7 +24,7 @@
 // Description:
 //   View and manage your Google Analytics data
 // Documentation:
-//   http://code.google.com/apis/analytics
+//   https://developers.google.com/analytics/
 // Classes:
 //   GTLQueryAnalytics (7 custom class methods, 14 custom properties)
 

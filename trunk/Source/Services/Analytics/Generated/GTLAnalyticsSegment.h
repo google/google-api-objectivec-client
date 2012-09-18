@@ -24,7 +24,7 @@
 // Description:
 //   View and manage your Google Analytics data
 // Documentation:
-//   http://code.google.com/apis/analytics
+//   https://developers.google.com/analytics/
 // Classes:
 //   GTLAnalyticsSegment (0 custom class methods, 8 custom properties)
 

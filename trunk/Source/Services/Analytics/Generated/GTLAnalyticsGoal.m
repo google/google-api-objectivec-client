@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@
 // Description:
 //   View and manage your Google Analytics data
 // Documentation:
-//   http://code.google.com/apis/analytics
+//   https://developers.google.com/analytics/
 // Classes:
 //   GTLAnalyticsGoal (0 custom class methods, 18 custom properties)
 //   GTLAnalyticsGoalEventDetails (0 custom class methods, 2 custom properties)
