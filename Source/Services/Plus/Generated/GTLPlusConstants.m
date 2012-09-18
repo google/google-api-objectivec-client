@@ -32,9 +32,6 @@
 NSString * const kGTLAuthScopePlusMe            = @"https://www.googleapis.com/auth/plus.me";
 NSString * const kGTLAuthScopePlusUserinfoEmail = @"https://www.googleapis.com/auth/userinfo.email";
 
-// Alt
-NSString * const kGTLPlusAltJson = @"json";
-
 // Collection
 NSString * const kGTLPlusCollectionPlusoners = @"plusoners";
 NSString * const kGTLPlusCollectionPublic    = @"public";

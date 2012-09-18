@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/+/api/
 // Classes:
-//   GTLQueryPlus (8 custom class methods, 12 custom properties)
+//   GTLQueryPlus (8 custom class methods, 11 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -47,7 +47,6 @@
 // Method-specific parameters; see the comments below for more information.
 //
 @property (copy) NSString *activityId;
-@property (copy) NSString *alt;
 @property (copy) NSString *collection;
 @property (copy) NSString *commentId;
 @property (copy) NSString *language;
@@ -66,10 +65,6 @@
 // Get an activity.
 //  Required:
 //   activityId: The ID of the activity to get.
-//  Optional:
-//   alt: Specifies an alternative representation type. (Default
-//     kGTLPlusAltJson)
-//      kGTLPlusAltJson: Use JSON format
 //  Authorization scope(s):
 //   kGTLAuthScopePlusMe
 // Fetches a GTLPlusActivity.
@@ -84,9 +79,6 @@
 //      kGTLPlusCollectionPublic: All public activities created by the specified
 //        user.
 //  Optional:
-//   alt: Specifies an alternative representation type. (Default
-//     kGTLPlusAltJson)
-//      kGTLPlusAltJson: Use JSON format
 //   maxResults: The maximum number of activities to include in the response,
 //     used for paging. For any response, the actual number returned may be less
 //     than the specified maxResults. (1..100, default 20)
@@ -142,9 +134,6 @@
 //  Required:
 //   activityId: The ID of the activity to get comments for.
 //  Optional:
-//   alt: Specifies an alternative representation type. (Default
-//     kGTLPlusAltJson)
-//      kGTLPlusAltJson: Use JSON format
 //   maxResults: The maximum number of comments to include in the response, used
 //     for paging. For any response, the actual number returned may be less than
 //     the specified maxResults. (0..100, default 20)
