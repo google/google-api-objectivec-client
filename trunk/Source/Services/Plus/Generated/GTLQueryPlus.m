@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/+/api/
 // Classes:
-//   GTLQueryPlus (8 custom class methods, 12 custom properties)
+//   GTLQueryPlus (8 custom class methods, 11 custom properties)
 
 #import "GTLQueryPlus.h"
 
@@ -39,7 +39,7 @@
 
 @implementation GTLQueryPlus
 
-@dynamic activityId, alt, collection, commentId, fields, language, maxResults,
+@dynamic activityId, collection, commentId, fields, language, maxResults,
          orderBy, pageToken, query, sortOrder, userId;
 
 #pragma mark -

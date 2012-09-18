@@ -40,9 +40,6 @@ GTL_EXTERN NSString * const kGTLAuthScopePlusMe;             // "https://www.goo
 // View your email address
 GTL_EXTERN NSString * const kGTLAuthScopePlusUserinfoEmail;  // "https://www.googleapis.com/auth/userinfo.email"
 
-// Alt
-GTL_EXTERN NSString * const kGTLPlusAltJson;  // "json"
-
 // Collection
 GTL_EXTERN NSString * const kGTLPlusCollectionPlusoners;  // "plusoners"
 GTL_EXTERN NSString * const kGTLPlusCollectionPublic;     // "public"
