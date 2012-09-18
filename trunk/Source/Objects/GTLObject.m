@@ -626,8 +626,12 @@ static NSMutableDictionary *gArrayPropertyToClassMapCache = nil;
 @end
 
 @implementation GTLCollectionObject
-
 // Subclasses must implement the items method dynamically.
+
+- (void)dealloc {
+  [identifierMap_ release];
+  [super dealloc];
+}
 
 - (id)itemAtIndex:(NSUInteger)idx {
   NSArray *items = [self performSelector:@selector(items)];
@@ -642,6 +646,29 @@ static NSMutableDictionary *gArrayPropertyToClassMapCache = nil;
     return [self itemAtIndex:(NSUInteger)idx];
   }
   return nil;
+}
+
+- (id)itemForIdentifier:(NSString *)key {
+  if (identifierMap_ == nil) {
+    NSArray *items = [self performSelector:@selector(items)];
+    NSMutableDictionary *dict =
+      [NSMutableDictionary dictionaryWithCapacity:[items count]];
+    for (id item in items) {
+      id identifier = [item valueForKey:@"identifier"];
+      if (identifier != nil && identifier != [NSNull null]) {
+        if ([dict objectForKey:identifier] == nil) {
+          [dict setObject:item forKey:identifier];
+        }
+      }
+    }
+    identifierMap_ = [dict copy];
+  }
+  return [identifierMap_ objectForKey:key];
+}
+
+- (void)resetIdentifierMap {
+  [identifierMap_ release];
+  identifierMap_ = nil;
 }
 
 // NSFastEnumeration protocol
