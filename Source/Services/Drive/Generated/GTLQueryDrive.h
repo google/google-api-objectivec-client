@@ -221,7 +221,8 @@
 //  Optional:
 //   convert: Whether to convert this file to the corresponding Google Docs
 //     format. (Default false)
-//   ocr: Whether to attempt OCR on .jpg, .png, or .gif uploads. (Default false)
+//   ocr: Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads. (Default
+//     false)
 //   ocrLanguage: If ocr is true, hints at the language to use. Valid values are
 //     ISO 639-1 codes.
 //   pinned: Whether to pin the head revision of the new copy. (Default false)
@@ -269,7 +270,8 @@
 //  Optional:
 //   convert: Whether to convert this file to the corresponding Google Docs
 //     format. (Default false)
-//   ocr: Whether to attempt OCR on .jpg, .png, or .gif uploads. (Default false)
+//   ocr: Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads. (Default
+//     false)
 //   ocrLanguage: If ocr is true, hints at the language to use. Valid values are
 //     ISO 639-1 codes.
 //   pinned: Whether to pin the head revision of the uploaded file. (Default
@@ -316,7 +318,8 @@
 //   newRevision: Whether a blob upload should create a new revision. If false,
 //     the blob data in the current head revision will be replaced. (Default
 //     true)
-//   ocr: Whether to attempt OCR on .jpg, .png, or .gif uploads. (Default false)
+//   ocr: Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads. (Default
+//     false)
 //   ocrLanguage: If ocr is true, hints at the language to use. Valid values are
 //     ISO 639-1 codes.
 //   pinned: Whether to pin the new revision. (Default false)
@@ -376,7 +379,8 @@
 //   newRevision: Whether a blob upload should create a new revision. If false,
 //     the blob data in the current head revision will be replaced. (Default
 //     true)
-//   ocr: Whether to attempt OCR on .jpg, .png, or .gif uploads. (Default false)
+//   ocr: Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads. (Default
+//     false)
 //   ocrLanguage: If ocr is true, hints at the language to use. Valid values are
 //     ISO 639-1 codes.
 //   pinned: Whether to pin the new revision. (Default false)
