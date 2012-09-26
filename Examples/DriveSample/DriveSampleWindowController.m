@@ -626,13 +626,14 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
   if (fileHandle) {
     GTLServiceDrive *service = self.driveService;
 
-    NSString *mimeType = [GTLUtilities MIMETypeForFileAtPath:path
-                                             defaultMIMEType:@"binary/octet-stream"];
+    NSString *filename = [path lastPathComponent];
+    NSString *mimeType = [self MIMETypeFileName:filename
+                                defaultMIMEType:@"binary/octet-stream"];
     GTLUploadParameters *uploadParameters =
       [GTLUploadParameters uploadParametersWithFileHandle:fileHandle
                                                  MIMEType:mimeType];
     GTLDriveFile *newFile = [GTLDriveFile object];
-    newFile.title = [path lastPathComponent];
+    newFile.title = filename;
 
     GTLQueryDrive *query = [GTLQueryDrive queryForFilesInsertWithObject:newFile
                                                        uploadParameters:uploadParameters];
@@ -667,6 +668,22 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
     // Could not read file data.
     [self displayAlert:@"No Upload File Found" format:@"Path: %@", path];
   }
+}
+
+- (NSString *)MIMETypeFileName:(NSString *)path
+                    defaultMIMEType:(NSString *)defaultType {
+  NSString *result = defaultType;
+  NSString *extension = [path pathExtension];
+  CFStringRef uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension,
+      (__bridge CFStringRef)extension, NULL);
+  if (uti) {
+    CFStringRef cfMIMEType = UTTypeCopyPreferredTagWithClass(uti, kUTTagClassMIMEType);
+    if (cfMIMEType) {
+      result = CFBridgingRelease(cfMIMEType);
+    }
+    CFRelease(uti);
+  }
+  return result;
 }
 
 #pragma mark Downloading
