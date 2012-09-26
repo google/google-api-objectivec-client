@@ -67,7 +67,7 @@
 // Key for the metadata entry. Keys must conform to the following regexp:
 // [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as
 // part of a URL in the metadata server. Additionally, to avoid ambiguity, keys
-// must not conflict with any other metadata keys for the project.
+// must be unique.
 @property (copy) NSString *key;
 
 // Value for the metadata entry. These are free-form strings, and only have

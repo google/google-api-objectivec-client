@@ -60,7 +60,7 @@
 // Count of CPUs exposed to the instance.
 @property (retain) NSNumber *guestCpus;  // intValue
 
-// Count of physical CPUs reserved on the virtual machine host.
+// Count of physical CPUs reserved on the virtual machine host. Deprecated.
 @property (retain) NSNumber *hostCpus;  // intValue
 
 // Unique identifier for the resource; defined by the server (output only).

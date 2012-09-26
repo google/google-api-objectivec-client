@@ -79,7 +79,7 @@
 // instance of a given disk snapshot.
 @property (copy) NSString *sourceSnapshotId;
 
-// The status of disk creation.
+// The status of disk creation (output only).
 @property (copy) NSString *status;
 
 // URL for the zone where the persistent disk resides; provided by the client
