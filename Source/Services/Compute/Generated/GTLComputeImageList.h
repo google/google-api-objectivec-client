@@ -56,7 +56,7 @@
 // Type of resource.
 @property (copy) NSString *kind;
 
-// A token used to continue a truncated list request.
+// A token used to continue a truncated list request (output only).
 @property (copy) NSString *nextPageToken;
 
 // Server defined URL for this resource (output only).
