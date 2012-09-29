@@ -118,11 +118,11 @@
 
 @interface GTLPlusCommentInReplyToItem : GTLObject
 
-// The id of the activity.
+// The ID of the activity.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// The url of the activity.
+// The URL of the activity.
 @property (copy) NSString *url;
 
 @end
