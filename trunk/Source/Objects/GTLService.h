@@ -354,6 +354,17 @@ typedef void *GTLServiceUploadProgressBlock;
 // is ignored.
 @property (nonatomic, assign) BOOL shouldFetchInBackground;
 
+// Callbacks can be invoked on an operation queue rather than via the run loop
+// starting on 10.7 and iOS 6.  Do not specify both run loop modes and an
+// operation queue. Specifying a delegate queue typically looks like this:
+//
+//   service.delegateQueue = [[[NSOperationQueue alloc] init] autorelease];
+//
+// Since the callbacks will be on a thread of the operation queue, the client
+// may re-dispatch from the callbacks to a known dispatch queue or to the
+// main queue.
+@property (nonatomic, retain) NSOperationQueue *delegateQueue;
+
 // Run loop modes are used for scheduling NSURLConnections.
 //
 // The default value, nil, schedules connections using the current run
