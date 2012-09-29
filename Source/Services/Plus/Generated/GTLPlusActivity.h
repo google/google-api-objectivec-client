@@ -304,7 +304,7 @@
 // If the attachment is a video, the embeddable link.
 @property (retain) GTLPlusActivityObjectAttachmentsItemEmbed *embed;
 
-// The full image url for photo attachments.
+// The full image URL for photo attachments.
 @property (retain) GTLPlusActivityObjectAttachmentsItemFullImage *fullImage;
 
 // The ID of the media object's resource.

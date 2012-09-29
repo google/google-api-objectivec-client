@@ -49,16 +49,17 @@
 // ETag of this response for caching purposes.
 @property (copy) NSString *ETag;
 
-// The people in this page of results. Each item will include the id,
-// displayName, image, and url for the person. To retrieve additional profile
-// data, see the people.get method.
+// The people in this page of results. Each item includes the id, displayName,
+// image, and url for the person. To retrieve additional profile data, see the
+// people.get method.
 @property (retain) NSArray *items;  // of GTLPlusPerson
 
 // Identifies this resource as a collection of people. Value: "plus#peopleFeed".
 @property (copy) NSString *kind;
 
-// The continuation token, used to page through large result sets. Provide this
-// value in a subsequent request to return the next page of results.
+// The continuation token, which is used to page through large result sets.
+// Provide this value in a subsequent request to return the next page of
+// results.
 @property (copy) NSString *nextPageToken;
 
 // Link to this resource.

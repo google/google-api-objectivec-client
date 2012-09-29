@@ -80,11 +80,11 @@
 //        user.
 //  Optional:
 //   maxResults: The maximum number of activities to include in the response,
-//     used for paging. For any response, the actual number returned may be less
-//     than the specified maxResults. (1..100, default 20)
-//   pageToken: The continuation token, used to page through large result sets.
-//     To get the next page of results, set this parameter to the value of
-//     "nextPageToken" from the previous response.
+//     which is used for paging. For any response, the actual number returned
+//     might be less than the specified maxResults. (1..100, default 20)
+//   pageToken: The continuation token, which is used to page through large
+//     result sets. To get the next page of results, set this parameter to the
+//     value of "nextPageToken" from the previous response.
 //  Authorization scope(s):
 //   kGTLAuthScopePlusMe
 // Fetches a GTLPlusActivityFeed.
@@ -99,18 +99,18 @@
 //   language: Specify the preferred language to search with. See search
 //     language codes for available values.
 //   maxResults: The maximum number of activities to include in the response,
-//     used for paging. For any response, the actual number returned may be less
-//     than the specified maxResults. (1..20, default 10)
+//     which is used for paging. For any response, the actual number returned
+//     might be less than the specified maxResults. (1..20, default 10)
 //   orderBy: Specifies how to order search results. (Default
 //     kGTLPlusOrderByRecent)
 //      kGTLPlusOrderByBest: Sort activities by relevance to the user, most
 //        relevant first.
 //      kGTLPlusOrderByRecent: Sort activities by published date, most recent
 //        first.
-//   pageToken: The continuation token, used to page through large result sets.
-//     To get the next page of results, set this parameter to the value of
-//     "nextPageToken" from the previous response. This token may be of any
-//     length.
+//   pageToken: The continuation token, which is used to page through large
+//     result sets. To get the next page of results, set this parameter to the
+//     value of "nextPageToken" from the previous response. This token can be of
+//     any length.
 //  Authorization scope(s):
 //   kGTLAuthScopePlusMe
 // Fetches a GTLPlusActivityFeed.
@@ -134,12 +134,12 @@
 //  Required:
 //   activityId: The ID of the activity to get comments for.
 //  Optional:
-//   maxResults: The maximum number of comments to include in the response, used
-//     for paging. For any response, the actual number returned may be less than
-//     the specified maxResults. (0..100, default 20)
-//   pageToken: The continuation token, used to page through large result sets.
-//     To get the next page of results, set this parameter to the value of
-//     "nextPageToken" from the previous response.
+//   maxResults: The maximum number of comments to include in the response,
+//     which is used for paging. For any response, the actual number returned
+//     might be less than the specified maxResults. (0..100, default 20)
+//   pageToken: The continuation token, which is used to page through large
+//     result sets. To get the next page of results, set this parameter to the
+//     value of "nextPageToken" from the previous response.
 //   sortOrder: The order in which to sort the list of comments. (Default
 //     kGTLPlusSortOrderAscending)
 //      kGTLPlusSortOrderAscending: Sort oldest comments first.
@@ -174,12 +174,12 @@
 //      kGTLPlusCollectionResharers: List all people who have reshared this
 //        activity.
 //  Optional:
-//   maxResults: The maximum number of people to include in the response, used
-//     for paging. For any response, the actual number returned may be less than
-//     the specified maxResults. (1..100, default 20)
-//   pageToken: The continuation token, used to page through large result sets.
-//     To get the next page of results, set this parameter to the value of
-//     "nextPageToken" from the previous response.
+//   maxResults: The maximum number of people to include in the response, which
+//     is used for paging. For any response, the actual number returned might be
+//     less than the specified maxResults. (1..100, default 20)
+//   pageToken: The continuation token, which is used to page through large
+//     result sets. To get the next page of results, set this parameter to the
+//     value of "nextPageToken" from the previous response.
 //  Authorization scope(s):
 //   kGTLAuthScopePlusMe
 // Fetches a GTLPlusPeopleFeed.
@@ -194,13 +194,13 @@
 //  Optional:
 //   language: Specify the preferred language to search with. See search
 //     language codes for available values.
-//   maxResults: The maximum number of people to include in the response, used
-//     for paging. For any response, the actual number returned may be less than
-//     the specified maxResults. (1..20, default 10)
-//   pageToken: The continuation token, used to page through large result sets.
-//     To get the next page of results, set this parameter to the value of
-//     "nextPageToken" from the previous response. This token may be of any
-//     length.
+//   maxResults: The maximum number of people to include in the response, which
+//     is used for paging. For any response, the actual number returned might be
+//     less than the specified maxResults. (1..20, default 10)
+//   pageToken: The continuation token, which is used to page through large
+//     result sets. To get the next page of results, set this parameter to the
+//     value of "nextPageToken" from the previous response. This token can be of
+//     any length.
 //  Authorization scope(s):
 //   kGTLAuthScopePlusMe
 // Fetches a GTLPlusPeopleFeed.

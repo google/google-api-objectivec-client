@@ -63,8 +63,9 @@
 // Link to the next page of activities.
 @property (copy) NSString *nextLink;
 
-// The continuation token, used to page through large result sets. Provide this
-// value in a subsequent request to return the next page of results.
+// The continuation token, which is used to page through large result sets.
+// Provide this value in a subsequent request to return the next page of
+// results.
 @property (copy) NSString *nextPageToken;
 
 // The title of this collection of comments.
