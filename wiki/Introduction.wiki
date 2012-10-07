@@ -137,7 +137,7 @@ Service objects maintain cookies and track other persistent data across queries.
 
 The service object makes a copy of each query for execution, so changes to a query object made after calling `executeQuery:` will not affect the request.
 
-Query execution by the service is inherently asynchronous. There is no need to create an operation queue or to use GCD to run queries on other threads. Callbacks are always run on the same thread that began the query execution. Generally, it's best to execute queries on the main application thread. Any number of queries may be executed either concurrently or sequentially, subject to rate limits shown in the [https://code.google.com/apis/console API Console].
+Query execution by the service is inherently asynchronous. There is no need to create an operation queue or to use GCD to run queries on other threads. Generally, it's best to execute queries on the main application thread. Any number of queries may be executed either concurrently or sequentially, subject to rate limits shown in the [https://code.google.com/apis/console API Console]. Additional information about threading support is listed below in the section on Performance Optimizations.
 
 On iOS, query fetches will normally be stopped once the user puts the application into the background. Fetches and callbacks can be continued in the background, up to the operating system time limit, by setting the property `shouldFetchInBackground`:
 {{{
@@ -432,6 +432,24 @@ GTLBatchQuery *batchQuery = [GTLBatchQuery batchQuery];
 }}}
 
 Each query object is created with a unique `requestID`, though your application may set a custom `requestID` string for the query prior to execution. The `requestID` string must be non-empty, and all queries in a batch must have unique `requestID`s.
+
+=== Threading ===
+
+Typically, applications will execute queries on the main thread, and the query completion handler will be called back on the main thread.  
+
+Alternatively, an application can execute a query on a background thread and will be called back on that same background thread, though the application must run an `NSRunLoop` on that thread for the callbacks to occur.
+
+Beginning with iOS 6 and Mac OS X 10.7, a query may be executed on either the main thread or a background thread, and be called back on either the main thread or a background thread.  To have callbacks occur on a different thread than the query was executed on, specify an `NSOperationQueue` (not a dispatch queue) for the service object's `delegateQueue` property. 
+
+For example, queries made from any thread can be called back on the main thread by using the main queue:
+{{{
+service.delegateQueue = [NSOperationQueue mainQueue];
+}}}
+Queries made from any thread can be called back on a background thread by providing a background queue, as in this example:
+{{{
+service.delegateQueue = [[[NSOperationQueue alloc] init] autorelease];
+}}}
+When a delegate queue is specified, there is no requirement for a run loop to be running on the thread that executes the query.
 
 == Convenience Features ==
 
