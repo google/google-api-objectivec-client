@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLDrive.h
+//  GTLDriveUser.m
 //
 
 // ----------------------------------------------------------------------------
@@ -25,29 +25,32 @@
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
+// Classes:
+//   GTLDriveUser (0 custom class methods, 4 custom properties)
+//   GTLDriveUserPicture (0 custom class methods, 1 custom properties)
 
-#import "GTLDriveConstants.h"
-
-#import "GTLDriveAbout.h"
-#import "GTLDriveApp.h"
-#import "GTLDriveAppList.h"
-#import "GTLDriveChange.h"
-#import "GTLDriveChangeList.h"
-#import "GTLDriveChildList.h"
-#import "GTLDriveChildReference.h"
-#import "GTLDriveComment.h"
-#import "GTLDriveCommentList.h"
-#import "GTLDriveCommentReply.h"
-#import "GTLDriveCommentReplyList.h"
-#import "GTLDriveFile.h"
-#import "GTLDriveFileList.h"
-#import "GTLDriveParentList.h"
-#import "GTLDriveParentReference.h"
-#import "GTLDrivePermission.h"
-#import "GTLDrivePermissionList.h"
-#import "GTLDriveRevision.h"
-#import "GTLDriveRevisionList.h"
 #import "GTLDriveUser.h"
 
-#import "GTLQueryDrive.h"
-#import "GTLServiceDrive.h"
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveUser
+//
+
+@implementation GTLDriveUser
+@dynamic displayName, isAuthenticatedUser, kind, picture;
+
++ (void)load {
+  [self registerObjectClassForKind:@"drive#user"];
+}
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveUserPicture
+//
+
+@implementation GTLDriveUserPicture
+@dynamic url;
+@end

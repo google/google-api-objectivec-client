@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLDrive.h
+//  GTLDriveCommentReplyList.m
 //
 
 // ----------------------------------------------------------------------------
@@ -25,29 +25,30 @@
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
+// Classes:
+//   GTLDriveCommentReplyList (0 custom class methods, 3 custom properties)
 
-#import "GTLDriveConstants.h"
-
-#import "GTLDriveAbout.h"
-#import "GTLDriveApp.h"
-#import "GTLDriveAppList.h"
-#import "GTLDriveChange.h"
-#import "GTLDriveChangeList.h"
-#import "GTLDriveChildList.h"
-#import "GTLDriveChildReference.h"
-#import "GTLDriveComment.h"
-#import "GTLDriveCommentList.h"
-#import "GTLDriveCommentReply.h"
 #import "GTLDriveCommentReplyList.h"
-#import "GTLDriveFile.h"
-#import "GTLDriveFileList.h"
-#import "GTLDriveParentList.h"
-#import "GTLDriveParentReference.h"
-#import "GTLDrivePermission.h"
-#import "GTLDrivePermissionList.h"
-#import "GTLDriveRevision.h"
-#import "GTLDriveRevisionList.h"
-#import "GTLDriveUser.h"
 
-#import "GTLQueryDrive.h"
-#import "GTLServiceDrive.h"
+#import "GTLDriveCommentReply.h"
+
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveCommentReplyList
+//
+
+@implementation GTLDriveCommentReplyList
+@dynamic items, kind, nextPageToken;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLDriveCommentReply class]
+                                forKey:@"items"];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"drive#commentReplyList"];
+}
+
+@end

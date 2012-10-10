@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLQueryDrive (34 custom class methods, 29 custom properties)
+//   GTLQueryDrive (46 custom class methods, 32 custom properties)
 
 #import "GTLQueryDrive.h"
 
@@ -37,6 +37,10 @@
 #import "GTLDriveChangeList.h"
 #import "GTLDriveChildList.h"
 #import "GTLDriveChildReference.h"
+#import "GTLDriveComment.h"
+#import "GTLDriveCommentList.h"
+#import "GTLDriveCommentReply.h"
+#import "GTLDriveCommentReplyList.h"
 #import "GTLDriveFile.h"
 #import "GTLDriveFileList.h"
 #import "GTLDriveParentList.h"
@@ -48,12 +52,12 @@
 
 @implementation GTLQueryDrive
 
-@dynamic appId, changeId, childId, convert, fields, fileId, folderId,
+@dynamic appId, changeId, childId, commentId, convert, fields, fileId, folderId,
          includeDeleted, includeSubscribed, maxChangeIdCount, maxResults,
          newRevision, ocr, ocrLanguage, pageToken, parentId, permissionId,
-         pinned, projection, q, revisionId, sendNotificationEmails,
+         pinned, projection, q, replyId, revisionId, sendNotificationEmails,
          setModifiedDate, sourceLanguage, startChangeId, targetLanguage,
-         timedTextLanguage, timedTextTrackName, updateViewedDate;
+         timedTextLanguage, timedTextTrackName, updatedMin, updateViewedDate;
 
 #pragma mark -
 #pragma mark "about" methods
@@ -146,6 +150,83 @@
   GTLQueryDrive *query = [self queryWithMethodName:methodName];
   query.folderId = folderId;
   query.expectedObjectClass = [GTLDriveChildList class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "comments" methods
+// These create a GTLQueryDrive object.
+
++ (id)queryForCommentsDeleteWithFileId:(NSString *)fileId
+                             commentId:(NSString *)commentId {
+  NSString *methodName = @"drive.comments.delete";
+  GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.fileId = fileId;
+  query.commentId = commentId;
+  return query;
+}
+
++ (id)queryForCommentsGetWithFileId:(NSString *)fileId
+                          commentId:(NSString *)commentId {
+  NSString *methodName = @"drive.comments.get";
+  GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.fileId = fileId;
+  query.commentId = commentId;
+  query.expectedObjectClass = [GTLDriveComment class];
+  return query;
+}
+
++ (id)queryForCommentsInsertWithObject:(GTLDriveComment *)object
+                                fileId:(NSString *)fileId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"drive.comments.insert";
+  GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.fileId = fileId;
+  query.expectedObjectClass = [GTLDriveComment class];
+  return query;
+}
+
++ (id)queryForCommentsListWithFileId:(NSString *)fileId {
+  NSString *methodName = @"drive.comments.list";
+  GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.fileId = fileId;
+  query.expectedObjectClass = [GTLDriveCommentList class];
+  return query;
+}
+
++ (id)queryForCommentsPatchWithObject:(GTLDriveComment *)object
+                               fileId:(NSString *)fileId
+                            commentId:(NSString *)commentId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"drive.comments.patch";
+  GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.fileId = fileId;
+  query.commentId = commentId;
+  query.expectedObjectClass = [GTLDriveComment class];
+  return query;
+}
+
++ (id)queryForCommentsUpdateWithObject:(GTLDriveComment *)object
+                                fileId:(NSString *)fileId
+                             commentId:(NSString *)commentId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"drive.comments.update";
+  GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.fileId = fileId;
+  query.commentId = commentId;
+  query.expectedObjectClass = [GTLDriveComment class];
   return query;
 }
 
@@ -376,6 +457,95 @@
   query.fileId = fileId;
   query.permissionId = permissionId;
   query.expectedObjectClass = [GTLDrivePermission class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "replies" methods
+// These create a GTLQueryDrive object.
+
++ (id)queryForRepliesDeleteWithFileId:(NSString *)fileId
+                            commentId:(NSString *)commentId
+                              replyId:(NSString *)replyId {
+  NSString *methodName = @"drive.replies.delete";
+  GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.fileId = fileId;
+  query.commentId = commentId;
+  query.replyId = replyId;
+  return query;
+}
+
++ (id)queryForRepliesGetWithFileId:(NSString *)fileId
+                         commentId:(NSString *)commentId
+                           replyId:(NSString *)replyId {
+  NSString *methodName = @"drive.replies.get";
+  GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.fileId = fileId;
+  query.commentId = commentId;
+  query.replyId = replyId;
+  query.expectedObjectClass = [GTLDriveCommentReply class];
+  return query;
+}
+
++ (id)queryForRepliesInsertWithObject:(GTLDriveCommentReply *)object
+                               fileId:(NSString *)fileId
+                            commentId:(NSString *)commentId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"drive.replies.insert";
+  GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.fileId = fileId;
+  query.commentId = commentId;
+  query.expectedObjectClass = [GTLDriveCommentReply class];
+  return query;
+}
+
++ (id)queryForRepliesListWithFileId:(NSString *)fileId
+                          commentId:(NSString *)commentId {
+  NSString *methodName = @"drive.replies.list";
+  GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.fileId = fileId;
+  query.commentId = commentId;
+  query.expectedObjectClass = [GTLDriveCommentReplyList class];
+  return query;
+}
+
++ (id)queryForRepliesPatchWithObject:(GTLDriveCommentReply *)object
+                              fileId:(NSString *)fileId
+                           commentId:(NSString *)commentId
+                             replyId:(NSString *)replyId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"drive.replies.patch";
+  GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.fileId = fileId;
+  query.commentId = commentId;
+  query.replyId = replyId;
+  query.expectedObjectClass = [GTLDriveCommentReply class];
+  return query;
+}
+
++ (id)queryForRepliesUpdateWithObject:(GTLDriveCommentReply *)object
+                               fileId:(NSString *)fileId
+                            commentId:(NSString *)commentId
+                              replyId:(NSString *)replyId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"drive.replies.update";
+  GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.fileId = fileId;
+  query.commentId = commentId;
+  query.replyId = replyId;
+  query.expectedObjectClass = [GTLDriveCommentReply class];
   return query;
 }
 
