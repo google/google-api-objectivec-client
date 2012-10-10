@@ -147,6 +147,7 @@ typedef enum {
 @property (readonly) NSString *objcServiceClassName;
 @property (readonly) NSString *objcQueryClassName;
 @property (readonly) NSString *masterHeaderName;
+@property (readonly) NSString *allSourcesSourceName;
 
 @property (readonly) NSString *serviceHeader;
 @property (readonly) NSString *serviceSource;
@@ -504,46 +505,74 @@ static NSArray *DictionaryObjectsSortedByKeys(NSDictionary *dict) {
                forKey:[constantsFileNameBase stringByAppendingPathExtension:@"m"]];
   }
 
-  // Generate the service "master" header.
+  // Generate the service "master" header and "AllSources" source.
 
   NSString *masterHeaderName = self.masterHeaderName;
+  NSString *allSourcesSourceName = self.allSourcesSourceName;
 
-  NSMutableArray *parts = [NSMutableArray array];
+  NSMutableArray *headerParts = [NSMutableArray array];
+  NSMutableArray *sourceParts = [NSMutableArray array];
 
-  [parts addObject:[self legalBlock]];
+  [headerParts addObject:[self legalBlock]];
+  [sourceParts addObject:[self legalBlock]];
 
   NSString *nameBlock = [NSString stringWithFormat:@"//\n//  %@\n//\n",
                          masterHeaderName];
-  [parts addObject:nameBlock];
+  [headerParts addObject:nameBlock];
 
+  nameBlock =
+    [NSString stringWithFormat:
+      @"//\n"
+      @"//  %@\n"
+      @"//\n"
+      @"// This file can be compiled into projects to avoid adding the individual\n"
+      @"// source files for this service.\n"
+      @"//\n", allSourcesSourceName];
+  [sourceParts addObject:nameBlock];
+  
   NSString *generatedInfo = [self generatedInfo];
-  [parts addObject:generatedInfo];
-
+  [headerParts addObject:generatedInfo];
+  [sourceParts addObject:generatedInfo];
+  
   if (constantsHeader != nil) {
     NSString *constantsInclude =
       [NSString stringWithFormat:@"#import \"%@.h\"\n", constantsFileNameBase];
-    [parts addObject:constantsInclude];
+    [headerParts addObject:constantsInclude];
+  }
+  if (constantsSource != nil) {
+    NSString *constantsInclude =
+      [NSString stringWithFormat:@"#import \"%@.m\"\n", constantsFileNameBase];
+    [sourceParts addObject:constantsInclude];
   }
 
-  NSMutableString *dataClassImports = [NSMutableString string];
+  NSMutableString *dataClassHeaderImports = [NSMutableString string];
+  NSMutableString *dataClassSourceImports = [NSMutableString string];
   for (GTLDiscoveryJsonSchema *schema in self.api.topLevelObjectSchemas) {
     NSString *name = schema.objcClassName;
-    [dataClassImports appendFormat:@"#import \"%@.h\"\n", name];
+    [dataClassHeaderImports appendFormat:@"#import \"%@.h\"\n", name];
+    [dataClassSourceImports appendFormat:@"#import \"%@.m\"\n", name];
   }
-  if ([dataClassImports length]) {
-    [parts addObject:dataClassImports];
+  if ([dataClassHeaderImports length]) {
+    [headerParts addObject:dataClassHeaderImports];
+  }
+  if ([dataClassSourceImports length]) {
+    [sourceParts addObject:dataClassSourceImports];
   }
 
   NSMutableString *queryAndServiceImport = [NSMutableString string];
-  [queryAndServiceImport appendFormat:@"#import \"%@\"\n",
-   [queryFileNameBase stringByAppendingPathExtension:@"h"]];
-  [queryAndServiceImport appendFormat:@"#import \"%@\"\n",
-   [serviceFileNameBase stringByAppendingPathExtension:@"h"]];
-  [parts addObject:queryAndServiceImport];
+  [queryAndServiceImport appendFormat:@"#import \"%@.h\"\n", queryFileNameBase];
+  [queryAndServiceImport appendFormat:@"#import \"%@.h\"\n", serviceFileNameBase];
+  [headerParts addObject:queryAndServiceImport];
+  queryAndServiceImport = [NSMutableString string];
+  [queryAndServiceImport appendFormat:@"#import \"%@.m\"\n", queryFileNameBase];
+  [queryAndServiceImport appendFormat:@"#import \"%@.m\"\n", serviceFileNameBase];
+  [sourceParts addObject:queryAndServiceImport];
 
-  NSString *masterHeader = [parts componentsJoinedByString:@"\n"];
+  NSString *masterHeader = [headerParts componentsJoinedByString:@"\n"];
+  NSString *allSourcesSource = [sourceParts componentsJoinedByString:@"\n"];
 
   [result setObject:masterHeader forKey:masterHeaderName];
+  [result setObject:allSourcesSource forKey:allSourcesSourceName];
 
   // Report any infos/warnings added during generation.
   for (NSString *infoString in self.infos) {
@@ -598,6 +627,12 @@ static NSArray *DictionaryObjectsSortedByKeys(NSDictionary *dict) {
 
 - (NSString *)masterHeaderName {
   NSString *result = [NSString stringWithFormat:@"%@%@.h",
+                      kProjectPrefix, self.formattedApiName];
+  return result;
+}
+
+- (NSString *)allSourcesSourceName {
+  NSString *result = [NSString stringWithFormat:@"%@%@_Sources.m",
                       kProjectPrefix, self.formattedApiName];
   return result;
 }
