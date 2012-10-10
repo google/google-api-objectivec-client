@@ -48,27 +48,33 @@
 @interface GTLCivicInfoAdministrativeBody : GTLObject
 
 // A URL provided by this administrative body for information on absentee
+// voting.
 @property (copy) NSString *absenteeVotingInfoUrl;
 
-// A URL provided by this administrative body to give contest information to
+// A URL provided by this administrative body to give contest information to the
+// voter.
 @property (copy) NSString *ballotInfoUrl;
 
 // The mailing address of this administrative body.
 @property (retain) GTLCivicInfoSimpleAddressType *correspondenceAddress;
 
 // A URL provided by this administrative body for looking up general election
+// information.
 @property (copy) NSString *electionInfoUrl;
 
 // The election officials for this election administrative body.
 @property (retain) NSArray *electionOfficials;  // of GTLCivicInfoElectionOfficial
 
-// A URL provided by this administrative body for confirming that the voter
+// A URL provided by this administrative body for confirming that the voter is
+// registered to vote.
 @property (copy) NSString *electionRegistrationConfirmationUrl;
 
-// A URL provided by this administrative body for looking up how to register
+// A URL provided by this administrative body for looking up how to register to
+// vote.
 @property (copy) NSString *electionRegistrationUrl;
 
-// A URL provided by this administrative body describing election rules to
+// A URL provided by this administrative body describing election rules to the
+// voter.
 @property (copy) NSString *electionRulesUrl;
 
 // A description of the hours of operation for this administrative body.
