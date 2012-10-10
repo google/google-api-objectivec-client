@@ -26,11 +26,12 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 33 custom properties)
+//   GTLDriveFile (0 custom class methods, 34 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
-//   GTLDriveFileImageMediaMetadata (0 custom class methods, 4 custom properties)
+//   GTLDriveFileImageMediaMetadata (0 custom class methods, 12 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
 //   GTLDriveFileLabels (0 custom class methods, 5 custom properties)
+//   GTLDriveFileThumbnail (0 custom class methods, 2 custom properties)
 //   GTLDriveFileImageMediaMetadataLocation (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -44,6 +45,7 @@
 @class GTLDriveFileImageMediaMetadataLocation;
 @class GTLDriveFileIndexableText;
 @class GTLDriveFileLabels;
+@class GTLDriveFileThumbnail;
 @class GTLDriveParentReference;
 @class GTLDrivePermission;
 
@@ -162,6 +164,10 @@
 // timestamp).
 @property (retain) GTLDateTime *sharedWithMeDate;
 
+// Thumbnail for the file. Only accepted on upload and for files that are not
+// already thumbnailed by Google.
+@property (retain) GTLDriveFileThumbnail *thumbnail;
+
 // A link to the file's thumbnail.
 @property (copy) NSString *thumbnailLink;
 
@@ -202,8 +208,32 @@
 
 @interface GTLDriveFileImageMediaMetadata : GTLObject
 
+// The aperture used to create the photo (f-number).
+@property (retain) NSNumber *aperture;  // floatValue
+
+// The make of the camera used to create the photo.
+@property (copy) NSString *cameraMake;
+
+// The model of the camera used to create the photo.
+@property (copy) NSString *cameraModel;
+
+// The date and time the photo was taken (EXIF format timestamp).
+@property (copy) NSString *date;
+
+// The length of the exposure, in seconds.
+@property (retain) NSNumber *exposureTime;  // floatValue
+
+// Whether a flash was used to create the photo.
+@property (retain) NSNumber *flashUsed;  // boolValue
+
+// The focal length used to create the photo, in millimeters.
+@property (retain) NSNumber *focalLength;  // floatValue
+
 // The height of the image in pixels.
 @property (retain) NSNumber *height;  // intValue
+
+// The ISO speed used to create the photo.
+@property (retain) NSNumber *isoSpeed;  // intValue
 
 // Geographic location information stored in the image.
 @property (retain) GTLDriveFileImageMediaMetadataLocation *location;
@@ -251,6 +281,22 @@
 
 // Whether this file has been viewed by this user.
 @property (retain) NSNumber *viewed;  // boolValue
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveFileThumbnail
+//
+
+@interface GTLDriveFileThumbnail : GTLObject
+
+// The URL-safe Base64 encoded bytes of the thumbnail image.
+@property (copy) NSString *image;  // GTLBase64 can encode/decode (probably web-safe format)
+
+// The MIME type of the thumbnail.
+@property (copy) NSString *mimeType;
 
 @end
 

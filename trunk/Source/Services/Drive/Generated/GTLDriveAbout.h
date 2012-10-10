@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveAbout (0 custom class methods, 18 custom properties)
+//   GTLDriveAbout (0 custom class methods, 20 custom properties)
 //   GTLDriveAboutAdditionalRoleInfoItem (0 custom class methods, 2 custom properties)
 //   GTLDriveAboutExportFormatsItem (0 custom class methods, 2 custom properties)
 //   GTLDriveAboutFeaturesItem (0 custom class methods, 2 custom properties)
@@ -46,6 +46,7 @@
 @class GTLDriveAboutFeaturesItem;
 @class GTLDriveAboutImportFormatsItem;
 @class GTLDriveAboutMaxUploadSizesItem;
+@class GTLDriveUser;
 
 // ----------------------------------------------------------------------------
 //
@@ -101,6 +102,9 @@
 // The number of quota bytes used.
 @property (retain) NSNumber *quotaBytesUsed;  // longLongValue
 
+// The number of quota bytes used by all Google apps (Drive, Picasa, etc.).
+@property (retain) NSNumber *quotaBytesUsedAggregate;  // longLongValue
+
 // The number of quota bytes used by trashed items.
 @property (retain) NSNumber *quotaBytesUsedInTrash;  // longLongValue
 
@@ -112,6 +116,9 @@
 
 // A link back to this item.
 @property (copy) NSString *selfLink;
+
+// The authenticated user.
+@property (retain) GTLDriveUser *user;
 
 @end
 

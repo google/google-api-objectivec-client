@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLDrive.h
+//  GTLDriveCommentList.h
 //
 
 // ----------------------------------------------------------------------------
@@ -25,29 +25,36 @@
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
+// Classes:
+//   GTLDriveCommentList (0 custom class methods, 3 custom properties)
 
-#import "GTLDriveConstants.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLDriveAbout.h"
-#import "GTLDriveApp.h"
-#import "GTLDriveAppList.h"
-#import "GTLDriveChange.h"
-#import "GTLDriveChangeList.h"
-#import "GTLDriveChildList.h"
-#import "GTLDriveChildReference.h"
-#import "GTLDriveComment.h"
-#import "GTLDriveCommentList.h"
-#import "GTLDriveCommentReply.h"
-#import "GTLDriveCommentReplyList.h"
-#import "GTLDriveFile.h"
-#import "GTLDriveFileList.h"
-#import "GTLDriveParentList.h"
-#import "GTLDriveParentReference.h"
-#import "GTLDrivePermission.h"
-#import "GTLDrivePermissionList.h"
-#import "GTLDriveRevision.h"
-#import "GTLDriveRevisionList.h"
-#import "GTLDriveUser.h"
+@class GTLDriveComment;
 
-#import "GTLQueryDrive.h"
-#import "GTLServiceDrive.h"
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveCommentList
+//
+
+// A JSON representation of a list of comments on a file in Google Drive.
+
+// This class supports NSFastEnumeration over its "items" property. It also
+// supports -itemAtIndex: to retrieve individual objects from "items".
+
+@interface GTLDriveCommentList : GTLCollectionObject
+
+// List of comments.
+@property (retain) NSArray *items;  // of GTLDriveComment
+
+// This is always drive#commentList.
+@property (copy) NSString *kind;
+
+// The token to use to request the next page of results.
+@property (copy) NSString *nextPageToken;
+
+@end

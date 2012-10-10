@@ -45,6 +45,10 @@
                       [GTLDriveChangeList class],
                       [GTLDriveChildList class],
                       [GTLDriveChildReference class],
+                      [GTLDriveComment class],
+                      [GTLDriveCommentList class],
+                      [GTLDriveCommentReply class],
+                      [GTLDriveCommentReplyList class],
                       [GTLDriveFile class],
                       [GTLDriveFileList class],
                       [GTLDriveParentList class],
@@ -53,6 +57,7 @@
                       [GTLDrivePermissionList class],
                       [GTLDriveRevision class],
                       [GTLDriveRevisionList class],
+                      [GTLDriveUser class],
                       nil];
   return classes;
 }

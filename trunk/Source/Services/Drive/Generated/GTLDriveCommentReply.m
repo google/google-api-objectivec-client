@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLDrive.h
+//  GTLDriveCommentReply.m
 //
 
 // ----------------------------------------------------------------------------
@@ -25,29 +25,24 @@
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
+// Classes:
+//   GTLDriveCommentReply (0 custom class methods, 9 custom properties)
 
-#import "GTLDriveConstants.h"
-
-#import "GTLDriveAbout.h"
-#import "GTLDriveApp.h"
-#import "GTLDriveAppList.h"
-#import "GTLDriveChange.h"
-#import "GTLDriveChangeList.h"
-#import "GTLDriveChildList.h"
-#import "GTLDriveChildReference.h"
-#import "GTLDriveComment.h"
-#import "GTLDriveCommentList.h"
 #import "GTLDriveCommentReply.h"
-#import "GTLDriveCommentReplyList.h"
-#import "GTLDriveFile.h"
-#import "GTLDriveFileList.h"
-#import "GTLDriveParentList.h"
-#import "GTLDriveParentReference.h"
-#import "GTLDrivePermission.h"
-#import "GTLDrivePermissionList.h"
-#import "GTLDriveRevision.h"
-#import "GTLDriveRevisionList.h"
+
 #import "GTLDriveUser.h"
 
-#import "GTLQueryDrive.h"
-#import "GTLServiceDrive.h"
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveCommentReply
+//
+
+@implementation GTLDriveCommentReply
+@dynamic author, content, createdDate, deleted, htmlContent, kind, modifiedDate,
+         replyId, verb;
+
++ (void)load {
+  [self registerObjectClassForKind:@"drive#commentReply"];
+}
+
+@end

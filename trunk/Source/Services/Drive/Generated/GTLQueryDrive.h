@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLQueryDrive (34 custom class methods, 29 custom properties)
+//   GTLQueryDrive (46 custom class methods, 32 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -35,6 +35,8 @@
 #endif
 
 @class GTLDriveChildReference;
+@class GTLDriveComment;
+@class GTLDriveCommentReply;
 @class GTLDriveFile;
 @class GTLDriveParentReference;
 @class GTLDrivePermission;
@@ -55,6 +57,7 @@
 @property (copy) NSString *appId;
 @property (copy) NSString *changeId;
 @property (copy) NSString *childId;
+@property (copy) NSString *commentId;
 @property (assign) BOOL convert;
 @property (copy) NSString *fileId;
 @property (copy) NSString *folderId;
@@ -71,6 +74,7 @@
 @property (assign) BOOL pinned;
 @property (copy) NSString *projection;
 @property (copy) NSString *q;
+@property (copy) NSString *replyId;
 @property (copy) NSString *revisionId;
 @property (assign) BOOL sendNotificationEmails;
 @property (assign) BOOL setModifiedDate;
@@ -79,6 +83,7 @@
 @property (copy) NSString *targetLanguage;
 @property (copy) NSString *timedTextLanguage;
 @property (copy) NSString *timedTextTrackName;
+@property (copy) NSString *updatedMin;
 @property (assign) BOOL updateViewedDate;
 
 #pragma mark -
@@ -209,6 +214,88 @@
 //   kGTLAuthScopeDriveReadonly
 // Fetches a GTLDriveChildList.
 + (id)queryForChildrenListWithFolderId:(NSString *)folderId;
+
+#pragma mark -
+#pragma mark "comments" methods
+// These create a GTLQueryDrive object.
+
+// Method: drive.comments.delete
+// Deletes a comment.
+//  Required:
+//   fileId: The ID of the file.
+//   commentId: The ID of the comment.
+//  Authorization scope(s):
+//   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveReadonly
++ (id)queryForCommentsDeleteWithFileId:(NSString *)fileId
+                             commentId:(NSString *)commentId;
+
+// Method: drive.comments.get
+// Gets a comment by ID.
+//  Required:
+//   fileId: The ID of the file.
+//   commentId: The ID of the comment.
+//  Authorization scope(s):
+//   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveReadonly
+// Fetches a GTLDriveComment.
++ (id)queryForCommentsGetWithFileId:(NSString *)fileId
+                          commentId:(NSString *)commentId;
+
+// Method: drive.comments.insert
+// Creates a new comment on the given file.
+//  Required:
+//   fileId: The ID of the file.
+//  Authorization scope(s):
+//   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveReadonly
+// Fetches a GTLDriveComment.
++ (id)queryForCommentsInsertWithObject:(GTLDriveComment *)object
+                                fileId:(NSString *)fileId;
+
+// Method: drive.comments.list
+// Lists a file's comments.
+//  Required:
+//   fileId: The ID of the file.
+//  Optional:
+//   includeDeleted: If set, all comments, including deleted comments (with
+//     content stripped) will be returned. (Default false)
+//   maxResults: The maximum number of discussions to include in the response,
+//     used for paging. (0..100, default 20)
+//   pageToken: The continuation token, used to page through large result sets.
+//     To get the next page of results, set this parameter to the value of
+//     "nextPageToken" from the previous response.
+//   updatedMin: Only discussions that were updated after this timestamp will be
+//     returned. Formatted as an RFC 3339 timestamp.
+//  Authorization scope(s):
+//   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveReadonly
+// Fetches a GTLDriveCommentList.
++ (id)queryForCommentsListWithFileId:(NSString *)fileId;
+
+// Method: drive.comments.patch
+// Updates an existing comment. This method supports patch semantics.
+//  Required:
+//   fileId: The ID of the file.
+//   commentId: The ID of the comment.
+//  Authorization scope(s):
+//   kGTLAuthScopeDrive
+// Fetches a GTLDriveComment.
++ (id)queryForCommentsPatchWithObject:(GTLDriveComment *)object
+                               fileId:(NSString *)fileId
+                            commentId:(NSString *)commentId;
+
+// Method: drive.comments.update
+// Updates an existing comment.
+//  Required:
+//   fileId: The ID of the file.
+//   commentId: The ID of the comment.
+//  Authorization scope(s):
+//   kGTLAuthScopeDrive
+// Fetches a GTLDriveComment.
++ (id)queryForCommentsUpdateWithObject:(GTLDriveComment *)object
+                                fileId:(NSString *)fileId
+                             commentId:(NSString *)commentId;
 
 #pragma mark -
 #pragma mark "files" methods
@@ -535,6 +622,94 @@
 + (id)queryForPermissionsUpdateWithObject:(GTLDrivePermission *)object
                                    fileId:(NSString *)fileId
                              permissionId:(NSString *)permissionId;
+
+#pragma mark -
+#pragma mark "replies" methods
+// These create a GTLQueryDrive object.
+
+// Method: drive.replies.delete
+// Deletes a reply.
+//  Required:
+//   fileId: The ID of the file.
+//   commentId: The ID of the comment.
+//   replyId: The ID of the reply.
+//  Authorization scope(s):
+//   kGTLAuthScopeDrive
++ (id)queryForRepliesDeleteWithFileId:(NSString *)fileId
+                            commentId:(NSString *)commentId
+                              replyId:(NSString *)replyId;
+
+// Method: drive.replies.get
+// Gets a reply.
+//  Required:
+//   fileId: The ID of the file.
+//   commentId: The ID of the comment.
+//   replyId: The ID of the reply.
+//  Authorization scope(s):
+//   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveReadonly
+// Fetches a GTLDriveCommentReply.
++ (id)queryForRepliesGetWithFileId:(NSString *)fileId
+                         commentId:(NSString *)commentId
+                           replyId:(NSString *)replyId;
+
+// Method: drive.replies.insert
+// Creates a new reply to the given comment.
+//  Required:
+//   fileId: The ID of the file.
+//   commentId: The ID of the comment.
+//  Authorization scope(s):
+//   kGTLAuthScopeDrive
+// Fetches a GTLDriveCommentReply.
++ (id)queryForRepliesInsertWithObject:(GTLDriveCommentReply *)object
+                               fileId:(NSString *)fileId
+                            commentId:(NSString *)commentId;
+
+// Method: drive.replies.list
+// Lists all of the replies to a comment.
+//  Required:
+//   fileId: The ID of the file.
+//   commentId: The ID of the comment.
+//  Optional:
+//   maxResults: The maximum number of replies to include in the response, used
+//     for paging. (0..100, default 20)
+//   pageToken: The continuation token, used to page through large result sets.
+//     To get the next page of results, set this parameter to the value of
+//     "nextPageToken" from the previous response.
+//  Authorization scope(s):
+//   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveReadonly
+// Fetches a GTLDriveCommentReplyList.
++ (id)queryForRepliesListWithFileId:(NSString *)fileId
+                          commentId:(NSString *)commentId;
+
+// Method: drive.replies.patch
+// Updates an existing reply. This method supports patch semantics.
+//  Required:
+//   fileId: The ID of the file.
+//   commentId: The ID of the comment.
+//   replyId: The ID of the reply.
+//  Authorization scope(s):
+//   kGTLAuthScopeDrive
+// Fetches a GTLDriveCommentReply.
++ (id)queryForRepliesPatchWithObject:(GTLDriveCommentReply *)object
+                              fileId:(NSString *)fileId
+                           commentId:(NSString *)commentId
+                             replyId:(NSString *)replyId;
+
+// Method: drive.replies.update
+// Updates an existing reply.
+//  Required:
+//   fileId: The ID of the file.
+//   commentId: The ID of the comment.
+//   replyId: The ID of the reply.
+//  Authorization scope(s):
+//   kGTLAuthScopeDrive
+// Fetches a GTLDriveCommentReply.
++ (id)queryForRepliesUpdateWithObject:(GTLDriveCommentReply *)object
+                               fileId:(NSString *)fileId
+                            commentId:(NSString *)commentId
+                              replyId:(NSString *)replyId;
 
 #pragma mark -
 #pragma mark "revisions" methods

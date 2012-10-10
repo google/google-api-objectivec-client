@@ -26,11 +26,12 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 33 custom properties)
+//   GTLDriveFile (0 custom class methods, 34 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
-//   GTLDriveFileImageMediaMetadata (0 custom class methods, 4 custom properties)
+//   GTLDriveFileImageMediaMetadata (0 custom class methods, 12 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
 //   GTLDriveFileLabels (0 custom class methods, 5 custom properties)
+//   GTLDriveFileThumbnail (0 custom class methods, 2 custom properties)
 //   GTLDriveFileImageMediaMetadataLocation (0 custom class methods, 3 custom properties)
 
 #import "GTLDriveFile.h"
@@ -49,8 +50,8 @@
          fileSize, identifier, imageMediaMetadata, indexableText, kind, labels,
          lastModifyingUserName, lastViewedByMeDate, md5Checksum, mimeType,
          modifiedByMeDate, modifiedDate, originalFilename, ownerNames, parents,
-         quotaBytesUsed, selfLink, sharedWithMeDate, thumbnailLink, title,
-         userPermission, webContentLink, writersCanShare;
+         quotaBytesUsed, selfLink, sharedWithMeDate, thumbnail, thumbnailLink,
+         title, userPermission, webContentLink, writersCanShare;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -98,7 +99,8 @@
 //
 
 @implementation GTLDriveFileImageMediaMetadata
-@dynamic height, location, rotation, width;
+@dynamic aperture, cameraMake, cameraModel, date, exposureTime, flashUsed,
+         focalLength, height, isoSpeed, location, rotation, width;
 @end
 
 
@@ -119,6 +121,16 @@
 
 @implementation GTLDriveFileLabels
 @dynamic hidden, restricted, starred, trashed, viewed;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveFileThumbnail
+//
+
+@implementation GTLDriveFileThumbnail
+@dynamic image, mimeType;
 @end
 
 
