@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoPollingLocation (0 custom class methods, 7 custom properties)
+//   GTLCivicInfoPollingLocation (0 custom class methods, 8 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -47,26 +47,33 @@
 
 @interface GTLCivicInfoPollingLocation : GTLObject
 
-// The address of the polling location.
+// The address of the location
 @property (retain) GTLCivicInfoSimpleAddressType *address;
 
-// The last date that this early vote site may be used.
+// The last date that this early vote site may be used. This field is not
+// populated for polling locations.
 @property (copy) NSString *endDate;
 
-// The name of the early vote site.
+// The name of the early vote site. This field is not populated for polling
+// locations.
 @property (copy) NSString *name;
 
-// A description of when this polling location is open.
+// Notes about this location (e.g. accessibility ramp or entrance to use)
+@property (copy) NSString *notes;
+
+// A description of when this location is open.
 @property (copy) NSString *pollingHours;
 
-// A list of sources for this polling location. If multiple sources are listed
-// the data has been aggregated from those sources.
+// A list of sources for this location. If multiple sources are listed the data
+// has been aggregated from those sources.
 @property (retain) NSArray *sources;  // of GTLCivicInfoSource
 
-// The first date that this early vote site may be used.
+// The first date that this early vote site may be used. This field is not
+// populated for polling locations.
 @property (copy) NSString *startDate;
 
-// The services provided by this early vote site.
+// The services provided by this early vote site. This field is not populated
+// for polling locations.
 @property (copy) NSString *voterServices;
 
 @end

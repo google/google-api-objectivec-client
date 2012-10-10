@@ -58,7 +58,7 @@
 // The election that was queried.
 @property (retain) GTLCivicInfoElection *election;
 
-// The kind, fixed to "civicinfo#voterinforesponse".
+// The kind, fixed to "civicinfo#voterInfoResponse".
 @property (copy) NSString *kind;
 
 // The normalized version of the requested address

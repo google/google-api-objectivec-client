@@ -48,7 +48,7 @@
 }
 
 + (void)load {
-  [self registerObjectClassForKind:@"civicinfo#electionsqueryresponse"];
+  [self registerObjectClassForKind:@"civicinfo#electionsQueryResponse"];
 }
 
 @end

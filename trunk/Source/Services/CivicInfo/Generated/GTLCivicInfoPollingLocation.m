@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoPollingLocation (0 custom class methods, 7 custom properties)
+//   GTLCivicInfoPollingLocation (0 custom class methods, 8 custom properties)
 
 #import "GTLCivicInfoPollingLocation.h"
 
@@ -39,7 +39,7 @@
 //
 
 @implementation GTLCivicInfoPollingLocation
-@dynamic address, endDate, name, pollingHours, sources, startDate,
+@dynamic address, endDate, name, notes, pollingHours, sources, startDate,
          voterServices;
 
 + (NSDictionary *)arrayPropertyToClassMap {

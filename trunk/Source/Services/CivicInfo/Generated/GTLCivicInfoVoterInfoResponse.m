@@ -57,7 +57,7 @@
 }
 
 + (void)load {
-  [self registerObjectClassForKind:@"civicinfo#voterinforesponse"];
+  [self registerObjectClassForKind:@"civicinfo#voterInfoResponse"];
 }
 
 @end
