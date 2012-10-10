@@ -206,7 +206,7 @@
 // their attributes.
 @property (retain) NSArray *conversionPathValue;  // of GTLAnalyticsMcfDataRowsItemConversionPathValueItem
 
-// A primitive metric value. A primitive dimension value.
+// A primitive dimension value. A primitive metric value.
 @property (copy) NSString *primitiveValue;
 
 @end

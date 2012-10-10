@@ -68,8 +68,8 @@
 // Unique identifier for this request.
 @property (copy) NSString *requestId;
 
-// Self link of product when generated for a search request. Self link of
-// product when generated for a lookup request.
+// Self link of product when generated for a lookup request. Self link of
+// product when generated for a search request.
 @property (copy) NSString *selfLink;
 
 @end

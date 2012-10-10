@@ -185,9 +185,9 @@
 
 // The HTML-formatted content, suitable for display. When creating or updating
 // an activity, this value must be supplied as plain text in the request. If
-// successful, the response will contain the HTML-formatted content. When
-// updating an activity, use originalContent as the starting value, then assign
-// the updated text to this property.
+// successful, the response contains the HTML-formatted content. When updating
+// an activity, use originalContent as the starting value, then assign the
+// updated text to this property.
 @property (copy) NSString *content;
 
 // The ID of the object. When resharing an activity, this is the ID of the
