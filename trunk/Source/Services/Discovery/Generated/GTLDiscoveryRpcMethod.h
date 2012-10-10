@@ -77,7 +77,7 @@
 @property (retain) GTLDiscoveryRpcMethodReturns *returns;
 
 // OAuth 2.0 scopes applicable to this method.
-@property (retain) NSArray *scopes;  // of any JSON type
+@property (retain) NSArray *scopes;  // of NSString
 
 // Whether this method supports media download.
 @property (retain) NSNumber *supportsMediaDownload;  // boolValue
