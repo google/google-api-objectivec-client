@@ -59,7 +59,7 @@
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
       [NSString class], @"parameterOrder",
-      [NSObject class], @"scopes",
+      [NSString class], @"scopes",
       nil];
   return map;
 }
