@@ -14,24 +14,7 @@
 		4F9B545B15816762005E917A /* DriveSampleAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9B545815816762005E917A /* DriveSampleAppController.m */; };
 		4F9B545C15816762005E917A /* DriveSampleWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9B545A15816762005E917A /* DriveSampleWindowController.m */; };
 		4FA6F3D41034AEC400C5DFA5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FA6F3D11034AEC400C5DFA5 /* MainMenu.xib */; };
-		4FBBC4E21593BF1300495B52 /* GTLDriveAbout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBC4BF1593BF1300495B52 /* GTLDriveAbout.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		4FBBC4E31593BF1300495B52 /* GTLDriveApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBC4C11593BF1300495B52 /* GTLDriveApp.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		4FBBC4E41593BF1300495B52 /* GTLDriveAppList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBC4C31593BF1300495B52 /* GTLDriveAppList.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		4FBBC4E51593BF1300495B52 /* GTLDriveChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBC4C51593BF1300495B52 /* GTLDriveChange.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		4FBBC4E61593BF1300495B52 /* GTLDriveChangeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBC4C71593BF1300495B52 /* GTLDriveChangeList.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		4FBBC4E71593BF1300495B52 /* GTLDriveChildList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBC4C91593BF1300495B52 /* GTLDriveChildList.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		4FBBC4E81593BF1300495B52 /* GTLDriveChildReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBC4CB1593BF1300495B52 /* GTLDriveChildReference.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		4FBBC4E91593BF1300495B52 /* GTLDriveConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBC4CD1593BF1300495B52 /* GTLDriveConstants.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		4FBBC4EA1593BF1300495B52 /* GTLDriveFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBC4CF1593BF1300495B52 /* GTLDriveFile.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		4FBBC4EB1593BF1300495B52 /* GTLDriveFileList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBC4D11593BF1300495B52 /* GTLDriveFileList.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		4FBBC4EC1593BF1300495B52 /* GTLDriveParentList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBC4D31593BF1300495B52 /* GTLDriveParentList.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		4FBBC4ED1593BF1300495B52 /* GTLDriveParentReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBC4D51593BF1300495B52 /* GTLDriveParentReference.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		4FBBC4EE1593BF1300495B52 /* GTLDrivePermission.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBC4D71593BF1300495B52 /* GTLDrivePermission.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		4FBBC4EF1593BF1300495B52 /* GTLDrivePermissionList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBC4D91593BF1300495B52 /* GTLDrivePermissionList.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		4FBBC4F01593BF1300495B52 /* GTLDriveRevision.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBC4DB1593BF1300495B52 /* GTLDriveRevision.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		4FBBC4F11593BF1300495B52 /* GTLDriveRevisionList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBC4DD1593BF1300495B52 /* GTLDriveRevisionList.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		4FBBC4F21593BF1300495B52 /* GTLQueryDrive.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBC4DF1593BF1300495B52 /* GTLQueryDrive.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		4FBBC4F31593BF1300495B52 /* GTLServiceDrive.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBC4E11593BF1300495B52 /* GTLServiceDrive.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4FF21BEB1626428F00805586 /* GTLDrive_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF21BEA1626428F00805586 /* GTLDrive_Sources.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -103,44 +86,8 @@
 		4F9B545915816762005E917A /* DriveSampleWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DriveSampleWindowController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		4F9B545A15816762005E917A /* DriveSampleWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriveSampleWindowController.m; sourceTree = "<group>"; };
 		4FA6F3D21034AEC400C5DFA5 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		4FBBC4BD1593BF1300495B52 /* GTLDrive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLDrive.h; sourceTree = "<group>"; };
-		4FBBC4BE1593BF1300495B52 /* GTLDriveAbout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLDriveAbout.h; sourceTree = "<group>"; };
-		4FBBC4BF1593BF1300495B52 /* GTLDriveAbout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLDriveAbout.m; sourceTree = "<group>"; };
-		4FBBC4C01593BF1300495B52 /* GTLDriveApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLDriveApp.h; sourceTree = "<group>"; };
-		4FBBC4C11593BF1300495B52 /* GTLDriveApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLDriveApp.m; sourceTree = "<group>"; };
-		4FBBC4C21593BF1300495B52 /* GTLDriveAppList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLDriveAppList.h; sourceTree = "<group>"; };
-		4FBBC4C31593BF1300495B52 /* GTLDriveAppList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLDriveAppList.m; sourceTree = "<group>"; };
-		4FBBC4C41593BF1300495B52 /* GTLDriveChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLDriveChange.h; sourceTree = "<group>"; };
-		4FBBC4C51593BF1300495B52 /* GTLDriveChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLDriveChange.m; sourceTree = "<group>"; };
-		4FBBC4C61593BF1300495B52 /* GTLDriveChangeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLDriveChangeList.h; sourceTree = "<group>"; };
-		4FBBC4C71593BF1300495B52 /* GTLDriveChangeList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLDriveChangeList.m; sourceTree = "<group>"; };
-		4FBBC4C81593BF1300495B52 /* GTLDriveChildList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLDriveChildList.h; sourceTree = "<group>"; };
-		4FBBC4C91593BF1300495B52 /* GTLDriveChildList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLDriveChildList.m; sourceTree = "<group>"; };
-		4FBBC4CA1593BF1300495B52 /* GTLDriveChildReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLDriveChildReference.h; sourceTree = "<group>"; };
-		4FBBC4CB1593BF1300495B52 /* GTLDriveChildReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLDriveChildReference.m; sourceTree = "<group>"; };
-		4FBBC4CC1593BF1300495B52 /* GTLDriveConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLDriveConstants.h; sourceTree = "<group>"; };
-		4FBBC4CD1593BF1300495B52 /* GTLDriveConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLDriveConstants.m; sourceTree = "<group>"; };
-		4FBBC4CE1593BF1300495B52 /* GTLDriveFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLDriveFile.h; sourceTree = "<group>"; };
-		4FBBC4CF1593BF1300495B52 /* GTLDriveFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLDriveFile.m; sourceTree = "<group>"; };
-		4FBBC4D01593BF1300495B52 /* GTLDriveFileList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLDriveFileList.h; sourceTree = "<group>"; };
-		4FBBC4D11593BF1300495B52 /* GTLDriveFileList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLDriveFileList.m; sourceTree = "<group>"; };
-		4FBBC4D21593BF1300495B52 /* GTLDriveParentList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLDriveParentList.h; sourceTree = "<group>"; };
-		4FBBC4D31593BF1300495B52 /* GTLDriveParentList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLDriveParentList.m; sourceTree = "<group>"; };
-		4FBBC4D41593BF1300495B52 /* GTLDriveParentReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLDriveParentReference.h; sourceTree = "<group>"; };
-		4FBBC4D51593BF1300495B52 /* GTLDriveParentReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLDriveParentReference.m; sourceTree = "<group>"; };
-		4FBBC4D61593BF1300495B52 /* GTLDrivePermission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLDrivePermission.h; sourceTree = "<group>"; };
-		4FBBC4D71593BF1300495B52 /* GTLDrivePermission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLDrivePermission.m; sourceTree = "<group>"; };
-		4FBBC4D81593BF1300495B52 /* GTLDrivePermissionList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLDrivePermissionList.h; sourceTree = "<group>"; };
-		4FBBC4D91593BF1300495B52 /* GTLDrivePermissionList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLDrivePermissionList.m; sourceTree = "<group>"; };
-		4FBBC4DA1593BF1300495B52 /* GTLDriveRevision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLDriveRevision.h; sourceTree = "<group>"; };
-		4FBBC4DB1593BF1300495B52 /* GTLDriveRevision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLDriveRevision.m; sourceTree = "<group>"; };
-		4FBBC4DC1593BF1300495B52 /* GTLDriveRevisionList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLDriveRevisionList.h; sourceTree = "<group>"; };
-		4FBBC4DD1593BF1300495B52 /* GTLDriveRevisionList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLDriveRevisionList.m; sourceTree = "<group>"; };
-		4FBBC4DE1593BF1300495B52 /* GTLQueryDrive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLQueryDrive.h; sourceTree = "<group>"; };
-		4FBBC4DF1593BF1300495B52 /* GTLQueryDrive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLQueryDrive.m; sourceTree = "<group>"; };
-		4FBBC4E01593BF1300495B52 /* GTLServiceDrive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLServiceDrive.h; sourceTree = "<group>"; };
-		4FBBC4E11593BF1300495B52 /* GTLServiceDrive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLServiceDrive.m; sourceTree = "<group>"; };
 		4FD0F1DA0CBC68F300059DC1 /* buildStripHeaders */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.script.sh; path = buildStripHeaders; sourceTree = "<group>"; };
+		4FF21BEA1626428F00805586 /* GTLDrive_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLDrive_Sources.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* DriveSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DriveSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -270,43 +217,7 @@
 		4FBBC4BC1593BF1300495B52 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				4FBBC4BD1593BF1300495B52 /* GTLDrive.h */,
-				4FBBC4BE1593BF1300495B52 /* GTLDriveAbout.h */,
-				4FBBC4BF1593BF1300495B52 /* GTLDriveAbout.m */,
-				4FBBC4C01593BF1300495B52 /* GTLDriveApp.h */,
-				4FBBC4C11593BF1300495B52 /* GTLDriveApp.m */,
-				4FBBC4C21593BF1300495B52 /* GTLDriveAppList.h */,
-				4FBBC4C31593BF1300495B52 /* GTLDriveAppList.m */,
-				4FBBC4C41593BF1300495B52 /* GTLDriveChange.h */,
-				4FBBC4C51593BF1300495B52 /* GTLDriveChange.m */,
-				4FBBC4C61593BF1300495B52 /* GTLDriveChangeList.h */,
-				4FBBC4C71593BF1300495B52 /* GTLDriveChangeList.m */,
-				4FBBC4C81593BF1300495B52 /* GTLDriveChildList.h */,
-				4FBBC4C91593BF1300495B52 /* GTLDriveChildList.m */,
-				4FBBC4CA1593BF1300495B52 /* GTLDriveChildReference.h */,
-				4FBBC4CB1593BF1300495B52 /* GTLDriveChildReference.m */,
-				4FBBC4CC1593BF1300495B52 /* GTLDriveConstants.h */,
-				4FBBC4CD1593BF1300495B52 /* GTLDriveConstants.m */,
-				4FBBC4CE1593BF1300495B52 /* GTLDriveFile.h */,
-				4FBBC4CF1593BF1300495B52 /* GTLDriveFile.m */,
-				4FBBC4D01593BF1300495B52 /* GTLDriveFileList.h */,
-				4FBBC4D11593BF1300495B52 /* GTLDriveFileList.m */,
-				4FBBC4D21593BF1300495B52 /* GTLDriveParentList.h */,
-				4FBBC4D31593BF1300495B52 /* GTLDriveParentList.m */,
-				4FBBC4D41593BF1300495B52 /* GTLDriveParentReference.h */,
-				4FBBC4D51593BF1300495B52 /* GTLDriveParentReference.m */,
-				4FBBC4D61593BF1300495B52 /* GTLDrivePermission.h */,
-				4FBBC4D71593BF1300495B52 /* GTLDrivePermission.m */,
-				4FBBC4D81593BF1300495B52 /* GTLDrivePermissionList.h */,
-				4FBBC4D91593BF1300495B52 /* GTLDrivePermissionList.m */,
-				4FBBC4DA1593BF1300495B52 /* GTLDriveRevision.h */,
-				4FBBC4DB1593BF1300495B52 /* GTLDriveRevision.m */,
-				4FBBC4DC1593BF1300495B52 /* GTLDriveRevisionList.h */,
-				4FBBC4DD1593BF1300495B52 /* GTLDriveRevisionList.m */,
-				4FBBC4DE1593BF1300495B52 /* GTLQueryDrive.h */,
-				4FBBC4DF1593BF1300495B52 /* GTLQueryDrive.m */,
-				4FBBC4E01593BF1300495B52 /* GTLServiceDrive.h */,
-				4FBBC4E11593BF1300495B52 /* GTLServiceDrive.m */,
+				4FF21BEA1626428F00805586 /* GTLDrive_Sources.m */,
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -445,24 +356,7 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				4F9B545B15816762005E917A /* DriveSampleAppController.m in Sources */,
 				4F9B545C15816762005E917A /* DriveSampleWindowController.m in Sources */,
-				4FBBC4E21593BF1300495B52 /* GTLDriveAbout.m in Sources */,
-				4FBBC4E31593BF1300495B52 /* GTLDriveApp.m in Sources */,
-				4FBBC4E41593BF1300495B52 /* GTLDriveAppList.m in Sources */,
-				4FBBC4E51593BF1300495B52 /* GTLDriveChange.m in Sources */,
-				4FBBC4E61593BF1300495B52 /* GTLDriveChangeList.m in Sources */,
-				4FBBC4E71593BF1300495B52 /* GTLDriveChildList.m in Sources */,
-				4FBBC4E81593BF1300495B52 /* GTLDriveChildReference.m in Sources */,
-				4FBBC4E91593BF1300495B52 /* GTLDriveConstants.m in Sources */,
-				4FBBC4EA1593BF1300495B52 /* GTLDriveFile.m in Sources */,
-				4FBBC4EB1593BF1300495B52 /* GTLDriveFileList.m in Sources */,
-				4FBBC4EC1593BF1300495B52 /* GTLDriveParentList.m in Sources */,
-				4FBBC4ED1593BF1300495B52 /* GTLDriveParentReference.m in Sources */,
-				4FBBC4EE1593BF1300495B52 /* GTLDrivePermission.m in Sources */,
-				4FBBC4EF1593BF1300495B52 /* GTLDrivePermissionList.m in Sources */,
-				4FBBC4F01593BF1300495B52 /* GTLDriveRevision.m in Sources */,
-				4FBBC4F11593BF1300495B52 /* GTLDriveRevisionList.m in Sources */,
-				4FBBC4F21593BF1300495B52 /* GTLQueryDrive.m in Sources */,
-				4FBBC4F31593BF1300495B52 /* GTLServiceDrive.m in Sources */,
+				4FF21BEB1626428F00805586 /* GTLDrive_Sources.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
