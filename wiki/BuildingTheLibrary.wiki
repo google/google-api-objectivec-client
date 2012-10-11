@@ -25,7 +25,7 @@ Next, add the [http://developer.apple.com/library/mac/#qa/qa1490/_index.html Obj
 
   Other Linker Flags: `-ObjC -all_load`
 
-Also drag the folder with the class files for the services needed by your application, such as Tasks or Books, directly into your project.
+Also drag the folder with the class files for the services needed by your application, such as Tasks or Books, directly into your project. From the generated files folder, include in your project either the individual class .m files for the service or the service's _Sources.m file, but not both.
 
 Application classes using the library should include the header for each specific service, such as
 
