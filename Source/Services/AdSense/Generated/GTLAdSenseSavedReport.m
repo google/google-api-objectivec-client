@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAdSenseAdClient.m
+//  GTLAdSenseSavedReport.m
 //
 
 // ----------------------------------------------------------------------------
@@ -27,17 +27,17 @@
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLAdSenseAdClient (0 custom class methods, 5 custom properties)
+//   GTLAdSenseSavedReport (0 custom class methods, 3 custom properties)
 
-#import "GTLAdSenseAdClient.h"
+#import "GTLAdSenseSavedReport.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAdSenseAdClient
+//   GTLAdSenseSavedReport
 //
 
-@implementation GTLAdSenseAdClient
-@dynamic arcOptIn, identifier, kind, productCode, supportsReporting;
+@implementation GTLAdSenseSavedReport
+@dynamic identifier, kind, name;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -47,7 +47,7 @@
 }
 
 + (void)load {
-  [self registerObjectClassForKind:@"adsense#adClient"];
+  [self registerObjectClassForKind:@"adsense#savedReport"];
 }
 
 @end

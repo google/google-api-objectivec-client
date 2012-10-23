@@ -20,14 +20,14 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   AdSense Management API (adsense/v1.1)
+//   AdSense Management API (adsense/v1.2)
 // Description:
 //   Gives AdSense publishers access to their inventory and the ability to
 //   generate reports
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLAdSenseAccount (0 custom class methods, 4 custom properties)
+//   GTLAdSenseAccount (0 custom class methods, 5 custom properties)
 
 #import "GTLAdSenseAccount.h"
 
@@ -37,7 +37,7 @@
 //
 
 @implementation GTLAdSenseAccount
-@dynamic identifier, kind, name, subAccounts;
+@dynamic identifier, kind, name, premium, subAccounts;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

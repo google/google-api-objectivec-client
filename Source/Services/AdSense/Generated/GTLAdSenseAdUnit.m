@@ -20,16 +20,22 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   AdSense Management API (adsense/v1.1)
+//   AdSense Management API (adsense/v1.2)
 // Description:
 //   Gives AdSense publishers access to their inventory and the ability to
 //   generate reports
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLAdSenseAdUnit (0 custom class methods, 5 custom properties)
+//   GTLAdSenseAdUnit (0 custom class methods, 10 custom properties)
+//   GTLAdSenseAdUnitContentAdsSettings (0 custom class methods, 3 custom properties)
+//   GTLAdSenseAdUnitFeedAdsSettings (0 custom class methods, 4 custom properties)
+//   GTLAdSenseAdUnitMobileContentAdsSettings (0 custom class methods, 4 custom properties)
+//   GTLAdSenseAdUnitContentAdsSettingsBackupOption (0 custom class methods, 3 custom properties)
 
 #import "GTLAdSenseAdUnit.h"
+
+#import "GTLAdSenseAdStyle.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -37,7 +43,8 @@
 //
 
 @implementation GTLAdSenseAdUnit
-@dynamic code, identifier, kind, name, status;
+@dynamic code, contentAdsSettings, customStyle, feedAdsSettings, identifier,
+         kind, mobileContentAdsSettings, name, savedStyleId, status;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -50,4 +57,44 @@
   [self registerObjectClassForKind:@"adsense#adUnit"];
 }
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAdSenseAdUnitContentAdsSettings
+//
+
+@implementation GTLAdSenseAdUnitContentAdsSettings
+@dynamic backupOption, size, type;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAdSenseAdUnitFeedAdsSettings
+//
+
+@implementation GTLAdSenseAdUnitFeedAdsSettings
+@dynamic adPosition, frequency, minimumWordCount, type;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAdSenseAdUnitMobileContentAdsSettings
+//
+
+@implementation GTLAdSenseAdUnitMobileContentAdsSettings
+@dynamic markupLanguage, scriptingLanguage, size, type;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAdSenseAdUnitContentAdsSettingsBackupOption
+//
+
+@implementation GTLAdSenseAdUnitContentAdsSettingsBackupOption
+@dynamic color, type, url;
 @end

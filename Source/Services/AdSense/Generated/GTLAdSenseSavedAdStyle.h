@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAdSenseAdClient.m
+//  GTLAdSenseSavedAdStyle.h
 //
 
 // ----------------------------------------------------------------------------
@@ -27,27 +27,35 @@
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLAdSenseAdClient (0 custom class methods, 5 custom properties)
+//   GTLAdSenseSavedAdStyle (0 custom class methods, 4 custom properties)
 
-#import "GTLAdSenseAdClient.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
+
+@class GTLAdSenseAdStyle;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAdSenseAdClient
+//   GTLAdSenseSavedAdStyle
 //
 
-@implementation GTLAdSenseAdClient
-@dynamic arcOptIn, identifier, kind, productCode, supportsReporting;
+@interface GTLAdSenseSavedAdStyle : GTLObject
 
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
-  return map;
-}
+// The AdStyle itself.
+@property (retain) GTLAdSenseAdStyle *adStyle;
 
-+ (void)load {
-  [self registerObjectClassForKind:@"adsense#adClient"];
-}
+// Unique identifier of this saved ad style. This should be considered an opaque
+// identifier; it is not safe to rely on it being in any particular format.
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+@property (copy) NSString *identifier;
+
+// Kind of resource this is, in this case adsense#savedAdStyle.
+@property (copy) NSString *kind;
+
+// The user selected name of this SavedAdStyle.
+@property (copy) NSString *name;
 
 @end

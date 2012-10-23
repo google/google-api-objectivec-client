@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAdSenseAdClient.m
+//  GTLAdSenseSavedAdStyles.m
 //
 
 // ----------------------------------------------------------------------------
@@ -27,27 +27,36 @@
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLAdSenseAdClient (0 custom class methods, 5 custom properties)
+//   GTLAdSenseSavedAdStyles (0 custom class methods, 4 custom properties)
 
-#import "GTLAdSenseAdClient.h"
+#import "GTLAdSenseSavedAdStyles.h"
+
+#import "GTLAdSenseSavedAdStyle.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAdSenseAdClient
+//   GTLAdSenseSavedAdStyles
 //
 
-@implementation GTLAdSenseAdClient
-@dynamic arcOptIn, identifier, kind, productCode, supportsReporting;
+@implementation GTLAdSenseSavedAdStyles
+@dynamic ETag, items, kind, nextPageToken;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+    [NSDictionary dictionaryWithObject:@"etag"
+                                forKey:@"ETag"];
+  return map;
+}
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLAdSenseSavedAdStyle class]
+                                forKey:@"items"];
   return map;
 }
 
 + (void)load {
-  [self registerObjectClassForKind:@"adsense#adClient"];
+  [self registerObjectClassForKind:@"adsense#savedAdStyles"];
 }
 
 @end

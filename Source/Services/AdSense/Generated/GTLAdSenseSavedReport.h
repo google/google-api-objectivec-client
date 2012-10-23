@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAdSenseAdClient.m
+//  GTLAdSenseSavedReport.h
 //
 
 // ----------------------------------------------------------------------------
@@ -27,27 +27,29 @@
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLAdSenseAdClient (0 custom class methods, 5 custom properties)
+//   GTLAdSenseSavedReport (0 custom class methods, 3 custom properties)
 
-#import "GTLAdSenseAdClient.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAdSenseAdClient
+//   GTLAdSenseSavedReport
 //
 
-@implementation GTLAdSenseAdClient
-@dynamic arcOptIn, identifier, kind, productCode, supportsReporting;
+@interface GTLAdSenseSavedReport : GTLObject
 
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
-  return map;
-}
+// Unique identifier of this saved report.
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+@property (copy) NSString *identifier;
 
-+ (void)load {
-  [self registerObjectClassForKind:@"adsense#adClient"];
-}
+// Kind of resource this is, in this case adsense#savedReport.
+@property (copy) NSString *kind;
+
+// This saved report's name.
+@property (copy) NSString *name;
 
 @end
