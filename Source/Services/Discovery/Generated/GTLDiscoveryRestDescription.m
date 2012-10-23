@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/discovery/
 // Classes:
-//   GTLDiscoveryRestDescription (0 custom class methods, 24 custom properties)
+//   GTLDiscoveryRestDescription (0 custom class methods, 25 custom properties)
 //   GTLDiscoveryRestDescriptionAuth (0 custom class methods, 1 custom properties)
 //   GTLDiscoveryRestDescriptionIcons (0 custom class methods, 2 custom properties)
 //   GTLDiscoveryRestDescriptionMethods (0 custom class methods, 0 custom properties)
@@ -51,14 +51,15 @@
 
 @implementation GTLDiscoveryRestDescription
 @dynamic auth, basePath, baseUrl, batchPath, canonicalName, descriptionProperty,
-         discoveryVersion, documentationLink, features, icons, identifier, kind,
-         labels, methods, name, parameters, protocol, resources, revision,
+         discoveryVersion, documentationLink, ETag, features, icons, identifier,
+         kind, labels, methods, name, parameters, protocol, resources, revision,
          rootUrl, schemas, servicePath, title, version;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
       @"description", @"descriptionProperty",
+      @"etag", @"ETag",
       @"id", @"identifier",
       nil];
   return map;

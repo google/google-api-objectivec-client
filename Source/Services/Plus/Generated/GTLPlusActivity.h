@@ -202,7 +202,9 @@
 
 // The content (text) as provided by the author, stored without any HTML
 // formatting. When updating an activity's content, use the value of
-// originalContent as the starting point from which to make edits.
+// originalContent as the starting point from which to make edits. The
+// formatting uses inline formatting in the style of *bold*, _italic_ and
+// -strikethrough-.
 @property (copy) NSString *originalContent;
 
 // People who +1'd this activity.

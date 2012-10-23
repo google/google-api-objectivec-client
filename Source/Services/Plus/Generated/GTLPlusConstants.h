@@ -36,9 +36,7 @@
 
 // Authorization scope
 // Know who you are on Google
-GTL_EXTERN NSString * const kGTLAuthScopePlusMe;             // "https://www.googleapis.com/auth/plus.me"
-// View your email address
-GTL_EXTERN NSString * const kGTLAuthScopePlusUserinfoEmail;  // "https://www.googleapis.com/auth/userinfo.email"
+GTL_EXTERN NSString * const kGTLAuthScopePlusMe;  // "https://www.googleapis.com/auth/plus.me"
 
 // Collection
 GTL_EXTERN NSString * const kGTLPlusCollectionPlusoners;  // "plusoners"

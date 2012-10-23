@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoContest (0 custom class methods, 12 custom properties)
+//   GTLCivicInfoContest (0 custom class methods, 15 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -76,6 +76,18 @@
 // If this is a partisan election, the name of the party it is for.
 @property (copy) NSString *primaryParty;
 
+// A brief description of the referendum. This field is only populated for
+// contests of type 'Referendum'.
+@property (copy) NSString *referendumSubtitle;
+
+// The title of the referendum. (e.g. 'Proposition 42') This field is only
+// populated for contests of type 'Referendum'.
+@property (copy) NSString *referendumTitle;
+
+// A link the referendum. This field is only populated for contests of type
+// 'Referendum'.
+@property (copy) NSString *referendumUrl;
+
 // A list of sources for this contest. If multiple sources are listed, the data
 // has been aggregated from those sources.
 @property (retain) NSArray *sources;  // of GTLCivicInfoSource
@@ -84,7 +96,8 @@
 // normal election cycle.
 @property (copy) NSString *special;
 
-// The type of contest. Usually this will be General, Primary, or Run-off.
+// The type of contest. Usually this will be 'General', 'Primary', or 'Run-off'
+// for contests with candidates. For referenda this will be 'Referendum'.
 @property (copy) NSString *type;
 
 @end
