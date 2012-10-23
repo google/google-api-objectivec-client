@@ -363,6 +363,9 @@
 //  Required:
 //   calendarId: Calendar identifier.
 //  Optional:
+//   maxAttendees: The maximum number of attendees to include in the response.
+//     If there are more than the specified number of attendees, only the
+//     participant is returned. Optional.
 //   sendNotifications: Whether to send notifications about the creation of the
 //     new event. Optional. The default is False.
 //  Authorization scope(s):
@@ -482,6 +485,9 @@
 //     of this option is discouraged and should only be used by clients which
 //     cannot handle the absence of an email address value in the mentioned
 //     places. Optional. The default is False.
+//   maxAttendees: The maximum number of attendees to include in the response.
+//     If there are more than the specified number of attendees, only the
+//     participant is returned. Optional.
 //   sendNotifications: Whether to send notifications about the event update
 //     (e.g. attendee's responses, title changes, etc.). Optional. The default
 //     is False.
@@ -518,6 +524,9 @@
 //     of this option is discouraged and should only be used by clients which
 //     cannot handle the absence of an email address value in the mentioned
 //     places. Optional. The default is False.
+//   maxAttendees: The maximum number of attendees to include in the response.
+//     If there are more than the specified number of attendees, only the
+//     participant is returned. Optional.
 //   sendNotifications: Whether to send notifications about the event update
 //     (e.g. attendee's responses, title changes, etc.). Optional. The default
 //     is False.

@@ -107,7 +107,7 @@
 @property (retain) GTLCalendarEventGadget *gadget;
 
 // Whether attendees other than the organizer can invite others to the event.
-// Optional. The default is False.
+// Optional. The default is True.
 @property (retain) NSNumber *guestsCanInviteOthers;  // boolValue
 
 // Whether attendees other than the organizer can modify the event. Optional.
@@ -115,7 +115,7 @@
 @property (retain) NSNumber *guestsCanModify;  // boolValue
 
 // Whether attendees other than the organizer can see who the event's attendees
-// are. Optional. The default is False.
+// are. Optional. The default is True.
 @property (retain) NSNumber *guestsCanSeeOtherGuests;  // boolValue
 
 // An absolute link to the Google+ hangout associated with this event.
