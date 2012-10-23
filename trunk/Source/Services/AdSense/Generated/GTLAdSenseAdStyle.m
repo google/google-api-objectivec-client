@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAdSenseAdClient.m
+//  GTLAdSenseAdStyle.m
 //
 
 // ----------------------------------------------------------------------------
@@ -27,27 +27,42 @@
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLAdSenseAdClient (0 custom class methods, 5 custom properties)
+//   GTLAdSenseAdStyle (0 custom class methods, 4 custom properties)
+//   GTLAdSenseAdStyleColors (0 custom class methods, 5 custom properties)
+//   GTLAdSenseAdStyleFont (0 custom class methods, 2 custom properties)
 
-#import "GTLAdSenseAdClient.h"
+#import "GTLAdSenseAdStyle.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAdSenseAdClient
+//   GTLAdSenseAdStyle
 //
 
-@implementation GTLAdSenseAdClient
-@dynamic arcOptIn, identifier, kind, productCode, supportsReporting;
-
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
-  return map;
-}
+@implementation GTLAdSenseAdStyle
+@dynamic colors, corners, font, kind;
 
 + (void)load {
-  [self registerObjectClassForKind:@"adsense#adClient"];
+  [self registerObjectClassForKind:@"adsense#adStyle"];
 }
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAdSenseAdStyleColors
+//
+
+@implementation GTLAdSenseAdStyleColors
+@dynamic background, border, text, title, url;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAdSenseAdStyleFont
+//
+
+@implementation GTLAdSenseAdStyleFont
+@dynamic family, size;
 @end

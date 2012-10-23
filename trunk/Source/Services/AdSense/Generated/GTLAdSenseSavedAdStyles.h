@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAdSenseAdClient.m
+//  GTLAdSenseSavedAdStyles.h
 //
 
 // ----------------------------------------------------------------------------
@@ -27,27 +27,37 @@
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLAdSenseAdClient (0 custom class methods, 5 custom properties)
+//   GTLAdSenseSavedAdStyles (0 custom class methods, 4 custom properties)
 
-#import "GTLAdSenseAdClient.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
+
+@class GTLAdSenseSavedAdStyle;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAdSenseAdClient
+//   GTLAdSenseSavedAdStyles
 //
 
-@implementation GTLAdSenseAdClient
-@dynamic arcOptIn, identifier, kind, productCode, supportsReporting;
+// This class supports NSFastEnumeration over its "items" property. It also
+// supports -itemAtIndex: to retrieve individual objects from "items".
 
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
-  return map;
-}
+@interface GTLAdSenseSavedAdStyles : GTLCollectionObject
 
-+ (void)load {
-  [self registerObjectClassForKind:@"adsense#adClient"];
-}
+// ETag of this response for caching purposes.
+@property (copy) NSString *ETag;
+
+// The saved ad styles returned in this list response.
+@property (retain) NSArray *items;  // of GTLAdSenseSavedAdStyle
+
+// Kind of list this is, in this case adsense#savedAdStyles.
+@property (copy) NSString *kind;
+
+// Continuation token used to page through ad units. To retrieve the next page
+// of results, set the next request's "pageToken" value to this.
+@property (copy) NSString *nextPageToken;
 
 @end

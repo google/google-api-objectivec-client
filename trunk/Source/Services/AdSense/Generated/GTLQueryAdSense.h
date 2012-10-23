@@ -20,14 +20,14 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   AdSense Management API (adsense/v1.1)
+//   AdSense Management API (adsense/v1.2)
 // Description:
 //   Gives AdSense publishers access to their inventory and the ability to
 //   generate reports
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLQueryAdSense (20 custom class methods, 18 custom properties)
+//   GTLQueryAdSense (28 custom class methods, 20 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -62,6 +62,8 @@
 @property (assign) NSInteger maxResults;
 @property (retain) NSArray *metric;  // of NSString
 @property (copy) NSString *pageToken;
+@property (copy) NSString *savedAdStyleId;
+@property (copy) NSString *savedReportId;
 @property (retain) NSArray *sort;  // of NSString
 @property (copy) NSString *startDate;
 @property (assign) NSInteger startIndex;
@@ -278,6 +280,76 @@
                                            endDate:(NSString *)endDate;
 
 #pragma mark -
+#pragma mark "accounts.reports.saved" methods
+// These create a GTLQueryAdSense object.
+
+// Method: adsense.accounts.reports.saved.generate
+// Generate an AdSense report based on the saved report ID sent in the query
+// parameters.
+//  Required:
+//   accountId: Account to which the saved reports belong.
+//   savedReportId: The saved report to retrieve.
+//  Optional:
+//   locale: Optional locale to use for translating report output to a local
+//     language. Defaults to "en_US" if not specified.
+//   maxResults: The maximum number of rows of report data to return. (0..50000)
+//   startIndex: Index of the first row of report data to return. (0..5000)
+//  Authorization scope(s):
+//   kGTLAuthScopeAdSense
+//   kGTLAuthScopeAdSenseReadonly
+// Fetches a GTLAdSenseAdsenseReportsGenerateResponse.
++ (id)queryForAccountsReportsSavedGenerateWithAccountId:(NSString *)accountId
+                                          savedReportId:(NSString *)savedReportId;
+
+// Method: adsense.accounts.reports.saved.list
+// List all saved reports in the specified AdSense account.
+//  Required:
+//   accountId: Account to which the saved reports belong.
+//  Optional:
+//   maxResults: The maximum number of saved reports to include in the response,
+//     used for paging. (0..100)
+//   pageToken: A continuation token, used to page through saved reports. To
+//     retrieve the next page, set this parameter to the value of
+//     "nextPageToken" from the previous response.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdSense
+//   kGTLAuthScopeAdSenseReadonly
+// Fetches a GTLAdSenseSavedReports.
++ (id)queryForAccountsReportsSavedListWithAccountId:(NSString *)accountId;
+
+#pragma mark -
+#pragma mark "accounts.savedadstyles" methods
+// These create a GTLQueryAdSense object.
+
+// Method: adsense.accounts.savedadstyles.get
+// List a specific saved ad style for the specified account.
+//  Required:
+//   accountId: Account for which to get the saved ad style.
+//   savedAdStyleId: Saved ad style to retrieve.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdSense
+//   kGTLAuthScopeAdSenseReadonly
+// Fetches a GTLAdSenseSavedAdStyle.
++ (id)queryForAccountsSavedadstylesGetWithAccountId:(NSString *)accountId
+                                     savedAdStyleId:(NSString *)savedAdStyleId;
+
+// Method: adsense.accounts.savedadstyles.list
+// List all saved ad styles in the specified account.
+//  Required:
+//   accountId: Account for which to list saved ad styles.
+//  Optional:
+//   maxResults: The maximum number of saved ad styles to include in the
+//     response, used for paging. (0..10000)
+//   pageToken: A continuation token, used to page through saved ad styles. To
+//     retrieve the next page, set this parameter to the value of
+//     "nextPageToken" from the previous response.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdSense
+//   kGTLAuthScopeAdSenseReadonly
+// Fetches a GTLAdSenseSavedAdStyles.
++ (id)queryForAccountsSavedadstylesListWithAccountId:(NSString *)accountId;
+
+#pragma mark -
 #pragma mark "accounts.urlchannels" methods
 // These create a GTLQueryAdSense object.
 
@@ -461,6 +533,68 @@
 // Fetches a GTLAdSenseAdsenseReportsGenerateResponse.
 + (id)queryForReportsGenerateWithStartDate:(NSString *)startDate
                                    endDate:(NSString *)endDate;
+
+#pragma mark -
+#pragma mark "reports.saved" methods
+// These create a GTLQueryAdSense object.
+
+// Method: adsense.reports.saved.generate
+// Generate an AdSense report based on the saved report ID sent in the query
+// parameters.
+//  Required:
+//   savedReportId: The saved report to retrieve.
+//  Optional:
+//   locale: Optional locale to use for translating report output to a local
+//     language. Defaults to "en_US" if not specified.
+//   maxResults: The maximum number of rows of report data to return. (0..50000)
+//   startIndex: Index of the first row of report data to return. (0..5000)
+//  Authorization scope(s):
+//   kGTLAuthScopeAdSense
+//   kGTLAuthScopeAdSenseReadonly
+// Fetches a GTLAdSenseAdsenseReportsGenerateResponse.
++ (id)queryForReportsSavedGenerateWithSavedReportId:(NSString *)savedReportId;
+
+// Method: adsense.reports.saved.list
+// List all saved reports in this AdSense account.
+//  Optional:
+//   maxResults: The maximum number of saved reports to include in the response,
+//     used for paging. (0..100)
+//   pageToken: A continuation token, used to page through saved reports. To
+//     retrieve the next page, set this parameter to the value of
+//     "nextPageToken" from the previous response.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdSense
+//   kGTLAuthScopeAdSenseReadonly
+// Fetches a GTLAdSenseSavedReports.
++ (id)queryForReportsSavedList;
+
+#pragma mark -
+#pragma mark "savedadstyles" methods
+// These create a GTLQueryAdSense object.
+
+// Method: adsense.savedadstyles.get
+// Get a specific saved ad style from the user's account.
+//  Required:
+//   savedAdStyleId: Saved ad style to retrieve.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdSense
+//   kGTLAuthScopeAdSenseReadonly
+// Fetches a GTLAdSenseSavedAdStyle.
++ (id)queryForSavedadstylesGetWithSavedAdStyleId:(NSString *)savedAdStyleId;
+
+// Method: adsense.savedadstyles.list
+// List all saved ad styles in the user's account.
+//  Optional:
+//   maxResults: The maximum number of saved ad styles to include in the
+//     response, used for paging. (0..10000)
+//   pageToken: A continuation token, used to page through saved ad styles. To
+//     retrieve the next page, set this parameter to the value of
+//     "nextPageToken" from the previous response.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdSense
+//   kGTLAuthScopeAdSenseReadonly
+// Fetches a GTLAdSenseSavedAdStyles.
++ (id)queryForSavedadstylesList;
 
 #pragma mark -
 #pragma mark "urlchannels" methods

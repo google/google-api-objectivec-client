@@ -20,14 +20,14 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   AdSense Management API (adsense/v1.1)
+//   AdSense Management API (adsense/v1.2)
 // Description:
 //   Gives AdSense publishers access to their inventory and the ability to
 //   generate reports
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLQueryAdSense (20 custom class methods, 18 custom properties)
+//   GTLQueryAdSense (28 custom class methods, 20 custom properties)
 
 #import "GTLQueryAdSense.h"
 
@@ -39,13 +39,17 @@
 #import "GTLAdSenseAdUnits.h"
 #import "GTLAdSenseCustomChannel.h"
 #import "GTLAdSenseCustomChannels.h"
+#import "GTLAdSenseSavedAdStyle.h"
+#import "GTLAdSenseSavedAdStyles.h"
+#import "GTLAdSenseSavedReports.h"
 #import "GTLAdSenseUrlChannels.h"
 
 @implementation GTLQueryAdSense
 
 @dynamic accountId, adClientId, adUnitId, currency, customChannelId, dimension,
          endDate, fields, filter, includeInactive, locale, maxResults, metric,
-         pageToken, sort, startDate, startIndex, tree;
+         pageToken, savedAdStyleId, savedReportId, sort, startDate, startIndex,
+         tree;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
@@ -190,6 +194,50 @@
 }
 
 #pragma mark -
+#pragma mark "accounts.reports.saved" methods
+// These create a GTLQueryAdSense object.
+
++ (id)queryForAccountsReportsSavedGenerateWithAccountId:(NSString *)accountId
+                                          savedReportId:(NSString *)savedReportId {
+  NSString *methodName = @"adsense.accounts.reports.saved.generate";
+  GTLQueryAdSense *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.savedReportId = savedReportId;
+  query.expectedObjectClass = [GTLAdSenseAdsenseReportsGenerateResponse class];
+  return query;
+}
+
++ (id)queryForAccountsReportsSavedListWithAccountId:(NSString *)accountId {
+  NSString *methodName = @"adsense.accounts.reports.saved.list";
+  GTLQueryAdSense *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.expectedObjectClass = [GTLAdSenseSavedReports class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "accounts.savedadstyles" methods
+// These create a GTLQueryAdSense object.
+
++ (id)queryForAccountsSavedadstylesGetWithAccountId:(NSString *)accountId
+                                     savedAdStyleId:(NSString *)savedAdStyleId {
+  NSString *methodName = @"adsense.accounts.savedadstyles.get";
+  GTLQueryAdSense *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.savedAdStyleId = savedAdStyleId;
+  query.expectedObjectClass = [GTLAdSenseSavedAdStyle class];
+  return query;
+}
+
++ (id)queryForAccountsSavedadstylesListWithAccountId:(NSString *)accountId {
+  NSString *methodName = @"adsense.accounts.savedadstyles.list";
+  GTLQueryAdSense *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.expectedObjectClass = [GTLAdSenseSavedAdStyles class];
+  return query;
+}
+
+#pragma mark -
 #pragma mark "accounts.urlchannels" methods
 // These create a GTLQueryAdSense object.
 
@@ -297,6 +345,44 @@
   query.startDate = startDate;
   query.endDate = endDate;
   query.expectedObjectClass = [GTLAdSenseAdsenseReportsGenerateResponse class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "reports.saved" methods
+// These create a GTLQueryAdSense object.
+
++ (id)queryForReportsSavedGenerateWithSavedReportId:(NSString *)savedReportId {
+  NSString *methodName = @"adsense.reports.saved.generate";
+  GTLQueryAdSense *query = [self queryWithMethodName:methodName];
+  query.savedReportId = savedReportId;
+  query.expectedObjectClass = [GTLAdSenseAdsenseReportsGenerateResponse class];
+  return query;
+}
+
++ (id)queryForReportsSavedList {
+  NSString *methodName = @"adsense.reports.saved.list";
+  GTLQueryAdSense *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLAdSenseSavedReports class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "savedadstyles" methods
+// These create a GTLQueryAdSense object.
+
++ (id)queryForSavedadstylesGetWithSavedAdStyleId:(NSString *)savedAdStyleId {
+  NSString *methodName = @"adsense.savedadstyles.get";
+  GTLQueryAdSense *query = [self queryWithMethodName:methodName];
+  query.savedAdStyleId = savedAdStyleId;
+  query.expectedObjectClass = [GTLAdSenseSavedAdStyle class];
+  return query;
+}
+
++ (id)queryForSavedadstylesList {
+  NSString *methodName = @"adsense.savedadstyles.list";
+  GTLQueryAdSense *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLAdSenseSavedAdStyles class];
   return query;
 }
 

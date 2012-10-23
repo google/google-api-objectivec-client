@@ -23,7 +23,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   AdSense Management API (adsense/v1.1)
+//   AdSense Management API (adsense/v1.2)
 // Description:
 //   Gives AdSense publishers access to their inventory and the ability to
 //   generate reports
@@ -37,10 +37,15 @@
 #import "GTLAdSenseAdClient.m"
 #import "GTLAdSenseAdClients.m"
 #import "GTLAdSenseAdsenseReportsGenerateResponse.m"
+#import "GTLAdSenseAdStyle.m"
 #import "GTLAdSenseAdUnit.m"
 #import "GTLAdSenseAdUnits.m"
 #import "GTLAdSenseCustomChannel.m"
 #import "GTLAdSenseCustomChannels.m"
+#import "GTLAdSenseSavedAdStyle.m"
+#import "GTLAdSenseSavedAdStyles.m"
+#import "GTLAdSenseSavedReport.m"
+#import "GTLAdSenseSavedReports.m"
 #import "GTLAdSenseUrlChannel.m"
 #import "GTLAdSenseUrlChannels.m"
 

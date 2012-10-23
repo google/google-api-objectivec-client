@@ -20,14 +20,14 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   AdSense Management API (adsense/v1.1)
+//   AdSense Management API (adsense/v1.2)
 // Description:
 //   Gives AdSense publishers access to their inventory and the ability to
 //   generate reports
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLAdSenseAccount (0 custom class methods, 4 custom properties)
+//   GTLAdSenseAccount (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -53,6 +53,9 @@
 
 // Name of this account.
 @property (copy) NSString *name;
+
+// Whether this account is premium.
+@property (retain) NSNumber *premium;  // boolValue
 
 // Sub accounts of the this account.
 @property (retain) NSArray *subAccounts;  // of GTLAdSenseAccount
