@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/discovery/
 // Classes:
-//   GTLDiscoveryRpcDescription (0 custom class methods, 21 custom properties)
+//   GTLDiscoveryRpcDescription (0 custom class methods, 22 custom properties)
 //   GTLDiscoveryRpcDescriptionAuth (0 custom class methods, 1 custom properties)
 //   GTLDiscoveryRpcDescriptionIcons (0 custom class methods, 2 custom properties)
 //   GTLDiscoveryRpcDescriptionMethods (0 custom class methods, 0 custom properties)
@@ -77,6 +77,9 @@
 
 // A link to human readable documentation for the API.
 @property (copy) NSString *documentationLink;
+
+// The etag for this response.
+@property (copy) NSString *ETag;
 
 // A list of supported features for this API.
 @property (retain) NSArray *features;  // of NSString

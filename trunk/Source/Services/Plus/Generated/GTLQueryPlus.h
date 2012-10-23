@@ -160,7 +160,6 @@
 //     can be used to indicate the authenticated user.
 //  Authorization scope(s):
 //   kGTLAuthScopePlusMe
-//   kGTLAuthScopePlusUserinfoEmail
 // Fetches a GTLPlusPerson.
 + (id)queryForPeopleGetWithUserId:(NSString *)userId;
 
