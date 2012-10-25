@@ -39,3 +39,6 @@
 GTL_EXTERN NSString * const kGTLAuthScopeAnalytics;          // "https://www.googleapis.com/auth/analytics"
 // View your Google Analytics data
 GTL_EXTERN NSString * const kGTLAuthScopeAnalyticsReadonly;  // "https://www.googleapis.com/auth/analytics.readonly"
+
+// Type
+GTL_EXTERN NSString * const kGTLAnalyticsTypeCost;  // "cost"

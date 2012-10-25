@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAnalytics.h
+//  GTLAnalyticsDailyUploadAppend.m
 //
 
 // ----------------------------------------------------------------------------
@@ -25,26 +25,22 @@
 //   View and manage your Google Analytics data
 // Documentation:
 //   https://developers.google.com/analytics/
+// Classes:
+//   GTLAnalyticsDailyUploadAppend (0 custom class methods, 7 custom properties)
 
-#import "GTLAnalyticsConstants.h"
-
-#import "GTLAnalyticsAccount.h"
-#import "GTLAnalyticsAccounts.h"
-#import "GTLAnalyticsCustomDataSource.h"
-#import "GTLAnalyticsCustomDataSources.h"
-#import "GTLAnalyticsDailyUpload.h"
 #import "GTLAnalyticsDailyUploadAppend.h"
-#import "GTLAnalyticsDailyUploads.h"
-#import "GTLAnalyticsGaData.h"
-#import "GTLAnalyticsGoal.h"
-#import "GTLAnalyticsGoals.h"
-#import "GTLAnalyticsMcfData.h"
-#import "GTLAnalyticsProfile.h"
-#import "GTLAnalyticsProfiles.h"
-#import "GTLAnalyticsSegment.h"
-#import "GTLAnalyticsSegments.h"
-#import "GTLAnalyticsWebproperties.h"
-#import "GTLAnalyticsWebproperty.h"
 
-#import "GTLQueryAnalytics.h"
-#import "GTLServiceAnalytics.h"
+// ----------------------------------------------------------------------------
+//
+//   GTLAnalyticsDailyUploadAppend
+//
+
+@implementation GTLAnalyticsDailyUploadAppend
+@dynamic accountId, appendNumber, customDataSourceId, date, kind,
+         nextAppendLink, webPropertyId;
+
++ (void)load {
+  [self registerObjectClassForKind:@"analytics#dailyUploadAppend"];
+}
+
+@end

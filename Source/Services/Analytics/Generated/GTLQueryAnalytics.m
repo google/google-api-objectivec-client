@@ -26,11 +26,14 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLQueryAnalytics (7 custom class methods, 14 custom properties)
+//   GTLQueryAnalytics (11 custom class methods, 19 custom properties)
 
 #import "GTLQueryAnalytics.h"
 
 #import "GTLAnalyticsAccounts.h"
+#import "GTLAnalyticsCustomDataSources.h"
+#import "GTLAnalyticsDailyUploadAppend.h"
+#import "GTLAnalyticsDailyUploads.h"
 #import "GTLAnalyticsGaData.h"
 #import "GTLAnalyticsGoals.h"
 #import "GTLAnalyticsMcfData.h"
@@ -40,9 +43,9 @@
 
 @implementation GTLQueryAnalytics
 
-@dynamic accountId, dimensions, endDate, fields, filters, ids, maxResults,
-         metrics, profileId, segment, sort, startDate, startIndex,
-         webPropertyId;
+@dynamic accountId, appendNumber, customDataSourceId, date, dimensions, endDate,
+         fields, filters, ids, maxResults, metrics, profileId, reset, segment,
+         sort, startDate, startIndex, type, webPropertyId;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map =
@@ -99,6 +102,75 @@
   NSString *methodName = @"analytics.management.accounts.list";
   GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLAnalyticsAccounts class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "management.customDataSources" methods
+// These create a GTLQueryAnalytics object.
+
++ (id)queryForManagementCustomDataSourcesListWithAccountId:(NSString *)accountId
+                                             webPropertyId:(NSString *)webPropertyId {
+  NSString *methodName = @"analytics.management.customDataSources.list";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.expectedObjectClass = [GTLAnalyticsCustomDataSources class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "management.dailyUploads" methods
+// These create a GTLQueryAnalytics object.
+
++ (id)queryForManagementDailyUploadsDeleteWithAccountId:(NSString *)accountId
+                                          webPropertyId:(NSString *)webPropertyId
+                                     customDataSourceId:(NSString *)customDataSourceId
+                                                   date:(NSString *)date
+                                                   type:(NSString *)type {
+  NSString *methodName = @"analytics.management.dailyUploads.delete";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.customDataSourceId = customDataSourceId;
+  query.date = date;
+  query.type = type;
+  return query;
+}
+
++ (id)queryForManagementDailyUploadsListWithAccountId:(NSString *)accountId
+                                        webPropertyId:(NSString *)webPropertyId
+                                   customDataSourceId:(NSString *)customDataSourceId
+                                            startDate:(NSString *)startDate
+                                              endDate:(NSString *)endDate {
+  NSString *methodName = @"analytics.management.dailyUploads.list";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.customDataSourceId = customDataSourceId;
+  query.startDate = startDate;
+  query.endDate = endDate;
+  query.expectedObjectClass = [GTLAnalyticsDailyUploads class];
+  return query;
+}
+
++ (id)queryForManagementDailyUploadsUploadWithAccountId:(NSString *)accountId
+                                          webPropertyId:(NSString *)webPropertyId
+                                     customDataSourceId:(NSString *)customDataSourceId
+                                                   date:(NSString *)date
+                                           appendNumber:(NSInteger)appendNumber
+                                                   type:(NSString *)type
+                                       uploadParameters:(GTLUploadParameters *)uploadParametersOrNil {
+  NSString *methodName = @"analytics.management.dailyUploads.upload";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.customDataSourceId = customDataSourceId;
+  query.date = date;
+  query.appendNumber = appendNumber;
+  query.type = type;
+  query.uploadParameters = uploadParametersOrNil;
+  query.expectedObjectClass = [GTLAnalyticsDailyUploadAppend class];
   return query;
 }
 

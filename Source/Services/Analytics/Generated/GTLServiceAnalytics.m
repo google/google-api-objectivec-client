@@ -40,6 +40,11 @@
                       [GTLQueryAnalytics class],
                       [GTLAnalyticsAccount class],
                       [GTLAnalyticsAccounts class],
+                      [GTLAnalyticsCustomDataSource class],
+                      [GTLAnalyticsCustomDataSources class],
+                      [GTLAnalyticsDailyUpload class],
+                      [GTLAnalyticsDailyUploadAppend class],
+                      [GTLAnalyticsDailyUploads class],
                       [GTLAnalyticsGaData class],
                       [GTLAnalyticsGoal class],
                       [GTLAnalyticsGoals class],
@@ -65,6 +70,7 @@
     // Turn off prettyPrint for this service to save bandwidth (especially on
     // mobile). The fetcher logging will pretty print.
     self.rpcURL = [NSURL URLWithString:@"https://www.googleapis.com/rpc?prettyPrint=false"];
+    self.rpcUploadURL = [NSURL URLWithString:@"https://www.googleapis.com/upload/rpc?uploadType=resumable&prettyPrint=false"];
   }
   return self;
 }

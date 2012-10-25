@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLQueryAnalytics (7 custom class methods, 14 custom properties)
+//   GTLQueryAnalytics (11 custom class methods, 19 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -47,6 +47,9 @@
 // Method-specific parameters; see the comments below for more information.
 //
 @property (copy) NSString *accountId;
+@property (assign) NSInteger appendNumber;
+@property (copy) NSString *customDataSourceId;
+@property (copy) NSString *date;
 @property (copy) NSString *dimensions;
 @property (copy) NSString *endDate;
 @property (copy) NSString *filters;
@@ -54,10 +57,12 @@
 @property (assign) NSInteger maxResults;
 @property (copy) NSString *metrics;
 @property (copy) NSString *profileId;
+@property (assign) BOOL reset;
 @property (copy) NSString *segment;
 @property (copy) NSString *sort;
 @property (copy) NSString *startDate;
 @property (assign) NSInteger startIndex;
+@property (copy) NSString *type;
 @property (copy) NSString *webPropertyId;
 
 #pragma mark -
@@ -145,6 +150,103 @@
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsAccounts.
 + (id)queryForManagementAccountsList;
+
+#pragma mark -
+#pragma mark "management.customDataSources" methods
+// These create a GTLQueryAnalytics object.
+
+// Method: analytics.management.customDataSources.list
+// List custom data sources to which the user has access.
+//  Required:
+//   accountId: Account Id for the custom data sources to retrieve.
+//   webPropertyId: Web property Id for the custom data sources to retrieve.
+//  Optional:
+//   maxResults: The maximum number of custom data sources to include in this
+//     response.
+//   startIndex: A 1-based index of the first custom data source to retrieve.
+//     Use this parameter as a pagination mechanism along with the max-results
+//     parameter.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsReadonly
+// Fetches a GTLAnalyticsCustomDataSources.
++ (id)queryForManagementCustomDataSourcesListWithAccountId:(NSString *)accountId
+                                             webPropertyId:(NSString *)webPropertyId;
+
+#pragma mark -
+#pragma mark "management.dailyUploads" methods
+// These create a GTLQueryAnalytics object.
+
+// Method: analytics.management.dailyUploads.delete
+// Delete uploaded data for the given date.
+//  Required:
+//   accountId: Account Id associated with daily upload delete.
+//   webPropertyId: Web property Id associated with daily upload delete.
+//   customDataSourceId: Custom data source Id associated with daily upload
+//     delete.
+//   date: Date for which data is to be deleted. Date should be formatted as
+//     YYYY-MM-DD.
+//   type: Type of data for this delete.
+//      kGTLAnalyticsTypeCost: Value for specifying cost data upload.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
++ (id)queryForManagementDailyUploadsDeleteWithAccountId:(NSString *)accountId
+                                          webPropertyId:(NSString *)webPropertyId
+                                     customDataSourceId:(NSString *)customDataSourceId
+                                                   date:(NSString *)date
+                                                   type:(NSString *)type;
+
+// Method: analytics.management.dailyUploads.list
+// List daily uploads to which the user has access.
+//  Required:
+//   accountId: Account Id for the daily uploads to retrieve.
+//   webPropertyId: Web property Id for the daily uploads to retrieve.
+//   customDataSourceId: Custom data source Id for daily uploads to retrieve.
+//   startDate: Start date of the form YYYY-MM-DD.
+//   endDate: End date of the form YYYY-MM-DD.
+//  Optional:
+//   maxResults: The maximum number of custom data sources to include in this
+//     response.
+//   startIndex: A 1-based index of the first daily upload to retrieve. Use this
+//     parameter as a pagination mechanism along with the max-results parameter.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsReadonly
+// Fetches a GTLAnalyticsDailyUploads.
++ (id)queryForManagementDailyUploadsListWithAccountId:(NSString *)accountId
+                                        webPropertyId:(NSString *)webPropertyId
+                                   customDataSourceId:(NSString *)customDataSourceId
+                                            startDate:(NSString *)startDate
+                                              endDate:(NSString *)endDate;
+
+// Method: analytics.management.dailyUploads.upload
+// Update/Overwrite data for a custom data source.
+//  Required:
+//   accountId: Account Id associated with daily upload.
+//   webPropertyId: Web property Id associated with daily upload.
+//   customDataSourceId: Custom data source Id to which the data being uploaded
+//     belongs.
+//   date: Date for which data is uploaded. Date should be formatted as
+//     YYYY-MM-DD.
+//   appendNumber: Append number for this upload indexed from 1. (1..20)
+//   type: Type of data for this upload.
+//      kGTLAnalyticsTypeCost: Value for specifying cost data upload.
+//  Optional:
+//   reset: Reset/Overwrite all previous appends for this date and start over
+//     with this file as the first upload. (Default false)
+//  Upload Parameters:
+//   Maximum size: 5MB
+//   Accepted MIME type(s): application/octet-stream
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+// Fetches a GTLAnalyticsDailyUploadAppend.
++ (id)queryForManagementDailyUploadsUploadWithAccountId:(NSString *)accountId
+                                          webPropertyId:(NSString *)webPropertyId
+                                     customDataSourceId:(NSString *)customDataSourceId
+                                                   date:(NSString *)date
+                                           appendNumber:(NSInteger)appendNumber
+                                                   type:(NSString *)type
+                                       uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
 #pragma mark -
 #pragma mark "management.goals" methods
