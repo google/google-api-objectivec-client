@@ -31,3 +31,6 @@
 // Authorization scope
 NSString * const kGTLAuthScopeAnalytics         = @"https://www.googleapis.com/auth/analytics";
 NSString * const kGTLAuthScopeAnalyticsReadonly = @"https://www.googleapis.com/auth/analytics.readonly";
+
+// Type
+NSString * const kGTLAnalyticsTypeCost = @"cost";

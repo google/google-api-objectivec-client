@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAnalytics.h
+//  GTLAnalyticsDailyUploads.m
 //
 
 // ----------------------------------------------------------------------------
@@ -25,26 +25,31 @@
 //   View and manage your Google Analytics data
 // Documentation:
 //   https://developers.google.com/analytics/
+// Classes:
+//   GTLAnalyticsDailyUploads (0 custom class methods, 8 custom properties)
 
-#import "GTLAnalyticsConstants.h"
-
-#import "GTLAnalyticsAccount.h"
-#import "GTLAnalyticsAccounts.h"
-#import "GTLAnalyticsCustomDataSource.h"
-#import "GTLAnalyticsCustomDataSources.h"
-#import "GTLAnalyticsDailyUpload.h"
-#import "GTLAnalyticsDailyUploadAppend.h"
 #import "GTLAnalyticsDailyUploads.h"
-#import "GTLAnalyticsGaData.h"
-#import "GTLAnalyticsGoal.h"
-#import "GTLAnalyticsGoals.h"
-#import "GTLAnalyticsMcfData.h"
-#import "GTLAnalyticsProfile.h"
-#import "GTLAnalyticsProfiles.h"
-#import "GTLAnalyticsSegment.h"
-#import "GTLAnalyticsSegments.h"
-#import "GTLAnalyticsWebproperties.h"
-#import "GTLAnalyticsWebproperty.h"
 
-#import "GTLQueryAnalytics.h"
-#import "GTLServiceAnalytics.h"
+#import "GTLAnalyticsDailyUpload.h"
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAnalyticsDailyUploads
+//
+
+@implementation GTLAnalyticsDailyUploads
+@dynamic items, itemsPerPage, kind, nextLink, previousLink, startIndex,
+         totalResults, username;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLAnalyticsDailyUpload class]
+                                forKey:@"items"];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"analytics#dailyUploads"];
+}
+
+@end
