@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/+/api/
 // Classes:
-//   GTLPlusAclentryResource (0 custom class methods, 2 custom properties)
+//   GTLPlusAclentryResource (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -40,6 +40,9 @@
 //
 
 @interface GTLPlusAclentryResource : GTLObject
+
+// A descriptive name for this entry. Suitable for display.
+@property (copy) NSString *displayName;
 
 // The ID of the entry. For entries of type "person" or "circle", this is the ID
 // of the resource. For other types, this property is not set.

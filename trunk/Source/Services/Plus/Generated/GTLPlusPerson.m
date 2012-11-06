@@ -43,7 +43,7 @@
 
 @implementation GTLPlusPerson
 @dynamic aboutMe, birthday, currentLocation, displayName, emails, ETag, gender,
-         hasApp, identifier, image, kind, languagesSpoken, name, nickname,
+         hasApp, identifier, image, isPlusUser, kind, name, nickname,
          objectType, organizations, placesLived, relationshipStatus, tagline,
          url, urls;
 
@@ -60,7 +60,6 @@
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
       [GTLPlusPersonEmailsItem class], @"emails",
-      [NSString class], @"languagesSpoken",
       [GTLPlusPersonOrganizationsItem class], @"organizations",
       [GTLPlusPersonPlacesLivedItem class], @"placesLived",
       [GTLPlusPersonUrlsItem class], @"urls",

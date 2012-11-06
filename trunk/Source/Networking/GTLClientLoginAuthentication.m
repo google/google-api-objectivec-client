@@ -418,6 +418,29 @@ static void XorPlainMutableData(NSMutableData *mutableData) {
   self.fetcher = nil;
 }
 
+- (void)stopAuthorizationForRequest:(NSURLRequest *)request {
+  @synchronized(authorizationQueue_) {
+    NSUInteger argIndex = 0;
+    BOOL found = NO;
+    for (GTLClientLoginAuthorizationArgs *args in authorizationQueue_) {
+      if ([args request] == request) {
+        found = YES;
+        break;
+      }
+      argIndex++;
+    }
+
+    if (found) {
+      [authorizationQueue_ removeObjectAtIndex:argIndex];
+
+      // If the queue is now empty, go ahead and stop the fetcher.
+      if ([authorizationQueue_ count] == 0) {
+        [self stopAuthorization];
+      }
+    }
+  }
+}
+
 - (BOOL)isAuthorizingRequest:(NSURLRequest *)request {
   BOOL wasFound = NO;
   @synchronized(authorizationQueue_) {
