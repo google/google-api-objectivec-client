@@ -235,6 +235,9 @@
 //  Required:
 //   fileId: The ID of the file.
 //   commentId: The ID of the comment.
+//  Optional:
+//   includeDeleted: If set, this will succeed when retrieving a deleted
+//     comment, and will include any deleted replies. (Default false)
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
 //   kGTLAuthScopeDriveReadonly
@@ -258,8 +261,9 @@
 //  Required:
 //   fileId: The ID of the file.
 //  Optional:
-//   includeDeleted: If set, all comments, including deleted comments (with
-//     content stripped) will be returned. (Default false)
+//   includeDeleted: If set, all comments and replies, including deleted
+//     comments and replies (with content stripped) will be returned. (Default
+//     false)
 //   maxResults: The maximum number of discussions to include in the response,
 //     used for paging. (0..100, default 20)
 //   pageToken: The continuation token, used to page through large result sets.
@@ -645,6 +649,9 @@
 //   fileId: The ID of the file.
 //   commentId: The ID of the comment.
 //   replyId: The ID of the reply.
+//  Optional:
+//   includeDeleted: If set, this will succeed when retrieving a deleted reply.
+//     (Default false)
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
 //   kGTLAuthScopeDriveReadonly
@@ -671,6 +678,8 @@
 //   fileId: The ID of the file.
 //   commentId: The ID of the comment.
 //  Optional:
+//   includeDeleted: If set, all replies, including deleted replies (with
+//     content stripped) will be returned. (Default false)
 //   maxResults: The maximum number of replies to include in the response, used
 //     for paging. (0..100, default 20)
 //   pageToken: The continuation token, used to page through large result sets.

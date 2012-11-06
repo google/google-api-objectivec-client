@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/+/api/
 // Classes:
-//   GTLPlusAclentryResource (0 custom class methods, 2 custom properties)
+//   GTLPlusAclentryResource (0 custom class methods, 3 custom properties)
 
 #import "GTLPlusAclentryResource.h"
 
@@ -36,7 +36,7 @@
 //
 
 @implementation GTLPlusAclentryResource
-@dynamic identifier, type;
+@dynamic displayName, identifier, type;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

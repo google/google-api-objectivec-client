@@ -98,7 +98,7 @@
 // comment with the desired status.
 // - "open" - The comment is still open.
 // - "resolved" - The comment has been resolved by one of its replies.
-@property (copy) NSString *status;
+@property (retain) id status;
 
 @end
 

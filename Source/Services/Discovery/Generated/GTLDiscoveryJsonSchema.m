@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/discovery/
 // Classes:
-//   GTLDiscoveryJsonSchema (0 custom class methods, 18 custom properties)
+//   GTLDiscoveryJsonSchema (0 custom class methods, 19 custom properties)
 //   GTLDiscoveryJsonSchemaAnnotations (0 custom class methods, 1 custom properties)
 //   GTLDiscoveryJsonSchemaProperties (0 custom class methods, 0 custom properties)
 
@@ -42,7 +42,7 @@
 @dynamic xRef, additionalPropertiesProperty, annotations, defaultProperty,
          descriptionProperty, enumProperty, enumDescriptions, format,
          identifier, items, location, maximum, minimum, pattern, properties,
-         repeated, required, type;
+         readOnly, repeated, required, type;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

@@ -26,10 +26,11 @@
 // Documentation:
 //   https://developers.google.com/+/api/
 // Classes:
-//   GTLPlusComment (0 custom class methods, 10 custom properties)
+//   GTLPlusComment (0 custom class methods, 11 custom properties)
 //   GTLPlusCommentActor (0 custom class methods, 4 custom properties)
 //   GTLPlusCommentInReplyToItem (0 custom class methods, 2 custom properties)
-//   GTLPlusCommentObject (0 custom class methods, 2 custom properties)
+//   GTLPlusCommentObject (0 custom class methods, 3 custom properties)
+//   GTLPlusCommentPlusoners (0 custom class methods, 1 custom properties)
 //   GTLPlusCommentActorImage (0 custom class methods, 1 custom properties)
 
 #import "GTLPlusComment.h"
@@ -40,8 +41,8 @@
 //
 
 @implementation GTLPlusComment
-@dynamic actor, ETag, identifier, inReplyTo, kind, object, published, selfLink,
-         updated, verb;
+@dynamic actor, ETag, identifier, inReplyTo, kind, object, plusoners, published,
+         selfLink, updated, verb;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -108,7 +109,17 @@
 //
 
 @implementation GTLPlusCommentObject
-@dynamic content, objectType;
+@dynamic content, objectType, originalContent;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusCommentPlusoners
+//
+
+@implementation GTLPlusCommentPlusoners
+@dynamic totalItems;
 @end
 
 

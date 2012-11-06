@@ -33,7 +33,7 @@
 //   GTLPlusActivityActorImage (0 custom class methods, 1 custom properties)
 //   GTLPlusActivityActorName (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectActor (0 custom class methods, 4 custom properties)
-//   GTLPlusActivityObjectAttachmentsItem (0 custom class methods, 8 custom properties)
+//   GTLPlusActivityObjectAttachmentsItem (0 custom class methods, 9 custom properties)
 //   GTLPlusActivityObjectPlusoners (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectReplies (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectResharers (0 custom class methods, 2 custom properties)
@@ -41,6 +41,8 @@
 //   GTLPlusActivityObjectAttachmentsItemEmbed (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectAttachmentsItemFullImage (0 custom class methods, 4 custom properties)
 //   GTLPlusActivityObjectAttachmentsItemImage (0 custom class methods, 4 custom properties)
+//   GTLPlusActivityObjectAttachmentsItemThumbnailsItem (0 custom class methods, 3 custom properties)
+//   GTLPlusActivityObjectAttachmentsItemThumbnailsItemImage (0 custom class methods, 4 custom properties)
 
 #import "GTLPlusActivity.h"
 
@@ -171,12 +173,19 @@
 
 @implementation GTLPlusActivityObjectAttachmentsItem
 @dynamic content, displayName, embed, fullImage, identifier, image, objectType,
-         url;
+         thumbnails, url;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObject:@"id"
                                 forKey:@"identifier"];
+  return map;
+}
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLPlusActivityObjectAttachmentsItemThumbnailsItem class]
+                                forKey:@"thumbnails"];
   return map;
 }
 
@@ -249,5 +258,33 @@
 //
 
 @implementation GTLPlusActivityObjectAttachmentsItemImage
+@dynamic height, type, url, width;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusActivityObjectAttachmentsItemThumbnailsItem
+//
+
+@implementation GTLPlusActivityObjectAttachmentsItemThumbnailsItem
+@dynamic descriptionProperty, image, url;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"description"
+                                forKey:@"descriptionProperty"];
+  return map;
+}
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusActivityObjectAttachmentsItemThumbnailsItemImage
+//
+
+@implementation GTLPlusActivityObjectAttachmentsItemThumbnailsItemImage
 @dynamic height, type, url, width;
 @end

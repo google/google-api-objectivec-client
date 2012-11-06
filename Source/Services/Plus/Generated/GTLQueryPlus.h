@@ -97,7 +97,7 @@
 //   query: Full-text search query string.
 //  Optional:
 //   language: Specify the preferred language to search with. See search
-//     language codes for available values.
+//     language codes for available values. (Default en-US)
 //   maxResults: The maximum number of activities to include in the response,
 //     which is used for paging. For any response, the actual number returned
 //     might be less than the specified maxResults. (1..20, default 10)
@@ -136,7 +136,7 @@
 //  Optional:
 //   maxResults: The maximum number of comments to include in the response,
 //     which is used for paging. For any response, the actual number returned
-//     might be less than the specified maxResults. (0..100, default 20)
+//     might be less than the specified maxResults. (0..500, default 20)
 //   pageToken: The continuation token, which is used to page through large
 //     result sets. To get the next page of results, set this parameter to the
 //     value of "nextPageToken" from the previous response.
@@ -192,7 +192,7 @@
 //     profiles.
 //  Optional:
 //   language: Specify the preferred language to search with. See search
-//     language codes for available values.
+//     language codes for available values. (Default en-US)
 //   maxResults: The maximum number of people to include in the response, which
 //     is used for paging. For any response, the actual number returned might be
 //     less than the specified maxResults. (1..20, default 10)

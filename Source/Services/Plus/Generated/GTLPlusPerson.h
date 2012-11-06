@@ -91,11 +91,11 @@
 // The representation of the person's profile photo.
 @property (retain) GTLPlusPersonImage *image;
 
+// Whether this user has signed up for G+.
+@property (retain) NSNumber *isPlusUser;  // boolValue
+
 // Identifies this resource as a person. Value: "plus#person".
 @property (copy) NSString *kind;
-
-// The languages spoken by this person.
-@property (retain) NSArray *languagesSpoken;  // of NSString
 
 // An object representation of the individual components of a person's name.
 @property (retain) GTLPlusPersonName *name;

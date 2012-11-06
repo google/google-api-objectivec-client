@@ -239,7 +239,7 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
     STAssertEquals([feed.items count], (NSUInteger) 2,
                    @"wrong feed items");
 
-    GTLTasksTask *item = [feed.items objectAtIndex:0];
+    GTLTasksTask *item = feed[0];
     NSString *className = NSStringFromClass([item class]);
     NSString *expectedName = PREFIXED_CLASSNAME(@"GTLTasksTask");
 
@@ -269,7 +269,7 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
 
   completionBlock = ^(GTLServiceTicket *ticket, id object, NSError *error) {
     NSDictionary *userInfo = [error userInfo];
-    GTLErrorObject *errObj = [userInfo objectForKey:kGTLStructuredErrorKey];
+    GTLErrorObject *errObj = userInfo[kGTLStructuredErrorKey];
 
     STAssertNil(object, @"unexpected object on error");
     STAssertEqualObjects(errObj.message, @"Server Status 499",
@@ -312,7 +312,7 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
     STAssertNil(error, @"fetch error %@", error);
     STAssertEquals((NSUInteger) 2, [tasks.items count], @"item count");
 
-    GTLTasksTask *item = [tasks.items objectAtIndex:0];
+    GTLTasksTask *item = tasks[0];
     NSString *className = NSStringFromClass([item class]);
     NSString *expectedName = PREFIXED_CLASSNAME(@"GTLTasksTask");
 
@@ -332,13 +332,11 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   query.requestID = @"gtl_12";
 
   // test adding http headers to the query
-  query.additionalHTTPHeaders = [NSDictionary dictionaryWithObjectsAndKeys:
-                                 @"Fluffy", @"X-Feline",
-                                 @"Spot", @"X-Canine", nil];
+  query.additionalHTTPHeaders = @{ @"X-Feline": @"Fluffy",
+                                   @"X-Canine": @"Spot" };
 
   // tell the test server to look for an oauth authorization header
-  query.urlQueryParameters = [NSDictionary dictionaryWithObject:@"catpaws"
-                                                         forKey:@"oauth2"];
+  query.urlQueryParameters = @{ @"oauth2": @"catpaws" };
 
   GTLServiceTicket *ticket = [service executeQuery:query
                                  completionHandler:completionBlock];
@@ -397,8 +395,7 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   query.requestID = @"gtl_12";
 
   // tell the test server to look for an oauth authorization header
-  query.urlQueryParameters = [NSDictionary dictionaryWithObject:@"dogpaws"
-                                                         forKey:@"oauth2"];
+  query.urlQueryParameters = @{ @"oauth2": @"dogpaws" };
 
   ticket = [service executeQuery:query
                completionHandler:completionBlock];
@@ -420,10 +417,8 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   service.apiVersion = @"v1";
 
   // declare the surrogates we want instantiated
-  service.surrogates = [NSDictionary dictionaryWithObjectsAndKeys:
-                        [MyTask class], [GTLTasksTask class],
-                        [MyTasks class], [GTLTasksTasks class],
-                        nil];
+  service.surrogates = @{ (id<NSCopying>)[GTLTasksTask class] : [MyTask class],
+                          (id<NSCopying>)[GTLTasksTasks class] : [MyTasks class] };
 
   GTLServiceCompletionHandler completionBlock;
 
@@ -491,7 +486,7 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
     STAssertEquals([tasks.items count], (NSUInteger) 4, @"item count");
 
     // test item class
-    GTLTasksTask *item1 = [tasks.items objectAtIndex:0];
+    GTLTasksTask *item1 = tasks[0];
     NSString *className = NSStringFromClass([item1 class]);
     NSString *expectedName = PREFIXED_CLASSNAME(@"GTLTasksTask");
     STAssertEqualObjects(expectedName, className, @"object member error");
@@ -499,7 +494,7 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
     // test members of items from each page
     STAssertEqualObjects(@"task one", item1.title, @"NSString member error");
 
-    GTLTasksTask *item4 = [tasks.items objectAtIndex:3];
+    GTLTasksTask *item4 = tasks[3];
     STAssertEqualObjects(@"task four", item4.title, @"NSString member error");
   };
 
@@ -562,7 +557,7 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
     STAssertEquals((NSUInteger) 1, [failures count], @"failure count");
     
     // successful item
-    GTLTasksTask *item = [successes objectForKey:@"gtl_19"];
+    GTLTasksTask *item = successes[@"gtl_19"];
     NSString *className = NSStringFromClass([item class]);
     NSString *expectedName = PREFIXED_CLASSNAME(@"GTLTasksTask");
     STAssertEqualObjects(expectedName, className, @"result class error");
@@ -573,7 +568,7 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
                          item.updated.RFC3339String, @"date");
     
     // failed item
-    GTLErrorObject *errorObj = [failures objectForKey:@"gtl_18"];
+    GTLErrorObject *errorObj = failures[@"gtl_18"];
     className = NSStringFromClass([errorObj class]);
     expectedName = PREFIXED_CLASSNAME(@"GTLErrorObject");
     STAssertEqualObjects(expectedName, className, @"error object");
@@ -756,6 +751,9 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
 }
 
 - (void)stopAuthorization {
+}
+
+- (void)stopAuthorizationForRequest:(NSURLRequest *)request {
 }
 
 - (BOOL)isAuthorizingRequest:(NSURLRequest *)request {

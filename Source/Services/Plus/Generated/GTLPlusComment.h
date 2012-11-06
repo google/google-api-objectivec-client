@@ -26,10 +26,11 @@
 // Documentation:
 //   https://developers.google.com/+/api/
 // Classes:
-//   GTLPlusComment (0 custom class methods, 10 custom properties)
+//   GTLPlusComment (0 custom class methods, 11 custom properties)
 //   GTLPlusCommentActor (0 custom class methods, 4 custom properties)
 //   GTLPlusCommentInReplyToItem (0 custom class methods, 2 custom properties)
-//   GTLPlusCommentObject (0 custom class methods, 2 custom properties)
+//   GTLPlusCommentObject (0 custom class methods, 3 custom properties)
+//   GTLPlusCommentPlusoners (0 custom class methods, 1 custom properties)
 //   GTLPlusCommentActorImage (0 custom class methods, 1 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -42,6 +43,7 @@
 @class GTLPlusCommentActorImage;
 @class GTLPlusCommentInReplyToItem;
 @class GTLPlusCommentObject;
+@class GTLPlusCommentPlusoners;
 
 // ----------------------------------------------------------------------------
 //
@@ -68,6 +70,9 @@
 
 // The object of this comment.
 @property (retain) GTLPlusCommentObject *object;
+
+// People who +1'd this comment.
+@property (retain) GTLPlusCommentPlusoners *plusoners;
 
 // The time at which this comment was initially published. Formatted as an RFC
 // 3339 timestamp.
@@ -135,12 +140,30 @@
 
 @interface GTLPlusCommentObject : GTLObject
 
-// The content of this comment.
+// The HTML-formatted content, suitable for display.
 @property (copy) NSString *content;
 
 // The object type of this comment. Possible values are:
 // - "comment" - A comment in reply to an activity.
 @property (copy) NSString *objectType;
+
+// The content (text) as provided by the author, stored without any HTML
+// formatting. When creating or updating a comment, this value must be supplied
+// as plain text in the request.
+@property (copy) NSString *originalContent;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusCommentPlusoners
+//
+
+@interface GTLPlusCommentPlusoners : GTLObject
+
+// Total number of people who +1'd this comment.
+@property (retain) NSNumber *totalItems;  // unsignedIntValue
 
 @end
 

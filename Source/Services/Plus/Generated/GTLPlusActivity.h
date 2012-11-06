@@ -33,7 +33,7 @@
 //   GTLPlusActivityActorImage (0 custom class methods, 1 custom properties)
 //   GTLPlusActivityActorName (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectActor (0 custom class methods, 4 custom properties)
-//   GTLPlusActivityObjectAttachmentsItem (0 custom class methods, 8 custom properties)
+//   GTLPlusActivityObjectAttachmentsItem (0 custom class methods, 9 custom properties)
 //   GTLPlusActivityObjectPlusoners (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectReplies (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectResharers (0 custom class methods, 2 custom properties)
@@ -41,6 +41,8 @@
 //   GTLPlusActivityObjectAttachmentsItemEmbed (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectAttachmentsItemFullImage (0 custom class methods, 4 custom properties)
 //   GTLPlusActivityObjectAttachmentsItemImage (0 custom class methods, 4 custom properties)
+//   GTLPlusActivityObjectAttachmentsItemThumbnailsItem (0 custom class methods, 3 custom properties)
+//   GTLPlusActivityObjectAttachmentsItemThumbnailsItemImage (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -59,6 +61,8 @@
 @class GTLPlusActivityObjectAttachmentsItemEmbed;
 @class GTLPlusActivityObjectAttachmentsItemFullImage;
 @class GTLPlusActivityObjectAttachmentsItemImage;
+@class GTLPlusActivityObjectAttachmentsItemThumbnailsItem;
+@class GTLPlusActivityObjectAttachmentsItemThumbnailsItemImage;
 @class GTLPlusActivityObjectPlusoners;
 @class GTLPlusActivityObjectReplies;
 @class GTLPlusActivityObjectResharers;
@@ -134,8 +138,8 @@
 
 // This activity's verb, indicating what action was performed. Possible values
 // are:
-// - "post" - Publish content to the stream.
 // - "checkin" - Check in to a location.
+// - "post" - Publish content to the stream.
 // - "share" - Reshare an activity.
 @property (copy) NSString *verb;
 
@@ -183,11 +187,7 @@
 // The media objects attached to this activity.
 @property (retain) NSArray *attachments;  // of GTLPlusActivityObjectAttachmentsItem
 
-// The HTML-formatted content, suitable for display. When creating or updating
-// an activity, this value must be supplied as plain text in the request. If
-// successful, the response contains the HTML-formatted content. When updating
-// an activity, use originalContent as the starting value, then assign the
-// updated text to this property.
+// The HTML-formatted content, suitable for display.
 @property (copy) NSString *content;
 
 // The ID of the object. When resharing an activity, this is the ID of the
@@ -201,10 +201,8 @@
 @property (copy) NSString *objectType;
 
 // The content (text) as provided by the author, stored without any HTML
-// formatting. When updating an activity's content, use the value of
-// originalContent as the starting point from which to make edits. The
-// formatting uses inline formatting in the style of *bold*, _italic_ and
-// -strikethrough-.
+// formatting. When creating or updating an activity, this value must be
+// supplied as plain text in the request.
 @property (copy) NSString *originalContent;
 
 // People who +1'd this activity.
@@ -297,7 +295,7 @@
 @interface GTLPlusActivityObjectAttachmentsItem : GTLObject
 
 // If the attachment is an article, this property contains a snippet of text
-// from the article.
+// from the article. It can also include descriptions for other types.
 @property (copy) NSString *content;
 
 // The title of the attachment (such as a photo caption or an article title).
@@ -309,7 +307,7 @@
 // The full image URL for photo attachments.
 @property (retain) GTLPlusActivityObjectAttachmentsItemFullImage *fullImage;
 
-// The ID of the media object's resource.
+// The ID of the attachment.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
@@ -318,9 +316,14 @@
 
 // The type of media object. Possible values are:
 // - "photo" - A photo.
+// - "album" - A photo album.
 // - "video" - A video.
 // - "article" - An article, specified by a link.
 @property (copy) NSString *objectType;
+
+// If the attachment is an album, potential additional thumbnails from the
+// album.
+@property (retain) NSArray *thumbnails;  // of GTLPlusActivityObjectAttachmentsItemThumbnailsItem
 
 // The link to the attachment, should be of type text/html.
 @property (copy) NSString *url;
@@ -418,7 +421,7 @@
 // Media type of the link.
 @property (copy) NSString *type;
 
-// URL of the link.
+// URL to the image.
 @property (copy) NSString *url;
 
 // The width, in pixels, of the linked resource.
@@ -440,7 +443,49 @@
 // Media type of the link.
 @property (copy) NSString *type;
 
-// URL of the link.
+// Image url.
+@property (copy) NSString *url;
+
+// The width, in pixels, of the linked resource.
+@property (retain) NSNumber *width;  // unsignedIntValue
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusActivityObjectAttachmentsItemThumbnailsItem
+//
+
+@interface GTLPlusActivityObjectAttachmentsItemThumbnailsItem : GTLObject
+
+// Potential name of the thumbnail.
+// Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
+@property (copy) NSString *descriptionProperty;
+
+// Image resource.
+@property (retain) GTLPlusActivityObjectAttachmentsItemThumbnailsItemImage *image;
+
+// URL to the webpage containing the image.
+@property (copy) NSString *url;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusActivityObjectAttachmentsItemThumbnailsItemImage
+//
+
+@interface GTLPlusActivityObjectAttachmentsItemThumbnailsItemImage : GTLObject
+
+// The height, in pixels, of the linked resource.
+@property (retain) NSNumber *height;  // unsignedIntValue
+
+// Media type of the link.
+@property (copy) NSString *type;
+
+// Image url.
 @property (copy) NSString *url;
 
 // The width, in pixels, of the linked resource.

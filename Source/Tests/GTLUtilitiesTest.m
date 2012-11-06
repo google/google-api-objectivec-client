@@ -129,7 +129,7 @@
   STAssertNil(output, @"empty string");
 
   inputStr = nil;
-  inputDict = [NSDictionary dictionaryWithObject:@"1" forKey:@"b"];
+  inputDict = @{@"b": @"1"};
   output = [GTLUtilities URLWithString:inputStr queryParameters:inputDict];
   STAssertNil(output, @"nil string with params");
 
@@ -143,11 +143,11 @@
   expected = [NSURL URLWithString:@"http://www.google.com"];
   STAssertEqualObjects(output, expected, @"plain string");
 
-  inputDict = [NSDictionary dictionary];
+  inputDict = @{};
   output = [GTLUtilities URLWithString:inputStr queryParameters:inputDict];
   STAssertEqualObjects(output, expected, @"plain string with empty params");
 
-  inputDict = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"a", @"&", @"b", nil];
+  inputDict = @{@"a": @"1", @"b": @"&"};
   output = [GTLUtilities URLWithString:inputStr queryParameters:inputDict];
   expected = [NSURL URLWithString:@"http://www.google.com?a=1&b=%26"];
   STAssertEqualObjects(output, expected, @"simple build");
@@ -165,13 +165,13 @@
   NSNumber *result;
 
   // Give it a number, get the same thing back
-  num = [NSNumber numberWithInteger:12];
+  num = @12;
   result = GTL_EnsureNSNumber(num);
   STAssertEqualObjects(num, result, nil);
   STAssertEquals(num, result, nil);
 
   // Give it a string, and it converts...
-  num = [NSNumber numberWithDouble:1000.01];
+  num = @1000.01;
   result = GTL_EnsureNSNumber((NSNumber*)@"1000.01");
   STAssertEqualObjects(num, result, nil);
 }
@@ -222,8 +222,8 @@
 
   id testKey = [enumTestKeys nextObject];
   while (testKey) {
-    id objTest = [testDict objectForKey:testKey];
-    id objCopy = [copyDict objectForKey:testKey];
+    id objTest = testDict[testKey];
+    id objCopy = copyDict[testKey];
 
     STAssertTrue(objTest != objCopy,
                   @"dict copy is reusing original object (%lu items)",
