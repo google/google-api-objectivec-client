@@ -32,7 +32,7 @@
 //   GTLShoppingProductsGetRecommendations (0 custom class methods, 3 custom properties)
 //   GTLShoppingProductsListCategories (0 custom class methods, 3 custom properties)
 //   GTLShoppingProductsListCategoryRecommendations (0 custom class methods, 4 custom properties)
-//   GTLShoppingProductsListFacets (0 custom class methods, 4 custom properties)
+//   GTLShoppingProductsListFacets (0 custom class methods, 5 custom properties)
 //   GTLShoppingProductsListPlusOne (0 custom class methods, 3 custom properties)
 //   GTLShoppingProductsListPromotions (0 custom class methods, 2 custom properties)
 //   GTLShoppingProductsListRedirects (0 custom class methods, 2 custom properties)
@@ -137,7 +137,7 @@
 //
 
 @implementation GTLShoppingProductsListFacets
-@dynamic discover, enabled, include, useGcsConfig;
+@dynamic discover, enabled, include, includeEmptyBuckets, useGcsConfig;
 @end
 
 // ----------------------------------------------------------------------------

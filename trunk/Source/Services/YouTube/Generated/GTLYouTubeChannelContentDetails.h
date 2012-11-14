@@ -26,13 +26,16 @@
 // Documentation:
 //   https://developers.google.com/youtube
 // Classes:
-//   GTLYouTubeChannelContentDetails (0 custom class methods, 2 custom properties)
+//   GTLYouTubeChannelContentDetails (0 custom class methods, 1 custom properties)
+//   GTLYouTubeChannelContentDetailsRelatedPlaylists (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
 #else
   #import "GTLObject.h"
 #endif
+
+@class GTLYouTubeChannelContentDetailsRelatedPlaylists;
 
 // ----------------------------------------------------------------------------
 //
@@ -43,10 +46,32 @@
 
 @interface GTLYouTubeChannelContentDetails : GTLObject
 
-// Privacy status of the channel.
-@property (copy) NSString *privacyStatus;
+// Auto-generated playlists associated with the channel
+@property (retain) GTLYouTubeChannelContentDetailsRelatedPlaylists *relatedPlaylists;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLYouTubeChannelContentDetailsRelatedPlaylists
+//
+
+@interface GTLYouTubeChannelContentDetailsRelatedPlaylists : GTLObject
+
+// The ID of the playlist containing the favorites of this channel.
+@property (copy) NSString *favorites;
+
+// The ID of the playlist containing the liked videos of this channel.
+@property (copy) NSString *likes;
 
 // The ID of the playlist containing the uploads of this channel.
 @property (copy) NSString *uploads;
+
+// The ID of the playlist of the watch history of this channel.
+@property (copy) NSString *watchHistory;
+
+// The ID of the watch later playlist for this channel
+@property (copy) NSString *watchLater;
 
 @end

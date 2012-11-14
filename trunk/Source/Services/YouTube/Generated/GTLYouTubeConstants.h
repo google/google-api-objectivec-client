@@ -53,9 +53,10 @@ GTL_EXTERN NSString * const kGTLYouTubeOrderUnread;        // "unread"
 GTL_EXTERN NSString * const kGTLYouTubeOrderViewCount;     // "view_count"
 
 // Published
-GTL_EXTERN NSString * const kGTLYouTubePublishedAny;       // "any"
-GTL_EXTERN NSString * const kGTLYouTubePublishedThisWeek;  // "thisWeek"
-GTL_EXTERN NSString * const kGTLYouTubePublishedToday;     // "today"
+GTL_EXTERN NSString * const kGTLYouTubePublishedAny;        // "any"
+GTL_EXTERN NSString * const kGTLYouTubePublishedThisMonth;  // "thisMonth"
+GTL_EXTERN NSString * const kGTLYouTubePublishedThisWeek;   // "thisWeek"
+GTL_EXTERN NSString * const kGTLYouTubePublishedToday;      // "today"
 
 // VideoCaption
 GTL_EXTERN NSString * const kGTLYouTubeVideoCaptionAny;         // "any"

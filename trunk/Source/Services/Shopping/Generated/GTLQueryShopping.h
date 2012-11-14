@@ -32,7 +32,7 @@
 //   GTLShoppingProductsGetRecommendations (0 custom class methods, 3 custom properties)
 //   GTLShoppingProductsListCategories (0 custom class methods, 3 custom properties)
 //   GTLShoppingProductsListCategoryRecommendations (0 custom class methods, 4 custom properties)
-//   GTLShoppingProductsListFacets (0 custom class methods, 4 custom properties)
+//   GTLShoppingProductsListFacets (0 custom class methods, 5 custom properties)
 //   GTLShoppingProductsListPlusOne (0 custom class methods, 3 custom properties)
 //   GTLShoppingProductsListPromotions (0 custom class methods, 2 custom properties)
 //   GTLShoppingProductsListRedirects (0 custom class methods, 2 custom properties)
@@ -304,6 +304,9 @@
 
 // Facets to include (applies when useGcsConfig == false)
 @property (copy) NSString *include;
+
+// Return empty facet buckets.
+@property (retain) NSNumber *includeEmptyBuckets;  // boolValue
 
 // Whether to return facet information as configured in the GCS account
 @property (retain) NSNumber *useGcsConfig;  // boolValue

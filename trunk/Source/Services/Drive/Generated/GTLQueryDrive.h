@@ -93,8 +93,11 @@
 // Method: drive.about.get
 // Gets the information about the current user along with Drive API settings
 //  Optional:
-//   includeSubscribed: Whether to include subscribed items when calculating the
-//     number of remaining change IDs (Default true)
+//   includeSubscribed: When calculating the number of remaining change IDs,
+//     whether to include shared files and public files the user has opened.
+//     When set to false, this counts only change IDs for owned files and any
+//     shared or public files that the user has explictly added to a folder in
+//     Drive. (Default true)
 //   maxChangeIdCount: Maximum number of remaining change IDs to count (Default
 //     1)
 //   startChangeId: Change ID to start counting from when calculating number of
@@ -147,7 +150,10 @@
 // Lists the changes for a user.
 //  Optional:
 //   includeDeleted: Whether to include deleted items. (Default true)
-//   includeSubscribed: Whether to include subscribed items. (Default true)
+//   includeSubscribed: Whether to include shared files and public files the
+//     user has opened. When set to false, the list will include owned files
+//     plus any shared or public files the user has explictly added to a folder
+//     in Drive. (Default true)
 //   maxResults: Maximum number of changes to return. (Default 100)
 //   pageToken: Page token for changes.
 //   startChangeId: Change ID to start listing changes from.
