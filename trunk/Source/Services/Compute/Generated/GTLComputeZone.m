@@ -20,11 +20,11 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Compute Engine API (compute/v1beta12)
+//   Compute Engine API (compute/v1beta13)
 // Description:
 //   API for the Google Compute Engine service.
 // Documentation:
-//   https://developers.google.com/compute/docs/reference/v1beta12
+//   https://developers.google.com/compute/docs/reference/v1beta13
 // Classes:
 //   GTLComputeZone (0 custom class methods, 9 custom properties)
 //   GTLComputeZoneMaintenanceWindowsItem (0 custom class methods, 4 custom properties)
@@ -52,7 +52,7 @@
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSObject class], @"availableMachineType",
+      [NSString class], @"availableMachineType",
       [GTLComputeZoneMaintenanceWindowsItem class], @"maintenanceWindows",
       nil];
   return map;

@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Compute Engine API (compute/v1beta12)
+//   Compute Engine API (compute/v1beta13)
 // Description:
 //   API for the Google Compute Engine service.
 // Documentation:
-//   https://developers.google.com/compute/docs/reference/v1beta12
+//   https://developers.google.com/compute/docs/reference/v1beta13
 // Classes:
-//   GTLQueryCompute (39 custom class methods, 18 custom properties)
+//   GTLQueryCompute (40 custom class methods, 18 custom properties)
 
 #import "GTLQueryCompute.h"
 
@@ -49,6 +49,7 @@
 #import "GTLComputeOperation.h"
 #import "GTLComputeOperationList.h"
 #import "GTLComputeProject.h"
+#import "GTLComputeSerialPortOutput.h"
 #import "GTLComputeSnapshot.h"
 #import "GTLComputeSnapshotList.h"
 #import "GTLComputeZone.h"
@@ -290,6 +291,16 @@
   return query;
 }
 
++ (id)queryForInstancesGetSerialPortOutputWithProject:(NSString *)project
+                                             instance:(NSString *)instance {
+  NSString *methodName = @"compute.instances.getSerialPortOutput";
+  GTLQueryCompute *query = [self queryWithMethodName:methodName];
+  query.project = project;
+  query.instance = instance;
+  query.expectedObjectClass = [GTLComputeSerialPortOutput class];
+  return query;
+}
+
 + (id)queryForInstancesInsertWithObject:(GTLComputeInstance *)object
                                 project:(NSString *)project {
   if (object == nil) {
@@ -449,6 +460,7 @@
   NSString *methodName = @"compute.projects.setCommonInstanceMetadata";
   GTLQueryCompute *query = [self queryWithMethodName:methodName];
   query.project = project;
+  query.expectedObjectClass = [GTLComputeOperation class];
   return query;
 }
 

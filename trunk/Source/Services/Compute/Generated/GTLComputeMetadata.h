@@ -20,11 +20,11 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Compute Engine API (compute/v1beta12)
+//   Compute Engine API (compute/v1beta13)
 // Description:
 //   API for the Google Compute Engine service.
 // Documentation:
-//   https://developers.google.com/compute/docs/reference/v1beta12
+//   https://developers.google.com/compute/docs/reference/v1beta13
 // Classes:
 //   GTLComputeMetadata (0 custom class methods, 2 custom properties)
 //   GTLComputeMetadataItemsItem (0 custom class methods, 2 custom properties)
@@ -67,13 +67,13 @@
 // Key for the metadata entry. Keys must conform to the following regexp:
 // [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as
 // part of a URL in the metadata server. Additionally, to avoid ambiguity, keys
-// must be unique.
+// must not conflict with any other metadata keys for the project.
 @property (copy) NSString *key;
 
 // Value for the metadata entry. These are free-form strings, and only have
 // meaning as interpreted by the image running in the instance. The only
 // restriction placed on values is that their size must be less than or equal to
-// 15000 bytes.
+// 32768 bytes.
 @property (copy) NSString *value;
 
 @end

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLComputeNetworkInterface.m
+//  GTLComputeSerialPortOutput.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,29 +26,30 @@
 // Documentation:
 //   https://developers.google.com/compute/docs/reference/v1beta13
 // Classes:
-//   GTLComputeNetworkInterface (0 custom class methods, 5 custom properties)
+//   GTLComputeSerialPortOutput (0 custom class methods, 3 custom properties)
 
-#import "GTLComputeNetworkInterface.h"
-
-#import "GTLComputeAccessConfig.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLComputeNetworkInterface
+//   GTLComputeSerialPortOutput
 //
 
-@implementation GTLComputeNetworkInterface
-@dynamic accessConfigs, kind, name, network, networkIP;
+// An instance serial console output.
 
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLComputeAccessConfig class]
-                                forKey:@"accessConfigs"];
-  return map;
-}
+@interface GTLComputeSerialPortOutput : GTLObject
 
-+ (void)load {
-  [self registerObjectClassForKind:@"compute#networkInterface"];
-}
+// The contents of the console output.
+@property (copy) NSString *contents;
+
+// Type of the resource.
+@property (copy) NSString *kind;
+
+// Server defined URL for the resource.
+@property (copy) NSString *selfLink;
 
 @end

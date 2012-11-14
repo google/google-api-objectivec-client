@@ -20,11 +20,11 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Compute Engine API (compute/v1beta12)
+//   Compute Engine API (compute/v1beta13)
 // Description:
 //   API for the Google Compute Engine service.
 // Documentation:
-//   https://developers.google.com/compute/docs/reference/v1beta12
+//   https://developers.google.com/compute/docs/reference/v1beta13
 // Classes:
 //   GTLComputeNetworkList (0 custom class methods, 5 custom properties)
 
