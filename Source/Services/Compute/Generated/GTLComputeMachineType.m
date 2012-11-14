@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Compute Engine API (compute/v1beta12)
+//   Compute Engine API (compute/v1beta13)
 // Description:
 //   API for the Google Compute Engine service.
 // Documentation:
-//   https://developers.google.com/compute/docs/reference/v1beta12
+//   https://developers.google.com/compute/docs/reference/v1beta13
 // Classes:
-//   GTLComputeMachineType (0 custom class methods, 14 custom properties)
+//   GTLComputeMachineType (0 custom class methods, 13 custom properties)
 //   GTLComputeMachineTypeEphemeralDisksItem (0 custom class methods, 1 custom properties)
 
 #import "GTLComputeMachineType.h"
@@ -38,9 +38,8 @@
 
 @implementation GTLComputeMachineType
 @dynamic availableZone, creationTimestamp, descriptionProperty, ephemeralDisks,
-         guestCpus, hostCpus, identifier, imageSpaceGb, kind,
-         maximumPersistentDisks, maximumPersistentDisksSizeGb, memoryMb, name,
-         selfLink;
+         guestCpus, identifier, imageSpaceGb, kind, maximumPersistentDisks,
+         maximumPersistentDisksSizeGb, memoryMb, name, selfLink;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -54,7 +53,7 @@
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSObject class], @"availableZone",
+      [NSString class], @"availableZone",
       [GTLComputeMachineTypeEphemeralDisksItem class], @"ephemeralDisks",
       nil];
   return map;

@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Compute Engine API (compute/v1beta12)
+//   Compute Engine API (compute/v1beta13)
 // Description:
 //   API for the Google Compute Engine service.
 // Documentation:
-//   https://developers.google.com/compute/docs/reference/v1beta12
+//   https://developers.google.com/compute/docs/reference/v1beta13
 // Classes:
-//   GTLComputeMachineType (0 custom class methods, 14 custom properties)
+//   GTLComputeMachineType (0 custom class methods, 13 custom properties)
 //   GTLComputeMachineTypeEphemeralDisksItem (0 custom class methods, 1 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -45,7 +45,7 @@
 @interface GTLComputeMachineType : GTLObject
 
 // The zones that this machine type can run in.
-@property (retain) NSArray *availableZone;  // of any JSON type
+@property (retain) NSArray *availableZone;  // of NSString
 
 // Creation timestamp in RFC3339 text format (output only).
 @property (copy) NSString *creationTimestamp;
@@ -59,9 +59,6 @@
 
 // Count of CPUs exposed to the instance.
 @property (retain) NSNumber *guestCpus;  // intValue
-
-// Count of physical CPUs reserved on the virtual machine host. Deprecated.
-@property (retain) NSNumber *hostCpus;  // intValue
 
 // Unique identifier for the resource; defined by the server (output only).
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').

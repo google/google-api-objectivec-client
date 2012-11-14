@@ -20,11 +20,11 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Compute Engine API (compute/v1beta12)
+//   Compute Engine API (compute/v1beta13)
 // Description:
 //   API for the Google Compute Engine service.
 // Documentation:
-//   https://developers.google.com/compute/docs/reference/v1beta12
+//   https://developers.google.com/compute/docs/reference/v1beta13
 // Classes:
 //   GTLServiceCompute (0 custom class methods, 0 custom properties)
 
@@ -59,6 +59,7 @@
                       [GTLComputeOperation class],
                       [GTLComputeOperationList class],
                       [GTLComputeProject class],
+                      [GTLComputeSerialPortOutput class],
                       [GTLComputeServiceAccount class],
                       [GTLComputeSnapshot class],
                       [GTLComputeSnapshotList class],
@@ -73,7 +74,7 @@
   self = [super init];
   if (self) {
     // Version from discovery.
-    self.apiVersion = @"v1beta12";
+    self.apiVersion = @"v1beta13";
 
     // From discovery.  Where to send JSON-RPC.
     // Turn off prettyPrint for this service to save bandwidth (especially on

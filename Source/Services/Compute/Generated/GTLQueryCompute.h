@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Compute Engine API (compute/v1beta12)
+//   Compute Engine API (compute/v1beta13)
 // Description:
 //   API for the Google Compute Engine service.
 // Documentation:
-//   https://developers.google.com/compute/docs/reference/v1beta12
+//   https://developers.google.com/compute/docs/reference/v1beta13
 // Classes:
-//   GTLQueryCompute (39 custom class methods, 18 custom properties)
+//   GTLQueryCompute (40 custom class methods, 18 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -317,6 +317,17 @@
 + (id)queryForInstancesGetWithProject:(NSString *)project
                              instance:(NSString *)instance;
 
+// Method: compute.instances.getSerialPortOutput
+// Returns the specified instance's serial port output.
+//  Required:
+//   project: Name of the project scoping this request.
+//   instance: Name of the instance scoping this request.
+//  Authorization scope(s):
+//   kGTLAuthScopeComputeReadonly
+// Fetches a GTLComputeSerialPortOutput.
++ (id)queryForInstancesGetSerialPortOutputWithProject:(NSString *)project
+                                             instance:(NSString *)instance;
+
 // Method: compute.instances.insert
 // Creates an instance resource in the specified project using the data included
 // in the request.
@@ -520,6 +531,7 @@
 //   metadata: GTLComputeMetadata
 //  Authorization scope(s):
 //   kGTLAuthScopeCompute
+// Fetches a GTLComputeOperation.
 + (id)queryForProjectsSetCommonInstanceMetadataWithProject:(NSString *)project;
 
 #pragma mark -

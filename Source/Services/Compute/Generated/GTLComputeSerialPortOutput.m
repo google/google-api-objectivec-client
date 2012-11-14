@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLComputeNetworkInterface.m
+//  GTLComputeSerialPortOutput.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,29 +26,20 @@
 // Documentation:
 //   https://developers.google.com/compute/docs/reference/v1beta13
 // Classes:
-//   GTLComputeNetworkInterface (0 custom class methods, 5 custom properties)
+//   GTLComputeSerialPortOutput (0 custom class methods, 3 custom properties)
 
-#import "GTLComputeNetworkInterface.h"
-
-#import "GTLComputeAccessConfig.h"
+#import "GTLComputeSerialPortOutput.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLComputeNetworkInterface
+//   GTLComputeSerialPortOutput
 //
 
-@implementation GTLComputeNetworkInterface
-@dynamic accessConfigs, kind, name, network, networkIP;
-
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLComputeAccessConfig class]
-                                forKey:@"accessConfigs"];
-  return map;
-}
+@implementation GTLComputeSerialPortOutput
+@dynamic contents, kind, selfLink;
 
 + (void)load {
-  [self registerObjectClassForKind:@"compute#networkInterface"];
+  [self registerObjectClassForKind:@"compute#serialPortOutput"];
 }
 
 @end
