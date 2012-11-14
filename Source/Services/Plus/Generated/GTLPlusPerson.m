@@ -26,13 +26,16 @@
 // Documentation:
 //   https://developers.google.com/+/api/
 // Classes:
-//   GTLPlusPerson (0 custom class methods, 21 custom properties)
+//   GTLPlusPerson (0 custom class methods, 25 custom properties)
+//   GTLPlusPersonCover (0 custom class methods, 3 custom properties)
 //   GTLPlusPersonEmailsItem (0 custom class methods, 3 custom properties)
 //   GTLPlusPersonImage (0 custom class methods, 1 custom properties)
 //   GTLPlusPersonName (0 custom class methods, 6 custom properties)
 //   GTLPlusPersonOrganizationsItem (0 custom class methods, 9 custom properties)
 //   GTLPlusPersonPlacesLivedItem (0 custom class methods, 2 custom properties)
 //   GTLPlusPersonUrlsItem (0 custom class methods, 3 custom properties)
+//   GTLPlusPersonCoverCoverInfo (0 custom class methods, 2 custom properties)
+//   GTLPlusPersonCoverCoverPhoto (0 custom class methods, 3 custom properties)
 
 #import "GTLPlusPerson.h"
 
@@ -42,10 +45,10 @@
 //
 
 @implementation GTLPlusPerson
-@dynamic aboutMe, birthday, currentLocation, displayName, emails, ETag, gender,
-         hasApp, identifier, image, isPlusUser, kind, name, nickname,
-         objectType, organizations, placesLived, relationshipStatus, tagline,
-         url, urls;
+@dynamic aboutMe, birthday, circledByCount, cover, currentLocation, displayName,
+         emails, ETag, gender, hasApp, identifier, image, isPlusUser, kind,
+         name, nickname, objectType, organizations, placesLived, plusOneCount,
+         relationshipStatus, tagline, url, urls, verified;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -71,6 +74,16 @@
   [self registerObjectClassForKind:@"plus#person"];
 }
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusPersonCover
+//
+
+@implementation GTLPlusPersonCover
+@dynamic coverInfo, coverPhoto, layout;
 @end
 
 
@@ -141,4 +154,24 @@
 
 @implementation GTLPlusPersonUrlsItem
 @dynamic primary, type, value;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusPersonCoverCoverInfo
+//
+
+@implementation GTLPlusPersonCoverCoverInfo
+@dynamic leftImageOffset, topImageOffset;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusPersonCoverCoverPhoto
+//
+
+@implementation GTLPlusPersonCoverCoverPhoto
+@dynamic height, url, width;
 @end

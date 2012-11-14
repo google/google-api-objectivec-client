@@ -26,7 +26,8 @@
 // Documentation:
 //   https://developers.google.com/youtube
 // Classes:
-//   GTLYouTubeChannelContentDetails (0 custom class methods, 2 custom properties)
+//   GTLYouTubeChannelContentDetails (0 custom class methods, 1 custom properties)
+//   GTLYouTubeChannelContentDetailsRelatedPlaylists (0 custom class methods, 5 custom properties)
 
 #import "GTLYouTubeChannelContentDetails.h"
 
@@ -36,5 +37,15 @@
 //
 
 @implementation GTLYouTubeChannelContentDetails
-@dynamic privacyStatus, uploads;
+@dynamic relatedPlaylists;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLYouTubeChannelContentDetailsRelatedPlaylists
+//
+
+@implementation GTLYouTubeChannelContentDetailsRelatedPlaylists
+@dynamic favorites, likes, uploads, watchHistory, watchLater;
 @end

@@ -270,6 +270,8 @@
 //   part: Playlist parts to include in the returned response. Valid values are:
 //     id, snippet and status.
 //  Optional:
+//   channelId: Flag indicating only return the playlists of the specified
+//     channel ID.
 //   identifier: Comma-separated YouTube IDs of the playlists to be returned.
 //   maxResults: Maximum number of results to return (0..50, default 5)
 //   mine: Flag indicating only return the playlists of the authenticated user.
@@ -319,7 +321,8 @@
 //   pageToken: Token for the page selection.
 //   published: Only search for resources uploaded at a specific pediod
 //      kGTLYouTubePublishedAny: No filter on the release date
-//      kGTLYouTubePublishedThisWeek: Videos uploaded this month
+//      kGTLYouTubePublishedThisMonth: Videos uploaded this month
+//      kGTLYouTubePublishedThisWeek: Videos uploaded this week
 //      kGTLYouTubePublishedToday: Videos uploaded today
 //   q: Query to search in Youtube.
 //   relatedToVideo: Search for resources related to this video. Need to be used

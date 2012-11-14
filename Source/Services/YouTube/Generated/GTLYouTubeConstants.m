@@ -43,9 +43,10 @@ NSString * const kGTLYouTubeOrderUnread       = @"unread";
 NSString * const kGTLYouTubeOrderViewCount    = @"view_count";
 
 // Published
-NSString * const kGTLYouTubePublishedAny      = @"any";
-NSString * const kGTLYouTubePublishedThisWeek = @"thisWeek";
-NSString * const kGTLYouTubePublishedToday    = @"today";
+NSString * const kGTLYouTubePublishedAny       = @"any";
+NSString * const kGTLYouTubePublishedThisMonth = @"thisMonth";
+NSString * const kGTLYouTubePublishedThisWeek  = @"thisWeek";
+NSString * const kGTLYouTubePublishedToday     = @"today";
 
 // VideoCaption
 NSString * const kGTLYouTubeVideoCaptionAny           = @"any";

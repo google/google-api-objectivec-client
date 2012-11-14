@@ -26,13 +26,16 @@
 // Documentation:
 //   https://developers.google.com/+/api/
 // Classes:
-//   GTLPlusPerson (0 custom class methods, 21 custom properties)
+//   GTLPlusPerson (0 custom class methods, 25 custom properties)
+//   GTLPlusPersonCover (0 custom class methods, 3 custom properties)
 //   GTLPlusPersonEmailsItem (0 custom class methods, 3 custom properties)
 //   GTLPlusPersonImage (0 custom class methods, 1 custom properties)
 //   GTLPlusPersonName (0 custom class methods, 6 custom properties)
 //   GTLPlusPersonOrganizationsItem (0 custom class methods, 9 custom properties)
 //   GTLPlusPersonPlacesLivedItem (0 custom class methods, 2 custom properties)
 //   GTLPlusPersonUrlsItem (0 custom class methods, 3 custom properties)
+//   GTLPlusPersonCoverCoverInfo (0 custom class methods, 2 custom properties)
+//   GTLPlusPersonCoverCoverPhoto (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -40,6 +43,9 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLPlusPersonCover;
+@class GTLPlusPersonCoverCoverInfo;
+@class GTLPlusPersonCoverCoverPhoto;
 @class GTLPlusPersonEmailsItem;
 @class GTLPlusPersonImage;
 @class GTLPlusPersonName;
@@ -59,6 +65,13 @@
 
 // The person's date of birth, represented as YYYY-MM-DD.
 @property (copy) NSString *birthday;
+
+// If a Google+ Page and for followers who are visible, the number of people who
+// have added this page to a circle.
+@property (retain) NSNumber *circledByCount;  // intValue
+
+// The cover photo content.
+@property (retain) GTLPlusPersonCover *cover;
 
 // The current location for this person.
 @property (copy) NSString *currentLocation;
@@ -114,6 +127,9 @@
 // A list of places where this person has lived.
 @property (retain) NSArray *placesLived;  // of GTLPlusPersonPlacesLivedItem
 
+// If a Google+ Page, the number of people who have +1'ed this page.
+@property (retain) NSNumber *plusOneCount;  // intValue
+
 // The person's relationship status. Possible values are:
 // - "single" - Person is single.
 // - "in_a_relationship" - Person is in a relationship.
@@ -134,6 +150,29 @@
 
 // A list of URLs for this person.
 @property (retain) NSArray *urls;  // of GTLPlusPersonUrlsItem
+
+// If a Google+ Page, whether it has been verified.
+@property (retain) NSNumber *verified;  // boolValue
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusPersonCover
+//
+
+@interface GTLPlusPersonCover : GTLObject
+
+// Extra information about the cover photo.
+@property (retain) GTLPlusPersonCoverCoverInfo *coverInfo;
+
+// The person's primary cover image.
+@property (retain) GTLPlusPersonCoverCoverPhoto *coverPhoto;
+
+// The layout of the cover art. Possible values are:
+// - "banner" - One large image banner.
+@property (copy) NSString *layout;
 
 @end
 
@@ -281,5 +320,42 @@
 
 // The URL value.
 @property (copy) NSString *value;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusPersonCoverCoverInfo
+//
+
+@interface GTLPlusPersonCoverCoverInfo : GTLObject
+
+// The difference between the left position of the image cover and the actual
+// displayed cover image. Only valid for BANNER layout.
+@property (retain) NSNumber *leftImageOffset;  // intValue
+
+// The difference between the top position of the image cover and the actual
+// displayed cover image. Only valid for BANNER layout.
+@property (retain) NSNumber *topImageOffset;  // intValue
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusPersonCoverCoverPhoto
+//
+
+@interface GTLPlusPersonCoverCoverPhoto : GTLObject
+
+// The height to the image.
+@property (retain) NSNumber *height;  // intValue
+
+// The url to the image.
+@property (copy) NSString *url;
+
+// The width to the image.
+@property (retain) NSNumber *width;  // intValue
 
 @end
