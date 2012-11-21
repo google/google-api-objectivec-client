@@ -31,7 +31,7 @@
 //   GTLYouTubeActivityContentDetailsComment (0 custom class methods, 1 custom properties)
 //   GTLYouTubeActivityContentDetailsFavorite (0 custom class methods, 1 custom properties)
 //   GTLYouTubeActivityContentDetailsLike (0 custom class methods, 1 custom properties)
-//   GTLYouTubeActivityContentDetailsPlaylistItem (0 custom class methods, 2 custom properties)
+//   GTLYouTubeActivityContentDetailsPlaylistItem (0 custom class methods, 3 custom properties)
 //   GTLYouTubeActivityContentDetailsRecommendation (0 custom class methods, 3 custom properties)
 //   GTLYouTubeActivityContentDetailsSocial (0 custom class methods, 5 custom properties)
 //   GTLYouTubeActivityContentDetailsSubscription (0 custom class methods, 1 custom properties)
@@ -98,7 +98,7 @@
 //
 
 @implementation GTLYouTubeActivityContentDetailsPlaylistItem
-@dynamic playlistId, resourceId;
+@dynamic playlistId, playlistItemId, resourceId;
 @end
 
 

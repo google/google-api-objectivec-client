@@ -41,22 +41,27 @@
 //   GTLYouTubeGuideCategory
 //
 
-// A guideCategory resource identifies a category that YouTube assigns based on
-// a channel's content or other indicators, such as the channel's popularity.
+// A guideCategory resource identifies a category that YouTube algorithmically
+// assigns based on a channel's content or other indicators, such as the
+// channel's popularity. The list is similar to video categories, with the
+// difference being that a video's uploader can assign a video category but only
+// YouTube can assign a channel category.
 
 @interface GTLYouTubeGuideCategory : GTLObject
 
-// The eTag of the guide category.
+// The ETag of the guideCategory resource.
 @property (copy) NSString *ETag;
 
-// The unique ID of the guide category.
+// The ID that YouTube uses to uniquely identify the guide category.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// The type of this API resource.
+// The type of the API resource. For guideCategory resources, the value will be
+// youtube#guideCategory/code>.
 @property (copy) NSString *kind;
 
-// Snippet of the category.
+// The snippet object contains basic details about the category, such as its
+// title.
 @property (retain) GTLYouTubeGuideCategorySnippet *snippet;
 
 @end

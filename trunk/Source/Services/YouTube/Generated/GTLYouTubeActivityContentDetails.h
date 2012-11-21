@@ -31,7 +31,7 @@
 //   GTLYouTubeActivityContentDetailsComment (0 custom class methods, 1 custom properties)
 //   GTLYouTubeActivityContentDetailsFavorite (0 custom class methods, 1 custom properties)
 //   GTLYouTubeActivityContentDetailsLike (0 custom class methods, 1 custom properties)
-//   GTLYouTubeActivityContentDetailsPlaylistItem (0 custom class methods, 2 custom properties)
+//   GTLYouTubeActivityContentDetailsPlaylistItem (0 custom class methods, 3 custom properties)
 //   GTLYouTubeActivityContentDetailsRecommendation (0 custom class methods, 3 custom properties)
 //   GTLYouTubeActivityContentDetailsSocial (0 custom class methods, 5 custom properties)
 //   GTLYouTubeActivityContentDetailsSubscription (0 custom class methods, 1 custom properties)
@@ -64,31 +64,43 @@
 
 @interface GTLYouTubeActivityContentDetails : GTLObject
 
-// Only present if the type is "bulletin".
+// The bulletin object contains details about a channel bulletin post. This
+// object is only present if the snippet.type is bulletin.
 @property (retain) GTLYouTubeActivityContentDetailsBulletin *bulletin;
 
-// Only present if the type is "comment".
+// The comment object contains information about a resource that received a
+// comment. This property is only present if the snippet.type is comment.
 @property (retain) GTLYouTubeActivityContentDetailsComment *comment;
 
-// Only present if the type is "favorite".
+// The favorite object contains information about a video that was marked as a
+// favorite video. This property is only present if the snippet.type is
+// favorite.
 @property (retain) GTLYouTubeActivityContentDetailsFavorite *favorite;
 
-// Only present if the type is "like".
+// The like object contains information about a resource that received a
+// positive (like) rating. This property is only present if the snippet.type is
+// like.
 @property (retain) GTLYouTubeActivityContentDetailsLike *like;
 
-// Only present if the type is "playlistItem".
+// The playlistItem object contains information about a new playlist item. This
+// property is only present if the snippet.type is playlistItem.
 @property (retain) GTLYouTubeActivityContentDetailsPlaylistItem *playlistItem;
 
-// Only set if the type is "recommendation".
+// The recommendation object contains information about a recommended resource.
+// This property is only present if the snippet.type is recommendation.
 @property (retain) GTLYouTubeActivityContentDetailsRecommendation *recommendation;
 
-// Only present if the type is "social".
+// The social object contains details about a social network post. This property
+// is only present if the snippet.type is social.
 @property (retain) GTLYouTubeActivityContentDetailsSocial *social;
 
-// Only present if the type is "subscription".
+// The subscription object contains information about a channel that a user
+// subscribed to. This property is only present if the snippet.type is
+// subscription.
 @property (retain) GTLYouTubeActivityContentDetailsSubscription *subscription;
 
-// Only present if the type is "upload".
+// The upload object contains information about the uploaded video. This
+// property is only present if the snippet.type is upload.
 @property (retain) GTLYouTubeActivityContentDetailsUpload *upload;
 
 @end
@@ -101,7 +113,8 @@
 
 @interface GTLYouTubeActivityContentDetailsBulletin : GTLObject
 
-// ID of the resource this bulletin is about.
+// The resourceId object contains information that identifies the resource
+// associated with a bulletin post.
 @property (retain) GTLYouTubeResourceId *resourceId;
 
 @end
@@ -114,7 +127,8 @@
 
 @interface GTLYouTubeActivityContentDetailsComment : GTLObject
 
-// ID of the commented resource.
+// The resourceId object contains information that identifies the resource
+// associated with the comment.
 @property (retain) GTLYouTubeResourceId *resourceId;
 
 @end
@@ -127,7 +141,8 @@
 
 @interface GTLYouTubeActivityContentDetailsFavorite : GTLObject
 
-// ID of the favorited resource.
+// The resourceId object contains information that identifies the resource that
+// was marked as a favorite.
 @property (retain) GTLYouTubeResourceId *resourceId;
 
 @end
@@ -140,7 +155,8 @@
 
 @interface GTLYouTubeActivityContentDetailsLike : GTLObject
 
-// ID of the rated resource.
+// The resourceId object contains information that identifies the rated
+// resource.
 @property (retain) GTLYouTubeResourceId *resourceId;
 
 @end
@@ -153,10 +169,14 @@
 
 @interface GTLYouTubeActivityContentDetailsPlaylistItem : GTLObject
 
-// ID of the playlist the resource was added to.
+// The value that YouTube uses to uniquely identify the playlist.
 @property (copy) NSString *playlistId;
 
-// ID of the resource added to the playlist.
+// ID of the item within the playlist.
+@property (copy) NSString *playlistItemId;
+
+// The resourceId object contains information about the resource that was added
+// to the playlist.
 @property (retain) GTLYouTubeResourceId *resourceId;
 
 @end
@@ -169,13 +189,15 @@
 
 @interface GTLYouTubeActivityContentDetailsRecommendation : GTLObject
 
-// Reason for which the video was recommended.
+// The reason that the resource is recommended to the user.
 @property (copy) NSString *reason;
 
-// ID of the recommended resource.
+// The resourceId object contains information that identifies the recommended
+// resource.
 @property (retain) GTLYouTubeResourceId *resourceId;
 
-// ID of the video that caused this recommendation.
+// The seedResourceId object contains information about the resource that caused
+// the recommendation.
 @property (retain) GTLYouTubeResourceId *seedResourceId;
 
 @end
@@ -188,19 +210,20 @@
 
 @interface GTLYouTubeActivityContentDetailsSocial : GTLObject
 
-// Author of the post.
+// The author of the social network post.
 @property (copy) NSString *author;
 
-// Image of the post author.
+// An image of the post's author.
 @property (copy) NSString *imageUrl;
 
-// Url of the social post.
+// The URL of the social network post.
 @property (copy) NSString *referenceUrl;
 
-// ID of the resource this social activity is about.
+// The resourceId object encapsulates information that identifies the resource
+// associated with a social network post.
 @property (retain) GTLYouTubeResourceId *resourceId;
 
-// Type of the social network.
+// The name of the social network.
 @property (copy) NSString *type;
 
 @end
@@ -213,7 +236,8 @@
 
 @interface GTLYouTubeActivityContentDetailsSubscription : GTLObject
 
-// ID of the resource subscribed to.
+// The resourceId object contains information that identifies the resource that
+// the user subscribed to.
 @property (retain) GTLYouTubeResourceId *resourceId;
 
 @end
@@ -226,7 +250,7 @@
 
 @interface GTLYouTubeActivityContentDetailsUpload : GTLObject
 
-// ID of the uploaded video.
+// The ID that YouTube uses to uniquely identify the uploaded video.
 @property (copy) NSString *videoId;
 
 @end

@@ -43,7 +43,7 @@
 
 @interface GTLYouTubeThumbnail : GTLObject
 
-// The URL for the thumbnail.
+// The thumbnail image's URL.
 @property (copy) NSString *url;
 
 @end

@@ -44,20 +44,27 @@
 
 // A search result contains information about a YouTube video, channel, or
 // playlist that matches the search parameters specified in an API request.
+// While a search result points to a uniquely identifiable resource, like a
+// video, it does not have its own persistent data.
 
 @interface GTLYouTubeSearchResult : GTLObject
 
-// The eTag of the search result.
+// The ETag of the search result.
 @property (copy) NSString *ETag;
 
-// The id of the resource.
+// The id object contains information that can be used to uniquely identify the
+// resource that matches the search request.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (retain) GTLYouTubeResourceId *identifier;
 
-// The type of this API resource.
+// The type of the API response. For this resource, the value will be
+// youtube#searchResult.
 @property (copy) NSString *kind;
 
-// Basic details about the search result: title, description, author.
+// The snippet object contains basic details about a search result, such as its
+// title or description. For example, if the search result is a video, then the
+// title will be the video's title and the description will be the video's
+// description.
 @property (retain) GTLYouTubeSearchResultSnippet *snippet;
 
 @end

@@ -50,22 +50,25 @@
 
 @interface GTLYouTubeChannelListResponse : GTLCollectionObject
 
-// The eTag of the response.
+// The ETag for the response.
 @property (copy) NSString *ETag;
 
-// List of channels matching the request criteria.
+// A list of channels that match the request criteria.
 @property (retain) NSArray *items;  // of GTLYouTubeChannel
 
-// The type of this API response.
+// The type of the API response. For this operation, the value will be
+// youtube#channelListResponse.
 @property (copy) NSString *kind;
 
-// Token to the next page.
+// The token that can be used as the value of the pageToken parameter to
+// retrieve the next page in the result set.
 @property (copy) NSString *nextPageToken;
 
-// Paging information for the list result.
+// The pageInfo object encapsulates paging information for the result set.
 @property (retain) GTLYouTubePageInfo *pageInfo;
 
-// Token to the previous page.
+// The token that can be used as the value of the pageToken parameter to
+// retrieve the previous page in the result set.
 @property (copy) NSString *prevPageToken;
 
 @end

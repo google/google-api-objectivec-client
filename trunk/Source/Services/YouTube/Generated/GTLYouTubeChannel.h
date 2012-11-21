@@ -44,30 +44,34 @@
 //   GTLYouTubeChannel
 //
 
-// A channel resource contains information about a single YouTube channel.
+// A channel resource contains information about a YouTube channel.
 
 @interface GTLYouTubeChannel : GTLObject
 
-// Information about the channel content: upload playlist id, privacy status.
+// The contentDetails object encapsulates information about the channel's
+// content.
 @property (retain) GTLYouTubeChannelContentDetails *contentDetails;
 
-// The eTag of the channel.
+// The ETag for the channel resource.
 @property (copy) NSString *ETag;
 
-// The unique ID of the channel.
+// The ID that YouTube uses to uniquely identify the channel.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// The type of this API resource.
+// The type of the API resource. For channel resources, the value will be
+// youtube#channel.
 @property (copy) NSString *kind;
 
-// Basic details about the channel: title, description, and thumbnails.
+// The snippet object contains basic details about the channel, such as its
+// title, description, and thumbnail images.
 @property (retain) GTLYouTubeChannelSnippet *snippet;
 
-// Statistics about the channel: number of subscribers, views, and comments.
+// The statistics object encapsulates statistics for the channel.
 @property (retain) GTLYouTubeChannelStatistics *statistics;
 
-// Information about channel topics
+// The topicDetails object encapsulates information about Freebase topics
+// associated with the channel.
 @property (retain) GTLYouTubeChannelTopicDetails *topicDetails;
 
 @end

@@ -42,24 +42,43 @@
 //   GTLYouTubePlaylist
 //
 
-// A playlist resource represents a single YouTube playlist.
+// A playlist resource represents a YouTube playlist. A playlist is a collection
+// of videos that can be viewed sequentially and shared with other users. A
+// playlist can contain up to 200 videos, and YouTube does not limit the number
+// of playlists that each user creates. By default, playlists are publicly
+// visible to other users, but playlists can be public or private.
+// YouTube also uses playlists to identify special collections of videos for a
+// channel, such as:
+// - uploaded videos
+// - favorite videos
+// - positively rated (liked) videos
+// - watch history
+// - watch later To be more specific, these lists are associated with a channel,
+// which is a collection of a person, group, or company's videos, playlists, and
+// other YouTube information. You can retrieve the playlist IDs for each of
+// these lists from the channel resource for a given channel.
+// You can then use the playlistItems.list method to retrieve any of those
+// lists. You can also add or remove items from those lists by calling the
+// playlistItems.insert and playlistItems.delete methods.
 
 @interface GTLYouTubePlaylist : GTLObject
 
-// The eTag of the playlist.
+// The ETag for the playlist resource.
 @property (copy) NSString *ETag;
 
-// The unique id of the playlist.
+// The ID that YouTube uses to uniquely identify the playlist.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// The type of this API resource.
+// The type of the API resource. For video resources, the value will be
+// youtube#playlist.
 @property (copy) NSString *kind;
 
-// Basic details about the playlist: title, description, thumbnails.
+// The snippet object contains basic details about the playlist, such as its
+// title and description.
 @property (retain) GTLYouTubePlaylistSnippet *snippet;
 
-// Status of the playlist: only privacy_status for now.
+// The status object contains status information for the playlist.
 @property (retain) GTLYouTubePlaylistStatus *status;
 
 @end

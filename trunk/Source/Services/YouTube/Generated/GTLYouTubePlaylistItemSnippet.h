@@ -50,29 +50,37 @@
 
 @interface GTLYouTubePlaylistItemSnippet : GTLObject
 
-// Channel publishing the playlist item.
+// The ID that YouTube uses to uniquely identify the user that added the item to
+// the playlist.
 @property (copy) NSString *channelId;
 
-// Description of the playlist item.
+// The item's description.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
 
-// The playlist the item is part of.
+// The ID that YouTube uses to uniquely identify the playlist that the playlist
+// item is in.
 @property (copy) NSString *playlistId;
 
-// The position of the item within the playlist.
+// The order in which the item appears in the playlist. The value uses a
+// zero-based index, so the first item has a position of 0, the second item has
+// a position of 1, and so forth.
 @property (retain) NSNumber *position;  // unsignedIntValue
 
-// Date and time the playlist item was published at.
+// The date and time that the item was added to the playlist. The value is
+// specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
 @property (retain) GTLDateTime *publishedAt;
 
-// The ID of the resource referenced by the playlist item.
+// The id object contains information that can be used to uniquely identify the
+// resource that is included in the playlist as the playlist item.
 @property (retain) GTLYouTubeResourceId *resourceId;
 
-// Playlist item thumbnails.
+// A map of thumbnail images associated with the playlist item. For each object
+// in the map, the key is the name of the thumbnail image, and the value is an
+// object that contains other information about the thumbnail.
 @property (retain) GTLYouTubePlaylistItemSnippetThumbnails *thumbnails;
 
-// Title of the playlist item.
+// The item's title.
 @property (copy) NSString *title;
 
 @end

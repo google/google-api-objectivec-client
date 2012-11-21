@@ -40,7 +40,7 @@ NSString * const kGTLYouTubeOrderDate         = @"date";
 NSString * const kGTLYouTubeOrderRating       = @"rating";
 NSString * const kGTLYouTubeOrderRelevance    = @"relevance";
 NSString * const kGTLYouTubeOrderUnread       = @"unread";
-NSString * const kGTLYouTubeOrderViewCount    = @"view_count";
+NSString * const kGTLYouTubeOrderViewCount    = @"viewCount";
 
 // Published
 NSString * const kGTLYouTubePublishedAny       = @"any";

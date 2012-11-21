@@ -46,17 +46,19 @@
 
 @interface GTLYouTubeVideoCategory : GTLObject
 
-// The eTag of the video.
+// The ETag of the videoCategory resource.
 @property (copy) NSString *ETag;
 
-// The unique id of the video category.
+// The ID that YouTube uses to uniquely identify the video category.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// The type of this API resource.
+// The type of the API resource. For video category resources, the value will be
+// youtube#videoCategory.
 @property (copy) NSString *kind;
 
-// Basic details about the video category.
+// The snippet object contains basic details about the video category, including
+// its title.
 @property (retain) GTLYouTubeVideoCategorySnippet *snippet;
 
 @end

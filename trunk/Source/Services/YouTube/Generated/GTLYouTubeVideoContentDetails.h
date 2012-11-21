@@ -46,10 +46,19 @@
 
 @interface GTLYouTubeVideoContentDetails : GTLObject
 
-// Duration of the video.
+// The length of the video. The tag value is an ISO 8601 duration in the format
+// PT#M#S, in which the letters PT indicate that the value specifies a period of
+// time, and the letters M and S refer to length in minutes and seconds,
+// respectively. The # characters preceding the M and S letters are both
+// integers that specify the number of minutes (or seconds) of the video. For
+// example, a value of PT15M51S indicates that the video is 15 minutes and 51
+// seconds long.
 @property (copy) NSString *duration;
 
-// Region restriction of the video.
+// The regionRestriction object contains information about the countries where a
+// video is (or is not) viewable. The object will contain either the
+// contentDetails.regionRestriction.allowed property or the
+// contentDetails.regionRestriction.blocked property.
 @property (retain) GTLYouTubeVideoContentDetailsRegionRestriction *regionRestriction;
 
 @end
@@ -62,10 +71,16 @@
 
 @interface GTLYouTubeVideoContentDetailsRegionRestriction : GTLObject
 
-// List of allowed region codes.
+// A list of region codes that identify countries where the video is viewable.
+// If this property is present and a country is not listed in its value, then
+// the video is blocked from appearing in that country. If this property is
+// present and contains an empty list, the video is blocked in all countries.
 @property (retain) NSArray *allowed;  // of NSString
 
-// List of blocked region codes.
+// A list of region codes that identify countries where the video is blocked. If
+// this property is present and a country is not listed in its value, then the
+// video is viewable in that country. If this property is present and contains
+// an empty list, the video is viewable in all countries.
 @property (retain) NSArray *blocked;  // of NSString
 
 @end

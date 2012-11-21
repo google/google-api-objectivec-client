@@ -44,19 +44,21 @@
 
 @interface GTLYouTubeVideoStatistics : GTLObject
 
-// Number of comments for this video.
+// The number of comments for the video.
 @property (retain) NSNumber *commentCount;  // unsignedLongLongValue
 
-// Number of times the video was disliked.
+// The number of users who have indicated that they disliked the video by giving
+// it a negative rating.
 @property (retain) NSNumber *dislikeCount;  // unsignedLongLongValue
 
-// Number of times the video was added to a user's favorites list.
+// The number of users who currently have the video marked as a favorite video.
 @property (retain) NSNumber *favoriteCount;  // unsignedLongLongValue
 
-// Number of times the video was liked.
+// The number of users who have indicated that they liked the video by giving it
+// a positive rating.
 @property (retain) NSNumber *likeCount;  // unsignedLongLongValue
 
-// Number of times the video was viewed.
+// The number of times the video has been viewed.
 @property (retain) NSNumber *viewCount;  // unsignedLongLongValue
 
 @end
