@@ -48,26 +48,31 @@
 
 @interface GTLYouTubeVideoSnippet : GTLObject
 
-// Video category the video belongs to.
+// The YouTube video category associated with the video.
 @property (copy) NSString *categoryId;
 
-// Channel publishing the video.
+// The ID that YouTube uses to uniquely identify the channel that the video was
+// uploaded to.
 @property (copy) NSString *channelId;
 
-// Description of the video.
+// The video's description.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
 
-// Date and time the video was published at.
+// The date and time that the video was uploaded. The value is specified in ISO
+// 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
 @property (retain) GTLDateTime *publishedAt;
 
-// Textual tags associated with the video.
+// A list of keyword tags associated with the video. Tags may contain spaces.
+// This field is only visible to the video's uploader.
 @property (retain) NSArray *tags;  // of NSString
 
-// Video thumbnails.
+// A map of thumbnail images associated with the video. For each object in the
+// map, the key is the name of the thumbnail image, and the value is an object
+// that contains other information about the thumbnail.
 @property (retain) GTLYouTubeVideoSnippetThumbnails *thumbnails;
 
-// Title of the video.
+// The video's title.
 @property (copy) NSString *title;
 
 @end

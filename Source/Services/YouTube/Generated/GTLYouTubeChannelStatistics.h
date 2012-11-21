@@ -44,16 +44,16 @@
 
 @interface GTLYouTubeChannelStatistics : GTLObject
 
-// Number of comments for this channel.
+// The number of comments for the channel.
 @property (retain) NSNumber *commentCount;  // unsignedLongLongValue
 
-// Number of subscribers to this channel.
+// The number of subscribers that the channel has.
 @property (retain) NSNumber *subscriberCount;  // unsignedLongLongValue
 
-// Number of videos in the channel.
+// The number of videos uploaded to the channel.
 @property (retain) NSNumber *videoCount;  // unsignedLongLongValue
 
-// Number of times the channel has been viewed.
+// The number of times the channel has been viewed.
 @property (retain) NSNumber *viewCount;  // unsignedLongLongValue
 
 @end

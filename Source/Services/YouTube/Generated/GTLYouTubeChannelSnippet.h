@@ -47,20 +47,23 @@
 
 @interface GTLYouTubeChannelSnippet : GTLObject
 
-// Id of the channel.
+// The ID that YouTube uses to uniquely identify the channel.
 @property (copy) NSString *channelId;
 
-// Description of the channel.
+// The channel's description.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
 
-// Date and time the channel was published at.
+// The date and time that the channel was created. The value is specified in ISO
+// 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
 @property (retain) GTLDateTime *publishedAt;
 
-// Channel thumbnails.
+// A map of thumbnail images associated with the channel. For each object in the
+// map, the key is the name of the thumbnail image, and the value is an object
+// that contains other information about the thumbnail.
 @property (retain) GTLYouTubeChannelSnippetThumbnails *thumbnails;
 
-// Title of the channel.
+// The channel's title.
 @property (copy) NSString *title;
 
 @end

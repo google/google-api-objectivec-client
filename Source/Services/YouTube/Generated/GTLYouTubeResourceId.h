@@ -43,16 +43,22 @@
 
 @interface GTLYouTubeResourceId : GTLObject
 
-// ID of the referred channel. Present only when type is "CHANNEL".
+// The ID that YouTube uses to uniquely identify the referred resource, if that
+// resource is a channel. This property is only present if the resourceId.kind
+// value is youtube#channel.
 @property (copy) NSString *channelId;
 
-// The kind of the referred resource.
+// The kind, or type, of the referred resource.
 @property (copy) NSString *kind;
 
-// ID of the referred playlist. Present only when type is "PLAYLIST".
+// The ID that YouTube uses to uniquely identify the referred resource, if that
+// resource is a playlist. This property is only present if the resourceId.kind
+// value is youtube#playlist.
 @property (copy) NSString *playlistId;
 
-// ID of the referred video. Present only when type is "VIDEO".
+// The ID that YouTube uses to uniquely identify the referred resource, if that
+// resource is a video. This property is only present if the resourceId.kind
+// value is youtube#video.
 @property (copy) NSString *videoId;
 
 @end

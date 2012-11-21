@@ -49,13 +49,16 @@
 
 @interface GTLYouTubeVideoCategoryListResponse : GTLCollectionObject
 
-// The eTag of the response.
+// The ETag of the response.
 @property (copy) NSString *ETag;
 
-// List of video categories matching the request criteria.
+// A list of video categories that can be associated with YouTube videos. In
+// this map, the video category ID is the map key, and its value is the
+// corresponding videoCategory resource.
 @property (retain) NSArray *items;  // of GTLYouTubeVideoCategory
 
-// The type of this API response.
+// The type of the API response. For this operation, the value will be
+// youtube#videoCategoryListResponse.
 @property (copy) NSString *kind;
 
 @end

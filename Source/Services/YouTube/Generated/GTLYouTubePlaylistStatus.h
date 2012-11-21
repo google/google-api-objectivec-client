@@ -43,7 +43,7 @@
 
 @interface GTLYouTubePlaylistStatus : GTLObject
 
-// Privacy of the playlist.
+// The playlist's privacy status.
 @property (copy) NSString *privacyStatus;
 
 @end

@@ -43,7 +43,7 @@
 
 @interface GTLYouTubeVideoPlayer : GTLObject
 
-// Iframe embed for the video.
+// An <iframe> tag that embeds a player that will play the video.
 @property (copy) NSString *embedHtml;
 
 @end

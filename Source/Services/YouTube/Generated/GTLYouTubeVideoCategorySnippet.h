@@ -43,10 +43,10 @@
 
 @interface GTLYouTubeVideoCategorySnippet : GTLObject
 
-// Channel publishing the video category.
+// The YouTube channel that created the video category.
 @property (copy) NSString *channelId;
 
-// Title of the video category.
+// The video category's title.
 @property (copy) NSString *title;
 
 @end

@@ -46,36 +46,42 @@
 //   GTLYouTubeVideo
 //
 
-// A video resource represents a single YouTube video.
+// A video resource represents a YouTube video.
 
 @interface GTLYouTubeVideo : GTLObject
 
-// Information about the video content, media file.
+// The contentDetails object contains information about the video content,
+// including the length of the video and its aspect ratio.
 @property (retain) GTLYouTubeVideoContentDetails *contentDetails;
 
-// The eTag of the video.
+// The ETag of the video resource.
 @property (copy) NSString *ETag;
 
-// The unique id of the video.
+// The ID that YouTube uses to uniquely identify the video.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// The type of this API resource.
+// The type of the API resource. For video resources, the value will be
+// youtube#video.
 @property (copy) NSString *kind;
 
-// Information used to play the video.
+// The player object contains information that you would use to play the video
+// in an embedded player.
 @property (retain) GTLYouTubeVideoPlayer *player;
 
-// Basic details about the video: title, description, thumbnails.
+// The snippet object contains basic details about the video, such as its title,
+// description, and category.
 @property (retain) GTLYouTubeVideoSnippet *snippet;
 
-// Statistics about the video: number of views, ratings.
+// The statistics object contains statistics about the video.
 @property (retain) GTLYouTubeVideoStatistics *statistics;
 
-// Status of the video upload, privacy status.
+// The status object contains information about the video's uploading,
+// processing, and privacy statuses.
 @property (retain) GTLYouTubeVideoStatus *status;
 
-// Topics related to the video
+// The topicDetails object encapsulates information about Freebase topics
+// associated with the video.
 @property (retain) GTLYouTubeVideoTopicDetails *topicDetails;
 
 @end

@@ -49,13 +49,14 @@
 
 @interface GTLYouTubeVideoListResponse : GTLCollectionObject
 
-// The eTag of the response.
+// The ETag of the response.
 @property (copy) NSString *ETag;
 
-// List of videos matching the request criteria.
+// A list of videos that match the request criteria.
 @property (retain) NSArray *items;  // of GTLYouTubeVideo
 
-// The type of this API response.
+// The type of the API response. For this operation, the value will be
+// youtube#videoListResponse.
 @property (copy) NSString *kind;
 
 @end

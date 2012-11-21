@@ -43,10 +43,10 @@
 
 @interface GTLYouTubeSubscriptionContentDetails : GTLObject
 
-// Number of new items in the subscription since its content was last read.
+// The number of new items in the subscription since its content was last read.
 @property (retain) NSNumber *newItemCount;  // unsignedIntValue
 
-// Approximate total number of items the subscription points to.
+// The approximate number of items that the subscription points to.
 @property (retain) NSNumber *totalItemCount;  // unsignedIntValue
 
 @end

@@ -43,7 +43,8 @@
 
 @interface GTLYouTubeChannelTopicDetails : GTLObject
 
-// List of topic ids for this channel *
+// A list of Freebase topic IDs associated with the channel. You can retrieve
+// information about each topic using the Freebase Topic API.
 @property (retain) NSArray *topicIds;  // of NSString
 
 @end

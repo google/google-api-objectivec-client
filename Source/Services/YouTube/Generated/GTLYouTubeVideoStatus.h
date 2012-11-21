@@ -43,16 +43,19 @@
 
 @interface GTLYouTubeVideoStatus : GTLObject
 
-// Present only if the uploadStatus indicates a failed upload.
+// This value explains why a video failed to upload. This property is only
+// present if the uploadStatus property indicates that the upload failed.
 @property (copy) NSString *failureReason;
 
-// Privacy of the video.
+// The video's privacy status.
 @property (copy) NSString *privacyStatus;
 
-// Present only if the uploadStatus indicates a rejected upload.
+// This value explains why YouTube rejected an uploaded video. This property is
+// only present if the uploadStatus property indicates that the upload was
+// rejected.
 @property (copy) NSString *rejectionReason;
 
-// Status of the video upload.
+// The status of the uploaded video.
 @property (copy) NSString *uploadStatus;
 
 @end

@@ -48,26 +48,36 @@
 
 @interface GTLYouTubeActivitySnippet : GTLObject
 
-// Channel publishing the activity.
+// The ID that YouTube uses to uniquely identify the channel associated with the
+// activity.
 @property (copy) NSString *channelId;
 
-// Description of the activity.
+// The description of the resource primarily associated with the activity.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
 
-// Id of the group that this activity is part of.
+// The group ID associated with the activity. A group ID identifies user events
+// that are associated with the same user and resource. For example, if a user
+// rates a video and marks the same video as a favorite, the entries for those
+// events would have the same group ID in the user's activity feed. In your user
+// interface, you can avoid repetition by grouping events with the same groupId
+// value.
 @property (copy) NSString *groupId;
 
-// Date and time the activity was published at.
+// The date and time that the activity occurred. The value is specified in ISO
+// 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
 @property (retain) GTLDateTime *publishedAt;
 
-// Activity thumbnails.
+// A map of thumbnail images associated with the resource that is primarily
+// associated with the activity. For each object in the map, the key is the name
+// of the thumbnail image, and the value is an object that contains other
+// information about the thumbnail.
 @property (retain) GTLYouTubeActivitySnippetThumbnails *thumbnails;
 
-// Title of the activity.
+// The title of the resource primarily associated with the activity.
 @property (copy) NSString *title;
 
-// Type of the activity.
+// The type of activity that the resource describes.
 @property (copy) NSString *type;
 
 @end

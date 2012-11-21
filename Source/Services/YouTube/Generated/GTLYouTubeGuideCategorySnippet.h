@@ -43,10 +43,11 @@
 
 @interface GTLYouTubeGuideCategorySnippet : GTLObject
 
-// Channel publishing the guide category.
+// The ID that YouTube uses to uniquely identify the channel publishing the
+// guide category.
 @property (copy) NSString *channelId;
 
-// Title of the guide category.
+// The category's title.
 @property (copy) NSString *title;
 
 @end

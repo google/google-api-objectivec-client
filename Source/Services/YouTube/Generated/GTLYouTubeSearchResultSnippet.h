@@ -48,20 +48,24 @@
 
 @interface GTLYouTubeSearchResultSnippet : GTLObject
 
-// Channel publishing the found resource.
+// The value that YouTube uses to uniquely identify the channel that published
+// the resource that the search result identifies.
 @property (copy) NSString *channelId;
 
-// Description of the found resource.
+// A description of the search result.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
 
-// Date and time the found resource was published at.
+// The creation date and time of the resource that the search result identifies.
+// The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
 @property (retain) GTLDateTime *publishedAt;
 
-// Thumbnails for the found resource.
+// A map of thumbnail images associated with the search result. For each object
+// in the map, the key is the name of the thumbnail image, and the value is an
+// object that contains other information about the thumbnail.
 @property (retain) GTLYouTubeSearchResultSnippetThumbnails *thumbnails;
 
-// Title of the found resource.
+// The title to display for the search result.
 @property (copy) NSString *title;
 
 @end

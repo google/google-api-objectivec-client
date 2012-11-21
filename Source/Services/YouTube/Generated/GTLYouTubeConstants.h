@@ -50,7 +50,7 @@ GTL_EXTERN NSString * const kGTLYouTubeOrderDate;          // "date"
 GTL_EXTERN NSString * const kGTLYouTubeOrderRating;        // "rating"
 GTL_EXTERN NSString * const kGTLYouTubeOrderRelevance;     // "relevance"
 GTL_EXTERN NSString * const kGTLYouTubeOrderUnread;        // "unread"
-GTL_EXTERN NSString * const kGTLYouTubeOrderViewCount;     // "view_count"
+GTL_EXTERN NSString * const kGTLYouTubeOrderViewCount;     // "viewCount"
 
 // Published
 GTL_EXTERN NSString * const kGTLYouTubePublishedAny;        // "any"

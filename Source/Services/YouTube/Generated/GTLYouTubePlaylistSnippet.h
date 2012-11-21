@@ -47,20 +47,24 @@
 
 @interface GTLYouTubePlaylistSnippet : GTLObject
 
-// Channel publishing the playlist.
+// The ID that YouTube uses to uniquely identify the channel that published the
+// playlist.
 @property (copy) NSString *channelId;
 
-// Description of the playlist.
+// The playlist's description.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
 
-// Date and time the playlist was published at.
+// The date and time that the playlist was created. The value is specified in
+// ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
 @property (retain) GTLDateTime *publishedAt;
 
-// Playlist thumbnails.
+// A map of thumbnail images associated with the playlist. For each object in
+// the map, the key is the name of the thumbnail image, and the value is an
+// object that contains other information about the thumbnail.
 @property (retain) GTLYouTubePlaylistSnippetThumbnails *thumbnails;
 
-// Title of the playlist.
+// The playlist's title.
 @property (copy) NSString *title;
 
 @end

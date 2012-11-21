@@ -44,10 +44,10 @@
 
 @interface GTLYouTubePageInfo : GTLObject
 
-// The number of results to display for each page.
+// The number of results included in the API response.
 @property (retain) NSNumber *resultsPerPage;  // intValue
 
-// The total number of results.
+// The total number of results in the result set.
 @property (retain) NSNumber *totalResults;  // intValue
 
 @end

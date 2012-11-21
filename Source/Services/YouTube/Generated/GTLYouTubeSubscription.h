@@ -43,24 +43,28 @@
 //
 
 // A subscription resource contains information about a YouTube user
-// subscription.
+// subscription. A subscription notifies a user when new videos are added to a
+// channel or when another user takes one of several actions on YouTube, such as
+// uploading a video, rating a video, or commenting on a video.
 
 @interface GTLYouTubeSubscription : GTLObject
 
-// Basic statistics about the subscription
+// The contentDetails object contains basic statistics about the subscription.
 @property (retain) GTLYouTubeSubscriptionContentDetails *contentDetails;
 
-// The eTag of the subscription.
+// The ETag of the subscription resource.
 @property (copy) NSString *ETag;
 
-// The unique id of the subscription.
+// The ID that YouTube uses to uniquely identify the subscription.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// The type of this API resource.
+// The type of the API resource. For subscription resources, the value will be
+// youtube#subscription.
 @property (copy) NSString *kind;
 
-// Basic details about the subscription
+// The snippet object contains basic details about the subscription, including
+// its title and the channel that the user subscribed to.
 @property (retain) GTLYouTubeSubscriptionSnippet *snippet;
 
 @end

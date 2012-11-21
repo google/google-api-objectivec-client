@@ -49,13 +49,16 @@
 
 @interface GTLYouTubeGuideCategoryListResponse : GTLCollectionObject
 
-// The eTag of the response.
+// The ETag of the response.
 @property (copy) NSString *ETag;
 
-// List of categories matching the request criteria.
+// A list of categories that can be associated with YouTube channels. In this
+// map, the category ID is the map key, and its value is the corresponding
+// guideCategory resource.
 @property (retain) NSArray *items;  // of GTLYouTubeGuideCategory
 
-// The type of this API response.
+// The type of the API response. For this operation, the value will be
+// youtube#guideCategoryListResponse.
 @property (copy) NSString *kind;
 
 @end
