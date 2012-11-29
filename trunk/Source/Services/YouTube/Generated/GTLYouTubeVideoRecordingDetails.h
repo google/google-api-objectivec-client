@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideo.m
+//  GTLYouTubeVideoRecordingDetails.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,38 +26,33 @@
 // Documentation:
 //   https://developers.google.com/youtube
 // Classes:
-//   GTLYouTubeVideo (0 custom class methods, 10 custom properties)
+//   GTLYouTubeVideoRecordingDetails (0 custom class methods, 3 custom properties)
 
-#import "GTLYouTubeVideo.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLYouTubeVideoContentDetails.h"
-#import "GTLYouTubeVideoPlayer.h"
-#import "GTLYouTubeVideoRecordingDetails.h"
-#import "GTLYouTubeVideoSnippet.h"
-#import "GTLYouTubeVideoStatistics.h"
-#import "GTLYouTubeVideoStatus.h"
-#import "GTLYouTubeVideoTopicDetails.h"
+@class GTLYouTubeGeoPoint;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideo
+//   GTLYouTubeVideoRecordingDetails
 //
 
-@implementation GTLYouTubeVideo
-@dynamic contentDetails, ETag, identifier, kind, player, recordingDetails,
-         snippet, statistics, status, topicDetails;
+// Recording information associated with the video.
 
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"etag", @"ETag",
-      @"id", @"identifier",
-      nil];
-  return map;
-}
+@interface GTLYouTubeVideoRecordingDetails : GTLObject
 
-+ (void)load {
-  [self registerObjectClassForKind:@"youtube#video"];
-}
+// The geolocation information associated with the video.
+@property (retain) GTLYouTubeGeoPoint *location;
+
+// The text description of the location where the video was recorded.
+@property (copy) NSString *locationDescription;
+
+// The date and time when the video was recorded. The value is specified in ISO
+// 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
+@property (retain) GTLDateTime *recordingDate;
 
 @end

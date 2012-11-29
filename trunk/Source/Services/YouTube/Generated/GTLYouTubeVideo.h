@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube
 // Classes:
-//   GTLYouTubeVideo (0 custom class methods, 9 custom properties)
+//   GTLYouTubeVideo (0 custom class methods, 10 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,6 +36,7 @@
 
 @class GTLYouTubeVideoContentDetails;
 @class GTLYouTubeVideoPlayer;
+@class GTLYouTubeVideoRecordingDetails;
 @class GTLYouTubeVideoSnippet;
 @class GTLYouTubeVideoStatistics;
 @class GTLYouTubeVideoStatus;
@@ -68,6 +69,10 @@
 // The player object contains information that you would use to play the video
 // in an embedded player.
 @property (retain) GTLYouTubeVideoPlayer *player;
+
+// The recordingDetails object encapsulates information about the location, date
+// and address where the video was recorded.
+@property (retain) GTLYouTubeVideoRecordingDetails *recordingDetails;
 
 // The snippet object contains basic details about the video, such as its title,
 // description, and category.

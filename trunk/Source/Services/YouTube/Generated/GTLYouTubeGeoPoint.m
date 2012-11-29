@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideo.m
+//  GTLYouTubeGeoPoint.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,38 +26,15 @@
 // Documentation:
 //   https://developers.google.com/youtube
 // Classes:
-//   GTLYouTubeVideo (0 custom class methods, 10 custom properties)
+//   GTLYouTubeGeoPoint (0 custom class methods, 3 custom properties)
 
-#import "GTLYouTubeVideo.h"
-
-#import "GTLYouTubeVideoContentDetails.h"
-#import "GTLYouTubeVideoPlayer.h"
-#import "GTLYouTubeVideoRecordingDetails.h"
-#import "GTLYouTubeVideoSnippet.h"
-#import "GTLYouTubeVideoStatistics.h"
-#import "GTLYouTubeVideoStatus.h"
-#import "GTLYouTubeVideoTopicDetails.h"
+#import "GTLYouTubeGeoPoint.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideo
+//   GTLYouTubeGeoPoint
 //
 
-@implementation GTLYouTubeVideo
-@dynamic contentDetails, ETag, identifier, kind, player, recordingDetails,
-         snippet, statistics, status, topicDetails;
-
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"etag", @"ETag",
-      @"id", @"identifier",
-      nil];
-  return map;
-}
-
-+ (void)load {
-  [self registerObjectClassForKind:@"youtube#video"];
-}
-
+@implementation GTLYouTubeGeoPoint
+@dynamic elevation, latitude, longitude;
 @end
