@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideo.m
+//  GTLYouTubeChannelStatus.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,38 +26,24 @@
 // Documentation:
 //   https://developers.google.com/youtube
 // Classes:
-//   GTLYouTubeVideo (0 custom class methods, 10 custom properties)
+//   GTLYouTubeChannelStatus (0 custom class methods, 1 custom properties)
 
-#import "GTLYouTubeVideo.h"
-
-#import "GTLYouTubeVideoContentDetails.h"
-#import "GTLYouTubeVideoPlayer.h"
-#import "GTLYouTubeVideoRecordingDetails.h"
-#import "GTLYouTubeVideoSnippet.h"
-#import "GTLYouTubeVideoStatistics.h"
-#import "GTLYouTubeVideoStatus.h"
-#import "GTLYouTubeVideoTopicDetails.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideo
+//   GTLYouTubeChannelStatus
 //
 
-@implementation GTLYouTubeVideo
-@dynamic contentDetails, ETag, identifier, kind, player, recordingDetails,
-         snippet, statistics, status, topicDetails;
+// JSON template for the status part of a channel.
 
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"etag", @"ETag",
-      @"id", @"identifier",
-      nil];
-  return map;
-}
+@interface GTLYouTubeChannelStatus : GTLObject
 
-+ (void)load {
-  [self registerObjectClassForKind:@"youtube#video"];
-}
+// Privacy status of the channel.
+@property (copy) NSString *privacyStatus;
 
 @end

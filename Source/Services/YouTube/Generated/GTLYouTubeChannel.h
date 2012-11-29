@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube
 // Classes:
-//   GTLYouTubeChannel (0 custom class methods, 7 custom properties)
+//   GTLYouTubeChannel (0 custom class methods, 8 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -37,6 +37,7 @@
 @class GTLYouTubeChannelContentDetails;
 @class GTLYouTubeChannelSnippet;
 @class GTLYouTubeChannelStatistics;
+@class GTLYouTubeChannelStatus;
 @class GTLYouTubeChannelTopicDetails;
 
 // ----------------------------------------------------------------------------
@@ -69,6 +70,10 @@
 
 // The statistics object encapsulates statistics for the channel.
 @property (retain) GTLYouTubeChannelStatistics *statistics;
+
+// The status object encapsulates information about the privacy status of the
+// channel.
+@property (retain) GTLYouTubeChannelStatus *status;
 
 // The topicDetails object encapsulates information about Freebase topics
 // associated with the channel.

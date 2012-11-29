@@ -26,13 +26,14 @@
 // Documentation:
 //   https://developers.google.com/youtube
 // Classes:
-//   GTLYouTubeChannel (0 custom class methods, 7 custom properties)
+//   GTLYouTubeChannel (0 custom class methods, 8 custom properties)
 
 #import "GTLYouTubeChannel.h"
 
 #import "GTLYouTubeChannelContentDetails.h"
 #import "GTLYouTubeChannelSnippet.h"
 #import "GTLYouTubeChannelStatistics.h"
+#import "GTLYouTubeChannelStatus.h"
 #import "GTLYouTubeChannelTopicDetails.h"
 
 // ----------------------------------------------------------------------------
@@ -41,7 +42,7 @@
 //
 
 @implementation GTLYouTubeChannel
-@dynamic contentDetails, ETag, identifier, kind, snippet, statistics,
+@dynamic contentDetails, ETag, identifier, kind, snippet, statistics, status,
          topicDetails;
 
 + (NSDictionary *)propertyToJSONKeyMap {
