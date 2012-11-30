@@ -26,9 +26,9 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 34 custom properties)
+//   GTLDriveFile (0 custom class methods, 37 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
-//   GTLDriveFileImageMediaMetadata (0 custom class methods, 12 custom properties)
+//   GTLDriveFileImageMediaMetadata (0 custom class methods, 21 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
 //   GTLDriveFileLabels (0 custom class methods, 5 custom properties)
 //   GTLDriveFileThumbnail (0 custom class methods, 2 custom properties)
@@ -60,6 +60,9 @@
 
 // A link for opening the file in using a relevant Google editor or viewer.
 @property (copy) NSString *alternateLink;
+
+// Whether this file is in the appdata folder.
+@property (retain) NSNumber *appDataContents;  // boolValue
 
 // Create time for this file (formatted ISO8601 timestamp).
 @property (retain) GTLDateTime *createdDate;
@@ -96,6 +99,9 @@
 // The size of the file in bytes. This will only be populated on files with
 // content stored in Drive.
 @property (retain) NSNumber *fileSize;  // longLongValue
+
+// A link to the file's icon.
+@property (copy) NSString *iconLink;
 
 // The id of the file.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
@@ -174,13 +180,16 @@
 // The title of this file.
 @property (copy) NSString *title;
 
-// The permissions for the authenticated user on this file.
 @property (retain) GTLDrivePermission *userPermission;
 
 // A link for downloading the content of the file in a browser using cookie
 // based authentication. In cases where the content is shared publicly, the
 // content can be downloaded without any credentials.
 @property (copy) NSString *webContentLink;
+
+// A link providing access to static web assets (HTML, CSS, JS, etc) in a public
+// folder hierarchy using filenames in a relative path.
+@property (copy) NSString *webViewLink;
 
 // Whether writers can share the document with other users.
 @property (retain) NSNumber *writersCanShare;  // boolValue
@@ -217,8 +226,17 @@
 // The model of the camera used to create the photo.
 @property (copy) NSString *cameraModel;
 
+// The color space of the photo.
+@property (copy) NSString *colorSpace;
+
 // The date and time the photo was taken (EXIF format timestamp).
 @property (copy) NSString *date;
+
+// The exposure bias of the photo (APEX value).
+@property (retain) NSNumber *exposureBias;  // floatValue
+
+// The exposure mode used to create the photo.
+@property (copy) NSString *exposureMode;
 
 // The length of the exposure, in seconds.
 @property (retain) NSNumber *exposureTime;  // floatValue
@@ -235,11 +253,30 @@
 // The ISO speed used to create the photo.
 @property (retain) NSNumber *isoSpeed;  // intValue
 
+// The lens used to create the photo.
+@property (copy) NSString *lens;
+
 // Geographic location information stored in the image.
 @property (retain) GTLDriveFileImageMediaMetadataLocation *location;
 
+// The smallest f-number of the lens at the focal length used to create the
+// photo (APEX value).
+@property (retain) NSNumber *maxApertureValue;  // floatValue
+
+// The metering mode used to create the photo.
+@property (copy) NSString *meteringMode;
+
 // The rotation in clockwise degrees from the image's original orientation.
 @property (retain) NSNumber *rotation;  // intValue
+
+// The type of sensor used to create the photo.
+@property (copy) NSString *sensor;
+
+// The distance to the subject of the photo, in meters.
+@property (retain) NSNumber *subjectDistance;  // intValue
+
+// The white balance mode used to create the photo.
+@property (copy) NSString *whiteBalance;
 
 // The width of the image in pixels.
 @property (retain) NSNumber *width;  // intValue

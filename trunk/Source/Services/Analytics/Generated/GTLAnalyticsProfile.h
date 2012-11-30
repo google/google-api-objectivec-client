@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsProfile (0 custom class methods, 19 custom properties)
+//   GTLAnalyticsProfile (0 custom class methods, 20 custom properties)
 //   GTLAnalyticsProfileChildLink (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsProfileParentLink (0 custom class methods, 2 custom properties)
 
@@ -97,6 +97,9 @@
 
 // Time zone for which this profile has been configured.
 @property (copy) NSString *timezone;
+
+// Profile type. Supported types: WEB or APP.
+@property (copy) NSString *type;
 
 // Time this profile was last modified.
 @property (retain) GTLDateTime *updated;

@@ -26,9 +26,9 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 34 custom properties)
+//   GTLDriveFile (0 custom class methods, 37 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
-//   GTLDriveFileImageMediaMetadata (0 custom class methods, 12 custom properties)
+//   GTLDriveFileImageMediaMetadata (0 custom class methods, 21 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
 //   GTLDriveFileLabels (0 custom class methods, 5 custom properties)
 //   GTLDriveFileThumbnail (0 custom class methods, 2 custom properties)
@@ -45,13 +45,14 @@
 //
 
 @implementation GTLDriveFile
-@dynamic alternateLink, createdDate, descriptionProperty, downloadUrl, editable,
-         embedLink, ETag, explicitlyTrashed, exportLinks, fileExtension,
-         fileSize, identifier, imageMediaMetadata, indexableText, kind, labels,
-         lastModifyingUserName, lastViewedByMeDate, md5Checksum, mimeType,
-         modifiedByMeDate, modifiedDate, originalFilename, ownerNames, parents,
-         quotaBytesUsed, selfLink, sharedWithMeDate, thumbnail, thumbnailLink,
-         title, userPermission, webContentLink, writersCanShare;
+@dynamic alternateLink, appDataContents, createdDate, descriptionProperty,
+         downloadUrl, editable, embedLink, ETag, explicitlyTrashed, exportLinks,
+         fileExtension, fileSize, iconLink, identifier, imageMediaMetadata,
+         indexableText, kind, labels, lastModifyingUserName, lastViewedByMeDate,
+         md5Checksum, mimeType, modifiedByMeDate, modifiedDate,
+         originalFilename, ownerNames, parents, quotaBytesUsed, selfLink,
+         sharedWithMeDate, thumbnail, thumbnailLink, title, userPermission,
+         webContentLink, webViewLink, writersCanShare;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -99,8 +100,10 @@
 //
 
 @implementation GTLDriveFileImageMediaMetadata
-@dynamic aperture, cameraMake, cameraModel, date, exposureTime, flashUsed,
-         focalLength, height, isoSpeed, location, rotation, width;
+@dynamic aperture, cameraMake, cameraModel, colorSpace, date, exposureBias,
+         exposureMode, exposureTime, flashUsed, focalLength, height, isoSpeed,
+         lens, location, maxApertureValue, meteringMode, rotation, sensor,
+         subjectDistance, whiteBalance, width;
 @end
 
 
