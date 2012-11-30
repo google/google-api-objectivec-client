@@ -104,7 +104,7 @@
 // The representation of the person's profile photo.
 @property (retain) GTLPlusPersonImage *image;
 
-// Whether this user has signed up for G+.
+// Whether this user has signed up for Google+.
 @property (retain) NSNumber *isPlusUser;  // boolValue
 
 // Identifies this resource as a person. Value: "plus#person".
