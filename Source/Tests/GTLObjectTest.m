@@ -1210,12 +1210,12 @@ static Class gAdditionalPropsClass = Nil;
   collection.items = [[items copy] autorelease];
 
   // Test fast enumeration.
-  int counter = 0;
+  NSUInteger counter = 0;
   for (id foundItem in collection) {
     STAssertEqualObjects(foundItem, items[counter], nil);
     counter++;
   }
-  STAssertEquals(counter, 2, nil);
+  STAssertEquals(counter, (NSUInteger)2, nil);
 
   // Test indexed subscripts.
   STAssertEqualObjects(collection[0], items[0], nil);

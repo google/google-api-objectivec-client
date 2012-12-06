@@ -22,7 +22,6 @@
 		4F1817511134982E009F7FD1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F18174C1134982E009F7FD1 /* Security.framework */; };
 		4F1AD90D0B71607400DC0485 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F1AD90C0B71607400DC0485 /* main.m */; };
 		4F1ADAB10B7168F300DC0485 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
-		4F244944121F3C2B00FEE1DA /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F24493A121F3C2B00FEE1DA /* JSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F2449B7121F3E2A00FEE1DA /* GTMHTTPFetcherTestServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2449B4121F3E2A00FEE1DA /* GTMHTTPFetcherTestServer.m */; };
 		4F2449B8121F3E2A00FEE1DA /* GTMHTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2449B6121F3E2A00FEE1DA /* GTMHTTPServer.m */; };
 		4F31A3D7142AA6BA00A58EAD /* TaskBatchPage1a.request.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4F31A3D3142AA6BA00A58EAD /* TaskBatchPage1a.request.txt */; };
@@ -135,21 +134,6 @@
 		4F9F7E3C11F510430033A2C1 /* GTLFrameworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F7E3A11F510430033A2C1 /* GTLFrameworkTest.m */; };
 		4F9F7E3D11F510430033A2C1 /* GTLUtilitiesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F7E3B11F510430033A2C1 /* GTLUtilitiesTest.m */; };
 		4FCC7A1D11EFD9EA0097924C /* GTLServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCC7A1C11EFD9EA0097924C /* GTLServiceTest.m */; };
-		4FDB9FBF152BA565004A2830 /* SBJsonBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FDB9FAE152BA565004A2830 /* SBJsonBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4FDB9FC0152BA565004A2830 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB9FAF152BA565004A2830 /* SBJsonBase.m */; };
-		4FDB9FC1152BA565004A2830 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB9FAF152BA565004A2830 /* SBJsonBase.m */; };
-		4FDB9FC2152BA565004A2830 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB9FAF152BA565004A2830 /* SBJsonBase.m */; };
-		4FDB9FC3152BA565004A2830 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB9FAF152BA565004A2830 /* SBJsonBase.m */; };
-		4FDB9FC4152BA565004A2830 /* SBJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FDB9FB0152BA565004A2830 /* SBJsonParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4FDB9FC5152BA565004A2830 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB9FB1152BA565004A2830 /* SBJsonParser.m */; };
-		4FDB9FC6152BA565004A2830 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB9FB1152BA565004A2830 /* SBJsonParser.m */; };
-		4FDB9FC7152BA565004A2830 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB9FB1152BA565004A2830 /* SBJsonParser.m */; };
-		4FDB9FC8152BA565004A2830 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB9FB1152BA565004A2830 /* SBJsonParser.m */; };
-		4FDB9FC9152BA565004A2830 /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FDB9FB2152BA565004A2830 /* SBJsonWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4FDB9FCA152BA565004A2830 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB9FB3152BA565004A2830 /* SBJsonWriter.m */; };
-		4FDB9FCB152BA565004A2830 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB9FB3152BA565004A2830 /* SBJsonWriter.m */; };
-		4FDB9FCC152BA565004A2830 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB9FB3152BA565004A2830 /* SBJsonWriter.m */; };
-		4FDB9FCD152BA565004A2830 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB9FB3152BA565004A2830 /* SBJsonWriter.m */; };
 		4FDE223913848173005AEFAA /* GTLFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FDE223313848173005AEFAA /* GTLFramework.m */; };
 		4FDE223A13848173005AEFAA /* GTLJSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FDE223513848173005AEFAA /* GTLJSONParser.m */; };
 		4FDE223B13848173005AEFAA /* GTLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FDE223813848173005AEFAA /* GTLUtilities.m */; };
@@ -282,7 +266,6 @@
 		4F18174C1134982E009F7FD1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		4F1AD9020B71603F00DC0485 /* DevelopmentTestTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DevelopmentTestTool; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F1AD90C0B71607400DC0485 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Tests/main.m; sourceTree = "<group>"; };
-		4F24493A121F3C2B00FEE1DA /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSON.h; path = JSON/JSON.h; sourceTree = "<group>"; };
 		4F2449B3121F3E2A00FEE1DA /* GTMHTTPFetcherTestServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMHTTPFetcherTestServer.h; path = HTTPFetcher/Tests/GTMHTTPFetcherTestServer.h; sourceTree = "<group>"; };
 		4F2449B4121F3E2A00FEE1DA /* GTMHTTPFetcherTestServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMHTTPFetcherTestServer.m; path = HTTPFetcher/Tests/GTMHTTPFetcherTestServer.m; sourceTree = "<group>"; };
 		4F2449B5121F3E2A00FEE1DA /* GTMHTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMHTTPServer.h; path = HTTPFetcher/Tests/GTMHTTPServer.h; sourceTree = "<group>"; };
@@ -341,13 +324,6 @@
 		4F9F7E3A11F510430033A2C1 /* GTLFrameworkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLFrameworkTest.m; path = Tests/GTLFrameworkTest.m; sourceTree = "<group>"; };
 		4F9F7E3B11F510430033A2C1 /* GTLUtilitiesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLUtilitiesTest.m; path = Tests/GTLUtilitiesTest.m; sourceTree = "<group>"; };
 		4FCC7A1C11EFD9EA0097924C /* GTLServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLServiceTest.m; path = Tests/GTLServiceTest.m; sourceTree = "<group>"; };
-		4FDB9FA9152BA565004A2830 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSON.h; path = JSON/JSON.h; sourceTree = "<group>"; };
-		4FDB9FAE152BA565004A2830 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonBase.h; path = JSON/SBJsonBase.h; sourceTree = "<group>"; };
-		4FDB9FAF152BA565004A2830 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonBase.m; path = JSON/SBJsonBase.m; sourceTree = "<group>"; };
-		4FDB9FB0152BA565004A2830 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonParser.h; path = JSON/SBJsonParser.h; sourceTree = "<group>"; };
-		4FDB9FB1152BA565004A2830 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonParser.m; path = JSON/SBJsonParser.m; sourceTree = "<group>"; };
-		4FDB9FB2152BA565004A2830 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonWriter.h; path = JSON/SBJsonWriter.h; sourceTree = "<group>"; };
-		4FDB9FB3152BA565004A2830 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonWriter.m; path = JSON/SBJsonWriter.m; sourceTree = "<group>"; };
 		4FDE223213848173005AEFAA /* GTLFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTLFramework.h; path = Utilities/GTLFramework.h; sourceTree = "<group>"; };
 		4FDE223313848173005AEFAA /* GTLFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLFramework.m; path = Utilities/GTLFramework.m; sourceTree = "<group>"; };
 		4FDE223413848173005AEFAA /* GTLJSONParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTLJSONParser.h; path = Utilities/GTLJSONParser.h; sourceTree = "<group>"; };
@@ -492,21 +468,6 @@
 			name = "GTL Source";
 			sourceTree = "<group>";
 		};
-		4F12035B11A4CA8D00BEB470 /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				4F24493A121F3C2B00FEE1DA /* JSON.h */,
-				4FDB9FA9152BA565004A2830 /* JSON.h */,
-				4FDB9FAE152BA565004A2830 /* SBJsonBase.h */,
-				4FDB9FAF152BA565004A2830 /* SBJsonBase.m */,
-				4FDB9FB0152BA565004A2830 /* SBJsonParser.h */,
-				4FDB9FB1152BA565004A2830 /* SBJsonParser.m */,
-				4FDB9FB2152BA565004A2830 /* SBJsonWriter.h */,
-				4FDB9FB3152BA565004A2830 /* SBJsonWriter.m */,
-			);
-			name = JSON;
-			sourceTree = "<group>";
-		};
 		4F244248121E0A8D00FEE1DA /* Touch */ = {
 			isa = PBXGroup;
 			children = (
@@ -534,7 +495,6 @@
 				4F5CC88E1381EC7300D1D4CF /* Objects */,
 				4F5CC88F1381EC7F00D1D4CF /* Utilities */,
 				4FB730D70BE27A92000C493E /* HTTPFetcher */,
-				4F12035B11A4CA8D00BEB470 /* JSON */,
 				4FDE39371134948400700DC8 /* OAuth2 */,
 			);
 			name = Common;
@@ -718,10 +678,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F3DE995119CCE49006926D1 /* GTLDefines.h in Headers */,
-				4F244944121F3C2B00FEE1DA /* JSON.h in Headers */,
-				4FDB9FBF152BA565004A2830 /* SBJsonBase.h in Headers */,
-				4FDB9FC4152BA565004A2830 /* SBJsonParser.h in Headers */,
-				4FDB9FC9152BA565004A2830 /* SBJsonWriter.h in Headers */,
 				4F697FA7131C1A4100A5AB6A /* GTMOAuth2Authentication.h in Headers */,
 				4F697FA9131C1A4100A5AB6A /* GTMOAuth2SignIn.h in Headers */,
 				4F697FB7131C1A5800A5AB6A /* GTMOAuth2WindowController.h in Headers */,
@@ -829,7 +785,7 @@
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0440;
 			};
 			buildConfigurationList = 1DEB913E08733D840010E9CD /* Build configuration list for PBXProject "GTL" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -950,9 +906,6 @@
 				4F8DB61C13FDAC160001DD6C /* GTMReadMonitorInputStream.m in Sources */,
 				4F934E6A1512712100C4EA34 /* GTLBase64.m in Sources */,
 				4F934F51151286FE00C4EA34 /* GTLBase64Test.m in Sources */,
-				4FDB9FC2152BA565004A2830 /* SBJsonBase.m in Sources */,
-				4FDB9FC7152BA565004A2830 /* SBJsonParser.m in Sources */,
-				4FDB9FCC152BA565004A2830 /* SBJsonWriter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -984,9 +937,6 @@
 				4F0C4FC013CFA7E5007E5E92 /* GTLUploadParameters.m in Sources */,
 				4F8DB61D13FDAC160001DD6C /* GTMReadMonitorInputStream.m in Sources */,
 				4F934E6B1512712100C4EA34 /* GTLBase64.m in Sources */,
-				4FDB9FC3152BA565004A2830 /* SBJsonBase.m in Sources */,
-				4FDB9FC8152BA565004A2830 /* SBJsonParser.m in Sources */,
-				4FDB9FCD152BA565004A2830 /* SBJsonWriter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1018,9 +968,6 @@
 				4F0C4FBE13CFA7E5007E5E92 /* GTLUploadParameters.m in Sources */,
 				4F8DB61B13FDAC160001DD6C /* GTMReadMonitorInputStream.m in Sources */,
 				4F934E691512712100C4EA34 /* GTLBase64.m in Sources */,
-				4FDB9FC1152BA565004A2830 /* SBJsonBase.m in Sources */,
-				4FDB9FC6152BA565004A2830 /* SBJsonParser.m in Sources */,
-				4FDB9FCB152BA565004A2830 /* SBJsonWriter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1052,9 +999,6 @@
 				4F0C4FBD13CFA7E5007E5E92 /* GTLUploadParameters.m in Sources */,
 				4F8DB61A13FDAC160001DD6C /* GTMReadMonitorInputStream.m in Sources */,
 				4F934E681512712100C4EA34 /* GTLBase64.m in Sources */,
-				4FDB9FC0152BA565004A2830 /* SBJsonBase.m in Sources */,
-				4FDB9FC5152BA565004A2830 /* SBJsonParser.m in Sources */,
-				4FDB9FCA152BA565004A2830 /* SBJsonWriter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1088,7 +1032,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_CFLAGS = "-DDEBUG=1";
 				SDKROOT = macosx;
 				WARNING_CFLAGS = (
@@ -1098,6 +1042,17 @@
 					"-Wnewline-eof",
 					"-Wfloat-equal",
 					"-Wundeclared-selector",
+					"-Wextra",
+					"-Wstrict-overflow",
+					"-Wconversion",
+					"-Wformat=2",
+					"-Wformat-security",
+					"-Wreorder",
+					"-Wsign-promo",
+					"-Wstrict-selector-match",
+					"-Wno-unused-parameter",
+					"-Wno-pragmas",
+					"-Wno-unknown-pragmas",
 				);
 			};
 			name = Debug;
@@ -1121,7 +1076,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				MACOSX_DEPLOYMENT_TARGET = "";
 				SDKROOT = macosx;
 				WARNING_CFLAGS = (
 					"-Wall",
@@ -1130,6 +1085,17 @@
 					"-Wnewline-eof",
 					"-Wfloat-equal",
 					"-Wundeclared-selector",
+					"-Wextra",
+					"-Wstrict-overflow",
+					"-Wconversion",
+					"-Wformat=2",
+					"-Wformat-security",
+					"-Wreorder",
+					"-Wsign-promo",
+					"-Wstrict-selector-match",
+					"-Wno-unused-parameter",
+					"-Wno-pragmas",
+					"-Wno-unknown-pragmas",
 				);
 			};
 			name = Release;
@@ -1137,7 +1103,7 @@
 		4F14A9E00B1276B70072EBB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(value)",
@@ -1148,7 +1114,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
 				INFOPLIST_FILE = "Resources/GTLUnitTests-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-DGTL_UTILITIES_BASE64=1",
@@ -1169,7 +1135,7 @@
 		4F14A9E10B1276B70072EBB8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(value)",
@@ -1180,7 +1146,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
 				INFOPLIST_FILE = "Resources/GTLUnitTests-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-DGTL_UTILITIES_BASE64=1",

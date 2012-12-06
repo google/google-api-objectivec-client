@@ -164,16 +164,52 @@
   NSNumber *num;
   NSNumber *result;
 
+  result = GTL_EnsureNSNumber(nil);
+  STAssertNil(result, nil);
+
   // Give it a number, get the same thing back
   num = @12;
   result = GTL_EnsureNSNumber(num);
-  STAssertEqualObjects(num, result, nil);
-  STAssertEquals(num, result, nil);
+  STAssertEqualObjects(result, num, nil);
+  STAssertEquals(result, num, nil);
 
   // Give it a string, and it converts...
+  num = @0;
+  result = GTL_EnsureNSNumber((NSNumber*)@"");
+  STAssertEqualObjects(result, num, nil);
+
+  num = @0;
+  result = GTL_EnsureNSNumber((NSNumber*)@"0");
+  STAssertEqualObjects(result, num, nil);
+
   num = @1000.01;
   result = GTL_EnsureNSNumber((NSNumber*)@"1000.01");
-  STAssertEqualObjects(num, result, nil);
+  STAssertEqualObjects(result, num, nil);
+
+  num = @-1000.01;
+  result = GTL_EnsureNSNumber((NSNumber*)@"-1000.01");
+  STAssertEqualObjects(result, num, nil);
+
+  // Check the values of the NSNumber objects created from strings.
+  result = GTL_EnsureNSNumber((NSNumber*)@"1");
+  STAssertEquals([result longLongValue], 1LL, nil);
+
+  result = GTL_EnsureNSNumber((NSNumber*)@"-1");
+  STAssertEquals([result longLongValue], -1LL, nil);
+
+  result = GTL_EnsureNSNumber((NSNumber*)@"71100000000007780");
+  STAssertEquals([result longLongValue], 71100000000007780LL, nil);
+
+  result = GTL_EnsureNSNumber((NSNumber*)@"-71100000000007780");
+  STAssertEquals([result longLongValue], -71100000000007780LL, nil);
+
+  NSString *ullongmaxStr = [[NSNumber numberWithUnsignedLongLong:ULLONG_MAX] stringValue];
+  result = GTL_EnsureNSNumber((NSNumber*)ullongmaxStr);
+  STAssertEquals([result unsignedLongLongValue], ULLONG_MAX, nil);
+
+  NSString *llongminStr = [[NSNumber numberWithLongLong:LLONG_MIN] stringValue];
+  result = GTL_EnsureNSNumber((NSNumber*)llongminStr);
+  STAssertEquals([result longLongValue], LLONG_MIN, nil);
 }
 
 #pragma mark -
