@@ -40,6 +40,7 @@
                       [GTLQueryShopping class],
                       [GTLShoppingModelCategory class],
                       [GTLShoppingModelDebug class],
+                      [GTLShoppingModelExtras class],
                       [GTLShoppingModelProduct class],
                       [GTLShoppingModelRecommendations class],
                       [GTLShoppingProduct class],

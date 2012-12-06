@@ -33,6 +33,7 @@
 
 #import "GTLShoppingModelCategory.m"
 #import "GTLShoppingModelDebug.m"
+#import "GTLShoppingModelExtras.m"
 #import "GTLShoppingModelProduct.m"
 #import "GTLShoppingModelRecommendations.m"
 #import "GTLShoppingProduct.m"

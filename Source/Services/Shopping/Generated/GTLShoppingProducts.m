@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/shopping-search/v1/getting_started
 // Classes:
-//   GTLShoppingProducts (0 custom class methods, 21 custom properties)
+//   GTLShoppingProducts (0 custom class methods, 22 custom properties)
 //   GTLShoppingProductsFacetsItem (0 custom class methods, 7 custom properties)
 //   GTLShoppingProductsPromotionsItem (0 custom class methods, 8 custom properties)
 //   GTLShoppingProductsSpelling (0 custom class methods, 1 custom properties)
@@ -38,6 +38,7 @@
 
 #import "GTLShoppingModelCategory.h"
 #import "GTLShoppingModelDebug.h"
+#import "GTLShoppingModelExtras.h"
 #import "GTLShoppingModelProduct.h"
 #import "GTLShoppingModelRecommendations.h"
 #import "GTLShoppingProduct.h"
@@ -49,9 +50,9 @@
 
 @implementation GTLShoppingProducts
 @dynamic categories, categoryRecommendations, currentItemCount, debug, ETag,
-         facets, identifier, items, itemsPerPage, kind, nextLink, previousLink,
-         promotions, redirects, relatedQueries, requestId, selfLink, spelling,
-         startIndex, stores, totalItems;
+         extras, facets, identifier, items, itemsPerPage, kind, nextLink,
+         previousLink, promotions, redirects, relatedQueries, requestId,
+         selfLink, spelling, startIndex, stores, totalItems;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

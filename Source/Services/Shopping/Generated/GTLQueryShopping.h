@@ -26,12 +26,13 @@
 // Documentation:
 //   https://developers.google.com/shopping-search/v1/getting_started
 // Classes:
-//   GTLQueryShopping (2 custom class methods, 34 custom properties)
+//   GTLQueryShopping (2 custom class methods, 35 custom properties)
 //   GTLShoppingProductsGetCategories (0 custom class methods, 3 custom properties)
 //   GTLShoppingProductsGetPlusOne (0 custom class methods, 3 custom properties)
 //   GTLShoppingProductsGetRecommendations (0 custom class methods, 3 custom properties)
 //   GTLShoppingProductsListCategories (0 custom class methods, 3 custom properties)
 //   GTLShoppingProductsListCategoryRecommendations (0 custom class methods, 4 custom properties)
+//   GTLShoppingProductsListExtras (0 custom class methods, 2 custom properties)
 //   GTLShoppingProductsListFacets (0 custom class methods, 5 custom properties)
 //   GTLShoppingProductsListPlusOne (0 custom class methods, 3 custom properties)
 //   GTLShoppingProductsListPromotions (0 custom class methods, 2 custom properties)
@@ -50,6 +51,7 @@
 @class GTLShoppingProductsGetRecommendations;
 @class GTLShoppingProductsListCategories;
 @class GTLShoppingProductsListCategoryRecommendations;
+@class GTLShoppingProductsListExtras;
 @class GTLShoppingProductsListFacets;
 @class GTLShoppingProductsListPlusOne;
 @class GTLShoppingProductsListPromotions;
@@ -82,6 +84,7 @@
 @property (copy) NSString *country;
 @property (copy) NSString *crowdBy;
 @property (copy) NSString *currency;
+@property (retain) GTLShoppingProductsListExtras *extras;
 @property (retain) GTLShoppingProductsListFacets *facets;
 @property (copy) NSString *language;
 @property (copy) NSString *location;
@@ -153,6 +156,7 @@
 //   country: Country restriction (ISO 3166)
 //   crowdBy: Crowding specification
 //   currency: Currency restriction (ISO 4217)
+//   extras: GTLShoppingProductsListExtras
 //   facets: GTLShoppingProductsListFacets
 //   language: Language restriction (BCP 47)
 //   location: Location used to determine tax and shipping
@@ -284,6 +288,23 @@
 
 // This parameter is currently ignored
 @property (retain) NSNumber *useGcsConfig;  // boolValue
+
+@end
+
+// ----------------------------------------------------------------------------
+//
+//   GTLShoppingProductsListExtras
+//
+
+// Used for 'extras' parameter on 'shopping.products.list'.
+
+@interface GTLShoppingProductsListExtras : GTLObject
+
+// Whether to return extra information.
+@property (retain) NSNumber *enabled;  // boolValue
+
+// What extra information to return.
+@property (copy) NSString *info;
 
 @end
 
