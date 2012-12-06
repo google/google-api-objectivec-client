@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/shopping-search/v1/getting_started
 // Classes:
-//   GTLShoppingProducts (0 custom class methods, 21 custom properties)
+//   GTLShoppingProducts (0 custom class methods, 22 custom properties)
 //   GTLShoppingProductsFacetsItem (0 custom class methods, 7 custom properties)
 //   GTLShoppingProductsPromotionsItem (0 custom class methods, 8 custom properties)
 //   GTLShoppingProductsSpelling (0 custom class methods, 1 custom properties)
@@ -42,6 +42,7 @@
 
 @class GTLShoppingModelCategory;
 @class GTLShoppingModelDebug;
+@class GTLShoppingModelExtras;
 @class GTLShoppingModelProduct;
 @class GTLShoppingModelRecommendations;
 @class GTLShoppingProduct;
@@ -76,6 +77,9 @@
 
 // Etag of feed.
 @property (copy) NSString *ETag;
+
+// List of extras.
+@property (retain) GTLShoppingModelExtras *extras;
 
 // List of facets.
 @property (retain) NSArray *facets;  // of GTLShoppingProductsFacetsItem

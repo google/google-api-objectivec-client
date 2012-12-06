@@ -30,6 +30,7 @@
 
 #import "GTLShoppingModelCategory.h"
 #import "GTLShoppingModelDebug.h"
+#import "GTLShoppingModelExtras.h"
 #import "GTLShoppingModelProduct.h"
 #import "GTLShoppingModelRecommendations.h"
 #import "GTLShoppingProduct.h"
