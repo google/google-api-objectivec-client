@@ -26,8 +26,9 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLBooksVolume (0 custom class methods, 9 custom properties)
+//   GTLBooksVolume (0 custom class methods, 10 custom properties)
 //   GTLBooksVolumeAccessInfo (0 custom class methods, 11 custom properties)
+//   GTLBooksVolumeRecommendedInfo (0 custom class methods, 1 custom properties)
 //   GTLBooksVolumeSaleInfo (0 custom class methods, 7 custom properties)
 //   GTLBooksVolumeSearchInfo (0 custom class methods, 1 custom properties)
 //   GTLBooksVolumeUserInfo (0 custom class methods, 6 custom properties)
@@ -52,6 +53,7 @@
 @class GTLBooksVolumeAccessInfo;
 @class GTLBooksVolumeAccessInfoEpub;
 @class GTLBooksVolumeAccessInfoPdf;
+@class GTLBooksVolumeRecommendedInfo;
 @class GTLBooksVolumeSaleInfo;
 @class GTLBooksVolumeSaleInfoListPrice;
 @class GTLBooksVolumeSaleInfoRetailPrice;
@@ -84,6 +86,9 @@
 
 // Resource type for a volume. (In LITE projection.)
 @property (copy) NSString *kind;
+
+// Recommendation related information for this volume.
+@property (retain) GTLBooksVolumeRecommendedInfo *recommendedInfo;
 
 // Any information about a volume related to the eBookstore and/or
 // purchaseability. This information can depend on the country where the request
@@ -156,6 +161,19 @@
 // URL to read this volume on the Google Books site. Link will not allow users
 // to read non-viewable volumes.
 @property (copy) NSString *webReaderLink;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksVolumeRecommendedInfo
+//
+
+@interface GTLBooksVolumeRecommendedInfo : GTLObject
+
+// A text explaining why this volume is recommended.
+@property (copy) NSString *explanation;
 
 @end
 
