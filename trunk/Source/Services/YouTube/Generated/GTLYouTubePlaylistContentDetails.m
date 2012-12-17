@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeChannelTopicDetails.m
+//  GTLYouTubePlaylistContentDetails.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,23 +26,15 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelTopicDetails (0 custom class methods, 1 custom properties)
+//   GTLYouTubePlaylistContentDetails (0 custom class methods, 1 custom properties)
 
-#import "GTLYouTubeChannelTopicDetails.h"
+#import "GTLYouTubePlaylistContentDetails.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeChannelTopicDetails
+//   GTLYouTubePlaylistContentDetails
 //
 
-@implementation GTLYouTubeChannelTopicDetails
-@dynamic topicIds;
-
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[NSString class]
-                                forKey:@"topicIds"];
-  return map;
-}
-
+@implementation GTLYouTubePlaylistContentDetails
+@dynamic itemCount;
 @end

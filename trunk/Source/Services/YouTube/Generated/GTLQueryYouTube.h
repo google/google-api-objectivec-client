@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   YouTube API (youtube/v3)
+//   YouTube Data API (youtube/v3)
 // Description:
 //   Programmatic access to YouTube features.
 // Documentation:
-//   https://developers.google.com/youtube
+//   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (21 custom class methods, 27 custom properties)
+//   GTLQueryYouTube (21 custom class methods, 28 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -66,7 +66,6 @@
 @property (copy) NSString *pageToken;
 @property (copy) NSString *part;
 @property (copy) NSString *playlistId;
-@property (copy) NSString *published;
 @property (retain) GTLDateTime *publishedAfter;
 @property (retain) GTLDateTime *publishedBefore;
 @property (copy) NSString *q;
@@ -78,7 +77,9 @@
 @property (copy) NSString *videoDefinition;
 @property (copy) NSString *videoDimension;
 @property (copy) NSString *videoDuration;
+@property (copy) NSString *videoEmbeddable;
 @property (copy) NSString *videoLicense;
+@property (copy) NSString *videoSyndicated;
 
 #pragma mark -
 #pragma mark "activities" methods
@@ -411,6 +412,8 @@
 //     part=snippet, the API response will also contain all of those nested
 //     properties.
 //  Optional:
+//   channelId: The channelId parameter indicates that the API response should
+//     only contain resources created by the channel
 //   maxResults: USE_DESCRIPTION --- channels:list:maxResults (0..50, default 5)
 //   order: The order parameter specifies the method that will be used to order
 //     resources in the API response. (Default "SEARCH_SORT_RELEVANCE")
@@ -423,15 +426,14 @@
 //      kGTLYouTubeOrderViewCount: Resources are sorted from highest to lowest
 //        number of views.
 //   pageToken: USE_DESCRIPTION --- channels:list:pageToken
-//   published: The published parameter indicates that the API response should
-//     only contain resources created within the specified time period.
-//      kGTLYouTubePublishedAny: Do not filter results based on their creation
-//        date. This is the default value.
-//      kGTLYouTubePublishedThisMonth: Return videos that were uploaded within
-//        the past month.
-//      kGTLYouTubePublishedThisWeek: Return videos that were uploaded within
-//        the past week.
-//      kGTLYouTubePublishedToday: Return videos that were uploaded today.
+//   publishedAfter: The publishedAfter parameter indicates that the API
+//     response should only contain resources created after the specified time.
+//     The value is an RFC 3339 formatted date-time value
+//     (1970-01-01T00:00:00Z).
+//   publishedBefore: The publishedBefore parameter indicates that the API
+//     response should only contain resources created before the specified time.
+//     The value is an RFC 3339 formatted date-time value
+//     (1970-01-01T00:00:00Z).
 //   q: The q parameter specifies the query term to search for.
 //   relatedToVideoId: The relatedToVideoId parameter retrieves a list of videos
 //     that are related to the video that the parameter value identifies. The
@@ -477,6 +479,10 @@
 //        four and 20 minutes long (inclusive).
 //      kGTLYouTubeVideoDurationShort: Only include videos that are less than
 //        four minutes long.
+//   videoEmbeddable: The videoEmbeddable parameter lets you to restrict a
+//     search to only videos that can be embedded into a webpage.
+//      kGTLYouTubeVideoEmbeddableAny: Return all videos, embeddable or not.
+//      kGTLYouTubeVideoEmbeddableTrue: Only retrieve embeddable videos.
 //   videoLicense: The videoLicense parameter filters search results to only
 //     include videos with a particular license. YouTube lets video uploaders
 //     choose to attach either the Creative Commons license or the standard
@@ -488,6 +494,10 @@
 //        other videos that they create. Learn more.
 //      kGTLYouTubeVideoLicenseYoutube: Only return videos that have the
 //        standard YouTube license.
+//   videoSyndicated: The videoSyndicated parameter lets you to restrict a
+//     search to only videos that can be played outside youtube.com.
+//      kGTLYouTubeVideoSyndicatedAny: Return all videos, syndicated or not.
+//      kGTLYouTubeVideoSyndicatedTrue: Only retrieve syndicated videos.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 //   kGTLAuthScopeYouTubeReadonly

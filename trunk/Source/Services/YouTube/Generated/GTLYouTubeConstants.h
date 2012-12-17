@@ -20,11 +20,11 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   YouTube API (youtube/v3)
+//   YouTube Data API (youtube/v3)
 // Description:
 //   Programmatic access to YouTube features.
 // Documentation:
-//   https://developers.google.com/youtube
+//   https://developers.google.com/youtube/v3
 
 #import <Foundation/Foundation.h>
 
@@ -52,12 +52,6 @@ GTL_EXTERN NSString * const kGTLYouTubeOrderRelevance;     // "relevance"
 GTL_EXTERN NSString * const kGTLYouTubeOrderUnread;        // "unread"
 GTL_EXTERN NSString * const kGTLYouTubeOrderViewCount;     // "viewCount"
 
-// Published
-GTL_EXTERN NSString * const kGTLYouTubePublishedAny;        // "any"
-GTL_EXTERN NSString * const kGTLYouTubePublishedThisMonth;  // "thisMonth"
-GTL_EXTERN NSString * const kGTLYouTubePublishedThisWeek;   // "thisWeek"
-GTL_EXTERN NSString * const kGTLYouTubePublishedToday;      // "today"
-
 // VideoCaption
 GTL_EXTERN NSString * const kGTLYouTubeVideoCaptionAny;         // "any"
 GTL_EXTERN NSString * const kGTLYouTubeVideoCaptionClosedCaption;  // "closedCaption"
@@ -79,7 +73,15 @@ GTL_EXTERN NSString * const kGTLYouTubeVideoDurationLong;    // "long"
 GTL_EXTERN NSString * const kGTLYouTubeVideoDurationMedium;  // "medium"
 GTL_EXTERN NSString * const kGTLYouTubeVideoDurationShort;   // "short"
 
+// VideoEmbeddable
+GTL_EXTERN NSString * const kGTLYouTubeVideoEmbeddableAny;   // "any"
+GTL_EXTERN NSString * const kGTLYouTubeVideoEmbeddableTrue;  // "true"
+
 // VideoLicense
 GTL_EXTERN NSString * const kGTLYouTubeVideoLicenseAny;         // "any"
 GTL_EXTERN NSString * const kGTLYouTubeVideoLicenseCreativeCommon;  // "creativeCommon"
 GTL_EXTERN NSString * const kGTLYouTubeVideoLicenseYoutube;     // "youtube"
+
+// VideoSyndicated
+GTL_EXTERN NSString * const kGTLYouTubeVideoSyndicatedAny;   // "any"
+GTL_EXTERN NSString * const kGTLYouTubeVideoSyndicatedTrue;  // "true"
