@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   YouTube API (youtube/v3)
+//   YouTube Data API (youtube/v3)
 // Description:
 //   Programmatic access to YouTube features.
 // Documentation:
-//   https://developers.google.com/youtube
+//   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (21 custom class methods, 27 custom properties)
+//   GTLQueryYouTube (21 custom class methods, 28 custom properties)
 
 #import "GTLQueryYouTube.h"
 
@@ -49,9 +49,9 @@
 
 @dynamic categoryId, channelId, fields, forChannelId, hl, home, identifier,
          maxResults, mine, mySubscribers, order, pageToken, part, playlistId,
-         published, publishedAfter, publishedBefore, q, regionCode,
-         relatedToVideoId, topicId, type, videoCaption, videoDefinition,
-         videoDimension, videoDuration, videoLicense;
+         publishedAfter, publishedBefore, q, regionCode, relatedToVideoId,
+         topicId, type, videoCaption, videoDefinition, videoDimension,
+         videoDuration, videoEmbeddable, videoLicense, videoSyndicated;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map =

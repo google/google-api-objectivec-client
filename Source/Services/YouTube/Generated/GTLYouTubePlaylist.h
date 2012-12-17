@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   YouTube API (youtube/v3)
+//   YouTube Data API (youtube/v3)
 // Description:
 //   Programmatic access to YouTube features.
 // Documentation:
-//   https://developers.google.com/youtube
+//   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlaylist (0 custom class methods, 5 custom properties)
+//   GTLYouTubePlaylist (0 custom class methods, 6 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,6 +34,7 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLYouTubePlaylistContentDetails;
 @class GTLYouTubePlaylistSnippet;
 @class GTLYouTubePlaylistStatus;
 
@@ -62,6 +63,9 @@
 // playlistItems.insert and playlistItems.delete methods.
 
 @interface GTLYouTubePlaylist : GTLObject
+
+// The contentDetails object contains information like video count.
+@property (retain) GTLYouTubePlaylistContentDetails *contentDetails;
 
 // The ETag for the playlist resource.
 @property (copy) NSString *ETag;

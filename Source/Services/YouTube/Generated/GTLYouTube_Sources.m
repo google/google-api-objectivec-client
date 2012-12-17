@@ -23,11 +23,11 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   YouTube API (youtube/v3)
+//   YouTube Data API (youtube/v3)
 // Description:
 //   Programmatic access to YouTube features.
 // Documentation:
-//   https://developers.google.com/youtube
+//   https://developers.google.com/youtube/v3
 
 #import "GTLYouTubeConstants.m"
 
@@ -48,6 +48,7 @@
 #import "GTLYouTubeGuideCategorySnippet.m"
 #import "GTLYouTubePageInfo.m"
 #import "GTLYouTubePlaylist.m"
+#import "GTLYouTubePlaylistContentDetails.m"
 #import "GTLYouTubePlaylistItem.m"
 #import "GTLYouTubePlaylistItemContentDetails.m"
 #import "GTLYouTubePlaylistItemListResponse.m"

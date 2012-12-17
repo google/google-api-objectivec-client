@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeChannelTopicDetails.m
+//  GTLYouTubePlaylistContentDetails.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,23 +26,24 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelTopicDetails (0 custom class methods, 1 custom properties)
+//   GTLYouTubePlaylistContentDetails (0 custom class methods, 1 custom properties)
 
-#import "GTLYouTubeChannelTopicDetails.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeChannelTopicDetails
+//   GTLYouTubePlaylistContentDetails
 //
 
-@implementation GTLYouTubeChannelTopicDetails
-@dynamic topicIds;
+// Details about the content of a playlist, such as the video count.
 
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[NSString class]
-                                forKey:@"topicIds"];
-  return map;
-}
+@interface GTLYouTubePlaylistContentDetails : GTLObject
+
+// The number of videos in the playlist.
+@property (retain) NSNumber *itemCount;  // unsignedIntValue
 
 @end

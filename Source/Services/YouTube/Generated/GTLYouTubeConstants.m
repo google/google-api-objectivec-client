@@ -20,11 +20,11 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   YouTube API (youtube/v3)
+//   YouTube Data API (youtube/v3)
 // Description:
 //   Programmatic access to YouTube features.
 // Documentation:
-//   https://developers.google.com/youtube
+//   https://developers.google.com/youtube/v3
 
 #import "GTLYouTubeConstants.h"
 
@@ -41,12 +41,6 @@ NSString * const kGTLYouTubeOrderRating       = @"rating";
 NSString * const kGTLYouTubeOrderRelevance    = @"relevance";
 NSString * const kGTLYouTubeOrderUnread       = @"unread";
 NSString * const kGTLYouTubeOrderViewCount    = @"viewCount";
-
-// Published
-NSString * const kGTLYouTubePublishedAny       = @"any";
-NSString * const kGTLYouTubePublishedThisMonth = @"thisMonth";
-NSString * const kGTLYouTubePublishedThisWeek  = @"thisWeek";
-NSString * const kGTLYouTubePublishedToday     = @"today";
 
 // VideoCaption
 NSString * const kGTLYouTubeVideoCaptionAny           = @"any";
@@ -69,7 +63,15 @@ NSString * const kGTLYouTubeVideoDurationLong   = @"long";
 NSString * const kGTLYouTubeVideoDurationMedium = @"medium";
 NSString * const kGTLYouTubeVideoDurationShort  = @"short";
 
+// VideoEmbeddable
+NSString * const kGTLYouTubeVideoEmbeddableAny  = @"any";
+NSString * const kGTLYouTubeVideoEmbeddableTrue = @"true";
+
 // VideoLicense
 NSString * const kGTLYouTubeVideoLicenseAny            = @"any";
 NSString * const kGTLYouTubeVideoLicenseCreativeCommon = @"creativeCommon";
 NSString * const kGTLYouTubeVideoLicenseYoutube        = @"youtube";
+
+// VideoSyndicated
+NSString * const kGTLYouTubeVideoSyndicatedAny  = @"any";
+NSString * const kGTLYouTubeVideoSyndicatedTrue = @"true";

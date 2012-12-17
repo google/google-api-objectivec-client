@@ -20,11 +20,11 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   YouTube API (youtube/v3)
+//   YouTube Data API (youtube/v3)
 // Description:
 //   Programmatic access to YouTube features.
 // Documentation:
-//   https://developers.google.com/youtube
+//   https://developers.google.com/youtube/v3
 // Classes:
 //   GTLYouTubePlaylistSnippet (0 custom class methods, 5 custom properties)
 //   GTLYouTubePlaylistSnippetThumbnails (0 custom class methods, 0 custom properties)
