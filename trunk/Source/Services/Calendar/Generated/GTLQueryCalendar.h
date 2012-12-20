@@ -175,9 +175,9 @@
 // Method: calendar.calendarList.insert
 // Adds an entry to the user's calendar list.
 //  Optional:
-//   colorRgbFormat: Whether to use the 'frontendColor' and 'backgroundColor'
+//   colorRgbFormat: Whether to use the 'foregroundColor' and 'backgroundColor'
 //     fields to write the calendar colors (RGB). If this feature is used, the
-//     index-based 'color' field will be set to the best matching option
+//     index-based 'colorId' field will be set to the best matching option
 //     automatically. Optional. The default is False.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
@@ -212,9 +212,9 @@
 //  Required:
 //   calendarId: Calendar identifier.
 //  Optional:
-//   colorRgbFormat: Whether to use the 'frontendColor' and 'backgroundColor'
+//   colorRgbFormat: Whether to use the 'foregroundColor' and 'backgroundColor'
 //     fields to write the calendar colors (RGB). If this feature is used, the
-//     index-based 'color' field will be set to the best matching option
+//     index-based 'colorId' field will be set to the best matching option
 //     automatically. Optional. The default is False.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
@@ -227,9 +227,9 @@
 //  Required:
 //   calendarId: Calendar identifier.
 //  Optional:
-//   colorRgbFormat: Whether to use the 'frontendColor' and 'backgroundColor'
+//   colorRgbFormat: Whether to use the 'foregroundColor' and 'backgroundColor'
 //     fields to write the calendar colors (RGB). If this feature is used, the
-//     index-based 'color' field will be set to the best matching option
+//     index-based 'colorId' field will be set to the best matching option
 //     automatically. Optional. The default is False.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
