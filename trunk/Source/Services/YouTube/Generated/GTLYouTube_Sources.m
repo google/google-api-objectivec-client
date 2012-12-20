@@ -54,6 +54,7 @@
 #import "GTLYouTubePlaylistItemListResponse.m"
 #import "GTLYouTubePlaylistItemSnippet.m"
 #import "GTLYouTubePlaylistListResponse.m"
+#import "GTLYouTubePlaylistPlayer.m"
 #import "GTLYouTubePlaylistSnippet.m"
 #import "GTLYouTubePlaylistStatus.m"
 #import "GTLYouTubeResourceId.m"

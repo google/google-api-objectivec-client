@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubePlaylist.m
+//  GTLYouTubePlaylistPlayer.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,34 +26,15 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlaylist (0 custom class methods, 7 custom properties)
+//   GTLYouTubePlaylistPlayer (0 custom class methods, 1 custom properties)
 
-#import "GTLYouTubePlaylist.h"
-
-#import "GTLYouTubePlaylistContentDetails.h"
 #import "GTLYouTubePlaylistPlayer.h"
-#import "GTLYouTubePlaylistSnippet.h"
-#import "GTLYouTubePlaylistStatus.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubePlaylist
+//   GTLYouTubePlaylistPlayer
 //
 
-@implementation GTLYouTubePlaylist
-@dynamic contentDetails, ETag, identifier, kind, player, snippet, status;
-
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"etag", @"ETag",
-      @"id", @"identifier",
-      nil];
-  return map;
-}
-
-+ (void)load {
-  [self registerObjectClassForKind:@"youtube#playlist"];
-}
-
+@implementation GTLYouTubePlaylistPlayer
+@dynamic embedHtml;
 @end

@@ -61,6 +61,7 @@
                       [GTLYouTubePlaylistItemListResponse class],
                       [GTLYouTubePlaylistItemSnippet class],
                       [GTLYouTubePlaylistListResponse class],
+                      [GTLYouTubePlaylistPlayer class],
                       [GTLYouTubePlaylistSnippet class],
                       [GTLYouTubePlaylistStatus class],
                       [GTLYouTubeResourceId class],
