@@ -314,6 +314,11 @@
 // The preview image for photos or videos.
 @property (retain) GTLPlusActivityObjectAttachmentsItemImage *image;
 
+// The type of media object. Possible values are:
+// - "photo" - A photo.
+// - "album" - A photo album.
+// - "video" - A video.
+// - "article" - An article, specified by a link.
 @property (copy) NSString *objectType;
 
 // If the attachment is an album, potential additional thumbnails from the

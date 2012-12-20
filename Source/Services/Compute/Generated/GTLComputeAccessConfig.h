@@ -48,7 +48,7 @@
 @property (copy) NSString *name;
 
 // An external IP address associated with this instance. Specify an unused
-// static IP address available to the project. If left blank, the external IP
+// static IP address available to the project. If not specified, the external IP
 // will be drawn from a shared ephemeral pool.
 @property (copy) NSString *natIP;
 
