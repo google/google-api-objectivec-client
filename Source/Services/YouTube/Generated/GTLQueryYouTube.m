@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (21 custom class methods, 28 custom properties)
+//   GTLQueryYouTube (21 custom class methods, 29 custom properties)
 
 #import "GTLQueryYouTube.h"
 
@@ -50,8 +50,9 @@
 @dynamic categoryId, channelId, fields, forChannelId, hl, home, identifier,
          maxResults, mine, mySubscribers, order, pageToken, part, playlistId,
          publishedAfter, publishedBefore, q, regionCode, relatedToVideoId,
-         topicId, type, videoCaption, videoDefinition, videoDimension,
-         videoDuration, videoEmbeddable, videoLicense, videoSyndicated;
+         topicId, type, videoCaption, videoCategoryId, videoDefinition,
+         videoDimension, videoDuration, videoEmbeddable, videoLicense,
+         videoSyndicated;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map =

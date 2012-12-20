@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubePlaylist.m
+//  GTLYouTubePlaylistPlayer.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,34 +26,24 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlaylist (0 custom class methods, 7 custom properties)
+//   GTLYouTubePlaylistPlayer (0 custom class methods, 1 custom properties)
 
-#import "GTLYouTubePlaylist.h"
-
-#import "GTLYouTubePlaylistContentDetails.h"
-#import "GTLYouTubePlaylistPlayer.h"
-#import "GTLYouTubePlaylistSnippet.h"
-#import "GTLYouTubePlaylistStatus.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubePlaylist
+//   GTLYouTubePlaylistPlayer
 //
 
-@implementation GTLYouTubePlaylist
-@dynamic contentDetails, ETag, identifier, kind, player, snippet, status;
+// Player to be used for a playlist playback.
 
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"etag", @"ETag",
-      @"id", @"identifier",
-      nil];
-  return map;
-}
+@interface GTLYouTubePlaylistPlayer : GTLObject
 
-+ (void)load {
-  [self registerObjectClassForKind:@"youtube#playlist"];
-}
+// An <iframe> tag that embeds a player that will play the playlist.
+@property (copy) NSString *embedHtml;
 
 @end

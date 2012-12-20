@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlaylist (0 custom class methods, 6 custom properties)
+//   GTLYouTubePlaylist (0 custom class methods, 7 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -35,6 +35,7 @@
 #endif
 
 @class GTLYouTubePlaylistContentDetails;
+@class GTLYouTubePlaylistPlayer;
 @class GTLYouTubePlaylistSnippet;
 @class GTLYouTubePlaylistStatus;
 
@@ -77,6 +78,10 @@
 // The type of the API resource. For video resources, the value will be
 // youtube#playlist.
 @property (copy) NSString *kind;
+
+// The player object contains information that you would use to play the
+// playlist in an embedded player.
+@property (retain) GTLYouTubePlaylistPlayer *player;
 
 // The snippet object contains basic details about the playlist, such as its
 // title and description.

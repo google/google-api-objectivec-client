@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (21 custom class methods, 28 custom properties)
+//   GTLQueryYouTube (21 custom class methods, 29 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -74,6 +74,7 @@
 @property (copy) NSString *topicId;
 @property (copy) NSString *type;
 @property (copy) NSString *videoCaption;
+@property (copy) NSString *videoCategoryId;
 @property (copy) NSString *videoDefinition;
 @property (copy) NSString *videoDimension;
 @property (copy) NSString *videoDuration;
@@ -452,6 +453,8 @@
 //        captions.
 //      kGTLYouTubeVideoCaptionNone: Only include videos that do not have
 //        captions.
+//   videoCategoryId: The videoCategoryId parameter filters video search results
+//     based on their category.
 //   videoDefinition: The videoDefinition parameter lets you restrict a search
 //     to only include either high definition (HD) or standard definition (SD)
 //     videos. HD videos are available for playback in at least 720p, though

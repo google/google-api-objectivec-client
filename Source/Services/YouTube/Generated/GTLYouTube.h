@@ -51,6 +51,7 @@
 #import "GTLYouTubePlaylistItemListResponse.h"
 #import "GTLYouTubePlaylistItemSnippet.h"
 #import "GTLYouTubePlaylistListResponse.h"
+#import "GTLYouTubePlaylistPlayer.h"
 #import "GTLYouTubePlaylistSnippet.h"
 #import "GTLYouTubePlaylistStatus.h"
 #import "GTLYouTubeResourceId.h"
