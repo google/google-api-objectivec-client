@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLQueryDrive (46 custom class methods, 32 custom properties)
+//   GTLQueryDrive (46 custom class methods, 30 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -78,9 +78,7 @@
 @property (copy) NSString *revisionId;
 @property (assign) BOOL sendNotificationEmails;
 @property (assign) BOOL setModifiedDate;
-@property (copy) NSString *sourceLanguage;
 @property (assign) long long startChangeId;
-@property (copy) NSString *targetLanguage;
 @property (copy) NSString *timedTextLanguage;
 @property (copy) NSString *timedTextTrackName;
 @property (copy) NSString *updatedMin;
@@ -323,9 +321,6 @@
 //   ocrLanguage: If ocr is true, hints at the language to use. Valid values are
 //     ISO 639-1 codes.
 //   pinned: Whether to pin the head revision of the new copy. (Default false)
-//   sourceLanguage: The language of the original file to be translated.
-//   targetLanguage: Target language to translate the file to. If no
-//     sourceLanguage is provided, the API will attempt to detect the language.
 //   timedTextLanguage: The language of the timed text.
 //   timedTextTrackName: The timed text track name.
 //  Authorization scope(s):
@@ -373,9 +368,6 @@
 //     ISO 639-1 codes.
 //   pinned: Whether to pin the head revision of the uploaded file. (Default
 //     false)
-//   sourceLanguage: The language of the original file to be translated.
-//   targetLanguage: Target language to translate the file to. If no
-//     sourceLanguage is provided, the API will attempt to detect the language.
 //   timedTextLanguage: The language of the timed text.
 //   timedTextTrackName: The timed text track name.
 //  Upload Parameters:
@@ -422,9 +414,6 @@
 //   pinned: Whether to pin the new revision. (Default false)
 //   setModifiedDate: Whether to set the modified date with the supplied
 //     modified date. (Default false)
-//   sourceLanguage: The language of the original file to be translated.
-//   targetLanguage: Target language to translate the file to. If no
-//     sourceLanguage is provided, the API will attempt to detect the language.
 //   timedTextLanguage: The language of the timed text.
 //   timedTextTrackName: The timed text track name.
 //   updateViewedDate: Whether to update the view date after successfully
@@ -483,9 +472,6 @@
 //   pinned: Whether to pin the new revision. (Default false)
 //   setModifiedDate: Whether to set the modified date with the supplied
 //     modified date. (Default false)
-//   sourceLanguage: The language of the original file to be translated.
-//   targetLanguage: Target language to translate the file to. If no
-//     sourceLanguage is provided, the API will attempt to detect the language.
 //   timedTextLanguage: The language of the timed text.
 //   timedTextTrackName: The timed text track name.
 //   updateViewedDate: Whether to update the view date after successfully

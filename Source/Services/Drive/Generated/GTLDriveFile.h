@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 36 custom properties)
+//   GTLDriveFile (0 custom class methods, 37 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
 //   GTLDriveFileImageMediaMetadata (0 custom class methods, 21 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
@@ -60,6 +60,9 @@
 
 // A link for opening the file in using a relevant Google editor or viewer.
 @property (copy) NSString *alternateLink;
+
+// Whether this file is in the appdata folder.
+@property (retain) NSNumber *appDataContents;  // boolValue
 
 // Create time for this file (formatted ISO8601 timestamp).
 @property (retain) GTLDateTime *createdDate;
@@ -177,7 +180,6 @@
 // The title of this file.
 @property (copy) NSString *title;
 
-// The permissions for the authenticated user on this file.
 @property (retain) GTLDrivePermission *userPermission;
 
 // A link for downloading the content of the file in a browser using cookie
