@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLQueryDrive (46 custom class methods, 32 custom properties)
+//   GTLQueryDrive (46 custom class methods, 30 custom properties)
 
 #import "GTLQueryDrive.h"
 
@@ -56,8 +56,8 @@
          includeDeleted, includeSubscribed, maxChangeIdCount, maxResults,
          newRevision, ocr, ocrLanguage, pageToken, parentId, permissionId,
          pinned, projection, q, replyId, revisionId, sendNotificationEmails,
-         setModifiedDate, sourceLanguage, startChangeId, targetLanguage,
-         timedTextLanguage, timedTextTrackName, updatedMin, updateViewedDate;
+         setModifiedDate, startChangeId, timedTextLanguage, timedTextTrackName,
+         updatedMin, updateViewedDate;
 
 #pragma mark -
 #pragma mark "about" methods
