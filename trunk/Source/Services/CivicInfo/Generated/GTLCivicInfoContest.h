@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoContest (0 custom class methods, 15 custom properties)
+//   GTLCivicInfoContest (0 custom class methods, 16 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -59,6 +59,12 @@
 // A description of any additional eligibility requirements for voting in this
 // contest.
 @property (copy) NSString *electorateSpecifications;
+
+// An ID for this object. IDs may change in future requests and should not be
+// cached. Access to this field requires special access that can be requested
+// from the Request more link on the Quotas page.
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+@property (copy) NSString *identifier;
 
 // The level of office for this contest. One of: federal, state, county, city,
 // other
