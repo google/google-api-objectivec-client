@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoPollingLocation (0 custom class methods, 8 custom properties)
+//   GTLCivicInfoPollingLocation (0 custom class methods, 9 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -53,6 +53,12 @@
 // The last date that this early vote site may be used. This field is not
 // populated for polling locations.
 @property (copy) NSString *endDate;
+
+// An ID for this object. IDs may change in future requests and should not be
+// cached. Access to this field requires special access that can be requested
+// from the Request more link on the Quotas page.
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+@property (copy) NSString *identifier;
 
 // The name of the early vote site. This field is not populated for polling
 // locations.

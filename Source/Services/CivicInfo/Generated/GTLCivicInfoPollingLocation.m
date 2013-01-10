@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoPollingLocation (0 custom class methods, 8 custom properties)
+//   GTLCivicInfoPollingLocation (0 custom class methods, 9 custom properties)
 
 #import "GTLCivicInfoPollingLocation.h"
 
@@ -39,8 +39,15 @@
 //
 
 @implementation GTLCivicInfoPollingLocation
-@dynamic address, endDate, name, notes, pollingHours, sources, startDate,
-         voterServices;
+@dynamic address, endDate, identifier, name, notes, pollingHours, sources,
+         startDate, voterServices;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"id"
+                                forKey:@"identifier"];
+  return map;
+}
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =

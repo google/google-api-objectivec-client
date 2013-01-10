@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoAdministrationRegion (0 custom class methods, 4 custom properties)
+//   GTLCivicInfoAdministrationRegion (0 custom class methods, 5 custom properties)
 
 #import "GTLCivicInfoAdministrationRegion.h"
 
@@ -39,12 +39,15 @@
 //
 
 @implementation GTLCivicInfoAdministrationRegion
-@dynamic electionAdministrationBody, localJurisdiction, name, sources;
+@dynamic electionAdministrationBody, identifier, localJurisdiction, name,
+         sources;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"local_jurisdiction"
-                                forKey:@"localJurisdiction"];
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      @"id", @"identifier",
+      @"local_jurisdiction", @"localJurisdiction",
+      nil];
   return map;
 }
 

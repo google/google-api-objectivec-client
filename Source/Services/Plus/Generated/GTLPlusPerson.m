@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/+/api/
 // Classes:
-//   GTLPlusPerson (0 custom class methods, 25 custom properties)
+//   GTLPlusPerson (0 custom class methods, 26 custom properties)
 //   GTLPlusPersonCover (0 custom class methods, 3 custom properties)
 //   GTLPlusPersonEmailsItem (0 custom class methods, 3 custom properties)
 //   GTLPlusPersonImage (0 custom class methods, 1 custom properties)
@@ -45,10 +45,11 @@
 //
 
 @implementation GTLPlusPerson
-@dynamic aboutMe, birthday, circledByCount, cover, currentLocation, displayName,
-         emails, ETag, gender, hasApp, identifier, image, isPlusUser, kind,
-         name, nickname, objectType, organizations, placesLived, plusOneCount,
-         relationshipStatus, tagline, url, urls, verified;
+@dynamic aboutMe, birthday, braggingRights, circledByCount, cover,
+         currentLocation, displayName, emails, ETag, gender, hasApp, identifier,
+         image, isPlusUser, kind, name, nickname, objectType, organizations,
+         placesLived, plusOneCount, relationshipStatus, tagline, url, urls,
+         verified;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

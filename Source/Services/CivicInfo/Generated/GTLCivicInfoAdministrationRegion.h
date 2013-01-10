@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoAdministrationRegion (0 custom class methods, 4 custom properties)
+//   GTLCivicInfoAdministrationRegion (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -49,6 +49,12 @@
 
 // The election administration body for this area.
 @property (retain) GTLCivicInfoAdministrativeBody *electionAdministrationBody;
+
+// An ID for this object. IDs may change in future requests and should not be
+// cached. Access to this field requires special access that can be requested
+// from the Request more link on the Quotas page.
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+@property (copy) NSString *identifier;
 
 // The city or county that provides election information for this voter. This
 // object can have the same elements as state.

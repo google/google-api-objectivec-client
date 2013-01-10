@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/+/api/
 // Classes:
-//   GTLPlusPerson (0 custom class methods, 25 custom properties)
+//   GTLPlusPerson (0 custom class methods, 26 custom properties)
 //   GTLPlusPersonCover (0 custom class methods, 3 custom properties)
 //   GTLPlusPersonEmailsItem (0 custom class methods, 3 custom properties)
 //   GTLPlusPersonImage (0 custom class methods, 1 custom properties)
@@ -65,6 +65,9 @@
 
 // The person's date of birth, represented as YYYY-MM-DD.
 @property (copy) NSString *birthday;
+
+// The "bragging rights" line of this person.
+@property (copy) NSString *braggingRights;
 
 // If a Google+ Page and for followers who are visible, the number of people who
 // have added this page to a circle.
@@ -151,7 +154,7 @@
 // A list of URLs for this person.
 @property (retain) NSArray *urls;  // of GTLPlusPersonUrlsItem
 
-// If a Google+ Page, whether it has been verified.
+// Whether the person or Google+ Page has been verified.
 @property (retain) NSNumber *verified;  // boolValue
 
 @end

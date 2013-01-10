@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,7 +69,7 @@
 //  Optional:
 //   address: The registered address of the voter to look up.
 //   officialOnly: If set to true, only data from official state sources will be
-//     returned.
+//     returned. (Default false)
 // Fetches a GTLCivicInfoVoterInfoResponse.
 + (id)queryForElectionsVoterInfoQueryWithElectionId:(long long)electionId;
 
