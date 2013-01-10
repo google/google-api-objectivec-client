@@ -136,6 +136,7 @@ typedef enum {
 
 @interface FHGenerator () {
   NSString *formattedName_;
+  NSPredicate *notRetainedPredicate_;
 }
 
 @property (retain) NSMutableArray *warnings;
@@ -257,7 +258,15 @@ static NSArray *DictionaryObjectsSortedByKeys(NSDictionary *dict) {
                         forKey:kWrappedMethodKey];
 
       } // Parameters Loop
-    }
+
+      // Anything that starts "alloc", "new", or "copy" (and maybe continues
+      // with a capital letter) can trip up a clang warning about not following
+      // normal cocoa naming conventions, match them and add the directive
+      // to tell the compiler what model to enforce.
+      notRetainedPredicate_ =
+        [NSPredicate predicateWithFormat:@"SELF matches %@",
+         @"^(new|copy|mutableCopy)([A-Z].*)?"];
+}
   }
   return self;
 }
@@ -529,11 +538,11 @@ static NSArray *DictionaryObjectsSortedByKeys(NSDictionary *dict) {
       @"// source files for this service.\n"
       @"//\n", allSourcesSourceName];
   [sourceParts addObject:nameBlock];
-  
+
   NSString *generatedInfo = [self generatedInfo];
   [headerParts addObject:generatedInfo];
   [sourceParts addObject:generatedInfo];
-  
+
   if (constantsHeader != nil) {
     NSString *constantsInclude =
       [NSString stringWithFormat:@"#import \"%@.h\"\n", constantsFileNameBase];
@@ -1378,13 +1387,6 @@ static NSString *MappedParamName(NSString *name) {
   if ([uniqueParameters count]) {
     // Write out the property support (QueryBase will fill them in at runtime).
     if (mode == kGenerateInterface) {
-      // Anything that starts "alloc", "new", or "copy" (and maybe continues
-      // with a capital letter) can trip up a clang warning about not following
-      // normal cocoa naming conventions, match them and add the directive
-      // to tell the compiler what model to enforce.
-      NSPredicate *notRetainedPredicate =
-        [NSPredicate predicateWithFormat:@"SELF matches %@",
-         @"^(new|copy|mutableCopy)([A-Z].*)?"];
       NSMutableArray *commonParts = [NSMutableArray array];
       NSMutableArray *methodParts = [NSMutableArray array];
       for (GTLDiscoveryJsonSchema *param in uniqueParameters) {
@@ -1442,7 +1444,8 @@ static NSString *MappedParamName(NSString *name) {
         }
         NSString *paramObjCName = param.objcName;
         NSString *clangDirective = @"";
-        if (asPtr && [notRetainedPredicate evaluateWithObject:paramObjCName]) {
+        if ((asPtr || [objcType isEqual:@"id"])
+            && [notRetainedPredicate_ evaluateWithObject:paramObjCName]) {
           clangDirective = @" NS_RETURNS_NOT_RETAINED";
         }
         NSString *propertyLine = [NSString stringWithFormat:@"@property (%@) %@%@%@%@;%@\n",
@@ -1768,7 +1771,7 @@ static NSString *MappedParamName(NSString *name) {
          (int)nameWidth, "uploadParameters"];
       }
     }
-    
+
     if (mode == kGenerateInterface) {
       // End the line.
       [methodStr appendString:@";\n"];
@@ -1879,7 +1882,7 @@ static NSString *MappedParamName(NSString *name) {
       if (supportsMediaUpload) {
         [methodStr appendString:@"  query.uploadParameters = uploadParametersOrNil;\n"];
       }
-      
+
       GTLDiscoveryJsonSchema *returnsSchema = method.returns.resolvedSchema;
       if (returnsSchema) {
         [methodStr appendFormat:@"  query.expectedObjectClass = [%@ class];\n",
@@ -2007,7 +2010,7 @@ static NSString *MappedParamName(NSString *name) {
                schemaClassName];
   }
   [parts addObject:atBlock];
-  
+
   // For the rare cases where a method returns an array directly, generate a
   // special result object that just has -items to get the contents of the
   // array.  The rest of the logic after this block is basically a no-op as
@@ -2098,10 +2101,15 @@ static NSString *MappedParamName(NSString *name) {
         } else {
           comment = [@"  // " stringByAppendingString:comment];
         }
-        NSString *propertyLine = [NSString stringWithFormat:@"@property (%@) %@%@%@;%@\n",
+        NSString *propertyObjCName = property.objcName;
+        NSString *clangDirective = @"";
+        if ([notRetainedPredicate_ evaluateWithObject:propertyObjCName]) {
+          clangDirective = @" NS_RETURNS_NOT_RETAINED";
+        }
+        NSString *propertyLine = [NSString stringWithFormat:@"@property (%@) %@%@%@%@;%@\n",
                                   objcPropertySemantics, objcType,
                                   (asPtr ? @" *" : @" "),
-                                  property.objcName, comment];
+                                  propertyObjCName, clangDirective, comment];
         [subParts addObject:propertyLine];
         if (hadComment) {
           [subParts addObject:@"\n"];
@@ -2245,7 +2253,7 @@ static NSString *MappedParamName(NSString *name) {
       if ([objcType isEqual:@"id"]) {
         objcType = @"NSObject";
       }
-      
+
       NSMutableString *method = [NSMutableString string];
       [method appendString:@"+ (Class)classForAdditionalProperties {\n"];
       [method appendFormat:@"  return [%@ class];\n", objcType];
@@ -2667,7 +2675,7 @@ static NSString *MappedParamName(NSString *name) {
       messageHandler(kFHGeneratorHandlerMessageInfo, msgStr);
     }
   }
-  
+
   [self setProperty:uniqueParams forKey:kUniqueParamsKey];
   [self setProperty:allParams forKey:kAllParamsKey];
 
@@ -3059,6 +3067,12 @@ static NSDictionary *OverrideMap(EQueryOrObject queryOrObject,
       @"zone",
       @"isProxy",
       @"classForCoder",
+      // Foundation protocol methods.
+      @"copy",
+      @"copyWithZone",
+      @"mutableCopy",
+      @"mutableCopyWithZone",
+      @"new",
     };
     // GTLObject methods
     NSString *gtlObjectReserved[] = {
