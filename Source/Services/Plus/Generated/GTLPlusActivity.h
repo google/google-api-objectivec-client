@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -138,7 +138,6 @@
 
 // This activity's verb, indicating what action was performed. Possible values
 // are:
-// - "checkin" - Check in to a location.
 // - "post" - Publish content to the stream.
 // - "share" - Reshare an activity.
 @property (copy) NSString *verb;

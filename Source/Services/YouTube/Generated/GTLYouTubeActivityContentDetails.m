@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,8 +26,9 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeActivityContentDetails (0 custom class methods, 9 custom properties)
+//   GTLYouTubeActivityContentDetails (0 custom class methods, 10 custom properties)
 //   GTLYouTubeActivityContentDetailsBulletin (0 custom class methods, 1 custom properties)
+//   GTLYouTubeActivityContentDetailsChannelItem (0 custom class methods, 1 custom properties)
 //   GTLYouTubeActivityContentDetailsComment (0 custom class methods, 1 custom properties)
 //   GTLYouTubeActivityContentDetailsFavorite (0 custom class methods, 1 custom properties)
 //   GTLYouTubeActivityContentDetailsLike (0 custom class methods, 1 custom properties)
@@ -47,8 +48,8 @@
 //
 
 @implementation GTLYouTubeActivityContentDetails
-@dynamic bulletin, comment, favorite, like, playlistItem, recommendation,
-         social, subscription, upload;
+@dynamic bulletin, channelItem, comment, favorite, like, playlistItem,
+         recommendation, social, subscription, upload;
 @end
 
 
@@ -58,6 +59,16 @@
 //
 
 @implementation GTLYouTubeActivityContentDetailsBulletin
+@dynamic resourceId;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLYouTubeActivityContentDetailsChannelItem
+//
+
+@implementation GTLYouTubeActivityContentDetailsChannelItem
 @dynamic resourceId;
 @end
 
