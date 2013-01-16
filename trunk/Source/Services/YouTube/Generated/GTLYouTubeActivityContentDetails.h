@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,8 +26,9 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeActivityContentDetails (0 custom class methods, 9 custom properties)
+//   GTLYouTubeActivityContentDetails (0 custom class methods, 10 custom properties)
 //   GTLYouTubeActivityContentDetailsBulletin (0 custom class methods, 1 custom properties)
+//   GTLYouTubeActivityContentDetailsChannelItem (0 custom class methods, 1 custom properties)
 //   GTLYouTubeActivityContentDetailsComment (0 custom class methods, 1 custom properties)
 //   GTLYouTubeActivityContentDetailsFavorite (0 custom class methods, 1 custom properties)
 //   GTLYouTubeActivityContentDetailsLike (0 custom class methods, 1 custom properties)
@@ -44,6 +45,7 @@
 #endif
 
 @class GTLYouTubeActivityContentDetailsBulletin;
+@class GTLYouTubeActivityContentDetailsChannelItem;
 @class GTLYouTubeActivityContentDetailsComment;
 @class GTLYouTubeActivityContentDetailsFavorite;
 @class GTLYouTubeActivityContentDetailsLike;
@@ -67,6 +69,10 @@
 // The bulletin object contains details about a channel bulletin post. This
 // object is only present if the snippet.type is bulletin.
 @property (retain) GTLYouTubeActivityContentDetailsBulletin *bulletin;
+
+// The channelItem object contains details about a resource which was added to a
+// channel. This property is only present if the snippet.type is channelItem.
+@property (retain) GTLYouTubeActivityContentDetailsChannelItem *channelItem;
 
 // The comment object contains information about a resource that received a
 // comment. This property is only present if the snippet.type is comment.
@@ -115,6 +121,20 @@
 
 // The resourceId object contains information that identifies the resource
 // associated with a bulletin post.
+@property (retain) GTLYouTubeResourceId *resourceId;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLYouTubeActivityContentDetailsChannelItem
+//
+
+@interface GTLYouTubeActivityContentDetailsChannelItem : GTLObject
+
+// The resourceId object contains information that identifies the resource that
+// was added to the channel.
 @property (retain) GTLYouTubeResourceId *resourceId;
 
 @end
