@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 36 custom properties)
+//   GTLDriveFile (0 custom class methods, 37 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
 //   GTLDriveFileImageMediaMetadata (0 custom class methods, 21 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
@@ -50,7 +50,7 @@
          fileSize, iconLink, identifier, imageMediaMetadata, indexableText,
          kind, labels, lastModifyingUserName, lastViewedByMeDate, md5Checksum,
          mimeType, modifiedByMeDate, modifiedDate, originalFilename, ownerNames,
-         parents, quotaBytesUsed, selfLink, sharedWithMeDate, thumbnail,
+         parents, quotaBytesUsed, selfLink, shared, sharedWithMeDate, thumbnail,
          thumbnailLink, title, userPermission, webContentLink, webViewLink,
          writersCanShare;
 

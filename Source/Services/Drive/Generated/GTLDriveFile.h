@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 36 custom properties)
+//   GTLDriveFile (0 custom class methods, 37 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
 //   GTLDriveFileImageMediaMetadata (0 custom class methods, 21 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
@@ -162,6 +162,9 @@
 
 // A link back to this file.
 @property (copy) NSString *selfLink;
+
+// Whether the file has been shared.
+@property (retain) NSNumber *shared;  // boolValue
 
 // Time at which this file was shared with the user (formatted RFC 3339
 // timestamp).
