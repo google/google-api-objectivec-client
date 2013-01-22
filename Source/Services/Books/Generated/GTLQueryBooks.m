@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLQueryBooks (29 custom class methods, 44 custom properties)
+//   GTLQueryBooks (30 custom class methods, 46 custom properties)
 
 #import "GTLQueryBooks.h"
 
@@ -49,12 +49,13 @@
 @implementation GTLQueryBooks
 
 @dynamic action, annotationDataId, annotationId, association, contentVersion,
-         country, cpksver, download, endOffset, endPosition, fields, filter, h,
-         langRestrict, layerId, libraryRestrict, locale, maxResults, nonce,
-         orderBy, pageIds, pageToken, partner, position, printType, projection,
-         q, scale, shelf, showDeleted, showPreorders, source, startIndex,
-         startOffset, startPosition, summaryId, timestamp, updatedMax,
-         updatedMin, userId, volumeId, volumeIds, volumePosition, w;
+         country, cpksver, deviceCookie, download, endOffset, endPosition,
+         fields, filter, h, langRestrict, layerId, libraryRestrict, locale,
+         maxResults, nonce, orderBy, pageIds, pageToken, partner, position,
+         printType, projection, q, scale, shelf, showDeleted, showPreorders,
+         source, startIndex, startOffset, startPosition, summaryId, timestamp,
+         updatedMax, updatedMin, userId, volumeAnnotationsVersion, volumeId,
+         volumeIds, volumePosition, w;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
@@ -391,6 +392,17 @@
   NSString *methodName = @"books.volumes.list";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.q = q;
+  query.expectedObjectClass = [GTLBooksVolumes class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "volumes.recommended" methods
+// These create a GTLQueryBooks object.
+
++ (id)queryForVolumesRecommendedList {
+  NSString *methodName = @"books.volumes.recommended.list";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLBooksVolumes class];
   return query;
 }

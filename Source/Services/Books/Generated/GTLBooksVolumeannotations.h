@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLBooksVolumeannotations (0 custom class methods, 4 custom properties)
+//   GTLBooksVolumeannotations (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -58,5 +58,11 @@
 
 // The total number of volume annotations found.
 @property (retain) NSNumber *totalItems;  // intValue
+
+// The version string for all of the volume annotations in this layer (not just
+// the ones in this response). Note: the version string doesn't apply to the
+// annotation data, just the information in this response (e.g. the location of
+// annotations in the book).
+@property (copy) NSString *version;
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLBooksLayersummary (0 custom class methods, 12 custom properties)
+//   GTLBooksLayersummary (0 custom class methods, 13 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -75,6 +75,11 @@
 // Timestamp for the last time an item in this layer was updated. (RFC 3339 UTC
 // date-time format).
 @property (retain) GTLDateTime *updated;
+
+// The current version of this layer's volume annotations. Note that this
+// version applies only to the data in the books.layers.volumeAnnotations.*
+// responses. The actual annotation data is versioned separately.
+@property (copy) NSString *volumeAnnotationsVersion;
 
 // The volume id this resource is for.
 @property (copy) NSString *volumeId;
