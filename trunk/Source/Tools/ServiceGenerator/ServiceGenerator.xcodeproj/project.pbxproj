@@ -31,7 +31,6 @@
 		F483B8A713A7ACEB001F030B /* GTLDiscoveryRpcMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = F483B89B13A7ACEB001F030B /* GTLDiscoveryRpcMethod.m */; };
 		F483B8A813A7ACEB001F030B /* GTLQueryDiscovery.m in Sources */ = {isa = PBXBuildFile; fileRef = F483B89D13A7ACEB001F030B /* GTLQueryDiscovery.m */; };
 		F483B8A913A7ACEB001F030B /* GTLServiceDiscovery.m in Sources */ = {isa = PBXBuildFile; fileRef = F483B89F13A7ACEB001F030B /* GTLServiceDiscovery.m */; };
-		F4A91857122828DF00BBE2A5 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A91854122828DF00BBE2A5 /* SBJSON.m */; };
 		F4BB4A5E12B7BF02008B2FB4 /* GTMHTTPFetcherService.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BB4A5112B7BF02008B2FB4 /* GTMHTTPFetcherService.m */; };
 		F4BB4A5F12B7BF02008B2FB4 /* GTMHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BB4A5312B7BF02008B2FB4 /* GTMHTTPFetcher.m */; };
 		F4BB4A6012B7BF02008B2FB4 /* GTMHTTPFetchHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BB4A5512B7BF02008B2FB4 /* GTMHTTPFetchHistory.m */; };
@@ -103,8 +102,6 @@
 		F483B89D13A7ACEB001F030B /* GTLQueryDiscovery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLQueryDiscovery.m; path = ../../Services/Discovery/Generated/GTLQueryDiscovery.m; sourceTree = SOURCE_ROOT; };
 		F483B89E13A7ACEB001F030B /* GTLServiceDiscovery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTLServiceDiscovery.h; path = ../../Services/Discovery/Generated/GTLServiceDiscovery.h; sourceTree = SOURCE_ROOT; };
 		F483B89F13A7ACEB001F030B /* GTLServiceDiscovery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLServiceDiscovery.m; path = ../../Services/Discovery/Generated/GTLServiceDiscovery.m; sourceTree = SOURCE_ROOT; };
-		F4A91853122828DF00BBE2A5 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
-		F4A91854122828DF00BBE2A5 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
 		F4BB4A5012B7BF02008B2FB4 /* GTMHTTPFetcherService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMHTTPFetcherService.h; path = ../../HTTPFetcher/GTMHTTPFetcherService.h; sourceTree = SOURCE_ROOT; };
 		F4BB4A5112B7BF02008B2FB4 /* GTMHTTPFetcherService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMHTTPFetcherService.m; path = ../../HTTPFetcher/GTMHTTPFetcherService.m; sourceTree = SOURCE_ROOT; };
 		F4BB4A5212B7BF02008B2FB4 /* GTMHTTPFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMHTTPFetcher.h; path = ../../HTTPFetcher/GTMHTTPFetcher.h; sourceTree = SOURCE_ROOT; };
@@ -213,16 +210,6 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
-		F4A9184D122828AB00BBE2A5 /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				F4A91853122828DF00BBE2A5 /* SBJSON.h */,
-				F4A91854122828DF00BBE2A5 /* SBJSON.m */,
-			);
-			name = JSON;
-			path = ../../JSON;
-			sourceTree = "<group>";
-		};
 		F4BB4A4E12B7BEEB008B2FB4 /* GTL Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,7 +241,6 @@
 				F40E713B1384B41200EE3F02 /* Utilities */,
 				F40E712A1384B41200EE3F02 /* Objects */,
 				F4BB4A4F12B7BF02008B2FB4 /* HTTPFetcher */,
-				F4A9184D122828AB00BBE2A5 /* JSON */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -341,7 +327,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DD76F9A0486AA7600D96B5E /* FHMain.m in Sources */,
-				F4A91857122828DF00BBE2A5 /* SBJSON.m in Sources */,
 				F4CC66DF1237D33800522D45 /* FHGenerator.m in Sources */,
 				F4BB4A5E12B7BF02008B2FB4 /* GTMHTTPFetcherService.m in Sources */,
 				F4BB4A5F12B7BF02008B2FB4 /* GTMHTTPFetcher.m in Sources */,
@@ -416,7 +401,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_CFLAGS = (
 					"-Wformat",
 					"-Wall",
@@ -448,7 +433,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_CFLAGS = (
 					"-Wformat",
 					"-Wall",
