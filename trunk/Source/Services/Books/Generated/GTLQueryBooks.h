@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLQueryBooks (29 custom class methods, 44 custom properties)
+//   GTLQueryBooks (30 custom class methods, 46 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -57,6 +57,7 @@
 @property (copy) NSString *contentVersion;
 @property (copy) NSString *country;
 @property (copy) NSString *cpksver;
+@property (copy) NSString *deviceCookie;
 @property (copy) NSString *download;
 @property (copy) NSString *endOffset;
 @property (copy) NSString *endPosition;
@@ -89,6 +90,7 @@
 @property (copy) NSString *updatedMax;
 @property (copy) NSString *updatedMin;
 @property (copy) NSString *userId;
+@property (copy) NSString *volumeAnnotationsVersion;
 @property (copy) NSString *volumeId;
 @property (retain) NSArray *volumeIds;  // of NSString
 @property (assign) NSInteger volumePosition;
@@ -277,6 +279,8 @@
 //     timestamp (exclusive).
 //   updatedMin: RFC 3339 timestamp to restrict to items updated since this
 //     timestamp (inclusive).
+//   volumeAnnotationsVersion: The version of the volume annotations that you
+//     are requesting.
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
 // Fetches a GTLBooksVolumeannotations.
@@ -537,6 +541,7 @@
 //      kGTLBooksActionSearch: User chose search results within volume.
 //   contentVersion: Volume content version for which this reading position
 //     applies.
+//   deviceCookie: Random persistent device cookie optional on set position.
 //   source: String to identify the originator of this request.
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
@@ -628,5 +633,20 @@
 //   kGTLAuthScopeBooks
 // Fetches a GTLBooksVolumes.
 + (id)queryForVolumesListWithQ:(NSString *)q;
+
+#pragma mark -
+#pragma mark "volumes.recommended" methods
+// These create a GTLQueryBooks object.
+
+// Method: books.volumes.recommended.list
+// Return a list of recommended books for the current user.
+//  Optional:
+//   locale: ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used
+//     for generating recommendations.
+//   source: String to identify the originator of this request.
+//  Authorization scope(s):
+//   kGTLAuthScopeBooks
+// Fetches a GTLBooksVolumes.
++ (id)queryForVolumesRecommendedList;
 
 @end

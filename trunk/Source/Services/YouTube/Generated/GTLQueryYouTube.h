@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -436,6 +436,9 @@
 //     The value is an RFC 3339 formatted date-time value
 //     (1970-01-01T00:00:00Z).
 //   q: The q parameter specifies the query term to search for.
+//   regionCode: The regionCode parameter instructs the API to return search
+//     results for the specified country. The parameter value is an ISO 3166-1
+//     alpha-2 country code.
 //   relatedToVideoId: The relatedToVideoId parameter retrieves a list of videos
 //     that are related to the video that the parameter value identifies. The
 //     parameter value must be set to a YouTube video ID and, if you are using

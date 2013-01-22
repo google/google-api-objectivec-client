@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,8 +26,9 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLBooksVolume (0 custom class methods, 10 custom properties)
+//   GTLBooksVolume (0 custom class methods, 11 custom properties)
 //   GTLBooksVolumeAccessInfo (0 custom class methods, 11 custom properties)
+//   GTLBooksVolumeLayerInfo (0 custom class methods, 1 custom properties)
 //   GTLBooksVolumeRecommendedInfo (0 custom class methods, 1 custom properties)
 //   GTLBooksVolumeSaleInfo (0 custom class methods, 7 custom properties)
 //   GTLBooksVolumeSearchInfo (0 custom class methods, 1 custom properties)
@@ -35,6 +36,7 @@
 //   GTLBooksVolumeVolumeInfo (0 custom class methods, 20 custom properties)
 //   GTLBooksVolumeAccessInfoEpub (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeAccessInfoPdf (0 custom class methods, 3 custom properties)
+//   GTLBooksVolumeLayerInfoLayersItem (0 custom class methods, 2 custom properties)
 //   GTLBooksVolumeSaleInfoListPrice (0 custom class methods, 2 custom properties)
 //   GTLBooksVolumeSaleInfoRetailPrice (0 custom class methods, 2 custom properties)
 //   GTLBooksVolumeVolumeInfoDimensions (0 custom class methods, 3 custom properties)
@@ -53,6 +55,8 @@
 @class GTLBooksVolumeAccessInfo;
 @class GTLBooksVolumeAccessInfoEpub;
 @class GTLBooksVolumeAccessInfoPdf;
+@class GTLBooksVolumeLayerInfo;
+@class GTLBooksVolumeLayerInfoLayersItem;
 @class GTLBooksVolumeRecommendedInfo;
 @class GTLBooksVolumeSaleInfo;
 @class GTLBooksVolumeSaleInfoListPrice;
@@ -86,6 +90,9 @@
 
 // Resource type for a volume. (In LITE projection.)
 @property (copy) NSString *kind;
+
+// What layers exist in this volume and high level information about them.
+@property (retain) GTLBooksVolumeLayerInfo *layerInfo;
 
 // Recommendation related information for this volume.
 @property (retain) GTLBooksVolumeRecommendedInfo *recommendedInfo;
@@ -161,6 +168,19 @@
 // URL to read this volume on the Google Books site. Link will not allow users
 // to read non-viewable volumes.
 @property (copy) NSString *webReaderLink;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksVolumeLayerInfo
+//
+
+@interface GTLBooksVolumeLayerInfo : GTLObject
+
+// A layer should appear here if and only if the layer exists for this book.
+@property (retain) NSArray *layers;  // of GTLBooksVolumeLayerInfoLayersItem
 
 @end
 
@@ -374,6 +394,24 @@
 // Is a scanned image pdf available either as public domain or for purchase. (In
 // LITE projection.)
 @property (retain) NSNumber *isAvailable;  // boolValue
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksVolumeLayerInfoLayersItem
+//
+
+@interface GTLBooksVolumeLayerInfoLayersItem : GTLObject
+
+// The layer id of this layer (e.g. "geo").
+@property (copy) NSString *layerId;
+
+// The current version of this layer's volume annotations. Note that this
+// version applies only to the data in the books.layers.volumeAnnotations.*
+// responses. The actual annotation data is versioned separately.
+@property (copy) NSString *volumeAnnotationsVersion;
 
 @end
 

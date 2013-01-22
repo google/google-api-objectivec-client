@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/discovery/
 // Classes:
-//   GTLDiscoveryRpcMethod (0 custom class methods, 12 custom properties)
+//   GTLDiscoveryRpcMethod (0 custom class methods, 13 custom properties)
 //   GTLDiscoveryRpcMethodMediaUpload (0 custom class methods, 2 custom properties)
 //   GTLDiscoveryRpcMethodParameters (0 custom class methods, 0 custom properties)
 //   GTLDiscoveryRpcMethodReturns (0 custom class methods, 1 custom properties)
@@ -56,6 +56,9 @@
 // Description of this method.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
+
+// Does this method require sending the ETag along with the request.
+@property (retain) NSNumber *etagRequired;  // boolValue
 
 // A unique ID for this method. This property can be used to match methods
 // between different versions of Discovery.

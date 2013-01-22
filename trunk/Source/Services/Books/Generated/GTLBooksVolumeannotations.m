@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLBooksVolumeannotations (0 custom class methods, 4 custom properties)
+//   GTLBooksVolumeannotations (0 custom class methods, 5 custom properties)
 
 #import "GTLBooksVolumeannotations.h"
 
@@ -38,7 +38,7 @@
 //
 
 @implementation GTLBooksVolumeannotations
-@dynamic items, kind, nextPageToken, totalItems;
+@dynamic items, kind, nextPageToken, totalItems, version;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =

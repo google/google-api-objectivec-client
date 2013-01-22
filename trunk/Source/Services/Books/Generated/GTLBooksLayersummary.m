@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLBooksLayersummary (0 custom class methods, 12 custom properties)
+//   GTLBooksLayersummary (0 custom class methods, 13 custom properties)
 
 #import "GTLBooksLayersummary.h"
 
@@ -38,7 +38,7 @@
 @implementation GTLBooksLayersummary
 @dynamic annotationCount, annotationsDataLink, annotationsLink, annotationTypes,
          contentVersion, dataCount, identifier, kind, layerId, selfLink,
-         updated, volumeId;
+         updated, volumeAnnotationsVersion, volumeId;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
