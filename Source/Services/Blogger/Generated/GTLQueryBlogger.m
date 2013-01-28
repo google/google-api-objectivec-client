@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,9 +58,10 @@
   return query;
 }
 
-+ (id)queryForBlogsGetByUrl {
++ (id)queryForBlogsGetByUrlWithUrl:(NSString *)url {
   NSString *methodName = @"blogger.blogs.getByUrl";
   GTLQueryBlogger *query = [self queryWithMethodName:methodName];
+  query.url = url;
   query.expectedObjectClass = [GTLBloggerBlog class];
   return query;
 }
@@ -144,10 +145,12 @@
   return query;
 }
 
-+ (id)queryForPostsGetByPathWithBlogId:(NSString *)blogId {
++ (id)queryForPostsGetByPathWithBlogId:(NSString *)blogId
+                                  path:(NSString *)path {
   NSString *methodName = @"blogger.posts.getByPath";
   GTLQueryBlogger *query = [self queryWithMethodName:methodName];
   query.blogId = blogId;
+  query.path = path;
   query.expectedObjectClass = [GTLBloggerPost class];
   return query;
 }
@@ -190,10 +193,12 @@
   return query;
 }
 
-+ (id)queryForPostsSearchWithBlogId:(NSString *)blogId {
++ (id)queryForPostsSearchWithBlogId:(NSString *)blogId
+                                  q:(NSString *)q {
   NSString *methodName = @"blogger.posts.search";
   GTLQueryBlogger *query = [self queryWithMethodName:methodName];
   query.blogId = blogId;
+  query.q = q;
   query.expectedObjectClass = [GTLBloggerPostList class];
   return query;
 }
