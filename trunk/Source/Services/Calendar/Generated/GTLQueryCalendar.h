@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -395,6 +395,10 @@
 //   pageToken: Token specifying which result page to return. Optional.
 //   showDeleted: Whether to include deleted events (with 'eventStatus' equals
 //     'cancelled') in the result. Optional. The default is False.
+//   timeMax: Upper bound (exclusive) for an event's start time to filter by.
+//     Optional. The default is not to filter by start time.
+//   timeMin: Lower bound (inclusive) for an event's end time to filter by.
+//     Optional. The default is not to filter by end time.
 //   timeZone: Time zone used in the response. Optional. The default is the time
 //     zone of the calendar.
 //  Authorization scope(s):
