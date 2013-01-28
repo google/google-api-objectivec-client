@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -83,13 +83,13 @@
 
 // Method: blogger.blogs.getByUrl
 // Retrieve a Blog by URL.
-//  Optional:
+//  Required:
 //   url: The URL of the blog to retrieve.
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerBlog.
-+ (id)queryForBlogsGetByUrl;
++ (id)queryForBlogsGetByUrlWithUrl:(NSString *)url;
 
 // Method: blogger.blogs.listByUser
 // Retrieves a list of blogs, possibly filtered.
@@ -200,14 +200,15 @@
 // Retrieve a Post by Path.
 //  Required:
 //   blogId: ID of the blog to fetch the post from.
+//   path: Path of the Post to retrieve.
 //  Optional:
 //   maxComments: Maximum number of comments to pull back on a post.
-//   path: Path of the Post to retrieve.
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerPost.
-+ (id)queryForPostsGetByPathWithBlogId:(NSString *)blogId;
++ (id)queryForPostsGetByPathWithBlogId:(NSString *)blogId
+                                  path:(NSString *)path;
 
 // Method: blogger.posts.insert
 // Add a post.
@@ -253,13 +254,13 @@
 // Search for a post.
 //  Required:
 //   blogId: ID of the blog to fetch the post from.
-//  Optional:
 //   q: Query terms to search this blog for matching posts.
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerPostList.
-+ (id)queryForPostsSearchWithBlogId:(NSString *)blogId;
++ (id)queryForPostsSearchWithBlogId:(NSString *)blogId
+                                  q:(NSString *)q;
 
 // Method: blogger.posts.update
 // Update a post.
