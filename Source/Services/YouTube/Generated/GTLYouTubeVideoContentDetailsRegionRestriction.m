@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeThumbnail.h
+//  GTLYouTubeVideoContentDetailsRegionRestriction.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,24 +26,25 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeThumbnail (0 custom class methods, 3 custom properties)
+//   GTLYouTubeVideoContentDetailsRegionRestriction (0 custom class methods, 2 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLYouTubeVideoContentDetailsRegionRestriction.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeThumbnail
+//   GTLYouTubeVideoContentDetailsRegionRestriction
 //
 
-@interface GTLYouTubeThumbnail : GTLObject
-@property (retain) NSNumber *height;  // unsignedIntValue
+@implementation GTLYouTubeVideoContentDetailsRegionRestriction
+@dynamic allowed, blocked;
 
-// The thumbnail image's URL.
-@property (copy) NSString *url;
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      [NSString class], @"allowed",
+      [NSString class], @"blocked",
+      nil];
+  return map;
+}
 
-@property (retain) NSNumber *width;  // unsignedIntValue
 @end
