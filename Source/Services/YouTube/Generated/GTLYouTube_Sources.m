@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -71,6 +71,7 @@
 #import "GTLYouTubeVideoCategoryListResponse.m"
 #import "GTLYouTubeVideoCategorySnippet.m"
 #import "GTLYouTubeVideoContentDetails.m"
+#import "GTLYouTubeVideoContentDetailsRegionRestriction.m"
 #import "GTLYouTubeVideoListResponse.m"
 #import "GTLYouTubeVideoPlayer.m"
 #import "GTLYouTubeVideoRecordingDetails.m"
