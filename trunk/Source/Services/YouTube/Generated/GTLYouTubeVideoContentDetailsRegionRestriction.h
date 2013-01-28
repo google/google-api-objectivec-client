@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeThumbnail.h
+//  GTLYouTubeVideoContentDetailsRegionRestriction.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeThumbnail (0 custom class methods, 3 custom properties)
+//   GTLYouTubeVideoContentDetailsRegionRestriction (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,14 +36,23 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeThumbnail
+//   GTLYouTubeVideoContentDetailsRegionRestriction
 //
 
-@interface GTLYouTubeThumbnail : GTLObject
-@property (retain) NSNumber *height;  // unsignedIntValue
+// Region restriction of the video.
 
-// The thumbnail image's URL.
-@property (copy) NSString *url;
+@interface GTLYouTubeVideoContentDetailsRegionRestriction : GTLObject
 
-@property (retain) NSNumber *width;  // unsignedIntValue
+// A list of region codes that identify countries where the video is viewable.
+// If this property is present and a country is not listed in its value, then
+// the video is blocked from appearing in that country. If this property is
+// present and contains an empty list, the video is blocked in all countries.
+@property (retain) NSArray *allowed;  // of NSString
+
+// A list of region codes that identify countries where the video is blocked. If
+// this property is present and a country is not listed in its value, then the
+// video is viewable in that country. If this property is present and contains
+// an empty list, the video is viewable in all countries.
+@property (retain) NSArray *blocked;  // of NSString
+
 @end
