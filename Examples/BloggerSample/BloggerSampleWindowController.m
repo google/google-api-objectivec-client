@@ -310,7 +310,7 @@ NSString *const kKeychainItemName = @"BloggerSample: Google Blogger";
   GTLServiceBlogger *service = self.bloggerService;
 
   GTLBloggerBlog *selectedBlog = [self selectedBlog];
-  NSString *blogID = [selectedBlog.identifier stringValue];
+  NSString *blogID = selectedBlog.identifier;
   GTLQueryBlogger *query = [GTLQueryBlogger queryForPostsListWithBlogId:blogID];
 
   self.postListTicket = [service executeQuery:query
@@ -334,7 +334,7 @@ NSString *const kKeychainItemName = @"BloggerSample: Google Blogger";
   GTLServiceBlogger *service = self.bloggerService;
 
   GTLBloggerBlog *selectedBlog = [self selectedBlog];
-  NSString *blogID = [selectedBlog.identifier stringValue];
+  NSString *blogID = selectedBlog.identifier;
 
 
   GTLBloggerPost *newPost = [GTLBloggerPost object];
@@ -371,8 +371,8 @@ NSString *const kKeychainItemName = @"BloggerSample: Google Blogger";
     GTLServiceBlogger *service = self.bloggerService;
 
     GTLBloggerBlog *selectedBlog = [self selectedBlog];
-    NSString *blogID = [selectedBlog.identifier stringValue];
-    NSString *postID = [selectedPost.identifier stringValue];
+    NSString *blogID = selectedBlog.identifier;
+    NSString *postID = selectedPost.identifier;
     NSString *oldTitle = selectedPost.title;
 
     GTLBloggerPost *patchObject = [GTLBloggerPost object];
@@ -411,8 +411,8 @@ NSString *const kKeychainItemName = @"BloggerSample: Google Blogger";
     GTLServiceBlogger *service = self.bloggerService;
 
     GTLBloggerBlog *selectedBlog = [self selectedBlog];
-    NSString *blogID = [selectedBlog.identifier stringValue];
-    NSString *postID = [selectedPost.identifier stringValue];
+    NSString *blogID = selectedBlog.identifier;
+    NSString *postID = selectedPost.identifier;
 
     GTLQueryBlogger *query = [GTLQueryBlogger queryForPostsDeleteWithBlogId:blogID
                                                                      postId:postID];
@@ -440,7 +440,7 @@ NSString *const kKeychainItemName = @"BloggerSample: Google Blogger";
 
 - (void)deleteAllPosts {
   GTLBloggerBlog *selectedBlog = [self selectedBlog];
-  NSString *blogID = [selectedBlog.identifier stringValue];
+  NSString *blogID = selectedBlog.identifier;
 
   // Make a batch with a delete query for every post in the blog.
   //
@@ -448,7 +448,7 @@ NSString *const kKeychainItemName = @"BloggerSample: Google Blogger";
 
   GTLBatchQuery *batchQuery = [GTLBatchQuery batchQuery];
   for (GTLBloggerPost *post in self.postList) {
-    NSString *postID = [post.identifier stringValue];
+    NSString *postID = post.identifier;
     GTLQueryBlogger *query = [GTLQueryBlogger queryForPostsDeleteWithBlogId:blogID
                                                                      postId:postID];
     [batchQuery addQuery:query];
@@ -620,7 +620,7 @@ NSString *const kKeychainItemName = @"BloggerSample: Google Blogger";
     va_end(argList);
   }
   NSBeginAlertSheet(title, nil, nil, nil, [self window], nil, nil,
-                    nil, nil, result);
+                    nil, nil, @"%@", result);
 }
 
 #pragma mark Client ID Sheet

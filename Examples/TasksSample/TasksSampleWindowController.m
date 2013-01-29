@@ -1157,22 +1157,22 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 
   if ([task.notes length] > 0) {
     // append a pencil to indicate this task has notes
-    str = [str stringByAppendingFormat:@" %C", 0x270E];
+    str = [str stringByAppendingString:@" \u270E"];
   }
 
   if ([task.status isEqual:kTaskStatusCompleted]) {
     // append a checkmark to indicate this task has been completed
-    str = [str stringByAppendingFormat:@" %C", 0x2713];
+    str = [str stringByAppendingString:@" \u2713"];
   }
 
   if ([task.hidden boolValue]) {
     // append a moon to indicate this task is hidden
-    str = [str stringByAppendingFormat:@" %C", 0x263E];
+    str = [str stringByAppendingString:@" \u263E"];
   }
 
   if ([task.deleted boolValue]) {
     // prepend an X mark if this is a deleted task
-    str = [NSString stringWithFormat:@"%C %@", 0x2717, str];
+    str = [NSString stringWithFormat:@"\u2717 %@", str];
   }
   return str;
 }

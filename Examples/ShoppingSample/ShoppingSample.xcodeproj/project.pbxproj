@@ -14,15 +14,7 @@
 		4F6293CF11CC193500BE36DD /* ShoppingSampleWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6293CD11CC193500BE36DD /* ShoppingSampleWindowController.m */; };
 		4F6293F811CC21A000BE36DD /* ShoppingSampleWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F6293F611CC21A000BE36DD /* ShoppingSampleWindow.xib */; };
 		4FA6F3D41034AEC400C5DFA5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FA6F3D11034AEC400C5DFA5 /* MainMenu.xib */; };
-		4FCCF56A155C519B009947E5 /* GTLQueryShopping.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCCF558155C519B009947E5 /* GTLQueryShopping.m */; };
-		4FCCF56B155C519B009947E5 /* GTLServiceShopping.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCCF55A155C519B009947E5 /* GTLServiceShopping.m */; };
-		4FCCF56C155C519B009947E5 /* GTLShoppingConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCCF55D155C519B009947E5 /* GTLShoppingConstants.m */; };
-		4FCCF56D155C519B009947E5 /* GTLShoppingModelCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCCF55F155C519B009947E5 /* GTLShoppingModelCategory.m */; };
-		4FCCF56E155C519B009947E5 /* GTLShoppingModelDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCCF561155C519B009947E5 /* GTLShoppingModelDebug.m */; };
-		4FCCF56F155C519B009947E5 /* GTLShoppingModelProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCCF563155C519B009947E5 /* GTLShoppingModelProduct.m */; };
-		4FCCF570155C519B009947E5 /* GTLShoppingModelRecommendations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCCF565155C519B009947E5 /* GTLShoppingModelRecommendations.m */; };
-		4FCCF571155C519B009947E5 /* GTLShoppingProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCCF567155C519B009947E5 /* GTLShoppingProduct.m */; };
-		4FCCF572155C519B009947E5 /* GTLShoppingProducts.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCCF569155C519B009947E5 /* GTLShoppingProducts.m */; };
+		4FFCA31016B8744E00F7EC1C /* GTLShopping_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCA30F16B8744E00F7EC1C /* GTLShopping_Sources.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -103,27 +95,9 @@
 		4F6293CD11CC193500BE36DD /* ShoppingSampleWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingSampleWindowController.m; sourceTree = "<group>"; };
 		4F6293F711CC21A000BE36DD /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/ShoppingSampleWindow.xib; sourceTree = "<group>"; };
 		4FA6F3D21034AEC400C5DFA5 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		4FCCF557155C519B009947E5 /* GTLQueryShopping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLQueryShopping.h; sourceTree = "<group>"; };
-		4FCCF558155C519B009947E5 /* GTLQueryShopping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLQueryShopping.m; sourceTree = "<group>"; };
-		4FCCF559155C519B009947E5 /* GTLServiceShopping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLServiceShopping.h; sourceTree = "<group>"; };
-		4FCCF55A155C519B009947E5 /* GTLServiceShopping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLServiceShopping.m; sourceTree = "<group>"; };
-		4FCCF55B155C519B009947E5 /* GTLShopping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLShopping.h; sourceTree = "<group>"; };
-		4FCCF55C155C519B009947E5 /* GTLShoppingConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLShoppingConstants.h; sourceTree = "<group>"; };
-		4FCCF55D155C519B009947E5 /* GTLShoppingConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLShoppingConstants.m; sourceTree = "<group>"; };
-		4FCCF55E155C519B009947E5 /* GTLShoppingModelCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLShoppingModelCategory.h; sourceTree = "<group>"; };
-		4FCCF55F155C519B009947E5 /* GTLShoppingModelCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLShoppingModelCategory.m; sourceTree = "<group>"; };
-		4FCCF560155C519B009947E5 /* GTLShoppingModelDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLShoppingModelDebug.h; sourceTree = "<group>"; };
-		4FCCF561155C519B009947E5 /* GTLShoppingModelDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLShoppingModelDebug.m; sourceTree = "<group>"; };
-		4FCCF562155C519B009947E5 /* GTLShoppingModelProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLShoppingModelProduct.h; sourceTree = "<group>"; };
-		4FCCF563155C519B009947E5 /* GTLShoppingModelProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLShoppingModelProduct.m; sourceTree = "<group>"; };
-		4FCCF564155C519B009947E5 /* GTLShoppingModelRecommendations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLShoppingModelRecommendations.h; sourceTree = "<group>"; };
-		4FCCF565155C519B009947E5 /* GTLShoppingModelRecommendations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLShoppingModelRecommendations.m; sourceTree = "<group>"; };
-		4FCCF566155C519B009947E5 /* GTLShoppingProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLShoppingProduct.h; sourceTree = "<group>"; };
-		4FCCF567155C519B009947E5 /* GTLShoppingProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLShoppingProduct.m; sourceTree = "<group>"; };
-		4FCCF568155C519B009947E5 /* GTLShoppingProducts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLShoppingProducts.h; sourceTree = "<group>"; };
-		4FCCF569155C519B009947E5 /* GTLShoppingProducts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLShoppingProducts.m; sourceTree = "<group>"; };
 		4FD0F1D90CBC68F300059DC1 /* buildCopyScript */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.script.sh; path = buildCopyScript; sourceTree = "<group>"; };
 		4FD0F1DA0CBC68F300059DC1 /* buildStripHeaders */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.script.sh; path = buildStripHeaders; sourceTree = "<group>"; };
+		4FFCA30F16B8744E00F7EC1C /* GTLShopping_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLShopping_Sources.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* ShoppingSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -253,25 +227,7 @@
 		4FCCF556155C519B009947E5 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				4FCCF557155C519B009947E5 /* GTLQueryShopping.h */,
-				4FCCF558155C519B009947E5 /* GTLQueryShopping.m */,
-				4FCCF559155C519B009947E5 /* GTLServiceShopping.h */,
-				4FCCF55A155C519B009947E5 /* GTLServiceShopping.m */,
-				4FCCF55B155C519B009947E5 /* GTLShopping.h */,
-				4FCCF55C155C519B009947E5 /* GTLShoppingConstants.h */,
-				4FCCF55D155C519B009947E5 /* GTLShoppingConstants.m */,
-				4FCCF55E155C519B009947E5 /* GTLShoppingModelCategory.h */,
-				4FCCF55F155C519B009947E5 /* GTLShoppingModelCategory.m */,
-				4FCCF560155C519B009947E5 /* GTLShoppingModelDebug.h */,
-				4FCCF561155C519B009947E5 /* GTLShoppingModelDebug.m */,
-				4FCCF562155C519B009947E5 /* GTLShoppingModelProduct.h */,
-				4FCCF563155C519B009947E5 /* GTLShoppingModelProduct.m */,
-				4FCCF564155C519B009947E5 /* GTLShoppingModelRecommendations.h */,
-				4FCCF565155C519B009947E5 /* GTLShoppingModelRecommendations.m */,
-				4FCCF566155C519B009947E5 /* GTLShoppingProduct.h */,
-				4FCCF567155C519B009947E5 /* GTLShoppingProduct.m */,
-				4FCCF568155C519B009947E5 /* GTLShoppingProducts.h */,
-				4FCCF569155C519B009947E5 /* GTLShoppingProducts.m */,
+				4FFCA30F16B8744E00F7EC1C /* GTLShopping_Sources.m */,
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -409,15 +365,7 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				4F6293CE11CC193500BE36DD /* ShoppingSampleAppController.m in Sources */,
 				4F6293CF11CC193500BE36DD /* ShoppingSampleWindowController.m in Sources */,
-				4FCCF56A155C519B009947E5 /* GTLQueryShopping.m in Sources */,
-				4FCCF56B155C519B009947E5 /* GTLServiceShopping.m in Sources */,
-				4FCCF56C155C519B009947E5 /* GTLShoppingConstants.m in Sources */,
-				4FCCF56D155C519B009947E5 /* GTLShoppingModelCategory.m in Sources */,
-				4FCCF56E155C519B009947E5 /* GTLShoppingModelDebug.m in Sources */,
-				4FCCF56F155C519B009947E5 /* GTLShoppingModelProduct.m in Sources */,
-				4FCCF570155C519B009947E5 /* GTLShoppingModelRecommendations.m in Sources */,
-				4FCCF571155C519B009947E5 /* GTLShoppingProduct.m in Sources */,
-				4FCCF572155C519B009947E5 /* GTLShoppingProducts.m in Sources */,
+				4FFCA31016B8744E00F7EC1C /* GTLShopping_Sources.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
