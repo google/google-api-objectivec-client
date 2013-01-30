@@ -34,3 +34,6 @@
 
 ==URL Shortener API==
 [http://code.google.com/p/google-api-objectivec-client/source/browse/#svn%2Ftrunk%2FExamples%2FURLShortenerSample Sample application] that uses the URL Shortener API. ||
+
+==!YouTube API==
+[https://code.google.com/p/google-api-objectivec-client/source/browse/#svn%2Ftrunk%2FExamples%2FYouTubeSample Sample application] that uses the YouTube Shortener API. ||
