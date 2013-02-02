@@ -126,3 +126,13 @@
     #define NS_RETURNS_NOT_RETAINED
   #endif
 #endif
+
+#ifndef __has_attribute
+  #define __has_attribute(x) 0
+#endif
+
+#if __has_attribute(nonnull)
+  #define GTL_NONNULL(x) __attribute__((nonnull x))
+#else
+  #define GTL_NONNULL(x)
+#endif
