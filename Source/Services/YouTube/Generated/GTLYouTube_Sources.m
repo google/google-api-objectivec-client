@@ -31,6 +31,7 @@
 
 #import "GTLYouTubeConstants.m"
 
+#import "GTLYouTubeAccessPolicy.m"
 #import "GTLYouTubeActivity.m"
 #import "GTLYouTubeActivityContentDetails.m"
 #import "GTLYouTubeActivityListResponse.m"
@@ -73,6 +74,7 @@
 #import "GTLYouTubeVideoContentDetails.m"
 #import "GTLYouTubeVideoContentDetailsRegionRestriction.m"
 #import "GTLYouTubeVideoListResponse.m"
+#import "GTLYouTubeVideoMonetizationDetails.m"
 #import "GTLYouTubeVideoPlayer.m"
 #import "GTLYouTubeVideoRecordingDetails.m"
 #import "GTLYouTubeVideoSnippet.m"

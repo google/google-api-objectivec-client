@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoContentDetails (0 custom class methods, 2 custom properties)
+//   GTLYouTubeVideoContentDetails (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -42,6 +42,17 @@
 //
 
 @interface GTLYouTubeVideoContentDetails : GTLObject
+
+// The value of captions indicates whether the video has captions or not.
+@property (copy) NSString *caption;
+
+// The value of definition indicates whether the video is available in high
+// definition or only in standard definition.
+@property (copy) NSString *definition;
+
+// The value of dimension indicates whether the video is available in 3D or in
+// 2D.
+@property (copy) NSString *dimension;
 
 // The length of the video. The tag value is an ISO 8601 duration in the format
 // PT#M#S, in which the letters PT indicate that the value specifies a period of

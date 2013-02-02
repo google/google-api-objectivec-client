@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeChannelSnippet.m
+//  GTLYouTubeVideoMonetizationDetails.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,40 +26,24 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelSnippet (0 custom class methods, 4 custom properties)
-//   GTLYouTubeChannelSnippetThumbnails (0 custom class methods, 0 custom properties)
+//   GTLYouTubeVideoMonetizationDetails (0 custom class methods, 1 custom properties)
 
-#import "GTLYouTubeChannelSnippet.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLYouTubeThumbnail.h"
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubeChannelSnippet
-//
-
-@implementation GTLYouTubeChannelSnippet
-@dynamic descriptionProperty, publishedAt, thumbnails, title;
-
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"description"
-                                forKey:@"descriptionProperty"];
-  return map;
-}
-
-@end
-
+@class GTLYouTubeAccessPolicy;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeChannelSnippetThumbnails
+//   GTLYouTubeVideoMonetizationDetails
 //
 
-@implementation GTLYouTubeChannelSnippetThumbnails
+@interface GTLYouTubeVideoMonetizationDetails : GTLObject
 
-+ (Class)classForAdditionalProperties {
-  return [GTLYouTubeThumbnail class];
-}
+// The value of access indicates whether the video can be monetized or not.
+@property (retain) GTLYouTubeAccessPolicy *access;
 
 @end

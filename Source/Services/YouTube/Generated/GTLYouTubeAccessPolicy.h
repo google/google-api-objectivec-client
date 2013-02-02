@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeChannelSnippet.m
+//  GTLYouTubeAccessPolicy.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,40 +26,27 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelSnippet (0 custom class methods, 4 custom properties)
-//   GTLYouTubeChannelSnippetThumbnails (0 custom class methods, 0 custom properties)
+//   GTLYouTubeAccessPolicy (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubeChannelSnippet.h"
-
-#import "GTLYouTubeThumbnail.h"
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubeChannelSnippet
-//
-
-@implementation GTLYouTubeChannelSnippet
-@dynamic descriptionProperty, publishedAt, thumbnails, title;
-
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"description"
-                                forKey:@"descriptionProperty"];
-  return map;
-}
-
-@end
-
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeChannelSnippetThumbnails
+//   GTLYouTubeAccessPolicy
 //
 
-@implementation GTLYouTubeChannelSnippetThumbnails
+@interface GTLYouTubeAccessPolicy : GTLObject
 
-+ (Class)classForAdditionalProperties {
-  return [GTLYouTubeThumbnail class];
-}
+// The value of allowed indicates whether the access to the policy is allowed or
+// denied by default.
+@property (retain) NSNumber *allowed;  // boolValue
+
+// A list of region codes that identify countries where the default policy do
+// not apply.
+@property (retain) NSArray *exception;  // of NSString
 
 @end

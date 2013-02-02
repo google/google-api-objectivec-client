@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideo (0 custom class methods, 10 custom properties)
+//   GTLYouTubeVideo (0 custom class methods, 11 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -35,6 +35,7 @@
 #endif
 
 @class GTLYouTubeVideoContentDetails;
+@class GTLYouTubeVideoMonetizationDetails;
 @class GTLYouTubeVideoPlayer;
 @class GTLYouTubeVideoRecordingDetails;
 @class GTLYouTubeVideoSnippet;
@@ -65,6 +66,10 @@
 // The type of the API resource. For video resources, the value will be
 // youtube#video.
 @property (copy) NSString *kind;
+
+// The monetizationDetails object encapsulates information about the
+// monetization status of the video.
+@property (retain) GTLYouTubeVideoMonetizationDetails *monetizationDetails;
 
 // The player object contains information that you would use to play the video
 // in an embedded player.

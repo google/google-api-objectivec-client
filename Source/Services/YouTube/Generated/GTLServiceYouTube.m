@@ -38,6 +38,7 @@
 + (NSArray *)checkClasses {
   NSArray *classes = [NSArray arrayWithObjects:
                       [GTLQueryYouTube class],
+                      [GTLYouTubeAccessPolicy class],
                       [GTLYouTubeActivity class],
                       [GTLYouTubeActivityContentDetails class],
                       [GTLYouTubeActivityListResponse class],
@@ -80,6 +81,7 @@
                       [GTLYouTubeVideoContentDetails class],
                       [GTLYouTubeVideoContentDetailsRegionRestriction class],
                       [GTLYouTubeVideoListResponse class],
+                      [GTLYouTubeVideoMonetizationDetails class],
                       [GTLYouTubeVideoPlayer class],
                       [GTLYouTubeVideoRecordingDetails class],
                       [GTLYouTubeVideoSnippet class],
