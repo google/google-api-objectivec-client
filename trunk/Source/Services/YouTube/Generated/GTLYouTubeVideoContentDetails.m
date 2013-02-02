@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoContentDetails (0 custom class methods, 2 custom properties)
+//   GTLYouTubeVideoContentDetails (0 custom class methods, 5 custom properties)
 
 #import "GTLYouTubeVideoContentDetails.h"
 
@@ -38,5 +38,5 @@
 //
 
 @implementation GTLYouTubeVideoContentDetails
-@dynamic duration, regionRestriction;
+@dynamic caption, definition, dimension, duration, regionRestriction;
 @end

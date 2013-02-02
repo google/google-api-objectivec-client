@@ -28,6 +28,7 @@
 
 #import "GTLYouTubeConstants.h"
 
+#import "GTLYouTubeAccessPolicy.h"
 #import "GTLYouTubeActivity.h"
 #import "GTLYouTubeActivityContentDetails.h"
 #import "GTLYouTubeActivityListResponse.h"
@@ -70,6 +71,7 @@
 #import "GTLYouTubeVideoContentDetails.h"
 #import "GTLYouTubeVideoContentDetailsRegionRestriction.h"
 #import "GTLYouTubeVideoListResponse.h"
+#import "GTLYouTubeVideoMonetizationDetails.h"
 #import "GTLYouTubeVideoPlayer.h"
 #import "GTLYouTubeVideoRecordingDetails.h"
 #import "GTLYouTubeVideoSnippet.h"

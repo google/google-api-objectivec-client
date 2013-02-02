@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoStatus (0 custom class methods, 4 custom properties)
+//   GTLYouTubeVideoStatus (0 custom class methods, 6 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -43,9 +43,15 @@
 
 @interface GTLYouTubeVideoStatus : GTLObject
 
+// This value indicates if the video can be embedded on another website.
+@property (retain) NSNumber *embeddable;  // boolValue
+
 // This value explains why a video failed to upload. This property is only
 // present if the uploadStatus property indicates that the upload failed.
 @property (copy) NSString *failureReason;
+
+// The video's license.
+@property (copy) NSString *license;
 
 // The video's privacy status.
 @property (copy) NSString *privacyStatus;

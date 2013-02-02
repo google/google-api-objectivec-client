@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (21 custom class methods, 29 custom properties)
+//   GTLQueryYouTube (21 custom class methods, 30 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -79,6 +79,7 @@
 @property (copy) NSString *videoDimension;
 @property (copy) NSString *videoDuration;
 @property (copy) NSString *videoEmbeddable;
+@property (copy) NSString *videoId;
 @property (copy) NSString *videoLicense;
 @property (copy) NSString *videoSyndicated;
 
@@ -272,6 +273,8 @@
 //     though this is an optional parameter, every request to retrieve playlist
 //     items must specify a value for either the id parameter or the playlistId
 //     parameter.
+//   videoId: The videoId parameter specifies that the request should return
+//     only the playlist items that contain the specified video.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 //   kGTLAuthScopeYouTubeReadonly

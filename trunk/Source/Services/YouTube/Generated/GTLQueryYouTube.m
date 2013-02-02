@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (21 custom class methods, 29 custom properties)
+//   GTLQueryYouTube (21 custom class methods, 30 custom properties)
 
 #import "GTLQueryYouTube.h"
 
@@ -51,7 +51,7 @@
          maxResults, mine, mySubscribers, order, pageToken, part, playlistId,
          publishedAfter, publishedBefore, q, regionCode, relatedToVideoId,
          topicId, type, videoCaption, videoCategoryId, videoDefinition,
-         videoDimension, videoDuration, videoEmbeddable, videoLicense,
+         videoDimension, videoDuration, videoEmbeddable, videoId, videoLicense,
          videoSyndicated;
 
 + (NSDictionary *)parameterNameMap {

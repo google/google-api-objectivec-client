@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeChannelSnippet.m
+//  GTLYouTubeAccessPolicy.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,40 +26,23 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelSnippet (0 custom class methods, 4 custom properties)
-//   GTLYouTubeChannelSnippetThumbnails (0 custom class methods, 0 custom properties)
+//   GTLYouTubeAccessPolicy (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubeChannelSnippet.h"
-
-#import "GTLYouTubeThumbnail.h"
+#import "GTLYouTubeAccessPolicy.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeChannelSnippet
+//   GTLYouTubeAccessPolicy
 //
 
-@implementation GTLYouTubeChannelSnippet
-@dynamic descriptionProperty, publishedAt, thumbnails, title;
+@implementation GTLYouTubeAccessPolicy
+@dynamic allowed, exception;
 
-+ (NSDictionary *)propertyToJSONKeyMap {
++ (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"description"
-                                forKey:@"descriptionProperty"];
+    [NSDictionary dictionaryWithObject:[NSString class]
+                                forKey:@"exception"];
   return map;
-}
-
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubeChannelSnippetThumbnails
-//
-
-@implementation GTLYouTubeChannelSnippetThumbnails
-
-+ (Class)classForAdditionalProperties {
-  return [GTLYouTubeThumbnail class];
 }
 
 @end
