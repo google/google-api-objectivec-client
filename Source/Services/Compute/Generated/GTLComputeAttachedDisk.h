@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,11 +20,11 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Compute Engine API (compute/v1beta13)
+//   Compute Engine API (compute/v1beta14)
 // Description:
 //   API for the Google Compute Engine service.
 // Documentation:
-//   https://developers.google.com/compute/docs/reference/v1beta13
+//   https://developers.google.com/compute/docs/reference/v1beta14
 // Classes:
 //   GTLComputeAttachedDisk (0 custom class methods, 7 custom properties)
 
@@ -39,12 +39,13 @@
 //   GTLComputeAttachedDisk
 //
 
+// An instance-attached disk resource.
+
 @interface GTLComputeAttachedDisk : GTLObject
 
-// Persistent disk only; If true, delete the disk and all its data when the
-// associated instance is deleted. This property defaults to false if not
-// specified.
-@property (retain) NSNumber *deleteOnTerminate;  // boolValue
+// Indicates that this is a boot disk. VM will use the first partition of the
+// disk for its root filesystem.
+@property (retain) NSNumber *boot;  // boolValue
 
 // Persistent disk only; must be unique within the instance when specified. This
 // represents a unique device name that is reflected into the /dev/ tree of a

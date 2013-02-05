@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Compute Engine API (compute/v1beta13)
+//   Compute Engine API (compute/v1beta14)
 // Description:
 //   API for the Google Compute Engine service.
 // Documentation:
-//   https://developers.google.com/compute/docs/reference/v1beta13
+//   https://developers.google.com/compute/docs/reference/v1beta14
 // Classes:
-//   GTLComputeMachineType (0 custom class methods, 13 custom properties)
+//   GTLComputeMachineType (0 custom class methods, 14 custom properties)
 //   GTLComputeMachineTypeEphemeralDisksItem (0 custom class methods, 1 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -35,12 +35,15 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLComputeDeprecationStatus;
 @class GTLComputeMachineTypeEphemeralDisksItem;
 
 // ----------------------------------------------------------------------------
 //
 //   GTLComputeMachineType
 //
+
+// A machine type resource.
 
 @interface GTLComputeMachineType : GTLObject
 
@@ -49,6 +52,9 @@
 
 // Creation timestamp in RFC3339 text format (output only).
 @property (copy) NSString *creationTimestamp;
+
+// The deprecation status associated with this machine type.
+@property (retain) GTLComputeDeprecationStatus *deprecated;
 
 // An optional textual description of the resource.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.

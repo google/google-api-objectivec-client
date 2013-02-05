@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Compute Engine API (compute/v1beta13)
+//   Compute Engine API (compute/v1beta14)
 // Description:
 //   API for the Google Compute Engine service.
 // Documentation:
-//   https://developers.google.com/compute/docs/reference/v1beta13
+//   https://developers.google.com/compute/docs/reference/v1beta14
 // Classes:
-//   GTLQueryCompute (40 custom class methods, 18 custom properties)
+//   GTLQueryCompute (46 custom class methods, 21 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -35,6 +35,7 @@
 #endif
 
 @class GTLComputeAccessConfig;
+@class GTLComputeDeprecationStatus;
 @class GTLComputeDisk;
 @class GTLComputeFirewall;
 @class GTLComputeImage;
@@ -42,6 +43,7 @@
 @class GTLComputeMetadata;
 @class GTLComputeNetwork;
 @class GTLComputeSnapshot;
+@class GTLComputeTags;
 
 @interface GTLQueryCompute : GTLQuery
 
@@ -58,6 +60,7 @@
 // "accessConfig" has different types for some query methods; see the
 // documentation for the right type for each query method.
 @property (retain) id accessConfig;
+@property (retain) GTLComputeDeprecationStatus *deprecationStatus;
 @property (copy) NSString *disk;
 @property (copy) NSString *filter;
 @property (copy) NSString *firewall;
@@ -73,6 +76,8 @@
 @property (copy) NSString *pageToken;
 @property (copy) NSString *project;
 @property (copy) NSString *snapshot;
+@property (copy) NSString *sourceImage;
+@property (retain) GTLComputeTags *tags;
 // Remapped to 'zoneProperty' to avoid NSObject's 'zone'.
 @property (copy) NSString *zoneProperty;
 
@@ -84,22 +89,26 @@
 // Deletes the specified persistent disk resource.
 //  Required:
 //   project: Name of the project scoping this request.
+//   zoneProperty: Name of the zone scoping this request.
 //   disk: Name of the persistent disk resource to delete.
 //  Authorization scope(s):
 //   kGTLAuthScopeCompute
 // Fetches a GTLComputeOperation.
 + (id)queryForDisksDeleteWithProject:(NSString *)project
+                        zoneProperty:(NSString *)zoneProperty
                                 disk:(NSString *)disk;
 
 // Method: compute.disks.get
 // Returns the specified persistent disk resource.
 //  Required:
 //   project: Name of the project scoping this request.
+//   zoneProperty: Name of the zone scoping this request.
 //   disk: Name of the persistent disk resource to return.
 //  Authorization scope(s):
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeDisk.
 + (id)queryForDisksGetWithProject:(NSString *)project
+                     zoneProperty:(NSString *)zoneProperty
                              disk:(NSString *)disk;
 
 // Method: compute.disks.insert
@@ -107,17 +116,22 @@
 // included in the request.
 //  Required:
 //   project: Name of the project scoping this request.
+//   zoneProperty: Name of the zone scoping this request.
+//  Optional:
+//   sourceImage: Optional. Source image to restore onto a disk.
 //  Authorization scope(s):
 //   kGTLAuthScopeCompute
 // Fetches a GTLComputeOperation.
 + (id)queryForDisksInsertWithObject:(GTLComputeDisk *)object
-                            project:(NSString *)project;
+                            project:(NSString *)project
+                       zoneProperty:(NSString *)zoneProperty;
 
 // Method: compute.disks.list
 // Retrieves the list of persistent disk resources contained within the
-// specified project.
+// specified zone.
 //  Required:
 //   project: Name of the project scoping this request.
+//   zoneProperty: Name of the zone scoping this request.
 //  Optional:
 //   filter: Optional. Filter expression for filtering listed resources.
 //   maxResults: Optional. Maximum count of results to be returned. Maximum and
@@ -127,7 +141,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeDiskList.
-+ (id)queryForDisksListWithProject:(NSString *)project;
++ (id)queryForDisksListWithProject:(NSString *)project
+                      zoneProperty:(NSString *)zoneProperty;
 
 #pragma mark -
 #pragma mark "firewalls" methods
@@ -208,6 +223,47 @@
                                firewall:(NSString *)firewall;
 
 #pragma mark -
+#pragma mark "globalOperations" methods
+// These create a GTLQueryCompute object.
+
+// Method: compute.globalOperations.delete
+// Deletes the specified operation resource.
+//  Required:
+//   project: Name of the project scoping this request.
+//   operation: Name of the operation resource to delete.
+//  Authorization scope(s):
+//   kGTLAuthScopeCompute
++ (id)queryForGlobalOperationsDeleteWithProject:(NSString *)project
+                                      operation:(NSString *)operation;
+
+// Method: compute.globalOperations.get
+// Retrieves the specified operation resource.
+//  Required:
+//   project: Name of the project scoping this request.
+//   operation: Name of the operation resource to return.
+//  Authorization scope(s):
+//   kGTLAuthScopeComputeReadonly
+// Fetches a GTLComputeOperation.
++ (id)queryForGlobalOperationsGetWithProject:(NSString *)project
+                                   operation:(NSString *)operation;
+
+// Method: compute.globalOperations.list
+// Retrieves the list of operation resources contained within the specified
+// project.
+//  Required:
+//   project: Name of the project scoping this request.
+//  Optional:
+//   filter: Optional. Filter expression for filtering listed resources.
+//   maxResults: Optional. Maximum count of results to be returned. Maximum and
+//     default value is 100. (0..100, default 100)
+//   pageToken: Optional. Tag returned by a previous list request truncated by
+//     maxResults. Used to continue a previous list request.
+//  Authorization scope(s):
+//   kGTLAuthScopeComputeReadonly
+// Fetches a GTLComputeOperationList.
++ (id)queryForGlobalOperationsListWithProject:(NSString *)project;
+
+#pragma mark -
 #pragma mark "images" methods
 // These create a GTLQueryCompute object.
 
@@ -221,6 +277,20 @@
 // Fetches a GTLComputeOperation.
 + (id)queryForImagesDeleteWithProject:(NSString *)project
                                 image:(NSString *)image;
+
+// Method: compute.images.deprecate
+// Sets the deprecation status of an image. If no message body is given, clears
+// the deprecation status instead.
+//  Required:
+//   project: Name of the project scoping this request.
+//   image: Image name.
+//  Optional:
+//   deprecationStatus: GTLComputeDeprecationStatus
+//  Authorization scope(s):
+//   kGTLAuthScopeCompute
+// Fetches a GTLComputeOperation.
++ (id)queryForImagesDeprecateWithProject:(NSString *)project
+                                   image:(NSString *)image;
 
 // Method: compute.images.get
 // Returns the specified image resource.
@@ -268,6 +338,7 @@
 // Adds an access config to an instance's network interface.
 //  Required:
 //   project: Project name.
+//   zoneProperty: Name of the zone scoping this request.
 //   instance: Instance name.
 //   networkInterface: Network interface name.
 //  Optional:
@@ -277,6 +348,7 @@
 //   kGTLAuthScopeCompute
 // Fetches a GTLComputeOperation.
 + (id)queryForInstancesAddAccessConfigWithProject:(NSString *)project
+                                     zoneProperty:(NSString *)zoneProperty
                                          instance:(NSString *)instance
                                  networkInterface:(NSString *)networkInterface;
 
@@ -284,17 +356,20 @@
 // Deletes the specified instance resource.
 //  Required:
 //   project: Name of the project scoping this request.
+//   zoneProperty: Name of the zone scoping this request.
 //   instance: Name of the instance resource to delete.
 //  Authorization scope(s):
 //   kGTLAuthScopeCompute
 // Fetches a GTLComputeOperation.
 + (id)queryForInstancesDeleteWithProject:(NSString *)project
+                            zoneProperty:(NSString *)zoneProperty
                                 instance:(NSString *)instance;
 
 // Method: compute.instances.deleteAccessConfig
 // Deletes an access config from an instance's network interface.
 //  Required:
 //   project: Project name.
+//   zoneProperty: Name of the zone scoping this request.
 //   instance: Instance name.
 //   accessConfig: Access config name.
 //   networkInterface: Network interface name.
@@ -302,6 +377,7 @@
 //   kGTLAuthScopeCompute
 // Fetches a GTLComputeOperation.
 + (id)queryForInstancesDeleteAccessConfigWithProject:(NSString *)project
+                                        zoneProperty:(NSString *)zoneProperty
                                             instance:(NSString *)instance
                                         accessConfig:(NSString *)accessConfig
                                     networkInterface:(NSString *)networkInterface;
@@ -310,22 +386,26 @@
 // Returns the specified instance resource.
 //  Required:
 //   project: Name of the project scoping this request.
+//   zoneProperty: Name of the zone scoping this request.
 //   instance: Name of the instance resource to return.
 //  Authorization scope(s):
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeInstance.
 + (id)queryForInstancesGetWithProject:(NSString *)project
+                         zoneProperty:(NSString *)zoneProperty
                              instance:(NSString *)instance;
 
 // Method: compute.instances.getSerialPortOutput
 // Returns the specified instance's serial port output.
 //  Required:
 //   project: Name of the project scoping this request.
+//   zoneProperty: Name of the zone scoping this request.
 //   instance: Name of the instance scoping this request.
 //  Authorization scope(s):
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeSerialPortOutput.
 + (id)queryForInstancesGetSerialPortOutputWithProject:(NSString *)project
+                                         zoneProperty:(NSString *)zoneProperty
                                              instance:(NSString *)instance;
 
 // Method: compute.instances.insert
@@ -333,17 +413,19 @@
 // in the request.
 //  Required:
 //   project: Name of the project scoping this request.
+//   zoneProperty: Name of the zone scoping this request.
 //  Authorization scope(s):
 //   kGTLAuthScopeCompute
 // Fetches a GTLComputeOperation.
 + (id)queryForInstancesInsertWithObject:(GTLComputeInstance *)object
-                                project:(NSString *)project;
+                                project:(NSString *)project
+                           zoneProperty:(NSString *)zoneProperty;
 
 // Method: compute.instances.list
-// Retrieves the list of instance resources contained within the specified
-// project.
+// Retrieves the list of instance resources contained within the specified zone.
 //  Required:
 //   project: Name of the project scoping this request.
+//   zoneProperty: Name of the zone scoping this request.
 //  Optional:
 //   filter: Optional. Filter expression for filtering listed resources.
 //   maxResults: Optional. Maximum count of results to be returned. Maximum and
@@ -353,7 +435,38 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeInstanceList.
-+ (id)queryForInstancesListWithProject:(NSString *)project;
++ (id)queryForInstancesListWithProject:(NSString *)project
+                          zoneProperty:(NSString *)zoneProperty;
+
+// Method: compute.instances.setMetadata
+// Sets metadata for the specified instance to the data included in the request.
+//  Required:
+//   project: Name of the project scoping this request.
+//   zoneProperty: Name of the zone scoping this request.
+//   instance: Name of the instance scoping this request.
+//  Optional:
+//   metadata: GTLComputeMetadata
+//  Authorization scope(s):
+//   kGTLAuthScopeCompute
+// Fetches a GTLComputeOperation.
++ (id)queryForInstancesSetMetadataWithProject:(NSString *)project
+                                 zoneProperty:(NSString *)zoneProperty
+                                     instance:(NSString *)instance;
+
+// Method: compute.instances.setTags
+// Sets tags for the specified instance to the data included in the request.
+//  Required:
+//   project: Name of the project scoping this request.
+//   zoneProperty: Name of the zone scoping this request.
+//   instance: Name of the instance scoping this request.
+//  Optional:
+//   tags: GTLComputeTags
+//  Authorization scope(s):
+//   kGTLAuthScopeCompute
+// Fetches a GTLComputeOperation.
++ (id)queryForInstancesSetTagsWithProject:(NSString *)project
+                             zoneProperty:(NSString *)zoneProperty
+                                 instance:(NSString *)instance;
 
 #pragma mark -
 #pragma mark "kernels" methods
@@ -469,47 +582,6 @@
 + (id)queryForNetworksListWithProject:(NSString *)project;
 
 #pragma mark -
-#pragma mark "operations" methods
-// These create a GTLQueryCompute object.
-
-// Method: compute.operations.delete
-// Deletes the specified operation resource.
-//  Required:
-//   project: Name of the project scoping this request.
-//   operation: Name of the operation resource to delete.
-//  Authorization scope(s):
-//   kGTLAuthScopeCompute
-+ (id)queryForOperationsDeleteWithProject:(NSString *)project
-                                operation:(NSString *)operation;
-
-// Method: compute.operations.get
-// Retrieves the specified operation resource.
-//  Required:
-//   project: Name of the project scoping this request.
-//   operation: Name of the operation resource to return.
-//  Authorization scope(s):
-//   kGTLAuthScopeComputeReadonly
-// Fetches a GTLComputeOperation.
-+ (id)queryForOperationsGetWithProject:(NSString *)project
-                             operation:(NSString *)operation;
-
-// Method: compute.operations.list
-// Retrieves the list of operation resources contained within the specified
-// project.
-//  Required:
-//   project: Name of the project scoping this request.
-//  Optional:
-//   filter: Optional. Filter expression for filtering listed resources.
-//   maxResults: Optional. Maximum count of results to be returned. Maximum and
-//     default value is 100. (0..100, default 100)
-//   pageToken: Optional. Tag returned by a previous list request truncated by
-//     maxResults. Used to continue a previous list request.
-//  Authorization scope(s):
-//   kGTLAuthScopeComputeReadonly
-// Fetches a GTLComputeOperationList.
-+ (id)queryForOperationsListWithProject:(NSString *)project;
-
-#pragma mark -
 #pragma mark "projects" methods
 // These create a GTLQueryCompute object.
 
@@ -586,6 +658,53 @@
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeSnapshotList.
 + (id)queryForSnapshotsListWithProject:(NSString *)project;
+
+#pragma mark -
+#pragma mark "zoneOperations" methods
+// These create a GTLQueryCompute object.
+
+// Method: compute.zoneOperations.delete
+// Deletes the specified zone-specific operation resource.
+//  Required:
+//   project: Name of the project scoping this request.
+//   zoneProperty: Name of the zone scoping this request.
+//   operation: Name of the operation resource to delete.
+//  Authorization scope(s):
+//   kGTLAuthScopeCompute
++ (id)queryForZoneOperationsDeleteWithProject:(NSString *)project
+                                 zoneProperty:(NSString *)zoneProperty
+                                    operation:(NSString *)operation;
+
+// Method: compute.zoneOperations.get
+// Retrieves the specified zone-specific operation resource.
+//  Required:
+//   project: Name of the project scoping this request.
+//   zoneProperty: Name of the zone scoping this request.
+//   operation: Name of the operation resource to return.
+//  Authorization scope(s):
+//   kGTLAuthScopeComputeReadonly
+// Fetches a GTLComputeOperation.
++ (id)queryForZoneOperationsGetWithProject:(NSString *)project
+                              zoneProperty:(NSString *)zoneProperty
+                                 operation:(NSString *)operation;
+
+// Method: compute.zoneOperations.list
+// Retrieves the list of operation resources contained within the specified
+// zone.
+//  Required:
+//   project: Name of the project scoping this request.
+//   zoneProperty: Name of the zone scoping this request.
+//  Optional:
+//   filter: Optional. Filter expression for filtering listed resources.
+//   maxResults: Optional. Maximum count of results to be returned. Maximum and
+//     default value is 100. (0..100, default 100)
+//   pageToken: Optional. Tag returned by a previous list request truncated by
+//     maxResults. Used to continue a previous list request.
+//  Authorization scope(s):
+//   kGTLAuthScopeComputeReadonly
+// Fetches a GTLComputeOperationList.
++ (id)queryForZoneOperationsListWithProject:(NSString *)project
+                               zoneProperty:(NSString *)zoneProperty;
 
 #pragma mark -
 #pragma mark "zones" methods

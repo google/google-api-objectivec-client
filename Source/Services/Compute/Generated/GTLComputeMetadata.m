@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Compute Engine API (compute/v1beta13)
+//   Compute Engine API (compute/v1beta14)
 // Description:
 //   API for the Google Compute Engine service.
 // Documentation:
-//   https://developers.google.com/compute/docs/reference/v1beta13
+//   https://developers.google.com/compute/docs/reference/v1beta14
 // Classes:
-//   GTLComputeMetadata (0 custom class methods, 2 custom properties)
+//   GTLComputeMetadata (0 custom class methods, 3 custom properties)
 //   GTLComputeMetadataItemsItem (0 custom class methods, 2 custom properties)
 
 #import "GTLComputeMetadata.h"
@@ -37,7 +37,7 @@
 //
 
 @implementation GTLComputeMetadata
-@dynamic items, kind;
+@dynamic fingerprint, items, kind;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =

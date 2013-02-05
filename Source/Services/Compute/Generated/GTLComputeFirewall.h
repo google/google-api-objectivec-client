@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,11 +20,11 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Compute Engine API (compute/v1beta13)
+//   Compute Engine API (compute/v1beta14)
 // Description:
 //   API for the Google Compute Engine service.
 // Documentation:
-//   https://developers.google.com/compute/docs/reference/v1beta13
+//   https://developers.google.com/compute/docs/reference/v1beta14
 // Classes:
 //   GTLComputeFirewall (0 custom class methods, 11 custom properties)
 //   GTLComputeFirewallAllowedItem (0 custom class methods, 2 custom properties)
@@ -41,6 +41,8 @@
 //
 //   GTLComputeFirewall
 //
+
+// A firewall resource.
 
 @interface GTLComputeFirewall : GTLObject
 
@@ -108,7 +110,7 @@
 // An optional list of ports which are allowed. It is an error to specify this
 // for any protocol that isn't UDP or TCP. Each entry must be either an integer
 // or a range. If not specified, connections through any port are allowed.
-// Example inputs include: ["22"], ["80,"443"] and ["12345-12349"].
+// Example inputs include: ["22"], ["80","443"] and ["12345-12349"].
 @property (retain) NSArray *ports;  // of NSString
 
 @end

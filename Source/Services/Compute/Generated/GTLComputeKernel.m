@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,15 +20,17 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Compute Engine API (compute/v1beta13)
+//   Compute Engine API (compute/v1beta14)
 // Description:
 //   API for the Google Compute Engine service.
 // Documentation:
-//   https://developers.google.com/compute/docs/reference/v1beta13
+//   https://developers.google.com/compute/docs/reference/v1beta14
 // Classes:
-//   GTLComputeKernel (0 custom class methods, 6 custom properties)
+//   GTLComputeKernel (0 custom class methods, 7 custom properties)
 
 #import "GTLComputeKernel.h"
+
+#import "GTLComputeDeprecationStatus.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -36,8 +38,8 @@
 //
 
 @implementation GTLComputeKernel
-@dynamic creationTimestamp, descriptionProperty, identifier, kind, name,
-         selfLink;
+@dynamic creationTimestamp, deprecated, descriptionProperty, identifier, kind,
+         name, selfLink;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

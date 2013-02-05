@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Compute Engine API (compute/v1beta13)
+//   Compute Engine API (compute/v1beta14)
 // Description:
 //   API for the Google Compute Engine service.
 // Documentation:
-//   https://developers.google.com/compute/docs/reference/v1beta13
+//   https://developers.google.com/compute/docs/reference/v1beta14
 // Classes:
-//   GTLComputeNetworkInterface (0 custom class methods, 5 custom properties)
+//   GTLComputeNetworkInterface (0 custom class methods, 4 custom properties)
 
 #import "GTLComputeNetworkInterface.h"
 
@@ -38,17 +38,13 @@
 //
 
 @implementation GTLComputeNetworkInterface
-@dynamic accessConfigs, kind, name, network, networkIP;
+@dynamic accessConfigs, name, network, networkIP;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObject:[GTLComputeAccessConfig class]
                                 forKey:@"accessConfigs"];
   return map;
-}
-
-+ (void)load {
-  [self registerObjectClassForKind:@"compute#networkInterface"];
 }
 
 @end
