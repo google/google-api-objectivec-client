@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,17 +20,18 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Compute Engine API (compute/v1beta13)
+//   Compute Engine API (compute/v1beta14)
 // Description:
 //   API for the Google Compute Engine service.
 // Documentation:
-//   https://developers.google.com/compute/docs/reference/v1beta13
+//   https://developers.google.com/compute/docs/reference/v1beta14
 // Classes:
-//   GTLQueryCompute (40 custom class methods, 18 custom properties)
+//   GTLQueryCompute (46 custom class methods, 21 custom properties)
 
 #import "GTLQueryCompute.h"
 
 #import "GTLComputeAccessConfig.h"
+#import "GTLComputeDeprecationStatus.h"
 #import "GTLComputeDisk.h"
 #import "GTLComputeDiskList.h"
 #import "GTLComputeFirewall.h"
@@ -52,19 +53,22 @@
 #import "GTLComputeSerialPortOutput.h"
 #import "GTLComputeSnapshot.h"
 #import "GTLComputeSnapshotList.h"
+#import "GTLComputeTags.h"
 #import "GTLComputeZone.h"
 #import "GTLComputeZoneList.h"
 
 @implementation GTLQueryCompute
 
-@dynamic accessConfig, disk, fields, filter, firewall, image, instance, kernel,
-         machineType, maxResults, metadata, network, networkInterface,
-         operation, pageToken, project, snapshot, zoneProperty;
+@dynamic accessConfig, deprecationStatus, disk, fields, filter, firewall, image,
+         instance, kernel, machineType, maxResults, metadata, network,
+         networkInterface, operation, pageToken, project, snapshot, sourceImage,
+         tags, zoneProperty;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
       @"access_config", @"accessConfig",
+      @"deprecation_status", @"deprecationStatus",
       @"network_interface", @"networkInterface",
       @"zone", @"zoneProperty",
       nil];
@@ -76,27 +80,32 @@
 // These create a GTLQueryCompute object.
 
 + (id)queryForDisksDeleteWithProject:(NSString *)project
+                        zoneProperty:(NSString *)zoneProperty
                                 disk:(NSString *)disk {
   NSString *methodName = @"compute.disks.delete";
   GTLQueryCompute *query = [self queryWithMethodName:methodName];
   query.project = project;
+  query.zoneProperty = zoneProperty;
   query.disk = disk;
   query.expectedObjectClass = [GTLComputeOperation class];
   return query;
 }
 
 + (id)queryForDisksGetWithProject:(NSString *)project
+                     zoneProperty:(NSString *)zoneProperty
                              disk:(NSString *)disk {
   NSString *methodName = @"compute.disks.get";
   GTLQueryCompute *query = [self queryWithMethodName:methodName];
   query.project = project;
+  query.zoneProperty = zoneProperty;
   query.disk = disk;
   query.expectedObjectClass = [GTLComputeDisk class];
   return query;
 }
 
 + (id)queryForDisksInsertWithObject:(GTLComputeDisk *)object
-                            project:(NSString *)project {
+                            project:(NSString *)project
+                       zoneProperty:(NSString *)zoneProperty {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -105,14 +114,17 @@
   GTLQueryCompute *query = [self queryWithMethodName:methodName];
   query.bodyObject = object;
   query.project = project;
+  query.zoneProperty = zoneProperty;
   query.expectedObjectClass = [GTLComputeOperation class];
   return query;
 }
 
-+ (id)queryForDisksListWithProject:(NSString *)project {
++ (id)queryForDisksListWithProject:(NSString *)project
+                      zoneProperty:(NSString *)zoneProperty {
   NSString *methodName = @"compute.disks.list";
   GTLQueryCompute *query = [self queryWithMethodName:methodName];
   query.project = project;
+  query.zoneProperty = zoneProperty;
   query.expectedObjectClass = [GTLComputeDiskList class];
   return query;
 }
@@ -196,12 +208,53 @@
 }
 
 #pragma mark -
+#pragma mark "globalOperations" methods
+// These create a GTLQueryCompute object.
+
++ (id)queryForGlobalOperationsDeleteWithProject:(NSString *)project
+                                      operation:(NSString *)operation {
+  NSString *methodName = @"compute.globalOperations.delete";
+  GTLQueryCompute *query = [self queryWithMethodName:methodName];
+  query.project = project;
+  query.operation = operation;
+  return query;
+}
+
++ (id)queryForGlobalOperationsGetWithProject:(NSString *)project
+                                   operation:(NSString *)operation {
+  NSString *methodName = @"compute.globalOperations.get";
+  GTLQueryCompute *query = [self queryWithMethodName:methodName];
+  query.project = project;
+  query.operation = operation;
+  query.expectedObjectClass = [GTLComputeOperation class];
+  return query;
+}
+
++ (id)queryForGlobalOperationsListWithProject:(NSString *)project {
+  NSString *methodName = @"compute.globalOperations.list";
+  GTLQueryCompute *query = [self queryWithMethodName:methodName];
+  query.project = project;
+  query.expectedObjectClass = [GTLComputeOperationList class];
+  return query;
+}
+
+#pragma mark -
 #pragma mark "images" methods
 // These create a GTLQueryCompute object.
 
 + (id)queryForImagesDeleteWithProject:(NSString *)project
                                 image:(NSString *)image {
   NSString *methodName = @"compute.images.delete";
+  GTLQueryCompute *query = [self queryWithMethodName:methodName];
+  query.project = project;
+  query.image = image;
+  query.expectedObjectClass = [GTLComputeOperation class];
+  return query;
+}
+
++ (id)queryForImagesDeprecateWithProject:(NSString *)project
+                                   image:(NSString *)image {
+  NSString *methodName = @"compute.images.deprecate";
   GTLQueryCompute *query = [self queryWithMethodName:methodName];
   query.project = project;
   query.image = image;
@@ -246,11 +299,13 @@
 // These create a GTLQueryCompute object.
 
 + (id)queryForInstancesAddAccessConfigWithProject:(NSString *)project
+                                     zoneProperty:(NSString *)zoneProperty
                                          instance:(NSString *)instance
                                  networkInterface:(NSString *)networkInterface {
   NSString *methodName = @"compute.instances.addAccessConfig";
   GTLQueryCompute *query = [self queryWithMethodName:methodName];
   query.project = project;
+  query.zoneProperty = zoneProperty;
   query.instance = instance;
   query.networkInterface = networkInterface;
   query.expectedObjectClass = [GTLComputeOperation class];
@@ -258,22 +313,26 @@
 }
 
 + (id)queryForInstancesDeleteWithProject:(NSString *)project
+                            zoneProperty:(NSString *)zoneProperty
                                 instance:(NSString *)instance {
   NSString *methodName = @"compute.instances.delete";
   GTLQueryCompute *query = [self queryWithMethodName:methodName];
   query.project = project;
+  query.zoneProperty = zoneProperty;
   query.instance = instance;
   query.expectedObjectClass = [GTLComputeOperation class];
   return query;
 }
 
 + (id)queryForInstancesDeleteAccessConfigWithProject:(NSString *)project
+                                        zoneProperty:(NSString *)zoneProperty
                                             instance:(NSString *)instance
                                         accessConfig:(NSString *)accessConfig
                                     networkInterface:(NSString *)networkInterface {
   NSString *methodName = @"compute.instances.deleteAccessConfig";
   GTLQueryCompute *query = [self queryWithMethodName:methodName];
   query.project = project;
+  query.zoneProperty = zoneProperty;
   query.instance = instance;
   query.accessConfig = accessConfig;
   query.networkInterface = networkInterface;
@@ -282,27 +341,32 @@
 }
 
 + (id)queryForInstancesGetWithProject:(NSString *)project
+                         zoneProperty:(NSString *)zoneProperty
                              instance:(NSString *)instance {
   NSString *methodName = @"compute.instances.get";
   GTLQueryCompute *query = [self queryWithMethodName:methodName];
   query.project = project;
+  query.zoneProperty = zoneProperty;
   query.instance = instance;
   query.expectedObjectClass = [GTLComputeInstance class];
   return query;
 }
 
 + (id)queryForInstancesGetSerialPortOutputWithProject:(NSString *)project
+                                         zoneProperty:(NSString *)zoneProperty
                                              instance:(NSString *)instance {
   NSString *methodName = @"compute.instances.getSerialPortOutput";
   GTLQueryCompute *query = [self queryWithMethodName:methodName];
   query.project = project;
+  query.zoneProperty = zoneProperty;
   query.instance = instance;
   query.expectedObjectClass = [GTLComputeSerialPortOutput class];
   return query;
 }
 
 + (id)queryForInstancesInsertWithObject:(GTLComputeInstance *)object
-                                project:(NSString *)project {
+                                project:(NSString *)project
+                           zoneProperty:(NSString *)zoneProperty {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -311,15 +375,42 @@
   GTLQueryCompute *query = [self queryWithMethodName:methodName];
   query.bodyObject = object;
   query.project = project;
+  query.zoneProperty = zoneProperty;
   query.expectedObjectClass = [GTLComputeOperation class];
   return query;
 }
 
-+ (id)queryForInstancesListWithProject:(NSString *)project {
++ (id)queryForInstancesListWithProject:(NSString *)project
+                          zoneProperty:(NSString *)zoneProperty {
   NSString *methodName = @"compute.instances.list";
   GTLQueryCompute *query = [self queryWithMethodName:methodName];
   query.project = project;
+  query.zoneProperty = zoneProperty;
   query.expectedObjectClass = [GTLComputeInstanceList class];
+  return query;
+}
+
++ (id)queryForInstancesSetMetadataWithProject:(NSString *)project
+                                 zoneProperty:(NSString *)zoneProperty
+                                     instance:(NSString *)instance {
+  NSString *methodName = @"compute.instances.setMetadata";
+  GTLQueryCompute *query = [self queryWithMethodName:methodName];
+  query.project = project;
+  query.zoneProperty = zoneProperty;
+  query.instance = instance;
+  query.expectedObjectClass = [GTLComputeOperation class];
+  return query;
+}
+
++ (id)queryForInstancesSetTagsWithProject:(NSString *)project
+                             zoneProperty:(NSString *)zoneProperty
+                                 instance:(NSString *)instance {
+  NSString *methodName = @"compute.instances.setTags";
+  GTLQueryCompute *query = [self queryWithMethodName:methodName];
+  query.project = project;
+  query.zoneProperty = zoneProperty;
+  query.instance = instance;
+  query.expectedObjectClass = [GTLComputeOperation class];
   return query;
 }
 
@@ -414,37 +505,6 @@
 }
 
 #pragma mark -
-#pragma mark "operations" methods
-// These create a GTLQueryCompute object.
-
-+ (id)queryForOperationsDeleteWithProject:(NSString *)project
-                                operation:(NSString *)operation {
-  NSString *methodName = @"compute.operations.delete";
-  GTLQueryCompute *query = [self queryWithMethodName:methodName];
-  query.project = project;
-  query.operation = operation;
-  return query;
-}
-
-+ (id)queryForOperationsGetWithProject:(NSString *)project
-                             operation:(NSString *)operation {
-  NSString *methodName = @"compute.operations.get";
-  GTLQueryCompute *query = [self queryWithMethodName:methodName];
-  query.project = project;
-  query.operation = operation;
-  query.expectedObjectClass = [GTLComputeOperation class];
-  return query;
-}
-
-+ (id)queryForOperationsListWithProject:(NSString *)project {
-  NSString *methodName = @"compute.operations.list";
-  GTLQueryCompute *query = [self queryWithMethodName:methodName];
-  query.project = project;
-  query.expectedObjectClass = [GTLComputeOperationList class];
-  return query;
-}
-
-#pragma mark -
 #pragma mark "projects" methods
 // These create a GTLQueryCompute object.
 
@@ -507,6 +567,43 @@
   GTLQueryCompute *query = [self queryWithMethodName:methodName];
   query.project = project;
   query.expectedObjectClass = [GTLComputeSnapshotList class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "zoneOperations" methods
+// These create a GTLQueryCompute object.
+
++ (id)queryForZoneOperationsDeleteWithProject:(NSString *)project
+                                 zoneProperty:(NSString *)zoneProperty
+                                    operation:(NSString *)operation {
+  NSString *methodName = @"compute.zoneOperations.delete";
+  GTLQueryCompute *query = [self queryWithMethodName:methodName];
+  query.project = project;
+  query.zoneProperty = zoneProperty;
+  query.operation = operation;
+  return query;
+}
+
++ (id)queryForZoneOperationsGetWithProject:(NSString *)project
+                              zoneProperty:(NSString *)zoneProperty
+                                 operation:(NSString *)operation {
+  NSString *methodName = @"compute.zoneOperations.get";
+  GTLQueryCompute *query = [self queryWithMethodName:methodName];
+  query.project = project;
+  query.zoneProperty = zoneProperty;
+  query.operation = operation;
+  query.expectedObjectClass = [GTLComputeOperation class];
+  return query;
+}
+
++ (id)queryForZoneOperationsListWithProject:(NSString *)project
+                               zoneProperty:(NSString *)zoneProperty {
+  NSString *methodName = @"compute.zoneOperations.list";
+  GTLQueryCompute *query = [self queryWithMethodName:methodName];
+  query.project = project;
+  query.zoneProperty = zoneProperty;
+  query.expectedObjectClass = [GTLComputeOperationList class];
   return query;
 }
 

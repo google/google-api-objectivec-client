@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,14 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Compute Engine API (compute/v1beta13)
+//   Compute Engine API (compute/v1beta14)
 // Description:
 //   API for the Google Compute Engine service.
 // Documentation:
-//   https://developers.google.com/compute/docs/reference/v1beta13
+//   https://developers.google.com/compute/docs/reference/v1beta14
 // Classes:
 //   GTLComputeImage (0 custom class methods, 10 custom properties)
-//   GTLComputeImageDiskSnapshot (0 custom class methods, 1 custom properties)
 //   GTLComputeImageRawDisk (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -36,7 +35,7 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLComputeImageDiskSnapshot;
+@class GTLComputeDeprecationStatus;
 @class GTLComputeImageRawDisk;
 
 // ----------------------------------------------------------------------------
@@ -44,18 +43,20 @@
 //   GTLComputeImage
 //
 
+// A disk image resource.
+
 @interface GTLComputeImage : GTLObject
 
 // Creation timestamp in RFC3339 text format (output only).
 @property (copy) NSString *creationTimestamp;
 
+// The deprecation status associated with this image.
+@property (retain) GTLComputeDeprecationStatus *deprecated;
+
 // Textual description of the resource; provided by the client when the resource
 // is created.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
-
-// Not yet implemented.
-@property (retain) GTLComputeImageDiskSnapshot *diskSnapshot;
 
 // Unique identifier for the resource; defined by the server (output only).
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
@@ -80,19 +81,6 @@
 
 // Must be "RAW"; provided by the client when the disk image is created.
 @property (copy) NSString *sourceType;
-
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLComputeImageDiskSnapshot
-//
-
-@interface GTLComputeImageDiskSnapshot : GTLObject
-
-// URL of the disk snapshot.
-@property (copy) NSString *source;
 
 @end
 

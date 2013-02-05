@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLComputeImageList.h
+//  GTLComputeQuota.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/compute/docs/reference/v1beta14
 // Classes:
-//   GTLComputeImageList (0 custom class methods, 5 custom properties)
+//   GTLComputeQuota (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,34 +34,22 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLComputeImage;
-
 // ----------------------------------------------------------------------------
 //
-//   GTLComputeImageList
+//   GTLComputeQuota
 //
 
-// Contains a list of disk image resources.
+// A quotas entry.
 
-// This class supports NSFastEnumeration over its "items" property. It also
-// supports -itemAtIndex: to retrieve individual objects from "items".
+@interface GTLComputeQuota : GTLObject
 
-@interface GTLComputeImageList : GTLCollectionObject
+// Quota limit for this metric.
+@property (retain) NSNumber *limit;  // doubleValue
 
-// Unique identifier for the resource; defined by the server (output only).
-// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+// Name of the quota metric.
+@property (copy) NSString *metric;
 
-// The disk image resources.
-@property (retain) NSArray *items;  // of GTLComputeImage
-
-// Type of resource.
-@property (copy) NSString *kind;
-
-// A token used to continue a truncated list request (output only).
-@property (copy) NSString *nextPageToken;
-
-// Server defined URL for this resource (output only).
-@property (copy) NSString *selfLink;
+// Current usage of this metric.
+@property (retain) NSNumber *usage;  // doubleValue
 
 @end

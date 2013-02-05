@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLComputeImageList.h
+//  GTLComputeTags.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/compute/docs/reference/v1beta14
 // Classes:
-//   GTLComputeImageList (0 custom class methods, 5 custom properties)
+//   GTLComputeTags (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,34 +34,25 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLComputeImage;
-
 // ----------------------------------------------------------------------------
 //
-//   GTLComputeImageList
+//   GTLComputeTags
 //
 
-// Contains a list of disk image resources.
+// A set of instance tags.
 
 // This class supports NSFastEnumeration over its "items" property. It also
 // supports -itemAtIndex: to retrieve individual objects from "items".
 
-@interface GTLComputeImageList : GTLCollectionObject
+@interface GTLComputeTags : GTLCollectionObject
 
-// Unique identifier for the resource; defined by the server (output only).
-// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+// Fingerprint of this resource. A hash of the tags stored in this object. This
+// field is used optimistic locking. An up-to-date tags fingerprint must be
+// provided in order to modify tags.
+@property (copy) NSString *fingerprint;  // GTLBase64 can encode/decode (probably web-safe format)
 
-// The disk image resources.
-@property (retain) NSArray *items;  // of GTLComputeImage
-
-// Type of resource.
-@property (copy) NSString *kind;
-
-// A token used to continue a truncated list request (output only).
-@property (copy) NSString *nextPageToken;
-
-// Server defined URL for this resource (output only).
-@property (copy) NSString *selfLink;
+// An array of tags. Each tag must be 1-63 characters long, and comply with
+// RFC1035.
+@property (retain) NSArray *items;  // of NSString
 
 @end

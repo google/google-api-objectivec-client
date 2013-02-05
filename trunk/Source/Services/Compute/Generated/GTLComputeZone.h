@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Compute Engine API (compute/v1beta13)
+//   Compute Engine API (compute/v1beta14)
 // Description:
 //   API for the Google Compute Engine service.
 // Documentation:
-//   https://developers.google.com/compute/docs/reference/v1beta13
+//   https://developers.google.com/compute/docs/reference/v1beta14
 // Classes:
-//   GTLComputeZone (0 custom class methods, 9 custom properties)
+//   GTLComputeZone (0 custom class methods, 11 custom properties)
 //   GTLComputeZoneMaintenanceWindowsItem (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -35,12 +35,16 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLComputeDeprecationStatus;
+@class GTLComputeQuota;
 @class GTLComputeZoneMaintenanceWindowsItem;
 
 // ----------------------------------------------------------------------------
 //
 //   GTLComputeZone
 //
+
+// A zone resource.
 
 @interface GTLComputeZone : GTLObject
 
@@ -49,6 +53,9 @@
 
 // Creation timestamp in RFC3339 text format (output only).
 @property (copy) NSString *creationTimestamp;
+
+// The deprecation status associated with this zone.
+@property (retain) GTLComputeDeprecationStatus *deprecated;
 
 // Textual description of the resource.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
@@ -67,6 +74,9 @@
 
 // Name of the resource.
 @property (copy) NSString *name;
+
+// Quotas assigned to this zone.
+@property (retain) NSArray *quotas;  // of GTLComputeQuota
 
 // Server defined URL for the resource (output only).
 @property (copy) NSString *selfLink;

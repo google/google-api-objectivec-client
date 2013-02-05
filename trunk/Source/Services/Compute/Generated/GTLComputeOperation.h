@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,15 +20,17 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Compute Engine API (compute/v1beta13)
+//   Compute Engine API (compute/v1beta14)
 // Description:
 //   API for the Google Compute Engine service.
 // Documentation:
-//   https://developers.google.com/compute/docs/reference/v1beta13
+//   https://developers.google.com/compute/docs/reference/v1beta14
 // Classes:
-//   GTLComputeOperation (0 custom class methods, 19 custom properties)
+//   GTLComputeOperation (0 custom class methods, 21 custom properties)
 //   GTLComputeOperationError (0 custom class methods, 1 custom properties)
+//   GTLComputeOperationWarningsItem (0 custom class methods, 3 custom properties)
 //   GTLComputeOperationErrorErrorsItem (0 custom class methods, 3 custom properties)
+//   GTLComputeOperationWarningsItemDataItem (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -38,11 +40,15 @@
 
 @class GTLComputeOperationError;
 @class GTLComputeOperationErrorErrorsItem;
+@class GTLComputeOperationWarningsItem;
+@class GTLComputeOperationWarningsItemDataItem;
 
 // ----------------------------------------------------------------------------
 //
 //   GTLComputeOperation
 //
+
+// An operation resource, used to manage asynchronous API requests.
 
 @interface GTLComputeOperation : GTLObject
 
@@ -81,7 +87,7 @@
 // Type of the resource.
 @property (copy) NSString *kind;
 
-// Name of the resource.
+// Name of the resource (output only).
 @property (copy) NSString *name;
 
 // Type of the operation. Examples include "insert", "update", and "delete"
@@ -121,6 +127,14 @@
 // only).
 @property (copy) NSString *user;
 
+// If warning messages generated during processing of this operation, this field
+// will be populated (output only).
+@property (retain) NSArray *warnings;  // of GTLComputeOperationWarningsItem
+
+// URL of the zone where the operation resides (output only).
+// Remapped to 'zoneProperty' to avoid NSObject's 'zone'.
+@property (copy) NSString *zoneProperty;
+
 @end
 
 
@@ -133,6 +147,25 @@
 
 // The array of errors encountered while processing this operation.
 @property (retain) NSArray *errors;  // of GTLComputeOperationErrorErrorsItem
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLComputeOperationWarningsItem
+//
+
+@interface GTLComputeOperationWarningsItem : GTLObject
+
+// The warning type identifier for this warning.
+@property (copy) NSString *code;
+
+// Metadata for this warning in 'key: value' format.
+@property (retain) NSArray *data;  // of GTLComputeOperationWarningsItemDataItem
+
+// Optional human-readable details for this warning.
+@property (copy) NSString *message;
 
 @end
 
@@ -153,5 +186,21 @@
 
 // An optional, human-readable error message.
 @property (copy) NSString *message;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLComputeOperationWarningsItemDataItem
+//
+
+@interface GTLComputeOperationWarningsItemDataItem : GTLObject
+
+// A key for the warning data.
+@property (copy) NSString *key;
+
+// A warning data value corresponding to the key.
+@property (copy) NSString *value;
 
 @end

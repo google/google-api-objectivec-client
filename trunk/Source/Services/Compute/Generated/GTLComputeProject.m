@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,18 +20,18 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Compute Engine API (compute/v1beta13)
+//   Compute Engine API (compute/v1beta14)
 // Description:
 //   API for the Google Compute Engine service.
 // Documentation:
-//   https://developers.google.com/compute/docs/reference/v1beta13
+//   https://developers.google.com/compute/docs/reference/v1beta14
 // Classes:
 //   GTLComputeProject (0 custom class methods, 9 custom properties)
-//   GTLComputeProjectQuotasItem (0 custom class methods, 3 custom properties)
 
 #import "GTLComputeProject.h"
 
 #import "GTLComputeMetadata.h"
+#import "GTLComputeQuota.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -55,7 +55,7 @@
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
       [NSString class], @"externalIpAddresses",
-      [GTLComputeProjectQuotasItem class], @"quotas",
+      [GTLComputeQuota class], @"quotas",
       nil];
   return map;
 }
@@ -64,14 +64,4 @@
   [self registerObjectClassForKind:@"compute#project"];
 }
 
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLComputeProjectQuotasItem
-//
-
-@implementation GTLComputeProjectQuotasItem
-@dynamic limit, metric, usage;
 @end

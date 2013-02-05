@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Compute Engine API (compute/v1beta13)
+//   Compute Engine API (compute/v1beta14)
 // Description:
 //   API for the Google Compute Engine service.
 // Documentation:
-//   https://developers.google.com/compute/docs/reference/v1beta13
+//   https://developers.google.com/compute/docs/reference/v1beta14
 // Classes:
-//   GTLComputeInstance (0 custom class methods, 16 custom properties)
+//   GTLComputeInstance (0 custom class methods, 18 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -38,13 +38,19 @@
 @class GTLComputeMetadata;
 @class GTLComputeNetworkInterface;
 @class GTLComputeServiceAccount;
+@class GTLComputeTags;
 
 // ----------------------------------------------------------------------------
 //
 //   GTLComputeInstance
 //
 
+// An instance resource.
+
 @interface GTLComputeInstance : GTLObject
+
+// Reserved for future use.
+@property (retain) NSNumber *canIpForward;  // boolValue
 
 // Creation timestamp in RFC3339 text format (output only).
 @property (copy) NSString *creationTimestamp;
@@ -62,10 +68,17 @@
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (retain) NSNumber *identifier;  // unsignedLongLongValue
 
-// An optional URL of the disk image resource to be to be installed on this
-// instance; provided by the client when the instance is created. If not
-// specified, the server will choose a default image.
+// An optional URL of the disk image resource to be installed on this instance;
+// provided by the client when the instance is created. Alternatively to passing
+// the image, the client may choose to boot from a persistent disk, by setting
+// boot=true flag on one of the entries in disks[] collection.
 @property (copy) NSString *image;
+
+// URL of the kernel resource to use when booting. In case of booting from
+// persistent disk, this parameter is required. When booting from a disk image,
+// it is optional, but may be provided to use a different kernel than the one
+// associated with the image.
+@property (copy) NSString *kernel;
 
 // Type of the resource.
 @property (copy) NSString *kind;
@@ -97,20 +110,19 @@
 @property (retain) NSArray *serviceAccounts;  // of GTLComputeServiceAccount
 
 // Instance status. One of the following values: "PROVISIONING", "STAGING",
-// "RUNNING", "STOPPED", "TERMINATED", and "STOPPING" (output only).
+// "RUNNING", "STOPPING", "STOPPED", "TERMINATED" (output only).
 @property (copy) NSString *status;
 
 // An optional, human-readable explanation of the status (output only).
 @property (copy) NSString *statusMessage;
 
-// An optional set of tags applied to this instance. Used to identify valid
-// sources or targets for network firewalls. Provided by the client when the
-// instance is created. Each tag must be 1-63 characters long, and comply with
-// RFC1035.
-@property (retain) NSArray *tags;  // of NSString
+// A list of tags to be applied to this instance. Used to identify valid sources
+// or targets for network firewalls. Provided by the client on instance
+// creation. The tags can be later modified by the setTags method. Each tag
+// within the list must comply with RFC1035.
+@property (retain) GTLComputeTags *tags;
 
-// URL of the zone resource describing where this instance should be hosted;
-// provided by the client when the instance is created.
+// URL of the zone where the instance resides (output only).
 // Remapped to 'zoneProperty' to avoid NSObject's 'zone'.
 @property (copy) NSString *zoneProperty;
 

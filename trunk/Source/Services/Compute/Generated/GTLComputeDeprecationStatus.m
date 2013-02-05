@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLComputeImageList.h
+//  GTLComputeDeprecationStatus.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,42 +26,15 @@
 // Documentation:
 //   https://developers.google.com/compute/docs/reference/v1beta14
 // Classes:
-//   GTLComputeImageList (0 custom class methods, 5 custom properties)
+//   GTLComputeDeprecationStatus (0 custom class methods, 5 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
-
-@class GTLComputeImage;
+#import "GTLComputeDeprecationStatus.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLComputeImageList
+//   GTLComputeDeprecationStatus
 //
 
-// Contains a list of disk image resources.
-
-// This class supports NSFastEnumeration over its "items" property. It also
-// supports -itemAtIndex: to retrieve individual objects from "items".
-
-@interface GTLComputeImageList : GTLCollectionObject
-
-// Unique identifier for the resource; defined by the server (output only).
-// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
-
-// The disk image resources.
-@property (retain) NSArray *items;  // of GTLComputeImage
-
-// Type of resource.
-@property (copy) NSString *kind;
-
-// A token used to continue a truncated list request (output only).
-@property (copy) NSString *nextPageToken;
-
-// Server defined URL for this resource (output only).
-@property (copy) NSString *selfLink;
-
+@implementation GTLComputeDeprecationStatus
+@dynamic deleted, deprecated, obsolete, replacement, state;
 @end

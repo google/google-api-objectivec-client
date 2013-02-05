@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,15 +20,17 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Compute Engine API (compute/v1beta13)
+//   Compute Engine API (compute/v1beta14)
 // Description:
 //   API for the Google Compute Engine service.
 // Documentation:
-//   https://developers.google.com/compute/docs/reference/v1beta13
+//   https://developers.google.com/compute/docs/reference/v1beta14
 // Classes:
-//   GTLComputeOperation (0 custom class methods, 19 custom properties)
+//   GTLComputeOperation (0 custom class methods, 21 custom properties)
 //   GTLComputeOperationError (0 custom class methods, 1 custom properties)
+//   GTLComputeOperationWarningsItem (0 custom class methods, 3 custom properties)
 //   GTLComputeOperationErrorErrorsItem (0 custom class methods, 3 custom properties)
+//   GTLComputeOperationWarningsItemDataItem (0 custom class methods, 2 custom properties)
 
 #import "GTLComputeOperation.h"
 
@@ -41,12 +43,21 @@
 @dynamic clientOperationId, creationTimestamp, endTime, error, httpErrorMessage,
          httpErrorStatusCode, identifier, insertTime, kind, name, operationType,
          progress, selfLink, startTime, status, statusMessage, targetId,
-         targetLink, user;
+         targetLink, user, warnings, zoneProperty;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      @"id", @"identifier",
+      @"zone", @"zoneProperty",
+      nil];
+  return map;
+}
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLComputeOperationWarningsItem class]
+                                forKey:@"warnings"];
   return map;
 }
 
@@ -77,9 +88,37 @@
 
 // ----------------------------------------------------------------------------
 //
+//   GTLComputeOperationWarningsItem
+//
+
+@implementation GTLComputeOperationWarningsItem
+@dynamic code, data, message;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLComputeOperationWarningsItemDataItem class]
+                                forKey:@"data"];
+  return map;
+}
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
 //   GTLComputeOperationErrorErrorsItem
 //
 
 @implementation GTLComputeOperationErrorErrorsItem
 @dynamic code, location, message;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLComputeOperationWarningsItemDataItem
+//
+
+@implementation GTLComputeOperationWarningsItemDataItem
+@dynamic key, value;
 @end

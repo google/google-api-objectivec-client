@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Compute Engine API (compute/v1beta13)
+//   Compute Engine API (compute/v1beta14)
 // Description:
 //   API for the Google Compute Engine service.
 // Documentation:
-//   https://developers.google.com/compute/docs/reference/v1beta13
+//   https://developers.google.com/compute/docs/reference/v1beta14
 // Classes:
-//   GTLComputeNetworkInterface (0 custom class methods, 5 custom properties)
+//   GTLComputeNetworkInterface (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -41,6 +41,8 @@
 //   GTLComputeNetworkInterface
 //
 
+// A network interface resource attached to an instance.
+
 @interface GTLComputeNetworkInterface : GTLObject
 
 // Array of configurations for this interface. This specifies how this interface
@@ -50,18 +52,16 @@
 // external internet access.
 @property (retain) NSArray *accessConfigs;  // of GTLComputeAccessConfig
 
-// Type of the resource.
-@property (copy) NSString *kind;
-
-// Name of the resource, determined by the server; for network devices, these
-// are e.g. eth0, eth1, etc. (output only).
+// Name of the network interface, determined by the server; for network devices,
+// these are e.g. eth0, eth1, etc. (output only).
 @property (copy) NSString *name;
 
 // URL of the network resource attached to this interface.
 @property (copy) NSString *network;
 
-// An optional IPV4 internal network address to assign to this instance. If not
-// specified, one will be assigned from the available range.
+// An optional IPV4 internal network address to assign to the instance for this
+// network interface. If not specified, one will be assigned from the available
+// range.
 @property (copy) NSString *networkIP;
 
 @end

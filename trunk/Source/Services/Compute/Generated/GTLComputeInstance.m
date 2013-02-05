@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Compute Engine API (compute/v1beta13)
+//   Compute Engine API (compute/v1beta14)
 // Description:
 //   API for the Google Compute Engine service.
 // Documentation:
-//   https://developers.google.com/compute/docs/reference/v1beta13
+//   https://developers.google.com/compute/docs/reference/v1beta14
 // Classes:
-//   GTLComputeInstance (0 custom class methods, 16 custom properties)
+//   GTLComputeInstance (0 custom class methods, 18 custom properties)
 
 #import "GTLComputeInstance.h"
 
@@ -34,6 +34,7 @@
 #import "GTLComputeMetadata.h"
 #import "GTLComputeNetworkInterface.h"
 #import "GTLComputeServiceAccount.h"
+#import "GTLComputeTags.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -41,9 +42,10 @@
 //
 
 @implementation GTLComputeInstance
-@dynamic creationTimestamp, descriptionProperty, disks, identifier, image, kind,
-         machineType, metadata, name, networkInterfaces, selfLink,
-         serviceAccounts, status, statusMessage, tags, zoneProperty;
+@dynamic canIpForward, creationTimestamp, descriptionProperty, disks,
+         identifier, image, kernel, kind, machineType, metadata, name,
+         networkInterfaces, selfLink, serviceAccounts, status, statusMessage,
+         tags, zoneProperty;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -61,7 +63,6 @@
       [GTLComputeAttachedDisk class], @"disks",
       [GTLComputeNetworkInterface class], @"networkInterfaces",
       [GTLComputeServiceAccount class], @"serviceAccounts",
-      [NSString class], @"tags",
       nil];
   return map;
 }

@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,11 +20,11 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Compute Engine API (compute/v1beta13)
+//   Compute Engine API (compute/v1beta14)
 // Description:
 //   API for the Google Compute Engine service.
 // Documentation:
-//   https://developers.google.com/compute/docs/reference/v1beta13
+//   https://developers.google.com/compute/docs/reference/v1beta14
 // Classes:
 //   GTLComputeDisk (0 custom class methods, 12 custom properties)
 
@@ -38,6 +38,8 @@
 //
 //   GTLComputeDisk
 //
+
+// A persistent disk resource.
 
 @interface GTLComputeDisk : GTLObject
 
@@ -66,7 +68,8 @@
 // Server defined URL for the resource (output only).
 @property (copy) NSString *selfLink;
 
-// Size of the persistent disk, specified in GB.
+// Size of the persistent disk, specified in GB. This parameter is optional when
+// creating a disk from a disk image or a snapshot, otherwise it is required.
 @property (retain) NSNumber *sizeGb;  // longLongValue
 
 // The source snapshot used to create this disk. Once the source snapshot has
@@ -82,9 +85,7 @@
 // The status of disk creation (output only).
 @property (copy) NSString *status;
 
-// URL for the zone where the persistent disk resides; provided by the client
-// when the disk is created. A persistent disk must reside in the same zone as
-// the instance to which it is attached.
+// URL of the zone where the disk resides (output only).
 // Remapped to 'zoneProperty' to avoid NSObject's 'zone'.
 @property (copy) NSString *zoneProperty;
 

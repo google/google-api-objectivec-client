@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,16 +20,17 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Compute Engine API (compute/v1beta13)
+//   Compute Engine API (compute/v1beta14)
 // Description:
 //   API for the Google Compute Engine service.
 // Documentation:
-//   https://developers.google.com/compute/docs/reference/v1beta13
+//   https://developers.google.com/compute/docs/reference/v1beta14
 
 #import "GTLComputeConstants.h"
 
 #import "GTLComputeAccessConfig.h"
 #import "GTLComputeAttachedDisk.h"
+#import "GTLComputeDeprecationStatus.h"
 #import "GTLComputeDisk.h"
 #import "GTLComputeDiskList.h"
 #import "GTLComputeFirewall.h"
@@ -49,10 +50,12 @@
 #import "GTLComputeOperation.h"
 #import "GTLComputeOperationList.h"
 #import "GTLComputeProject.h"
+#import "GTLComputeQuota.h"
 #import "GTLComputeSerialPortOutput.h"
 #import "GTLComputeServiceAccount.h"
 #import "GTLComputeSnapshot.h"
 #import "GTLComputeSnapshotList.h"
+#import "GTLComputeTags.h"
 #import "GTLComputeZone.h"
 #import "GTLComputeZoneList.h"
 
