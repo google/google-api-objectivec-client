@@ -41,6 +41,8 @@
 //   GTLYouTubeVideoMonetizationDetails
 //
 
+// Details about monetization of a YouTube Video.
+
 @interface GTLYouTubeVideoMonetizationDetails : GTLObject
 
 // The value of access indicates whether the video can be monetized or not.

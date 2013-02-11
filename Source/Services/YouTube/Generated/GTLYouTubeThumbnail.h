@@ -39,11 +39,17 @@
 //   GTLYouTubeThumbnail
 //
 
+// A thumbnail is an image representing a YouTube resource.
+
 @interface GTLYouTubeThumbnail : GTLObject
+
+// (Optional) Height of the thumbnail image.
 @property (retain) NSNumber *height;  // unsignedIntValue
 
 // The thumbnail image's URL.
 @property (copy) NSString *url;
 
+// (Optional) Width of the thumbnail image.
 @property (retain) NSNumber *width;  // unsignedIntValue
+
 @end

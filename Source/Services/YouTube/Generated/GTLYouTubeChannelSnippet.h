@@ -47,6 +47,7 @@
 
 @interface GTLYouTubeChannelSnippet : GTLObject
 
+// The description of the channel.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
 

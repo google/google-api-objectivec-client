@@ -640,6 +640,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 //   kGTLAuthScopeYouTubeUpload
+//   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubeVideo.
 + (id)queryForVideosInsertWithObject:(GTLYouTubeVideo *)object
                                 part:(NSString *)part
