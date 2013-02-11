@@ -230,6 +230,7 @@
 //   commentId: The ID of the comment.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveReadonly
 + (id)queryForCommentsDeleteWithFileId:(NSString *)fileId
                              commentId:(NSString *)commentId;
@@ -244,6 +245,7 @@
 //     comment, and will include any deleted replies. (Default false)
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveReadonly
 // Fetches a GTLDriveComment.
 + (id)queryForCommentsGetWithFileId:(NSString *)fileId
@@ -255,6 +257,7 @@
 //   fileId: The ID of the file.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveReadonly
 // Fetches a GTLDriveComment.
 + (id)queryForCommentsInsertWithObject:(GTLDriveComment *)object
@@ -277,6 +280,7 @@
 //     returned. Formatted as an RFC 3339 timestamp.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveReadonly
 // Fetches a GTLDriveCommentList.
 + (id)queryForCommentsListWithFileId:(NSString *)fileId;
@@ -288,6 +292,7 @@
 //   commentId: The ID of the comment.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveFile
 // Fetches a GTLDriveComment.
 + (id)queryForCommentsPatchWithObject:(GTLDriveComment *)object
                                fileId:(NSString *)fileId
@@ -300,6 +305,7 @@
 //   commentId: The ID of the comment.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveFile
 // Fetches a GTLDriveComment.
 + (id)queryForCommentsUpdateWithObject:(GTLDriveComment *)object
                                 fileId:(NSString *)fileId
@@ -631,6 +637,7 @@
 //   replyId: The ID of the reply.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveFile
 + (id)queryForRepliesDeleteWithFileId:(NSString *)fileId
                             commentId:(NSString *)commentId
                               replyId:(NSString *)replyId;
@@ -646,6 +653,7 @@
 //     (Default false)
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveReadonly
 // Fetches a GTLDriveCommentReply.
 + (id)queryForRepliesGetWithFileId:(NSString *)fileId
@@ -659,6 +667,7 @@
 //   commentId: The ID of the comment.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveFile
 // Fetches a GTLDriveCommentReply.
 + (id)queryForRepliesInsertWithObject:(GTLDriveCommentReply *)object
                                fileId:(NSString *)fileId
@@ -679,6 +688,7 @@
 //     "nextPageToken" from the previous response.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveReadonly
 // Fetches a GTLDriveCommentReplyList.
 + (id)queryForRepliesListWithFileId:(NSString *)fileId
@@ -692,6 +702,7 @@
 //   replyId: The ID of the reply.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveFile
 // Fetches a GTLDriveCommentReply.
 + (id)queryForRepliesPatchWithObject:(GTLDriveCommentReply *)object
                               fileId:(NSString *)fileId
@@ -706,6 +717,7 @@
 //   replyId: The ID of the reply.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveFile
 // Fetches a GTLDriveCommentReply.
 + (id)queryForRepliesUpdateWithObject:(GTLDriveCommentReply *)object
                                fileId:(NSString *)fileId
