@@ -26,11 +26,12 @@
 // Documentation:
 //   https://developers.google.com/compute/docs/reference/v1beta14
 // Classes:
-//   GTLQueryCompute (46 custom class methods, 21 custom properties)
+//   GTLQueryCompute (48 custom class methods, 21 custom properties)
 
 #import "GTLQueryCompute.h"
 
 #import "GTLComputeAccessConfig.h"
+#import "GTLComputeAttachedDisk.h"
 #import "GTLComputeDeprecationStatus.h"
 #import "GTLComputeDisk.h"
 #import "GTLComputeDiskList.h"
@@ -312,6 +313,18 @@
   return query;
 }
 
++ (id)queryForInstancesAttachDiskWithProject:(NSString *)project
+                                zoneProperty:(NSString *)zoneProperty
+                                    instance:(NSString *)instance {
+  NSString *methodName = @"compute.instances.attachDisk";
+  GTLQueryCompute *query = [self queryWithMethodName:methodName];
+  query.project = project;
+  query.zoneProperty = zoneProperty;
+  query.instance = instance;
+  query.expectedObjectClass = [GTLComputeOperation class];
+  return query;
+}
+
 + (id)queryForInstancesDeleteWithProject:(NSString *)project
                             zoneProperty:(NSString *)zoneProperty
                                 instance:(NSString *)instance {
@@ -336,6 +349,20 @@
   query.instance = instance;
   query.accessConfig = accessConfig;
   query.networkInterface = networkInterface;
+  query.expectedObjectClass = [GTLComputeOperation class];
+  return query;
+}
+
++ (id)queryForInstancesDetachDiskWithProject:(NSString *)project
+                                zoneProperty:(NSString *)zoneProperty
+                                    instance:(NSString *)instance
+                                        disk:(NSString *)disk {
+  NSString *methodName = @"compute.instances.detachDisk";
+  GTLQueryCompute *query = [self queryWithMethodName:methodName];
+  query.project = project;
+  query.zoneProperty = zoneProperty;
+  query.instance = instance;
+  query.disk = disk;
   query.expectedObjectClass = [GTLComputeOperation class];
   return query;
 }
