@@ -131,8 +131,14 @@
   #define __has_attribute(x) 0
 #endif
 
-#if __has_attribute(nonnull)
-  #define GTL_NONNULL(x) __attribute__((nonnull x))
-#else
+#if 1
+  // We will start using nonnull declarations once the static analyzer seems
+  // to support it without false positives.
   #define GTL_NONNULL(x)
+#else
+  #if __has_attribute(nonnull)
+    #define GTL_NONNULL(x) __attribute__((nonnull x))
+  #else
+    #define GTL_NONNULL(x)
+  #endif
 #endif
