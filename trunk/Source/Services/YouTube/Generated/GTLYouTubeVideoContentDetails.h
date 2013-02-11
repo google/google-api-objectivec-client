@@ -41,6 +41,8 @@
 //   GTLYouTubeVideoContentDetails
 //
 
+// Details about the content of a YouTube Video.
+
 @interface GTLYouTubeVideoContentDetails : GTLObject
 
 // The value of captions indicates whether the video has captions or not.

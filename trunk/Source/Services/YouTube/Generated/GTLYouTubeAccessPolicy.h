@@ -39,6 +39,8 @@
 //   GTLYouTubeAccessPolicy
 //
 
+// Rights management policy for YouTube resources.
+
 @interface GTLYouTubeAccessPolicy : GTLObject
 
 // The value of allowed indicates whether the access to the policy is allowed or
