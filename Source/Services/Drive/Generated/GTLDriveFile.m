@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 38 custom properties)
+//   GTLDriveFile (0 custom class methods, 39 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
 //   GTLDriveFileImageMediaMetadata (0 custom class methods, 21 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
@@ -38,6 +38,7 @@
 
 #import "GTLDriveParentReference.h"
 #import "GTLDrivePermission.h"
+#import "GTLDriveUser.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -45,14 +46,15 @@
 //
 
 @implementation GTLDriveFile
-@dynamic alternateLink, appDataContents, createdDate, descriptionProperty,
-         downloadUrl, editable, embedLink, ETag, explicitlyTrashed, exportLinks,
-         fileExtension, fileSize, iconLink, identifier, imageMediaMetadata,
-         indexableText, kind, labels, lastModifyingUserName, lastViewedByMeDate,
-         md5Checksum, mimeType, modifiedByMeDate, modifiedDate,
-         originalFilename, ownerNames, parents, quotaBytesUsed, selfLink,
-         shared, sharedWithMeDate, thumbnail, thumbnailLink, title,
-         userPermission, webContentLink, webViewLink, writersCanShare;
+@dynamic alternateLink, createdDate, descriptionProperty, downloadUrl, editable,
+         embedLink, ETag, explicitlyTrashed, exportLinks, fileExtension,
+         fileSize, iconLink, identifier, imageMediaMetadata, indexableText,
+         kind, labels, lastModifyingUser, lastModifyingUserName,
+         lastViewedByMeDate, md5Checksum, mimeType, modifiedByMeDate,
+         modifiedDate, originalFilename, ownerNames, owners, parents,
+         quotaBytesUsed, selfLink, shared, sharedWithMeDate, thumbnail,
+         thumbnailLink, title, userPermission, webContentLink, webViewLink,
+         writersCanShare;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -68,6 +70,7 @@
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
       [NSString class], @"ownerNames",
+      [GTLDriveUser class], @"owners",
       [GTLDriveParentReference class], @"parents",
       nil];
   return map;

@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 38 custom properties)
+//   GTLDriveFile (0 custom class methods, 39 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
 //   GTLDriveFileImageMediaMetadata (0 custom class methods, 21 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
@@ -48,6 +48,7 @@
 @class GTLDriveFileThumbnail;
 @class GTLDriveParentReference;
 @class GTLDrivePermission;
+@class GTLDriveUser;
 
 // ----------------------------------------------------------------------------
 //
@@ -60,9 +61,6 @@
 
 // A link for opening the file in using a relevant Google editor or viewer.
 @property (copy) NSString *alternateLink;
-
-// Whether this file is in the appdata folder.
-@property (retain) NSNumber *appDataContents;  // boolValue
 
 // Create time for this file (formatted ISO8601 timestamp).
 @property (retain) GTLDateTime *createdDate;
@@ -120,8 +118,10 @@
 // A group of labels for the file.
 @property (retain) GTLDriveFileLabels *labels;
 
-// Name of the last user to modify this file. This will only be populated if a
-// user has edited this file.
+// The last user to modify this file.
+@property (retain) GTLDriveUser *lastModifyingUser;
+
+// Name of the last user to modify this file.
 @property (copy) NSString *lastModifyingUserName;
 
 // Last time this file was viewed by the user (formatted RFC 3339 timestamp).
@@ -154,6 +154,9 @@
 // Name(s) of the owner(s) of this file.
 @property (retain) NSArray *ownerNames;  // of NSString
 
+// The owner(s) of this file.
+@property (retain) NSArray *owners;  // of GTLDriveUser
+
 // Collection of parent folders which contain this file.
 // Setting this field will put the file in all of the provided folders. On
 // insert, if no folders are provided, the file will be placed in the default
@@ -183,6 +186,7 @@
 // The title of this file.
 @property (copy) NSString *title;
 
+// The permissions for the authenticated user on this file.
 @property (retain) GTLDrivePermission *userPermission;
 
 // A link for downloading the content of the file in a browser using cookie

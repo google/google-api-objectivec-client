@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,10 +26,12 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveRevision (0 custom class methods, 17 custom properties)
+//   GTLDriveRevision (0 custom class methods, 18 custom properties)
 //   GTLDriveRevisionExportLinks (0 custom class methods, 0 custom properties)
 
 #import "GTLDriveRevision.h"
+
+#import "GTLDriveUser.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -38,9 +40,9 @@
 
 @implementation GTLDriveRevision
 @dynamic downloadUrl, ETag, exportLinks, fileSize, identifier, kind,
-         lastModifyingUserName, md5Checksum, mimeType, modifiedDate,
-         originalFilename, pinned, publishAuto, published, publishedLink,
-         publishedOutsideDomain, selfLink;
+         lastModifyingUser, lastModifyingUserName, md5Checksum, mimeType,
+         modifiedDate, originalFilename, pinned, publishAuto, published,
+         publishedLink, publishedOutsideDomain, selfLink;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

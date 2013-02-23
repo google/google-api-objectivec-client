@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -99,7 +99,7 @@
 // The total number of quota bytes.
 @property (retain) NSNumber *quotaBytesTotal;  // longLongValue
 
-// The number of quota bytes used.
+// The number of quota bytes used by Google Drive.
 @property (retain) NSNumber *quotaBytesUsed;  // longLongValue
 
 // The number of quota bytes used by all Google apps (Drive, Picasa, etc.).

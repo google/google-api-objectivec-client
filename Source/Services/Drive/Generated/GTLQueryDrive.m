@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLQueryDrive (46 custom class methods, 30 custom properties)
+//   GTLQueryDrive (46 custom class methods, 32 custom properties)
 
 #import "GTLQueryDrive.h"
 
@@ -52,12 +52,13 @@
 
 @implementation GTLQueryDrive
 
-@dynamic appId, changeId, childId, commentId, convert, fields, fileId, folderId,
-         includeDeleted, includeSubscribed, maxChangeIdCount, maxResults,
-         newRevision, ocr, ocrLanguage, pageToken, parentId, permissionId,
-         pinned, projection, q, replyId, revisionId, sendNotificationEmails,
-         setModifiedDate, startChangeId, timedTextLanguage, timedTextTrackName,
-         updatedMin, updateViewedDate;
+@dynamic appId, changeId, childId, commentId, convert, emailMessage, fields,
+         fileId, folderId, includeDeleted, includeSubscribed, maxChangeIdCount,
+         maxResults, newRevision, ocr, ocrLanguage, pageToken, parentId,
+         permissionId, pinned, projection, q, replyId, revisionId,
+         sendNotificationEmails, setModifiedDate, startChangeId,
+         timedTextLanguage, timedTextTrackName, updatedMin, updateViewedDate,
+         useContentAsIndexableText;
 
 #pragma mark -
 #pragma mark "about" methods
