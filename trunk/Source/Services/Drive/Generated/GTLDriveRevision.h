@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveRevision (0 custom class methods, 17 custom properties)
+//   GTLDriveRevision (0 custom class methods, 18 custom properties)
 //   GTLDriveRevisionExportLinks (0 custom class methods, 0 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -36,6 +36,7 @@
 #endif
 
 @class GTLDriveRevisionExportLinks;
+@class GTLDriveUser;
 
 // ----------------------------------------------------------------------------
 //
@@ -66,6 +67,9 @@
 
 // This is always drive#revision.
 @property (copy) NSString *kind;
+
+// The last user to modify this revision.
+@property (retain) GTLDriveUser *lastModifyingUser;
 
 // Name of the last user to modify this revision.
 @property (copy) NSString *lastModifyingUserName;

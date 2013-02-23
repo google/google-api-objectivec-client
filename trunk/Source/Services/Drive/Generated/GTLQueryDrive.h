@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLQueryDrive (46 custom class methods, 30 custom properties)
+//   GTLQueryDrive (46 custom class methods, 32 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -59,6 +59,7 @@
 @property (copy) NSString *childId;
 @property (copy) NSString *commentId;
 @property (assign) BOOL convert;
+@property (copy) NSString *emailMessage;
 @property (copy) NSString *fileId;
 @property (copy) NSString *folderId;
 @property (assign) BOOL includeDeleted;
@@ -83,6 +84,7 @@
 @property (copy) NSString *timedTextTrackName;
 @property (copy) NSString *updatedMin;
 @property (assign) BOOL updateViewedDate;
+@property (assign) BOOL useContentAsIndexableText;
 
 #pragma mark -
 #pragma mark "about" methods
@@ -376,6 +378,8 @@
 //     false)
 //   timedTextLanguage: The language of the timed text.
 //   timedTextTrackName: The timed text track name.
+//   useContentAsIndexableText: Whether to use the content as indexable text.
+//     (Default false)
 //  Upload Parameters:
 //   Maximum size: 10GB
 //   Accepted MIME type(s): */*
@@ -424,6 +428,8 @@
 //   timedTextTrackName: The timed text track name.
 //   updateViewedDate: Whether to update the view date after successfully
 //     updating the file. (Default true)
+//   useContentAsIndexableText: Whether to use the content as indexable text.
+//     (Default false)
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
 //   kGTLAuthScopeDriveFile
@@ -482,6 +488,8 @@
 //   timedTextTrackName: The timed text track name.
 //   updateViewedDate: Whether to update the view date after successfully
 //     updating the file. (Default true)
+//   useContentAsIndexableText: Whether to use the content as indexable text.
+//     (Default false)
 //  Upload Parameters:
 //   Maximum size: 10GB
 //   Accepted MIME type(s): */*
@@ -579,7 +587,9 @@
 //  Required:
 //   fileId: The ID for the file.
 //  Optional:
-//   sendNotificationEmails: Whether to send notification emails. (Default true)
+//   emailMessage: A custom message to include in notification emails.
+//   sendNotificationEmails: Whether to send notification emails when sharing to
+//     users or groups. (Default true)
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
 //   kGTLAuthScopeDriveFile
