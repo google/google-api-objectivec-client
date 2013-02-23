@@ -163,11 +163,42 @@
                                              timeZone:denverTZ];
 
   GTLDateTime *dateTime = [GTLDateTime dateTimeWithDate:date
-                                                   timeZone:denverTZ];
+                                               timeZone:denverTZ];
   NSTimeZone *testTZ = dateTime.timeZone;
   STAssertEqualObjects(testTZ, denverTZ, @"Time zone changed");
 }
-@end
 
-//2006-11-20 17:53:23.880 otest[5401] timezone=GMT-0100 (GMT-0100) offset -3600
-//2006-11-20 17:53:23.880 otest[5401] era:1 year:2006 month:10 day:14   hour:15 min:0 sec:0
+- (void)testCalendarCaching {
+  NSTimeZone *denverTZ = [NSTimeZone timeZoneWithName:@"America/Denver"];
+  NSCalendarDate *date = [NSCalendarDate dateWithYear:2007 month:01 day:01
+                                                 hour:01 minute:01 second:01
+                                             timeZone:denverTZ];
+
+  GTLDateTime *dateTime = [GTLDateTime dateTimeWithDate:date
+                                               timeZone:denverTZ];
+
+  // Test that the calendar instance is cached for the time zone (comparing
+  // pointer values.)
+  NSTimeZone *denverTZ2 = [NSTimeZone timeZoneWithName:@"America/Denver"];
+  GTLDateTime *dateTime2 = [GTLDateTime dateTimeWithDate:date
+                                               timeZone:denverTZ2];
+  STAssertEquals(dateTime2.calendar, dateTime.calendar,
+                 @"%@ ≠ %@", dateTime2.calendar, dateTime.calendar);
+
+  // RFC3339 strings have offsets but not named time zones.
+  NSString *str = [dateTime RFC3339String];
+  GTLDateTime *dateTime3 = [GTLDateTime dateTimeWithRFC3339String:str];
+  GTLDateTime *dateTime4 = [GTLDateTime dateTimeWithRFC3339String:str];
+
+  STAssertEquals(dateTime3.calendar, dateTime4.calendar,
+                 @"%@ ≠ %@", dateTime3.calendar, dateTime4.calendar);
+
+  // The timezones don't match, so the calendars should be unique, but the
+  // time zone offsets from GMT are the same.
+  STAssertTrue(dateTime3.calendar != dateTime.calendar,
+               @"%@ = %@", dateTime3.calendar, dateTime.calendar);
+  STAssertEquals(dateTime3.calendar.timeZone.secondsFromGMT,
+                 dateTime.calendar.timeZone.secondsFromGMT, nil);
+}
+
+@end
