@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideoContentDetails.m
+//  GTLYouTubeVideoSuggestionsTagSuggestion.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,18 +26,23 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoContentDetails (0 custom class methods, 6 custom properties)
+//   GTLYouTubeVideoSuggestionsTagSuggestion (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubeVideoContentDetails.h"
-
-#import "GTLYouTubeVideoContentDetailsRegionRestriction.h"
+#import "GTLYouTubeVideoSuggestionsTagSuggestion.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoContentDetails
+//   GTLYouTubeVideoSuggestionsTagSuggestion
 //
 
-@implementation GTLYouTubeVideoContentDetails
-@dynamic caption, definition, dimension, duration, licensedContent,
-         regionRestriction;
+@implementation GTLYouTubeVideoSuggestionsTagSuggestion
+@dynamic categoryRestricts, tag;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[NSString class]
+                                forKey:@"categoryRestricts"];
+  return map;
+}
+
 @end

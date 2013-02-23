@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideoContentDetails.m
+//  GTLYouTubeVideoProcessingDetailsProcessingProgress.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,18 +26,15 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoContentDetails (0 custom class methods, 6 custom properties)
+//   GTLYouTubeVideoProcessingDetailsProcessingProgress (0 custom class methods, 3 custom properties)
 
-#import "GTLYouTubeVideoContentDetails.h"
-
-#import "GTLYouTubeVideoContentDetailsRegionRestriction.h"
+#import "GTLYouTubeVideoProcessingDetailsProcessingProgress.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoContentDetails
+//   GTLYouTubeVideoProcessingDetailsProcessingProgress
 //
 
-@implementation GTLYouTubeVideoContentDetails
-@dynamic caption, definition, dimension, duration, licensedContent,
-         regionRestriction;
+@implementation GTLYouTubeVideoProcessingDetailsProcessingProgress
+@dynamic partsProcessed, partsTotal, timeLeftMs;
 @end

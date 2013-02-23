@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideoContentDetails.m
+//  GTLYouTubeLiveStreamStatus.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,18 +26,24 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoContentDetails (0 custom class methods, 6 custom properties)
+//   GTLYouTubeLiveStreamStatus (0 custom class methods, 1 custom properties)
 
-#import "GTLYouTubeVideoContentDetails.h"
-
-#import "GTLYouTubeVideoContentDetailsRegionRestriction.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoContentDetails
+//   GTLYouTubeLiveStreamStatus
 //
 
-@implementation GTLYouTubeVideoContentDetails
-@dynamic caption, definition, dimension, duration, licensedContent,
-         regionRestriction;
+// Brief description of the live stream status.
+
+@interface GTLYouTubeLiveStreamStatus : GTLObject
+
+// The status of the stream.
+@property (copy) NSString *streamStatus;
+
 @end

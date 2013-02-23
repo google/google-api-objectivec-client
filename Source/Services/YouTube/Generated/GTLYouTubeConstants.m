@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,6 +33,15 @@ NSString * const kGTLAuthScopeYouTube               = @"https://www.googleapis.c
 NSString * const kGTLAuthScopeYouTubeReadonly       = @"https://www.googleapis.com/auth/youtube.readonly";
 NSString * const kGTLAuthScopeYouTubeUpload         = @"https://www.googleapis.com/auth/youtube.upload";
 NSString * const kGTLAuthScopeYouTubeYoutubepartner = @"https://www.googleapis.com/auth/youtubepartner";
+
+// BroadcastStatus
+NSString * const kGTLYouTubeBroadcastStatusActive    = @"active";
+NSString * const kGTLYouTubeBroadcastStatusAll       = @"all";
+NSString * const kGTLYouTubeBroadcastStatusComplete  = @"complete";
+NSString * const kGTLYouTubeBroadcastStatusCompleted = @"completed";
+NSString * const kGTLYouTubeBroadcastStatusLive      = @"live";
+NSString * const kGTLYouTubeBroadcastStatusTesting   = @"testing";
+NSString * const kGTLYouTubeBroadcastStatusUpcoming  = @"upcoming";
 
 // Order
 NSString * const kGTLYouTubeOrderAlphabetical = @"alphabetical";

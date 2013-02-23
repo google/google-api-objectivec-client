@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideoContentDetails.m
+//  GTLYouTubeLiveStreamCdnIngestionInfo.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,18 +26,30 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoContentDetails (0 custom class methods, 6 custom properties)
+//   GTLYouTubeLiveStreamCdnIngestionInfo (0 custom class methods, 3 custom properties)
 
-#import "GTLYouTubeVideoContentDetails.h"
-
-#import "GTLYouTubeVideoContentDetailsRegionRestriction.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoContentDetails
+//   GTLYouTubeLiveStreamCdnIngestionInfo
 //
 
-@implementation GTLYouTubeVideoContentDetails
-@dynamic caption, definition, dimension, duration, licensedContent,
-         regionRestriction;
+// Brief description of the live stream cdn settings.
+
+@interface GTLYouTubeLiveStreamCdnIngestionInfo : GTLObject
+
+// The backup address of the inbound data.
+@property (copy) NSString *backupIngestionAddress;
+
+// The address of the inbound data.
+@property (copy) NSString *ingestionAddress;
+
+// Ingestion stream name.
+@property (copy) NSString *streamName;
+
 @end

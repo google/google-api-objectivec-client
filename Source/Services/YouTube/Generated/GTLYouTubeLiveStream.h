@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideoContentDetails.m
+//  GTLYouTubeLiveStream.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,18 +26,44 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoContentDetails (0 custom class methods, 6 custom properties)
+//   GTLYouTubeLiveStream (0 custom class methods, 6 custom properties)
 
-#import "GTLYouTubeVideoContentDetails.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLYouTubeVideoContentDetailsRegionRestriction.h"
+@class GTLYouTubeLiveStreamCdn;
+@class GTLYouTubeLiveStreamSnippet;
+@class GTLYouTubeLiveStreamStatus;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoContentDetails
+//   GTLYouTubeLiveStream
 //
 
-@implementation GTLYouTubeVideoContentDetails
-@dynamic caption, definition, dimension, duration, licensedContent,
-         regionRestriction;
+// A live stream describes a live ingestion point.
+
+@interface GTLYouTubeLiveStream : GTLObject
+
+// Cdn settings of the live stream.
+@property (retain) GTLYouTubeLiveStreamCdn *cdn;
+
+// The eTag of the stream.
+@property (copy) NSString *ETag;
+
+// The unique id of the stream.
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+@property (copy) NSString *identifier;
+
+// The type of this API resource.
+@property (copy) NSString *kind;
+
+// Basic details about the live stream.
+@property (retain) GTLYouTubeLiveStreamSnippet *snippet;
+
+// Status of the live stream.
+@property (retain) GTLYouTubeLiveStreamStatus *status;
+
 @end

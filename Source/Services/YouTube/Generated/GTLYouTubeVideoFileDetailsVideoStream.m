@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideoContentDetails.m
+//  GTLYouTubeVideoFileDetailsVideoStream.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,18 +26,16 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoContentDetails (0 custom class methods, 6 custom properties)
+//   GTLYouTubeVideoFileDetailsVideoStream (0 custom class methods, 8 custom properties)
 
-#import "GTLYouTubeVideoContentDetails.h"
-
-#import "GTLYouTubeVideoContentDetailsRegionRestriction.h"
+#import "GTLYouTubeVideoFileDetailsVideoStream.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoContentDetails
+//   GTLYouTubeVideoFileDetailsVideoStream
 //
 
-@implementation GTLYouTubeVideoContentDetails
-@dynamic caption, definition, dimension, duration, licensedContent,
-         regionRestriction;
+@implementation GTLYouTubeVideoFileDetailsVideoStream
+@dynamic aspectRatio, bitrateBps, codec, frameRateFps, heightPixels, rotation,
+         vendor, widthPixels;
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,6 +43,15 @@ GTL_EXTERN NSString * const kGTLAuthScopeYouTubeReadonly;       // "https://www.
 GTL_EXTERN NSString * const kGTLAuthScopeYouTubeUpload;         // "https://www.googleapis.com/auth/youtube.upload"
 // View and manage your assets and associated content on YouTube
 GTL_EXTERN NSString * const kGTLAuthScopeYouTubeYoutubepartner;  // "https://www.googleapis.com/auth/youtubepartner"
+
+// BroadcastStatus
+GTL_EXTERN NSString * const kGTLYouTubeBroadcastStatusActive;   // "active"
+GTL_EXTERN NSString * const kGTLYouTubeBroadcastStatusAll;      // "all"
+GTL_EXTERN NSString * const kGTLYouTubeBroadcastStatusComplete;  // "complete"
+GTL_EXTERN NSString * const kGTLYouTubeBroadcastStatusCompleted;  // "completed"
+GTL_EXTERN NSString * const kGTLYouTubeBroadcastStatusLive;     // "live"
+GTL_EXTERN NSString * const kGTLYouTubeBroadcastStatusTesting;  // "testing"
+GTL_EXTERN NSString * const kGTLYouTubeBroadcastStatusUpcoming;  // "upcoming"
 
 // Order
 GTL_EXTERN NSString * const kGTLYouTubeOrderAlphabetical;  // "alphabetical"

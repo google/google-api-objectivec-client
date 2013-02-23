@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideoContentDetails.m
+//  GTLYouTubeLiveStreamCdn.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,18 +26,18 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoContentDetails (0 custom class methods, 6 custom properties)
+//   GTLYouTubeLiveStreamCdn (0 custom class methods, 4 custom properties)
 
-#import "GTLYouTubeVideoContentDetails.h"
+#import "GTLYouTubeLiveStreamCdn.h"
 
-#import "GTLYouTubeVideoContentDetailsRegionRestriction.h"
+#import "GTLYouTubeLiveStreamCdnIngestionInfo.h"
+#import "GTLYouTubeLiveStreamCdnMulticastIngestionInfo.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoContentDetails
+//   GTLYouTubeLiveStreamCdn
 //
 
-@implementation GTLYouTubeVideoContentDetails
-@dynamic caption, definition, dimension, duration, licensedContent,
-         regionRestriction;
+@implementation GTLYouTubeLiveStreamCdn
+@dynamic format, ingestionInfo, ingestionType, multicastIngestionInfo;
 @end

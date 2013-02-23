@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideoContentDetails.m
+//  GTLYouTubeLiveBroadcastStatus.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,18 +26,28 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoContentDetails (0 custom class methods, 6 custom properties)
+//   GTLYouTubeLiveBroadcastStatus (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubeVideoContentDetails.h"
-
-#import "GTLYouTubeVideoContentDetailsRegionRestriction.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoContentDetails
+//   GTLYouTubeLiveBroadcastStatus
 //
 
-@implementation GTLYouTubeVideoContentDetails
-@dynamic caption, definition, dimension, duration, licensedContent,
-         regionRestriction;
+// The status of a live broadcast.
+
+@interface GTLYouTubeLiveBroadcastStatus : GTLObject
+
+// Life status of the live broadcast.
+@property (copy) NSString *lifeCycleStatus;
+
+// Privacy settings of the live broadcast. Allowed values: private, unlisted,
+// public.
+@property (copy) NSString *privacyStatus;
+
 @end

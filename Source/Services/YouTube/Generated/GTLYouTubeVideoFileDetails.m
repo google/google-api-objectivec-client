@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideoContentDetails.m
+//  GTLYouTubeVideoFileDetails.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,18 +26,30 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoContentDetails (0 custom class methods, 6 custom properties)
+//   GTLYouTubeVideoFileDetails (0 custom class methods, 10 custom properties)
 
-#import "GTLYouTubeVideoContentDetails.h"
+#import "GTLYouTubeVideoFileDetails.h"
 
-#import "GTLYouTubeVideoContentDetailsRegionRestriction.h"
+#import "GTLYouTubeGeoPoint.h"
+#import "GTLYouTubeVideoFileDetailsAudioStream.h"
+#import "GTLYouTubeVideoFileDetailsVideoStream.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoContentDetails
+//   GTLYouTubeVideoFileDetails
 //
 
-@implementation GTLYouTubeVideoContentDetails
-@dynamic caption, definition, dimension, duration, licensedContent,
-         regionRestriction;
+@implementation GTLYouTubeVideoFileDetails
+@dynamic audioStreams, bitrateBps, container, creationTime, durationMs,
+         fileName, fileSize, fileType, recordingLocation, videoStreams;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      [GTLYouTubeVideoFileDetailsAudioStream class], @"audioStreams",
+      [GTLYouTubeVideoFileDetailsVideoStream class], @"videoStreams",
+      nil];
+  return map;
+}
+
 @end

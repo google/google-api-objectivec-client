@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelContentDetails (0 custom class methods, 1 custom properties)
+//   GTLYouTubeChannelContentDetails (0 custom class methods, 2 custom properties)
 //   GTLYouTubeChannelContentDetailsRelatedPlaylists (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -45,6 +45,10 @@
 // Details about the content of a channel.
 
 @interface GTLYouTubeChannelContentDetails : GTLObject
+
+// The googlePlusUserId object identifies the Google+ profile ID associated with
+// this channel.
+@property (copy) NSString *googlePlusUserId;
 
 // The relatedPlaylists object is a map that identifies playlists associated
 // with the channel, such as the channel's uploaded videos or favorite videos.

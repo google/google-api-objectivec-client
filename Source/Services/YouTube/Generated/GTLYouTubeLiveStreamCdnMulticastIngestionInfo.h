@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideoContentDetails.m
+//  GTLYouTubeLiveStreamCdnMulticastIngestionInfo.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,18 +26,24 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoContentDetails (0 custom class methods, 6 custom properties)
+//   GTLYouTubeLiveStreamCdnMulticastIngestionInfo (0 custom class methods, 1 custom properties)
 
-#import "GTLYouTubeVideoContentDetails.h"
-
-#import "GTLYouTubeVideoContentDetailsRegionRestriction.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoContentDetails
+//   GTLYouTubeLiveStreamCdnMulticastIngestionInfo
 //
 
-@implementation GTLYouTubeVideoContentDetails
-@dynamic caption, definition, dimension, duration, licensedContent,
-         regionRestriction;
+// Brief description of the live stream cdn settings.
+
+@interface GTLYouTubeLiveStreamCdnMulticastIngestionInfo : GTLObject
+
+// The IP address of the multicast data.
+@property (copy) NSString *multicastAddress;
+
 @end

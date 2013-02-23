@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideoContentDetails.m
+//  GTLYouTubeLiveStreamSnippet.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,18 +26,34 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoContentDetails (0 custom class methods, 6 custom properties)
+//   GTLYouTubeLiveStreamSnippet (0 custom class methods, 4 custom properties)
 
-#import "GTLYouTubeVideoContentDetails.h"
-
-#import "GTLYouTubeVideoContentDetailsRegionRestriction.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoContentDetails
+//   GTLYouTubeLiveStreamSnippet
 //
 
-@implementation GTLYouTubeVideoContentDetails
-@dynamic caption, definition, dimension, duration, licensedContent,
-         regionRestriction;
+// Basic details about a live stream, including title and description.
+
+@interface GTLYouTubeLiveStreamSnippet : GTLObject
+
+// Channel publishing the live stream.
+@property (copy) NSString *channelId;
+
+// Description of the live stream.
+// Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
+@property (copy) NSString *descriptionProperty;
+
+// Date and time the live stream was published at.
+@property (retain) GTLDateTime *publishedAt;
+
+// Title of the live stream.
+@property (copy) NSString *title;
+
 @end

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideoContentDetails.m
+//  GTLYouTubeLiveStream.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,18 +26,33 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoContentDetails (0 custom class methods, 6 custom properties)
+//   GTLYouTubeLiveStream (0 custom class methods, 6 custom properties)
 
-#import "GTLYouTubeVideoContentDetails.h"
+#import "GTLYouTubeLiveStream.h"
 
-#import "GTLYouTubeVideoContentDetailsRegionRestriction.h"
+#import "GTLYouTubeLiveStreamCdn.h"
+#import "GTLYouTubeLiveStreamSnippet.h"
+#import "GTLYouTubeLiveStreamStatus.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoContentDetails
+//   GTLYouTubeLiveStream
 //
 
-@implementation GTLYouTubeVideoContentDetails
-@dynamic caption, definition, dimension, duration, licensedContent,
-         regionRestriction;
+@implementation GTLYouTubeLiveStream
+@dynamic cdn, ETag, identifier, kind, snippet, status;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      @"etag", @"ETag",
+      @"id", @"identifier",
+      nil];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"youtube#liveStream"];
+}
+
 @end
