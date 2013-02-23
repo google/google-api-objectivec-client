@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoContentDetails (0 custom class methods, 5 custom properties)
+//   GTLYouTubeVideoContentDetails (0 custom class methods, 6 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -64,6 +64,10 @@
 // example, a value of PT15M51S indicates that the video is 15 minutes and 51
 // seconds long.
 @property (copy) NSString *duration;
+
+// The value of is_license_content indicates whether the video is licensed
+// content.
+@property (retain) NSNumber *licensedContent;  // boolValue
 
 // The regionRestriction object contains information about the countries where a
 // video is (or is not) viewable. The object will contain either the

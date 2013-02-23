@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideoContentDetails.m
+//  GTLYouTubeVideoProcessingDetailsProcessingProgress.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,18 +26,32 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoContentDetails (0 custom class methods, 6 custom properties)
+//   GTLYouTubeVideoProcessingDetailsProcessingProgress (0 custom class methods, 3 custom properties)
 
-#import "GTLYouTubeVideoContentDetails.h"
-
-#import "GTLYouTubeVideoContentDetailsRegionRestriction.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoContentDetails
+//   GTLYouTubeVideoProcessingDetailsProcessingProgress
 //
 
-@implementation GTLYouTubeVideoContentDetails
-@dynamic caption, definition, dimension, duration, licensedContent,
-         regionRestriction;
+// Video processing progress and completion time estimate.
+
+@interface GTLYouTubeVideoProcessingDetailsProcessingProgress : GTLObject
+
+// Number of parts already processed. Progress expressed in percent should be
+// computed as: 100 * parts_processed / parts_total.
+@property (retain) NSNumber *partsProcessed;  // unsignedLongLongValue
+
+// An estimate of total number of parts to process. The number might be updated
+// with more precise estimates as the processing progresses.
+@property (retain) NSNumber *partsTotal;  // unsignedLongLongValue
+
+// Estimated time till video processing is complete, in milliseconds.
+@property (retain) NSNumber *timeLeftMs;  // unsignedLongLongValue
+
 @end

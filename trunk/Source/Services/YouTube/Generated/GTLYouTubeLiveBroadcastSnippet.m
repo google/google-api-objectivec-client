@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideoContentDetails.m
+//  GTLYouTubeLiveBroadcastSnippet.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,18 +26,41 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoContentDetails (0 custom class methods, 6 custom properties)
+//   GTLYouTubeLiveBroadcastSnippet (0 custom class methods, 9 custom properties)
+//   GTLYouTubeLiveBroadcastSnippetThumbnails (0 custom class methods, 0 custom properties)
 
-#import "GTLYouTubeVideoContentDetails.h"
+#import "GTLYouTubeLiveBroadcastSnippet.h"
 
-#import "GTLYouTubeVideoContentDetailsRegionRestriction.h"
+#import "GTLYouTubeThumbnail.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoContentDetails
+//   GTLYouTubeLiveBroadcastSnippet
 //
 
-@implementation GTLYouTubeVideoContentDetails
-@dynamic caption, definition, dimension, duration, licensedContent,
-         regionRestriction;
+@implementation GTLYouTubeLiveBroadcastSnippet
+@dynamic actualEndTime, actualStartTime, channelId, descriptionProperty,
+         publishedAt, scheduledEndTime, scheduledStartTime, thumbnails, title;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"description"
+                                forKey:@"descriptionProperty"];
+  return map;
+}
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLYouTubeLiveBroadcastSnippetThumbnails
+//
+
+@implementation GTLYouTubeLiveBroadcastSnippetThumbnails
+
++ (Class)classForAdditionalProperties {
+  return [GTLYouTubeThumbnail class];
+}
+
 @end

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideoContentDetails.m
+//  GTLYouTubeVideoFileDetailsAudioStream.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,18 +26,33 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoContentDetails (0 custom class methods, 6 custom properties)
+//   GTLYouTubeVideoFileDetailsAudioStream (0 custom class methods, 4 custom properties)
 
-#import "GTLYouTubeVideoContentDetails.h"
-
-#import "GTLYouTubeVideoContentDetailsRegionRestriction.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoContentDetails
+//   GTLYouTubeVideoFileDetailsAudioStream
 //
 
-@implementation GTLYouTubeVideoContentDetails
-@dynamic caption, definition, dimension, duration, licensedContent,
-         regionRestriction;
+// Information about an audio stream.
+
+@interface GTLYouTubeVideoFileDetailsAudioStream : GTLObject
+
+// Audio stream bitrate, in bits per second.
+@property (retain) NSNumber *bitrateBps;  // unsignedLongLongValue
+
+// Number of audio channels.
+@property (retain) NSNumber *channelCount;  // unsignedIntValue
+
+// Audio codec used.
+@property (copy) NSString *codec;
+
+// Audio vendor identifier, typically a four-letter vendor code.
+@property (copy) NSString *vendor;
+
 @end

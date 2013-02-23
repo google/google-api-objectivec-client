@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideoContentDetails.m
+//  GTLYouTubeLiveBroadcast.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,18 +26,34 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoContentDetails (0 custom class methods, 6 custom properties)
+//   GTLYouTubeLiveBroadcast (0 custom class methods, 7 custom properties)
 
-#import "GTLYouTubeVideoContentDetails.h"
+#import "GTLYouTubeLiveBroadcast.h"
 
-#import "GTLYouTubeVideoContentDetailsRegionRestriction.h"
+#import "GTLYouTubeLiveBroadcastContentDetails.h"
+#import "GTLYouTubeLiveBroadcastSlateSettings.h"
+#import "GTLYouTubeLiveBroadcastSnippet.h"
+#import "GTLYouTubeLiveBroadcastStatus.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoContentDetails
+//   GTLYouTubeLiveBroadcast
 //
 
-@implementation GTLYouTubeVideoContentDetails
-@dynamic caption, definition, dimension, duration, licensedContent,
-         regionRestriction;
+@implementation GTLYouTubeLiveBroadcast
+@dynamic contentDetails, ETag, identifier, kind, slateSettings, snippet, status;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      @"etag", @"ETag",
+      @"id", @"identifier",
+      nil];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"youtube#liveBroadcast"];
+}
+
 @end
