@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -120,7 +120,7 @@
 @property (copy) NSString *hashProperty;
 
 // Content-Length of the data in bytes.
-@property (retain) NSNumber *length;  // longLongValue
+@property (retain) NSNumber *length;  // unsignedLongLongValue
 
 // Media download link.
 @property (copy) NSString *link;
