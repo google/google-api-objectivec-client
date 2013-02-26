@@ -26,7 +26,8 @@
 // Documentation:
 //   https://developers.google.com/+/api/
 // Classes:
-//   GTLPlusPerson (0 custom class methods, 26 custom properties)
+//   GTLPlusPerson (0 custom class methods, 28 custom properties)
+//   GTLPlusPersonAgeRange (0 custom class methods, 2 custom properties)
 //   GTLPlusPersonCover (0 custom class methods, 3 custom properties)
 //   GTLPlusPersonEmailsItem (0 custom class methods, 3 custom properties)
 //   GTLPlusPersonImage (0 custom class methods, 1 custom properties)
@@ -43,6 +44,7 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLPlusPersonAgeRange;
 @class GTLPlusPersonCover;
 @class GTLPlusPersonCoverCoverInfo;
 @class GTLPlusPersonCoverCoverPhoto;
@@ -63,6 +65,9 @@
 // A short biography for this person.
 @property (copy) NSString *aboutMe;
 
+// The age range of the person.
+@property (retain) GTLPlusPersonAgeRange *ageRange;
+
 // The person's date of birth, represented as YYYY-MM-DD.
 @property (copy) NSString *birthday;
 
@@ -82,7 +87,9 @@
 // The name of this person, suitable for display.
 @property (copy) NSString *displayName;
 
-// A list of email addresses for this person.
+// A list of email addresses that this person has set to public on their Google+
+// profile. You can also use the userinfo.email scope to retrieve an
+// authenticated user's email address.
 @property (retain) NSArray *emails;  // of GTLPlusPersonEmailsItem
 
 // ETag of this response for caching purposes.
@@ -112,6 +119,9 @@
 
 // Identifies this resource as a person. Value: "plus#person".
 @property (copy) NSString *kind;
+
+// The user's preferred language for rendering.
+@property (copy) NSString *language;
 
 // An object representation of the individual components of a person's name.
 @property (retain) GTLPlusPersonName *name;
@@ -156,6 +166,22 @@
 
 // Whether the person or Google+ Page has been verified.
 @property (retain) NSNumber *verified;  // boolValue
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusPersonAgeRange
+//
+
+@interface GTLPlusPersonAgeRange : GTLObject
+
+// The age range's upper bound, if any.
+@property (retain) NSNumber *max;  // intValue
+
+// The age range's lower bound, if any.
+@property (retain) NSNumber *min;  // intValue
 
 @end
 

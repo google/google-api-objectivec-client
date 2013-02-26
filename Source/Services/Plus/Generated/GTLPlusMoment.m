@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLPlusConstants.m
+//  GTLPlusMoment.m
 //
 
 // ----------------------------------------------------------------------------
@@ -25,24 +25,30 @@
 //   The Google+ API enables developers to build on top of the Google+ platform.
 // Documentation:
 //   https://developers.google.com/+/api/
+// Classes:
+//   GTLPlusMoment (0 custom class methods, 6 custom properties)
 
-#import "GTLPlusConstants.h"
+#import "GTLPlusMoment.h"
 
-// Authorization scope
-NSString * const kGTLAuthScopePlusMe = @"https://www.googleapis.com/auth/plus.me";
+#import "GTLPlusItemScope.h"
 
-// Collection
-NSString * const kGTLPlusCollectionPlusoners = @"plusoners";
-NSString * const kGTLPlusCollectionPublic    = @"public";
-NSString * const kGTLPlusCollectionResharers = @"resharers";
-NSString * const kGTLPlusCollectionVault     = @"vault";
-NSString * const kGTLPlusCollectionVisible   = @"visible";
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusMoment
+//
 
-// OrderBy
-NSString * const kGTLPlusOrderByAlphabetical = @"alphabetical";
-NSString * const kGTLPlusOrderByBest         = @"best";
-NSString * const kGTLPlusOrderByRecent       = @"recent";
+@implementation GTLPlusMoment
+@dynamic identifier, kind, result, startDate, target, type;
 
-// SortOrder
-NSString * const kGTLPlusSortOrderAscending  = @"ascending";
-NSString * const kGTLPlusSortOrderDescending = @"descending";
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"id"
+                                forKey:@"identifier"];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"plus#moment"];
+}
+
+@end
