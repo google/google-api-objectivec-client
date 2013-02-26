@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLPlusConstants.m
+//  GTLPlusMomentsFeed.m
 //
 
 // ----------------------------------------------------------------------------
@@ -25,24 +25,37 @@
 //   The Google+ API enables developers to build on top of the Google+ platform.
 // Documentation:
 //   https://developers.google.com/+/api/
+// Classes:
+//   GTLPlusMomentsFeed (0 custom class methods, 8 custom properties)
 
-#import "GTLPlusConstants.h"
+#import "GTLPlusMomentsFeed.h"
 
-// Authorization scope
-NSString * const kGTLAuthScopePlusMe = @"https://www.googleapis.com/auth/plus.me";
+#import "GTLPlusMoment.h"
 
-// Collection
-NSString * const kGTLPlusCollectionPlusoners = @"plusoners";
-NSString * const kGTLPlusCollectionPublic    = @"public";
-NSString * const kGTLPlusCollectionResharers = @"resharers";
-NSString * const kGTLPlusCollectionVault     = @"vault";
-NSString * const kGTLPlusCollectionVisible   = @"visible";
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusMomentsFeed
+//
 
-// OrderBy
-NSString * const kGTLPlusOrderByAlphabetical = @"alphabetical";
-NSString * const kGTLPlusOrderByBest         = @"best";
-NSString * const kGTLPlusOrderByRecent       = @"recent";
+@implementation GTLPlusMomentsFeed
+@dynamic ETag, items, kind, nextLink, nextPageToken, selfLink, title, updated;
 
-// SortOrder
-NSString * const kGTLPlusSortOrderAscending  = @"ascending";
-NSString * const kGTLPlusSortOrderDescending = @"descending";
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"etag"
+                                forKey:@"ETag"];
+  return map;
+}
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLPlusMoment class]
+                                forKey:@"items"];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"plus#momentsFeed"];
+}
+
+@end
