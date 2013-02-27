@@ -13,17 +13,7 @@
 		4F346EEF1404678B00D3CE42 /* PlusSampleAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F346EEC1404678B00D3CE42 /* PlusSampleAppController.m */; };
 		4F346EF01404678B00D3CE42 /* PlusSampleWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F346EEE1404678B00D3CE42 /* PlusSampleWindowController.m */; };
 		4F346F4F1404714200D3CE42 /* PlusSampleWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F346F4D1404714200D3CE42 /* PlusSampleWindow.xib */; };
-		4F93D7DE143CE411000A2029 /* GTLPlusAcl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F93D7C9143CE411000A2029 /* GTLPlusAcl.m */; };
-		4F93D7DF143CE411000A2029 /* GTLPlusAclentryResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F93D7CB143CE411000A2029 /* GTLPlusAclentryResource.m */; };
-		4F93D7E0143CE411000A2029 /* GTLPlusActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F93D7CD143CE411000A2029 /* GTLPlusActivity.m */; };
-		4F93D7E1143CE411000A2029 /* GTLPlusActivityFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F93D7CF143CE411000A2029 /* GTLPlusActivityFeed.m */; };
-		4F93D7E2143CE411000A2029 /* GTLPlusComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F93D7D1143CE411000A2029 /* GTLPlusComment.m */; };
-		4F93D7E3143CE411000A2029 /* GTLPlusCommentFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F93D7D3143CE411000A2029 /* GTLPlusCommentFeed.m */; };
-		4F93D7E4143CE411000A2029 /* GTLPlusConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F93D7D5143CE411000A2029 /* GTLPlusConstants.m */; };
-		4F93D7E5143CE411000A2029 /* GTLPlusPeopleFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F93D7D7143CE411000A2029 /* GTLPlusPeopleFeed.m */; };
-		4F93D7E6143CE411000A2029 /* GTLPlusPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F93D7D9143CE411000A2029 /* GTLPlusPerson.m */; };
-		4F93D7E7143CE411000A2029 /* GTLQueryPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F93D7DB143CE411000A2029 /* GTLQueryPlus.m */; };
-		4F93D7E8143CE411000A2029 /* GTLServicePlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F93D7DD143CE411000A2029 /* GTLServicePlus.m */; };
+		4F92C63F16DEB3E900EA1089 /* GTLPlus_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F92C63E16DEB3E900EA1089 /* GTLPlus_Sources.m */; };
 		4FA6F3D41034AEC400C5DFA5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FA6F3D11034AEC400C5DFA5 /* MainMenu.xib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -95,29 +85,8 @@
 		4F346EED1404678B00D3CE42 /* PlusSampleWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlusSampleWindowController.h; sourceTree = "<group>"; };
 		4F346EEE1404678B00D3CE42 /* PlusSampleWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlusSampleWindowController.m; sourceTree = "<group>"; };
 		4F346F4E1404714200D3CE42 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/PlusSampleWindow.xib; sourceTree = "<group>"; };
+		4F92C63E16DEB3E900EA1089 /* GTLPlus_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLPlus_Sources.m; sourceTree = "<group>"; };
 		4F93D7C7143CE411000A2029 /* GTLPlus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLPlus.h; sourceTree = "<group>"; };
-		4F93D7C8143CE411000A2029 /* GTLPlusAcl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLPlusAcl.h; sourceTree = "<group>"; };
-		4F93D7C9143CE411000A2029 /* GTLPlusAcl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLPlusAcl.m; sourceTree = "<group>"; };
-		4F93D7CA143CE411000A2029 /* GTLPlusAclentryResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLPlusAclentryResource.h; sourceTree = "<group>"; };
-		4F93D7CB143CE411000A2029 /* GTLPlusAclentryResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLPlusAclentryResource.m; sourceTree = "<group>"; };
-		4F93D7CC143CE411000A2029 /* GTLPlusActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLPlusActivity.h; sourceTree = "<group>"; };
-		4F93D7CD143CE411000A2029 /* GTLPlusActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLPlusActivity.m; sourceTree = "<group>"; };
-		4F93D7CE143CE411000A2029 /* GTLPlusActivityFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLPlusActivityFeed.h; sourceTree = "<group>"; };
-		4F93D7CF143CE411000A2029 /* GTLPlusActivityFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLPlusActivityFeed.m; sourceTree = "<group>"; };
-		4F93D7D0143CE411000A2029 /* GTLPlusComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLPlusComment.h; sourceTree = "<group>"; };
-		4F93D7D1143CE411000A2029 /* GTLPlusComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLPlusComment.m; sourceTree = "<group>"; };
-		4F93D7D2143CE411000A2029 /* GTLPlusCommentFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLPlusCommentFeed.h; sourceTree = "<group>"; };
-		4F93D7D3143CE411000A2029 /* GTLPlusCommentFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLPlusCommentFeed.m; sourceTree = "<group>"; };
-		4F93D7D4143CE411000A2029 /* GTLPlusConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLPlusConstants.h; sourceTree = "<group>"; };
-		4F93D7D5143CE411000A2029 /* GTLPlusConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLPlusConstants.m; sourceTree = "<group>"; };
-		4F93D7D6143CE411000A2029 /* GTLPlusPeopleFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLPlusPeopleFeed.h; sourceTree = "<group>"; };
-		4F93D7D7143CE411000A2029 /* GTLPlusPeopleFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLPlusPeopleFeed.m; sourceTree = "<group>"; };
-		4F93D7D8143CE411000A2029 /* GTLPlusPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLPlusPerson.h; sourceTree = "<group>"; };
-		4F93D7D9143CE411000A2029 /* GTLPlusPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLPlusPerson.m; sourceTree = "<group>"; };
-		4F93D7DA143CE411000A2029 /* GTLQueryPlus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLQueryPlus.h; sourceTree = "<group>"; };
-		4F93D7DB143CE411000A2029 /* GTLQueryPlus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLQueryPlus.m; sourceTree = "<group>"; };
-		4F93D7DC143CE411000A2029 /* GTLServicePlus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLServicePlus.h; sourceTree = "<group>"; };
-		4F93D7DD143CE411000A2029 /* GTLServicePlus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLServicePlus.m; sourceTree = "<group>"; };
 		4FA6F3D21034AEC400C5DFA5 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		4FD0F1DA0CBC68F300059DC1 /* buildStripHeaders */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.script.sh; path = buildStripHeaders; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -242,28 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				4F93D7C7143CE411000A2029 /* GTLPlus.h */,
-				4F93D7C8143CE411000A2029 /* GTLPlusAcl.h */,
-				4F93D7C9143CE411000A2029 /* GTLPlusAcl.m */,
-				4F93D7CA143CE411000A2029 /* GTLPlusAclentryResource.h */,
-				4F93D7CB143CE411000A2029 /* GTLPlusAclentryResource.m */,
-				4F93D7CC143CE411000A2029 /* GTLPlusActivity.h */,
-				4F93D7CD143CE411000A2029 /* GTLPlusActivity.m */,
-				4F93D7CE143CE411000A2029 /* GTLPlusActivityFeed.h */,
-				4F93D7CF143CE411000A2029 /* GTLPlusActivityFeed.m */,
-				4F93D7D0143CE411000A2029 /* GTLPlusComment.h */,
-				4F93D7D1143CE411000A2029 /* GTLPlusComment.m */,
-				4F93D7D2143CE411000A2029 /* GTLPlusCommentFeed.h */,
-				4F93D7D3143CE411000A2029 /* GTLPlusCommentFeed.m */,
-				4F93D7D4143CE411000A2029 /* GTLPlusConstants.h */,
-				4F93D7D5143CE411000A2029 /* GTLPlusConstants.m */,
-				4F93D7D6143CE411000A2029 /* GTLPlusPeopleFeed.h */,
-				4F93D7D7143CE411000A2029 /* GTLPlusPeopleFeed.m */,
-				4F93D7D8143CE411000A2029 /* GTLPlusPerson.h */,
-				4F93D7D9143CE411000A2029 /* GTLPlusPerson.m */,
-				4F93D7DA143CE411000A2029 /* GTLQueryPlus.h */,
-				4F93D7DB143CE411000A2029 /* GTLQueryPlus.m */,
-				4F93D7DC143CE411000A2029 /* GTLServicePlus.h */,
-				4F93D7DD143CE411000A2029 /* GTLServicePlus.m */,
+				4F92C63E16DEB3E900EA1089 /* GTLPlus_Sources.m */,
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -407,17 +355,7 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				4F346EEF1404678B00D3CE42 /* PlusSampleAppController.m in Sources */,
 				4F346EF01404678B00D3CE42 /* PlusSampleWindowController.m in Sources */,
-				4F93D7DE143CE411000A2029 /* GTLPlusAcl.m in Sources */,
-				4F93D7DF143CE411000A2029 /* GTLPlusAclentryResource.m in Sources */,
-				4F93D7E0143CE411000A2029 /* GTLPlusActivity.m in Sources */,
-				4F93D7E1143CE411000A2029 /* GTLPlusActivityFeed.m in Sources */,
-				4F93D7E2143CE411000A2029 /* GTLPlusComment.m in Sources */,
-				4F93D7E3143CE411000A2029 /* GTLPlusCommentFeed.m in Sources */,
-				4F93D7E4143CE411000A2029 /* GTLPlusConstants.m in Sources */,
-				4F93D7E5143CE411000A2029 /* GTLPlusPeopleFeed.m in Sources */,
-				4F93D7E6143CE411000A2029 /* GTLPlusPerson.m in Sources */,
-				4F93D7E7143CE411000A2029 /* GTLQueryPlus.m in Sources */,
-				4F93D7E8143CE411000A2029 /* GTLServicePlus.m in Sources */,
+				4F92C63F16DEB3E900EA1089 /* GTLPlus_Sources.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
