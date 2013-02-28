@@ -91,6 +91,7 @@
 #import "GTLYouTubeVideoPlayer.h"
 #import "GTLYouTubeVideoProcessingDetails.h"
 #import "GTLYouTubeVideoProcessingDetailsProcessingProgress.h"
+#import "GTLYouTubeVideoProjectDetails.h"
 #import "GTLYouTubeVideoRecordingDetails.h"
 #import "GTLYouTubeVideoSnippet.h"
 #import "GTLYouTubeVideoStatistics.h"

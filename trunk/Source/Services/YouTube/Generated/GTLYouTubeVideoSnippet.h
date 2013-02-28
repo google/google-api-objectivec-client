@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoSnippet (0 custom class methods, 7 custom properties)
+//   GTLYouTubeVideoSnippet (0 custom class methods, 8 custom properties)
 //   GTLYouTubeVideoSnippetThumbnails (0 custom class methods, 0 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -54,6 +54,9 @@
 // The ID that YouTube uses to uniquely identify the channel that the video was
 // uploaded to.
 @property (copy) NSString *channelId;
+
+// Channel title for the channel that the video belongs to.
+@property (copy) NSString *channelTitle;
 
 // The video's description.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.

@@ -43,16 +43,17 @@
 
 @interface GTLYouTubeVideoFileDetailsAudioStream : GTLObject
 
-// Audio stream bitrate, in bits per second.
+// The audio stream's bitrate, in bits per second.
 @property (retain) NSNumber *bitrateBps;  // unsignedLongLongValue
 
-// Number of audio channels.
+// The number of audio channels that the stream contains.
 @property (retain) NSNumber *channelCount;  // unsignedIntValue
 
-// Audio codec used.
+// The audio codec that the stream uses.
 @property (copy) NSString *codec;
 
-// Audio vendor identifier, typically a four-letter vendor code.
+// A value that uniquely identifies a video vendor. Typically, the value is a
+// four-letter vendor code.
 @property (copy) NSString *vendor;
 
 @end

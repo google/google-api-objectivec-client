@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideo.m
+//  GTLYouTubeVideoProjectDetails.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,45 +26,23 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideo (0 custom class methods, 15 custom properties)
+//   GTLYouTubeVideoProjectDetails (0 custom class methods, 1 custom properties)
 
-#import "GTLYouTubeVideo.h"
-
-#import "GTLYouTubeVideoContentDetails.h"
-#import "GTLYouTubeVideoFileDetails.h"
-#import "GTLYouTubeVideoMonetizationDetails.h"
-#import "GTLYouTubeVideoPlayer.h"
-#import "GTLYouTubeVideoProcessingDetails.h"
 #import "GTLYouTubeVideoProjectDetails.h"
-#import "GTLYouTubeVideoRecordingDetails.h"
-#import "GTLYouTubeVideoSnippet.h"
-#import "GTLYouTubeVideoStatistics.h"
-#import "GTLYouTubeVideoStatus.h"
-#import "GTLYouTubeVideoSuggestions.h"
-#import "GTLYouTubeVideoTopicDetails.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideo
+//   GTLYouTubeVideoProjectDetails
 //
 
-@implementation GTLYouTubeVideo
-@dynamic contentDetails, ETag, fileDetails, identifier, kind,
-         monetizationDetails, player, processingDetails, projectDetails,
-         recordingDetails, snippet, statistics, status, suggestions,
-         topicDetails;
+@implementation GTLYouTubeVideoProjectDetails
+@dynamic tags;
 
-+ (NSDictionary *)propertyToJSONKeyMap {
++ (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"etag", @"ETag",
-      @"id", @"identifier",
-      nil];
+    [NSDictionary dictionaryWithObject:[NSString class]
+                                forKey:@"tags"];
   return map;
-}
-
-+ (void)load {
-  [self registerObjectClassForKind:@"youtube#video"];
 }
 
 @end

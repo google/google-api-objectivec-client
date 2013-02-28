@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoSnippet (0 custom class methods, 7 custom properties)
+//   GTLYouTubeVideoSnippet (0 custom class methods, 8 custom properties)
 //   GTLYouTubeVideoSnippetThumbnails (0 custom class methods, 0 custom properties)
 
 #import "GTLYouTubeVideoSnippet.h"
@@ -39,8 +39,8 @@
 //
 
 @implementation GTLYouTubeVideoSnippet
-@dynamic categoryId, channelId, descriptionProperty, publishedAt, tags,
-         thumbnails, title;
+@dynamic categoryId, channelId, channelTitle, descriptionProperty, publishedAt,
+         tags, thumbnails, title;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
