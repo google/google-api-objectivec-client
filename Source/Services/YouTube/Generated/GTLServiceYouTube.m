@@ -101,6 +101,7 @@
                       [GTLYouTubeVideoPlayer class],
                       [GTLYouTubeVideoProcessingDetails class],
                       [GTLYouTubeVideoProcessingDetailsProcessingProgress class],
+                      [GTLYouTubeVideoProjectDetails class],
                       [GTLYouTubeVideoRecordingDetails class],
                       [GTLYouTubeVideoSnippet class],
                       [GTLYouTubeVideoStatistics class],

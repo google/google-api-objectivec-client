@@ -43,15 +43,23 @@
 
 @interface GTLYouTubeVideoProcessingDetailsProcessingProgress : GTLObject
 
-// Number of parts already processed. Progress expressed in percent should be
-// computed as: 100 * parts_processed / parts_total.
+// The number of parts of the video that YouTube has already processed. You can
+// estimate the percentage of the video that YouTube has already processed by
+// calculating:
+// 100 * parts_processed / parts_total
+// Note that since the estimated number of parts could increase without a
+// corresponding increase in the number of parts that have already been
+// processed, it is possible that the calculated progress could periodically
+// decrease while YouTube processes a video.
 @property (retain) NSNumber *partsProcessed;  // unsignedLongLongValue
 
-// An estimate of total number of parts to process. The number might be updated
-// with more precise estimates as the processing progresses.
+// An estimate of the total number of parts that need to be processed for the
+// video. The number may be updated with more precise estimates while YouTube
+// processes the video.
 @property (retain) NSNumber *partsTotal;  // unsignedLongLongValue
 
-// Estimated time till video processing is complete, in milliseconds.
+// An estimate of the amount of time, in millseconds, that YouTube needs to
+// finish processing the video.
 @property (retain) NSNumber *timeLeftMs;  // unsignedLongLongValue
 
 @end

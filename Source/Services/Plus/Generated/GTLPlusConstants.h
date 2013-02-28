@@ -35,8 +35,10 @@
 #endif
 
 // Authorization scope
+// Know your name, basic info, and list of people you're connected to on Google+
+GTL_EXTERN NSString * const kGTLAuthScopePlusLogin;  // "https://www.googleapis.com/auth/plus.login"
 // Know who you are on Google
-GTL_EXTERN NSString * const kGTLAuthScopePlusMe;  // "https://www.googleapis.com/auth/plus.me"
+GTL_EXTERN NSString * const kGTLAuthScopePlusMe;     // "https://www.googleapis.com/auth/plus.me"
 
 // Collection
 GTL_EXTERN NSString * const kGTLPlusCollectionPlusoners;  // "plusoners"

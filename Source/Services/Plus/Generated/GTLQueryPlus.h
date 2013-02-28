@@ -73,6 +73,7 @@
 //  Required:
 //   activityId: The ID of the activity to get.
 //  Authorization scope(s):
+//   kGTLAuthScopePlusLogin
 //   kGTLAuthScopePlusMe
 // Fetches a GTLPlusActivity.
 + (id)queryForActivitiesGetWithActivityId:(NSString *)activityId;
@@ -93,6 +94,7 @@
 //     result sets. To get the next page of results, set this parameter to the
 //     value of "nextPageToken" from the previous response.
 //  Authorization scope(s):
+//   kGTLAuthScopePlusLogin
 //   kGTLAuthScopePlusMe
 // Fetches a GTLPlusActivityFeed.
 + (id)queryForActivitiesListWithUserId:(NSString *)userId
@@ -119,6 +121,7 @@
 //     value of "nextPageToken" from the previous response. This token can be of
 //     any length.
 //  Authorization scope(s):
+//   kGTLAuthScopePlusLogin
 //   kGTLAuthScopePlusMe
 // Fetches a GTLPlusActivityFeed.
 + (id)queryForActivitiesSearchWithQuery:(NSString *)query;
@@ -132,6 +135,7 @@
 //  Required:
 //   commentId: The ID of the comment to get.
 //  Authorization scope(s):
+//   kGTLAuthScopePlusLogin
 //   kGTLAuthScopePlusMe
 // Fetches a GTLPlusComment.
 + (id)queryForCommentsGetWithCommentId:(NSString *)commentId;
@@ -152,6 +156,7 @@
 //      kGTLPlusSortOrderAscending: Sort oldest comments first.
 //      kGTLPlusSortOrderDescending: Sort newest comments first.
 //  Authorization scope(s):
+//   kGTLAuthScopePlusLogin
 //   kGTLAuthScopePlusMe
 // Fetches a GTLPlusCommentFeed.
 + (id)queryForCommentsListWithActivityId:(NSString *)activityId;
@@ -170,6 +175,8 @@
 //      kGTLPlusCollectionVault: The default collection for writing new moments.
 //  Optional:
 //   debug: Return the moment as written. Should be used only for debugging.
+//  Authorization scope(s):
+//   kGTLAuthScopePlusLogin
 // Fetches a GTLPlusMoment.
 + (id)queryForMomentsInsertWithObject:(GTLPlusMoment *)object
                                userId:(NSString *)userId
@@ -192,6 +199,8 @@
 //     value of "nextPageToken" from the previous response.
 //   targetUrl: Only moments containing this targetUrl will be returned.
 //   type: Only moments of this type will be returned.
+//  Authorization scope(s):
+//   kGTLAuthScopePlusLogin
 // Fetches a GTLPlusMomentsFeed.
 + (id)queryForMomentsListWithUserId:(NSString *)userId
                          collection:(NSString *)collection;
@@ -200,6 +209,8 @@
 // Delete a moment.
 //  Required:
 //   identifier: The ID of the moment to delete.
+//  Authorization scope(s):
+//   kGTLAuthScopePlusLogin
 + (id)queryForMomentsRemoveWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
@@ -214,6 +225,7 @@
 //   userId: The ID of the person to get the profile for. The special value "me"
 //     can be used to indicate the authenticated user.
 //  Authorization scope(s):
+//   kGTLAuthScopePlusLogin
 //   kGTLAuthScopePlusMe
 // Fetches a GTLPlusPerson.
 + (id)queryForPeopleGetWithUserId:(NSString *)userId;
@@ -237,6 +249,8 @@
 //   pageToken: The continuation token, which is used to page through large
 //     result sets. To get the next page of results, set this parameter to the
 //     value of "nextPageToken" from the previous response.
+//  Authorization scope(s):
+//   kGTLAuthScopePlusLogin
 // Fetches a GTLPlusPeopleFeed.
 + (id)queryForPeopleListWithUserId:(NSString *)userId
                         collection:(NSString *)collection;
@@ -258,6 +272,7 @@
 //     result sets. To get the next page of results, set this parameter to the
 //     value of "nextPageToken" from the previous response.
 //  Authorization scope(s):
+//   kGTLAuthScopePlusLogin
 //   kGTLAuthScopePlusMe
 // Fetches a GTLPlusPeopleFeed.
 + (id)queryForPeopleListByActivityWithActivityId:(NSString *)activityId
@@ -279,6 +294,7 @@
 //     value of "nextPageToken" from the previous response. This token can be of
 //     any length.
 //  Authorization scope(s):
+//   kGTLAuthScopePlusLogin
 //   kGTLAuthScopePlusMe
 // Fetches a GTLPlusPeopleFeed.
 + (id)queryForPeopleSearchWithQuery:(NSString *)query;

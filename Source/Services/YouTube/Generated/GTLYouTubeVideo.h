@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideo (0 custom class methods, 14 custom properties)
+//   GTLYouTubeVideo (0 custom class methods, 15 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -39,6 +39,7 @@
 @class GTLYouTubeVideoMonetizationDetails;
 @class GTLYouTubeVideoPlayer;
 @class GTLYouTubeVideoProcessingDetails;
+@class GTLYouTubeVideoProjectDetails;
 @class GTLYouTubeVideoRecordingDetails;
 @class GTLYouTubeVideoSnippet;
 @class GTLYouTubeVideoStatistics;
@@ -94,6 +95,10 @@
 // uploaded can track the progress that YouTube has made in processing the
 // uploaded video file. This data can only be retrieved by the video owner.
 @property (retain) GTLYouTubeVideoProcessingDetails *processingDetails;
+
+// The projectDetails object contains information about the project specific
+// video metadata.
+@property (retain) GTLYouTubeVideoProjectDetails *projectDetails;
 
 // The recordingDetails object encapsulates information about the location, date
 // and address where the video was recorded.

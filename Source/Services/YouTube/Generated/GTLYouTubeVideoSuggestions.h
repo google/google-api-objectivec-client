@@ -46,19 +46,31 @@
 
 @interface GTLYouTubeVideoSuggestions : GTLObject
 
-// Editor operations that could improve video quality.
+// A list of video editing operations that might improve the video quality or
+// playback experience of the uploaded video.
 @property (retain) NSArray *editorSuggestions;  // of NSString
 
-// Errors encountered during video processing.
+// A list of errors that will prevent YouTube from successfully processing the
+// uploaded video video. These errors indicate that, regardless of the video's
+// current processing status, eventually, that status will almost certainly be
+// failed.
 @property (retain) NSArray *processingErrors;  // of NSString
 
-// Hints about how to improve video processing.
+// A list of suggestions that may improve YouTube's ability to process the
+// video.
 @property (retain) NSArray *processingHints;  // of NSString
 
-// Warnings produced by the video processing engine.
+// A list of reasons why YouTube may have difficulty transcoding the uploaded
+// video or that might result in an erroneous transcoding. These warnings are
+// generated before YouTube actually processes the uploaded video file. In
+// addition, they identify issues that are unlikely to cause the video
+// processing to fail but that might cause problems such as sync issues, video
+// artifacts, or a missing audio track.
 @property (retain) NSArray *processingWarnings;  // of NSString
 
-// Tags that could be added to aid video discovery.
+// A list of keyword tags that could be added to the video's metadata to
+// increase the likelihood that users will locate your video when searching or
+// browsing on YouTube.
 @property (retain) NSArray *tagSuggestions;  // of GTLYouTubeVideoSuggestionsTagSuggestion
 
 @end

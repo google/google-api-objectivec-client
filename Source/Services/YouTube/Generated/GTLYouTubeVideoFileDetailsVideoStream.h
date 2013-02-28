@@ -43,28 +43,32 @@
 
 @interface GTLYouTubeVideoFileDetailsVideoStream : GTLObject
 
-// Display aspect ratio, which might differ from width_pixels / height_pixels.
+// The video content's display aspect ratio, which specifies the aspect ratio in
+// which the video should be displayed.
 @property (retain) NSNumber *aspectRatio;  // doubleValue
 
-// Video stream bitrate, in bits per second.
+// The video stream's bitrate, in bits per second.
 @property (retain) NSNumber *bitrateBps;  // unsignedLongLongValue
 
-// Video codec used.
+// The video codec that the stream uses.
 @property (copy) NSString *codec;
 
-// Video frame rate, in frames per second.
+// The video stream's frame rate, in frames per second.
 @property (retain) NSNumber *frameRateFps;  // doubleValue
 
-// Video height in pixels.
+// The encoded video content's height in pixels.
 @property (retain) NSNumber *heightPixels;  // unsignedIntValue
 
-// Rotation that is necessary to display the video properly.
+// The amount that YouTube needs to rotate the original source content to
+// properly display the video.
 @property (copy) NSString *rotation;
 
-// Video vendor identifier, typically a four-letter vendor code.
+// A value that uniquely identifies a video vendor. Typically, the value is a
+// four-letter vendor code.
 @property (copy) NSString *vendor;
 
-// Video width in pixels.
+// The encoded video content's width in pixels. You can calculate the video's
+// encoding aspect ratio as width_pixels / height_pixels.
 @property (retain) NSNumber *widthPixels;  // unsignedIntValue
 
 @end

@@ -94,6 +94,7 @@
 #import "GTLYouTubeVideoPlayer.m"
 #import "GTLYouTubeVideoProcessingDetails.m"
 #import "GTLYouTubeVideoProcessingDetailsProcessingProgress.m"
+#import "GTLYouTubeVideoProjectDetails.m"
 #import "GTLYouTubeVideoRecordingDetails.m"
 #import "GTLYouTubeVideoSnippet.m"
 #import "GTLYouTubeVideoStatistics.m"

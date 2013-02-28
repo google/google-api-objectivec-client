@@ -29,7 +29,8 @@
 #import "GTLPlusConstants.h"
 
 // Authorization scope
-NSString * const kGTLAuthScopePlusMe = @"https://www.googleapis.com/auth/plus.me";
+NSString * const kGTLAuthScopePlusLogin = @"https://www.googleapis.com/auth/plus.login";
+NSString * const kGTLAuthScopePlusMe    = @"https://www.googleapis.com/auth/plus.me";
 
 // Collection
 NSString * const kGTLPlusCollectionPlusoners = @"plusoners";

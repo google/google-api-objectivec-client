@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/google-apps/calendar/firstapp
 // Classes:
-//   GTLCalendarCalendarListEntry (0 custom class methods, 15 custom properties)
+//   GTLCalendarCalendarListEntry (0 custom class methods, 16 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -91,6 +91,10 @@
 
 // Geographic location of the calendar as free-form text. Optional. Read-only.
 @property (copy) NSString *location;
+
+// Whether the calendar is the primary calendar of the authenticated user.
+// Read-only. Optional. The default is False.
+@property (retain) NSNumber *primary;  // boolValue
 
 // Whether the calendar content shows up in the calendar UI. Optional. The
 // default is False.

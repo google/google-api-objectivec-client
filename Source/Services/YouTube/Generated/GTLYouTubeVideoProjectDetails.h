@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideoSuggestionsTagSuggestion.h
+//  GTLYouTubeVideoProjectDetails.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoSuggestionsTagSuggestion (0 custom class methods, 2 custom properties)
+//   GTLYouTubeVideoProjectDetails (0 custom class methods, 1 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,21 +36,14 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoSuggestionsTagSuggestion
+//   GTLYouTubeVideoProjectDetails
 //
 
-// A single tag suggestion with it's relevance information.
+// Project specific details about the content of a YouTube Video.
 
-@interface GTLYouTubeVideoSuggestionsTagSuggestion : GTLObject
+@interface GTLYouTubeVideoProjectDetails : GTLObject
 
-// A set of video categories for which the tag is relevant. You can use this
-// information to display appropriate tag suggestions based on the video
-// category that the video uploader associates with the video. By default, tag
-// suggestions are relevant for all categories if there are no restricts defined
-// for the keyword.
-@property (retain) NSArray *categoryRestricts;  // of NSString
-
-// The keyword tag suggested for the video.
-@property (copy) NSString *tag;
+// A list of project tags associated with the video during the upload.
+@property (retain) NSArray *tags;  // of NSString
 
 @end
