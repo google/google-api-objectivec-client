@@ -69,8 +69,8 @@
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
 
-// Short term download URL for the file. This will only be populated on files
-// with content stored in Drive.
+// Short lived download URL for the file. This is only populated for files with
+// content stored in Drive.
 @property (copy) NSString *downloadUrl;
 
 // Whether the file can be edited by the current user.
@@ -89,19 +89,19 @@
 // Links for exporting Google Docs to specific formats.
 @property (retain) GTLDriveFileExportLinks *exportLinks;
 
-// The file extension used when downloading this file. This field is set from
-// the title when inserting or uploading new content. This will only be
-// populated on files with content stored in Drive.
+// The file extension used when downloading this file. This field is read only.
+// To set the extension, include it in the title when creating the file. This is
+// only populated for files with content stored in Drive.
 @property (copy) NSString *fileExtension;
 
-// The size of the file in bytes. This will only be populated on files with
-// content stored in Drive.
+// The size of the file in bytes. This is only populated for files with content
+// stored in Drive.
 @property (retain) NSNumber *fileSize;  // longLongValue
 
 // A link to the file's icon.
 @property (copy) NSString *iconLink;
 
-// The id of the file.
+// The ID of the file.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
@@ -127,7 +127,7 @@
 // Last time this file was viewed by the user (formatted RFC 3339 timestamp).
 @property (retain) GTLDateTime *lastViewedByMeDate;
 
-// An MD5 checksum for the content of this file. This will only be populated on
+// An MD5 checksum for the content of this file. This is populated only for
 // files with content stored in Drive.
 @property (copy) NSString *md5Checksum;
 
@@ -298,7 +298,7 @@
 
 @interface GTLDriveFileIndexableText : GTLObject
 
-// The text to be indexed for this file
+// The text to be indexed for this file.
 @property (copy) NSString *text;
 
 @end

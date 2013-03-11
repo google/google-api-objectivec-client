@@ -43,7 +43,7 @@
 //   GTLDriveRevision
 //
 
-// A single revision of a file.
+// A revision of a file.
 
 @interface GTLDriveRevision : GTLObject
 

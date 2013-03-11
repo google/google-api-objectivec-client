@@ -234,7 +234,7 @@
 // List all of the people in the specified collection.
 //  Required:
 //   userId: Get the collection of people for the person identified. Use "me" to
-//     indiciated the authenticated user.
+//     indicate the authenticated user.
 //   collection: The collection of people to list.
 //      kGTLPlusCollectionVisible: The list of people who this user has added to
 //        one or more circles, limited to the circles visible to the requesting
