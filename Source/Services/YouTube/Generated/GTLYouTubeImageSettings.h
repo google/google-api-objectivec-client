@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeChannel.m
+//  GTLYouTubeImageSettings.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,37 +26,29 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannel (0 custom class methods, 9 custom properties)
+//   GTLYouTubeImageSettings (0 custom class methods, 9 custom properties)
 
-#import "GTLYouTubeChannel.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLYouTubeChannelBrandingSettings.h"
-#import "GTLYouTubeChannelContentDetails.h"
-#import "GTLYouTubeChannelSnippet.h"
-#import "GTLYouTubeChannelStatistics.h"
-#import "GTLYouTubeChannelStatus.h"
-#import "GTLYouTubeChannelTopicDetails.h"
+@class GTLYouTubeLocalizedProperty;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeChannel
+//   GTLYouTubeImageSettings
 //
 
-@implementation GTLYouTubeChannel
-@dynamic brandingSettings, contentDetails, ETag, identifier, kind, snippet,
-         statistics, status, topicDetails;
-
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"etag", @"ETag",
-      @"id", @"identifier",
-      nil];
-  return map;
-}
-
-+ (void)load {
-  [self registerObjectClassForKind:@"youtube#channel"];
-}
-
+@interface GTLYouTubeImageSettings : GTLObject
+@property (retain) GTLYouTubeLocalizedProperty *backgroundImageUrl;
+@property (copy) NSString *bannerImageUrl;
+@property (copy) NSString *bannerMobileImageUrl;
+@property (retain) GTLYouTubeLocalizedProperty *largeBrandedBannerImageImapScript;
+@property (retain) GTLYouTubeLocalizedProperty *largeBrandedBannerImageUrl;
+@property (retain) GTLYouTubeLocalizedProperty *smallBrandedBannerImageImapScript;
+@property (retain) GTLYouTubeLocalizedProperty *smallBrandedBannerImageUrl;
+@property (copy) NSString *trackingImageUrl;
+@property (copy) NSString *watchIconImageUrl;
 @end

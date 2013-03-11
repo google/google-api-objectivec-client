@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLYouTubeResourceId;
+@class GTLYouTubeResourceId2;
 @class GTLYouTubeSearchResultSnippet;
 
 // ----------------------------------------------------------------------------
@@ -49,16 +49,15 @@
 
 @interface GTLYouTubeSearchResult : GTLObject
 
-// The ETag of the search result.
+// Etag of this resource.
 @property (copy) NSString *ETag;
 
 // The id object contains information that can be used to uniquely identify the
 // resource that matches the search request.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) GTLYouTubeResourceId *identifier;
+@property (retain) GTLYouTubeResourceId2 *identifier;
 
-// The type of the API response. For this resource, the value will be
-// youtube#searchResult.
+// The kind, fixed to "youtube#searchResult".
 @property (copy) NSString *kind;
 
 // The snippet object contains basic details about a search result, such as its

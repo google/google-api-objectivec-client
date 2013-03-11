@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeChannel.m
+//  GTLYouTubeImageSettings.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,37 +26,20 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannel (0 custom class methods, 9 custom properties)
+//   GTLYouTubeImageSettings (0 custom class methods, 9 custom properties)
 
-#import "GTLYouTubeChannel.h"
+#import "GTLYouTubeImageSettings.h"
 
-#import "GTLYouTubeChannelBrandingSettings.h"
-#import "GTLYouTubeChannelContentDetails.h"
-#import "GTLYouTubeChannelSnippet.h"
-#import "GTLYouTubeChannelStatistics.h"
-#import "GTLYouTubeChannelStatus.h"
-#import "GTLYouTubeChannelTopicDetails.h"
+#import "GTLYouTubeLocalizedProperty.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeChannel
+//   GTLYouTubeImageSettings
 //
 
-@implementation GTLYouTubeChannel
-@dynamic brandingSettings, contentDetails, ETag, identifier, kind, snippet,
-         statistics, status, topicDetails;
-
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"etag", @"ETag",
-      @"id", @"identifier",
-      nil];
-  return map;
-}
-
-+ (void)load {
-  [self registerObjectClassForKind:@"youtube#channel"];
-}
-
+@implementation GTLYouTubeImageSettings
+@dynamic backgroundImageUrl, bannerImageUrl, bannerMobileImageUrl,
+         largeBrandedBannerImageImapScript, largeBrandedBannerImageUrl,
+         smallBrandedBannerImageImapScript, smallBrandedBannerImageUrl,
+         trackingImageUrl, watchIconImageUrl;
 @end

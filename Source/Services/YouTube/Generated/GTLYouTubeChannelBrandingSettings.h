@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeChannel.m
+//  GTLYouTubeChannelBrandingSettings.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,37 +26,29 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannel (0 custom class methods, 9 custom properties)
+//   GTLYouTubeChannelBrandingSettings (0 custom class methods, 4 custom properties)
 
-#import "GTLYouTubeChannel.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLYouTubeChannelBrandingSettings.h"
-#import "GTLYouTubeChannelContentDetails.h"
-#import "GTLYouTubeChannelSnippet.h"
-#import "GTLYouTubeChannelStatistics.h"
-#import "GTLYouTubeChannelStatus.h"
-#import "GTLYouTubeChannelTopicDetails.h"
+@class GTLYouTubeChannelSettings;
+@class GTLYouTubeImageSettings;
+@class GTLYouTubePropertyValue;
+@class GTLYouTubeWatchSettings;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeChannel
+//   GTLYouTubeChannelBrandingSettings
 //
 
-@implementation GTLYouTubeChannel
-@dynamic brandingSettings, contentDetails, ETag, identifier, kind, snippet,
-         statistics, status, topicDetails;
+// Branding properties of a YouTube channel.
 
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"etag", @"ETag",
-      @"id", @"identifier",
-      nil];
-  return map;
-}
-
-+ (void)load {
-  [self registerObjectClassForKind:@"youtube#channel"];
-}
-
+@interface GTLYouTubeChannelBrandingSettings : GTLObject
+@property (retain) GTLYouTubeChannelSettings *channel;
+@property (retain) NSArray *hints;  // of GTLYouTubePropertyValue
+@property (retain) GTLYouTubeImageSettings *image;
+@property (retain) GTLYouTubeWatchSettings *watch;
 @end

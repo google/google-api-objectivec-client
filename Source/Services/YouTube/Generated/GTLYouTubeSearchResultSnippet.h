@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeSearchResultSnippet (0 custom class methods, 5 custom properties)
+//   GTLYouTubeSearchResultSnippet (0 custom class methods, 6 custom properties)
 //   GTLYouTubeSearchResultSnippetThumbnails (0 custom class methods, 0 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -43,14 +43,15 @@
 //   GTLYouTubeSearchResultSnippet
 //
 
-// Basic details about a search result, including title, description and
-// thumbnails of the item referenced by the search result.
-
 @interface GTLYouTubeSearchResultSnippet : GTLObject
 
 // The value that YouTube uses to uniquely identify the channel that published
 // the resource that the search result identifies.
 @property (copy) NSString *channelId;
+
+// The title of the channel that published the resource that the search result
+// identifies.
+@property (copy) NSString *channelTitle;
 
 // A description of the search result.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
@@ -65,7 +66,7 @@
 // object that contains other information about the thumbnail.
 @property (retain) GTLYouTubeSearchResultSnippetThumbnails *thumbnails;
 
-// The title to display for the search result.
+// The title of the search result.
 @property (copy) NSString *title;
 
 @end

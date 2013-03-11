@@ -43,6 +43,10 @@ NSString * const kGTLYouTubeBroadcastStatusLive      = @"live";
 NSString * const kGTLYouTubeBroadcastStatusTesting   = @"testing";
 NSString * const kGTLYouTubeBroadcastStatusUpcoming  = @"upcoming";
 
+// ChannelType
+NSString * const kGTLYouTubeChannelTypeAny  = @"any";
+NSString * const kGTLYouTubeChannelTypeShow = @"show";
+
 // Order
 NSString * const kGTLYouTubeOrderAlphabetical = @"alphabetical";
 NSString * const kGTLYouTubeOrderDate         = @"date";
@@ -84,3 +88,8 @@ NSString * const kGTLYouTubeVideoLicenseYoutube        = @"youtube";
 // VideoSyndicated
 NSString * const kGTLYouTubeVideoSyndicatedAny  = @"any";
 NSString * const kGTLYouTubeVideoSyndicatedTrue = @"true";
+
+// VideoType
+NSString * const kGTLYouTubeVideoTypeAny     = @"any";
+NSString * const kGTLYouTubeVideoTypeEpisode = @"episode";
+NSString * const kGTLYouTubeVideoTypeMovie   = @"movie";

@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (31 custom class methods, 33 custom properties)
+//   GTLQueryYouTube (31 custom class methods, 37 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -57,7 +57,9 @@
 @property (copy) NSString *broadcastStatus;
 @property (copy) NSString *categoryId;
 @property (copy) NSString *channelId;
+@property (copy) NSString *channelType;
 @property (copy) NSString *forChannelId;
+@property (assign) BOOL forContentOwner;
 @property (copy) NSString *hl;
 @property (copy) NSString *home;
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
@@ -66,6 +68,7 @@
 @property (assign) BOOL mine;
 @property (copy) NSString *mySubscribers;
 @property (copy) NSString *onBehalfOf;
+@property (copy) NSString *onBehalfOfContentOwner;
 @property (copy) NSString *order;
 @property (copy) NSString *pageToken;
 @property (copy) NSString *part;
@@ -87,6 +90,7 @@
 @property (copy) NSString *videoId;
 @property (copy) NSString *videoLicense;
 @property (copy) NSString *videoSyndicated;
+@property (copy) NSString *videoType;
 
 #pragma mark -
 #pragma mark "activities" methods
@@ -180,6 +184,15 @@
 //     channels owned by the authenticated user.
 //   mySubscribers: Set this parameter's value to true to retrieve a list of
 //     channels that subscribed to the authenticated user's channel.
+//   onBehalfOfContentOwner: The onBehalfOfContentOwner parameter indicates that
+//     the authenticated user is acting on behalf of the content owner specified
+//     in the parameter value. This parameter is intended for YouTube content
+//     partners that own and manage many different YouTube channels. It allows
+//     content owners to authenticate once and get access to all their video and
+//     channel data, without having to provide authentication credentials for
+//     each individual channel. The actual CMS account that the user
+//     authenticates with needs to be linked to the specified YouTube content
+//     owner.
 //   pageToken: The pageToken parameter identifies a specific page in the result
 //     set that should be returned. In an API response, the nextPageToken and
 //     prevPageToken properties identify other pages that could be retrieved.
@@ -573,7 +586,25 @@
 //  Optional:
 //   channelId: The channelId parameter indicates that the API response should
 //     only contain resources created by the channel
+//   channelType: The channelType parameter lets you restrict a search to a
+//     particular type of channel.
+//      kGTLYouTubeChannelTypeAny: Return all channels.
+//      kGTLYouTubeChannelTypeShow: Only retrieve shows.
+//   forContentOwner: The forContentOwner parameter restricts the search to only
+//     retrieve resources owned by the content owner specified by the
+//     onBehalfOfContentOwner parameter. The user must be authenticated as a CMS
+//     account linked to the specified content owner and onBehalfOfContentOwner
+//     must be provided.
 //   maxResults: USE_DESCRIPTION --- channels:list:maxResults (0..50, default 5)
+//   onBehalfOfContentOwner: The onBehalfOfContentOwner parameter indicates that
+//     the authenticated user is acting on behalf of the content owner specified
+//     in the parameter value. This parameter is intended for YouTube content
+//     partners that own and manage many different YouTube channels. It allows
+//     content owners to authenticate once and get access to all their video and
+//     channel data, without having to provide authentication credentials for
+//     each individual channel. The actual CMS account that the user
+//     authenticates with needs to be linked to the specified YouTube content
+//     owner.
 //   order: The order parameter specifies the method that will be used to order
 //     resources in the API response. (Default "SEARCH_SORT_RELEVANCE")
 //      kGTLYouTubeOrderDate: Resources are sorted in reverse chronological
@@ -662,6 +693,11 @@
 //     search to only videos that can be played outside youtube.com.
 //      kGTLYouTubeVideoSyndicatedAny: Return all videos, syndicated or not.
 //      kGTLYouTubeVideoSyndicatedTrue: Only retrieve syndicated videos.
+//   videoType: The videoType parameter lets you restrict a search to a
+//     particular type of videos.
+//      kGTLYouTubeVideoTypeAny: Return all videos.
+//      kGTLYouTubeVideoTypeEpisode: Only retrieve episodes of shows.
+//      kGTLYouTubeVideoTypeMovie: Only retrieve movies.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 //   kGTLAuthScopeYouTubeReadonly
@@ -770,6 +806,16 @@
 //   identifier: The id parameter specifies the YouTube video ID for the
 //     resource that is being deleted. In a video resource, the id property
 //     specifies the video's ID.
+//  Optional:
+//   onBehalfOfContentOwner: The onBehalfOfContentOwner parameter indicates that
+//     the authenticated user is acting on behalf of the content owner specified
+//     in the parameter value. This parameter is intended for YouTube content
+//     partners that own and manage many different YouTube channels. It allows
+//     content owners to authenticate once and get access to all their video and
+//     channel data, without having to provide authentication credentials for
+//     each individual channel. The actual CMS account that the user
+//     authenticates with needs to be linked to the specified YouTube content
+//     owner.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 //   kGTLAuthScopeYouTubeYoutubepartner
@@ -816,6 +862,16 @@
 //     video resource, the snippet property contains the channelId, title,
 //     description, tags, and categoryId properties. As such, if you set
 //     part=snippet, the API response will contain all of those properties.
+//  Optional:
+//   onBehalfOfContentOwner: The onBehalfOfContentOwner parameter indicates that
+//     the authenticated user is acting on behalf of the content owner specified
+//     in the parameter value. This parameter is intended for YouTube content
+//     partners that own and manage many different YouTube channels. It allows
+//     content owners to authenticate once and get access to all their video and
+//     channel data, without having to provide authentication credentials for
+//     each individual channel. The actual CMS account that the user
+//     authenticates with needs to be linked to the specified YouTube content
+//     owner.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 //   kGTLAuthScopeYouTubeReadonly
@@ -847,6 +903,16 @@
 //     does not contain values that you can set or modify. If the parameter
 //     value specifies a part that does not contain mutable values, that part
 //     will still be included in the API response.
+//  Optional:
+//   onBehalfOfContentOwner: The onBehalfOfContentOwner parameter indicates that
+//     the authenticated user is acting on behalf of the content owner specified
+//     in the parameter value. This parameter is intended for YouTube content
+//     partners that own and manage many different YouTube channels. It allows
+//     content owners to authenticate once and get access to all their video and
+//     channel data, without having to provide authentication credentials for
+//     each individual channel. The actual CMS account that the user
+//     authenticates with needs to be linked to the specified YouTube content
+//     owner.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 //   kGTLAuthScopeYouTubeYoutubepartner
