@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,8 +42,9 @@
 //   GTLDriveApp
 //
 
-// Information about a third-party application which the user has installed or
-// given access to Google Drive.
+// The apps resource provides a list of the apps that a user has installed, with
+// information about each app's supported MIME types, file extensions, and other
+// details.
 
 @interface GTLDriveApp : GTLObject
 

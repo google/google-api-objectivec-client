@@ -49,8 +49,8 @@
 // A plain text displayable name for this user.
 @property (copy) NSString *displayName;
 
-// Whether this user is the same as the authenticated user of which the request
-// was made on behalf.
+// Whether this user is the same as the authenticated user for whom the request
+// was made.
 @property (retain) NSNumber *isAuthenticatedUser;  // boolValue
 
 // This is always drive#user.

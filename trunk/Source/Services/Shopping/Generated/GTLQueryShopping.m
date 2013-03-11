@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/shopping-search/v1/getting_started
 // Classes:
-//   GTLQueryShopping (2 custom class methods, 35 custom properties)
+//   GTLQueryShopping (2 custom class methods, 36 custom properties)
 //   GTLShoppingProductsGetCategories (0 custom class methods, 3 custom properties)
 //   GTLShoppingProductsGetPlusOne (0 custom class methods, 3 custom properties)
 //   GTLShoppingProductsGetRecommendations (0 custom class methods, 3 custom properties)
@@ -49,10 +49,10 @@
 
 @dynamic accountId, attributeFilter, availability, boostBy, categories,
          categoryRecommendations, channels, clickTracking, country, crowdBy,
-         currency, extras, facets, fields, language, location, maxResults,
-         maxVariants, plusOne, productId, productIdType, promotions, q, rankBy,
-         recommendations, redirects, relatedQueries, restrictBy, safe, source,
-         spelling, startIndex, taxonomy, thumbnails, useCase;
+         currency, experimentId, extras, facets, fields, language, location,
+         maxResults, maxVariants, plusOne, productId, productIdType, promotions,
+         q, rankBy, recommendations, redirects, relatedQueries, restrictBy,
+         safe, source, spelling, startIndex, taxonomy, thumbnails, useCase;
 
 #pragma mark -
 #pragma mark "products" methods

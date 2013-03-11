@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/compute/docs/reference/v1beta14
 // Classes:
-//   GTLQueryCompute (46 custom class methods, 21 custom properties)
+//   GTLQueryCompute (48 custom class methods, 22 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -35,6 +35,7 @@
 #endif
 
 @class GTLComputeAccessConfig;
+@class GTLComputeAttachedDisk;
 @class GTLComputeDeprecationStatus;
 @class GTLComputeDisk;
 @class GTLComputeFirewall;
@@ -61,7 +62,10 @@
 // documentation for the right type for each query method.
 @property (retain) id accessConfig;
 @property (retain) GTLComputeDeprecationStatus *deprecationStatus;
-@property (copy) NSString *disk;
+@property (copy) NSString *deviceName;
+// "disk" has different types for some query methods; see the documentation for
+// the right type for each query method.
+@property (retain) id disk;
 @property (copy) NSString *filter;
 @property (copy) NSString *firewall;
 @property (copy) NSString *image;
@@ -352,6 +356,21 @@
                                          instance:(NSString *)instance
                                  networkInterface:(NSString *)networkInterface;
 
+// Method: compute.instances.attachDisk
+// Attaches a disk resource to an instance.
+//  Required:
+//   project: Project name.
+//   zoneProperty: Name of the zone scoping this request.
+//   instance: Instance name.
+//  Optional:
+//   disk: For this method, "disk" should be of type GTLComputeAttachedDisk.
+//  Authorization scope(s):
+//   kGTLAuthScopeCompute
+// Fetches a GTLComputeOperation.
++ (id)queryForInstancesAttachDiskWithProject:(NSString *)project
+                                zoneProperty:(NSString *)zoneProperty
+                                    instance:(NSString *)instance;
+
 // Method: compute.instances.delete
 // Deletes the specified instance resource.
 //  Required:
@@ -381,6 +400,21 @@
                                             instance:(NSString *)instance
                                         accessConfig:(NSString *)accessConfig
                                     networkInterface:(NSString *)networkInterface;
+
+// Method: compute.instances.detachDisk
+// Detaches a disk from an instance.
+//  Required:
+//   project: Project name.
+//   zoneProperty: Name of the zone scoping this request.
+//   instance: Instance name.
+//   deviceName: Disk device name to detach.
+//  Authorization scope(s):
+//   kGTLAuthScopeCompute
+// Fetches a GTLComputeOperation.
++ (id)queryForInstancesDetachDiskWithProject:(NSString *)project
+                                zoneProperty:(NSString *)zoneProperty
+                                    instance:(NSString *)instance
+                                  deviceName:(NSString *)deviceName;
 
 // Method: compute.instances.get
 // Returns the specified instance resource.
