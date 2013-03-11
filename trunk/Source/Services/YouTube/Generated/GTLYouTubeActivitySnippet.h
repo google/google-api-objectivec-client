@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeActivitySnippet (0 custom class methods, 7 custom properties)
+//   GTLYouTubeActivitySnippet (0 custom class methods, 8 custom properties)
 //   GTLYouTubeActivitySnippetThumbnails (0 custom class methods, 0 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -52,6 +52,9 @@
 // activity.
 @property (copy) NSString *channelId;
 
+// Channel title for the channel responsible for this activity
+@property (copy) NSString *channelTitle;
+
 // The description of the resource primarily associated with the activity.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
@@ -64,7 +67,7 @@
 // value.
 @property (copy) NSString *groupId;
 
-// The date and time that the activity occurred. The value is specified in ISO
+// The date and time that the video was uploaded. The value is specified in ISO
 // 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
 @property (retain) GTLDateTime *publishedAt;
 

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideoContentDetailsRegionRestriction.h
+//  GTLYouTubeResourceId2.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoContentDetailsRegionRestriction (0 custom class methods, 2 custom properties)
+//   GTLYouTubeResourceId2 (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,23 +36,28 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoContentDetailsRegionRestriction
+//   GTLYouTubeResourceId2
 //
 
-// DEPRECATED Region restriction of the video.
+// A resource id is a generic reference that points to another YouTube resource.
 
-@interface GTLYouTubeVideoContentDetailsRegionRestriction : GTLObject
+@interface GTLYouTubeResourceId2 : GTLObject
 
-// A list of region codes that identify countries where the video is viewable.
-// If this property is present and a country is not listed in its value, then
-// the video is blocked from appearing in that country. If this property is
-// present and contains an empty list, the video is blocked in all countries.
-@property (retain) NSArray *allowed;  // of NSString
+// The ID that YouTube uses to uniquely identify the referred resource, if that
+// resource is a channel. This property is only present if the resourceId.kind
+// value is youtube#channel.
+@property (copy) NSString *channelId;
 
-// A list of region codes that identify countries where the video is blocked. If
-// this property is present and a country is not listed in its value, then the
-// video is viewable in that country. If this property is present and contains
-// an empty list, the video is viewable in all countries.
-@property (retain) NSArray *blocked;  // of NSString
+@property (copy) NSString *kind;
+
+// The ID that YouTube uses to uniquely identify the referred resource, if that
+// resource is a playlist. This property is only present if the resourceId.kind
+// value is youtube#playlist.
+@property (copy) NSString *playlistId;
+
+// The ID that YouTube uses to uniquely identify the referred resource, if that
+// resource is a video. This property is only present if the resourceId.kind
+// value is youtube#video.
+@property (copy) NSString *videoId;
 
 @end

@@ -53,6 +53,10 @@ GTL_EXTERN NSString * const kGTLYouTubeBroadcastStatusLive;     // "live"
 GTL_EXTERN NSString * const kGTLYouTubeBroadcastStatusTesting;  // "testing"
 GTL_EXTERN NSString * const kGTLYouTubeBroadcastStatusUpcoming;  // "upcoming"
 
+// ChannelType
+GTL_EXTERN NSString * const kGTLYouTubeChannelTypeAny;   // "any"
+GTL_EXTERN NSString * const kGTLYouTubeChannelTypeShow;  // "show"
+
 // Order
 GTL_EXTERN NSString * const kGTLYouTubeOrderAlphabetical;  // "alphabetical"
 GTL_EXTERN NSString * const kGTLYouTubeOrderDate;          // "date"
@@ -94,3 +98,8 @@ GTL_EXTERN NSString * const kGTLYouTubeVideoLicenseYoutube;     // "youtube"
 // VideoSyndicated
 GTL_EXTERN NSString * const kGTLYouTubeVideoSyndicatedAny;   // "any"
 GTL_EXTERN NSString * const kGTLYouTubeVideoSyndicatedTrue;  // "true"
+
+// VideoType
+GTL_EXTERN NSString * const kGTLYouTubeVideoTypeAny;      // "any"
+GTL_EXTERN NSString * const kGTLYouTubeVideoTypeEpisode;  // "episode"
+GTL_EXTERN NSString * const kGTLYouTubeVideoTypeMovie;    // "movie"

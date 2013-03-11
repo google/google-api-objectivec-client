@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannel (0 custom class methods, 8 custom properties)
+//   GTLYouTubeChannel (0 custom class methods, 9 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,6 +34,7 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLYouTubeChannelBrandingSettings;
 @class GTLYouTubeChannelContentDetails;
 @class GTLYouTubeChannelSnippet;
 @class GTLYouTubeChannelStatistics;
@@ -48,6 +49,10 @@
 // A channel resource contains information about a YouTube channel.
 
 @interface GTLYouTubeChannel : GTLObject
+
+// The brandingSettings object encapsulates information about the branding of
+// the channel.
+@property (retain) GTLYouTubeChannelBrandingSettings *brandingSettings;
 
 // The contentDetails object encapsulates information about the channel's
 // content.

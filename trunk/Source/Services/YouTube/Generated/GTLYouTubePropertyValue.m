@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeChannel.m
+//  GTLYouTubePropertyValue.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,37 +26,15 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannel (0 custom class methods, 9 custom properties)
+//   GTLYouTubePropertyValue (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubeChannel.h"
-
-#import "GTLYouTubeChannelBrandingSettings.h"
-#import "GTLYouTubeChannelContentDetails.h"
-#import "GTLYouTubeChannelSnippet.h"
-#import "GTLYouTubeChannelStatistics.h"
-#import "GTLYouTubeChannelStatus.h"
-#import "GTLYouTubeChannelTopicDetails.h"
+#import "GTLYouTubePropertyValue.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeChannel
+//   GTLYouTubePropertyValue
 //
 
-@implementation GTLYouTubeChannel
-@dynamic brandingSettings, contentDetails, ETag, identifier, kind, snippet,
-         statistics, status, topicDetails;
-
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"etag", @"ETag",
-      @"id", @"identifier",
-      nil];
-  return map;
-}
-
-+ (void)load {
-  [self registerObjectClassForKind:@"youtube#channel"];
-}
-
+@implementation GTLYouTubePropertyValue
+@dynamic property, value;
 @end
