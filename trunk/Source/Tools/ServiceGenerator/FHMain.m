@@ -497,6 +497,7 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
         NSString *value = [asString substringFromIndex:range.location + 1];
         [self.formattedNames setObject:value forKey:key];
       }
+        break;
       case 'w': {
         NSString *asString = [NSString stringWithUTF8String:optarg];
         NSRange range = [asString rangeOfString:@":"];
@@ -922,7 +923,7 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
   // Set the state to next be write files. This way, an error below will clear
   // the state.
   self.state = FHMain_WriteFiles;
-  
+
   // Stable order for compares.
   NSArray *orderedAPIs =
     [self.collectedApis sortedArrayUsingComparator:
@@ -1019,7 +1020,7 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
   NSArray *allKeys = [self.generatedData allKeys];
   NSArray *sortedKeys =
     [allKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-  
+
   for (NSString *dirName in sortedKeys) {
     NSDictionary *filesDict = [self.generatedData objectForKey:dirName];
 
