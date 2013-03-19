@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideo (0 custom class methods, 15 custom properties)
+//   GTLYouTubeVideo (0 custom class methods, 16 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,6 +34,7 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLYouTubeVideoAgeGating;
 @class GTLYouTubeVideoContentDetails;
 @class GTLYouTubeVideoFileDetails;
 @class GTLYouTubeVideoMonetizationDetails;
@@ -55,6 +56,9 @@
 // A video resource represents a YouTube video.
 
 @interface GTLYouTubeVideo : GTLObject
+
+// Age restriction details related to a video.
+@property (retain) GTLYouTubeVideoAgeGating *ageGatingDetails;
 
 // The contentDetails object contains information about the video content,
 // including the length of the video and its aspect ratio.

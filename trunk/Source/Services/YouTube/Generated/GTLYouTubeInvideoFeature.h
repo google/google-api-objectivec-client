@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveStreamCdn.m
+//  GTLYouTubeInvideoFeature.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,17 +26,23 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveStreamCdn (0 custom class methods, 3 custom properties)
+//   GTLYouTubeInvideoFeature (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubeLiveStreamCdn.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLYouTubeLiveStreamCdnIngestionInfo.h"
+@class GTLYouTubeFeaturedChannel;
+@class GTLYouTubeFeaturedVideo;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveStreamCdn
+//   GTLYouTubeInvideoFeature
 //
 
-@implementation GTLYouTubeLiveStreamCdn
-@dynamic format, ingestionInfo, ingestionType;
+@interface GTLYouTubeInvideoFeature : GTLObject
+@property (retain) GTLYouTubeFeaturedChannel *featuredChannel;
+@property (retain) GTLYouTubeFeaturedVideo *featuredVideo;
 @end

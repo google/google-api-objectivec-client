@@ -49,24 +49,24 @@
 
 @interface GTLYouTubeLiveStreamList : GTLCollectionObject
 
-// The eTag of the chart.
+// The ETag of the response.
 @property (copy) NSString *ETag;
 
 // A list of live streams that match the request criteria.
 @property (retain) NSArray *items;  // of GTLYouTubeLiveStream
 
-// The type of this API resource.
+// The type of the API response. For this operation, the value will be
+// youtube#liveStreamList.
 @property (copy) NSString *kind;
 
-// The token that can be used as the value of the {@code pageInfo} parameter to
+// The token that can be used as the value of the pageToken parameter to
 // retrieve the next page in the result set.
 @property (copy) NSString *nextPageToken;
 
-// The {@code pageInfo} object encapsulates paging information for the result
-// set.
+// The pageInfo object encapsulates paging information for the result set.
 @property (retain) GTLYouTubePageInfo *pageInfo;
 
-// The token that can be used as the value of the {@code pageInfo} parameter to
+// The token that can be used as the value of the pageToken parameter to
 // retrieve the previous page in the result set.
 @property (copy) NSString *prevPageToken;
 

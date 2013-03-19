@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeChannelBrandingSettings.h
+//  GTLYouTubePlayer.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelBrandingSettings (0 custom class methods, 4 custom properties)
+//   GTLYouTubePlayer (0 custom class methods, 6 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,30 +34,38 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLYouTubeChannelSettings;
-@class GTLYouTubeImageSettings;
-@class GTLYouTubePropertyValue;
-@class GTLYouTubeWatchSettings;
+@class GTLYouTubeInvideoFeature;
+@class GTLYouTubePlayerAdsPlaylist;
+@class GTLYouTubePlayerVideoUrls;
+@class GTLYouTubeResourceId;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeChannelBrandingSettings
+//   GTLYouTubePlayer
 //
 
-// Branding properties of a YouTube channel.
+// A player resource represents all the information needed to play a video.
 
-@interface GTLYouTubeChannelBrandingSettings : GTLObject
+@interface GTLYouTubePlayer : GTLObject
 
-// Branding properties for the channel view.
-@property (retain) GTLYouTubeChannelSettings *channel;
+// The playlist of video ads to show for this playback.
+@property (retain) GTLYouTubePlayerAdsPlaylist *adsPlaylist;
 
-// Additional experimental branding properties.
-@property (retain) NSArray *hints;  // of GTLYouTubePropertyValue
+// The ETag for the player resource.
+@property (copy) NSString *ETag;
 
-// Branding properties for branding images.
-@property (retain) GTLYouTubeImageSettings *image;
+// The ID that YouTube uses to uniquely identify the resource.
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+@property (retain) GTLYouTubeResourceId *identifier;
 
-// Branding properties for the watch page.
-@property (retain) GTLYouTubeWatchSettings *watch;
+// The invideo features for the video.
+@property (retain) GTLYouTubeInvideoFeature *invideoFeature;
+
+// The type of the API resource.
+@property (copy) NSString *kind;
+
+// The videoUrls object either contains restriction information or URLs giving
+// access to the content.
+@property (retain) GTLYouTubePlayerVideoUrls *videoUrls;
 
 @end

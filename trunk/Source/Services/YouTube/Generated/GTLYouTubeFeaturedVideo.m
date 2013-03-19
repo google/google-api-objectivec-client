@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveStreamCdn.m
+//  GTLYouTubeFeaturedVideo.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,17 +26,18 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveStreamCdn (0 custom class methods, 3 custom properties)
+//   GTLYouTubeFeaturedVideo (0 custom class methods, 9 custom properties)
 
-#import "GTLYouTubeLiveStreamCdn.h"
+#import "GTLYouTubeFeaturedVideo.h"
 
-#import "GTLYouTubeLiveStreamCdnIngestionInfo.h"
+#import "GTLYouTubeVideoSnippet.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveStreamCdn
+//   GTLYouTubeFeaturedVideo
 //
 
-@implementation GTLYouTubeLiveStreamCdn
-@dynamic format, ingestionInfo, ingestionType;
+@implementation GTLYouTubeFeaturedVideo
+@dynamic concurrentViewers, endTimeMs, featureId, isLive, lengthS, startTimeMs,
+         videoId, videoSnippet, viewCount;
 @end

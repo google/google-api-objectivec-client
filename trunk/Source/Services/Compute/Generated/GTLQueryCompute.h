@@ -109,6 +109,7 @@
 //   zoneProperty: Name of the zone scoping this request.
 //   disk: Name of the persistent disk resource to return.
 //  Authorization scope(s):
+//   kGTLAuthScopeCompute
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeDisk.
 + (id)queryForDisksGetWithProject:(NSString *)project
@@ -143,6 +144,7 @@
 //   pageToken: Optional. Tag returned by a previous list request truncated by
 //     maxResults. Used to continue a previous list request.
 //  Authorization scope(s):
+//   kGTLAuthScopeCompute
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeDiskList.
 + (id)queryForDisksListWithProject:(NSString *)project
@@ -169,6 +171,7 @@
 //   project: Name of the project scoping this request.
 //   firewall: Name of the firewall resource to return.
 //  Authorization scope(s):
+//   kGTLAuthScopeCompute
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeFirewall.
 + (id)queryForFirewallsGetWithProject:(NSString *)project
@@ -196,6 +199,7 @@
 //   pageToken: Optional. Tag returned by a previous list request truncated by
 //     maxResults. Used to continue a previous list request.
 //  Authorization scope(s):
+//   kGTLAuthScopeCompute
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeFirewallList.
 + (id)queryForFirewallsListWithProject:(NSString *)project;
@@ -246,6 +250,7 @@
 //   project: Name of the project scoping this request.
 //   operation: Name of the operation resource to return.
 //  Authorization scope(s):
+//   kGTLAuthScopeCompute
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeOperation.
 + (id)queryForGlobalOperationsGetWithProject:(NSString *)project
@@ -263,6 +268,7 @@
 //   pageToken: Optional. Tag returned by a previous list request truncated by
 //     maxResults. Used to continue a previous list request.
 //  Authorization scope(s):
+//   kGTLAuthScopeCompute
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeOperationList.
 + (id)queryForGlobalOperationsListWithProject:(NSString *)project;
@@ -302,6 +308,7 @@
 //   project: Name of the project scoping this request.
 //   image: Name of the image resource to return.
 //  Authorization scope(s):
+//   kGTLAuthScopeCompute
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeImage.
 + (id)queryForImagesGetWithProject:(NSString *)project
@@ -330,6 +337,7 @@
 //   pageToken: Optional. Tag returned by a previous list request truncated by
 //     maxResults. Used to continue a previous list request.
 //  Authorization scope(s):
+//   kGTLAuthScopeCompute
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeImageList.
 + (id)queryForImagesListWithProject:(NSString *)project;
@@ -423,6 +431,7 @@
 //   zoneProperty: Name of the zone scoping this request.
 //   instance: Name of the instance resource to return.
 //  Authorization scope(s):
+//   kGTLAuthScopeCompute
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeInstance.
 + (id)queryForInstancesGetWithProject:(NSString *)project
@@ -436,6 +445,7 @@
 //   zoneProperty: Name of the zone scoping this request.
 //   instance: Name of the instance scoping this request.
 //  Authorization scope(s):
+//   kGTLAuthScopeCompute
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeSerialPortOutput.
 + (id)queryForInstancesGetSerialPortOutputWithProject:(NSString *)project
@@ -467,6 +477,7 @@
 //   pageToken: Optional. Tag returned by a previous list request truncated by
 //     maxResults. Used to continue a previous list request.
 //  Authorization scope(s):
+//   kGTLAuthScopeCompute
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeInstanceList.
 + (id)queryForInstancesListWithProject:(NSString *)project
@@ -512,6 +523,7 @@
 //   project: Name of the project scoping this request.
 //   kernel: Name of the kernel resource to return.
 //  Authorization scope(s):
+//   kGTLAuthScopeCompute
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeKernel.
 + (id)queryForKernelsGetWithProject:(NSString *)project
@@ -528,6 +540,7 @@
 //   pageToken: Optional. Tag returned by a previous list request truncated by
 //     maxResults. Used to continue a previous list request.
 //  Authorization scope(s):
+//   kGTLAuthScopeCompute
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeKernelList.
 + (id)queryForKernelsListWithProject:(NSString *)project;
@@ -542,6 +555,7 @@
 //   project: Name of the project scoping this request.
 //   machineType: Name of the machine type resource to return.
 //  Authorization scope(s):
+//   kGTLAuthScopeCompute
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeMachineType.
 + (id)queryForMachineTypesGetWithProject:(NSString *)project
@@ -559,6 +573,7 @@
 //   pageToken: Optional. Tag returned by a previous list request truncated by
 //     maxResults. Used to continue a previous list request.
 //  Authorization scope(s):
+//   kGTLAuthScopeCompute
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeMachineTypeList.
 + (id)queryForMachineTypesListWithProject:(NSString *)project;
@@ -584,6 +599,7 @@
 //   project: Name of the project scoping this request.
 //   network: Name of the network resource to return.
 //  Authorization scope(s):
+//   kGTLAuthScopeCompute
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeNetwork.
 + (id)queryForNetworksGetWithProject:(NSString *)project
@@ -611,6 +627,7 @@
 //   pageToken: Optional. Tag returned by a previous list request truncated by
 //     maxResults. Used to continue a previous list request.
 //  Authorization scope(s):
+//   kGTLAuthScopeCompute
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeNetworkList.
 + (id)queryForNetworksListWithProject:(NSString *)project;
@@ -624,6 +641,7 @@
 //  Required:
 //   project: Name of the project resource to retrieve.
 //  Authorization scope(s):
+//   kGTLAuthScopeCompute
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeProject.
 + (id)queryForProjectsGetWithProject:(NSString *)project;
@@ -661,6 +679,7 @@
 //   project: Name of the project scoping this request.
 //   snapshot: Name of the persistent disk snapshot resource to return.
 //  Authorization scope(s):
+//   kGTLAuthScopeCompute
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeSnapshot.
 + (id)queryForSnapshotsGetWithProject:(NSString *)project
@@ -689,6 +708,7 @@
 //   pageToken: Optional. Tag returned by a previous list request truncated by
 //     maxResults. Used to continue a previous list request.
 //  Authorization scope(s):
+//   kGTLAuthScopeCompute
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeSnapshotList.
 + (id)queryForSnapshotsListWithProject:(NSString *)project;
@@ -716,6 +736,7 @@
 //   zoneProperty: Name of the zone scoping this request.
 //   operation: Name of the operation resource to return.
 //  Authorization scope(s):
+//   kGTLAuthScopeCompute
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeOperation.
 + (id)queryForZoneOperationsGetWithProject:(NSString *)project
@@ -735,6 +756,7 @@
 //   pageToken: Optional. Tag returned by a previous list request truncated by
 //     maxResults. Used to continue a previous list request.
 //  Authorization scope(s):
+//   kGTLAuthScopeCompute
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeOperationList.
 + (id)queryForZoneOperationsListWithProject:(NSString *)project
@@ -750,6 +772,7 @@
 //   project: Name of the project scoping this request.
 //   zoneProperty: Name of the zone resource to return.
 //  Authorization scope(s):
+//   kGTLAuthScopeCompute
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeZone.
 + (id)queryForZonesGetWithProject:(NSString *)project
@@ -766,6 +789,7 @@
 //   pageToken: Optional. Tag returned by a previous list request truncated by
 //     maxResults. Used to continue a previous list request.
 //  Authorization scope(s):
+//   kGTLAuthScopeCompute
 //   kGTLAuthScopeComputeReadonly
 // Fetches a GTLComputeZoneList.
 + (id)queryForZonesListWithProject:(NSString *)project;

@@ -43,7 +43,7 @@
 
 @interface GTLYouTubeLiveStreamStatus : GTLObject
 
-// The status of the stream.
+// The stream's status.
 @property (copy) NSString *streamStatus;
 
 @end

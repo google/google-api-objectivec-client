@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveStreamCdnMulticastIngestionInfo.h
+//  GTLYouTubeVideoAgeGating.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,24 +26,15 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveStreamCdnMulticastIngestionInfo (0 custom class methods, 1 custom properties)
+//   GTLYouTubeVideoAgeGating (0 custom class methods, 3 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLYouTubeVideoAgeGating.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveStreamCdnMulticastIngestionInfo
+//   GTLYouTubeVideoAgeGating
 //
 
-// Brief description of the live stream cdn settings.
-
-@interface GTLYouTubeLiveStreamCdnMulticastIngestionInfo : GTLObject
-
-// The IP address of the multicast data.
-@property (copy) NSString *multicastAddress;
-
+@implementation GTLYouTubeVideoAgeGating
+@dynamic alcoholContent, restricted, videoGameRating;
 @end

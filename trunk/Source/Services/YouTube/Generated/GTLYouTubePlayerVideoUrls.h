@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveStreamCdn.m
+//  GTLYouTubePlayerVideoUrls.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,17 +26,30 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveStreamCdn (0 custom class methods, 3 custom properties)
+//   GTLYouTubePlayerVideoUrls (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubeLiveStreamCdn.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLYouTubeLiveStreamCdnIngestionInfo.h"
+@class GTLYouTubePlayerRestrictionDetails;
+@class GTLYouTubePlayerVideoUrl;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveStreamCdn
+//   GTLYouTubePlayerVideoUrls
 //
 
-@implementation GTLYouTubeLiveStreamCdn
-@dynamic format, ingestionInfo, ingestionType;
+// Part containing the URLs pointing to the video data.
+
+@interface GTLYouTubePlayerVideoUrls : GTLObject
+
+// Possible restriction to the playability of the video.
+@property (retain) GTLYouTubePlayerRestrictionDetails *restriction;
+
+// URLs to the formats that are available to the caller.
+@property (retain) NSArray *url;  // of GTLYouTubePlayerVideoUrl
+
 @end

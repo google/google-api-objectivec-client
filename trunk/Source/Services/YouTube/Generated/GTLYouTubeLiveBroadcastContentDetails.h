@@ -46,26 +46,47 @@
 
 @interface GTLYouTubeLiveBroadcastContentDetails : GTLObject
 
-// The id of the stream bound to the broadcast.
+// This value uniquely identifies the live stream bound to the broadcast.
 @property (copy) NSString *boundStreamId;
 
-// Whether the live event will be archived or not.
+// This setting indicates whether the live event should be archived so that
+// YouTube viewers can watch it at a later date. The default value for this
+// property is true.
+// Important: You must also set the enableDvr property's value to true if you
+// want the playback to be available immediately after the broadcast ends. If
+// you set this property's value to true but do not also set the enableDvr
+// property to true, there may be a delay of around one day before the archived
+// video will be available for playback.
 @property (retain) NSNumber *enableArchive;  // boolValue
 
-// Whether to enable or disable content encryption.
+// This setting indicates whether YouTube should enable content encryption for
+// the broadcast.
 @property (retain) NSNumber *enableContentEncryption;  // boolValue
 
-// Whether the dvr (digital video recording) is enabled or not.
+// This setting determines whether viewers can access DVR controls while
+// watching the video. DVR controls enable the viewer to control the video
+// playback experience by pausing, rewinding, or fast forwarding content. The
+// default value for this property is true.
+// Important: You must set the value to true and also set the enableArchive
+// property's value to true if you want to make playback available immediately
+// after the broadcast ends.
 @property (retain) NSNumber *enableDvr;  // boolValue
 
-// Whether to allow the broadcast to be played in an embedded player.
+// This setting indicates whether the broadcast video can be played in an
+// embedded player. If you choose to archive the video (using the enableArchive
+// property), this setting will also apply to the archived video.
 @property (retain) NSNumber *enableEmbed;  // boolValue
 
-// Information about the monitor stream which helps the broadcaster to review
-// the event content before shown to the public.
+// The monitorStream object contains information about the monitor stream, which
+// the broadcaster can use to review the event content before the broadcast
+// stream is shown publicly.
 @property (retain) GTLYouTubeLiveBroadcastContentDetailsMonitorStream *monitorStream;
 
-// Automatically start with a slate cuepoint.
+// This setting indicates whether the broadcast should automatically begin with
+// an in-stream slate when you update the broadcast's status to live. After
+// updating the status, you then need to send a liveCuepoints.insert request
+// that sets the cuepoint's eventState to end to remove the in-stream slate and
+// make your broadcast stream visible to viewers.
 @property (retain) NSNumber *startWithSlateCuepoint;  // boolValue
 
 @end
@@ -78,14 +99,22 @@
 
 @interface GTLYouTubeLiveBroadcastContentDetailsMonitorStream : GTLObject
 
-// If enableMonitorStream is true, the public broadcast will be delayed by this
-// value.
+// If you have set the enableMonitorStream property to true, then this property
+// determines the length of the live broadcast delay.
 @property (retain) NSNumber *broadcastStreamDelayMs;  // unsignedIntValue
 
-// The html code of the embedded player for the monitor stream.
+// HTML code that embeds a player that plays the monitor stream.
 @property (copy) NSString *embedHtml;
 
-// Whether to enable the monitor stream for the broadcast.
+// This value determines whether the monitor stream is enabled for the
+// broadcast. If the monitor stream is enabled, then YouTube will broadcast the
+// event content on a special stream intended only for the broadcaster's
+// consumption. The broadcaster can use the stream to review the event content
+// and also to identify the optimal times to insert cuepoints.
+// You need to set this value to true if you intend to have a broadcast delay
+// for your event.
+// Note: This property cannot be updated once the broadcast is in the testing or
+// live state.
 @property (retain) NSNumber *enableMonitorStream;  // boolValue
 
 @end

@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLQueryDrive (46 custom class methods, 32 custom properties)
+//   GTLQueryDrive (46 custom class methods, 33 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -82,6 +82,7 @@
 @property (assign) long long startChangeId;
 @property (copy) NSString *timedTextLanguage;
 @property (copy) NSString *timedTextTrackName;
+@property (assign) BOOL transferOwnership;
 @property (copy) NSString *updatedMin;
 @property (assign) BOOL updateViewedDate;
 @property (assign) BOOL useContentAsIndexableText;
@@ -618,6 +619,9 @@
 //  Required:
 //   fileId: The ID for the file.
 //   permissionId: The ID for the permission.
+//  Optional:
+//   transferOwnership: Whether changing a role to 'owner' should also downgrade
+//     the current owners to writers. (Default false)
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
 //   kGTLAuthScopeDriveFile
@@ -631,6 +635,9 @@
 //  Required:
 //   fileId: The ID for the file.
 //   permissionId: The ID for the permission.
+//  Optional:
+//   transferOwnership: Whether changing a role to 'owner' should also downgrade
+//     the current owners to writers. (Default false)
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
 //   kGTLAuthScopeDriveFile

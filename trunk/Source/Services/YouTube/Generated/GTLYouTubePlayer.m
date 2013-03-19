@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveStreamCdn.m
+//  GTLYouTubePlayer.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,17 +26,34 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveStreamCdn (0 custom class methods, 3 custom properties)
+//   GTLYouTubePlayer (0 custom class methods, 6 custom properties)
 
-#import "GTLYouTubeLiveStreamCdn.h"
+#import "GTLYouTubePlayer.h"
 
-#import "GTLYouTubeLiveStreamCdnIngestionInfo.h"
+#import "GTLYouTubeInvideoFeature.h"
+#import "GTLYouTubePlayerAdsPlaylist.h"
+#import "GTLYouTubePlayerVideoUrls.h"
+#import "GTLYouTubeResourceId.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveStreamCdn
+//   GTLYouTubePlayer
 //
 
-@implementation GTLYouTubeLiveStreamCdn
-@dynamic format, ingestionInfo, ingestionType;
+@implementation GTLYouTubePlayer
+@dynamic adsPlaylist, ETag, identifier, invideoFeature, kind, videoUrls;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      @"etag", @"ETag",
+      @"id", @"identifier",
+      nil];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"youtube#player"];
+}
+
 @end

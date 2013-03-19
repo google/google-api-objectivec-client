@@ -38,7 +38,7 @@
 //
 
 @implementation GTLYouTubeLocalizedProperty
-@dynamic defaultProperty, localizeds;
+@dynamic defaultProperty, localized;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -50,7 +50,7 @@
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObject:[GTLYouTubeLocalizedString class]
-                                forKey:@"localizeds"];
+                                forKey:@"localized"];
   return map;
 }
 

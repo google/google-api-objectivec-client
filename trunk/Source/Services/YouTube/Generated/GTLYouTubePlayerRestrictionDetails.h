@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveStreamCdn.m
+//  GTLYouTubePlayerRestrictionDetails.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,17 +26,30 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveStreamCdn (0 custom class methods, 3 custom properties)
+//   GTLYouTubePlayerRestrictionDetails (0 custom class methods, 3 custom properties)
 
-#import "GTLYouTubeLiveStreamCdn.h"
-
-#import "GTLYouTubeLiveStreamCdnIngestionInfo.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveStreamCdn
+//   GTLYouTubePlayerRestrictionDetails
 //
 
-@implementation GTLYouTubeLiveStreamCdn
-@dynamic format, ingestionInfo, ingestionType;
+// Part describing if and why a video can't be played.
+
+@interface GTLYouTubePlayerRestrictionDetails : GTLObject
+
+// Detailed information about the restriction
+@property (copy) NSString *reason;
+
+// True iff the video can't be played.
+@property (retain) NSNumber *restricted;  // boolValue
+
+// A code describing the restriction class.
+@property (copy) NSString *restriction;
+
 @end

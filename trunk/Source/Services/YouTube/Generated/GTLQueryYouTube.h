@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (31 custom class methods, 37 custom properties)
+//   GTLQueryYouTube (32 custom class methods, 39 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -64,6 +64,8 @@
 @property (copy) NSString *home;
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
+@property (copy) NSString *itag;
+@property (assign) BOOL managedByMe;
 @property (assign) NSUInteger maxResults;
 @property (assign) BOOL mine;
 @property (copy) NSString *mySubscribers;
@@ -178,6 +180,11 @@
 //     YouTube channel ID(s) for the resource(s) that are being retrieved. In a
 //     channel resource, the id property specifies the channel's YouTube channel
 //     ID.
+//   managedByMe: Set this parameter's value to true to instruct the API to only
+//     return channels managed by the content owner that the
+//     onBehalfOfContentOwner parameter specifies. The user must be
+//     authenticated as a CMS account linked to the specified content owner and
+//     onBehalfOfContentOwner must be provided.
 //   maxResults: The maxResults parameter specifies the maximum number of items
 //     that should be returned in the result set. (0..50, default 5)
 //   mine: Set this parameter's value to true to instruct the API to only return
@@ -241,13 +248,20 @@
 // These create a GTLQueryYouTube object.
 
 // Method: youtube.liveBroadcasts.bind
-// Bind a YouTube live broadcast to a stream.
+// Binds a YouTube broadcast to a stream or removes an existing binding between
+// a broadcast and a stream. A broadcast can only be bound to one video stream.
 //  Required:
-//   identifier: ID of the broadcast to which the stream will be bound
-//   part: Live broadcast parts to be returned in the response. Valid values
-//     are: id, snippet, status, slateSettings, contentDetails.
+//   identifier: The id parameter specifies the unique ID of the broadcast that
+//     is being bound to a video stream.
+//   part: The part parameter specifies a comma-separated list of one or more
+//     liveBroadcast resource properties that the API response will include. The
+//     part names that you can include in the parameter value are id, snippet,
+//     contentDetails, slateSettings, and status.
 //  Optional:
-//   streamId: ID of the stream to bind to the broadcast
+//   streamId: The streamId parameter specifies the unique ID of the video
+//     stream that is being bound to a broadcast. If this parameter is omitted,
+//     the API will remove any existing binding between the broadcast and a
+//     video stream.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 // Fetches a GTLYouTubeLiveBroadcast.
@@ -255,7 +269,7 @@
                                           part:(NSString *)part;
 
 // Method: youtube.liveBroadcasts.delete
-// Delete a YouTube live broadcast.
+// Deletes a broadcast.
 //  Required:
 //   identifier: The id parameter specifies the YouTube live broadcast ID for
 //     the resource that is being deleted.
@@ -264,11 +278,13 @@
 + (id)queryForLiveBroadcastsDeleteWithIdentifier:(NSString *)identifier;
 
 // Method: youtube.liveBroadcasts.insert
-// Insert a YouTube live broadcast.
+// Creates a broadcast.
 //  Required:
-//   part: Live broadcast parts to be set for the broadcast as well as included
-//     in the returned response. Valid values are: snippet, status,
-//     slateSettings, contentDetails.
+//   part: The part parameter serves two purposes in this operation. It
+//     identifies the properties that the write operation will set as well as
+//     the properties that the API response will include.
+//     The part properties that you can include in the parameter value are id,
+//     snippet, contentDetails, slateSettings, and status.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 // Fetches a GTLYouTubeLiveBroadcast.
@@ -276,40 +292,63 @@
                                         part:(NSString *)part;
 
 // Method: youtube.liveBroadcasts.list
-// Browse the YouTube broadcast collection.
+// Returns a list of YouTube broadcasts that match the API request parameters.
 //  Required:
-//   part: Live broadcast parts to include in the returned response. Valid
-//     values are: id, snippet, status, slateSettings, contentDetails.
+//   part: The part parameter specifies a comma-separated list of one or more
+//     liveBroadcast resource properties that the API response will include. The
+//     part names that you can include in the parameter value are id, snippet,
+//     contentDetails, slateSettings, and status.
 //  Optional:
-//   broadcastStatus: Filter to only return broadcasts with the given status by
-//     the authenticated user.
-//      kGTLYouTubeBroadcastStatusActive: Return active broadcasts.
-//      kGTLYouTubeBroadcastStatusAll: Return all the broadcasts.
-//      kGTLYouTubeBroadcastStatusCompleted: Return previously completed
-//        broadcasts.
-//      kGTLYouTubeBroadcastStatusUpcoming: Return upcoming broadcasts.
-//   identifier: IDs of the live broadcasts to be returned.
-//   maxResults: Maximum number of results to return (0..50, default 5)
-//   mine: Filter to only return broadcasts owned by authenticated user.
-//   onBehalfOf: ID of the Google+ Page for the channel that the request is be
-//     on behalf of
-//   pageToken: Token for the page selection.
+//   broadcastStatus: The broadcastStatus parameter filters the API response to
+//     only include broadcasts with the specified status.
+//      kGTLYouTubeBroadcastStatusActive: Return current live broadcasts.
+//      kGTLYouTubeBroadcastStatusAll: Return all broadcasts.
+//      kGTLYouTubeBroadcastStatusCompleted: Return broadcasts that have already
+//        ended.
+//      kGTLYouTubeBroadcastStatusUpcoming: Return broadcasts that have not yet
+//        started.
+//   identifier: The id parameter specifies a comma-separated list of YouTube
+//     broadcast IDs that identify the broadcasts being retrieved. In a
+//     liveBroadcast resource, the id property specifies the broadcast's ID.
+//   maxResults: The maxResults parameter specifies the maximum number of items
+//     that should be returned in the result set. Acceptable values are 0 to 50,
+//     inclusive. The default value is 5. (0..50, default 5)
+//   mine: The mine parameter can be used to instruct the API to only return
+//     broadcasts owned by the authenticated user. Set the parameter value to
+//     true to only retrieve your own broadcasts.
+//   pageToken: The pageToken parameter identifies a specific page in the result
+//     set that should be returned. In an API response, the nextPageToken and
+//     prevPageToken properties identify other pages that could be retrieved.
 //  Authorization scope(s):
+//   kGTLAuthScopeYouTube
 //   kGTLAuthScopeYouTubeReadonly
 // Fetches a GTLYouTubeLiveBroadcastList.
 + (id)queryForLiveBroadcastsListWithPart:(NSString *)part;
 
 // Method: youtube.liveBroadcasts.transition
-// Change the broadcasting status of a YouTube live broadcast and start all the
-// processes associated with it.
+// Changes the status of a YouTube live broadcast and initiates any processes
+// associated with the new status. For example, when you transition a
+// broadcast's status to testing, YouTube starts to transmit video to that
+// broadcast's monitor stream.
 //  Required:
-//   broadcastStatus: Desired broadcast status.
-//      kGTLYouTubeBroadcastStatusComplete: Stop broadcasting.
-//      kGTLYouTubeBroadcastStatusLive: Start broadcasting.
-//      kGTLYouTubeBroadcastStatusTesting: Start broadcast testing.
-//   identifier: ID of the broadcast to change status
-//   part: Live broadcast parts to be returned in the response. Valid values
-//     are: id, snippet, status, slateSettings, contentDetails.
+//   broadcastStatus: The broadcastStatus parameter identifies the state to
+//     which the broadcast is changing.
+//      kGTLYouTubeBroadcastStatusComplete: The broadcast is over. YouTube stops
+//        transmitting video.
+//      kGTLYouTubeBroadcastStatusLive: The broadcast is visible to its
+//        audience. YouTube transmits video to the broadcast's monitor stream
+//        and its broadcast stream.
+//      kGTLYouTubeBroadcastStatusTesting: Start testing the broadcast. YouTube
+//        transmits video to the broadcast's monitor stream. Note that you can
+//        only transition a broadcast to the testing state if its
+//        contentDetails.monitorStream.enableMonitorStream property is set to
+//        true.
+//   identifier: The id parameter specifies the unique ID of the broadcast that
+//     is transitioning to another status.
+//   part: The part parameter specifies a comma-separated list of one or more
+//     liveBroadcast resource properties that the API response will include. The
+//     part names that you can include in the parameter value are id, snippet,
+//     contentDetails, slateSettings, and status.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 // Fetches a GTLYouTubeLiveBroadcast.
@@ -318,13 +357,23 @@
                                                      part:(NSString *)part;
 
 // Method: youtube.liveBroadcasts.update
-// Update a YouTube live broadcast.
+// Updates a broadcast. For example, you could modify the broadcast settings
+// defined in the liveBroadcast resource's contentDetails object.
 //  Required:
 //   part: The part parameter serves two purposes in this operation. It
 //     identifies the properties that the write operation will set as well as
 //     the properties that the API response will include.
-//     The part names that you can include in the parameter value are id,
-//     snippet, status, slateSettings, contentDetails.
+//     The part properties that you can include in the parameter value are id,
+//     snippet, contentDetails, slateSettings, and status.
+//     Note that this method will override the existing values for all of the
+//     mutable properties that are contained in any parts that the parameter
+//     value specifies. For example, a broadcast's privacy status is defined in
+//     the status part. As such, if your request is updating a private or
+//     unlisted broadcast, and the request's part parameter value includes the
+//     status part, the broadcast's privacy setting will be updated to whatever
+//     value the request body specifies. If the request body does not specify a
+//     value, the existing privacy setting will be removed and the broadcast
+//     will revert to the default privacy setting.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 // Fetches a GTLYouTubeLiveBroadcast.
@@ -336,7 +385,7 @@
 // These create a GTLQueryYouTube object.
 
 // Method: youtube.liveStreams.delete
-// Delete a live stream.
+// Deletes a video stream.
 //  Required:
 //   identifier: The id parameter specifies the YouTube live stream ID for the
 //     resource that is being deleted.
@@ -345,10 +394,14 @@
 + (id)queryForLiveStreamsDeleteWithIdentifier:(NSString *)identifier;
 
 // Method: youtube.liveStreams.insert
-// Insert a YouTube live stream.
+// Creates a video stream. The stream enables you to send your video to YouTube,
+// which can then broadcast the video to your audience.
 //  Required:
-//   part: Live stream parts to include in the returned response. Valid values
-//     are: id, snippet, cdn, status.
+//   part: The part parameter serves two purposes in this operation. It
+//     identifies the properties that the write operation will set as well as
+//     the properties that the API response will include.
+//     The part properties that you can include in the parameter value are id,
+//     snippet, cdn, and status.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 // Fetches a GTLYouTubeLiveStream.
@@ -356,35 +409,74 @@
                                      part:(NSString *)part;
 
 // Method: youtube.liveStreams.list
-// Browse the YouTube live stream collection.
+// Returns a list of video streams that match the API request parameters.
 //  Required:
-//   part: Live stream parts to include in the returned response. Valid values
-//     are: id, snippet, cdn, status.
+//   part: The part parameter specifies a comma-separated list of one or more
+//     liveStream resource properties that the API response will include. The
+//     part names that you can include in the parameter value are id, snippet,
+//     cdn, and status.
 //  Optional:
-//   identifier: IDs of the live streams to be returned.
-//   maxResults: Maximum number of results to return (0..50, default 5)
-//   mine: Filter to only live streams owned by authenticated user.
-//   onBehalfOf: ID of the Google+ Page for the channel that the request is to
-//     be on behalf of
-//   pageToken: Token for the page selection.
+//   identifier: The id parameter specifies a comma-separated list of YouTube
+//     stream IDs that identify the streams being retrieved. In a liveStream
+//     resource, the id property specifies the stream's ID.
+//   maxResults: The maxResults parameter specifies the maximum number of items
+//     that should be returned in the result set. Acceptable values are 0 to 50,
+//     inclusive. The default value is 5. (0..50, default 5)
+//   mine: The mine parameter can be used to instruct the API to only return
+//     streams owned by the authenticated user. Set the parameter value to true
+//     to only retrieve your own streams.
+//   onBehalfOf: ID of the Google+ Page for the channel on whose behalf this
+//     request is made
+//   pageToken: The pageToken parameter identifies a specific page in the result
+//     set that should be returned. In an API response, the nextPageToken and
+//     prevPageToken properties identify other pages that could be retrieved.
 //  Authorization scope(s):
+//   kGTLAuthScopeYouTube
 //   kGTLAuthScopeYouTubeReadonly
 // Fetches a GTLYouTubeLiveStreamList.
 + (id)queryForLiveStreamsListWithPart:(NSString *)part;
 
 // Method: youtube.liveStreams.update
-// Update a YouTube live stream.
+// Updates a video stream. If the properties that you want to change cannot be
+// updated, then you need to create a new stream with the proper settings.
 //  Required:
 //   part: The part parameter serves two purposes in this operation. It
 //     identifies the properties that the write operation will set as well as
 //     the properties that the API response will include.
-//     The part names that you can include in the parameter value are id,
-//     snippet, cdn, status.
+//     The part properties that you can include in the parameter value are id,
+//     snippet, cdn, and status.
+//     Note that this method will override the existing values for all of the
+//     mutable properties that are contained in any parts that the parameter
+//     value specifies. If the request body does not specify a value for a
+//     mutable property, the existing value for that property will be removed.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 // Fetches a GTLYouTubeLiveStream.
 + (id)queryForLiveStreamsUpdateWithObject:(GTLYouTubeLiveStream *)object
                                      part:(NSString *)part;
+
+#pragma mark -
+#pragma mark "players" methods
+// These create a GTLQueryYouTube object.
+
+// Method: youtube.players.list
+// Returns the data required to play the videos specified on the request, or
+// restriction information explaining why it can't be played.
+//  Required:
+//   part: The part parameter specifies a comma-separated list of one or more
+//     player resource properties that the API response will include.
+//  Optional:
+//   itag: If specified, the itag parameter specifies a comma-separated list of
+//     itags video formats the client is interested in. The returned formats
+//     will be a subset of those itags.
+//   videoId: The videoId parameter specifies a comma-separated list of the
+//     YouTube video ID(s) for the resource(s) that are being retrieved.
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeReadonly
+//   kGTLAuthScopeYouTubeYoutubepartner
+// Fetches a GTLYouTubePlayerListResponse.
++ (id)queryForPlayersListWithPart:(NSString *)part;
 
 #pragma mark -
 #pragma mark "playlistItems" methods

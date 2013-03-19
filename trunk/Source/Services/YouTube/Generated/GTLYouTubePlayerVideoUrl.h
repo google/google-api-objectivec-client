@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveStreamCdnMulticastIngestionInfo.m
+//  GTLYouTubePlayerVideoUrl.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,15 +26,27 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveStreamCdnMulticastIngestionInfo (0 custom class methods, 1 custom properties)
+//   GTLYouTubePlayerVideoUrl (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubeLiveStreamCdnMulticastIngestionInfo.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveStreamCdnMulticastIngestionInfo
+//   GTLYouTubePlayerVideoUrl
 //
 
-@implementation GTLYouTubeLiveStreamCdnMulticastIngestionInfo
-@dynamic multicastAddress;
+// A single video format the user can access.
+
+@interface GTLYouTubePlayerVideoUrl : GTLObject
+
+// itag of the video format.
+@property (retain) NSNumber *itag;  // unsignedIntValue
+
+// Streamer URL serving the video.
+@property (copy) NSString *url;
+
 @end

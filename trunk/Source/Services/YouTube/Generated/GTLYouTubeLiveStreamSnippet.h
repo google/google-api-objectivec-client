@@ -43,17 +43,19 @@
 
 @interface GTLYouTubeLiveStreamSnippet : GTLObject
 
-// Channel publishing the live stream.
+// The ID that YouTube uses to uniquely identify the channel that is
+// transmitting the stream.
 @property (copy) NSString *channelId;
 
-// Description of the live stream.
+// The stream's description. The value cannot be longer than 10000 characters.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
 
-// Date and time the live stream was published at.
+// The date and time that the stream was created. The value is specified in ISO
+// 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
 @property (retain) GTLDateTime *publishedAt;
 
-// Title of the live stream.
+// The stream's title. The value must be between 1 and 128 characters long.
 @property (copy) NSString *title;
 
 @end

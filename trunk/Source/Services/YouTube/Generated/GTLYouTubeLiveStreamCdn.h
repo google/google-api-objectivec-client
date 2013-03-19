@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveStreamCdn (0 custom class methods, 4 custom properties)
+//   GTLYouTubeLiveStreamCdn (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -35,7 +35,6 @@
 #endif
 
 @class GTLYouTubeLiveStreamCdnIngestionInfo;
-@class GTLYouTubeLiveStreamCdnMulticastIngestionInfo;
 
 // ----------------------------------------------------------------------------
 //
@@ -46,18 +45,14 @@
 
 @interface GTLYouTubeLiveStreamCdn : GTLObject
 
-// The format of the inbound data. Allowed values: 240p, 360p, 480p, 720p,
-// 1080p, webm_360p, multicast_qcif, multicast_240p, multicast_360p,
-// multicast_480p, multicast_720p, multicast_1080p.
+// The format of the video stream that you are sending to YouTube.
 @property (copy) NSString *format;
 
-// Encapsulates information for ingesting an RTMP or an HTTP stream.
+// The ingestionInfo object contains information that YouTube provides that you
+// need to transmit your RTMP or HTTP stream to YouTube.
 @property (retain) GTLYouTubeLiveStreamCdnIngestionInfo *ingestionInfo;
 
-// The live stream ingestion type. Allowed values: rtmp, http, multicast.
+// The method or protocol used to transmit the video stream.
 @property (copy) NSString *ingestionType;
-
-// Encapsulates information for ingesting a multicast stream.
-@property (retain) GTLYouTubeLiveStreamCdnMulticastIngestionInfo *multicastIngestionInfo;
 
 @end

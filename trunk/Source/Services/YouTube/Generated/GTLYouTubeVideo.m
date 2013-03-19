@@ -26,10 +26,11 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideo (0 custom class methods, 15 custom properties)
+//   GTLYouTubeVideo (0 custom class methods, 16 custom properties)
 
 #import "GTLYouTubeVideo.h"
 
+#import "GTLYouTubeVideoAgeGating.h"
 #import "GTLYouTubeVideoContentDetails.h"
 #import "GTLYouTubeVideoFileDetails.h"
 #import "GTLYouTubeVideoMonetizationDetails.h"
@@ -49,7 +50,7 @@
 //
 
 @implementation GTLYouTubeVideo
-@dynamic contentDetails, ETag, fileDetails, identifier, kind,
+@dynamic ageGatingDetails, contentDetails, ETag, fileDetails, identifier, kind,
          monetizationDetails, player, processingDetails, projectDetails,
          recordingDetails, snippet, statistics, status, suggestions,
          topicDetails;

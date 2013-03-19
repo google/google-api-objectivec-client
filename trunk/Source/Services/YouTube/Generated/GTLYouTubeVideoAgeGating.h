@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveStreamCdn.m
+//  GTLYouTubeVideoAgeGating.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,17 +26,32 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveStreamCdn (0 custom class methods, 3 custom properties)
+//   GTLYouTubeVideoAgeGating (0 custom class methods, 3 custom properties)
 
-#import "GTLYouTubeLiveStreamCdn.h"
-
-#import "GTLYouTubeLiveStreamCdnIngestionInfo.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveStreamCdn
+//   GTLYouTubeVideoAgeGating
 //
 
-@implementation GTLYouTubeLiveStreamCdn
-@dynamic format, ingestionInfo, ingestionType;
+@interface GTLYouTubeVideoAgeGating : GTLObject
+
+// Indicates whether or not the video has alcoholic beverage content. Only users
+// of legal purchasing age in a particular country, as identified by ICAP, can
+// view the content.
+@property (retain) NSNumber *alcoholContent;  // boolValue
+
+// Age-restricted trailers. For redband trailers and adult-rated video-games.
+// Only users aged 18+ can view the content. The the field is true the content
+// is restricted to viewers aged 18+. Otherwise The field won't be present.
+@property (retain) NSNumber *restricted;  // boolValue
+
+// Video game rating, if any.
+@property (copy) NSString *videoGameRating;
+
 @end

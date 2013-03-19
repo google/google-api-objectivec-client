@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveStreamCdn.m
+//  GTLYouTubeFeaturedChannel.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,17 +26,18 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveStreamCdn (0 custom class methods, 3 custom properties)
+//   GTLYouTubeFeaturedChannel (0 custom class methods, 7 custom properties)
 
-#import "GTLYouTubeLiveStreamCdn.h"
+#import "GTLYouTubeFeaturedChannel.h"
 
-#import "GTLYouTubeLiveStreamCdnIngestionInfo.h"
+#import "GTLYouTubeChannelSnippet.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveStreamCdn
+//   GTLYouTubeFeaturedChannel
 //
 
-@implementation GTLYouTubeLiveStreamCdn
-@dynamic format, ingestionInfo, ingestionType;
+@implementation GTLYouTubeFeaturedChannel
+@dynamic channelId, channelSnippet, endTimeMs, featureId, imageUrl, startTimeMs,
+         subscriberCount;
 @end

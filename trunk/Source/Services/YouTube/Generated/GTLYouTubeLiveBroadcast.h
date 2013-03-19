@@ -44,30 +44,39 @@
 //   GTLYouTubeLiveBroadcast
 //
 
-// A live broadcast describes live event configuration.
+// A liveBroadcast resource represents an event that will be streamed, via live
+// video, on YouTube.
 
 @interface GTLYouTubeLiveBroadcast : GTLObject
 
-// The content details of the live broadcast.
+// The contentDetails object contains information about the event's video
+// content, such as whether the content can be shown in an embedded video player
+// or if it will be archived and therefore available for viewing after the event
+// has concluded.
 @property (retain) GTLYouTubeLiveBroadcastContentDetails *contentDetails;
 
-// The eTag of the broadcast.
+// The ETag of the broadcast.
 @property (copy) NSString *ETag;
 
-// The unique id of the broadcast.
+// The ID that YouTube assigns to uniquely identify the broadcast.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// The type of this API resource.
+// The type of the API resource. For live broadcast resources, the value will be
+// youtube#liveBroadcast.
 @property (copy) NSString *kind;
 
-// The slate settings of the live broadcast.
+// The slateSettings object contains details about the content that will display
+// in the player when you show a broadcast slate. A broadcast slate displays
+// above the video. However, while it displays, the video continues to play and
+// is also audible in the background.
 @property (retain) GTLYouTubeLiveBroadcastSlateSettings *slateSettings;
 
-// Basic details about the live broadcast.
+// The snippet object contains basic details about the event, including its
+// title, description, start time, and end time.
 @property (retain) GTLYouTubeLiveBroadcastSnippet *snippet;
 
-// The status of the live broadcast.
+// The status object contains information about the event's status.
 @property (retain) GTLYouTubeLiveBroadcastStatus *status;
 
 @end

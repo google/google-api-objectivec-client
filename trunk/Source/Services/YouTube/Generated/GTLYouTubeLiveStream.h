@@ -47,23 +47,27 @@
 
 @interface GTLYouTubeLiveStream : GTLObject
 
-// Cdn settings of the live stream.
+// The cdn object defines the live stream's content delivery network (CDN)
+// settings. These settings provide details about the manner in which you stream
+// your content to YouTube.
 @property (retain) GTLYouTubeLiveStreamCdn *cdn;
 
-// The eTag of the stream.
+// The ETag of the stream resource.
 @property (copy) NSString *ETag;
 
-// The unique id of the stream.
+// The ID that YouTube assigns to uniquely identify the stream.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// The type of this API resource.
+// The type of the API resource. For live stream resources, the value will be
+// youtube#liveStream.
 @property (copy) NSString *kind;
 
-// Basic details about the live stream.
+// The snippet object contains basic details about the stream, including its
+// channel, title, and description.
 @property (retain) GTLYouTubeLiveStreamSnippet *snippet;
 
-// Status of the live stream.
+// The status object contains information about live stream's status.
 @property (retain) GTLYouTubeLiveStreamStatus *status;
 
 @end
