@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveStreamCdn.m
+//  GTLYouTubePlayerVideoUrls.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,17 +26,26 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveStreamCdn (0 custom class methods, 3 custom properties)
+//   GTLYouTubePlayerVideoUrls (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubeLiveStreamCdn.h"
+#import "GTLYouTubePlayerVideoUrls.h"
 
-#import "GTLYouTubeLiveStreamCdnIngestionInfo.h"
+#import "GTLYouTubePlayerRestrictionDetails.h"
+#import "GTLYouTubePlayerVideoUrl.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveStreamCdn
+//   GTLYouTubePlayerVideoUrls
 //
 
-@implementation GTLYouTubeLiveStreamCdn
-@dynamic format, ingestionInfo, ingestionType;
+@implementation GTLYouTubePlayerVideoUrls
+@dynamic restriction, url;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLYouTubePlayerVideoUrl class]
+                                forKey:@"url"];
+  return map;
+}
+
 @end

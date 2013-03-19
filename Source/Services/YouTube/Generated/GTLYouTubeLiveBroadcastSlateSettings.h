@@ -48,10 +48,13 @@
 
 @interface GTLYouTubeLiveBroadcastSlateSettings : GTLObject
 
-// Whether slate is enabled or not.
+// An indication of whether a broadcast slate is enabled for the broadcast. Set
+// this property to true to display the slate. Update the property value to
+// false to remove the slate. You can insert or remove the broadcast slate at
+// any time during an event.
 @property (retain) NSNumber *enableSlates;  // boolValue
 
-// Broadcast slates.
+// A map of slates that are displayed for the broadcast in different regions.
 @property (retain) GTLYouTubeLiveBroadcastSlateSettingsSlates *slates;
 
 @end
@@ -77,10 +80,12 @@
 
 @interface GTLYouTubeLiveBroadcastSlateSettingsSlatesSlate : GTLObject
 
-// Url of the background image.
+// The URL of the slate's background image. This value can be set or updated if
+// enableSlates is set to true. The image should have a 16x9 aspect ratio.
 @property (copy) NSString *backgroundUrl;
 
-// Multi-line message showing in the slate.
+// A multiline message that the slate displays. This value can be set or updated
+// if enableSlates is set to true. You can specify up to three lines of text.
 @property (retain) NSArray *textLines;  // of NSString
 
 @end

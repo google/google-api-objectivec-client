@@ -14,6 +14,7 @@
 		4F3D9918162B33DA00E1959E /* YouTubeSampleWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F3D9916162B33DA00E1959E /* YouTubeSampleWindow.xib */; };
 		4FA6F3D41034AEC400C5DFA5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FA6F3D11034AEC400C5DFA5 /* MainMenu.xib */; };
 		4FCD41821682AFD200CE1176 /* GTLYouTube_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD41211682AFD200CE1176 /* GTLYouTube_Sources.m */; };
+		4FD4714316E15505005DDD5D /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F22A2141186315400FFBAB6 /* WebKit.framework */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -98,6 +99,7 @@
 			files = (
 				4F2445C9121F0D2C00FEE1DA /* GTL.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				4FD4714316E15505005DDD5D /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

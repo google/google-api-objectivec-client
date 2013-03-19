@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveStreamCdn.m
+//  GTLYouTubeFeaturedVideo.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,17 +26,29 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveStreamCdn (0 custom class methods, 3 custom properties)
+//   GTLYouTubeFeaturedVideo (0 custom class methods, 9 custom properties)
 
-#import "GTLYouTubeLiveStreamCdn.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLYouTubeLiveStreamCdnIngestionInfo.h"
+@class GTLYouTubeVideoSnippet;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveStreamCdn
+//   GTLYouTubeFeaturedVideo
 //
 
-@implementation GTLYouTubeLiveStreamCdn
-@dynamic format, ingestionInfo, ingestionType;
+@interface GTLYouTubeFeaturedVideo : GTLObject
+@property (retain) NSNumber *concurrentViewers;  // unsignedIntValue
+@property (retain) NSNumber *endTimeMs;  // longLongValue
+@property (copy) NSString *featureId;
+@property (retain) NSNumber *isLive;  // boolValue
+@property (retain) NSNumber *lengthS;  // unsignedLongLongValue
+@property (retain) NSNumber *startTimeMs;  // longLongValue
+@property (copy) NSString *videoId;
+@property (retain) GTLYouTubeVideoSnippet *videoSnippet;
+@property (retain) NSNumber *viewCount;  // unsignedLongLongValue
 @end

@@ -48,5 +48,5 @@
 // Remapped to 'defaultProperty' to avoid language reserved word 'default'.
 @property (copy) NSString *defaultProperty;
 
-@property (retain) NSArray *localizeds;  // of GTLYouTubeLocalizedString
+@property (retain) NSArray *localized;  // of GTLYouTubeLocalizedString
 @end

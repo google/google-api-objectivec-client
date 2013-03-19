@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveStreamCdn.m
+//  GTLYouTubePlayerAdsPlaylist.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,17 +26,23 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveStreamCdn (0 custom class methods, 3 custom properties)
+//   GTLYouTubePlayerAdsPlaylist (0 custom class methods, 1 custom properties)
 
-#import "GTLYouTubeLiveStreamCdn.h"
-
-#import "GTLYouTubeLiveStreamCdnIngestionInfo.h"
+#import "GTLYouTubePlayerAdsPlaylist.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveStreamCdn
+//   GTLYouTubePlayerAdsPlaylist
 //
 
-@implementation GTLYouTubeLiveStreamCdn
-@dynamic format, ingestionInfo, ingestionType;
+@implementation GTLYouTubePlayerAdsPlaylist
+@dynamic vmapXml;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"vmap_xml"
+                                forKey:@"vmapXml"];
+  return map;
+}
+
 @end

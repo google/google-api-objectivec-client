@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveStreamCdn.m
+//  GTLYouTubePlayerListResponse.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,17 +26,33 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveStreamCdn (0 custom class methods, 3 custom properties)
+//   GTLYouTubePlayerListResponse (0 custom class methods, 3 custom properties)
 
-#import "GTLYouTubeLiveStreamCdn.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLYouTubeLiveStreamCdnIngestionInfo.h"
+@class GTLYouTubePlayer;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveStreamCdn
+//   GTLYouTubePlayerListResponse
 //
 
-@implementation GTLYouTubeLiveStreamCdn
-@dynamic format, ingestionInfo, ingestionType;
+// A list of players returned from a youtube.player.list call.
+
+@interface GTLYouTubePlayerListResponse : GTLObject
+
+// The ETag of the response.
+@property (copy) NSString *ETag;
+
+// The type of the API response. For this operation, the value will be
+// youtube#playerListResponse.
+@property (copy) NSString *kind;
+
+// A list of players that match the request criteria.
+@property (retain) NSArray *players;  // of GTLYouTubePlayer
+
 @end

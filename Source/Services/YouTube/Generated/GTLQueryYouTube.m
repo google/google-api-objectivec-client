@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (31 custom class methods, 37 custom properties)
+//   GTLQueryYouTube (32 custom class methods, 39 custom properties)
 
 #import "GTLQueryYouTube.h"
 
@@ -38,6 +38,7 @@
 #import "GTLYouTubeLiveBroadcastList.h"
 #import "GTLYouTubeLiveStream.h"
 #import "GTLYouTubeLiveStreamList.h"
+#import "GTLYouTubePlayerListResponse.h"
 #import "GTLYouTubePlaylist.h"
 #import "GTLYouTubePlaylistItem.h"
 #import "GTLYouTubePlaylistItemListResponse.h"
@@ -52,10 +53,10 @@
 @implementation GTLQueryYouTube
 
 @dynamic broadcastStatus, categoryId, channelId, channelType, fields,
-         forChannelId, forContentOwner, hl, home, identifier, maxResults, mine,
-         mySubscribers, onBehalfOf, onBehalfOfContentOwner, order, pageToken,
-         part, playlistId, publishedAfter, publishedBefore, q, regionCode,
-         relatedToVideoId, streamId, topicId, type, videoCaption,
+         forChannelId, forContentOwner, hl, home, identifier, itag, managedByMe,
+         maxResults, mine, mySubscribers, onBehalfOf, onBehalfOfContentOwner,
+         order, pageToken, part, playlistId, publishedAfter, publishedBefore, q,
+         regionCode, relatedToVideoId, streamId, topicId, type, videoCaption,
          videoCategoryId, videoDefinition, videoDimension, videoDuration,
          videoEmbeddable, videoId, videoLicense, videoSyndicated, videoType;
 
@@ -229,6 +230,18 @@
   query.bodyObject = object;
   query.part = part;
   query.expectedObjectClass = [GTLYouTubeLiveStream class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "players" methods
+// These create a GTLQueryYouTube object.
+
++ (id)queryForPlayersListWithPart:(NSString *)part {
+  NSString *methodName = @"youtube.players.list";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.part = part;
+  query.expectedObjectClass = [GTLYouTubePlayerListResponse class];
   return query;
 }
 

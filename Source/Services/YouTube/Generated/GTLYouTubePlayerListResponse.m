@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveStreamCdn.m
+//  GTLYouTubePlayerListResponse.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,17 +26,36 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveStreamCdn (0 custom class methods, 3 custom properties)
+//   GTLYouTubePlayerListResponse (0 custom class methods, 3 custom properties)
 
-#import "GTLYouTubeLiveStreamCdn.h"
+#import "GTLYouTubePlayerListResponse.h"
 
-#import "GTLYouTubeLiveStreamCdnIngestionInfo.h"
+#import "GTLYouTubePlayer.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveStreamCdn
+//   GTLYouTubePlayerListResponse
 //
 
-@implementation GTLYouTubeLiveStreamCdn
-@dynamic format, ingestionInfo, ingestionType;
+@implementation GTLYouTubePlayerListResponse
+@dynamic ETag, kind, players;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"etag"
+                                forKey:@"ETag"];
+  return map;
+}
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLYouTubePlayer class]
+                                forKey:@"players"];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"youtube#playerListResponse"];
+}
+
 @end

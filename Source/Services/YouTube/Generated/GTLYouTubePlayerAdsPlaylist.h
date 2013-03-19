@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveStreamCdn.m
+//  GTLYouTubePlayerAdsPlaylist.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,17 +26,25 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveStreamCdn (0 custom class methods, 3 custom properties)
+//   GTLYouTubePlayerAdsPlaylist (0 custom class methods, 1 custom properties)
 
-#import "GTLYouTubeLiveStreamCdn.h"
-
-#import "GTLYouTubeLiveStreamCdnIngestionInfo.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveStreamCdn
+//   GTLYouTubePlayerAdsPlaylist
 //
 
-@implementation GTLYouTubeLiveStreamCdn
-@dynamic format, ingestionInfo, ingestionType;
+// The playlist of ads which accompany the content video.
+
+@interface GTLYouTubePlayerAdsPlaylist : GTLObject
+
+// The VMAP XML document that describes where ads should be inserted and what ad
+// formats should be used in those ad breaks. See http://www.iab.net/vmap.
+@property (copy) NSString *vmapXml;
+
 @end

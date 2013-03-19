@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveStreamCdn.m
+//  GTLYouTubePlayerVideoUrl.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,17 +26,15 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveStreamCdn (0 custom class methods, 3 custom properties)
+//   GTLYouTubePlayerVideoUrl (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubeLiveStreamCdn.h"
-
-#import "GTLYouTubeLiveStreamCdnIngestionInfo.h"
+#import "GTLYouTubePlayerVideoUrl.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveStreamCdn
+//   GTLYouTubePlayerVideoUrl
 //
 
-@implementation GTLYouTubeLiveStreamCdn
-@dynamic format, ingestionInfo, ingestionType;
+@implementation GTLYouTubePlayerVideoUrl
+@dynamic itag, url;
 @end

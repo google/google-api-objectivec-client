@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveStreamCdn.m
+//  GTLYouTubeFeaturedChannel.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,17 +26,27 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveStreamCdn (0 custom class methods, 3 custom properties)
+//   GTLYouTubeFeaturedChannel (0 custom class methods, 7 custom properties)
 
-#import "GTLYouTubeLiveStreamCdn.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLYouTubeLiveStreamCdnIngestionInfo.h"
+@class GTLYouTubeChannelSnippet;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveStreamCdn
+//   GTLYouTubeFeaturedChannel
 //
 
-@implementation GTLYouTubeLiveStreamCdn
-@dynamic format, ingestionInfo, ingestionType;
+@interface GTLYouTubeFeaturedChannel : GTLObject
+@property (copy) NSString *channelId;
+@property (retain) GTLYouTubeChannelSnippet *channelSnippet;
+@property (retain) NSNumber *endTimeMs;  // longLongValue
+@property (copy) NSString *featureId;
+@property (copy) NSString *imageUrl;
+@property (retain) NSNumber *startTimeMs;  // longLongValue
+@property (retain) NSNumber *subscriberCount;  // unsignedLongLongValue
 @end
