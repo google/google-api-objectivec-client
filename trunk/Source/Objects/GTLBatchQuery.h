@@ -28,6 +28,7 @@
   NSMutableDictionary *requestIDMap_;
   BOOL skipAuthorization_;
   NSDictionary *additionalHTTPHeaders_;
+  NSDictionary *urlQueryParameters_;
 }
 
 // Queries included in this batch.  Each query should have a unique requestID.
@@ -41,6 +42,10 @@
 // These headers override the same keys from the service object's
 // additionalHTTPHeaders.
 @property (copy) NSDictionary *additionalHTTPHeaders;
+
+// Any URL query parameters to add to the query (useful for debugging with some
+// services).
+@property (copy) NSDictionary *urlQueryParameters;
 
 + (id)batchQuery;
 + (id)batchQueryWithQueries:(NSArray *)array;
