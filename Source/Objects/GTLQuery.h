@@ -28,6 +28,7 @@
 - (BOOL)shouldSkipAuthorization;
 - (void)executionDidStop;
 - (NSDictionary *)additionalHTTPHeaders;
+- (NSDictionary *)urlQueryParameters;
 - (GTLUploadParameters *)uploadParameters;
 @end
 
@@ -78,7 +79,7 @@
 // or data must be provided.
 @property (copy) GTLUploadParameters *uploadParameters;
 
-// Any url query parameters to add to the query (useful for debugging with some
+// Any URL query parameters to add to the query (useful for debugging with some
 // services).
 @property (copy) NSDictionary *urlQueryParameters;
 
