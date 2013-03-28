@@ -34,7 +34,7 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLYouTubeResourceId2;
+@class GTLYouTubeResourceId;
 @class GTLYouTubeSearchResultSnippet;
 
 // ----------------------------------------------------------------------------
@@ -55,7 +55,7 @@
 // The id object contains information that can be used to uniquely identify the
 // resource that matches the search request.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) GTLYouTubeResourceId2 *identifier;
+@property (retain) GTLYouTubeResourceId *identifier;
 
 // The kind, fixed to "youtube#searchResult".
 @property (copy) NSString *kind;

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeResourceId2.h
+//  GTLYouTubeThumbnailDetails.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeResourceId2 (0 custom class methods, 4 custom properties)
+//   GTLYouTubeThumbnailDetails (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,30 +34,20 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLYouTubeThumbnail;
+
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeResourceId2
+//   GTLYouTubeThumbnailDetails
 //
 
-// A resource id is a generic reference that points to another YouTube resource.
+@interface GTLYouTubeThumbnailDetails : GTLObject
 
-@interface GTLYouTubeResourceId2 : GTLObject
+// Remapped to 'defaultProperty' to avoid language reserved word 'default'.
+@property (retain) GTLYouTubeThumbnail *defaultProperty;
 
-// The ID that YouTube uses to uniquely identify the referred resource, if that
-// resource is a channel. This property is only present if the resourceId.kind
-// value is youtube#channel.
-@property (copy) NSString *channelId;
-
-@property (copy) NSString *kind;
-
-// The ID that YouTube uses to uniquely identify the referred resource, if that
-// resource is a playlist. This property is only present if the resourceId.kind
-// value is youtube#playlist.
-@property (copy) NSString *playlistId;
-
-// The ID that YouTube uses to uniquely identify the referred resource, if that
-// resource is a video. This property is only present if the resourceId.kind
-// value is youtube#video.
-@property (copy) NSString *videoId;
-
+@property (retain) GTLYouTubeThumbnail *high;
+@property (retain) GTLYouTubeThumbnail *maxres;
+@property (retain) GTLYouTubeThumbnail *medium;
+@property (retain) GTLYouTubeThumbnail *standard;
 @end

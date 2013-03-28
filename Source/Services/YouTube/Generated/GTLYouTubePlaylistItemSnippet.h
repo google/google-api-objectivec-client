@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,8 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlaylistItemSnippet (0 custom class methods, 8 custom properties)
-//   GTLYouTubePlaylistItemSnippetThumbnails (0 custom class methods, 0 custom properties)
+//   GTLYouTubePlaylistItemSnippet (0 custom class methods, 9 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -35,24 +34,22 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLYouTubePlaylistItemSnippetThumbnails;
 @class GTLYouTubeResourceId;
-@class GTLYouTubeThumbnail;
+@class GTLYouTubeThumbnailDetails;
 
 // ----------------------------------------------------------------------------
 //
 //   GTLYouTubePlaylistItemSnippet
 //
 
-// Basic details about an item included in a playlist, including title,
-// description, thumbnails, playlist the item is part of and position of the
-// item inside the playlist.
-
 @interface GTLYouTubePlaylistItemSnippet : GTLObject
 
 // The ID that YouTube uses to uniquely identify the user that added the item to
 // the playlist.
 @property (copy) NSString *channelId;
+
+// Channel title for the channel that the playlist item belongs to.
+@property (copy) NSString *channelTitle;
 
 // The item's description.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
@@ -75,25 +72,9 @@
 // resource that is included in the playlist as the playlist item.
 @property (retain) GTLYouTubeResourceId *resourceId;
 
-// A map of thumbnail images associated with the playlist item. For each object
-// in the map, the key is the name of the thumbnail image, and the value is an
-// object that contains other information about the thumbnail.
-@property (retain) GTLYouTubePlaylistItemSnippetThumbnails *thumbnails;
+@property (retain) GTLYouTubeThumbnailDetails *thumbnails;
 
 // The item's title.
 @property (copy) NSString *title;
 
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubePlaylistItemSnippetThumbnails
-//
-
-@interface GTLYouTubePlaylistItemSnippetThumbnails : GTLObject
-// This object is documented as having more properties that are
-// GTLYouTubeThumbnail. Use -additionalJSONKeys and -additionalPropertyForName:
-// to get the list of properties and then fetch them; or -additionalProperties
-// to fetch them all at once.
 @end

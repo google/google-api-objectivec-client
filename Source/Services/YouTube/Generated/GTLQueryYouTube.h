@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (32 custom class methods, 39 custom properties)
+//   GTLQueryYouTube (32 custom class methods, 40 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -80,6 +80,7 @@
 @property (copy) NSString *q;
 @property (copy) NSString *regionCode;
 @property (copy) NSString *relatedToVideoId;
+@property (copy) NSString *safeSearch;
 @property (copy) NSString *streamId;
 @property (copy) NSString *topicId;
 @property (copy) NSString *type;
@@ -724,6 +725,19 @@
 //     that are related to the video that the parameter value identifies. The
 //     parameter value must be set to a YouTube video ID and, if you are using
 //     this parameter, the type parameter must be set to video.
+//   safeSearch: The safeSearch parameter indicates whether the search results
+//     should include restricted content as well as standard content.
+//      kGTLYouTubeSafeSearchModerate: YouTube will filter some content from
+//        search results and, at the least, will filter content that is
+//        restricted in your locale. Based on their content, search results
+//        could be removed from search results or demoted in search results.
+//        Note: The default value for the safeSearch parameter is moderate.
+//      kGTLYouTubeSafeSearchNone: YouTube will not perform any filtering on the
+//        search result set.
+//      kGTLYouTubeSafeSearchStrict: YouTube will try to exclude all restricted
+//        content from the search result set. Based on their content, search
+//        results could be removed from search results or demoted in search
+//        results.
 //   topicId: The topicId parameter indicates that the API response should only
 //     contain resources associated with the specified topic. The value
 //     identifies a Freebase topic ID.

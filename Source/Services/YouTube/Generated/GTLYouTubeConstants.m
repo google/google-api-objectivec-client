@@ -55,6 +55,11 @@ NSString * const kGTLYouTubeOrderRelevance    = @"relevance";
 NSString * const kGTLYouTubeOrderUnread       = @"unread";
 NSString * const kGTLYouTubeOrderViewCount    = @"viewCount";
 
+// SafeSearch
+NSString * const kGTLYouTubeSafeSearchModerate = @"moderate";
+NSString * const kGTLYouTubeSafeSearchNone     = @"none";
+NSString * const kGTLYouTubeSafeSearchStrict   = @"strict";
+
 // VideoCaption
 NSString * const kGTLYouTubeVideoCaptionAny           = @"any";
 NSString * const kGTLYouTubeVideoCaptionClosedCaption = @"closedCaption";

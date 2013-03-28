@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,10 +26,11 @@
 // Documentation:
 //   https://developers.google.com/shopping-search/v1/getting_started
 // Classes:
-//   GTLShoppingModelProduct (0 custom class methods, 35 custom properties)
+//   GTLShoppingModelProduct (0 custom class methods, 36 custom properties)
 //   GTLShoppingModelProductAttributesItem (0 custom class methods, 5 custom properties)
 //   GTLShoppingModelProductAuthor (0 custom class methods, 2 custom properties)
 //   GTLShoppingModelProductImagesItem (0 custom class methods, 3 custom properties)
+//   GTLShoppingModelProductInternal16 (0 custom class methods, 3 custom properties)
 //   GTLShoppingModelProductInternal4Item (0 custom class methods, 2 custom properties)
 //   GTLShoppingModelProductInventoriesItem (0 custom class methods, 15 custom properties)
 //   GTLShoppingModelProductVariantsItem (0 custom class methods, 1 custom properties)
@@ -46,9 +47,10 @@
 @dynamic attributes, author, brand, categories, condition, country,
          creationTime, descriptionProperty, googleId, gtin, gtins, images,
          internal1, internal10, internal12, internal13, internal14, internal15,
-         internal3, internal4, internal6, internal7, internal8, inventories,
-         language, link, modificationTime, mpns, plusOne, providedId,
-         queryMatched, score, title, totalMatchingVariants, variants;
+         internal16, internal3, internal4, internal6, internal7, internal8,
+         inventories, language, link, modificationTime, mpns, plusOne,
+         providedId, queryMatched, score, title, totalMatchingVariants,
+         variants;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -113,6 +115,16 @@
   return map;
 }
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLShoppingModelProductInternal16
+//
+
+@implementation GTLShoppingModelProductInternal16
+@dynamic length, number, size;
 @end
 
 

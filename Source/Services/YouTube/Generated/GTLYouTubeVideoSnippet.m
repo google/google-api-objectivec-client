@@ -27,11 +27,10 @@
 //   https://developers.google.com/youtube/v3
 // Classes:
 //   GTLYouTubeVideoSnippet (0 custom class methods, 8 custom properties)
-//   GTLYouTubeVideoSnippetThumbnails (0 custom class methods, 0 custom properties)
 
 #import "GTLYouTubeVideoSnippet.h"
 
-#import "GTLYouTubeThumbnail.h"
+#import "GTLYouTubeThumbnailDetails.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -54,20 +53,6 @@
     [NSDictionary dictionaryWithObject:[NSString class]
                                 forKey:@"tags"];
   return map;
-}
-
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubeVideoSnippetThumbnails
-//
-
-@implementation GTLYouTubeVideoSnippetThumbnails
-
-+ (Class)classForAdditionalProperties {
-  return [GTLYouTubeThumbnail class];
 }
 
 @end

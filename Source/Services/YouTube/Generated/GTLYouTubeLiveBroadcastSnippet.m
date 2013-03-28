@@ -27,11 +27,10 @@
 //   https://developers.google.com/youtube/v3
 // Classes:
 //   GTLYouTubeLiveBroadcastSnippet (0 custom class methods, 9 custom properties)
-//   GTLYouTubeLiveBroadcastSnippetThumbnails (0 custom class methods, 0 custom properties)
 
 #import "GTLYouTubeLiveBroadcastSnippet.h"
 
-#import "GTLYouTubeThumbnail.h"
+#import "GTLYouTubeThumbnailDetails.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -47,20 +46,6 @@
     [NSDictionary dictionaryWithObject:@"description"
                                 forKey:@"descriptionProperty"];
   return map;
-}
-
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubeLiveBroadcastSnippetThumbnails
-//
-
-@implementation GTLYouTubeLiveBroadcastSnippetThumbnails
-
-+ (Class)classForAdditionalProperties {
-  return [GTLYouTubeThumbnail class];
 }
 
 @end

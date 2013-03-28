@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -155,7 +155,7 @@
 @property (retain) GTLCalendarEventDateTime *originalStartTime;
 
 // Whether this is a private event copy where changes are not shared with other
-// copies on other calendars. Optional. Immutable.
+// copies on other calendars. Optional. Immutable. The default is False.
 @property (retain) NSNumber *privateCopy;  // boolValue
 
 // List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event. This

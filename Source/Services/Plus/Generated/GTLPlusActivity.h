@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/+/api/
 // Classes:
-//   GTLPlusActivity (0 custom class methods, 19 custom properties)
+//   GTLPlusActivity (0 custom class methods, 20 custom properties)
 //   GTLPlusActivityActor (0 custom class methods, 5 custom properties)
 //   GTLPlusActivityObject (0 custom class methods, 10 custom properties)
 //   GTLPlusActivityProvider (0 custom class methods, 1 custom properties)
@@ -67,6 +67,7 @@
 @class GTLPlusActivityObjectReplies;
 @class GTLPlusActivityObjectResharers;
 @class GTLPlusActivityProvider;
+@class GTLPlusPlace;
 
 // ----------------------------------------------------------------------------
 //
@@ -105,6 +106,9 @@
 
 // Identifies this resource as an activity. Value: "plus#activity".
 @property (copy) NSString *kind;
+
+// The location where this activity occurred.
+@property (retain) GTLPlusPlace *location;
 
 // The object of this activity.
 @property (retain) GTLPlusActivityObject *object;

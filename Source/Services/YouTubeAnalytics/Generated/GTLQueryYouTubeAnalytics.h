@@ -101,6 +101,7 @@
 //     a pagination mechanism along with the max-results parameter (one-based,
 //     inclusive).
 //  Authorization scope(s):
+//   kGTLAuthScopeYouTubeAnalyticsYtAnalyticsMonetaryReadonly
 //   kGTLAuthScopeYouTubeAnalyticsYtAnalyticsReadonly
 // Fetches a GTLYouTubeAnalyticsResultTable.
 + (id)queryForReportsQueryWithIds:(NSString *)ids

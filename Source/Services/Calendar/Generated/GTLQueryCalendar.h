@@ -440,9 +440,9 @@
 //     'cancelled') in the result. Cancelled instances of recurring events (but
 //     not the underlying recurring event) will still be included if
 //     'showDeleted' and 'singleEvents' are both False. If 'showDeleted' and
-//     'singleEvents' are both True only single instances of deleted events (but
-//     not the underlying recurring events) are returned. Optional. The default
-//     is False.
+//     'singleEvents' are both True, only single instances of deleted events
+//     (but not the underlying recurring events) are returned. Optional. The
+//     default is False.
 //   showHiddenInvitations: Whether to include hidden invitations in the result.
 //     Optional. The default is False.
 //   singleEvents: Whether to expand recurring events into instances and only

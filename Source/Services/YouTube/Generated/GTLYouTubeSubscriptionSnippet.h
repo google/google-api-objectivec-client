@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,6 @@
 //   https://developers.google.com/youtube/v3
 // Classes:
 //   GTLYouTubeSubscriptionSnippet (0 custom class methods, 6 custom properties)
-//   GTLYouTubeSubscriptionSnippetThumbnails (0 custom class methods, 0 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,8 +35,7 @@
 #endif
 
 @class GTLYouTubeResourceId;
-@class GTLYouTubeSubscriptionSnippetThumbnails;
-@class GTLYouTubeThumbnail;
+@class GTLYouTubeThumbnailDetails;
 
 // ----------------------------------------------------------------------------
 //
@@ -67,22 +65,9 @@
 // A map of thumbnail images associated with the subscription. For each object
 // in the map, the key is the name of the thumbnail image, and the value is an
 // object that contains other information about the thumbnail.
-@property (retain) GTLYouTubeSubscriptionSnippetThumbnails *thumbnails;
+@property (retain) GTLYouTubeThumbnailDetails *thumbnails;
 
 // The subscription's title.
 @property (copy) NSString *title;
 
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubeSubscriptionSnippetThumbnails
-//
-
-@interface GTLYouTubeSubscriptionSnippetThumbnails : GTLObject
-// This object is documented as having more properties that are
-// GTLYouTubeThumbnail. Use -additionalJSONKeys and -additionalPropertyForName:
-// to get the list of properties and then fetch them; or -additionalProperties
-// to fetch them all at once.
 @end

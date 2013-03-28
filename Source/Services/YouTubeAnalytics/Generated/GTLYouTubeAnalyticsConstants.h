@@ -35,5 +35,7 @@
 #endif
 
 // Authorization scope
+// View YouTube Analytics monetary reports for your YouTube content
+GTL_EXTERN NSString * const kGTLAuthScopeYouTubeAnalyticsYtAnalyticsMonetaryReadonly;  // "https://www.googleapis.com/auth/yt-analytics-monetary.readonly"
 // View YouTube Analytics reports for your YouTube content
 GTL_EXTERN NSString * const kGTLAuthScopeYouTubeAnalyticsYtAnalyticsReadonly;  // "https://www.googleapis.com/auth/yt-analytics.readonly"

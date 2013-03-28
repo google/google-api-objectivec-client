@@ -39,6 +39,7 @@
 #import "GTLPlusMomentsFeed.h"
 #import "GTLPlusPeopleFeed.h"
 #import "GTLPlusPerson.h"
+#import "GTLPlusPlace.h"
 
 #import "GTLQueryPlus.h"
 #import "GTLServicePlus.h"

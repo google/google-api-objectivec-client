@@ -27,7 +27,6 @@
 //   https://developers.google.com/youtube/v3
 // Classes:
 //   GTLYouTubeLiveBroadcastSnippet (0 custom class methods, 9 custom properties)
-//   GTLYouTubeLiveBroadcastSnippetThumbnails (0 custom class methods, 0 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -35,8 +34,7 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLYouTubeLiveBroadcastSnippetThumbnails;
-@class GTLYouTubeThumbnail;
+@class GTLYouTubeThumbnailDetails;
 
 // ----------------------------------------------------------------------------
 //
@@ -83,24 +81,11 @@
 // A map of thumbnail images associated with the broadcast. For each nested
 // object in this object, the key is the name of the thumbnail image, and the
 // value is an object that contains other information about the thumbnail.
-@property (retain) GTLYouTubeLiveBroadcastSnippetThumbnails *thumbnails;
+@property (retain) GTLYouTubeThumbnailDetails *thumbnails;
 
 // The broadcast's title. Note that the broadcast represents exactly one YouTube
 // video. You can set this field by modifying the broadcast resource or by
 // setting the title field of the corresponding video resource.
 @property (copy) NSString *title;
 
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubeLiveBroadcastSnippetThumbnails
-//
-
-@interface GTLYouTubeLiveBroadcastSnippetThumbnails : GTLObject
-// This object is documented as having more properties that are
-// GTLYouTubeThumbnail. Use -additionalJSONKeys and -additionalPropertyForName:
-// to get the list of properties and then fetch them; or -additionalProperties
-// to fetch them all at once.
 @end

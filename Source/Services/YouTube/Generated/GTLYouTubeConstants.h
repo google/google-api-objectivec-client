@@ -65,6 +65,11 @@ GTL_EXTERN NSString * const kGTLYouTubeOrderRelevance;     // "relevance"
 GTL_EXTERN NSString * const kGTLYouTubeOrderUnread;        // "unread"
 GTL_EXTERN NSString * const kGTLYouTubeOrderViewCount;     // "viewCount"
 
+// SafeSearch
+GTL_EXTERN NSString * const kGTLYouTubeSafeSearchModerate;  // "moderate"
+GTL_EXTERN NSString * const kGTLYouTubeSafeSearchNone;      // "none"
+GTL_EXTERN NSString * const kGTLYouTubeSafeSearchStrict;    // "strict"
+
 // VideoCaption
 GTL_EXTERN NSString * const kGTLYouTubeVideoCaptionAny;         // "any"
 GTL_EXTERN NSString * const kGTLYouTubeVideoCaptionClosedCaption;  // "closedCaption"
