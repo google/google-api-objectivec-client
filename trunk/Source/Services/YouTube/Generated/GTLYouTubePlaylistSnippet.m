@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,12 +26,11 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlaylistSnippet (0 custom class methods, 5 custom properties)
-//   GTLYouTubePlaylistSnippetThumbnails (0 custom class methods, 0 custom properties)
+//   GTLYouTubePlaylistSnippet (0 custom class methods, 8 custom properties)
 
 #import "GTLYouTubePlaylistSnippet.h"
 
-#import "GTLYouTubeThumbnail.h"
+#import "GTLYouTubeThumbnailDetails.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -39,7 +38,8 @@
 //
 
 @implementation GTLYouTubePlaylistSnippet
-@dynamic channelId, descriptionProperty, publishedAt, thumbnails, title;
+@dynamic channelId, channelTitle, descriptionProperty, publishedAtMs, tags,
+         thumbnails, title, updatedAtMs;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -48,18 +48,11 @@
   return map;
 }
 
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubePlaylistSnippetThumbnails
-//
-
-@implementation GTLYouTubePlaylistSnippetThumbnails
-
-+ (Class)classForAdditionalProperties {
-  return [GTLYouTubeThumbnail class];
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[NSString class]
+                                forKey:@"tags"];
+  return map;
 }
 
 @end

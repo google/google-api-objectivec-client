@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,7 +48,6 @@
 // value is youtube#channel.
 @property (copy) NSString *channelId;
 
-// The kind, or type, of the referred resource.
 @property (copy) NSString *kind;
 
 // The ID that YouTube uses to uniquely identify the referred resource, if that

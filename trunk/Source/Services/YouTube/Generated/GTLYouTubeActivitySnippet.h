@@ -27,7 +27,6 @@
 //   https://developers.google.com/youtube/v3
 // Classes:
 //   GTLYouTubeActivitySnippet (0 custom class methods, 8 custom properties)
-//   GTLYouTubeActivitySnippetThumbnails (0 custom class methods, 0 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -35,8 +34,7 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLYouTubeActivitySnippetThumbnails;
-@class GTLYouTubeThumbnail;
+@class GTLYouTubeThumbnailDetails;
 
 // ----------------------------------------------------------------------------
 //
@@ -75,7 +73,7 @@
 // associated with the activity. For each object in the map, the key is the name
 // of the thumbnail image, and the value is an object that contains other
 // information about the thumbnail.
-@property (retain) GTLYouTubeActivitySnippetThumbnails *thumbnails;
+@property (retain) GTLYouTubeThumbnailDetails *thumbnails;
 
 // The title of the resource primarily associated with the activity.
 @property (copy) NSString *title;
@@ -83,17 +81,4 @@
 // The type of activity that the resource describes.
 @property (copy) NSString *type;
 
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubeActivitySnippetThumbnails
-//
-
-@interface GTLYouTubeActivitySnippetThumbnails : GTLObject
-// This object is documented as having more properties that are
-// GTLYouTubeThumbnail. Use -additionalJSONKeys and -additionalPropertyForName:
-// to get the list of properties and then fetch them; or -additionalProperties
-// to fetch them all at once.
 @end

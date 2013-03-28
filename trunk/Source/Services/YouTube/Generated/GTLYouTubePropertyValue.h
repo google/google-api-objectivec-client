@@ -39,7 +39,7 @@
 //   GTLYouTubePropertyValue
 //
 
-// A key value for the experimental branding properties.
+// A pair Property / Value.
 
 @interface GTLYouTubePropertyValue : GTLObject
 @property (copy) NSString *property;

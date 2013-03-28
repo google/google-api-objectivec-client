@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoStatus (0 custom class methods, 6 custom properties)
+//   GTLYouTubeVideoStatus (0 custom class methods, 7 custom properties)
 
 #import "GTLYouTubeVideoStatus.h"
 
@@ -36,6 +36,6 @@
 //
 
 @implementation GTLYouTubeVideoStatus
-@dynamic embeddable, failureReason, license, privacyStatus, rejectionReason,
-         uploadStatus;
+@dynamic embeddable, failureReason, license, privacyStatus, publicStatsViewable,
+         rejectionReason, uploadStatus;
 @end

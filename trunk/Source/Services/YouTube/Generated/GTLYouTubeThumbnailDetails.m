@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeResourceId2.m
+//  GTLYouTubeThumbnailDetails.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,15 +26,25 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeResourceId2 (0 custom class methods, 4 custom properties)
+//   GTLYouTubeThumbnailDetails (0 custom class methods, 5 custom properties)
 
-#import "GTLYouTubeResourceId2.h"
+#import "GTLYouTubeThumbnailDetails.h"
+
+#import "GTLYouTubeThumbnail.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeResourceId2
+//   GTLYouTubeThumbnailDetails
 //
 
-@implementation GTLYouTubeResourceId2
-@dynamic channelId, kind, playlistId, videoId;
+@implementation GTLYouTubeThumbnailDetails
+@dynamic defaultProperty, high, maxres, medium, standard;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"default"
+                                forKey:@"defaultProperty"];
+  return map;
+}
+
 @end

@@ -14,10 +14,7 @@
  */
 
 //
-//  GTLPlus_Sources.m
-//
-// This file can be compiled into projects to avoid adding the individual
-// source files for this service.
+//  GTLPlusPlace.m
 //
 
 // ----------------------------------------------------------------------------
@@ -28,21 +25,43 @@
 //   The Google+ API enables developers to build on top of the Google+ platform.
 // Documentation:
 //   https://developers.google.com/+/api/
+// Classes:
+//   GTLPlusPlace (0 custom class methods, 4 custom properties)
+//   GTLPlusPlaceAddress (0 custom class methods, 1 custom properties)
+//   GTLPlusPlacePosition (0 custom class methods, 2 custom properties)
 
-#import "GTLPlusConstants.m"
+#import "GTLPlusPlace.h"
 
-#import "GTLPlusAcl.m"
-#import "GTLPlusAclentryResource.m"
-#import "GTLPlusActivity.m"
-#import "GTLPlusActivityFeed.m"
-#import "GTLPlusComment.m"
-#import "GTLPlusCommentFeed.m"
-#import "GTLPlusItemScope.m"
-#import "GTLPlusMoment.m"
-#import "GTLPlusMomentsFeed.m"
-#import "GTLPlusPeopleFeed.m"
-#import "GTLPlusPerson.m"
-#import "GTLPlusPlace.m"
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusPlace
+//
 
-#import "GTLQueryPlus.m"
-#import "GTLServicePlus.m"
+@implementation GTLPlusPlace
+@dynamic address, displayName, kind, position;
+
++ (void)load {
+  [self registerObjectClassForKind:@"plus#place"];
+}
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusPlaceAddress
+//
+
+@implementation GTLPlusPlaceAddress
+@dynamic formatted;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusPlacePosition
+//
+
+@implementation GTLPlusPlacePosition
+@dynamic latitude, longitude;
+@end

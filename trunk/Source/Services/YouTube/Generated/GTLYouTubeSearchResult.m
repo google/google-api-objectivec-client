@@ -30,7 +30,7 @@
 
 #import "GTLYouTubeSearchResult.h"
 
-#import "GTLYouTubeResourceId2.h"
+#import "GTLYouTubeResourceId.h"
 #import "GTLYouTubeSearchResultSnippet.h"
 
 // ----------------------------------------------------------------------------

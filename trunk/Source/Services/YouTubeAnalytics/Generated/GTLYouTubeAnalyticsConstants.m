@@ -29,4 +29,5 @@
 #import "GTLYouTubeAnalyticsConstants.h"
 
 // Authorization scope
+NSString * const kGTLAuthScopeYouTubeAnalyticsYtAnalyticsMonetaryReadonly = @"https://www.googleapis.com/auth/yt-analytics-monetary.readonly";
 NSString * const kGTLAuthScopeYouTubeAnalyticsYtAnalyticsReadonly = @"https://www.googleapis.com/auth/yt-analytics.readonly";

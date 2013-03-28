@@ -49,6 +49,7 @@
                       [GTLPlusMomentsFeed class],
                       [GTLPlusPeopleFeed class],
                       [GTLPlusPerson class],
+                      [GTLPlusPlace class],
                       nil];
   return classes;
 }

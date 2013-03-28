@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,10 +26,11 @@
 // Documentation:
 //   https://developers.google.com/shopping-search/v1/getting_started
 // Classes:
-//   GTLShoppingModelProduct (0 custom class methods, 35 custom properties)
+//   GTLShoppingModelProduct (0 custom class methods, 36 custom properties)
 //   GTLShoppingModelProductAttributesItem (0 custom class methods, 5 custom properties)
 //   GTLShoppingModelProductAuthor (0 custom class methods, 2 custom properties)
 //   GTLShoppingModelProductImagesItem (0 custom class methods, 3 custom properties)
+//   GTLShoppingModelProductInternal16 (0 custom class methods, 3 custom properties)
 //   GTLShoppingModelProductInternal4Item (0 custom class methods, 2 custom properties)
 //   GTLShoppingModelProductInventoriesItem (0 custom class methods, 15 custom properties)
 //   GTLShoppingModelProductVariantsItem (0 custom class methods, 1 custom properties)
@@ -46,6 +47,7 @@
 @class GTLShoppingModelProductAuthor;
 @class GTLShoppingModelProductImagesItem;
 @class GTLShoppingModelProductImagesItemThumbnailsItem;
+@class GTLShoppingModelProductInternal16;
 @class GTLShoppingModelProductInternal4Item;
 @class GTLShoppingModelProductInventoriesItem;
 @class GTLShoppingModelProductVariantsItem;
@@ -112,6 +114,9 @@
 
 // Google Internal.
 @property (retain) NSNumber *internal15;  // doubleValue
+
+// Google Internal. Attribute names are deliberately vague.
+@property (retain) GTLShoppingModelProductInternal16 *internal16;
 
 // Google Internal.
 @property (copy) NSString *internal3;
@@ -224,6 +229,18 @@
 // Thumbnails of product image.
 @property (retain) NSArray *thumbnails;  // of GTLShoppingModelProductImagesItemThumbnailsItem
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLShoppingModelProductInternal16
+//
+
+@interface GTLShoppingModelProductInternal16 : GTLObject
+@property (retain) NSNumber *length;  // intValue
+@property (retain) NSNumber *number;  // intValue
+@property (retain) NSNumber *size;  // longLongValue
 @end
 
 

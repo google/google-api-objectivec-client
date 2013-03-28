@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoStatus (0 custom class methods, 6 custom properties)
+//   GTLYouTubeVideoStatus (0 custom class methods, 7 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -55,6 +55,11 @@
 
 // The video's privacy status.
 @property (copy) NSString *privacyStatus;
+
+// This value indicates if the extended video statistics on the watch page can
+// be viewed by everyone. Note that the view count, likes, etc will still be
+// visible if this is disabled.
+@property (retain) NSNumber *publicStatsViewable;  // boolValue
 
 // This value explains why YouTube rejected an uploaded video. This property is
 // only present if the uploadStatus property indicates that the upload was
