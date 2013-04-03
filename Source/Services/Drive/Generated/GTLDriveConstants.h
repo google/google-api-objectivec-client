@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,6 +46,8 @@ GTL_EXTERN NSString * const kGTLAuthScopeDriveFile;             // "https://www.
 GTL_EXTERN NSString * const kGTLAuthScopeDriveMetadataReadonly;  // "https://www.googleapis.com/auth/drive.metadata.readonly"
 // View the files and documents in your Google Drive
 GTL_EXTERN NSString * const kGTLAuthScopeDriveReadonly;         // "https://www.googleapis.com/auth/drive.readonly"
+// New service: https://www.googleapis.com/auth/drive.scripts
+GTL_EXTERN NSString * const kGTLAuthScopeDriveScripts;          // "https://www.googleapis.com/auth/drive.scripts"
 
 // Projection
 GTL_EXTERN NSString * const kGTLDriveProjectionBasic;  // "BASIC"

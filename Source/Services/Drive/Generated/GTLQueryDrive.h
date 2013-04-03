@@ -436,6 +436,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
 //   kGTLAuthScopeDriveFile
+//   kGTLAuthScopeDriveScripts
 // Fetches a GTLDriveFile.
 + (id)queryForFilesPatchWithObject:(GTLDriveFile *)object
                             fileId:(NSString *)fileId;
@@ -501,6 +502,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
 //   kGTLAuthScopeDriveFile
+//   kGTLAuthScopeDriveScripts
 // Fetches a GTLDriveFile.
 + (id)queryForFilesUpdateWithObject:(GTLDriveFile *)object
                              fileId:(NSString *)fileId
