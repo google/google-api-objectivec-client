@@ -14,10 +14,7 @@
  */
 
 //
-//  GTLDrive_Sources.m
-//
-// This file can be compiled into projects to avoid adding the individual
-// source files for this service.
+//  GTLDriveProperty.h
 //
 
 // ----------------------------------------------------------------------------
@@ -28,31 +25,40 @@
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
+// Classes:
+//   GTLDriveProperty (0 custom class methods, 6 custom properties)
 
-#import "GTLDriveConstants.m"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLDriveAbout.m"
-#import "GTLDriveApp.m"
-#import "GTLDriveAppList.m"
-#import "GTLDriveChange.m"
-#import "GTLDriveChangeList.m"
-#import "GTLDriveChildList.m"
-#import "GTLDriveChildReference.m"
-#import "GTLDriveComment.m"
-#import "GTLDriveCommentList.m"
-#import "GTLDriveCommentReply.m"
-#import "GTLDriveCommentReplyList.m"
-#import "GTLDriveFile.m"
-#import "GTLDriveFileList.m"
-#import "GTLDriveParentList.m"
-#import "GTLDriveParentReference.m"
-#import "GTLDrivePermission.m"
-#import "GTLDrivePermissionList.m"
-#import "GTLDriveProperty.m"
-#import "GTLDrivePropertyList.m"
-#import "GTLDriveRevision.m"
-#import "GTLDriveRevisionList.m"
-#import "GTLDriveUser.m"
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveProperty
+//
 
-#import "GTLQueryDrive.m"
-#import "GTLServiceDrive.m"
+// A key-value pair that is either public or private to an application.
+
+@interface GTLDriveProperty : GTLObject
+
+// ETag of the property.
+@property (copy) NSString *ETag;
+
+// The key of this property.
+@property (copy) NSString *key;
+
+// This is always drive#property.
+@property (copy) NSString *kind;
+
+// The link back to this property.
+@property (copy) NSString *selfLink;
+
+// The value of this property.
+@property (copy) NSString *value;
+
+// The visibility of this property.
+@property (copy) NSString *visibility;
+
+@end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,6 +55,8 @@
                       [GTLDriveParentReference class],
                       [GTLDrivePermission class],
                       [GTLDrivePermissionList class],
+                      [GTLDriveProperty class],
+                      [GTLDrivePropertyList class],
                       [GTLDriveRevision class],
                       [GTLDriveRevisionList class],
                       [GTLDriveUser class],
