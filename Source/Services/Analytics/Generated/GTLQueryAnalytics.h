@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,13 +26,15 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLQueryAnalytics (11 custom class methods, 19 custom properties)
+//   GTLQueryAnalytics (17 custom class methods, 20 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
 #else
   #import "GTLQuery.h"
 #endif
+
+@class GTLAnalyticsExperiment;
 
 @interface GTLQueryAnalytics : GTLQuery
 
@@ -52,6 +54,7 @@
 @property (copy) NSString *date;
 @property (copy) NSString *dimensions;
 @property (copy) NSString *endDate;
+@property (copy) NSString *experimentId;
 @property (copy) NSString *filters;
 @property (copy) NSString *ids;
 @property (assign) NSInteger maxResults;
@@ -247,6 +250,104 @@
                                            appendNumber:(NSInteger)appendNumber
                                                    type:(NSString *)type
                                        uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
+
+#pragma mark -
+#pragma mark "management.experiments" methods
+// These create a GTLQueryAnalytics object.
+
+// Method: analytics.management.experiments.delete
+// Delete an experiment.
+//  Required:
+//   accountId: Account ID to which the experiment belongs
+//   webPropertyId: Web property ID to which the experiment belongs
+//   profileId: Profile ID to which the experiment belongs
+//   experimentId: ID of the experiment to delete
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
++ (id)queryForManagementExperimentsDeleteWithAccountId:(NSString *)accountId
+                                         webPropertyId:(NSString *)webPropertyId
+                                             profileId:(NSString *)profileId
+                                          experimentId:(NSString *)experimentId;
+
+// Method: analytics.management.experiments.get
+// Returns an experiment to which the user has access.
+//  Required:
+//   accountId: Account ID to retrieve the experiment for.
+//   webPropertyId: Web property ID to retrieve the experiment for.
+//   profileId: Profile ID to retrieve the experiment for.
+//   experimentId: Experiment ID to retrieve the experiment for.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsReadonly
+// Fetches a GTLAnalyticsExperiment.
++ (id)queryForManagementExperimentsGetWithAccountId:(NSString *)accountId
+                                      webPropertyId:(NSString *)webPropertyId
+                                          profileId:(NSString *)profileId
+                                       experimentId:(NSString *)experimentId;
+
+// Method: analytics.management.experiments.insert
+// Create a new experiment.
+//  Required:
+//   accountId: Account ID to create the experiment for.
+//   webPropertyId: Web property ID to create the experiment for.
+//   profileId: Profile ID to create the experiment for.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+// Fetches a GTLAnalyticsExperiment.
++ (id)queryForManagementExperimentsInsertWithObject:(GTLAnalyticsExperiment *)object
+                                          accountId:(NSString *)accountId
+                                      webPropertyId:(NSString *)webPropertyId
+                                          profileId:(NSString *)profileId;
+
+// Method: analytics.management.experiments.list
+// Lists experiments to which the user has access.
+//  Required:
+//   accountId: Account ID to retrieve experiments for.
+//   webPropertyId: Web property ID to retrieve experiments for.
+//   profileId: Profile ID to retrieve experiments for.
+//  Optional:
+//   maxResults: The maximum number of experiments to include in this response.
+//   startIndex: An index of the first experiment to retrieve. Use this
+//     parameter as a pagination mechanism along with the max-results parameter.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsReadonly
+// Fetches a GTLAnalyticsExperiments.
++ (id)queryForManagementExperimentsListWithAccountId:(NSString *)accountId
+                                       webPropertyId:(NSString *)webPropertyId
+                                           profileId:(NSString *)profileId;
+
+// Method: analytics.management.experiments.patch
+// Update an existing experiment. This method supports patch semantics.
+//  Required:
+//   accountId: Account ID of the experiment to update.
+//   webPropertyId: Web property ID of the experiment to update.
+//   profileId: Profile ID of the experiment to update.
+//   experimentId: Experiment ID of the experiment to update.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+// Fetches a GTLAnalyticsExperiment.
++ (id)queryForManagementExperimentsPatchWithObject:(GTLAnalyticsExperiment *)object
+                                         accountId:(NSString *)accountId
+                                     webPropertyId:(NSString *)webPropertyId
+                                         profileId:(NSString *)profileId
+                                      experimentId:(NSString *)experimentId;
+
+// Method: analytics.management.experiments.update
+// Update an existing experiment.
+//  Required:
+//   accountId: Account ID of the experiment to update.
+//   webPropertyId: Web property ID of the experiment to update.
+//   profileId: Profile ID of the experiment to update.
+//   experimentId: Experiment ID of the experiment to update.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+// Fetches a GTLAnalyticsExperiment.
++ (id)queryForManagementExperimentsUpdateWithObject:(GTLAnalyticsExperiment *)object
+                                          accountId:(NSString *)accountId
+                                      webPropertyId:(NSString *)webPropertyId
+                                          profileId:(NSString *)profileId
+                                       experimentId:(NSString *)experimentId;
 
 #pragma mark -
 #pragma mark "management.goals" methods

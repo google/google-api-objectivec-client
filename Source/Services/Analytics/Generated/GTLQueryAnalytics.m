@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLQueryAnalytics (11 custom class methods, 19 custom properties)
+//   GTLQueryAnalytics (17 custom class methods, 20 custom properties)
 
 #import "GTLQueryAnalytics.h"
 
@@ -34,6 +34,8 @@
 #import "GTLAnalyticsCustomDataSources.h"
 #import "GTLAnalyticsDailyUploadAppend.h"
 #import "GTLAnalyticsDailyUploads.h"
+#import "GTLAnalyticsExperiment.h"
+#import "GTLAnalyticsExperiments.h"
 #import "GTLAnalyticsGaData.h"
 #import "GTLAnalyticsGoals.h"
 #import "GTLAnalyticsMcfData.h"
@@ -44,8 +46,8 @@
 @implementation GTLQueryAnalytics
 
 @dynamic accountId, appendNumber, customDataSourceId, date, dimensions, endDate,
-         fields, filters, ids, maxResults, metrics, profileId, reset, segment,
-         sort, startDate, startIndex, type, webPropertyId;
+         experimentId, fields, filters, ids, maxResults, metrics, profileId,
+         reset, segment, sort, startDate, startIndex, type, webPropertyId;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map =
@@ -171,6 +173,107 @@
   query.type = type;
   query.uploadParameters = uploadParametersOrNil;
   query.expectedObjectClass = [GTLAnalyticsDailyUploadAppend class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "management.experiments" methods
+// These create a GTLQueryAnalytics object.
+
++ (id)queryForManagementExperimentsDeleteWithAccountId:(NSString *)accountId
+                                         webPropertyId:(NSString *)webPropertyId
+                                             profileId:(NSString *)profileId
+                                          experimentId:(NSString *)experimentId {
+  NSString *methodName = @"analytics.management.experiments.delete";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.profileId = profileId;
+  query.experimentId = experimentId;
+  return query;
+}
+
++ (id)queryForManagementExperimentsGetWithAccountId:(NSString *)accountId
+                                      webPropertyId:(NSString *)webPropertyId
+                                          profileId:(NSString *)profileId
+                                       experimentId:(NSString *)experimentId {
+  NSString *methodName = @"analytics.management.experiments.get";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.profileId = profileId;
+  query.experimentId = experimentId;
+  query.expectedObjectClass = [GTLAnalyticsExperiment class];
+  return query;
+}
+
++ (id)queryForManagementExperimentsInsertWithObject:(GTLAnalyticsExperiment *)object
+                                          accountId:(NSString *)accountId
+                                      webPropertyId:(NSString *)webPropertyId
+                                          profileId:(NSString *)profileId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"analytics.management.experiments.insert";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.profileId = profileId;
+  query.expectedObjectClass = [GTLAnalyticsExperiment class];
+  return query;
+}
+
++ (id)queryForManagementExperimentsListWithAccountId:(NSString *)accountId
+                                       webPropertyId:(NSString *)webPropertyId
+                                           profileId:(NSString *)profileId {
+  NSString *methodName = @"analytics.management.experiments.list";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.profileId = profileId;
+  query.expectedObjectClass = [GTLAnalyticsExperiments class];
+  return query;
+}
+
++ (id)queryForManagementExperimentsPatchWithObject:(GTLAnalyticsExperiment *)object
+                                         accountId:(NSString *)accountId
+                                     webPropertyId:(NSString *)webPropertyId
+                                         profileId:(NSString *)profileId
+                                      experimentId:(NSString *)experimentId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"analytics.management.experiments.patch";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.profileId = profileId;
+  query.experimentId = experimentId;
+  query.expectedObjectClass = [GTLAnalyticsExperiment class];
+  return query;
+}
+
++ (id)queryForManagementExperimentsUpdateWithObject:(GTLAnalyticsExperiment *)object
+                                          accountId:(NSString *)accountId
+                                      webPropertyId:(NSString *)webPropertyId
+                                          profileId:(NSString *)profileId
+                                       experimentId:(NSString *)experimentId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"analytics.management.experiments.update";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.profileId = profileId;
+  query.experimentId = experimentId;
+  query.expectedObjectClass = [GTLAnalyticsExperiment class];
   return query;
 }
 
