@@ -26,13 +26,14 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (32 custom class methods, 40 custom properties)
+//   GTLQueryYouTube (33 custom class methods, 40 custom properties)
 
 #import "GTLQueryYouTube.h"
 
 #import "GTLYouTubeActivity.h"
 #import "GTLYouTubeActivityListResponse.h"
 #import "GTLYouTubeChannelListResponse.h"
+#import "GTLYouTubeClientConfigurationListResponse.h"
 #import "GTLYouTubeGuideCategoryListResponse.h"
 #import "GTLYouTubeLiveBroadcast.h"
 #import "GTLYouTubeLiveBroadcastList.h"
@@ -103,6 +104,18 @@
   GTLQueryYouTube *query = [self queryWithMethodName:methodName];
   query.part = part;
   query.expectedObjectClass = [GTLYouTubeChannelListResponse class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "clientConfiguration" methods
+// These create a GTLQueryYouTube object.
+
++ (id)queryForClientConfigurationListWithPart:(NSString *)part {
+  NSString *methodName = @"youtube.clientConfiguration.list";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.part = part;
+  query.expectedObjectClass = [GTLYouTubeClientConfigurationListResponse class];
   return query;
 }
 

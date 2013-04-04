@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlaylistItem (0 custom class methods, 5 custom properties)
+//   GTLYouTubePlaylistItem (0 custom class methods, 6 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,6 +36,7 @@
 
 @class GTLYouTubePlaylistItemContentDetails;
 @class GTLYouTubePlaylistItemSnippet;
+@class GTLYouTubePlaylistItemStatus;
 
 // ----------------------------------------------------------------------------
 //
@@ -82,5 +83,9 @@
 // The snippet object contains basic details about the playlist item, such as
 // its title and position in the playlist.
 @property (retain) GTLYouTubePlaylistItemSnippet *snippet;
+
+// The status object contains information about the playlist item's privacy
+// status.
+@property (retain) GTLYouTubePlaylistItemStatus *status;
 
 @end

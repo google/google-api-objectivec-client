@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (32 custom class methods, 40 custom properties)
+//   GTLQueryYouTube (33 custom class methods, 40 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -212,6 +212,22 @@
 + (id)queryForChannelsListWithPart:(NSString *)part;
 
 #pragma mark -
+#pragma mark "clientConfiguration" methods
+// These create a GTLQueryYouTube object.
+
+// Method: youtube.clientConfiguration.list
+// Returns a list of properties that applies to the client.
+//  Required:
+//   part: The part parameter specifies the clientConfiguration resource parts
+//     that the API response will include. Supported values are id and settings.
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeReadonly
+//   kGTLAuthScopeYouTubeYoutubepartner
+// Fetches a GTLYouTubeClientConfigurationListResponse.
++ (id)queryForClientConfigurationListWithPart:(NSString *)part;
+
+#pragma mark -
 #pragma mark "guideCategories" methods
 // These create a GTLQueryYouTube object.
 
@@ -257,7 +273,7 @@
 //   part: The part parameter specifies a comma-separated list of one or more
 //     liveBroadcast resource properties that the API response will include. The
 //     part names that you can include in the parameter value are id, snippet,
-//     contentDetails, slateSettings, and status.
+//     contentDetails, and status.
 //  Optional:
 //   streamId: The streamId parameter specifies the unique ID of the video
 //     stream that is being bound to a broadcast. If this parameter is omitted,
@@ -285,7 +301,7 @@
 //     identifies the properties that the write operation will set as well as
 //     the properties that the API response will include.
 //     The part properties that you can include in the parameter value are id,
-//     snippet, contentDetails, slateSettings, and status.
+//     snippet, contentDetails, and status.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 // Fetches a GTLYouTubeLiveBroadcast.
@@ -298,7 +314,7 @@
 //   part: The part parameter specifies a comma-separated list of one or more
 //     liveBroadcast resource properties that the API response will include. The
 //     part names that you can include in the parameter value are id, snippet,
-//     contentDetails, slateSettings, and status.
+//     contentDetails, and status.
 //  Optional:
 //   broadcastStatus: The broadcastStatus parameter filters the API response to
 //     only include broadcasts with the specified status.
@@ -349,7 +365,7 @@
 //   part: The part parameter specifies a comma-separated list of one or more
 //     liveBroadcast resource properties that the API response will include. The
 //     part names that you can include in the parameter value are id, snippet,
-//     contentDetails, slateSettings, and status.
+//     contentDetails, and status.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 // Fetches a GTLYouTubeLiveBroadcast.
@@ -365,7 +381,7 @@
 //     identifies the properties that the write operation will set as well as
 //     the properties that the API response will include.
 //     The part properties that you can include in the parameter value are id,
-//     snippet, contentDetails, slateSettings, and status.
+//     snippet, contentDetails, and status.
 //     Note that this method will override the existing values for all of the
 //     mutable properties that are contained in any parts that the parameter
 //     value specifies. For example, a broadcast's privacy status is defined in

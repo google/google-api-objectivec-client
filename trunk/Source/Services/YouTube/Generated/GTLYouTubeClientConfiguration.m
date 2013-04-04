@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeFeaturedChannel.m
+//  GTLYouTubeClientConfiguration.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,18 +26,31 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeFeaturedChannel (0 custom class methods, 6 custom properties)
+//   GTLYouTubeClientConfiguration (0 custom class methods, 4 custom properties)
 
-#import "GTLYouTubeFeaturedChannel.h"
+#import "GTLYouTubeClientConfiguration.h"
 
-#import "GTLYouTubeChannelSnippet.h"
+#import "GTLYouTubeClientConfigurationSettings.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeFeaturedChannel
+//   GTLYouTubeClientConfiguration
 //
 
-@implementation GTLYouTubeFeaturedChannel
-@dynamic channelId, channelSnippet, endTimeMs, featureId, startTimeMs,
-         watermarkUrl;
+@implementation GTLYouTubeClientConfiguration
+@dynamic ETag, identifier, kind, settings;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      @"etag", @"ETag",
+      @"id", @"identifier",
+      nil];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"youtube#clientConfiguration"];
+}
+
 @end

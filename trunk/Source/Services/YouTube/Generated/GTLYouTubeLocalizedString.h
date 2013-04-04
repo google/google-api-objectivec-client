@@ -42,6 +42,11 @@
 // A localized string.
 
 @interface GTLYouTubeLocalizedString : GTLObject
+
+// Language associated to this value.
 @property (copy) NSString *language;
+
+// Value of the property.
 @property (copy) NSString *value;
+
 @end

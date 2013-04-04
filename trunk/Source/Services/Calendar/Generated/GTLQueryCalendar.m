@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,8 @@
 // Documentation:
 //   https://developers.google.com/google-apps/calendar/firstapp
 // Classes:
-//   GTLQueryCalendar (32 custom class methods, 29 custom properties)
+//   GTLQueryCalendar (33 custom class methods, 38 custom properties)
+//   GTLCalendarSubscriptionsUnsubscribeChannelParams (0 custom class methods, 0 custom properties)
 
 #import "GTLQueryCalendar.h"
 
@@ -45,12 +46,20 @@
 
 @implementation GTLQueryCalendar
 
-@dynamic alwaysIncludeEmail, calendarExpansionMax, calendarId, colorRgbFormat,
-         destination, eventId, fields, groupExpansionMax, iCalUID, items,
-         maxAttendees, maxResults, minAccessRole, orderBy, originalStart,
+@dynamic address, alwaysIncludeEmail, calendarExpansionMax, calendarId, channel,
+         channelParams, clientToken, colorRgbFormat, destination, eventId,
+         expiration, fields, groupExpansionMax, iCalUID, identifier, items,
+         kind, maxAttendees, maxResults, minAccessRole, orderBy, originalStart,
          pageToken, q, ruleId, sendNotifications, setting, showDeleted,
          showHidden, showHiddenInvitations, singleEvents, text, timeMax,
-         timeMin, timeZone, updatedMin;
+         timeMin, timeZone, topicId, topicUri, updatedMin;
+
++ (NSDictionary *)parameterNameMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"id"
+                                forKey:@"identifier"];
+  return map;
+}
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
@@ -430,6 +439,34 @@
   GTLQueryCalendar *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLCalendarSettings class];
   return query;
+}
+
+#pragma mark -
+#pragma mark "subscriptions" methods
+// These create a GTLQueryCalendar object.
+
++ (id)queryForSubscriptionsUnsubscribe {
+  NSString *methodName = @"calendar.subscriptions.unsubscribe";
+  GTLQueryCalendar *query = [self queryWithMethodName:methodName];
+  return query;
+}
+
+@end
+
+#pragma mark -
+#pragma mark method parameter objects
+// These object are used only to pass a collection of parameters to a
+// method as a single item.
+
+// ----------------------------------------------------------------------------
+//
+//   GTLCalendarSubscriptionsUnsubscribeChannelParams
+//
+
+@implementation GTLCalendarSubscriptionsUnsubscribeChannelParams
+
++ (Class)classForAdditionalProperties {
+  return [NSString class];
 }
 
 @end

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeFeaturedChannel.m
+//  GTLYouTubeClientConfiguration.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,18 +26,37 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeFeaturedChannel (0 custom class methods, 6 custom properties)
+//   GTLYouTubeClientConfiguration (0 custom class methods, 4 custom properties)
 
-#import "GTLYouTubeFeaturedChannel.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLYouTubeChannelSnippet.h"
+@class GTLYouTubeClientConfigurationSettings;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeFeaturedChannel
+//   GTLYouTubeClientConfiguration
 //
 
-@implementation GTLYouTubeFeaturedChannel
-@dynamic channelId, channelSnippet, endTimeMs, featureId, startTimeMs,
-         watermarkUrl;
+// Remote settings that apply to a first-party client.
+
+@interface GTLYouTubeClientConfiguration : GTLObject
+
+// Etag of this resource.
+@property (copy) NSString *ETag;
+
+// The id uniquely identifies the client configuration.
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+@property (copy) NSString *identifier;
+
+// The kind, fixed to "youtube#clientConfiguration".
+@property (copy) NSString *kind;
+
+// The settings object identifies the properties and values that are applicable
+// to the client.
+@property (retain) GTLYouTubeClientConfigurationSettings *settings;
+
 @end

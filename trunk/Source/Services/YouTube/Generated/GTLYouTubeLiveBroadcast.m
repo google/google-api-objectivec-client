@@ -27,11 +27,11 @@
 //   https://developers.google.com/youtube/v3
 // Classes:
 //   GTLYouTubeLiveBroadcast (0 custom class methods, 7 custom properties)
+//   GTLYouTubeLiveBroadcastSlateSettings (0 custom class methods, 0 custom properties)
 
 #import "GTLYouTubeLiveBroadcast.h"
 
 #import "GTLYouTubeLiveBroadcastContentDetails.h"
-#import "GTLYouTubeLiveBroadcastSlateSettings.h"
 #import "GTLYouTubeLiveBroadcastSnippet.h"
 #import "GTLYouTubeLiveBroadcastStatus.h"
 
@@ -56,4 +56,13 @@
   [self registerObjectClassForKind:@"youtube#liveBroadcast"];
 }
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLYouTubeLiveBroadcastSlateSettings
+//
+
+@implementation GTLYouTubeLiveBroadcastSlateSettings
 @end

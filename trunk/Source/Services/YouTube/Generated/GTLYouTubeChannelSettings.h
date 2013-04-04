@@ -42,18 +42,41 @@
 // Branding properties for the channel view.
 
 @interface GTLYouTubeChannelSettings : GTLObject
+
+// Which content tab users should see when viewing the channel.
 @property (copy) NSString *defaultTab;
 
+// Specifies the channel description.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
 
+// Title for the featured channels tab.
 @property (copy) NSString *featuredChannelsTitle;
+
+// The list of featured channels.
 @property (retain) NSArray *featuredChannelsUrls;  // of NSString
+
+// Lists keywords associated with the channel, comma-separated.
 @property (copy) NSString *keywords;
+
+// Whether user-submitted comments left on the channel page need to be approved
+// by the channel owner to be publicly visible.
 @property (retain) NSNumber *moderateComments;  // boolValue
+
+// Whether the tab to browse the videos should be displayed.
 @property (retain) NSNumber *showBrowseView;  // boolValue
+
+// Whether related channels should be proposed.
 @property (retain) NSNumber *showRelatedChannels;  // boolValue
+
+// Specifies the channel title.
 @property (copy) NSString *title;
+
+// The ID for a Google Analytics account to track and measure traffic to the
+// channels.
 @property (copy) NSString *trackingAnalyticsAccountId;
+
+// The trailer of the channel, for users that are not subscribers.
 @property (copy) NSString *unsubscribedTrailer;
+
 @end

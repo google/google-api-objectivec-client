@@ -45,8 +45,11 @@
 
 @interface GTLYouTubeLocalizedProperty : GTLObject
 
+// Default value for the localized property.
 // Remapped to 'defaultProperty' to avoid language reserved word 'default'.
 @property (copy) NSString *defaultProperty;
 
+// The localized values.
 @property (retain) NSArray *localized;  // of GTLYouTubeLocalizedString
+
 @end

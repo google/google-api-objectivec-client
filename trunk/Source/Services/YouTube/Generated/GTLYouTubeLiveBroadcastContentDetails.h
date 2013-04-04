@@ -26,8 +26,10 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveBroadcastContentDetails (0 custom class methods, 7 custom properties)
+//   GTLYouTubeLiveBroadcastContentDetails (0 custom class methods, 9 custom properties)
+//   GTLYouTubeLiveBroadcastContentDetailsEnableArchive (0 custom class methods, 0 custom properties)
 //   GTLYouTubeLiveBroadcastContentDetailsMonitorStream (0 custom class methods, 3 custom properties)
+//   GTLYouTubeLiveBroadcastContentDetailsStartWithSlateCuepoint (0 custom class methods, 0 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -35,7 +37,9 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLYouTubeLiveBroadcastContentDetailsEnableArchive;
 @class GTLYouTubeLiveBroadcastContentDetailsMonitorStream;
+@class GTLYouTubeLiveBroadcastContentDetailsStartWithSlateCuepoint;
 
 // ----------------------------------------------------------------------------
 //
@@ -49,15 +53,15 @@
 // This value uniquely identifies the live stream bound to the broadcast.
 @property (copy) NSString *boundStreamId;
 
-// This setting indicates whether the live event should be archived so that
-// YouTube viewers can watch it at a later date. The default value for this
-// property is true.
+// DEPRECATED: Please use recordFromStart instead. This setting indicates
+// whether the live event should be archived so that YouTube viewers can watch
+// it at a later date. The default value for this property is true.
 // Important: You must also set the enableDvr property's value to true if you
 // want the playback to be available immediately after the broadcast ends. If
 // you set this property's value to true but do not also set the enableDvr
 // property to true, there may be a delay of around one day before the archived
 // video will be available for playback.
-@property (retain) NSNumber *enableArchive;  // boolValue
+@property (retain) GTLYouTubeLiveBroadcastContentDetailsEnableArchive *enableArchive;
 
 // This setting indicates whether YouTube should enable content encryption for
 // the broadcast.
@@ -82,13 +86,39 @@
 // stream is shown publicly.
 @property (retain) GTLYouTubeLiveBroadcastContentDetailsMonitorStream *monitorStream;
 
+// Automatically start recording after the event goes live. The default value
+// for this property is true.
+// Important: You must also set the enableDvr property's value to true if you
+// want the playback to be available immediately after the broadcast ends. If
+// you set this property's value to true but do not also set the enableDvr
+// property to true, there may be a delay of around one day before the archived
+// video will be available for playback.
+@property (retain) NSNumber *recordFromStart;  // boolValue
+
 // This setting indicates whether the broadcast should automatically begin with
 // an in-stream slate when you update the broadcast's status to live. After
 // updating the status, you then need to send a liveCuepoints.insert request
 // that sets the cuepoint's eventState to end to remove the in-stream slate and
 // make your broadcast stream visible to viewers.
-@property (retain) NSNumber *startWithSlateCuepoint;  // boolValue
+@property (retain) NSNumber *startWithSlate;  // boolValue
 
+// DEPRECATED: Please use startWithSlate instead. This setting indicates whether
+// the broadcast should automatically begin with an in-stream slate when you
+// update the broadcast's status to live. After updating the status, you then
+// need to send a liveCuepoints.insert request that sets the cuepoint's
+// eventState to end to remove the in-stream slate and make your broadcast
+// stream visible to viewers.
+@property (retain) GTLYouTubeLiveBroadcastContentDetailsStartWithSlateCuepoint *startWithSlateCuepoint;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLYouTubeLiveBroadcastContentDetailsEnableArchive
+//
+
+@interface GTLYouTubeLiveBroadcastContentDetailsEnableArchive : GTLObject
 @end
 
 
@@ -117,4 +147,13 @@
 // live state.
 @property (retain) NSNumber *enableMonitorStream;  // boolValue
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLYouTubeLiveBroadcastContentDetailsStartWithSlateCuepoint
+//
+
+@interface GTLYouTubeLiveBroadcastContentDetailsStartWithSlateCuepoint : GTLObject
 @end

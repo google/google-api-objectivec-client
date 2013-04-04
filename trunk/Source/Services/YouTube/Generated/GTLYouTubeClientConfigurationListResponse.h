@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeFeaturedChannel.m
+//  GTLYouTubeClientConfigurationListResponse.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,18 +26,37 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeFeaturedChannel (0 custom class methods, 6 custom properties)
+//   GTLYouTubeClientConfigurationListResponse (0 custom class methods, 3 custom properties)
 
-#import "GTLYouTubeFeaturedChannel.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLYouTubeChannelSnippet.h"
+@class GTLYouTubeClientConfiguration;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeFeaturedChannel
+//   GTLYouTubeClientConfigurationListResponse
 //
 
-@implementation GTLYouTubeFeaturedChannel
-@dynamic channelId, channelSnippet, endTimeMs, featureId, startTimeMs,
-         watermarkUrl;
+// A list of settings as the response to a youtube.clientConfiguration.list
+// call.
+
+// This class supports NSFastEnumeration over its "items" property. It also
+// supports -itemAtIndex: to retrieve individual objects from "items".
+
+@interface GTLYouTubeClientConfigurationListResponse : GTLCollectionObject
+
+// The ETag for the response.
+@property (copy) NSString *ETag;
+
+// A list of results that match the client settings.
+@property (retain) NSArray *items;  // of GTLYouTubeClientConfiguration
+
+// The type of the API response. For this operation, the value will be
+// youtube#clientConfigurationListResponse.
+@property (copy) NSString *kind;
+
 @end

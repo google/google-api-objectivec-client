@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveBroadcastSlateSettings.m
+//  GTLYouTubePropertyValues.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,48 +26,22 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveBroadcastSlateSettings (0 custom class methods, 2 custom properties)
-//   GTLYouTubeLiveBroadcastSlateSettingsSlates (0 custom class methods, 0 custom properties)
-//   GTLYouTubeLiveBroadcastSlateSettingsSlatesSlate (0 custom class methods, 2 custom properties)
+//   GTLYouTubePropertyValues (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubeLiveBroadcastSlateSettings.h"
+#import "GTLYouTubePropertyValues.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveBroadcastSlateSettings
+//   GTLYouTubePropertyValues
 //
 
-@implementation GTLYouTubeLiveBroadcastSlateSettings
-@dynamic enableSlates, slates;
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubeLiveBroadcastSlateSettingsSlates
-//
-
-@implementation GTLYouTubeLiveBroadcastSlateSettingsSlates
-
-+ (Class)classForAdditionalProperties {
-  return [GTLYouTubeLiveBroadcastSlateSettingsSlatesSlate class];
-}
-
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubeLiveBroadcastSlateSettingsSlatesSlate
-//
-
-@implementation GTLYouTubeLiveBroadcastSlateSettingsSlatesSlate
-@dynamic backgroundUrl, textLines;
+@implementation GTLYouTubePropertyValues
+@dynamic property, values;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObject:[NSString class]
-                                forKey:@"textLines"];
+                                forKey:@"values"];
   return map;
 }
 
