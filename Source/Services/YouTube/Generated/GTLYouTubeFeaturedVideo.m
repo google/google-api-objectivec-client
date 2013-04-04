@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeFeaturedVideo (0 custom class methods, 9 custom properties)
+//   GTLYouTubeFeaturedVideo (0 custom class methods, 5 custom properties)
 
 #import "GTLYouTubeFeaturedVideo.h"
 
@@ -38,6 +38,5 @@
 //
 
 @implementation GTLYouTubeFeaturedVideo
-@dynamic concurrentViewers, endTimeMs, featureId, isLive, lengthS, startTimeMs,
-         videoId, videoSnippet, viewCount;
+@dynamic endTimeMs, featureId, startTimeMs, videoId, videoSnippet;
 @end

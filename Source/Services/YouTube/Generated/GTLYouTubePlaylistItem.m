@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,12 +26,13 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlaylistItem (0 custom class methods, 5 custom properties)
+//   GTLYouTubePlaylistItem (0 custom class methods, 6 custom properties)
 
 #import "GTLYouTubePlaylistItem.h"
 
 #import "GTLYouTubePlaylistItemContentDetails.h"
 #import "GTLYouTubePlaylistItemSnippet.h"
+#import "GTLYouTubePlaylistItemStatus.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -39,7 +40,7 @@
 //
 
 @implementation GTLYouTubePlaylistItem
-@dynamic contentDetails, ETag, identifier, kind, snippet;
+@dynamic contentDetails, ETag, identifier, kind, snippet, status;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

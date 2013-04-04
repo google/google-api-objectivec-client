@@ -27,6 +27,7 @@
 //   https://developers.google.com/youtube/v3
 // Classes:
 //   GTLYouTubeLiveBroadcast (0 custom class methods, 7 custom properties)
+//   GTLYouTubeLiveBroadcastSlateSettings (0 custom class methods, 0 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -79,4 +80,13 @@
 // The status object contains information about the event's status.
 @property (retain) GTLYouTubeLiveBroadcastStatus *status;
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLYouTubeLiveBroadcastSlateSettings
+//
+
+@interface GTLYouTubeLiveBroadcastSlateSettings : GTLObject
 @end

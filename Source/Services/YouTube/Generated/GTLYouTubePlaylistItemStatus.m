@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeFeaturedChannel.m
+//  GTLYouTubePlaylistItemStatus.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,18 +26,15 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeFeaturedChannel (0 custom class methods, 6 custom properties)
+//   GTLYouTubePlaylistItemStatus (0 custom class methods, 1 custom properties)
 
-#import "GTLYouTubeFeaturedChannel.h"
-
-#import "GTLYouTubeChannelSnippet.h"
+#import "GTLYouTubePlaylistItemStatus.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeFeaturedChannel
+//   GTLYouTubePlaylistItemStatus
 //
 
-@implementation GTLYouTubeFeaturedChannel
-@dynamic channelId, channelSnippet, endTimeMs, featureId, startTimeMs,
-         watermarkUrl;
+@implementation GTLYouTubePlaylistItemStatus
+@dynamic privacyStatus;
 @end

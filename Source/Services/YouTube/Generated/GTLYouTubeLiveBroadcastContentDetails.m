@@ -26,8 +26,10 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveBroadcastContentDetails (0 custom class methods, 7 custom properties)
+//   GTLYouTubeLiveBroadcastContentDetails (0 custom class methods, 9 custom properties)
+//   GTLYouTubeLiveBroadcastContentDetailsEnableArchive (0 custom class methods, 0 custom properties)
 //   GTLYouTubeLiveBroadcastContentDetailsMonitorStream (0 custom class methods, 3 custom properties)
+//   GTLYouTubeLiveBroadcastContentDetailsStartWithSlateCuepoint (0 custom class methods, 0 custom properties)
 
 #import "GTLYouTubeLiveBroadcastContentDetails.h"
 
@@ -38,7 +40,17 @@
 
 @implementation GTLYouTubeLiveBroadcastContentDetails
 @dynamic boundStreamId, enableArchive, enableContentEncryption, enableDvr,
-         enableEmbed, monitorStream, startWithSlateCuepoint;
+         enableEmbed, monitorStream, recordFromStart, startWithSlate,
+         startWithSlateCuepoint;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLYouTubeLiveBroadcastContentDetailsEnableArchive
+//
+
+@implementation GTLYouTubeLiveBroadcastContentDetailsEnableArchive
 @end
 
 
@@ -49,4 +61,13 @@
 
 @implementation GTLYouTubeLiveBroadcastContentDetailsMonitorStream
 @dynamic broadcastStreamDelayMs, embedHtml, enableMonitorStream;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLYouTubeLiveBroadcastContentDetailsStartWithSlateCuepoint
+//
+
+@implementation GTLYouTubeLiveBroadcastContentDetailsStartWithSlateCuepoint
 @end

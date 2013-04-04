@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeFeaturedChannel.m
+//  GTLYouTubePropertyValues.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,18 +26,22 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeFeaturedChannel (0 custom class methods, 6 custom properties)
+//   GTLYouTubePropertyValues (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubeFeaturedChannel.h"
-
-#import "GTLYouTubeChannelSnippet.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeFeaturedChannel
+//   GTLYouTubePropertyValues
 //
 
-@implementation GTLYouTubeFeaturedChannel
-@dynamic channelId, channelSnippet, endTimeMs, featureId, startTimeMs,
-         watermarkUrl;
+// A pair Property / Values.
+
+@interface GTLYouTubePropertyValues : GTLObject
+@property (copy) NSString *property;
+@property (retain) NSArray *values;  // of NSString
 @end

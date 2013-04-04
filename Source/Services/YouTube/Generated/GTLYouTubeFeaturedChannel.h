@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeFeaturedChannel (0 custom class methods, 7 custom properties)
+//   GTLYouTubeFeaturedChannel (0 custom class methods, 6 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -46,7 +46,6 @@
 @property (retain) GTLYouTubeChannelSnippet *channelSnippet;
 @property (retain) NSNumber *endTimeMs;  // longLongValue
 @property (copy) NSString *featureId;
-@property (copy) NSString *imageUrl;
 @property (retain) NSNumber *startTimeMs;  // longLongValue
-@property (retain) NSNumber *subscriberCount;  // unsignedLongLongValue
+@property (copy) NSString *watermarkUrl;
 @end
