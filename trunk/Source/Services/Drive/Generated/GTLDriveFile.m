@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 39 custom properties)
+//   GTLDriveFile (0 custom class methods, 40 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
 //   GTLDriveFileImageMediaMetadata (0 custom class methods, 21 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
@@ -46,10 +46,10 @@
 //
 
 @implementation GTLDriveFile
-@dynamic alternateLink, createdDate, descriptionProperty, downloadUrl, editable,
-         embedLink, ETag, explicitlyTrashed, exportLinks, fileExtension,
-         fileSize, iconLink, identifier, imageMediaMetadata, indexableText,
-         kind, labels, lastModifyingUser, lastModifyingUserName,
+@dynamic alternateLink, appDataContents, createdDate, descriptionProperty,
+         downloadUrl, editable, embedLink, ETag, explicitlyTrashed, exportLinks,
+         fileExtension, fileSize, iconLink, identifier, imageMediaMetadata,
+         indexableText, kind, labels, lastModifyingUser, lastModifyingUserName,
          lastViewedByMeDate, md5Checksum, mimeType, modifiedByMeDate,
          modifiedDate, originalFilename, ownerNames, owners, parents,
          quotaBytesUsed, selfLink, shared, sharedWithMeDate, thumbnail,

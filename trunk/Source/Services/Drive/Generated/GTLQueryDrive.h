@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLQueryDrive (46 custom class methods, 33 custom properties)
+//   GTLQueryDrive (52 custom class methods, 35 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -40,6 +40,7 @@
 @class GTLDriveFile;
 @class GTLDriveParentReference;
 @class GTLDrivePermission;
+@class GTLDriveProperty;
 @class GTLDriveRevision;
 
 @interface GTLQueryDrive : GTLQuery
@@ -74,6 +75,7 @@
 @property (copy) NSString *permissionId;
 @property (assign) BOOL pinned;
 @property (copy) NSString *projection;
+@property (copy) NSString *propertyKey;
 @property (copy) NSString *q;
 @property (copy) NSString *replyId;
 @property (copy) NSString *revisionId;
@@ -86,6 +88,7 @@
 @property (copy) NSString *updatedMin;
 @property (assign) BOOL updateViewedDate;
 @property (assign) BOOL useContentAsIndexableText;
+@property (copy) NSString *visibility;
 
 #pragma mark -
 #pragma mark "about" methods
@@ -647,6 +650,92 @@
 + (id)queryForPermissionsUpdateWithObject:(GTLDrivePermission *)object
                                    fileId:(NSString *)fileId
                              permissionId:(NSString *)permissionId;
+
+#pragma mark -
+#pragma mark "properties" methods
+// These create a GTLQueryDrive object.
+
+// Method: drive.properties.delete
+// Deletes a property.
+//  Required:
+//   fileId: The ID of the file.
+//   propertyKey: The key of the property.
+//  Optional:
+//   visibility: The visibility of the property. (Default private)
+//  Authorization scope(s):
+//   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveFile
++ (id)queryForPropertiesDeleteWithFileId:(NSString *)fileId
+                             propertyKey:(NSString *)propertyKey;
+
+// Method: drive.properties.get
+// Gets a property by its key.
+//  Required:
+//   fileId: The ID of the file.
+//   propertyKey: The key of the property.
+//  Optional:
+//   visibility: The visibility of the property. (Default private)
+//  Authorization scope(s):
+//   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveFile
+//   kGTLAuthScopeDriveMetadataReadonly
+//   kGTLAuthScopeDriveReadonly
+// Fetches a GTLDriveProperty.
++ (id)queryForPropertiesGetWithFileId:(NSString *)fileId
+                          propertyKey:(NSString *)propertyKey;
+
+// Method: drive.properties.insert
+// Adds a property to a file.
+//  Required:
+//   fileId: The ID of the file.
+//  Authorization scope(s):
+//   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveFile
+// Fetches a GTLDriveProperty.
++ (id)queryForPropertiesInsertWithObject:(GTLDriveProperty *)object
+                                  fileId:(NSString *)fileId;
+
+// Method: drive.properties.list
+// Lists a file's properties.
+//  Required:
+//   fileId: The ID of the file.
+//  Authorization scope(s):
+//   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveFile
+//   kGTLAuthScopeDriveMetadataReadonly
+//   kGTLAuthScopeDriveReadonly
+// Fetches a GTLDrivePropertyList.
++ (id)queryForPropertiesListWithFileId:(NSString *)fileId;
+
+// Method: drive.properties.patch
+// Updates a property. This method supports patch semantics.
+//  Required:
+//   fileId: The ID of the file.
+//   propertyKey: The key of the property.
+//  Optional:
+//   visibility: The visibility of the property. (Default private)
+//  Authorization scope(s):
+//   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveFile
+// Fetches a GTLDriveProperty.
++ (id)queryForPropertiesPatchWithObject:(GTLDriveProperty *)object
+                                 fileId:(NSString *)fileId
+                            propertyKey:(NSString *)propertyKey;
+
+// Method: drive.properties.update
+// Updates a property.
+//  Required:
+//   fileId: The ID of the file.
+//   propertyKey: The key of the property.
+//  Optional:
+//   visibility: The visibility of the property. (Default private)
+//  Authorization scope(s):
+//   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveFile
+// Fetches a GTLDriveProperty.
++ (id)queryForPropertiesUpdateWithObject:(GTLDriveProperty *)object
+                                  fileId:(NSString *)fileId
+                             propertyKey:(NSString *)propertyKey;
 
 #pragma mark -
 #pragma mark "replies" methods

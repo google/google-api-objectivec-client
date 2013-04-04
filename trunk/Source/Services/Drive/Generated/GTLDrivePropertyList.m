@@ -14,10 +14,7 @@
  */
 
 //
-//  GTLDrive_Sources.m
-//
-// This file can be compiled into projects to avoid adding the individual
-// source files for this service.
+//  GTLDrivePropertyList.m
 //
 
 // ----------------------------------------------------------------------------
@@ -28,31 +25,37 @@
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
+// Classes:
+//   GTLDrivePropertyList (0 custom class methods, 4 custom properties)
 
-#import "GTLDriveConstants.m"
+#import "GTLDrivePropertyList.h"
 
-#import "GTLDriveAbout.m"
-#import "GTLDriveApp.m"
-#import "GTLDriveAppList.m"
-#import "GTLDriveChange.m"
-#import "GTLDriveChangeList.m"
-#import "GTLDriveChildList.m"
-#import "GTLDriveChildReference.m"
-#import "GTLDriveComment.m"
-#import "GTLDriveCommentList.m"
-#import "GTLDriveCommentReply.m"
-#import "GTLDriveCommentReplyList.m"
-#import "GTLDriveFile.m"
-#import "GTLDriveFileList.m"
-#import "GTLDriveParentList.m"
-#import "GTLDriveParentReference.m"
-#import "GTLDrivePermission.m"
-#import "GTLDrivePermissionList.m"
-#import "GTLDriveProperty.m"
-#import "GTLDrivePropertyList.m"
-#import "GTLDriveRevision.m"
-#import "GTLDriveRevisionList.m"
-#import "GTLDriveUser.m"
+#import "GTLDriveProperty.h"
 
-#import "GTLQueryDrive.m"
-#import "GTLServiceDrive.m"
+// ----------------------------------------------------------------------------
+//
+//   GTLDrivePropertyList
+//
+
+@implementation GTLDrivePropertyList
+@dynamic ETag, items, kind, selfLink;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"etag"
+                                forKey:@"ETag"];
+  return map;
+}
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLDriveProperty class]
+                                forKey:@"items"];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"drive#propertyList"];
+}
+
+@end

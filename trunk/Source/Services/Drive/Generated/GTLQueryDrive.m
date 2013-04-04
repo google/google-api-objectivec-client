@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLQueryDrive (46 custom class methods, 33 custom properties)
+//   GTLQueryDrive (52 custom class methods, 35 custom properties)
 
 #import "GTLQueryDrive.h"
 
@@ -47,6 +47,8 @@
 #import "GTLDriveParentReference.h"
 #import "GTLDrivePermission.h"
 #import "GTLDrivePermissionList.h"
+#import "GTLDriveProperty.h"
+#import "GTLDrivePropertyList.h"
 #import "GTLDriveRevision.h"
 #import "GTLDriveRevisionList.h"
 
@@ -55,10 +57,10 @@
 @dynamic appId, changeId, childId, commentId, convert, emailMessage, fields,
          fileId, folderId, includeDeleted, includeSubscribed, maxChangeIdCount,
          maxResults, newRevision, ocr, ocrLanguage, pageToken, parentId,
-         permissionId, pinned, projection, q, replyId, revisionId,
+         permissionId, pinned, projection, propertyKey, q, replyId, revisionId,
          sendNotificationEmails, setModifiedDate, startChangeId,
          timedTextLanguage, timedTextTrackName, transferOwnership, updatedMin,
-         updateViewedDate, useContentAsIndexableText;
+         updateViewedDate, useContentAsIndexableText, visibility;
 
 #pragma mark -
 #pragma mark "about" methods
@@ -458,6 +460,83 @@
   query.fileId = fileId;
   query.permissionId = permissionId;
   query.expectedObjectClass = [GTLDrivePermission class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "properties" methods
+// These create a GTLQueryDrive object.
+
++ (id)queryForPropertiesDeleteWithFileId:(NSString *)fileId
+                             propertyKey:(NSString *)propertyKey {
+  NSString *methodName = @"drive.properties.delete";
+  GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.fileId = fileId;
+  query.propertyKey = propertyKey;
+  return query;
+}
+
++ (id)queryForPropertiesGetWithFileId:(NSString *)fileId
+                          propertyKey:(NSString *)propertyKey {
+  NSString *methodName = @"drive.properties.get";
+  GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.fileId = fileId;
+  query.propertyKey = propertyKey;
+  query.expectedObjectClass = [GTLDriveProperty class];
+  return query;
+}
+
++ (id)queryForPropertiesInsertWithObject:(GTLDriveProperty *)object
+                                  fileId:(NSString *)fileId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"drive.properties.insert";
+  GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.fileId = fileId;
+  query.expectedObjectClass = [GTLDriveProperty class];
+  return query;
+}
+
++ (id)queryForPropertiesListWithFileId:(NSString *)fileId {
+  NSString *methodName = @"drive.properties.list";
+  GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.fileId = fileId;
+  query.expectedObjectClass = [GTLDrivePropertyList class];
+  return query;
+}
+
++ (id)queryForPropertiesPatchWithObject:(GTLDriveProperty *)object
+                                 fileId:(NSString *)fileId
+                            propertyKey:(NSString *)propertyKey {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"drive.properties.patch";
+  GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.fileId = fileId;
+  query.propertyKey = propertyKey;
+  query.expectedObjectClass = [GTLDriveProperty class];
+  return query;
+}
+
++ (id)queryForPropertiesUpdateWithObject:(GTLDriveProperty *)object
+                                  fileId:(NSString *)fileId
+                             propertyKey:(NSString *)propertyKey {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"drive.properties.update";
+  GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.fileId = fileId;
+  query.propertyKey = propertyKey;
+  query.expectedObjectClass = [GTLDriveProperty class];
   return query;
 }
 
