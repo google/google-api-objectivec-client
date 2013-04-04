@@ -14,10 +14,7 @@
  */
 
 //
-//  GTLAnalytics_Sources.m
-//
-// This file can be compiled into projects to avoid adding the individual
-// source files for this service.
+//  GTLAnalyticsExperiments.m
 //
 
 // ----------------------------------------------------------------------------
@@ -28,28 +25,31 @@
 //   View and manage your Google Analytics data
 // Documentation:
 //   https://developers.google.com/analytics/
+// Classes:
+//   GTLAnalyticsExperiments (0 custom class methods, 8 custom properties)
 
-#import "GTLAnalyticsConstants.m"
+#import "GTLAnalyticsExperiments.h"
 
-#import "GTLAnalyticsAccount.m"
-#import "GTLAnalyticsAccounts.m"
-#import "GTLAnalyticsCustomDataSource.m"
-#import "GTLAnalyticsCustomDataSources.m"
-#import "GTLAnalyticsDailyUpload.m"
-#import "GTLAnalyticsDailyUploadAppend.m"
-#import "GTLAnalyticsDailyUploads.m"
-#import "GTLAnalyticsExperiment.m"
-#import "GTLAnalyticsExperiments.m"
-#import "GTLAnalyticsGaData.m"
-#import "GTLAnalyticsGoal.m"
-#import "GTLAnalyticsGoals.m"
-#import "GTLAnalyticsMcfData.m"
-#import "GTLAnalyticsProfile.m"
-#import "GTLAnalyticsProfiles.m"
-#import "GTLAnalyticsSegment.m"
-#import "GTLAnalyticsSegments.m"
-#import "GTLAnalyticsWebproperties.m"
-#import "GTLAnalyticsWebproperty.m"
+#import "GTLAnalyticsExperiment.h"
 
-#import "GTLQueryAnalytics.m"
-#import "GTLServiceAnalytics.m"
+// ----------------------------------------------------------------------------
+//
+//   GTLAnalyticsExperiments
+//
+
+@implementation GTLAnalyticsExperiments
+@dynamic items, itemsPerPage, kind, nextLink, previousLink, startIndex,
+         totalResults, username;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLAnalyticsExperiment class]
+                                forKey:@"items"];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"analytics#experiments"];
+}
+
+@end
