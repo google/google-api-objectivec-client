@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,12 +26,13 @@
 // Documentation:
 //   https://developers.google.com/google-apps/calendar/firstapp
 // Classes:
-//   GTLCalendarEvent (0 custom class methods, 35 custom properties)
+//   GTLCalendarEvent (0 custom class methods, 36 custom properties)
 //   GTLCalendarEventCreator (0 custom class methods, 4 custom properties)
 //   GTLCalendarEventExtendedProperties (0 custom class methods, 2 custom properties)
 //   GTLCalendarEventGadget (0 custom class methods, 8 custom properties)
 //   GTLCalendarEventOrganizer (0 custom class methods, 4 custom properties)
 //   GTLCalendarEventReminders (0 custom class methods, 2 custom properties)
+//   GTLCalendarEventSource (0 custom class methods, 2 custom properties)
 //   GTLCalendarEventExtendedPropertiesPrivate (0 custom class methods, 0 custom properties)
 //   GTLCalendarEventExtendedPropertiesShared (0 custom class methods, 0 custom properties)
 //   GTLCalendarEventGadgetPreferences (0 custom class methods, 0 custom properties)
@@ -53,8 +54,8 @@
          extendedProperties, gadget, guestsCanInviteOthers, guestsCanModify,
          guestsCanSeeOtherGuests, hangoutLink, htmlLink, iCalUID, identifier,
          kind, location, locked, organizer, originalStartTime, privateCopy,
-         recurrence, recurringEventId, reminders, sequence, start, status,
-         summary, transparency, updated, visibility;
+         recurrence, recurringEventId, reminders, sequence, source, start,
+         status, summary, transparency, updated, visibility;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -165,6 +166,16 @@
   return map;
 }
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLCalendarEventSource
+//
+
+@implementation GTLCalendarEventSource
+@dynamic title, url;
 @end
 
 

@@ -26,12 +26,13 @@
 // Documentation:
 //   https://developers.google.com/google-apps/calendar/firstapp
 // Classes:
-//   GTLCalendarEvent (0 custom class methods, 35 custom properties)
+//   GTLCalendarEvent (0 custom class methods, 36 custom properties)
 //   GTLCalendarEventCreator (0 custom class methods, 4 custom properties)
 //   GTLCalendarEventExtendedProperties (0 custom class methods, 2 custom properties)
 //   GTLCalendarEventGadget (0 custom class methods, 8 custom properties)
 //   GTLCalendarEventOrganizer (0 custom class methods, 4 custom properties)
 //   GTLCalendarEventReminders (0 custom class methods, 2 custom properties)
+//   GTLCalendarEventSource (0 custom class methods, 2 custom properties)
 //   GTLCalendarEventExtendedPropertiesPrivate (0 custom class methods, 0 custom properties)
 //   GTLCalendarEventExtendedPropertiesShared (0 custom class methods, 0 custom properties)
 //   GTLCalendarEventGadgetPreferences (0 custom class methods, 0 custom properties)
@@ -53,6 +54,7 @@
 @class GTLCalendarEventOrganizer;
 @class GTLCalendarEventReminder;
 @class GTLCalendarEventReminders;
+@class GTLCalendarEventSource;
 
 // ----------------------------------------------------------------------------
 //
@@ -171,6 +173,11 @@
 
 // Sequence number as per iCalendar.
 @property (retain) NSNumber *sequence;  // intValue
+
+// Source of an event from which it was created; for example a web page, an
+// email message or any document identifiable by an URL using HTTP/HTTPS
+// protocol. Accessible only by the creator of the event.
+@property (retain) GTLCalendarEventSource *source;
 
 // The (inclusive) start time of the event. For a recurring event, this is the
 // start time of the first instance.
@@ -328,6 +335,23 @@
 
 // Whether the default reminders of the calendar apply to the event.
 @property (retain) NSNumber *useDefault;  // boolValue
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLCalendarEventSource
+//
+
+@interface GTLCalendarEventSource : GTLObject
+
+// Title of the source; for example a title of a web page or an email subject.
+@property (copy) NSString *title;
+
+// URL of the source pointing to a resource. URL's protocol must be HTTP or
+// HTTPS.
+@property (copy) NSString *url;
 
 @end
 
