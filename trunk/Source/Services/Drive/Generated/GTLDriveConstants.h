@@ -46,7 +46,7 @@ GTL_EXTERN NSString * const kGTLAuthScopeDriveFile;             // "https://www.
 GTL_EXTERN NSString * const kGTLAuthScopeDriveMetadataReadonly;  // "https://www.googleapis.com/auth/drive.metadata.readonly"
 // View the files and documents in your Google Drive
 GTL_EXTERN NSString * const kGTLAuthScopeDriveReadonly;         // "https://www.googleapis.com/auth/drive.readonly"
-// New service: https://www.googleapis.com/auth/drive.scripts
+// Modify your Google Apps Script scripts' behavior
 GTL_EXTERN NSString * const kGTLAuthScopeDriveScripts;          // "https://www.googleapis.com/auth/drive.scripts"
 
 // Projection
