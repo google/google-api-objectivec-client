@@ -62,8 +62,15 @@ GTL_EXTERN NSString * const kGTLYouTubeOrderAlphabetical;  // "alphabetical"
 GTL_EXTERN NSString * const kGTLYouTubeOrderDate;          // "date"
 GTL_EXTERN NSString * const kGTLYouTubeOrderRating;        // "rating"
 GTL_EXTERN NSString * const kGTLYouTubeOrderRelevance;     // "relevance"
+GTL_EXTERN NSString * const kGTLYouTubeOrderTitle;         // "title"
 GTL_EXTERN NSString * const kGTLYouTubeOrderUnread;        // "unread"
+GTL_EXTERN NSString * const kGTLYouTubeOrderVideoCount;    // "videoCount"
 GTL_EXTERN NSString * const kGTLYouTubeOrderViewCount;     // "viewCount"
+
+// Rating
+GTL_EXTERN NSString * const kGTLYouTubeRatingDislike;  // "dislike"
+GTL_EXTERN NSString * const kGTLYouTubeRatingLike;     // "like"
+GTL_EXTERN NSString * const kGTLYouTubeRatingNone;     // "none"
 
 // SafeSearch
 GTL_EXTERN NSString * const kGTLYouTubeSafeSearchModerate;  // "moderate"

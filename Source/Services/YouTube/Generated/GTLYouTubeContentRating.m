@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeClientConfiguration.h
+//  GTLYouTubeContentRating.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,37 +26,17 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeClientConfiguration (0 custom class methods, 4 custom properties)
+//   GTLYouTubeContentRating (0 custom class methods, 15 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
-
-@class GTLYouTubeClientConfigurationSettings;
+#import "GTLYouTubeContentRating.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeClientConfiguration
+//   GTLYouTubeContentRating
 //
 
-// Remote settings that apply to a first-party client.
-
-@interface GTLYouTubeClientConfiguration : GTLObject
-
-// Etag of this resource.
-@property (copy) NSString *ETag;
-
-// The id uniquely identifies the client configuration.
-// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
-
-// The kind, fixed to "youtube#clientConfiguration".
-@property (copy) NSString *kind;
-
-// The settings object identifies the properties and values that are applicable
-// to the client.
-@property (retain) GTLYouTubeClientConfigurationSettings *settings;
-
+@implementation GTLYouTubeContentRating
+@dynamic acbRating, bbfcRating, cbfcRating, chvrsRating, djctqRating,
+         eirinRating, fmocRating, fskRating, icaaRating, kmrbRating, mpaaRating,
+         oflcRating, rtcRating, russiaRating, tvpgRating;
 @end
