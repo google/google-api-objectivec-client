@@ -39,8 +39,6 @@
 //   GTLYouTubeVideoStatus
 //
 
-// The status of a video details the video's upload status and privacy status.
-
 @interface GTLYouTubeVideoStatus : GTLObject
 
 // This value indicates if the video can be embedded on another website.

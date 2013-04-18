@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (33 custom class methods, 40 custom properties)
+//   GTLQueryYouTube (33 custom class methods, 42 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -60,6 +60,7 @@
 @property (copy) NSString *channelType;
 @property (copy) NSString *forChannelId;
 @property (assign) BOOL forContentOwner;
+@property (assign) BOOL forMine;
 @property (copy) NSString *hl;
 @property (copy) NSString *home;
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
@@ -78,6 +79,7 @@
 @property (retain) GTLDateTime *publishedAfter;
 @property (retain) GTLDateTime *publishedBefore;
 @property (copy) NSString *q;
+@property (copy) NSString *rating;
 @property (copy) NSString *regionCode;
 @property (copy) NSString *relatedToVideoId;
 @property (copy) NSString *safeSearch;
@@ -210,22 +212,6 @@
 //   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubeChannelListResponse.
 + (id)queryForChannelsListWithPart:(NSString *)part;
-
-#pragma mark -
-#pragma mark "clientConfiguration" methods
-// These create a GTLQueryYouTube object.
-
-// Method: youtube.clientConfiguration.list
-// Returns a list of properties that applies to the client.
-//  Required:
-//   part: The part parameter specifies the clientConfiguration resource parts
-//     that the API response will include. Supported values are id and settings.
-//  Authorization scope(s):
-//   kGTLAuthScopeYouTube
-//   kGTLAuthScopeYouTubeReadonly
-//   kGTLAuthScopeYouTubeYoutubepartner
-// Fetches a GTLYouTubeClientConfigurationListResponse.
-+ (id)queryForClientConfigurationListWithPart:(NSString *)part;
 
 #pragma mark -
 #pragma mark "guideCategories" methods
@@ -704,6 +690,8 @@
 //     onBehalfOfContentOwner parameter. The user must be authenticated as a CMS
 //     account linked to the specified content owner and onBehalfOfContentOwner
 //     must be provided.
+//   forMine: The forMine parameter restricts the search to only retrieve videos
+//     owned by the authenticated user.
 //   maxResults: USE_DESCRIPTION --- channels:list:maxResults (0..50, default 5)
 //   onBehalfOfContentOwner: The onBehalfOfContentOwner parameter indicates that
 //     the authenticated user is acting on behalf of the content owner specified
@@ -722,6 +710,9 @@
 //        rating.
 //      kGTLYouTubeOrderRelevance: Resources are sorted based on their relevance
 //        to the search query. This is the default value for this parameter.
+//      kGTLYouTubeOrderTitle: Resources are sorted based on their title.
+//      kGTLYouTubeOrderVideoCount: Channels are sorted from highest to lowest
+//        number of video uploaded.
 //      kGTLYouTubeOrderViewCount: Resources are sorted from highest to lowest
 //        number of views.
 //   pageToken: USE_DESCRIPTION --- channels:list:pageToken
@@ -928,16 +919,6 @@
 //   identifier: The id parameter specifies the YouTube video ID for the
 //     resource that is being deleted. In a video resource, the id property
 //     specifies the video's ID.
-//  Optional:
-//   onBehalfOfContentOwner: The onBehalfOfContentOwner parameter indicates that
-//     the authenticated user is acting on behalf of the content owner specified
-//     in the parameter value. This parameter is intended for YouTube content
-//     partners that own and manage many different YouTube channels. It allows
-//     content owners to authenticate once and get access to all their video and
-//     channel data, without having to provide authentication credentials for
-//     each individual channel. The actual CMS account that the user
-//     authenticates with needs to be linked to the specified YouTube content
-//     owner.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 //   kGTLAuthScopeYouTubeYoutubepartner
@@ -1002,6 +983,23 @@
 + (id)queryForVideosListWithIdentifier:(NSString *)identifier
                                   part:(NSString *)part;
 
+// Method: youtube.videos.rate
+// Like, dislike, or remove rating from a video.
+//  Required:
+//   identifier: The id parameter specifies the YouTube video ID.
+//   rating: Specifies the rating to record.
+//      kGTLYouTubeRatingDislike: Records that the authenticated user disliked
+//        the video.
+//      kGTLYouTubeRatingLike: Records that the authenticated user liked the
+//        video.
+//      kGTLYouTubeRatingNone: Removes any vote (like or dislike) the
+//        authenticated user had for the video.
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeYoutubepartner
++ (id)queryForVideosRateWithIdentifier:(NSString *)identifier
+                                rating:(NSString *)rating;
+
 // Method: youtube.videos.update
 // Updates a video's metadata.
 //  Required:
@@ -1025,16 +1023,6 @@
 //     does not contain values that you can set or modify. If the parameter
 //     value specifies a part that does not contain mutable values, that part
 //     will still be included in the API response.
-//  Optional:
-//   onBehalfOfContentOwner: The onBehalfOfContentOwner parameter indicates that
-//     the authenticated user is acting on behalf of the content owner specified
-//     in the parameter value. This parameter is intended for YouTube content
-//     partners that own and manage many different YouTube channels. It allows
-//     content owners to authenticate once and get access to all their video and
-//     channel data, without having to provide authentication credentials for
-//     each individual channel. The actual CMS account that the user
-//     authenticates with needs to be linked to the specified YouTube content
-//     owner.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 //   kGTLAuthScopeYouTubeYoutubepartner

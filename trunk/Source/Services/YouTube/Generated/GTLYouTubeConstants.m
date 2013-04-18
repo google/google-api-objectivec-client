@@ -52,8 +52,15 @@ NSString * const kGTLYouTubeOrderAlphabetical = @"alphabetical";
 NSString * const kGTLYouTubeOrderDate         = @"date";
 NSString * const kGTLYouTubeOrderRating       = @"rating";
 NSString * const kGTLYouTubeOrderRelevance    = @"relevance";
+NSString * const kGTLYouTubeOrderTitle        = @"title";
 NSString * const kGTLYouTubeOrderUnread       = @"unread";
+NSString * const kGTLYouTubeOrderVideoCount   = @"videoCount";
 NSString * const kGTLYouTubeOrderViewCount    = @"viewCount";
+
+// Rating
+NSString * const kGTLYouTubeRatingDislike = @"dislike";
+NSString * const kGTLYouTubeRatingLike    = @"like";
+NSString * const kGTLYouTubeRatingNone    = @"none";
 
 // SafeSearch
 NSString * const kGTLYouTubeSafeSearchModerate = @"moderate";

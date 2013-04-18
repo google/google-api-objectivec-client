@@ -26,14 +26,13 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (33 custom class methods, 40 custom properties)
+//   GTLQueryYouTube (33 custom class methods, 42 custom properties)
 
 #import "GTLQueryYouTube.h"
 
 #import "GTLYouTubeActivity.h"
 #import "GTLYouTubeActivityListResponse.h"
 #import "GTLYouTubeChannelListResponse.h"
-#import "GTLYouTubeClientConfigurationListResponse.h"
 #import "GTLYouTubeGuideCategoryListResponse.h"
 #import "GTLYouTubeLiveBroadcast.h"
 #import "GTLYouTubeLiveBroadcastList.h"
@@ -54,13 +53,13 @@
 @implementation GTLQueryYouTube
 
 @dynamic broadcastStatus, categoryId, channelId, channelType, fields,
-         forChannelId, forContentOwner, hl, home, identifier, itag, managedByMe,
-         maxResults, mine, mySubscribers, onBehalfOf, onBehalfOfContentOwner,
-         order, pageToken, part, playlistId, publishedAfter, publishedBefore, q,
-         regionCode, relatedToVideoId, safeSearch, streamId, topicId, type,
-         videoCaption, videoCategoryId, videoDefinition, videoDimension,
-         videoDuration, videoEmbeddable, videoId, videoLicense, videoSyndicated,
-         videoType;
+         forChannelId, forContentOwner, forMine, hl, home, identifier, itag,
+         managedByMe, maxResults, mine, mySubscribers, onBehalfOf,
+         onBehalfOfContentOwner, order, pageToken, part, playlistId,
+         publishedAfter, publishedBefore, q, rating, regionCode,
+         relatedToVideoId, safeSearch, streamId, topicId, type, videoCaption,
+         videoCategoryId, videoDefinition, videoDimension, videoDuration,
+         videoEmbeddable, videoId, videoLicense, videoSyndicated, videoType;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map =
@@ -104,18 +103,6 @@
   GTLQueryYouTube *query = [self queryWithMethodName:methodName];
   query.part = part;
   query.expectedObjectClass = [GTLYouTubeChannelListResponse class];
-  return query;
-}
-
-#pragma mark -
-#pragma mark "clientConfiguration" methods
-// These create a GTLQueryYouTube object.
-
-+ (id)queryForClientConfigurationListWithPart:(NSString *)part {
-  NSString *methodName = @"youtube.clientConfiguration.list";
-  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
-  query.part = part;
-  query.expectedObjectClass = [GTLYouTubeClientConfigurationListResponse class];
   return query;
 }
 
@@ -444,6 +431,15 @@
   query.identifier = identifier;
   query.part = part;
   query.expectedObjectClass = [GTLYouTubeVideoListResponse class];
+  return query;
+}
+
++ (id)queryForVideosRateWithIdentifier:(NSString *)identifier
+                                rating:(NSString *)rating {
+  NSString *methodName = @"youtube.videos.rate";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.identifier = identifier;
+  query.rating = rating;
   return query;
 }
 

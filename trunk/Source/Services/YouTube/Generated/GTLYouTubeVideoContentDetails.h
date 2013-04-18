@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoContentDetails (0 custom class methods, 7 custom properties)
+//   GTLYouTubeVideoContentDetails (0 custom class methods, 8 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -35,6 +35,7 @@
 #endif
 
 @class GTLYouTubeAccessPolicy;
+@class GTLYouTubeContentRating;
 @class GTLYouTubeVideoContentDetailsRegionRestriction;
 
 // ----------------------------------------------------------------------------
@@ -48,6 +49,9 @@
 
 // The value of captions indicates whether the video has captions or not.
 @property (copy) NSString *caption;
+
+// Specifies the ratings that the video received under various rating schemes.
+@property (retain) GTLYouTubeContentRating *contentRating;
 
 // The countryRestriction object contains information about the countries where
 // a video is (or is not) viewable.
