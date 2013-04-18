@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubePropertyValues.m
+//  GTLYouTubePropertyValue.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,23 +26,15 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePropertyValues (0 custom class methods, 2 custom properties)
+//   GTLYouTubePropertyValue (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubePropertyValues.h"
+#import "GTLYouTubePropertyValue.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubePropertyValues
+//   GTLYouTubePropertyValue
 //
 
-@implementation GTLYouTubePropertyValues
-@dynamic property, values;
-
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[NSString class]
-                                forKey:@"values"];
-  return map;
-}
-
+@implementation GTLYouTubePropertyValue
+@dynamic property, value;
 @end
