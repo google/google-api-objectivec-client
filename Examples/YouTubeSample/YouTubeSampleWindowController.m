@@ -628,8 +628,8 @@ NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
   static NSString *gDisplayedURLStr = nil;
 
   GTLYouTubePlaylistItem *playlistItem = [self selectedPlaylistItem];
-  GTLYouTubePlaylistItemSnippetThumbnails *thumbnails = playlistItem.snippet.thumbnails;
-  GTLYouTubeThumbnail *thumbnail = [thumbnails additionalPropertyForName:@"default"];
+  GTLYouTubeThumbnailDetails *thumbnails = playlistItem.snippet.thumbnails;
+  GTLYouTubeThumbnail *thumbnail = thumbnails.defaultProperty;
   NSString *thumbnailURLStr = thumbnail.url;
 
   if (!GTL_AreEqualOrBothNil(gDisplayedURLStr, thumbnailURLStr)) {
