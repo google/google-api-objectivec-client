@@ -53,6 +53,9 @@ Google APIs rely on OAuth 2 for user sign-in. The library includes the [http://c
 
 Be sure to read the introduction wiki page for [http://code.google.com/p/gtm-oauth2/ gtm-oauth2], as adding authentication support to your project is likely to require more effort than is using the API client library.
 
+*Note:* The [http://code.google.com/p/gtm-oauth2/ GTM OAuth 2 controllers] support signing in from within a Mac or iOS app. Alternatively, iOS apps may offer sign-in to Google services using a [https://developers.google.com/+/mobile/ios/ Google+ Platform sign-in] button. Google+ Platform sign-in brings Safari to the foreground while the user is signing in.
+
+
 === API Quotas ===
 
 For each API used by your application, enable the API and check its default *quota* in the Services section of the [https://code.google.com/apis/console/ API Console]. 
