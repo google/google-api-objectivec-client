@@ -21,6 +21,8 @@ The Google APIs Client Library for Objective-C is a Cocoa framework that enables
 
 The Google APIs Client Library for Objective-C requires iOS 3 or later, or Mac OS X 10.5 or later.
 
+To download the project via Subversion, install Xcode command-line tools so the `svn` command is available. In Xcode, choose `Xcode > Preferences > Downloads`, and click the Install button for Command Line Tools
+
 === Example Applications ===
 
 The Examples directory contains example applications showing typical interactions with Google services using the framework.  The applications act as simple browsers for the data classes for each service.  The !WindowController source files of the samples were written with typical Cocoa idioms to serve as quick introductions to use of the APIs.  
