@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,28 +20,25 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   AdSense Management API (adsense/v1.3)
+//   AdSense Management API (adsense/v1.2)
 // Description:
 //   Gives AdSense publishers access to their inventory and the ability to
 //   generate reports
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLQueryAdSense (34 custom class methods, 21 custom properties)
+//   GTLQueryAdSense (28 custom class methods, 20 custom properties)
 
 #import "GTLQueryAdSense.h"
 
 #import "GTLAdSenseAccount.h"
 #import "GTLAdSenseAccounts.h"
 #import "GTLAdSenseAdClients.h"
-#import "GTLAdSenseAdCode.h"
 #import "GTLAdSenseAdsenseReportsGenerateResponse.h"
 #import "GTLAdSenseAdUnit.h"
 #import "GTLAdSenseAdUnits.h"
-#import "GTLAdSenseAlerts.h"
 #import "GTLAdSenseCustomChannel.h"
 #import "GTLAdSenseCustomChannels.h"
-#import "GTLAdSenseMetadata.h"
 #import "GTLAdSenseSavedAdStyle.h"
 #import "GTLAdSenseSavedAdStyles.h"
 #import "GTLAdSenseSavedReports.h"
@@ -52,7 +49,7 @@
 @dynamic accountId, adClientId, adUnitId, currency, customChannelId, dimension,
          endDate, fields, filter, includeInactive, locale, maxResults, metric,
          pageToken, savedAdStyleId, savedReportId, sort, startDate, startIndex,
-         tree, useTimezoneReporting;
+         tree;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
@@ -109,18 +106,6 @@
   return query;
 }
 
-+ (id)queryForAccountsAdunitsGetAdCodeWithAccountId:(NSString *)accountId
-                                         adClientId:(NSString *)adClientId
-                                           adUnitId:(NSString *)adUnitId {
-  NSString *methodName = @"adsense.accounts.adunits.getAdCode";
-  GTLQueryAdSense *query = [self queryWithMethodName:methodName];
-  query.accountId = accountId;
-  query.adClientId = adClientId;
-  query.adUnitId = adUnitId;
-  query.expectedObjectClass = [GTLAdSenseAdCode class];
-  return query;
-}
-
 + (id)queryForAccountsAdunitsListWithAccountId:(NSString *)accountId
                                     adClientId:(NSString *)adClientId {
   NSString *methodName = @"adsense.accounts.adunits.list";
@@ -128,18 +113,6 @@
   query.accountId = accountId;
   query.adClientId = adClientId;
   query.expectedObjectClass = [GTLAdSenseAdUnits class];
-  return query;
-}
-
-#pragma mark -
-#pragma mark "accounts.alerts" methods
-// These create a GTLQueryAdSense object.
-
-+ (id)queryForAccountsAlertsListWithAccountId:(NSString *)accountId {
-  NSString *methodName = @"adsense.accounts.alerts.list";
-  GTLQueryAdSense *query = [self queryWithMethodName:methodName];
-  query.accountId = accountId;
-  query.expectedObjectClass = [GTLAdSenseAlerts class];
   return query;
 }
 
@@ -317,32 +290,11 @@
   return query;
 }
 
-+ (id)queryForAdunitsGetAdCodeWithAdClientId:(NSString *)adClientId
-                                    adUnitId:(NSString *)adUnitId {
-  NSString *methodName = @"adsense.adunits.getAdCode";
-  GTLQueryAdSense *query = [self queryWithMethodName:methodName];
-  query.adClientId = adClientId;
-  query.adUnitId = adUnitId;
-  query.expectedObjectClass = [GTLAdSenseAdCode class];
-  return query;
-}
-
 + (id)queryForAdunitsListWithAdClientId:(NSString *)adClientId {
   NSString *methodName = @"adsense.adunits.list";
   GTLQueryAdSense *query = [self queryWithMethodName:methodName];
   query.adClientId = adClientId;
   query.expectedObjectClass = [GTLAdSenseAdUnits class];
-  return query;
-}
-
-#pragma mark -
-#pragma mark "alerts" methods
-// These create a GTLQueryAdSense object.
-
-+ (id)queryForAlertsList {
-  NSString *methodName = @"adsense.alerts.list";
-  GTLQueryAdSense *query = [self queryWithMethodName:methodName];
-  query.expectedObjectClass = [GTLAdSenseAlerts class];
   return query;
 }
 
@@ -379,28 +331,6 @@
   GTLQueryAdSense *query = [self queryWithMethodName:methodName];
   query.adClientId = adClientId;
   query.expectedObjectClass = [GTLAdSenseCustomChannels class];
-  return query;
-}
-
-#pragma mark -
-#pragma mark "metadata.dimensions" methods
-// These create a GTLQueryAdSense object.
-
-+ (id)queryForMetadataDimensionsList {
-  NSString *methodName = @"adsense.metadata.dimensions.list";
-  GTLQueryAdSense *query = [self queryWithMethodName:methodName];
-  query.expectedObjectClass = [GTLAdSenseMetadata class];
-  return query;
-}
-
-#pragma mark -
-#pragma mark "metadata.metrics" methods
-// These create a GTLQueryAdSense object.
-
-+ (id)queryForMetadataMetricsList {
-  NSString *methodName = @"adsense.metadata.metrics.list";
-  GTLQueryAdSense *query = [self queryWithMethodName:methodName];
-  query.expectedObjectClass = [GTLAdSenseMetadata class];
   return query;
 }
 

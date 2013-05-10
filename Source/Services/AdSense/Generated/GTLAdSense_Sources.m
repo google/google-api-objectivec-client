@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   AdSense Management API (adsense/v1.3)
+//   AdSense Management API (adsense/v1.2)
 // Description:
 //   Gives AdSense publishers access to their inventory and the ability to
 //   generate reports
@@ -36,17 +36,12 @@
 #import "GTLAdSenseAccounts.m"
 #import "GTLAdSenseAdClient.m"
 #import "GTLAdSenseAdClients.m"
-#import "GTLAdSenseAdCode.m"
 #import "GTLAdSenseAdsenseReportsGenerateResponse.m"
 #import "GTLAdSenseAdStyle.m"
 #import "GTLAdSenseAdUnit.m"
 #import "GTLAdSenseAdUnits.m"
-#import "GTLAdSenseAlert.m"
-#import "GTLAdSenseAlerts.m"
 #import "GTLAdSenseCustomChannel.m"
 #import "GTLAdSenseCustomChannels.m"
-#import "GTLAdSenseMetadata.m"
-#import "GTLAdSenseReportingMetadataEntry.m"
 #import "GTLAdSenseSavedAdStyle.m"
 #import "GTLAdSenseSavedAdStyles.m"
 #import "GTLAdSenseSavedReport.m"
