@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlaylistSnippet (0 custom class methods, 5 custom properties)
+//   GTLYouTubePlaylistSnippet (0 custom class methods, 6 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -48,6 +48,9 @@
 // The ID that YouTube uses to uniquely identify the channel that published the
 // playlist.
 @property (copy) NSString *channelId;
+
+// Channel title for the channel that the video belongs to.
+@property (copy) NSString *channelTitle;
 
 // The playlist's description.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.

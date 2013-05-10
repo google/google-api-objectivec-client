@@ -41,13 +41,24 @@
 //   GTLYouTubeThumbnailDetails
 //
 
+// Internal representation of thumbnails for a YouTube resource.
+
 @interface GTLYouTubeThumbnailDetails : GTLObject
 
+// The default image for this resource.
 // Remapped to 'defaultProperty' to avoid language reserved word 'default'.
 @property (retain) GTLYouTubeThumbnail *defaultProperty;
 
+// The high quality image for this resource.
 @property (retain) GTLYouTubeThumbnail *high;
+
+// The maximum resolution quality image for this resource.
 @property (retain) GTLYouTubeThumbnail *maxres;
+
+// The medium quality image for this resource.
 @property (retain) GTLYouTubeThumbnail *medium;
+
+// The standard quality image for this resource.
 @property (retain) GTLYouTubeThumbnail *standard;
+
 @end

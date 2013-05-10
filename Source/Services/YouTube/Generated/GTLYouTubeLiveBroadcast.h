@@ -26,8 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveBroadcast (0 custom class methods, 7 custom properties)
-//   GTLYouTubeLiveBroadcastSlateSettings (0 custom class methods, 0 custom properties)
+//   GTLYouTubeLiveBroadcast (0 custom class methods, 6 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,7 +35,6 @@
 #endif
 
 @class GTLYouTubeLiveBroadcastContentDetails;
-@class GTLYouTubeLiveBroadcastSlateSettings;
 @class GTLYouTubeLiveBroadcastSnippet;
 @class GTLYouTubeLiveBroadcastStatus;
 
@@ -67,12 +65,6 @@
 // youtube#liveBroadcast.
 @property (copy) NSString *kind;
 
-// The slateSettings object contains details about the content that will display
-// in the player when you show a broadcast slate. A broadcast slate displays
-// above the video. However, while it displays, the video continues to play and
-// is also audible in the background.
-@property (retain) GTLYouTubeLiveBroadcastSlateSettings *slateSettings;
-
 // The snippet object contains basic details about the event, including its
 // title, description, start time, and end time.
 @property (retain) GTLYouTubeLiveBroadcastSnippet *snippet;
@@ -80,13 +72,4 @@
 // The status object contains information about the event's status.
 @property (retain) GTLYouTubeLiveBroadcastStatus *status;
 
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubeLiveBroadcastSlateSettings
-//
-
-@interface GTLYouTubeLiveBroadcastSlateSettings : GTLObject
 @end

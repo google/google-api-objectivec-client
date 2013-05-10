@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeSubscription (0 custom class methods, 5 custom properties)
+//   GTLYouTubeSubscription (0 custom class methods, 6 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,6 +36,7 @@
 
 @class GTLYouTubeSubscriptionContentDetails;
 @class GTLYouTubeSubscriptionSnippet;
+@class GTLYouTubeSubscriptionSubscriberSnippet;
 
 // ----------------------------------------------------------------------------
 //
@@ -66,5 +67,8 @@
 // The snippet object contains basic details about the subscription, including
 // its title and the channel that the user subscribed to.
 @property (retain) GTLYouTubeSubscriptionSnippet *snippet;
+
+// The subscriberSnippet object contains basic details about the subscriber.
+@property (retain) GTLYouTubeSubscriptionSubscriberSnippet *subscriberSnippet;
 
 @end

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeInvideoFeature.h
+//  GTLYouTubeVideoGetRatingResponse.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,23 +26,36 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeInvideoFeature (0 custom class methods, 2 custom properties)
+//   GTLYouTubeVideoGetRatingResponse (0 custom class methods, 3 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLYouTubeVideoGetRatingResponse.h"
 
-@class GTLYouTubeFeaturedChannel;
-@class GTLYouTubeFeaturedVideo;
+#import "GTLYouTubeVideoRating.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeInvideoFeature
+//   GTLYouTubeVideoGetRatingResponse
 //
 
-@interface GTLYouTubeInvideoFeature : GTLObject
-@property (retain) GTLYouTubeFeaturedChannel *featuredChannel;
-@property (retain) GTLYouTubeFeaturedVideo *featuredVideo;
+@implementation GTLYouTubeVideoGetRatingResponse
+@dynamic ETag, items, kind;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"etag"
+                                forKey:@"ETag"];
+  return map;
+}
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLYouTubeVideoRating class]
+                                forKey:@"items"];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"youtube#videoGetRatingResponse"];
+}
+
 @end

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveBroadcast.m
+//  GTLYouTubeChannelConversionPing.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,33 +26,15 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveBroadcast (0 custom class methods, 6 custom properties)
+//   GTLYouTubeChannelConversionPing (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubeLiveBroadcast.h"
-
-#import "GTLYouTubeLiveBroadcastContentDetails.h"
-#import "GTLYouTubeLiveBroadcastSnippet.h"
-#import "GTLYouTubeLiveBroadcastStatus.h"
+#import "GTLYouTubeChannelConversionPing.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveBroadcast
+//   GTLYouTubeChannelConversionPing
 //
 
-@implementation GTLYouTubeLiveBroadcast
-@dynamic contentDetails, ETag, identifier, kind, snippet, status;
-
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"etag", @"ETag",
-      @"id", @"identifier",
-      nil];
-  return map;
-}
-
-+ (void)load {
-  [self registerObjectClassForKind:@"youtube#liveBroadcast"];
-}
-
+@implementation GTLYouTubeChannelConversionPing
+@dynamic context, conversionUrl;
 @end

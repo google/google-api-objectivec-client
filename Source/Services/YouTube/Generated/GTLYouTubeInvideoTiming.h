@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeInvideoFeature.m
+//  GTLYouTubeInvideoTiming.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,18 +26,32 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeInvideoFeature (0 custom class methods, 2 custom properties)
+//   GTLYouTubeInvideoTiming (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubeInvideoFeature.h"
-
-#import "GTLYouTubeFeaturedChannel.h"
-#import "GTLYouTubeFeaturedVideo.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeInvideoFeature
+//   GTLYouTubeInvideoTiming
 //
 
-@implementation GTLYouTubeInvideoFeature
-@dynamic featuredChannel, featuredVideo;
+// Describes a temporal position of a visual widget inside a video.
+
+@interface GTLYouTubeInvideoTiming : GTLObject
+
+// Defines the time at which the promotion will appear. Depending on the value
+// of type the value of the offsetMs field will represent a time offset from the
+// start or from the end of the video, expressed in milliseconds.
+@property (retain) NSNumber *offsetMs;  // unsignedLongLongValue
+
+// Describes a timing type. If the value is offsetFromStart, then the offsetMs
+// field represents an offset from the start of the video. If the value is
+// offsetFromEnd, then the offsetMs field represents an offset from the end of
+// the video.
+@property (copy) NSString *type;
+
 @end

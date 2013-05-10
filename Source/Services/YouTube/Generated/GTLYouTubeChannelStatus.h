@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelStatus (0 custom class methods, 1 custom properties)
+//   GTLYouTubeChannelStatus (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -42,6 +42,10 @@
 // JSON template for the status part of a channel.
 
 @interface GTLYouTubeChannelStatus : GTLObject
+
+// If true, then the user is linked to either a YouTube username or G+ account.
+// Otherwise, the user doesn't have a public YouTube identity.
+@property (retain) NSNumber *isLinked;  // boolValue
 
 // Privacy status of the channel.
 @property (copy) NSString *privacyStatus;

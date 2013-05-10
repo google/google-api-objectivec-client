@@ -47,6 +47,10 @@ NSString * const kGTLYouTubeBroadcastStatusUpcoming  = @"upcoming";
 NSString * const kGTLYouTubeChannelTypeAny  = @"any";
 NSString * const kGTLYouTubeChannelTypeShow = @"show";
 
+// MyRating
+NSString * const kGTLYouTubeMyRatingDislike = @"dislike";
+NSString * const kGTLYouTubeMyRatingLike    = @"like";
+
 // Order
 NSString * const kGTLYouTubeOrderAlphabetical = @"alphabetical";
 NSString * const kGTLYouTubeOrderDate         = @"date";

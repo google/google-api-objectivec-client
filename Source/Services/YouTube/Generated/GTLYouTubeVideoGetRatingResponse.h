@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubePlayerVideoUrls.h
+//  GTLYouTubeVideoGetRatingResponse.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlayerVideoUrls (0 custom class methods, 2 custom properties)
+//   GTLYouTubeVideoGetRatingResponse (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,22 +34,29 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLYouTubePlayerRestrictionDetails;
-@class GTLYouTubePlayerVideoUrl;
+@class GTLYouTubeVideoRating;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubePlayerVideoUrls
+//   GTLYouTubeVideoGetRatingResponse
 //
 
-// Part containing the URLs pointing to the video data.
+// A list of video ratings returned as the response to a
+// youtube.videos.getRating call.
 
-@interface GTLYouTubePlayerVideoUrls : GTLObject
+// This class supports NSFastEnumeration over its "items" property. It also
+// supports -itemAtIndex: to retrieve individual objects from "items".
 
-// Possible restriction to the playability of the video.
-@property (retain) GTLYouTubePlayerRestrictionDetails *restriction;
+@interface GTLYouTubeVideoGetRatingResponse : GTLCollectionObject
 
-// URLs to the formats that are available to the caller.
-@property (retain) NSArray *url;  // of GTLYouTubePlayerVideoUrl
+// The ETag of the response.
+@property (copy) NSString *ETag;
+
+// A list of ratings that match the request criteria.
+@property (retain) NSArray *items;  // of GTLYouTubeVideoRating
+
+// The type of the API response. For this operation, the value will be
+// youtube#videoGetRatingResponse.
+@property (copy) NSString *kind;
 
 @end

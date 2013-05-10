@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideo (0 custom class methods, 16 custom properties)
+//   GTLYouTubeVideo (0 custom class methods, 17 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,6 +36,7 @@
 
 @class GTLYouTubeVideoAgeGating;
 @class GTLYouTubeVideoContentDetails;
+@class GTLYouTubeVideoConversionPings;
 @class GTLYouTubeVideoFileDetails;
 @class GTLYouTubeVideoMonetizationDetails;
 @class GTLYouTubeVideoPlayer;
@@ -63,6 +64,10 @@
 // The contentDetails object contains information about the video content,
 // including the length of the video and its aspect ratio.
 @property (retain) GTLYouTubeVideoContentDetails *contentDetails;
+
+// The conversionPings object encapsulates information about url pings that need
+// to be respected by the App in different video contexts.
+@property (retain) GTLYouTubeVideoConversionPings *conversionPings;
 
 // The ETag of the video resource.
 @property (copy) NSString *ETag;

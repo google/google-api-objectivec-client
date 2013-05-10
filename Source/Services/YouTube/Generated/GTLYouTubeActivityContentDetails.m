@@ -26,13 +26,14 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeActivityContentDetails (0 custom class methods, 10 custom properties)
+//   GTLYouTubeActivityContentDetails (0 custom class methods, 11 custom properties)
 //   GTLYouTubeActivityContentDetailsBulletin (0 custom class methods, 1 custom properties)
 //   GTLYouTubeActivityContentDetailsChannelItem (0 custom class methods, 1 custom properties)
 //   GTLYouTubeActivityContentDetailsComment (0 custom class methods, 1 custom properties)
 //   GTLYouTubeActivityContentDetailsFavorite (0 custom class methods, 1 custom properties)
 //   GTLYouTubeActivityContentDetailsLike (0 custom class methods, 1 custom properties)
 //   GTLYouTubeActivityContentDetailsPlaylistItem (0 custom class methods, 3 custom properties)
+//   GTLYouTubeActivityContentDetailsPromotedItem (0 custom class methods, 7 custom properties)
 //   GTLYouTubeActivityContentDetailsRecommendation (0 custom class methods, 3 custom properties)
 //   GTLYouTubeActivityContentDetailsSocial (0 custom class methods, 5 custom properties)
 //   GTLYouTubeActivityContentDetailsSubscription (0 custom class methods, 1 custom properties)
@@ -49,7 +50,7 @@
 
 @implementation GTLYouTubeActivityContentDetails
 @dynamic bulletin, channelItem, comment, favorite, like, playlistItem,
-         recommendation, social, subscription, upload;
+         promotedItem, recommendation, social, subscription, upload;
 @end
 
 
@@ -110,6 +111,17 @@
 
 @implementation GTLYouTubeActivityContentDetailsPlaylistItem
 @dynamic playlistId, playlistItemId, resourceId;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLYouTubeActivityContentDetailsPromotedItem
+//
+
+@implementation GTLYouTubeActivityContentDetailsPromotedItem
+@dynamic adTag, clickTrackingUrl, creativeViewUrl, ctaType, descriptionText,
+         destinationUrl, videoId;
 @end
 
 

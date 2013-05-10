@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubePlayerVideoUrls.m
+//  GTLYouTubeVideoRating.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,26 +26,27 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlayerVideoUrls (0 custom class methods, 2 custom properties)
+//   GTLYouTubeVideoRating (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubePlayerVideoUrls.h"
-
-#import "GTLYouTubePlayerRestrictionDetails.h"
-#import "GTLYouTubePlayerVideoUrl.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubePlayerVideoUrls
+//   GTLYouTubeVideoRating
 //
 
-@implementation GTLYouTubePlayerVideoUrls
-@dynamic restriction, url;
+// Basic details about rating of a video.
 
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLYouTubePlayerVideoUrl class]
-                                forKey:@"url"];
-  return map;
-}
+@interface GTLYouTubeVideoRating : GTLObject
+
+// Rating of a video.
+@property (copy) NSString *rating;
+
+// The ID that YouTube uses to uniquely identify the video.
+@property (copy) NSString *videoId;
 
 @end

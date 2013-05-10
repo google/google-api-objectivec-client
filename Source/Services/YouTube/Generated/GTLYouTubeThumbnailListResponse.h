@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeFeaturedVideo.h
+//  GTLYouTubeThumbnailListResponse.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeFeaturedVideo (0 custom class methods, 5 custom properties)
+//   GTLYouTubeThumbnailListResponse (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,17 +34,28 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLYouTubeVideoSnippet;
+@class GTLYouTubeThumbnailDetails;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeFeaturedVideo
+//   GTLYouTubeThumbnailListResponse
 //
 
-@interface GTLYouTubeFeaturedVideo : GTLObject
-@property (retain) NSNumber *endTimeMs;  // longLongValue
-@property (copy) NSString *featureId;
-@property (retain) NSNumber *startTimeMs;  // longLongValue
-@property (copy) NSString *videoId;
-@property (retain) GTLYouTubeVideoSnippet *videoSnippet;
+// A list of thumbnails returned as the response to a thumbnails.set call.
+
+// This class supports NSFastEnumeration over its "items" property. It also
+// supports -itemAtIndex: to retrieve individual objects from "items".
+
+@interface GTLYouTubeThumbnailListResponse : GTLCollectionObject
+
+// The ETag of the response.
+@property (copy) NSString *ETag;
+
+// A list of thumbnails.
+@property (retain) NSArray *items;  // of GTLYouTubeThumbnailDetails
+
+// The type of the API response. For this operation, the value will be
+// youtube#thumbnailListResponse.
+@property (copy) NSString *kind;
+
 @end

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubePlayer.h
+//  GTLYouTubeSubscriptionSubscriberSnippet.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlayer (0 custom class methods, 6 custom properties)
+//   GTLYouTubeSubscriptionSubscriberSnippet (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,38 +34,29 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLYouTubeInvideoFeature;
-@class GTLYouTubePlayerAdsPlaylist;
-@class GTLYouTubePlayerVideoUrls;
-@class GTLYouTubeResourceId;
+@class GTLYouTubeThumbnailDetails;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubePlayer
+//   GTLYouTubeSubscriptionSubscriberSnippet
 //
 
-// A player resource represents all the information needed to play a video.
+// Basic details about a subscription's subscriber including title, description,
+// channel ID and thumbnails.
 
-@interface GTLYouTubePlayer : GTLObject
+@interface GTLYouTubeSubscriptionSubscriberSnippet : GTLObject
 
-// The playlist of video ads to show for this playback.
-@property (retain) GTLYouTubePlayerAdsPlaylist *adsPlaylist;
+// The channel ID of the subscriber.
+@property (copy) NSString *channelId;
 
-// The ETag for the player resource.
-@property (copy) NSString *ETag;
+// The description of the subscriber.
+// Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
+@property (copy) NSString *descriptionProperty;
 
-// The ID that YouTube uses to uniquely identify the resource.
-// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) GTLYouTubeResourceId *identifier;
+// Thumbnails for this subscriber.
+@property (retain) GTLYouTubeThumbnailDetails *thumbnails;
 
-// The invideo features for the video.
-@property (retain) GTLYouTubeInvideoFeature *invideoFeature;
-
-// The type of the API resource.
-@property (copy) NSString *kind;
-
-// The videoUrls object either contains restriction information or URLs giving
-// access to the content.
-@property (retain) GTLYouTubePlayerVideoUrls *videoUrls;
+// The title of the subscriber.
+@property (copy) NSString *title;
 
 @end

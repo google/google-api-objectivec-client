@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeFeaturedVideo.m
+//  GTLYouTubeInvideoPosition.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,17 +26,28 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeFeaturedVideo (0 custom class methods, 5 custom properties)
+//   GTLYouTubeInvideoPosition (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubeFeaturedVideo.h"
-
-#import "GTLYouTubeVideoSnippet.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeFeaturedVideo
+//   GTLYouTubeInvideoPosition
 //
 
-@implementation GTLYouTubeFeaturedVideo
-@dynamic endTimeMs, featureId, startTimeMs, videoId, videoSnippet;
+// Describes the spatial position of a visual widget inside a video. It is a
+// union of various position types, out of which only will be set one.
+
+@interface GTLYouTubeInvideoPosition : GTLObject
+
+// Describes in which corner of the video the visual widget will appear.
+@property (copy) NSString *cornerPosition;
+
+// Defines the position type.
+@property (copy) NSString *type;
+
 @end

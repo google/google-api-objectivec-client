@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoCategoryListResponse (0 custom class methods, 3 custom properties)
+//   GTLYouTubeVideoCategoryListResponse (0 custom class methods, 4 custom properties)
 
 #import "GTLYouTubeVideoCategoryListResponse.h"
 
@@ -38,7 +38,7 @@
 //
 
 @implementation GTLYouTubeVideoCategoryListResponse
-@dynamic ETag, items, kind;
+@dynamic ETag, eventId, items, kind;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

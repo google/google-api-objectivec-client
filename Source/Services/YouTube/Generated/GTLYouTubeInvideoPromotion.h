@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubePlaylistItemStatus.h
+//  GTLYouTubeInvideoPromotion.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlaylistItemStatus (0 custom class methods, 1 custom properties)
+//   GTLYouTubeInvideoPromotion (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,16 +34,35 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLYouTubeInvideoPosition;
+@class GTLYouTubeInvideoTiming;
+@class GTLYouTubePromotedItemId;
+
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubePlaylistItemStatus
+//   GTLYouTubeInvideoPromotion
 //
 
-// Information about the playlist item's privacy status.
+// Describes an invideo promotion campaign consisting of multiple promoted
+// items. A campaign belongs to a single channel_id.
 
-@interface GTLYouTubePlaylistItemStatus : GTLObject
+// This class supports NSFastEnumeration over its "items" property. It also
+// supports -itemAtIndex: to retrieve individual objects from "items".
 
-// This resource's privacy status.
-@property (copy) NSString *privacyStatus;
+@interface GTLYouTubeInvideoPromotion : GTLCollectionObject
+
+// The YouTube ID of the channel to which this campaign belongs.
+@property (copy) NSString *channelId;
+
+// List of promoted items in decreasing priority.
+@property (retain) NSArray *items;  // of GTLYouTubePromotedItemId
+
+// The spatial position within the video where the promoted item will be
+// displayed.
+@property (retain) GTLYouTubeInvideoPosition *position;
+
+// The temporal position within the video where the promoted item will be
+// displayed.
+@property (retain) GTLYouTubeInvideoTiming *timing;
 
 @end

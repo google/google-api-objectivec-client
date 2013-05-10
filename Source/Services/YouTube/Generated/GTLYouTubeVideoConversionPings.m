@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubePlayerRestrictionDetails.m
+//  GTLYouTubeVideoConversionPings.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,15 +26,25 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlayerRestrictionDetails (0 custom class methods, 3 custom properties)
+//   GTLYouTubeVideoConversionPings (0 custom class methods, 1 custom properties)
 
-#import "GTLYouTubePlayerRestrictionDetails.h"
+#import "GTLYouTubeVideoConversionPings.h"
+
+#import "GTLYouTubeVideoConversionPing.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubePlayerRestrictionDetails
+//   GTLYouTubeVideoConversionPings
 //
 
-@implementation GTLYouTubePlayerRestrictionDetails
-@dynamic reason, restricted, restriction;
+@implementation GTLYouTubeVideoConversionPings
+@dynamic pings;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLYouTubeVideoConversionPing class]
+                                forKey:@"pings"];
+  return map;
+}
+
 @end

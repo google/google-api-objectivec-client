@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeSubscriptionSnippet (0 custom class methods, 6 custom properties)
+//   GTLYouTubeSubscriptionSnippet (0 custom class methods, 7 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -50,6 +50,9 @@
 // The ID that YouTube uses to uniquely identify the subscriber's channel.
 @property (copy) NSString *channelId;
 
+// Channel title for the channel that the subscription belongs to.
+@property (copy) NSString *channelTitle;
+
 // The subscription's details.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
@@ -62,9 +65,9 @@
 // to.
 @property (retain) GTLYouTubeResourceId *resourceId;
 
-// A map of thumbnail images associated with the subscription. For each object
-// in the map, the key is the name of the thumbnail image, and the value is an
-// object that contains other information about the thumbnail.
+// A map of thumbnail images associated with the video. For each object in the
+// map, the key is the name of the thumbnail image, and the value is an object
+// that contains other information about the thumbnail.
 @property (retain) GTLYouTubeThumbnailDetails *thumbnails;
 
 // The subscription's title.

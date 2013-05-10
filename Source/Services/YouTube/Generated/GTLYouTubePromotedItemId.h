@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveBroadcast.m
+//  GTLYouTubePromotedItemId.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,33 +26,29 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveBroadcast (0 custom class methods, 6 custom properties)
+//   GTLYouTubePromotedItemId (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubeLiveBroadcast.h"
-
-#import "GTLYouTubeLiveBroadcastContentDetails.h"
-#import "GTLYouTubeLiveBroadcastSnippet.h"
-#import "GTLYouTubeLiveBroadcastStatus.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveBroadcast
+//   GTLYouTubePromotedItemId
 //
 
-@implementation GTLYouTubeLiveBroadcast
-@dynamic contentDetails, ETag, identifier, kind, snippet, status;
+// Describes a single promoted item. It is a union of various possible types.
 
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"etag", @"ETag",
-      @"id", @"identifier",
-      nil];
-  return map;
-}
+@interface GTLYouTubePromotedItemId : GTLObject
 
-+ (void)load {
-  [self registerObjectClassForKind:@"youtube#liveBroadcast"];
-}
+// Describes the type of the promoted item.
+@property (copy) NSString *type;
+
+// If the promoted item represents a video, this field represents the unique
+// YouTube ID identifying it. This field will be present only if type has the
+// value video.
+@property (copy) NSString *videoId;
 
 @end

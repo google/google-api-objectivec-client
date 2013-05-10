@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeGuideCategoryListResponse (0 custom class methods, 3 custom properties)
+//   GTLYouTubeGuideCategoryListResponse (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -51,6 +51,9 @@
 
 // The ETag of the response.
 @property (copy) NSString *ETag;
+
+// Serialized EventId of the request which produced this response.
+@property (copy) NSString *eventId;
 
 // A list of categories that can be associated with YouTube channels. In this
 // map, the category ID is the map key, and its value is the corresponding
