@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,14 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud Storage API (storage/v1beta1)
+//   Cloud Storage API (storage/v1beta2)
 // Description:
 //   Lets you store and retrieve potentially-large, immutable data objects.
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 // Classes:
-//   GTLStorageObject (0 custom class methods, 13 custom properties)
-//   GTLStorageObjectMedia (0 custom class methods, 7 custom properties)
+//   GTLStorageObject (0 custom class methods, 23 custom properties)
 //   GTLStorageObjectMetadata (0 custom class methods, 0 custom properties)
 //   GTLStorageObjectOwner (0 custom class methods, 2 custom properties)
 
@@ -41,14 +40,17 @@
 //
 
 @implementation GTLStorageObject
-@dynamic acl, bucket, cacheControl, contentDisposition, contentEncoding,
-         contentLanguage, identifier, kind, media, metadata, name, owner,
-         selfLink;
+@dynamic acl, bucket, cacheControl, componentCount, contentDisposition,
+         contentEncoding, contentLanguage, contentType, crc32c, ETag,
+         generation, identifier, kind, md5Hash, mediaLink, metadata,
+         metageneration, name, owner, selfLink, size, timeDeleted, updated;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      @"etag", @"ETag",
+      @"id", @"identifier",
+      nil];
   return map;
 }
 
@@ -61,24 +63,6 @@
 
 + (void)load {
   [self registerObjectClassForKind:@"storage#object"];
-}
-
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLStorageObjectMedia
-//
-
-@implementation GTLStorageObjectMedia
-@dynamic algorithm, contentType, data, hashProperty, length, link, timeCreated;
-
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"hash"
-                                forKey:@"hashProperty"];
-  return map;
 }
 
 @end

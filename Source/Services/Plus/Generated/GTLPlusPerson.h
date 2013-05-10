@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/+/api/
 // Classes:
-//   GTLPlusPerson (0 custom class methods, 28 custom properties)
+//   GTLPlusPerson (0 custom class methods, 27 custom properties)
 //   GTLPlusPersonAgeRange (0 custom class methods, 2 custom properties)
 //   GTLPlusPersonCover (0 custom class methods, 3 custom properties)
 //   GTLPlusPersonEmailsItem (0 custom class methods, 3 custom properties)
@@ -100,12 +100,6 @@
 // - "female" - Female gender.
 // - "other" - Other.
 @property (copy) NSString *gender;
-
-// If "true", indicates that the person has installed the app that is making the
-// request and has chosen to expose this install state to the caller. A value of
-// "false" indicates that the install state cannot be determined (it is either
-// not installed or the person has chosen to keep this information private).
-@property (retain) NSNumber *hasApp;  // boolValue
 
 // The ID of this person.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
@@ -336,14 +330,13 @@
 
 @interface GTLPlusPersonUrlsItem : GTLObject
 
-// If "true", this URL is the person's primary URL.
-@property (retain) NSNumber *primary;  // boolValue
+// The label of the URL.
+@property (copy) NSString *label;
 
 // The type of URL. Possible values are:
-// - "home" - URL for home.
-// - "work" - URL for work.
-// - "blog" - URL for blog.
-// - "profile" - URL for profile.
+// - "otherProfile" - URL for another profile.
+// - "contributor" - URL for which this person is a contributor to.
+// - "website" - URL for this Google+ Page's primary website.
 // - "other" - Other.
 @property (copy) NSString *type;
 

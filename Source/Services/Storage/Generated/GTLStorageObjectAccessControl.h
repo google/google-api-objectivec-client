@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud Storage API (storage/v1beta1)
+//   Cloud Storage API (storage/v1beta2)
 // Description:
 //   Lets you store and retrieve potentially-large, immutable data objects.
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 // Classes:
-//   GTLStorageObjectAccessControl (0 custom class methods, 10 custom properties)
+//   GTLStorageObjectAccessControl (0 custom class methods, 11 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -63,6 +63,9 @@
 
 // The ID for the entity, if any.
 @property (copy) NSString *entityId;
+
+// HTTP 1.1 Entity tag for the access-control entry.
+@property (copy) NSString *ETag;
 
 // The ID of the access-control entry.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').

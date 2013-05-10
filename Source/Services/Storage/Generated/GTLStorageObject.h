@@ -20,14 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud Storage API (storage/v1beta1)
+//   Cloud Storage API (storage/v1beta2)
 // Description:
 //   Lets you store and retrieve potentially-large, immutable data objects.
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 // Classes:
-//   GTLStorageObject (0 custom class methods, 13 custom properties)
-//   GTLStorageObjectMedia (0 custom class methods, 7 custom properties)
+//   GTLStorageObject (0 custom class methods, 23 custom properties)
 //   GTLStorageObjectMetadata (0 custom class methods, 0 custom properties)
 //   GTLStorageObjectOwner (0 custom class methods, 2 custom properties)
 
@@ -38,7 +37,6 @@
 #endif
 
 @class GTLStorageObjectAccessControl;
-@class GTLStorageObjectMedia;
 @class GTLStorageObjectMetadata;
 @class GTLStorageObjectOwner;
 
@@ -60,6 +58,10 @@
 // Cache-Control directive for the object data.
 @property (copy) NSString *cacheControl;
 
+// Number of underlying components that make up this object. Components are
+// accumulated by compose operations and are limited to a count of 32.
+@property (retain) NSNumber *componentCount;  // intValue
+
 // Content-Disposition of the object data.
 @property (copy) NSString *contentDisposition;
 
@@ -69,6 +71,18 @@
 // Content-Language of the object data.
 @property (copy) NSString *contentLanguage;
 
+// Content-Type of the object data.
+@property (copy) NSString *contentType;
+
+// CRC32c checksum, as described in RFC 4960, Appendix B; encoded using base64.
+@property (copy) NSString *crc32c;
+
+// HTTP 1.1 Entity tag for the object.
+@property (copy) NSString *ETag;
+
+// The content generation of this object. Used for object versioning.
+@property (retain) NSNumber *generation;  // longLongValue
+
 // The ID of the object.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
@@ -76,12 +90,19 @@
 // The kind of item this is. For objects, this is always storage#object.
 @property (copy) NSString *kind;
 
-// Object media data. Provided on your behalf when uploading raw media or
-// multipart/related with an auxiliary media part.
-@property (retain) GTLStorageObjectMedia *media;
+// MD5 hash of the data; encoded using base64.
+@property (copy) NSString *md5Hash;
+
+// Media download link.
+@property (copy) NSString *mediaLink;
 
 // User-provided metadata, in key/value pairs.
 @property (retain) GTLStorageObjectMetadata *metadata;
+
+// The generation of the metadata for this object at this generation. Used for
+// metadata versioning. Has no meaning outside of the context of this
+// generation.
+@property (retain) NSNumber *metageneration;  // longLongValue
 
 // The name of this object. Required if not specified by URL parameter.
 @property (copy) NSString *name;
@@ -92,41 +113,15 @@
 // The link to this object.
 @property (copy) NSString *selfLink;
 
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLStorageObjectMedia
-//
-
-@interface GTLStorageObjectMedia : GTLObject
-
-// Hash algorithm used. Currently only MD5 is supported. Required if a hash is
-// provided.
-@property (copy) NSString *algorithm;
-
-// Content-Type of the object data.
-@property (copy) NSString *contentType;
-
-// URL-safe Base64-encoded data. This property can be used to insert objects
-// under 64KB in size, and will only be returned in response to the get method
-// for objects so created. When this resource is returned in response to the
-// list method, this property is omitted.
-@property (copy) NSString *data;  // GTLBase64 can encode/decode (probably web-safe format)
-
-// Hash of the data. Required if a hash algorithm is provided.
-// Remapped to 'hashProperty' to avoid NSObject's 'hash'.
-@property (copy) NSString *hashProperty;
-
 // Content-Length of the data in bytes.
-@property (retain) NSNumber *length;  // unsignedLongLongValue
+@property (retain) NSNumber *size;  // unsignedLongLongValue
 
-// Media download link.
-@property (copy) NSString *link;
+// Deletion time of the object in RFC 3339 format. Will be returned if and only
+// if this version of the object has been deleted.
+@property (retain) GTLDateTime *timeDeleted;
 
-// Creation time of the data in RFC 3339 format.
-@property (retain) GTLDateTime *timeCreated;
+// Modification time of the object metadata in RFC 3339 format.
+@property (retain) GTLDateTime *updated;
 
 @end
 
