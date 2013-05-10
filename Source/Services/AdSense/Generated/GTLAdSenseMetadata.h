@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAdSenseAdStyle.m
+//  GTLAdSenseMetadata.h
 //
 
 // ----------------------------------------------------------------------------
@@ -27,42 +27,28 @@
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLAdSenseAdStyle (0 custom class methods, 4 custom properties)
-//   GTLAdSenseAdStyleColors (0 custom class methods, 5 custom properties)
-//   GTLAdSenseAdStyleFont (0 custom class methods, 2 custom properties)
+//   GTLAdSenseMetadata (0 custom class methods, 2 custom properties)
 
-#import "GTLAdSenseAdStyle.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-// ----------------------------------------------------------------------------
-//
-//   GTLAdSenseAdStyle
-//
-
-@implementation GTLAdSenseAdStyle
-@dynamic colors, corners, font, kind;
-
-+ (void)load {
-  [self registerObjectClassForKind:@"adsense#adStyle"];
-}
-
-@end
-
+@class GTLAdSenseReportingMetadataEntry;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAdSenseAdStyleColors
+//   GTLAdSenseMetadata
 //
 
-@implementation GTLAdSenseAdStyleColors
-@dynamic background, border, text, title, url;
-@end
+// This class supports NSFastEnumeration over its "items" property. It also
+// supports -itemAtIndex: to retrieve individual objects from "items".
 
+@interface GTLAdSenseMetadata : GTLCollectionObject
+@property (retain) NSArray *items;  // of GTLAdSenseReportingMetadataEntry
 
-// ----------------------------------------------------------------------------
-//
-//   GTLAdSenseAdStyleFont
-//
+// Kind of list this is, in this case adsense#metadata.
+@property (copy) NSString *kind;
 
-@implementation GTLAdSenseAdStyleFont
-@dynamic family, size;
 @end
