@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2012 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,14 +20,14 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   AdSense Management API (adsense/v1.3)
+//   AdSense Management API (adsense/v1.2)
 // Description:
 //   Gives AdSense publishers access to their inventory and the ability to
 //   generate reports
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLQueryAdSense (34 custom class methods, 21 custom properties)
+//   GTLQueryAdSense (28 custom class methods, 20 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -68,7 +68,6 @@
 @property (copy) NSString *startDate;
 @property (assign) NSInteger startIndex;
 @property (assign) BOOL tree;
-@property (assign) BOOL useTimezoneReporting;
 
 #pragma mark -
 #pragma mark "accounts.adclients" methods
@@ -133,20 +132,6 @@
                                    adClientId:(NSString *)adClientId
                                      adUnitId:(NSString *)adUnitId;
 
-// Method: adsense.accounts.adunits.getAdCode
-// Get ad code for the specified ad unit.
-//  Required:
-//   accountId: Account which contains the ad client.
-//   adClientId: Ad client with contains the ad unit.
-//   adUnitId: Ad unit to get the code for.
-//  Authorization scope(s):
-//   kGTLAuthScopeAdSense
-//   kGTLAuthScopeAdSenseReadonly
-// Fetches a GTLAdSenseAdCode.
-+ (id)queryForAccountsAdunitsGetAdCodeWithAccountId:(NSString *)accountId
-                                         adClientId:(NSString *)adClientId
-                                           adUnitId:(NSString *)adUnitId;
-
 // Method: adsense.accounts.adunits.list
 // List all ad units in the specified ad client for the specified account.
 //  Required:
@@ -165,24 +150,6 @@
 // Fetches a GTLAdSenseAdUnits.
 + (id)queryForAccountsAdunitsListWithAccountId:(NSString *)accountId
                                     adClientId:(NSString *)adClientId;
-
-#pragma mark -
-#pragma mark "accounts.alerts" methods
-// These create a GTLQueryAdSense object.
-
-// Method: adsense.accounts.alerts.list
-// List the alerts for the specified AdSense account.
-//  Required:
-//   accountId: Account for which to retrieve the alerts.
-//  Optional:
-//   locale: The locale to use for translating alert messages. The account
-//     locale will be used if this is not supplied the AdSense default (English)
-//     will be used if the supplied locale is invalid or unsupported.
-//  Authorization scope(s):
-//   kGTLAuthScopeAdSense
-//   kGTLAuthScopeAdSenseReadonly
-// Fetches a GTLAdSenseAlerts.
-+ (id)queryForAccountsAlertsListWithAccountId:(NSString *)accountId;
 
 #pragma mark -
 #pragma mark "accounts.customchannels.adunits" methods
@@ -304,8 +271,6 @@
 //     optionally prefixed with "+" to sort ascending or "-" to sort descending.
 //     If no prefix is specified, the column is sorted ascending.
 //   startIndex: Index of the first row of report data to return. (0..5000)
-//   useTimezoneReporting: Whether the report should be generated in a specific
-//     AdSense reporting timezone. If false default PST timezone will be used.
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSense
 //   kGTLAuthScopeAdSenseReadonly
@@ -462,18 +427,6 @@
 + (id)queryForAdunitsGetWithAdClientId:(NSString *)adClientId
                               adUnitId:(NSString *)adUnitId;
 
-// Method: adsense.adunits.getAdCode
-// Get ad code for the specified ad unit.
-//  Required:
-//   adClientId: Ad client with contains the ad unit.
-//   adUnitId: Ad unit to get the code for.
-//  Authorization scope(s):
-//   kGTLAuthScopeAdSense
-//   kGTLAuthScopeAdSenseReadonly
-// Fetches a GTLAdSenseAdCode.
-+ (id)queryForAdunitsGetAdCodeWithAdClientId:(NSString *)adClientId
-                                    adUnitId:(NSString *)adUnitId;
-
 // Method: adsense.adunits.list
 // List all ad units in the specified ad client for this AdSense account.
 //  Required:
@@ -490,22 +443,6 @@
 //   kGTLAuthScopeAdSenseReadonly
 // Fetches a GTLAdSenseAdUnits.
 + (id)queryForAdunitsListWithAdClientId:(NSString *)adClientId;
-
-#pragma mark -
-#pragma mark "alerts" methods
-// These create a GTLQueryAdSense object.
-
-// Method: adsense.alerts.list
-// List the alerts for this AdSense account.
-//  Optional:
-//   locale: The locale to use for translating alert messages. The account
-//     locale will be used if this is not supplied the AdSense default (English)
-//     will be used if the supplied locale is invalid or unsupported.
-//  Authorization scope(s):
-//   kGTLAuthScopeAdSense
-//   kGTLAuthScopeAdSenseReadonly
-// Fetches a GTLAdSenseAlerts.
-+ (id)queryForAlertsList;
 
 #pragma mark -
 #pragma mark "customchannels.adunits" methods
@@ -563,30 +500,6 @@
 + (id)queryForCustomchannelsListWithAdClientId:(NSString *)adClientId;
 
 #pragma mark -
-#pragma mark "metadata.dimensions" methods
-// These create a GTLQueryAdSense object.
-
-// Method: adsense.metadata.dimensions.list
-// List the metadata for the dimensions available to this AdSense account.
-//  Authorization scope(s):
-//   kGTLAuthScopeAdSense
-//   kGTLAuthScopeAdSenseReadonly
-// Fetches a GTLAdSenseMetadata.
-+ (id)queryForMetadataDimensionsList;
-
-#pragma mark -
-#pragma mark "metadata.metrics" methods
-// These create a GTLQueryAdSense object.
-
-// Method: adsense.metadata.metrics.list
-// List the metadata for the metrics available to this AdSense account.
-//  Authorization scope(s):
-//   kGTLAuthScopeAdSense
-//   kGTLAuthScopeAdSenseReadonly
-// Fetches a GTLAdSenseMetadata.
-+ (id)queryForMetadataMetricsList;
-
-#pragma mark -
 #pragma mark "reports" methods
 // These create a GTLQueryAdSense object.
 
@@ -614,8 +527,6 @@
 //     optionally prefixed with "+" to sort ascending or "-" to sort descending.
 //     If no prefix is specified, the column is sorted ascending.
 //   startIndex: Index of the first row of report data to return. (0..5000)
-//   useTimezoneReporting: Whether the report should be generated in a specific
-//     AdSense reporting timezone. If false default PST timezone will be used.
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSense
 //   kGTLAuthScopeAdSenseReadonly
