@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubePlayerListResponse.m
+//  GTLYouTubeVideoRating.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,36 +26,15 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlayerListResponse (0 custom class methods, 3 custom properties)
+//   GTLYouTubeVideoRating (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubePlayerListResponse.h"
-
-#import "GTLYouTubePlayer.h"
+#import "GTLYouTubeVideoRating.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubePlayerListResponse
+//   GTLYouTubeVideoRating
 //
 
-@implementation GTLYouTubePlayerListResponse
-@dynamic ETag, kind, players;
-
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"etag"
-                                forKey:@"ETag"];
-  return map;
-}
-
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLYouTubePlayer class]
-                                forKey:@"players"];
-  return map;
-}
-
-+ (void)load {
-  [self registerObjectClassForKind:@"youtube#playerListResponse"];
-}
-
+@implementation GTLYouTubeVideoRating
+@dynamic rating, videoId;
 @end

@@ -39,6 +39,8 @@
 //   GTLYouTubeVideoStatus
 //
 
+// Basic details about a video category, such as its localized title.
+
 @interface GTLYouTubeVideoStatus : GTLObject
 
 // This value indicates if the video can be embedded on another website.

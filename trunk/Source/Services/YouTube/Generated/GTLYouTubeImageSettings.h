@@ -41,6 +41,8 @@
 //   GTLYouTubeImageSettings
 //
 
+// Branding properties for images associated with the channel.
+
 @interface GTLYouTubeImageSettings : GTLObject
 
 // The URL for the background image shown on the video watch page. The image

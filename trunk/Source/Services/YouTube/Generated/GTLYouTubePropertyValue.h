@@ -42,6 +42,11 @@
 // A pair Property / Value.
 
 @interface GTLYouTubePropertyValue : GTLObject
+
+// A property.
 @property (copy) NSString *property;
+
+// The property's value.
 @property (copy) NSString *value;
+
 @end

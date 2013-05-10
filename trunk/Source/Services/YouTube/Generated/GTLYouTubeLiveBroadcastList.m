@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveBroadcastList (0 custom class methods, 6 custom properties)
+//   GTLYouTubeLiveBroadcastList (0 custom class methods, 7 custom properties)
 
 #import "GTLYouTubeLiveBroadcastList.h"
 
@@ -39,7 +39,7 @@
 //
 
 @implementation GTLYouTubeLiveBroadcastList
-@dynamic ETag, items, kind, nextPageToken, pageInfo, prevPageToken;
+@dynamic ETag, eventId, items, kind, nextPageToken, pageInfo, prevPageToken;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

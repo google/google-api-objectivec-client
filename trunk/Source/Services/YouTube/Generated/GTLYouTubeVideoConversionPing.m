@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubePlayerVideoUrl.m
+//  GTLYouTubeVideoConversionPing.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,15 +26,15 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlayerVideoUrl (0 custom class methods, 2 custom properties)
+//   GTLYouTubeVideoConversionPing (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubePlayerVideoUrl.h"
+#import "GTLYouTubeVideoConversionPing.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubePlayerVideoUrl
+//   GTLYouTubeVideoConversionPing
 //
 
-@implementation GTLYouTubePlayerVideoUrl
-@dynamic itag, url;
+@implementation GTLYouTubeVideoConversionPing
+@dynamic context, conversionUrl;
 @end

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubePlayerRestrictionDetails.h
+//  GTLYouTubeInvideoPosition.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,30 +26,15 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlayerRestrictionDetails (0 custom class methods, 3 custom properties)
+//   GTLYouTubeInvideoPosition (0 custom class methods, 2 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLYouTubeInvideoPosition.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubePlayerRestrictionDetails
+//   GTLYouTubeInvideoPosition
 //
 
-// Part describing if and why a video can't be played.
-
-@interface GTLYouTubePlayerRestrictionDetails : GTLObject
-
-// Detailed information about the restriction
-@property (copy) NSString *reason;
-
-// True iff the video can't be played.
-@property (retain) NSNumber *restricted;  // boolValue
-
-// A code describing the restriction class.
-@property (copy) NSString *restriction;
-
+@implementation GTLYouTubeInvideoPosition
+@dynamic cornerPosition, type;
 @end

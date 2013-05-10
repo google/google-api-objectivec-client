@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubePlayerAdsPlaylist.h
+//  GTLYouTubeChannelConversionPing.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlayerAdsPlaylist (0 custom class methods, 1 custom properties)
+//   GTLYouTubeChannelConversionPing (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,15 +36,25 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubePlayerAdsPlaylist
+//   GTLYouTubeChannelConversionPing
 //
 
-// The playlist of ads which accompany the content video.
+// Pings that the app shall fire (authenticated by biscotti cookie). Each ping
+// has a context, in which the app must fire the ping, and a url identifying the
+// ping.
 
-@interface GTLYouTubePlayerAdsPlaylist : GTLObject
+@interface GTLYouTubeChannelConversionPing : GTLObject
 
-// The VMAP XML document that describes where ads should be inserted and what ad
-// formats should be used in those ad breaks. See http://www.iab.net/vmap.
-@property (copy) NSString *vmapXml;
+// Defines the context of the ping.
+@property (copy) NSString *context;
+
+// The url (without the schema) that the player shall send the ping to. It's at
+// caller's descretion to decide which schema to use (http vs https) Example of
+// a returned url: //googleads.g.doubleclick.net/pagead/
+// viewthroughconversion/962985656/?data=path%3DtHe_path%3Btype%3D
+// cview%3Butuid%3DGISQtTNGYqaYl4sKxoVvKA&labe=default The caller must append
+// biscotti authentication (ms param in case of mobile, for example) to this
+// ping.
+@property (copy) NSString *conversionUrl;
 
 @end

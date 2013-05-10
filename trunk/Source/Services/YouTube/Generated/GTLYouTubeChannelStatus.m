@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelStatus (0 custom class methods, 1 custom properties)
+//   GTLYouTubeChannelStatus (0 custom class methods, 2 custom properties)
 
 #import "GTLYouTubeChannelStatus.h"
 
@@ -36,5 +36,5 @@
 //
 
 @implementation GTLYouTubeChannelStatus
-@dynamic privacyStatus;
+@dynamic isLinked, privacyStatus;
 @end

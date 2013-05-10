@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveBroadcast.m
+//  GTLYouTubeSubscriptionSubscriberSnippet.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,33 +26,25 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveBroadcast (0 custom class methods, 6 custom properties)
+//   GTLYouTubeSubscriptionSubscriberSnippet (0 custom class methods, 4 custom properties)
 
-#import "GTLYouTubeLiveBroadcast.h"
+#import "GTLYouTubeSubscriptionSubscriberSnippet.h"
 
-#import "GTLYouTubeLiveBroadcastContentDetails.h"
-#import "GTLYouTubeLiveBroadcastSnippet.h"
-#import "GTLYouTubeLiveBroadcastStatus.h"
+#import "GTLYouTubeThumbnailDetails.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveBroadcast
+//   GTLYouTubeSubscriptionSubscriberSnippet
 //
 
-@implementation GTLYouTubeLiveBroadcast
-@dynamic contentDetails, ETag, identifier, kind, snippet, status;
+@implementation GTLYouTubeSubscriptionSubscriberSnippet
+@dynamic channelId, descriptionProperty, thumbnails, title;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"etag", @"ETag",
-      @"id", @"identifier",
-      nil];
+    [NSDictionary dictionaryWithObject:@"description"
+                                forKey:@"descriptionProperty"];
   return map;
-}
-
-+ (void)load {
-  [self registerObjectClassForKind:@"youtube#liveBroadcast"];
 }
 
 @end

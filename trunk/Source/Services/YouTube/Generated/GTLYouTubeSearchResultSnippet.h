@@ -41,6 +41,9 @@
 //   GTLYouTubeSearchResultSnippet
 //
 
+// Basic details about a search result, including title, description and
+// thumbnails of the item referenced by the search result.
+
 @interface GTLYouTubeSearchResultSnippet : GTLObject
 
 // The value that YouTube uses to uniquely identify the channel that published

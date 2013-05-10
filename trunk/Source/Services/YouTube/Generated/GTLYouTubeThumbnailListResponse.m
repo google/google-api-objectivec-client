@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeFeaturedChannel.h
+//  GTLYouTubeThumbnailListResponse.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,26 +26,36 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeFeaturedChannel (0 custom class methods, 6 custom properties)
+//   GTLYouTubeThumbnailListResponse (0 custom class methods, 3 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLYouTubeThumbnailListResponse.h"
 
-@class GTLYouTubeChannelSnippet;
+#import "GTLYouTubeThumbnailDetails.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeFeaturedChannel
+//   GTLYouTubeThumbnailListResponse
 //
 
-@interface GTLYouTubeFeaturedChannel : GTLObject
-@property (copy) NSString *channelId;
-@property (retain) GTLYouTubeChannelSnippet *channelSnippet;
-@property (retain) NSNumber *endTimeMs;  // longLongValue
-@property (copy) NSString *featureId;
-@property (retain) NSNumber *startTimeMs;  // longLongValue
-@property (copy) NSString *watermarkUrl;
+@implementation GTLYouTubeThumbnailListResponse
+@dynamic ETag, items, kind;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"etag"
+                                forKey:@"ETag"];
+  return map;
+}
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLYouTubeThumbnailDetails class]
+                                forKey:@"items"];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"youtube#thumbnailListResponse"];
+}
+
 @end

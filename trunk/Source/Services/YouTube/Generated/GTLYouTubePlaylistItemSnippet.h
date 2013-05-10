@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlaylistItemSnippet (0 custom class methods, 8 custom properties)
+//   GTLYouTubePlaylistItemSnippet (0 custom class methods, 9 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -42,11 +42,16 @@
 //   GTLYouTubePlaylistItemSnippet
 //
 
+// Basic details about a playlist, including title, description and thumbnails.
+
 @interface GTLYouTubePlaylistItemSnippet : GTLObject
 
 // The ID that YouTube uses to uniquely identify the user that added the item to
 // the playlist.
 @property (copy) NSString *channelId;
+
+// Channel title for the channel that the playlist item belongs to.
+@property (copy) NSString *channelTitle;
 
 // The item's description.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.

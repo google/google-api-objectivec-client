@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeSubscriptionSnippet (0 custom class methods, 6 custom properties)
+//   GTLYouTubeSubscriptionSnippet (0 custom class methods, 7 custom properties)
 
 #import "GTLYouTubeSubscriptionSnippet.h"
 
@@ -39,8 +39,8 @@
 //
 
 @implementation GTLYouTubeSubscriptionSnippet
-@dynamic channelId, descriptionProperty, publishedAt, resourceId, thumbnails,
-         title;
+@dynamic channelId, channelTitle, descriptionProperty, publishedAt, resourceId,
+         thumbnails, title;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

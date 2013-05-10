@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeFeaturedChannel.m
+//  GTLYouTubeVideoConversionPings.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,18 +26,26 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeFeaturedChannel (0 custom class methods, 6 custom properties)
+//   GTLYouTubeVideoConversionPings (0 custom class methods, 1 custom properties)
 
-#import "GTLYouTubeFeaturedChannel.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLYouTubeChannelSnippet.h"
+@class GTLYouTubeVideoConversionPing;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeFeaturedChannel
+//   GTLYouTubeVideoConversionPings
 //
 
-@implementation GTLYouTubeFeaturedChannel
-@dynamic channelId, channelSnippet, endTimeMs, featureId, startTimeMs,
-         watermarkUrl;
+@interface GTLYouTubeVideoConversionPings : GTLObject
+
+// Pings that the app shall fire for a video (authenticated by biscotti cookie).
+// Each ping has a context, in which the app must fire the ping, and a url
+// identifying the ping.
+@property (retain) NSArray *pings;  // of GTLYouTubeVideoConversionPing
+
 @end

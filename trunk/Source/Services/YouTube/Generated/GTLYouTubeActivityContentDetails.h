@@ -26,13 +26,14 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeActivityContentDetails (0 custom class methods, 10 custom properties)
+//   GTLYouTubeActivityContentDetails (0 custom class methods, 11 custom properties)
 //   GTLYouTubeActivityContentDetailsBulletin (0 custom class methods, 1 custom properties)
 //   GTLYouTubeActivityContentDetailsChannelItem (0 custom class methods, 1 custom properties)
 //   GTLYouTubeActivityContentDetailsComment (0 custom class methods, 1 custom properties)
 //   GTLYouTubeActivityContentDetailsFavorite (0 custom class methods, 1 custom properties)
 //   GTLYouTubeActivityContentDetailsLike (0 custom class methods, 1 custom properties)
 //   GTLYouTubeActivityContentDetailsPlaylistItem (0 custom class methods, 3 custom properties)
+//   GTLYouTubeActivityContentDetailsPromotedItem (0 custom class methods, 7 custom properties)
 //   GTLYouTubeActivityContentDetailsRecommendation (0 custom class methods, 3 custom properties)
 //   GTLYouTubeActivityContentDetailsSocial (0 custom class methods, 5 custom properties)
 //   GTLYouTubeActivityContentDetailsSubscription (0 custom class methods, 1 custom properties)
@@ -50,6 +51,7 @@
 @class GTLYouTubeActivityContentDetailsFavorite;
 @class GTLYouTubeActivityContentDetailsLike;
 @class GTLYouTubeActivityContentDetailsPlaylistItem;
+@class GTLYouTubeActivityContentDetailsPromotedItem;
 @class GTLYouTubeActivityContentDetailsRecommendation;
 @class GTLYouTubeActivityContentDetailsSocial;
 @class GTLYouTubeActivityContentDetailsSubscription;
@@ -91,6 +93,10 @@
 // The playlistItem object contains information about a new playlist item. This
 // property is only present if the snippet.type is playlistItem.
 @property (retain) GTLYouTubeActivityContentDetailsPlaylistItem *playlistItem;
+
+// The promotedItem object contains details about a resource which is being
+// promoted. This property is only present if the snippet.type is promotedItem.
+@property (retain) GTLYouTubeActivityContentDetailsPromotedItem *promotedItem;
 
 // The recommendation object contains information about a recommended resource.
 // This property is only present if the snippet.type is recommendation.
@@ -198,6 +204,41 @@
 // The resourceId object contains information about the resource that was added
 // to the playlist.
 @property (retain) GTLYouTubeResourceId *resourceId;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLYouTubeActivityContentDetailsPromotedItem
+//
+
+@interface GTLYouTubeActivityContentDetailsPromotedItem : GTLObject
+
+// The URL the client should fetch to request a promoted item.
+@property (copy) NSString *adTag;
+
+// The URL the client should ping to indicate that the user clicked through on
+// this promoted item.
+@property (copy) NSString *clickTrackingUrl;
+
+// The URL the client should ping to indicate that the user was shown this
+// promoted item.
+@property (copy) NSString *creativeViewUrl;
+
+// The type of call-to-action, a message to the user indicating action that can
+// be taken.
+@property (copy) NSString *ctaType;
+
+// The text description to accompany the promoted item.
+@property (copy) NSString *descriptionText;
+
+// The URL the client should direct the user to, if the user chooses to visit
+// the advertiser's website.
+@property (copy) NSString *destinationUrl;
+
+// The ID that YouTube uses to uniquely identify the promoted video.
+@property (copy) NSString *videoId;
 
 @end
 

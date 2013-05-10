@@ -39,10 +39,14 @@
 //   GTLYouTubeVideoCategorySnippet
 //
 
+// Basic details about a video category, such as its localized title.
+
 @interface GTLYouTubeVideoCategorySnippet : GTLObject
 
 // The YouTube channel that created the video category.
 @property (copy) NSString *channelId;
 
+// The video category's title.
 @property (copy) NSString *title;
+
 @end

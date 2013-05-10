@@ -26,12 +26,13 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideo (0 custom class methods, 16 custom properties)
+//   GTLYouTubeVideo (0 custom class methods, 17 custom properties)
 
 #import "GTLYouTubeVideo.h"
 
 #import "GTLYouTubeVideoAgeGating.h"
 #import "GTLYouTubeVideoContentDetails.h"
+#import "GTLYouTubeVideoConversionPings.h"
 #import "GTLYouTubeVideoFileDetails.h"
 #import "GTLYouTubeVideoMonetizationDetails.h"
 #import "GTLYouTubeVideoPlayer.h"
@@ -50,10 +51,10 @@
 //
 
 @implementation GTLYouTubeVideo
-@dynamic ageGatingDetails, contentDetails, ETag, fileDetails, identifier, kind,
-         monetizationDetails, player, processingDetails, projectDetails,
-         recordingDetails, snippet, statistics, status, suggestions,
-         topicDetails;
+@dynamic ageGatingDetails, contentDetails, conversionPings, ETag, fileDetails,
+         identifier, kind, monetizationDetails, player, processingDetails,
+         projectDetails, recordingDetails, snippet, statistics, status,
+         suggestions, topicDetails;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

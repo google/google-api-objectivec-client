@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlaylistListResponse (0 custom class methods, 6 custom properties)
+//   GTLYouTubePlaylistListResponse (0 custom class methods, 7 custom properties)
 
 #import "GTLYouTubePlaylistListResponse.h"
 
@@ -39,7 +39,7 @@
 //
 
 @implementation GTLYouTubePlaylistListResponse
-@dynamic ETag, items, kind, nextPageToken, pageInfo, prevPageToken;
+@dynamic ETag, eventId, items, kind, nextPageToken, pageInfo, prevPageToken;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

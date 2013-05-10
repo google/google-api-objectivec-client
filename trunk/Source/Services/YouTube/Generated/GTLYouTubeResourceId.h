@@ -48,6 +48,7 @@
 // value is youtube#channel.
 @property (copy) NSString *channelId;
 
+// The type of the API resource.
 @property (copy) NSString *kind;
 
 // The ID that YouTube uses to uniquely identify the referred resource, if that

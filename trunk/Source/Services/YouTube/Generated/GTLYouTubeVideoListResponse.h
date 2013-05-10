@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoListResponse (0 custom class methods, 3 custom properties)
+//   GTLYouTubeVideoListResponse (0 custom class methods, 7 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,6 +34,7 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLYouTubePageInfo;
 @class GTLYouTubeVideo;
 
 // ----------------------------------------------------------------------------
@@ -52,11 +53,25 @@
 // The ETag of the response.
 @property (copy) NSString *ETag;
 
+// Serialized EventId of the request which produced this response.
+@property (copy) NSString *eventId;
+
 // A list of videos that match the request criteria.
 @property (retain) NSArray *items;  // of GTLYouTubeVideo
 
 // The type of the API response. For this operation, the value will be
 // youtube#videoListResponse.
 @property (copy) NSString *kind;
+
+// The token that can be used as the value of the pageToken parameter to
+// retrieve the next page in the result set.
+@property (copy) NSString *nextPageToken;
+
+// The pageInfo object encapsulates paging information for the result set.
+@property (retain) GTLYouTubePageInfo *pageInfo;
+
+// The token that can be used as the value of the pageToken parameter to
+// retrieve the previous page in the result set.
+@property (copy) NSString *prevPageToken;
 
 @end

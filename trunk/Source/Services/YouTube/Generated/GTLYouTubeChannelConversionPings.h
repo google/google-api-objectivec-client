@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveBroadcast.m
+//  GTLYouTubeChannelConversionPings.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,33 +26,29 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveBroadcast (0 custom class methods, 6 custom properties)
+//   GTLYouTubeChannelConversionPings (0 custom class methods, 1 custom properties)
 
-#import "GTLYouTubeLiveBroadcast.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLYouTubeLiveBroadcastContentDetails.h"
-#import "GTLYouTubeLiveBroadcastSnippet.h"
-#import "GTLYouTubeLiveBroadcastStatus.h"
+@class GTLYouTubeChannelConversionPing;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveBroadcast
+//   GTLYouTubeChannelConversionPings
 //
 
-@implementation GTLYouTubeLiveBroadcast
-@dynamic contentDetails, ETag, identifier, kind, snippet, status;
+// The conversionPings object encapsulates information about conversion pings
+// that need to be respected by the channel.
 
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"etag", @"ETag",
-      @"id", @"identifier",
-      nil];
-  return map;
-}
+@interface GTLYouTubeChannelConversionPings : GTLObject
 
-+ (void)load {
-  [self registerObjectClassForKind:@"youtube#liveBroadcast"];
-}
+// Pings that the app shall fire (authenticated by biscotti cookie). Each ping
+// has a context, in which the app must fire the ping, and a url identifying the
+// ping.
+@property (retain) NSArray *pings;  // of GTLYouTubeChannelConversionPing
 
 @end

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubePlayerListResponse.h
+//  GTLYouTubeInvideoPromotion.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,33 +26,27 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlayerListResponse (0 custom class methods, 3 custom properties)
+//   GTLYouTubeInvideoPromotion (0 custom class methods, 4 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLYouTubeInvideoPromotion.h"
 
-@class GTLYouTubePlayer;
+#import "GTLYouTubeInvideoPosition.h"
+#import "GTLYouTubeInvideoTiming.h"
+#import "GTLYouTubePromotedItemId.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubePlayerListResponse
+//   GTLYouTubeInvideoPromotion
 //
 
-// A list of players returned from a youtube.player.list call.
+@implementation GTLYouTubeInvideoPromotion
+@dynamic channelId, items, position, timing;
 
-@interface GTLYouTubePlayerListResponse : GTLObject
-
-// The ETag of the response.
-@property (copy) NSString *ETag;
-
-// The type of the API response. For this operation, the value will be
-// youtube#playerListResponse.
-@property (copy) NSString *kind;
-
-// A list of players that match the request criteria.
-@property (retain) NSArray *players;  // of GTLYouTubePlayer
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLYouTubePromotedItemId class]
+                                forKey:@"items"];
+  return map;
+}
 
 @end

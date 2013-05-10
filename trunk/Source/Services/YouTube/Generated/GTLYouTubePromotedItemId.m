@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubePlayerVideoUrl.h
+//  GTLYouTubePromotedItemId.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,27 +26,15 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlayerVideoUrl (0 custom class methods, 2 custom properties)
+//   GTLYouTubePromotedItemId (0 custom class methods, 2 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLYouTubePromotedItemId.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubePlayerVideoUrl
+//   GTLYouTubePromotedItemId
 //
 
-// A single video format the user can access.
-
-@interface GTLYouTubePlayerVideoUrl : GTLObject
-
-// itag of the video format.
-@property (retain) NSNumber *itag;  // unsignedIntValue
-
-// Streamer URL serving the video.
-@property (copy) NSString *url;
-
+@implementation GTLYouTubePromotedItemId
+@dynamic type, videoId;
 @end

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubePlayer.m
+//  GTLYouTubeInvideoTiming.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,34 +26,15 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlayer (0 custom class methods, 6 custom properties)
+//   GTLYouTubeInvideoTiming (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubePlayer.h"
-
-#import "GTLYouTubeInvideoFeature.h"
-#import "GTLYouTubePlayerAdsPlaylist.h"
-#import "GTLYouTubePlayerVideoUrls.h"
-#import "GTLYouTubeResourceId.h"
+#import "GTLYouTubeInvideoTiming.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubePlayer
+//   GTLYouTubeInvideoTiming
 //
 
-@implementation GTLYouTubePlayer
-@dynamic adsPlaylist, ETag, identifier, invideoFeature, kind, videoUrls;
-
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"etag", @"ETag",
-      @"id", @"identifier",
-      nil];
-  return map;
-}
-
-+ (void)load {
-  [self registerObjectClassForKind:@"youtube#player"];
-}
-
+@implementation GTLYouTubeInvideoTiming
+@dynamic offsetMs, type;
 @end

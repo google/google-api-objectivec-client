@@ -57,6 +57,10 @@ GTL_EXTERN NSString * const kGTLYouTubeBroadcastStatusUpcoming;  // "upcoming"
 GTL_EXTERN NSString * const kGTLYouTubeChannelTypeAny;   // "any"
 GTL_EXTERN NSString * const kGTLYouTubeChannelTypeShow;  // "show"
 
+// MyRating
+GTL_EXTERN NSString * const kGTLYouTubeMyRatingDislike;  // "dislike"
+GTL_EXTERN NSString * const kGTLYouTubeMyRatingLike;     // "like"
+
 // Order
 GTL_EXTERN NSString * const kGTLYouTubeOrderAlphabetical;  // "alphabetical"
 GTL_EXTERN NSString * const kGTLYouTubeOrderDate;          // "date"
