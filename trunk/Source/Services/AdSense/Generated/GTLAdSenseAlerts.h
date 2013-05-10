@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAdSenseAdStyle.m
+//  GTLAdSenseAlerts.h
 //
 
 // ----------------------------------------------------------------------------
@@ -27,42 +27,30 @@
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLAdSenseAdStyle (0 custom class methods, 4 custom properties)
-//   GTLAdSenseAdStyleColors (0 custom class methods, 5 custom properties)
-//   GTLAdSenseAdStyleFont (0 custom class methods, 2 custom properties)
+//   GTLAdSenseAlerts (0 custom class methods, 2 custom properties)
 
-#import "GTLAdSenseAdStyle.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-// ----------------------------------------------------------------------------
-//
-//   GTLAdSenseAdStyle
-//
-
-@implementation GTLAdSenseAdStyle
-@dynamic colors, corners, font, kind;
-
-+ (void)load {
-  [self registerObjectClassForKind:@"adsense#adStyle"];
-}
-
-@end
-
+@class GTLAdSenseAlert;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAdSenseAdStyleColors
+//   GTLAdSenseAlerts
 //
 
-@implementation GTLAdSenseAdStyleColors
-@dynamic background, border, text, title, url;
-@end
+// This class supports NSFastEnumeration over its "items" property. It also
+// supports -itemAtIndex: to retrieve individual objects from "items".
 
+@interface GTLAdSenseAlerts : GTLCollectionObject
 
-// ----------------------------------------------------------------------------
-//
-//   GTLAdSenseAdStyleFont
-//
+// The alerts returned in this list response.
+@property (retain) NSArray *items;  // of GTLAdSenseAlert
 
-@implementation GTLAdSenseAdStyleFont
-@dynamic family, size;
+// Kind of list this is, in this case adsense#alerts.
+@property (copy) NSString *kind;
+
 @end

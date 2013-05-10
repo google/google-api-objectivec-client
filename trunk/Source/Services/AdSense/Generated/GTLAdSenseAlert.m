@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAdSenseAdStyle.m
+//  GTLAdSenseAlert.m
 //
 
 // ----------------------------------------------------------------------------
@@ -27,42 +27,27 @@
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLAdSenseAdStyle (0 custom class methods, 4 custom properties)
-//   GTLAdSenseAdStyleColors (0 custom class methods, 5 custom properties)
-//   GTLAdSenseAdStyleFont (0 custom class methods, 2 custom properties)
+//   GTLAdSenseAlert (0 custom class methods, 5 custom properties)
 
-#import "GTLAdSenseAdStyle.h"
+#import "GTLAdSenseAlert.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAdSenseAdStyle
+//   GTLAdSenseAlert
 //
 
-@implementation GTLAdSenseAdStyle
-@dynamic colors, corners, font, kind;
+@implementation GTLAdSenseAlert
+@dynamic identifier, kind, message, severity, type;
 
-+ (void)load {
-  [self registerObjectClassForKind:@"adsense#adStyle"];
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"id"
+                                forKey:@"identifier"];
+  return map;
 }
 
-@end
++ (void)load {
+  [self registerObjectClassForKind:@"adsense#alert"];
+}
 
-
-// ----------------------------------------------------------------------------
-//
-//   GTLAdSenseAdStyleColors
-//
-
-@implementation GTLAdSenseAdStyleColors
-@dynamic background, border, text, title, url;
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLAdSenseAdStyleFont
-//
-
-@implementation GTLAdSenseAdStyleFont
-@dynamic family, size;
 @end

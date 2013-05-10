@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAdSenseAdStyle.m
+//  GTLAdSenseAdCode.h
 //
 
 // ----------------------------------------------------------------------------
@@ -27,42 +27,25 @@
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLAdSenseAdStyle (0 custom class methods, 4 custom properties)
-//   GTLAdSenseAdStyleColors (0 custom class methods, 5 custom properties)
-//   GTLAdSenseAdStyleFont (0 custom class methods, 2 custom properties)
+//   GTLAdSenseAdCode (0 custom class methods, 2 custom properties)
 
-#import "GTLAdSenseAdStyle.h"
-
-// ----------------------------------------------------------------------------
-//
-//   GTLAdSenseAdStyle
-//
-
-@implementation GTLAdSenseAdStyle
-@dynamic colors, corners, font, kind;
-
-+ (void)load {
-  [self registerObjectClassForKind:@"adsense#adStyle"];
-}
-
-@end
-
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAdSenseAdStyleColors
+//   GTLAdSenseAdCode
 //
 
-@implementation GTLAdSenseAdStyleColors
-@dynamic background, border, text, title, url;
-@end
+@interface GTLAdSenseAdCode : GTLObject
 
+// The ad code snippet.
+@property (copy) NSString *adCode;
 
-// ----------------------------------------------------------------------------
-//
-//   GTLAdSenseAdStyleFont
-//
+// Kind this is, in this case adsense#adCode.
+@property (copy) NSString *kind;
 
-@implementation GTLAdSenseAdStyleFont
-@dynamic family, size;
 @end
