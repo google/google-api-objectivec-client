@@ -3286,21 +3286,10 @@ static NSString *OverrideName(NSString *name, EQueryOrObject queryOrObject,
           NSString *lowerName = [name lowercaseString];
           NSUInteger nameLen = [name length];
 
-          // Trailing version number
-          NSString *apiVersion = [generator.api.version lowercaseString];
-          NSUInteger apiVerLength = [apiVersion length];
-          if ([lowerName hasSuffix:apiVersion] && nameLen != apiVerLength) {
-            name = [name substringToIndex:nameLen - apiVerLength];
-            continue;
-          }
-          // Trailing version number but with the '.' removed (v1.1 -> v11).
-          apiVersion = [apiVersion stringByReplacingOccurrencesOfString:@"."
-                                                             withString:@""];
-          apiVerLength = [apiVersion length];
-          if ([lowerName hasSuffix:apiVersion] && nameLen != apiVerLength) {
-            name = [name substringToIndex:nameLen - apiVerLength];
-            continue;
-          }
+          // We used to do some fixup for trailing version numbers (with and
+          // without the '.' in the number), but that appears to no longer
+          // be needed and as some apis have evolved they actually have real
+          // reasons to have "V2" at the end of their scheme names.
 
           // Trailing 'json'
           if ([lowerName hasSuffix:@"json"] && nameLen != 4) {
@@ -3308,8 +3297,7 @@ static NSString *OverrideName(NSString *name, EQueryOrObject queryOrObject,
             continue;
           }
 
-          // Service name on type (we add it ourselves)
-          // Moderator, Shopping, and PlusOne do this on some things.
+          // Service name on type (we add it ourselves).
           NSString *apiName = [generator.formattedApiName lowercaseString];
           if ([lowerName hasPrefix:apiName] && nameLen != [apiName length]) {
             name = [name substringFromIndex:[apiName length]];

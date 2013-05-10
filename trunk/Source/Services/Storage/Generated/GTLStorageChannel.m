@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLStorageBucketAccessControls.h
+//  GTLStorageChannel.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,33 +26,43 @@
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 // Classes:
-//   GTLStorageBucketAccessControls (0 custom class methods, 2 custom properties)
+//   GTLStorageChannel (0 custom class methods, 9 custom properties)
+//   GTLStorageChannelParams (0 custom class methods, 0 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
-
-@class GTLStorageBucketAccessControl;
+#import "GTLStorageChannel.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLStorageBucketAccessControls
+//   GTLStorageChannel
 //
 
-// An access-control list.
+@implementation GTLStorageChannel
+@dynamic address, expiration, identifier, kind, params, resourceId, resourceUri,
+         token, type;
 
-// This class supports NSFastEnumeration over its "items" property. It also
-// supports -itemAtIndex: to retrieve individual objects from "items".
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"id"
+                                forKey:@"identifier"];
+  return map;
+}
 
-@interface GTLStorageBucketAccessControls : GTLCollectionObject
++ (void)load {
+  [self registerObjectClassForKind:@"api#channel"];
+}
 
-// The list of items.
-@property (retain) NSArray *items;  // of GTLStorageBucketAccessControl
+@end
 
-// The kind of item this is. For lists of bucket access control entries, this is
-// always storage#bucketAccessControls.
-@property (copy) NSString *kind;
+
+// ----------------------------------------------------------------------------
+//
+//   GTLStorageChannelParams
+//
+
+@implementation GTLStorageChannelParams
+
++ (Class)classForAdditionalProperties {
+  return [NSString class];
+}
 
 @end

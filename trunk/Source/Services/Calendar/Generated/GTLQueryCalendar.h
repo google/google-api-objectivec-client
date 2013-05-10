@@ -26,8 +26,7 @@
 // Documentation:
 //   https://developers.google.com/google-apps/calendar/firstapp
 // Classes:
-//   GTLQueryCalendar (33 custom class methods, 38 custom properties)
-//   GTLCalendarSubscriptionsUnsubscribeChannelParams (0 custom class methods, 0 custom properties)
+//   GTLQueryCalendar (32 custom class methods, 29 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -40,7 +39,6 @@
 @class GTLCalendarCalendarListEntry;
 @class GTLCalendarEvent;
 @class GTLCalendarFreeBusyRequestItem;
-@class GTLCalendarSubscriptionsUnsubscribeChannelParams;
 
 @interface GTLQueryCalendar : GTLQuery
 
@@ -54,23 +52,15 @@
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (copy) NSString *address;
 @property (assign) BOOL alwaysIncludeEmail;
 @property (assign) NSInteger calendarExpansionMax;
 @property (copy) NSString *calendarId;
-@property (copy) NSString *channel;
-@property (retain) GTLCalendarSubscriptionsUnsubscribeChannelParams *channelParams;
-@property (copy) NSString *clientToken;
 @property (assign) BOOL colorRgbFormat;
 @property (copy) NSString *destination;
 @property (copy) NSString *eventId;
-@property (assign) long long expiration;
 @property (assign) NSInteger groupExpansionMax;
 @property (copy) NSString *iCalUID;
-// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
 @property (retain) NSArray *items;  // of GTLCalendarFreeBusyRequestItem
-@property (copy) NSString *kind;
 @property (assign) NSInteger maxAttendees;
 @property (assign) NSInteger maxResults;
 @property (copy) NSString *minAccessRole;
@@ -89,8 +79,6 @@
 @property (retain) GTLDateTime *timeMax;
 @property (retain) GTLDateTime *timeMin;
 @property (copy) NSString *timeZone;
-@property (copy) NSString *topicId;
-@property (copy) NSString *topicUri;
 @property (retain) GTLDateTime *updatedMin;
 
 #pragma mark -
@@ -602,49 +590,4 @@
 // Fetches a GTLCalendarSettings.
 + (id)queryForSettingsList;
 
-#pragma mark -
-#pragma mark "subscriptions" methods
-// These create a GTLQueryCalendar object.
-
-// Method: calendar.subscriptions.unsubscribe
-//  Optional:
-//   address: The address of the receiving entity where notifications are
-//     delivered. Specific to the channel mechanism.
-//   channel: The delivery channel mechanism to use for notifications
-//   channelParams: Additional parameters controlling delivery channel behavior
-//   clientToken: An arbitrary string associated with the subscription that is
-//     delivered to the target address with each notification for this
-//     subscription.
-//   expiration: The expiration instant for this subscription if it is defined.
-//   identifier: A UUID for the subscription
-//   kind: A subscription to an API resource (Default api#subscription)
-//   topicId: An opaque topic id that identifies the backend resource which has
-//     been subscribed to. Stable across different API versions
-//   topicUri: The canonicalized URI of the subscribed-to resource.
-//  Authorization scope(s):
-//   kGTLAuthScopeCalendar
-//   kGTLAuthScopeCalendarReadonly
-+ (id)queryForSubscriptionsUnsubscribe;
-
-@end
-
-#pragma mark -
-#pragma mark method parameter objects
-// These object are used only to pass a collection of parameters to a
-// method as a single item.
-
-// ----------------------------------------------------------------------------
-//
-//   GTLCalendarSubscriptionsUnsubscribeChannelParams
-//
-
-// Used for 'channelParams' parameter on 'calendar.subscriptions.unsubscribe'.
-
-// Additional parameters controlling delivery channel behavior
-
-@interface GTLCalendarSubscriptionsUnsubscribeChannelParams : GTLObject
-// This object is documented as having more properties that are NSString. Use
-// -additionalJSONKeys and -additionalPropertyForName: to get the list of
-// properties and then fetch them; or -additionalProperties to fetch them all at
-// once.
 @end

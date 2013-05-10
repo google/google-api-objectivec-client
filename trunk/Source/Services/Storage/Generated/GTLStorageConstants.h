@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud Storage API (storage/v1beta1)
+//   Cloud Storage API (storage/v1beta2)
 // Description:
 //   Lets you store and retrieve potentially-large, immutable data objects.
 // Documentation:
@@ -44,4 +44,4 @@ GTL_EXTERN NSString * const kGTLAuthScopeStorageDevstorageReadWrite;  // "https:
 
 // Projection
 GTL_EXTERN NSString * const kGTLStorageProjectionFull;   // "full"
-GTL_EXTERN NSString * const kGTLStorageProjectionNoAcl;  // "no_acl"
+GTL_EXTERN NSString * const kGTLStorageProjectionNoAcl;  // "noAcl"

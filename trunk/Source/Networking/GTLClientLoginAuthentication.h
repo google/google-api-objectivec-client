@@ -79,7 +79,7 @@ enum {
 + (GTLClientLoginAuthentication *)authenticationForService:(NSString *)serviceID
                                                     source:(NSString *)applicationID;
 
-@property (copy) NSString *userEmail;
+@property (retain, readwrite) NSString *userEmail;
 @property (copy) NSString *password;
 
 // Each service supporting ClientLogin has a serviceID string
