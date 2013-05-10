@@ -32,13 +32,14 @@
 //   GTLBooksVolumeRecommendedInfo (0 custom class methods, 1 custom properties)
 //   GTLBooksVolumeSaleInfo (0 custom class methods, 7 custom properties)
 //   GTLBooksVolumeSearchInfo (0 custom class methods, 1 custom properties)
-//   GTLBooksVolumeUserInfo (0 custom class methods, 6 custom properties)
+//   GTLBooksVolumeUserInfo (0 custom class methods, 8 custom properties)
 //   GTLBooksVolumeVolumeInfo (0 custom class methods, 20 custom properties)
 //   GTLBooksVolumeAccessInfoEpub (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeAccessInfoPdf (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeLayerInfoLayersItem (0 custom class methods, 2 custom properties)
 //   GTLBooksVolumeSaleInfoListPrice (0 custom class methods, 2 custom properties)
 //   GTLBooksVolumeSaleInfoRetailPrice (0 custom class methods, 2 custom properties)
+//   GTLBooksVolumeUserInfoUserUploadedVolumeInfo (0 custom class methods, 1 custom properties)
 //   GTLBooksVolumeVolumeInfoDimensions (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeVolumeInfoImageLinks (0 custom class methods, 6 custom properties)
 //   GTLBooksVolumeVolumeInfoIndustryIdentifiersItem (0 custom class methods, 2 custom properties)
@@ -63,6 +64,7 @@
 @class GTLBooksVolumeSaleInfoRetailPrice;
 @class GTLBooksVolumeSearchInfo;
 @class GTLBooksVolumeUserInfo;
+@class GTLBooksVolumeUserInfoUserUploadedVolumeInfo;
 @class GTLBooksVolumeVolumeInfo;
 @class GTLBooksVolumeVolumeInfoDimensions;
 @class GTLBooksVolumeVolumeInfoImageLinks;
@@ -265,6 +267,9 @@
 // request. (In LITE projection.)
 @property (retain) NSNumber *isPurchased;  // boolValue
 
+// Whether or not this volume was user uploaded.
+@property (retain) NSNumber *isUploaded;  // boolValue
+
 // The user's current reading position in the volume, if one is available. (In
 // LITE projection.)
 @property (retain) GTLBooksReadingPosition *readingPosition;
@@ -277,6 +282,7 @@
 // date-time format).
 @property (retain) GTLDateTime *updated;
 
+@property (retain) GTLBooksVolumeUserInfoUserUploadedVolumeInfo *userUploadedVolumeInfo;
 @end
 
 
@@ -445,6 +451,16 @@
 // An ISO 4217, three-letter currency code. (In LITE projection.)
 @property (copy) NSString *currencyCode;
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksVolumeUserInfoUserUploadedVolumeInfo
+//
+
+@interface GTLBooksVolumeUserInfoUserUploadedVolumeInfo : GTLObject
+@property (copy) NSString *processingState;
 @end
 
 

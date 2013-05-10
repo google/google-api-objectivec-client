@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/compute/docs/reference/v1beta14
 // Classes:
-//   GTLQueryCompute (48 custom class methods, 22 custom properties)
+//   GTLQueryCompute (48 custom class methods, 23 custom properties)
 
 #import "GTLQueryCompute.h"
 
@@ -60,16 +60,16 @@
 
 @implementation GTLQueryCompute
 
-@dynamic accessConfig, deprecationStatus, deviceName, disk, fields, filter,
-         firewall, image, instance, kernel, machineType, maxResults, metadata,
-         network, networkInterface, operation, pageToken, project, snapshot,
-         sourceImage, tags, zoneProperty;
+@dynamic accessConfig, deprecated, deviceName, disk, fields, filter, firewall,
+         firewallResource, image, instance, kernel, machineType, maxResults,
+         metadata, network, networkInterface, operation, pageToken, project,
+         snapshot, sourceImage, tags, zoneProperty;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
       @"access_config", @"accessConfig",
-      @"deprecation_status", @"deprecationStatus",
+      @"firewall_resource", @"firewallResource",
       @"network_interface", @"networkInterface",
       @"zone", @"zoneProperty",
       nil];
@@ -104,16 +104,10 @@
   return query;
 }
 
-+ (id)queryForDisksInsertWithObject:(GTLComputeDisk *)object
-                            project:(NSString *)project
-                       zoneProperty:(NSString *)zoneProperty {
-  if (object == nil) {
-    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
-    return nil;
-  }
++ (id)queryForDisksInsertWithProject:(NSString *)project
+                        zoneProperty:(NSString *)zoneProperty {
   NSString *methodName = @"compute.disks.insert";
   GTLQueryCompute *query = [self queryWithMethodName:methodName];
-  query.bodyObject = object;
   query.project = project;
   query.zoneProperty = zoneProperty;
   query.expectedObjectClass = [GTLComputeOperation class];
@@ -154,15 +148,9 @@
   return query;
 }
 
-+ (id)queryForFirewallsInsertWithObject:(GTLComputeFirewall *)object
-                                project:(NSString *)project {
-  if (object == nil) {
-    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
-    return nil;
-  }
++ (id)queryForFirewallsInsertWithProject:(NSString *)project {
   NSString *methodName = @"compute.firewalls.insert";
   GTLQueryCompute *query = [self queryWithMethodName:methodName];
-  query.bodyObject = object;
   query.project = project;
   query.expectedObjectClass = [GTLComputeOperation class];
   return query;
@@ -176,32 +164,20 @@
   return query;
 }
 
-+ (id)queryForFirewallsPatchWithObject:(GTLComputeFirewall *)object
-                               project:(NSString *)project
-                              firewall:(NSString *)firewall {
-  if (object == nil) {
-    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
-    return nil;
-  }
++ (id)queryForFirewallsPatchWithProject:(NSString *)project
+                               firewall:(NSString *)firewall {
   NSString *methodName = @"compute.firewalls.patch";
   GTLQueryCompute *query = [self queryWithMethodName:methodName];
-  query.bodyObject = object;
   query.project = project;
   query.firewall = firewall;
   query.expectedObjectClass = [GTLComputeOperation class];
   return query;
 }
 
-+ (id)queryForFirewallsUpdateWithObject:(GTLComputeFirewall *)object
-                                project:(NSString *)project
-                               firewall:(NSString *)firewall {
-  if (object == nil) {
-    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
-    return nil;
-  }
++ (id)queryForFirewallsUpdateWithProject:(NSString *)project
+                                firewall:(NSString *)firewall {
   NSString *methodName = @"compute.firewalls.update";
   GTLQueryCompute *query = [self queryWithMethodName:methodName];
-  query.bodyObject = object;
   query.project = project;
   query.firewall = firewall;
   query.expectedObjectClass = [GTLComputeOperation class];
@@ -273,15 +249,9 @@
   return query;
 }
 
-+ (id)queryForImagesInsertWithObject:(GTLComputeImage *)object
-                             project:(NSString *)project {
-  if (object == nil) {
-    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
-    return nil;
-  }
++ (id)queryForImagesInsertWithProject:(NSString *)project {
   NSString *methodName = @"compute.images.insert";
   GTLQueryCompute *query = [self queryWithMethodName:methodName];
-  query.bodyObject = object;
   query.project = project;
   query.expectedObjectClass = [GTLComputeOperation class];
   return query;
@@ -391,16 +361,10 @@
   return query;
 }
 
-+ (id)queryForInstancesInsertWithObject:(GTLComputeInstance *)object
-                                project:(NSString *)project
-                           zoneProperty:(NSString *)zoneProperty {
-  if (object == nil) {
-    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
-    return nil;
-  }
++ (id)queryForInstancesInsertWithProject:(NSString *)project
+                            zoneProperty:(NSString *)zoneProperty {
   NSString *methodName = @"compute.instances.insert";
   GTLQueryCompute *query = [self queryWithMethodName:methodName];
-  query.bodyObject = object;
   query.project = project;
   query.zoneProperty = zoneProperty;
   query.expectedObjectClass = [GTLComputeOperation class];
@@ -509,15 +473,9 @@
   return query;
 }
 
-+ (id)queryForNetworksInsertWithObject:(GTLComputeNetwork *)object
-                               project:(NSString *)project {
-  if (object == nil) {
-    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
-    return nil;
-  }
++ (id)queryForNetworksInsertWithProject:(NSString *)project {
   NSString *methodName = @"compute.networks.insert";
   GTLQueryCompute *query = [self queryWithMethodName:methodName];
-  query.bodyObject = object;
   query.project = project;
   query.expectedObjectClass = [GTLComputeOperation class];
   return query;
@@ -575,15 +533,9 @@
   return query;
 }
 
-+ (id)queryForSnapshotsInsertWithObject:(GTLComputeSnapshot *)object
-                                project:(NSString *)project {
-  if (object == nil) {
-    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
-    return nil;
-  }
++ (id)queryForSnapshotsInsertWithProject:(NSString *)project {
   NSString *methodName = @"compute.snapshots.insert";
   GTLQueryCompute *query = [self queryWithMethodName:methodName];
-  query.bodyObject = object;
   query.project = project;
   query.expectedObjectClass = [GTLComputeOperation class];
   return query;

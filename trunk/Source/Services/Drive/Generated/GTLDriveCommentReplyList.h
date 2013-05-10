@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveCommentReplyList (0 custom class methods, 3 custom properties)
+//   GTLDriveCommentReplyList (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -55,7 +55,13 @@
 // This is always drive#commentReplyList.
 @property (copy) NSString *kind;
 
+// A link to the next page of replies.
+@property (copy) NSString *nextLink;
+
 // The token to use to request the next page of results.
 @property (copy) NSString *nextPageToken;
+
+// A link back to this list.
+@property (copy) NSString *selfLink;
 
 @end

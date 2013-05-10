@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/compute/docs/reference/v1beta14
 // Classes:
-//   GTLQueryCompute (48 custom class methods, 22 custom properties)
+//   GTLQueryCompute (48 custom class methods, 23 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -61,25 +61,36 @@
 // "accessConfig" has different types for some query methods; see the
 // documentation for the right type for each query method.
 @property (retain) id accessConfig;
-@property (retain) GTLComputeDeprecationStatus *deprecationStatus;
+@property (retain) GTLComputeDeprecationStatus *deprecated;
 @property (copy) NSString *deviceName;
 // "disk" has different types for some query methods; see the documentation for
 // the right type for each query method.
 @property (retain) id disk;
 @property (copy) NSString *filter;
-@property (copy) NSString *firewall;
-@property (copy) NSString *image;
-@property (copy) NSString *instance;
+// "firewall" has different types for some query methods; see the documentation
+// for the right type for each query method.
+@property (retain) id firewall;
+@property (retain) GTLComputeFirewall *firewallResource;
+// "image" has different types for some query methods; see the documentation for
+// the right type for each query method.
+@property (retain) id image;
+// "instance" has different types for some query methods; see the documentation
+// for the right type for each query method.
+@property (retain) id instance;
 @property (copy) NSString *kernel;
 @property (copy) NSString *machineType;
 @property (assign) NSUInteger maxResults;
 @property (retain) GTLComputeMetadata *metadata;
-@property (copy) NSString *network;
+// "network" has different types for some query methods; see the documentation
+// for the right type for each query method.
+@property (retain) id network;
 @property (copy) NSString *networkInterface;
 @property (copy) NSString *operation;
 @property (copy) NSString *pageToken;
 @property (copy) NSString *project;
-@property (copy) NSString *snapshot;
+// "snapshot" has different types for some query methods; see the documentation
+// for the right type for each query method.
+@property (retain) id snapshot;
 @property (copy) NSString *sourceImage;
 @property (retain) GTLComputeTags *tags;
 // Remapped to 'zoneProperty' to avoid NSObject's 'zone'.
@@ -123,13 +134,13 @@
 //   project: Name of the project scoping this request.
 //   zoneProperty: Name of the zone scoping this request.
 //  Optional:
+//   disk: For this method, "disk" should be of type GTLComputeDisk.
 //   sourceImage: Optional. Source image to restore onto a disk.
 //  Authorization scope(s):
 //   kGTLAuthScopeCompute
 // Fetches a GTLComputeOperation.
-+ (id)queryForDisksInsertWithObject:(GTLComputeDisk *)object
-                            project:(NSString *)project
-                       zoneProperty:(NSString *)zoneProperty;
++ (id)queryForDisksInsertWithProject:(NSString *)project
+                        zoneProperty:(NSString *)zoneProperty;
 
 // Method: compute.disks.list
 // Retrieves the list of persistent disk resources contained within the
@@ -182,11 +193,12 @@
 // in the request.
 //  Required:
 //   project: Name of the project scoping this request.
+//  Optional:
+//   firewall: For this method, "firewall" should be of type GTLComputeFirewall.
 //  Authorization scope(s):
 //   kGTLAuthScopeCompute
 // Fetches a GTLComputeOperation.
-+ (id)queryForFirewallsInsertWithObject:(GTLComputeFirewall *)object
-                                project:(NSString *)project;
++ (id)queryForFirewallsInsertWithProject:(NSString *)project;
 
 // Method: compute.firewalls.list
 // Retrieves the list of firewall resources available to the specified project.
@@ -210,12 +222,13 @@
 //  Required:
 //   project: Name of the project scoping this request.
 //   firewall: Name of the firewall resource to update.
+//  Optional:
+//   firewallResource: GTLComputeFirewall
 //  Authorization scope(s):
 //   kGTLAuthScopeCompute
 // Fetches a GTLComputeOperation.
-+ (id)queryForFirewallsPatchWithObject:(GTLComputeFirewall *)object
-                               project:(NSString *)project
-                              firewall:(NSString *)firewall;
++ (id)queryForFirewallsPatchWithProject:(NSString *)project
+                               firewall:(NSString *)firewall;
 
 // Method: compute.firewalls.update
 // Updates the specified firewall resource with the data included in the
@@ -223,12 +236,13 @@
 //  Required:
 //   project: Name of the project scoping this request.
 //   firewall: Name of the firewall resource to update.
+//  Optional:
+//   firewallResource: GTLComputeFirewall
 //  Authorization scope(s):
 //   kGTLAuthScopeCompute
 // Fetches a GTLComputeOperation.
-+ (id)queryForFirewallsUpdateWithObject:(GTLComputeFirewall *)object
-                                project:(NSString *)project
-                               firewall:(NSString *)firewall;
++ (id)queryForFirewallsUpdateWithProject:(NSString *)project
+                                firewall:(NSString *)firewall;
 
 #pragma mark -
 #pragma mark "globalOperations" methods
@@ -295,7 +309,7 @@
 //   project: Name of the project scoping this request.
 //   image: Image name.
 //  Optional:
-//   deprecationStatus: GTLComputeDeprecationStatus
+//   deprecated: GTLComputeDeprecationStatus
 //  Authorization scope(s):
 //   kGTLAuthScopeCompute
 // Fetches a GTLComputeOperation.
@@ -319,12 +333,13 @@
 // the request.
 //  Required:
 //   project: Name of the project scoping this request.
+//  Optional:
+//   image: For this method, "image" should be of type GTLComputeImage.
 //  Authorization scope(s):
 //   kGTLAuthScopeCompute
 //   kGTLAuthScopeComputeDevstorageReadOnly
 // Fetches a GTLComputeOperation.
-+ (id)queryForImagesInsertWithObject:(GTLComputeImage *)object
-                             project:(NSString *)project;
++ (id)queryForImagesInsertWithProject:(NSString *)project;
 
 // Method: compute.images.list
 // Retrieves the list of image resources available to the specified project.
@@ -458,12 +473,13 @@
 //  Required:
 //   project: Name of the project scoping this request.
 //   zoneProperty: Name of the zone scoping this request.
+//  Optional:
+//   instance: For this method, "instance" should be of type GTLComputeInstance.
 //  Authorization scope(s):
 //   kGTLAuthScopeCompute
 // Fetches a GTLComputeOperation.
-+ (id)queryForInstancesInsertWithObject:(GTLComputeInstance *)object
-                                project:(NSString *)project
-                           zoneProperty:(NSString *)zoneProperty;
++ (id)queryForInstancesInsertWithProject:(NSString *)project
+                            zoneProperty:(NSString *)zoneProperty;
 
 // Method: compute.instances.list
 // Retrieves the list of instance resources contained within the specified zone.
@@ -610,11 +626,12 @@
 // in the request.
 //  Required:
 //   project: Name of the project scoping this request.
+//  Optional:
+//   network: For this method, "network" should be of type GTLComputeNetwork.
 //  Authorization scope(s):
 //   kGTLAuthScopeCompute
 // Fetches a GTLComputeOperation.
-+ (id)queryForNetworksInsertWithObject:(GTLComputeNetwork *)object
-                               project:(NSString *)project;
++ (id)queryForNetworksInsertWithProject:(NSString *)project;
 
 // Method: compute.networks.list
 // Retrieves the list of network resources available to the specified project.
@@ -690,11 +707,12 @@
 // the data included in the request.
 //  Required:
 //   project: Name of the project scoping this request.
+//  Optional:
+//   snapshot: For this method, "snapshot" should be of type GTLComputeSnapshot.
 //  Authorization scope(s):
 //   kGTLAuthScopeCompute
 // Fetches a GTLComputeOperation.
-+ (id)queryForSnapshotsInsertWithObject:(GTLComputeSnapshot *)object
-                                project:(NSString *)project;
++ (id)queryForSnapshotsInsertWithProject:(NSString *)project;
 
 // Method: compute.snapshots.list
 // Retrieves the list of persistent disk snapshot resources contained within the

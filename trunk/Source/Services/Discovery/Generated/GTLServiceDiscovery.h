@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@
 //   APIs Discovery Service (discovery/v1)
 // Description:
 //   Lets you discover information about other Google APIs, such as what APIs
-//   are available, the resource and method details for each API
+//   are available, the resource and method details for each API.
 // Documentation:
 //   https://developers.google.com/discovery/
 // Classes:

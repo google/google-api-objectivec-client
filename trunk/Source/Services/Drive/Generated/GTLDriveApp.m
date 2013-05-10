@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveApp (0 custom class methods, 15 custom properties)
+//   GTLDriveApp (0 custom class methods, 19 custom properties)
 //   GTLDriveAppIconsItem (0 custom class methods, 3 custom properties)
 
 #import "GTLDriveApp.h"
@@ -37,10 +37,11 @@
 //
 
 @implementation GTLDriveApp
-@dynamic authorized, icons, identifier, installed, kind, name, objectType,
-         primaryFileExtensions, primaryMimeTypes, productUrl,
-         secondaryFileExtensions, secondaryMimeTypes, supportsCreate,
-         supportsImport, useByDefault;
+@dynamic authorized, icons, identifier, installed, kind, longDescription, name,
+         objectType, primaryFileExtensions, primaryMimeTypes, productId,
+         productUrl, secondaryFileExtensions, secondaryMimeTypes,
+         shortDescription, supportsCreate, supportsImport, supportsMultiOpen,
+         useByDefault;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

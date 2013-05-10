@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveApp (0 custom class methods, 15 custom properties)
+//   GTLDriveApp (0 custom class methods, 19 custom properties)
 //   GTLDriveAppIconsItem (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -64,6 +64,9 @@
 // This is always drive#app.
 @property (copy) NSString *kind;
 
+// A long description of the app.
+@property (copy) NSString *longDescription;
+
 // The name of the app.
 @property (copy) NSString *name;
 
@@ -77,7 +80,10 @@
 // The list of primary mime types.
 @property (retain) NSArray *primaryMimeTypes;  // of NSString
 
-// The product URL.
+// The ID of the product listing for this app.
+@property (copy) NSString *productId;
+
+// A link to the product listing for this app.
 @property (copy) NSString *productUrl;
 
 // The list of secondary file extensions.
@@ -86,11 +92,17 @@
 // The list of secondary mime types.
 @property (retain) NSArray *secondaryMimeTypes;  // of NSString
 
+// A short description of the app.
+@property (copy) NSString *shortDescription;
+
 // Whether this app supports creating new objects.
 @property (retain) NSNumber *supportsCreate;  // boolValue
 
 // Whether this app supports importing Google Docs.
 @property (retain) NSNumber *supportsImport;  // boolValue
+
+// Whether this app supports opening more than one file.
+@property (retain) NSNumber *supportsMultiOpen;  // boolValue
 
 // Whether the app is selected as the default handler for the types it supports.
 @property (retain) NSNumber *useByDefault;  // boolValue

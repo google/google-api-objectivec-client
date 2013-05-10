@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,11 +23,11 @@
 //   APIs Discovery Service (discovery/v1)
 // Description:
 //   Lets you discover information about other Google APIs, such as what APIs
-//   are available, the resource and method details for each API
+//   are available, the resource and method details for each API.
 // Documentation:
 //   https://developers.google.com/discovery/
 // Classes:
-//   GTLDiscoveryRpcDescription (0 custom class methods, 22 custom properties)
+//   GTLDiscoveryRpcDescription (0 custom class methods, 25 custom properties)
 //   GTLDiscoveryRpcDescriptionAuth (0 custom class methods, 1 custom properties)
 //   GTLDiscoveryRpcDescriptionIcons (0 custom class methods, 2 custom properties)
 //   GTLDiscoveryRpcDescriptionMethods (0 custom class methods, 0 custom properties)
@@ -68,7 +68,7 @@
 // parts. Useful for generating pretty class names.
 @property (copy) NSString *canonicalName;
 
-// The description of this API.
+// The description of the API.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
 
@@ -78,7 +78,7 @@
 // A link to human readable documentation for the API.
 @property (copy) NSString *documentationLink;
 
-// The etag for this response.
+// The ETag for this response.
 @property (copy) NSString *ETag;
 
 // A list of supported features for this API.
@@ -87,7 +87,7 @@
 // Links to 16x16 and 32x32 icons representing the API.
 @property (retain) GTLDiscoveryRpcDescriptionIcons *icons;
 
-// The id of this API.
+// The ID of this API.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
@@ -103,31 +103,42 @@
 // The name of this API.
 @property (copy) NSString *name;
 
+// The domain of the owner of the API. Together with the ownerName and a
+// packagePath values, this can be used to generate a library for the API which
+// would have a unique fully qualified name.
+@property (copy) NSString *ownerDomain;
+
+// The name of the owner of the API. See ownerDomain
+@property (copy) NSString *ownerName;
+
+// The package of the owner of the API. See ownerDomain
+@property (copy) NSString *packagePath;
+
 // Common parameters that apply across all apis.
 @property (retain) GTLDiscoveryRpcDescriptionParameters *parameters;
 
 // The protocol described by this document.
 @property (copy) NSString *protocol;
 
-// The version of this API.
+// The version of the API.
 @property (copy) NSString *revision;
 
-// The root url under which all API services live.
+// The root URL under which all API services live.
 @property (copy) NSString *rootUrl;
 
 // The path for JSON-RPC requests.
 @property (copy) NSString *rpcPath;
 
-// [DEPRECATED] The url for JSON-RPC requests.
+// [DEPRECATED] The URL for JSON-RPC requests.
 @property (copy) NSString *rpcUrl;
 
 // The schemas for this API.
 @property (retain) GTLDiscoveryRpcDescriptionSchemas *schemas;
 
-// The title of this API.
+// The title of the API.
 @property (copy) NSString *title;
 
-// The version of this API.
+// The version of the API.
 @property (copy) NSString *version;
 
 @end
@@ -153,10 +164,10 @@
 
 @interface GTLDiscoveryRpcDescriptionIcons : GTLObject
 
-// The url of the 16x16 icon.
+// The URL of the 16x16 icon.
 @property (copy) NSString *x16;
 
-// The url of the 32x32 icon.
+// The URL of the 32x32 icon.
 @property (copy) NSString *x32;
 
 @end

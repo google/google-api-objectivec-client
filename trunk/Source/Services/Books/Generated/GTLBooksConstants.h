@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,6 +38,13 @@
 // Manage your books
 GTL_EXTERN NSString * const kGTLAuthScopeBooks;  // "https://www.googleapis.com/auth/books"
 
+// AcquireMethod
+GTL_EXTERN NSString * const kGTLBooksAcquireMethodPreordered;   // "PREORDERED"
+GTL_EXTERN NSString * const kGTLBooksAcquireMethodPublicDomain;  // "PUBLIC_DOMAIN"
+GTL_EXTERN NSString * const kGTLBooksAcquireMethodPurchased;    // "PURCHASED"
+GTL_EXTERN NSString * const kGTLBooksAcquireMethodSample;       // "SAMPLE"
+GTL_EXTERN NSString * const kGTLBooksAcquireMethodUploaded;     // "UPLOADED"
+
 // Action
 GTL_EXTERN NSString * const kGTLBooksActionBookmark;  // "bookmark"
 GTL_EXTERN NSString * const kGTLBooksActionChapter;   // "chapter"
@@ -72,6 +79,11 @@ GTL_EXTERN NSString * const kGTLBooksOrderByRelevance;  // "relevance"
 GTL_EXTERN NSString * const kGTLBooksPrintTypeAll;        // "all"
 GTL_EXTERN NSString * const kGTLBooksPrintTypeBooks;      // "books"
 GTL_EXTERN NSString * const kGTLBooksPrintTypeMagazines;  // "magazines"
+
+// ProcessingState
+GTL_EXTERN NSString * const kGTLBooksProcessingStateCompletedFailed;  // "COMPLETED_FAILED"
+GTL_EXTERN NSString * const kGTLBooksProcessingStateCompletedSuccess;  // "COMPLETED_SUCCESS"
+GTL_EXTERN NSString * const kGTLBooksProcessingStateRunning;    // "RUNNING"
 
 // Projection
 GTL_EXTERN NSString * const kGTLBooksProjectionFull;  // "full"

@@ -55,13 +55,13 @@
 // The machine type resources.
 @property (retain) NSArray *items;  // of GTLComputeMachineType
 
-// Type of resource.
+// Type of the resource.
 @property (copy) NSString *kind;
 
 // A token used to continue a truncated list request (output only).
 @property (copy) NSString *nextPageToken;
 
-// Server defined URL for this resource (output only).
+// Server defined URL for the resource (output only).
 @property (copy) NSString *selfLink;
 
 @end

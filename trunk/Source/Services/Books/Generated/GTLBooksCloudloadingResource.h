@@ -14,29 +14,34 @@
  */
 
 //
-//  GTLDiscovery_Sources.m
-//
-// This file can be compiled into projects to avoid adding the individual
-// source files for this service.
+//  GTLBooksCloudloadingResource.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   APIs Discovery Service (discovery/v1)
+//   Books API (books/v1)
 // Description:
-//   Lets you discover information about other Google APIs, such as what APIs
-//   are available, the resource and method details for each API.
+//   Lets you search for books and manage your Google Books library.
 // Documentation:
-//   https://developers.google.com/discovery/
+//   https://developers.google.com/books/docs/v1/getting_started
+// Classes:
+//   GTLBooksCloudloadingResource (0 custom class methods, 4 custom properties)
 
-#import "GTLDiscoveryDirectoryList.m"
-#import "GTLDiscoveryJsonSchema.m"
-#import "GTLDiscoveryRestDescription.m"
-#import "GTLDiscoveryRestMethod.m"
-#import "GTLDiscoveryRestResource.m"
-#import "GTLDiscoveryRpcDescription.m"
-#import "GTLDiscoveryRpcMethod.m"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLQueryDiscovery.m"
-#import "GTLServiceDiscovery.m"
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksCloudloadingResource
+//
+
+@interface GTLBooksCloudloadingResource : GTLObject
+@property (copy) NSString *author;
+@property (copy) NSString *processingState;
+@property (copy) NSString *title;
+@property (copy) NSString *volumeId;
+@end

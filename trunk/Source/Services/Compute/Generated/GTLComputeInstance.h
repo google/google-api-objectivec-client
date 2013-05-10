@@ -102,7 +102,7 @@
 // external internet access.
 @property (retain) NSArray *networkInterfaces;  // of GTLComputeNetworkInterface
 
-// Server defined URL for the resource (output only).
+// Server defined URL for this resource (output only).
 @property (copy) NSString *selfLink;
 
 // A list of service accounts each with specified scopes, for which access

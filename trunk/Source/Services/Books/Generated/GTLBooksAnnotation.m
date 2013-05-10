@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,8 +27,8 @@
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
 //   GTLBooksAnnotation (0 custom class methods, 16 custom properties)
-//   GTLBooksAnnotationClientVersionRanges (0 custom class methods, 4 custom properties)
-//   GTLBooksAnnotationCurrentVersionRanges (0 custom class methods, 4 custom properties)
+//   GTLBooksAnnotationClientVersionRanges (0 custom class methods, 5 custom properties)
+//   GTLBooksAnnotationCurrentVersionRanges (0 custom class methods, 5 custom properties)
 
 #import "GTLBooksAnnotation.h"
 
@@ -71,7 +71,7 @@
 //
 
 @implementation GTLBooksAnnotationClientVersionRanges
-@dynamic cfiRange, contentVersion, gbImageRange, gbTextRange;
+@dynamic cfiRange, contentVersion, gbImageRange, gbTextRange, imageCfiRange;
 @end
 
 
@@ -81,5 +81,5 @@
 //
 
 @implementation GTLBooksAnnotationCurrentVersionRanges
-@dynamic cfiRange, contentVersion, gbImageRange, gbTextRange;
+@dynamic cfiRange, contentVersion, gbImageRange, gbTextRange, imageCfiRange;
 @end
