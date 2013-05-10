@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveCommentReplyList (0 custom class methods, 3 custom properties)
+//   GTLDriveCommentReplyList (0 custom class methods, 5 custom properties)
 
 #import "GTLDriveCommentReplyList.h"
 
@@ -38,7 +38,7 @@
 //
 
 @implementation GTLDriveCommentReplyList
-@dynamic items, kind, nextPageToken;
+@dynamic items, kind, nextLink, nextPageToken, selfLink;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =

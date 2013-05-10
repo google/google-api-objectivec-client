@@ -26,11 +26,12 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 40 custom properties)
+//   GTLDriveFile (0 custom class methods, 42 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
 //   GTLDriveFileImageMediaMetadata (0 custom class methods, 21 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
 //   GTLDriveFileLabels (0 custom class methods, 5 custom properties)
+//   GTLDriveFileOpenWithLinks (0 custom class methods, 0 custom properties)
 //   GTLDriveFileThumbnail (0 custom class methods, 2 custom properties)
 //   GTLDriveFileImageMediaMetadataLocation (0 custom class methods, 3 custom properties)
 
@@ -45,6 +46,7 @@
 @class GTLDriveFileImageMediaMetadataLocation;
 @class GTLDriveFileIndexableText;
 @class GTLDriveFileLabels;
+@class GTLDriveFileOpenWithLinks;
 @class GTLDriveFileThumbnail;
 @class GTLDriveParentReference;
 @class GTLDrivePermission;
@@ -67,6 +69,10 @@
 
 // Create time for this file (formatted ISO8601 timestamp).
 @property (retain) GTLDateTime *createdDate;
+
+// A link to open this file with the user's default app for this file. Only
+// populated when the drive.apps.readonly scope is used.
+@property (copy) NSString *defaultOpenWithLink;
 
 // A short description of the file.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
@@ -147,6 +153,10 @@
 // Last time this file was modified by anyone (formatted RFC 3339 timestamp).
 // This is only mutable on update when the setModifiedDate parameter is set.
 @property (retain) GTLDateTime *modifiedDate;
+
+// A map of the id of each of the user's apps to a link to open this file with
+// that app. Only populated when the drive.apps.readonly scope is used.
+@property (retain) GTLDriveFileOpenWithLinks *openWithLinks;
 
 // The original filename if the file was uploaded manually, or the original
 // title if the file was inserted through the API. Note that renames of the
@@ -329,6 +339,19 @@
 // Whether this file has been viewed by this user.
 @property (retain) NSNumber *viewed;  // boolValue
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveFileOpenWithLinks
+//
+
+@interface GTLDriveFileOpenWithLinks : GTLObject
+// This object is documented as having more properties that are NSString. Use
+// -additionalJSONKeys and -additionalPropertyForName: to get the list of
+// properties and then fetch them; or -additionalProperties to fetch them all at
+// once.
 @end
 
 

@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,8 +27,8 @@
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
 //   GTLBooksAnnotation (0 custom class methods, 16 custom properties)
-//   GTLBooksAnnotationClientVersionRanges (0 custom class methods, 4 custom properties)
-//   GTLBooksAnnotationCurrentVersionRanges (0 custom class methods, 4 custom properties)
+//   GTLBooksAnnotationClientVersionRanges (0 custom class methods, 5 custom properties)
+//   GTLBooksAnnotationCurrentVersionRanges (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -47,10 +47,12 @@
 
 @interface GTLBooksAnnotation : GTLObject
 
-// Anchor text after excerpt.
+// Anchor text after excerpt. For requests, if the user bookmarked a screen that
+// has no flowing text on it, then this field should be empty.
 @property (copy) NSString *afterSelectedText;
 
-// Anchor text before excerpt.
+// Anchor text before excerpt. For requests, if the user bookmarked a screen
+// that has no flowing text on it, then this field should be empty.
 @property (copy) NSString *beforeSelectedText;
 
 // Selection ranges sent from the client.
@@ -118,6 +120,9 @@
 // Range in GB text format for this annotation sent by client.
 @property (retain) GTLBooksAnnotationsRange *gbTextRange;
 
+// Range in image CFI format for this annotation sent by client.
+@property (retain) GTLBooksAnnotationsRange *imageCfiRange;
+
 @end
 
 
@@ -139,5 +144,8 @@
 
 // Range in GB text format for this annotation for version above.
 @property (retain) GTLBooksAnnotationsRange *gbTextRange;
+
+// Range in image CFI format for this annotation for version above.
+@property (retain) GTLBooksAnnotationsRange *imageCfiRange;
 
 @end

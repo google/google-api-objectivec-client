@@ -14,29 +14,27 @@
  */
 
 //
-//  GTLDiscovery_Sources.m
-//
-// This file can be compiled into projects to avoid adding the individual
-// source files for this service.
+//  GTLBooksCloudloadingResource.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   APIs Discovery Service (discovery/v1)
+//   Books API (books/v1)
 // Description:
-//   Lets you discover information about other Google APIs, such as what APIs
-//   are available, the resource and method details for each API.
+//   Lets you search for books and manage your Google Books library.
 // Documentation:
-//   https://developers.google.com/discovery/
+//   https://developers.google.com/books/docs/v1/getting_started
+// Classes:
+//   GTLBooksCloudloadingResource (0 custom class methods, 4 custom properties)
 
-#import "GTLDiscoveryDirectoryList.m"
-#import "GTLDiscoveryJsonSchema.m"
-#import "GTLDiscoveryRestDescription.m"
-#import "GTLDiscoveryRestMethod.m"
-#import "GTLDiscoveryRestResource.m"
-#import "GTLDiscoveryRpcDescription.m"
-#import "GTLDiscoveryRpcMethod.m"
+#import "GTLBooksCloudloadingResource.h"
 
-#import "GTLQueryDiscovery.m"
-#import "GTLServiceDiscovery.m"
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksCloudloadingResource
+//
+
+@implementation GTLBooksCloudloadingResource
+@dynamic author, processingState, title, volumeId;
+@end

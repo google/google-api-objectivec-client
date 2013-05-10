@@ -198,7 +198,8 @@
   STAssertTrue(dateTime3.calendar != dateTime.calendar,
                @"%@ = %@", dateTime3.calendar, dateTime.calendar);
   STAssertEquals(dateTime3.calendar.timeZone.secondsFromGMT,
-                 dateTime.calendar.timeZone.secondsFromGMT, nil);
+                 (dateTime.calendar.timeZone.secondsFromGMT -
+                  (NSInteger)[dateTime.timeZone daylightSavingTimeOffset]), nil);
 }
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,11 +23,11 @@
 //   APIs Discovery Service (discovery/v1)
 // Description:
 //   Lets you discover information about other Google APIs, such as what APIs
-//   are available, the resource and method details for each API
+//   are available, the resource and method details for each API.
 // Documentation:
 //   https://developers.google.com/discovery/
 // Classes:
-//   GTLDiscoveryRpcDescription (0 custom class methods, 22 custom properties)
+//   GTLDiscoveryRpcDescription (0 custom class methods, 25 custom properties)
 //   GTLDiscoveryRpcDescriptionAuth (0 custom class methods, 1 custom properties)
 //   GTLDiscoveryRpcDescriptionIcons (0 custom class methods, 2 custom properties)
 //   GTLDiscoveryRpcDescriptionMethods (0 custom class methods, 0 custom properties)
@@ -50,8 +50,8 @@
 @implementation GTLDiscoveryRpcDescription
 @dynamic auth, canonicalName, descriptionProperty, discoveryVersion,
          documentationLink, ETag, features, icons, identifier, kind, labels,
-         methods, name, parameters, protocol, revision, rootUrl, rpcPath,
-         rpcUrl, schemas, title, version;
+         methods, name, ownerDomain, ownerName, packagePath, parameters,
+         protocol, revision, rootUrl, rpcPath, rpcUrl, schemas, title, version;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

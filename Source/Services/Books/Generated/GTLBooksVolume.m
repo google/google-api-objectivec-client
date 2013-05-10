@@ -32,13 +32,14 @@
 //   GTLBooksVolumeRecommendedInfo (0 custom class methods, 1 custom properties)
 //   GTLBooksVolumeSaleInfo (0 custom class methods, 7 custom properties)
 //   GTLBooksVolumeSearchInfo (0 custom class methods, 1 custom properties)
-//   GTLBooksVolumeUserInfo (0 custom class methods, 6 custom properties)
+//   GTLBooksVolumeUserInfo (0 custom class methods, 8 custom properties)
 //   GTLBooksVolumeVolumeInfo (0 custom class methods, 20 custom properties)
 //   GTLBooksVolumeAccessInfoEpub (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeAccessInfoPdf (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeLayerInfoLayersItem (0 custom class methods, 2 custom properties)
 //   GTLBooksVolumeSaleInfoListPrice (0 custom class methods, 2 custom properties)
 //   GTLBooksVolumeSaleInfoRetailPrice (0 custom class methods, 2 custom properties)
+//   GTLBooksVolumeUserInfoUserUploadedVolumeInfo (0 custom class methods, 1 custom properties)
 //   GTLBooksVolumeVolumeInfoDimensions (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeVolumeInfoImageLinks (0 custom class methods, 6 custom properties)
 //   GTLBooksVolumeVolumeInfoIndustryIdentifiersItem (0 custom class methods, 2 custom properties)
@@ -141,8 +142,8 @@
 //
 
 @implementation GTLBooksVolumeUserInfo
-@dynamic isInMyBooks, isPreordered, isPurchased, readingPosition, review,
-         updated;
+@dynamic isInMyBooks, isPreordered, isPurchased, isUploaded, readingPosition,
+         review, updated, userUploadedVolumeInfo;
 @end
 
 
@@ -225,6 +226,16 @@
 
 @implementation GTLBooksVolumeSaleInfoRetailPrice
 @dynamic amount, currencyCode;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksVolumeUserInfoUserUploadedVolumeInfo
+//
+
+@implementation GTLBooksVolumeUserInfoUserUploadedVolumeInfo
+@dynamic processingState;
 @end
 
 

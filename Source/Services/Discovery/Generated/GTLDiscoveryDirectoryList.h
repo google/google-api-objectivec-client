@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@
 //   APIs Discovery Service (discovery/v1)
 // Description:
 //   Lets you discover information about other Google APIs, such as what APIs
-//   are available, the resource and method details for each API
+//   are available, the resource and method details for each API.
 // Documentation:
 //   https://developers.google.com/discovery/
 // Classes:
@@ -76,7 +76,7 @@
 // A link to the discovery document.
 @property (copy) NSString *discoveryLink;
 
-// The url for the discovery REST document.
+// The URL for the discovery REST document.
 @property (copy) NSString *discoveryRestUrl;
 
 // A link to human readable documentation for the API.
@@ -117,10 +117,10 @@
 
 @interface GTLDiscoveryDirectoryListItemsItemIcons : GTLObject
 
-// The url of the 16x16 icon.
+// The URL of the 16x16 icon.
 @property (copy) NSString *x16;
 
-// The url of the 32x32 icon.
+// The URL of the 32x32 icon.
 @property (copy) NSString *x32;
 
 @end

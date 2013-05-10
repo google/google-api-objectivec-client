@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLQueryBooks (30 custom class methods, 46 custom properties)
+//   GTLQueryBooks (35 custom class methods, 52 custom properties)
 
 #import "GTLQueryBooks.h"
 
@@ -36,6 +36,7 @@
 #import "GTLBooksAnnotationsdata.h"
 #import "GTLBooksBookshelf.h"
 #import "GTLBooksBookshelves.h"
+#import "GTLBooksCloudloadingResource.h"
 #import "GTLBooksDownloadAccesses.h"
 #import "GTLBooksLayersummaries.h"
 #import "GTLBooksLayersummary.h"
@@ -48,19 +49,33 @@
 
 @implementation GTLQueryBooks
 
-@dynamic action, annotationDataId, annotationId, association, contentVersion,
-         country, cpksver, deviceCookie, download, endOffset, endPosition,
-         fields, filter, h, langRestrict, layerId, libraryRestrict, locale,
-         maxResults, nonce, orderBy, pageIds, pageToken, partner, position,
-         printType, projection, q, scale, shelf, showDeleted, showPreorders,
-         source, startIndex, startOffset, startPosition, summaryId, timestamp,
-         updatedMax, updatedMin, userId, volumeAnnotationsVersion, volumeId,
-         volumeIds, volumePosition, w;
+@dynamic acquireMethod, action, annotationDataId, annotationId, association,
+         contentVersion, country, cpksver, deviceCookie, download,
+         driveDocumentId, endOffset, endPosition, fields, filter, h,
+         langRestrict, layerId, libraryRestrict, locale, maxResults, mimeType,
+         name, nonce, orderBy, pageIds, pageToken, partner, position, printType,
+         processingState, projection, q, scale, shelf, showDeleted,
+         showPreorders, source, startIndex, startOffset, startPosition,
+         summaryId, timestamp, updatedMax, updatedMin, uploadClientToken,
+         userId, volumeAnnotationsVersion, volumeId, volumeIds, volumePosition,
+         w;
+
++ (NSDictionary *)parameterNameMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      @"drive_document_id", @"driveDocumentId",
+      @"mime_type", @"mimeType",
+      @"upload_client_token", @"uploadClientToken",
+      nil];
+  return map;
+}
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
+      [NSString class], @"acquireMethod",
       [NSString class], @"pageIds",
+      [NSString class], @"processingState",
       [NSString class], @"volumeIds",
       nil];
   return map;
@@ -99,6 +114,36 @@
   query.userId = userId;
   query.shelf = shelf;
   query.expectedObjectClass = [GTLBooksVolumes class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "cloudloading" methods
+// These create a GTLQueryBooks object.
+
++ (id)queryForCloudloadingAddBook {
+  NSString *methodName = @"books.cloudloading.addBook";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLBooksCloudloadingResource class];
+  return query;
+}
+
++ (id)queryForCloudloadingDeleteBookWithVolumeId:(NSString *)volumeId {
+  NSString *methodName = @"books.cloudloading.deleteBook";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.volumeId = volumeId;
+  return query;
+}
+
++ (id)queryForCloudloadingUpdateBookWithObject:(GTLBooksCloudloadingResource *)object {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"books.cloudloading.updateBook";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.expectedObjectClass = [GTLBooksCloudloadingResource class];
   return query;
 }
 
@@ -397,11 +442,33 @@
 }
 
 #pragma mark -
+#pragma mark "volumes.mybooks" methods
+// These create a GTLQueryBooks object.
+
++ (id)queryForVolumesMybooksList {
+  NSString *methodName = @"books.volumes.mybooks.list";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLBooksVolumes class];
+  return query;
+}
+
+#pragma mark -
 #pragma mark "volumes.recommended" methods
 // These create a GTLQueryBooks object.
 
 + (id)queryForVolumesRecommendedList {
   NSString *methodName = @"books.volumes.recommended.list";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLBooksVolumes class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "volumes.useruploaded" methods
+// These create a GTLQueryBooks object.
+
++ (id)queryForVolumesUseruploadedList {
+  NSString *methodName = @"books.volumes.useruploaded.list";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLBooksVolumes class];
   return query;

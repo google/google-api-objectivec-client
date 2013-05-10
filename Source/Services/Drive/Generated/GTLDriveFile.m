@@ -26,11 +26,12 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 40 custom properties)
+//   GTLDriveFile (0 custom class methods, 42 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
 //   GTLDriveFileImageMediaMetadata (0 custom class methods, 21 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
 //   GTLDriveFileLabels (0 custom class methods, 5 custom properties)
+//   GTLDriveFileOpenWithLinks (0 custom class methods, 0 custom properties)
 //   GTLDriveFileThumbnail (0 custom class methods, 2 custom properties)
 //   GTLDriveFileImageMediaMetadataLocation (0 custom class methods, 3 custom properties)
 
@@ -46,15 +47,15 @@
 //
 
 @implementation GTLDriveFile
-@dynamic alternateLink, appDataContents, createdDate, descriptionProperty,
-         downloadUrl, editable, embedLink, ETag, explicitlyTrashed, exportLinks,
-         fileExtension, fileSize, iconLink, identifier, imageMediaMetadata,
-         indexableText, kind, labels, lastModifyingUser, lastModifyingUserName,
-         lastViewedByMeDate, md5Checksum, mimeType, modifiedByMeDate,
-         modifiedDate, originalFilename, ownerNames, owners, parents,
-         quotaBytesUsed, selfLink, shared, sharedWithMeDate, thumbnail,
-         thumbnailLink, title, userPermission, webContentLink, webViewLink,
-         writersCanShare;
+@dynamic alternateLink, appDataContents, createdDate, defaultOpenWithLink,
+         descriptionProperty, downloadUrl, editable, embedLink, ETag,
+         explicitlyTrashed, exportLinks, fileExtension, fileSize, iconLink,
+         identifier, imageMediaMetadata, indexableText, kind, labels,
+         lastModifyingUser, lastModifyingUserName, lastViewedByMeDate,
+         md5Checksum, mimeType, modifiedByMeDate, modifiedDate, openWithLinks,
+         originalFilename, ownerNames, owners, parents, quotaBytesUsed,
+         selfLink, shared, sharedWithMeDate, thumbnail, thumbnailLink, title,
+         userPermission, webContentLink, webViewLink, writersCanShare;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -127,6 +128,20 @@
 
 @implementation GTLDriveFileLabels
 @dynamic hidden, restricted, starred, trashed, viewed;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveFileOpenWithLinks
+//
+
+@implementation GTLDriveFileOpenWithLinks
+
++ (Class)classForAdditionalProperties {
+  return [NSString class];
+}
+
 @end
 
 

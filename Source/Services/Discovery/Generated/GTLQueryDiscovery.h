@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,11 +23,11 @@
 //   APIs Discovery Service (discovery/v1)
 // Description:
 //   Lets you discover information about other Google APIs, such as what APIs
-//   are available, the resource and method details for each API
+//   are available, the resource and method details for each API.
 // Documentation:
 //   https://developers.google.com/discovery/
 // Classes:
-//   GTLQueryDiscovery (3 custom class methods, 6 custom properties)
+//   GTLQueryDiscovery (3 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -48,7 +48,6 @@
 // Method-specific parameters; see the comments below for more information.
 //
 @property (copy) NSString *api;
-@property (copy) NSString *label;
 @property (copy) NSString *name;
 @property (assign) BOOL preferred;
 @property (copy) NSString *version;
@@ -78,12 +77,6 @@
 // Method: discovery.apis.list
 // Retrieve the list of APIs supported at this endpoint.
 //  Optional:
-//   label: Only include APIs with a matching label, such as 'graduated' or
-//     'labs'.
-//      kGTLDiscoveryLabelDeprecated: APIs that have been deprecated.
-//      kGTLDiscoveryLabelGraduated: Supported APIs that have graduated from
-//        labs.
-//      kGTLDiscoveryLabelLabs: APIs that are experimental
 //   name: Only include APIs with the given name.
 //   preferred: Return only the preferred version of an API. (Default false)
 // Fetches a GTLDiscoveryDirectoryList.
