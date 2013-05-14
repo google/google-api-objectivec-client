@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 // Classes:
-//   GTLStorageObjectAccessControl (0 custom class methods, 11 custom properties)
+//   GTLStorageObjectAccessControl (0 custom class methods, 12 custom properties)
 
 #import "GTLStorageObjectAccessControl.h"
 
@@ -36,8 +36,8 @@
 //
 
 @implementation GTLStorageObjectAccessControl
-@dynamic bucket, domain, email, entity, entityId, ETag, identifier, kind,
-         object, role, selfLink;
+@dynamic bucket, domain, email, entity, entityId, ETag, generation, identifier,
+         kind, object, role, selfLink;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
