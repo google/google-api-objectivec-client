@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,6 +55,7 @@
 // - "myCircles" - Access to members of all the person's circles.
 // - "extendedCircles" - Access to members of everyone in a person's circles,
 // plus all of the people in their circles.
+// - "domain" - Access to members of the person's Google Apps domain.
 // - "public" - Access to anyone on the web.
 @property (copy) NSString *type;
 

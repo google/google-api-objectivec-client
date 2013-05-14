@@ -144,6 +144,7 @@
 //   changeId: The ID of the change.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppsReadonly
 //   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveMetadataReadonly
 //   kGTLAuthScopeDriveReadonly
@@ -163,6 +164,7 @@
 //   startChangeId: Change ID to start listing changes from.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppsReadonly
 //   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveMetadataReadonly
 //   kGTLAuthScopeDriveReadonly
@@ -337,6 +339,7 @@
 //   timedTextTrackName: The timed text track name.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppsReadonly
 //   kGTLAuthScopeDriveFile
 // Fetches a GTLDriveFile.
 + (id)queryForFilesCopyWithObject:(GTLDriveFile *)object
@@ -363,6 +366,7 @@
 //     retrieving the file. (Default false)
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppsReadonly
 //   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveMetadataReadonly
 //   kGTLAuthScopeDriveReadonly
@@ -389,6 +393,7 @@
 //   Accepted MIME type(s): */*
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppsReadonly
 //   kGTLAuthScopeDriveFile
 // Fetches a GTLDriveFile.
 + (id)queryForFilesInsertWithObject:(GTLDriveFile *)object
@@ -405,6 +410,7 @@
 //   q: Query string for searching files.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppsReadonly
 //   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveMetadataReadonly
 //   kGTLAuthScopeDriveReadonly
@@ -438,6 +444,7 @@
 //     (Default false)
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppsReadonly
 //   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveScripts
 // Fetches a GTLDriveFile.
@@ -450,6 +457,7 @@
 //   fileId: The ID of the file to update.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppsReadonly
 //   kGTLAuthScopeDriveFile
 // Fetches a GTLDriveFile.
 + (id)queryForFilesTouchWithFileId:(NSString *)fileId;
@@ -460,6 +468,7 @@
 //   fileId: The ID of the file to trash.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppsReadonly
 //   kGTLAuthScopeDriveFile
 // Fetches a GTLDriveFile.
 + (id)queryForFilesTrashWithFileId:(NSString *)fileId;
@@ -470,6 +479,7 @@
 //   fileId: The ID of the file to untrash.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppsReadonly
 //   kGTLAuthScopeDriveFile
 // Fetches a GTLDriveFile.
 + (id)queryForFilesUntrashWithFileId:(NSString *)fileId;
@@ -504,6 +514,7 @@
 //   Accepted MIME type(s): */*
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppsReadonly
 //   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveScripts
 // Fetches a GTLDriveFile.

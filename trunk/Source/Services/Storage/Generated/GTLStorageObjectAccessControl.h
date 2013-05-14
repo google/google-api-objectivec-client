@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 // Classes:
-//   GTLStorageObjectAccessControl (0 custom class methods, 11 custom properties)
+//   GTLStorageObjectAccessControl (0 custom class methods, 12 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -66,6 +66,9 @@
 
 // HTTP 1.1 Entity tag for the access-control entry.
 @property (copy) NSString *ETag;
+
+// The content generation of the object.
+@property (retain) NSNumber *generation;  // longLongValue
 
 // The ID of the access-control entry.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').

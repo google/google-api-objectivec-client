@@ -396,6 +396,9 @@
 //   object: Name of the object.
 //   entity: The entity holding the permission. Can be user-userId,
 //     group-groupId, allUsers, or allAuthenticatedUsers.
+//  Optional:
+//   generation: If present, selects a specific revision of this object (as
+//     opposed to the latest version, the default).
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 + (id)queryForObjectAccessControlsDeleteWithBucket:(NSString *)bucket
@@ -409,6 +412,9 @@
 //   object: Name of the object.
 //   entity: The entity holding the permission. Can be user-userId,
 //     group-groupId, allUsers, or allAuthenticatedUsers.
+//  Optional:
+//   generation: If present, selects a specific revision of this object (as
+//     opposed to the latest version, the default).
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControl.
@@ -421,6 +427,9 @@
 //  Required:
 //   bucket: Name of a bucket.
 //   object: Name of the object.
+//  Optional:
+//   generation: If present, selects a specific revision of this object (as
+//     opposed to the latest version, the default).
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControl.
@@ -433,6 +442,9 @@
 //  Required:
 //   bucket: Name of a bucket.
 //   object: Name of the object.
+//  Optional:
+//   generation: If present, selects a specific revision of this object (as
+//     opposed to the latest version, the default).
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControls.
@@ -447,6 +459,9 @@
 //   object: Name of the object.
 //   entity: The entity holding the permission. Can be user-userId,
 //     group-groupId, allUsers, or allAuthenticatedUsers.
+//  Optional:
+//   generation: If present, selects a specific revision of this object (as
+//     opposed to the latest version, the default).
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControl.
@@ -462,6 +477,9 @@
 //   object: Name of the object.
 //   entity: The entity holding the permission. Can be user-userId,
 //     group-groupId, allUsers, or allAuthenticatedUsers.
+//  Optional:
+//   generation: If present, selects a specific revision of this object (as
+//     opposed to the latest version, the default).
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControl.
