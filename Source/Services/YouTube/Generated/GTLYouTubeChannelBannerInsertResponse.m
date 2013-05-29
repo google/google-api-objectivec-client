@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeImageSettings.m
+//  GTLYouTubeChannelBannerInsertResponse.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,24 +26,27 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeImageSettings (0 custom class methods, 19 custom properties)
+//   GTLYouTubeChannelBannerInsertResponse (0 custom class methods, 3 custom properties)
 
-#import "GTLYouTubeImageSettings.h"
-
-#import "GTLYouTubeLocalizedProperty.h"
+#import "GTLYouTubeChannelBannerInsertResponse.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeImageSettings
+//   GTLYouTubeChannelBannerInsertResponse
 //
 
-@implementation GTLYouTubeImageSettings
-@dynamic backgroundImageUrl, bannerExternalUrl, bannerImageUrl,
-         bannerMobileExtraHdImageUrl, bannerMobileHdImageUrl,
-         bannerMobileImageUrl, bannerMobileLowImageUrl,
-         bannerMobileMediumHdImageUrl, bannerTabletExtraHdImageUrl,
-         bannerTabletHdImageUrl, bannerTabletImageUrl, bannerTabletLowImageUrl,
-         bannerTvImageUrl, largeBrandedBannerImageImapScript,
-         largeBrandedBannerImageUrl, smallBrandedBannerImageImapScript,
-         smallBrandedBannerImageUrl, trackingImageUrl, watchIconImageUrl;
+@implementation GTLYouTubeChannelBannerInsertResponse
+@dynamic ETag, kind, url;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"etag"
+                                forKey:@"ETag"];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"youtube#channelBannerInsertResponse"];
+}
+
 @end

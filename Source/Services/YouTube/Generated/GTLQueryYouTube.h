@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (36 custom class methods, 45 custom properties)
+//   GTLQueryYouTube (37 custom class methods, 45 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -36,6 +36,7 @@
 
 @class GTLYouTubeActivity;
 @class GTLYouTubeChannel;
+@class GTLYouTubeChannelBannerInsertResponse;
 @class GTLYouTubeLiveBroadcast;
 @class GTLYouTubeLiveStream;
 @class GTLYouTubePlaylist;
@@ -164,6 +165,22 @@
 //   kGTLAuthScopeYouTubeReadonly
 // Fetches a GTLYouTubeActivityListResponse.
 + (id)queryForActivitiesListWithPart:(NSString *)part;
+
+#pragma mark -
+#pragma mark "channelBanners" methods
+// These create a GTLQueryYouTube object.
+
+// Method: youtube.channelBanners.insert
+// Uploads a channel banner to YouTube.
+//  Upload Parameters:
+//   Maximum size: 6MB
+//   Accepted MIME type(s): application/octet-stream, image/jpeg, image/png
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeUpload
+// Fetches a GTLYouTubeChannelBannerInsertResponse.
++ (id)queryForChannelBannersInsertWithObject:(GTLYouTubeChannelBannerInsertResponse *)object
+                            uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
 #pragma mark -
 #pragma mark "channels" methods

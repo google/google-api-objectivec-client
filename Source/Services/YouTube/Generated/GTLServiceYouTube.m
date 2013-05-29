@@ -44,6 +44,7 @@
                       [GTLYouTubeActivityListResponse class],
                       [GTLYouTubeActivitySnippet class],
                       [GTLYouTubeChannel class],
+                      [GTLYouTubeChannelBannerInsertResponse class],
                       [GTLYouTubeChannelBrandingSettings class],
                       [GTLYouTubeChannelContentDetails class],
                       [GTLYouTubeChannelConversionPing class],

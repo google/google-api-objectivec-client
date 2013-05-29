@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeImageSettings (0 custom class methods, 18 custom properties)
+//   GTLYouTubeImageSettings (0 custom class methods, 19 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -48,6 +48,10 @@
 // The URL for the background image shown on the video watch page. The image
 // should be 1200px by 615px, with a maximum file size of 128k.
 @property (retain) GTLYouTubeLocalizedProperty *backgroundImageUrl;
+
+// This is used only in update requests; if it's set, we use this URL to
+// generate all of the above banner URLs.
+@property (copy) NSString *bannerExternalUrl;
 
 // Banner image. Desktop size (1060x175).
 @property (copy) NSString *bannerImageUrl;
