@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeImageSettings.m
+//  GTLYouTubeChannelBannerInsertResponse.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,24 +26,31 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeImageSettings (0 custom class methods, 19 custom properties)
+//   GTLYouTubeChannelBannerInsertResponse (0 custom class methods, 3 custom properties)
 
-#import "GTLYouTubeImageSettings.h"
-
-#import "GTLYouTubeLocalizedProperty.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeImageSettings
+//   GTLYouTubeChannelBannerInsertResponse
 //
 
-@implementation GTLYouTubeImageSettings
-@dynamic backgroundImageUrl, bannerExternalUrl, bannerImageUrl,
-         bannerMobileExtraHdImageUrl, bannerMobileHdImageUrl,
-         bannerMobileImageUrl, bannerMobileLowImageUrl,
-         bannerMobileMediumHdImageUrl, bannerTabletExtraHdImageUrl,
-         bannerTabletHdImageUrl, bannerTabletImageUrl, bannerTabletLowImageUrl,
-         bannerTvImageUrl, largeBrandedBannerImageImapScript,
-         largeBrandedBannerImageUrl, smallBrandedBannerImageImapScript,
-         smallBrandedBannerImageUrl, trackingImageUrl, watchIconImageUrl;
+// A channel banner returned as the response to a channel_banner.insert call.
+
+@interface GTLYouTubeChannelBannerInsertResponse : GTLObject
+
+// The ETag of the response.
+@property (copy) NSString *ETag;
+
+// The type of the API response. For this operation, the value will be
+// youtube#channelBannerInsertResponse.
+@property (copy) NSString *kind;
+
+// The URL of this banner image.
+@property (copy) NSString *url;
+
 @end

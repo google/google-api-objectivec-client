@@ -34,6 +34,7 @@
 #import "GTLYouTubeActivityListResponse.h"
 #import "GTLYouTubeActivitySnippet.h"
 #import "GTLYouTubeChannel.h"
+#import "GTLYouTubeChannelBannerInsertResponse.h"
 #import "GTLYouTubeChannelBrandingSettings.h"
 #import "GTLYouTubeChannelContentDetails.h"
 #import "GTLYouTubeChannelConversionPing.h"

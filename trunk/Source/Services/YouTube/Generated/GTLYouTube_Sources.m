@@ -37,6 +37,7 @@
 #import "GTLYouTubeActivityListResponse.m"
 #import "GTLYouTubeActivitySnippet.m"
 #import "GTLYouTubeChannel.m"
+#import "GTLYouTubeChannelBannerInsertResponse.m"
 #import "GTLYouTubeChannelBrandingSettings.m"
 #import "GTLYouTubeChannelContentDetails.m"
 #import "GTLYouTubeChannelConversionPing.m"
