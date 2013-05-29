@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsWebproperty (0 custom class methods, 12 custom properties)
+//   GTLAnalyticsWebproperty (0 custom class methods, 13 custom properties)
 //   GTLAnalyticsWebpropertyChildLink (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsWebpropertyParentLink (0 custom class methods, 2 custom properties)
 
@@ -61,6 +61,9 @@
 // Web property ID of the form UA-XXXXX-YY.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
+
+// Industry vertical
+@property (copy) NSString *industryVertical;
 
 // Internal ID for this web property.
 @property (copy) NSString *internalWebPropertyId;

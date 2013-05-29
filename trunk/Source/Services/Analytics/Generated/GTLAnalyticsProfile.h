@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -63,7 +63,7 @@
 // Default page for this profile.
 @property (copy) NSString *defaultPage;
 
-// E-commerce tracking parameter for this profile.
+// Indicates whether ecommerce tracking is enabled for this profile.
 @property (retain) NSNumber *eCommerceTracking;  // boolValue
 
 // The query parameters that are excluded from this profile.
