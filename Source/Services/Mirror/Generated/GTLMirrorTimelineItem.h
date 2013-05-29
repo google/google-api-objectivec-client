@@ -79,6 +79,23 @@
 
 // HTML content for this item. If both text and html are provided for an item,
 // the html will be rendered in the timeline.
+// Allowed HTML elements - You can use these elements in your timeline cards.
+// - Headers: h1, h2, h3, h4, h5, h6
+// - Images: img
+// - Lists: li, ol, ul
+// - HTML5 semantics: article, aside, details, figure, figcaption, footer,
+// header, nav, section, summary, time
+// - Structural: blockquote, br, div, hr, p, span
+// - Style: b, big, center, em, i, u, s, small, strike, strong, style, sub, sup
+// - Tables: table, tbody, td, tfoot, th, thead, tr
+// Blocked HTML elements: These elements and their contents are removed from
+// HTML payloads.
+// - Document headers: head, title
+// - Embeds: audio, embed, object, source, video
+// - Frames: frame, frameset
+// - Scripting: applet, script
+// Other elements: Any elements that aren't listed are removed, but their
+// contents are preserved.
 @property (copy) NSString *html;
 
 // Additional pages of HTML content associated with this item. If this field is
@@ -112,7 +129,8 @@
 
 // When true, indicates this item is pinned, which means it's grouped alongside
 // "active" items like navigation and hangouts, on the opposite side of the home
-// screen from historical (non-pinned) timeline items.
+// screen from historical (non-pinned) timeline items. You can allow the user to
+// toggle the value of this property with the TOGGLE_PINNED built-in menu item.
 @property (retain) NSNumber *isPinned;  // boolValue
 
 // The type of resource. This is always mirror#timelineItem.
