@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveApp (0 custom class methods, 19 custom properties)
+//   GTLDriveApp (0 custom class methods, 20 custom properties)
 //   GTLDriveAppIconsItem (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -73,6 +73,10 @@
 // The type of object this app creates (e.g. Chart). If empty, the app name
 // should be used instead.
 @property (copy) NSString *objectType;
+
+// The template url for opening files with this app. The template will contain
+// {ids} and/or {exportIds} to be replaced by the actual file ids.
+@property (copy) NSString *openUrlTemplate;
 
 // The list of primary file extensions.
 @property (retain) NSArray *primaryFileExtensions;  // of NSString
