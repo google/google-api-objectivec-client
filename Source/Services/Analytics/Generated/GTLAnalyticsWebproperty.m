@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsWebproperty (0 custom class methods, 12 custom properties)
+//   GTLAnalyticsWebproperty (0 custom class methods, 13 custom properties)
 //   GTLAnalyticsWebpropertyChildLink (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsWebpropertyParentLink (0 custom class methods, 2 custom properties)
 
@@ -38,8 +38,9 @@
 //
 
 @implementation GTLAnalyticsWebproperty
-@dynamic accountId, childLink, created, identifier, internalWebPropertyId, kind,
-         level, name, parentLink, selfLink, updated, websiteUrl;
+@dynamic accountId, childLink, created, identifier, industryVertical,
+         internalWebPropertyId, kind, level, name, parentLink, selfLink,
+         updated, websiteUrl;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
