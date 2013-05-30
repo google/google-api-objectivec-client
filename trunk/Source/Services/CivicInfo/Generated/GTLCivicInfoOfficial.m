@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLCivicInfo.h
+//  GTLCivicInfoOfficial.m
 //
 
 // ----------------------------------------------------------------------------
@@ -25,24 +25,40 @@
 //   An API for accessing civic information.
 // Documentation:
 //   https://developers.google.com/civic-information
+// Classes:
+//   GTLCivicInfoOfficial (0 custom class methods, 9 custom properties)
 
-#import "GTLCivicInfoAdministrationRegion.h"
-#import "GTLCivicInfoAdministrativeBody.h"
-#import "GTLCivicInfoCandidate.h"
-#import "GTLCivicInfoChannel.h"
-#import "GTLCivicInfoContest.h"
-#import "GTLCivicInfoElection.h"
-#import "GTLCivicInfoElectionOfficial.h"
-#import "GTLCivicInfoElectionsQueryResponse.h"
-#import "GTLCivicInfoElectoralDistrict.h"
-#import "GTLCivicInfoGeographicDivision.h"
-#import "GTLCivicInfoOffice.h"
 #import "GTLCivicInfoOfficial.h"
-#import "GTLCivicInfoPollingLocation.h"
-#import "GTLCivicInfoRepresentativeInfoResponse.h"
-#import "GTLCivicInfoSimpleAddressType.h"
-#import "GTLCivicInfoSource.h"
-#import "GTLCivicInfoVoterInfoResponse.h"
 
-#import "GTLQueryCivicInfo.h"
-#import "GTLServiceCivicInfo.h"
+#import "GTLCivicInfoChannel.h"
+#import "GTLCivicInfoSimpleAddressType.h"
+
+// ----------------------------------------------------------------------------
+//
+//   GTLCivicInfoOfficial
+//
+
+@implementation GTLCivicInfoOfficial
+@dynamic address, channels, emails, identifier, name, party, phones, photoUrl,
+         urls;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"id"
+                                forKey:@"identifier"];
+  return map;
+}
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      [GTLCivicInfoSimpleAddressType class], @"address",
+      [GTLCivicInfoChannel class], @"channels",
+      [NSString class], @"emails",
+      [NSString class], @"phones",
+      [NSString class], @"urls",
+      nil];
+  return map;
+}
+
+@end

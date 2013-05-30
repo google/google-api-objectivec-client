@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,7 +38,11 @@
 #import "GTLCivicInfoElectionOfficial.m"
 #import "GTLCivicInfoElectionsQueryResponse.m"
 #import "GTLCivicInfoElectoralDistrict.m"
+#import "GTLCivicInfoGeographicDivision.m"
+#import "GTLCivicInfoOffice.m"
+#import "GTLCivicInfoOfficial.m"
 #import "GTLCivicInfoPollingLocation.m"
+#import "GTLCivicInfoRepresentativeInfoResponse.m"
 #import "GTLCivicInfoSimpleAddressType.m"
 #import "GTLCivicInfoSource.m"
 #import "GTLCivicInfoVoterInfoResponse.m"

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLCivicInfo.h
+//  GTLCivicInfoRepresentativeInfoResponse.m
 //
 
 // ----------------------------------------------------------------------------
@@ -25,24 +25,36 @@
 //   An API for accessing civic information.
 // Documentation:
 //   https://developers.google.com/civic-information
+// Classes:
+//   GTLCivicInfoRepresentativeInfoResponse (0 custom class methods, 6 custom properties)
 
-#import "GTLCivicInfoAdministrationRegion.h"
-#import "GTLCivicInfoAdministrativeBody.h"
-#import "GTLCivicInfoCandidate.h"
-#import "GTLCivicInfoChannel.h"
-#import "GTLCivicInfoContest.h"
-#import "GTLCivicInfoElection.h"
-#import "GTLCivicInfoElectionOfficial.h"
-#import "GTLCivicInfoElectionsQueryResponse.h"
-#import "GTLCivicInfoElectoralDistrict.h"
+#import "GTLCivicInfoRepresentativeInfoResponse.h"
+
 #import "GTLCivicInfoGeographicDivision.h"
 #import "GTLCivicInfoOffice.h"
 #import "GTLCivicInfoOfficial.h"
-#import "GTLCivicInfoPollingLocation.h"
-#import "GTLCivicInfoRepresentativeInfoResponse.h"
 #import "GTLCivicInfoSimpleAddressType.h"
-#import "GTLCivicInfoSource.h"
-#import "GTLCivicInfoVoterInfoResponse.h"
 
-#import "GTLQueryCivicInfo.h"
-#import "GTLServiceCivicInfo.h"
+// ----------------------------------------------------------------------------
+//
+//   GTLCivicInfoRepresentativeInfoResponse
+//
+
+@implementation GTLCivicInfoRepresentativeInfoResponse
+@dynamic divisions, kind, normalizedInput, offices, officials, status;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      [GTLCivicInfoGeographicDivision class], @"divisions",
+      [GTLCivicInfoOffice class], @"offices",
+      [GTLCivicInfoOfficial class], @"officials",
+      nil];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"civicinfo#representativeInfoResponse"];
+}
+
+@end
