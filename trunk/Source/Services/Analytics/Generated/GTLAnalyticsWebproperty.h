@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsWebproperty (0 custom class methods, 13 custom properties)
+//   GTLAnalyticsWebproperty (0 custom class methods, 14 custom properties)
 //   GTLAnalyticsWebpropertyChildLink (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsWebpropertyParentLink (0 custom class methods, 2 custom properties)
 
@@ -80,6 +80,9 @@
 // Parent link for this web property. Points to the account to which this web
 // property belongs.
 @property (retain) GTLAnalyticsWebpropertyParentLink *parentLink;
+
+// Profile count for this web property.
+@property (retain) NSNumber *profileCount;  // intValue
 
 // Link for this web property.
 @property (copy) NSString *selfLink;
