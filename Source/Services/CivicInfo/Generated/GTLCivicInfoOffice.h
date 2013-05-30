@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLCivicInfo.h
+//  GTLCivicInfoOffice.h
 //
 
 // ----------------------------------------------------------------------------
@@ -25,24 +25,35 @@
 //   An API for accessing civic information.
 // Documentation:
 //   https://developers.google.com/civic-information
+// Classes:
+//   GTLCivicInfoOffice (0 custom class methods, 3 custom properties)
 
-#import "GTLCivicInfoAdministrationRegion.h"
-#import "GTLCivicInfoAdministrativeBody.h"
-#import "GTLCivicInfoCandidate.h"
-#import "GTLCivicInfoChannel.h"
-#import "GTLCivicInfoContest.h"
-#import "GTLCivicInfoElection.h"
-#import "GTLCivicInfoElectionOfficial.h"
-#import "GTLCivicInfoElectionsQueryResponse.h"
-#import "GTLCivicInfoElectoralDistrict.h"
-#import "GTLCivicInfoGeographicDivision.h"
-#import "GTLCivicInfoOffice.h"
-#import "GTLCivicInfoOfficial.h"
-#import "GTLCivicInfoPollingLocation.h"
-#import "GTLCivicInfoRepresentativeInfoResponse.h"
-#import "GTLCivicInfoSimpleAddressType.h"
-#import "GTLCivicInfoSource.h"
-#import "GTLCivicInfoVoterInfoResponse.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLQueryCivicInfo.h"
-#import "GTLServiceCivicInfo.h"
+@class GTLCivicInfoOfficial;
+@class GTLCivicInfoSource;
+
+// ----------------------------------------------------------------------------
+//
+//   GTLCivicInfoOffice
+//
+
+// Information about an Office held by one or more Officials.
+
+@interface GTLCivicInfoOffice : GTLObject
+
+// The human-readable name of the office.
+@property (copy) NSString *name;
+
+// A list of people who presently hold the office.
+@property (retain) NSArray *officials;  // of GTLCivicInfoOfficial
+
+// A list of sources for this contest. If multiple sources are listed, the data
+// has been aggregated from those sources.
+@property (retain) NSArray *sources;  // of GTLCivicInfoSource
+
+@end

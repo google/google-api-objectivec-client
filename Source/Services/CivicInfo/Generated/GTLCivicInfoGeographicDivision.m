@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLCivicInfo.h
+//  GTLCivicInfoGeographicDivision.m
 //
 
 // ----------------------------------------------------------------------------
@@ -25,24 +25,26 @@
 //   An API for accessing civic information.
 // Documentation:
 //   https://developers.google.com/civic-information
+// Classes:
+//   GTLCivicInfoGeographicDivision (0 custom class methods, 5 custom properties)
 
-#import "GTLCivicInfoAdministrationRegion.h"
-#import "GTLCivicInfoAdministrativeBody.h"
-#import "GTLCivicInfoCandidate.h"
-#import "GTLCivicInfoChannel.h"
-#import "GTLCivicInfoContest.h"
-#import "GTLCivicInfoElection.h"
-#import "GTLCivicInfoElectionOfficial.h"
-#import "GTLCivicInfoElectionsQueryResponse.h"
-#import "GTLCivicInfoElectoralDistrict.h"
 #import "GTLCivicInfoGeographicDivision.h"
-#import "GTLCivicInfoOffice.h"
-#import "GTLCivicInfoOfficial.h"
-#import "GTLCivicInfoPollingLocation.h"
-#import "GTLCivicInfoRepresentativeInfoResponse.h"
-#import "GTLCivicInfoSimpleAddressType.h"
-#import "GTLCivicInfoSource.h"
-#import "GTLCivicInfoVoterInfoResponse.h"
 
-#import "GTLQueryCivicInfo.h"
-#import "GTLServiceCivicInfo.h"
+#import "GTLCivicInfoOffice.h"
+
+// ----------------------------------------------------------------------------
+//
+//   GTLCivicInfoGeographicDivision
+//
+
+@implementation GTLCivicInfoGeographicDivision
+@dynamic confidence, name, ocdId, offices, type;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLCivicInfoOffice class]
+                                forKey:@"offices"];
+  return map;
+}
+
+@end

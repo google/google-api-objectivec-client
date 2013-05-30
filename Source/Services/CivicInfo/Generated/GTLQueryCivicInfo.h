@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLQueryCivicInfo (2 custom class methods, 4 custom properties)
+//   GTLQueryCivicInfo (3 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -48,6 +48,7 @@
 //
 @property (copy) NSString *address;
 @property (assign) long long electionId;
+@property (assign) BOOL includeOffices;
 @property (assign) BOOL officialOnly;
 
 #pragma mark -
@@ -72,5 +73,20 @@
 //     returned. (Default false)
 // Fetches a GTLCivicInfoVoterInfoResponse.
 + (id)queryForElectionsVoterInfoQueryWithElectionId:(long long)electionId;
+
+#pragma mark -
+#pragma mark "representatives" methods
+// These create a GTLQueryCivicInfo object.
+
+// Method: civicinfo.representatives.representativeInfoQuery
+// Looks up political geography and (optionally) representative information
+// based on an address.
+//  Optional:
+//   address: NSString
+//   includeOffices: Whether to return information about offices and officials.
+//     If false, only the top-level district information will be returned.
+//     (Default true)
+// Fetches a GTLCivicInfoRepresentativeInfoResponse.
++ (id)queryForRepresentativesRepresentativeInfoQuery;
 
 @end
