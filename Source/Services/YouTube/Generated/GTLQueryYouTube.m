@@ -26,13 +26,14 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (36 custom class methods, 45 custom properties)
+//   GTLQueryYouTube (37 custom class methods, 45 custom properties)
 
 #import "GTLQueryYouTube.h"
 
 #import "GTLYouTubeActivity.h"
 #import "GTLYouTubeActivityListResponse.h"
 #import "GTLYouTubeChannel.h"
+#import "GTLYouTubeChannelBannerInsertResponse.h"
 #import "GTLYouTubeChannelListResponse.h"
 #import "GTLYouTubeGuideCategoryListResponse.h"
 #import "GTLYouTubeLiveBroadcast.h"
@@ -94,6 +95,24 @@
   GTLQueryYouTube *query = [self queryWithMethodName:methodName];
   query.part = part;
   query.expectedObjectClass = [GTLYouTubeActivityListResponse class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "channelBanners" methods
+// These create a GTLQueryYouTube object.
+
++ (id)queryForChannelBannersInsertWithObject:(GTLYouTubeChannelBannerInsertResponse *)object
+                            uploadParameters:(GTLUploadParameters *)uploadParametersOrNil {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"youtube.channelBanners.insert";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.uploadParameters = uploadParametersOrNil;
+  query.expectedObjectClass = [GTLYouTubeChannelBannerInsertResponse class];
   return query;
 }
 

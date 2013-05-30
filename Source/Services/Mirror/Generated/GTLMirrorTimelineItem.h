@@ -164,7 +164,8 @@
 // The speakable version of the content of this item. Along with the READ_ALOUD
 // menu item, use this field to provide text that would be clearer when read
 // aloud, or to provide extended information to what is displayed visually on
-// Glass.
+// Glass. If you specified html content, use this property instead of text to
+// specify the text to read aloud.
 @property (copy) NSString *speakableText;
 
 // Text content of this item.
