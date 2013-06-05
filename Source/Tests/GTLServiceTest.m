@@ -53,14 +53,15 @@
 @property (retain) NSString *pageToken;
 @property (retain) NSString *task;
 @property (retain) NSString *tasklist;
+@property (retain) NSString *fields;
 @property (assign) BOOL showCompleted;
 @property (assign) BOOL showDeleted;
 @property (assign) BOOL showHidden;
 @end
 
 @implementation GTLQueryTasksTest
-@dynamic maxResults, pageToken, task, tasklist, showCompleted,
-showDeleted, showHidden;
+@dynamic maxResults, pageToken, task, tasklist, fields, showCompleted,
+         showDeleted, showHidden;
 
 + (id)queryForTasksListWithTasklist:(NSString *)tasklist {
   NSString *methodName = @"tasks.tasks.list";
@@ -84,6 +85,16 @@ showDeleted, showHidden;
   query.expectedObjectClass = [GTLTasksTask class];
   return query;
 }
+
++ (id)queryForTasksDeleteWithTasklist:(NSString *)tasklist
+                                 task:(NSString *)task {
+  NSString *methodName = @"tasks.tasks.delete";
+  GTLQueryTasksTest *query = [self queryWithMethodName:methodName];
+  query.tasklist = tasklist;
+  query.task = task;
+  return query;
+}
+
 
 + (id)queryForTasksGetWithTasklist:(NSString *)tasklist
                               task:(NSString *)task {
@@ -139,6 +150,8 @@ static NSString *const kRESTErrorFileName = @"Task1.rest.txt?status=499";
 
 static NSString *const kRPCValidName = @"Task1.rpc";
 static NSString *const kRPCInvalidName = @"TaskError1.rpc";
+static NSString *const kRPCDeleteName = @"TaskDelete1.rpc";
+static NSString *const kRPCEmptyName = @"TaskEmpty1.rpc";
 
 // Token paging
 static NSString *const kRPCPageAName = @"TaskPage1a.rpc"; // page token request
@@ -401,6 +414,41 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
                completionHandler:completionBlock];
   [self service:service waitForTicket:ticket];
   STAssertTrue(ticket.hasCalledCallback, @"callback skipped");
+
+  //
+  // test: delete an item, expect an empty response as nil
+  //
+  completionBlock = ^(GTLServiceTicket *ticket, id object, NSError *error) {
+    STAssertNil(object, nil);
+  };
+
+  service.rpcURL = [testServer_ localURLForFile:kRPCDeleteName];
+  query = [GTLQueryTasksTest queryForTasksDeleteWithTasklist:@"MTQwNzM4MjM0NzE2NDExMDgxOTM6MDow"
+                                                        task:@"MTQwNzM4MjM0NzE2NDExMDgxOTM6MDoz"];
+  query.requestID = @"gtl_5";
+  ticket = [service executeQuery:query
+               completionHandler:completionBlock];
+  [self service:service waitForTicket:ticket];
+  STAssertTrue(ticket.hasCalledCallback, @"callback skipped");
+
+  //
+  // test: fetch with fields that should lead to an empty item, expect an empty
+  // response as a bare object instance
+  //
+  completionBlock = ^(GTLServiceTicket *ticket, id object, NSError *error) {
+    STAssertTrue([object isKindOfClass:[GTLTasksTasks class]],
+                 @"%@", [object class]);
+    STAssertNil([object JSON], @"%@", [object JSON]);
+  };
+
+  service.rpcURL = [testServer_ localURLForFile:kRPCEmptyName];
+  query = [GTLQueryTasksTest queryForTasksListWithTasklist:@"MTQwNzM4MjM0NzE2NDExMDgxOTM6MDow"];
+  query.requestID = @"gtl_7";
+  query.fields = @"";
+  ticket = [service executeQuery:query
+               completionHandler:completionBlock];
+  [self service:service waitForTicket:ticket];
+  STAssertTrue(ticket.hasCalledCallback, @"callback skipped");
 }
 
 - (void)testServiceRPCSurrogates {
@@ -549,9 +597,11 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   completionBlock = ^(GTLServiceTicket *ticket, id object, NSError *error) {
     GTLBatchResult *batchResult = object;
     
-    // we expect the first batch item to succeed, the second to fail
+    // we expect the first batch item to succeed, the second to fail,
+    // the third to succeed but return an empty object, which shows up
+    // as an NSNull
     NSDictionary *successes = batchResult.successes;
-    STAssertEquals((NSUInteger) 1, [successes count], @"success count");
+    STAssertEquals((NSUInteger) 2, [successes count], @"success count");
     
     NSDictionary *failures = batchResult.failures;
     STAssertEquals((NSUInteger) 1, [failures count], @"failure count");
@@ -614,9 +664,21 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   };
   [queriesToCallBack addObject:query2];
 
+  GTLQueryTasksTest *query3 = [GTLQueryTasksTest queryForTasksDeleteWithTasklist:@"MDg0NTg2OTA1ODg4OTI3MzgyMzQ6NDow"
+                                                                            task:@"MDg0NTg2OTA1ODg4OTI3MzgyMzQ6NDoz"];
+  query3.requestID = @"gtl_20";
+  query3.completionBlock = ^(GTLServiceTicket *ticket, id object, NSError *error) {
+    STAssertEquals(object, [NSNull null], nil);
+    // Remove this query from the list
+    STAssertTrue([queriesToCallBack containsObject:query3], @"callback list");
+    [queriesToCallBack removeObject:query3];
+  };
+  [queriesToCallBack addObject:query3];
+
   GTLBatchQuery *batchQuery = [GTLBatchQuery batchQuery];
   [batchQuery addQuery:query1];
   [batchQuery addQuery:query2];
+  [batchQuery addQuery:query3];
 
   GTLServiceTicket *ticket = [service executeQuery:batchQuery
                                  completionHandler:completionBlock];

@@ -133,6 +133,10 @@
 		4F9F7E3911F5103B0033A2C1 /* GTLDateTimeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F7E3811F5103B0033A2C1 /* GTLDateTimeTest.m */; };
 		4F9F7E3C11F510430033A2C1 /* GTLFrameworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F7E3A11F510430033A2C1 /* GTLFrameworkTest.m */; };
 		4F9F7E3D11F510430033A2C1 /* GTLUtilitiesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F7E3B11F510430033A2C1 /* GTLUtilitiesTest.m */; };
+		4FA4F77B1755682800CB7616 /* TaskDelete1.request.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4FA4F7771755682800CB7616 /* TaskDelete1.request.txt */; };
+		4FA4F77C1755682800CB7616 /* TaskDelete1.response.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4FA4F7781755682800CB7616 /* TaskDelete1.response.txt */; };
+		4FA4F77D1755682800CB7616 /* TaskEmpty1.request.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4FA4F7791755682800CB7616 /* TaskEmpty1.request.txt */; };
+		4FA4F77E1755682800CB7616 /* TaskEmpty1.response.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4FA4F77A1755682800CB7616 /* TaskEmpty1.response.txt */; };
 		4FCC7A1D11EFD9EA0097924C /* GTLServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCC7A1C11EFD9EA0097924C /* GTLServiceTest.m */; };
 		4FDE223913848173005AEFAA /* GTLFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FDE223313848173005AEFAA /* GTLFramework.m */; };
 		4FDE223A13848173005AEFAA /* GTLJSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FDE223513848173005AEFAA /* GTLJSONParser.m */; };
@@ -323,6 +327,10 @@
 		4F9F7E3811F5103B0033A2C1 /* GTLDateTimeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLDateTimeTest.m; path = Tests/GTLDateTimeTest.m; sourceTree = "<group>"; };
 		4F9F7E3A11F510430033A2C1 /* GTLFrameworkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLFrameworkTest.m; path = Tests/GTLFrameworkTest.m; sourceTree = "<group>"; };
 		4F9F7E3B11F510430033A2C1 /* GTLUtilitiesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLUtilitiesTest.m; path = Tests/GTLUtilitiesTest.m; sourceTree = "<group>"; };
+		4FA4F7771755682800CB7616 /* TaskDelete1.request.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TaskDelete1.request.txt; path = Tests/Data/TaskDelete1.request.txt; sourceTree = "<group>"; };
+		4FA4F7781755682800CB7616 /* TaskDelete1.response.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TaskDelete1.response.txt; path = Tests/Data/TaskDelete1.response.txt; sourceTree = "<group>"; };
+		4FA4F7791755682800CB7616 /* TaskEmpty1.request.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TaskEmpty1.request.txt; path = Tests/Data/TaskEmpty1.request.txt; sourceTree = "<group>"; };
+		4FA4F77A1755682800CB7616 /* TaskEmpty1.response.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TaskEmpty1.response.txt; path = Tests/Data/TaskEmpty1.response.txt; sourceTree = "<group>"; };
 		4FCC7A1C11EFD9EA0097924C /* GTLServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLServiceTest.m; path = Tests/GTLServiceTest.m; sourceTree = "<group>"; };
 		4FDE223213848173005AEFAA /* GTLFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTLFramework.h; path = Utilities/GTLFramework.h; sourceTree = "<group>"; };
 		4FDE223313848173005AEFAA /* GTLFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLFramework.m; path = Utilities/GTLFramework.m; sourceTree = "<group>"; };
@@ -616,6 +624,10 @@
 				4F164607137098C80096E878 /* Task1.response.txt */,
 				4F4DE9071371DD6F00F5C554 /* TaskError1.request.txt */,
 				4F4DE9081371DD6F00F5C554 /* TaskError1.response.txt */,
+				4FA4F7771755682800CB7616 /* TaskDelete1.request.txt */,
+				4FA4F7781755682800CB7616 /* TaskDelete1.response.txt */,
+				4FA4F7791755682800CB7616 /* TaskEmpty1.request.txt */,
+				4FA4F77A1755682800CB7616 /* TaskEmpty1.response.txt */,
 				4F4DEB6B1372170300F5C554 /* TaskPage1a.request.txt */,
 				4F4DEB6C1372170300F5C554 /* TaskPage1a.response.txt */,
 				4F4DEB6D1372170300F5C554 /* TaskPage1b.request.txt */,
@@ -833,6 +845,10 @@
 				4F31A3D8142AA6BA00A58EAD /* TaskBatchPage1a.response.txt in Resources */,
 				4F31A3D9142AA6BA00A58EAD /* TaskBatchPage1b.request.txt in Resources */,
 				4F31A3DA142AA6BA00A58EAD /* TaskBatchPage1b.response.txt in Resources */,
+				4FA4F77B1755682800CB7616 /* TaskDelete1.request.txt in Resources */,
+				4FA4F77C1755682800CB7616 /* TaskDelete1.response.txt in Resources */,
+				4FA4F77D1755682800CB7616 /* TaskEmpty1.request.txt in Resources */,
+				4FA4F77E1755682800CB7616 /* TaskEmpty1.response.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
