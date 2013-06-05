@@ -57,9 +57,9 @@
 }
 #endif // DEBUG && !GTL_REQUIRES_NSJSONSERIALIZATION
 
-+ (NSString*)stringWithObject:(id)obj
-                humanReadable:(BOOL)humanReadable
-                        error:(NSError**)error {
++ (NSString *)stringWithObject:(id)obj
+                 humanReadable:(BOOL)humanReadable
+                         error:(NSError **)error {
   NSData *data = [self dataWithObject:obj
                         humanReadable:humanReadable
                                 error:error];
@@ -73,7 +73,9 @@
 
 + (NSData *)dataWithObject:(id)obj
              humanReadable:(BOOL)humanReadable
-                     error:(NSError**)error {
+                     error:(NSError **)error {
+  if (obj == nil) return nil;
+
   const NSUInteger kOpts = humanReadable ? (1UL << 0) : 0; // NSJSONWritingPrettyPrinted
 
 #if GTL_REQUIRES_NSJSONSERIALIZATION
