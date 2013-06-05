@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoCategoryListResponse (0 custom class methods, 4 custom properties)
+//   GTLYouTubeVideoCategoryListResponse (0 custom class methods, 5 custom properties)
 
 #import "GTLYouTubeVideoCategoryListResponse.h"
 
@@ -38,7 +38,7 @@
 //
 
 @implementation GTLYouTubeVideoCategoryListResponse
-@dynamic ETag, eventId, items, kind;
+@dynamic ETag, eventId, items, kind, visitorId;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

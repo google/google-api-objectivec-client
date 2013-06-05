@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlaylistSnippet (0 custom class methods, 6 custom properties)
+//   GTLYouTubePlaylistSnippet (0 custom class methods, 7 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -59,6 +59,8 @@
 // The date and time that the playlist was created. The value is specified in
 // ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
 @property (retain) GTLDateTime *publishedAt;
+
+@property (retain) NSArray *tags;  // of NSString
 
 // A map of thumbnail images associated with the playlist. For each object in
 // the map, the key is the name of the thumbnail image, and the value is an

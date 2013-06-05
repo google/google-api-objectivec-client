@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveBroadcastList (0 custom class methods, 7 custom properties)
+//   GTLYouTubeLiveBroadcastList (0 custom class methods, 8 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -72,5 +72,8 @@
 // The token that can be used as the value of the pageToken parameter to
 // retrieve the previous page in the result set.
 @property (copy) NSString *prevPageToken;
+
+// The visitorId identifies the visitor.
+@property (copy) NSString *visitorId;
 
 @end

@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveBroadcastStatus (0 custom class methods, 2 custom properties)
+//   GTLYouTubeLiveBroadcastStatus (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -53,5 +53,8 @@
 // resource or by setting the privacyStatus field of the corresponding video
 // resource.
 @property (copy) NSString *privacyStatus;
+
+// The broadcast's recording status.
+@property (copy) NSString *recordingStatus;
 
 @end

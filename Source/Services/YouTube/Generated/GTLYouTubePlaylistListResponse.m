@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlaylistListResponse (0 custom class methods, 7 custom properties)
+//   GTLYouTubePlaylistListResponse (0 custom class methods, 8 custom properties)
 
 #import "GTLYouTubePlaylistListResponse.h"
 
@@ -39,7 +39,8 @@
 //
 
 @implementation GTLYouTubePlaylistListResponse
-@dynamic ETag, eventId, items, kind, nextPageToken, pageInfo, prevPageToken;
+@dynamic ETag, eventId, items, kind, nextPageToken, pageInfo, prevPageToken,
+         visitorId;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

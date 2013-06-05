@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeContentRating (0 custom class methods, 15 custom properties)
+//   GTLYouTubeContentRating (0 custom class methods, 16 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -39,7 +39,8 @@
 //   GTLYouTubeContentRating
 //
 
-// Movie ratings schemes.
+// Ratings schemes. The country-specific ratings are mostly for movies and
+// shows.
 
 @interface GTLYouTubeContentRating : GTLObject
 
@@ -90,5 +91,8 @@
 
 // TV Parental Guidelines rating of the content.
 @property (copy) NSString *tvpgRating;
+
+// Internal YouTube rating.
+@property (copy) NSString *ytRating;
 
 @end
