@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeInvideoPromotion (0 custom class methods, 4 custom properties)
+//   GTLYouTubeInvideoPromotion (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -50,9 +50,6 @@
 // supports -itemAtIndex: to retrieve individual objects from "items".
 
 @interface GTLYouTubeInvideoPromotion : GTLCollectionObject
-
-// The YouTube ID of the channel to which this campaign belongs.
-@property (copy) NSString *channelId;
 
 // List of promoted items in decreasing priority.
 @property (retain) NSArray *items;  // of GTLYouTubePromotedItemId

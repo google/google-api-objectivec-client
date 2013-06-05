@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeGuideCategoryListResponse (0 custom class methods, 4 custom properties)
+//   GTLYouTubeGuideCategoryListResponse (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -63,5 +63,8 @@
 // The type of the API response. For this operation, the value will be
 // youtube#guideCategoryListResponse.
 @property (copy) NSString *kind;
+
+// The visitorId identifies the visitor.
+@property (copy) NSString *visitorId;
 
 @end

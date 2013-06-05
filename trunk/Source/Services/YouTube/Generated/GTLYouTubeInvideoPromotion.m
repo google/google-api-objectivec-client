@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeInvideoPromotion (0 custom class methods, 4 custom properties)
+//   GTLYouTubeInvideoPromotion (0 custom class methods, 3 custom properties)
 
 #import "GTLYouTubeInvideoPromotion.h"
 
@@ -40,7 +40,7 @@
 //
 
 @implementation GTLYouTubeInvideoPromotion
-@dynamic channelId, items, position, timing;
+@dynamic items, position, timing;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =

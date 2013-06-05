@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeThumbnailListResponse (0 custom class methods, 3 custom properties)
+//   GTLYouTubeThumbnailListResponse (0 custom class methods, 4 custom properties)
 
 #import "GTLYouTubeThumbnailListResponse.h"
 
@@ -38,7 +38,7 @@
 //
 
 @implementation GTLYouTubeThumbnailListResponse
-@dynamic ETag, items, kind;
+@dynamic ETag, items, kind, visitorId;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

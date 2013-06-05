@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlaylistSnippet (0 custom class methods, 6 custom properties)
+//   GTLYouTubePlaylistSnippet (0 custom class methods, 7 custom properties)
 
 #import "GTLYouTubePlaylistSnippet.h"
 
@@ -38,13 +38,20 @@
 //
 
 @implementation GTLYouTubePlaylistSnippet
-@dynamic channelId, channelTitle, descriptionProperty, publishedAt, thumbnails,
-         title;
+@dynamic channelId, channelTitle, descriptionProperty, publishedAt, tags,
+         thumbnails, title;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObject:@"description"
                                 forKey:@"descriptionProperty"];
+  return map;
+}
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[NSString class]
+                                forKey:@"tags"];
   return map;
 }
 

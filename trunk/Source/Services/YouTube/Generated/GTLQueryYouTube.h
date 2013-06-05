@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (37 custom class methods, 45 custom properties)
+//   GTLQueryYouTube (37 custom class methods, 46 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -65,6 +65,7 @@
 @property (copy) NSString *forChannelId;
 @property (assign) BOOL forContentOwner;
 @property (assign) BOOL forMine;
+@property (copy) NSString *forUsername;
 @property (copy) NSString *hl;
 @property (copy) NSString *home;
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
@@ -160,6 +161,9 @@
 //     not a time, then any activities that occurred that day will be excluded
 //     from the result set. The value is specified in ISO 8601
 //     (YYYY-MM-DDThh:mm:ss.sZ) format.
+//   regionCode: The regionCode parameter instructs the API to return results
+//     for the specified country. The parameter value is an ISO 3166-1 alpha-2
+//     country code.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 //   kGTLAuthScopeYouTubeReadonly
@@ -202,6 +206,8 @@
 //  Optional:
 //   categoryId: The categoryId parameter specifies a YouTube guide category,
 //     thereby requesting YouTube channels associated with that category.
+//   forUsername: The forUsername parameter specifies a YouTube username,
+//     thereby requesting the channel associated with that username.
 //   identifier: The id parameter specifies a comma-separated list of the
 //     YouTube channel ID(s) for the resource(s) that are being retrieved. In a
 //     channel resource, the id property specifies the channel's YouTube channel
@@ -1054,7 +1060,7 @@
 //   identifier: The id parameter specifies a comma-separated list of the
 //     YouTube video ID(s) for the resource(s) that are being retrieved. In a
 //     video resource, the id property specifies the video's ID.
-//   maxResults: USE_DESCRIPTION --- channels:list:maxResults (1..50)
+//   maxResults: USE_DESCRIPTION --- channels:list:maxResults (1..50, default 5)
 //   myRating: Set this parameter's value to like or dislike to instruct the API
 //     to only return videos liked or disliked by the authenticated user.
 //      kGTLYouTubeMyRatingDislike: Returns only videos disliked by the

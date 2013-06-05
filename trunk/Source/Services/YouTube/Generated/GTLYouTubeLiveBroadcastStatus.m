@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveBroadcastStatus (0 custom class methods, 2 custom properties)
+//   GTLYouTubeLiveBroadcastStatus (0 custom class methods, 3 custom properties)
 
 #import "GTLYouTubeLiveBroadcastStatus.h"
 
@@ -36,5 +36,5 @@
 //
 
 @implementation GTLYouTubeLiveBroadcastStatus
-@dynamic lifeCycleStatus, privacyStatus;
+@dynamic lifeCycleStatus, privacyStatus, recordingStatus;
 @end
