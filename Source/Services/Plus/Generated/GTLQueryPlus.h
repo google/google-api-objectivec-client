@@ -288,7 +288,7 @@
 //     language codes for available values. (Default en-US)
 //   maxResults: The maximum number of people to include in the response, which
 //     is used for paging. For any response, the actual number returned might be
-//     less than the specified maxResults. (1..20, default 10)
+//     less than the specified maxResults. (1..50, default 25)
 //   pageToken: The continuation token, which is used to page through large
 //     result sets. To get the next page of results, set this parameter to the
 //     value of "nextPageToken" from the previous response. This token can be of
