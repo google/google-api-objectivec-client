@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAdSenseAdStyle.m
+//  GTLAdSenseReportingMetadataEntry.m
 //
 
 // ----------------------------------------------------------------------------
@@ -27,42 +27,40 @@
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLAdSenseAdStyle (0 custom class methods, 4 custom properties)
-//   GTLAdSenseAdStyleColors (0 custom class methods, 5 custom properties)
-//   GTLAdSenseAdStyleFont (0 custom class methods, 2 custom properties)
+//   GTLAdSenseReportingMetadataEntry (0 custom class methods, 7 custom properties)
 
-#import "GTLAdSenseAdStyle.h"
+#import "GTLAdSenseReportingMetadataEntry.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAdSenseAdStyle
+//   GTLAdSenseReportingMetadataEntry
 //
 
-@implementation GTLAdSenseAdStyle
-@dynamic colors, corners, font, kind;
+@implementation GTLAdSenseReportingMetadataEntry
+@dynamic compatibleDimensions, compatibleMetrics, identifier, kind,
+         requiredDimensions, requiredMetrics, supportedProducts;
 
-+ (void)load {
-  [self registerObjectClassForKind:@"adsense#adStyle"];
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"id"
+                                forKey:@"identifier"];
+  return map;
 }
 
-@end
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      [NSString class], @"compatibleDimensions",
+      [NSString class], @"compatibleMetrics",
+      [NSString class], @"requiredDimensions",
+      [NSString class], @"requiredMetrics",
+      [NSString class], @"supportedProducts",
+      nil];
+  return map;
+}
 
++ (void)load {
+  [self registerObjectClassForKind:@"adsense#reportingMetadataEntry"];
+}
 
-// ----------------------------------------------------------------------------
-//
-//   GTLAdSenseAdStyleColors
-//
-
-@implementation GTLAdSenseAdStyleColors
-@dynamic background, border, text, title, url;
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLAdSenseAdStyleFont
-//
-
-@implementation GTLAdSenseAdStyleFont
-@dynamic family, size;
 @end
