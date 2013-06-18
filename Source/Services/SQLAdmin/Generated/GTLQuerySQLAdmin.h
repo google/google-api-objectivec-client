@@ -132,6 +132,8 @@
 //   instance: Database instance ID. This does not include the project ID.
 //  Optional:
 //   exportContext: Contains details about the export operation.
+//  Authorization scope(s):
+//   kGTLAuthScopeSQLAdminCloudPlatform
 // Fetches a GTLSQLAdminInstancesExportResponse.
 + (id)queryForInstancesExportWithProject:(NSString *)project
                                 instance:(NSString *)instance;
@@ -157,6 +159,8 @@
 //   instance: Database instance ID. This does not include the project ID.
 //  Optional:
 //   importContext: Contains details about the import operation.
+//  Authorization scope(s):
+//   kGTLAuthScopeSQLAdminCloudPlatform
 // Fetches a GTLSQLAdminInstancesImportResponse.
 + (id)queryForInstancesImportWithProject:(NSString *)project
                                 instance:(NSString *)instance;

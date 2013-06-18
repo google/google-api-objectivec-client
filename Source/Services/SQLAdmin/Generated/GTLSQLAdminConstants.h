@@ -35,5 +35,8 @@
 #endif
 
 // Authorization scope
+// MESSAGE UNDER CONSTRUCTION View and manage your data across Google Cloud
+// Platform services
+GTL_EXTERN NSString * const kGTLAuthScopeSQLAdminCloudPlatform;  // "https://www.googleapis.com/auth/cloud-platform"
 // Manage your Google SQL Service instances
 GTL_EXTERN NSString * const kGTLAuthScopeSQLAdminSqlserviceAdmin;  // "https://www.googleapis.com/auth/sqlservice.admin"

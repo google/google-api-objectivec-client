@@ -29,4 +29,5 @@
 #import "GTLSQLAdminConstants.h"
 
 // Authorization scope
+NSString * const kGTLAuthScopeSQLAdminCloudPlatform   = @"https://www.googleapis.com/auth/cloud-platform";
 NSString * const kGTLAuthScopeSQLAdminSqlserviceAdmin = @"https://www.googleapis.com/auth/sqlservice.admin";
