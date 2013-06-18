@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAdSenseAdStyle.m
+//  GTLAdSenseAlert.h
 //
 
 // ----------------------------------------------------------------------------
@@ -27,42 +27,38 @@
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLAdSenseAdStyle (0 custom class methods, 4 custom properties)
-//   GTLAdSenseAdStyleColors (0 custom class methods, 5 custom properties)
-//   GTLAdSenseAdStyleFont (0 custom class methods, 2 custom properties)
+//   GTLAdSenseAlert (0 custom class methods, 5 custom properties)
 
-#import "GTLAdSenseAdStyle.h"
-
-// ----------------------------------------------------------------------------
-//
-//   GTLAdSenseAdStyle
-//
-
-@implementation GTLAdSenseAdStyle
-@dynamic colors, corners, font, kind;
-
-+ (void)load {
-  [self registerObjectClassForKind:@"adsense#adStyle"];
-}
-
-@end
-
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAdSenseAdStyleColors
+//   GTLAdSenseAlert
 //
 
-@implementation GTLAdSenseAdStyleColors
-@dynamic background, border, text, title, url;
-@end
+@interface GTLAdSenseAlert : GTLObject
 
+// Unique identifier of this alert. This should be considered an opaque
+// identifier; it is not safe to rely on it being in any particular format.
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+@property (copy) NSString *identifier;
 
-// ----------------------------------------------------------------------------
-//
-//   GTLAdSenseAdStyleFont
-//
+// Kind of resource this is, in this case adsense#alert.
+@property (copy) NSString *kind;
 
-@implementation GTLAdSenseAdStyleFont
-@dynamic family, size;
+// The localized alert message.
+@property (copy) NSString *message;
+
+// Severity of this alert. Possible values: INFO, WARNING, SEVERE.
+@property (copy) NSString *severity;
+
+// Type of this alert. Possible values: SELF_HOLD, MIGRATED_TO_BILLING3,
+// ADDRESS_PIN_VERIFICATION, PHONE_PIN_VERIFICATION, CORPORATE_ENTITY,
+// GRAYLISTED_PUBLISHER, API_HOLD.
+@property (copy) NSString *type;
+
 @end
