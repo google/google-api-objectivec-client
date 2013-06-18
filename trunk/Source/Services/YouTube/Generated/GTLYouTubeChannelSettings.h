@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelSettings (0 custom class methods, 11 custom properties)
+//   GTLYouTubeChannelSettings (0 custom class methods, 12 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -62,6 +62,9 @@
 // Whether user-submitted comments left on the channel page need to be approved
 // by the channel owner to be publicly visible.
 @property (retain) NSNumber *moderateComments;  // boolValue
+
+// A prominent color that can be rendered on this channel page.
+@property (copy) NSString *profileColor;
 
 // Whether the tab to browse the videos should be displayed.
 @property (retain) NSNumber *showBrowseView;  // boolValue

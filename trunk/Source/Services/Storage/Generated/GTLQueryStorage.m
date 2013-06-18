@@ -45,21 +45,21 @@
 
 @implementation GTLQueryStorage
 
-@dynamic address, bucket, channel, delimiter, destination, destinationBucket,
-         destinationObject, entity, expiration, fields, generation, identifier,
-         ifGenerationMatch, ifGenerationNotMatch, ifMetagenerationMatch,
-         ifMetagenerationNotMatch, ifSourceGenerationMatch,
-         ifSourceGenerationNotMatch, ifSourceMetagenerationMatch,
-         ifSourceMetagenerationNotMatch, kind, maxResults, name, object,
-         pageToken, params, prefix, project, projection, resourceId,
-         resourceUri, sourceBucket, sourceGeneration, sourceObject,
-         sourceObjects, targetResource, token, type, versions;
+@dynamic address, bucket, channel, delimiter, destination, destinationResource,
+         destinationBucket, destinationObject, entity, expiration, fields,
+         generation, identifier, ifGenerationMatch, ifGenerationNotMatch,
+         ifMetagenerationMatch, ifMetagenerationNotMatch,
+         ifSourceGenerationMatch, ifSourceGenerationNotMatch,
+         ifSourceMetagenerationMatch, ifSourceMetagenerationNotMatch, kind,
+         maxResults, name, object, pageToken, params, prefix, project,
+         projection, resourceId, resourceUri, sourceBucket, sourceGeneration,
+         sourceObject, sourceObjects, token, type, versions;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
+      @"destination_resource", @"destinationResource",
       @"id", @"identifier",
-      @"target_resource", @"targetResource",
       nil];
   return map;
 }

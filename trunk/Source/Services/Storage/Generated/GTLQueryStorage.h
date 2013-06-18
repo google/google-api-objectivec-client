@@ -62,6 +62,7 @@
 @property (retain) GTLStorageChannel *channel;
 @property (copy) NSString *delimiter;
 @property (retain) GTLStorageObject *destination;
+@property (retain) GTLStorageObject *destinationResource;
 @property (copy) NSString *destinationBucket;
 @property (copy) NSString *destinationObject;
 @property (copy) NSString *entity;
@@ -92,7 +93,6 @@
 @property (assign) unsigned long long sourceGeneration;
 @property (copy) NSString *sourceObject;
 @property (retain) NSArray *sourceObjects;  // of GTLStorageObjectsComposeSourceObjectsItem
-@property (retain) GTLStorageObject *targetResource;
 @property (copy) NSString *token;
 @property (copy) NSString *type;
 @property (assign) BOOL versions;
@@ -525,7 +525,7 @@
 //     metadata is not otherwise provided. Overrides the object metadata's name
 //     value, if any.
 //  Optional:
-//   targetResource: GTLStorageObject
+//   destinationResource: GTLStorageObject
 //   ifGenerationMatch: Makes the operation conditional on whether the
 //     destination object's current generation matches the given value.
 //   ifGenerationNotMatch: Makes the operation conditional on whether the

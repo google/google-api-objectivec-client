@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelSettings (0 custom class methods, 11 custom properties)
+//   GTLYouTubeChannelSettings (0 custom class methods, 12 custom properties)
 
 #import "GTLYouTubeChannelSettings.h"
 
@@ -37,8 +37,8 @@
 
 @implementation GTLYouTubeChannelSettings
 @dynamic defaultTab, descriptionProperty, featuredChannelsTitle,
-         featuredChannelsUrls, keywords, moderateComments, showBrowseView,
-         showRelatedChannels, title, trackingAnalyticsAccountId,
+         featuredChannelsUrls, keywords, moderateComments, profileColor,
+         showBrowseView, showRelatedChannels, title, trackingAnalyticsAccountId,
          unsubscribedTrailer;
 
 + (NSDictionary *)propertyToJSONKeyMap {

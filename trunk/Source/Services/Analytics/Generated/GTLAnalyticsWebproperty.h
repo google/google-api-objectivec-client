@@ -62,7 +62,7 @@
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// Industry vertical
+// The industry vertical/category selected for this web property.
 @property (copy) NSString *industryVertical;
 
 // Internal ID for this web property.
