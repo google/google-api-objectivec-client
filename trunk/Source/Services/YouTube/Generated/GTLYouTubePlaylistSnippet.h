@@ -49,7 +49,7 @@
 // playlist.
 @property (copy) NSString *channelId;
 
-// Channel title for the channel that the video belongs to.
+// The channel title of the channel that the video belongs to.
 @property (copy) NSString *channelTitle;
 
 // The playlist's description.
@@ -60,6 +60,7 @@
 // ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
 @property (retain) GTLDateTime *publishedAt;
 
+// Keyword tags associated with the playlist.
 @property (retain) NSArray *tags;  // of NSString
 
 // A map of thumbnail images associated with the playlist. For each object in
