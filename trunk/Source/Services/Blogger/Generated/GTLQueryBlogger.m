@@ -26,12 +26,13 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLQueryBlogger (16 custom class methods, 17 custom properties)
+//   GTLQueryBlogger (17 custom class methods, 17 custom properties)
 
 #import "GTLQueryBlogger.h"
 
 #import "GTLBloggerBlog.h"
 #import "GTLBloggerBlogList.h"
+#import "GTLBloggerBlogUserInfo.h"
 #import "GTLBloggerComment.h"
 #import "GTLBloggerCommentList.h"
 #import "GTLBloggerPage.h"
@@ -71,6 +72,20 @@
   GTLQueryBlogger *query = [self queryWithMethodName:methodName];
   query.userId = userId;
   query.expectedObjectClass = [GTLBloggerBlogList class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "blogUserInfos" methods
+// These create a GTLQueryBlogger object.
+
++ (id)queryForBlogUserInfosGetWithUserId:(NSString *)userId
+                                  blogId:(NSString *)blogId {
+  NSString *methodName = @"blogger.blogUserInfos.get";
+  GTLQueryBlogger *query = [self queryWithMethodName:methodName];
+  query.userId = userId;
+  query.blogId = blogId;
+  query.expectedObjectClass = [GTLBloggerBlogUserInfo class];
   return query;
 }
 

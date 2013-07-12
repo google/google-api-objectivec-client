@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLBlogger.h
+//  GTLBloggerBlogUserInfo.m
 //
 
 // ----------------------------------------------------------------------------
@@ -25,20 +25,24 @@
 //   API for access to the data within Blogger.
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
+// Classes:
+//   GTLBloggerBlogUserInfo (0 custom class methods, 3 custom properties)
 
-#import "GTLBloggerConstants.h"
+#import "GTLBloggerBlogUserInfo.h"
 
 #import "GTLBloggerBlog.h"
-#import "GTLBloggerBlogList.h"
 #import "GTLBloggerBlogPerUserInfo.h"
-#import "GTLBloggerBlogUserInfo.h"
-#import "GTLBloggerComment.h"
-#import "GTLBloggerCommentList.h"
-#import "GTLBloggerPage.h"
-#import "GTLBloggerPageList.h"
-#import "GTLBloggerPost.h"
-#import "GTLBloggerPostList.h"
-#import "GTLBloggerUser.h"
 
-#import "GTLQueryBlogger.h"
-#import "GTLServiceBlogger.h"
+// ----------------------------------------------------------------------------
+//
+//   GTLBloggerBlogUserInfo
+//
+
+@implementation GTLBloggerBlogUserInfo
+@dynamic blog, kind, user;
+
++ (void)load {
+  [self registerObjectClassForKind:@"blogger#blogUserInfo"];
+}
+
+@end
