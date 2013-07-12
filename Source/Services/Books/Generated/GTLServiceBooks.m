@@ -49,6 +49,8 @@
                       [GTLBooksConcurrentAccessRestriction class],
                       [GTLBooksDownloadAccesses class],
                       [GTLBooksDownloadAccessRestriction class],
+                      [GTLBooksLayerDictData class],
+                      [GTLBooksLayerGeoData class],
                       [GTLBooksLayersummaries class],
                       [GTLBooksLayersummary class],
                       [GTLBooksReadingPosition class],

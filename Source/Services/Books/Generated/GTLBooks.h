@@ -39,6 +39,8 @@
 #import "GTLBooksConcurrentAccessRestriction.h"
 #import "GTLBooksDownloadAccesses.h"
 #import "GTLBooksDownloadAccessRestriction.h"
+#import "GTLBooksLayerDictData.h"
+#import "GTLBooksLayerGeoData.h"
 #import "GTLBooksLayersummaries.h"
 #import "GTLBooksLayersummary.h"
 #import "GTLBooksReadingPosition.h"
