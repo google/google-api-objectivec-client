@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLQueryBlogger (16 custom class methods, 17 custom properties)
+//   GTLQueryBlogger (17 custom class methods, 17 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -101,6 +101,25 @@
 //   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerBlogList.
 + (id)queryForBlogsListByUserWithUserId:(NSString *)userId;
+
+#pragma mark -
+#pragma mark "blogUserInfos" methods
+// These create a GTLQueryBlogger object.
+
+// Method: blogger.blogUserInfos.get
+// Gets one blog and user info pair by blogId and userId.
+//  Required:
+//   userId: ID of the user whose blogs are to be fetched. Either the word
+//     'self' (sans quote marks) or the user's profile identifier.
+//   blogId: The ID of the blog to get.
+//  Optional:
+//   maxPosts: Maximum number of posts to pull back with the blog.
+//  Authorization scope(s):
+//   kGTLAuthScopeBlogger
+//   kGTLAuthScopeBloggerReadonly
+// Fetches a GTLBloggerBlogUserInfo.
++ (id)queryForBlogUserInfosGetWithUserId:(NSString *)userId
+                                  blogId:(NSString *)blogId;
 
 #pragma mark -
 #pragma mark "comments" methods
@@ -213,7 +232,7 @@
 // Method: blogger.posts.insert
 // Add a post.
 //  Required:
-//   blogId: ID of the blog to fetch the post from.
+//   blogId: ID of the blog to add the post to.
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 // Fetches a GTLBloggerPost.

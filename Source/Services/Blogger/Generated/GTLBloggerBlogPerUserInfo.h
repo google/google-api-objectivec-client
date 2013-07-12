@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLBlogger.h
+//  GTLBloggerBlogPerUserInfo.h
 //
 
 // ----------------------------------------------------------------------------
@@ -25,20 +25,23 @@
 //   API for access to the data within Blogger.
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
+// Classes:
+//   GTLBloggerBlogPerUserInfo (0 custom class methods, 4 custom properties)
 
-#import "GTLBloggerConstants.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLBloggerBlog.h"
-#import "GTLBloggerBlogList.h"
-#import "GTLBloggerBlogPerUserInfo.h"
-#import "GTLBloggerBlogUserInfo.h"
-#import "GTLBloggerComment.h"
-#import "GTLBloggerCommentList.h"
-#import "GTLBloggerPage.h"
-#import "GTLBloggerPageList.h"
-#import "GTLBloggerPost.h"
-#import "GTLBloggerPostList.h"
-#import "GTLBloggerUser.h"
+// ----------------------------------------------------------------------------
+//
+//   GTLBloggerBlogPerUserInfo
+//
 
-#import "GTLQueryBlogger.h"
-#import "GTLServiceBlogger.h"
+@interface GTLBloggerBlogPerUserInfo : GTLObject
+@property (copy) NSString *blogId;
+@property (copy) NSString *kind;
+@property (copy) NSString *photosAlbumKey;
+@property (copy) NSString *userId;
+@end
