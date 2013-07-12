@@ -141,7 +141,7 @@
 @property (copy) NSString *url;
 
 // This activity's verb, indicating what action was performed. Possible values
-// are:
+// include (but are not limited to):
 // - "post" - Publish content to the stream.
 // - "share" - Reshare an activity.
 @property (copy) NSString *verb;
@@ -198,7 +198,7 @@
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// The type of the object. Possible values are:
+// The type of the object. Possible values include (but are not limited to):
 // - "note" - Textual content.
 // - "activity" - A Google+ activity.
 @property (copy) NSString *objectType;
@@ -317,7 +317,7 @@
 // The preview image for photos or videos.
 @property (retain) GTLPlusActivityObjectAttachmentsItemImage *image;
 
-// The type of media object. Possible values are:
+// The type of media object. Possible values include (but are not limited to):
 // - "photo" - A photo.
 // - "album" - A photo album.
 // - "video" - A video.
