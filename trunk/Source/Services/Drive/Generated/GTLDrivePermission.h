@@ -81,8 +81,8 @@
 // - anyone
 @property (copy) NSString *type;
 
-// The email address or domain name for the entity. This is not populated in
-// responses.
+// The email address or domain name for the entity. This is used during inserts
+// and is not populated in responses.
 @property (copy) NSString *value;
 
 // Whether the link is required for this permission.

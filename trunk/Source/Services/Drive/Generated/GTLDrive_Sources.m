@@ -36,6 +36,7 @@
 #import "GTLDriveAppList.m"
 #import "GTLDriveChange.m"
 #import "GTLDriveChangeList.m"
+#import "GTLDriveChannel.m"
 #import "GTLDriveChildList.m"
 #import "GTLDriveChildReference.m"
 #import "GTLDriveComment.m"
