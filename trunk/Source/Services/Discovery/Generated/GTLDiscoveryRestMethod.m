@@ -30,7 +30,7 @@
 //   GTLDiscoveryRestMethod (0 custom class methods, 14 custom properties)
 //   GTLDiscoveryRestMethodMediaUpload (0 custom class methods, 3 custom properties)
 //   GTLDiscoveryRestMethodParameters (0 custom class methods, 0 custom properties)
-//   GTLDiscoveryRestMethodRequest (0 custom class methods, 1 custom properties)
+//   GTLDiscoveryRestMethodRequest (0 custom class methods, 2 custom properties)
 //   GTLDiscoveryRestMethodResponse (0 custom class methods, 1 custom properties)
 //   GTLDiscoveryRestMethodMediaUploadProtocols (0 custom class methods, 2 custom properties)
 //   GTLDiscoveryRestMethodMediaUploadProtocolsResumable (0 custom class methods, 2 custom properties)
@@ -109,7 +109,7 @@
 //
 
 @implementation GTLDiscoveryRestMethodRequest
-@dynamic xRef;
+@dynamic xRef, parameterName;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
