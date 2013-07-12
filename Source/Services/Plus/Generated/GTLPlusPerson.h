@@ -95,7 +95,7 @@
 // ETag of this response for caching purposes.
 @property (copy) NSString *ETag;
 
-// The person's gender. Possible values are:
+// The person's gender. Possible values include (but are not limited to):
 // - "male" - Male gender.
 // - "female" - Female gender.
 // - "other" - Other.
@@ -123,7 +123,8 @@
 // The nickname of this person.
 @property (copy) NSString *nickname;
 
-// Type of person within Google+. Possible values are:
+// Type of person within Google+. Possible values include (but are not limited
+// to):
 // - "person" - represents an actual person.
 // - "page" - represents a page.
 @property (copy) NSString *objectType;
@@ -137,7 +138,8 @@
 // If a Google+ Page, the number of people who have +1'ed this page.
 @property (retain) NSNumber *plusOneCount;  // intValue
 
-// The person's relationship status. Possible values are:
+// The person's relationship status. Possible values include (but are not
+// limited to):
 // - "single" - Person is single.
 // - "in_a_relationship" - Person is in a relationship.
 // - "engaged" - Person is engaged.
@@ -193,7 +195,8 @@
 // The person's primary cover image.
 @property (retain) GTLPlusPersonCoverCoverPhoto *coverPhoto;
 
-// The layout of the cover art. Possible values are:
+// The layout of the cover art. Possible values include (but are not limited
+// to):
 // - "banner" - One large image banner.
 @property (copy) NSString *layout;
 
@@ -210,7 +213,7 @@
 // If "true", indicates this email address is the person's primary one.
 @property (retain) NSNumber *primary;  // boolValue
 
-// The type of address. Possible values are:
+// The type of address. Possible values include (but are not limited to):
 // - "home" - Home email address.
 // - "work" - Work email address.
 // - "other" - Other.
@@ -298,7 +301,7 @@
 // The person's job title or role within the organization.
 @property (copy) NSString *title;
 
-// The type of organization. Possible values are:
+// The type of organization. Possible values include (but are not limited to):
 // - "work" - Work.
 // - "school" - School.
 @property (copy) NSString *type;
@@ -333,7 +336,7 @@
 // The label of the URL.
 @property (copy) NSString *label;
 
-// The type of URL. Possible values are:
+// The type of URL. Possible values include (but are not limited to):
 // - "otherProfile" - URL for another profile.
 // - "contributor" - URL for which this person is a contributor to.
 // - "website" - URL for this Google+ Page's primary website.
