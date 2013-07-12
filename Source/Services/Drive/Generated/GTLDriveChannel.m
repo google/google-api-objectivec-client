@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLDrive.h
+//  GTLDriveChannel.m
 //
 
 // ----------------------------------------------------------------------------
@@ -25,32 +25,44 @@
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
+// Classes:
+//   GTLDriveChannel (0 custom class methods, 9 custom properties)
+//   GTLDriveChannelParams (0 custom class methods, 0 custom properties)
 
-#import "GTLDriveConstants.h"
-
-#import "GTLDriveAbout.h"
-#import "GTLDriveApp.h"
-#import "GTLDriveAppList.h"
-#import "GTLDriveChange.h"
-#import "GTLDriveChangeList.h"
 #import "GTLDriveChannel.h"
-#import "GTLDriveChildList.h"
-#import "GTLDriveChildReference.h"
-#import "GTLDriveComment.h"
-#import "GTLDriveCommentList.h"
-#import "GTLDriveCommentReply.h"
-#import "GTLDriveCommentReplyList.h"
-#import "GTLDriveFile.h"
-#import "GTLDriveFileList.h"
-#import "GTLDriveParentList.h"
-#import "GTLDriveParentReference.h"
-#import "GTLDrivePermission.h"
-#import "GTLDrivePermissionList.h"
-#import "GTLDriveProperty.h"
-#import "GTLDrivePropertyList.h"
-#import "GTLDriveRevision.h"
-#import "GTLDriveRevisionList.h"
-#import "GTLDriveUser.h"
 
-#import "GTLQueryDrive.h"
-#import "GTLServiceDrive.h"
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveChannel
+//
+
+@implementation GTLDriveChannel
+@dynamic address, expiration, identifier, kind, params, resourceId, resourceUri,
+         token, type;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"id"
+                                forKey:@"identifier"];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"api#channel"];
+}
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveChannelParams
+//
+
+@implementation GTLDriveChannelParams
+
++ (Class)classForAdditionalProperties {
+  return [NSString class];
+}
+
+@end

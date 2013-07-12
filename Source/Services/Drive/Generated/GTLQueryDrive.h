@@ -26,7 +26,8 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLQueryDrive (52 custom class methods, 35 custom properties)
+//   GTLQueryDrive (56 custom class methods, 45 custom properties)
+//   GTLDriveChannelsStopParams (0 custom class methods, 0 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -34,6 +35,8 @@
   #import "GTLQuery.h"
 #endif
 
+@class GTLDriveChannel;
+@class GTLDriveChannelsStopParams;
 @class GTLDriveChildReference;
 @class GTLDriveComment;
 @class GTLDriveCommentReply;
@@ -55,22 +58,29 @@
 //
 // Method-specific parameters; see the comments below for more information.
 //
+@property (copy) NSString *address;
 @property (copy) NSString *appId;
 @property (copy) NSString *changeId;
+@property (retain) GTLDriveChannel *channel;
 @property (copy) NSString *childId;
 @property (copy) NSString *commentId;
 @property (assign) BOOL convert;
 @property (copy) NSString *emailMessage;
+@property (assign) long long expiration;
 @property (copy) NSString *fileId;
 @property (copy) NSString *folderId;
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+@property (copy) NSString *identifier;
 @property (assign) BOOL includeDeleted;
 @property (assign) BOOL includeSubscribed;
+@property (copy) NSString *kind;
 @property (assign) long long maxChangeIdCount;
 @property (assign) NSInteger maxResults;
 @property (assign) BOOL newRevision;
 @property (assign) BOOL ocr;
 @property (copy) NSString *ocrLanguage;
 @property (copy) NSString *pageToken;
+@property (retain) GTLDriveChannelsStopParams *params;
 @property (copy) NSString *parentId;
 @property (copy) NSString *permissionId;
 @property (assign) BOOL pinned;
@@ -78,13 +88,17 @@
 @property (copy) NSString *propertyKey;
 @property (copy) NSString *q;
 @property (copy) NSString *replyId;
+@property (copy) NSString *resourceId;
+@property (copy) NSString *resourceUri;
 @property (copy) NSString *revisionId;
 @property (assign) BOOL sendNotificationEmails;
 @property (assign) BOOL setModifiedDate;
 @property (assign) long long startChangeId;
 @property (copy) NSString *timedTextLanguage;
 @property (copy) NSString *timedTextTrackName;
+@property (copy) NSString *token;
 @property (assign) BOOL transferOwnership;
+@property (copy) NSString *type;
 @property (copy) NSString *updatedMin;
 @property (assign) BOOL updateViewedDate;
 @property (assign) BOOL useContentAsIndexableText;
@@ -170,6 +184,53 @@
 //   kGTLAuthScopeDriveReadonly
 // Fetches a GTLDriveChangeList.
 + (id)queryForChangesList;
+
+// Method: drive.changes.watch
+// Subscribe to changes for a user.
+//  Optional:
+//   channel: GTLDriveChannel
+//   includeDeleted: Whether to include deleted items. (Default true)
+//   includeSubscribed: Whether to include shared files and public files the
+//     user has opened. When set to false, the list will include owned files
+//     plus any shared or public files the user has explictly added to a folder
+//     in Drive. (Default true)
+//   maxResults: Maximum number of changes to return. (Default 100)
+//   pageToken: Page token for changes.
+//   startChangeId: Change ID to start listing changes from.
+//  Authorization scope(s):
+//   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppsReadonly
+//   kGTLAuthScopeDriveFile
+//   kGTLAuthScopeDriveMetadataReadonly
+//   kGTLAuthScopeDriveReadonly
+// Fetches a GTLDriveChannel.
++ (id)queryForChangesWatch;
+
+#pragma mark -
+#pragma mark "channels" methods
+// These create a GTLQueryDrive object.
+
+// Method: drive.channels.stop
+//  Optional:
+//   address: The address of the receiving entity where events are delivered.
+//     Specific to the channel type.
+//   expiration: The expiration instant for this channel if it is defined.
+//   identifier: A UUID for the channel
+//   kind: A channel watching an API resource (Default api#channel)
+//   params: Additional parameters controlling delivery channel behavior
+//   resourceId: An opaque id that identifies the resource that is being
+//     watched. Stable across different API versions
+//   resourceUri: The canonicalized ID of the watched resource.
+//   token: An arbitrary string associated with the channel that is delivered to
+//     the target address with each event delivered over this channel.
+//   type: The type of delivery mechanism used by this channel
+//  Authorization scope(s):
+//   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppsReadonly
+//   kGTLAuthScopeDriveFile
+//   kGTLAuthScopeDriveMetadataReadonly
+//   kGTLAuthScopeDriveReadonly
++ (id)queryForChannelsStop;
 
 #pragma mark -
 #pragma mark "children" methods
@@ -337,6 +398,13 @@
 //   pinned: Whether to pin the head revision of the new copy. (Default false)
 //   timedTextLanguage: The language of the timed text.
 //   timedTextTrackName: The timed text track name.
+//   visibility: The visibility of the new file. This parameter is only relevant
+//     when the source is not a native Google Doc and convert=false. (Default
+//     kGTLDriveVisibilityDefault)
+//      kGTLDriveVisibilityDefault: The visibility of the new file is determined
+//        by the user's default visibility/sharing policies.
+//      kGTLDriveVisibilityPrivate: The new file will be visible to only the
+//        owner.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
 //   kGTLAuthScopeDriveAppsReadonly
@@ -388,6 +456,12 @@
 //   timedTextTrackName: The timed text track name.
 //   useContentAsIndexableText: Whether to use the content as indexable text.
 //     (Default false)
+//   visibility: The visibility of the new file. This parameter is only relevant
+//     when convert=false. (Default kGTLDriveVisibilityDefault)
+//      kGTLDriveVisibilityDefault: The visibility of the new file is determined
+//        by the user's default visibility/sharing policies.
+//      kGTLDriveVisibilityPrivate: The new file will be visible to only the
+//        owner.
 //  Upload Parameters:
 //   Maximum size: 10GB
 //   Accepted MIME type(s): */*
@@ -521,6 +595,26 @@
 + (id)queryForFilesUpdateWithObject:(GTLDriveFile *)object
                              fileId:(NSString *)fileId
                    uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
+
+// Method: drive.files.watch
+// Subscribe to changes on a file
+//  Required:
+//   fileId: The ID for the file in question.
+//  Optional:
+//   channel: GTLDriveChannel
+//   projection: This parameter is deprecated and has no function.
+//      kGTLDriveProjectionBasic: Deprecated
+//      kGTLDriveProjectionFull: Deprecated
+//   updateViewedDate: Whether to update the view date after successfully
+//     retrieving the file. (Default false)
+//  Authorization scope(s):
+//   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppsReadonly
+//   kGTLAuthScopeDriveFile
+//   kGTLAuthScopeDriveMetadataReadonly
+//   kGTLAuthScopeDriveReadonly
+// Fetches a GTLDriveChannel.
++ (id)queryForFilesWatchWithFileId:(NSString *)fileId;
 
 #pragma mark -
 #pragma mark "parents" methods
@@ -749,6 +843,22 @@
                              propertyKey:(NSString *)propertyKey;
 
 #pragma mark -
+#pragma mark "realtime" methods
+// These create a GTLQueryDrive object.
+
+// Method: drive.realtime.get
+// Exports the contents of the Realtime API data model associated with this file
+// as JSON.
+//  Required:
+//   fileId: The ID of the file that the Realtime API data model is associated
+//     with.
+//  Authorization scope(s):
+//   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveFile
+//   kGTLAuthScopeDriveReadonly
++ (id)queryForRealtimeGetWithFileId:(NSString *)fileId;
+
+#pragma mark -
 #pragma mark "replies" methods
 // These create a GTLQueryDrive object.
 
@@ -914,4 +1024,25 @@
                                  fileId:(NSString *)fileId
                              revisionId:(NSString *)revisionId;
 
+@end
+
+#pragma mark -
+#pragma mark method parameter objects
+// These object are used only to pass a collection of parameters to a
+// method as a single item.
+
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveChannelsStopParams
+//
+
+// Used for 'params' parameter on 'drive.channels.stop'.
+
+// Additional parameters controlling delivery channel behavior
+
+@interface GTLDriveChannelsStopParams : GTLObject
+// This object is documented as having more properties that are NSString. Use
+// -additionalJSONKeys and -additionalPropertyForName: to get the list of
+// properties and then fetch them; or -additionalProperties to fetch them all at
+// once.
 @end

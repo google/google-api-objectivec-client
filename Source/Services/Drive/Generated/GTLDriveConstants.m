@@ -39,3 +39,7 @@ NSString * const kGTLAuthScopeDriveScripts          = @"https://www.googleapis.c
 // Projection
 NSString * const kGTLDriveProjectionBasic = @"BASIC";
 NSString * const kGTLDriveProjectionFull  = @"FULL";
+
+// Visibility
+NSString * const kGTLDriveVisibilityDefault = @"DEFAULT";
+NSString * const kGTLDriveVisibilityPrivate = @"PRIVATE";

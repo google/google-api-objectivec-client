@@ -26,7 +26,8 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLQueryDrive (52 custom class methods, 35 custom properties)
+//   GTLQueryDrive (56 custom class methods, 45 custom properties)
+//   GTLDriveChannelsStopParams (0 custom class methods, 0 custom properties)
 
 #import "GTLQueryDrive.h"
 
@@ -35,6 +36,7 @@
 #import "GTLDriveAppList.h"
 #import "GTLDriveChange.h"
 #import "GTLDriveChangeList.h"
+#import "GTLDriveChannel.h"
 #import "GTLDriveChildList.h"
 #import "GTLDriveChildReference.h"
 #import "GTLDriveComment.h"
@@ -54,13 +56,22 @@
 
 @implementation GTLQueryDrive
 
-@dynamic appId, changeId, childId, commentId, convert, emailMessage, fields,
-         fileId, folderId, includeDeleted, includeSubscribed, maxChangeIdCount,
-         maxResults, newRevision, ocr, ocrLanguage, pageToken, parentId,
-         permissionId, pinned, projection, propertyKey, q, replyId, revisionId,
-         sendNotificationEmails, setModifiedDate, startChangeId,
-         timedTextLanguage, timedTextTrackName, transferOwnership, updatedMin,
-         updateViewedDate, useContentAsIndexableText, visibility;
+@dynamic address, appId, changeId, channel, childId, commentId, convert,
+         emailMessage, expiration, fields, fileId, folderId, identifier,
+         includeDeleted, includeSubscribed, kind, maxChangeIdCount, maxResults,
+         newRevision, ocr, ocrLanguage, pageToken, params, parentId,
+         permissionId, pinned, projection, propertyKey, q, replyId, resourceId,
+         resourceUri, revisionId, sendNotificationEmails, setModifiedDate,
+         startChangeId, timedTextLanguage, timedTextTrackName, token,
+         transferOwnership, type, updatedMin, updateViewedDate,
+         useContentAsIndexableText, visibility;
+
++ (NSDictionary *)parameterNameMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"id"
+                                forKey:@"identifier"];
+  return map;
+}
 
 #pragma mark -
 #pragma mark "about" methods
@@ -108,6 +119,23 @@
   NSString *methodName = @"drive.changes.list";
   GTLQueryDrive *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLDriveChangeList class];
+  return query;
+}
+
++ (id)queryForChangesWatch {
+  NSString *methodName = @"drive.changes.watch";
+  GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLDriveChannel class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "channels" methods
+// These create a GTLQueryDrive object.
+
++ (id)queryForChannelsStop {
+  NSString *methodName = @"drive.channels.stop";
+  GTLQueryDrive *query = [self queryWithMethodName:methodName];
   return query;
 }
 
@@ -341,6 +369,14 @@
   return query;
 }
 
++ (id)queryForFilesWatchWithFileId:(NSString *)fileId {
+  NSString *methodName = @"drive.files.watch";
+  GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.fileId = fileId;
+  query.expectedObjectClass = [GTLDriveChannel class];
+  return query;
+}
+
 #pragma mark -
 #pragma mark "parents" methods
 // These create a GTLQueryDrive object.
@@ -541,6 +577,17 @@
 }
 
 #pragma mark -
+#pragma mark "realtime" methods
+// These create a GTLQueryDrive object.
+
++ (id)queryForRealtimeGetWithFileId:(NSString *)fileId {
+  NSString *methodName = @"drive.realtime.get";
+  GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.fileId = fileId;
+  return query;
+}
+
+#pragma mark -
 #pragma mark "replies" methods
 // These create a GTLQueryDrive object.
 
@@ -690,6 +737,24 @@
   query.revisionId = revisionId;
   query.expectedObjectClass = [GTLDriveRevision class];
   return query;
+}
+
+@end
+
+#pragma mark -
+#pragma mark method parameter objects
+// These object are used only to pass a collection of parameters to a
+// method as a single item.
+
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveChannelsStopParams
+//
+
+@implementation GTLDriveChannelsStopParams
+
++ (Class)classForAdditionalProperties {
+  return [NSString class];
 }
 
 @end

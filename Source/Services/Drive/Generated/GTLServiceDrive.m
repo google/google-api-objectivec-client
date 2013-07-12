@@ -43,6 +43,7 @@
                       [GTLDriveAppList class],
                       [GTLDriveChange class],
                       [GTLDriveChangeList class],
+                      [GTLDriveChannel class],
                       [GTLDriveChildList class],
                       [GTLDriveChildReference class],
                       [GTLDriveComment class],

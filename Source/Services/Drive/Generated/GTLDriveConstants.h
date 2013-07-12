@@ -52,3 +52,7 @@ GTL_EXTERN NSString * const kGTLAuthScopeDriveScripts;          // "https://www.
 // Projection
 GTL_EXTERN NSString * const kGTLDriveProjectionBasic;  // "BASIC"
 GTL_EXTERN NSString * const kGTLDriveProjectionFull;   // "FULL"
+
+// Visibility
+GTL_EXTERN NSString * const kGTLDriveVisibilityDefault;  // "DEFAULT"
+GTL_EXTERN NSString * const kGTLDriveVisibilityPrivate;  // "PRIVATE"

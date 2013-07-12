@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 42 custom properties)
+//   GTLDriveFile (0 custom class methods, 43 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
 //   GTLDriveFileImageMediaMetadata (0 custom class methods, 21 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
@@ -106,6 +106,10 @@
 // The size of the file in bytes. This is only populated for files with content
 // stored in Drive.
 @property (retain) NSNumber *fileSize;  // longLongValue
+
+// The ID of the file's head revision. This will only be populated for files
+// with content stored in Drive.
+@property (copy) NSString *headRevisionId;
 
 // A link to the file's icon.
 @property (copy) NSString *iconLink;
