@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveStreamCdnIngestionInfo.m
+//  GTLYouTubeActivityContentDetailsRecommendation.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,15 +26,34 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveStreamCdnIngestionInfo (0 custom class methods, 3 custom properties)
+//   GTLYouTubeActivityContentDetailsRecommendation (0 custom class methods, 3 custom properties)
 
-#import "GTLYouTubeLiveStreamCdnIngestionInfo.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
+
+@class GTLYouTubeResourceId;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveStreamCdnIngestionInfo
+//   GTLYouTubeActivityContentDetailsRecommendation
 //
 
-@implementation GTLYouTubeLiveStreamCdnIngestionInfo
-@dynamic backupIngestionAddress, ingestionAddress, streamName;
+// Information that identifies the recommended resource.
+
+@interface GTLYouTubeActivityContentDetailsRecommendation : GTLObject
+
+// The reason that the resource is recommended to the user.
+@property (copy) NSString *reason;
+
+// The resourceId object contains information that identifies the recommended
+// resource.
+@property (retain) GTLYouTubeResourceId *resourceId;
+
+// The seedResourceId object contains information about the resource that caused
+// the recommendation.
+@property (retain) GTLYouTubeResourceId *seedResourceId;
+
 @end

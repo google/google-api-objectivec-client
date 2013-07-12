@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeGeoPoint.h
+//  GTLYouTubeActivityContentDetailsSocial.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,30 +26,17 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeGeoPoint (0 custom class methods, 3 custom properties)
+//   GTLYouTubeActivityContentDetailsSocial (0 custom class methods, 5 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLYouTubeActivityContentDetailsSocial.h"
+
+#import "GTLYouTubeResourceId.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeGeoPoint
+//   GTLYouTubeActivityContentDetailsSocial
 //
 
-// Geographical coordinates of a point, in WGS84.
-
-@interface GTLYouTubeGeoPoint : GTLObject
-
-// Altitude above the reference ellipsoid, in meters.
-@property (retain) NSNumber *altitude;  // doubleValue
-
-// Latitude in degrees.
-@property (retain) NSNumber *latitude;  // doubleValue
-
-// Longitude in degrees.
-@property (retain) NSNumber *longitude;  // doubleValue
-
+@implementation GTLYouTubeActivityContentDetailsSocial
+@dynamic author, imageUrl, referenceUrl, resourceId, type;
 @end

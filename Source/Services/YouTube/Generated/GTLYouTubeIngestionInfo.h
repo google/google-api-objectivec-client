@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeGeoPoint.h
+//  GTLYouTubeIngestionInfo.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeGeoPoint (0 custom class methods, 3 custom properties)
+//   GTLYouTubeIngestionInfo (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,20 +36,27 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeGeoPoint
+//   GTLYouTubeIngestionInfo
 //
 
-// Geographical coordinates of a point, in WGS84.
+// Describes information necessary for ingesting an RTMP or an HTTP stream.
 
-@interface GTLYouTubeGeoPoint : GTLObject
+@interface GTLYouTubeIngestionInfo : GTLObject
 
-// Altitude above the reference ellipsoid, in meters.
-@property (retain) NSNumber *altitude;  // doubleValue
+// The backup ingestion URL that you should use to stream video to YouTube. You
+// have the option of simultaneously streaming the content that you are sending
+// to the ingestionAddress to this URL.
+@property (copy) NSString *backupIngestionAddress;
 
-// Latitude in degrees.
-@property (retain) NSNumber *latitude;  // doubleValue
+// The primary ingestion URL that you should use to stream video to YouTube. You
+// must stream video to this URL.
+// Depending on which application or tool you use to encode your video stream,
+// you may need to enter the stream URL and stream name separately or you may
+// need to concatenate them in the following format:
+// STREAM_URL/STREAM_NAME
+@property (copy) NSString *ingestionAddress;
 
-// Longitude in degrees.
-@property (retain) NSNumber *longitude;  // doubleValue
+// The HTTP or RTMP stream name that YouTube assigns to the video stream.
+@property (copy) NSString *streamName;
 
 @end

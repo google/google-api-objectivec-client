@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubePlaylistItemContentDetails.h
+//  GTLYouTubeActivityContentDetailsPromotedItem.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlaylistItemContentDetails (0 custom class methods, 4 custom properties)
+//   GTLYouTubeActivityContentDetailsPromotedItem (0 custom class methods, 7 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,28 +36,36 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubePlaylistItemContentDetails
+//   GTLYouTubeActivityContentDetailsPromotedItem
 //
 
-@interface GTLYouTubePlaylistItemContentDetails : GTLObject
+// Details about a resource which is being promoted.
 
-// The time, measured in seconds from the start of the video, when the video
-// should stop playing. (The playlist owner can specify the times when the video
-// should start and stop playing when the video is played in the context of the
-// playlist.) By default, assume that the video.endTime is the end of the video.
-@property (copy) NSString *endAtMs;
+@interface GTLYouTubeActivityContentDetailsPromotedItem : GTLObject
 
-// A user-generated note for this item.
-@property (copy) NSString *note;
+// The URL the client should fetch to request a promoted item.
+@property (copy) NSString *adTag;
 
-// The time, measured in seconds from the start of the video, when the video
-// should start playing. (The playlist owner can specify the times when the
-// video should start and stop playing when the video is played in the context
-// of the playlist.) The default value is 0.
-@property (copy) NSString *startAtMs;
+// The URL the client should ping to indicate that the user clicked through on
+// this promoted item.
+@property (copy) NSString *clickTrackingUrl;
 
-// The ID that YouTube uses to uniquely identify a video. To retrieve the video
-// resource, set the id query parameter to this value in your API request.
+// The URL the client should ping to indicate that the user was shown this
+// promoted item.
+@property (copy) NSString *creativeViewUrl;
+
+// The type of call-to-action, a message to the user indicating action that can
+// be taken.
+@property (copy) NSString *ctaType;
+
+// The text description to accompany the promoted item.
+@property (copy) NSString *descriptionText;
+
+// The URL the client should direct the user to, if the user chooses to visit
+// the advertiser's website.
+@property (copy) NSString *destinationUrl;
+
+// The ID that YouTube uses to uniquely identify the promoted video.
 @property (copy) NSString *videoId;
 
 @end

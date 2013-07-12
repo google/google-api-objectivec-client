@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeGeoPoint.h
+//  GTLYouTubeActivityContentDetailsUpload.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeGeoPoint (0 custom class methods, 3 custom properties)
+//   GTLYouTubeActivityContentDetailsUpload (0 custom class methods, 1 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,20 +36,14 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeGeoPoint
+//   GTLYouTubeActivityContentDetailsUpload
 //
 
-// Geographical coordinates of a point, in WGS84.
+// Information about the uploaded video.
 
-@interface GTLYouTubeGeoPoint : GTLObject
+@interface GTLYouTubeActivityContentDetailsUpload : GTLObject
 
-// Altitude above the reference ellipsoid, in meters.
-@property (retain) NSNumber *altitude;  // doubleValue
-
-// Latitude in degrees.
-@property (retain) NSNumber *latitude;  // doubleValue
-
-// Longitude in degrees.
-@property (retain) NSNumber *longitude;  // doubleValue
+// The ID that YouTube uses to uniquely identify the uploaded video.
+@property (copy) NSString *videoId;
 
 @end

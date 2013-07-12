@@ -59,7 +59,7 @@
 @interface GTLYouTubeVideo : GTLObject
 
 // Age restriction details related to a video.
-@property (retain) GTLYouTubeVideoAgeGating *ageGatingDetails;
+@property (retain) GTLYouTubeVideoAgeGating *ageGating;
 
 // The contentDetails object contains information about the video content,
 // including the length of the video and its aspect ratio.
@@ -69,7 +69,7 @@
 // to be respected by the App in different video contexts.
 @property (retain) GTLYouTubeVideoConversionPings *conversionPings;
 
-// The ETag of the video resource.
+// Etag of this resource.
 @property (copy) NSString *ETag;
 
 // The fileDetails object encapsulates information about the video file that was
@@ -82,8 +82,7 @@
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// The type of the API resource. For video resources, the value will be
-// youtube#video.
+// The kind, fixed to "youtube#video".
 @property (copy) NSString *kind;
 
 // The monetizationDetails object encapsulates information about the

@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -68,15 +68,14 @@
 // The contentDetails object contains information like video count.
 @property (retain) GTLYouTubePlaylistContentDetails *contentDetails;
 
-// The ETag for the playlist resource.
+// Etag of this resource.
 @property (copy) NSString *ETag;
 
 // The ID that YouTube uses to uniquely identify the playlist.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// The type of the API resource. For video resources, the value will be
-// youtube#playlist.
+// The kind, fixed to "youtube#playlist".
 @property (copy) NSString *kind;
 
 // The player object contains information that you would use to play the

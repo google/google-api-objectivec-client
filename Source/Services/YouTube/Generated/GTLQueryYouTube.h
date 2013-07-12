@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (37 custom class methods, 47 custom properties)
+//   GTLQueryYouTube (37 custom class methods, 49 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -36,7 +36,7 @@
 
 @class GTLYouTubeActivity;
 @class GTLYouTubeChannel;
-@class GTLYouTubeChannelBannerInsertResponse;
+@class GTLYouTubeChannelBannerResource;
 @class GTLYouTubeLiveBroadcast;
 @class GTLYouTubeLiveStream;
 @class GTLYouTubePlaylist;
@@ -61,6 +61,7 @@
 @property (copy) NSString *categoryId;
 @property (copy) NSString *channelId;
 @property (copy) NSString *channelType;
+@property (copy) NSString *chart;
 @property (assign) BOOL displaySlate;
 @property (copy) NSString *forChannelId;
 @property (assign) BOOL forContentOwner;
@@ -70,6 +71,7 @@
 @property (assign) BOOL home;
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
+@property (copy) NSString *locale;
 @property (assign) BOOL managedByMe;
 @property (assign) NSUInteger maxResults;
 @property (assign) BOOL mine;
@@ -184,8 +186,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 //   kGTLAuthScopeYouTubeUpload
-// Fetches a GTLYouTubeChannelBannerInsertResponse.
-+ (id)queryForChannelBannersInsertWithObject:(GTLYouTubeChannelBannerInsertResponse *)object
+// Fetches a GTLYouTubeChannelBannerResource.
++ (id)queryForChannelBannersInsertWithObject:(GTLYouTubeChannelBannerResource *)object
                             uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
 #pragma mark -
@@ -1101,9 +1103,21 @@
 //     description, tags, and categoryId properties. As such, if you set
 //     part=snippet, the API response will contain all of those properties.
 //  Optional:
+//   chart: Set this parameter's value to mostPopular to instruct the API to
+//     return videos belonging to the chart of most popular videos.
+//      kGTLYouTubeChartMostPopular: Returns videos belonging to most popular
+//        video chart.
 //   identifier: The id parameter specifies a comma-separated list of the
 //     YouTube video ID(s) for the resource(s) that are being retrieved. In a
 //     video resource, the id property specifies the video's ID.
+//   locale: The locale parameter selects a video chart available in the
+//     specified locale. If using this parameter, chart must also be set. The
+//     parameter value is an BCP 47 locale. Supported locales include ar_AE,
+//     ar_DZ, ar_EG, ar_JO, ar_MA, ar_SA, ar_TN, ar_YE, cs_CZ, de_DE, el_GR,
+//     en_AU, en_BE, en_CA, en_GB, en_GH, en_IE, en_IL, en_IN, en_KE, en_NG,
+//     en_NZ, en_SG, en_UG, en_US, en_ZA, es_AR, es_CL, es_CO, es_ES, es_MX,
+//     es_PE, fil_PH, fr_FR, hu_HU, id_ID, it_IT, ja_JP, ko_KR, ms_MY, nl_NL,
+//     pl_PL, pt_BR, ru_RU, sv_SE, tr_TR, zh_HK, zh_TW (Default en_US)
 //   maxResults: USE_DESCRIPTION --- channels:list:maxResults (1..50, default 5)
 //   myRating: Set this parameter's value to like or dislike to instruct the API
 //     to only return videos liked or disliked by the authenticated user.
@@ -1114,6 +1128,9 @@
 //   onBehalfOfContentOwner: USE_DESCRIPTION ---
 //     channels:list:onBehalfOfContentOwner
 //   pageToken: USE_DESCRIPTION --- channels:list:pageToken
+//   videoCategoryId: The videoCategoryId parameter selects a video chart based
+//     on the category. If using this parameter, chart must also be set.
+//     (Default 0)
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 //   kGTLAuthScopeYouTubeReadonly

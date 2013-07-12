@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,8 +43,8 @@
 //
 
 // An activity resource contains information about an action that a particular
-// channel, or user, has taken on YouTube. The actions reported in activity
-// feeds include rating a video, sharing a video, marking a video as a favorite,
+// channel, or user, has taken on YouTube.The actions reported in activity feeds
+// include rating a video, sharing a video, marking a video as a favorite,
 // commenting on a video, uploading a video, and so forth. Each activity
 // resource identifies the type of action, the channel associated with the
 // action, and the resource(s) associated with the action, such as the video
@@ -57,15 +57,14 @@
 // the contentDetails object's content identifies the rated video.
 @property (retain) GTLYouTubeActivityContentDetails *contentDetails;
 
-// The ETag of the activity resource.
+// Etag of this resource.
 @property (copy) NSString *ETag;
 
 // The ID that YouTube uses to uniquely identify the activity.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// The type of the API resource. For activity resources, the value will be
-// youtube#activity.
+// The kind, fixed to "youtube#activity".
 @property (copy) NSString *kind;
 
 // The snippet object contains basic details about the activity, including the

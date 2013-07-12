@@ -27,21 +27,20 @@
 //   https://developers.google.com/youtube/v3
 // Classes:
 //   GTLYouTubeActivityContentDetails (0 custom class methods, 11 custom properties)
-//   GTLYouTubeActivityContentDetailsBulletin (0 custom class methods, 1 custom properties)
-//   GTLYouTubeActivityContentDetailsChannelItem (0 custom class methods, 1 custom properties)
-//   GTLYouTubeActivityContentDetailsComment (0 custom class methods, 1 custom properties)
-//   GTLYouTubeActivityContentDetailsFavorite (0 custom class methods, 1 custom properties)
-//   GTLYouTubeActivityContentDetailsLike (0 custom class methods, 1 custom properties)
-//   GTLYouTubeActivityContentDetailsPlaylistItem (0 custom class methods, 3 custom properties)
-//   GTLYouTubeActivityContentDetailsPromotedItem (0 custom class methods, 7 custom properties)
-//   GTLYouTubeActivityContentDetailsRecommendation (0 custom class methods, 3 custom properties)
-//   GTLYouTubeActivityContentDetailsSocial (0 custom class methods, 5 custom properties)
-//   GTLYouTubeActivityContentDetailsSubscription (0 custom class methods, 1 custom properties)
-//   GTLYouTubeActivityContentDetailsUpload (0 custom class methods, 1 custom properties)
 
 #import "GTLYouTubeActivityContentDetails.h"
 
-#import "GTLYouTubeResourceId.h"
+#import "GTLYouTubeActivityContentDetailsBulletin.h"
+#import "GTLYouTubeActivityContentDetailsChannelItem.h"
+#import "GTLYouTubeActivityContentDetailsComment.h"
+#import "GTLYouTubeActivityContentDetailsFavorite.h"
+#import "GTLYouTubeActivityContentDetailsLike.h"
+#import "GTLYouTubeActivityContentDetailsPlaylistItem.h"
+#import "GTLYouTubeActivityContentDetailsPromotedItem.h"
+#import "GTLYouTubeActivityContentDetailsRecommendation.h"
+#import "GTLYouTubeActivityContentDetailsSocial.h"
+#import "GTLYouTubeActivityContentDetailsSubscription.h"
+#import "GTLYouTubeActivityContentDetailsUpload.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -51,115 +50,4 @@
 @implementation GTLYouTubeActivityContentDetails
 @dynamic bulletin, channelItem, comment, favorite, like, playlistItem,
          promotedItem, recommendation, social, subscription, upload;
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubeActivityContentDetailsBulletin
-//
-
-@implementation GTLYouTubeActivityContentDetailsBulletin
-@dynamic resourceId;
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubeActivityContentDetailsChannelItem
-//
-
-@implementation GTLYouTubeActivityContentDetailsChannelItem
-@dynamic resourceId;
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubeActivityContentDetailsComment
-//
-
-@implementation GTLYouTubeActivityContentDetailsComment
-@dynamic resourceId;
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubeActivityContentDetailsFavorite
-//
-
-@implementation GTLYouTubeActivityContentDetailsFavorite
-@dynamic resourceId;
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubeActivityContentDetailsLike
-//
-
-@implementation GTLYouTubeActivityContentDetailsLike
-@dynamic resourceId;
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubeActivityContentDetailsPlaylistItem
-//
-
-@implementation GTLYouTubeActivityContentDetailsPlaylistItem
-@dynamic playlistId, playlistItemId, resourceId;
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubeActivityContentDetailsPromotedItem
-//
-
-@implementation GTLYouTubeActivityContentDetailsPromotedItem
-@dynamic adTag, clickTrackingUrl, creativeViewUrl, ctaType, descriptionText,
-         destinationUrl, videoId;
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubeActivityContentDetailsRecommendation
-//
-
-@implementation GTLYouTubeActivityContentDetailsRecommendation
-@dynamic reason, resourceId, seedResourceId;
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubeActivityContentDetailsSocial
-//
-
-@implementation GTLYouTubeActivityContentDetailsSocial
-@dynamic author, imageUrl, referenceUrl, resourceId, type;
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubeActivityContentDetailsSubscription
-//
-
-@implementation GTLYouTubeActivityContentDetailsSubscription
-@dynamic resourceId;
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubeActivityContentDetailsUpload
-//
-
-@implementation GTLYouTubeActivityContentDetailsUpload
-@dynamic videoId;
 @end

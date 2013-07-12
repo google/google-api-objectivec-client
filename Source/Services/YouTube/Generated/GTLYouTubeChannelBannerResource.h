@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeGeoPoint.h
+//  GTLYouTubeChannelBannerResource.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeGeoPoint (0 custom class methods, 3 custom properties)
+//   GTLYouTubeChannelBannerResource (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,20 +36,20 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeGeoPoint
+//   GTLYouTubeChannelBannerResource
 //
 
-// Geographical coordinates of a point, in WGS84.
+// A channel banner returned as the response to a channel_banner.insert call.
 
-@interface GTLYouTubeGeoPoint : GTLObject
+@interface GTLYouTubeChannelBannerResource : GTLObject
 
-// Altitude above the reference ellipsoid, in meters.
-@property (retain) NSNumber *altitude;  // doubleValue
+// Etag of this resource.
+@property (copy) NSString *ETag;
 
-// Latitude in degrees.
-@property (retain) NSNumber *latitude;  // doubleValue
+// The kind, fixed to "youtube#channelBannerResource".
+@property (copy) NSString *kind;
 
-// Longitude in degrees.
-@property (retain) NSNumber *longitude;  // doubleValue
+// The URL of this banner image.
+@property (copy) NSString *url;
 
 @end

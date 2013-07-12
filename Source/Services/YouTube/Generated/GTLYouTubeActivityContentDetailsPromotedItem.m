@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeChannelBannerInsertResponse.m
+//  GTLYouTubeActivityContentDetailsPromotedItem.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,27 +26,16 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelBannerInsertResponse (0 custom class methods, 3 custom properties)
+//   GTLYouTubeActivityContentDetailsPromotedItem (0 custom class methods, 7 custom properties)
 
-#import "GTLYouTubeChannelBannerInsertResponse.h"
+#import "GTLYouTubeActivityContentDetailsPromotedItem.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeChannelBannerInsertResponse
+//   GTLYouTubeActivityContentDetailsPromotedItem
 //
 
-@implementation GTLYouTubeChannelBannerInsertResponse
-@dynamic ETag, kind, url;
-
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"etag"
-                                forKey:@"ETag"];
-  return map;
-}
-
-+ (void)load {
-  [self registerObjectClassForKind:@"youtube#channelBannerInsertResponse"];
-}
-
+@implementation GTLYouTubeActivityContentDetailsPromotedItem
+@dynamic adTag, clickTrackingUrl, creativeViewUrl, ctaType, descriptionText,
+         destinationUrl, videoId;
 @end

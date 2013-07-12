@@ -54,15 +54,14 @@
 // has concluded.
 @property (retain) GTLYouTubeLiveBroadcastContentDetails *contentDetails;
 
-// The ETag of the broadcast.
+// Etag of this resource.
 @property (copy) NSString *ETag;
 
 // The ID that YouTube assigns to uniquely identify the broadcast.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// The type of the API resource. For live broadcast resources, the value will be
-// youtube#liveBroadcast.
+// The kind, fixed to "youtube#liveBroadcast".
 @property (copy) NSString *kind;
 
 // The snippet object contains basic details about the event, including its

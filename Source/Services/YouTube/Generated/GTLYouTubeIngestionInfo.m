@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeGeoPoint.h
+//  GTLYouTubeIngestionInfo.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,30 +26,15 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeGeoPoint (0 custom class methods, 3 custom properties)
+//   GTLYouTubeIngestionInfo (0 custom class methods, 3 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLYouTubeIngestionInfo.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeGeoPoint
+//   GTLYouTubeIngestionInfo
 //
 
-// Geographical coordinates of a point, in WGS84.
-
-@interface GTLYouTubeGeoPoint : GTLObject
-
-// Altitude above the reference ellipsoid, in meters.
-@property (retain) NSNumber *altitude;  // doubleValue
-
-// Latitude in degrees.
-@property (retain) NSNumber *latitude;  // doubleValue
-
-// Longitude in degrees.
-@property (retain) NSNumber *longitude;  // doubleValue
-
+@implementation GTLYouTubeIngestionInfo
+@dynamic backupIngestionAddress, ingestionAddress, streamName;
 @end

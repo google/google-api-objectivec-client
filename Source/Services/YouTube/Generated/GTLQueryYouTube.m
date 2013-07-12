@@ -26,14 +26,14 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (37 custom class methods, 47 custom properties)
+//   GTLQueryYouTube (37 custom class methods, 49 custom properties)
 
 #import "GTLQueryYouTube.h"
 
 #import "GTLYouTubeActivity.h"
 #import "GTLYouTubeActivityListResponse.h"
 #import "GTLYouTubeChannel.h"
-#import "GTLYouTubeChannelBannerInsertResponse.h"
+#import "GTLYouTubeChannelBannerResource.h"
 #import "GTLYouTubeChannelListResponse.h"
 #import "GTLYouTubeGuideCategoryListResponse.h"
 #import "GTLYouTubeLiveBroadcast.h"
@@ -55,10 +55,10 @@
 
 @implementation GTLQueryYouTube
 
-@dynamic autoLevels, broadcastStatus, categoryId, channelId, channelType,
+@dynamic autoLevels, broadcastStatus, categoryId, channelId, channelType, chart,
          displaySlate, fields, forChannelId, forContentOwner, forMine,
-         forUsername, hl, home, identifier, managedByMe, maxResults, mine,
-         myRating, mySubscribers, offsetTimeMs, onBehalfOfContentOwner,
+         forUsername, hl, home, identifier, locale, managedByMe, maxResults,
+         mine, myRating, mySubscribers, offsetTimeMs, onBehalfOfContentOwner,
          onBehalfOfContentOwnerChannel, order, pageToken, part, playlistId,
          publishedAfter, publishedBefore, q, rating, regionCode,
          relatedToVideoId, safeSearch, stabilize, streamId, topicId, type,
@@ -103,7 +103,7 @@
 #pragma mark "channelBanners" methods
 // These create a GTLQueryYouTube object.
 
-+ (id)queryForChannelBannersInsertWithObject:(GTLYouTubeChannelBannerInsertResponse *)object
++ (id)queryForChannelBannersInsertWithObject:(GTLYouTubeChannelBannerResource *)object
                             uploadParameters:(GTLUploadParameters *)uploadParametersOrNil {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
@@ -113,7 +113,7 @@
   GTLQueryYouTube *query = [self queryWithMethodName:methodName];
   query.bodyObject = object;
   query.uploadParameters = uploadParametersOrNil;
-  query.expectedObjectClass = [GTLYouTubeChannelBannerInsertResponse class];
+  query.expectedObjectClass = [GTLYouTubeChannelBannerResource class];
   return query;
 }
 

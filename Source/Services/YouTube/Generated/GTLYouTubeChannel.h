@@ -64,7 +64,7 @@
 // that need to be respected by the channel.
 @property (retain) GTLYouTubeChannelConversionPings *conversionPings;
 
-// The ETag for the channel resource.
+// Etag of this resource.
 @property (copy) NSString *ETag;
 
 // The ID that YouTube uses to uniquely identify the channel.
@@ -75,8 +75,7 @@
 // associated with the channel.
 @property (retain) GTLYouTubeInvideoPromotion *invideoPromotion;
 
-// The type of the API resource. For channel resources, the value will be
-// youtube#channel.
+// The kind, fixed to "youtube#channel".
 @property (copy) NSString *kind;
 
 // The snippet object contains basic details about the channel, such as its

@@ -53,22 +53,21 @@
 // The contentDetails object contains basic statistics about the subscription.
 @property (retain) GTLYouTubeSubscriptionContentDetails *contentDetails;
 
-// The ETag of the subscription resource.
+// Etag of this resource.
 @property (copy) NSString *ETag;
 
 // The ID that YouTube uses to uniquely identify the subscription.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// The type of the API resource. For subscription resources, the value will be
-// youtube#subscription.
+// The kind, fixed to "youtube#subscription".
 @property (copy) NSString *kind;
 
 // The snippet object contains basic details about the subscription, including
 // its title and the channel that the user subscribed to.
 @property (retain) GTLYouTubeSubscriptionSnippet *snippet;
 
-// The subscriberSnippet object contains basic details about the subscriber.
+// The subscriberSnippet object contains basic details about the sbuscriber.
 @property (retain) GTLYouTubeSubscriptionSubscriberSnippet *subscriberSnippet;
 
 @end
