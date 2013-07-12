@@ -42,6 +42,8 @@
 #import "GTLBooksConcurrentAccessRestriction.m"
 #import "GTLBooksDownloadAccesses.m"
 #import "GTLBooksDownloadAccessRestriction.m"
+#import "GTLBooksLayerDictData.m"
+#import "GTLBooksLayerGeoData.m"
 #import "GTLBooksLayersummaries.m"
 #import "GTLBooksLayersummary.m"
 #import "GTLBooksReadingPosition.m"
