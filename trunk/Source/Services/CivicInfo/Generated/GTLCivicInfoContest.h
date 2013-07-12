@@ -86,11 +86,11 @@
 // contests of type 'Referendum'.
 @property (copy) NSString *referendumSubtitle;
 
-// The title of the referendum. (e.g. 'Proposition 42') This field is only
+// The title of the referendum (e.g. 'Proposition 42'). This field is only
 // populated for contests of type 'Referendum'.
 @property (copy) NSString *referendumTitle;
 
-// A link the referendum. This field is only populated for contests of type
+// A link to the referendum. This field is only populated for contests of type
 // 'Referendum'.
 @property (copy) NSString *referendumUrl;
 
