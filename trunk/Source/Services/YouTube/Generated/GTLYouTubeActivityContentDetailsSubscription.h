@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeChannelBannerInsertResponse.h
+//  GTLYouTubeActivityContentDetailsSubscription.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelBannerInsertResponse (0 custom class methods, 3 custom properties)
+//   GTLYouTubeActivityContentDetailsSubscription (0 custom class methods, 1 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,23 +34,19 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLYouTubeResourceId;
+
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeChannelBannerInsertResponse
+//   GTLYouTubeActivityContentDetailsSubscription
 //
 
-// A channel banner returned as the response to a channel_banner.insert call.
+// Information about a channel that a user subscribed to.
 
-@interface GTLYouTubeChannelBannerInsertResponse : GTLObject
+@interface GTLYouTubeActivityContentDetailsSubscription : GTLObject
 
-// The ETag of the response.
-@property (copy) NSString *ETag;
-
-// The type of the API response. For this operation, the value will be
-// youtube#channelBannerInsertResponse.
-@property (copy) NSString *kind;
-
-// The URL of this banner image.
-@property (copy) NSString *url;
+// The resourceId object contains information that identifies the resource that
+// the user subscribed to.
+@property (retain) GTLYouTubeResourceId *resourceId;
 
 @end

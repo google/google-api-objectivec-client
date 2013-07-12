@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeGeoPoint.h
+//  GTLYouTubeActivityContentDetailsChannelItem.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeGeoPoint (0 custom class methods, 3 custom properties)
+//   GTLYouTubeActivityContentDetailsChannelItem (0 custom class methods, 1 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,22 +34,19 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLYouTubeResourceId;
+
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeGeoPoint
+//   GTLYouTubeActivityContentDetailsChannelItem
 //
 
-// Geographical coordinates of a point, in WGS84.
+// Details about a resource which was added to a channel.
 
-@interface GTLYouTubeGeoPoint : GTLObject
+@interface GTLYouTubeActivityContentDetailsChannelItem : GTLObject
 
-// Altitude above the reference ellipsoid, in meters.
-@property (retain) NSNumber *altitude;  // doubleValue
-
-// Latitude in degrees.
-@property (retain) NSNumber *latitude;  // doubleValue
-
-// Longitude in degrees.
-@property (retain) NSNumber *longitude;  // doubleValue
+// The resourceId object contains information that identifies the resource that
+// was added to the channel.
+@property (retain) GTLYouTubeResourceId *resourceId;
 
 @end

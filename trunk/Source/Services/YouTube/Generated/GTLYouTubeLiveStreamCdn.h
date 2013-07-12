@@ -34,7 +34,7 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLYouTubeLiveStreamCdnIngestionInfo;
+@class GTLYouTubeIngestionInfo;
 
 // ----------------------------------------------------------------------------
 //
@@ -50,7 +50,7 @@
 
 // The ingestionInfo object contains information that YouTube provides that you
 // need to transmit your RTMP or HTTP stream to YouTube.
-@property (retain) GTLYouTubeLiveStreamCdnIngestionInfo *ingestionInfo;
+@property (retain) GTLYouTubeIngestionInfo *ingestionInfo;
 
 // The method or protocol used to transmit the video stream.
 @property (copy) NSString *ingestionType;

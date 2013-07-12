@@ -51,7 +51,7 @@
 //
 
 @implementation GTLYouTubeVideo
-@dynamic ageGatingDetails, contentDetails, conversionPings, ETag, fileDetails,
+@dynamic ageGating, contentDetails, conversionPings, ETag, fileDetails,
          identifier, kind, monetizationDetails, player, processingDetails,
          projectDetails, recordingDetails, snippet, statistics, status,
          suggestions, topicDetails;

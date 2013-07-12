@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeGeoPoint.h
+//  GTLYouTubeActivityContentDetailsLike.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeGeoPoint (0 custom class methods, 3 custom properties)
+//   GTLYouTubeActivityContentDetailsLike (0 custom class methods, 1 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,22 +34,19 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLYouTubeResourceId;
+
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeGeoPoint
+//   GTLYouTubeActivityContentDetailsLike
 //
 
-// Geographical coordinates of a point, in WGS84.
+// Information about a resource that received a positive (like) rating.
 
-@interface GTLYouTubeGeoPoint : GTLObject
+@interface GTLYouTubeActivityContentDetailsLike : GTLObject
 
-// Altitude above the reference ellipsoid, in meters.
-@property (retain) NSNumber *altitude;  // doubleValue
-
-// Latitude in degrees.
-@property (retain) NSNumber *latitude;  // doubleValue
-
-// Longitude in degrees.
-@property (retain) NSNumber *longitude;  // doubleValue
+// The resourceId object contains information that identifies the rated
+// resource.
+@property (retain) GTLYouTubeResourceId *resourceId;
 
 @end

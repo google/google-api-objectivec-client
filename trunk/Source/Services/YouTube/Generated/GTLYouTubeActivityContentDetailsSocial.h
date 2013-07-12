@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeGeoPoint.h
+//  GTLYouTubeActivityContentDetailsSocial.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeGeoPoint (0 custom class methods, 3 custom properties)
+//   GTLYouTubeActivityContentDetailsSocial (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,22 +34,31 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLYouTubeResourceId;
+
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeGeoPoint
+//   GTLYouTubeActivityContentDetailsSocial
 //
 
-// Geographical coordinates of a point, in WGS84.
+// Details about a social network post.
 
-@interface GTLYouTubeGeoPoint : GTLObject
+@interface GTLYouTubeActivityContentDetailsSocial : GTLObject
 
-// Altitude above the reference ellipsoid, in meters.
-@property (retain) NSNumber *altitude;  // doubleValue
+// The author of the social network post.
+@property (copy) NSString *author;
 
-// Latitude in degrees.
-@property (retain) NSNumber *latitude;  // doubleValue
+// An image of the post's author.
+@property (copy) NSString *imageUrl;
 
-// Longitude in degrees.
-@property (retain) NSNumber *longitude;  // doubleValue
+// The URL of the social network post.
+@property (copy) NSString *referenceUrl;
+
+// The resourceId object encapsulates information that identifies the resource
+// associated with a social network post.
+@property (retain) GTLYouTubeResourceId *resourceId;
+
+// The name of the social network.
+@property (copy) NSString *type;
 
 @end

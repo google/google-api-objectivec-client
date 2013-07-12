@@ -39,8 +39,6 @@
 //   GTLYouTubeLiveBroadcastStatus
 //
 
-// The status of a live broadcast.
-
 @interface GTLYouTubeLiveBroadcastStatus : GTLObject
 
 // The broadcast's status. The status can be updated using the API's

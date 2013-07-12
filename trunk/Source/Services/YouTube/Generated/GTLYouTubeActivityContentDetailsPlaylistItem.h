@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeGeoPoint.h
+//  GTLYouTubeActivityContentDetailsPlaylistItem.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeGeoPoint (0 custom class methods, 3 custom properties)
+//   GTLYouTubeActivityContentDetailsPlaylistItem (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,22 +34,25 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLYouTubeResourceId;
+
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeGeoPoint
+//   GTLYouTubeActivityContentDetailsPlaylistItem
 //
 
-// Geographical coordinates of a point, in WGS84.
+// Information about a new playlist item.
 
-@interface GTLYouTubeGeoPoint : GTLObject
+@interface GTLYouTubeActivityContentDetailsPlaylistItem : GTLObject
 
-// Altitude above the reference ellipsoid, in meters.
-@property (retain) NSNumber *altitude;  // doubleValue
+// The value that YouTube uses to uniquely identify the playlist.
+@property (copy) NSString *playlistId;
 
-// Latitude in degrees.
-@property (retain) NSNumber *latitude;  // doubleValue
+// ID of the item within the playlist.
+@property (copy) NSString *playlistItemId;
 
-// Longitude in degrees.
-@property (retain) NSNumber *longitude;  // doubleValue
+// The resourceId object contains information about the resource that was added
+// to the playlist.
+@property (retain) GTLYouTubeResourceId *resourceId;
 
 @end

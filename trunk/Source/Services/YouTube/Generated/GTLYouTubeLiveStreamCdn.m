@@ -30,7 +30,7 @@
 
 #import "GTLYouTubeLiveStreamCdn.h"
 
-#import "GTLYouTubeLiveStreamCdnIngestionInfo.h"
+#import "GTLYouTubeIngestionInfo.h"
 
 // ----------------------------------------------------------------------------
 //

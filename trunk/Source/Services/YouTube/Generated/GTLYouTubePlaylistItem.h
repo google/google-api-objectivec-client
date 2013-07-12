@@ -69,15 +69,14 @@
 // a YouTube video. The object contains additional information about the video.
 @property (retain) GTLYouTubePlaylistItemContentDetails *contentDetails;
 
-// The ETag for the playlist item resource.
+// Etag of this resource.
 @property (copy) NSString *ETag;
 
 // The ID that YouTube uses to uniquely identify the playlist item.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// The type of the API resource. For playlist item resources, the value will be
-// youtube#playlistItem.
+// The kind, fixed to "youtube#playlistItem".
 @property (copy) NSString *kind;
 
 // The snippet object contains basic details about the playlist item, such as

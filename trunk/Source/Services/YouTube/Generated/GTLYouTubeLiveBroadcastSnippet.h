@@ -41,9 +41,6 @@
 //   GTLYouTubeLiveBroadcastSnippet
 //
 
-// Basic details about a live broadcast, including title, description and
-// thumbnails.
-
 @interface GTLYouTubeLiveBroadcastSnippet : GTLObject
 
 // The date and time that the broadcast actually ended. This information is only

@@ -27,7 +27,6 @@
 //   https://developers.google.com/youtube/v3
 // Classes:
 //   GTLYouTubeLiveBroadcastContentDetails (0 custom class methods, 7 custom properties)
-//   GTLYouTubeLiveBroadcastContentDetailsMonitorStream (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -35,7 +34,7 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLYouTubeLiveBroadcastContentDetailsMonitorStream;
+@class GTLYouTubeMonitorStreamInfo;
 
 // ----------------------------------------------------------------------------
 //
@@ -70,7 +69,7 @@
 // The monitorStream object contains information about the monitor stream, which
 // the broadcaster can use to review the event content before the broadcast
 // stream is shown publicly.
-@property (retain) GTLYouTubeLiveBroadcastContentDetailsMonitorStream *monitorStream;
+@property (retain) GTLYouTubeMonitorStreamInfo *monitorStream;
 
 // Automatically start recording after the event goes live. The default value
 // for this property is true.
@@ -87,33 +86,5 @@
 // that sets the cuepoint's eventState to end to remove the in-stream slate and
 // make your broadcast stream visible to viewers.
 @property (retain) NSNumber *startWithSlate;  // boolValue
-
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubeLiveBroadcastContentDetailsMonitorStream
-//
-
-@interface GTLYouTubeLiveBroadcastContentDetailsMonitorStream : GTLObject
-
-// If you have set the enableMonitorStream property to true, then this property
-// determines the length of the live broadcast delay.
-@property (retain) NSNumber *broadcastStreamDelayMs;  // unsignedIntValue
-
-// HTML code that embeds a player that plays the monitor stream.
-@property (copy) NSString *embedHtml;
-
-// This value determines whether the monitor stream is enabled for the
-// broadcast. If the monitor stream is enabled, then YouTube will broadcast the
-// event content on a special stream intended only for the broadcaster's
-// consumption. The broadcaster can use the stream to review the event content
-// and also to identify the optimal times to insert cuepoints.
-// You need to set this value to true if you intend to have a broadcast delay
-// for your event.
-// Note: This property cannot be updated once the broadcast is in the testing or
-// live state.
-@property (retain) NSNumber *enableMonitorStream;  // boolValue
 
 @end

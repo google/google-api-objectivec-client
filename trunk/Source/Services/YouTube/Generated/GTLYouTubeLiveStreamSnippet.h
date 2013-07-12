@@ -39,8 +39,6 @@
 //   GTLYouTubeLiveStreamSnippet
 //
 
-// Basic details about a live stream, including title and description.
-
 @interface GTLYouTubeLiveStreamSnippet : GTLObject
 
 // The ID that YouTube uses to uniquely identify the channel that is

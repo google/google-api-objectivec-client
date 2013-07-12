@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveStreamCdnIngestionInfo.h
+//  GTLYouTubeActivityContentDetailsComment.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveStreamCdnIngestionInfo (0 custom class methods, 3 custom properties)
+//   GTLYouTubeActivityContentDetailsComment (0 custom class methods, 1 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,29 +34,19 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLYouTubeResourceId;
+
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveStreamCdnIngestionInfo
+//   GTLYouTubeActivityContentDetailsComment
 //
 
-// Brief description of the live stream cdn settings.
+// Information about a resource that received a comment.
 
-@interface GTLYouTubeLiveStreamCdnIngestionInfo : GTLObject
+@interface GTLYouTubeActivityContentDetailsComment : GTLObject
 
-// The backup ingestion URL that you should use to stream video to YouTube. You
-// have the option of simultaneously streaming the content that you are sending
-// to the ingestionAddress to this URL.
-@property (copy) NSString *backupIngestionAddress;
-
-// The primary ingestion URL that you should use to stream video to YouTube. You
-// must stream video to this URL.
-// Depending on which application or tool you use to encode your video stream,
-// you may need to enter the stream URL and stream name separately or you may
-// need to concatenate them in the following format:
-// STREAM_URL/STREAM_NAME
-@property (copy) NSString *ingestionAddress;
-
-// The HTTP or RTMP stream name that YouTube assigns to the video stream.
-@property (copy) NSString *streamName;
+// The resourceId object contains information that identifies the resource
+// associated with the comment.
+@property (retain) GTLYouTubeResourceId *resourceId;
 
 @end

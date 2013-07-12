@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,12 +42,9 @@
 // Basic details about a guide category.
 
 @interface GTLYouTubeGuideCategorySnippet : GTLObject
-
-// The ID that YouTube uses to uniquely identify the channel publishing the
-// guide category.
 @property (copy) NSString *channelId;
 
-// The category's title.
+// Description of the guide category.
 @property (copy) NSString *title;
 
 @end

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubePlaylistPlayer.h
+//  GTLYouTubeMonitorStreamInfo.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlaylistPlayer (0 custom class methods, 1 custom properties)
+//   GTLYouTubeMonitorStreamInfo (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,12 +36,29 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubePlaylistPlayer
+//   GTLYouTubeMonitorStreamInfo
 //
 
-@interface GTLYouTubePlaylistPlayer : GTLObject
+// Settings and Info of the monitor stream
 
-// An <iframe> tag that embeds a player that will play the playlist.
+@interface GTLYouTubeMonitorStreamInfo : GTLObject
+
+// If you have set the enableMonitorStream property to true, then this property
+// determines the length of the live broadcast delay.
+@property (retain) NSNumber *broadcastStreamDelayMs;  // unsignedIntValue
+
+// HTML code that embeds a player that plays the monitor stream.
 @property (copy) NSString *embedHtml;
+
+// This value determines whether the monitor stream is enabled for the
+// broadcast. If the monitor stream is enabled, then YouTube will broadcast the
+// event content on a special stream intended only for the broadcaster's
+// consumption. The broadcaster can use the stream to review the event content
+// and also to identify the optimal times to insert cuepoints.
+// You need to set this value to true if you intend to have a broadcast delay
+// for your event.
+// Note: This property cannot be updated once the broadcast is in the testing or
+// live state.
+@property (retain) NSNumber *enableMonitorStream;  // boolValue
 
 @end
