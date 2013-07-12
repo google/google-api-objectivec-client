@@ -34,46 +34,36 @@
 #import "GTLQuery.h"
 #import "GTLUtilities.h"
 
-#undef _EXTERN
-#undef _INITIALIZE_AS
-#ifdef GTLSERVICE_DEFINE_GLOBALS
-#define _EXTERN
-#define _INITIALIZE_AS(x) =x
-#else
-#define _EXTERN extern
-#define _INITIALIZE_AS(x)
-#endif
-
 // Error domains
-_EXTERN NSString* const kGTLServiceErrorDomain _INITIALIZE_AS(@"com.google.GTLServiceDomain");
+extern NSString *const kGTLServiceErrorDomain;
 enum {
   kGTLErrorQueryResultMissing = -3000,
   kGTLErrorWaitTimedOut       = -3001
 };
 
-_EXTERN NSString* const kGTLJSONRPCErrorDomain _INITIALIZE_AS(@"com.google.GTLJSONRPCErrorDomain");
+extern NSString *const kGTLJSONRPCErrorDomain;
 
 // We'll consistently store the server error string in the userInfo under
 // this key
-_EXTERN NSString* const kGTLServerErrorStringKey _INITIALIZE_AS(@"error");
+extern NSString *const kGTLServerErrorStringKey;
 
-_EXTERN Class const kGTLUseRegisteredClass _INITIALIZE_AS(nil);
+extern Class const kGTLUseRegisteredClass;
 
-_EXTERN NSUInteger const kGTLStandardUploadChunkSize _INITIALIZE_AS(NSUIntegerMax);
+extern NSUInteger const kGTLStandardUploadChunkSize;
 
 // When servers return us structured JSON errors, the NSError will
 // contain a GTLErrorObject in the userInfo dictionary under the key
 // kGTLStructuredErrorsKey
-_EXTERN NSString* const kGTLStructuredErrorKey _INITIALIZE_AS(@"GTLStructuredError");
+extern NSString *const kGTLStructuredErrorKey;
 
 // When specifying an ETag for updating or deleting a single entry, use
 // kGTLETagWildcard to tell the server to replace the current value
 // unconditionally.  Do not use this in entries in a batch feed.
-_EXTERN NSString* const kGTLETagWildcard _INITIALIZE_AS(@"*");
+extern NSString *const kGTLETagWildcard;
 
 // Notifications when parsing of a fetcher feed or entry begins or ends
-_EXTERN NSString* const kGTLServiceTicketParsingStartedNotification _INITIALIZE_AS(@"kGTLServiceTicketParsingStartedNotification");
-_EXTERN NSString* const kGTLServiceTicketParsingStoppedNotification _INITIALIZE_AS(@"kGTLServiceTicketParsingStoppedNotification");
+extern NSString *const kGTLServiceTicketParsingStartedNotification;
+extern NSString *const kGTLServiceTicketParsingStoppedNotification ;
 
 @class GTLServiceTicket;
 

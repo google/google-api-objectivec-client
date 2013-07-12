@@ -26,16 +26,6 @@
 #import "GTLUtilities.h"
 #import "GTLDateTime.h"
 
-#undef _EXTERN
-#undef _INITIALIZE_AS
-#ifdef GTLOBJECT_DEFINE_GLOBALS
-#define _EXTERN
-#define _INITIALIZE_AS(x) =x
-#else
-#define _EXTERN extern
-#define _INITIALIZE_AS(x)
-#endif
-
 @protocol GTLCollectionProtocol
 @optional
 @property (retain) NSArray *items;

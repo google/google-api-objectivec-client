@@ -26,10 +26,21 @@
 #import <UIKit/UIKit.h>
 #endif
 
-#define GTLSERVICE_DEFINE_GLOBALS 1
 #import "GTLService.h"
 
-static NSString *const kUserDataPropertyKey = @"_userData";
+NSString* const kGTLServiceErrorDomain = @"com.google.GTLServiceDomain";
+NSString* const kGTLJSONRPCErrorDomain = @"com.google.GTLJSONRPCErrorDomain";
+NSString* const kGTLServerErrorStringKey = @"error";
+Class const kGTLUseRegisteredClass = nil;
+NSUInteger const kGTLStandardUploadChunkSize = NSUIntegerMax;
+NSString* const kGTLStructuredErrorKey = @"GTLStructuredError";
+NSString* const kGTLETagWildcard = @"*";
+
+NSString* const kGTLServiceTicketParsingStartedNotification = @"kGTLServiceTicketParsingStartedNotification";
+NSString* const kGTLServiceTicketParsingStoppedNotification = @"kGTLServiceTicketParsingStoppedNotification";
+
+
+static NSString *const kServiceUserDataPropertyKey = @"_userData";
 
 static NSString* const kFetcherDelegateKey             = @"_delegate";
 static NSString* const kFetcherObjectClassKey          = @"_objectClass";
@@ -1256,9 +1267,10 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
   if (ticket.shouldFetchNextPages) {
     // Determine if we should fetch more pages of results
 
-    GTLQuery *nextPageQuery = [self nextPageQueryForQuery:executingQuery
-                                                   result:object
-                                                   ticket:ticket];
+    GTLQuery *nextPageQuery =
+      (GTLQuery *)[self nextPageQueryForQuery:executingQuery
+                                       result:object
+                                       ticket:ticket];
     if (nextPageQuery) {
       BOOL isFetchingMore = [self fetchNextPageWithQuery:nextPageQuery
                                                 delegate:delegate
@@ -1533,9 +1545,10 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
       GTLObject *singleObject = [successes objectForKey:requestID];
       GTLQuery *singleQuery = [ticket queryForRequestID:requestID];
 
-      GTLQuery *newQuery = [self nextPageQueryForQuery:singleQuery
-                                                result:singleObject
-                                                ticket:ticket];
+      GTLQuery *newQuery =
+        (GTLQuery *)[self nextPageQueryForQuery:singleQuery
+                                         result:singleObject
+                                         ticket:ticket];
       if (newQuery) {
         // There is another query to fetch
         if (nextPageBatchQuery == nil) {
@@ -2107,11 +2120,11 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 }
 
 - (void)setServiceUserData:(id)userData {
-  [self setServiceProperty:userData forKey:kUserDataPropertyKey];
+  [self setServiceProperty:userData forKey:kServiceUserDataPropertyKey];
 }
 
 - (id)serviceUserData {
-  return [[[self servicePropertyForKey:kUserDataPropertyKey] retain] autorelease];
+  return [[[self servicePropertyForKey:kServiceUserDataPropertyKey] retain] autorelease];
 }
 
 - (void)setAuthorizer:(id <GTMFetcherAuthorizationProtocol>)authorizer {
@@ -2309,13 +2322,13 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 }
 
 - (void)setUserData:(id)userData {
-  [self setProperty:userData forKey:kUserDataPropertyKey];
+  [self setProperty:userData forKey:kServiceUserDataPropertyKey];
 }
 
 - (id)userData {
   // be sure the returned pointer has the life of the autorelease pool,
   // in case self is released immediately
-  return [[[self propertyForKey:kUserDataPropertyKey] retain] autorelease];
+  return [[[self propertyForKey:kServiceUserDataPropertyKey] retain] autorelease];
 }
 
 - (void)setProperties:(NSDictionary *)dict {

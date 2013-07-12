@@ -213,17 +213,17 @@
 
 #pragma mark Runtime Utilities
 
-static NSMutableDictionary *gParameterNameMapCache = nil;
-static NSMutableDictionary *gArrayPropertyToClassMapCache = nil;
+static NSMutableDictionary *gQueryParameterNameMapCache = nil;
+static NSMutableDictionary *gQueryArrayPropertyToClassMapCache = nil;
 
 + (void)initialize {
   // note that initialize is guaranteed by the runtime to be called in a
   // thread-safe manner
-  if (gParameterNameMapCache == nil) {
-    gParameterNameMapCache = [GTLUtilities newStaticDictionary];
+  if (gQueryParameterNameMapCache == nil) {
+    gQueryParameterNameMapCache = [GTLUtilities newStaticDictionary];
   }
-  if (gArrayPropertyToClassMapCache == nil) {
-    gArrayPropertyToClassMapCache = [GTLUtilities newStaticDictionary];
+  if (gQueryArrayPropertyToClassMapCache == nil) {
+    gQueryArrayPropertyToClassMapCache = [GTLUtilities newStaticDictionary];
   }
 }
 
@@ -232,7 +232,7 @@ static NSMutableDictionary *gArrayPropertyToClassMapCache = nil;
   [GTLUtilities mergedClassDictionaryForSelector:@selector(parameterNameMap)
                                       startClass:aClass
                                    ancestorClass:[GTLQuery class]
-                                           cache:gParameterNameMapCache];
+                                           cache:gQueryParameterNameMapCache];
   return resultMap;
 }
 
@@ -241,7 +241,7 @@ static NSMutableDictionary *gArrayPropertyToClassMapCache = nil;
     [GTLUtilities mergedClassDictionaryForSelector:@selector(arrayPropertyToClassMap)
                                         startClass:aClass
                                      ancestorClass:[GTLQuery class]
-                                             cache:gArrayPropertyToClassMapCache];
+                                             cache:gQueryArrayPropertyToClassMapCache];
   return resultMap;
 }
 

@@ -17,8 +17,6 @@
 //  GTLObject.m
 //
 
-#define GTLOBJECT_DEFINE_GLOBALS 1
-
 #include <objc/runtime.h>
 
 #import "GTLObject.h"
