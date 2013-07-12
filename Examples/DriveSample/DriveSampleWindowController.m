@@ -1102,7 +1102,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     [title appendString:@" \u2605"]; // star character
   }
   if ([labels.trashed boolValue]) {
-    title = [NSString stringWithFormat:@"\u2717 %@", title]; // X character
+    [title insertString:@"\u2717 " atIndex:0]; // X character
   }
   if ([labels.hidden boolValue]) {
     [title appendString:@" \u263D"]; // quarter moon character
