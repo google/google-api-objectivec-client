@@ -56,11 +56,11 @@ To facilitate debugging, you may choose to include the GTL.xcodeproj project fil
 
 == Compiling the Source Files Directly into a Mac or iOS Application ==
 
-Rather than link to the GTL framework, you can compile the GTL library sources directly into your own project. To do this, option-click the group arrow to fully expand the GTL Sources source group, and select all of the files in the Common group, and drag the files from the GTL Xcode project into your project's window (add by reference, not by copying the files.)
+Rather than link to the GTL framework, you can compile the GTL library sources directly into your own project. To do this, find the library's `GTLCommon_Sources.m` and `GTLCommon_Networking.m` files, and drag the files into your project's window (add by reference, not by copying the files.)
 
-*Note:* For the OAuth 2 files, add to your project either the Touch (for iOS) or the Mac group, but not both. 
+Then add to your project's search the paths to the library's source folders to your project's search paths: `Source`, `Source/Objects`, `Source/Utilities`, `HTTPFetcher`, `OAuth2`, `OAuth2/Touch` (or `OAuth2/Mac`).
 
-Also drag the folder with the class files for the services needed by your application, such as Tasks or Books, directly into your project. From the generated files folder, include in your project either the individual class .m files for the service or the service's `_Sources.m` file, but not both.
+Also drag the folder with the class files for the services needed by your application, such as Tasks or Books, directly into your project. From the generated files folder, include in your project the service's `_Sources.m` file.
 
 Application classes using the library should include the header for each specific service, such as
 
