@@ -30,19 +30,25 @@
 //   GTLBooksVolumeAccessInfo (0 custom class methods, 11 custom properties)
 //   GTLBooksVolumeLayerInfo (0 custom class methods, 1 custom properties)
 //   GTLBooksVolumeRecommendedInfo (0 custom class methods, 1 custom properties)
-//   GTLBooksVolumeSaleInfo (0 custom class methods, 7 custom properties)
+//   GTLBooksVolumeSaleInfo (0 custom class methods, 8 custom properties)
 //   GTLBooksVolumeSearchInfo (0 custom class methods, 1 custom properties)
-//   GTLBooksVolumeUserInfo (0 custom class methods, 8 custom properties)
+//   GTLBooksVolumeUserInfo (0 custom class methods, 11 custom properties)
 //   GTLBooksVolumeVolumeInfo (0 custom class methods, 20 custom properties)
 //   GTLBooksVolumeAccessInfoEpub (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeAccessInfoPdf (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeLayerInfoLayersItem (0 custom class methods, 2 custom properties)
 //   GTLBooksVolumeSaleInfoListPrice (0 custom class methods, 2 custom properties)
+//   GTLBooksVolumeSaleInfoOffersItem (0 custom class methods, 4 custom properties)
 //   GTLBooksVolumeSaleInfoRetailPrice (0 custom class methods, 2 custom properties)
+//   GTLBooksVolumeUserInfoCopy (0 custom class methods, 4 custom properties)
+//   GTLBooksVolumeUserInfoRentalPeriod (0 custom class methods, 2 custom properties)
 //   GTLBooksVolumeUserInfoUserUploadedVolumeInfo (0 custom class methods, 1 custom properties)
 //   GTLBooksVolumeVolumeInfoDimensions (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeVolumeInfoImageLinks (0 custom class methods, 6 custom properties)
 //   GTLBooksVolumeVolumeInfoIndustryIdentifiersItem (0 custom class methods, 2 custom properties)
+//   GTLBooksVolumeSaleInfoOffersItemListPrice (0 custom class methods, 2 custom properties)
+//   GTLBooksVolumeSaleInfoOffersItemRentalDuration (0 custom class methods, 2 custom properties)
+//   GTLBooksVolumeSaleInfoOffersItemRetailPrice (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -61,9 +67,15 @@
 @class GTLBooksVolumeRecommendedInfo;
 @class GTLBooksVolumeSaleInfo;
 @class GTLBooksVolumeSaleInfoListPrice;
+@class GTLBooksVolumeSaleInfoOffersItem;
+@class GTLBooksVolumeSaleInfoOffersItemListPrice;
+@class GTLBooksVolumeSaleInfoOffersItemRentalDuration;
+@class GTLBooksVolumeSaleInfoOffersItemRetailPrice;
 @class GTLBooksVolumeSaleInfoRetailPrice;
 @class GTLBooksVolumeSearchInfo;
 @class GTLBooksVolumeUserInfo;
+@class GTLBooksVolumeUserInfoCopy;
+@class GTLBooksVolumeUserInfoRentalPeriod;
 @class GTLBooksVolumeUserInfoUserUploadedVolumeInfo;
 @class GTLBooksVolumeVolumeInfo;
 @class GTLBooksVolumeVolumeInfoDimensions;
@@ -220,6 +232,9 @@
 // Suggested retail price. (In LITE projection.)
 @property (retain) GTLBooksVolumeSaleInfoListPrice *listPrice;
 
+// Offers available for this volume (sales and rentals).
+@property (retain) NSArray *offers;  // of GTLBooksVolumeSaleInfoOffersItem
+
 // The date on which this book is available for sale.
 @property (retain) GTLDateTime *onSaleDate;
 
@@ -230,7 +245,7 @@
 
 // Whether or not this book is available for sale or offered for free in the
 // Google eBookstore for the country listed above. Possible values are FOR_SALE,
-// FREE, NOT_FOR_SALE, or FOR_PREORDER.
+// FOR_RENTAL_ONLY, FOR_SALE_AND_RENTAL, FREE, NOT_FOR_SALE, or FOR_PREORDER.
 @property (copy) NSString *saleability;
 
 @end
@@ -256,6 +271,10 @@
 
 @interface GTLBooksVolumeUserInfo : GTLObject
 
+// Copy/Paste accounting information.
+// Remapped to 'copyProperty' to avoid NSObject's 'copy'.
+@property (retain) GTLBooksVolumeUserInfoCopy *copyProperty NS_RETURNS_NOT_RETAINED;
+
 // Whether or not this volume is currently in "my books."
 @property (retain) NSNumber *isInMyBooks;  // boolValue
 
@@ -273,6 +292,12 @@
 // The user's current reading position in the volume, if one is available. (In
 // LITE projection.)
 @property (retain) GTLBooksReadingPosition *readingPosition;
+
+// Period during this book is/was a valid rental.
+@property (retain) GTLBooksVolumeUserInfoRentalPeriod *rentalPeriod;
+
+// Whether this book is an active or an expired rental.
+@property (copy) NSString *rentalState;
 
 // This user's review of this volume, if one exists.
 @property (retain) GTLBooksReview *review;
@@ -440,6 +465,28 @@
 
 // ----------------------------------------------------------------------------
 //
+//   GTLBooksVolumeSaleInfoOffersItem
+//
+
+@interface GTLBooksVolumeSaleInfoOffersItem : GTLObject
+
+// The finsky offer type (e.g., PURCHASE=0 RENTAL=3)
+@property (retain) NSNumber *finskyOfferType;  // intValue
+
+// Offer list (=undiscounted) price in Micros.
+@property (retain) GTLBooksVolumeSaleInfoOffersItemListPrice *listPrice;
+
+// The rental duration (for rental offers only).
+@property (retain) GTLBooksVolumeSaleInfoOffersItemRentalDuration *rentalDuration;
+
+// Offer retail (=discounted) price in Micros
+@property (retain) GTLBooksVolumeSaleInfoOffersItemRetailPrice *retailPrice;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
 //   GTLBooksVolumeSaleInfoRetailPrice
 //
 
@@ -451,6 +498,30 @@
 // An ISO 4217, three-letter currency code. (In LITE projection.)
 @property (copy) NSString *currencyCode;
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksVolumeUserInfoCopy
+//
+
+@interface GTLBooksVolumeUserInfoCopy : GTLObject
+@property (retain) NSNumber *allowedCharacterCount;  // intValue
+@property (copy) NSString *limitType;
+@property (retain) NSNumber *remainingCharacterCount;  // intValue
+@property (retain) GTLDateTime *updated;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksVolumeUserInfoRentalPeriod
+//
+
+@interface GTLBooksVolumeUserInfoRentalPeriod : GTLObject
+@property (retain) NSNumber *endUtcSec;  // longLongValue
+@property (retain) NSNumber *startUtcSec;  // longLongValue
 @end
 
 
@@ -527,4 +598,37 @@
 // Identifier type. Possible values are ISBN_10, ISBN_13, ISSN and OTHER.
 @property (copy) NSString *type;
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksVolumeSaleInfoOffersItemListPrice
+//
+
+@interface GTLBooksVolumeSaleInfoOffersItemListPrice : GTLObject
+@property (retain) NSNumber *amountInMicros;  // doubleValue
+@property (copy) NSString *currencyCode;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksVolumeSaleInfoOffersItemRentalDuration
+//
+
+@interface GTLBooksVolumeSaleInfoOffersItemRentalDuration : GTLObject
+@property (retain) NSNumber *count;  // doubleValue
+@property (copy) NSString *unit;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksVolumeSaleInfoOffersItemRetailPrice
+//
+
+@interface GTLBooksVolumeSaleInfoOffersItemRetailPrice : GTLObject
+@property (retain) NSNumber *amountInMicros;  // doubleValue
+@property (copy) NSString *currencyCode;
 @end

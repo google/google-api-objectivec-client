@@ -26,9 +26,10 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLBooksAnnotation (0 custom class methods, 16 custom properties)
+//   GTLBooksAnnotation (0 custom class methods, 17 custom properties)
 //   GTLBooksAnnotationClientVersionRanges (0 custom class methods, 5 custom properties)
 //   GTLBooksAnnotationCurrentVersionRanges (0 custom class methods, 5 custom properties)
+//   GTLBooksAnnotationLayerSummary (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -38,6 +39,7 @@
 
 @class GTLBooksAnnotationClientVersionRanges;
 @class GTLBooksAnnotationCurrentVersionRanges;
+@class GTLBooksAnnotationLayerSummary;
 @class GTLBooksAnnotationsRange;
 
 // ----------------------------------------------------------------------------
@@ -82,6 +84,8 @@
 
 // The layer this annotation is for.
 @property (copy) NSString *layerId;
+
+@property (retain) GTLBooksAnnotationLayerSummary *layerSummary;
 
 // Pages that this annotation spans.
 @property (retain) NSArray *pageIds;  // of NSString
@@ -147,5 +151,25 @@
 
 // Range in image CFI format for this annotation for version above.
 @property (retain) GTLBooksAnnotationsRange *imageCfiRange;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksAnnotationLayerSummary
+//
+
+@interface GTLBooksAnnotationLayerSummary : GTLObject
+
+// Maximum allowed characters on this layer, especially for the "copy" layer.
+@property (retain) NSNumber *allowedCharacterCount;  // intValue
+
+// Type of limitation on this layer. "limited" or "unlimited" for the "copy"
+// layer.
+@property (copy) NSString *limitType;
+
+// Remaining allowed characters on this layer, especially for the "copy" layer.
+@property (retain) NSNumber *remainingCharacterCount;  // intValue
 
 @end

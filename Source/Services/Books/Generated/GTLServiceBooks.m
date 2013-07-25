@@ -43,6 +43,7 @@
                       [GTLBooksAnnotations class],
                       [GTLBooksAnnotationsdata class],
                       [GTLBooksAnnotationsRange class],
+                      [GTLBooksAnnotationsSummary class],
                       [GTLBooksBookshelf class],
                       [GTLBooksBookshelves class],
                       [GTLBooksCloudloadingResource class],

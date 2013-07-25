@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLQueryBooks (35 custom class methods, 52 custom properties)
+//   GTLQueryBooks (36 custom class methods, 55 custom properties)
 
 #import "GTLQueryBooks.h"
 
@@ -34,6 +34,7 @@
 #import "GTLBooksAnnotationdata.h"
 #import "GTLBooksAnnotations.h"
 #import "GTLBooksAnnotationsdata.h"
+#import "GTLBooksAnnotationsSummary.h"
 #import "GTLBooksBookshelf.h"
 #import "GTLBooksBookshelves.h"
 #import "GTLBooksCloudloadingResource.h"
@@ -51,14 +52,14 @@
 
 @dynamic acquireMethod, action, annotationDataId, annotationId, association,
          contentVersion, country, cpksver, deviceCookie, download,
-         driveDocumentId, endOffset, endPosition, fields, filter, h,
-         langRestrict, layerId, libraryRestrict, locale, maxResults, mimeType,
-         name, nonce, orderBy, pageIds, pageToken, partner, position, printType,
-         processingState, projection, q, scale, shelf, showDeleted,
-         showPreorders, source, startIndex, startOffset, startPosition,
-         summaryId, timestamp, updatedMax, updatedMin, uploadClientToken,
-         userId, volumeAnnotationsVersion, volumeId, volumeIds, volumePosition,
-         w;
+         driveDocumentId, endOffset, endPosition, features, fields, filter, h,
+         langRestrict, layerId, layerIds, libraryRestrict, locale, maxResults,
+         mimeType, name, nonce, orderBy, pageIds, pageToken, partner, position,
+         printType, processingState, projection, q, scale, shelf, showDeleted,
+         showOnlySummaryInResponse, showPreorders, source, startIndex,
+         startOffset, startPosition, summaryId, timestamp, updatedMax,
+         updatedMin, uploadClientToken, userId, volumeAnnotationsVersion,
+         volumeId, volumeIds, volumePosition, w;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map =
@@ -74,6 +75,8 @@
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
       [NSString class], @"acquireMethod",
+      [NSString class], @"features",
+      [NSString class], @"layerIds",
       [NSString class], @"pageIds",
       [NSString class], @"processingState",
       [NSString class], @"volumeIds",
@@ -302,6 +305,16 @@
   NSString *methodName = @"books.mylibrary.annotations.list";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLBooksAnnotations class];
+  return query;
+}
+
++ (id)queryForMylibraryAnnotationsSummaryWithLayerIds:(NSArray *)layerIds
+                                             volumeId:(NSString *)volumeId {
+  NSString *methodName = @"books.mylibrary.annotations.summary";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.layerIds = layerIds;
+  query.volumeId = volumeId;
+  query.expectedObjectClass = [GTLBooksAnnotationsSummary class];
   return query;
 }
 

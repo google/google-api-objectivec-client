@@ -32,11 +32,13 @@
 NSString * const kGTLAuthScopeBooks = @"https://www.googleapis.com/auth/books";
 
 // AcquireMethod
-NSString * const kGTLBooksAcquireMethodPreordered   = @"PREORDERED";
-NSString * const kGTLBooksAcquireMethodPublicDomain = @"PUBLIC_DOMAIN";
-NSString * const kGTLBooksAcquireMethodPurchased    = @"PURCHASED";
-NSString * const kGTLBooksAcquireMethodSample       = @"SAMPLE";
-NSString * const kGTLBooksAcquireMethodUploaded     = @"UPLOADED";
+NSString * const kGTLBooksAcquireMethodPreordered       = @"PREORDERED";
+NSString * const kGTLBooksAcquireMethodPreviouslyRented = @"PREVIOUSLY_RENTED";
+NSString * const kGTLBooksAcquireMethodPublicDomain     = @"PUBLIC_DOMAIN";
+NSString * const kGTLBooksAcquireMethodPurchased        = @"PURCHASED";
+NSString * const kGTLBooksAcquireMethodRented           = @"RENTED";
+NSString * const kGTLBooksAcquireMethodSample           = @"SAMPLE";
+NSString * const kGTLBooksAcquireMethodUploaded         = @"UPLOADED";
 
 // Action
 NSString * const kGTLBooksActionBookmark = @"bookmark";
@@ -52,6 +54,9 @@ NSString * const kGTLBooksAssociationEndOfVolume = @"end-of-volume";
 
 // Download
 NSString * const kGTLBooksDownloadEpub = @"epub";
+
+// Features
+NSString * const kGTLBooksFeaturesRentals = @"RENTALS";
 
 // Filter
 NSString * const kGTLBooksFilterEbooks     = @"ebooks";

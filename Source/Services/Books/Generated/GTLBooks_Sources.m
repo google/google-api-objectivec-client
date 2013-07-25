@@ -36,6 +36,7 @@
 #import "GTLBooksAnnotations.m"
 #import "GTLBooksAnnotationsdata.m"
 #import "GTLBooksAnnotationsRange.m"
+#import "GTLBooksAnnotationsSummary.m"
 #import "GTLBooksBookshelf.m"
 #import "GTLBooksBookshelves.m"
 #import "GTLBooksCloudloadingResource.m"
