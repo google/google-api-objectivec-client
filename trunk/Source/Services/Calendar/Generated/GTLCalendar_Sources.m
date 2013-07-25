@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,6 +36,7 @@
 #import "GTLCalendarCalendar.m"
 #import "GTLCalendarCalendarList.m"
 #import "GTLCalendarCalendarListEntry.m"
+#import "GTLCalendarChannel.m"
 #import "GTLCalendarColorDefinition.m"
 #import "GTLCalendarColors.m"
 #import "GTLCalendarError.m"

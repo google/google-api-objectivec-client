@@ -26,7 +26,8 @@
 // Documentation:
 //   https://developers.google.com/google-apps/calendar/firstapp
 // Classes:
-//   GTLQueryCalendar (32 custom class methods, 29 custom properties)
+//   GTLQueryCalendar (34 custom class methods, 39 custom properties)
+//   GTLCalendarChannelsStopParams (0 custom class methods, 0 custom properties)
 
 #import "GTLQueryCalendar.h"
 
@@ -35,6 +36,7 @@
 #import "GTLCalendarCalendar.h"
 #import "GTLCalendarCalendarList.h"
 #import "GTLCalendarCalendarListEntry.h"
+#import "GTLCalendarChannel.h"
 #import "GTLCalendarColors.h"
 #import "GTLCalendarEvent.h"
 #import "GTLCalendarEvents.h"
@@ -45,12 +47,20 @@
 
 @implementation GTLQueryCalendar
 
-@dynamic alwaysIncludeEmail, calendarExpansionMax, calendarId, colorRgbFormat,
-         destination, eventId, fields, groupExpansionMax, iCalUID, items,
-         maxAttendees, maxResults, minAccessRole, orderBy, originalStart,
-         pageToken, q, ruleId, sendNotifications, setting, showDeleted,
-         showHidden, showHiddenInvitations, singleEvents, text, timeMax,
-         timeMin, timeZone, updatedMin;
+@dynamic address, alwaysIncludeEmail, calendarExpansionMax, calendarId, channel,
+         colorRgbFormat, destination, eventId, expiration, fields,
+         groupExpansionMax, iCalUID, identifier, items, kind, maxAttendees,
+         maxResults, minAccessRole, orderBy, originalStart, pageToken, params,
+         q, resourceId, resourceUri, ruleId, sendNotifications, setting,
+         showDeleted, showHidden, showHiddenInvitations, singleEvents, text,
+         timeMax, timeMin, timeZone, token, type, updatedMin;
+
++ (NSDictionary *)parameterNameMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"id"
+                                forKey:@"identifier"];
+  return map;
+}
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
@@ -269,6 +279,16 @@
 }
 
 #pragma mark -
+#pragma mark "channels" methods
+// These create a GTLQueryCalendar object.
+
++ (id)queryForChannelsStop {
+  NSString *methodName = @"calendar.channels.stop";
+  GTLQueryCalendar *query = [self queryWithMethodName:methodName];
+  return query;
+}
+
+#pragma mark -
 #pragma mark "colors" methods
 // These create a GTLQueryCalendar object.
 
@@ -402,6 +422,14 @@
   return query;
 }
 
++ (id)queryForEventsWatchWithCalendarId:(NSString *)calendarId {
+  NSString *methodName = @"calendar.events.watch";
+  GTLQueryCalendar *query = [self queryWithMethodName:methodName];
+  query.calendarId = calendarId;
+  query.expectedObjectClass = [GTLCalendarChannel class];
+  return query;
+}
+
 #pragma mark -
 #pragma mark "freebusy" methods
 // These create a GTLQueryCalendar object.
@@ -430,6 +458,24 @@
   GTLQueryCalendar *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLCalendarSettings class];
   return query;
+}
+
+@end
+
+#pragma mark -
+#pragma mark method parameter objects
+// These object are used only to pass a collection of parameters to a
+// method as a single item.
+
+// ----------------------------------------------------------------------------
+//
+//   GTLCalendarChannelsStopParams
+//
+
+@implementation GTLCalendarChannelsStopParams
+
++ (Class)classForAdditionalProperties {
+  return [NSString class];
 }
 
 @end
