@@ -26,12 +26,16 @@
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 // Classes:
-//   GTLStorageBucket (0 custom class methods, 16 custom properties)
+//   GTLStorageBucket (0 custom class methods, 17 custom properties)
 //   GTLStorageBucketCorsItem (0 custom class methods, 4 custom properties)
+//   GTLStorageBucketLifecycle (0 custom class methods, 1 custom properties)
 //   GTLStorageBucketLogging (0 custom class methods, 2 custom properties)
 //   GTLStorageBucketOwner (0 custom class methods, 2 custom properties)
 //   GTLStorageBucketVersioning (0 custom class methods, 1 custom properties)
 //   GTLStorageBucketWebsite (0 custom class methods, 2 custom properties)
+//   GTLStorageBucketLifecycleRuleItem (0 custom class methods, 2 custom properties)
+//   GTLStorageBucketLifecycleRuleItemAction (0 custom class methods, 1 custom properties)
+//   GTLStorageBucketLifecycleRuleItemCondition (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -41,6 +45,10 @@
 
 @class GTLStorageBucketAccessControl;
 @class GTLStorageBucketCorsItem;
+@class GTLStorageBucketLifecycle;
+@class GTLStorageBucketLifecycleRuleItem;
+@class GTLStorageBucketLifecycleRuleItemAction;
+@class GTLStorageBucketLifecycleRuleItemCondition;
 @class GTLStorageBucketLogging;
 @class GTLStorageBucketOwner;
 @class GTLStorageBucketVersioning;
@@ -75,6 +83,10 @@
 // The kind of item this is. For buckets, this is always storage#bucket.
 @property (copy) NSString *kind;
 
+// The bucket's lifecycle configuration. See object lifecycle management for
+// more information.
+@property (retain) GTLStorageBucketLifecycle *lifecycle;
+
 // The location of the bucket. Object data for objects in the bucket resides in
 // physical storage within this region. Typical values are US and EU. Defaults
 // to US. See the developer's guide for the authoritative list.
@@ -97,8 +109,9 @@
 @property (copy) NSString *selfLink;
 
 // The bucket's storage class. This defines how objects in the bucket will be
-// stored and determines the SLA and the cost of storage. Can be STANDARD or
-// DRA. Defaults to STANDARD.
+// stored and determines the SLA and the cost of storage. Typical values are
+// STANDARD and DURABLE_REDUCED_AVAILABILITY. Defaults to STANDARD. See the
+// developer's guide for the authoritative list.
 @property (copy) NSString *storageClass;
 
 // Creation time of the bucket in RFC 3339 format.
@@ -136,6 +149,20 @@
 // The list of HTTP headers other than the simple response headers to give
 // permission for the user-agent to share across domains.
 @property (retain) NSArray *responseHeader;  // of NSString
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLStorageBucketLifecycle
+//
+
+@interface GTLStorageBucketLifecycle : GTLObject
+
+// A lifecycle management rule, which is made of an action to take and the
+// condition(s) under which the action will be taken.
+@property (retain) NSArray *rule;  // of GTLStorageBucketLifecycleRuleItem
 
 @end
 
@@ -198,5 +225,62 @@
 
 // The custom object to return when a requested resource is not found.
 @property (copy) NSString *notFoundPage;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLStorageBucketLifecycleRuleItem
+//
+
+@interface GTLStorageBucketLifecycleRuleItem : GTLObject
+
+// The action to take.
+@property (retain) GTLStorageBucketLifecycleRuleItemAction *action;
+
+// The condition(s) under which the action will be taken.
+@property (retain) GTLStorageBucketLifecycleRuleItemCondition *condition;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLStorageBucketLifecycleRuleItemAction
+//
+
+@interface GTLStorageBucketLifecycleRuleItemAction : GTLObject
+
+// Type of the action, e.g. Delete.
+@property (copy) NSString *type;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLStorageBucketLifecycleRuleItemCondition
+//
+
+@interface GTLStorageBucketLifecycleRuleItemCondition : GTLObject
+
+// Age of an object (in days). This condition is satisfied when an object
+// reaches the specified age.
+@property (retain) NSNumber *age;  // intValue
+
+// A date in RFC 3339 format with only the date part, e.g. "2013-01-15". This
+// condition is satisfied when an object is created before midnight of the
+// specified date in UTC.
+@property (retain) GTLDateTime *createdBefore;  // Date only (yyyy-mm-dd)
+
+// Relevant only for versioned objects. If the value is true, this condition
+// matches live objects; if the value is false, it matches archived objects.
+@property (retain) NSNumber *isLive;  // boolValue
+
+// Relevant only for versioned objects. If the value is N, this condition is
+// satisfied when there are at least N versions (including the live version)
+// newer than this version of the object.
+@property (retain) NSNumber *numNewerVersions;  // intValue
 
 @end

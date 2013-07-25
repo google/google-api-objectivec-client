@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeSubscriptionContentDetails (0 custom class methods, 2 custom properties)
+//   GTLYouTubeSubscriptionContentDetails (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -42,6 +42,9 @@
 // Details about the content to witch a subscription refers.
 
 @interface GTLYouTubeSubscriptionContentDetails : GTLObject
+
+// The type of activity this subscription is for (only uploads, everything).
+@property (copy) NSString *activityType;
 
 // The number of new items in the subscription since its content was last read.
 @property (retain) NSNumber *newItemCount NS_RETURNS_NOT_RETAINED;  // unsignedIntValue
