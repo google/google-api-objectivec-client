@@ -26,10 +26,9 @@
 // Documentation:
 //   https://developers.google.com/+/api/
 // Classes:
-//   GTLPlusPerson (0 custom class methods, 27 custom properties)
+//   GTLPlusPerson (0 custom class methods, 26 custom properties)
 //   GTLPlusPersonAgeRange (0 custom class methods, 2 custom properties)
 //   GTLPlusPersonCover (0 custom class methods, 3 custom properties)
-//   GTLPlusPersonEmailsItem (0 custom class methods, 3 custom properties)
 //   GTLPlusPersonImage (0 custom class methods, 1 custom properties)
 //   GTLPlusPersonName (0 custom class methods, 6 custom properties)
 //   GTLPlusPersonOrganizationsItem (0 custom class methods, 9 custom properties)
@@ -48,7 +47,6 @@
 @class GTLPlusPersonCover;
 @class GTLPlusPersonCoverCoverInfo;
 @class GTLPlusPersonCoverCoverPhoto;
-@class GTLPlusPersonEmailsItem;
 @class GTLPlusPersonImage;
 @class GTLPlusPersonName;
 @class GTLPlusPersonOrganizationsItem;
@@ -86,11 +84,6 @@
 
 // The name of this person, suitable for display.
 @property (copy) NSString *displayName;
-
-// A list of email addresses that this person has set to public on their Google+
-// profile. You can also use the userinfo.email scope to retrieve an
-// authenticated user's email address.
-@property (retain) NSArray *emails;  // of GTLPlusPersonEmailsItem
 
 // ETag of this response for caching purposes.
 @property (copy) NSString *ETag;
@@ -199,28 +192,6 @@
 // to):
 // - "banner" - One large image banner.
 @property (copy) NSString *layout;
-
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLPlusPersonEmailsItem
-//
-
-@interface GTLPlusPersonEmailsItem : GTLObject
-
-// If "true", indicates this email address is the person's primary one.
-@property (retain) NSNumber *primary;  // boolValue
-
-// The type of address. Possible values include (but are not limited to):
-// - "home" - Home email address.
-// - "work" - Work email address.
-// - "other" - Other.
-@property (copy) NSString *type;
-
-// The email address.
-@property (copy) NSString *value;
 
 @end
 

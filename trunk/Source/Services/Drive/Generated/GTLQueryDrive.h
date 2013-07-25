@@ -122,6 +122,7 @@
 //     remaining change IDs
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveMetadataReadonly
 //   kGTLAuthScopeDriveReadonly
@@ -158,6 +159,7 @@
 //   changeId: The ID of the change.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveAppsReadonly
 //   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveMetadataReadonly
@@ -178,6 +180,7 @@
 //   startChangeId: Change ID to start listing changes from.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveAppsReadonly
 //   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveMetadataReadonly
@@ -199,6 +202,7 @@
 //   startChangeId: Change ID to start listing changes from.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveAppsReadonly
 //   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveMetadataReadonly
@@ -226,6 +230,7 @@
 //   type: The type of delivery mechanism used by this channel
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveAppsReadonly
 //   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveMetadataReadonly
@@ -254,6 +259,7 @@
 //   childId: The ID of the child.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveMetadataReadonly
 //   kGTLAuthScopeDriveReadonly
@@ -267,6 +273,7 @@
 //   folderId: The ID of the folder.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveFile
 // Fetches a GTLDriveChildReference.
 + (id)queryForChildrenInsertWithObject:(GTLDriveChildReference *)object
@@ -282,6 +289,7 @@
 //   q: Query string for searching children.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveMetadataReadonly
 //   kGTLAuthScopeDriveReadonly
@@ -407,6 +415,7 @@
 //        owner.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveAppsReadonly
 //   kGTLAuthScopeDriveFile
 // Fetches a GTLDriveFile.
@@ -419,6 +428,7 @@
 //   fileId: The ID of the file to delete.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveFile
 + (id)queryForFilesDeleteWithFileId:(NSString *)fileId;
 
@@ -434,6 +444,7 @@
 //     retrieving the file. (Default false)
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveAppsReadonly
 //   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveMetadataReadonly
@@ -467,6 +478,7 @@
 //   Accepted MIME type(s): */*
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveAppsReadonly
 //   kGTLAuthScopeDriveFile
 // Fetches a GTLDriveFile.
@@ -484,6 +496,7 @@
 //   q: Query string for searching files.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveAppsReadonly
 //   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveMetadataReadonly
@@ -518,6 +531,7 @@
 //     (Default false)
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveAppsReadonly
 //   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveScripts
@@ -531,6 +545,7 @@
 //   fileId: The ID of the file to update.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveAppsReadonly
 //   kGTLAuthScopeDriveFile
 // Fetches a GTLDriveFile.
@@ -588,6 +603,7 @@
 //   Accepted MIME type(s): */*
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveAppsReadonly
 //   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveScripts
@@ -609,6 +625,7 @@
 //     retrieving the file. (Default false)
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveAppsReadonly
 //   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveMetadataReadonly
@@ -638,6 +655,7 @@
 //   parentId: The ID of the parent.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveMetadataReadonly
 //   kGTLAuthScopeDriveReadonly
@@ -651,6 +669,7 @@
 //   fileId: The ID of the file.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveFile
 // Fetches a GTLDriveParentReference.
 + (id)queryForParentsInsertWithObject:(GTLDriveParentReference *)object
@@ -662,6 +681,7 @@
 //   fileId: The ID of the file.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveMetadataReadonly
 //   kGTLAuthScopeDriveReadonly
@@ -769,6 +789,7 @@
 //   visibility: The visibility of the property. (Default private)
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveFile
 + (id)queryForPropertiesDeleteWithFileId:(NSString *)fileId
                              propertyKey:(NSString *)propertyKey;
@@ -782,6 +803,7 @@
 //   visibility: The visibility of the property. (Default private)
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveMetadataReadonly
 //   kGTLAuthScopeDriveReadonly
@@ -795,6 +817,7 @@
 //   fileId: The ID of the file.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveFile
 // Fetches a GTLDriveProperty.
 + (id)queryForPropertiesInsertWithObject:(GTLDriveProperty *)object
@@ -806,6 +829,7 @@
 //   fileId: The ID of the file.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveMetadataReadonly
 //   kGTLAuthScopeDriveReadonly
@@ -821,6 +845,7 @@
 //   visibility: The visibility of the property. (Default private)
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveFile
 // Fetches a GTLDriveProperty.
 + (id)queryForPropertiesPatchWithObject:(GTLDriveProperty *)object
@@ -836,6 +861,7 @@
 //   visibility: The visibility of the property. (Default private)
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveFile
 // Fetches a GTLDriveProperty.
 + (id)queryForPropertiesUpdateWithObject:(GTLDriveProperty *)object
@@ -968,6 +994,7 @@
 //   revisionId: The ID of the revision.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveFile
 + (id)queryForRevisionsDeleteWithFileId:(NSString *)fileId
                              revisionId:(NSString *)revisionId;
@@ -979,6 +1006,7 @@
 //   revisionId: The ID of the revision.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveMetadataReadonly
 //   kGTLAuthScopeDriveReadonly
@@ -992,6 +1020,7 @@
 //   fileId: The ID of the file.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveMetadataReadonly
 //   kGTLAuthScopeDriveReadonly
@@ -1005,6 +1034,7 @@
 //   revisionId: The ID for the revision.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveFile
 // Fetches a GTLDriveRevision.
 + (id)queryForRevisionsPatchWithObject:(GTLDriveRevision *)object
@@ -1018,6 +1048,7 @@
 //   revisionId: The ID for the revision.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveFile
 // Fetches a GTLDriveRevision.
 + (id)queryForRevisionsUpdateWithObject:(GTLDriveRevision *)object

@@ -26,12 +26,16 @@
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 // Classes:
-//   GTLStorageBucket (0 custom class methods, 16 custom properties)
+//   GTLStorageBucket (0 custom class methods, 17 custom properties)
 //   GTLStorageBucketCorsItem (0 custom class methods, 4 custom properties)
+//   GTLStorageBucketLifecycle (0 custom class methods, 1 custom properties)
 //   GTLStorageBucketLogging (0 custom class methods, 2 custom properties)
 //   GTLStorageBucketOwner (0 custom class methods, 2 custom properties)
 //   GTLStorageBucketVersioning (0 custom class methods, 1 custom properties)
 //   GTLStorageBucketWebsite (0 custom class methods, 2 custom properties)
+//   GTLStorageBucketLifecycleRuleItem (0 custom class methods, 2 custom properties)
+//   GTLStorageBucketLifecycleRuleItemAction (0 custom class methods, 1 custom properties)
+//   GTLStorageBucketLifecycleRuleItemCondition (0 custom class methods, 4 custom properties)
 
 #import "GTLStorageBucket.h"
 
@@ -44,9 +48,9 @@
 //
 
 @implementation GTLStorageBucket
-@dynamic acl, cors, defaultObjectAcl, ETag, identifier, kind, location, logging,
-         metageneration, name, owner, selfLink, storageClass, timeCreated,
-         versioning, website;
+@dynamic acl, cors, defaultObjectAcl, ETag, identifier, kind, lifecycle,
+         location, logging, metageneration, name, owner, selfLink, storageClass,
+         timeCreated, versioning, website;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -97,6 +101,24 @@
 
 // ----------------------------------------------------------------------------
 //
+//   GTLStorageBucketLifecycle
+//
+
+@implementation GTLStorageBucketLifecycle
+@dynamic rule;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLStorageBucketLifecycleRuleItem class]
+                                forKey:@"rule"];
+  return map;
+}
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
 //   GTLStorageBucketLogging
 //
 
@@ -132,4 +154,34 @@
 
 @implementation GTLStorageBucketWebsite
 @dynamic mainPageSuffix, notFoundPage;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLStorageBucketLifecycleRuleItem
+//
+
+@implementation GTLStorageBucketLifecycleRuleItem
+@dynamic action, condition;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLStorageBucketLifecycleRuleItemAction
+//
+
+@implementation GTLStorageBucketLifecycleRuleItemAction
+@dynamic type;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLStorageBucketLifecycleRuleItemCondition
+//
+
+@implementation GTLStorageBucketLifecycleRuleItemCondition
+@dynamic age, createdBefore, isLive, numNewerVersions;
 @end
