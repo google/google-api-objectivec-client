@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLBooks.h
+//  GTLBooksAnnotationsSummary.m
 //
 
 // ----------------------------------------------------------------------------
@@ -25,32 +25,40 @@
 //   Lets you search for books and manage your Google Books library.
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
+// Classes:
+//   GTLBooksAnnotationsSummary (0 custom class methods, 2 custom properties)
+//   GTLBooksAnnotationsSummaryLayersItem (0 custom class methods, 5 custom properties)
 
-#import "GTLBooksConstants.h"
-
-#import "GTLBooksAnnotation.h"
-#import "GTLBooksAnnotationdata.h"
-#import "GTLBooksAnnotations.h"
-#import "GTLBooksAnnotationsdata.h"
-#import "GTLBooksAnnotationsRange.h"
 #import "GTLBooksAnnotationsSummary.h"
-#import "GTLBooksBookshelf.h"
-#import "GTLBooksBookshelves.h"
-#import "GTLBooksCloudloadingResource.h"
-#import "GTLBooksConcurrentAccessRestriction.h"
-#import "GTLBooksDownloadAccesses.h"
-#import "GTLBooksDownloadAccessRestriction.h"
-#import "GTLBooksLayerDictData.h"
-#import "GTLBooksLayerGeoData.h"
-#import "GTLBooksLayersummaries.h"
-#import "GTLBooksLayersummary.h"
-#import "GTLBooksReadingPosition.h"
-#import "GTLBooksRequestAccess.h"
-#import "GTLBooksReview.h"
-#import "GTLBooksVolume.h"
-#import "GTLBooksVolumeannotation.h"
-#import "GTLBooksVolumeannotations.h"
-#import "GTLBooksVolumes.h"
 
-#import "GTLQueryBooks.h"
-#import "GTLServiceBooks.h"
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksAnnotationsSummary
+//
+
+@implementation GTLBooksAnnotationsSummary
+@dynamic kind, layers;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLBooksAnnotationsSummaryLayersItem class]
+                                forKey:@"layers"];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"books#annotationsSummary"];
+}
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksAnnotationsSummaryLayersItem
+//
+
+@implementation GTLBooksAnnotationsSummaryLayersItem
+@dynamic allowedCharacterCount, layerId, limitType, remainingCharacterCount,
+         updated;
+@end
