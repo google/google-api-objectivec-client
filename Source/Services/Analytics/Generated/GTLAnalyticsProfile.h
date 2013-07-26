@@ -44,70 +44,71 @@
 //   GTLAnalyticsProfile
 //
 
-// JSON template for an Analytics profile.
+// JSON template for an Analytics view (profile).
 
 @interface GTLAnalyticsProfile : GTLObject
 
-// Account ID to which this profile belongs.
+// Account ID to which this view (profile) belongs.
 @property (copy) NSString *accountId;
 
-// Child link for this profile. Points to the list of goals for this profile.
+// Child link for this view (profile). Points to the list of goals for this view
+// (profile).
 @property (retain) GTLAnalyticsProfileChildLink *childLink;
 
-// Time this profile was created.
+// Time this view (profile) was created.
 @property (retain) GTLDateTime *created;
 
-// The currency type associated with this profile.
+// The currency type associated with this view (profile).
 @property (copy) NSString *currency;
 
-// Default page for this profile.
+// Default page for this view (profile).
 @property (copy) NSString *defaultPage;
 
-// Indicates whether ecommerce tracking is enabled for this profile.
+// Indicates whether ecommerce tracking is enabled for this view (profile).
 @property (retain) NSNumber *eCommerceTracking;  // boolValue
 
-// The query parameters that are excluded from this profile.
+// The query parameters that are excluded from this view (profile).
 @property (copy) NSString *excludeQueryParameters;
 
-// Profile ID.
+// View (Profile) ID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// Internal ID for the web property to which this profile belongs.
+// Internal ID for the web property to which this view (profile) belongs.
 @property (copy) NSString *internalWebPropertyId;
 
 // Resource type for Analytics profile.
 @property (copy) NSString *kind;
 
-// Name of this profile.
+// Name of this view (profile).
 @property (copy) NSString *name;
 
-// Parent link for this profile. Points to the web property to which this
-// profile belongs.
+// Parent link for this view (profile). Points to the web property to which this
+// view (profile) belongs.
 @property (retain) GTLAnalyticsProfileParentLink *parentLink;
 
-// Link for this profile.
+// Link for this view (profile).
 @property (copy) NSString *selfLink;
 
-// Site search category parameters for this profile.
+// Site search category parameters for this view (profile).
 @property (copy) NSString *siteSearchCategoryParameters;
 
-// The site search query parameters for this profile.
+// The site search query parameters for this view (profile).
 @property (copy) NSString *siteSearchQueryParameters;
 
 // Time zone for which this profile has been configured.
 @property (copy) NSString *timezone;
 
-// Profile type. Supported types: WEB or APP.
+// View (Profile) type. Supported types: WEB or APP.
 @property (copy) NSString *type;
 
-// Time this profile was last modified.
+// Time this view (profile) was last modified.
 @property (retain) GTLDateTime *updated;
 
-// Web property ID of the form UA-XXXXX-YY to which this profile belongs.
+// Web property ID of the form UA-XXXXX-YY to which this view (profile) belongs.
 @property (copy) NSString *webPropertyId;
 
-// Website URL for this profile.
+// Website URL for this view (profile).
 @property (copy) NSString *websiteUrl;
 
 @end
@@ -120,7 +121,7 @@
 
 @interface GTLAnalyticsProfileChildLink : GTLObject
 
-// Link to the list of goals for this profile.
+// Link to the list of goals for this view (profile).
 @property (copy) NSString *href;
 
 // Value is "analytics#goals".
@@ -136,7 +137,7 @@
 
 @interface GTLAnalyticsProfileParentLink : GTLObject
 
-// Link to the web property to which this profile belongs.
+// Link to the web property to which this view (profile) belongs.
 @property (copy) NSString *href;
 
 // Value is "analytics#webproperty".

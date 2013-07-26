@@ -76,7 +76,7 @@
 // this custom data source belongs.
 @property (retain) GTLAnalyticsCustomDataSourceParentLink *parentLink;
 
-// IDs of profiles linked to the custom data source.
+// IDs of views (profiles) linked to the custom data source.
 @property (retain) NSArray *profilesLinked;  // of NSString
 
 // Link for this Analytics custom data source.

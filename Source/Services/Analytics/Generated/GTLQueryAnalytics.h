@@ -73,10 +73,10 @@
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.data.ga.get
-// Returns Analytics data for a profile.
+// Returns Analytics data for a view (profile).
 //  Required:
 //   ids: Unique table ID for retrieving Analytics data. Table ID is of the form
-//     ga:XXXX, where XXXX is the Analytics profile ID.
+//     ga:XXXX, where XXXX is the Analytics view (profile) ID.
 //   startDate: Start date for fetching Analytics data. All requests should
 //     specify a start date formatted as YYYY-MM-DD.
 //   endDate: End date for fetching Analytics data. All requests should specify
@@ -108,10 +108,10 @@
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.data.mcf.get
-// Returns Analytics Multi-Channel Funnels data for a profile.
+// Returns Analytics Multi-Channel Funnels data for a view (profile).
 //  Required:
 //   ids: Unique table ID for retrieving Analytics data. Table ID is of the form
-//     ga:XXXX, where XXXX is the Analytics profile ID.
+//     ga:XXXX, where XXXX is the Analytics view (profile) ID.
 //   startDate: Start date for fetching Analytics data. All requests should
 //     specify a start date formatted as YYYY-MM-DD.
 //   endDate: End date for fetching Analytics data. All requests should specify
@@ -260,7 +260,7 @@
 //  Required:
 //   accountId: Account ID to which the experiment belongs
 //   webPropertyId: Web property ID to which the experiment belongs
-//   profileId: Profile ID to which the experiment belongs
+//   profileId: View (Profile) ID to which the experiment belongs
 //   experimentId: ID of the experiment to delete
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalytics
@@ -274,7 +274,7 @@
 //  Required:
 //   accountId: Account ID to retrieve the experiment for.
 //   webPropertyId: Web property ID to retrieve the experiment for.
-//   profileId: Profile ID to retrieve the experiment for.
+//   profileId: View (Profile) ID to retrieve the experiment for.
 //   experimentId: Experiment ID to retrieve the experiment for.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalytics
@@ -290,7 +290,7 @@
 //  Required:
 //   accountId: Account ID to create the experiment for.
 //   webPropertyId: Web property ID to create the experiment for.
-//   profileId: Profile ID to create the experiment for.
+//   profileId: View (Profile) ID to create the experiment for.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalytics
 // Fetches a GTLAnalyticsExperiment.
@@ -304,7 +304,7 @@
 //  Required:
 //   accountId: Account ID to retrieve experiments for.
 //   webPropertyId: Web property ID to retrieve experiments for.
-//   profileId: Profile ID to retrieve experiments for.
+//   profileId: View (Profile) ID to retrieve experiments for.
 //  Optional:
 //   maxResults: The maximum number of experiments to include in this response.
 //   startIndex: An index of the first experiment to retrieve. Use this
@@ -322,7 +322,7 @@
 //  Required:
 //   accountId: Account ID of the experiment to update.
 //   webPropertyId: Web property ID of the experiment to update.
-//   profileId: Profile ID of the experiment to update.
+//   profileId: View (Profile) ID of the experiment to update.
 //   experimentId: Experiment ID of the experiment to update.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalytics
@@ -338,7 +338,7 @@
 //  Required:
 //   accountId: Account ID of the experiment to update.
 //   webPropertyId: Web property ID of the experiment to update.
-//   profileId: Profile ID of the experiment to update.
+//   profileId: View (Profile) ID of the experiment to update.
 //   experimentId: Experiment ID of the experiment to update.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalytics
@@ -362,9 +362,9 @@
 //   webPropertyId: Web property ID to retrieve goals for. Can either be a
 //     specific web property ID or '~all', which refers to all the web
 //     properties that user has access to.
-//   profileId: Profile ID to retrieve goals for. Can either be a specific
-//     profile ID or '~all', which refers to all the profiles that user has
-//     access to.
+//   profileId: View (Profile) ID to retrieve goals for. Can either be a
+//     specific view (profile) ID or '~all', which refers to all the views
+//     (profiles) that user has access to.
 //  Optional:
 //   maxResults: The maximum number of goals to include in this response.
 //   startIndex: An index of the first goal to retrieve. Use this parameter as a
@@ -382,16 +382,17 @@
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.management.profiles.list
-// Lists profiles to which the user has access.
+// Lists views (profiles) to which the user has access.
 //  Required:
-//   accountId: Account ID for the profiles to retrieve. Can either be a
+//   accountId: Account ID for the view (profiles) to retrieve. Can either be a
 //     specific account ID or '~all', which refers to all the accounts to which
 //     the user has access.
-//   webPropertyId: Web property ID for the profiles to retrieve. Can either be
-//     a specific web property ID or '~all', which refers to all the web
-//     properties to which the user has access.
+//   webPropertyId: Web property ID for the views (profiles) to retrieve. Can
+//     either be a specific web property ID or '~all', which refers to all the
+//     web properties to which the user has access.
 //  Optional:
-//   maxResults: The maximum number of profiles to include in this response.
+//   maxResults: The maximum number of views (profiles) to include in this
+//     response.
 //   startIndex: An index of the first entity to retrieve. Use this parameter as
 //     a pagination mechanism along with the max-results parameter.
 //  Authorization scope(s):

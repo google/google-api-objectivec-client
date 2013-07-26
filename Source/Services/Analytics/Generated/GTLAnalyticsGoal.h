@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -83,10 +83,11 @@
 // Goal name.
 @property (copy) NSString *name;
 
-// Parent link for a goal. Points to the profile to which this goal belongs.
+// Parent link for a goal. Points to the view (profile) to which this goal
+// belongs.
 @property (retain) GTLAnalyticsGoalParentLink *parentLink;
 
-// Profile ID to which this goal belongs.
+// View (Profile) ID to which this goal belongs.
 @property (copy) NSString *profileId;
 
 // Link for this goal.
@@ -141,7 +142,7 @@
 
 @interface GTLAnalyticsGoalParentLink : GTLObject
 
-// Link to the profile to which this goal belongs.
+// Link to the view (profile) to which this goal belongs.
 @property (copy) NSString *href;
 
 // Value is "analytics#profile".

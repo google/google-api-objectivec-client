@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,7 +52,7 @@
 //   GTLAnalyticsMcfData
 //
 
-// Multi-Channel Funnels data for a given profile.
+// Multi-Channel Funnels data for a given view (profile).
 
 @interface GTLAnalyticsMcfData : GTLObject
 
@@ -81,7 +81,8 @@
 // Link to previous page for this Analytics data query.
 @property (copy) NSString *previousLink;
 
-// Information for the profile, for which the Analytics data was requested.
+// Information for the view (profile), for which the Analytics data was
+// requested.
 @property (retain) GTLAnalyticsMcfDataProfileInfo *profileInfo;
 
 // Analytics data request query parameters.
@@ -134,22 +135,22 @@
 
 @interface GTLAnalyticsMcfDataProfileInfo : GTLObject
 
-// Account ID to which this profile belongs.
+// Account ID to which this view (profile) belongs.
 @property (copy) NSString *accountId;
 
-// Internal ID for the web property to which this profile belongs.
+// Internal ID for the web property to which this view (profile) belongs.
 @property (copy) NSString *internalWebPropertyId;
 
-// Profile ID.
+// View (Profile) ID.
 @property (copy) NSString *profileId;
 
-// Profile name.
+// View (Profile) name.
 @property (copy) NSString *profileName;
 
-// Table ID for profile.
+// Table ID for view (profile).
 @property (copy) NSString *tableId;
 
-// Web Property ID to which this profile belongs.
+// Web Property ID to which this view (profile) belongs.
 @property (copy) NSString *webPropertyId;
 
 @end
