@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoTopicDetails (0 custom class methods, 1 custom properties)
+//   GTLYouTubeVideoTopicDetails (0 custom class methods, 2 custom properties)
 
 #import "GTLYouTubeVideoTopicDetails.h"
 
@@ -36,12 +36,14 @@
 //
 
 @implementation GTLYouTubeVideoTopicDetails
-@dynamic topicIds;
+@dynamic relevantTopicIds, topicIds;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[NSString class]
-                                forKey:@"topicIds"];
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      [NSString class], @"relevantTopicIds",
+      [NSString class], @"topicIds",
+      nil];
   return map;
 }
 

@@ -51,8 +51,8 @@
 // Account ID to which this web property belongs.
 @property (copy) NSString *accountId;
 
-// Child link for this web property. Points to the list of profiles for this web
-// property.
+// Child link for this web property. Points to the list of views (profiles) for
+// this web property.
 @property (retain) GTLAnalyticsWebpropertyChildLink *childLink;
 
 // Time this web property was created.
@@ -81,7 +81,7 @@
 // property belongs.
 @property (retain) GTLAnalyticsWebpropertyParentLink *parentLink;
 
-// Profile count for this web property.
+// View (Profile) count for this web property.
 @property (retain) NSNumber *profileCount;  // intValue
 
 // Link for this web property.
@@ -103,7 +103,7 @@
 
 @interface GTLAnalyticsWebpropertyChildLink : GTLObject
 
-// Link to the list of profiles for this web property.
+// Link to the list of views (profiles) for this web property.
 @property (copy) NSString *href;
 
 // Type of the parent link. Its value is "analytics#profiles".

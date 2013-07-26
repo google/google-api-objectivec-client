@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,7 +42,7 @@
 //
 
 // A goal collection lists Analytics goals to which the user has access. Each
-// profile can have a set of goals. Each resource in the Goal collection
+// view (profile) can have a set of goals. Each resource in the Goal collection
 // corresponds to a single Analytics goal.
 
 // This class supports NSFastEnumeration over its "items" property. It also

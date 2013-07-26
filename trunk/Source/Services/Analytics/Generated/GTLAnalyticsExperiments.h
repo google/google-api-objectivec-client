@@ -42,8 +42,8 @@
 //
 
 // An experiment collection lists Analytics experiments to which the user has
-// access. Each profile can have a set of experiments. Each resource in the
-// Experiment collection corresponds to a single Analytics experiment.
+// access. Each view (profile) can have a set of experiments. Each resource in
+// the Experiment collection corresponds to a single Analytics experiment.
 
 // This class supports NSFastEnumeration over its "items" property. It also
 // supports -itemAtIndex: to retrieve individual objects from "items".

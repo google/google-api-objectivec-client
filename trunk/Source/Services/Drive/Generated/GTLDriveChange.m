@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveChange (0 custom class methods, 6 custom properties)
+//   GTLDriveChange (0 custom class methods, 7 custom properties)
 
 #import "GTLDriveChange.h"
 
@@ -38,7 +38,7 @@
 //
 
 @implementation GTLDriveChange
-@dynamic deleted, file, fileId, identifier, kind, selfLink;
+@dynamic deleted, file, fileId, identifier, kind, modificationDate, selfLink;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

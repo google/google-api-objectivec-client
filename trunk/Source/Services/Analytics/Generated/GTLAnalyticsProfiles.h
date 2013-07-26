@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,15 +41,16 @@
 //   GTLAnalyticsProfiles
 //
 
-// A profile collection lists Analytics profiles to which the user has access.
-// Each resource in the collection corresponds to a single Analytics profile.
+// A view (profile) collection lists Analytics views (profiles) to which the
+// user has access. Each resource in the collection corresponds to a single
+// Analytics view (profile).
 
 // This class supports NSFastEnumeration over its "items" property. It also
 // supports -itemAtIndex: to retrieve individual objects from "items".
 
 @interface GTLAnalyticsProfiles : GTLCollectionObject
 
-// A list of profiles.
+// A list of views (profiles).
 @property (retain) NSArray *items;  // of GTLAnalyticsProfile
 
 // The maximum number of resources the response can contain, regardless of the
@@ -61,10 +62,10 @@
 // Collection type.
 @property (copy) NSString *kind;
 
-// Link to next page for this profile collection.
+// Link to next page for this view (profile) collection.
 @property (copy) NSString *nextLink;
 
-// Link to previous page for this profile collection.
+// Link to previous page for this view (profile) collection.
 @property (copy) NSString *previousLink;
 
 // The starting index of the resources, which is 1 by default or otherwise

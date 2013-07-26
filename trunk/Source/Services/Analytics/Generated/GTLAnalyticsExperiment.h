@@ -99,11 +99,11 @@
 // "RUNNING" or "ENDED".
 @property (copy) NSString *optimizationType;
 
-// Parent link for an experiment. Points to the profile to which this experiment
-// belongs.
+// Parent link for an experiment. Points to the view (profile) to which this
+// experiment belongs.
 @property (retain) GTLAnalyticsExperimentParentLink *parentLink;
 
-// Profile ID to which this experiment belongs. This field is read-only.
+// View (Profile) ID to which this experiment belongs. This field is read-only.
 @property (copy) NSString *profileId;
 
 // Why the experiment ended. Possible values: "STOPPED_BY_USER", "WINNER_FOUND",
@@ -185,7 +185,7 @@
 
 @interface GTLAnalyticsExperimentParentLink : GTLObject
 
-// Link to the profile to which this experiment belongs. This field is
+// Link to the view (profile) to which this experiment belongs. This field is
 // read-only.
 @property (copy) NSString *href;
 
