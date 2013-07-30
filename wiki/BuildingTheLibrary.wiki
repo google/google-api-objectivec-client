@@ -31,7 +31,7 @@ Application classes using the library should include the header for each specifi
 
 `#import "GTLTasks.h"`
 
-*_Note:_* To support the OAuth 2 sign-in classes in the library, your application will need to link to Security.framework and !SystemConfiguration.framework. 
+*_Note:_* To support the OAuth 2 sign-in classes in the library, your application will need to link to Security.framework and !SystemConfiguration.framework, as well as include the OAuth 2 controller's `xib`.
 
 == Linking to the Mac OS X Framework ==
 
@@ -52,15 +52,15 @@ To facilitate debugging, you may choose to include the GTL.xcodeproj project fil
 
 *_Tip_*: if Xcode's debugger is ignoring breakpoints set in the framework, turn off the [http://developer.apple.com/mac/library/documentation/DeveloperTools/Conceptual/XcodeDebugging/150-Debugging_Preferences/debugging_preferences.html "Load symbols lazily" option] in Xcode's Debugging preferences.
 
-*_Note:_* To support the OAuth 2 sign-in classes in the library, your application will need to link to Security.framework and !SystemConfiguration.framework. 
+*_Note:_* To support the OAuth 2 sign-in classes in the library, your application will need to link to Security.framework and !SystemConfiguration.framework, as well as include the OAuth 2 controller's `xib`.
 
 == Compiling the Source Files Directly into a Mac or iOS Application ==
 
-Rather than link to the GTL framework, you can compile the GTL library sources directly into your own project. To do this, find the library's `GTLCommon_Sources.m` and `GTLCommon_Networking.m` files, and drag the files into your project's window (add by reference, not by copying the files.)
+Rather than link to the GTL framework, you can compile the GTL library sources directly into your own project. To do this, find the library's `GTLCommon_Sources.m` and `GTLCommon_Networking.m` files, and drag the files into your project's window. 
 
-Then add to your project's search the paths to the library's source folders to your project's search paths: `Source`, `Source/Objects`, `Source/Utilities`, `HTTPFetcher`, `OAuth2`, `OAuth2/Touch` (or `OAuth2/Mac`).
+Then add the library's source folders to the Header Search Paths entry of your project's build settings: `Source`, `Source/Objects`, `Source/Utilities`, `Source/HTTPFetcher`, `Source/OAuth2`, `OAuth2/Touch` (or `OAuth2/Mac`).
 
-Also drag the folder with the class files for the services needed by your application, such as Tasks or Books, directly into your project. From the generated files folder, include in your project the service's `_Sources.m` file.
+Also add to your project the sources files for the services needed by your application, such as Tasks or Books. From the generated files folder, drag into your project the service's `_Sources.m` file, such as `GTLTasks_Sources.m`.
 
 Application classes using the library should include the header for each specific service, such as
 
@@ -73,6 +73,9 @@ For just the Debug configuration of your target, add this compiler definition to
 Or, if the Other C Flags setting is not available in your target's build options, set the equivalent user-defined setting:
 
   `OTHER_CFLAGS=-DDEBUG=1`
+
+*_Note:_* To support the OAuth 2 sign-in classes in the library, your application will need to link to Security.framework and !SystemConfiguration.framework, as well as include the OAuth 2 controller's `xib`.
+
 
 === ARC Compatibility ===
 
