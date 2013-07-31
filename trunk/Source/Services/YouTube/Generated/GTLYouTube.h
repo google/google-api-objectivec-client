@@ -91,6 +91,7 @@
 #import "GTLYouTubePlaylistPlayer.h"
 #import "GTLYouTubePlaylistSnippet.h"
 #import "GTLYouTubePlaylistStatus.h"
+#import "GTLYouTubePromotedItem.h"
 #import "GTLYouTubePromotedItemId.h"
 #import "GTLYouTubePropertyValue.h"
 #import "GTLYouTubeResourceId.h"

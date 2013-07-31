@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeInvideoTiming.m
+//  GTLYouTubePromotedItem.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,15 +26,36 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeInvideoTiming (0 custom class methods, 3 custom properties)
+//   GTLYouTubePromotedItem (0 custom class methods, 3 custom properties)
 
-#import "GTLYouTubeInvideoTiming.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
+
+@class GTLYouTubeInvideoTiming;
+@class GTLYouTubePromotedItemId;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeInvideoTiming
+//   GTLYouTubePromotedItem
 //
 
-@implementation GTLYouTubeInvideoTiming
-@dynamic durationMs, offsetMs, type;
+// Describes a single promoted item.
+
+@interface GTLYouTubePromotedItem : GTLObject
+
+// A custom message to display for this promotion. This field is currently
+// ignored unless the promoted item is a website.
+@property (copy) NSString *customMessage;
+
+// Identifies the promoted item.
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+@property (retain) GTLYouTubePromotedItemId *identifier;
+
+// The temporal position within the video where the promoted item will be
+// displayed. If present, it overrides the default timing.
+@property (retain) GTLYouTubeInvideoTiming *timing;
+
 @end

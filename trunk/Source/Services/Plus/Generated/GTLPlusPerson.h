@@ -82,13 +82,14 @@
 // The current location for this person.
 @property (copy) NSString *currentLocation;
 
-// The name of this person, suitable for display.
+// The name of this person, which is suitable for display.
 @property (copy) NSString *displayName;
 
 // ETag of this response for caching purposes.
 @property (copy) NSString *ETag;
 
-// The person's gender. Possible values include (but are not limited to):
+// The person's gender. Possible values include, but are not limited to, the
+// following values:
 // - "male" - Male gender.
 // - "female" - Female gender.
 // - "other" - Other.
@@ -116,8 +117,8 @@
 // The nickname of this person.
 @property (copy) NSString *nickname;
 
-// Type of person within Google+. Possible values include (but are not limited
-// to):
+// Type of person within Google+. Possible values include, but are not limited
+// to, the following values:
 // - "person" - represents an actual person.
 // - "page" - represents a page.
 @property (copy) NSString *objectType;
@@ -131,8 +132,8 @@
 // If a Google+ Page, the number of people who have +1'ed this page.
 @property (retain) NSNumber *plusOneCount;  // intValue
 
-// The person's relationship status. Possible values include (but are not
-// limited to):
+// The person's relationship status. Possible values include, but are not
+// limited to, the following values:
 // - "single" - Person is single.
 // - "in_a_relationship" - Person is in a relationship.
 // - "engaged" - Person is engaged.
@@ -188,8 +189,8 @@
 // The person's primary cover image.
 @property (retain) GTLPlusPersonCoverCoverPhoto *coverPhoto;
 
-// The layout of the cover art. Possible values include (but are not limited
-// to):
+// The layout of the cover art. Possible values include, but are not limited to,
+// the following values:
 // - "banner" - One large image banner.
 @property (copy) NSString *layout;
 
@@ -253,7 +254,7 @@
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
 
-// The date the person left this organization.
+// The date that the person left this organization.
 @property (copy) NSString *endDate;
 
 // The location of this organization. Deprecated.
@@ -262,17 +263,18 @@
 // The name of the organization.
 @property (copy) NSString *name;
 
-// If "true", indicates this organization is the person's primary one (typically
-// interpreted as current one).
+// If "true", indicates this organization is the person's primary one, which is
+// typically interpreted as the current one.
 @property (retain) NSNumber *primary;  // boolValue
 
-// The date the person joined this organization.
+// The date that the person joined this organization.
 @property (copy) NSString *startDate;
 
 // The person's job title or role within the organization.
 @property (copy) NSString *title;
 
-// The type of organization. Possible values include (but are not limited to):
+// The type of organization. Possible values include, but are not limited to,
+// the following values:
 // - "work" - Work.
 // - "school" - School.
 @property (copy) NSString *type;
@@ -307,11 +309,12 @@
 // The label of the URL.
 @property (copy) NSString *label;
 
-// The type of URL. Possible values include (but are not limited to):
+// The type of URL. Possible values include, but are not limited to, the
+// following values:
 // - "otherProfile" - URL for another profile.
-// - "contributor" - URL for which this person is a contributor to.
+// - "contributor" - URL to a site for which this person is a contributor.
 // - "website" - URL for this Google+ Page's primary website.
-// - "other" - Other.
+// - "other" - Other URL.
 @property (copy) NSString *type;
 
 // The URL value.

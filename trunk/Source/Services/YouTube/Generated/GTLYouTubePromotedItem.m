@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeInvideoTiming.m
+//  GTLYouTubePromotedItem.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,15 +26,26 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeInvideoTiming (0 custom class methods, 3 custom properties)
+//   GTLYouTubePromotedItem (0 custom class methods, 3 custom properties)
+
+#import "GTLYouTubePromotedItem.h"
 
 #import "GTLYouTubeInvideoTiming.h"
+#import "GTLYouTubePromotedItemId.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeInvideoTiming
+//   GTLYouTubePromotedItem
 //
 
-@implementation GTLYouTubeInvideoTiming
-@dynamic durationMs, offsetMs, type;
+@implementation GTLYouTubePromotedItem
+@dynamic customMessage, identifier, timing;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"id"
+                                forKey:@"identifier"];
+  return map;
+}
+
 @end

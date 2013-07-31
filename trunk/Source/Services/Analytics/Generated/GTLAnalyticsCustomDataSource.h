@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsCustomDataSource (0 custom class methods, 12 custom properties)
+//   GTLAnalyticsCustomDataSource (0 custom class methods, 13 custom properties)
 //   GTLAnalyticsCustomDataSourceChildLink (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsCustomDataSourceParentLink (0 custom class methods, 2 custom properties)
 
@@ -51,8 +51,6 @@
 // Account ID to which this custom data source belongs.
 @property (copy) NSString *accountId;
 
-// Child link for this custom data source. Points to the list of daily uploads
-// for this custom data source.
 @property (retain) GTLAnalyticsCustomDataSourceChildLink *childLink;
 
 // Time this custom data source was created.
@@ -82,6 +80,9 @@
 // Link for this Analytics custom data source.
 @property (copy) NSString *selfLink;
 
+// Type of the custom data source.
+@property (copy) NSString *type;
+
 // Time this custom data source was last modified.
 @property (retain) GTLDateTime *updated;
 
@@ -99,10 +100,11 @@
 
 @interface GTLAnalyticsCustomDataSourceChildLink : GTLObject
 
-// Link to the list of daily uploads for this custom data source.
+// Link to the list of daily uploads for this custom data source. Link to the
+// list of uploads for this custom data source.
 @property (copy) NSString *href;
 
-// Value is "analytics#dailyUploads".
+// Value is "analytics#dailyUploads". Value is "analytics#uploads".
 @property (copy) NSString *type;
 
 @end
