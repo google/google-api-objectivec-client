@@ -45,7 +45,7 @@
 // should stop playing. (The playlist owner can specify the times when the video
 // should start and stop playing when the video is played in the context of the
 // playlist.) By default, assume that the video.endTime is the end of the video.
-@property (copy) NSString *endAtMs;
+@property (copy) NSString *endAt;
 
 // A user-generated note for this item.
 @property (copy) NSString *note;
@@ -54,7 +54,7 @@
 // should start playing. (The playlist owner can specify the times when the
 // video should start and stop playing when the video is played in the context
 // of the playlist.) The default value is 0.
-@property (copy) NSString *startAtMs;
+@property (copy) NSString *startAt;
 
 // The ID that YouTube uses to uniquely identify a video. To retrieve the video
 // resource, set the id query parameter to this value in your API request.

@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePromotedItemId (0 custom class methods, 2 custom properties)
+//   GTLYouTubePromotedItemId (0 custom class methods, 3 custom properties)
 
 #import "GTLYouTubePromotedItemId.h"
 
@@ -36,5 +36,5 @@
 //
 
 @implementation GTLYouTubePromotedItemId
-@dynamic type, videoId;
+@dynamic type, videoId, websiteUrl;
 @end

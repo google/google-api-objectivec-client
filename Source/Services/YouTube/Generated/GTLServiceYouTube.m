@@ -101,6 +101,7 @@
                       [GTLYouTubePlaylistPlayer class],
                       [GTLYouTubePlaylistSnippet class],
                       [GTLYouTubePlaylistStatus class],
+                      [GTLYouTubePromotedItem class],
                       [GTLYouTubePromotedItemId class],
                       [GTLYouTubePropertyValue class],
                       [GTLYouTubeResourceId class],

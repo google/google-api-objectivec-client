@@ -94,6 +94,7 @@
 #import "GTLYouTubePlaylistPlayer.m"
 #import "GTLYouTubePlaylistSnippet.m"
 #import "GTLYouTubePlaylistStatus.m"
+#import "GTLYouTubePromotedItem.m"
 #import "GTLYouTubePromotedItemId.m"
 #import "GTLYouTubePropertyValue.m"
 #import "GTLYouTubeResourceId.m"

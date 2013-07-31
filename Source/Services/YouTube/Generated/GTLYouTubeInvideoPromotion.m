@@ -32,7 +32,7 @@
 
 #import "GTLYouTubeInvideoPosition.h"
 #import "GTLYouTubeInvideoTiming.h"
-#import "GTLYouTubePromotedItemId.h"
+#import "GTLYouTubePromotedItem.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -40,11 +40,11 @@
 //
 
 @implementation GTLYouTubeInvideoPromotion
-@dynamic items, position, timing;
+@dynamic defaultTiming, items, position;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLYouTubePromotedItemId class]
+    [NSDictionary dictionaryWithObject:[GTLYouTubePromotedItem class]
                                 forKey:@"items"];
   return map;
 }

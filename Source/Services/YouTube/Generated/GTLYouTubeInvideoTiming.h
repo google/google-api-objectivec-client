@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeInvideoTiming (0 custom class methods, 2 custom properties)
+//   GTLYouTubeInvideoTiming (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -42,6 +42,10 @@
 // Describes a temporal position of a visual widget inside a video.
 
 @interface GTLYouTubeInvideoTiming : GTLObject
+
+// Defines the duration in milliseconds for which the promotion should be
+// displayed. If missing, the client should use the default.
+@property (retain) NSNumber *durationMs;  // unsignedLongLongValue
 
 // Defines the time at which the promotion will appear. Depending on the value
 // of type the value of the offsetMs field will represent a time offset from the

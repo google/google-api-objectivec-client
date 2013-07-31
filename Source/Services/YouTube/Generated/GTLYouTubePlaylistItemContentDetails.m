@@ -36,5 +36,5 @@
 //
 
 @implementation GTLYouTubePlaylistItemContentDetails
-@dynamic endAtMs, note, startAtMs, videoId;
+@dynamic endAt, note, startAt, videoId;
 @end

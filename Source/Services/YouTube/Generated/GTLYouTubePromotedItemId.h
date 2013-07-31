@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePromotedItemId (0 custom class methods, 2 custom properties)
+//   GTLYouTubePromotedItemId (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -39,7 +39,7 @@
 //   GTLYouTubePromotedItemId
 //
 
-// Describes a single promoted item. It is a union of various possible types.
+// Describes a single promoted item id. It is a union of various possible types.
 
 @interface GTLYouTubePromotedItemId : GTLObject
 
@@ -50,5 +50,10 @@
 // YouTube ID identifying it. This field will be present only if type has the
 // value video.
 @property (copy) NSString *videoId;
+
+// If the promoted item represents a website, this field represents the url
+// pointing to the website. This field will be present only if type has the
+// value website.
+@property (copy) NSString *websiteUrl;
 
 @end
