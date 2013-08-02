@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDrivePermission (0 custom class methods, 12 custom properties)
+//   GTLDrivePermission (0 custom class methods, 14 custom properties)
 
 #import "GTLDrivePermission.h"
 
@@ -36,8 +36,8 @@
 //
 
 @implementation GTLDrivePermission
-@dynamic additionalRoles, authKey, ETag, identifier, kind, name, photoLink,
-         role, selfLink, type, value, withLink;
+@dynamic additionalRoles, authKey, domain, emailAddress, ETag, identifier, kind,
+         name, photoLink, role, selfLink, type, value, withLink;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

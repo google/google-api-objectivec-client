@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDrivePermission (0 custom class methods, 12 custom properties)
+//   GTLDrivePermission (0 custom class methods, 14 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -48,6 +48,17 @@
 
 // The authkey parameter required for this permission.
 @property (copy) NSString *authKey;
+
+// The domain name of the entity this permission refers to. This is an
+// output-only field which is populated when the permission type is "user",
+// "group" or "domain".
+@property (copy) NSString *domain;
+
+// The email address of the user this permission refers to. This is an
+// output-only field which is populated when the permission type is "user" and
+// the given user's Google+ profile privacy settings allow exposing their email
+// address.
+@property (copy) NSString *emailAddress;
 
 // The ETag of the permission.
 @property (copy) NSString *ETag;
