@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 43 custom properties)
+//   GTLDriveFile (0 custom class methods, 45 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
 //   GTLDriveFileImageMediaMetadata (0 custom class methods, 21 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
@@ -39,6 +39,7 @@
 
 #import "GTLDriveParentReference.h"
 #import "GTLDrivePermission.h"
+#import "GTLDriveProperty.h"
 #import "GTLDriveUser.h"
 
 // ----------------------------------------------------------------------------
@@ -47,16 +48,16 @@
 //
 
 @implementation GTLDriveFile
-@dynamic alternateLink, appDataContents, createdDate, defaultOpenWithLink,
-         descriptionProperty, downloadUrl, editable, embedLink, ETag,
-         explicitlyTrashed, exportLinks, fileExtension, fileSize,
-         headRevisionId, iconLink, identifier, imageMediaMetadata,
+@dynamic alternateLink, appDataContents, copyable, createdDate,
+         defaultOpenWithLink, descriptionProperty, downloadUrl, editable,
+         embedLink, ETag, explicitlyTrashed, exportLinks, fileExtension,
+         fileSize, headRevisionId, iconLink, identifier, imageMediaMetadata,
          indexableText, kind, labels, lastModifyingUser, lastModifyingUserName,
          lastViewedByMeDate, md5Checksum, mimeType, modifiedByMeDate,
          modifiedDate, openWithLinks, originalFilename, ownerNames, owners,
-         parents, quotaBytesUsed, selfLink, shared, sharedWithMeDate, thumbnail,
-         thumbnailLink, title, userPermission, webContentLink, webViewLink,
-         writersCanShare;
+         parents, properties, quotaBytesUsed, selfLink, shared,
+         sharedWithMeDate, thumbnail, thumbnailLink, title, userPermission,
+         webContentLink, webViewLink, writersCanShare;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -74,6 +75,7 @@
       [NSString class], @"ownerNames",
       [GTLDriveUser class], @"owners",
       [GTLDriveParentReference class], @"parents",
+      [GTLDriveProperty class], @"properties",
       nil];
   return map;
 }

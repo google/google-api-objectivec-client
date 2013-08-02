@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 43 custom properties)
+//   GTLDriveFile (0 custom class methods, 45 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
 //   GTLDriveFileImageMediaMetadata (0 custom class methods, 21 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
@@ -50,6 +50,7 @@
 @class GTLDriveFileThumbnail;
 @class GTLDriveParentReference;
 @class GTLDrivePermission;
+@class GTLDriveProperty;
 @class GTLDriveUser;
 
 // ----------------------------------------------------------------------------
@@ -66,6 +67,9 @@
 
 // Whether this file is in the appdata folder.
 @property (retain) NSNumber *appDataContents;  // boolValue
+
+// Whether the file can be copied by the current user.
+@property (retain) NSNumber *copyable;  // boolValue
 
 // Create time for this file (formatted ISO8601 timestamp).
 @property (retain) GTLDateTime *createdDate;
@@ -179,6 +183,9 @@
 // insert, if no folders are provided, the file will be placed in the default
 // root folder.
 @property (retain) NSArray *parents;  // of GTLDriveParentReference
+
+// The list of properties.
+@property (retain) NSArray *properties;  // of GTLDriveProperty
 
 // The number of quota bytes used by this file.
 @property (retain) NSNumber *quotaBytesUsed;  // longLongValue
