@@ -43,6 +43,7 @@
 #import "GTLAnalyticsMcfData.h"
 #import "GTLAnalyticsProfile.h"
 #import "GTLAnalyticsProfiles.h"
+#import "GTLAnalyticsRealtimeData.h"
 #import "GTLAnalyticsSegment.h"
 #import "GTLAnalyticsSegments.h"
 #import "GTLAnalyticsWebproperties.h"

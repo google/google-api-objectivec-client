@@ -46,6 +46,7 @@
 #import "GTLAnalyticsMcfData.m"
 #import "GTLAnalyticsProfile.m"
 #import "GTLAnalyticsProfiles.m"
+#import "GTLAnalyticsRealtimeData.m"
 #import "GTLAnalyticsSegment.m"
 #import "GTLAnalyticsSegments.m"
 #import "GTLAnalyticsWebproperties.m"

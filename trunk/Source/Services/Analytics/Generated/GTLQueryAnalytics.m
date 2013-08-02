@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLQueryAnalytics (17 custom class methods, 20 custom properties)
+//   GTLQueryAnalytics (18 custom class methods, 20 custom properties)
 
 #import "GTLQueryAnalytics.h"
 
@@ -40,6 +40,7 @@
 #import "GTLAnalyticsGoals.h"
 #import "GTLAnalyticsMcfData.h"
 #import "GTLAnalyticsProfiles.h"
+#import "GTLAnalyticsRealtimeData.h"
 #import "GTLAnalyticsSegments.h"
 #import "GTLAnalyticsWebproperties.h"
 
@@ -93,6 +94,20 @@
   query.endDate = endDate;
   query.metrics = metrics;
   query.expectedObjectClass = [GTLAnalyticsMcfData class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "data.realtime" methods
+// These create a GTLQueryAnalytics object.
+
++ (id)queryForDataRealtimeGetWithIds:(NSString *)ids
+                             metrics:(NSString *)metrics {
+  NSString *methodName = @"analytics.data.realtime.get";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.ids = ids;
+  query.metrics = metrics;
+  query.expectedObjectClass = [GTLAnalyticsRealtimeData class];
   return query;
 }
 

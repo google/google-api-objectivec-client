@@ -53,6 +53,7 @@
                       [GTLAnalyticsMcfData class],
                       [GTLAnalyticsProfile class],
                       [GTLAnalyticsProfiles class],
+                      [GTLAnalyticsRealtimeData class],
                       [GTLAnalyticsSegment class],
                       [GTLAnalyticsSegments class],
                       [GTLAnalyticsWebproperties class],
