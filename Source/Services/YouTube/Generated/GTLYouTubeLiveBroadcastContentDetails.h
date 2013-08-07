@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveBroadcastContentDetails (0 custom class methods, 7 custom properties)
+//   GTLYouTubeLiveBroadcastContentDetails (0 custom class methods, 8 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -41,12 +41,17 @@
 //   GTLYouTubeLiveBroadcastContentDetails
 //
 
-// Slate settings of a broadcast.
+// Detailed settings of a broadcast.
 
 @interface GTLYouTubeLiveBroadcastContentDetails : GTLObject
 
 // This value uniquely identifies the live stream bound to the broadcast.
 @property (copy) NSString *boundStreamId;
+
+// This setting indicates whether closed captioning is enabled for this
+// broadcast. The ingestion URL of the closed captions is returned through the
+// liveStreams API.
+@property (retain) NSNumber *enableClosedCaptions;  // boolValue
 
 // This setting indicates whether YouTube should enable content encryption for
 // the broadcast.

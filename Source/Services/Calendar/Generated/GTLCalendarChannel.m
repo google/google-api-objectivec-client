@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/google-apps/calendar/firstapp
 // Classes:
-//   GTLCalendarChannel (0 custom class methods, 9 custom properties)
+//   GTLCalendarChannel (0 custom class methods, 10 custom properties)
 //   GTLCalendarChannelParams (0 custom class methods, 0 custom properties)
 
 #import "GTLCalendarChannel.h"
@@ -37,8 +37,8 @@
 //
 
 @implementation GTLCalendarChannel
-@dynamic address, expiration, identifier, kind, params, resourceId, resourceUri,
-         token, type;
+@dynamic address, expiration, identifier, kind, params, payload, resourceId,
+         resourceUri, token, type;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

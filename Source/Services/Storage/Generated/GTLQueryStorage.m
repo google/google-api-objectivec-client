@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 // Classes:
-//   GTLQueryStorage (34 custom class methods, 39 custom properties)
+//   GTLQueryStorage (34 custom class methods, 40 custom properties)
 //   GTLStorageChannelsStopParams (0 custom class methods, 0 custom properties)
 //   GTLStorageObjectsComposeSourceObjectsItem (0 custom class methods, 3 custom properties)
 //   GTLStorageObjectsComposeSourceObjectsItemObjectPreconditions (0 custom class methods, 1 custom properties)
@@ -51,7 +51,7 @@
          ifMetagenerationMatch, ifMetagenerationNotMatch,
          ifSourceGenerationMatch, ifSourceGenerationNotMatch,
          ifSourceMetagenerationMatch, ifSourceMetagenerationNotMatch, kind,
-         maxResults, name, object, pageToken, params, prefix, project,
+         maxResults, name, object, pageToken, params, payload, prefix, project,
          projection, resourceId, resourceUri, sourceBucket, sourceGeneration,
          sourceObject, sourceObjects, token, type, versions;
 

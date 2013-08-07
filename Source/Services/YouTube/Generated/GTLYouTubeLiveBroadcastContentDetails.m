@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveBroadcastContentDetails (0 custom class methods, 7 custom properties)
+//   GTLYouTubeLiveBroadcastContentDetails (0 custom class methods, 8 custom properties)
 
 #import "GTLYouTubeLiveBroadcastContentDetails.h"
 
@@ -38,6 +38,6 @@
 //
 
 @implementation GTLYouTubeLiveBroadcastContentDetails
-@dynamic boundStreamId, enableContentEncryption, enableDvr, enableEmbed,
-         monitorStream, recordFromStart, startWithSlate;
+@dynamic boundStreamId, enableClosedCaptions, enableContentEncryption,
+         enableDvr, enableEmbed, monitorStream, recordFromStart, startWithSlate;
 @end

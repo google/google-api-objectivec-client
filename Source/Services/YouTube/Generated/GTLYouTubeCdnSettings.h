@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveStream.m
+//  GTLYouTubeCdnSettings.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,34 +26,33 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveStream (0 custom class methods, 7 custom properties)
+//   GTLYouTubeCdnSettings (0 custom class methods, 3 custom properties)
 
-#import "GTLYouTubeLiveStream.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLYouTubeCdnSettings.h"
-#import "GTLYouTubeLiveStreamContentDetails.h"
-#import "GTLYouTubeLiveStreamSnippet.h"
-#import "GTLYouTubeLiveStreamStatus.h"
+@class GTLYouTubeIngestionInfo;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveStream
+//   GTLYouTubeCdnSettings
 //
 
-@implementation GTLYouTubeLiveStream
-@dynamic cdn, contentDetails, ETag, identifier, kind, snippet, status;
+// Brief description of the live stream cdn settings.
 
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"etag", @"ETag",
-      @"id", @"identifier",
-      nil];
-  return map;
-}
+@interface GTLYouTubeCdnSettings : GTLObject
 
-+ (void)load {
-  [self registerObjectClassForKind:@"youtube#liveStream"];
-}
+// The format of the video stream that you are sending to Youtube.
+@property (copy) NSString *format;
+
+// The ingestionInfo object contains information that YouTube provides that you
+// need to transmit your RTMP or HTTP stream to YouTube.
+@property (retain) GTLYouTubeIngestionInfo *ingestionInfo;
+
+// The method or protocol used to transmit the video stream.
+@property (copy) NSString *ingestionType;
 
 @end

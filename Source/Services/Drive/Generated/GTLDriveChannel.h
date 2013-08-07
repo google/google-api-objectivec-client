@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveChannel (0 custom class methods, 9 custom properties)
+//   GTLDriveChannel (0 custom class methods, 10 custom properties)
 //   GTLDriveChannelParams (0 custom class methods, 0 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -44,35 +44,39 @@
 
 @interface GTLDriveChannel : GTLObject
 
-// The address of the receiving entity where events are delivered. Specific to
-// the channel type.
+// The address where notifications are delivered for this channel.
 @property (copy) NSString *address;
 
-// The expiration instant for this channel if it is defined.
+// Date and time of notification channel expiration, expressed as a Unix
+// timestamp, in milliseconds. Optional.
 @property (retain) NSNumber *expiration;  // longLongValue
 
-// A UUID for the channel
+// A UUID or similar unique string that identifies this channel.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// A channel watching an API resource
+// Identifies this as a notification channel used to watch for changes to a
+// resource. Value: the fixed string "api#channel".
 @property (copy) NSString *kind;
 
-// Additional parameters controlling delivery channel behavior
+// Additional parameters controlling delivery channel behavior. Optional.
 @property (retain) GTLDriveChannelParams *params;
 
-// An opaque id that identifies the resource that is being watched. Stable
-// across different API versions
+// A Boolean value to indicate whether payload is wanted. Optional.
+@property (retain) NSNumber *payload;  // boolValue
+
+// An opaque ID that identifies the resource being watched on this channel.
+// Stable across different API versions.
 @property (copy) NSString *resourceId;
 
-// The canonicalized ID of the watched resource.
+// A version-specific identifier for the watched resource.
 @property (copy) NSString *resourceUri;
 
-// An arbitrary string associated with the channel that is delivered to the
-// target address with each event delivered over this channel.
+// An arbitrary string delivered to the target address with each notification
+// delivered over this channel. Optional.
 @property (copy) NSString *token;
 
-// The type of delivery mechanism used by this channel
+// The type of delivery mechanism used for this channel.
 @property (copy) NSString *type;
 
 @end

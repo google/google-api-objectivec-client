@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 // Classes:
-//   GTLQueryStorage (34 custom class methods, 39 custom properties)
+//   GTLQueryStorage (34 custom class methods, 40 custom properties)
 //   GTLStorageChannelsStopParams (0 custom class methods, 0 custom properties)
 //   GTLStorageObjectsComposeSourceObjectsItem (0 custom class methods, 3 custom properties)
 //   GTLStorageObjectsComposeSourceObjectsItemObjectPreconditions (0 custom class methods, 1 custom properties)
@@ -84,6 +84,7 @@
 @property (copy) NSString *object;
 @property (copy) NSString *pageToken;
 @property (retain) GTLStorageChannelsStopParams *params;
+@property (assign) BOOL payload;
 @property (copy) NSString *prefix;
 @property (copy) NSString *project;
 @property (copy) NSString *projection;
@@ -290,19 +291,24 @@
 // These create a GTLQueryStorage object.
 
 // Method: storage.channels.stop
+// Stop watching resources through this channel
 //  Optional:
-//   address: The address of the receiving entity where events are delivered.
-//     Specific to the channel type.
-//   expiration: The expiration instant for this channel if it is defined.
-//   identifier: A UUID for the channel
-//   kind: A channel watching an API resource (Default api#channel)
-//   params: Additional parameters controlling delivery channel behavior
-//   resourceId: An opaque id that identifies the resource that is being
-//     watched. Stable across different API versions
-//   resourceUri: The canonicalized ID of the watched resource.
-//   token: An arbitrary string associated with the channel that is delivered to
-//     the target address with each event delivered over this channel.
-//   type: The type of delivery mechanism used by this channel
+//   address: The address where notifications are delivered for this channel.
+//   expiration: Date and time of notification channel expiration, expressed as
+//     a Unix timestamp, in milliseconds. Optional.
+//   identifier: A UUID or similar unique string that identifies this channel.
+//   kind: Identifies this as a notification channel used to watch for changes
+//     to a resource. Value: the fixed string "api#channel". (Default
+//     api#channel)
+//   params: Additional parameters controlling delivery channel behavior.
+//     Optional.
+//   payload: A Boolean value to indicate whether payload is wanted. Optional.
+//   resourceId: An opaque ID that identifies the resource being watched on this
+//     channel. Stable across different API versions.
+//   resourceUri: A version-specific identifier for the watched resource.
+//   token: An arbitrary string delivered to the target address with each
+//     notification delivered over this channel. Optional.
+//   type: The type of delivery mechanism used for this channel.
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadOnly
@@ -762,7 +768,7 @@
 
 // Used for 'params' parameter on 'storage.channels.stop'.
 
-// Additional parameters controlling delivery channel behavior
+// Additional parameters controlling delivery channel behavior. Optional.
 
 @interface GTLStorageChannelsStopParams : GTLObject
 // This object is documented as having more properties that are NSString. Use

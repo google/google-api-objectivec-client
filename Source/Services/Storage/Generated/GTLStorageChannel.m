@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 // Classes:
-//   GTLStorageChannel (0 custom class methods, 9 custom properties)
+//   GTLStorageChannel (0 custom class methods, 10 custom properties)
 //   GTLStorageChannelParams (0 custom class methods, 0 custom properties)
 
 #import "GTLStorageChannel.h"
@@ -37,8 +37,8 @@
 //
 
 @implementation GTLStorageChannel
-@dynamic address, expiration, identifier, kind, params, resourceId, resourceUri,
-         token, type;
+@dynamic address, expiration, identifier, kind, params, payload, resourceId,
+         resourceUri, token, type;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

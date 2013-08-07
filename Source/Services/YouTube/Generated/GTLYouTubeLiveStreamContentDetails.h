@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveStreamCdn.h
+//  GTLYouTubeLiveStreamContentDetails.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveStreamCdn (0 custom class methods, 3 custom properties)
+//   GTLYouTubeLiveStreamContentDetails (0 custom class methods, 1 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,25 +34,16 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLYouTubeIngestionInfo;
-
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveStreamCdn
+//   GTLYouTubeLiveStreamContentDetails
 //
 
-// Brief description of the live stream cdn settings.
+// Detailed settings of a stream.
 
-@interface GTLYouTubeLiveStreamCdn : GTLObject
+@interface GTLYouTubeLiveStreamContentDetails : GTLObject
 
-// The format of the video stream that you are sending to YouTube.
-@property (copy) NSString *format;
-
-// The ingestionInfo object contains information that YouTube provides that you
-// need to transmit your RTMP or HTTP stream to YouTube.
-@property (retain) GTLYouTubeIngestionInfo *ingestionInfo;
-
-// The method or protocol used to transmit the video stream.
-@property (copy) NSString *ingestionType;
+// The ingestion URL where the closed captions of this stream are sent.
+@property (copy) NSString *closedCaptionsIngestionUrl;
 
 @end
