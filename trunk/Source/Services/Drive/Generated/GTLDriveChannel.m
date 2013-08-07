@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveChannel (0 custom class methods, 9 custom properties)
+//   GTLDriveChannel (0 custom class methods, 10 custom properties)
 //   GTLDriveChannelParams (0 custom class methods, 0 custom properties)
 
 #import "GTLDriveChannel.h"
@@ -37,8 +37,8 @@
 //
 
 @implementation GTLDriveChannel
-@dynamic address, expiration, identifier, kind, params, resourceId, resourceUri,
-         token, type;
+@dynamic address, expiration, identifier, kind, params, payload, resourceId,
+         resourceUri, token, type;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

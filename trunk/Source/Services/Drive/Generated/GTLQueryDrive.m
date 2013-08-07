@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLQueryDrive (56 custom class methods, 45 custom properties)
+//   GTLQueryDrive (56 custom class methods, 46 custom properties)
 //   GTLDriveChannelsStopParams (0 custom class methods, 0 custom properties)
 
 #import "GTLQueryDrive.h"
@@ -59,7 +59,7 @@
 @dynamic address, appId, changeId, channel, childId, commentId, convert,
          emailMessage, expiration, fields, fileId, folderId, identifier,
          includeDeleted, includeSubscribed, kind, maxChangeIdCount, maxResults,
-         newRevision, ocr, ocrLanguage, pageToken, params, parentId,
+         newRevision, ocr, ocrLanguage, pageToken, params, parentId, payload,
          permissionId, pinned, projection, propertyKey, q, replyId, resourceId,
          resourceUri, revisionId, sendNotificationEmails, setModifiedDate,
          startChangeId, timedTextLanguage, timedTextTrackName, token,

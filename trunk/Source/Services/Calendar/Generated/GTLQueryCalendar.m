@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/google-apps/calendar/firstapp
 // Classes:
-//   GTLQueryCalendar (34 custom class methods, 39 custom properties)
+//   GTLQueryCalendar (34 custom class methods, 40 custom properties)
 //   GTLCalendarChannelsStopParams (0 custom class methods, 0 custom properties)
 
 #import "GTLQueryCalendar.h"
@@ -51,9 +51,9 @@
          colorRgbFormat, destination, eventId, expiration, fields,
          groupExpansionMax, iCalUID, identifier, items, kind, maxAttendees,
          maxResults, minAccessRole, orderBy, originalStart, pageToken, params,
-         q, resourceId, resourceUri, ruleId, sendNotifications, setting,
-         showDeleted, showHidden, showHiddenInvitations, singleEvents, text,
-         timeMax, timeMin, timeZone, token, type, updatedMin;
+         payload, q, resourceId, resourceUri, ruleId, sendNotifications,
+         setting, showDeleted, showHidden, showHiddenInvitations, singleEvents,
+         text, timeMax, timeMin, timeZone, token, type, updatedMin;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map =
