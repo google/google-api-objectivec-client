@@ -40,6 +40,7 @@
                       [GTLQueryMirror class],
                       [GTLMirrorAttachment class],
                       [GTLMirrorAttachmentsListResponse class],
+                      [GTLMirrorCommand class],
                       [GTLMirrorContact class],
                       [GTLMirrorContactsListResponse class],
                       [GTLMirrorLocation class],

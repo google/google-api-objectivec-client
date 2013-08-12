@@ -104,10 +104,7 @@
 // contents are preserved.
 @property (copy) NSString *html;
 
-// Additional pages of HTML content associated with this item. If this field is
-// specified, the item will be displayed as a bundle, with the html field as the
-// cover. It is an error to specify this field without specifying the html
-// field.
+// This field is deprecated, use the html property with pagination instead.
 @property (retain) NSArray *htmlPages;  // of NSString
 
 // The ID of the timeline item. This is unique within a user's timeline.

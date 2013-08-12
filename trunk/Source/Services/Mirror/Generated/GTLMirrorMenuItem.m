@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/glass
 // Classes:
-//   GTLMirrorMenuItem (0 custom class methods, 4 custom properties)
+//   GTLMirrorMenuItem (0 custom class methods, 5 custom properties)
 
 #import "GTLMirrorMenuItem.h"
 
@@ -38,7 +38,7 @@
 //
 
 @implementation GTLMirrorMenuItem
-@dynamic action, identifier, removeWhenSelected, values;
+@dynamic action, identifier, payload, removeWhenSelected, values;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

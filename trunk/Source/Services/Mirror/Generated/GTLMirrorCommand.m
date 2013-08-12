@@ -14,10 +14,7 @@
  */
 
 //
-//  GTLMirror_Sources.m
-//
-// This file can be compiled into projects to avoid adding the individual
-// source files for this service.
+//  GTLMirrorCommand.m
 //
 
 // ----------------------------------------------------------------------------
@@ -28,25 +25,16 @@
 //   API for interacting with Glass users via the timeline.
 // Documentation:
 //   https://developers.google.com/glass
+// Classes:
+//   GTLMirrorCommand (0 custom class methods, 1 custom properties)
 
-#import "GTLMirrorConstants.m"
+#import "GTLMirrorCommand.h"
 
-#import "GTLMirrorAttachment.m"
-#import "GTLMirrorAttachmentsListResponse.m"
-#import "GTLMirrorCommand.m"
-#import "GTLMirrorContact.m"
-#import "GTLMirrorContactsListResponse.m"
-#import "GTLMirrorLocation.m"
-#import "GTLMirrorLocationsListResponse.m"
-#import "GTLMirrorMenuItem.m"
-#import "GTLMirrorMenuValue.m"
-#import "GTLMirrorNotification.m"
-#import "GTLMirrorNotificationConfig.m"
-#import "GTLMirrorSubscription.m"
-#import "GTLMirrorSubscriptionsListResponse.m"
-#import "GTLMirrorTimelineItem.m"
-#import "GTLMirrorTimelineListResponse.m"
-#import "GTLMirrorUserAction.m"
+// ----------------------------------------------------------------------------
+//
+//   GTLMirrorCommand
+//
 
-#import "GTLQueryMirror.m"
-#import "GTLServiceMirror.m"
+@implementation GTLMirrorCommand
+@dynamic type;
+@end

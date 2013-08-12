@@ -26,13 +26,15 @@
 // Documentation:
 //   https://developers.google.com/glass
 // Classes:
-//   GTLMirrorContact (0 custom class methods, 9 custom properties)
+//   GTLMirrorContact (0 custom class methods, 11 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
 #else
   #import "GTLObject.h"
 #endif
+
+@class GTLMirrorCommand;
 
 // ----------------------------------------------------------------------------
 //
@@ -42,6 +44,9 @@
 // A person or group that can be used as a creator or a contact.
 
 @interface GTLMirrorContact : GTLObject
+
+// A list of voice menu commands that a contact can handle.
+@property (retain) NSArray *acceptCommands;  // of GTLMirrorCommand
 
 // A list of MIME types that a contact supports. The contact will be shown to
 // the user if any of its acceptTypes matches any of the types of the
@@ -77,6 +82,12 @@
 // The ID of the application that created this contact. This is populated by the
 // API
 @property (copy) NSString *source;
+
+// Name of this contact as it should be pronounced. If this contact's name must
+// be spoken as part of a voice disambiguation menu, this name is used as the
+// expected pronunciation. This is useful for contact names with unpronounceable
+// characters or whose display spelling is otherwise not phonetic.
+@property (copy) NSString *speakableName;
 
 // The type for this contact. This is used for sorting in UIs. Allowed values
 // are:

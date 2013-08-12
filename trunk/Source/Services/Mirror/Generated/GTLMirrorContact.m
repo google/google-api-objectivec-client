@@ -26,9 +26,11 @@
 // Documentation:
 //   https://developers.google.com/glass
 // Classes:
-//   GTLMirrorContact (0 custom class methods, 9 custom properties)
+//   GTLMirrorContact (0 custom class methods, 11 custom properties)
 
 #import "GTLMirrorContact.h"
+
+#import "GTLMirrorCommand.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -36,8 +38,8 @@
 //
 
 @implementation GTLMirrorContact
-@dynamic acceptTypes, displayName, identifier, imageUrls, kind, phoneNumber,
-         priority, source, type;
+@dynamic acceptCommands, acceptTypes, displayName, identifier, imageUrls, kind,
+         phoneNumber, priority, source, speakableName, type;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -49,6 +51,7 @@
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
+      [GTLMirrorCommand class], @"acceptCommands",
       [NSString class], @"acceptTypes",
       [NSString class], @"imageUrls",
       nil];
