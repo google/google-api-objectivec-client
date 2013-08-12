@@ -143,20 +143,20 @@
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.data.realtime.get
-// Returns real-time data for a view (profile).
+// Returns real time data for a view (profile).
 //  Required:
-//   ids: Unique table ID for retrieving Analytics data. Table ID is of the form
+//   ids: Unique table ID for retrieving real time data. Table ID is of the form
 //     ga:XXXX, where XXXX is the Analytics view (profile) ID.
-//   metrics: A comma-separated list of Analytics metrics. E.g.,
-//     'ga:visits,ga:pageviews'. At least one metric must be specified.
+//   metrics: A comma-separated list of real time metrics. E.g.,
+//     'ga:activeVisitors'. At least one metric must be specified.
 //  Optional:
-//   dimensions: A comma-separated list of real-time dimensions. E.g.,
+//   dimensions: A comma-separated list of real time dimensions. E.g.,
 //     'ga:medium,ga:city'.
 //   filters: A comma-separated list of dimension or metric filters to be
-//     applied to real-time data.
+//     applied to real time data.
 //   maxResults: The maximum number of entries to include in this feed.
 //   sort: A comma-separated list of dimensions or metrics that determine the
-//     sort order for real-time data.
+//     sort order for real time data.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalytics
 //   kGTLAuthScopeAnalyticsReadonly
