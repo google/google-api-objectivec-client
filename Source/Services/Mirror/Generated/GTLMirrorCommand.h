@@ -14,10 +14,7 @@
  */
 
 //
-//  GTLMirror_Sources.m
-//
-// This file can be compiled into projects to avoid adding the individual
-// source files for this service.
+//  GTLMirrorCommand.h
 //
 
 // ----------------------------------------------------------------------------
@@ -28,25 +25,29 @@
 //   API for interacting with Glass users via the timeline.
 // Documentation:
 //   https://developers.google.com/glass
+// Classes:
+//   GTLMirrorCommand (0 custom class methods, 1 custom properties)
 
-#import "GTLMirrorConstants.m"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLMirrorAttachment.m"
-#import "GTLMirrorAttachmentsListResponse.m"
-#import "GTLMirrorCommand.m"
-#import "GTLMirrorContact.m"
-#import "GTLMirrorContactsListResponse.m"
-#import "GTLMirrorLocation.m"
-#import "GTLMirrorLocationsListResponse.m"
-#import "GTLMirrorMenuItem.m"
-#import "GTLMirrorMenuValue.m"
-#import "GTLMirrorNotification.m"
-#import "GTLMirrorNotificationConfig.m"
-#import "GTLMirrorSubscription.m"
-#import "GTLMirrorSubscriptionsListResponse.m"
-#import "GTLMirrorTimelineItem.m"
-#import "GTLMirrorTimelineListResponse.m"
-#import "GTLMirrorUserAction.m"
+// ----------------------------------------------------------------------------
+//
+//   GTLMirrorCommand
+//
 
-#import "GTLQueryMirror.m"
-#import "GTLServiceMirror.m"
+// A single menu command that is part of a Contact.
+
+@interface GTLMirrorCommand : GTLObject
+
+// The type of operation this command corresponds to. Allowed values are:
+// - TAKE_A_NOTE - Shares a timeline item with the transcription of user speech
+// from the "Take a note" voice menu command.
+// - POST_AN_UPDATE - Shares a timeline item with the transcription of user
+// speech from the "Post an update" voice menu command.
+@property (copy) NSString *type;
+
+@end

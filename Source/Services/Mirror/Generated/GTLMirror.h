@@ -30,6 +30,7 @@
 
 #import "GTLMirrorAttachment.h"
 #import "GTLMirrorAttachmentsListResponse.h"
+#import "GTLMirrorCommand.h"
 #import "GTLMirrorContact.h"
 #import "GTLMirrorContactsListResponse.h"
 #import "GTLMirrorLocation.h"
