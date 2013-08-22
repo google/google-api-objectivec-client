@@ -14,19 +14,20 @@
  */
 
 //
-//  GTLPlusAclentryResource.h
+//  GTLAnalyticsColumn.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google+ API (plus/v1)
+//   Google Analytics API (analytics/v3)
 // Description:
-//   The Google+ API enables developers to build on top of the Google+ platform.
+//   View and manage your Google Analytics data
 // Documentation:
-//   https://developers.google.com/+/api/
+//   https://developers.google.com/analytics/
 // Classes:
-//   GTLPlusAclentryResource (0 custom class methods, 3 custom properties)
+//   GTLAnalyticsColumn (0 custom class methods, 3 custom properties)
+//   GTLAnalyticsColumnAttributes (0 custom class methods, 0 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,29 +35,38 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLAnalyticsColumnAttributes;
+
 // ----------------------------------------------------------------------------
 //
-//   GTLPlusAclentryResource
+//   GTLAnalyticsColumn
 //
 
-@interface GTLPlusAclentryResource : GTLObject
+// JSON template for a metadata column.
 
-// A descriptive name for this entry. Suitable for display.
-@property (copy) NSString *displayName;
+@interface GTLAnalyticsColumn : GTLObject
 
-// The ID of the entry. For entries of type "person" or "circle", this is the ID
-// of the resource. For other types, this property is not set.
+// Map of attribute name and value for this column.
+@property (retain) GTLAnalyticsColumnAttributes *attributes;
+
+// Column id.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// The type of entry describing to whom access is granted. Possible values are:
-// - "person" - Access to an individual.
-// - "circle" - Access to members of a circle.
-// - "myCircles" - Access to members of all the person's circles.
-// - "extendedCircles" - Access to members of all the person's circles, plus all
-// of the people in their circles.
-// - "domain" - Access to members of the person's Google Apps domain.
-// - "public" - Access to anyone on the web.
-@property (copy) NSString *type;
+// Resource type for Analytics column.
+@property (copy) NSString *kind;
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAnalyticsColumnAttributes
+//
+
+@interface GTLAnalyticsColumnAttributes : GTLObject
+// This object is documented as having more properties that are NSString. Use
+// -additionalJSONKeys and -additionalPropertyForName: to get the list of
+// properties and then fetch them; or -additionalProperties to fetch them all at
+// once.
 @end

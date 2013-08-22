@@ -37,9 +37,9 @@
 #import "GTLYouTubeChannelListResponse.h"
 #import "GTLYouTubeGuideCategoryListResponse.h"
 #import "GTLYouTubeLiveBroadcast.h"
-#import "GTLYouTubeLiveBroadcastList.h"
+#import "GTLYouTubeLiveBroadcastListResponse.h"
 #import "GTLYouTubeLiveStream.h"
-#import "GTLYouTubeLiveStreamList.h"
+#import "GTLYouTubeLiveStreamListResponse.h"
 #import "GTLYouTubePlaylist.h"
 #import "GTLYouTubePlaylistItem.h"
 #import "GTLYouTubePlaylistItemListResponse.h"
@@ -47,7 +47,7 @@
 #import "GTLYouTubeSearchListResponse.h"
 #import "GTLYouTubeSubscription.h"
 #import "GTLYouTubeSubscriptionListResponse.h"
-#import "GTLYouTubeThumbnailListResponse.h"
+#import "GTLYouTubeThumbnailSetResponse.h"
 #import "GTLYouTubeVideo.h"
 #import "GTLYouTubeVideoCategoryListResponse.h"
 #import "GTLYouTubeVideoGetRatingResponse.h"
@@ -204,7 +204,7 @@
   NSString *methodName = @"youtube.liveBroadcasts.list";
   GTLQueryYouTube *query = [self queryWithMethodName:methodName];
   query.part = part;
-  query.expectedObjectClass = [GTLYouTubeLiveBroadcastList class];
+  query.expectedObjectClass = [GTLYouTubeLiveBroadcastListResponse class];
   return query;
 }
 
@@ -263,7 +263,7 @@
   NSString *methodName = @"youtube.liveStreams.list";
   GTLQueryYouTube *query = [self queryWithMethodName:methodName];
   query.part = part;
-  query.expectedObjectClass = [GTLYouTubeLiveStreamList class];
+  query.expectedObjectClass = [GTLYouTubeLiveStreamListResponse class];
   return query;
 }
 
@@ -430,7 +430,7 @@
   GTLQueryYouTube *query = [self queryWithMethodName:methodName];
   query.videoId = videoId;
   query.uploadParameters = uploadParametersOrNil;
-  query.expectedObjectClass = [GTLYouTubeThumbnailListResponse class];
+  query.expectedObjectClass = [GTLYouTubeThumbnailSetResponse class];
   return query;
 }
 

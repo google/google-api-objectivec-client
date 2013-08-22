@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLBooksLayerGeoData.m
+//  GTLBooksGeolayerdata.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,48 +26,53 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLBooksLayerGeoData (0 custom class methods, 2 custom properties)
-//   GTLBooksLayerGeoDataCommon (0 custom class methods, 5 custom properties)
-//   GTLBooksLayerGeoDataGeo (0 custom class methods, 8 custom properties)
-//   GTLBooksLayerGeoDataGeoBoundaryItem (0 custom class methods, 2 custom properties)
-//   GTLBooksLayerGeoDataGeoViewport (0 custom class methods, 2 custom properties)
-//   GTLBooksLayerGeoDataGeoViewportHi (0 custom class methods, 2 custom properties)
-//   GTLBooksLayerGeoDataGeoViewportLo (0 custom class methods, 2 custom properties)
+//   GTLBooksGeolayerdata (0 custom class methods, 3 custom properties)
+//   GTLBooksGeolayerdataCommon (0 custom class methods, 5 custom properties)
+//   GTLBooksGeolayerdataGeo (0 custom class methods, 8 custom properties)
+//   GTLBooksGeolayerdataGeoBoundaryItem (0 custom class methods, 2 custom properties)
+//   GTLBooksGeolayerdataGeoViewport (0 custom class methods, 2 custom properties)
+//   GTLBooksGeolayerdataGeoViewportHi (0 custom class methods, 2 custom properties)
+//   GTLBooksGeolayerdataGeoViewportLo (0 custom class methods, 2 custom properties)
 
-#import "GTLBooksLayerGeoData.h"
+#import "GTLBooksGeolayerdata.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBooksLayerGeoData
+//   GTLBooksGeolayerdata
 //
 
-@implementation GTLBooksLayerGeoData
-@dynamic common, geo;
+@implementation GTLBooksGeolayerdata
+@dynamic common, geo, kind;
+
++ (void)load {
+  [self registerObjectClassForKind:@"books#geolayerdata"];
+}
+
 @end
 
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBooksLayerGeoDataCommon
+//   GTLBooksGeolayerdataCommon
 //
 
-@implementation GTLBooksLayerGeoDataCommon
+@implementation GTLBooksGeolayerdataCommon
 @dynamic lang, previewImageUrl, snippet, snippetUrl, title;
 @end
 
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBooksLayerGeoDataGeo
+//   GTLBooksGeolayerdataGeo
 //
 
-@implementation GTLBooksLayerGeoDataGeo
+@implementation GTLBooksGeolayerdataGeo
 @dynamic boundary, cachePolicy, countryCode, latitude, longitude, mapType,
          viewport, zoom;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLBooksLayerGeoDataGeoBoundaryItem class]
+    [NSDictionary dictionaryWithObject:[GTLBooksGeolayerdataGeoBoundaryItem class]
                                 forKey:@"boundary"];
   return map;
 }
@@ -77,39 +82,39 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBooksLayerGeoDataGeoBoundaryItem
+//   GTLBooksGeolayerdataGeoBoundaryItem
 //
 
-@implementation GTLBooksLayerGeoDataGeoBoundaryItem
+@implementation GTLBooksGeolayerdataGeoBoundaryItem
 @dynamic latitude, longitude;
 @end
 
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBooksLayerGeoDataGeoViewport
+//   GTLBooksGeolayerdataGeoViewport
 //
 
-@implementation GTLBooksLayerGeoDataGeoViewport
+@implementation GTLBooksGeolayerdataGeoViewport
 @dynamic hi, lo;
 @end
 
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBooksLayerGeoDataGeoViewportHi
+//   GTLBooksGeolayerdataGeoViewportHi
 //
 
-@implementation GTLBooksLayerGeoDataGeoViewportHi
+@implementation GTLBooksGeolayerdataGeoViewportHi
 @dynamic latitude, longitude;
 @end
 
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBooksLayerGeoDataGeoViewportLo
+//   GTLBooksGeolayerdataGeoViewportLo
 //
 
-@implementation GTLBooksLayerGeoDataGeoViewportLo
+@implementation GTLBooksGeolayerdataGeoViewportLo
 @dynamic latitude, longitude;
 @end

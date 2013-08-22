@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLQueryBooks (36 custom class methods, 55 custom properties)
+//   GTLQueryBooks (37 custom class methods, 56 custom properties)
 
 #import "GTLQueryBooks.h"
 
@@ -47,6 +47,7 @@
 #import "GTLBooksVolumeannotation.h"
 #import "GTLBooksVolumeannotations.h"
 #import "GTLBooksVolumes.h"
+#import "GTLBooksVolumesRecommendedRateResponse.h"
 
 @implementation GTLQueryBooks
 
@@ -55,11 +56,11 @@
          driveDocumentId, endOffset, endPosition, features, fields, filter, h,
          langRestrict, layerId, layerIds, libraryRestrict, locale, maxResults,
          mimeType, name, nonce, orderBy, pageIds, pageToken, partner, position,
-         printType, processingState, projection, q, scale, shelf, showDeleted,
-         showOnlySummaryInResponse, showPreorders, source, startIndex,
-         startOffset, startPosition, summaryId, timestamp, updatedMax,
-         updatedMin, uploadClientToken, userId, volumeAnnotationsVersion,
-         volumeId, volumeIds, volumePosition, w;
+         printType, processingState, projection, q, rating, scale, shelf,
+         showDeleted, showOnlySummaryInResponse, showPreorders, source,
+         startIndex, startOffset, startPosition, summaryId, timestamp,
+         updatedMax, updatedMin, uploadClientToken, userId,
+         volumeAnnotationsVersion, volumeId, volumeIds, volumePosition, w;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map =
@@ -473,6 +474,16 @@
   NSString *methodName = @"books.volumes.recommended.list";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLBooksVolumes class];
+  return query;
+}
+
++ (id)queryForVolumesRecommendedRateWithRating:(NSString *)rating
+                                      volumeId:(NSString *)volumeId {
+  NSString *methodName = @"books.volumes.recommended.rate";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.rating = rating;
+  query.volumeId = volumeId;
+  query.expectedObjectClass = [GTLBooksVolumesRecommendedRateResponse class];
   return query;
 }
 

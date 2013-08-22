@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeActivityContentDetailsPromotedItem (0 custom class methods, 7 custom properties)
+//   GTLYouTubeActivityContentDetailsPromotedItem (0 custom class methods, 8 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -64,6 +64,10 @@
 // The URL the client should direct the user to, if the user chooses to visit
 // the advertiser's website.
 @property (copy) NSString *destinationUrl;
+
+// The list of impression URLs. The client should ping all of these URLs to
+// indicate that the user was shown this promoted item.
+@property (retain) NSArray *impressionUrls;  // of NSString
 
 // The ID that YouTube uses to uniquely identify the promoted video.
 @property (copy) NSString *videoId;

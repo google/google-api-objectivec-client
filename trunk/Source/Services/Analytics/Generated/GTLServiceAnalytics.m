@@ -40,6 +40,8 @@
                       [GTLQueryAnalytics class],
                       [GTLAnalyticsAccount class],
                       [GTLAnalyticsAccounts class],
+                      [GTLAnalyticsColumn class],
+                      [GTLAnalyticsColumns class],
                       [GTLAnalyticsCustomDataSource class],
                       [GTLAnalyticsCustomDataSources class],
                       [GTLAnalyticsDailyUpload class],

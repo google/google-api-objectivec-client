@@ -93,3 +93,7 @@ GTL_EXTERN NSString * const kGTLBooksProcessingStateRunning;    // "RUNNING"
 // Projection
 GTL_EXTERN NSString * const kGTLBooksProjectionFull;  // "full"
 GTL_EXTERN NSString * const kGTLBooksProjectionLite;  // "lite"
+
+// Rating
+GTL_EXTERN NSString * const kGTLBooksRatingHaveIt;         // "HAVE_IT"
+GTL_EXTERN NSString * const kGTLBooksRatingNotInterested;  // "NOT_INTERESTED"

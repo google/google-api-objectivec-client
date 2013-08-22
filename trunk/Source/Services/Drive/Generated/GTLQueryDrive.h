@@ -26,8 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLQueryDrive (56 custom class methods, 46 custom properties)
-//   GTLDriveChannelsStopParams (0 custom class methods, 0 custom properties)
+//   GTLQueryDrive (56 custom class methods, 35 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -36,7 +35,6 @@
 #endif
 
 @class GTLDriveChannel;
-@class GTLDriveChannelsStopParams;
 @class GTLDriveChildReference;
 @class GTLDriveComment;
 @class GTLDriveCommentReply;
@@ -58,48 +56,36 @@
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (copy) NSString *address;
 @property (copy) NSString *appId;
 @property (copy) NSString *changeId;
-@property (retain) GTLDriveChannel *channel;
 @property (copy) NSString *childId;
 @property (copy) NSString *commentId;
 @property (assign) BOOL convert;
 @property (copy) NSString *emailMessage;
-@property (assign) long long expiration;
 @property (copy) NSString *fileId;
 @property (copy) NSString *folderId;
-// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
 @property (assign) BOOL includeDeleted;
 @property (assign) BOOL includeSubscribed;
-@property (copy) NSString *kind;
 @property (assign) long long maxChangeIdCount;
 @property (assign) NSInteger maxResults;
 @property (assign) BOOL newRevision;
 @property (assign) BOOL ocr;
 @property (copy) NSString *ocrLanguage;
 @property (copy) NSString *pageToken;
-@property (retain) GTLDriveChannelsStopParams *params;
 @property (copy) NSString *parentId;
-@property (assign) BOOL payload;
 @property (copy) NSString *permissionId;
 @property (assign) BOOL pinned;
 @property (copy) NSString *projection;
 @property (copy) NSString *propertyKey;
 @property (copy) NSString *q;
 @property (copy) NSString *replyId;
-@property (copy) NSString *resourceId;
-@property (copy) NSString *resourceUri;
 @property (copy) NSString *revisionId;
 @property (assign) BOOL sendNotificationEmails;
 @property (assign) BOOL setModifiedDate;
 @property (assign) long long startChangeId;
 @property (copy) NSString *timedTextLanguage;
 @property (copy) NSString *timedTextTrackName;
-@property (copy) NSString *token;
 @property (assign) BOOL transferOwnership;
-@property (copy) NSString *type;
 @property (copy) NSString *updatedMin;
 @property (assign) BOOL updateViewedDate;
 @property (assign) BOOL useContentAsIndexableText;
@@ -192,7 +178,6 @@
 // Method: drive.changes.watch
 // Subscribe to changes for a user.
 //  Optional:
-//   channel: GTLDriveChannel
 //   includeDeleted: Whether to include deleted items. (Default true)
 //   includeSubscribed: Whether to include shared files and public files the
 //     user has opened. When set to false, the list will include owned files
@@ -209,7 +194,7 @@
 //   kGTLAuthScopeDriveMetadataReadonly
 //   kGTLAuthScopeDriveReadonly
 // Fetches a GTLDriveChannel.
-+ (id)queryForChangesWatch;
++ (id)queryForChangesWatchWithObject:(GTLDriveChannel *)object;
 
 #pragma mark -
 #pragma mark "channels" methods
@@ -217,23 +202,6 @@
 
 // Method: drive.channels.stop
 // Stop watching resources through this channel
-//  Optional:
-//   address: The address where notifications are delivered for this channel.
-//   expiration: Date and time of notification channel expiration, expressed as
-//     a Unix timestamp, in milliseconds. Optional.
-//   identifier: A UUID or similar unique string that identifies this channel.
-//   kind: Identifies this as a notification channel used to watch for changes
-//     to a resource. Value: the fixed string "api#channel". (Default
-//     api#channel)
-//   params: Additional parameters controlling delivery channel behavior.
-//     Optional.
-//   payload: A Boolean value to indicate whether payload is wanted. Optional.
-//   resourceId: An opaque ID that identifies the resource being watched on this
-//     channel. Stable across different API versions.
-//   resourceUri: A version-specific identifier for the watched resource.
-//   token: An arbitrary string delivered to the target address with each
-//     notification delivered over this channel. Optional.
-//   type: The type of delivery mechanism used for this channel.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
 //   kGTLAuthScopeDriveAppdata
@@ -241,7 +209,7 @@
 //   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveMetadataReadonly
 //   kGTLAuthScopeDriveReadonly
-+ (id)queryForChannelsStop;
++ (id)queryForChannelsStopWithObject:(GTLDriveChannel *)object;
 
 #pragma mark -
 #pragma mark "children" methods
@@ -623,7 +591,6 @@
 //  Required:
 //   fileId: The ID for the file in question.
 //  Optional:
-//   channel: GTLDriveChannel
 //   projection: This parameter is deprecated and has no function.
 //      kGTLDriveProjectionBasic: Deprecated
 //      kGTLDriveProjectionFull: Deprecated
@@ -637,7 +604,8 @@
 //   kGTLAuthScopeDriveMetadataReadonly
 //   kGTLAuthScopeDriveReadonly
 // Fetches a GTLDriveChannel.
-+ (id)queryForFilesWatchWithFileId:(NSString *)fileId;
++ (id)queryForFilesWatchWithObject:(GTLDriveChannel *)object
+                            fileId:(NSString *)fileId;
 
 #pragma mark -
 #pragma mark "parents" methods
@@ -1061,25 +1029,4 @@
                                  fileId:(NSString *)fileId
                              revisionId:(NSString *)revisionId;
 
-@end
-
-#pragma mark -
-#pragma mark method parameter objects
-// These object are used only to pass a collection of parameters to a
-// method as a single item.
-
-// ----------------------------------------------------------------------------
-//
-//   GTLDriveChannelsStopParams
-//
-
-// Used for 'params' parameter on 'drive.channels.stop'.
-
-// Additional parameters controlling delivery channel behavior. Optional.
-
-@interface GTLDriveChannelsStopParams : GTLObject
-// This object is documented as having more properties that are NSString. Use
-// -additionalJSONKeys and -additionalPropertyForName: to get the list of
-// properties and then fetch them; or -additionalProperties to fetch them all at
-// once.
 @end

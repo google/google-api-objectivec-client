@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeThumbnailListResponse.m
+//  GTLYouTubeThumbnailSetResponse.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,36 +26,39 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeThumbnailListResponse (0 custom class methods, 4 custom properties)
+//   GTLYouTubeThumbnailSetResponse (0 custom class methods, 5 custom properties)
 
-#import "GTLYouTubeThumbnailListResponse.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLYouTubeThumbnailDetails.h"
+@class GTLYouTubeThumbnailDetails;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeThumbnailListResponse
+//   GTLYouTubeThumbnailSetResponse
 //
 
-@implementation GTLYouTubeThumbnailListResponse
-@dynamic ETag, items, kind, visitorId;
+// This class supports NSFastEnumeration over its "items" property. It also
+// supports -itemAtIndex: to retrieve individual objects from "items".
 
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"etag"
-                                forKey:@"ETag"];
-  return map;
-}
+@interface GTLYouTubeThumbnailSetResponse : GTLCollectionObject
 
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLYouTubeThumbnailDetails class]
-                                forKey:@"items"];
-  return map;
-}
+// Etag of this resource.
+@property (copy) NSString *ETag;
 
-+ (void)load {
-  [self registerObjectClassForKind:@"youtube#thumbnailListResponse"];
-}
+// Serialized EventId of the request which produced this response.
+@property (copy) NSString *eventId;
+
+// A list of thumbnails.
+@property (retain) NSArray *items;  // of GTLYouTubeThumbnailDetails
+
+// The kind, fixed to "youtube#thumbnailSetResponse".
+@property (copy) NSString *kind;
+
+// The visitorId identifies the visitor.
+@property (copy) NSString *visitorId;
 
 @end

@@ -14,50 +14,54 @@
  */
 
 //
-//  GTLYouTubeLiveStreamList.m
+//  GTLAnalyticsColumn.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   YouTube Data API (youtube/v3)
+//   Google Analytics API (analytics/v3)
 // Description:
-//   Programmatic access to YouTube features.
+//   View and manage your Google Analytics data
 // Documentation:
-//   https://developers.google.com/youtube/v3
+//   https://developers.google.com/analytics/
 // Classes:
-//   GTLYouTubeLiveStreamList (0 custom class methods, 8 custom properties)
+//   GTLAnalyticsColumn (0 custom class methods, 3 custom properties)
+//   GTLAnalyticsColumnAttributes (0 custom class methods, 0 custom properties)
 
-#import "GTLYouTubeLiveStreamList.h"
-
-#import "GTLYouTubeLiveStream.h"
-#import "GTLYouTubePageInfo.h"
+#import "GTLAnalyticsColumn.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveStreamList
+//   GTLAnalyticsColumn
 //
 
-@implementation GTLYouTubeLiveStreamList
-@dynamic ETag, eventId, items, kind, nextPageToken, pageInfo, prevPageToken,
-         visitorId;
+@implementation GTLAnalyticsColumn
+@dynamic attributes, identifier, kind;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"etag"
-                                forKey:@"ETag"];
-  return map;
-}
-
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLYouTubeLiveStream class]
-                                forKey:@"items"];
+    [NSDictionary dictionaryWithObject:@"id"
+                                forKey:@"identifier"];
   return map;
 }
 
 + (void)load {
-  [self registerObjectClassForKind:@"youtube#liveStreamList"];
+  [self registerObjectClassForKind:@"analytics#column"];
+}
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAnalyticsColumnAttributes
+//
+
+@implementation GTLAnalyticsColumnAttributes
+
++ (Class)classForAdditionalProperties {
+  return [NSString class];
 }
 
 @end

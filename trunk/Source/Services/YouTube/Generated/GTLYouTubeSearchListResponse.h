@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeSearchListResponse (0 custom class methods, 8 custom properties)
+//   GTLYouTubeSearchListResponse (0 custom class methods, 9 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,21 +36,19 @@
 
 @class GTLYouTubePageInfo;
 @class GTLYouTubeSearchResult;
+@class GTLYouTubeTokenPagination;
 
 // ----------------------------------------------------------------------------
 //
 //   GTLYouTubeSearchListResponse
 //
 
-// A paginated list of search results returned as the response to a
-// youtube.search.list call.
-
 // This class supports NSFastEnumeration over its "items" property. It also
 // supports -itemAtIndex: to retrieve individual objects from "items".
 
 @interface GTLYouTubeSearchListResponse : GTLCollectionObject
 
-// The ETag for the response.
+// Etag of this resource.
 @property (copy) NSString *ETag;
 
 // Serialized EventId of the request which produced this response.
@@ -59,21 +57,20 @@
 // A list of results that match the search criteria.
 @property (retain) NSArray *items;  // of GTLYouTubeSearchResult
 
-// The type of the API response. For this operation, the value will be
-// youtube#searchListResponse.
+// The kind, fixed to "youtube#searchListResponse".
 @property (copy) NSString *kind;
 
 // The token that can be used as the value of the pageToken parameter to
 // retrieve the next page in the result set.
 @property (copy) NSString *nextPageToken;
 
-// The pageInfo object encapsulates paging information for the search result
-// set.
 @property (retain) GTLYouTubePageInfo *pageInfo;
 
 // The token that can be used as the value of the pageToken parameter to
 // retrieve the previous page in the result set.
 @property (copy) NSString *prevPageToken;
+
+@property (retain) GTLYouTubeTokenPagination *tokenPagination;
 
 // The visitorId identifies the visitor.
 @property (copy) NSString *visitorId;

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveBroadcastList.h
+//  GTLYouTubeLiveStreamListResponse.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveBroadcastList (0 custom class methods, 8 custom properties)
+//   GTLYouTubeLiveStreamListResponse (0 custom class methods, 9 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,44 +34,43 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLYouTubeLiveBroadcast;
+@class GTLYouTubeLiveStream;
 @class GTLYouTubePageInfo;
+@class GTLYouTubeTokenPagination;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveBroadcastList
+//   GTLYouTubeLiveStreamListResponse
 //
-
-// JSON template for list of broadcasts.
 
 // This class supports NSFastEnumeration over its "items" property. It also
 // supports -itemAtIndex: to retrieve individual objects from "items".
 
-@interface GTLYouTubeLiveBroadcastList : GTLCollectionObject
+@interface GTLYouTubeLiveStreamListResponse : GTLCollectionObject
 
-// The ETag of the response.
+// Etag of this resource.
 @property (copy) NSString *ETag;
 
 // Serialized EventId of the request which produced this response.
 @property (copy) NSString *eventId;
 
-// A list of broadcasts that match the request criteria.
-@property (retain) NSArray *items;  // of GTLYouTubeLiveBroadcast
+// A list of live streams that match the request criteria.
+@property (retain) NSArray *items;  // of GTLYouTubeLiveStream
 
-// The type of the API response. For this operation, the value will be
-// youtube#liveBroadcastList.
+// The kind, fixed to "youtube#liveStreamListResponse".
 @property (copy) NSString *kind;
 
 // The token that can be used as the value of the pageToken parameter to
 // retrieve the next page in the result set.
 @property (copy) NSString *nextPageToken;
 
-// The pageInfo object encapsulates paging information for the result set.
 @property (retain) GTLYouTubePageInfo *pageInfo;
 
 // The token that can be used as the value of the pageToken parameter to
 // retrieve the previous page in the result set.
 @property (copy) NSString *prevPageToken;
+
+@property (retain) GTLYouTubeTokenPagination *tokenPagination;
 
 // The visitorId identifies the visitor.
 @property (copy) NSString *visitorId;

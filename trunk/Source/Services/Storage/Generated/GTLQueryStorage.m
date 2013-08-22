@@ -26,8 +26,7 @@
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 // Classes:
-//   GTLQueryStorage (34 custom class methods, 40 custom properties)
-//   GTLStorageChannelsStopParams (0 custom class methods, 0 custom properties)
+//   GTLQueryStorage (34 custom class methods, 30 custom properties)
 //   GTLStorageObjectsComposeSourceObjectsItem (0 custom class methods, 3 custom properties)
 //   GTLStorageObjectsComposeSourceObjectsItemObjectPreconditions (0 custom class methods, 1 custom properties)
 
@@ -45,22 +44,18 @@
 
 @implementation GTLQueryStorage
 
-@dynamic address, bucket, channel, delimiter, destination, destinationResource,
-         destinationBucket, destinationObject, entity, expiration, fields,
-         generation, identifier, ifGenerationMatch, ifGenerationNotMatch,
-         ifMetagenerationMatch, ifMetagenerationNotMatch,
+@dynamic bucket, delimiter, destination, destinationResource, destinationBucket,
+         destinationObject, entity, fields, generation, ifGenerationMatch,
+         ifGenerationNotMatch, ifMetagenerationMatch, ifMetagenerationNotMatch,
          ifSourceGenerationMatch, ifSourceGenerationNotMatch,
          ifSourceMetagenerationMatch, ifSourceMetagenerationNotMatch, kind,
-         maxResults, name, object, pageToken, params, payload, prefix, project,
-         projection, resourceId, resourceUri, sourceBucket, sourceGeneration,
-         sourceObject, sourceObjects, token, type, versions;
+         maxResults, name, object, pageToken, prefix, project, projection,
+         sourceBucket, sourceGeneration, sourceObject, sourceObjects, versions;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"destination_resource", @"destinationResource",
-      @"id", @"identifier",
-      nil];
+    [NSDictionary dictionaryWithObject:@"destination_resource"
+                                forKey:@"destinationResource"];
   return map;
 }
 
@@ -221,9 +216,14 @@
 #pragma mark "channels" methods
 // These create a GTLQueryStorage object.
 
-+ (id)queryForChannelsStop {
++ (id)queryForChannelsStopWithObject:(GTLStorageChannel *)object {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
   NSString *methodName = @"storage.channels.stop";
   GTLQueryStorage *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
   return query;
 }
 
@@ -496,9 +496,15 @@
   return query;
 }
 
-+ (id)queryForObjectsWatchAllWithBucket:(NSString *)bucket {
++ (id)queryForObjectsWatchAllWithObject:(GTLStorageChannel *)object
+                                 bucket:(NSString *)bucket {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
   NSString *methodName = @"storage.objects.watchAll";
   GTLQueryStorage *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
   query.bucket = bucket;
   query.expectedObjectClass = [GTLStorageChannel class];
   return query;
@@ -510,19 +516,6 @@
 #pragma mark method parameter objects
 // These object are used only to pass a collection of parameters to a
 // method as a single item.
-
-// ----------------------------------------------------------------------------
-//
-//   GTLStorageChannelsStopParams
-//
-
-@implementation GTLStorageChannelsStopParams
-
-+ (Class)classForAdditionalProperties {
-  return [NSString class];
-}
-
-@end
 
 // ----------------------------------------------------------------------------
 //
