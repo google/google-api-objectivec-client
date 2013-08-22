@@ -26,10 +26,12 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoCategoryListResponse (0 custom class methods, 5 custom properties)
+//   GTLYouTubeVideoCategoryListResponse (0 custom class methods, 9 custom properties)
 
 #import "GTLYouTubeVideoCategoryListResponse.h"
 
+#import "GTLYouTubePageInfo.h"
+#import "GTLYouTubeTokenPagination.h"
 #import "GTLYouTubeVideoCategory.h"
 
 // ----------------------------------------------------------------------------
@@ -38,7 +40,8 @@
 //
 
 @implementation GTLYouTubeVideoCategoryListResponse
-@dynamic ETag, eventId, items, kind, visitorId;
+@dynamic ETag, eventId, items, kind, nextPageToken, pageInfo, prevPageToken,
+         tokenPagination, visitorId;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

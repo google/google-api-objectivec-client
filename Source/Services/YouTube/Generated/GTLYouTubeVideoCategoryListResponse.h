@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoCategoryListResponse (0 custom class methods, 5 custom properties)
+//   GTLYouTubeVideoCategoryListResponse (0 custom class methods, 9 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,6 +34,8 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLYouTubePageInfo;
+@class GTLYouTubeTokenPagination;
 @class GTLYouTubeVideoCategory;
 
 // ----------------------------------------------------------------------------
@@ -41,15 +43,12 @@
 //   GTLYouTubeVideoCategoryListResponse
 //
 
-// A paginated list of video categories returned as the response to a
-// youtube.videoCategory.list call.
-
 // This class supports NSFastEnumeration over its "items" property. It also
 // supports -itemAtIndex: to retrieve individual objects from "items".
 
 @interface GTLYouTubeVideoCategoryListResponse : GTLCollectionObject
 
-// The ETag of the response.
+// Etag of this resource.
 @property (copy) NSString *ETag;
 
 // Serialized EventId of the request which produced this response.
@@ -60,9 +59,20 @@
 // corresponding videoCategory resource.
 @property (retain) NSArray *items;  // of GTLYouTubeVideoCategory
 
-// The type of the API response. For this operation, the value will be
-// youtube#videoCategoryListResponse.
+// The kind, fixed to "youtube#videoCategoryListResponse".
 @property (copy) NSString *kind;
+
+// The token that can be used as the value of the pageToken parameter to
+// retrieve the next page in the result set.
+@property (copy) NSString *nextPageToken;
+
+@property (retain) GTLYouTubePageInfo *pageInfo;
+
+// The token that can be used as the value of the pageToken parameter to
+// retrieve the previous page in the result set.
+@property (copy) NSString *prevPageToken;
+
+@property (retain) GTLYouTubeTokenPagination *tokenPagination;
 
 // The visitorId identifies the visitor.
 @property (copy) NSString *visitorId;

@@ -14,19 +14,19 @@
  */
 
 //
-//  GTLYouTubeThumbnailListResponse.h
+//  GTLAnalyticsColumns.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   YouTube Data API (youtube/v3)
+//   Google Analytics API (analytics/v3)
 // Description:
-//   Programmatic access to YouTube features.
+//   View and manage your Google Analytics data
 // Documentation:
-//   https://developers.google.com/youtube/v3
+//   https://developers.google.com/analytics/
 // Classes:
-//   GTLYouTubeThumbnailListResponse (0 custom class methods, 4 custom properties)
+//   GTLAnalyticsColumns (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,31 +34,34 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLYouTubeThumbnailDetails;
+@class GTLAnalyticsColumn;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeThumbnailListResponse
+//   GTLAnalyticsColumns
 //
 
-// A list of thumbnails returned as the response to a thumbnails.set call.
+// Lists columns (dimensions and metrics) for a particular report type.
 
 // This class supports NSFastEnumeration over its "items" property. It also
 // supports -itemAtIndex: to retrieve individual objects from "items".
 
-@interface GTLYouTubeThumbnailListResponse : GTLCollectionObject
+@interface GTLAnalyticsColumns : GTLCollectionObject
 
-// The ETag of the response.
+// List of attributes names returned by columns.
+@property (retain) NSArray *attributeNames;  // of NSString
+
+// Etag of collection. This etag can be compared with the last response etag to
+// check if response has changed.
 @property (copy) NSString *ETag;
 
-// A list of thumbnails.
-@property (retain) NSArray *items;  // of GTLYouTubeThumbnailDetails
+// List of columns for a report type.
+@property (retain) NSArray *items;  // of GTLAnalyticsColumn
 
-// The type of the API response. For this operation, the value will be
-// youtube#thumbnailListResponse.
+// Collection type.
 @property (copy) NSString *kind;
 
-// The visitorId identifies the visitor.
-@property (copy) NSString *visitorId;
+// Total number of columns returned in the response.
+@property (retain) NSNumber *totalResults;  // intValue
 
 @end

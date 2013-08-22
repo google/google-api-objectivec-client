@@ -30,6 +30,8 @@
 
 #import "GTLAnalyticsAccount.h"
 #import "GTLAnalyticsAccounts.h"
+#import "GTLAnalyticsColumn.h"
+#import "GTLAnalyticsColumns.h"
 #import "GTLAnalyticsCustomDataSource.h"
 #import "GTLAnalyticsCustomDataSources.h"
 #import "GTLAnalyticsDailyUpload.h"

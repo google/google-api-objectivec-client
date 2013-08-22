@@ -26,8 +26,7 @@
 // Documentation:
 //   https://developers.google.com/google-apps/calendar/firstapp
 // Classes:
-//   GTLQueryCalendar (34 custom class methods, 40 custom properties)
-//   GTLCalendarChannelsStopParams (0 custom class methods, 0 custom properties)
+//   GTLQueryCalendar (34 custom class methods, 29 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -39,7 +38,6 @@
 @class GTLCalendarCalendar;
 @class GTLCalendarCalendarListEntry;
 @class GTLCalendarChannel;
-@class GTLCalendarChannelsStopParams;
 @class GTLCalendarEvent;
 @class GTLCalendarFreeBusyRequestItem;
 
@@ -55,32 +53,22 @@
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (copy) NSString *address;
 @property (assign) BOOL alwaysIncludeEmail;
 @property (assign) NSInteger calendarExpansionMax;
 @property (copy) NSString *calendarId;
-@property (retain) GTLCalendarChannel *channel;
 @property (assign) BOOL colorRgbFormat;
 @property (copy) NSString *destination;
 @property (copy) NSString *eventId;
-@property (assign) long long expiration;
 @property (assign) NSInteger groupExpansionMax;
 @property (copy) NSString *iCalUID;
-// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
 @property (retain) NSArray *items;  // of GTLCalendarFreeBusyRequestItem
-@property (copy) NSString *kind;
 @property (assign) NSInteger maxAttendees;
 @property (assign) NSInteger maxResults;
 @property (copy) NSString *minAccessRole;
 @property (copy) NSString *orderBy;
 @property (copy) NSString *originalStart;
 @property (copy) NSString *pageToken;
-@property (retain) GTLCalendarChannelsStopParams *params;
-@property (assign) BOOL payload;
 @property (copy) NSString *q;
-@property (copy) NSString *resourceId;
-@property (copy) NSString *resourceUri;
 @property (copy) NSString *ruleId;
 @property (assign) BOOL sendNotifications;
 @property (copy) NSString *setting;
@@ -92,8 +80,6 @@
 @property (retain) GTLDateTime *timeMax;
 @property (retain) GTLDateTime *timeMin;
 @property (copy) NSString *timeZone;
-@property (copy) NSString *token;
-@property (copy) NSString *type;
 @property (retain) GTLDateTime *updatedMin;
 
 #pragma mark -
@@ -316,27 +302,10 @@
 
 // Method: calendar.channels.stop
 // Stop watching resources through this channel
-//  Optional:
-//   address: The address where notifications are delivered for this channel.
-//   expiration: Date and time of notification channel expiration, expressed as
-//     a Unix timestamp, in milliseconds. Optional.
-//   identifier: A UUID or similar unique string that identifies this channel.
-//   kind: Identifies this as a notification channel used to watch for changes
-//     to a resource. Value: the fixed string "api#channel". (Default
-//     api#channel)
-//   params: Additional parameters controlling delivery channel behavior.
-//     Optional.
-//   payload: A Boolean value to indicate whether payload is wanted. Optional.
-//   resourceId: An opaque ID that identifies the resource being watched on this
-//     channel. Stable across different API versions.
-//   resourceUri: A version-specific identifier for the watched resource.
-//   token: An arbitrary string delivered to the target address with each
-//     notification delivered over this channel. Optional.
-//   type: The type of delivery mechanism used for this channel.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 //   kGTLAuthScopeCalendarReadonly
-+ (id)queryForChannelsStop;
++ (id)queryForChannelsStopWithObject:(GTLCalendarChannel *)object;
 
 #pragma mark -
 #pragma mark "colors" methods
@@ -591,11 +560,10 @@
                              eventId:(NSString *)eventId;
 
 // Method: calendar.events.watch
-// Subscribe to changes in events collection
+// Watch for changes to Events resources.
 //  Required:
 //   calendarId: Calendar identifier.
 //  Optional:
-//   channel: GTLCalendarChannel
 //   alwaysIncludeEmail: Whether to always include a value in the "email" field
 //     for the organizer, creator and attendees, even if no real email is
 //     available (i.e. a generated, non-working value will be provided). The use
@@ -643,7 +611,8 @@
 //   kGTLAuthScopeCalendar
 //   kGTLAuthScopeCalendarReadonly
 // Fetches a GTLCalendarChannel.
-+ (id)queryForEventsWatchWithCalendarId:(NSString *)calendarId;
++ (id)queryForEventsWatchWithObject:(GTLCalendarChannel *)object
+                         calendarId:(NSString *)calendarId;
 
 #pragma mark -
 #pragma mark "freebusy" methods
@@ -661,6 +630,7 @@
 //   timeMax: The end of the interval for the query.
 //   timeMin: The start of the interval for the query.
 //   timeZone: Time zone used in the response. Optional. The default is UTC.
+//     (Default UTC)
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 //   kGTLAuthScopeCalendarReadonly
@@ -689,25 +659,4 @@
 // Fetches a GTLCalendarSettings.
 + (id)queryForSettingsList;
 
-@end
-
-#pragma mark -
-#pragma mark method parameter objects
-// These object are used only to pass a collection of parameters to a
-// method as a single item.
-
-// ----------------------------------------------------------------------------
-//
-//   GTLCalendarChannelsStopParams
-//
-
-// Used for 'params' parameter on 'calendar.channels.stop'.
-
-// Additional parameters controlling delivery channel behavior. Optional.
-
-@interface GTLCalendarChannelsStopParams : GTLObject
-// This object is documented as having more properties that are NSString. Use
-// -additionalJSONKeys and -additionalPropertyForName: to get the list of
-// properties and then fetch them; or -additionalProperties to fetch them all at
-// once.
 @end

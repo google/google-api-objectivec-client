@@ -14,50 +14,35 @@
  */
 
 //
-//  GTLYouTubeLiveBroadcastList.m
+//  GTLBooksVolumesRecommendedRateResponse.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   YouTube Data API (youtube/v3)
+//   Books API (books/v1)
 // Description:
-//   Programmatic access to YouTube features.
+//   Lets you search for books and manage your Google Books library.
 // Documentation:
-//   https://developers.google.com/youtube/v3
+//   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLYouTubeLiveBroadcastList (0 custom class methods, 8 custom properties)
+//   GTLBooksVolumesRecommendedRateResponse (0 custom class methods, 1 custom properties)
 
-#import "GTLYouTubeLiveBroadcastList.h"
-
-#import "GTLYouTubeLiveBroadcast.h"
-#import "GTLYouTubePageInfo.h"
+#import "GTLBooksVolumesRecommendedRateResponse.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveBroadcastList
+//   GTLBooksVolumesRecommendedRateResponse
 //
 
-@implementation GTLYouTubeLiveBroadcastList
-@dynamic ETag, eventId, items, kind, nextPageToken, pageInfo, prevPageToken,
-         visitorId;
+@implementation GTLBooksVolumesRecommendedRateResponse
+@dynamic consistencyToken;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"etag"
-                                forKey:@"ETag"];
+    [NSDictionary dictionaryWithObject:@"consistency_token"
+                                forKey:@"consistencyToken"];
   return map;
-}
-
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLYouTubeLiveBroadcast class]
-                                forKey:@"items"];
-  return map;
-}
-
-+ (void)load {
-  [self registerObjectClassForKind:@"youtube#liveBroadcastList"];
 }
 
 @end

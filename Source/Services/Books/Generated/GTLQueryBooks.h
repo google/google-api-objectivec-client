@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLQueryBooks (36 custom class methods, 55 custom properties)
+//   GTLQueryBooks (37 custom class methods, 56 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -85,6 +85,7 @@
 @property (retain) NSArray *processingState;  // of NSString
 @property (copy) NSString *projection;
 @property (copy) NSString *q;
+@property (copy) NSString *rating;
 @property (assign) NSInteger scale;
 @property (copy) NSString *shelf;
 @property (assign) BOOL showDeleted;
@@ -744,6 +745,24 @@
 //   kGTLAuthScopeBooks
 // Fetches a GTLBooksVolumes.
 + (id)queryForVolumesRecommendedList;
+
+// Method: books.volumes.recommended.rate
+// Rate a recommended book for the current user.
+//  Required:
+//   rating: Rating to be given to the volume.
+//      kGTLBooksRatingHaveIt: Rating indicating a dismissal due to ownership.
+//      kGTLBooksRatingNotInterested: Rating indicating a negative dismissal of
+//        a volume.
+//   volumeId: ID of the source volume.
+//  Optional:
+//   locale: ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used
+//     for generating recommendations.
+//   source: String to identify the originator of this request.
+//  Authorization scope(s):
+//   kGTLAuthScopeBooks
+// Fetches a GTLBooksVolumesRecommendedRateResponse.
++ (id)queryForVolumesRecommendedRateWithRating:(NSString *)rating
+                                      volumeId:(NSString *)volumeId;
 
 #pragma mark -
 #pragma mark "volumes.useruploaded" methods

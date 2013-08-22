@@ -26,8 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLQueryDrive (56 custom class methods, 46 custom properties)
-//   GTLDriveChannelsStopParams (0 custom class methods, 0 custom properties)
+//   GTLQueryDrive (56 custom class methods, 35 custom properties)
 
 #import "GTLQueryDrive.h"
 
@@ -56,22 +55,13 @@
 
 @implementation GTLQueryDrive
 
-@dynamic address, appId, changeId, channel, childId, commentId, convert,
-         emailMessage, expiration, fields, fileId, folderId, identifier,
-         includeDeleted, includeSubscribed, kind, maxChangeIdCount, maxResults,
-         newRevision, ocr, ocrLanguage, pageToken, params, parentId, payload,
-         permissionId, pinned, projection, propertyKey, q, replyId, resourceId,
-         resourceUri, revisionId, sendNotificationEmails, setModifiedDate,
-         startChangeId, timedTextLanguage, timedTextTrackName, token,
-         transferOwnership, type, updatedMin, updateViewedDate,
-         useContentAsIndexableText, visibility;
-
-+ (NSDictionary *)parameterNameMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
-  return map;
-}
+@dynamic appId, changeId, childId, commentId, convert, emailMessage, fields,
+         fileId, folderId, includeDeleted, includeSubscribed, maxChangeIdCount,
+         maxResults, newRevision, ocr, ocrLanguage, pageToken, parentId,
+         permissionId, pinned, projection, propertyKey, q, replyId, revisionId,
+         sendNotificationEmails, setModifiedDate, startChangeId,
+         timedTextLanguage, timedTextTrackName, transferOwnership, updatedMin,
+         updateViewedDate, useContentAsIndexableText, visibility;
 
 #pragma mark -
 #pragma mark "about" methods
@@ -122,9 +112,14 @@
   return query;
 }
 
-+ (id)queryForChangesWatch {
++ (id)queryForChangesWatchWithObject:(GTLDriveChannel *)object {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
   NSString *methodName = @"drive.changes.watch";
   GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
   query.expectedObjectClass = [GTLDriveChannel class];
   return query;
 }
@@ -133,9 +128,14 @@
 #pragma mark "channels" methods
 // These create a GTLQueryDrive object.
 
-+ (id)queryForChannelsStop {
++ (id)queryForChannelsStopWithObject:(GTLDriveChannel *)object {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
   NSString *methodName = @"drive.channels.stop";
   GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
   return query;
 }
 
@@ -369,9 +369,15 @@
   return query;
 }
 
-+ (id)queryForFilesWatchWithFileId:(NSString *)fileId {
++ (id)queryForFilesWatchWithObject:(GTLDriveChannel *)object
+                            fileId:(NSString *)fileId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
   NSString *methodName = @"drive.files.watch";
   GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
   query.fileId = fileId;
   query.expectedObjectClass = [GTLDriveChannel class];
   return query;
@@ -737,24 +743,6 @@
   query.revisionId = revisionId;
   query.expectedObjectClass = [GTLDriveRevision class];
   return query;
-}
-
-@end
-
-#pragma mark -
-#pragma mark method parameter objects
-// These object are used only to pass a collection of parameters to a
-// method as a single item.
-
-// ----------------------------------------------------------------------------
-//
-//   GTLDriveChannelsStopParams
-//
-
-@implementation GTLDriveChannelsStopParams
-
-+ (Class)classForAdditionalProperties {
-  return [NSString class];
 }
 
 @end

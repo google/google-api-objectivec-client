@@ -129,7 +129,7 @@
 // A list of places where this person has lived.
 @property (retain) NSArray *placesLived;  // of GTLPlusPersonPlacesLivedItem
 
-// If a Google+ Page, the number of people who have +1'ed this page.
+// If a Google+ Page, the number of people who have +1'd this page.
 @property (retain) NSNumber *plusOneCount;  // intValue
 
 // The person's relationship status. Possible values include, but are not
@@ -204,7 +204,7 @@
 
 @interface GTLPlusPersonImage : GTLObject
 
-// The URL of the person's profile photo. To re-size the image and crop it to a
+// The URL of the person's profile photo. To resize the image and crop it to a
 // square, append the query string ?sz=x, where x is the dimension in pixels of
 // each side.
 @property (copy) NSString *url;
@@ -330,12 +330,12 @@
 
 @interface GTLPlusPersonCoverCoverInfo : GTLObject
 
-// The difference between the left position of the image cover and the actual
-// displayed cover image. Only valid for BANNER layout.
+// The difference between the left position of the cover image and the actual
+// displayed cover image. Only valid for banner layout.
 @property (retain) NSNumber *leftImageOffset;  // intValue
 
-// The difference between the top position of the image cover and the actual
-// displayed cover image. Only valid for BANNER layout.
+// The difference between the top position of the cover image and the actual
+// displayed cover image. Only valid for banner layout.
 @property (retain) NSNumber *topImageOffset;  // intValue
 
 @end
@@ -348,13 +348,13 @@
 
 @interface GTLPlusPersonCoverCoverPhoto : GTLObject
 
-// The height to the image.
+// The height of the image.
 @property (retain) NSNumber *height;  // intValue
 
-// The url to the image.
+// The URL of the image.
 @property (copy) NSString *url;
 
-// The width to the image.
+// The width of the image.
 @property (retain) NSNumber *width;  // intValue
 
 @end

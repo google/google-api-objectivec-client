@@ -89,7 +89,7 @@
 // only when resharing an activity.
 @property (copy) NSString *annotation;
 
-// If this activity is a cross post from another system, this property specifies
+// If this activity is a crosspost from another system, this property specifies
 // the ID of the original activity.
 @property (copy) NSString *crosspostSource;
 
@@ -159,7 +159,7 @@
 // The name of the actor, suitable for display.
 @property (copy) NSString *displayName;
 
-// The ID of the actor's person resource.
+// The ID of the actor's Person resource.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
@@ -243,7 +243,7 @@
 
 @interface GTLPlusActivityActorImage : GTLObject
 
-// The URL of the actor's profile photo. To re-size the image and crop it to a
+// The URL of the actor's profile photo. To resize the image and crop it to a
 // square, append the query string ?sz=x, where x is the dimension in pixels of
 // each side.
 @property (copy) NSString *url;
@@ -258,10 +258,10 @@
 
 @interface GTLPlusActivityActorName : GTLObject
 
-// The family name (last name) of the actor.
+// The family name ("last name") of the actor.
 @property (copy) NSString *familyName;
 
-// The given name (first name) of the actor.
+// The given name ("first name") of the actor.
 @property (copy) NSString *givenName;
 
 @end
@@ -329,7 +329,7 @@
 // additional thumbnails from the album.
 @property (retain) NSArray *thumbnails;  // of GTLPlusActivityObjectAttachmentsItemThumbnailsItem
 
-// The link to the attachment, should be of type text/html.
+// The link to the attachment; should be of type text/html.
 @property (copy) NSString *url;
 
 @end
@@ -425,7 +425,7 @@
 // Media type of the link.
 @property (copy) NSString *type;
 
-// URL to the image.
+// URL of the image.
 @property (copy) NSString *url;
 
 // The width, in pixels, of the linked resource.
@@ -447,7 +447,7 @@
 // Media type of the link.
 @property (copy) NSString *type;
 
-// Image url.
+// Image URL.
 @property (copy) NSString *url;
 
 // The width, in pixels, of the linked resource.
@@ -470,7 +470,7 @@
 // Image resource.
 @property (retain) GTLPlusActivityObjectAttachmentsItemThumbnailsItemImage *image;
 
-// URL to the webpage containing the image.
+// URL of the webpage containing the image.
 @property (copy) NSString *url;
 
 @end

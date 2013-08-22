@@ -26,12 +26,13 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlaylistItemListResponse (0 custom class methods, 8 custom properties)
+//   GTLYouTubePlaylistItemListResponse (0 custom class methods, 9 custom properties)
 
 #import "GTLYouTubePlaylistItemListResponse.h"
 
 #import "GTLYouTubePageInfo.h"
 #import "GTLYouTubePlaylistItem.h"
+#import "GTLYouTubeTokenPagination.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -40,7 +41,7 @@
 
 @implementation GTLYouTubePlaylistItemListResponse
 @dynamic ETag, eventId, items, kind, nextPageToken, pageInfo, prevPageToken,
-         visitorId;
+         tokenPagination, visitorId;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

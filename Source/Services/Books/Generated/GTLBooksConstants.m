@@ -86,3 +86,7 @@ NSString * const kGTLBooksProcessingStateRunning          = @"RUNNING";
 // Projection
 NSString * const kGTLBooksProjectionFull = @"full";
 NSString * const kGTLBooksProjectionLite = @"lite";
+
+// Rating
+NSString * const kGTLBooksRatingHaveIt        = @"HAVE_IT";
+NSString * const kGTLBooksRatingNotInterested = @"NOT_INTERESTED";

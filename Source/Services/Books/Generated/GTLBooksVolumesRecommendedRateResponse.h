@@ -14,48 +14,31 @@
  */
 
 //
-//  GTLPlusAcl.m
+//  GTLBooksVolumesRecommendedRateResponse.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google+ API (plus/v1)
+//   Books API (books/v1)
 // Description:
-//   The Google+ API enables developers to build on top of the Google+ platform.
+//   Lets you search for books and manage your Google Books library.
 // Documentation:
-//   https://developers.google.com/+/api/
+//   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLPlusAcl (0 custom class methods, 4 custom properties)
+//   GTLBooksVolumesRecommendedRateResponse (0 custom class methods, 1 custom properties)
 
-#import "GTLPlusAcl.h"
-
-#import "GTLPlusAclentryResource.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLPlusAcl
+//   GTLBooksVolumesRecommendedRateResponse
 //
 
-@implementation GTLPlusAcl
-@dynamic descriptionProperty, domainRestricted, items, kind;
-
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"description"
-                                forKey:@"descriptionProperty"];
-  return map;
-}
-
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLPlusAclentryResource class]
-                                forKey:@"items"];
-  return map;
-}
-
-+ (void)load {
-  [self registerObjectClassForKind:@"plus#acl"];
-}
-
+@interface GTLBooksVolumesRecommendedRateResponse : GTLObject
+@property (copy) NSString *consistencyToken;
 @end

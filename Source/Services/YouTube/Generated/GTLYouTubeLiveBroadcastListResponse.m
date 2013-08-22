@@ -14,48 +14,51 @@
  */
 
 //
-//  GTLPlusAcl.m
+//  GTLYouTubeLiveBroadcastListResponse.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google+ API (plus/v1)
+//   YouTube Data API (youtube/v3)
 // Description:
-//   The Google+ API enables developers to build on top of the Google+ platform.
+//   Programmatic access to YouTube features.
 // Documentation:
-//   https://developers.google.com/+/api/
+//   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLPlusAcl (0 custom class methods, 4 custom properties)
+//   GTLYouTubeLiveBroadcastListResponse (0 custom class methods, 9 custom properties)
 
-#import "GTLPlusAcl.h"
+#import "GTLYouTubeLiveBroadcastListResponse.h"
 
-#import "GTLPlusAclentryResource.h"
+#import "GTLYouTubeLiveBroadcast.h"
+#import "GTLYouTubePageInfo.h"
+#import "GTLYouTubeTokenPagination.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLPlusAcl
+//   GTLYouTubeLiveBroadcastListResponse
 //
 
-@implementation GTLPlusAcl
-@dynamic descriptionProperty, domainRestricted, items, kind;
+@implementation GTLYouTubeLiveBroadcastListResponse
+@dynamic ETag, eventId, items, kind, nextPageToken, pageInfo, prevPageToken,
+         tokenPagination, visitorId;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"description"
-                                forKey:@"descriptionProperty"];
+    [NSDictionary dictionaryWithObject:@"etag"
+                                forKey:@"ETag"];
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLPlusAclentryResource class]
+    [NSDictionary dictionaryWithObject:[GTLYouTubeLiveBroadcast class]
                                 forKey:@"items"];
   return map;
 }
 
 + (void)load {
-  [self registerObjectClassForKind:@"plus#acl"];
+  [self registerObjectClassForKind:@"youtube#liveBroadcastListResponse"];
 }
 
 @end

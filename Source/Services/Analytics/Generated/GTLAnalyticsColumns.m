@@ -14,48 +14,50 @@
  */
 
 //
-//  GTLPlusAcl.m
+//  GTLAnalyticsColumns.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google+ API (plus/v1)
+//   Google Analytics API (analytics/v3)
 // Description:
-//   The Google+ API enables developers to build on top of the Google+ platform.
+//   View and manage your Google Analytics data
 // Documentation:
-//   https://developers.google.com/+/api/
+//   https://developers.google.com/analytics/
 // Classes:
-//   GTLPlusAcl (0 custom class methods, 4 custom properties)
+//   GTLAnalyticsColumns (0 custom class methods, 5 custom properties)
 
-#import "GTLPlusAcl.h"
+#import "GTLAnalyticsColumns.h"
 
-#import "GTLPlusAclentryResource.h"
+#import "GTLAnalyticsColumn.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLPlusAcl
+//   GTLAnalyticsColumns
 //
 
-@implementation GTLPlusAcl
-@dynamic descriptionProperty, domainRestricted, items, kind;
+@implementation GTLAnalyticsColumns
+@dynamic attributeNames, ETag, items, kind, totalResults;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"description"
-                                forKey:@"descriptionProperty"];
+    [NSDictionary dictionaryWithObject:@"etag"
+                                forKey:@"ETag"];
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLPlusAclentryResource class]
-                                forKey:@"items"];
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      [NSString class], @"attributeNames",
+      [GTLAnalyticsColumn class], @"items",
+      nil];
   return map;
 }
 
 + (void)load {
-  [self registerObjectClassForKind:@"plus#acl"];
+  [self registerObjectClassForKind:@"analytics#columns"];
 }
 
 @end

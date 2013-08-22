@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLBooksLayerGeoData.h
+//  GTLBooksGeolayerdata.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,13 +26,13 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLBooksLayerGeoData (0 custom class methods, 2 custom properties)
-//   GTLBooksLayerGeoDataCommon (0 custom class methods, 5 custom properties)
-//   GTLBooksLayerGeoDataGeo (0 custom class methods, 8 custom properties)
-//   GTLBooksLayerGeoDataGeoBoundaryItem (0 custom class methods, 2 custom properties)
-//   GTLBooksLayerGeoDataGeoViewport (0 custom class methods, 2 custom properties)
-//   GTLBooksLayerGeoDataGeoViewportHi (0 custom class methods, 2 custom properties)
-//   GTLBooksLayerGeoDataGeoViewportLo (0 custom class methods, 2 custom properties)
+//   GTLBooksGeolayerdata (0 custom class methods, 3 custom properties)
+//   GTLBooksGeolayerdataCommon (0 custom class methods, 5 custom properties)
+//   GTLBooksGeolayerdataGeo (0 custom class methods, 8 custom properties)
+//   GTLBooksGeolayerdataGeoBoundaryItem (0 custom class methods, 2 custom properties)
+//   GTLBooksGeolayerdataGeoViewport (0 custom class methods, 2 custom properties)
+//   GTLBooksGeolayerdataGeoViewportHi (0 custom class methods, 2 custom properties)
+//   GTLBooksGeolayerdataGeoViewportLo (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -40,30 +40,31 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLBooksLayerGeoDataCommon;
-@class GTLBooksLayerGeoDataGeo;
-@class GTLBooksLayerGeoDataGeoBoundaryItem;
-@class GTLBooksLayerGeoDataGeoViewport;
-@class GTLBooksLayerGeoDataGeoViewportHi;
-@class GTLBooksLayerGeoDataGeoViewportLo;
+@class GTLBooksGeolayerdataCommon;
+@class GTLBooksGeolayerdataGeo;
+@class GTLBooksGeolayerdataGeoBoundaryItem;
+@class GTLBooksGeolayerdataGeoViewport;
+@class GTLBooksGeolayerdataGeoViewportHi;
+@class GTLBooksGeolayerdataGeoViewportLo;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBooksLayerGeoData
+//   GTLBooksGeolayerdata
 //
 
-@interface GTLBooksLayerGeoData : GTLObject
-@property (retain) GTLBooksLayerGeoDataCommon *common;
-@property (retain) GTLBooksLayerGeoDataGeo *geo;
+@interface GTLBooksGeolayerdata : GTLObject
+@property (retain) GTLBooksGeolayerdataCommon *common;
+@property (retain) GTLBooksGeolayerdataGeo *geo;
+@property (copy) NSString *kind;
 @end
 
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBooksLayerGeoDataCommon
+//   GTLBooksGeolayerdataCommon
 //
 
-@interface GTLBooksLayerGeoDataCommon : GTLObject
+@interface GTLBooksGeolayerdataCommon : GTLObject
 
 // The language of the information url and description.
 @property (copy) NSString *lang;
@@ -86,14 +87,14 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBooksLayerGeoDataGeo
+//   GTLBooksGeolayerdataGeo
 //
 
-@interface GTLBooksLayerGeoDataGeo : GTLObject
+@interface GTLBooksGeolayerdataGeo : GTLObject
 
 // The boundary of the location as a set of loops containing pairs of latitude,
 // longitude coordinates.
-@property (retain) NSArray *boundary;  // of NSArray of GTLBooksLayerGeoDataGeoBoundaryItem
+@property (retain) NSArray *boundary;  // of NSArray of GTLBooksGeolayerdataGeoBoundaryItem
 
 // The cache policy active for this data. EX: UNRESTRICTED, RESTRICTED, NEVER
 @property (copy) NSString *cachePolicy;
@@ -113,7 +114,7 @@
 
 // The viewport for showing this location. This is a latitude, longitude
 // rectangle.
-@property (retain) GTLBooksLayerGeoDataGeoViewport *viewport;
+@property (retain) GTLBooksGeolayerdataGeoViewport *viewport;
 
 // The Zoom level to use for the map. Zoom levels between 0 (the lowest zoom
 // level, in which the entire world can be seen on one map) to 21+ (down to
@@ -126,10 +127,10 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBooksLayerGeoDataGeoBoundaryItem
+//   GTLBooksGeolayerdataGeoBoundaryItem
 //
 
-@interface GTLBooksLayerGeoDataGeoBoundaryItem : GTLObject
+@interface GTLBooksGeolayerdataGeoBoundaryItem : GTLObject
 @property (retain) NSNumber *latitude;  // unsignedIntValue
 @property (retain) NSNumber *longitude;  // unsignedIntValue
 @end
@@ -137,21 +138,21 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBooksLayerGeoDataGeoViewport
+//   GTLBooksGeolayerdataGeoViewport
 //
 
-@interface GTLBooksLayerGeoDataGeoViewport : GTLObject
-@property (retain) GTLBooksLayerGeoDataGeoViewportHi *hi;
-@property (retain) GTLBooksLayerGeoDataGeoViewportLo *lo;
+@interface GTLBooksGeolayerdataGeoViewport : GTLObject
+@property (retain) GTLBooksGeolayerdataGeoViewportHi *hi;
+@property (retain) GTLBooksGeolayerdataGeoViewportLo *lo;
 @end
 
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBooksLayerGeoDataGeoViewportHi
+//   GTLBooksGeolayerdataGeoViewportHi
 //
 
-@interface GTLBooksLayerGeoDataGeoViewportHi : GTLObject
+@interface GTLBooksGeolayerdataGeoViewportHi : GTLObject
 @property (retain) NSNumber *latitude;  // doubleValue
 @property (retain) NSNumber *longitude;  // doubleValue
 @end
@@ -159,10 +160,10 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBooksLayerGeoDataGeoViewportLo
+//   GTLBooksGeolayerdataGeoViewportLo
 //
 
-@interface GTLBooksLayerGeoDataGeoViewportLo : GTLObject
+@interface GTLBooksGeolayerdataGeoViewportLo : GTLObject
 @property (retain) NSNumber *latitude;  // doubleValue
 @property (retain) NSNumber *longitude;  // doubleValue
 @end

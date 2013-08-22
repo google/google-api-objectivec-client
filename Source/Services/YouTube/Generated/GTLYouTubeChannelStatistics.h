@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelStatistics (0 custom class methods, 4 custom properties)
+//   GTLYouTubeChannelStatistics (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -46,6 +46,9 @@
 
 // The number of comments for the channel.
 @property (retain) NSNumber *commentCount;  // unsignedLongLongValue
+
+// Whether or not the number of subscribers is shown for this user.
+@property (retain) NSNumber *hiddenSubscriberCount;  // boolValue
 
 // The number of subscribers that the channel has.
 @property (retain) NSNumber *subscriberCount;  // unsignedLongLongValue

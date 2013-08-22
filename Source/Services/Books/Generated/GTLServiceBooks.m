@@ -48,10 +48,10 @@
                       [GTLBooksBookshelves class],
                       [GTLBooksCloudloadingResource class],
                       [GTLBooksConcurrentAccessRestriction class],
+                      [GTLBooksDictlayerdata class],
                       [GTLBooksDownloadAccesses class],
                       [GTLBooksDownloadAccessRestriction class],
-                      [GTLBooksLayerDictData class],
-                      [GTLBooksLayerGeoData class],
+                      [GTLBooksGeolayerdata class],
                       [GTLBooksLayersummaries class],
                       [GTLBooksLayersummary class],
                       [GTLBooksReadingPosition class],
@@ -61,6 +61,7 @@
                       [GTLBooksVolumeannotation class],
                       [GTLBooksVolumeannotations class],
                       [GTLBooksVolumes class],
+                      [GTLBooksVolumesRecommendedRateResponse class],
                       nil];
   return classes;
 }

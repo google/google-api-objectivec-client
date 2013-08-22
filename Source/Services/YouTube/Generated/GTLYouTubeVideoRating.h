@@ -39,14 +39,7 @@
 //   GTLYouTubeVideoRating
 //
 
-// Basic details about rating of a video.
-
 @interface GTLYouTubeVideoRating : GTLObject
-
-// Rating of a video.
 @property (copy) NSString *rating;
-
-// The ID that YouTube uses to uniquely identify the video.
 @property (copy) NSString *videoId;
-
 @end

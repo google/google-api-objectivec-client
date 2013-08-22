@@ -41,22 +41,18 @@
 //   GTLYouTubeVideoGetRatingResponse
 //
 
-// A list of video ratings returned as the response to a
-// youtube.videos.getRating call.
-
 // This class supports NSFastEnumeration over its "items" property. It also
 // supports -itemAtIndex: to retrieve individual objects from "items".
 
 @interface GTLYouTubeVideoGetRatingResponse : GTLCollectionObject
 
-// The ETag of the response.
+// Etag of this resource.
 @property (copy) NSString *ETag;
 
 // A list of ratings that match the request criteria.
 @property (retain) NSArray *items;  // of GTLYouTubeVideoRating
 
-// The type of the API response. For this operation, the value will be
-// youtube#videoGetRatingResponse.
+// The kind, fixed to "youtube#videoGetRatingResponse".
 @property (copy) NSString *kind;
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -110,7 +110,7 @@
 // The image representation of this actor.
 @property (retain) GTLPlusCommentActorImage *image;
 
-// A link to the person resource for this actor.
+// A link to the Person resource for this actor.
 @property (copy) NSString *url;
 
 @end
@@ -175,7 +175,7 @@
 
 @interface GTLPlusCommentActorImage : GTLObject
 
-// The URL of the actor's profile photo. To re-size the image and crop it to a
+// The URL of the actor's profile photo. To resize the image and crop it to a
 // square, append the query string ?sz=x, where x is the dimension in pixels of
 // each side.
 @property (copy) NSString *url;

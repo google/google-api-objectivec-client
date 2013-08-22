@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLQueryAnalytics (18 custom class methods, 20 custom properties)
+//   GTLQueryAnalytics (19 custom class methods, 21 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -60,6 +60,7 @@
 @property (assign) NSInteger maxResults;
 @property (copy) NSString *metrics;
 @property (copy) NSString *profileId;
+@property (copy) NSString *reportType;
 @property (assign) BOOL reset;
 @property (copy) NSString *segment;
 @property (copy) NSString *sort;
@@ -465,5 +466,20 @@
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsWebproperties.
 + (id)queryForManagementWebpropertiesListWithAccountId:(NSString *)accountId;
+
+#pragma mark -
+#pragma mark "metadata.columns" methods
+// These create a GTLQueryAnalytics object.
+
+// Method: analytics.metadata.columns.list
+// Lists all columns for a report type
+//  Required:
+//   reportType: Report type. Allowed Values: 'ga'. Where 'ga' corresponds to
+//     the Core Reporting API
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsReadonly
+// Fetches a GTLAnalyticsColumns.
++ (id)queryForMetadataColumnsListWithReportType:(NSString *)reportType;
 
 @end
