@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (37 custom class methods, 49 custom properties)
+//   GTLQueryYouTube (39 custom class methods, 50 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -37,6 +37,7 @@
 @class GTLYouTubeActivity;
 @class GTLYouTubeChannel;
 @class GTLYouTubeChannelBannerResource;
+@class GTLYouTubeInvideoBranding;
 @class GTLYouTubeLiveBroadcast;
 @class GTLYouTubeLiveStream;
 @class GTLYouTubePlaylist;
@@ -63,6 +64,7 @@
 @property (copy) NSString *channelType;
 @property (copy) NSString *chart;
 @property (assign) BOOL displaySlate;
+@property (copy) NSString *eventType;
 @property (copy) NSString *forChannelId;
 @property (assign) BOOL forContentOwner;
 @property (assign) BOOL forMine;
@@ -271,6 +273,7 @@
 //   kGTLAuthScopeYouTube
 //   kGTLAuthScopeYouTubeReadonly
 //   kGTLAuthScopeYouTubeYoutubepartner
+//   kGTLAuthScopeYouTubeYoutubepartnerChannelAudition
 // Fetches a GTLYouTubeChannelListResponse.
 + (id)queryForChannelsListWithPart:(NSString *)part;
 
@@ -798,6 +801,10 @@
 //     that should be returned in the result set. (0..50, default 5)
 //   mine: Set this parameter's value to true to instruct the API to only return
 //     playlists owned by the authenticated user.
+//   onBehalfOfContentOwner: USE_DESCRIPTION ---
+//     videos:insert:onBehalfOfContentOwnerChannel
+//   onBehalfOfContentOwnerChannel: USE_DESCRIPTION ---
+//     videos:insert:onBehalfOfContentOwnerChannel
 //   pageToken: The pageToken parameter identifies a specific page in the result
 //     set that should be returned. In an API response, the nextPageToken and
 //     prevPageToken properties identify other pages that could be retrieved.
@@ -859,6 +866,10 @@
 //     particular type of channel.
 //      kGTLYouTubeChannelTypeAny: Return all channels.
 //      kGTLYouTubeChannelTypeShow: Only retrieve shows.
+//   eventType: The eventType parameter restricts a search to broadcast events.
+//      kGTLYouTubeEventTypeCompleted: Only include completed broadcasts.
+//      kGTLYouTubeEventTypeLive: Only include active broadcasts.
+//      kGTLYouTubeEventTypeUpcoming: Only include upcoming broadcasts.
 //   forContentOwner: Note: This parameter is intended exclusively for YouTube
 //     content partners.
 //     The forContentOwner parameter restricts the search to only retrieve
@@ -1380,5 +1391,41 @@
 // Fetches a GTLYouTubeVideo.
 + (id)queryForVideosUpdateWithObject:(GTLYouTubeVideo *)object
                                 part:(NSString *)part;
+
+#pragma mark -
+#pragma mark "watermarks" methods
+// These create a GTLQueryYouTube object.
+
+// Method: youtube.watermarks.set
+// Uploads a watermark image to YouTube and sets it for a channel.
+//  Required:
+//   channelId: The channelId parameter specifies a YouTube channel ID for which
+//     the watermark is being provided.
+//  Optional:
+//   onBehalfOfContentOwner: USE_DESCRIPTION ---
+//     channels:list:onBehalfOfContentOwner
+//  Upload Parameters:
+//   Maximum size: 10MB
+//   Accepted MIME type(s): application/octet-stream, image/jpeg, image/png
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeUpload
+//   kGTLAuthScopeYouTubeYoutubepartner
++ (id)queryForWatermarksSetWithObject:(GTLYouTubeInvideoBranding *)object
+                            channelId:(NSString *)channelId
+                     uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
+
+// Method: youtube.watermarks.unset
+// Deletes a watermark.
+//  Required:
+//   channelId: The channelId parameter specifies a YouTube channel ID for which
+//     the watermark is being unset.
+//  Optional:
+//   onBehalfOfContentOwner: USE_DESCRIPTION ---
+//     channels:list:onBehalfOfContentOwner
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeYoutubepartner
++ (id)queryForWatermarksUnsetWithChannelId:(NSString *)channelId;
 
 @end

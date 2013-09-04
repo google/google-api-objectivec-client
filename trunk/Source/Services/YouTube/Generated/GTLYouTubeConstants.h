@@ -43,6 +43,9 @@ GTL_EXTERN NSString * const kGTLAuthScopeYouTubeReadonly;       // "https://www.
 GTL_EXTERN NSString * const kGTLAuthScopeYouTubeUpload;         // "https://www.googleapis.com/auth/youtube.upload"
 // View and manage your assets and associated content on YouTube
 GTL_EXTERN NSString * const kGTLAuthScopeYouTubeYoutubepartner;  // "https://www.googleapis.com/auth/youtubepartner"
+// View private information of your YouTube channel that is relevant for
+// audition with a YouTube Partner.
+GTL_EXTERN NSString * const kGTLAuthScopeYouTubeYoutubepartnerChannelAudition;  // "https://www.googleapis.com/auth/youtubepartner-channel-audition"
 
 // BroadcastStatus
 GTL_EXTERN NSString * const kGTLYouTubeBroadcastStatusActive;   // "active"
@@ -59,6 +62,11 @@ GTL_EXTERN NSString * const kGTLYouTubeChannelTypeShow;  // "show"
 
 // Chart
 GTL_EXTERN NSString * const kGTLYouTubeChartMostPopular;  // "mostPopular"
+
+// EventType
+GTL_EXTERN NSString * const kGTLYouTubeEventTypeCompleted;  // "completed"
+GTL_EXTERN NSString * const kGTLYouTubeEventTypeLive;       // "live"
+GTL_EXTERN NSString * const kGTLYouTubeEventTypeUpcoming;   // "upcoming"
 
 // MyRating
 GTL_EXTERN NSString * const kGTLYouTubeMyRatingDislike;  // "dislike"

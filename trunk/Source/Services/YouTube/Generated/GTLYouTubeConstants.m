@@ -29,10 +29,11 @@
 #import "GTLYouTubeConstants.h"
 
 // Authorization scope
-NSString * const kGTLAuthScopeYouTube               = @"https://www.googleapis.com/auth/youtube";
-NSString * const kGTLAuthScopeYouTubeReadonly       = @"https://www.googleapis.com/auth/youtube.readonly";
-NSString * const kGTLAuthScopeYouTubeUpload         = @"https://www.googleapis.com/auth/youtube.upload";
-NSString * const kGTLAuthScopeYouTubeYoutubepartner = @"https://www.googleapis.com/auth/youtubepartner";
+NSString * const kGTLAuthScopeYouTube                          = @"https://www.googleapis.com/auth/youtube";
+NSString * const kGTLAuthScopeYouTubeReadonly                  = @"https://www.googleapis.com/auth/youtube.readonly";
+NSString * const kGTLAuthScopeYouTubeUpload                    = @"https://www.googleapis.com/auth/youtube.upload";
+NSString * const kGTLAuthScopeYouTubeYoutubepartner            = @"https://www.googleapis.com/auth/youtubepartner";
+NSString * const kGTLAuthScopeYouTubeYoutubepartnerChannelAudition = @"https://www.googleapis.com/auth/youtubepartner-channel-audition";
 
 // BroadcastStatus
 NSString * const kGTLYouTubeBroadcastStatusActive    = @"active";
@@ -49,6 +50,11 @@ NSString * const kGTLYouTubeChannelTypeShow = @"show";
 
 // Chart
 NSString * const kGTLYouTubeChartMostPopular = @"mostPopular";
+
+// EventType
+NSString * const kGTLYouTubeEventTypeCompleted = @"completed";
+NSString * const kGTLYouTubeEventTypeLive      = @"live";
+NSString * const kGTLYouTubeEventTypeUpcoming  = @"upcoming";
 
 // MyRating
 NSString * const kGTLYouTubeMyRatingDislike = @"dislike";
