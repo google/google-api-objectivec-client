@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLQueryDrive (56 custom class methods, 35 custom properties)
+//   GTLQueryDrive (58 custom class methods, 37 custom properties)
 
 #import "GTLQueryDrive.h"
 
@@ -47,6 +47,7 @@
 #import "GTLDriveParentList.h"
 #import "GTLDriveParentReference.h"
 #import "GTLDrivePermission.h"
+#import "GTLDrivePermissionId.h"
 #import "GTLDrivePermissionList.h"
 #import "GTLDriveProperty.h"
 #import "GTLDrivePropertyList.h"
@@ -55,13 +56,14 @@
 
 @implementation GTLQueryDrive
 
-@dynamic appId, changeId, childId, commentId, convert, emailMessage, fields,
-         fileId, folderId, includeDeleted, includeSubscribed, maxChangeIdCount,
-         maxResults, newRevision, ocr, ocrLanguage, pageToken, parentId,
-         permissionId, pinned, projection, propertyKey, q, replyId, revisionId,
-         sendNotificationEmails, setModifiedDate, startChangeId,
-         timedTextLanguage, timedTextTrackName, transferOwnership, updatedMin,
-         updateViewedDate, useContentAsIndexableText, visibility;
+@dynamic appId, baseRevision, changeId, childId, commentId, convert, email,
+         emailMessage, fields, fileId, folderId, includeDeleted,
+         includeSubscribed, maxChangeIdCount, maxResults, newRevision, ocr,
+         ocrLanguage, pageToken, parentId, permissionId, pinned, projection,
+         propertyKey, q, replyId, revisionId, sendNotificationEmails,
+         setModifiedDate, startChangeId, timedTextLanguage, timedTextTrackName,
+         transferOwnership, updatedMin, updateViewedDate,
+         useContentAsIndexableText, visibility;
 
 #pragma mark -
 #pragma mark "about" methods
@@ -451,6 +453,14 @@
   return query;
 }
 
++ (id)queryForPermissionsGetIdForEmailWithEmail:(NSString *)email {
+  NSString *methodName = @"drive.permissions.getIdForEmail";
+  GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.email = email;
+  query.expectedObjectClass = [GTLDrivePermissionId class];
+  return query;
+}
+
 + (id)queryForPermissionsInsertWithObject:(GTLDrivePermission *)object
                                    fileId:(NSString *)fileId {
   if (object == nil) {
@@ -590,6 +600,15 @@
   NSString *methodName = @"drive.realtime.get";
   GTLQueryDrive *query = [self queryWithMethodName:methodName];
   query.fileId = fileId;
+  return query;
+}
+
++ (id)queryForRealtimeUpdateWithFileId:(NSString *)fileId
+                      uploadParameters:(GTLUploadParameters *)uploadParametersOrNil {
+  NSString *methodName = @"drive.realtime.update";
+  GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.fileId = fileId;
+  query.uploadParameters = uploadParametersOrNil;
   return query;
 }
 

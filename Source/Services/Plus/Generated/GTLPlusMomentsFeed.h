@@ -26,7 +26,8 @@
 // Documentation:
 //   https://developers.google.com/+/api/
 // Classes:
-//   GTLPlusMomentsFeed (0 custom class methods, 8 custom properties)
+//   GTLPlusMomentsFeed (0 custom class methods, 9 custom properties)
+//   GTLPlusMomentsFeedIcon (0 custom class methods, 1 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -35,6 +36,7 @@
 #endif
 
 @class GTLPlusMoment;
+@class GTLPlusMomentsFeedIcon;
 
 // ----------------------------------------------------------------------------
 //
@@ -48,6 +50,9 @@
 
 // ETag of this response for caching purposes.
 @property (copy) NSString *ETag;
+
+// The header icon of this collection of moments.
+@property (retain) GTLPlusMomentsFeedIcon *icon;
 
 // The moments in this page of results.
 @property (retain) NSArray *items;  // of GTLPlusMoment
@@ -73,4 +78,14 @@
 // The RFC 339 timestamp for when this collection of moments was last updated.
 @property (retain) GTLDateTime *updated;
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusMomentsFeedIcon
+//
+
+@interface GTLPlusMomentsFeedIcon : GTLObject
+@property (copy) NSString *url;
 @end

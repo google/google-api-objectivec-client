@@ -48,6 +48,7 @@
 #import "GTLDriveParentList.m"
 #import "GTLDriveParentReference.m"
 #import "GTLDrivePermission.m"
+#import "GTLDrivePermissionId.m"
 #import "GTLDrivePermissionList.m"
 #import "GTLDriveProperty.m"
 #import "GTLDrivePropertyList.m"
