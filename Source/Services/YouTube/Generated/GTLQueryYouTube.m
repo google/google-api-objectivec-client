@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (37 custom class methods, 49 custom properties)
+//   GTLQueryYouTube (39 custom class methods, 50 custom properties)
 
 #import "GTLQueryYouTube.h"
 
@@ -36,6 +36,7 @@
 #import "GTLYouTubeChannelBannerResource.h"
 #import "GTLYouTubeChannelListResponse.h"
 #import "GTLYouTubeGuideCategoryListResponse.h"
+#import "GTLYouTubeInvideoBranding.h"
 #import "GTLYouTubeLiveBroadcast.h"
 #import "GTLYouTubeLiveBroadcastListResponse.h"
 #import "GTLYouTubeLiveStream.h"
@@ -56,15 +57,15 @@
 @implementation GTLQueryYouTube
 
 @dynamic autoLevels, broadcastStatus, categoryId, channelId, channelType, chart,
-         displaySlate, fields, forChannelId, forContentOwner, forMine,
-         forUsername, hl, home, identifier, locale, managedByMe, maxResults,
-         mine, myRating, mySubscribers, offsetTimeMs, onBehalfOfContentOwner,
-         onBehalfOfContentOwnerChannel, order, pageToken, part, playlistId,
-         publishedAfter, publishedBefore, q, rating, regionCode,
-         relatedToVideoId, safeSearch, stabilize, streamId, topicId, type,
-         videoCaption, videoCategoryId, videoDefinition, videoDimension,
-         videoDuration, videoEmbeddable, videoId, videoLicense, videoSyndicated,
-         videoType;
+         displaySlate, eventType, fields, forChannelId, forContentOwner,
+         forMine, forUsername, hl, home, identifier, locale, managedByMe,
+         maxResults, mine, myRating, mySubscribers, offsetTimeMs,
+         onBehalfOfContentOwner, onBehalfOfContentOwnerChannel, order,
+         pageToken, part, playlistId, publishedAfter, publishedBefore, q,
+         rating, regionCode, relatedToVideoId, safeSearch, stabilize, streamId,
+         topicId, type, videoCaption, videoCategoryId, videoDefinition,
+         videoDimension, videoDuration, videoEmbeddable, videoId, videoLicense,
+         videoSyndicated, videoType;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map =
@@ -509,6 +510,32 @@
   query.bodyObject = object;
   query.part = part;
   query.expectedObjectClass = [GTLYouTubeVideo class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "watermarks" methods
+// These create a GTLQueryYouTube object.
+
++ (id)queryForWatermarksSetWithObject:(GTLYouTubeInvideoBranding *)object
+                            channelId:(NSString *)channelId
+                     uploadParameters:(GTLUploadParameters *)uploadParametersOrNil {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"youtube.watermarks.set";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.channelId = channelId;
+  query.uploadParameters = uploadParametersOrNil;
+  return query;
+}
+
++ (id)queryForWatermarksUnsetWithChannelId:(NSString *)channelId {
+  NSString *methodName = @"youtube.watermarks.unset";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.channelId = channelId;
   return query;
 }
 
