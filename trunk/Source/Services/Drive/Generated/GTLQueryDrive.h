@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLQueryDrive (56 custom class methods, 35 custom properties)
+//   GTLQueryDrive (58 custom class methods, 37 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -57,10 +57,12 @@
 // Method-specific parameters; see the comments below for more information.
 //
 @property (copy) NSString *appId;
+@property (copy) NSString *baseRevision;
 @property (copy) NSString *changeId;
 @property (copy) NSString *childId;
 @property (copy) NSString *commentId;
 @property (assign) BOOL convert;
+@property (copy) NSString *email;
 @property (copy) NSString *emailMessage;
 @property (copy) NSString *fileId;
 @property (copy) NSString *folderId;
@@ -691,6 +693,20 @@
 + (id)queryForPermissionsGetWithFileId:(NSString *)fileId
                           permissionId:(NSString *)permissionId;
 
+// Method: drive.permissions.getIdForEmail
+// Returns the permission ID for an email address.
+//  Required:
+//   email: The email address for which to return a permission ID
+//  Authorization scope(s):
+//   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
+//   kGTLAuthScopeDriveAppsReadonly
+//   kGTLAuthScopeDriveFile
+//   kGTLAuthScopeDriveMetadataReadonly
+//   kGTLAuthScopeDriveReadonly
+// Fetches a GTLDrivePermissionId.
++ (id)queryForPermissionsGetIdForEmailWithEmail:(NSString *)email;
+
 // Method: drive.permissions.insert
 // Inserts a permission for a file.
 //  Required:
@@ -857,6 +873,27 @@
 //   kGTLAuthScopeDriveFile
 //   kGTLAuthScopeDriveReadonly
 + (id)queryForRealtimeGetWithFileId:(NSString *)fileId;
+
+// Method: drive.realtime.update
+// Overwrites the Realtime API data model associated with this file with the
+// provided JSON data model.
+//  Required:
+//   fileId: The ID of the file that the Realtime API data model is associated
+//     with.
+//  Optional:
+//   baseRevision: The revision of the model to diff the uploaded model against.
+//     If set, the uploaded model is diffed against the provided revision and
+//     those differences are merged with any changes made to the model after the
+//     provided revision. If not set, the uploaded model replaces the current
+//     model on the server.
+//  Upload Parameters:
+//   Maximum size: 10MB
+//   Accepted MIME type(s): */*
+//  Authorization scope(s):
+//   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveFile
++ (id)queryForRealtimeUpdateWithFileId:(NSString *)fileId
+                      uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
 #pragma mark -
 #pragma mark "replies" methods

@@ -41,11 +41,14 @@
 @property (retain) NSArray *arrayDate;
 @property (retain) NSArray *arrayKids;
 @property (retain) NSArray *arrayAnything;
+// Use of getter= for Xcode 5's ARC treatment of init*.
+@property (retain, getter=valueOf_initFoo) NSNumber *initFoo;
 @end
 
 @implementation GTLTestingObject
 @dynamic aStr, str2, identifier, aNum, aDate, date2, child, anything;
 @dynamic arrayString, arrayNumber, arrayDate, arrayKids, arrayAnything;
+@dynamic initFoo;
 + (NSDictionary *)propertyToJSONKeyMap {
   // Use the name mapping on a few...
   return @{ @"aStr" : @"a_str",
@@ -670,6 +673,29 @@ static Class gAdditionalPropsClass = Nil;
   GTLObject *anyChild = aArray[0];
   STAssertEqualObjects([anyChild additionalPropertyForName:@"a_str"],
                        @"I'm a any kid", nil);
+}
+
+- (void)testInitFoo {
+
+  // Set/Get it.
+  GTLTestingObject *obj = [GTLTestingObject object];
+  STAssertNotNil(obj, nil);
+  obj.initFoo = @7;
+  NSDictionary *expected = @{ @"initFoo" : @7 };
+  STAssertEqualObjects(obj.JSON, expected, nil);
+  STAssertEqualObjects(obj.initFoo, @7, nil);
+
+  // Decode from string and get it.
+  NSString * const jsonStr = @"{\"initFoo\":1234}";
+  NSError *err = nil;
+  NSMutableDictionary *json = [GTLJSONParser objectWithString:jsonStr
+                                                        error:&err];
+  STAssertNil(err, nil);
+  STAssertNotNil(json, nil);
+
+  obj = [GTLTestingObject objectWithJSON:json];
+  STAssertNotNil(obj, nil);
+  STAssertEqualObjects(obj.initFoo, @1234, nil);
 }
 
 #pragma mark Additional Properties

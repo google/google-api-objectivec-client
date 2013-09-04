@@ -64,8 +64,8 @@
 // address.
 //  Required:
 //   electionId: The unique ID of the election to look up. A list of election
-//     IDs can be obtained
-//     at.https://www.googleapis.com/civicinfo/{version}/elections
+//     IDs can be obtained at
+//     https://www.googleapis.com/civicinfo/{version}/elections
 //  Optional:
 //   address: The registered address of the voter to look up.
 //   officialOnly: If set to true, only data from official state sources will be

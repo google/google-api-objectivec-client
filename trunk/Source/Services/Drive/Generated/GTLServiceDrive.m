@@ -55,6 +55,7 @@
                       [GTLDriveParentList class],
                       [GTLDriveParentReference class],
                       [GTLDrivePermission class],
+                      [GTLDrivePermissionId class],
                       [GTLDrivePermissionList class],
                       [GTLDriveProperty class],
                       [GTLDrivePropertyList class],
