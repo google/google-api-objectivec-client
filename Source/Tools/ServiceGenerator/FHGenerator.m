@@ -137,6 +137,7 @@ typedef enum {
 @interface FHGenerator () {
   NSString *formattedName_;
   NSPredicate *notRetainedPredicate_;
+  NSPredicate *useCustomerGetterPredicate_;
 }
 
 @property (retain) NSMutableArray *warnings;
@@ -259,14 +260,23 @@ static NSArray *DictionaryObjectsSortedByKeys(NSDictionary *dict) {
 
       } // Parameters Loop
 
-      // Anything that starts "alloc", "new", or "copy" (and maybe continues
+      // Anything that starts "new", "copy", or "mutableCopy" (and maybe continues
       // with a capital letter) can trip up a clang warning about not following
       // normal cocoa naming conventions, match them and add the directive
       // to tell the compiler what model to enforce.
       notRetainedPredicate_ =
         [NSPredicate predicateWithFormat:@"SELF matches %@",
          @"^(new|copy|mutableCopy)([A-Z].*)?"];
-}
+
+      // Anything that starts "init" (and maybe continues with a capital letter or
+      // underscore) can trip up clang (as of Xcode 5's ARC support) into thinking
+      // it is a init method and thus should return a object of the same type as
+      // the class the method is on. This can be avoid by adding a custom getter
+      // to tweak the actual method name.
+      useCustomerGetterPredicate_ =
+        [NSPredicate predicateWithFormat:@"SELF matches %@",
+         @"^(init)([A-Z_].*)?"];
+    }
   }
   return self;
 }
@@ -1443,13 +1453,17 @@ static NSString *MappedParamName(NSString *name) {
           comment = @"";
         }
         NSString *paramObjCName = param.objcName;
+        NSString *extraAttributes = @"";
+        if ([useCustomerGetterPredicate_ evaluateWithObject:paramObjCName]) {
+          extraAttributes = [NSString stringWithFormat:@", getter=valueOf_%@", paramObjCName];
+        }
         NSString *clangDirective = @"";
         if ((asPtr || [objcType isEqual:@"id"])
             && [notRetainedPredicate_ evaluateWithObject:paramObjCName]) {
           clangDirective = @" NS_RETURNS_NOT_RETAINED";
         }
-        NSString *propertyLine = [NSString stringWithFormat:@"@property (%@) %@%@%@%@;%@\n",
-                                  objcPropertySemantics, objcType,
+        NSString *propertyLine = [NSString stringWithFormat:@"@property (%@%@) %@%@%@%@;%@\n",
+                                  objcPropertySemantics, extraAttributes, objcType,
                                   (asPtr ? @" *" : @" "),
                                   paramObjCName,
                                   clangDirective,
@@ -2102,12 +2116,16 @@ static NSString *MappedParamName(NSString *name) {
           comment = [@"  // " stringByAppendingString:comment];
         }
         NSString *propertyObjCName = property.objcName;
+        NSString *extraAttributes = @"";
+        if ([useCustomerGetterPredicate_ evaluateWithObject:propertyObjCName]) {
+          extraAttributes = [NSString stringWithFormat:@", getter=valueOf_%@", propertyObjCName];
+        }
         NSString *clangDirective = @"";
         if ([notRetainedPredicate_ evaluateWithObject:propertyObjCName]) {
           clangDirective = @" NS_RETURNS_NOT_RETAINED";
         }
-        NSString *propertyLine = [NSString stringWithFormat:@"@property (%@) %@%@%@%@;%@\n",
-                                  objcPropertySemantics, objcType,
+        NSString *propertyLine = [NSString stringWithFormat:@"@property (%@%@) %@%@%@%@;%@\n",
+                                  objcPropertySemantics, extraAttributes, objcType,
                                   (asPtr ? @" *" : @" "),
                                   propertyObjCName, clangDirective, comment];
         [subParts addObject:propertyLine];
@@ -3155,7 +3173,7 @@ static NSDictionary *OverrideMap(EQueryOrObject queryOrObject,
     for (size_t i = 0; i < ARRAY_COUNT(gtlQueryReserved); ++i) {
       NSString *word = gtlQueryReserved[i];
       NSString *reason =
-        [NSString stringWithFormat:@"Remapped to '%@Property' to avoid GTLObject's '%@'.",
+        [NSString stringWithFormat:@"Remapped to '%@Property' to avoid GTLQuery's '%@'.",
          word, word];
       [builderMappings2 setObject:[word stringByAppendingString:@"Property"]
                            forKey:word];
