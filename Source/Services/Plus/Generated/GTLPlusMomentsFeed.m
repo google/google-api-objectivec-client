@@ -26,8 +26,7 @@
 // Documentation:
 //   https://developers.google.com/+/api/
 // Classes:
-//   GTLPlusMomentsFeed (0 custom class methods, 9 custom properties)
-//   GTLPlusMomentsFeedIcon (0 custom class methods, 1 custom properties)
+//   GTLPlusMomentsFeed (0 custom class methods, 8 custom properties)
 
 #import "GTLPlusMomentsFeed.h"
 
@@ -39,8 +38,7 @@
 //
 
 @implementation GTLPlusMomentsFeed
-@dynamic ETag, icon, items, kind, nextLink, nextPageToken, selfLink, title,
-         updated;
+@dynamic ETag, items, kind, nextLink, nextPageToken, selfLink, title, updated;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -60,14 +58,4 @@
   [self registerObjectClassForKind:@"plus#momentsFeed"];
 }
 
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLPlusMomentsFeedIcon
-//
-
-@implementation GTLPlusMomentsFeedIcon
-@dynamic url;
 @end

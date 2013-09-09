@@ -335,7 +335,7 @@
 
 @interface GTLDriveFileLabels : GTLObject
 
-// Whether this file is hidden from the user.
+// Deprecated.
 @property (retain) NSNumber *hidden;  // boolValue
 
 // Whether viewers are prevented from downloading this file.
