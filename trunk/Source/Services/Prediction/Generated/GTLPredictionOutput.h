@@ -60,7 +60,7 @@
 @property (retain) NSArray *outputMulti;  // of GTLPredictionOutputOutputMultiItem
 
 // The estimated regression value (Regression models only).
-@property (copy) NSString *outputValue;
+@property (retain) NSNumber *outputValue;  // doubleValue
 
 // A URL to re-request this resource.
 @property (copy) NSString *selfLink;
