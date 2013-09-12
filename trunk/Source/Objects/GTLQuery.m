@@ -265,3 +265,7 @@ static NSMutableDictionary *gQueryArrayPropertyToClassMapCache = nil;
 }
 
 @end
+
+@implementation GTLQueryCollectionImpl
+@dynamic pageToken, startIndex;
+@end

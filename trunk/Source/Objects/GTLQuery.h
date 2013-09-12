@@ -134,3 +134,8 @@
 + (NSDictionary *)parameterNameMap;
 + (NSDictionary *)arrayPropertyToClassMap;
 @end
+
+// The library doesn't use GTLQueryCollectionImpl, but it provides a concrete implementation
+// of the protocol so the methods do not cause a private method error in Xcode.
+@interface GTLQueryCollectionImpl : GTLQuery <GTLQueryCollectionProtocol>
+@end
