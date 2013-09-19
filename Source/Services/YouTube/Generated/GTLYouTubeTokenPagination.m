@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeTokenPagination (0 custom class methods, 2 custom properties)
+//   GTLYouTubeTokenPagination (0 custom class methods, 0 custom properties)
 
 #import "GTLYouTubeTokenPagination.h"
 
@@ -36,5 +36,4 @@
 //
 
 @implementation GTLYouTubeTokenPagination
-@dynamic nextPageToken, previousPageToken;
 @end

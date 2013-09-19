@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeContentRating (0 custom class methods, 16 custom properties)
+//   GTLYouTubeContentRating (0 custom class methods, 17 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -75,6 +75,10 @@
 
 // Rating system in South Korea - Korea Media Rating Board
 @property (copy) NSString *kmrbRating;
+
+// Rating system in Italy - Ministero dei Beni e delle Attivita Culturali e del
+// Turismo
+@property (copy) NSString *mibacRating;
 
 // Motion Picture Association of America rating for the content.
 @property (copy) NSString *mpaaRating;

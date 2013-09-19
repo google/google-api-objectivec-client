@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeTokenPagination.h
+//  GTLYouTubeChannelAuditDetails.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,20 +26,16 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeTokenPagination (0 custom class methods, 0 custom properties)
+//   GTLYouTubeChannelAuditDetails (0 custom class methods, 4 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLYouTubeChannelAuditDetails.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeTokenPagination
+//   GTLYouTubeChannelAuditDetails
 //
 
-// Stub token pagination template to suppress results.
-
-@interface GTLYouTubeTokenPagination : GTLObject
+@implementation GTLYouTubeChannelAuditDetails
+@dynamic communityGuidelinesGoodStanding, contentIdClaimsGoodStanding,
+         copyrightStrikesGoodStanding, overallGoodStanding;
 @end

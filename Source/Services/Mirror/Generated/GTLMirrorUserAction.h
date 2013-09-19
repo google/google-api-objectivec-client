@@ -55,8 +55,9 @@
 // - CUSTOM - the user selected a custom menu item on the timeline item.
 // - DELETE - the user deleted the item.
 // - PIN - the user pinned the item.
-// - UNPIN - the user unpinned the item. In the future, additional types may be
-// added. UserActions with unrecognized types should be ignored.
+// - UNPIN - the user unpinned the item.
+// - LAUNCH - the user initiated a voice command. In the future, additional
+// types may be added. UserActions with unrecognized types should be ignored.
 @property (copy) NSString *type;
 
 @end

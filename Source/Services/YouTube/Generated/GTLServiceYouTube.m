@@ -56,6 +56,7 @@
                       [GTLYouTubeActivitySnippet class],
                       [GTLYouTubeCdnSettings class],
                       [GTLYouTubeChannel class],
+                      [GTLYouTubeChannelAuditDetails class],
                       [GTLYouTubeChannelBannerResource class],
                       [GTLYouTubeChannelBrandingSettings class],
                       [GTLYouTubeChannelContentDetails class],

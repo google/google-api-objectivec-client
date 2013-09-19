@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,7 +44,7 @@
 // ETag of the resource.
 @property (copy) NSString *ETag;
 
-// Name of the user setting.
+// The id of the user setting.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
@@ -52,7 +52,7 @@
 @property (copy) NSString *kind;
 
 // Value of the user setting. The format of the value depends on the ID of the
-// setting.
+// setting. It must always be any UTF-8 string of length up to 1024 characters.
 @property (copy) NSString *value;
 
 @end
