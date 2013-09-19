@@ -49,6 +49,7 @@
 #import "GTLYouTubeActivitySnippet.m"
 #import "GTLYouTubeCdnSettings.m"
 #import "GTLYouTubeChannel.m"
+#import "GTLYouTubeChannelAuditDetails.m"
 #import "GTLYouTubeChannelBannerResource.m"
 #import "GTLYouTubeChannelBrandingSettings.m"
 #import "GTLYouTubeChannelContentDetails.m"

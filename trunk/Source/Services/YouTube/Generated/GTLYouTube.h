@@ -46,6 +46,7 @@
 #import "GTLYouTubeActivitySnippet.h"
 #import "GTLYouTubeCdnSettings.h"
 #import "GTLYouTubeChannel.h"
+#import "GTLYouTubeChannelAuditDetails.h"
 #import "GTLYouTubeChannelBannerResource.h"
 #import "GTLYouTubeChannelBrandingSettings.h"
 #import "GTLYouTubeChannelContentDetails.h"

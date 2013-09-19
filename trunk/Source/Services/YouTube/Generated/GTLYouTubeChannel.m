@@ -26,10 +26,11 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannel (0 custom class methods, 11 custom properties)
+//   GTLYouTubeChannel (0 custom class methods, 12 custom properties)
 
 #import "GTLYouTubeChannel.h"
 
+#import "GTLYouTubeChannelAuditDetails.h"
 #import "GTLYouTubeChannelBrandingSettings.h"
 #import "GTLYouTubeChannelContentDetails.h"
 #import "GTLYouTubeChannelConversionPings.h"
@@ -45,8 +46,9 @@
 //
 
 @implementation GTLYouTubeChannel
-@dynamic brandingSettings, contentDetails, conversionPings, ETag, identifier,
-         invideoPromotion, kind, snippet, statistics, status, topicDetails;
+@dynamic auditDetails, brandingSettings, contentDetails, conversionPings, ETag,
+         identifier, invideoPromotion, kind, snippet, statistics, status,
+         topicDetails;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

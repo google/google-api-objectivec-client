@@ -43,7 +43,9 @@
 
 @interface GTLMirrorMenuValue : GTLObject
 
-// The name to display for the menu item.
+// The name to display for the menu item. If you specify this property for a
+// built-in menu item, the default contextual voice command for that menu item
+// is not shown.
 @property (copy) NSString *displayName;
 
 // URL of an icon to display with the menu item.

@@ -644,7 +644,7 @@
 // Method: calendar.settings.get
 // Returns a single user setting.
 //  Required:
-//   setting: Name of the user setting.
+//   setting: The id of the user setting.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 //   kGTLAuthScopeCalendarReadonly

@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannel (0 custom class methods, 11 custom properties)
+//   GTLYouTubeChannel (0 custom class methods, 12 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,6 +34,7 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLYouTubeChannelAuditDetails;
 @class GTLYouTubeChannelBrandingSettings;
 @class GTLYouTubeChannelContentDetails;
 @class GTLYouTubeChannelConversionPings;
@@ -51,6 +52,10 @@
 // A channel resource contains information about a YouTube channel.
 
 @interface GTLYouTubeChannel : GTLObject
+
+// The auditionDetails object encapsulates channel data that is relevant for
+// YouTube Partners during the audition process.
+@property (retain) GTLYouTubeChannelAuditDetails *auditDetails;
 
 // The brandingSettings object encapsulates information about the branding of
 // the channel.

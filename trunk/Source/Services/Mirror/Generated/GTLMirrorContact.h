@@ -45,7 +45,10 @@
 
 @interface GTLMirrorContact : GTLObject
 
-// A list of voice menu commands that a contact can handle.
+// A list of voice menu commands that a contact can handle. Glass shows up to
+// three contacts for each voice menu command. If there are more than that, the
+// three contacts with the highest priority are shown for that particular
+// command.
 @property (retain) NSArray *acceptCommands;  // of GTLMirrorCommand
 
 // A list of MIME types that a contact supports. The contact will be shown to
