@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/glass
 // Classes:
-//   GTLMirrorTimelineItem (0 custom class methods, 27 custom properties)
+//   GTLMirrorTimelineItem (0 custom class methods, 26 custom properties)
 
 #import "GTLMirrorTimelineItem.h"
 
@@ -43,10 +43,10 @@
 
 @implementation GTLMirrorTimelineItem
 @dynamic attachments, bundleId, canonicalUrl, created, creator, displayTime,
-         ETag, html, htmlPages, identifier, inReplyTo, isBundleCover, isDeleted,
-         isPinned, kind, location, menuItems, notification, pinScore,
-         recipients, selfLink, sourceItemId, speakableText, speakableType, text,
-         title, updated;
+         ETag, html, identifier, inReplyTo, isBundleCover, isDeleted, isPinned,
+         kind, location, menuItems, notification, pinScore, recipients,
+         selfLink, sourceItemId, speakableText, speakableType, text, title,
+         updated;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -61,7 +61,6 @@
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
       [GTLMirrorAttachment class], @"attachments",
-      [NSString class], @"htmlPages",
       [GTLMirrorMenuItem class], @"menuItems",
       [GTLMirrorContact class], @"recipients",
       nil];

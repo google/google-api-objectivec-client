@@ -30,7 +30,6 @@
 
 #import "GTLYouTubeInvideoBranding.h"
 
-#import "GTLYouTubeChannelId.h"
 #import "GTLYouTubeInvideoPosition.h"
 #import "GTLYouTubeInvideoTiming.h"
 

@@ -52,7 +52,6 @@
 #import "GTLYouTubeChannelContentDetails.h"
 #import "GTLYouTubeChannelConversionPing.h"
 #import "GTLYouTubeChannelConversionPings.h"
-#import "GTLYouTubeChannelId.h"
 #import "GTLYouTubeChannelListResponse.h"
 #import "GTLYouTubeChannelSettings.h"
 #import "GTLYouTubeChannelSnippet.h"

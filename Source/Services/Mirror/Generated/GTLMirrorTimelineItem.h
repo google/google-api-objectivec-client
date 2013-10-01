@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/glass
 // Classes:
-//   GTLMirrorTimelineItem (0 custom class methods, 27 custom properties)
+//   GTLMirrorTimelineItem (0 custom class methods, 26 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -103,9 +103,6 @@
 // Other elements: Any elements that aren't listed are removed, but their
 // contents are preserved.
 @property (copy) NSString *html;
-
-// This field is deprecated, use the html property with pagination instead.
-@property (retain) NSArray *htmlPages;  // of NSString
 
 // The ID of the timeline item. This is unique within a user's timeline.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').

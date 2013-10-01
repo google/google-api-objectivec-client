@@ -34,7 +34,6 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLYouTubeChannelId;
 @class GTLYouTubeInvideoPosition;
 @class GTLYouTubeInvideoTiming;
 
@@ -47,6 +46,6 @@
 @property (copy) NSString *imageBytes;  // GTLBase64 can encode/decode (probably web-safe format)
 @property (copy) NSString *imageUrl;
 @property (retain) GTLYouTubeInvideoPosition *position;
-@property (retain) GTLYouTubeChannelId *targetChannelId;
+@property (copy) NSString *targetChannelId;
 @property (retain) GTLYouTubeInvideoTiming *timing;
 @end

@@ -30,8 +30,6 @@
 
 #import "GTLYouTubePromotedItemId.h"
 
-#import "GTLYouTubeChannelId.h"
-
 // ----------------------------------------------------------------------------
 //
 //   GTLYouTubePromotedItemId

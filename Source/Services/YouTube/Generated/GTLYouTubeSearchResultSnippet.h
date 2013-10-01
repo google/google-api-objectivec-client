@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeSearchResultSnippet (0 custom class methods, 6 custom properties)
+//   GTLYouTubeSearchResultSnippet (0 custom class methods, 7 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -57,6 +57,11 @@
 // A description of the search result.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
+
+// It indicates if the resource (video or channel) has upcoming/active live
+// broadcast content. Or it's "none" if there is not any upcoming/active live
+// broadcasts.
+@property (copy) NSString *liveBroadcastContent;
 
 // The creation date and time of the resource that the search result identifies.
 // The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
