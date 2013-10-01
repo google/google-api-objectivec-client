@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoCategorySnippet (0 custom class methods, 2 custom properties)
+//   GTLYouTubeVideoCategorySnippet (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -42,6 +42,7 @@
 // Basic details about a video category, such as its localized title.
 
 @interface GTLYouTubeVideoCategorySnippet : GTLObject
+@property (retain) NSNumber *assignable;  // boolValue
 
 // The YouTube channel that created the video category.
 @property (copy) NSString *channelId;

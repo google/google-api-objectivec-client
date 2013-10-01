@@ -273,7 +273,6 @@
 //   kGTLAuthScopeYouTube
 //   kGTLAuthScopeYouTubeReadonly
 //   kGTLAuthScopeYouTubeYoutubepartner
-//   kGTLAuthScopeYouTubeYoutubepartnerChannelAudition
 // Fetches a GTLYouTubeChannelListResponse.
 + (id)queryForChannelsListWithPart:(NSString *)part;
 
@@ -1107,6 +1106,9 @@
 //  Required:
 //   videoId: The videoId parameter specifies a YouTube video ID for which the
 //     custom video thumbnail is being provided.
+//  Optional:
+//   onBehalfOfContentOwner: USE_DESCRIPTION ---
+//     channels:list:onBehalfOfContentOwner
 //  Upload Parameters:
 //   Maximum size: 2MB
 //   Accepted MIME type(s): application/octet-stream, image/jpeg, image/png

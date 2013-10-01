@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoCategorySnippet (0 custom class methods, 2 custom properties)
+//   GTLYouTubeVideoCategorySnippet (0 custom class methods, 3 custom properties)
 
 #import "GTLYouTubeVideoCategorySnippet.h"
 
@@ -36,5 +36,5 @@
 //
 
 @implementation GTLYouTubeVideoCategorySnippet
-@dynamic channelId, title;
+@dynamic assignable, channelId, title;
 @end

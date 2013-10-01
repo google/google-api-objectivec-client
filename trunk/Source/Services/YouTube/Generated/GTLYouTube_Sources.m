@@ -55,7 +55,6 @@
 #import "GTLYouTubeChannelContentDetails.m"
 #import "GTLYouTubeChannelConversionPing.m"
 #import "GTLYouTubeChannelConversionPings.m"
-#import "GTLYouTubeChannelId.m"
 #import "GTLYouTubeChannelListResponse.m"
 #import "GTLYouTubeChannelSettings.m"
 #import "GTLYouTubeChannelSnippet.m"

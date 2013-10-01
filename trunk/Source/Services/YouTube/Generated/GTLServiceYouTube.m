@@ -62,7 +62,6 @@
                       [GTLYouTubeChannelContentDetails class],
                       [GTLYouTubeChannelConversionPing class],
                       [GTLYouTubeChannelConversionPings class],
-                      [GTLYouTubeChannelId class],
                       [GTLYouTubeChannelListResponse class],
                       [GTLYouTubeChannelSettings class],
                       [GTLYouTubeChannelSnippet class],

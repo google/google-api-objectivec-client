@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeActivityContentDetailsPromotedItem (0 custom class methods, 8 custom properties)
+//   GTLYouTubeActivityContentDetailsPromotedItem (0 custom class methods, 9 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -64,6 +64,11 @@
 // The URL the client should direct the user to, if the user chooses to visit
 // the advertiser's website.
 @property (copy) NSString *destinationUrl;
+
+// The list of forecasting URLs. The client should ping all of these URLs when a
+// promoted item is not available, to indicate that a promoted item could have
+// been shown.
+@property (retain) NSArray *forecastingUrls;  // of NSString
 
 // The list of impression URLs. The client should ping all of these URLs to
 // indicate that the user was shown this promoted item.

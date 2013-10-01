@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeSearchResultSnippet (0 custom class methods, 6 custom properties)
+//   GTLYouTubeSearchResultSnippet (0 custom class methods, 7 custom properties)
 
 #import "GTLYouTubeSearchResultSnippet.h"
 
@@ -38,8 +38,8 @@
 //
 
 @implementation GTLYouTubeSearchResultSnippet
-@dynamic channelId, channelTitle, descriptionProperty, publishedAt, thumbnails,
-         title;
+@dynamic channelId, channelTitle, descriptionProperty, liveBroadcastContent,
+         publishedAt, thumbnails, title;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
