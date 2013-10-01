@@ -18,6 +18,7 @@
 //
 
 #include <objc/runtime.h>
+#include <TargetConditionals.h>
 
 #import "GTLRuntimeCommon.h"
 
@@ -911,7 +912,8 @@ static const GTLDynamicImpInfo *DynamicImpInfoForProperty(objc_property_t prop,
   //   T@"NSString",&,D,P
   //   Ti,D -- NSInteger on 32bit
   //   Tq,D -- NSInteger on 64bit, long long on 32bit & 64bit
-  //   Tc,D -- BOOL comes as char
+  //   TB,D -- BOOL comes as bool on 64bit iOS
+  //   Tc,D -- BOOL comes as char otherwise
   //   T@"NSString",D
   //   T@"GTLLink",D
   //   T@"NSArray",D
@@ -962,13 +964,25 @@ static const GTLDynamicImpInfo *DynamicImpInfoForProperty(objc_property_t prop,
       nil, nil,
       NO
     },
-    { // BOOL
+// This conditional matches the one in iPhoneOS.platform version of
+// <objc/objc.h> that controls the definition of BOOL.
+#if !defined(OBJC_HIDE_64) && TARGET_OS_IPHONE && __LP64__
+    { // BOOL as bool
+      "TB",
+      "v@:B", (IMP)DynamicBooleanSetter,
+      "B@:", (IMP)DynamicBooleanGetter,
+      nil, nil,
+      NO
+    },
+#else
+    { // BOOL as char
       "Tc",
       "v@:c", (IMP)DynamicBooleanSetter,
       "c@:", (IMP)DynamicBooleanGetter,
       nil, nil,
       NO
     },
+#endif
     { // NSString
       "T@\"NSString\"",
       "v@:@", (IMP)DynamicStringSetter,
