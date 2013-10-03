@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAnalyticsConstants.m
+//  GTLAnalyticsUploads.m
 //
 
 // ----------------------------------------------------------------------------
@@ -25,13 +25,31 @@
 //   View and manage your Google Analytics data
 // Documentation:
 //   https://developers.google.com/analytics/
+// Classes:
+//   GTLAnalyticsUploads (0 custom class methods, 7 custom properties)
 
-#import "GTLAnalyticsConstants.h"
+#import "GTLAnalyticsUploads.h"
 
-// Authorization scope
-NSString * const kGTLAuthScopeAnalytics            = @"https://www.googleapis.com/auth/analytics";
-NSString * const kGTLAuthScopeAnalyticsManageUsers = @"https://www.googleapis.com/auth/analytics.manage.users";
-NSString * const kGTLAuthScopeAnalyticsReadonly    = @"https://www.googleapis.com/auth/analytics.readonly";
+#import "GTLAnalyticsUpload.h"
 
-// Type
-NSString * const kGTLAnalyticsTypeCost = @"cost";
+// ----------------------------------------------------------------------------
+//
+//   GTLAnalyticsUploads
+//
+
+@implementation GTLAnalyticsUploads
+@dynamic items, itemsPerPage, kind, nextLink, previousLink, startIndex,
+         totalResults;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLAnalyticsUpload class]
+                                forKey:@"items"];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"analytics#uploads"];
+}
+
+@end

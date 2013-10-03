@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAnalyticsConstants.h
+//  GTLAnalyticsWebPropertyRef.h
 //
 
 // ----------------------------------------------------------------------------
@@ -25,22 +25,41 @@
 //   View and manage your Google Analytics data
 // Documentation:
 //   https://developers.google.com/analytics/
-
-#import <Foundation/Foundation.h>
+// Classes:
+//   GTLAnalyticsWebPropertyRef (0 custom class methods, 6 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLDefines.h"
+  #import "GTL/GTLObject.h"
 #else
-  #import "GTLDefines.h"
+  #import "GTLObject.h"
 #endif
 
-// Authorization scope
-// View and manage your Google Analytics data
-GTL_EXTERN NSString * const kGTLAuthScopeAnalytics;             // "https://www.googleapis.com/auth/analytics"
-// Manage Google Analytics Account users by email address
-GTL_EXTERN NSString * const kGTLAuthScopeAnalyticsManageUsers;  // "https://www.googleapis.com/auth/analytics.manage.users"
-// View your Google Analytics data
-GTL_EXTERN NSString * const kGTLAuthScopeAnalyticsReadonly;     // "https://www.googleapis.com/auth/analytics.readonly"
+// ----------------------------------------------------------------------------
+//
+//   GTLAnalyticsWebPropertyRef
+//
 
-// Type
-GTL_EXTERN NSString * const kGTLAnalyticsTypeCost;  // "cost"
+// JSON template for a web property reference.
+
+@interface GTLAnalyticsWebPropertyRef : GTLObject
+
+// Account ID to which this web property belongs.
+@property (copy) NSString *accountId;
+
+// Link for this web property.
+@property (copy) NSString *href;
+
+// Web property ID of the form UA-XXXXX-YY.
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+@property (copy) NSString *identifier;
+
+// Internal ID for this web property.
+@property (copy) NSString *internalWebPropertyId;
+
+// Analytics web property reference.
+@property (copy) NSString *kind;
+
+// Name of this web property.
+@property (copy) NSString *name;
+
+@end
