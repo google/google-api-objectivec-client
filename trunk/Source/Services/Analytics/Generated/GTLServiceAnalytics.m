@@ -39,6 +39,7 @@
   NSArray *classes = [NSArray arrayWithObjects:
                       [GTLQueryAnalytics class],
                       [GTLAnalyticsAccount class],
+                      [GTLAnalyticsAccountRef class],
                       [GTLAnalyticsAccounts class],
                       [GTLAnalyticsColumn class],
                       [GTLAnalyticsColumns class],
@@ -47,6 +48,8 @@
                       [GTLAnalyticsDailyUpload class],
                       [GTLAnalyticsDailyUploadAppend class],
                       [GTLAnalyticsDailyUploads class],
+                      [GTLAnalyticsEntityUserLink class],
+                      [GTLAnalyticsEntityUserLinks class],
                       [GTLAnalyticsExperiment class],
                       [GTLAnalyticsExperiments class],
                       [GTLAnalyticsGaData class],
@@ -54,12 +57,17 @@
                       [GTLAnalyticsGoals class],
                       [GTLAnalyticsMcfData class],
                       [GTLAnalyticsProfile class],
+                      [GTLAnalyticsProfileRef class],
                       [GTLAnalyticsProfiles class],
                       [GTLAnalyticsRealtimeData class],
                       [GTLAnalyticsSegment class],
                       [GTLAnalyticsSegments class],
+                      [GTLAnalyticsUpload class],
+                      [GTLAnalyticsUploads class],
+                      [GTLAnalyticsUserRef class],
                       [GTLAnalyticsWebproperties class],
                       [GTLAnalyticsWebproperty class],
+                      [GTLAnalyticsWebPropertyRef class],
                       nil];
   return classes;
 }

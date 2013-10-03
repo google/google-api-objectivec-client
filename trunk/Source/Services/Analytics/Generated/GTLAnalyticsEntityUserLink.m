@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAnalyticsWebproperty.m
+//  GTLAnalyticsEntityUserLink.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,22 +26,24 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsWebproperty (0 custom class methods, 16 custom properties)
-//   GTLAnalyticsWebpropertyChildLink (0 custom class methods, 2 custom properties)
-//   GTLAnalyticsWebpropertyParentLink (0 custom class methods, 2 custom properties)
-//   GTLAnalyticsWebpropertyPermissions (0 custom class methods, 1 custom properties)
+//   GTLAnalyticsEntityUserLink (0 custom class methods, 6 custom properties)
+//   GTLAnalyticsEntityUserLinkEntity (0 custom class methods, 3 custom properties)
+//   GTLAnalyticsEntityUserLinkPermissions (0 custom class methods, 2 custom properties)
 
-#import "GTLAnalyticsWebproperty.h"
+#import "GTLAnalyticsEntityUserLink.h"
+
+#import "GTLAnalyticsAccountRef.h"
+#import "GTLAnalyticsProfileRef.h"
+#import "GTLAnalyticsUserRef.h"
+#import "GTLAnalyticsWebPropertyRef.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAnalyticsWebproperty
+//   GTLAnalyticsEntityUserLink
 //
 
-@implementation GTLAnalyticsWebproperty
-@dynamic accountId, childLink, created, defaultProfileId, identifier,
-         industryVertical, internalWebPropertyId, kind, level, name, parentLink,
-         permissions, profileCount, selfLink, updated, websiteUrl;
+@implementation GTLAnalyticsEntityUserLink
+@dynamic entity, identifier, kind, permissions, selfLink, userRef;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -51,7 +53,7 @@
 }
 
 + (void)load {
-  [self registerObjectClassForKind:@"analytics#webproperty"];
+  [self registerObjectClassForKind:@"analytics#entityUserLink"];
 }
 
 @end
@@ -59,36 +61,28 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAnalyticsWebpropertyChildLink
+//   GTLAnalyticsEntityUserLinkEntity
 //
 
-@implementation GTLAnalyticsWebpropertyChildLink
-@dynamic href, type;
+@implementation GTLAnalyticsEntityUserLinkEntity
+@dynamic accountRef, profileRef, webPropertyRef;
 @end
 
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAnalyticsWebpropertyParentLink
+//   GTLAnalyticsEntityUserLinkPermissions
 //
 
-@implementation GTLAnalyticsWebpropertyParentLink
-@dynamic href, type;
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLAnalyticsWebpropertyPermissions
-//
-
-@implementation GTLAnalyticsWebpropertyPermissions
-@dynamic effective;
+@implementation GTLAnalyticsEntityUserLinkPermissions
+@dynamic effective, local;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[NSString class]
-                                forKey:@"effective"];
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      [NSString class], @"effective",
+      [NSString class], @"local",
+      nil];
   return map;
 }
 

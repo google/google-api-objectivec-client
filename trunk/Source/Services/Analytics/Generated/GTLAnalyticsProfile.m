@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,9 +26,10 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsProfile (0 custom class methods, 20 custom properties)
+//   GTLAnalyticsProfile (0 custom class methods, 21 custom properties)
 //   GTLAnalyticsProfileChildLink (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsProfileParentLink (0 custom class methods, 2 custom properties)
+//   GTLAnalyticsProfilePermissions (0 custom class methods, 1 custom properties)
 
 #import "GTLAnalyticsProfile.h"
 
@@ -40,7 +41,7 @@
 @implementation GTLAnalyticsProfile
 @dynamic accountId, childLink, created, currency, defaultPage,
          eCommerceTracking, excludeQueryParameters, identifier,
-         internalWebPropertyId, kind, name, parentLink, selfLink,
+         internalWebPropertyId, kind, name, parentLink, permissions, selfLink,
          siteSearchCategoryParameters, siteSearchQueryParameters, timezone,
          type, updated, webPropertyId, websiteUrl;
 
@@ -75,4 +76,22 @@
 
 @implementation GTLAnalyticsProfileParentLink
 @dynamic href, type;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAnalyticsProfilePermissions
+//
+
+@implementation GTLAnalyticsProfilePermissions
+@dynamic effective;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[NSString class]
+                                forKey:@"effective"];
+  return map;
+}
+
 @end

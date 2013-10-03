@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAnalyticsConstants.m
+//  GTLAnalyticsEntityUserLinks.m
 //
 
 // ----------------------------------------------------------------------------
@@ -25,13 +25,31 @@
 //   View and manage your Google Analytics data
 // Documentation:
 //   https://developers.google.com/analytics/
+// Classes:
+//   GTLAnalyticsEntityUserLinks (0 custom class methods, 7 custom properties)
 
-#import "GTLAnalyticsConstants.h"
+#import "GTLAnalyticsEntityUserLinks.h"
 
-// Authorization scope
-NSString * const kGTLAuthScopeAnalytics            = @"https://www.googleapis.com/auth/analytics";
-NSString * const kGTLAuthScopeAnalyticsManageUsers = @"https://www.googleapis.com/auth/analytics.manage.users";
-NSString * const kGTLAuthScopeAnalyticsReadonly    = @"https://www.googleapis.com/auth/analytics.readonly";
+#import "GTLAnalyticsEntityUserLink.h"
 
-// Type
-NSString * const kGTLAnalyticsTypeCost = @"cost";
+// ----------------------------------------------------------------------------
+//
+//   GTLAnalyticsEntityUserLinks
+//
+
+@implementation GTLAnalyticsEntityUserLinks
+@dynamic items, itemsPerPage, kind, nextLink, previousLink, startIndex,
+         totalResults;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLAnalyticsEntityUserLink class]
+                                forKey:@"items"];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"analytics#entityUserLinks"];
+}
+
+@end

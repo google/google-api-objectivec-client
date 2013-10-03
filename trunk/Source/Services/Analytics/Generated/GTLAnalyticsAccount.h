@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,8 +26,9 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsAccount (0 custom class methods, 7 custom properties)
+//   GTLAnalyticsAccount (0 custom class methods, 8 custom properties)
 //   GTLAnalyticsAccountChildLink (0 custom class methods, 2 custom properties)
+//   GTLAnalyticsAccountPermissions (0 custom class methods, 1 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,6 +37,7 @@
 #endif
 
 @class GTLAnalyticsAccountChildLink;
+@class GTLAnalyticsAccountPermissions;
 
 // ----------------------------------------------------------------------------
 //
@@ -63,6 +65,9 @@
 // Account name.
 @property (copy) NSString *name;
 
+// Permissions the user has for this account.
+@property (retain) GTLAnalyticsAccountPermissions *permissions;
+
 // Link for this account.
 @property (copy) NSString *selfLink;
 
@@ -84,5 +89,19 @@
 
 // Type of the child link. Its value is "analytics#webproperties".
 @property (copy) NSString *type;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAnalyticsAccountPermissions
+//
+
+@interface GTLAnalyticsAccountPermissions : GTLObject
+
+// All the permissions that the user has for this account. These include any
+// implied permissions (e.g., EDIT implies VIEW).
+@property (retain) NSArray *effective;  // of NSString
 
 @end

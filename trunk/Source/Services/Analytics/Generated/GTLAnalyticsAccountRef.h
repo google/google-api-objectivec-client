@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAnalyticsConstants.m
+//  GTLAnalyticsAccountRef.h
 //
 
 // ----------------------------------------------------------------------------
@@ -25,13 +25,35 @@
 //   View and manage your Google Analytics data
 // Documentation:
 //   https://developers.google.com/analytics/
+// Classes:
+//   GTLAnalyticsAccountRef (0 custom class methods, 4 custom properties)
 
-#import "GTLAnalyticsConstants.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-// Authorization scope
-NSString * const kGTLAuthScopeAnalytics            = @"https://www.googleapis.com/auth/analytics";
-NSString * const kGTLAuthScopeAnalyticsManageUsers = @"https://www.googleapis.com/auth/analytics.manage.users";
-NSString * const kGTLAuthScopeAnalyticsReadonly    = @"https://www.googleapis.com/auth/analytics.readonly";
+// ----------------------------------------------------------------------------
+//
+//   GTLAnalyticsAccountRef
+//
 
-// Type
-NSString * const kGTLAnalyticsTypeCost = @"cost";
+// JSON template for a linked account.
+
+@interface GTLAnalyticsAccountRef : GTLObject
+
+// Link for this account.
+@property (copy) NSString *href;
+
+// Account ID.
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+@property (copy) NSString *identifier;
+
+// Analytics account reference.
+@property (copy) NSString *kind;
+
+// Account name.
+@property (copy) NSString *name;
+
+@end

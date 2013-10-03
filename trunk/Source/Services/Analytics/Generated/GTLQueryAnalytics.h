@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLQueryAnalytics (19 custom class methods, 21 custom properties)
+//   GTLQueryAnalytics (48 custom class methods, 25 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -34,7 +34,11 @@
   #import "GTLQuery.h"
 #endif
 
+@class GTLAnalyticsEntityUserLink;
 @class GTLAnalyticsExperiment;
+@class GTLAnalyticsGoal;
+@class GTLAnalyticsProfile;
+@class GTLAnalyticsWebproperty;
 
 @interface GTLQueryAnalytics : GTLQuery
 
@@ -50,13 +54,16 @@
 //
 @property (copy) NSString *accountId;
 @property (assign) NSInteger appendNumber;
+@property (retain) NSArray *customDataImportUids;  // of NSString
 @property (copy) NSString *customDataSourceId;
 @property (copy) NSString *date;
 @property (copy) NSString *dimensions;
 @property (copy) NSString *endDate;
 @property (copy) NSString *experimentId;
 @property (copy) NSString *filters;
+@property (copy) NSString *goalId;
 @property (copy) NSString *ids;
+@property (copy) NSString *linkId;
 @property (assign) NSInteger maxResults;
 @property (copy) NSString *metrics;
 @property (copy) NSString *profileId;
@@ -67,6 +74,7 @@
 @property (copy) NSString *startDate;
 @property (assign) NSInteger startIndex;
 @property (copy) NSString *type;
+@property (copy) NSString *uploadId;
 @property (copy) NSString *webPropertyId;
 
 #pragma mark -
@@ -180,6 +188,56 @@
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsAccounts.
 + (id)queryForManagementAccountsList;
+
+#pragma mark -
+#pragma mark "management.accountUserLinks" methods
+// These create a GTLQueryAnalytics object.
+
+// Method: analytics.management.accountUserLinks.delete
+// Removes a user from the given account.
+//  Required:
+//   accountId: Account ID to delete the user link for.
+//   linkId: Link ID to delete the user link for.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsManageUsers
++ (id)queryForManagementAccountUserLinksDeleteWithAccountId:(NSString *)accountId
+                                                     linkId:(NSString *)linkId;
+
+// Method: analytics.management.accountUserLinks.insert
+// Adds a new user to the given account.
+//  Required:
+//   accountId: Account ID to create the user link for.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsManageUsers
+// Fetches a GTLAnalyticsEntityUserLink.
++ (id)queryForManagementAccountUserLinksInsertWithObject:(GTLAnalyticsEntityUserLink *)object
+                                               accountId:(NSString *)accountId;
+
+// Method: analytics.management.accountUserLinks.list
+// Lists account-user links for a given account.
+//  Required:
+//   accountId: Account ID to retrieve the user links for.
+//  Optional:
+//   maxResults: The maximum number of account-user links to include in this
+//     response.
+//   startIndex: An index of the first account-user link to retrieve. Use this
+//     parameter as a pagination mechanism along with the max-results parameter.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsManageUsers
+// Fetches a GTLAnalyticsEntityUserLinks.
++ (id)queryForManagementAccountUserLinksListWithAccountId:(NSString *)accountId;
+
+// Method: analytics.management.accountUserLinks.update
+// Updates permissions for an existing user on the given account.
+//  Required:
+//   accountId: Account ID to update the account-user link for.
+//   linkId: Link ID to update the account-user link for.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsManageUsers
+// Fetches a GTLAnalyticsEntityUserLink.
++ (id)queryForManagementAccountUserLinksUpdateWithObject:(GTLAnalyticsEntityUserLink *)object
+                                               accountId:(NSString *)accountId
+                                                  linkId:(NSString *)linkId;
 
 #pragma mark -
 #pragma mark "management.customDataSources" methods
@@ -380,6 +438,36 @@
 #pragma mark "management.goals" methods
 // These create a GTLQueryAnalytics object.
 
+// Method: analytics.management.goals.get
+// Gets a goal to which the user has access.
+//  Required:
+//   accountId: Account ID to retrieve the goal for.
+//   webPropertyId: Web property ID to retrieve the goal for.
+//   profileId: View (Profile) ID to retrieve the goal for.
+//   goalId: Goal ID to retrieve the goal for.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsReadonly
+// Fetches a GTLAnalyticsGoal.
++ (id)queryForManagementGoalsGetWithAccountId:(NSString *)accountId
+                                webPropertyId:(NSString *)webPropertyId
+                                    profileId:(NSString *)profileId
+                                       goalId:(NSString *)goalId;
+
+// Method: analytics.management.goals.insert
+// Create a new goal.
+//  Required:
+//   accountId: Account ID to create the goal for.
+//   webPropertyId: Web property ID to create the goal for.
+//   profileId: View (Profile) ID to create the goal for.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+// Fetches a GTLAnalyticsGoal.
++ (id)queryForManagementGoalsInsertWithObject:(GTLAnalyticsGoal *)object
+                                    accountId:(NSString *)accountId
+                                webPropertyId:(NSString *)webPropertyId
+                                    profileId:(NSString *)profileId;
+
 // Method: analytics.management.goals.list
 // Lists goals to which the user has access.
 //  Required:
@@ -404,9 +492,79 @@
                                  webPropertyId:(NSString *)webPropertyId
                                      profileId:(NSString *)profileId;
 
+// Method: analytics.management.goals.patch
+// Updates an existing view (profile). This method supports patch semantics.
+//  Required:
+//   accountId: Account ID to update the goal.
+//   webPropertyId: Web property ID to update the goal.
+//   profileId: View (Profile) ID to update the goal.
+//   goalId: Index of the goal to be updated.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+// Fetches a GTLAnalyticsGoal.
++ (id)queryForManagementGoalsPatchWithObject:(GTLAnalyticsGoal *)object
+                                   accountId:(NSString *)accountId
+                               webPropertyId:(NSString *)webPropertyId
+                                   profileId:(NSString *)profileId
+                                      goalId:(NSString *)goalId;
+
+// Method: analytics.management.goals.update
+// Updates an existing view (profile).
+//  Required:
+//   accountId: Account ID to update the goal.
+//   webPropertyId: Web property ID to update the goal.
+//   profileId: View (Profile) ID to update the goal.
+//   goalId: Index of the goal to be updated.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+// Fetches a GTLAnalyticsGoal.
++ (id)queryForManagementGoalsUpdateWithObject:(GTLAnalyticsGoal *)object
+                                    accountId:(NSString *)accountId
+                                webPropertyId:(NSString *)webPropertyId
+                                    profileId:(NSString *)profileId
+                                       goalId:(NSString *)goalId;
+
 #pragma mark -
 #pragma mark "management.profiles" methods
 // These create a GTLQueryAnalytics object.
+
+// Method: analytics.management.profiles.delete
+// Deletes a view (profile).
+//  Required:
+//   accountId: Account ID to delete the view (profile) for.
+//   webPropertyId: Web property ID to delete the view (profile) for.
+//   profileId: ID of the view (profile) to be deleted.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
++ (id)queryForManagementProfilesDeleteWithAccountId:(NSString *)accountId
+                                      webPropertyId:(NSString *)webPropertyId
+                                          profileId:(NSString *)profileId;
+
+// Method: analytics.management.profiles.get
+// Gets a view (profile) to which the user has access.
+//  Required:
+//   accountId: Account ID to retrieve the goal for.
+//   webPropertyId: Web property ID to retrieve the goal for.
+//   profileId: View (Profile) ID to retrieve the goal for.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsReadonly
+// Fetches a GTLAnalyticsProfile.
++ (id)queryForManagementProfilesGetWithAccountId:(NSString *)accountId
+                                   webPropertyId:(NSString *)webPropertyId
+                                       profileId:(NSString *)profileId;
+
+// Method: analytics.management.profiles.insert
+// Create a new view (profile).
+//  Required:
+//   accountId: Account ID to create the view (profile) for.
+//   webPropertyId: Web property ID to create the view (profile) for.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+// Fetches a GTLAnalyticsProfile.
++ (id)queryForManagementProfilesInsertWithObject:(GTLAnalyticsProfile *)object
+                                       accountId:(NSString *)accountId
+                                   webPropertyId:(NSString *)webPropertyId;
 
 // Method: analytics.management.profiles.list
 // Lists views (profiles) to which the user has access.
@@ -429,6 +587,100 @@
 + (id)queryForManagementProfilesListWithAccountId:(NSString *)accountId
                                     webPropertyId:(NSString *)webPropertyId;
 
+// Method: analytics.management.profiles.patch
+// Updates an existing view (profile). This method supports patch semantics.
+//  Required:
+//   accountId: Account ID to which the view (profile) belongs
+//   webPropertyId: Web property ID to which the view (profile) belongs
+//   profileId: ID of the view (profile) to be updated.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+// Fetches a GTLAnalyticsProfile.
++ (id)queryForManagementProfilesPatchWithObject:(GTLAnalyticsProfile *)object
+                                      accountId:(NSString *)accountId
+                                  webPropertyId:(NSString *)webPropertyId
+                                      profileId:(NSString *)profileId;
+
+// Method: analytics.management.profiles.update
+// Updates an existing view (profile).
+//  Required:
+//   accountId: Account ID to which the view (profile) belongs
+//   webPropertyId: Web property ID to which the view (profile) belongs
+//   profileId: ID of the view (profile) to be updated.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+// Fetches a GTLAnalyticsProfile.
++ (id)queryForManagementProfilesUpdateWithObject:(GTLAnalyticsProfile *)object
+                                       accountId:(NSString *)accountId
+                                   webPropertyId:(NSString *)webPropertyId
+                                       profileId:(NSString *)profileId;
+
+#pragma mark -
+#pragma mark "management.profileUserLinks" methods
+// These create a GTLQueryAnalytics object.
+
+// Method: analytics.management.profileUserLinks.delete
+// Removes a user from the given view (profile).
+//  Required:
+//   accountId: Account ID to delete the user link for.
+//   webPropertyId: Web Property ID to delete the user link for.
+//   profileId: View (Profile) ID to delete the user link for.
+//   linkId: Link ID to delete the user link for.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsManageUsers
++ (id)queryForManagementProfileUserLinksDeleteWithAccountId:(NSString *)accountId
+                                              webPropertyId:(NSString *)webPropertyId
+                                                  profileId:(NSString *)profileId
+                                                     linkId:(NSString *)linkId;
+
+// Method: analytics.management.profileUserLinks.insert
+// Adds a new user to the given view (profile).
+//  Required:
+//   accountId: Account ID to create the user link for.
+//   webPropertyId: Web Property ID to create the user link for.
+//   profileId: View (Profile) ID to create the user link for.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsManageUsers
+// Fetches a GTLAnalyticsEntityUserLink.
++ (id)queryForManagementProfileUserLinksInsertWithObject:(GTLAnalyticsEntityUserLink *)object
+                                               accountId:(NSString *)accountId
+                                           webPropertyId:(NSString *)webPropertyId
+                                               profileId:(NSString *)profileId;
+
+// Method: analytics.management.profileUserLinks.list
+// Lists profile-user links for a given view (profile).
+//  Required:
+//   accountId: Account ID which the given view (profile) belongs to.
+//   webPropertyId: Web Property ID which the given view (profile) belongs to.
+//   profileId: View (Profile) ID to retrieve the profile-user links for
+//  Optional:
+//   maxResults: The maximum number of profile-user links to include in this
+//     response.
+//   startIndex: An index of the first profile-user link to retrieve. Use this
+//     parameter as a pagination mechanism along with the max-results parameter.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsManageUsers
+// Fetches a GTLAnalyticsEntityUserLinks.
++ (id)queryForManagementProfileUserLinksListWithAccountId:(NSString *)accountId
+                                            webPropertyId:(NSString *)webPropertyId
+                                                profileId:(NSString *)profileId;
+
+// Method: analytics.management.profileUserLinks.update
+// Updates permissions for an existing user on the given view (profile).
+//  Required:
+//   accountId: Account ID to update the user link for.
+//   webPropertyId: Web Property ID to update the user link for.
+//   profileId: View (Profile ID) to update the user link for.
+//   linkId: Link ID to update the user link for.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsManageUsers
+// Fetches a GTLAnalyticsEntityUserLink.
++ (id)queryForManagementProfileUserLinksUpdateWithObject:(GTLAnalyticsEntityUserLink *)object
+                                               accountId:(NSString *)accountId
+                                           webPropertyId:(NSString *)webPropertyId
+                                               profileId:(NSString *)profileId
+                                                  linkId:(NSString *)linkId;
+
 #pragma mark -
 #pragma mark "management.segments" methods
 // These create a GTLQueryAnalytics object.
@@ -447,8 +699,100 @@
 + (id)queryForManagementSegmentsList;
 
 #pragma mark -
+#pragma mark "management.uploads" methods
+// These create a GTLQueryAnalytics object.
+
+// Method: analytics.management.uploads.deleteUploadData
+// Delete data associated with a previous upload.
+//  Required:
+//   accountId: Account Id for the uploads to be deleted.
+//   webPropertyId: Web property Id for the uploads to be deleted.
+//   customDataSourceId: Custom data source Id for the uploads to be deleted.
+//  Optional:
+//   customDataImportUids: A list of upload UIDs.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
++ (id)queryForManagementUploadsDeleteUploadDataWithAccountId:(NSString *)accountId
+                                               webPropertyId:(NSString *)webPropertyId
+                                          customDataSourceId:(NSString *)customDataSourceId;
+
+// Method: analytics.management.uploads.get
+// List uploads to which the user has access.
+//  Required:
+//   accountId: Account Id for the upload to retrieve.
+//   webPropertyId: Web property Id for the upload to retrieve.
+//   customDataSourceId: Custom data source Id for upload to retrieve.
+//   uploadId: Upload Id to retrieve.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsReadonly
+// Fetches a GTLAnalyticsUpload.
++ (id)queryForManagementUploadsGetWithAccountId:(NSString *)accountId
+                                  webPropertyId:(NSString *)webPropertyId
+                             customDataSourceId:(NSString *)customDataSourceId
+                                       uploadId:(NSString *)uploadId;
+
+// Method: analytics.management.uploads.list
+// List uploads to which the user has access.
+//  Required:
+//   accountId: Account Id for the uploads to retrieve.
+//   webPropertyId: Web property Id for the uploads to retrieve.
+//   customDataSourceId: Custom data source Id for uploads to retrieve.
+//  Optional:
+//   maxResults: The maximum number of uploads to include in this response.
+//   startIndex: A 1-based index of the first upload to retrieve. Use this
+//     parameter as a pagination mechanism along with the max-results parameter.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsReadonly
+// Fetches a GTLAnalyticsUploads.
++ (id)queryForManagementUploadsListWithAccountId:(NSString *)accountId
+                                   webPropertyId:(NSString *)webPropertyId
+                              customDataSourceId:(NSString *)customDataSourceId;
+
+// Method: analytics.management.uploads.uploadData
+// Upload/Overwrite data for a custom data source.
+//  Required:
+//   accountId: Account Id associated with the upload.
+//   webPropertyId: Web property UA-string associated with the upload.
+//   customDataSourceId: Custom data source Id to which the data being uploaded
+//     belongs.
+//  Upload Parameters:
+//   Maximum size: 1GB
+//   Accepted MIME type(s): application/octet-stream
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+// Fetches a GTLAnalyticsUpload.
++ (id)queryForManagementUploadsUploadDataWithAccountId:(NSString *)accountId
+                                         webPropertyId:(NSString *)webPropertyId
+                                    customDataSourceId:(NSString *)customDataSourceId
+                                      uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
+
+#pragma mark -
 #pragma mark "management.webproperties" methods
 // These create a GTLQueryAnalytics object.
+
+// Method: analytics.management.webproperties.get
+// Gets a web property to which the user has access.
+//  Required:
+//   accountId: Account ID to retrieve the web property for.
+//   webPropertyId: ID to retrieve the web property for.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsReadonly
+// Fetches a GTLAnalyticsWebproperty.
++ (id)queryForManagementWebpropertiesGetWithAccountId:(NSString *)accountId
+                                        webPropertyId:(NSString *)webPropertyId;
+
+// Method: analytics.management.webproperties.insert
+// Create a new property if the account has fewer than 20 properties.
+//  Required:
+//   accountId: Account ID to create the web property for.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+// Fetches a GTLAnalyticsWebproperty.
++ (id)queryForManagementWebpropertiesInsertWithObject:(GTLAnalyticsWebproperty *)object
+                                            accountId:(NSString *)accountId;
 
 // Method: analytics.management.webproperties.list
 // Lists web properties to which the user has access.
@@ -466,6 +810,89 @@
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsWebproperties.
 + (id)queryForManagementWebpropertiesListWithAccountId:(NSString *)accountId;
+
+// Method: analytics.management.webproperties.patch
+// Updates an existing web property. This method supports patch semantics.
+//  Required:
+//   accountId: Account ID to which the web property belongs
+//   webPropertyId: Web property ID
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+// Fetches a GTLAnalyticsWebproperty.
++ (id)queryForManagementWebpropertiesPatchWithObject:(GTLAnalyticsWebproperty *)object
+                                           accountId:(NSString *)accountId
+                                       webPropertyId:(NSString *)webPropertyId;
+
+// Method: analytics.management.webproperties.update
+// Updates an existing web property.
+//  Required:
+//   accountId: Account ID to which the web property belongs
+//   webPropertyId: Web property ID
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+// Fetches a GTLAnalyticsWebproperty.
++ (id)queryForManagementWebpropertiesUpdateWithObject:(GTLAnalyticsWebproperty *)object
+                                            accountId:(NSString *)accountId
+                                        webPropertyId:(NSString *)webPropertyId;
+
+#pragma mark -
+#pragma mark "management.webpropertyUserLinks" methods
+// These create a GTLQueryAnalytics object.
+
+// Method: analytics.management.webpropertyUserLinks.delete
+// Removes a user from the given web property.
+//  Required:
+//   accountId: Account ID to delete the user link for.
+//   webPropertyId: Web Property ID to delete the user link for.
+//   linkId: Link ID to delete the user link for.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsManageUsers
++ (id)queryForManagementWebpropertyUserLinksDeleteWithAccountId:(NSString *)accountId
+                                                  webPropertyId:(NSString *)webPropertyId
+                                                         linkId:(NSString *)linkId;
+
+// Method: analytics.management.webpropertyUserLinks.insert
+// Adds a new user to the given web property.
+//  Required:
+//   accountId: Account ID to create the user link for.
+//   webPropertyId: Web Property ID to create the user link for.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsManageUsers
+// Fetches a GTLAnalyticsEntityUserLink.
++ (id)queryForManagementWebpropertyUserLinksInsertWithObject:(GTLAnalyticsEntityUserLink *)object
+                                                   accountId:(NSString *)accountId
+                                               webPropertyId:(NSString *)webPropertyId;
+
+// Method: analytics.management.webpropertyUserLinks.list
+// Lists webProperty-user links for a given web property.
+//  Required:
+//   accountId: Account ID which the given web property belongs to.
+//   webPropertyId: Web Property ID for the webProperty-user links to retrieve.
+//  Optional:
+//   maxResults: The maximum number of webProperty-user Links to include in this
+//     response.
+//   startIndex: An index of the first webProperty-user link to retrieve. Use
+//     this parameter as a pagination mechanism along with the max-results
+//     parameter.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsManageUsers
+// Fetches a GTLAnalyticsEntityUserLinks.
++ (id)queryForManagementWebpropertyUserLinksListWithAccountId:(NSString *)accountId
+                                                webPropertyId:(NSString *)webPropertyId;
+
+// Method: analytics.management.webpropertyUserLinks.update
+// Updates permissions for an existing user on the given web property.
+//  Required:
+//   accountId: Account ID to update the account-user link for.
+//   webPropertyId: Web property ID to update the account-user link for.
+//   linkId: Link ID to update the account-user link for.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsManageUsers
+// Fetches a GTLAnalyticsEntityUserLink.
++ (id)queryForManagementWebpropertyUserLinksUpdateWithObject:(GTLAnalyticsEntityUserLink *)object
+                                                   accountId:(NSString *)accountId
+                                               webPropertyId:(NSString *)webPropertyId
+                                                      linkId:(NSString *)linkId;
 
 #pragma mark -
 #pragma mark "metadata.columns" methods

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAnalyticsAccount.m
+//  GTLAnalyticsAccountRef.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,20 +26,17 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsAccount (0 custom class methods, 8 custom properties)
-//   GTLAnalyticsAccountChildLink (0 custom class methods, 2 custom properties)
-//   GTLAnalyticsAccountPermissions (0 custom class methods, 1 custom properties)
+//   GTLAnalyticsAccountRef (0 custom class methods, 4 custom properties)
 
-#import "GTLAnalyticsAccount.h"
+#import "GTLAnalyticsAccountRef.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAnalyticsAccount
+//   GTLAnalyticsAccountRef
 //
 
-@implementation GTLAnalyticsAccount
-@dynamic childLink, created, identifier, kind, name, permissions, selfLink,
-         updated;
+@implementation GTLAnalyticsAccountRef
+@dynamic href, identifier, kind, name;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -49,35 +46,7 @@
 }
 
 + (void)load {
-  [self registerObjectClassForKind:@"analytics#account"];
-}
-
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLAnalyticsAccountChildLink
-//
-
-@implementation GTLAnalyticsAccountChildLink
-@dynamic href, type;
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLAnalyticsAccountPermissions
-//
-
-@implementation GTLAnalyticsAccountPermissions
-@dynamic effective;
-
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[NSString class]
-                                forKey:@"effective"];
-  return map;
+  [self registerObjectClassForKind:@"analytics#accountRef"];
 }
 
 @end
