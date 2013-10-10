@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLBloggerBlogPerUserInfo.h
+//  GTLBloggerPostUserInfo.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,34 +26,30 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLBloggerBlogPerUserInfo (0 custom class methods, 5 custom properties)
+//   GTLBloggerPostUserInfo (0 custom class methods, 3 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLBloggerPostUserInfo.h"
+
+#import "GTLBloggerPost.h"
+#import "GTLBloggerPostPerUserInfo.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBloggerBlogPerUserInfo
+//   GTLBloggerPostUserInfo
 //
 
-@interface GTLBloggerBlogPerUserInfo : GTLObject
+@implementation GTLBloggerPostUserInfo
+@dynamic kind, post, postUserInfo;
 
-// ID of the Blog resource
-@property (copy) NSString *blogId;
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"post_user_info"
+                                forKey:@"postUserInfo"];
+  return map;
+}
 
-// True if the user has Admin level access to the blog.
-@property (retain) NSNumber *hasAdminAccess;  // boolValue
-
-// The kind of this entity. Always blogger#blogPerUserInfo
-@property (copy) NSString *kind;
-
-// The Photo Album Key for the user when adding photos to the blog
-@property (copy) NSString *photosAlbumKey;
-
-// ID of the User
-@property (copy) NSString *userId;
++ (void)load {
+  [self registerObjectClassForKind:@"blogger#postUserInfo"];
+}
 
 @end

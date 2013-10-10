@@ -341,7 +341,7 @@
 // additional thumbnails from the album.
 @property (retain) NSArray *thumbnails;  // of GTLPlusDomainsActivityObjectAttachmentsItemThumbnailsItem
 
-// The link to the attachment; should be of type text/html.
+// The link to the attachment, which should be of type text/html.
 @property (copy) NSString *url;
 
 @end

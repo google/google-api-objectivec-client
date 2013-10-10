@@ -69,6 +69,11 @@ NSString * const kGTLBooksFilterPartial    = @"partial";
 NSString * const kGTLBooksLibraryRestrictMyLibrary  = @"my-library";
 NSString * const kGTLBooksLibraryRestrictNoRestrict = @"no-restrict";
 
+// LicenseTypes
+NSString * const kGTLBooksLicenseTypesBoth       = @"BOTH";
+NSString * const kGTLBooksLicenseTypesConcurrent = @"CONCURRENT";
+NSString * const kGTLBooksLicenseTypesDownload   = @"DOWNLOAD";
+
 // OrderBy
 NSString * const kGTLBooksOrderByNewest    = @"newest";
 NSString * const kGTLBooksOrderByRelevance = @"relevance";

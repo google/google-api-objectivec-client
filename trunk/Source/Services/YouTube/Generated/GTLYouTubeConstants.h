@@ -43,6 +43,9 @@ GTL_EXTERN NSString * const kGTLAuthScopeYouTubeReadonly;       // "https://www.
 GTL_EXTERN NSString * const kGTLAuthScopeYouTubeUpload;         // "https://www.googleapis.com/auth/youtube.upload"
 // View and manage your assets and associated content on YouTube
 GTL_EXTERN NSString * const kGTLAuthScopeYouTubeYoutubepartner;  // "https://www.googleapis.com/auth/youtubepartner"
+// View private information of your YouTube channel relevant during the audit
+// process with a YouTube partner
+GTL_EXTERN NSString * const kGTLAuthScopeYouTubeYoutubepartnerChannelAudit;  // "https://www.googleapis.com/auth/youtubepartner-channel-audit"
 
 // BroadcastStatus
 GTL_EXTERN NSString * const kGTLYouTubeBroadcastStatusActive;   // "active"

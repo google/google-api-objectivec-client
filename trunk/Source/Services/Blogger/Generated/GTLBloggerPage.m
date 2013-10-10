@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLBloggerPage (0 custom class methods, 10 custom properties)
+//   GTLBloggerPage (0 custom class methods, 11 custom properties)
 //   GTLBloggerPageAuthor (0 custom class methods, 4 custom properties)
 //   GTLBloggerPageBlog (0 custom class methods, 1 custom properties)
 //   GTLBloggerPageAuthorImage (0 custom class methods, 1 custom properties)
@@ -39,8 +39,8 @@
 //
 
 @implementation GTLBloggerPage
-@dynamic author, blog, content, identifier, kind, published, selfLink, title,
-         updated, url;
+@dynamic author, blog, content, identifier, kind, published, selfLink, status,
+         title, updated, url;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

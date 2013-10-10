@@ -43,7 +43,14 @@
 //
 
 @interface GTLBloggerBlogUserInfo : GTLObject
+
+// The Blog resource.
 @property (retain) GTLBloggerBlog *blog;
+
+// Information about a User for the Blog.
+@property (retain) GTLBloggerBlogPerUserInfo *blogUserInfo;
+
+// The kind of this entity. Always blogger#blogUserInfo
 @property (copy) NSString *kind;
-@property (retain) GTLBloggerBlogPerUserInfo *user;
+
 @end

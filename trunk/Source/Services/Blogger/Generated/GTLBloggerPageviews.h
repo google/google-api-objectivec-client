@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLBloggerBlogPerUserInfo.h
+//  GTLBloggerPageviews.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,8 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLBloggerBlogPerUserInfo (0 custom class methods, 5 custom properties)
+//   GTLBloggerPageviews (0 custom class methods, 3 custom properties)
+//   GTLBloggerPageviewsCountsItem (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,26 +35,38 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLBloggerPageviewsCountsItem;
+
 // ----------------------------------------------------------------------------
 //
-//   GTLBloggerBlogPerUserInfo
+//   GTLBloggerPageviews
 //
 
-@interface GTLBloggerBlogPerUserInfo : GTLObject
+@interface GTLBloggerPageviews : GTLObject
 
-// ID of the Blog resource
-@property (copy) NSString *blogId;
+// Blog Id
+@property (retain) NSNumber *blogId;  // longLongValue
 
-// True if the user has Admin level access to the blog.
-@property (retain) NSNumber *hasAdminAccess;  // boolValue
+// The container of posts in this blog.
+@property (retain) NSArray *counts;  // of GTLBloggerPageviewsCountsItem
 
-// The kind of this entity. Always blogger#blogPerUserInfo
+// The kind of this entry. Always blogger#page_views
 @property (copy) NSString *kind;
 
-// The Photo Album Key for the user when adding photos to the blog
-@property (copy) NSString *photosAlbumKey;
+@end
 
-// ID of the User
-@property (copy) NSString *userId;
+
+// ----------------------------------------------------------------------------
+//
+//   GTLBloggerPageviewsCountsItem
+//
+
+@interface GTLBloggerPageviewsCountsItem : GTLObject
+
+// Count of page views for the given time range
+@property (retain) NSNumber *count;  // longLongValue
+
+// Time range the given count applies to
+@property (copy) NSString *timeRange;
 
 @end

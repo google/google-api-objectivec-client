@@ -76,6 +76,11 @@ GTL_EXTERN NSString * const kGTLBooksFilterPartial;     // "partial"
 GTL_EXTERN NSString * const kGTLBooksLibraryRestrictMyLibrary;  // "my-library"
 GTL_EXTERN NSString * const kGTLBooksLibraryRestrictNoRestrict;  // "no-restrict"
 
+// LicenseTypes
+GTL_EXTERN NSString * const kGTLBooksLicenseTypesBoth;        // "BOTH"
+GTL_EXTERN NSString * const kGTLBooksLicenseTypesConcurrent;  // "CONCURRENT"
+GTL_EXTERN NSString * const kGTLBooksLicenseTypesDownload;    // "DOWNLOAD"
+
 // OrderBy
 GTL_EXTERN NSString * const kGTLBooksOrderByNewest;     // "newest"
 GTL_EXTERN NSString * const kGTLBooksOrderByRelevance;  // "relevance"

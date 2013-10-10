@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLBloggerBlogPerUserInfo (0 custom class methods, 4 custom properties)
+//   GTLBloggerBlogPerUserInfo (0 custom class methods, 5 custom properties)
 
 #import "GTLBloggerBlogPerUserInfo.h"
 
@@ -36,7 +36,7 @@
 //
 
 @implementation GTLBloggerBlogPerUserInfo
-@dynamic blogId, kind, photosAlbumKey, userId;
+@dynamic blogId, hasAdminAccess, kind, photosAlbumKey, userId;
 
 + (void)load {
   [self registerObjectClassForKind:@"blogger#blogPerUserInfo"];

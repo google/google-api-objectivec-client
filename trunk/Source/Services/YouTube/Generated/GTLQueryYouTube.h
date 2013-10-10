@@ -273,6 +273,7 @@
 //   kGTLAuthScopeYouTube
 //   kGTLAuthScopeYouTubeReadonly
 //   kGTLAuthScopeYouTubeYoutubepartner
+//   kGTLAuthScopeYouTubeYoutubepartnerChannelAudit
 // Fetches a GTLYouTubeChannelListResponse.
 + (id)queryForChannelsListWithPart:(NSString *)part;
 

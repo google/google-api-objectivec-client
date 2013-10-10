@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLBloggerPostList (0 custom class methods, 4 custom properties)
+//   GTLBloggerPostList (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -54,8 +54,5 @@
 
 // Pagination token to fetch the next page, if one exists.
 @property (copy) NSString *nextPageToken;
-
-// Pagination token to fetch the previous page, if one exists.
-@property (copy) NSString *prevPageToken;
 
 @end

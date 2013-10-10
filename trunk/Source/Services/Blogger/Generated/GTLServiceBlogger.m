@@ -46,8 +46,12 @@
                       [GTLBloggerCommentList class],
                       [GTLBloggerPage class],
                       [GTLBloggerPageList class],
+                      [GTLBloggerPageviews class],
                       [GTLBloggerPost class],
                       [GTLBloggerPostList class],
+                      [GTLBloggerPostPerUserInfo class],
+                      [GTLBloggerPostUserInfo class],
+                      [GTLBloggerPostUserInfosList class],
                       [GTLBloggerUser class],
                       nil];
   return classes;

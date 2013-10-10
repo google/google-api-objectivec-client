@@ -29,10 +29,11 @@
 #import "GTLYouTubeConstants.h"
 
 // Authorization scope
-NSString * const kGTLAuthScopeYouTube               = @"https://www.googleapis.com/auth/youtube";
-NSString * const kGTLAuthScopeYouTubeReadonly       = @"https://www.googleapis.com/auth/youtube.readonly";
-NSString * const kGTLAuthScopeYouTubeUpload         = @"https://www.googleapis.com/auth/youtube.upload";
-NSString * const kGTLAuthScopeYouTubeYoutubepartner = @"https://www.googleapis.com/auth/youtubepartner";
+NSString * const kGTLAuthScopeYouTube                          = @"https://www.googleapis.com/auth/youtube";
+NSString * const kGTLAuthScopeYouTubeReadonly                  = @"https://www.googleapis.com/auth/youtube.readonly";
+NSString * const kGTLAuthScopeYouTubeUpload                    = @"https://www.googleapis.com/auth/youtube.upload";
+NSString * const kGTLAuthScopeYouTubeYoutubepartner            = @"https://www.googleapis.com/auth/youtubepartner";
+NSString * const kGTLAuthScopeYouTubeYoutubepartnerChannelAudit = @"https://www.googleapis.com/auth/youtubepartner-channel-audit";
 
 // BroadcastStatus
 NSString * const kGTLYouTubeBroadcastStatusActive    = @"active";

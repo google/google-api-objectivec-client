@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeImageSettings (0 custom class methods, 19 custom properties)
+//   GTLYouTubeImageSettings (0 custom class methods, 22 custom properties)
 
 #import "GTLYouTubeImageSettings.h"
 
@@ -43,7 +43,8 @@
          bannerMobileImageUrl, bannerMobileLowImageUrl,
          bannerMobileMediumHdImageUrl, bannerTabletExtraHdImageUrl,
          bannerTabletHdImageUrl, bannerTabletImageUrl, bannerTabletLowImageUrl,
-         bannerTvImageUrl, largeBrandedBannerImageImapScript,
+         bannerTvHighImageUrl, bannerTvImageUrl, bannerTvLowImageUrl,
+         bannerTvMediumImageUrl, largeBrandedBannerImageImapScript,
          largeBrandedBannerImageUrl, smallBrandedBannerImageImapScript,
          smallBrandedBannerImageUrl, trackingImageUrl, watchIconImageUrl;
 @end

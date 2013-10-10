@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLBloggerBlogPerUserInfo.h
+//  GTLBloggerPostPerUserInfo.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLBloggerBlogPerUserInfo (0 custom class methods, 5 custom properties)
+//   GTLBloggerPostPerUserInfo (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,24 +36,24 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBloggerBlogPerUserInfo
+//   GTLBloggerPostPerUserInfo
 //
 
-@interface GTLBloggerBlogPerUserInfo : GTLObject
+@interface GTLBloggerPostPerUserInfo : GTLObject
 
-// ID of the Blog resource
+// ID of the Blog that the post resource belongs to.
 @property (copy) NSString *blogId;
 
-// True if the user has Admin level access to the blog.
-@property (retain) NSNumber *hasAdminAccess;  // boolValue
+// True if the user has Author level access to the post.
+@property (retain) NSNumber *hasEditAccess;  // boolValue
 
-// The kind of this entity. Always blogger#blogPerUserInfo
+// The kind of this entity. Always blogger#postPerUserInfo
 @property (copy) NSString *kind;
 
-// The Photo Album Key for the user when adding photos to the blog
-@property (copy) NSString *photosAlbumKey;
+// ID of the Post resource.
+@property (copy) NSString *postId;
 
-// ID of the User
+// ID of the User.
 @property (copy) NSString *userId;
 
 @end
