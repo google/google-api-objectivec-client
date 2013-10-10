@@ -10,22 +10,11 @@
 		4F22A2151186315400FFBAB6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F22A2141186315400FFBAB6 /* WebKit.framework */; };
 		4F2445C8121F0D2900FEE1DA /* GTL.framework in Copy GTL Framework */ = {isa = PBXBuildFile; fileRef = 4F2445BE121F0CF600FEE1DA /* GTL.framework */; };
 		4F2445C9121F0D2C00FEE1DA /* GTL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2445BE121F0CF600FEE1DA /* GTL.framework */; };
+		4F385CB61807669C00E21D98 /* GTLBlogger_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F385CB51807669C00E21D98 /* GTLBlogger_Sources.m */; };
 		4F9A73431578159900D7D1B5 /* BloggerSampleAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A73401578159900D7D1B5 /* BloggerSampleAppController.m */; };
 		4F9A73441578159900D7D1B5 /* BloggerSampleWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A73421578159900D7D1B5 /* BloggerSampleWindowController.m */; };
 		4FA544A3134E93EE00068326 /* BloggerSampleWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FA544A1134E93EE00068326 /* BloggerSampleWindow.xib */; };
 		4FA6F3D41034AEC400C5DFA5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FA6F3D11034AEC400C5DFA5 /* MainMenu.xib */; };
-		4FAB9B5C157951EF000529A7 /* GTLBloggerBlog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAB9B45157951EF000529A7 /* GTLBloggerBlog.m */; };
-		4FAB9B5D157951EF000529A7 /* GTLBloggerBlogList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAB9B47157951EF000529A7 /* GTLBloggerBlogList.m */; };
-		4FAB9B5E157951EF000529A7 /* GTLBloggerComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAB9B49157951EF000529A7 /* GTLBloggerComment.m */; };
-		4FAB9B5F157951EF000529A7 /* GTLBloggerCommentList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAB9B4B157951EF000529A7 /* GTLBloggerCommentList.m */; };
-		4FAB9B60157951EF000529A7 /* GTLBloggerConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAB9B4D157951EF000529A7 /* GTLBloggerConstants.m */; };
-		4FAB9B61157951EF000529A7 /* GTLBloggerPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAB9B4F157951EF000529A7 /* GTLBloggerPage.m */; };
-		4FAB9B62157951EF000529A7 /* GTLBloggerPageList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAB9B51157951EF000529A7 /* GTLBloggerPageList.m */; };
-		4FAB9B63157951EF000529A7 /* GTLBloggerPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAB9B53157951EF000529A7 /* GTLBloggerPost.m */; };
-		4FAB9B64157951EF000529A7 /* GTLBloggerPostList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAB9B55157951EF000529A7 /* GTLBloggerPostList.m */; };
-		4FAB9B65157951EF000529A7 /* GTLBloggerUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAB9B57157951EF000529A7 /* GTLBloggerUser.m */; };
-		4FAB9B66157951EF000529A7 /* GTLQueryBlogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAB9B59157951EF000529A7 /* GTLQueryBlogger.m */; };
-		4FAB9B67157951EF000529A7 /* GTLServiceBlogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAB9B5B157951EF000529A7 /* GTLServiceBlogger.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -91,37 +80,13 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		4F22A2141186315400FFBAB6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
 		4F2445B6121F0CF600FEE1DA /* GTL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GTL.xcodeproj; path = ../../Source/GTL.xcodeproj; sourceTree = SOURCE_ROOT; };
+		4F385CB51807669C00E21D98 /* GTLBlogger_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBlogger_Sources.m; sourceTree = "<group>"; };
 		4F9A733F1578159900D7D1B5 /* BloggerSampleAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BloggerSampleAppController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		4F9A73401578159900D7D1B5 /* BloggerSampleAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BloggerSampleAppController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4F9A73411578159900D7D1B5 /* BloggerSampleWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BloggerSampleWindowController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		4F9A73421578159900D7D1B5 /* BloggerSampleWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BloggerSampleWindowController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4FA544A2134E93EE00068326 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/BloggerSampleWindow.xib; sourceTree = "<group>"; };
 		4FA6F3D21034AEC400C5DFA5 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		4FAB9B43157951EF000529A7 /* GTLBlogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBlogger.h; sourceTree = "<group>"; };
-		4FAB9B44157951EF000529A7 /* GTLBloggerBlog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBloggerBlog.h; sourceTree = "<group>"; };
-		4FAB9B45157951EF000529A7 /* GTLBloggerBlog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBloggerBlog.m; sourceTree = "<group>"; };
-		4FAB9B46157951EF000529A7 /* GTLBloggerBlogList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBloggerBlogList.h; sourceTree = "<group>"; };
-		4FAB9B47157951EF000529A7 /* GTLBloggerBlogList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBloggerBlogList.m; sourceTree = "<group>"; };
-		4FAB9B48157951EF000529A7 /* GTLBloggerComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBloggerComment.h; sourceTree = "<group>"; };
-		4FAB9B49157951EF000529A7 /* GTLBloggerComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBloggerComment.m; sourceTree = "<group>"; };
-		4FAB9B4A157951EF000529A7 /* GTLBloggerCommentList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBloggerCommentList.h; sourceTree = "<group>"; };
-		4FAB9B4B157951EF000529A7 /* GTLBloggerCommentList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBloggerCommentList.m; sourceTree = "<group>"; };
-		4FAB9B4C157951EF000529A7 /* GTLBloggerConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBloggerConstants.h; sourceTree = "<group>"; };
-		4FAB9B4D157951EF000529A7 /* GTLBloggerConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBloggerConstants.m; sourceTree = "<group>"; };
-		4FAB9B4E157951EF000529A7 /* GTLBloggerPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBloggerPage.h; sourceTree = "<group>"; };
-		4FAB9B4F157951EF000529A7 /* GTLBloggerPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBloggerPage.m; sourceTree = "<group>"; };
-		4FAB9B50157951EF000529A7 /* GTLBloggerPageList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBloggerPageList.h; sourceTree = "<group>"; };
-		4FAB9B51157951EF000529A7 /* GTLBloggerPageList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBloggerPageList.m; sourceTree = "<group>"; };
-		4FAB9B52157951EF000529A7 /* GTLBloggerPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBloggerPost.h; sourceTree = "<group>"; };
-		4FAB9B53157951EF000529A7 /* GTLBloggerPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBloggerPost.m; sourceTree = "<group>"; };
-		4FAB9B54157951EF000529A7 /* GTLBloggerPostList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBloggerPostList.h; sourceTree = "<group>"; };
-		4FAB9B55157951EF000529A7 /* GTLBloggerPostList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBloggerPostList.m; sourceTree = "<group>"; };
-		4FAB9B56157951EF000529A7 /* GTLBloggerUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLBloggerUser.h; sourceTree = "<group>"; };
-		4FAB9B57157951EF000529A7 /* GTLBloggerUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBloggerUser.m; sourceTree = "<group>"; };
-		4FAB9B58157951EF000529A7 /* GTLQueryBlogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLQueryBlogger.h; sourceTree = "<group>"; };
-		4FAB9B59157951EF000529A7 /* GTLQueryBlogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLQueryBlogger.m; sourceTree = "<group>"; };
-		4FAB9B5A157951EF000529A7 /* GTLServiceBlogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLServiceBlogger.h; sourceTree = "<group>"; };
-		4FAB9B5B157951EF000529A7 /* GTLServiceBlogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLServiceBlogger.m; sourceTree = "<group>"; };
 		4FD0F1DA0CBC68F300059DC1 /* buildStripHeaders */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.script.sh; path = buildStripHeaders; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* BloggerSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BloggerSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -235,31 +200,7 @@
 		4FAB9B42157951EF000529A7 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				4FAB9B43157951EF000529A7 /* GTLBlogger.h */,
-				4FAB9B44157951EF000529A7 /* GTLBloggerBlog.h */,
-				4FAB9B45157951EF000529A7 /* GTLBloggerBlog.m */,
-				4FAB9B46157951EF000529A7 /* GTLBloggerBlogList.h */,
-				4FAB9B47157951EF000529A7 /* GTLBloggerBlogList.m */,
-				4FAB9B48157951EF000529A7 /* GTLBloggerComment.h */,
-				4FAB9B49157951EF000529A7 /* GTLBloggerComment.m */,
-				4FAB9B4A157951EF000529A7 /* GTLBloggerCommentList.h */,
-				4FAB9B4B157951EF000529A7 /* GTLBloggerCommentList.m */,
-				4FAB9B4C157951EF000529A7 /* GTLBloggerConstants.h */,
-				4FAB9B4D157951EF000529A7 /* GTLBloggerConstants.m */,
-				4FAB9B4E157951EF000529A7 /* GTLBloggerPage.h */,
-				4FAB9B4F157951EF000529A7 /* GTLBloggerPage.m */,
-				4FAB9B50157951EF000529A7 /* GTLBloggerPageList.h */,
-				4FAB9B51157951EF000529A7 /* GTLBloggerPageList.m */,
-				4FAB9B52157951EF000529A7 /* GTLBloggerPost.h */,
-				4FAB9B53157951EF000529A7 /* GTLBloggerPost.m */,
-				4FAB9B54157951EF000529A7 /* GTLBloggerPostList.h */,
-				4FAB9B55157951EF000529A7 /* GTLBloggerPostList.m */,
-				4FAB9B56157951EF000529A7 /* GTLBloggerUser.h */,
-				4FAB9B57157951EF000529A7 /* GTLBloggerUser.m */,
-				4FAB9B58157951EF000529A7 /* GTLQueryBlogger.h */,
-				4FAB9B59157951EF000529A7 /* GTLQueryBlogger.m */,
-				4FAB9B5A157951EF000529A7 /* GTLServiceBlogger.h */,
-				4FAB9B5B157951EF000529A7 /* GTLServiceBlogger.m */,
+				4F385CB51807669C00E21D98 /* GTLBlogger_Sources.m */,
 			);
 			name = Generated;
 			path = ../../Source/Services/Blogger/Generated;
@@ -310,6 +251,8 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "BloggerSample" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -404,18 +347,7 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				4F9A73431578159900D7D1B5 /* BloggerSampleAppController.m in Sources */,
 				4F9A73441578159900D7D1B5 /* BloggerSampleWindowController.m in Sources */,
-				4FAB9B5C157951EF000529A7 /* GTLBloggerBlog.m in Sources */,
-				4FAB9B5D157951EF000529A7 /* GTLBloggerBlogList.m in Sources */,
-				4FAB9B5E157951EF000529A7 /* GTLBloggerComment.m in Sources */,
-				4FAB9B5F157951EF000529A7 /* GTLBloggerCommentList.m in Sources */,
-				4FAB9B60157951EF000529A7 /* GTLBloggerConstants.m in Sources */,
-				4FAB9B61157951EF000529A7 /* GTLBloggerPage.m in Sources */,
-				4FAB9B62157951EF000529A7 /* GTLBloggerPageList.m in Sources */,
-				4FAB9B63157951EF000529A7 /* GTLBloggerPost.m in Sources */,
-				4FAB9B64157951EF000529A7 /* GTLBloggerPostList.m in Sources */,
-				4FAB9B65157951EF000529A7 /* GTLBloggerUser.m in Sources */,
-				4FAB9B66157951EF000529A7 /* GTLQueryBlogger.m in Sources */,
-				4FAB9B67157951EF000529A7 /* GTLServiceBlogger.m in Sources */,
+				4F385CB61807669C00E21D98 /* GTLBlogger_Sources.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
