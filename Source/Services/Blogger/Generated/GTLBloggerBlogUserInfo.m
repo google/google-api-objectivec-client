@@ -39,7 +39,14 @@
 //
 
 @implementation GTLBloggerBlogUserInfo
-@dynamic blog, kind, user;
+@dynamic blog, blogUserInfo, kind;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"blog_user_info"
+                                forKey:@"blogUserInfo"];
+  return map;
+}
 
 + (void)load {
   [self registerObjectClassForKind:@"blogger#blogUserInfo"];

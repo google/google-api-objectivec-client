@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,11 +26,12 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLBloggerBlogList (0 custom class methods, 2 custom properties)
+//   GTLBloggerBlogList (0 custom class methods, 3 custom properties)
 
 #import "GTLBloggerBlogList.h"
 
 #import "GTLBloggerBlog.h"
+#import "GTLBloggerBlogUserInfo.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -38,12 +39,14 @@
 //
 
 @implementation GTLBloggerBlogList
-@dynamic items, kind;
+@dynamic blogUserInfos, items, kind;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLBloggerBlog class]
-                                forKey:@"items"];
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      [GTLBloggerBlogUserInfo class], @"blogUserInfos",
+      [GTLBloggerBlog class], @"items",
+      nil];
   return map;
 }
 

@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLQueryBlogger (17 custom class methods, 17 custom properties)
+//   GTLQueryBlogger (31 custom class methods, 25 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -34,6 +34,7 @@
   #import "GTLQuery.h"
 #endif
 
+@class GTLBloggerPage;
 @class GTLBloggerPost;
 
 @interface GTLQueryBlogger : GTLQuery
@@ -52,18 +53,26 @@
 @property (copy) NSString *commentId;
 @property (retain) GTLDateTime *endDate;
 @property (assign) BOOL fetchBodies;
+@property (assign) BOOL fetchImages;
+@property (assign) BOOL fetchUserInfo;
+@property (assign) BOOL isDraft;
 @property (copy) NSString *labels;
 @property (assign) NSUInteger maxComments;
 @property (assign) NSUInteger maxPosts;
 @property (assign) NSUInteger maxResults;
+@property (copy) NSString *orderBy;
 @property (copy) NSString *pageId;
 @property (copy) NSString *pageToken;
 @property (copy) NSString *path;
 @property (copy) NSString *postId;
+@property (retain) GTLDateTime *publishDate;
 @property (copy) NSString *q;
+@property (retain) NSArray *range;  // of NSString
 @property (retain) GTLDateTime *startDate;
+@property (retain) NSArray *statuses;  // of NSString
 @property (copy) NSString *url;
 @property (copy) NSString *userId;
+@property (copy) NSString *view;
 
 #pragma mark -
 #pragma mark "blogs" methods
@@ -96,6 +105,13 @@
 //  Required:
 //   userId: ID of the user whose blogs are to be fetched. Either the word
 //     'self' (sans quote marks) or the user's profile identifier.
+//  Optional:
+//   fetchUserInfo: Whether the response is a list of blogs with per-user
+//     information instead of just blogs.
+//   view: NSString
+//      kGTLBloggerViewAdmin: Admin level detail
+//      kGTLBloggerViewAuthor: Author level detail
+//      kGTLBloggerViewReader: Admin level detail
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
@@ -125,6 +141,31 @@
 #pragma mark "comments" methods
 // These create a GTLQueryBlogger object.
 
+// Method: blogger.comments.approve
+// Marks a comment as not spam.
+//  Required:
+//   blogId: The Id of the Blog.
+//   postId: The ID of the Post.
+//   commentId: The ID of the comment to mark as not spam.
+//  Authorization scope(s):
+//   kGTLAuthScopeBlogger
+// Fetches a GTLBloggerComment.
++ (id)queryForCommentsApproveWithBlogId:(NSString *)blogId
+                                 postId:(NSString *)postId
+                              commentId:(NSString *)commentId;
+
+// Method: blogger.comments.delete
+// Delete a comment by id.
+//  Required:
+//   blogId: The Id of the Blog.
+//   postId: The ID of the Post.
+//   commentId: The ID of the comment to delete.
+//  Authorization scope(s):
+//   kGTLAuthScopeBlogger
++ (id)queryForCommentsDeleteWithBlogId:(NSString *)blogId
+                                postId:(NSString *)postId
+                             commentId:(NSString *)commentId;
+
 // Method: blogger.comments.get
 // Gets one comment by id.
 //  Required:
@@ -140,10 +181,39 @@
                           commentId:(NSString *)commentId;
 
 // Method: blogger.comments.list
-// Retrieves the comments for a blog, possibly filtered.
+// Retrieves the comments for a post, possibly filtered.
 //  Required:
 //   blogId: ID of the blog to fetch comments from.
 //   postId: ID of the post to fetch posts from.
+//  Optional:
+//   endDate: Latest date of comment to fetch, a date-time with RFC 3339
+//     formatting.
+//   fetchBodies: Whether the body content of the comments is included.
+//   maxResults: Maximum number of comments to include in the result.
+//   pageToken: Continuation token if request is paged.
+//   startDate: Earliest date of comment to fetch, a date-time with RFC 3339
+//     formatting.
+//   statuses: NSArray
+//      kGTLBloggerStatusesEmptied: Comments that have had their content removed
+//      kGTLBloggerStatusesLive: Comments that are publicly visible
+//      kGTLBloggerStatusesPending: Comments that are awaiting administrator
+//        approval
+//      kGTLBloggerStatusesSpam: Comments marked as spam by the administrator
+//   view: NSString
+//      kGTLBloggerViewAdmin: Admin level detail
+//      kGTLBloggerViewAuthor: Author level detail
+//      kGTLBloggerViewReader: Admin level detail
+//  Authorization scope(s):
+//   kGTLAuthScopeBlogger
+//   kGTLAuthScopeBloggerReadonly
+// Fetches a GTLBloggerCommentList.
++ (id)queryForCommentsListWithBlogId:(NSString *)blogId
+                              postId:(NSString *)postId;
+
+// Method: blogger.comments.listByBlog
+// Retrieves the comments for a blog, across all posts, possibly filtered.
+//  Required:
+//   blogId: ID of the blog to fetch comments from.
 //  Optional:
 //   endDate: Latest date of comment to fetch, a date-time with RFC 3339
 //     formatting.
@@ -156,18 +226,58 @@
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerCommentList.
-+ (id)queryForCommentsListWithBlogId:(NSString *)blogId
-                              postId:(NSString *)postId;
++ (id)queryForCommentsListByBlogWithBlogId:(NSString *)blogId;
+
+// Method: blogger.comments.markAsSpam
+// Marks a comment as spam.
+//  Required:
+//   blogId: The Id of the Blog.
+//   postId: The ID of the Post.
+//   commentId: The ID of the comment to mark as spam.
+//  Authorization scope(s):
+//   kGTLAuthScopeBlogger
+// Fetches a GTLBloggerComment.
++ (id)queryForCommentsMarkAsSpamWithBlogId:(NSString *)blogId
+                                    postId:(NSString *)postId
+                                 commentId:(NSString *)commentId;
+
+// Method: blogger.comments.removeContent
+// Removes the content of a comment.
+//  Required:
+//   blogId: The Id of the Blog.
+//   postId: The ID of the Post.
+//   commentId: The ID of the comment to delete content from.
+//  Authorization scope(s):
+//   kGTLAuthScopeBlogger
+// Fetches a GTLBloggerComment.
++ (id)queryForCommentsRemoveContentWithBlogId:(NSString *)blogId
+                                       postId:(NSString *)postId
+                                    commentId:(NSString *)commentId;
 
 #pragma mark -
 #pragma mark "pages" methods
 // These create a GTLQueryBlogger object.
+
+// Method: blogger.pages.delete
+// Delete a page by id.
+//  Required:
+//   blogId: The Id of the Blog.
+//   pageId: The ID of the Page.
+//  Authorization scope(s):
+//   kGTLAuthScopeBlogger
++ (id)queryForPagesDeleteWithBlogId:(NSString *)blogId
+                             pageId:(NSString *)pageId;
 
 // Method: blogger.pages.get
 // Gets one blog page by id.
 //  Required:
 //   blogId: ID of the blog containing the page.
 //   pageId: The ID of the page to get.
+//  Optional:
+//   view: NSString
+//      kGTLBloggerViewAdmin: Admin level detail
+//      kGTLBloggerViewAuthor: Author level detail
+//      kGTLBloggerViewReader: Admin level detail
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
@@ -175,17 +285,77 @@
 + (id)queryForPagesGetWithBlogId:(NSString *)blogId
                           pageId:(NSString *)pageId;
 
+// Method: blogger.pages.insert
+// Add a page.
+//  Required:
+//   blogId: ID of the blog to add the page to.
+//  Authorization scope(s):
+//   kGTLAuthScopeBlogger
+// Fetches a GTLBloggerPage.
++ (id)queryForPagesInsertWithObject:(GTLBloggerPage *)object
+                             blogId:(NSString *)blogId;
+
 // Method: blogger.pages.list
-// Retrieves pages for a blog, possibly filtered.
+// Retrieves the pages for a blog, optionally including non-LIVE statuses.
 //  Required:
 //   blogId: ID of the blog to fetch pages from.
 //  Optional:
 //   fetchBodies: Whether to retrieve the Page bodies.
+//   statuses: NSArray
+//      kGTLBloggerStatusesDraft: Draft (unpublished) Pages
+//      kGTLBloggerStatusesImported: Pages that have had their content removed
+//      kGTLBloggerStatusesLive: Pages that are publicly visible
+//   view: NSString
+//      kGTLBloggerViewAdmin: Admin level detail
+//      kGTLBloggerViewAuthor: Author level detail
+//      kGTLBloggerViewReader: Admin level detail
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerPageList.
 + (id)queryForPagesListWithBlogId:(NSString *)blogId;
+
+// Method: blogger.pages.patch
+// Update a page. This method supports patch semantics.
+//  Required:
+//   blogId: The ID of the Blog.
+//   pageId: The ID of the Page.
+//  Authorization scope(s):
+//   kGTLAuthScopeBlogger
+// Fetches a GTLBloggerPage.
++ (id)queryForPagesPatchWithObject:(GTLBloggerPage *)object
+                            blogId:(NSString *)blogId
+                            pageId:(NSString *)pageId;
+
+// Method: blogger.pages.update
+// Update a page.
+//  Required:
+//   blogId: The ID of the Blog.
+//   pageId: The ID of the Page.
+//  Authorization scope(s):
+//   kGTLAuthScopeBlogger
+// Fetches a GTLBloggerPage.
++ (id)queryForPagesUpdateWithObject:(GTLBloggerPage *)object
+                             blogId:(NSString *)blogId
+                             pageId:(NSString *)pageId;
+
+#pragma mark -
+#pragma mark "pageViews" methods
+// These create a GTLQueryBlogger object.
+
+// Method: blogger.pageViews.get
+// Retrieve pageview stats for a Blog.
+//  Required:
+//   blogId: The ID of the blog to get.
+//  Optional:
+//   range: NSArray
+//      kGTLBloggerRangeX30days: Page view counts from the last thirty days.
+//      kGTLBloggerRangeX7days: Page view counts from the last seven days.
+//      kGTLBloggerRangeAll: Total page view counts from all time.
+//  Authorization scope(s):
+//   kGTLAuthScopeBlogger
+// Fetches a GTLBloggerPageviews.
++ (id)queryForPageViewsGetWithBlogId:(NSString *)blogId;
 
 #pragma mark -
 #pragma mark "posts" methods
@@ -208,6 +378,10 @@
 //   postId: The ID of the post
 //  Optional:
 //   maxComments: Maximum number of comments to pull back on a post.
+//   view: NSString
+//      kGTLBloggerViewAdmin: Admin level detail
+//      kGTLBloggerViewAuthor: Author level detail
+//      kGTLBloggerViewReader: Admin level detail
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
@@ -222,6 +396,10 @@
 //   path: Path of the Post to retrieve.
 //  Optional:
 //   maxComments: Maximum number of comments to pull back on a post.
+//   view: NSString
+//      kGTLBloggerViewAdmin: Admin level detail
+//      kGTLBloggerViewAuthor: Author level detail
+//      kGTLBloggerViewReader: Admin level detail
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
@@ -233,6 +411,8 @@
 // Add a post.
 //  Required:
 //   blogId: ID of the blog to add the post to.
+//  Optional:
+//   isDraft: Whether to create the post as a draft
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 // Fetches a GTLBloggerPost.
@@ -245,12 +425,25 @@
 //   blogId: ID of the blog to fetch posts from.
 //  Optional:
 //   endDate: Latest post date to fetch, a date-time with RFC 3339 formatting.
-//   fetchBodies: Whether the body content of posts is included.
+//   fetchBodies: Whether the body content of posts is included. (Default true)
+//   fetchImages: Whether image URL metadata for each post is included.
 //   labels: Comma-separated list of labels to search for.
 //   maxResults: Maximum number of posts to fetch.
+//   orderBy: Sort search results (Default "PUBLISHED")
+//      kGTLBloggerOrderByPublished: Order by the date the post was published
+//      kGTLBloggerOrderByUpdated: Order by the date the post was last updated
 //   pageToken: Continuation token if the request is paged.
 //   startDate: Earliest post date to fetch, a date-time with RFC 3339
 //     formatting.
+//   statuses: NSArray
+//      kGTLBloggerStatusesDraft: Draft posts
+//      kGTLBloggerStatusesLive: Published posts
+//      kGTLBloggerStatusesScheduled: Posts that are scheduled to publish in
+//        future.
+//   view: NSString
+//      kGTLBloggerViewAdmin: Admin level detail
+//      kGTLBloggerViewAuthor: Author level detail
+//      kGTLBloggerViewReader: Reader level detail
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
@@ -269,11 +462,39 @@
                             blogId:(NSString *)blogId
                             postId:(NSString *)postId;
 
+// Method: blogger.posts.publish
+// Publish a draft post.
+//  Required:
+//   blogId: The ID of the Blog.
+//   postId: The ID of the Post.
+//  Optional:
+//   publishDate: The date and time to schedule the publishing of the Blog.
+//  Authorization scope(s):
+//   kGTLAuthScopeBlogger
+// Fetches a GTLBloggerPost.
++ (id)queryForPostsPublishWithBlogId:(NSString *)blogId
+                              postId:(NSString *)postId;
+
+// Method: blogger.posts.revert
+// Revert a published or scheduled post to draft state.
+//  Required:
+//   blogId: The ID of the Blog.
+//   postId: The ID of the Post.
+//  Authorization scope(s):
+//   kGTLAuthScopeBlogger
+// Fetches a GTLBloggerPost.
++ (id)queryForPostsRevertWithBlogId:(NSString *)blogId
+                             postId:(NSString *)postId;
+
 // Method: blogger.posts.search
 // Search for a post.
 //  Required:
 //   blogId: ID of the blog to fetch the post from.
 //   q: Query terms to search this blog for matching posts.
+//  Optional:
+//   orderBy: Sort search results (Default "PUBLISHED")
+//      kGTLBloggerOrderByPublished: Order by the date the post was published
+//      kGTLBloggerOrderByUpdated: Order by the date the post was last updated
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
@@ -292,6 +513,60 @@
 + (id)queryForPostsUpdateWithObject:(GTLBloggerPost *)object
                              blogId:(NSString *)blogId
                              postId:(NSString *)postId;
+
+#pragma mark -
+#pragma mark "postUserInfos" methods
+// These create a GTLQueryBlogger object.
+
+// Method: blogger.postUserInfos.get
+// Gets one post and user info pair by postId and userId.
+//  Required:
+//   userId: ID of the user for the per-user information to be fetched. Either
+//     the word 'self' (sans quote marks) or the user's profile identifier.
+//   blogId: The ID of the blog.
+//   postId: The ID of the post to get.
+//  Optional:
+//   maxComments: Maximum number of comments to pull back on a post.
+//  Authorization scope(s):
+//   kGTLAuthScopeBlogger
+//   kGTLAuthScopeBloggerReadonly
+// Fetches a GTLBloggerPostUserInfo.
++ (id)queryForPostUserInfosGetWithUserId:(NSString *)userId
+                                  blogId:(NSString *)blogId
+                                  postId:(NSString *)postId;
+
+// Method: blogger.postUserInfos.list
+// Retrieves a list of post and user info pairs, possibly filtered.
+//  Required:
+//   userId: ID of the user for the per-user information to be fetched. Either
+//     the word 'self' (sans quote marks) or the user's profile identifier.
+//   blogId: ID of the blog to fetch posts from.
+//  Optional:
+//   endDate: Latest post date to fetch, a date-time with RFC 3339 formatting.
+//   fetchBodies: Whether the body content of posts is included.
+//   labels: Comma-separated list of labels to search for.
+//   maxResults: Maximum number of posts to fetch.
+//   orderBy: Sort search results (Default "PUBLISHED")
+//      kGTLBloggerOrderByPublished: Order by the date the post was published
+//      kGTLBloggerOrderByUpdated: Order by the date the post was last updated
+//   pageToken: Continuation token if the request is paged.
+//   startDate: Earliest post date to fetch, a date-time with RFC 3339
+//     formatting.
+//   statuses: NSArray
+//      kGTLBloggerStatusesDraft: Draft posts
+//      kGTLBloggerStatusesLive: Published posts
+//      kGTLBloggerStatusesScheduled: Posts that are scheduled to publish in
+//        future.
+//   view: NSString
+//      kGTLBloggerViewAdmin: Admin level detail
+//      kGTLBloggerViewAuthor: Author level detail
+//      kGTLBloggerViewReader: Reader level detail
+//  Authorization scope(s):
+//   kGTLAuthScopeBlogger
+//   kGTLAuthScopeBloggerReadonly
+// Fetches a GTLBloggerPostUserInfosList.
++ (id)queryForPostUserInfosListWithUserId:(NSString *)userId
+                                   blogId:(NSString *)blogId;
 
 #pragma mark -
 #pragma mark "users" methods

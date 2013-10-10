@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLQueryBooks (37 custom class methods, 56 custom properties)
+//   GTLQueryBooks (37 custom class methods, 57 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -71,6 +71,7 @@
 @property (copy) NSString *layerId;
 @property (retain) NSArray *layerIds;  // of NSString
 @property (copy) NSString *libraryRestrict;
+@property (copy) NSString *licenseTypes;
 @property (copy) NSString *locale;
 @property (assign) NSUInteger maxResults;
 @property (copy) NSString *mimeType;
@@ -361,6 +362,11 @@
 //   nonce: The client nonce value.
 //   cpksver: The device/version ID from which to request the restrictions.
 //  Optional:
+//   licenseTypes: The type of access license to request. If not specified, the
+//     default is BOTH.
+//      kGTLBooksLicenseTypesBoth: Both concurrent and download licenses.
+//      kGTLBooksLicenseTypesConcurrent: Concurrent access license.
+//      kGTLBooksLicenseTypesDownload: Offline download access license.
 //   locale: ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US.
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks

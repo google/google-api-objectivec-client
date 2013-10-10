@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLBloggerBlogPerUserInfo.h
+//  GTLBloggerPostUserInfosList.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLBloggerBlogPerUserInfo (0 custom class methods, 5 custom properties)
+//   GTLBloggerPostUserInfosList (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,26 +34,25 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLBloggerPostUserInfo;
+
 // ----------------------------------------------------------------------------
 //
-//   GTLBloggerBlogPerUserInfo
+//   GTLBloggerPostUserInfosList
 //
 
-@interface GTLBloggerBlogPerUserInfo : GTLObject
+// This class supports NSFastEnumeration over its "items" property. It also
+// supports -itemAtIndex: to retrieve individual objects from "items".
 
-// ID of the Blog resource
-@property (copy) NSString *blogId;
+@interface GTLBloggerPostUserInfosList : GTLCollectionObject
 
-// True if the user has Admin level access to the blog.
-@property (retain) NSNumber *hasAdminAccess;  // boolValue
+// The list of Posts with User information for the post, for this Blog.
+@property (retain) NSArray *items;  // of GTLBloggerPostUserInfo
 
-// The kind of this entity. Always blogger#blogPerUserInfo
+// The kind of this entity. Always blogger#postList
 @property (copy) NSString *kind;
 
-// The Photo Album Key for the user when adding photos to the blog
-@property (copy) NSString *photosAlbumKey;
-
-// ID of the User
-@property (copy) NSString *userId;
+// Pagination token to fetch the next page, if one exists.
+@property (copy) NSString *nextPageToken;
 
 @end

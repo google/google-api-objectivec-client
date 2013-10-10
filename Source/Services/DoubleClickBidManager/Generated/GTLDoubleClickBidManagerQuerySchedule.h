@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/bid-manager/
 // Classes:
-//   GTLDoubleClickBidManagerQuerySchedule (0 custom class methods, 2 custom properties)
+//   GTLDoubleClickBidManagerQuerySchedule (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -43,10 +43,17 @@
 
 @interface GTLDoubleClickBidManagerQuerySchedule : GTLObject
 
-// Run the query periodically until the specified time.
+// Datetime to periodically run the query until.
 @property (retain) NSNumber *endTimeMs;  // longLongValue
 
 // How often the query is run.
 @property (copy) NSString *frequency;
+
+// Time of day at which a new report will be generated, represented as minutes
+// past midnight Range is 0 to 1439. Only applies to scheduled reports.
+@property (retain) NSNumber *nextRunMinuteOfDay;  // intValue
+
+// Timezone in which a new report will be generated.
+@property (copy) NSString *nextRunTimezoneCode;
 
 @end

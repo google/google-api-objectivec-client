@@ -43,8 +43,8 @@
 
 @interface GTLDoubleClickBidManagerDownloadLineItemsResponse : GTLObject
 
-// Retrieved line items in CSV. Refer to Entity Write File Format for more
-// information on file format.
+// Retrieved line items in CSV format. Refer to Entity Write File Format for
+// more information on file format.
 @property (copy) NSString *lineItems;
 
 @end

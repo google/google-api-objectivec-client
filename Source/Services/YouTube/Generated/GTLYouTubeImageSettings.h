@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeImageSettings (0 custom class methods, 19 custom properties)
+//   GTLYouTubeImageSettings (0 custom class methods, 22 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -83,8 +83,17 @@
 // Banner image. Tablet size low resolution (1138x188).
 @property (copy) NSString *bannerTabletLowImageUrl;
 
-// Banner image. TV size (2120x1192).
+// Banner image. TV size high resolution (1920x1080).
+@property (copy) NSString *bannerTvHighImageUrl;
+
+// Banner image. TV size extra high resolution (2120x1192).
 @property (copy) NSString *bannerTvImageUrl;
+
+// Banner image. TV size low resolution (854x480).
+@property (copy) NSString *bannerTvLowImageUrl;
+
+// Banner image. TV size medium resolution (1280x720).
+@property (copy) NSString *bannerTvMediumImageUrl;
 
 // The image map script for the large banner image.
 @property (retain) GTLYouTubeLocalizedProperty *largeBrandedBannerImageImapScript;

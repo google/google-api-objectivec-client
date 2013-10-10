@@ -26,9 +26,10 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLBloggerPost (0 custom class methods, 14 custom properties)
+//   GTLBloggerPost (0 custom class methods, 17 custom properties)
 //   GTLBloggerPostAuthor (0 custom class methods, 4 custom properties)
 //   GTLBloggerPostBlog (0 custom class methods, 1 custom properties)
+//   GTLBloggerPostImagesItem (0 custom class methods, 1 custom properties)
 //   GTLBloggerPostLocation (0 custom class methods, 4 custom properties)
 //   GTLBloggerPostReplies (0 custom class methods, 3 custom properties)
 //   GTLBloggerPostAuthorImage (0 custom class methods, 1 custom properties)
@@ -43,6 +44,7 @@
 @class GTLBloggerPostAuthor;
 @class GTLBloggerPostAuthorImage;
 @class GTLBloggerPostBlog;
+@class GTLBloggerPostImagesItem;
 @class GTLBloggerPostLocation;
 @class GTLBloggerPostReplies;
 
@@ -69,6 +71,9 @@
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
+// Display image for the Post.
+@property (retain) NSArray *images;  // of GTLBloggerPostImagesItem
+
 // The kind of this entity. Always blogger#post
 @property (copy) NSString *kind;
 
@@ -87,8 +92,14 @@
 // The API REST URL to fetch this resource from.
 @property (copy) NSString *selfLink;
 
+// Status of the post. Only set for admin-level requests
+@property (copy) NSString *status;
+
 // The title of the Post.
 @property (copy) NSString *title;
+
+// The title link URL, similar to atom's related link.
+@property (copy) NSString *titleLink;
 
 // RFC 3339 date-time when this Post was last updated.
 @property (retain) GTLDateTime *updated;
@@ -133,6 +144,16 @@
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLBloggerPostImagesItem
+//
+
+@interface GTLBloggerPostImagesItem : GTLObject
+@property (copy) NSString *url;
 @end
 
 

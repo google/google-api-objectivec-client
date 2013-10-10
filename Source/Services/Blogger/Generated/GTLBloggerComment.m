@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLBloggerComment (0 custom class methods, 10 custom properties)
+//   GTLBloggerComment (0 custom class methods, 11 custom properties)
 //   GTLBloggerCommentAuthor (0 custom class methods, 4 custom properties)
 //   GTLBloggerCommentBlog (0 custom class methods, 1 custom properties)
 //   GTLBloggerCommentInReplyTo (0 custom class methods, 1 custom properties)
@@ -42,7 +42,7 @@
 
 @implementation GTLBloggerComment
 @dynamic author, blog, content, identifier, inReplyTo, kind, post, published,
-         selfLink, updated;
+         selfLink, status, updated;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

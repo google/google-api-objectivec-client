@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/bid-manager/
 // Classes:
-//   GTLDoubleClickBidManagerQuerySchedule (0 custom class methods, 2 custom properties)
+//   GTLDoubleClickBidManagerQuerySchedule (0 custom class methods, 4 custom properties)
 
 #import "GTLDoubleClickBidManagerQuerySchedule.h"
 
@@ -36,5 +36,5 @@
 //
 
 @implementation GTLDoubleClickBidManagerQuerySchedule
-@dynamic endTimeMs, frequency;
+@dynamic endTimeMs, frequency, nextRunMinuteOfDay, nextRunTimezoneCode;
 @end

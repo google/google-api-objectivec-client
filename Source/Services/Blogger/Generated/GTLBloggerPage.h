@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLBloggerPage (0 custom class methods, 10 custom properties)
+//   GTLBloggerPage (0 custom class methods, 11 custom properties)
 //   GTLBloggerPageAuthor (0 custom class methods, 4 custom properties)
 //   GTLBloggerPageBlog (0 custom class methods, 1 custom properties)
 //   GTLBloggerPageAuthorImage (0 custom class methods, 1 custom properties)
@@ -69,6 +69,9 @@
 
 // The API REST URL to fetch this resource from.
 @property (copy) NSString *selfLink;
+
+// The status of the page for admin resources (either LIVE or DRAFT).
+@property (copy) NSString *status;
 
 // The title of this entity. This is the name displayed in the Admin user
 // interface.

@@ -46,7 +46,7 @@
 // Whether the stored entity is changed as a result of upload.
 @property (retain) NSNumber *changed;  // boolValue
 
-// Entity ID.
+// Entity Id.
 @property (retain) NSNumber *entityId;  // longLongValue
 
 // Entity name.

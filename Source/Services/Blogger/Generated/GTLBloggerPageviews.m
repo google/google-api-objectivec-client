@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLBloggerBlogPerUserInfo.h
+//  GTLBloggerPageviews.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,34 +26,38 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLBloggerBlogPerUserInfo (0 custom class methods, 5 custom properties)
+//   GTLBloggerPageviews (0 custom class methods, 3 custom properties)
+//   GTLBloggerPageviewsCountsItem (0 custom class methods, 2 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLBloggerPageviews.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBloggerBlogPerUserInfo
+//   GTLBloggerPageviews
 //
 
-@interface GTLBloggerBlogPerUserInfo : GTLObject
+@implementation GTLBloggerPageviews
+@dynamic blogId, counts, kind;
 
-// ID of the Blog resource
-@property (copy) NSString *blogId;
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLBloggerPageviewsCountsItem class]
+                                forKey:@"counts"];
+  return map;
+}
 
-// True if the user has Admin level access to the blog.
-@property (retain) NSNumber *hasAdminAccess;  // boolValue
++ (void)load {
+  [self registerObjectClassForKind:@"blogger#page_views"];
+}
 
-// The kind of this entity. Always blogger#blogPerUserInfo
-@property (copy) NSString *kind;
+@end
 
-// The Photo Album Key for the user when adding photos to the blog
-@property (copy) NSString *photosAlbumKey;
 
-// ID of the User
-@property (copy) NSString *userId;
+// ----------------------------------------------------------------------------
+//
+//   GTLBloggerPageviewsCountsItem
+//
 
+@implementation GTLBloggerPageviewsCountsItem
+@dynamic count, timeRange;
 @end

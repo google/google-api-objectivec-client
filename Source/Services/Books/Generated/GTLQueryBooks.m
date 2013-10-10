@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLQueryBooks (37 custom class methods, 56 custom properties)
+//   GTLQueryBooks (37 custom class methods, 57 custom properties)
 
 #import "GTLQueryBooks.h"
 
@@ -54,11 +54,11 @@
 @dynamic acquireMethod, action, annotationDataId, annotationId, association,
          contentVersion, country, cpksver, deviceCookie, download,
          driveDocumentId, endOffset, endPosition, features, fields, filter, h,
-         langRestrict, layerId, layerIds, libraryRestrict, locale, maxResults,
-         mimeType, name, nonce, orderBy, pageIds, pageToken, partner, position,
-         printType, processingState, projection, q, rating, scale, shelf,
-         showDeleted, showOnlySummaryInResponse, showPreorders, source,
-         startIndex, startOffset, startPosition, summaryId, timestamp,
+         langRestrict, layerId, layerIds, libraryRestrict, licenseTypes, locale,
+         maxResults, mimeType, name, nonce, orderBy, pageIds, pageToken,
+         partner, position, printType, processingState, projection, q, rating,
+         scale, shelf, showDeleted, showOnlySummaryInResponse, showPreorders,
+         source, startIndex, startOffset, startPosition, summaryId, timestamp,
          updatedMax, updatedMin, uploadClientToken, userId,
          volumeAnnotationsVersion, volumeId, volumeIds, volumePosition, w;
 

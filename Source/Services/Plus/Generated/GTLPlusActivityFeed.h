@@ -68,7 +68,7 @@
 // results.
 @property (copy) NSString *nextPageToken;
 
-// Link to this activities resource.
+// Link to this activity resource.
 @property (copy) NSString *selfLink;
 
 // The title of this collection of activities, which is a truncated portion of

@@ -67,13 +67,13 @@
 // Method: doubleclickbidmanager.lineitems.downloadlineitems
 // Retrieves line items in CSV format.
 //  Optional:
-//   filterIds: IDs of the specified filter type used to filter line items to
+//   filterIds: Ids of the specified filter type used to filter line items to
 //     fetch. If omitted, all the line items will be returned.
 //   filterType: Filter type used to filter line items to fetch.
 //      kGTLDoubleClickBidManagerFilterTypeAdvertiserId: "ADVERTISER_ID"
 //      kGTLDoubleClickBidManagerFilterTypeInsertionOrderId: "INSERTION_ORDER_ID"
 //      kGTLDoubleClickBidManagerFilterTypeLineItemId: "LINE_ITEM_ID"
-//   format: Format in which the line items will be returned.
+//   format: Format in which the line items will be returned. Default to CSV.
 //      kGTLDoubleClickBidManagerFormatCsv: "CSV"
 // Fetches a GTLDoubleClickBidManagerDownloadLineItemsResponse.
 + (id)queryForLineitemsDownloadlineitems;
@@ -81,9 +81,9 @@
 // Method: doubleclickbidmanager.lineitems.uploadlineitems
 // Uploads line items in CSV format.
 //  Optional:
-//   dryRun: Set to true get upload status without actually persisting the line
-//     items.
-//   format: Format the line items are in.
+//   dryRun: Set to true to get upload status without actually persisting the
+//     line items.
+//   format: Format the line items are in. Default to CSV.
 //      kGTLDoubleClickBidManagerFormatCsv: "CSV"
 //   lineItems: Line items in CSV to upload. Refer to Entity Write File Format
 //     for more information on file format.

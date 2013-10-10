@@ -36,8 +36,12 @@
 #import "GTLBloggerCommentList.h"
 #import "GTLBloggerPage.h"
 #import "GTLBloggerPageList.h"
+#import "GTLBloggerPageviews.h"
 #import "GTLBloggerPost.h"
 #import "GTLBloggerPostList.h"
+#import "GTLBloggerPostPerUserInfo.h"
+#import "GTLBloggerPostUserInfo.h"
+#import "GTLBloggerPostUserInfosList.h"
 #import "GTLBloggerUser.h"
 
 #import "GTLQueryBlogger.h"

@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLBloggerComment (0 custom class methods, 10 custom properties)
+//   GTLBloggerComment (0 custom class methods, 11 custom properties)
 //   GTLBloggerCommentAuthor (0 custom class methods, 4 custom properties)
 //   GTLBloggerCommentBlog (0 custom class methods, 1 custom properties)
 //   GTLBloggerCommentInReplyTo (0 custom class methods, 1 custom properties)
@@ -79,6 +79,9 @@
 
 // The API REST URL to fetch this resource from.
 @property (copy) NSString *selfLink;
+
+// The status of the comment (only populated for admin users)
+@property (copy) NSString *status;
 
 // RFC 3339 date-time when this comment was last updated.
 @property (retain) GTLDateTime *updated;

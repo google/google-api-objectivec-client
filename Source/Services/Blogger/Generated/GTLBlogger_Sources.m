@@ -39,8 +39,12 @@
 #import "GTLBloggerCommentList.m"
 #import "GTLBloggerPage.m"
 #import "GTLBloggerPageList.m"
+#import "GTLBloggerPageviews.m"
 #import "GTLBloggerPost.m"
 #import "GTLBloggerPostList.m"
+#import "GTLBloggerPostPerUserInfo.m"
+#import "GTLBloggerPostUserInfo.m"
+#import "GTLBloggerPostUserInfosList.m"
 #import "GTLBloggerUser.m"
 
 #import "GTLQueryBlogger.m"
