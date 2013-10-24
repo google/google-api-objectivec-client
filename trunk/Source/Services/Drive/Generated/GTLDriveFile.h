@@ -184,7 +184,7 @@
 // root folder.
 @property (retain) NSArray *parents;  // of GTLDriveParentReference
 
-// The list of properties.
+// The list of properties. This is a write-only field.
 @property (retain) NSArray *properties;  // of GTLDriveProperty
 
 // The number of quota bytes used by this file.

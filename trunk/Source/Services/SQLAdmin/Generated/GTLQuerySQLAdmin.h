@@ -69,9 +69,8 @@
 // Method: sql.backupRuns.get
 // Retrieves a resource containing information about a backup run.
 //  Required:
-//   project: Project ID of the project that contains the instance. You can find
-//     this on the project summary page of the Google APIs Console.
-//   instance: Database instance ID. This does not include the project ID.
+//   project: Project ID of the project that contains the instance.
+//   instance: Cloud SQL instance ID. This does not include the project ID.
 //   backupConfiguration: Identifier for the backup configuration. This gets
 //     generated automatically when a backup configuration is created.
 //   dueTime: The time when this run is due to start in RFC 3339 format, for
@@ -88,9 +87,8 @@
 // Lists all backup runs associated with a given instance and configuration in
 // the reverse chronological order of the enqueued time.
 //  Required:
-//   project: Project ID of the project that contains the instance. You can find
-//     this on the project summary page of the Google APIs Console.
-//   instance: Database instance ID. This does not include the project ID.
+//   project: Project ID of the project that contains the instance.
+//   instance: Cloud SQL instance ID. This does not include the project ID.
 //   backupConfiguration: Identifier for the backup configuration. This gets
 //     generated automatically when a backup configuration is created.
 //  Optional:
@@ -110,12 +108,11 @@
 // These create a GTLQuerySQLAdmin object.
 
 // Method: sql.instances.delete
-// Deletes a database instance.
+// Deletes a Cloud SQL instance.
 //  Required:
 //   project: Project ID of the project that contains the instance to be
-//     deleted. You can find this on the project summary page of the Google APIs
-//     Console.
-//   instance: Database instance ID. This does not include the project ID.
+//     deleted.
+//   instance: Cloud SQL instance ID. This does not include the project ID.
 //  Authorization scope(s):
 //   kGTLAuthScopeSQLAdminSqlserviceAdmin
 // Fetches a GTLSQLAdminInstancesDeleteResponse.
@@ -123,13 +120,12 @@
                                 instance:(NSString *)instance;
 
 // Method: sql.instances.export
-// Exports data from a database instance to a Google Cloud Storage bucket as a
+// Exports data from a Cloud SQL instance to a Google Cloud Storage bucket as a
 // MySQL dump file.
 //  Required:
 //   project: Project ID of the project that contains the instance to be
-//     exported. You can find this on the project summary page of the Google
-//     APIs Console.
-//   instance: Database instance ID. This does not include the project ID.
+//     exported.
+//   instance: Cloud SQL instance ID. This does not include the project ID.
 //  Optional:
 //   exportContext: Contains details about the export operation.
 //  Authorization scope(s):
@@ -139,11 +135,10 @@
                                 instance:(NSString *)instance;
 
 // Method: sql.instances.get
-// Retrieves a resource containing information about a database instance.
+// Retrieves a resource containing information about a Cloud SQL instance.
 //  Required:
-//   project: Project ID of the project that contains the instance. You can find
-//     this on the project summary page of the Google APIs Console.
-//   instance: Database instance ID. This does not include the project ID.
+//   project: Project ID of the project that contains the instance.
+//   instance: Cloud SQL instance ID. This does not include the project ID.
 //  Authorization scope(s):
 //   kGTLAuthScopeSQLAdminSqlserviceAdmin
 // Fetches a GTLSQLAdminDatabaseInstance.
@@ -151,12 +146,11 @@
                              instance:(NSString *)instance;
 
 // Method: sql.instances.import
-// Imports data into a database instance from a MySQL dump file in Google Cloud
+// Imports data into a Cloud SQL instance from a MySQL dump file in Google Cloud
 // Storage.
 //  Required:
-//   project: Project ID of the project that contains the instance. You can find
-//     this on the project summary page of the Google APIs Console.
-//   instance: Database instance ID. This does not include the project ID.
+//   project: Project ID of the project that contains the instance.
+//   instance: Cloud SQL instance ID. This does not include the project ID.
 //  Optional:
 //   importContext: Contains details about the import operation.
 //  Authorization scope(s):
@@ -166,11 +160,10 @@
                                 instance:(NSString *)instance;
 
 // Method: sql.instances.insert
-// Creates a new database instance.
+// Creates a new Cloud SQL instance.
 //  Required:
-//   project: Project ID of the project to which the newly created database
-//     instances should belong. You can find this on the project summary page of
-//     the Google APIs Console.
+//   project: Project ID of the project to which the newly created Cloud SQL
+//     instances should belong.
 //  Authorization scope(s):
 //   kGTLAuthScopeSQLAdminSqlserviceAdmin
 // Fetches a GTLSQLAdminInstancesInsertResponse.
@@ -181,8 +174,7 @@
 // Lists instances under a given project in the alphabetical order of the
 // instance name.
 //  Required:
-//   project: Project ID of the project for which to list database instances.
-//     You can find this on the project summary page of the Google APIs Console.
+//   project: Project ID of the project for which to list Cloud SQL instances.
 //  Optional:
 //   maxResults: The maximum number of results to return per response.
 //     Note: For this method, "maxResults" should be of type NSUInteger.
@@ -194,14 +186,13 @@
 + (id)queryForInstancesListWithProject:(NSString *)project;
 
 // Method: sql.instances.patch
-// Updates settings of a database instance. Caution: This is not a partial
+// Updates settings of a Cloud SQL instance. Caution: This is not a partial
 // update, so you must include values for all the settings that you want to
 // retain. For partial updates, use patch.. This method supports patch
 // semantics.
 //  Required:
-//   project: Project ID of the project that contains the instance. You can find
-//     this on the project summary page of the Google APIs Console.
-//   instance: Database instance ID. This does not include the project ID.
+//   project: Project ID of the project that contains the instance.
+//   instance: Cloud SQL instance ID. This does not include the project ID.
 //  Authorization scope(s):
 //   kGTLAuthScopeSQLAdminSqlserviceAdmin
 // Fetches a GTLSQLAdminInstancesUpdateResponse.
@@ -210,12 +201,11 @@
                               instance:(NSString *)instance;
 
 // Method: sql.instances.restart
-// Restarts a database instance.
+// Restarts a Cloud SQL instance.
 //  Required:
 //   project: Project ID of the project that contains the instance to be
-//     restarted. You can find this on the project summary page of the Google
-//     APIs Console.
-//   instance: Database instance ID. This does not include the project ID.
+//     restarted.
+//   instance: Cloud SQL instance ID. This does not include the project ID.
 //  Authorization scope(s):
 //   kGTLAuthScopeSQLAdminSqlserviceAdmin
 // Fetches a GTLSQLAdminInstancesRestartResponse.
@@ -223,11 +213,10 @@
                                  instance:(NSString *)instance;
 
 // Method: sql.instances.restoreBackup
-// Restores a backup of a database instance.
+// Restores a backup of a Cloud SQL instance.
 //  Required:
-//   project: Project ID of the project that contains the instance. You can find
-//     this on the project summary page of the Google APIs Console.
-//   instance: Database instance ID. This does not include the project ID.
+//   project: Project ID of the project that contains the instance.
+//   instance: Cloud SQL instance ID. This does not include the project ID.
 //   backupConfiguration: The identifier of the backup configuration. This gets
 //     generated automatically when a backup configuration is created.
 //   dueTime: The time when this run is due to start in RFC 3339 format, for
@@ -241,13 +230,12 @@
                                         dueTime:(NSString *)dueTime;
 
 // Method: sql.instances.update
-// Updates settings of a database instance. Caution: This is not a partial
+// Updates settings of a Cloud SQL instance. Caution: This is not a partial
 // update, so you must include values for all the settings that you want to
 // retain. For partial updates, use patch.
 //  Required:
-//   project: Project ID of the project that contains the instance. You can find
-//     this on the project summary page of the Google APIs Console.
-//   instance: Database instance ID. This does not include the project ID.
+//   project: Project ID of the project that contains the instance.
+//   instance: Cloud SQL instance ID. This does not include the project ID.
 //  Authorization scope(s):
 //   kGTLAuthScopeSQLAdminSqlserviceAdmin
 // Fetches a GTLSQLAdminInstancesUpdateResponse.
@@ -262,9 +250,8 @@
 // Method: sql.operations.get
 // Retrieves an instance operation that has been performed on an instance.
 //  Required:
-//   project: Project ID of the project that contains the instance. You can find
-//     this on the project summary page of the Google APIs Console.
-//   instance: Database instance ID. This does not include the project ID.
+//   project: Project ID of the project that contains the instance.
+//   instance: Cloud SQL instance ID. This does not include the project ID.
 //   operation: Instance operation ID.
 //  Authorization scope(s):
 //   kGTLAuthScopeSQLAdminSqlserviceAdmin
@@ -274,12 +261,11 @@
                              operation:(NSString *)operation;
 
 // Method: sql.operations.list
-// Lists all instance operations that have been performed on the given database
+// Lists all instance operations that have been performed on the given Cloud SQL
 // instance in the reverse chronological order of the start time.
 //  Required:
-//   project: Project ID of the project that contains the instance. You can find
-//     this on the project summary page of the Google APIs Console.
-//   instance: Database instance ID. This does not include the project ID.
+//   project: Project ID of the project that contains the instance.
+//   instance: Cloud SQL instance ID. This does not include the project ID.
 //  Optional:
 //   maxResults: Maximum number of operations per response.
 //     Note: For this method, "maxResults" should be of type NSUInteger.
