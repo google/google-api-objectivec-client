@@ -66,7 +66,7 @@
 // creator.phone_number attribute as recipient.
 // - NAVIGATE - Navigate to the timeline item's location.
 // - TOGGLE_PINNED - Toggle the isPinned state of the timeline item.
-// - VIEW_WEBSITE - Open the payload of the menu item in the browser.
+// - OPEN_URI - Open the payload of the menu item in the browser.
 // - PLAY_VIDEO - Open the payload of the menu item in the Glass video player.
 @property (copy) NSString *action;
 
@@ -76,8 +76,7 @@
 @property (copy) NSString *identifier;
 
 // A generic payload whose meaning changes depending on this MenuItem's action.
-// - When the action is VIEW_WEBSITE, the payload is the URL of the website to
-// view.
+// - When the action is OPEN_URI, the payload is the URL of the website to view.
 // - When the action is PLAY_VIDEO, the payload is the streaming URL of the
 // video
 @property (copy) NSString *payload;

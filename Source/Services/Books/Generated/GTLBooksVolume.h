@@ -33,7 +33,7 @@
 //   GTLBooksVolumeSaleInfo (0 custom class methods, 8 custom properties)
 //   GTLBooksVolumeSearchInfo (0 custom class methods, 1 custom properties)
 //   GTLBooksVolumeUserInfo (0 custom class methods, 11 custom properties)
-//   GTLBooksVolumeVolumeInfo (0 custom class methods, 20 custom properties)
+//   GTLBooksVolumeVolumeInfo (0 custom class methods, 21 custom properties)
 //   GTLBooksVolumeAccessInfoEpub (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeAccessInfoPdf (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeLayerInfoLayersItem (0 custom class methods, 2 custom properties)
@@ -367,11 +367,14 @@
 // the categories list returned below that has the highest weight.
 @property (copy) NSString *mainCategory;
 
-// Total number of pages.
+// Total number of pages as per publisher metadata.
 @property (retain) NSNumber *pageCount;  // intValue
 
 // URL to preview this volume on the Google Books site.
 @property (copy) NSString *previewLink;
+
+// Total number of printed pages in generated pdf representation.
+@property (retain) NSNumber *printedPageCount;  // intValue
 
 // Type of publication of this volume. Possible values are BOOK or MAGAZINE.
 @property (copy) NSString *printType;

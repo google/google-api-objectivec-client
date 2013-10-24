@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLQueryBooks (37 custom class methods, 57 custom properties)
+//   GTLQueryBooks (37 custom class methods, 58 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -51,6 +51,7 @@
 //
 @property (retain) NSArray *acquireMethod;  // of NSString
 @property (copy) NSString *action;
+@property (assign) BOOL allowWebDefinitions;
 // "annotationDataId" has different types for some query methods; see the
 // documentation for the right type for each query method.
 @property (retain) id annotationDataId;
@@ -205,6 +206,8 @@
 //   contentVersion: The content version for the volume you are trying to
 //     retrieve.
 //  Optional:
+//   allowWebDefinitions: For the dictionary layer. Whether or not to allow web
+//     definitions.
 //   h: The requested pixel height for any images. If height is provided width
 //     must also be provided.
 //   locale: The locale information for the data. ISO-639-1 language and
@@ -437,6 +440,7 @@
 //  Optional:
 //   contentVersion: The content version for the requested volume.
 //   layerId: The layer ID to limit annotation by.
+//   layerIds: The layer ID(s) to limit annotation by.
 //   maxResults: Maximum number of results to return (0..40)
 //   pageIds: The page ID(s) for the volume that is being queried.
 //   pageToken: The value of the nextToken from the previous page.

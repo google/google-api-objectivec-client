@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/glass
 // Classes:
-//   GTLMirrorContact (0 custom class methods, 11 custom properties)
+//   GTLMirrorContact (0 custom class methods, 12 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -81,6 +81,10 @@
 // Contacts with higher priorities will be shown before ones with lower
 // priorities.
 @property (retain) NSNumber *priority;  // unsignedIntValue
+
+// A list of sharing features that a contact can handle. Allowed values are:
+// - ADD_CAPTION
+@property (retain) NSArray *sharingFeatures;  // of NSString
 
 // The ID of the application that created this contact. This is populated by the
 // API

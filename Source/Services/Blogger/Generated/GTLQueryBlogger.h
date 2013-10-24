@@ -425,7 +425,9 @@
 //   blogId: ID of the blog to fetch posts from.
 //  Optional:
 //   endDate: Latest post date to fetch, a date-time with RFC 3339 formatting.
-//   fetchBodies: Whether the body content of posts is included. (Default true)
+//   fetchBodies: Whether the body content of posts is included (default: true).
+//     This should be set to false when the post bodies are not required, to
+//     help minimize traffic. (Default true)
 //   fetchImages: Whether image URL metadata for each post is included.
 //   labels: Comma-separated list of labels to search for.
 //   maxResults: Maximum number of posts to fetch.
@@ -492,6 +494,9 @@
 //   blogId: ID of the blog to fetch the post from.
 //   q: Query terms to search this blog for matching posts.
 //  Optional:
+//   fetchBodies: Whether the body content of posts is included (default: true).
+//     This should be set to false when the post bodies are not required, to
+//     help minimize traffic. (Default true)
 //   orderBy: Sort search results (Default "PUBLISHED")
 //      kGTLBloggerOrderByPublished: Order by the date the post was published
 //      kGTLBloggerOrderByUpdated: Order by the date the post was last updated
