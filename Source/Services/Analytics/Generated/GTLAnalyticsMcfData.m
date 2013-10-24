@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,10 +26,10 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsMcfData (0 custom class methods, 13 custom properties)
+//   GTLAnalyticsMcfData (0 custom class methods, 15 custom properties)
 //   GTLAnalyticsMcfDataColumnHeadersItem (0 custom class methods, 3 custom properties)
 //   GTLAnalyticsMcfDataProfileInfo (0 custom class methods, 6 custom properties)
-//   GTLAnalyticsMcfDataQuery (0 custom class methods, 10 custom properties)
+//   GTLAnalyticsMcfDataQuery (0 custom class methods, 11 custom properties)
 //   GTLAnalyticsMcfDataRowsItem (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsMcfDataTotalsForAllResults (0 custom class methods, 0 custom properties)
 //   GTLAnalyticsMcfDataRowsItemConversionPathValueItem (0 custom class methods, 2 custom properties)
@@ -43,8 +43,8 @@
 
 @implementation GTLAnalyticsMcfData
 @dynamic columnHeaders, containsSampledData, identifier, itemsPerPage, kind,
-         nextLink, previousLink, profileInfo, query, rows, selfLink,
-         totalResults, totalsForAllResults;
+         nextLink, previousLink, profileInfo, query, rows, sampleSize,
+         sampleSpace, selfLink, totalResults, totalsForAllResults;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -96,8 +96,8 @@
 //
 
 @implementation GTLAnalyticsMcfDataQuery
-@dynamic dimensions, endDate, filters, ids, maxResults, metrics, segment, sort,
-         startDate, startIndex;
+@dynamic dimensions, endDate, filters, ids, maxResults, metrics, samplingLevel,
+         segment, sort, startDate, startIndex;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

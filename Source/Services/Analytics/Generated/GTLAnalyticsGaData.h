@@ -26,10 +26,10 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsGaData (0 custom class methods, 13 custom properties)
+//   GTLAnalyticsGaData (0 custom class methods, 15 custom properties)
 //   GTLAnalyticsGaDataColumnHeadersItem (0 custom class methods, 3 custom properties)
 //   GTLAnalyticsGaDataProfileInfo (0 custom class methods, 6 custom properties)
-//   GTLAnalyticsGaDataQuery (0 custom class methods, 10 custom properties)
+//   GTLAnalyticsGaDataQuery (0 custom class methods, 11 custom properties)
 //   GTLAnalyticsGaDataTotalsForAllResults (0 custom class methods, 0 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -88,6 +88,12 @@
 // followed by the metric values. The order of dimensions and metrics is same as
 // specified in the request.
 @property (retain) NSArray *rows;  // of NSArray of NSString
+
+// The number of samples used to calculate the result.
+@property (retain) NSNumber *sampleSize;  // longLongValue
+
+// Total size of the sample space from which the samples were selected.
+@property (retain) NSNumber *sampleSpace;  // longLongValue
 
 // Link to this page.
 @property (copy) NSString *selfLink;
@@ -177,6 +183,9 @@
 
 // List of analytics metrics.
 @property (retain) NSArray *metrics;  // of NSString
+
+// Desired sampling level
+@property (copy) NSString *samplingLevel;
 
 // Analytics advanced segment.
 @property (copy) NSString *segment;

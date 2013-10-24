@@ -105,7 +105,8 @@
 // The site search query parameters for this view (profile).
 @property (copy) NSString *siteSearchQueryParameters;
 
-// Time zone for which this view (profile) has been configured.
+// Time zone for which this view (profile) has been configured. Time zones are
+// identified by strings from the TZ database.
 @property (copy) NSString *timezone;
 
 // View (Profile) type. Supported types: WEB or APP.
