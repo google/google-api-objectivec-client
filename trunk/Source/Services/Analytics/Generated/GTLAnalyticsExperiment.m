@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsExperiment (0 custom class methods, 27 custom properties)
+//   GTLAnalyticsExperiment (0 custom class methods, 28 custom properties)
 //   GTLAnalyticsExperimentParentLink (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsExperimentVariationsItem (0 custom class methods, 5 custom properties)
 
@@ -39,11 +39,12 @@
 
 @implementation GTLAnalyticsExperiment
 @dynamic accountId, created, descriptionProperty, editableInGaUi, endTime,
-         identifier, internalWebPropertyId, kind, minimumExperimentLengthInDays,
-         name, objectiveMetric, optimizationType, parentLink, profileId,
-         reasonExperimentEnded, rewriteVariationUrlsAsOriginal, selfLink,
-         servingFramework, snippet, startTime, status, trafficCoverage, updated,
-         variations, webPropertyId, winnerConfidenceLevel, winnerFound;
+         equalWeighting, identifier, internalWebPropertyId, kind,
+         minimumExperimentLengthInDays, name, objectiveMetric, optimizationType,
+         parentLink, profileId, reasonExperimentEnded,
+         rewriteVariationUrlsAsOriginal, selfLink, servingFramework, snippet,
+         startTime, status, trafficCoverage, updated, variations, webPropertyId,
+         winnerConfidenceLevel, winnerFound;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

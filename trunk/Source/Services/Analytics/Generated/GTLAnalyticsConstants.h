@@ -37,10 +37,17 @@
 // Authorization scope
 // View and manage your Google Analytics data
 GTL_EXTERN NSString * const kGTLAuthScopeAnalytics;             // "https://www.googleapis.com/auth/analytics"
+// Edit Google Analytics management entities
+GTL_EXTERN NSString * const kGTLAuthScopeAnalyticsEdit;         // "https://www.googleapis.com/auth/analytics.edit"
 // Manage Google Analytics Account users by email address
 GTL_EXTERN NSString * const kGTLAuthScopeAnalyticsManageUsers;  // "https://www.googleapis.com/auth/analytics.manage.users"
 // View your Google Analytics data
 GTL_EXTERN NSString * const kGTLAuthScopeAnalyticsReadonly;     // "https://www.googleapis.com/auth/analytics.readonly"
+
+// SamplingLevel
+GTL_EXTERN NSString * const kGTLAnalyticsSamplingLevelDefault;  // "DEFAULT"
+GTL_EXTERN NSString * const kGTLAnalyticsSamplingLevelFaster;   // "FASTER"
+GTL_EXTERN NSString * const kGTLAnalyticsSamplingLevelHigherPrecision;  // "HIGHER_PRECISION"
 
 // Type
 GTL_EXTERN NSString * const kGTLAnalyticsTypeCost;  // "cost"

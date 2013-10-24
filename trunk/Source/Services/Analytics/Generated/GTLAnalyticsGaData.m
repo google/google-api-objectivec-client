@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,10 +26,10 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsGaData (0 custom class methods, 13 custom properties)
+//   GTLAnalyticsGaData (0 custom class methods, 15 custom properties)
 //   GTLAnalyticsGaDataColumnHeadersItem (0 custom class methods, 3 custom properties)
 //   GTLAnalyticsGaDataProfileInfo (0 custom class methods, 6 custom properties)
-//   GTLAnalyticsGaDataQuery (0 custom class methods, 10 custom properties)
+//   GTLAnalyticsGaDataQuery (0 custom class methods, 11 custom properties)
 //   GTLAnalyticsGaDataTotalsForAllResults (0 custom class methods, 0 custom properties)
 
 #import "GTLAnalyticsGaData.h"
@@ -41,8 +41,8 @@
 
 @implementation GTLAnalyticsGaData
 @dynamic columnHeaders, containsSampledData, identifier, itemsPerPage, kind,
-         nextLink, previousLink, profileInfo, query, rows, selfLink,
-         totalResults, totalsForAllResults;
+         nextLink, previousLink, profileInfo, query, rows, sampleSize,
+         sampleSpace, selfLink, totalResults, totalsForAllResults;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -94,8 +94,8 @@
 //
 
 @implementation GTLAnalyticsGaDataQuery
-@dynamic dimensions, endDate, filters, ids, maxResults, metrics, segment, sort,
-         startDate, startIndex;
+@dynamic dimensions, endDate, filters, ids, maxResults, metrics, samplingLevel,
+         segment, sort, startDate, startIndex;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

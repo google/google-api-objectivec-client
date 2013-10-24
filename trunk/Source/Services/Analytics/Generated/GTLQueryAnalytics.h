@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLQueryAnalytics (48 custom class methods, 25 custom properties)
+//   GTLQueryAnalytics (48 custom class methods, 26 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -69,6 +69,7 @@
 @property (copy) NSString *profileId;
 @property (copy) NSString *reportType;
 @property (assign) BOOL reset;
+@property (copy) NSString *samplingLevel;
 @property (copy) NSString *segment;
 @property (copy) NSString *sort;
 @property (copy) NSString *startDate;
@@ -86,10 +87,12 @@
 //  Required:
 //   ids: Unique table ID for retrieving Analytics data. Table ID is of the form
 //     ga:XXXX, where XXXX is the Analytics view (profile) ID.
-//   startDate: Start date for fetching Analytics data. All requests should
-//     specify a start date formatted as YYYY-MM-DD.
-//   endDate: End date for fetching Analytics data. All requests should specify
-//     an end date formatted as YYYY-MM-DD.
+//   startDate: Start date for fetching Analytics data. Requests can specify a
+//     start date formatted as YYYY-MM-DD, or as a relative date (e.g., today,
+//     yesterday, or 7daysAgo). The default value is 7daysAgo.
+//   endDate: End date for fetching Analytics data. Request can should specify
+//     an end date formatted as YYYY-MM-DD, or as a relative date (e.g., today,
+//     yesterday, or 7daysAgo). The default value is yesterday.
 //   metrics: A comma-separated list of Analytics metrics. E.g.,
 //     'ga:visits,ga:pageviews'. At least one metric must be specified.
 //  Optional:
@@ -98,6 +101,14 @@
 //   filters: A comma-separated list of dimension or metric filters to be
 //     applied to Analytics data.
 //   maxResults: The maximum number of entries to include in this feed.
+//   samplingLevel: The desired sampling level.
+//      kGTLAnalyticsSamplingLevelDefault: Returns response with a sample size
+//        that balances speed and accuracy.
+//      kGTLAnalyticsSamplingLevelFaster: Returns a fast response with a smaller
+//        sample size.
+//      kGTLAnalyticsSamplingLevelHigherPrecision: Returns a more accurate
+//        response using a large sample size, but this may result in the
+//        response being slower.
 //   segment: An Analytics advanced segment to be applied to data.
 //   sort: A comma-separated list of dimensions or metrics that determine the
 //     sort order for Analytics data.
@@ -121,10 +132,12 @@
 //  Required:
 //   ids: Unique table ID for retrieving Analytics data. Table ID is of the form
 //     ga:XXXX, where XXXX is the Analytics view (profile) ID.
-//   startDate: Start date for fetching Analytics data. All requests should
-//     specify a start date formatted as YYYY-MM-DD.
-//   endDate: End date for fetching Analytics data. All requests should specify
-//     an end date formatted as YYYY-MM-DD.
+//   startDate: Start date for fetching Analytics data. Requests can specify a
+//     start date formatted as YYYY-MM-DD, or as a relative date (e.g., today,
+//     yesterday, or 7daysAgo). The default value is 7daysAgo.
+//   endDate: End date for fetching Analytics data. Requests can specify a start
+//     date formatted as YYYY-MM-DD, or as a relative date (e.g., today,
+//     yesterday, or 7daysAgo). The default value is 7daysAgo.
 //   metrics: A comma-separated list of Multi-Channel Funnels metrics. E.g.,
 //     'mcf:totalConversions,mcf:totalConversionValue'. At least one metric must
 //     be specified.
@@ -134,6 +147,14 @@
 //   filters: A comma-separated list of dimension or metric filters to be
 //     applied to the Analytics data.
 //   maxResults: The maximum number of entries to include in this feed.
+//   samplingLevel: The desired sampling level.
+//      kGTLAnalyticsSamplingLevelDefault: Returns response with a sample size
+//        that balances speed and accuracy.
+//      kGTLAnalyticsSamplingLevelFaster: Returns a fast response with a smaller
+//        sample size.
+//      kGTLAnalyticsSamplingLevelHigherPrecision: Returns a more accurate
+//        response using a large sample size, but this may result in the
+//        response being slower.
 //   sort: A comma-separated list of dimensions or metrics that determine the
 //     sort order for the Analytics data.
 //   startIndex: An index of the first entity to retrieve. Use this parameter as
@@ -185,6 +206,7 @@
 //     as a pagination mechanism along with the max-results parameter.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsAccounts.
 + (id)queryForManagementAccountsList;
@@ -256,6 +278,7 @@
 //     parameter.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsCustomDataSources.
 + (id)queryForManagementCustomDataSourcesListWithAccountId:(NSString *)accountId
@@ -278,6 +301,7 @@
 //      kGTLAnalyticsTypeCost: Value for specifying cost data upload.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 + (id)queryForManagementDailyUploadsDeleteWithAccountId:(NSString *)accountId
                                           webPropertyId:(NSString *)webPropertyId
                                      customDataSourceId:(NSString *)customDataSourceId
@@ -327,6 +351,7 @@
 //   Accepted MIME type(s): application/octet-stream
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 // Fetches a GTLAnalyticsDailyUploadAppend.
 + (id)queryForManagementDailyUploadsUploadWithAccountId:(NSString *)accountId
                                           webPropertyId:(NSString *)webPropertyId
@@ -349,6 +374,7 @@
 //   experimentId: ID of the experiment to delete
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 + (id)queryForManagementExperimentsDeleteWithAccountId:(NSString *)accountId
                                          webPropertyId:(NSString *)webPropertyId
                                              profileId:(NSString *)profileId
@@ -363,6 +389,7 @@
 //   experimentId: Experiment ID to retrieve the experiment for.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsExperiment.
 + (id)queryForManagementExperimentsGetWithAccountId:(NSString *)accountId
@@ -378,6 +405,7 @@
 //   profileId: View (Profile) ID to create the experiment for.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 // Fetches a GTLAnalyticsExperiment.
 + (id)queryForManagementExperimentsInsertWithObject:(GTLAnalyticsExperiment *)object
                                           accountId:(NSString *)accountId
@@ -396,6 +424,7 @@
 //     parameter as a pagination mechanism along with the max-results parameter.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsExperiments.
 + (id)queryForManagementExperimentsListWithAccountId:(NSString *)accountId
@@ -411,6 +440,7 @@
 //   experimentId: Experiment ID of the experiment to update.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 // Fetches a GTLAnalyticsExperiment.
 + (id)queryForManagementExperimentsPatchWithObject:(GTLAnalyticsExperiment *)object
                                          accountId:(NSString *)accountId
@@ -427,6 +457,7 @@
 //   experimentId: Experiment ID of the experiment to update.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 // Fetches a GTLAnalyticsExperiment.
 + (id)queryForManagementExperimentsUpdateWithObject:(GTLAnalyticsExperiment *)object
                                           accountId:(NSString *)accountId
@@ -446,7 +477,7 @@
 //   profileId: View (Profile) ID to retrieve the goal for.
 //   goalId: Goal ID to retrieve the goal for.
 //  Authorization scope(s):
-//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsGoal.
 + (id)queryForManagementGoalsGetWithAccountId:(NSString *)accountId
@@ -461,7 +492,7 @@
 //   webPropertyId: Web property ID to create the goal for.
 //   profileId: View (Profile) ID to create the goal for.
 //  Authorization scope(s):
-//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 // Fetches a GTLAnalyticsGoal.
 + (id)queryForManagementGoalsInsertWithObject:(GTLAnalyticsGoal *)object
                                     accountId:(NSString *)accountId
@@ -486,6 +517,7 @@
 //     pagination mechanism along with the max-results parameter.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsGoals.
 + (id)queryForManagementGoalsListWithAccountId:(NSString *)accountId
@@ -500,7 +532,7 @@
 //   profileId: View (Profile) ID to update the goal.
 //   goalId: Index of the goal to be updated.
 //  Authorization scope(s):
-//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 // Fetches a GTLAnalyticsGoal.
 + (id)queryForManagementGoalsPatchWithObject:(GTLAnalyticsGoal *)object
                                    accountId:(NSString *)accountId
@@ -516,7 +548,7 @@
 //   profileId: View (Profile) ID to update the goal.
 //   goalId: Index of the goal to be updated.
 //  Authorization scope(s):
-//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 // Fetches a GTLAnalyticsGoal.
 + (id)queryForManagementGoalsUpdateWithObject:(GTLAnalyticsGoal *)object
                                     accountId:(NSString *)accountId
@@ -535,7 +567,7 @@
 //   webPropertyId: Web property ID to delete the view (profile) for.
 //   profileId: ID of the view (profile) to be deleted.
 //  Authorization scope(s):
-//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 + (id)queryForManagementProfilesDeleteWithAccountId:(NSString *)accountId
                                       webPropertyId:(NSString *)webPropertyId
                                           profileId:(NSString *)profileId;
@@ -547,7 +579,7 @@
 //   webPropertyId: Web property ID to retrieve the goal for.
 //   profileId: View (Profile) ID to retrieve the goal for.
 //  Authorization scope(s):
-//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsProfile.
 + (id)queryForManagementProfilesGetWithAccountId:(NSString *)accountId
@@ -560,7 +592,7 @@
 //   accountId: Account ID to create the view (profile) for.
 //   webPropertyId: Web property ID to create the view (profile) for.
 //  Authorization scope(s):
-//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 // Fetches a GTLAnalyticsProfile.
 + (id)queryForManagementProfilesInsertWithObject:(GTLAnalyticsProfile *)object
                                        accountId:(NSString *)accountId
@@ -582,6 +614,7 @@
 //     a pagination mechanism along with the max-results parameter.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsProfiles.
 + (id)queryForManagementProfilesListWithAccountId:(NSString *)accountId
@@ -594,7 +627,7 @@
 //   webPropertyId: Web property ID to which the view (profile) belongs
 //   profileId: ID of the view (profile) to be updated.
 //  Authorization scope(s):
-//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 // Fetches a GTLAnalyticsProfile.
 + (id)queryForManagementProfilesPatchWithObject:(GTLAnalyticsProfile *)object
                                       accountId:(NSString *)accountId
@@ -608,7 +641,7 @@
 //   webPropertyId: Web property ID to which the view (profile) belongs
 //   profileId: ID of the view (profile) to be updated.
 //  Authorization scope(s):
-//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 // Fetches a GTLAnalyticsProfile.
 + (id)queryForManagementProfilesUpdateWithObject:(GTLAnalyticsProfile *)object
                                        accountId:(NSString *)accountId
@@ -694,6 +727,7 @@
 //     parameter as a pagination mechanism along with the max-results parameter.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsSegments.
 + (id)queryForManagementSegmentsList;
@@ -712,6 +746,7 @@
 //   customDataImportUids: A list of upload UIDs.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 + (id)queryForManagementUploadsDeleteUploadDataWithAccountId:(NSString *)accountId
                                                webPropertyId:(NSString *)webPropertyId
                                           customDataSourceId:(NSString *)customDataSourceId;
@@ -725,6 +760,7 @@
 //   uploadId: Upload Id to retrieve.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsUpload.
 + (id)queryForManagementUploadsGetWithAccountId:(NSString *)accountId
@@ -744,6 +780,7 @@
 //     parameter as a pagination mechanism along with the max-results parameter.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsUploads.
 + (id)queryForManagementUploadsListWithAccountId:(NSString *)accountId
@@ -751,7 +788,7 @@
                               customDataSourceId:(NSString *)customDataSourceId;
 
 // Method: analytics.management.uploads.uploadData
-// Upload/Overwrite data for a custom data source.
+// Upload data for a custom data source.
 //  Required:
 //   accountId: Account Id associated with the upload.
 //   webPropertyId: Web property UA-string associated with the upload.
@@ -762,6 +799,7 @@
 //   Accepted MIME type(s): application/octet-stream
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 // Fetches a GTLAnalyticsUpload.
 + (id)queryForManagementUploadsUploadDataWithAccountId:(NSString *)accountId
                                          webPropertyId:(NSString *)webPropertyId
@@ -778,18 +816,20 @@
 //   accountId: Account ID to retrieve the web property for.
 //   webPropertyId: ID to retrieve the web property for.
 //  Authorization scope(s):
-//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsWebproperty.
 + (id)queryForManagementWebpropertiesGetWithAccountId:(NSString *)accountId
                                         webPropertyId:(NSString *)webPropertyId;
 
 // Method: analytics.management.webproperties.insert
-// Create a new property if the account has fewer than 20 properties.
+// Create a new property if the account has fewer than 20 properties. Web
+// properties are visible in the Google Analytics interface only if they have at
+// least one profile.
 //  Required:
 //   accountId: Account ID to create the web property for.
 //  Authorization scope(s):
-//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 // Fetches a GTLAnalyticsWebproperty.
 + (id)queryForManagementWebpropertiesInsertWithObject:(GTLAnalyticsWebproperty *)object
                                             accountId:(NSString *)accountId;
@@ -807,6 +847,7 @@
 //     a pagination mechanism along with the max-results parameter.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsWebproperties.
 + (id)queryForManagementWebpropertiesListWithAccountId:(NSString *)accountId;
@@ -817,7 +858,7 @@
 //   accountId: Account ID to which the web property belongs
 //   webPropertyId: Web property ID
 //  Authorization scope(s):
-//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 // Fetches a GTLAnalyticsWebproperty.
 + (id)queryForManagementWebpropertiesPatchWithObject:(GTLAnalyticsWebproperty *)object
                                            accountId:(NSString *)accountId
@@ -829,7 +870,7 @@
 //   accountId: Account ID to which the web property belongs
 //   webPropertyId: Web property ID
 //  Authorization scope(s):
-//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 // Fetches a GTLAnalyticsWebproperty.
 + (id)queryForManagementWebpropertiesUpdateWithObject:(GTLAnalyticsWebproperty *)object
                                             accountId:(NSString *)accountId
@@ -905,6 +946,7 @@
 //     the Core Reporting API
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsColumns.
 + (id)queryForMetadataColumnsListWithReportType:(NSString *)reportType;

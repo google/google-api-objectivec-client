@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsExperiment (0 custom class methods, 27 custom properties)
+//   GTLAnalyticsExperiment (0 custom class methods, 28 custom properties)
 //   GTLAnalyticsExperimentParentLink (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsExperimentVariationsItem (0 custom class methods, 5 custom properties)
 
@@ -66,6 +66,13 @@
 // to ENDED). This field is present only if the experiment has ended. This field
 // is read-only.
 @property (retain) GTLDateTime *endTime;
+
+// Boolean specifying whether to distribute traffic evenly across all
+// variations. If the value is False, content experiments follows the default
+// behavior of adjusting traffic dynamically based on variation performance.
+// Optional -- defaults to False. This field may not be changed for an
+// experiment whose status is ENDED.
+@property (retain) NSNumber *equalWeighting;  // boolValue
 
 // Experiment ID. Required for patch and update. Disallowed for create.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').

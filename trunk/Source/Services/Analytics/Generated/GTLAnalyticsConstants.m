@@ -30,8 +30,14 @@
 
 // Authorization scope
 NSString * const kGTLAuthScopeAnalytics            = @"https://www.googleapis.com/auth/analytics";
+NSString * const kGTLAuthScopeAnalyticsEdit        = @"https://www.googleapis.com/auth/analytics.edit";
 NSString * const kGTLAuthScopeAnalyticsManageUsers = @"https://www.googleapis.com/auth/analytics.manage.users";
 NSString * const kGTLAuthScopeAnalyticsReadonly    = @"https://www.googleapis.com/auth/analytics.readonly";
+
+// SamplingLevel
+NSString * const kGTLAnalyticsSamplingLevelDefault         = @"DEFAULT";
+NSString * const kGTLAnalyticsSamplingLevelFaster          = @"FASTER";
+NSString * const kGTLAnalyticsSamplingLevelHigherPrecision = @"HIGHER_PRECISION";
 
 // Type
 NSString * const kGTLAnalyticsTypeCost = @"cost";
