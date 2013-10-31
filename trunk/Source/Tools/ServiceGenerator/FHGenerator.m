@@ -952,8 +952,8 @@ static NSArray *DictionaryObjectsSortedByKeys(NSDictionary *dict) {
 - (NSString *)legalBlock {
   // Get the year consistently by forcing the locale.
   NSLocale *enUSLocale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease];
-  NSDateFormatter *formatter = [[[NSDateFormatter alloc] initWithDateFormat:@"%Y"
-                                                       allowNaturalLanguage:NO] autorelease];
+  NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+  [formatter setDateFormat:@"yyyy"];
   [formatter setLocale:enUSLocale];
   NSString *yearStr = [formatter stringFromDate:[NSDate date]];
 
