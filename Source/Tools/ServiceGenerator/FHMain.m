@@ -207,22 +207,18 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
   }
 
   // TODO: When moving to Lion, use NSRegularExpression to do this better.
-  NSLocale *enUSLocale =
-    [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease];
-  NSDateFormatter *formatter =
-    [[[NSDateFormatter alloc] initWithDateFormat:@"%Y"
-                            allowNaturalLanguage:NO] autorelease];
+  NSLocale *enUSLocale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease];
+  NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+  [formatter setDateFormat:@"yyyy"];
   [formatter setLocale:enUSLocale];
   NSString *yearStr = [formatter stringFromDate:[NSDate date]];
 
-  NSString *matchLine =
-    [NSString stringWithFormat:@"Copyright (c) %@ Google Inc.", yearStr];
+  NSString *matchLine = [NSString stringWithFormat:@"Copyright (c) %@ Google Inc.", yearStr];
   NSString *newTest = [newFile stringByReplacingOccurrencesOfString:matchLine
                                                          withString:@""];
 
   for (int aYear = 2010; aYear < 2020; ++aYear) {
-    matchLine =
-      [NSString stringWithFormat:@"Copyright (c) %d Google Inc.", aYear];
+    matchLine = [NSString stringWithFormat:@"Copyright (c) %d Google Inc.", aYear];
     NSString *oldTest = [oldFile stringByReplacingOccurrencesOfString:matchLine
                                                            withString:@""];
     if ([oldTest isEqual:newTest]) {
