@@ -57,7 +57,8 @@
 // A list of subscriptions that match the request criteria.
 @property (retain) NSArray *items;  // of GTLYouTubeSubscription
 
-// The kind, fixed to "youtube#subscriptionListResponse".
+// Identifies what kind of resource this is. Value: the fixed string
+// "youtube#subscriptionListResponse".
 @property (copy) NSString *kind;
 
 // The token that can be used as the value of the pageToken parameter to

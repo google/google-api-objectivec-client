@@ -177,6 +177,7 @@
 //   debug: Return the moment as written. Should be used only for debugging.
 //  Authorization scope(s):
 //   kGTLAuthScopePlusLogin
+//   kGTLAuthScopePlusMe
 // Fetches a GTLPlusMoment.
 + (id)queryForMomentsInsertWithObject:(GTLPlusMoment *)object
                                userId:(NSString *)userId
@@ -201,6 +202,7 @@
 //   type: Only moments of this type will be returned.
 //  Authorization scope(s):
 //   kGTLAuthScopePlusLogin
+//   kGTLAuthScopePlusMe
 // Fetches a GTLPlusMomentsFeed.
 + (id)queryForMomentsListWithUserId:(NSString *)userId
                          collection:(NSString *)collection;
@@ -251,6 +253,7 @@
 //     value of "nextPageToken" from the previous response.
 //  Authorization scope(s):
 //   kGTLAuthScopePlusLogin
+//   kGTLAuthScopePlusMe
 // Fetches a GTLPlusPeopleFeed.
 + (id)queryForPeopleListWithUserId:(NSString *)userId
                         collection:(NSString *)collection;

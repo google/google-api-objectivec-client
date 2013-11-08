@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud SQL Administration API (sqladmin/v1beta1)
+//   Cloud SQL Administration API (sqladmin/v1beta3)
 // Description:
 //   API for Cloud SQL database instance management.
 // Documentation:
 //   https://developers.google.com/cloud-sql/docs/admin-api/
 // Classes:
-//   GTLQuerySQLAdmin (15 custom class methods, 10 custom properties)
+//   GTLQuerySQLAdmin (21 custom class methods, 13 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -37,6 +37,7 @@
 @class GTLSQLAdminDatabaseInstance;
 @class GTLSQLAdminExportContext;
 @class GTLSQLAdminImportContext;
+@class GTLSQLAdminSetRootPasswordContext;
 
 @interface GTLQuerySQLAdmin : GTLQuery
 
@@ -51,6 +52,7 @@
 // Method-specific parameters; see the comments below for more information.
 //
 @property (copy) NSString *backupConfiguration;
+@property (copy) NSString *commonName;
 @property (copy) NSString *dueTime;
 @property (retain) GTLSQLAdminExportContext *exportContext;
 @property (retain) GTLSQLAdminImportContext *importContext;
@@ -61,6 +63,8 @@
 @property (copy) NSString *operation;
 @property (copy) NSString *pageToken;
 @property (copy) NSString *project;
+@property (retain) GTLSQLAdminSetRootPasswordContext *setRootPasswordContext;
+@property (copy) NSString *sha1Fingerprint;
 
 #pragma mark -
 #pragma mark "backupRuns" methods
@@ -138,7 +142,7 @@
 // Retrieves a resource containing information about a Cloud SQL instance.
 //  Required:
 //   project: Project ID of the project that contains the instance.
-//   instance: Cloud SQL instance ID. This does not include the project ID.
+//   instance: Database instance ID. This does not include the project ID.
 //  Authorization scope(s):
 //   kGTLAuthScopeSQLAdminSqlserviceAdmin
 // Fetches a GTLSQLAdminDatabaseInstance.
@@ -200,6 +204,20 @@
                                project:(NSString *)project
                               instance:(NSString *)instance;
 
+// Method: sql.instances.resetSslConfig
+// Deletes all client certificates and generates a new server SSL certificate
+// for the instance. The changes will not take effect until the instance is
+// restarted. Existing instances without a server certificate will need to call
+// this once to set a server certificate.
+//  Required:
+//   project: Project ID of the project that contains the instance.
+//   instance: Cloud SQL instance ID. This does not include the project ID.
+//  Authorization scope(s):
+//   kGTLAuthScopeSQLAdminSqlserviceAdmin
+// Fetches a GTLSQLAdminInstancesResetSslConfigResponse.
++ (id)queryForInstancesResetSslConfigWithProject:(NSString *)project
+                                        instance:(NSString *)instance;
+
 // Method: sql.instances.restart
 // Restarts a Cloud SQL instance.
 //  Required:
@@ -228,6 +246,19 @@
                                        instance:(NSString *)instance
                             backupConfiguration:(NSString *)backupConfiguration
                                         dueTime:(NSString *)dueTime;
+
+// Method: sql.instances.setRootPassword
+// Sets the password for the root user.
+//  Required:
+//   project: Project ID of the project that contains the instance.
+//   instance: Cloud SQL instance ID. This does not include the project ID.
+//  Optional:
+//   setRootPasswordContext: Set Root Password Context.
+//  Authorization scope(s):
+//   kGTLAuthScopeSQLAdminSqlserviceAdmin
+// Fetches a GTLSQLAdminInstancesSetRootPasswordResponse.
++ (id)queryForInstancesSetRootPasswordWithProject:(NSString *)project
+                                         instance:(NSString *)instance;
 
 // Method: sql.instances.update
 // Updates settings of a Cloud SQL instance. Caution: This is not a partial
@@ -278,15 +309,80 @@
                                instance:(NSString *)instance;
 
 #pragma mark -
+#pragma mark "sslCerts" methods
+// These create a GTLQuerySQLAdmin object.
+
+// Method: sql.sslCerts.delete
+// Deletes the SSL certificate. The change will not take effect until the
+// instance is restarted.
+//  Required:
+//   project: Project ID of the project that contains the instance to be
+//     deleted.
+//   instance: Cloud SQL instance ID. This does not include the project ID.
+//   sha1Fingerprint: Sha1 FingerPrint.
+//  Authorization scope(s):
+//   kGTLAuthScopeSQLAdminSqlserviceAdmin
+// Fetches a GTLSQLAdminSslCertsDeleteResponse.
++ (id)queryForSslCertsDeleteWithProject:(NSString *)project
+                               instance:(NSString *)instance
+                        sha1Fingerprint:(NSString *)sha1Fingerprint;
+
+// Method: sql.sslCerts.get
+// Retrieves a particular SSL certificate. Does not include the private key
+// (required for usage). The private key must be saved from the response to
+// initial creation.
+//  Required:
+//   project: Project ID of the project that contains the instance.
+//   instance: Cloud SQL instance ID. This does not include the project ID.
+//   sha1Fingerprint: Sha1 FingerPrint.
+//  Authorization scope(s):
+//   kGTLAuthScopeSQLAdminSqlserviceAdmin
+// Fetches a GTLSQLAdminSslCert.
++ (id)queryForSslCertsGetWithProject:(NSString *)project
+                            instance:(NSString *)instance
+                     sha1Fingerprint:(NSString *)sha1Fingerprint;
+
+// Method: sql.sslCerts.insert
+// Creates an SSL certificate and returns it along with the private key and
+// server certificate authority. The new certificate will not be usable until
+// the instance is restarted.
+//  Required:
+//   project: Project ID of the project to which the newly created Cloud SQL
+//     instances should belong.
+//   instance: Cloud SQL instance ID. This does not include the project ID.
+//  Optional:
+//   commonName: User supplied name. Must be a distinct name from the other
+//     certificates for this instance. New certificates will not be usable until
+//     the instance is restarted.
+//  Authorization scope(s):
+//   kGTLAuthScopeSQLAdminSqlserviceAdmin
+// Fetches a GTLSQLAdminSslCertsInsertResponse.
++ (id)queryForSslCertsInsertWithProject:(NSString *)project
+                               instance:(NSString *)instance;
+
+// Method: sql.sslCerts.list
+// Lists all of the current SSL certificates for the instance.
+//  Required:
+//   project: Project ID of the project for which to list Cloud SQL instances.
+//   instance: Cloud SQL instance ID. This does not include the project ID.
+//  Authorization scope(s):
+//   kGTLAuthScopeSQLAdminSqlserviceAdmin
+// Fetches a GTLSQLAdminSslCertsListResponse.
++ (id)queryForSslCertsListWithProject:(NSString *)project
+                             instance:(NSString *)instance;
+
+#pragma mark -
 #pragma mark "tiers" methods
 // These create a GTLQuerySQLAdmin object.
 
 // Method: sql.tiers.list
 // Lists all available service tiers for Google Cloud SQL, for example D1, D2.
 // For related information, see Pricing.
+//  Required:
+//   project: Project ID of the project for which to list tiers.
 //  Authorization scope(s):
 //   kGTLAuthScopeSQLAdminSqlserviceAdmin
 // Fetches a GTLSQLAdminTiersListResponse.
-+ (id)queryForTiersList;
++ (id)queryForTiersListWithProject:(NSString *)project;
 
 @end

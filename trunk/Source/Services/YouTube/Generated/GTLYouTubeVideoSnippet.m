@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoSnippet (0 custom class methods, 8 custom properties)
+//   GTLYouTubeVideoSnippet (0 custom class methods, 9 custom properties)
 
 #import "GTLYouTubeVideoSnippet.h"
 
@@ -38,8 +38,8 @@
 //
 
 @implementation GTLYouTubeVideoSnippet
-@dynamic categoryId, channelId, channelTitle, descriptionProperty, publishedAt,
-         tags, thumbnails, title;
+@dynamic categoryId, channelId, channelTitle, descriptionProperty,
+         liveBroadcastContent, publishedAt, tags, thumbnails, title;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

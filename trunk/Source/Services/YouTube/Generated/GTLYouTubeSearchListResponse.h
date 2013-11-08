@@ -57,7 +57,8 @@
 // A list of results that match the search criteria.
 @property (retain) NSArray *items;  // of GTLYouTubeSearchResult
 
-// The kind, fixed to "youtube#searchListResponse".
+// Identifies what kind of resource this is. Value: the fixed string
+// "youtube#searchListResponse".
 @property (copy) NSString *kind;
 
 // The token that can be used as the value of the pageToken parameter to

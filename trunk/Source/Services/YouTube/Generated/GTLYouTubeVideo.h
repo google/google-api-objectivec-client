@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideo (0 custom class methods, 17 custom properties)
+//   GTLYouTubeVideo (0 custom class methods, 18 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -38,6 +38,7 @@
 @class GTLYouTubeVideoContentDetails;
 @class GTLYouTubeVideoConversionPings;
 @class GTLYouTubeVideoFileDetails;
+@class GTLYouTubeVideoLiveStreamingDetails;
 @class GTLYouTubeVideoMonetizationDetails;
 @class GTLYouTubeVideoPlayer;
 @class GTLYouTubeVideoProcessingDetails;
@@ -82,8 +83,14 @@
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// The kind, fixed to "youtube#video".
+// Identifies what kind of resource this is. Value: the fixed string
+// "youtube#video".
 @property (copy) NSString *kind;
+
+// The liveStreamingDetails object contains metadata about a live video
+// broadcast. The object will only be present in a video resource if the video
+// is an upcoming, live, or completed live broadcast.
+@property (retain) GTLYouTubeVideoLiveStreamingDetails *liveStreamingDetails;
 
 // The monetizationDetails object encapsulates information about the
 // monetization status of the video.

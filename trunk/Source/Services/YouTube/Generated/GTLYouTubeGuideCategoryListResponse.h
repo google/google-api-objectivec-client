@@ -59,7 +59,8 @@
 // guideCategory resource.
 @property (retain) NSArray *items;  // of GTLYouTubeGuideCategory
 
-// The kind, fixed to "youtube#guideCategoryListResponse".
+// Identifies what kind of resource this is. Value: the fixed string
+// "youtube#guideCategoryListResponse".
 @property (copy) NSString *kind;
 
 // The token that can be used as the value of the pageToken parameter to

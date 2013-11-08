@@ -23,7 +23,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud SQL Administration API (sqladmin/v1beta1)
+//   Cloud SQL Administration API (sqladmin/v1beta3)
 // Description:
 //   API for Cloud SQL database instance management.
 // Documentation:
@@ -43,12 +43,23 @@
 #import "GTLSQLAdminInstancesImportResponse.m"
 #import "GTLSQLAdminInstancesInsertResponse.m"
 #import "GTLSQLAdminInstancesListResponse.m"
+#import "GTLSQLAdminInstancesResetSslConfigResponse.m"
 #import "GTLSQLAdminInstancesRestartResponse.m"
 #import "GTLSQLAdminInstancesRestoreBackupResponse.m"
+#import "GTLSQLAdminInstancesSetRootPasswordResponse.m"
 #import "GTLSQLAdminInstancesUpdateResponse.m"
+#import "GTLSQLAdminIpConfiguration.m"
+#import "GTLSQLAdminIpMapping.m"
+#import "GTLSQLAdminLocationPreference.m"
 #import "GTLSQLAdminOperationError.m"
 #import "GTLSQLAdminOperationsListResponse.m"
+#import "GTLSQLAdminSetRootPasswordContext.m"
 #import "GTLSQLAdminSettings.m"
+#import "GTLSQLAdminSslCert.m"
+#import "GTLSQLAdminSslCertDetail.m"
+#import "GTLSQLAdminSslCertsDeleteResponse.m"
+#import "GTLSQLAdminSslCertsInsertResponse.m"
+#import "GTLSQLAdminSslCertsListResponse.m"
 #import "GTLSQLAdminTier.m"
 #import "GTLSQLAdminTiersListResponse.m"
 

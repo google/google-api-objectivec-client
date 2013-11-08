@@ -134,6 +134,7 @@
                       [GTLYouTubeVideoFileDetailsVideoStream class],
                       [GTLYouTubeVideoGetRatingResponse class],
                       [GTLYouTubeVideoListResponse class],
+                      [GTLYouTubeVideoLiveStreamingDetails class],
                       [GTLYouTubeVideoMonetizationDetails class],
                       [GTLYouTubeVideoPlayer class],
                       [GTLYouTubeVideoProcessingDetails class],

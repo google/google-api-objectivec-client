@@ -20,17 +20,19 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud SQL Administration API (sqladmin/v1beta1)
+//   Cloud SQL Administration API (sqladmin/v1beta3)
 // Description:
 //   API for Cloud SQL database instance management.
 // Documentation:
 //   https://developers.google.com/cloud-sql/docs/admin-api/
 // Classes:
-//   GTLSQLAdminSettings (0 custom class methods, 7 custom properties)
+//   GTLSQLAdminSettings (0 custom class methods, 10 custom properties)
 
 #import "GTLSQLAdminSettings.h"
 
 #import "GTLSQLAdminBackupConfiguration.h"
+#import "GTLSQLAdminIpConfiguration.h"
+#import "GTLSQLAdminLocationPreference.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -38,8 +40,9 @@
 //
 
 @implementation GTLSQLAdminSettings
-@dynamic activationPolicy, authorizedGaeApplications, backupConfiguration, kind,
-         pricingPlan, replicationType, tier;
+@dynamic activationPolicy, authorizedGaeApplications, backupConfiguration,
+         ipConfiguration, kind, locationPreference, pricingPlan,
+         replicationType, settingsVersion, tier;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =

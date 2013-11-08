@@ -75,7 +75,8 @@
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// The kind, fixed to "youtube#playlist".
+// Identifies what kind of resource this is. Value: the fixed string
+// "youtube#playlist".
 @property (copy) NSString *kind;
 
 // The player object contains information that you would use to play the

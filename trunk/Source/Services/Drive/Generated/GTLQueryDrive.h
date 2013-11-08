@@ -127,7 +127,12 @@
 //  Required:
 //   appId: The ID of the app.
 //  Authorization scope(s):
+//   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveAppsReadonly
+//   kGTLAuthScopeDriveFile
+//   kGTLAuthScopeDriveMetadataReadonly
+//   kGTLAuthScopeDriveReadonly
 // Fetches a GTLDriveApp.
 + (id)queryForAppsGetWithAppId:(NSString *)appId;
 

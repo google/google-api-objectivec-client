@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePromotedItem (0 custom class methods, 3 custom properties)
+//   GTLYouTubePromotedItem (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -53,6 +53,11 @@
 // Identifies the promoted item.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (retain) GTLYouTubePromotedItemId *identifier;
+
+// If true, the content owner's name will be used when displaying the promotion.
+// This field can only be set when the update is made on behalf of the content
+// owner.
+@property (retain) NSNumber *promotedByContentOwner;  // boolValue
 
 // The temporal position within the video where the promoted item will be
 // displayed. If present, it overrides the default timing.
