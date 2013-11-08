@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud SQL Administration API (sqladmin/v1beta1)
+//   Cloud SQL Administration API (sqladmin/v1beta3)
 // Description:
 //   API for Cloud SQL database instance management.
 // Documentation:
 //   https://developers.google.com/cloud-sql/docs/admin-api/
 // Classes:
-//   GTLSQLAdminBackupConfiguration (0 custom class methods, 4 custom properties)
+//   GTLSQLAdminBackupConfiguration (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -42,6 +42,10 @@
 // Database instance backup configuration.
 
 @interface GTLSQLAdminBackupConfiguration : GTLObject
+
+// Whether binary log is enabled. If backup configuration is disabled, binary
+// log must be disabled as well.
+@property (retain) NSNumber *binaryLogEnabled;  // boolValue
 
 // Whether this configuration is enabled.
 @property (retain) NSNumber *enabled;  // boolValue

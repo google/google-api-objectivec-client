@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (39 custom class methods, 50 custom properties)
+//   GTLQueryYouTube (39 custom class methods, 51 custom properties)
 
 #import "GTLQueryYouTube.h"
 
@@ -59,9 +59,9 @@
 @dynamic autoLevels, broadcastStatus, categoryId, channelId, channelType, chart,
          displaySlate, eventType, fields, forChannelId, forContentOwner,
          forMine, forUsername, hl, home, identifier, locale, managedByMe,
-         maxResults, mine, myRating, mySubscribers, offsetTimeMs,
-         onBehalfOfContentOwner, onBehalfOfContentOwnerChannel, order,
-         pageToken, part, playlistId, publishedAfter, publishedBefore, q,
+         maxResults, mine, myRating, mySubscribers, notifySubscribers,
+         offsetTimeMs, onBehalfOfContentOwner, onBehalfOfContentOwnerChannel,
+         order, pageToken, part, playlistId, publishedAfter, publishedBefore, q,
          rating, regionCode, relatedToVideoId, safeSearch, stabilize, streamId,
          topicId, type, videoCaption, videoCategoryId, videoDefinition,
          videoDimension, videoDuration, videoEmbeddable, videoId, videoLicense,

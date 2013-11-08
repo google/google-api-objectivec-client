@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePromotedItem (0 custom class methods, 3 custom properties)
+//   GTLYouTubePromotedItem (0 custom class methods, 4 custom properties)
 
 #import "GTLYouTubePromotedItem.h"
 
@@ -39,7 +39,7 @@
 //
 
 @implementation GTLYouTubePromotedItem
-@dynamic customMessage, identifier, timing;
+@dynamic customMessage, identifier, promotedByContentOwner, timing;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

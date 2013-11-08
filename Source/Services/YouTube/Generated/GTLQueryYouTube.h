@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (39 custom class methods, 50 custom properties)
+//   GTLQueryYouTube (39 custom class methods, 51 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -79,6 +79,7 @@
 @property (assign) BOOL mine;
 @property (copy) NSString *myRating;
 @property (assign) BOOL mySubscribers;
+@property (assign) BOOL notifySubscribers;
 @property (assign) unsigned long long offsetTimeMs;
 @property (copy) NSString *onBehalfOfContentOwner;
 @property (copy) NSString *onBehalfOfContentOwnerChannel;
@@ -675,6 +676,18 @@
 //     the properties that the API response will include.
 //     The part names that you can include in the parameter value are snippet,
 //     contentDetails, and status.
+//  Optional:
+//   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
+//     YouTube content partners.
+//     The onBehalfOfContentOwner parameter indicates that the request's
+//     authorization credentials identify a YouTube CMS user who is acting on
+//     behalf of the content owner specified in the parameter value. This
+//     parameter is intended for YouTube content partners that own and manage
+//     many different YouTube channels. It allows content owners to authenticate
+//     once and get access to all their video and channel data, without having
+//     to provide authentication credentials for each individual channel. The
+//     CMS account that the user authenticates with must be linked to the
+//     specified YouTube content owner.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 //   kGTLAuthScopeYouTubeYoutubepartner
@@ -702,6 +715,17 @@
 //     more unique playlist item IDs.
 //   maxResults: The maxResults parameter specifies the maximum number of items
 //     that should be returned in the result set. (0..50, default 5)
+//   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
+//     YouTube content partners.
+//     The onBehalfOfContentOwner parameter indicates that the request's
+//     authorization credentials identify a YouTube CMS user who is acting on
+//     behalf of the content owner specified in the parameter value. This
+//     parameter is intended for YouTube content partners that own and manage
+//     many different YouTube channels. It allows content owners to authenticate
+//     once and get access to all their video and channel data, without having
+//     to provide authentication credentials for each individual channel. The
+//     CMS account that the user authenticates with must be linked to the
+//     specified YouTube content owner.
 //   pageToken: The pageToken parameter identifies a specific page in the result
 //     set that should be returned. In an API response, the nextPageToken and
 //     prevPageToken properties identify other pages that could be retrieved.
@@ -756,6 +780,18 @@
 //   identifier: The id parameter specifies the YouTube playlist ID for the
 //     playlist that is being deleted. In a playlist resource, the id property
 //     specifies the playlist's ID.
+//  Optional:
+//   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
+//     YouTube content partners.
+//     The onBehalfOfContentOwner parameter indicates that the request's
+//     authorization credentials identify a YouTube CMS user who is acting on
+//     behalf of the content owner specified in the parameter value. This
+//     parameter is intended for YouTube content partners that own and manage
+//     many different YouTube channels. It allows content owners to authenticate
+//     once and get access to all their video and channel data, without having
+//     to provide authentication credentials for each individual channel. The
+//     CMS account that the user authenticates with must be linked to the
+//     specified YouTube content owner.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 //   kGTLAuthScopeYouTubeYoutubepartner
@@ -769,6 +805,35 @@
 //     the properties that the API response will include.
 //     The part names that you can include in the parameter value are snippet
 //     and status.
+//  Optional:
+//   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
+//     YouTube content partners.
+//     The onBehalfOfContentOwner parameter indicates that the request's
+//     authorization credentials identify a YouTube CMS user who is acting on
+//     behalf of the content owner specified in the parameter value. This
+//     parameter is intended for YouTube content partners that own and manage
+//     many different YouTube channels. It allows content owners to authenticate
+//     once and get access to all their video and channel data, without having
+//     to provide authentication credentials for each individual channel. The
+//     CMS account that the user authenticates with must be linked to the
+//     specified YouTube content owner.
+//   onBehalfOfContentOwnerChannel: This parameter can only be used in a
+//     properly authorized request. Note: This parameter is intended exclusively
+//     for YouTube content partners.
+//     The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel
+//     ID of the channel to which a video is being added. This parameter is
+//     required when a request specifies a value for the onBehalfOfContentOwner
+//     parameter, and it can only be used in conjunction with that parameter. In
+//     addition, the request must be authorized using a CMS account that is
+//     linked to the content owner that the onBehalfOfContentOwner parameter
+//     specifies. Finally, the channel that the onBehalfOfContentOwnerChannel
+//     parameter value specifies must be linked to the content owner that the
+//     onBehalfOfContentOwner parameter specifies.
+//     This parameter is intended for YouTube content partners that own and
+//     manage many different YouTube channels. It allows content owners to
+//     authenticate once and perform actions on behalf of the channel specified
+//     in the parameter value, without having to provide authentication
+//     credentials for each separate channel.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 //   kGTLAuthScopeYouTubeYoutubepartner
@@ -801,10 +866,34 @@
 //     that should be returned in the result set. (0..50, default 5)
 //   mine: Set this parameter's value to true to instruct the API to only return
 //     playlists owned by the authenticated user.
-//   onBehalfOfContentOwner: USE_DESCRIPTION ---
-//     videos:insert:onBehalfOfContentOwnerChannel
-//   onBehalfOfContentOwnerChannel: USE_DESCRIPTION ---
-//     videos:insert:onBehalfOfContentOwnerChannel
+//   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
+//     YouTube content partners.
+//     The onBehalfOfContentOwner parameter indicates that the request's
+//     authorization credentials identify a YouTube CMS user who is acting on
+//     behalf of the content owner specified in the parameter value. This
+//     parameter is intended for YouTube content partners that own and manage
+//     many different YouTube channels. It allows content owners to authenticate
+//     once and get access to all their video and channel data, without having
+//     to provide authentication credentials for each individual channel. The
+//     CMS account that the user authenticates with must be linked to the
+//     specified YouTube content owner.
+//   onBehalfOfContentOwnerChannel: This parameter can only be used in a
+//     properly authorized request. Note: This parameter is intended exclusively
+//     for YouTube content partners.
+//     The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel
+//     ID of the channel to which a video is being added. This parameter is
+//     required when a request specifies a value for the onBehalfOfContentOwner
+//     parameter, and it can only be used in conjunction with that parameter. In
+//     addition, the request must be authorized using a CMS account that is
+//     linked to the content owner that the onBehalfOfContentOwner parameter
+//     specifies. Finally, the channel that the onBehalfOfContentOwnerChannel
+//     parameter value specifies must be linked to the content owner that the
+//     onBehalfOfContentOwner parameter specifies.
+//     This parameter is intended for YouTube content partners that own and
+//     manage many different YouTube channels. It allows content owners to
+//     authenticate once and perform actions on behalf of the channel specified
+//     in the parameter value, without having to provide authentication
+//     credentials for each separate channel.
 //   pageToken: The pageToken parameter identifies a specific page in the result
 //     set that should be returned. In an API response, the nextPageToken and
 //     prevPageToken properties identify other pages that could be retrieved.
@@ -833,6 +922,18 @@
 //     the request body specifies. If the request body does not specify a value,
 //     the existing privacy setting will be removed and the playlist will revert
 //     to the default privacy setting.
+//  Optional:
+//   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
+//     YouTube content partners.
+//     The onBehalfOfContentOwner parameter indicates that the request's
+//     authorization credentials identify a YouTube CMS user who is acting on
+//     behalf of the content owner specified in the parameter value. This
+//     parameter is intended for YouTube content partners that own and manage
+//     many different YouTube channels. It allows content owners to authenticate
+//     once and get access to all their video and channel data, without having
+//     to provide authentication credentials for each individual channel. The
+//     CMS account that the user authenticates with must be linked to the
+//     specified YouTube content owner.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 //   kGTLAuthScopeYouTubeYoutubepartner
@@ -1081,8 +1182,23 @@
 //     to provide authentication credentials for each individual channel. The
 //     CMS account that the user authenticates with must be linked to the
 //     specified YouTube content owner.
-//   onBehalfOfContentOwnerChannel: USE_DESCRIPTION ---
-//     videos:insert:onBehalfOfContentOwnerChannel
+//   onBehalfOfContentOwnerChannel: This parameter can only be used in a
+//     properly authorized request. Note: This parameter is intended exclusively
+//     for YouTube content partners.
+//     The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel
+//     ID of the channel to which a video is being added. This parameter is
+//     required when a request specifies a value for the onBehalfOfContentOwner
+//     parameter, and it can only be used in conjunction with that parameter. In
+//     addition, the request must be authorized using a CMS account that is
+//     linked to the content owner that the onBehalfOfContentOwner parameter
+//     specifies. Finally, the channel that the onBehalfOfContentOwnerChannel
+//     parameter value specifies must be linked to the content owner that the
+//     onBehalfOfContentOwner parameter specifies.
+//     This parameter is intended for YouTube content partners that own and
+//     manage many different YouTube channels. It allows content owners to
+//     authenticate once and perform actions on behalf of the channel specified
+//     in the parameter value, without having to provide authentication
+//     credentials for each separate channel.
 //   order: The order parameter specifies the method that will be used to sort
 //     resources in the API response. (Default "SUBSCRIPTION_ORDER_RELEVANCE")
 //      kGTLYouTubeOrderAlphabetical: Sort alphabetically.
@@ -1108,8 +1224,15 @@
 //   videoId: The videoId parameter specifies a YouTube video ID for which the
 //     custom video thumbnail is being provided.
 //  Optional:
-//   onBehalfOfContentOwner: USE_DESCRIPTION ---
-//     channels:list:onBehalfOfContentOwner
+//   onBehalfOfContentOwner: The onBehalfOfContentOwner parameter indicates that
+//     the authenticated user is acting on behalf of the content owner specified
+//     in the parameter value. This parameter is intended for YouTube content
+//     partners that own and manage many different YouTube channels. It allows
+//     content owners to authenticate once and get access to all their video and
+//     channel data, without having to provide authentication credentials for
+//     each individual channel. The actual CMS account that the user
+//     authenticates with needs to be linked to the specified YouTube content
+//     owner.
 //  Upload Parameters:
 //   Maximum size: 2MB
 //   Accepted MIME type(s): application/octet-stream, image/jpeg, image/png
@@ -1205,17 +1328,20 @@
 //     identifies the properties that the write operation will set as well as
 //     the properties that the API response will include.
 //     The part names that you can include in the parameter value are snippet,
-//     contentDetails, fileDetails, player, processingDetails, recordingDetails,
-//     statistics, status, suggestions, and topicDetails. However, not all of
-//     those parts contain properties that can be set when setting or updating a
-//     video's metadata. For example, the statistics object encapsulates
-//     statistics that YouTube calculates for a video and does not contain
-//     values that you can set or modify. If the parameter value specifies a
-//     part that does not contain mutable values, that part will still be
-//     included in the API response.
+//     contentDetails, fileDetails, liveStreamingDetails, player,
+//     processingDetails, recordingDetails, statistics, status, suggestions, and
+//     topicDetails. However, not all of those parts contain properties that can
+//     be set when setting or updating a video's metadata. For example, the
+//     statistics object encapsulates statistics that YouTube calculates for a
+//     video and does not contain values that you can set or modify. If the
+//     parameter value specifies a part that does not contain mutable values,
+//     that part will still be included in the API response.
 //  Optional:
 //   autoLevels: The autoLevels parameter indicates whether YouTube should
 //     automatically enhance the video's lighting and color.
+//   notifySubscribers: The notifySubscribers parameter indicates whether
+//     YouTube should send notification to subscribers about the inserted video.
+//     (Default true)
 //   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
 //     YouTube content partners.
 //     The onBehalfOfContentOwner parameter indicates that the request's
@@ -1264,8 +1390,9 @@
 //   part: The part parameter specifies a comma-separated list of one or more
 //     video resource properties that the API response will include. The part
 //     names that you can include in the parameter value are id, snippet,
-//     contentDetails, fileDetails, player, processingDetails, recordingDetails,
-//     statistics, status, suggestions, and topicDetails.
+//     contentDetails, fileDetails, liveStreamingDetails, player,
+//     processingDetails, recordingDetails, statistics, status, suggestions, and
+//     topicDetails.
 //     If the parameter identifies a property that contains child properties,
 //     the child properties will be included in the response. For example, in a
 //     video resource, the snippet property contains the channelId, title,
@@ -1308,9 +1435,9 @@
 //     myRating parameter, but it is not supported for use in conjunction with
 //     the id parameter.
 //   regionCode: The regionCode parameter instructs the API to select a video
-//     chart available in the specified region. If using this parameter, chart
-//     must also be set. The parameter value is an ISO 3166-1 alpha-2 country
-//     code.
+//     chart available in the specified region. This parameter can only be used
+//     in conjunction with the chart parameter. The parameter value is an ISO
+//     3166-1 alpha-2 country code.
 //   videoCategoryId: The videoCategoryId parameter identifies the video
 //     category for which the chart should be retrieved. This parameter can only
 //     be used in conjunction with the chart parameter. By default, charts are
@@ -1359,8 +1486,9 @@
 //     identifies the properties that the write operation will set as well as
 //     the properties that the API response will include.
 //     The part names that you can include in the parameter value are snippet,
-//     contentDetails, fileDetails, player, processingDetails, recordingDetails,
-//     statistics, status, suggestions, and topicDetails.
+//     contentDetails, fileDetails, liveStreamingDetails, player,
+//     processingDetails, recordingDetails, statistics, status, suggestions, and
+//     topicDetails.
 //     Note that this method will override the existing values for all of the
 //     mutable properties that are contained in any parts that the parameter
 //     value specifies. For example, a video's privacy setting is contained in
@@ -1405,8 +1533,15 @@
 //   channelId: The channelId parameter specifies a YouTube channel ID for which
 //     the watermark is being provided.
 //  Optional:
-//   onBehalfOfContentOwner: USE_DESCRIPTION ---
-//     channels:list:onBehalfOfContentOwner
+//   onBehalfOfContentOwner: The onBehalfOfContentOwner parameter indicates that
+//     the authenticated user is acting on behalf of the content owner specified
+//     in the parameter value. This parameter is intended for YouTube content
+//     partners that own and manage many different YouTube channels. It allows
+//     content owners to authenticate once and get access to all their video and
+//     channel data, without having to provide authentication credentials for
+//     each individual channel. The actual CMS account that the user
+//     authenticates with needs to be linked to the specified YouTube content
+//     owner.
 //  Upload Parameters:
 //   Maximum size: 10MB
 //   Accepted MIME type(s): application/octet-stream, image/jpeg, image/png
@@ -1424,8 +1559,15 @@
 //   channelId: The channelId parameter specifies a YouTube channel ID for which
 //     the watermark is being unset.
 //  Optional:
-//   onBehalfOfContentOwner: USE_DESCRIPTION ---
-//     channels:list:onBehalfOfContentOwner
+//   onBehalfOfContentOwner: The onBehalfOfContentOwner parameter indicates that
+//     the authenticated user is acting on behalf of the content owner specified
+//     in the parameter value. This parameter is intended for YouTube content
+//     partners that own and manage many different YouTube channels. It allows
+//     content owners to authenticate once and get access to all their video and
+//     channel data, without having to provide authentication credentials for
+//     each individual channel. The actual CMS account that the user
+//     authenticates with needs to be linked to the specified YouTube content
+//     owner.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 //   kGTLAuthScopeYouTubeYoutubepartner

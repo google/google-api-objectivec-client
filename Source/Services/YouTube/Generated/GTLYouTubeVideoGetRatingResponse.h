@@ -52,7 +52,8 @@
 // A list of ratings that match the request criteria.
 @property (retain) NSArray *items;  // of GTLYouTubeVideoRating
 
-// The kind, fixed to "youtube#videoGetRatingResponse".
+// Identifies what kind of resource this is. Value: the fixed string
+// "youtube#videoGetRatingResponse".
 @property (copy) NSString *kind;
 
 @end

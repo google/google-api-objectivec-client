@@ -80,7 +80,8 @@
 // associated with the channel.
 @property (retain) GTLYouTubeInvideoPromotion *invideoPromotion;
 
-// The kind, fixed to "youtube#channel".
+// Identifies what kind of resource this is. Value: the fixed string
+// "youtube#channel".
 @property (copy) NSString *kind;
 
 // The snippet object contains basic details about the channel, such as its

@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeContentRating (0 custom class methods, 17 custom properties)
+//   GTLYouTubeContentRating (0 custom class methods, 19 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -49,6 +49,12 @@
 
 // British Board of Film Classification
 @property (copy) NSString *bbfcRating;
+
+// Rating system for French Canadian TV - Regie du cinema
+@property (copy) NSString *catvfrRating;
+
+// Rating system for Canadian TV - Canadian TV Classification System
+@property (copy) NSString *catvRating;
 
 // Rating system in India - Central Board of Film Certification
 @property (copy) NSString *cbfcRating;

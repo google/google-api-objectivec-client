@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud SQL Administration API (sqladmin/v1beta1)
+//   Cloud SQL Administration API (sqladmin/v1beta3)
 // Description:
 //   API for Cloud SQL database instance management.
 // Documentation:
 //   https://developers.google.com/cloud-sql/docs/admin-api/
 // Classes:
-//   GTLQuerySQLAdmin (15 custom class methods, 10 custom properties)
+//   GTLQuerySQLAdmin (21 custom class methods, 13 custom properties)
 
 #import "GTLQuerySQLAdmin.h"
 
@@ -41,16 +41,24 @@
 #import "GTLSQLAdminInstancesImportResponse.h"
 #import "GTLSQLAdminInstancesInsertResponse.h"
 #import "GTLSQLAdminInstancesListResponse.h"
+#import "GTLSQLAdminInstancesResetSslConfigResponse.h"
 #import "GTLSQLAdminInstancesRestartResponse.h"
 #import "GTLSQLAdminInstancesRestoreBackupResponse.h"
+#import "GTLSQLAdminInstancesSetRootPasswordResponse.h"
 #import "GTLSQLAdminInstancesUpdateResponse.h"
 #import "GTLSQLAdminOperationsListResponse.h"
+#import "GTLSQLAdminSetRootPasswordContext.h"
+#import "GTLSQLAdminSslCert.h"
+#import "GTLSQLAdminSslCertsDeleteResponse.h"
+#import "GTLSQLAdminSslCertsInsertResponse.h"
+#import "GTLSQLAdminSslCertsListResponse.h"
 #import "GTLSQLAdminTiersListResponse.h"
 
 @implementation GTLQuerySQLAdmin
 
-@dynamic backupConfiguration, dueTime, exportContext, fields, importContext,
-         instance, maxResults, operation, pageToken, project;
+@dynamic backupConfiguration, commonName, dueTime, exportContext, fields,
+         importContext, instance, maxResults, operation, pageToken, project,
+         setRootPasswordContext, sha1Fingerprint;
 
 #pragma mark -
 #pragma mark "backupRuns" methods
@@ -164,6 +172,16 @@
   return query;
 }
 
++ (id)queryForInstancesResetSslConfigWithProject:(NSString *)project
+                                        instance:(NSString *)instance {
+  NSString *methodName = @"sql.instances.resetSslConfig";
+  GTLQuerySQLAdmin *query = [self queryWithMethodName:methodName];
+  query.project = project;
+  query.instance = instance;
+  query.expectedObjectClass = [GTLSQLAdminInstancesResetSslConfigResponse class];
+  return query;
+}
+
 + (id)queryForInstancesRestartWithProject:(NSString *)project
                                  instance:(NSString *)instance {
   NSString *methodName = @"sql.instances.restart";
@@ -185,6 +203,16 @@
   query.backupConfiguration = backupConfiguration;
   query.dueTime = dueTime;
   query.expectedObjectClass = [GTLSQLAdminInstancesRestoreBackupResponse class];
+  return query;
+}
+
++ (id)queryForInstancesSetRootPasswordWithProject:(NSString *)project
+                                         instance:(NSString *)instance {
+  NSString *methodName = @"sql.instances.setRootPassword";
+  GTLQuerySQLAdmin *query = [self queryWithMethodName:methodName];
+  query.project = project;
+  query.instance = instance;
+  query.expectedObjectClass = [GTLSQLAdminInstancesSetRootPasswordResponse class];
   return query;
 }
 
@@ -231,12 +259,61 @@
 }
 
 #pragma mark -
+#pragma mark "sslCerts" methods
+// These create a GTLQuerySQLAdmin object.
+
++ (id)queryForSslCertsDeleteWithProject:(NSString *)project
+                               instance:(NSString *)instance
+                        sha1Fingerprint:(NSString *)sha1Fingerprint {
+  NSString *methodName = @"sql.sslCerts.delete";
+  GTLQuerySQLAdmin *query = [self queryWithMethodName:methodName];
+  query.project = project;
+  query.instance = instance;
+  query.sha1Fingerprint = sha1Fingerprint;
+  query.expectedObjectClass = [GTLSQLAdminSslCertsDeleteResponse class];
+  return query;
+}
+
++ (id)queryForSslCertsGetWithProject:(NSString *)project
+                            instance:(NSString *)instance
+                     sha1Fingerprint:(NSString *)sha1Fingerprint {
+  NSString *methodName = @"sql.sslCerts.get";
+  GTLQuerySQLAdmin *query = [self queryWithMethodName:methodName];
+  query.project = project;
+  query.instance = instance;
+  query.sha1Fingerprint = sha1Fingerprint;
+  query.expectedObjectClass = [GTLSQLAdminSslCert class];
+  return query;
+}
+
++ (id)queryForSslCertsInsertWithProject:(NSString *)project
+                               instance:(NSString *)instance {
+  NSString *methodName = @"sql.sslCerts.insert";
+  GTLQuerySQLAdmin *query = [self queryWithMethodName:methodName];
+  query.project = project;
+  query.instance = instance;
+  query.expectedObjectClass = [GTLSQLAdminSslCertsInsertResponse class];
+  return query;
+}
+
++ (id)queryForSslCertsListWithProject:(NSString *)project
+                             instance:(NSString *)instance {
+  NSString *methodName = @"sql.sslCerts.list";
+  GTLQuerySQLAdmin *query = [self queryWithMethodName:methodName];
+  query.project = project;
+  query.instance = instance;
+  query.expectedObjectClass = [GTLSQLAdminSslCertsListResponse class];
+  return query;
+}
+
+#pragma mark -
 #pragma mark "tiers" methods
 // These create a GTLQuerySQLAdmin object.
 
-+ (id)queryForTiersList {
++ (id)queryForTiersListWithProject:(NSString *)project {
   NSString *methodName = @"sql.tiers.list";
   GTLQuerySQLAdmin *query = [self queryWithMethodName:methodName];
+  query.project = project;
   query.expectedObjectClass = [GTLSQLAdminTiersListResponse class];
   return query;
 }

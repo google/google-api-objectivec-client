@@ -55,7 +55,8 @@
 // A list of thumbnails.
 @property (retain) NSArray *items;  // of GTLYouTubeThumbnailDetails
 
-// The kind, fixed to "youtube#thumbnailSetResponse".
+// Identifies what kind of resource this is. Value: the fixed string
+// "youtube#thumbnailSetResponse".
 @property (copy) NSString *kind;
 
 // The visitorId identifies the visitor.

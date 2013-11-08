@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeContentRating (0 custom class methods, 17 custom properties)
+//   GTLYouTubeContentRating (0 custom class methods, 19 custom properties)
 
 #import "GTLYouTubeContentRating.h"
 
@@ -36,8 +36,8 @@
 //
 
 @implementation GTLYouTubeContentRating
-@dynamic acbRating, bbfcRating, cbfcRating, chvrsRating, djctqRating,
-         eirinRating, fmocRating, fskRating, icaaRating, kmrbRating,
-         mibacRating, mpaaRating, oflcRating, rtcRating, russiaRating,
-         tvpgRating, ytRating;
+@dynamic acbRating, bbfcRating, catvfrRating, catvRating, cbfcRating,
+         chvrsRating, djctqRating, eirinRating, fmocRating, fskRating,
+         icaaRating, kmrbRating, mibacRating, mpaaRating, oflcRating, rtcRating,
+         russiaRating, tvpgRating, ytRating;
 @end

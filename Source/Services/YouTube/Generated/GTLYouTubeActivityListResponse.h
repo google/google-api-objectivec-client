@@ -57,7 +57,8 @@
 // A list of activities, or events, that match the request criteria.
 @property (retain) NSArray *items;  // of GTLYouTubeActivity
 
-// The kind, fixed to "youtube#activityListResponse".
+// Identifies what kind of resource this is. Value: the fixed string
+// "youtube#activityListResponse".
 @property (copy) NSString *kind;
 
 // The token that can be used as the value of the pageToken parameter to

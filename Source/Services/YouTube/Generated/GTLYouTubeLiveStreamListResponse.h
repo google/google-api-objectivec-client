@@ -57,7 +57,8 @@
 // A list of live streams that match the request criteria.
 @property (retain) NSArray *items;  // of GTLYouTubeLiveStream
 
-// The kind, fixed to "youtube#liveStreamListResponse".
+// Identifies what kind of resource this is. Value: the fixed string
+// "youtube#liveStreamListResponse".
 @property (copy) NSString *kind;
 
 // The token that can be used as the value of the pageToken parameter to

@@ -124,6 +124,7 @@
 #import "GTLYouTubeVideoFileDetailsVideoStream.h"
 #import "GTLYouTubeVideoGetRatingResponse.h"
 #import "GTLYouTubeVideoListResponse.h"
+#import "GTLYouTubeVideoLiveStreamingDetails.h"
 #import "GTLYouTubeVideoMonetizationDetails.h"
 #import "GTLYouTubeVideoPlayer.h"
 #import "GTLYouTubeVideoProcessingDetails.h"

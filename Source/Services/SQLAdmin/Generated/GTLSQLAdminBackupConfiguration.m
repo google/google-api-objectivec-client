@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud SQL Administration API (sqladmin/v1beta1)
+//   Cloud SQL Administration API (sqladmin/v1beta3)
 // Description:
 //   API for Cloud SQL database instance management.
 // Documentation:
 //   https://developers.google.com/cloud-sql/docs/admin-api/
 // Classes:
-//   GTLSQLAdminBackupConfiguration (0 custom class methods, 4 custom properties)
+//   GTLSQLAdminBackupConfiguration (0 custom class methods, 5 custom properties)
 
 #import "GTLSQLAdminBackupConfiguration.h"
 
@@ -36,7 +36,7 @@
 //
 
 @implementation GTLSQLAdminBackupConfiguration
-@dynamic enabled, identifier, kind, startTime;
+@dynamic binaryLogEnabled, enabled, identifier, kind, startTime;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

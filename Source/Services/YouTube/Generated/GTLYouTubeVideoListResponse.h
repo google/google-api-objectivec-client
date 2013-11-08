@@ -57,7 +57,8 @@
 // A list of videos that match the request criteria.
 @property (retain) NSArray *items;  // of GTLYouTubeVideo
 
-// The kind, fixed to "youtube#videoListResponse".
+// Identifies what kind of resource this is. Value: the fixed string
+// "youtube#videoListResponse".
 @property (copy) NSString *kind;
 
 // The token that can be used as the value of the pageToken parameter to

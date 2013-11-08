@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud SQL Administration API (sqladmin/v1beta1)
+//   Cloud SQL Administration API (sqladmin/v1beta3)
 // Description:
 //   API for Cloud SQL database instance management.
 // Documentation:
@@ -40,12 +40,23 @@
 #import "GTLSQLAdminInstancesImportResponse.h"
 #import "GTLSQLAdminInstancesInsertResponse.h"
 #import "GTLSQLAdminInstancesListResponse.h"
+#import "GTLSQLAdminInstancesResetSslConfigResponse.h"
 #import "GTLSQLAdminInstancesRestartResponse.h"
 #import "GTLSQLAdminInstancesRestoreBackupResponse.h"
+#import "GTLSQLAdminInstancesSetRootPasswordResponse.h"
 #import "GTLSQLAdminInstancesUpdateResponse.h"
+#import "GTLSQLAdminIpConfiguration.h"
+#import "GTLSQLAdminIpMapping.h"
+#import "GTLSQLAdminLocationPreference.h"
 #import "GTLSQLAdminOperationError.h"
 #import "GTLSQLAdminOperationsListResponse.h"
+#import "GTLSQLAdminSetRootPasswordContext.h"
 #import "GTLSQLAdminSettings.h"
+#import "GTLSQLAdminSslCert.h"
+#import "GTLSQLAdminSslCertDetail.h"
+#import "GTLSQLAdminSslCertsDeleteResponse.h"
+#import "GTLSQLAdminSslCertsInsertResponse.h"
+#import "GTLSQLAdminSslCertsListResponse.h"
 #import "GTLSQLAdminTier.h"
 #import "GTLSQLAdminTiersListResponse.h"
 

@@ -57,7 +57,8 @@
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (retain) GTLYouTubeResourceId *identifier;
 
-// The kind, fixed to "youtube#searchResult".
+// Identifies what kind of resource this is. Value: the fixed string
+// "youtube#searchResult".
 @property (copy) NSString *kind;
 
 // The snippet object contains basic details about a search result, such as its

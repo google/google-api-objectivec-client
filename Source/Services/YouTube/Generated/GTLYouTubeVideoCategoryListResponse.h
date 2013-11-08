@@ -59,7 +59,8 @@
 // corresponding videoCategory resource.
 @property (retain) NSArray *items;  // of GTLYouTubeVideoCategory
 
-// The kind, fixed to "youtube#videoCategoryListResponse".
+// Identifies what kind of resource this is. Value: the fixed string
+// "youtube#videoCategoryListResponse".
 @property (copy) NSString *kind;
 
 // The token that can be used as the value of the pageToken parameter to

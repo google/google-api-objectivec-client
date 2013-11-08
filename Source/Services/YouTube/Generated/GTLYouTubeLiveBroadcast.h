@@ -61,7 +61,8 @@
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// The kind, fixed to "youtube#liveBroadcast".
+// Identifies what kind of resource this is. Value: the fixed string
+// "youtube#liveBroadcast".
 @property (copy) NSString *kind;
 
 // The snippet object contains basic details about the event, including its

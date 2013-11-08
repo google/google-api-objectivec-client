@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeActivityContentDetailsPromotedItem (0 custom class methods, 9 custom properties)
+//   GTLYouTubeActivityContentDetailsPromotedItem (0 custom class methods, 10 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -58,6 +58,10 @@
 // be taken.
 @property (copy) NSString *ctaType;
 
+// The custom call-to-action button text. If specified, it will override the
+// default button text for the cta_type.
+@property (copy) NSString *customCtaButtonText;
+
 // The text description to accompany the promoted item.
 @property (copy) NSString *descriptionText;
 
@@ -68,11 +72,11 @@
 // The list of forecasting URLs. The client should ping all of these URLs when a
 // promoted item is not available, to indicate that a promoted item could have
 // been shown.
-@property (retain) NSArray *forecastingUrls;  // of NSString
+@property (retain) NSArray *forecastingUrl;  // of NSString
 
 // The list of impression URLs. The client should ping all of these URLs to
 // indicate that the user was shown this promoted item.
-@property (retain) NSArray *impressionUrls;  // of NSString
+@property (retain) NSArray *impressionUrl;  // of NSString
 
 // The ID that YouTube uses to uniquely identify the promoted video.
 @property (copy) NSString *videoId;

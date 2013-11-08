@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud SQL Administration API (sqladmin/v1beta1)
+//   Cloud SQL Administration API (sqladmin/v1beta3)
 // Description:
 //   API for Cloud SQL database instance management.
 // Documentation:

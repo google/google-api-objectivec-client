@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud SQL Administration API (sqladmin/v1beta1)
+//   Cloud SQL Administration API (sqladmin/v1beta3)
 // Description:
 //   API for Cloud SQL database instance management.
 // Documentation:
@@ -50,12 +50,23 @@
                       [GTLSQLAdminInstancesImportResponse class],
                       [GTLSQLAdminInstancesInsertResponse class],
                       [GTLSQLAdminInstancesListResponse class],
+                      [GTLSQLAdminInstancesResetSslConfigResponse class],
                       [GTLSQLAdminInstancesRestartResponse class],
                       [GTLSQLAdminInstancesRestoreBackupResponse class],
+                      [GTLSQLAdminInstancesSetRootPasswordResponse class],
                       [GTLSQLAdminInstancesUpdateResponse class],
+                      [GTLSQLAdminIpConfiguration class],
+                      [GTLSQLAdminIpMapping class],
+                      [GTLSQLAdminLocationPreference class],
                       [GTLSQLAdminOperationError class],
                       [GTLSQLAdminOperationsListResponse class],
+                      [GTLSQLAdminSetRootPasswordContext class],
                       [GTLSQLAdminSettings class],
+                      [GTLSQLAdminSslCert class],
+                      [GTLSQLAdminSslCertDetail class],
+                      [GTLSQLAdminSslCertsDeleteResponse class],
+                      [GTLSQLAdminSslCertsInsertResponse class],
+                      [GTLSQLAdminSslCertsListResponse class],
                       [GTLSQLAdminTier class],
                       [GTLSQLAdminTiersListResponse class],
                       nil];
@@ -67,7 +78,7 @@
   self = [super init];
   if (self) {
     // Version from discovery.
-    self.apiVersion = @"v1beta1";
+    self.apiVersion = @"v1beta3";
 
     // From discovery.  Where to send JSON-RPC.
     // Turn off prettyPrint for this service to save bandwidth (especially on

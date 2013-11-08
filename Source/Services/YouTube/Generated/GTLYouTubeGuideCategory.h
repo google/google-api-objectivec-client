@@ -56,7 +56,8 @@
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// The kind, fixed to "youtube#guideCategory".
+// Identifies what kind of resource this is. Value: the fixed string
+// "youtube#guideCategory".
 @property (copy) NSString *kind;
 
 // The snippet object contains basic details about the category, such as its

@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud SQL Administration API (sqladmin/v1beta1)
+//   Cloud SQL Administration API (sqladmin/v1beta3)
 // Description:
 //   API for Cloud SQL database instance management.
 // Documentation:
 //   https://developers.google.com/cloud-sql/docs/admin-api/
 // Classes:
-//   GTLSQLAdminDatabaseInstance (0 custom class methods, 10 custom properties)
+//   GTLSQLAdminDatabaseInstance (0 custom class methods, 12 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,7 +34,9 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLSQLAdminIpMapping;
 @class GTLSQLAdminSettings;
+@class GTLSQLAdminSslCert;
 
 // ----------------------------------------------------------------------------
 //
@@ -60,6 +62,9 @@
 // Name of the Cloud SQL instance. This does not include the project ID.
 @property (copy) NSString *instance;
 
+// The assigned IP addresses for the instance.
+@property (retain) NSArray *ipAddresses;  // of GTLSQLAdminIpMapping
+
 // This is always sql#instance.
 @property (copy) NSString *kind;
 
@@ -73,6 +78,9 @@
 // The geographical region. Can be us-east1 or europe-west1. Defaults to
 // us-east1. The region can not be changed after instance creation.
 @property (copy) NSString *region;
+
+// SSL configuration.
+@property (retain) GTLSQLAdminSslCert *serverCaCert;
 
 // The user settings.
 @property (retain) GTLSQLAdminSettings *settings;

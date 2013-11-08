@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud SQL Administration API (sqladmin/v1beta1)
+//   Cloud SQL Administration API (sqladmin/v1beta3)
 // Description:
 //   API for Cloud SQL database instance management.
 // Documentation:
 //   https://developers.google.com/cloud-sql/docs/admin-api/
 // Classes:
-//   GTLSQLAdminSettings (0 custom class methods, 7 custom properties)
+//   GTLSQLAdminSettings (0 custom class methods, 10 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -35,6 +35,8 @@
 #endif
 
 @class GTLSQLAdminBackupConfiguration;
+@class GTLSQLAdminIpConfiguration;
+@class GTLSQLAdminLocationPreference;
 
 // ----------------------------------------------------------------------------
 //
@@ -59,8 +61,17 @@
 // The daily backup configuration for the instance.
 @property (retain) NSArray *backupConfiguration;  // of GTLSQLAdminBackupConfiguration
 
+// The settings for IP Management. This allows to enable or disable the instance
+// IP and manage which external networks can connect to the instance.
+@property (retain) GTLSQLAdminIpConfiguration *ipConfiguration;
+
 // This is always sql#settings.
 @property (copy) NSString *kind;
+
+// The location preference settings. This allows the instance to be located as
+// near as possible to either an AppEngine app or GCE zone for better
+// perfomance.
+@property (retain) GTLSQLAdminLocationPreference *locationPreference;
 
 // The pricing plan for this instance. This can be either PER_USE or PACKAGE.
 @property (copy) NSString *pricingPlan;
@@ -68,6 +79,12 @@
 // The type of replication this instance uses. This can be either ASYNCHRONOUS
 // or SYNCHRONOUS.
 @property (copy) NSString *replicationType;
+
+// The version of instance settings. This is a required field for update method
+// to make sure concurrent updates are handled properly. During update, use the
+// most recent settingsVersion value for this instance and do not try to update
+// this value.
+@property (retain) NSNumber *settingsVersion;  // longLongValue
 
 // The tier of service for this instance, for example D1, D2. For more
 // information, see pricing.

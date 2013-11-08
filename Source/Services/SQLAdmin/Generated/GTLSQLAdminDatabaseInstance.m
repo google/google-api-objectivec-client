@@ -20,17 +20,19 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud SQL Administration API (sqladmin/v1beta1)
+//   Cloud SQL Administration API (sqladmin/v1beta3)
 // Description:
 //   API for Cloud SQL database instance management.
 // Documentation:
 //   https://developers.google.com/cloud-sql/docs/admin-api/
 // Classes:
-//   GTLSQLAdminDatabaseInstance (0 custom class methods, 10 custom properties)
+//   GTLSQLAdminDatabaseInstance (0 custom class methods, 12 custom properties)
 
 #import "GTLSQLAdminDatabaseInstance.h"
 
+#import "GTLSQLAdminIpMapping.h"
 #import "GTLSQLAdminSettings.h"
+#import "GTLSQLAdminSslCert.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -38,13 +40,20 @@
 //
 
 @implementation GTLSQLAdminDatabaseInstance
-@dynamic currentDiskSize, databaseVersion, ETag, instance, kind, maxDiskSize,
-         project, region, settings, state;
+@dynamic currentDiskSize, databaseVersion, ETag, instance, ipAddresses, kind,
+         maxDiskSize, project, region, serverCaCert, settings, state;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObject:@"etag"
                                 forKey:@"ETag"];
+  return map;
+}
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLSQLAdminIpMapping class]
+                                forKey:@"ipAddresses"];
   return map;
 }
 

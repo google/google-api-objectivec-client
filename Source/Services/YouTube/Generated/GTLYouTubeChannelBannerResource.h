@@ -46,7 +46,8 @@
 // Etag of this resource.
 @property (copy) NSString *ETag;
 
-// The kind, fixed to "youtube#channelBannerResource".
+// Identifies what kind of resource this is. Value: the fixed string
+// "youtube#channelBannerResource".
 @property (copy) NSString *kind;
 
 // The URL of this banner image.

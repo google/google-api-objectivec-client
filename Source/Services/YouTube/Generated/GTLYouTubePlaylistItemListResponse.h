@@ -57,7 +57,8 @@
 // A list of playlist items that match the request criteria.
 @property (retain) NSArray *items;  // of GTLYouTubePlaylistItem
 
-// The kind, fixed to "youtube#playlistItemListResponse".
+// Identifies what kind of resource this is. Value: the fixed string
+// "youtube#playlistItemListResponse".
 @property (copy) NSString *kind;
 
 // The token that can be used as the value of the pageToken parameter to

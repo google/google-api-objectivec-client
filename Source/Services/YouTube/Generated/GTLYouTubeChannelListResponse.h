@@ -57,7 +57,8 @@
 // A list of channels that match the request criteria.
 @property (retain) NSArray *items;  // of GTLYouTubeChannel
 
-// The kind, fixed to "youtube#channelListResponse".
+// Identifies what kind of resource this is. Value: the fixed string
+// "youtube#channelListResponse".
 @property (copy) NSString *kind;
 
 // The token that can be used as the value of the pageToken parameter to

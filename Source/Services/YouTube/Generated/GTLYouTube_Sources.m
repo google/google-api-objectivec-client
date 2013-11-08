@@ -127,6 +127,7 @@
 #import "GTLYouTubeVideoFileDetailsVideoStream.m"
 #import "GTLYouTubeVideoGetRatingResponse.m"
 #import "GTLYouTubeVideoListResponse.m"
+#import "GTLYouTubeVideoLiveStreamingDetails.m"
 #import "GTLYouTubeVideoMonetizationDetails.m"
 #import "GTLYouTubeVideoPlayer.m"
 #import "GTLYouTubeVideoProcessingDetails.m"
