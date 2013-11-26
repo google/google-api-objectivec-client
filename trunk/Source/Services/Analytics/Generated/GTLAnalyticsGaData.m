@@ -26,11 +26,15 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsGaData (0 custom class methods, 15 custom properties)
+//   GTLAnalyticsGaData (0 custom class methods, 16 custom properties)
 //   GTLAnalyticsGaDataColumnHeadersItem (0 custom class methods, 3 custom properties)
+//   GTLAnalyticsGaDataDataTable (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsGaDataProfileInfo (0 custom class methods, 6 custom properties)
 //   GTLAnalyticsGaDataQuery (0 custom class methods, 11 custom properties)
 //   GTLAnalyticsGaDataTotalsForAllResults (0 custom class methods, 0 custom properties)
+//   GTLAnalyticsGaDataDataTableColsItem (0 custom class methods, 3 custom properties)
+//   GTLAnalyticsGaDataDataTableRowsItem (0 custom class methods, 1 custom properties)
+//   GTLAnalyticsGaDataDataTableRowsItemCItem (0 custom class methods, 1 custom properties)
 
 #import "GTLAnalyticsGaData.h"
 
@@ -40,9 +44,9 @@
 //
 
 @implementation GTLAnalyticsGaData
-@dynamic columnHeaders, containsSampledData, identifier, itemsPerPage, kind,
-         nextLink, previousLink, profileInfo, query, rows, sampleSize,
-         sampleSpace, selfLink, totalResults, totalsForAllResults;
+@dynamic columnHeaders, containsSampledData, dataTable, identifier,
+         itemsPerPage, kind, nextLink, previousLink, profileInfo, query, rows,
+         sampleSize, sampleSpace, selfLink, totalResults, totalsForAllResults;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -74,6 +78,26 @@
 
 @implementation GTLAnalyticsGaDataColumnHeadersItem
 @dynamic columnType, dataType, name;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAnalyticsGaDataDataTable
+//
+
+@implementation GTLAnalyticsGaDataDataTable
+@dynamic cols, rows;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      [GTLAnalyticsGaDataDataTableColsItem class], @"cols",
+      [GTLAnalyticsGaDataDataTableRowsItem class], @"rows",
+      nil];
+  return map;
+}
+
 @end
 
 
@@ -131,4 +155,50 @@
   return [NSString class];
 }
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAnalyticsGaDataDataTableColsItem
+//
+
+@implementation GTLAnalyticsGaDataDataTableColsItem
+@dynamic identifier, label, type;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"id"
+                                forKey:@"identifier"];
+  return map;
+}
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAnalyticsGaDataDataTableRowsItem
+//
+
+@implementation GTLAnalyticsGaDataDataTableRowsItem
+@dynamic c;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLAnalyticsGaDataDataTableRowsItemCItem class]
+                                forKey:@"c"];
+  return map;
+}
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAnalyticsGaDataDataTableRowsItemCItem
+//
+
+@implementation GTLAnalyticsGaDataDataTableRowsItemCItem
+@dynamic v;
 @end

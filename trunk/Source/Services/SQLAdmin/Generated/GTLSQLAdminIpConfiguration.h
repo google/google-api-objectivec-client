@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/cloud-sql/docs/admin-api/
 // Classes:
-//   GTLSQLAdminIpConfiguration (0 custom class methods, 2 custom properties)
+//   GTLSQLAdminIpConfiguration (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -50,5 +50,9 @@
 
 // Whether the instance should be assigned an IP address or not.
 @property (retain) NSNumber *enabled;  // boolValue
+
+// Whether the mysqld should default to 'REQUIRE X509' for users connecting over
+// IP.
+@property (retain) NSNumber *requireSsl;  // boolValue
 
 @end

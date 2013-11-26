@@ -52,6 +52,10 @@ GTL_EXTERN NSString * const kGTLAuthScopePlusDomainsPlusProfilesRead;  // "https
 GTL_EXTERN NSString * const kGTLAuthScopePlusDomainsPlusStreamRead;  // "https://www.googleapis.com/auth/plus.stream.read"
 // Manage your Google+ posts, comments, and stream
 GTL_EXTERN NSString * const kGTLAuthScopePlusDomainsPlusStreamWrite;  // "https://www.googleapis.com/auth/plus.stream.write"
+// View your email address
+GTL_EXTERN NSString * const kGTLAuthScopePlusDomainsUserinfoEmail;  // "https://www.googleapis.com/auth/userinfo.email"
+// View basic information about your account
+GTL_EXTERN NSString * const kGTLAuthScopePlusDomainsUserinfoProfile;  // "https://www.googleapis.com/auth/userinfo.profile"
 
 // Collection
 GTL_EXTERN NSString * const kGTLPlusDomainsCollectionCircled;   // "circled"

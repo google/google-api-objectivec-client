@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLQueryAnalytics (48 custom class methods, 26 custom properties)
+//   GTLQueryAnalytics (48 custom class methods, 27 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -66,6 +66,7 @@
 @property (copy) NSString *linkId;
 @property (assign) NSInteger maxResults;
 @property (copy) NSString *metrics;
+@property (copy) NSString *output;
 @property (copy) NSString *profileId;
 @property (copy) NSString *reportType;
 @property (assign) BOOL reset;
@@ -101,6 +102,11 @@
 //   filters: A comma-separated list of dimension or metric filters to be
 //     applied to Analytics data.
 //   maxResults: The maximum number of entries to include in this feed.
+//   output: The selected format for the response. Default format is JSON.
+//      kGTLAnalyticsOutputDataTable: Returns the response in Google Charts Data
+//        Table format. This is useful in creating visualization using Google
+//        Charts.
+//      kGTLAnalyticsOutputJson: Returns the response in standard JSON format.
 //   samplingLevel: The desired sampling level.
 //      kGTLAnalyticsSamplingLevelDefault: Returns response with a sample size
 //        that balances speed and accuracy.

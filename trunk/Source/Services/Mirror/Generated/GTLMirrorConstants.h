@@ -34,6 +34,12 @@
   #import "GTLDefines.h"
 #endif
 
+// Authorization scope
+// View your location
+GTL_EXTERN NSString * const kGTLAuthScopeMirrorGlassLocation;  // "https://www.googleapis.com/auth/glass.location"
+// View and manage your Glass timeline
+GTL_EXTERN NSString * const kGTLAuthScopeMirrorGlassTimeline;  // "https://www.googleapis.com/auth/glass.timeline"
+
 // OrderBy
 GTL_EXTERN NSString * const kGTLMirrorOrderByDisplayTime;  // "displayTime"
 GTL_EXTERN NSString * const kGTLMirrorOrderByWriteTime;    // "writeTime"

@@ -53,10 +53,7 @@
 // The database engine type and version, for example MYSQL_5_5 for MySQL 5.5.
 @property (copy) NSString *databaseVersion;
 
-// Etag for this resource - a version number for the settings object in this
-// resource. This field has no effect when passed as a request parameter.
-// Instead, the contents of this field should be passed in an 'If-Match' http
-// header for use in optimistic locking.
+// HTTP 1.1 Entity tag for the resource.
 @property (copy) NSString *ETag;
 
 // Name of the Cloud SQL instance. This does not include the project ID.
@@ -75,8 +72,9 @@
 // apps domain is prefixed if applicable.
 @property (copy) NSString *project;
 
-// The geographical region. Can be us-east1 or europe-west1. Defaults to
-// us-east1. The region can not be changed after instance creation.
+// The geographical region. Can be us-east1, us-central or europe-west1.
+// Defaults to us-central. The region can not be changed after instance
+// creation.
 @property (copy) NSString *region;
 
 // SSL configuration.

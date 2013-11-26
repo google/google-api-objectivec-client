@@ -70,22 +70,30 @@
 // Deletes a contact.
 //  Required:
 //   identifier: The ID of the contact.
+//  Authorization scope(s):
+//   kGTLAuthScopeMirrorGlassTimeline
 + (id)queryForContactsDeleteWithIdentifier:(NSString *)identifier;
 
 // Method: mirror.contacts.get
 // Gets a single contact by ID.
 //  Required:
 //   identifier: The ID of the contact.
+//  Authorization scope(s):
+//   kGTLAuthScopeMirrorGlassTimeline
 // Fetches a GTLMirrorContact.
 + (id)queryForContactsGetWithIdentifier:(NSString *)identifier;
 
 // Method: mirror.contacts.insert
 // Inserts a new contact.
+//  Authorization scope(s):
+//   kGTLAuthScopeMirrorGlassTimeline
 // Fetches a GTLMirrorContact.
 + (id)queryForContactsInsertWithObject:(GTLMirrorContact *)object;
 
 // Method: mirror.contacts.list
 // Retrieves a list of contacts for the authenticated user.
+//  Authorization scope(s):
+//   kGTLAuthScopeMirrorGlassTimeline
 // Fetches a GTLMirrorContactsListResponse.
 + (id)queryForContactsList;
 
@@ -93,6 +101,8 @@
 // Updates a contact in place. This method supports patch semantics.
 //  Required:
 //   identifier: The ID of the contact.
+//  Authorization scope(s):
+//   kGTLAuthScopeMirrorGlassTimeline
 // Fetches a GTLMirrorContact.
 + (id)queryForContactsPatchWithObject:(GTLMirrorContact *)object
                            identifier:(NSString *)identifier;
@@ -101,6 +111,8 @@
 // Updates a contact in place.
 //  Required:
 //   identifier: The ID of the contact.
+//  Authorization scope(s):
+//   kGTLAuthScopeMirrorGlassTimeline
 // Fetches a GTLMirrorContact.
 + (id)queryForContactsUpdateWithObject:(GTLMirrorContact *)object
                             identifier:(NSString *)identifier;
@@ -113,11 +125,17 @@
 // Gets a single location by ID.
 //  Required:
 //   identifier: The ID of the location or latest for the last known location.
+//  Authorization scope(s):
+//   kGTLAuthScopeMirrorGlassLocation
+//   kGTLAuthScopeMirrorGlassTimeline
 // Fetches a GTLMirrorLocation.
 + (id)queryForLocationsGetWithIdentifier:(NSString *)identifier;
 
 // Method: mirror.locations.list
 // Retrieves a list of locations for the user.
+//  Authorization scope(s):
+//   kGTLAuthScopeMirrorGlassLocation
+//   kGTLAuthScopeMirrorGlassTimeline
 // Fetches a GTLMirrorLocationsListResponse.
 + (id)queryForLocationsList;
 
@@ -129,15 +147,21 @@
 // Deletes a subscription.
 //  Required:
 //   identifier: The ID of the subscription.
+//  Authorization scope(s):
+//   kGTLAuthScopeMirrorGlassTimeline
 + (id)queryForSubscriptionsDeleteWithIdentifier:(NSString *)identifier;
 
 // Method: mirror.subscriptions.insert
 // Creates a new subscription.
+//  Authorization scope(s):
+//   kGTLAuthScopeMirrorGlassTimeline
 // Fetches a GTLMirrorSubscription.
 + (id)queryForSubscriptionsInsertWithObject:(GTLMirrorSubscription *)object;
 
 // Method: mirror.subscriptions.list
 // Retrieves a list of subscriptions for the authenticated user and service.
+//  Authorization scope(s):
+//   kGTLAuthScopeMirrorGlassTimeline
 // Fetches a GTLMirrorSubscriptionsListResponse.
 + (id)queryForSubscriptionsList;
 
@@ -145,6 +169,8 @@
 // Updates an existing subscription in place.
 //  Required:
 //   identifier: The ID of the subscription.
+//  Authorization scope(s):
+//   kGTLAuthScopeMirrorGlassTimeline
 // Fetches a GTLMirrorSubscription.
 + (id)queryForSubscriptionsUpdateWithObject:(GTLMirrorSubscription *)object
                                  identifier:(NSString *)identifier;
@@ -158,6 +184,8 @@
 //  Required:
 //   itemId: The ID of the timeline item the attachment belongs to.
 //   attachmentId: The ID of the attachment.
+//  Authorization scope(s):
+//   kGTLAuthScopeMirrorGlassTimeline
 + (id)queryForTimelineAttachmentsDeleteWithItemId:(NSString *)itemId
                                      attachmentId:(NSString *)attachmentId;
 
@@ -166,6 +194,8 @@
 //  Required:
 //   itemId: The ID of the timeline item the attachment belongs to.
 //   attachmentId: The ID of the attachment.
+//  Authorization scope(s):
+//   kGTLAuthScopeMirrorGlassTimeline
 // Fetches a GTLMirrorAttachment.
 + (id)queryForTimelineAttachmentsGetWithItemId:(NSString *)itemId
                                   attachmentId:(NSString *)attachmentId;
@@ -177,6 +207,8 @@
 //  Upload Parameters:
 //   Maximum size: 10MB
 //   Accepted MIME type(s): audio/*, image/*, video/*
+//  Authorization scope(s):
+//   kGTLAuthScopeMirrorGlassTimeline
 // Fetches a GTLMirrorAttachment.
 + (id)queryForTimelineAttachmentsInsertWithItemId:(NSString *)itemId
                                  uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
@@ -185,6 +217,8 @@
 // Returns a list of attachments for a timeline item.
 //  Required:
 //   itemId: The ID of the timeline item whose attachments should be listed.
+//  Authorization scope(s):
+//   kGTLAuthScopeMirrorGlassTimeline
 // Fetches a GTLMirrorAttachmentsListResponse.
 + (id)queryForTimelineAttachmentsListWithItemId:(NSString *)itemId;
 
@@ -196,12 +230,18 @@
 // Deletes a timeline item.
 //  Required:
 //   identifier: The ID of the timeline item.
+//  Authorization scope(s):
+//   kGTLAuthScopeMirrorGlassLocation
+//   kGTLAuthScopeMirrorGlassTimeline
 + (id)queryForTimelineDeleteWithIdentifier:(NSString *)identifier;
 
 // Method: mirror.timeline.get
 // Gets a single timeline item by ID.
 //  Required:
 //   identifier: The ID of the timeline item.
+//  Authorization scope(s):
+//   kGTLAuthScopeMirrorGlassLocation
+//   kGTLAuthScopeMirrorGlassTimeline
 // Fetches a GTLMirrorTimelineItem.
 + (id)queryForTimelineGetWithIdentifier:(NSString *)identifier;
 
@@ -210,6 +250,9 @@
 //  Upload Parameters:
 //   Maximum size: 10MB
 //   Accepted MIME type(s): audio/*, image/*, video/*
+//  Authorization scope(s):
+//   kGTLAuthScopeMirrorGlassLocation
+//   kGTLAuthScopeMirrorGlassTimeline
 // Fetches a GTLMirrorTimelineItem.
 + (id)queryForTimelineInsertWithObject:(GTLMirrorTimelineItem *)object
                       uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
@@ -232,6 +275,9 @@
 //   pinnedOnly: If true, only pinned items will be returned.
 //   sourceItemId: If provided, only items with the given sourceItemId will be
 //     returned.
+//  Authorization scope(s):
+//   kGTLAuthScopeMirrorGlassLocation
+//   kGTLAuthScopeMirrorGlassTimeline
 // Fetches a GTLMirrorTimelineListResponse.
 + (id)queryForTimelineList;
 
@@ -239,6 +285,9 @@
 // Updates a timeline item in place. This method supports patch semantics.
 //  Required:
 //   identifier: The ID of the timeline item.
+//  Authorization scope(s):
+//   kGTLAuthScopeMirrorGlassLocation
+//   kGTLAuthScopeMirrorGlassTimeline
 // Fetches a GTLMirrorTimelineItem.
 + (id)queryForTimelinePatchWithObject:(GTLMirrorTimelineItem *)object
                            identifier:(NSString *)identifier;
@@ -250,6 +299,9 @@
 //  Upload Parameters:
 //   Maximum size: 10MB
 //   Accepted MIME type(s): audio/*, image/*, video/*
+//  Authorization scope(s):
+//   kGTLAuthScopeMirrorGlassLocation
+//   kGTLAuthScopeMirrorGlassTimeline
 // Fetches a GTLMirrorTimelineItem.
 + (id)queryForTimelineUpdateWithObject:(GTLMirrorTimelineItem *)object
                             identifier:(NSString *)identifier
