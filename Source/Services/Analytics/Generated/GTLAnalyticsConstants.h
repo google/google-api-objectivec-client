@@ -44,6 +44,10 @@ GTL_EXTERN NSString * const kGTLAuthScopeAnalyticsManageUsers;  // "https://www.
 // View your Google Analytics data
 GTL_EXTERN NSString * const kGTLAuthScopeAnalyticsReadonly;     // "https://www.googleapis.com/auth/analytics.readonly"
 
+// Output
+GTL_EXTERN NSString * const kGTLAnalyticsOutputDataTable;  // "dataTable"
+GTL_EXTERN NSString * const kGTLAnalyticsOutputJson;       // "json"
+
 // SamplingLevel
 GTL_EXTERN NSString * const kGTLAnalyticsSamplingLevelDefault;  // "DEFAULT"
 GTL_EXTERN NSString * const kGTLAnalyticsSamplingLevelFaster;   // "FASTER"

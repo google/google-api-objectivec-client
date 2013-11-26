@@ -27,7 +27,7 @@
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
 //   GTLBooksVolume (0 custom class methods, 11 custom properties)
-//   GTLBooksVolumeAccessInfo (0 custom class methods, 12 custom properties)
+//   GTLBooksVolumeAccessInfo (0 custom class methods, 13 custom properties)
 //   GTLBooksVolumeLayerInfo (0 custom class methods, 1 custom properties)
 //   GTLBooksVolumeRecommendedInfo (0 custom class methods, 1 custom properties)
 //   GTLBooksVolumeSaleInfo (0 custom class methods, 8 custom properties)
@@ -89,7 +89,8 @@
 @implementation GTLBooksVolumeAccessInfo
 @dynamic accessViewStatus, country, downloadAccess, embeddable, epub,
          explicitOfflineLicenseManagement, pdf, publicDomain,
-         textToSpeechPermission, viewability, viewOrderUrl, webReaderLink;
+         quoteSharingAllowed, textToSpeechPermission, viewability, viewOrderUrl,
+         webReaderLink;
 @end
 
 

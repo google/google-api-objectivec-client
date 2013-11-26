@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/+/domains/
 // Classes:
-//   GTLPlusDomainsMedia (0 custom class methods, 17 custom properties)
+//   GTLPlusDomainsMedia (0 custom class methods, 18 custom properties)
 //   GTLPlusDomainsMediaAuthor (0 custom class methods, 4 custom properties)
 //   GTLPlusDomainsMediaExif (0 custom class methods, 1 custom properties)
 //   GTLPlusDomainsMediaAuthorImage (0 custom class methods, 1 custom properties)
@@ -70,6 +70,10 @@
 
 // The type of resource.
 @property (copy) NSString *kind;
+
+// The time at which this media was originally created in UTC. Formatted as an
+// RFC 3339 timestamp that matches this example: 2010-11-25T14:30:27.655Z
+@property (retain) GTLDateTime *mediaCreatedTime;
 
 // The URL of this photo or video's still image.
 @property (copy) NSString *mediaUrl;

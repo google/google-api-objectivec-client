@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLCivicInfoElectionsQueryResponse.h
+//  GTLCivicInfoOfficial.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoElectionsQueryResponse (0 custom class methods, 2 custom properties)
+//   GTLCivicInfoOfficial (0 custom class methods, 8 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,22 +34,40 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLCivicInfoElection;
+@class GTLCivicInfoChannel;
+@class GTLCivicInfoSimpleAddressType;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLCivicInfoElectionsQueryResponse
+//   GTLCivicInfoOfficial
 //
 
-// The list of elections available for this version of the API.
+// Information about a official holding an elected office.
 
-@interface GTLCivicInfoElectionsQueryResponse : GTLObject
+@interface GTLCivicInfoOfficial : GTLObject
 
-// A list of available elections
-@property (retain) NSArray *elections;  // of GTLCivicInfoElection
+// Addresses at which to contact the official.
+@property (retain) NSArray *address;  // of GTLCivicInfoSimpleAddressType
 
-// Identifies what kind of resource this is. Value: the fixed string
-// "civicinfo#electionsQueryResponse".
-@property (copy) NSString *kind;
+// A list of known (social) media channels for this official.
+@property (retain) NSArray *channels;  // of GTLCivicInfoChannel
+
+// The direct email addresses for the official.
+@property (retain) NSArray *emails;  // of NSString
+
+// The official's name.
+@property (copy) NSString *name;
+
+// The full name of the party the official belongs to.
+@property (copy) NSString *party;
+
+// The official's public contact phone numbers.
+@property (retain) NSArray *phones;  // of NSString
+
+// A URL for a photo of the official.
+@property (copy) NSString *photoUrl;
+
+// The official's public website URLs.
+@property (retain) NSArray *urls;  // of NSString
 
 @end

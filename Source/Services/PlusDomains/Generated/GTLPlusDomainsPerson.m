@@ -26,8 +26,9 @@
 // Documentation:
 //   https://developers.google.com/+/domains/
 // Classes:
-//   GTLPlusDomainsPerson (0 custom class methods, 24 custom properties)
+//   GTLPlusDomainsPerson (0 custom class methods, 25 custom properties)
 //   GTLPlusDomainsPersonCover (0 custom class methods, 3 custom properties)
+//   GTLPlusDomainsPersonEmailsItem (0 custom class methods, 2 custom properties)
 //   GTLPlusDomainsPersonImage (0 custom class methods, 1 custom properties)
 //   GTLPlusDomainsPersonName (0 custom class methods, 6 custom properties)
 //   GTLPlusDomainsPersonOrganizationsItem (0 custom class methods, 9 custom properties)
@@ -45,7 +46,7 @@
 
 @implementation GTLPlusDomainsPerson
 @dynamic aboutMe, birthday, braggingRights, circledByCount, cover,
-         currentLocation, displayName, ETag, gender, identifier, image,
+         currentLocation, displayName, emails, ETag, gender, identifier, image,
          isPlusUser, kind, name, nickname, objectType, organizations,
          placesLived, plusOneCount, relationshipStatus, tagline, url, urls,
          verified;
@@ -62,6 +63,7 @@
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
+      [GTLPlusDomainsPersonEmailsItem class], @"emails",
       [GTLPlusDomainsPersonOrganizationsItem class], @"organizations",
       [GTLPlusDomainsPersonPlacesLivedItem class], @"placesLived",
       [GTLPlusDomainsPersonUrlsItem class], @"urls",
@@ -83,6 +85,16 @@
 
 @implementation GTLPlusDomainsPersonCover
 @dynamic coverInfo, coverPhoto, layout;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusDomainsPersonEmailsItem
+//
+
+@implementation GTLPlusDomainsPersonEmailsItem
+@dynamic type, value;
 @end
 
 

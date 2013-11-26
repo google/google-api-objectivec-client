@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLCivicInfoElectionsQueryResponse.h
+//  GTLCivicInfoOfficial.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,30 +26,31 @@
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoElectionsQueryResponse (0 custom class methods, 2 custom properties)
+//   GTLCivicInfoOfficial (0 custom class methods, 8 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLCivicInfoOfficial.h"
 
-@class GTLCivicInfoElection;
+#import "GTLCivicInfoChannel.h"
+#import "GTLCivicInfoSimpleAddressType.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLCivicInfoElectionsQueryResponse
+//   GTLCivicInfoOfficial
 //
 
-// The list of elections available for this version of the API.
+@implementation GTLCivicInfoOfficial
+@dynamic address, channels, emails, name, party, phones, photoUrl, urls;
 
-@interface GTLCivicInfoElectionsQueryResponse : GTLObject
-
-// A list of available elections
-@property (retain) NSArray *elections;  // of GTLCivicInfoElection
-
-// Identifies what kind of resource this is. Value: the fixed string
-// "civicinfo#electionsQueryResponse".
-@property (copy) NSString *kind;
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      [GTLCivicInfoSimpleAddressType class], @"address",
+      [GTLCivicInfoChannel class], @"channels",
+      [NSString class], @"emails",
+      [NSString class], @"phones",
+      [NSString class], @"urls",
+      nil];
+  return map;
+}
 
 @end

@@ -229,6 +229,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopePlusLogin
 //   kGTLAuthScopePlusMe
+//   kGTLAuthScopePlusUserinfoEmail
+//   kGTLAuthScopePlusUserinfoProfile
 // Fetches a GTLPlusPerson.
 + (id)queryForPeopleGetWithUserId:(NSString *)userId;
 

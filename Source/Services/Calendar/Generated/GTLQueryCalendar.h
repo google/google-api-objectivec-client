@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/google-apps/calendar/firstapp
 // Classes:
-//   GTLQueryCalendar (34 custom class methods, 29 custom properties)
+//   GTLQueryCalendar (34 custom class methods, 31 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -68,10 +68,12 @@
 @property (copy) NSString *orderBy;
 @property (copy) NSString *originalStart;
 @property (copy) NSString *pageToken;
+@property (retain) NSArray *privateExtendedProperty;  // of NSString
 @property (copy) NSString *q;
 @property (copy) NSString *ruleId;
 @property (assign) BOOL sendNotifications;
 @property (copy) NSString *setting;
+@property (retain) NSArray *sharedExtendedProperty;  // of NSString
 @property (assign) BOOL showDeleted;
 @property (assign) BOOL showHidden;
 @property (assign) BOOL showHiddenInvitations;
@@ -447,8 +449,16 @@
 //        "singleEvents" is True)
 //      kGTLCalendarOrderByUpdated: Order by last modification time (ascending).
 //   pageToken: Token specifying which result page to return. Optional.
+//   privateExtendedProperty: Extended properties constraint specified as
+//     propertyName=value. Matches only private properties. This parameter might
+//     be repeated multiple times to return events that match all given
+//     constraints.
 //   q: Free text search terms to find events that match these terms in any
 //     field, except for extended properties. Optional.
+//   sharedExtendedProperty: Extended properties constraint specified as
+//     propertyName=value. Matches only shared properties. This parameter might
+//     be repeated multiple times to return events that match all given
+//     constraints.
 //   showDeleted: Whether to include deleted events (with 'status' equals
 //     'cancelled') in the result. Cancelled instances of recurring events (but
 //     not the underlying recurring event) will still be included if
@@ -583,8 +593,16 @@
 //        "singleEvents" is True)
 //      kGTLCalendarOrderByUpdated: Order by last modification time (ascending).
 //   pageToken: Token specifying which result page to return. Optional.
+//   privateExtendedProperty: Extended properties constraint specified as
+//     propertyName=value. Matches only private properties. This parameter might
+//     be repeated multiple times to return events that match all given
+//     constraints.
 //   q: Free text search terms to find events that match these terms in any
 //     field, except for extended properties. Optional.
+//   sharedExtendedProperty: Extended properties constraint specified as
+//     propertyName=value. Matches only shared properties. This parameter might
+//     be repeated multiple times to return events that match all given
+//     constraints.
 //   showDeleted: Whether to include deleted events (with 'status' equals
 //     'cancelled') in the result. Cancelled instances of recurring events (but
 //     not the underlying recurring event) will still be included if

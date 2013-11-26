@@ -14,24 +14,39 @@
  */
 
 //
-//  GTLMirrorConstants.m
+//  GTLCivicInfoOffice.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Mirror API (mirror/v1)
+//   Google Civic Information API (civicinfo/us_v1)
 // Description:
-//   API for interacting with Glass users via the timeline.
+//   An API for accessing civic information.
 // Documentation:
-//   https://developers.google.com/glass
+//   https://developers.google.com/civic-information
+// Classes:
+//   GTLCivicInfoOffice (0 custom class methods, 4 custom properties)
 
-#import "GTLMirrorConstants.h"
+#import "GTLCivicInfoOffice.h"
 
-// Authorization scope
-NSString * const kGTLAuthScopeMirrorGlassLocation = @"https://www.googleapis.com/auth/glass.location";
-NSString * const kGTLAuthScopeMirrorGlassTimeline = @"https://www.googleapis.com/auth/glass.timeline";
+#import "GTLCivicInfoSource.h"
 
-// OrderBy
-NSString * const kGTLMirrorOrderByDisplayTime = @"displayTime";
-NSString * const kGTLMirrorOrderByWriteTime   = @"writeTime";
+// ----------------------------------------------------------------------------
+//
+//   GTLCivicInfoOffice
+//
+
+@implementation GTLCivicInfoOffice
+@dynamic level, name, officialIds, sources;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      [NSString class], @"officialIds",
+      [GTLCivicInfoSource class], @"sources",
+      nil];
+  return map;
+}
+
+@end

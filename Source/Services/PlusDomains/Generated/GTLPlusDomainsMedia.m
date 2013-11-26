@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/+/domains/
 // Classes:
-//   GTLPlusDomainsMedia (0 custom class methods, 17 custom properties)
+//   GTLPlusDomainsMedia (0 custom class methods, 18 custom properties)
 //   GTLPlusDomainsMediaAuthor (0 custom class methods, 4 custom properties)
 //   GTLPlusDomainsMediaExif (0 custom class methods, 1 custom properties)
 //   GTLPlusDomainsMediaAuthorImage (0 custom class methods, 1 custom properties)
@@ -41,9 +41,9 @@
 //
 
 @implementation GTLPlusDomainsMedia
-@dynamic author, displayName, ETag, exif, height, identifier, kind, mediaUrl,
-         published, sizeBytes, streams, summary, updated, url, videoDuration,
-         videoStatus, width;
+@dynamic author, displayName, ETag, exif, height, identifier, kind,
+         mediaCreatedTime, mediaUrl, published, sizeBytes, streams, summary,
+         updated, url, videoDuration, videoStatus, width;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

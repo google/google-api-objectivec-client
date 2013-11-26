@@ -26,11 +26,15 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsGaData (0 custom class methods, 15 custom properties)
+//   GTLAnalyticsGaData (0 custom class methods, 16 custom properties)
 //   GTLAnalyticsGaDataColumnHeadersItem (0 custom class methods, 3 custom properties)
+//   GTLAnalyticsGaDataDataTable (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsGaDataProfileInfo (0 custom class methods, 6 custom properties)
 //   GTLAnalyticsGaDataQuery (0 custom class methods, 11 custom properties)
 //   GTLAnalyticsGaDataTotalsForAllResults (0 custom class methods, 0 custom properties)
+//   GTLAnalyticsGaDataDataTableColsItem (0 custom class methods, 3 custom properties)
+//   GTLAnalyticsGaDataDataTableRowsItem (0 custom class methods, 1 custom properties)
+//   GTLAnalyticsGaDataDataTableRowsItemCItem (0 custom class methods, 1 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -39,6 +43,10 @@
 #endif
 
 @class GTLAnalyticsGaDataColumnHeadersItem;
+@class GTLAnalyticsGaDataDataTable;
+@class GTLAnalyticsGaDataDataTableColsItem;
+@class GTLAnalyticsGaDataDataTableRowsItem;
+@class GTLAnalyticsGaDataDataTableRowsItemCItem;
 @class GTLAnalyticsGaDataProfileInfo;
 @class GTLAnalyticsGaDataQuery;
 @class GTLAnalyticsGaDataTotalsForAllResults;
@@ -58,6 +66,8 @@
 
 // Determines if Analytics data contains samples.
 @property (retain) NSNumber *containsSampledData;  // boolValue
+
+@property (retain) GTLAnalyticsGaDataDataTable *dataTable;
 
 // Unique ID for this data response.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
@@ -128,6 +138,17 @@
 // Column name.
 @property (copy) NSString *name;
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAnalyticsGaDataDataTable
+//
+
+@interface GTLAnalyticsGaDataDataTable : GTLObject
+@property (retain) NSArray *cols;  // of GTLAnalyticsGaDataDataTableColsItem
+@property (retain) NSArray *rows;  // of GTLAnalyticsGaDataDataTableRowsItem
 @end
 
 
@@ -212,4 +233,39 @@
 // -additionalJSONKeys and -additionalPropertyForName: to get the list of
 // properties and then fetch them; or -additionalProperties to fetch them all at
 // once.
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAnalyticsGaDataDataTableColsItem
+//
+
+@interface GTLAnalyticsGaDataDataTableColsItem : GTLObject
+
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+@property (copy) NSString *identifier;
+
+@property (copy) NSString *label;
+@property (copy) NSString *type;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAnalyticsGaDataDataTableRowsItem
+//
+
+@interface GTLAnalyticsGaDataDataTableRowsItem : GTLObject
+@property (retain) NSArray *c;  // of GTLAnalyticsGaDataDataTableRowsItemCItem
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAnalyticsGaDataDataTableRowsItemCItem
+//
+
+@interface GTLAnalyticsGaDataDataTableRowsItemCItem : GTLObject
+@property (copy) NSString *v;
 @end

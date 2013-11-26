@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/google-apps/calendar/firstapp
 // Classes:
-//   GTLQueryCalendar (34 custom class methods, 29 custom properties)
+//   GTLQueryCalendar (34 custom class methods, 31 custom properties)
 
 #import "GTLQueryCalendar.h"
 
@@ -49,14 +49,18 @@
 @dynamic alwaysIncludeEmail, calendarExpansionMax, calendarId, colorRgbFormat,
          destination, eventId, fields, groupExpansionMax, iCalUID, items,
          maxAttendees, maxResults, minAccessRole, orderBy, originalStart,
-         pageToken, q, ruleId, sendNotifications, setting, showDeleted,
-         showHidden, showHiddenInvitations, singleEvents, text, timeMax,
-         timeMin, timeZone, updatedMin;
+         pageToken, privateExtendedProperty, q, ruleId, sendNotifications,
+         setting, sharedExtendedProperty, showDeleted, showHidden,
+         showHiddenInvitations, singleEvents, text, timeMax, timeMin, timeZone,
+         updatedMin;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLCalendarFreeBusyRequestItem class]
-                                forKey:@"items"];
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      [GTLCalendarFreeBusyRequestItem class], @"items",
+      [NSString class], @"privateExtendedProperty",
+      [NSString class], @"sharedExtendedProperty",
+      nil];
   return map;
 }
 

@@ -26,9 +26,10 @@
 // Documentation:
 //   https://developers.google.com/+/api/
 // Classes:
-//   GTLPlusPerson (0 custom class methods, 26 custom properties)
+//   GTLPlusPerson (0 custom class methods, 27 custom properties)
 //   GTLPlusPersonAgeRange (0 custom class methods, 2 custom properties)
 //   GTLPlusPersonCover (0 custom class methods, 3 custom properties)
+//   GTLPlusPersonEmailsItem (0 custom class methods, 2 custom properties)
 //   GTLPlusPersonImage (0 custom class methods, 1 custom properties)
 //   GTLPlusPersonName (0 custom class methods, 6 custom properties)
 //   GTLPlusPersonOrganizationsItem (0 custom class methods, 9 custom properties)
@@ -47,6 +48,7 @@
 @class GTLPlusPersonCover;
 @class GTLPlusPersonCoverCoverInfo;
 @class GTLPlusPersonCoverCoverPhoto;
+@class GTLPlusPersonEmailsItem;
 @class GTLPlusPersonImage;
 @class GTLPlusPersonName;
 @class GTLPlusPersonOrganizationsItem;
@@ -84,6 +86,8 @@
 
 // The name of this person, which is suitable for display.
 @property (copy) NSString *displayName;
+
+@property (retain) NSArray *emails;  // of GTLPlusPersonEmailsItem
 
 // ETag of this response for caching purposes.
 @property (copy) NSString *ETag;
@@ -193,6 +197,26 @@
 // the following values:
 // - "banner" - One large image banner.
 @property (copy) NSString *layout;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusPersonEmailsItem
+//
+
+@interface GTLPlusPersonEmailsItem : GTLObject
+
+// The type of address. Possible values include, but are not limited to, the
+// following values:
+// - "home" - Home email address.
+// - "work" - Work email address.
+// - "other" - Other.
+@property (copy) NSString *type;
+
+// The email address.
+@property (copy) NSString *value;
 
 @end
 

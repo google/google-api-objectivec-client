@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2013 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,7 +58,8 @@
 // The election that was queried.
 @property (retain) GTLCivicInfoElection *election;
 
-// The kind, fixed to "civicinfo#voterInfoResponse".
+// Identifies what kind of resource this is. Value: the fixed string
+// "civicinfo#voterInfoResponse".
 @property (copy) NSString *kind;
 
 // The normalized version of the requested address

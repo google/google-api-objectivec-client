@@ -37,6 +37,8 @@ NSString * const kGTLAuthScopePlusDomainsPlusMediaUpload  = @"https://www.google
 NSString * const kGTLAuthScopePlusDomainsPlusProfilesRead = @"https://www.googleapis.com/auth/plus.profiles.read";
 NSString * const kGTLAuthScopePlusDomainsPlusStreamRead   = @"https://www.googleapis.com/auth/plus.stream.read";
 NSString * const kGTLAuthScopePlusDomainsPlusStreamWrite  = @"https://www.googleapis.com/auth/plus.stream.write";
+NSString * const kGTLAuthScopePlusDomainsUserinfoEmail    = @"https://www.googleapis.com/auth/userinfo.email";
+NSString * const kGTLAuthScopePlusDomainsUserinfoProfile  = @"https://www.googleapis.com/auth/userinfo.profile";
 
 // Collection
 NSString * const kGTLPlusDomainsCollectionCircled   = @"circled";

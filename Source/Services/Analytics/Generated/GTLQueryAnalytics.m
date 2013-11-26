@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLQueryAnalytics (48 custom class methods, 26 custom properties)
+//   GTLQueryAnalytics (48 custom class methods, 27 custom properties)
 
 #import "GTLQueryAnalytics.h"
 
@@ -56,7 +56,7 @@
 
 @dynamic accountId, appendNumber, customDataImportUids, customDataSourceId,
          date, dimensions, endDate, experimentId, fields, filters, goalId, ids,
-         linkId, maxResults, metrics, profileId, reportType, reset,
+         linkId, maxResults, metrics, output, profileId, reportType, reset,
          samplingLevel, segment, sort, startDate, startIndex, type, uploadId,
          webPropertyId;
 

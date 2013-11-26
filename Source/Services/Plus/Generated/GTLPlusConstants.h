@@ -36,9 +36,13 @@
 
 // Authorization scope
 // Know your basic profile info and list of people in your circles.
-GTL_EXTERN NSString * const kGTLAuthScopePlusLogin;  // "https://www.googleapis.com/auth/plus.login"
+GTL_EXTERN NSString * const kGTLAuthScopePlusLogin;            // "https://www.googleapis.com/auth/plus.login"
 // Know who you are on Google
-GTL_EXTERN NSString * const kGTLAuthScopePlusMe;     // "https://www.googleapis.com/auth/plus.me"
+GTL_EXTERN NSString * const kGTLAuthScopePlusMe;               // "https://www.googleapis.com/auth/plus.me"
+// View your email address
+GTL_EXTERN NSString * const kGTLAuthScopePlusUserinfoEmail;    // "https://www.googleapis.com/auth/userinfo.email"
+// View basic information about your account
+GTL_EXTERN NSString * const kGTLAuthScopePlusUserinfoProfile;  // "https://www.googleapis.com/auth/userinfo.profile"
 
 // Collection
 GTL_EXTERN NSString * const kGTLPlusCollectionPlusoners;  // "plusoners"

@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/cloud-sql/docs/admin-api/
 // Classes:
-//   GTLSQLAdminIpConfiguration (0 custom class methods, 2 custom properties)
+//   GTLSQLAdminIpConfiguration (0 custom class methods, 3 custom properties)
 
 #import "GTLSQLAdminIpConfiguration.h"
 
@@ -36,7 +36,7 @@
 //
 
 @implementation GTLSQLAdminIpConfiguration
-@dynamic authorizedNetworks, enabled;
+@dynamic authorizedNetworks, enabled, requireSsl;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =

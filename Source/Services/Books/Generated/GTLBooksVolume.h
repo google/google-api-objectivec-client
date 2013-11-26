@@ -27,7 +27,7 @@
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
 //   GTLBooksVolume (0 custom class methods, 11 custom properties)
-//   GTLBooksVolumeAccessInfo (0 custom class methods, 12 custom properties)
+//   GTLBooksVolumeAccessInfo (0 custom class methods, 13 custom properties)
 //   GTLBooksVolumeLayerInfo (0 custom class methods, 1 custom properties)
 //   GTLBooksVolumeRecommendedInfo (0 custom class methods, 1 custom properties)
 //   GTLBooksVolumeSaleInfo (0 custom class methods, 8 custom properties)
@@ -168,6 +168,9 @@
 
 // Whether or not this book is public domain in the country listed above.
 @property (retain) NSNumber *publicDomain;  // boolValue
+
+// Whether quote sharing is allowed for this volume.
+@property (retain) NSNumber *quoteSharingAllowed;  // boolValue
 
 // Whether text-to-speech is permitted for this volume. Values can be ALLOWED,
 // ALLOWED_FOR_ACCESSIBILITY, or NOT_ALLOWED.

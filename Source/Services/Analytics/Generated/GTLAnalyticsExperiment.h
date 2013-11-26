@@ -60,7 +60,7 @@
 
 // If true, the end user will be able to edit the experiment via the Google
 // Analytics user interface.
-@property (retain) id editableInGaUi;
+@property (retain) NSNumber *editableInGaUi;  // boolValue
 
 // The ending time of the experiment (the time the status changed from RUNNING
 // to ENDED). This field is present only if the experiment has ended. This field
@@ -138,7 +138,7 @@
 // - EXTERNAL: The variations will be served externally and the chosen variation
 // reported to Google Analytics. The caller is responsible for serving the
 // selected variation and evaluating the results.
-@property (retain) id servingFramework;
+@property (copy) NSString *servingFramework;
 
 // The snippet of code to include on the control page(s). This field is
 // read-only.

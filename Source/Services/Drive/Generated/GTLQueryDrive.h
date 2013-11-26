@@ -492,8 +492,8 @@
 //  Optional:
 //   convert: Whether to convert this file to the corresponding Google Docs
 //     format. (Default false)
-//   newRevision: Whether a blob upload should create a new revision. If not set
-//     or false, the blob data in the current head revision is replaced. If
+//   newRevision: Whether a blob upload should create a new revision. If false,
+//     the blob data in the current head revision is replaced. If not set or
 //     true, a new blob is created as head revision, and previous revisions are
 //     preserved (causing increased use of the user's data storage quota).
 //     (Default true)
@@ -561,8 +561,8 @@
 //  Optional:
 //   convert: Whether to convert this file to the corresponding Google Docs
 //     format. (Default false)
-//   newRevision: Whether a blob upload should create a new revision. If not set
-//     or false, the blob data in the current head revision is replaced. If
+//   newRevision: Whether a blob upload should create a new revision. If false,
+//     the blob data in the current head revision is replaced. If not set or
 //     true, a new blob is created as head revision, and previous revisions are
 //     preserved (causing increased use of the user's data storage quota).
 //     (Default true)

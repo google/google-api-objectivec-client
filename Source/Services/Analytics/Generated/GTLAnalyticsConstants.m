@@ -34,6 +34,10 @@ NSString * const kGTLAuthScopeAnalyticsEdit        = @"https://www.googleapis.co
 NSString * const kGTLAuthScopeAnalyticsManageUsers = @"https://www.googleapis.com/auth/analytics.manage.users";
 NSString * const kGTLAuthScopeAnalyticsReadonly    = @"https://www.googleapis.com/auth/analytics.readonly";
 
+// Output
+NSString * const kGTLAnalyticsOutputDataTable = @"dataTable";
+NSString * const kGTLAnalyticsOutputJson      = @"json";
+
 // SamplingLevel
 NSString * const kGTLAnalyticsSamplingLevelDefault         = @"DEFAULT";
 NSString * const kGTLAnalyticsSamplingLevelFaster          = @"FASTER";

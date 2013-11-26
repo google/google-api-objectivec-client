@@ -332,6 +332,8 @@
 //   kGTLAuthScopePlusDomainsPlusLogin
 //   kGTLAuthScopePlusDomainsPlusMe
 //   kGTLAuthScopePlusDomainsPlusProfilesRead
+//   kGTLAuthScopePlusDomainsUserinfoEmail
+//   kGTLAuthScopePlusDomainsUserinfoProfile
 // Fetches a GTLPlusDomainsPerson.
 + (id)queryForPeopleGetWithUserId:(NSString *)userId;
 
