@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/+/api/
 // Classes:
-//   GTLPlusPerson (0 custom class methods, 27 custom properties)
+//   GTLPlusPerson (0 custom class methods, 29 custom properties)
 //   GTLPlusPersonAgeRange (0 custom class methods, 2 custom properties)
 //   GTLPlusPersonCover (0 custom class methods, 3 custom properties)
 //   GTLPlusPersonEmailsItem (0 custom class methods, 2 custom properties)
@@ -127,6 +127,9 @@
 // - "page" - represents a page.
 @property (copy) NSString *objectType;
 
+// The occupation of this person.
+@property (copy) NSString *occupation;
+
 // A list of current or past organizations with which this person is associated.
 @property (retain) NSArray *organizations;  // of GTLPlusPersonOrganizationsItem
 
@@ -148,6 +151,9 @@
 // - "in_domestic_partnership" - Person is in a domestic partnership.
 // - "in_civil_union" - Person is in a civil union.
 @property (copy) NSString *relationshipStatus;
+
+// The person's skills.
+@property (copy) NSString *skills;
 
 // The brief description (tagline) of this person.
 @property (copy) NSString *tagline;
