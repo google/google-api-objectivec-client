@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveApp (0 custom class methods, 20 custom properties)
+//   GTLDriveApp (0 custom class methods, 22 custom properties)
 //   GTLDriveAppIconsItem (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -50,6 +50,14 @@
 
 // Whether the app is authorized to access data on the user's Drive.
 @property (retain) NSNumber *authorized;  // boolValue
+
+// The template url to create a new file with this app in a given folder. The
+// template will contain {folderId} to be replaced by the folder to create the
+// new file in.
+@property (copy) NSString *createInFolderTemplate;
+
+// The url to create a new file with this app.
+@property (copy) NSString *createUrl;
 
 // The various icons for the app.
 @property (retain) NSArray *icons;  // of GTLDriveAppIconsItem

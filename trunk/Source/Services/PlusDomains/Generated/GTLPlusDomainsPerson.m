@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/+/domains/
 // Classes:
-//   GTLPlusDomainsPerson (0 custom class methods, 25 custom properties)
+//   GTLPlusDomainsPerson (0 custom class methods, 27 custom properties)
 //   GTLPlusDomainsPersonCover (0 custom class methods, 3 custom properties)
 //   GTLPlusDomainsPersonEmailsItem (0 custom class methods, 2 custom properties)
 //   GTLPlusDomainsPersonImage (0 custom class methods, 1 custom properties)
@@ -47,9 +47,9 @@
 @implementation GTLPlusDomainsPerson
 @dynamic aboutMe, birthday, braggingRights, circledByCount, cover,
          currentLocation, displayName, emails, ETag, gender, identifier, image,
-         isPlusUser, kind, name, nickname, objectType, organizations,
-         placesLived, plusOneCount, relationshipStatus, tagline, url, urls,
-         verified;
+         isPlusUser, kind, name, nickname, objectType, occupation,
+         organizations, placesLived, plusOneCount, relationshipStatus, skills,
+         tagline, url, urls, verified;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

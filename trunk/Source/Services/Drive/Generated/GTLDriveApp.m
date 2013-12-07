@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveApp (0 custom class methods, 20 custom properties)
+//   GTLDriveApp (0 custom class methods, 22 custom properties)
 //   GTLDriveAppIconsItem (0 custom class methods, 3 custom properties)
 
 #import "GTLDriveApp.h"
@@ -37,11 +37,11 @@
 //
 
 @implementation GTLDriveApp
-@dynamic authorized, icons, identifier, installed, kind, longDescription, name,
-         objectType, openUrlTemplate, primaryFileExtensions, primaryMimeTypes,
-         productId, productUrl, secondaryFileExtensions, secondaryMimeTypes,
-         shortDescription, supportsCreate, supportsImport, supportsMultiOpen,
-         useByDefault;
+@dynamic authorized, createInFolderTemplate, createUrl, icons, identifier,
+         installed, kind, longDescription, name, objectType, openUrlTemplate,
+         primaryFileExtensions, primaryMimeTypes, productId, productUrl,
+         secondaryFileExtensions, secondaryMimeTypes, shortDescription,
+         supportsCreate, supportsImport, supportsMultiOpen, useByDefault;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
