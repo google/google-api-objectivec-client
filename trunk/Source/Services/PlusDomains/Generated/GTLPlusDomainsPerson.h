@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/+/domains/
 // Classes:
-//   GTLPlusDomainsPerson (0 custom class methods, 27 custom properties)
+//   GTLPlusDomainsPerson (0 custom class methods, 28 custom properties)
 //   GTLPlusDomainsPersonCover (0 custom class methods, 3 custom properties)
 //   GTLPlusDomainsPersonEmailsItem (0 custom class methods, 2 custom properties)
 //   GTLPlusDomainsPersonImage (0 custom class methods, 1 custom properties)
@@ -82,6 +82,16 @@
 // The name of this person, which is suitable for display.
 @property (copy) NSString *displayName;
 
+// The hosted domain name for the user's Google Apps account. For instance,
+// example.com. The plus.profile.emails.read or email scope is needed to get
+// this domain name.
+@property (copy) NSString *domain;
+
+// A list of email addresses that this person has, including their Google
+// account email address, and the public verified email addresses on their
+// Google+ profile. The plus.profile.emails.read scope is needed to retrieve
+// these email addresses, or the email scope can be used to retrieve just the
+// Google account email address.
 @property (retain) NSArray *emails;  // of GTLPlusDomainsPersonEmailsItem
 
 // ETag of this response for caching purposes.
@@ -192,6 +202,7 @@
 
 // The type of address. Possible values include, but are not limited to, the
 // following values:
+// - "account" - Google account email address.
 // - "home" - Home email address.
 // - "work" - Work email address.
 // - "other" - Other.

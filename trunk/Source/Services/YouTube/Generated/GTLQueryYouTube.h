@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (39 custom class methods, 51 custom properties)
+//   GTLQueryYouTube (39 custom class methods, 52 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -108,6 +108,7 @@
 @property (copy) NSString *videoLicense;
 @property (copy) NSString *videoSyndicated;
 @property (copy) NSString *videoType;
+@property (retain) GTLDateTime *walltime;
 
 #pragma mark -
 #pragma mark "activities" methods
@@ -411,6 +412,8 @@
 //     to provide authentication credentials for each individual channel. The
 //     CMS account that the user authenticates with must be linked to the
 //     specified YouTube content owner.
+//   walltime: The walltime parameter specifies the wall clock time at which the
+//     specified slate change will occur.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 // Fetches a GTLYouTubeLiveBroadcast.

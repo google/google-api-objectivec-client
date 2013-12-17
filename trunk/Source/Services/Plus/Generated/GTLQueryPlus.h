@@ -240,6 +240,10 @@
 //   userId: Get the collection of people for the person identified. Use "me" to
 //     indicate the authenticated user.
 //   collection: The collection of people to list.
+//      kGTLPlusCollectionConnected: The list of visible people in the
+//        authenticated user's circles who also use the requesting app. This
+//        list is limited to users who made their app activities visible to the
+//        authenticated user.
 //      kGTLPlusCollectionVisible: The list of people who this user has added to
 //        one or more circles, limited to the circles visible to the requesting
 //        application.
