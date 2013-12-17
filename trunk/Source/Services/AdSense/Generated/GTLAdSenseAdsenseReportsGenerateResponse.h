@@ -20,14 +20,14 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   AdSense Management API (adsense/v1.3)
+//   AdSense Management API (adsense/v1.4)
 // Description:
 //   Gives AdSense publishers access to their inventory and the ability to
 //   generate reports
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLAdSenseAdsenseReportsGenerateResponse (0 custom class methods, 7 custom properties)
+//   GTLAdSenseAdsenseReportsGenerateResponse (0 custom class methods, 9 custom properties)
 //   GTLAdSenseAdsenseReportsGenerateResponseHeadersItem (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -49,6 +49,9 @@
 // report; cells corresponding to dimension columns are empty.
 @property (retain) NSArray *averages;  // of NSString
 
+// The requested end date in yyyy-mm-dd format.
+@property (copy) NSString *endDate;
+
 // The header information of the columns requested in the report. This is a list
 // of headers; one for each dimension in the request, followed by one for each
 // metric in the request.
@@ -61,6 +64,9 @@
 // dimension in the request, followed by one for each metric in the request. The
 // dimension cells contain strings, and the metric cells contain numbers.
 @property (retain) NSArray *rows;  // of NSArray of NSString
+
+// The requested start date in yyyy-mm-dd format.
+@property (copy) NSString *startDate;
 
 // The total number of rows matched by the report request. Fewer rows may be
 // returned in the response due to being limited by the row count requested or

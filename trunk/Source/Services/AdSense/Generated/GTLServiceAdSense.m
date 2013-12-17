@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   AdSense Management API (adsense/v1.3)
+//   AdSense Management API (adsense/v1.4)
 // Description:
 //   Gives AdSense publishers access to their inventory and the ability to
 //   generate reports
@@ -53,6 +53,8 @@
                       [GTLAdSenseCustomChannel class],
                       [GTLAdSenseCustomChannels class],
                       [GTLAdSenseMetadata class],
+                      [GTLAdSensePayment class],
+                      [GTLAdSensePayments class],
                       [GTLAdSenseReportingMetadataEntry class],
                       [GTLAdSenseSavedAdStyle class],
                       [GTLAdSenseSavedAdStyles class],
@@ -69,7 +71,7 @@
   self = [super init];
   if (self) {
     // Version from discovery.
-    self.apiVersion = @"v1.3";
+    self.apiVersion = @"v1.4";
 
     // From discovery.  Where to send JSON-RPC.
     // Turn off prettyPrint for this service to save bandwidth (especially on

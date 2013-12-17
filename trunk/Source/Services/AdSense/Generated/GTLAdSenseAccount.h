@@ -20,14 +20,14 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   AdSense Management API (adsense/v1.3)
+//   AdSense Management API (adsense/v1.4)
 // Description:
 //   Gives AdSense publishers access to their inventory and the ability to
 //   generate reports
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLAdSenseAccount (0 custom class methods, 5 custom properties)
+//   GTLAdSenseAccount (0 custom class methods, 6 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -59,5 +59,8 @@
 
 // Sub accounts of the this account.
 @property (retain) NSArray *subAccounts;  // of GTLAdSenseAccount
+
+// AdSense timezone of this account.
+@property (copy) NSString *timezone;
 
 @end

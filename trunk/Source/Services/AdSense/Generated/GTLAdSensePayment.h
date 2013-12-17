@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAdSenseAccounts.h
+//  GTLAdSensePayment.h
 //
 
 // ----------------------------------------------------------------------------
@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLAdSenseAccounts (0 custom class methods, 4 custom properties)
+//   GTLAdSensePayment (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -35,29 +35,28 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLAdSenseAccount;
-
 // ----------------------------------------------------------------------------
 //
-//   GTLAdSenseAccounts
+//   GTLAdSensePayment
 //
 
-// This class supports NSFastEnumeration over its "items" property. It also
-// supports -itemAtIndex: to retrieve individual objects from "items".
+@interface GTLAdSensePayment : GTLObject
 
-@interface GTLAdSenseAccounts : GTLCollectionObject
+// Unique identifier of this Payment.
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+@property (copy) NSString *identifier;
 
-// ETag of this response for caching purposes.
-@property (copy) NSString *ETag;
-
-// The accounts returned in this list response.
-@property (retain) NSArray *items;  // of GTLAdSenseAccount
-
-// Kind of list this is, in this case adsense#accounts.
+// Kind of resource this is, in this case adsense#payment.
 @property (copy) NSString *kind;
 
-// Continuation token used to page through accounts. To retrieve the next page
-// of results, set the next request's "pageToken" value to this.
-@property (copy) NSString *nextPageToken;
+// The amount to be paid.
+@property (copy) NSString *paymentAmount;
+
+// The currency code for the amount to be paid.
+@property (copy) NSString *paymentAmountCurrencyCode;
+
+// The date this payment was/will be credited to the user, or none if the
+// payment threshold has not been met.
+@property (copy) NSString *paymentDate;
 
 @end

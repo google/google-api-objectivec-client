@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAdSenseAccounts.h
+//  GTLAdSensePayment.m
 //
 
 // ----------------------------------------------------------------------------
@@ -27,37 +27,28 @@
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLAdSenseAccounts (0 custom class methods, 4 custom properties)
+//   GTLAdSensePayment (0 custom class methods, 5 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
-
-@class GTLAdSenseAccount;
+#import "GTLAdSensePayment.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAdSenseAccounts
+//   GTLAdSensePayment
 //
 
-// This class supports NSFastEnumeration over its "items" property. It also
-// supports -itemAtIndex: to retrieve individual objects from "items".
+@implementation GTLAdSensePayment
+@dynamic identifier, kind, paymentAmount, paymentAmountCurrencyCode,
+         paymentDate;
 
-@interface GTLAdSenseAccounts : GTLCollectionObject
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"id"
+                                forKey:@"identifier"];
+  return map;
+}
 
-// ETag of this response for caching purposes.
-@property (copy) NSString *ETag;
-
-// The accounts returned in this list response.
-@property (retain) NSArray *items;  // of GTLAdSenseAccount
-
-// Kind of list this is, in this case adsense#accounts.
-@property (copy) NSString *kind;
-
-// Continuation token used to page through accounts. To retrieve the next page
-// of results, set the next request's "pageToken" value to this.
-@property (copy) NSString *nextPageToken;
++ (void)load {
+  [self registerObjectClassForKind:@"adsense#payment"];
+}
 
 @end

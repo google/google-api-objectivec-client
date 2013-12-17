@@ -20,14 +20,14 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   AdSense Management API (adsense/v1.3)
+//   AdSense Management API (adsense/v1.4)
 // Description:
 //   Gives AdSense publishers access to their inventory and the ability to
 //   generate reports
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLQueryAdSense (34 custom class methods, 21 custom properties)
+//   GTLQueryAdSense (38 custom class methods, 22 custom properties)
 
 #import "GTLQueryAdSense.h"
 
@@ -42,6 +42,7 @@
 #import "GTLAdSenseCustomChannel.h"
 #import "GTLAdSenseCustomChannels.h"
 #import "GTLAdSenseMetadata.h"
+#import "GTLAdSensePayments.h"
 #import "GTLAdSenseSavedAdStyle.h"
 #import "GTLAdSenseSavedAdStyles.h"
 #import "GTLAdSenseSavedReports.h"
@@ -49,10 +50,10 @@
 
 @implementation GTLQueryAdSense
 
-@dynamic accountId, adClientId, adUnitId, currency, customChannelId, dimension,
-         endDate, fields, filter, includeInactive, locale, maxResults, metric,
-         pageToken, savedAdStyleId, savedReportId, sort, startDate, startIndex,
-         tree, useTimezoneReporting;
+@dynamic accountId, adClientId, adUnitId, alertId, currency, customChannelId,
+         dimension, endDate, fields, filter, includeInactive, locale,
+         maxResults, metric, pageToken, savedAdStyleId, savedReportId, sort,
+         startDate, startIndex, tree, useTimezoneReporting;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
@@ -135,6 +136,15 @@
 #pragma mark "accounts.alerts" methods
 // These create a GTLQueryAdSense object.
 
++ (id)queryForAccountsAlertsDeleteWithAccountId:(NSString *)accountId
+                                        alertId:(NSString *)alertId {
+  NSString *methodName = @"adsense.accounts.alerts.delete";
+  GTLQueryAdSense *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.alertId = alertId;
+  return query;
+}
+
 + (id)queryForAccountsAlertsListWithAccountId:(NSString *)accountId {
   NSString *methodName = @"adsense.accounts.alerts.list";
   GTLQueryAdSense *query = [self queryWithMethodName:methodName];
@@ -201,6 +211,18 @@
   NSString *methodName = @"adsense.accounts.list";
   GTLQueryAdSense *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLAdSenseAccounts class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "accounts.payments" methods
+// These create a GTLQueryAdSense object.
+
++ (id)queryForAccountsPaymentsListWithAccountId:(NSString *)accountId {
+  NSString *methodName = @"adsense.accounts.payments.list";
+  GTLQueryAdSense *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.expectedObjectClass = [GTLAdSensePayments class];
   return query;
 }
 
@@ -339,6 +361,13 @@
 #pragma mark "alerts" methods
 // These create a GTLQueryAdSense object.
 
++ (id)queryForAlertsDeleteWithAlertId:(NSString *)alertId {
+  NSString *methodName = @"adsense.alerts.delete";
+  GTLQueryAdSense *query = [self queryWithMethodName:methodName];
+  query.alertId = alertId;
+  return query;
+}
+
 + (id)queryForAlertsList {
   NSString *methodName = @"adsense.alerts.list";
   GTLQueryAdSense *query = [self queryWithMethodName:methodName];
@@ -401,6 +430,17 @@
   NSString *methodName = @"adsense.metadata.metrics.list";
   GTLQueryAdSense *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLAdSenseMetadata class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "payments" methods
+// These create a GTLQueryAdSense object.
+
++ (id)queryForPaymentsList {
+  NSString *methodName = @"adsense.payments.list";
+  GTLQueryAdSense *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLAdSensePayments class];
   return query;
 }
 
