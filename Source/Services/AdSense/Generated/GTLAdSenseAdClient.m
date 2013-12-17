@@ -20,14 +20,14 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   AdSense Management API (adsense/v1.3)
+//   AdSense Management API (adsense/v1.4)
 // Description:
 //   Gives AdSense publishers access to their inventory and the ability to
 //   generate reports
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLAdSenseAdClient (0 custom class methods, 5 custom properties)
+//   GTLAdSenseAdClient (0 custom class methods, 6 custom properties)
 
 #import "GTLAdSenseAdClient.h"
 
@@ -37,7 +37,8 @@
 //
 
 @implementation GTLAdSenseAdClient
-@dynamic arcOptIn, identifier, kind, productCode, supportsReporting;
+@dynamic arcOptIn, arcReviewMode, identifier, kind, productCode,
+         supportsReporting;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

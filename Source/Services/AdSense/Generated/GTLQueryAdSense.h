@@ -20,14 +20,14 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   AdSense Management API (adsense/v1.3)
+//   AdSense Management API (adsense/v1.4)
 // Description:
 //   Gives AdSense publishers access to their inventory and the ability to
 //   generate reports
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLQueryAdSense (34 custom class methods, 21 custom properties)
+//   GTLQueryAdSense (38 custom class methods, 22 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -52,6 +52,7 @@
 @property (retain) id accountId;
 @property (copy) NSString *adClientId;
 @property (copy) NSString *adUnitId;
+@property (copy) NSString *alertId;
 @property (copy) NSString *currency;
 @property (copy) NSString *customChannelId;
 @property (retain) NSArray *dimension;  // of NSString
@@ -170,6 +171,17 @@
 #pragma mark "accounts.alerts" methods
 // These create a GTLQueryAdSense object.
 
+// Method: adsense.accounts.alerts.delete
+// Dismiss (delete) the specified alert from the specified publisher AdSense
+// account.
+//  Required:
+//   accountId: Account which contains the ad unit.
+//   alertId: Alert to delete.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdSense
++ (id)queryForAccountsAlertsDeleteWithAccountId:(NSString *)accountId
+                                        alertId:(NSString *)alertId;
+
 // Method: adsense.accounts.alerts.list
 // List the alerts for the specified AdSense account.
 //  Required:
@@ -276,6 +288,20 @@
 //   kGTLAuthScopeAdSenseReadonly
 // Fetches a GTLAdSenseAccounts.
 + (id)queryForAccountsList;
+
+#pragma mark -
+#pragma mark "accounts.payments" methods
+// These create a GTLQueryAdSense object.
+
+// Method: adsense.accounts.payments.list
+// List the payments for the specified AdSense account.
+//  Required:
+//   accountId: Account for which to retrieve the payments.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdSense
+//   kGTLAuthScopeAdSenseReadonly
+// Fetches a GTLAdSensePayments.
++ (id)queryForAccountsPaymentsListWithAccountId:(NSString *)accountId;
 
 #pragma mark -
 #pragma mark "accounts.reports" methods
@@ -495,6 +521,14 @@
 #pragma mark "alerts" methods
 // These create a GTLQueryAdSense object.
 
+// Method: adsense.alerts.delete
+// Dismiss (delete) the specified alert from the publisher's AdSense account.
+//  Required:
+//   alertId: Alert to delete.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdSense
++ (id)queryForAlertsDeleteWithAlertId:(NSString *)alertId;
+
 // Method: adsense.alerts.list
 // List the alerts for this AdSense account.
 //  Optional:
@@ -585,6 +619,18 @@
 //   kGTLAuthScopeAdSenseReadonly
 // Fetches a GTLAdSenseMetadata.
 + (id)queryForMetadataMetricsList;
+
+#pragma mark -
+#pragma mark "payments" methods
+// These create a GTLQueryAdSense object.
+
+// Method: adsense.payments.list
+// List the payments for this AdSense account.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdSense
+//   kGTLAuthScopeAdSenseReadonly
+// Fetches a GTLAdSensePayments.
++ (id)queryForPaymentsList;
 
 #pragma mark -
 #pragma mark "reports" methods

@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   AdSense Management API (adsense/v1.3)
+//   AdSense Management API (adsense/v1.4)
 // Description:
 //   Gives AdSense publishers access to their inventory and the ability to
 //   generate reports
@@ -43,6 +43,8 @@
 #import "GTLAdSenseCustomChannel.h"
 #import "GTLAdSenseCustomChannels.h"
 #import "GTLAdSenseMetadata.h"
+#import "GTLAdSensePayment.h"
+#import "GTLAdSensePayments.h"
 #import "GTLAdSenseReportingMetadataEntry.h"
 #import "GTLAdSenseSavedAdStyle.h"
 #import "GTLAdSenseSavedAdStyles.h"

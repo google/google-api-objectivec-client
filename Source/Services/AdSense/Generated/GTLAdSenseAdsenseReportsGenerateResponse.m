@@ -20,14 +20,14 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   AdSense Management API (adsense/v1.3)
+//   AdSense Management API (adsense/v1.4)
 // Description:
 //   Gives AdSense publishers access to their inventory and the ability to
 //   generate reports
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLAdSenseAdsenseReportsGenerateResponse (0 custom class methods, 7 custom properties)
+//   GTLAdSenseAdsenseReportsGenerateResponse (0 custom class methods, 9 custom properties)
 //   GTLAdSenseAdsenseReportsGenerateResponseHeadersItem (0 custom class methods, 3 custom properties)
 
 #import "GTLAdSenseAdsenseReportsGenerateResponse.h"
@@ -38,7 +38,8 @@
 //
 
 @implementation GTLAdSenseAdsenseReportsGenerateResponse
-@dynamic averages, headers, kind, rows, totalMatchedRows, totals, warnings;
+@dynamic averages, endDate, headers, kind, rows, startDate, totalMatchedRows,
+         totals, warnings;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
