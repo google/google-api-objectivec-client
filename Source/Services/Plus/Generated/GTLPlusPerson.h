@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/+/api/
 // Classes:
-//   GTLPlusPerson (0 custom class methods, 29 custom properties)
+//   GTLPlusPerson (0 custom class methods, 30 custom properties)
 //   GTLPlusPersonAgeRange (0 custom class methods, 2 custom properties)
 //   GTLPlusPersonCover (0 custom class methods, 3 custom properties)
 //   GTLPlusPersonEmailsItem (0 custom class methods, 2 custom properties)
@@ -65,7 +65,9 @@
 // A short biography for this person.
 @property (copy) NSString *aboutMe;
 
-// The age range of the person.
+// The age range of the person. Valid ranges are 17 or younger, 18 to 20, and 21
+// or older. Age is determined from the user's birthday using Western age
+// reckoning.
 @property (retain) GTLPlusPersonAgeRange *ageRange;
 
 // The person's date of birth, represented as YYYY-MM-DD.
@@ -87,6 +89,16 @@
 // The name of this person, which is suitable for display.
 @property (copy) NSString *displayName;
 
+// The hosted domain name for the user's Google Apps account. For instance,
+// example.com. The plus.profile.emails.read or email scope is needed to get
+// this domain name.
+@property (copy) NSString *domain;
+
+// A list of email addresses that this person has, including their Google
+// account email address, and the public verified email addresses on their
+// Google+ profile. The plus.profile.emails.read scope is needed to retrieve
+// these email addresses, or the email scope can be used to retrieve just the
+// Google account email address.
 @property (retain) NSArray *emails;  // of GTLPlusPersonEmailsItem
 
 // ETag of this response for caching purposes.
@@ -177,10 +189,16 @@
 
 @interface GTLPlusPersonAgeRange : GTLObject
 
-// The age range's upper bound, if any.
+// The age range's upper bound, if any. Possible values include, but are not
+// limited to, the following:
+// - "17" - for age 17
+// - "20" - for age 20
 @property (retain) NSNumber *max;  // intValue
 
-// The age range's lower bound, if any.
+// The age range's lower bound, if any. Possible values include, but are not
+// limited to, the following:
+// - "21" - for age 21
+// - "18" - for age 18
 @property (retain) NSNumber *min;  // intValue
 
 @end
@@ -216,6 +234,7 @@
 
 // The type of address. Possible values include, but are not limited to, the
 // following values:
+// - "account" - Google account email address.
 // - "home" - Home email address.
 // - "work" - Work email address.
 // - "other" - Other.

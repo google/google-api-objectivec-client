@@ -45,6 +45,7 @@ GTL_EXTERN NSString * const kGTLAuthScopePlusUserinfoEmail;    // "https://www.g
 GTL_EXTERN NSString * const kGTLAuthScopePlusUserinfoProfile;  // "https://www.googleapis.com/auth/userinfo.profile"
 
 // Collection
+GTL_EXTERN NSString * const kGTLPlusCollectionConnected;  // "connected"
 GTL_EXTERN NSString * const kGTLPlusCollectionPlusoners;  // "plusoners"
 GTL_EXTERN NSString * const kGTLPlusCollectionPublic;     // "public"
 GTL_EXTERN NSString * const kGTLPlusCollectionResharers;  // "resharers"

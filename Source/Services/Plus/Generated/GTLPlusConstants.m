@@ -35,6 +35,7 @@ NSString * const kGTLAuthScopePlusUserinfoEmail   = @"https://www.googleapis.com
 NSString * const kGTLAuthScopePlusUserinfoProfile = @"https://www.googleapis.com/auth/userinfo.profile";
 
 // Collection
+NSString * const kGTLPlusCollectionConnected = @"connected";
 NSString * const kGTLPlusCollectionPlusoners = @"plusoners";
 NSString * const kGTLPlusCollectionPublic    = @"public";
 NSString * const kGTLPlusCollectionResharers = @"resharers";
