@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -95,7 +95,8 @@
 //  Required:
 //   bucket: Name of a bucket.
 //   entity: The entity holding the permission. Can be user-userId,
-//     group-groupId, allUsers, or allAuthenticatedUsers.
+//     user-emailAddress, group-groupId, group-emailAddress, allUsers, or
+//     allAuthenticatedUsers.
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 + (id)queryForBucketAccessControlsDeleteWithBucket:(NSString *)bucket
@@ -106,7 +107,8 @@
 //  Required:
 //   bucket: Name of a bucket.
 //   entity: The entity holding the permission. Can be user-userId,
-//     group-groupId, allUsers, or allAuthenticatedUsers.
+//     user-emailAddress, group-groupId, group-emailAddress, allUsers, or
+//     allAuthenticatedUsers.
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageBucketAccessControl.
@@ -138,7 +140,8 @@
 //  Required:
 //   bucket: Name of a bucket.
 //   entity: The entity holding the permission. Can be user-userId,
-//     group-groupId, allUsers, or allAuthenticatedUsers.
+//     user-emailAddress, group-groupId, group-emailAddress, allUsers, or
+//     allAuthenticatedUsers.
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageBucketAccessControl.
@@ -151,7 +154,8 @@
 //  Required:
 //   bucket: Name of a bucket.
 //   entity: The entity holding the permission. Can be user-userId,
-//     group-groupId, allUsers, or allAuthenticatedUsers.
+//     user-emailAddress, group-groupId, group-emailAddress, allUsers, or
+//     allAuthenticatedUsers.
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageBucketAccessControl.
@@ -295,7 +299,8 @@
 //  Required:
 //   bucket: Name of a bucket.
 //   entity: The entity holding the permission. Can be user-userId,
-//     group-groupId, allUsers, or allAuthenticatedUsers.
+//     user-emailAddress, group-groupId, group-emailAddress, allUsers, or
+//     allAuthenticatedUsers.
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 + (id)queryForDefaultObjectAccessControlsDeleteWithBucket:(NSString *)bucket
@@ -307,7 +312,8 @@
 //  Required:
 //   bucket: Name of a bucket.
 //   entity: The entity holding the permission. Can be user-userId,
-//     group-groupId, allUsers, or allAuthenticatedUsers.
+//     user-emailAddress, group-groupId, group-emailAddress, allUsers, or
+//     allAuthenticatedUsers.
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControl.
@@ -328,6 +334,12 @@
 // Retrieves default object ACL entries on the specified bucket.
 //  Required:
 //   bucket: Name of a bucket.
+//  Optional:
+//   ifMetagenerationMatch: Makes the operation conditional on whether the
+//     destination object's current metageneration matches the given value.
+//   ifMetagenerationNotMatch: Makes the operation conditional on whether the
+//     destination object's current metageneration does not match the given
+//     value.
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControls.
@@ -339,7 +351,8 @@
 //  Required:
 //   bucket: Name of a bucket.
 //   entity: The entity holding the permission. Can be user-userId,
-//     group-groupId, allUsers, or allAuthenticatedUsers.
+//     user-emailAddress, group-groupId, group-emailAddress, allUsers, or
+//     allAuthenticatedUsers.
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControl.
@@ -352,7 +365,8 @@
 //  Required:
 //   bucket: Name of a bucket.
 //   entity: The entity holding the permission. Can be user-userId,
-//     group-groupId, allUsers, or allAuthenticatedUsers.
+//     user-emailAddress, group-groupId, group-emailAddress, allUsers, or
+//     allAuthenticatedUsers.
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControl.
@@ -371,7 +385,8 @@
 //   bucket: Name of a bucket.
 //   object: Name of the object.
 //   entity: The entity holding the permission. Can be user-userId,
-//     group-groupId, allUsers, or allAuthenticatedUsers.
+//     user-emailAddress, group-groupId, group-emailAddress, allUsers, or
+//     allAuthenticatedUsers.
 //  Optional:
 //   generation: If present, selects a specific revision of this object (as
 //     opposed to the latest version, the default).
@@ -387,7 +402,8 @@
 //   bucket: Name of a bucket.
 //   object: Name of the object.
 //   entity: The entity holding the permission. Can be user-userId,
-//     group-groupId, allUsers, or allAuthenticatedUsers.
+//     user-emailAddress, group-groupId, group-emailAddress, allUsers, or
+//     allAuthenticatedUsers.
 //  Optional:
 //   generation: If present, selects a specific revision of this object (as
 //     opposed to the latest version, the default).
@@ -434,7 +450,8 @@
 //   bucket: Name of a bucket.
 //   object: Name of the object.
 //   entity: The entity holding the permission. Can be user-userId,
-//     group-groupId, allUsers, or allAuthenticatedUsers.
+//     user-emailAddress, group-groupId, group-emailAddress, allUsers, or
+//     allAuthenticatedUsers.
 //  Optional:
 //   generation: If present, selects a specific revision of this object (as
 //     opposed to the latest version, the default).
@@ -452,7 +469,8 @@
 //   bucket: Name of a bucket.
 //   object: Name of the object.
 //   entity: The entity holding the permission. Can be user-userId,
-//     group-groupId, allUsers, or allAuthenticatedUsers.
+//     user-emailAddress, group-groupId, group-emailAddress, allUsers, or
+//     allAuthenticatedUsers.
 //  Optional:
 //   generation: If present, selects a specific revision of this object (as
 //     opposed to the latest version, the default).
@@ -749,7 +767,9 @@
 // destination bucket.
 @property (copy) NSString *name;
 
+// Conditions that must be met for this operation to execute.
 @property (retain) GTLStorageObjectsComposeSourceObjectsItemObjectPreconditions *objectPreconditions;
+
 @end
 
 // ----------------------------------------------------------------------------

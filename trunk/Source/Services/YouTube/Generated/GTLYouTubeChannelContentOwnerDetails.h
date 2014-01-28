@@ -14,19 +14,19 @@
  */
 
 //
-//  GTLSQLAdminSslCert.h
+//  GTLYouTubeChannelContentOwnerDetails.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud SQL Administration API (sqladmin/v1beta3)
+//   YouTube Data API (youtube/v3)
 // Description:
-//   API for Cloud SQL database instance management.
+//   Programmatic access to YouTube features.
 // Documentation:
-//   https://developers.google.com/cloud-sql/docs/admin-api/
+//   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLSQLAdminSslCert (0 custom class methods, 8 custom properties)
+//   GTLYouTubeChannelContentOwnerDetails (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,35 +36,19 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLSQLAdminSslCert
+//   GTLYouTubeChannelContentOwnerDetails
 //
 
-// SslCerts Resource
+// The contentOwnerDetails object encapsulates channel data that is relevant for
+// YouTube Partners linked with the channel.
 
-@interface GTLSQLAdminSslCert : GTLObject
+@interface GTLYouTubeChannelContentOwnerDetails : GTLObject
 
-// PEM representation.
-@property (copy) NSString *cert;
+// The ID of the content owner linked to the channel.
+@property (copy) NSString *contentOwner;
 
-// Serial number, as extracted from the certificate.
-@property (copy) NSString *certSerialNumber;
-
-// User supplied name. Constrained to [a-zA-Z.-_ ]+.
-@property (copy) NSString *commonName;
-
-// Time when the certificate was created.
-@property (retain) GTLDateTime *createTime;
-
-// Time when the certificate expires.
-@property (retain) GTLDateTime *expirationTime;
-
-// Name of the database instance.
-@property (copy) NSString *instance;
-
-// This is always sql#sslCert.
-@property (copy) NSString *kind;
-
-// Sha1 Fingerprint.
-@property (copy) NSString *sha1Fingerprint;
+// The date and time of when the channel was linked to the content owner. The
+// value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
+@property (retain) GTLDateTime *timeLinked;
 
 @end

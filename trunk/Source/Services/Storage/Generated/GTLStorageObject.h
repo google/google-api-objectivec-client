@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -81,7 +81,7 @@
 @property (copy) NSString *ETag;
 
 // The content generation of this object. Used for object versioning.
-@property (retain) NSNumber *generation;  // longLongValue
+@property (retain) NSNumber *generation;  // unsignedLongLongValue
 
 // The ID of the object.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').

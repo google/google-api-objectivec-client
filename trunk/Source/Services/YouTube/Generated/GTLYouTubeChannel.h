@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannel (0 custom class methods, 12 custom properties)
+//   GTLYouTubeChannel (0 custom class methods, 13 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -37,6 +37,7 @@
 @class GTLYouTubeChannelAuditDetails;
 @class GTLYouTubeChannelBrandingSettings;
 @class GTLYouTubeChannelContentDetails;
+@class GTLYouTubeChannelContentOwnerDetails;
 @class GTLYouTubeChannelConversionPings;
 @class GTLYouTubeChannelSnippet;
 @class GTLYouTubeChannelStatistics;
@@ -64,6 +65,10 @@
 // The contentDetails object encapsulates information about the channel's
 // content.
 @property (retain) GTLYouTubeChannelContentDetails *contentDetails;
+
+// The contentOwnerDetails object encapsulates channel data that is relevant for
+// YouTube Partners linked with the channel.
+@property (retain) GTLYouTubeChannelContentOwnerDetails *contentOwnerDetails;
 
 // The conversionPings object encapsulates information about conversion pings
 // that need to be respected by the channel.

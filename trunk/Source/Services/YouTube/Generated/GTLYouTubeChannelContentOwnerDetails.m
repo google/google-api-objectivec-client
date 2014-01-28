@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,32 +14,27 @@
  */
 
 //
-//  GTLBloggerBlogPerUserInfo.m
+//  GTLYouTubeChannelContentOwnerDetails.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Blogger API (blogger/v3)
+//   YouTube Data API (youtube/v3)
 // Description:
-//   API for access to the data within Blogger.
+//   Programmatic access to YouTube features.
 // Documentation:
-//   https://developers.google.com/blogger/docs/3.0/getting_started
+//   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLBloggerBlogPerUserInfo (0 custom class methods, 6 custom properties)
+//   GTLYouTubeChannelContentOwnerDetails (0 custom class methods, 2 custom properties)
 
-#import "GTLBloggerBlogPerUserInfo.h"
+#import "GTLYouTubeChannelContentOwnerDetails.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBloggerBlogPerUserInfo
+//   GTLYouTubeChannelContentOwnerDetails
 //
 
-@implementation GTLBloggerBlogPerUserInfo
-@dynamic blogId, hasAdminAccess, kind, photosAlbumKey, role, userId;
-
-+ (void)load {
-  [self registerObjectClassForKind:@"blogger#blogPerUserInfo"];
-}
-
+@implementation GTLYouTubeChannelContentOwnerDetails
+@dynamic contentOwner, timeLinked;
 @end

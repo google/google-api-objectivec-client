@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLQueryCivicInfo (3 custom class methods, 5 custom properties)
+//   GTLQueryCivicInfo (3 custom class methods, 6 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -49,6 +49,7 @@
 @property (copy) NSString *address;
 @property (assign) long long electionId;
 @property (assign) BOOL includeOffices;
+@property (copy) NSString *ocdId;
 @property (assign) BOOL officialOnly;
 
 #pragma mark -
@@ -82,10 +83,13 @@
 // Looks up political geography and (optionally) representative information
 // based on an address.
 //  Optional:
-//   address: NSString
+//   address: The address to look up. May only be specified if the field ocdId
+//     is not given in the URL.
 //   includeOffices: Whether to return information about offices and officials.
 //     If false, only the top-level district information will be returned.
 //     (Default true)
+//   ocdId: The division to look up. May only be specified if the address field
+//     is not given in the request body.
 // Fetches a GTLCivicInfoRepresentativeInfoResponse.
 + (id)queryForRepresentativesRepresentativeInfoQuery;
 

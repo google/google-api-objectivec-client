@@ -41,14 +41,18 @@ NSString * const kGTLBloggerRangeAll     = @"all";
 NSString * const kGTLBloggerRangeX30days = @"30DAYS";
 NSString * const kGTLBloggerRangeX7days  = @"7DAYS";
 
-// Statuses
-NSString * const kGTLBloggerStatusesDraft     = @"draft";
-NSString * const kGTLBloggerStatusesEmptied   = @"emptied";
-NSString * const kGTLBloggerStatusesImported  = @"imported";
-NSString * const kGTLBloggerStatusesLive      = @"live";
-NSString * const kGTLBloggerStatusesPending   = @"pending";
-NSString * const kGTLBloggerStatusesScheduled = @"scheduled";
-NSString * const kGTLBloggerStatusesSpam      = @"spam";
+// Role
+NSString * const kGTLBloggerRoleAdmin  = @"ADMIN";
+NSString * const kGTLBloggerRoleAuthor = @"AUTHOR";
+NSString * const kGTLBloggerRoleReader = @"READER";
+
+// Status
+NSString * const kGTLBloggerStatusDraft     = @"draft";
+NSString * const kGTLBloggerStatusEmptied   = @"emptied";
+NSString * const kGTLBloggerStatusLive      = @"live";
+NSString * const kGTLBloggerStatusPending   = @"pending";
+NSString * const kGTLBloggerStatusScheduled = @"scheduled";
+NSString * const kGTLBloggerStatusSpam      = @"spam";
 
 // View
 NSString * const kGTLBloggerViewAdmin  = @"ADMIN";
