@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,6 +53,7 @@
 #import "GTLYouTubeChannelBannerResource.m"
 #import "GTLYouTubeChannelBrandingSettings.m"
 #import "GTLYouTubeChannelContentDetails.m"
+#import "GTLYouTubeChannelContentOwnerDetails.m"
 #import "GTLYouTubeChannelConversionPing.m"
 #import "GTLYouTubeChannelConversionPings.m"
 #import "GTLYouTubeChannelListResponse.m"

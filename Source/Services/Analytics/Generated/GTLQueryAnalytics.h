@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -184,10 +184,10 @@
 //   ids: Unique table ID for retrieving real time data. Table ID is of the form
 //     ga:XXXX, where XXXX is the Analytics view (profile) ID.
 //   metrics: A comma-separated list of real time metrics. E.g.,
-//     'ga:activeVisitors'. At least one metric must be specified.
+//     'rt:activeVisitors'. At least one metric must be specified.
 //  Optional:
 //   dimensions: A comma-separated list of real time dimensions. E.g.,
-//     'ga:medium,ga:city'.
+//     'rt:medium,rt:city'.
 //   filters: A comma-separated list of dimension or metric filters to be
 //     applied to real time data.
 //   maxResults: The maximum number of entries to include in this feed.

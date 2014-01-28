@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLQueryBlogger (31 custom class methods, 25 custom properties)
+//   GTLQueryBlogger (31 custom class methods, 29 custom properties)
 
 #import "GTLQueryBlogger.h"
 
@@ -46,16 +46,18 @@
 
 @implementation GTLQueryBlogger
 
-@dynamic blogId, commentId, endDate, fetchBodies, fetchImages, fetchUserInfo,
-         fields, isDraft, labels, maxComments, maxPosts, maxResults, orderBy,
-         pageId, pageToken, path, postId, publishDate, q, range, startDate,
-         statuses, url, userId, view;
+@dynamic blogId, commentId, endDate, fetchBodies, fetchBody, fetchImages,
+         fetchUserInfo, fields, isDraft, labels, maxComments, maxPosts,
+         maxResults, orderBy, pageId, pageToken, path, postId, publish,
+         publishDate, q, range, revert, role, startDate, status, url, userId,
+         view;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
       [NSString class], @"range",
-      [NSString class], @"statuses",
+      [NSString class], @"role",
+      [NSString class], @"status",
       nil];
   return map;
 }

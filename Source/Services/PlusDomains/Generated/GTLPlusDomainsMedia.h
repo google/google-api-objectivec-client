@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -103,6 +103,7 @@
 @property (retain) NSNumber *videoDuration;  // longLongValue
 
 // The encoding status of this video. Possible values are:
+// - "UPLOADING" - Not all the video bytes have been received.
 // - "PENDING" - Video not yet processed.
 // - "FAILED" - Video processing failed.
 // - "READY" - A single video stream is playable.

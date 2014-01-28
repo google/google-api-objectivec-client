@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,7 @@
 //   GTLPlusDomainsActivityObjectPlusoners (0 custom class methods, 2 custom properties)
 //   GTLPlusDomainsActivityObjectReplies (0 custom class methods, 2 custom properties)
 //   GTLPlusDomainsActivityObjectResharers (0 custom class methods, 2 custom properties)
-//   GTLPlusDomainsActivityObjectStatusForViewer (0 custom class methods, 4 custom properties)
+//   GTLPlusDomainsActivityObjectStatusForViewer (0 custom class methods, 5 custom properties)
 //   GTLPlusDomainsActivityObjectActorImage (0 custom class methods, 1 custom properties)
 //   GTLPlusDomainsActivityObjectAttachmentsItemEmbed (0 custom class methods, 2 custom properties)
 //   GTLPlusDomainsActivityObjectAttachmentsItemFullImage (0 custom class methods, 4 custom properties)
@@ -233,7 +233,7 @@
 //
 
 @implementation GTLPlusDomainsActivityObjectStatusForViewer
-@dynamic canComment, canPlusone, isPlusOned, resharingDisabled;
+@dynamic canComment, canPlusone, canUpdate, isPlusOned, resharingDisabled;
 @end
 
 

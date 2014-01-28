@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLBloggerBlogPerUserInfo (0 custom class methods, 5 custom properties)
+//   GTLBloggerBlogPerUserInfo (0 custom class methods, 6 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -52,6 +52,9 @@
 
 // The Photo Album Key for the user when adding photos to the blog
 @property (copy) NSString *photosAlbumKey;
+
+// Access permissions that the user has for the blog (ADMIN, AUTHOR, or READER).
+@property (copy) NSString *role;
 
 // ID of the User
 @property (copy) NSString *userId;

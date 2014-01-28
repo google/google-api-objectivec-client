@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLQueryBlogger (31 custom class methods, 25 custom properties)
+//   GTLQueryBlogger (31 custom class methods, 29 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -53,6 +53,7 @@
 @property (copy) NSString *commentId;
 @property (retain) GTLDateTime *endDate;
 @property (assign) BOOL fetchBodies;
+@property (assign) BOOL fetchBody;
 @property (assign) BOOL fetchImages;
 @property (assign) BOOL fetchUserInfo;
 @property (assign) BOOL isDraft;
@@ -65,11 +66,14 @@
 @property (copy) NSString *pageToken;
 @property (copy) NSString *path;
 @property (copy) NSString *postId;
+@property (assign) BOOL publish;
 @property (retain) GTLDateTime *publishDate;
 @property (copy) NSString *q;
 @property (retain) NSArray *range;  // of NSString
+@property (assign) BOOL revert;
+@property (retain) NSArray *role;  // of NSString
 @property (retain) GTLDateTime *startDate;
-@property (retain) NSArray *statuses;  // of NSString
+@property (retain) NSArray *status;  // of NSString
 @property (copy) NSString *url;
 @property (copy) NSString *userId;
 @property (copy) NSString *view;
@@ -84,6 +88,11 @@
 //   blogId: The ID of the blog to get.
 //  Optional:
 //   maxPosts: Maximum number of posts to pull back with the blog.
+//   view: Access level with which to view the blogs. Note that some fields
+//     require elevated access.
+//      kGTLBloggerViewAdmin: Admin level detail
+//      kGTLBloggerViewAuthor: Author level detail
+//      kGTLBloggerViewReader: Reader level detail
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
@@ -94,6 +103,12 @@
 // Retrieve a Blog by URL.
 //  Required:
 //   url: The URL of the blog to retrieve.
+//  Optional:
+//   view: Access level with which to view the blogs. Note that some fields
+//     require elevated access.
+//      kGTLBloggerViewAdmin: Admin level detail
+//      kGTLBloggerViewAuthor: Author level detail
+//      kGTLBloggerViewReader: Reader level detail
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
@@ -108,10 +123,17 @@
 //  Optional:
 //   fetchUserInfo: Whether the response is a list of blogs with per-user
 //     information instead of just blogs.
-//   view: NSString
+//   role: User access types for blogs to include in the results, e.g. AUTHOR
+//     will return blogs where the user has author level access. If no roles are
+//     specified, defaults to ADMIN and AUTHOR roles.
+//      kGTLBloggerRoleAdmin: Admin role - User has Admin level access.
+//      kGTLBloggerRoleAuthor: Author role - User has Author level access.
+//      kGTLBloggerRoleReader: Reader role - User has Reader level access.
+//   view: Access level with which to view the blogs. Note that some fields
+//     require elevated access.
 //      kGTLBloggerViewAdmin: Admin level detail
 //      kGTLBloggerViewAuthor: Author level detail
-//      kGTLBloggerViewReader: Admin level detail
+//      kGTLBloggerViewReader: Reader level detail
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
@@ -172,6 +194,14 @@
 //   blogId: ID of the blog to containing the comment.
 //   postId: ID of the post to fetch posts from.
 //   commentId: The ID of the comment to get.
+//  Optional:
+//   view: Access level for the requested comment (default: READER). Note that
+//     some comments will require elevated permissions, for example comments
+//     where the parent posts which is in a draft state, or comments that are
+//     pending moderation.
+//      kGTLBloggerViewAdmin: Admin level detail
+//      kGTLBloggerViewAuthor: Author level detail
+//      kGTLBloggerViewReader: Admin level detail
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
@@ -193,16 +223,17 @@
 //   pageToken: Continuation token if request is paged.
 //   startDate: Earliest date of comment to fetch, a date-time with RFC 3339
 //     formatting.
-//   statuses: NSArray
-//      kGTLBloggerStatusesEmptied: Comments that have had their content removed
-//      kGTLBloggerStatusesLive: Comments that are publicly visible
-//      kGTLBloggerStatusesPending: Comments that are awaiting administrator
+//   status: NSArray
+//      kGTLBloggerStatusEmptied: Comments that have had their content removed
+//      kGTLBloggerStatusLive: Comments that are publicly visible
+//      kGTLBloggerStatusPending: Comments that are awaiting administrator
 //        approval
-//      kGTLBloggerStatusesSpam: Comments marked as spam by the administrator
-//   view: NSString
+//      kGTLBloggerStatusSpam: Comments marked as spam by the administrator
+//   view: Access level with which to view the returned result. Note that some
+//     fields require elevated access.
 //      kGTLBloggerViewAdmin: Admin level detail
 //      kGTLBloggerViewAuthor: Author level detail
-//      kGTLBloggerViewReader: Admin level detail
+//      kGTLBloggerViewReader: Reader level detail
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
@@ -277,7 +308,7 @@
 //   view: NSString
 //      kGTLBloggerViewAdmin: Admin level detail
 //      kGTLBloggerViewAuthor: Author level detail
-//      kGTLBloggerViewReader: Admin level detail
+//      kGTLBloggerViewReader: Reader level detail
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
@@ -301,14 +332,14 @@
 //   blogId: ID of the blog to fetch pages from.
 //  Optional:
 //   fetchBodies: Whether to retrieve the Page bodies.
-//   statuses: NSArray
-//      kGTLBloggerStatusesDraft: Draft (unpublished) Pages
-//      kGTLBloggerStatusesImported: Pages that have had their content removed
-//      kGTLBloggerStatusesLive: Pages that are publicly visible
-//   view: NSString
+//   status: NSArray
+//      kGTLBloggerStatusDraft: Draft (unpublished) Pages
+//      kGTLBloggerStatusLive: Pages that are publicly visible
+//   view: Access level with which to view the returned result. Note that some
+//     fields require elevated access.
 //      kGTLBloggerViewAdmin: Admin level detail
 //      kGTLBloggerViewAuthor: Author level detail
-//      kGTLBloggerViewReader: Admin level detail
+//      kGTLBloggerViewReader: Reader level detail
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
@@ -377,11 +408,17 @@
 //   blogId: ID of the blog to fetch the post from.
 //   postId: The ID of the post
 //  Optional:
+//   fetchBody: Whether the body content of the post is included (default:
+//     true). This should be set to false when the post bodies are not required,
+//     to help minimize traffic. (Default true)
+//   fetchImages: Whether image URL metadata for each post is included (default:
+//     false).
 //   maxComments: Maximum number of comments to pull back on a post.
-//   view: NSString
+//   view: Access level with which to view the returned result. Note that some
+//     fields require elevated access.
 //      kGTLBloggerViewAdmin: Admin level detail
 //      kGTLBloggerViewAuthor: Author level detail
-//      kGTLBloggerViewReader: Admin level detail
+//      kGTLBloggerViewReader: Reader level detail
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
@@ -396,10 +433,11 @@
 //   path: Path of the Post to retrieve.
 //  Optional:
 //   maxComments: Maximum number of comments to pull back on a post.
-//   view: NSString
+//   view: Access level with which to view the returned result. Note that some
+//     fields require elevated access.
 //      kGTLBloggerViewAdmin: Admin level detail
 //      kGTLBloggerViewAuthor: Author level detail
-//      kGTLBloggerViewReader: Admin level detail
+//      kGTLBloggerViewReader: Reader level detail
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
@@ -412,7 +450,11 @@
 //  Required:
 //   blogId: ID of the blog to add the post to.
 //  Optional:
-//   isDraft: Whether to create the post as a draft
+//   fetchBody: Whether the body content of the post is included with the result
+//     (default: true). (Default true)
+//   fetchImages: Whether image URL metadata for each post is included in the
+//     returned result (default: false).
+//   isDraft: Whether to create the post as a draft (default: false).
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 // Fetches a GTLBloggerPost.
@@ -437,12 +479,13 @@
 //   pageToken: Continuation token if the request is paged.
 //   startDate: Earliest post date to fetch, a date-time with RFC 3339
 //     formatting.
-//   statuses: NSArray
-//      kGTLBloggerStatusesDraft: Draft posts
-//      kGTLBloggerStatusesLive: Published posts
-//      kGTLBloggerStatusesScheduled: Posts that are scheduled to publish in
+//   status: Statuses to include in the results.
+//      kGTLBloggerStatusDraft: Draft (non-published) posts.
+//      kGTLBloggerStatusLive: Published posts
+//      kGTLBloggerStatusScheduled: Posts that are scheduled to publish in the
 //        future.
-//   view: NSString
+//   view: Access level with which to view the returned result. Note that some
+//     fields require escalated access.
 //      kGTLBloggerViewAdmin: Admin level detail
 //      kGTLBloggerViewAuthor: Author level detail
 //      kGTLBloggerViewReader: Reader level detail
@@ -457,6 +500,16 @@
 //  Required:
 //   blogId: The ID of the Blog.
 //   postId: The ID of the Post.
+//  Optional:
+//   fetchBody: Whether the body content of the post is included with the result
+//     (default: true). (Default true)
+//   fetchImages: Whether image URL metadata for each post is included in the
+//     returned result (default: false).
+//   maxComments: Maximum number of comments to retrieve with the returned post.
+//   publish: Whether a publish action should be performed when the post is
+//     updated (default: false).
+//   revert: Whether a revert action should be performed when the post is
+//     updated (default: false).
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 // Fetches a GTLBloggerPost.
@@ -512,6 +565,16 @@
 //  Required:
 //   blogId: The ID of the Blog.
 //   postId: The ID of the Post.
+//  Optional:
+//   fetchBody: Whether the body content of the post is included with the result
+//     (default: true). (Default true)
+//   fetchImages: Whether image URL metadata for each post is included in the
+//     returned result (default: false).
+//   maxComments: Maximum number of comments to retrieve with the returned post.
+//   publish: Whether a publish action should be performed when the post is
+//     updated (default: false).
+//   revert: Whether a revert action should be performed when the post is
+//     updated (default: false).
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 // Fetches a GTLBloggerPost.
@@ -524,7 +587,9 @@
 // These create a GTLQueryBlogger object.
 
 // Method: blogger.postUserInfos.get
-// Gets one post and user info pair by postId and userId.
+// Gets one post and user info pair, by post id and user id. The post user info
+// contains per-user information about the post, such as access rights, specific
+// to the user.
 //  Required:
 //   userId: ID of the user for the per-user information to be fetched. Either
 //     the word 'self' (sans quote marks) or the user's profile identifier.
@@ -541,28 +606,33 @@
                                   postId:(NSString *)postId;
 
 // Method: blogger.postUserInfos.list
-// Retrieves a list of post and user info pairs, possibly filtered.
+// Retrieves a list of post and post user info pairs, possibly filtered. The
+// post user info contains per-user information about the post, such as access
+// rights, specific to the user.
 //  Required:
 //   userId: ID of the user for the per-user information to be fetched. Either
 //     the word 'self' (sans quote marks) or the user's profile identifier.
 //   blogId: ID of the blog to fetch posts from.
 //  Optional:
 //   endDate: Latest post date to fetch, a date-time with RFC 3339 formatting.
-//   fetchBodies: Whether the body content of posts is included.
+//   fetchBodies: Whether the body content of posts is included. Default is
+//     false. (Default false)
 //   labels: Comma-separated list of labels to search for.
 //   maxResults: Maximum number of posts to fetch.
-//   orderBy: Sort search results (Default "PUBLISHED")
+//   orderBy: Sort order applied to search results. Default is published.
+//     (Default "PUBLISHED")
 //      kGTLBloggerOrderByPublished: Order by the date the post was published
 //      kGTLBloggerOrderByUpdated: Order by the date the post was last updated
 //   pageToken: Continuation token if the request is paged.
 //   startDate: Earliest post date to fetch, a date-time with RFC 3339
 //     formatting.
-//   statuses: NSArray
-//      kGTLBloggerStatusesDraft: Draft posts
-//      kGTLBloggerStatusesLive: Published posts
-//      kGTLBloggerStatusesScheduled: Posts that are scheduled to publish in
+//   status: NSArray
+//      kGTLBloggerStatusDraft: Draft posts
+//      kGTLBloggerStatusLive: Published posts
+//      kGTLBloggerStatusScheduled: Posts that are scheduled to publish in
 //        future.
-//   view: NSString
+//   view: Access level with which to view the returned result. Note that some
+//     fields require elevated access.
 //      kGTLBloggerViewAdmin: Admin level detail
 //      kGTLBloggerViewAuthor: Author level detail
 //      kGTLBloggerViewReader: Reader level detail

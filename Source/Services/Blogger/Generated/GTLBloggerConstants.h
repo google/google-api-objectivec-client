@@ -49,14 +49,18 @@ GTL_EXTERN NSString * const kGTLBloggerRangeAll;      // "all"
 GTL_EXTERN NSString * const kGTLBloggerRangeX30days;  // "30DAYS"
 GTL_EXTERN NSString * const kGTLBloggerRangeX7days;   // "7DAYS"
 
-// Statuses
-GTL_EXTERN NSString * const kGTLBloggerStatusesDraft;      // "draft"
-GTL_EXTERN NSString * const kGTLBloggerStatusesEmptied;    // "emptied"
-GTL_EXTERN NSString * const kGTLBloggerStatusesImported;   // "imported"
-GTL_EXTERN NSString * const kGTLBloggerStatusesLive;       // "live"
-GTL_EXTERN NSString * const kGTLBloggerStatusesPending;    // "pending"
-GTL_EXTERN NSString * const kGTLBloggerStatusesScheduled;  // "scheduled"
-GTL_EXTERN NSString * const kGTLBloggerStatusesSpam;       // "spam"
+// Role
+GTL_EXTERN NSString * const kGTLBloggerRoleAdmin;   // "ADMIN"
+GTL_EXTERN NSString * const kGTLBloggerRoleAuthor;  // "AUTHOR"
+GTL_EXTERN NSString * const kGTLBloggerRoleReader;  // "READER"
+
+// Status
+GTL_EXTERN NSString * const kGTLBloggerStatusDraft;      // "draft"
+GTL_EXTERN NSString * const kGTLBloggerStatusEmptied;    // "emptied"
+GTL_EXTERN NSString * const kGTLBloggerStatusLive;       // "live"
+GTL_EXTERN NSString * const kGTLBloggerStatusPending;    // "pending"
+GTL_EXTERN NSString * const kGTLBloggerStatusScheduled;  // "scheduled"
+GTL_EXTERN NSString * const kGTLBloggerStatusSpam;       // "spam"
 
 // View
 GTL_EXTERN NSString * const kGTLBloggerViewAdmin;   // "ADMIN"

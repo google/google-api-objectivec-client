@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLQueryCivicInfo (3 custom class methods, 5 custom properties)
+//   GTLQueryCivicInfo (3 custom class methods, 6 custom properties)
 
 #import "GTLQueryCivicInfo.h"
 
@@ -36,7 +36,7 @@
 
 @implementation GTLQueryCivicInfo
 
-@dynamic address, electionId, fields, includeOffices, officialOnly;
+@dynamic address, electionId, fields, includeOffices, ocdId, officialOnly;
 
 #pragma mark -
 #pragma mark "elections" methods
