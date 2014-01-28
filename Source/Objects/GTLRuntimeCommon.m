@@ -133,8 +133,10 @@ static NSString *const kJSONKey = @"jsonKey";
     result = [dateTime stringValue];
   } else {
     checkExpected = NO;
-    GTL_DEBUG_LOG(@"GTLRuntimeCommon: unsupported class '%s' in jsonFromAPIObject",
-                  class_getName([obj class]));
+    if (obj) {
+      GTL_DEBUG_LOG(@"GTLRuntimeCommon: unsupported class '%s' in jsonFromAPIObject",
+                    class_getName([obj class]));
+    }
   }
 
   if (checkExpected) {
