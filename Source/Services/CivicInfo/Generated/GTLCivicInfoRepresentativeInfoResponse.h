@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -74,7 +74,8 @@
 
 // The result of the request. One of: success, noStreetSegmentFound,
 // addressUnparseable, noAddressParameter, multipleStreetSegmentsFound,
-// electionOver, electionUnknown, internalLookupFailure
+// electionOver, electionUnknown, internalLookupFailure,
+// RequestedBothAddressAndOcdId
 @property (copy) NSString *status;
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/google-apps/groups-settings/get_started
 // Classes:
-//   GTLGroupssettingsGroups (0 custom class methods, 26 custom properties)
+//   GTLGroupssettingsGroups (0 custom class methods, 28 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -112,6 +112,11 @@
 // MODERATE SILENTLY_MODERATE REJECT
 @property (copy) NSString *spamModerationLevel;
 
+// Permission to contact owner of the group via web UI. Possbile values are:
+// ANYONE_CAN_CONTACT ALL_IN_DOMAIN_CAN_CONTACT ALL_MEMBERS_CAN_CONTACT
+// ALL_MANAGERS_CAN_CONTACT
+@property (copy) NSString *whoCanContactOwner;
+
 // Permissions to invite members. Possbile values are: ALL_MEMBERS_CAN_INVITE
 // ALL_MANAGERS_CAN_INVITE
 @property (copy) NSString *whoCanInvite;
@@ -119,6 +124,10 @@
 // Permissions to join the group. Possible values are: ANYONE_CAN_JOIN
 // ALL_IN_DOMAIN_CAN_JOIN INVITED_CAN_JOIN CAN_REQUEST_TO_JOIN
 @property (copy) NSString *whoCanJoin;
+
+// Permission to leave the group. Possible values are: ALL_MANAGERS_CAN_LEAVE
+// ALL_MEMBERS_CAN_LEAVE
+@property (copy) NSString *whoCanLeaveGroup;
 
 // Permissions to post messages to the group. Possible values are: NONE_CAN_POST
 // ALL_MANAGERS_CAN_POST ALL_MEMBERS_CAN_POST ALL_IN_DOMAIN_CAN_POST

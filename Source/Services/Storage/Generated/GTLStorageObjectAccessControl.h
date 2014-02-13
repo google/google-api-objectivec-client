@@ -73,7 +73,7 @@
 @property (copy) NSString *ETag;
 
 // The content generation of the object.
-@property (retain) NSNumber *generation;  // unsignedLongLongValue
+@property (retain) NSNumber *generation;  // longLongValue
 
 // The ID of the access-control entry.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').

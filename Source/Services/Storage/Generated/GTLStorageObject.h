@@ -81,7 +81,7 @@
 @property (copy) NSString *ETag;
 
 // The content generation of this object. Used for object versioning.
-@property (retain) NSNumber *generation;  // unsignedLongLongValue
+@property (retain) NSNumber *generation;  // longLongValue
 
 // The ID of the object.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
