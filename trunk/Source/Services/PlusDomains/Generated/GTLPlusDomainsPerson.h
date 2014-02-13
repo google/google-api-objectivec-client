@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,8 +69,8 @@
 // The "bragging rights" line of this person.
 @property (copy) NSString *braggingRights;
 
-// If a Google+ Page and for followers who are visible, the number of people who
-// have added this page to a circle.
+// For followers who are visible, the number of people who have added this
+// person or page to a circle.
 @property (retain) NSNumber *circledByCount;  // intValue
 
 // The cover photo content.

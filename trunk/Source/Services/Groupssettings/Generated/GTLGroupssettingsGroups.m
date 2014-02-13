@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/google-apps/groups-settings/get_started
 // Classes:
-//   GTLGroupssettingsGroups (0 custom class methods, 26 custom properties)
+//   GTLGroupssettingsGroups (0 custom class methods, 28 custom properties)
 
 #import "GTLGroupssettingsGroups.h"
 
@@ -42,8 +42,8 @@
          kind, maxMessageBytes, membersCanPostAsTheGroup, messageDisplayFont,
          messageModerationLevel, name, primaryLanguage, replyTo,
          sendMessageDenyNotification, showInGroupDirectory, spamModerationLevel,
-         whoCanInvite, whoCanJoin, whoCanPostMessage, whoCanViewGroup,
-         whoCanViewMembership;
+         whoCanContactOwner, whoCanInvite, whoCanJoin, whoCanLeaveGroup,
+         whoCanPostMessage, whoCanViewGroup, whoCanViewMembership;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
