@@ -29,9 +29,9 @@ The Examples directory contains example applications showing typical interaction
 
 The example applications run on Mac OS X, but the library does not provide any user interface support apart from authentication, so use of the library APIs is the same for Mac and iOS applications.
 
-In order to use the example applications that require authentication, you must create *client ID* and *client secret* strings for an *installed application* (not a web application) type *other* (not iOS) using the [https://code.google.com/apis/console/ API Console], as explained in the [http://code.google.com/p/gtm-oauth2/wiki/Introduction OAuth 2 controller documentation].
+In order to use the example applications that require authentication, you must create *client ID* and *client secret* strings for an *installed application* (not a web application) type *other* (not iOS) using the [https://console.developers.google.com/ API Console], as explained in the [http://code.google.com/p/gtm-oauth2/wiki/Introduction OAuth 2 controller documentation].
 
-Google APIs which do not require authentication may require an *API key*, also obtained from the [https://code.google.com/apis/console/ API Console].
+Google APIs which do not require authentication may require an *API key*, also obtained from the [https://console.developers.google.com/ API Console].
 
 === Adding the Library to a Project ===
 
@@ -60,7 +60,7 @@ Be sure to read the introduction wiki page for [http://code.google.com/p/gtm-oau
 
 === API Quotas ===
 
-For each API used by your application, enable the API and check its default *quota* in the Services section of the [https://code.google.com/apis/console/ API Console]. 
+For each API used by your application, enable the API and check its default *quota* in the Services section of the [https://console.developers.google.com/ API Console]. 
 
 Applications which make frequent API requests or have many users may need more than the default limit. The specific API documentation or the service's control in the API Console will explain how to request a larger quota. 
 
@@ -142,7 +142,7 @@ Service objects maintain cookies and track other persistent data across queries.
 
 The service object makes a copy of each query for execution, so changes to a query object made after calling `executeQuery:` will not affect the request.
 
-Query execution by the service is inherently asynchronous. There is no need to create an operation queue or to use GCD to run queries on other threads. Generally, it's best to execute queries on the main application thread. Any number of queries may be executed either concurrently or sequentially, subject to rate limits shown in the [https://code.google.com/apis/console API Console]. Additional information about threading support is listed below in the section on Performance Optimizations.
+Query execution by the service is inherently asynchronous. There is no need to create an operation queue or to use GCD to run queries on other threads. Generally, it's best to execute queries on the main application thread. Any number of queries may be executed either concurrently or sequentially, subject to rate limits shown in the [https://console.developers.google.com/ API Console]. Additional information about threading support is listed below in the section on Performance Optimizations.
 
 On iOS, query fetches will normally be stopped once the user puts the application into the background. Fetches and callbacks can be continued in the background, up to the operating system time limit, by setting the property `shouldFetchInBackground`:
 {{{
