@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideoStatus.m
+//  GTLYouTubeChannelSectionListResponse.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,16 +26,36 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoStatus (0 custom class methods, 8 custom properties)
+//   GTLYouTubeChannelSectionListResponse (0 custom class methods, 5 custom properties)
 
-#import "GTLYouTubeVideoStatus.h"
+#import "GTLYouTubeChannelSectionListResponse.h"
+
+#import "GTLYouTubeChannelSection.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoStatus
+//   GTLYouTubeChannelSectionListResponse
 //
 
-@implementation GTLYouTubeVideoStatus
-@dynamic embeddable, failureReason, license, privacyStatus, publicStatsViewable,
-         publishAt, rejectionReason, uploadStatus;
+@implementation GTLYouTubeChannelSectionListResponse
+@dynamic ETag, eventId, items, kind, visitorId;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"etag"
+                                forKey:@"ETag"];
+  return map;
+}
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLYouTubeChannelSection class]
+                                forKey:@"items"];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"youtube#channelSectionListResponse"];
+}
+
 @end

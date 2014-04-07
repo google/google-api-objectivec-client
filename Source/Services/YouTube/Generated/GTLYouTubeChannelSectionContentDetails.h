@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideoStatus.m
+//  GTLYouTubeChannelSectionContentDetails.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,16 +26,28 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoStatus (0 custom class methods, 8 custom properties)
+//   GTLYouTubeChannelSectionContentDetails (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubeVideoStatus.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoStatus
+//   GTLYouTubeChannelSectionContentDetails
 //
 
-@implementation GTLYouTubeVideoStatus
-@dynamic embeddable, failureReason, license, privacyStatus, publicStatsViewable,
-         publishAt, rejectionReason, uploadStatus;
+// Details about a channelsection, including playlists and channels.
+
+@interface GTLYouTubeChannelSectionContentDetails : GTLObject
+
+// The channel ids for type multiple_channels.
+@property (retain) NSArray *channels;  // of NSString
+
+// The playlist ids for type single_playlist and multiple_playlists. For
+// singlePlaylist, only one playlistId is allowed.
+@property (retain) NSArray *playlists;  // of NSString
+
 @end

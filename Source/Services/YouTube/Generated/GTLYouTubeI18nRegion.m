@@ -14,25 +14,43 @@
  */
 
 //
-//  GTLYouTubeAnalytics.h
+//  GTLYouTubeI18nRegion.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   YouTube Analytics API (youtubeAnalytics/v1)
+//   YouTube Data API (youtube/v3)
 // Description:
-//   Retrieve your YouTube Analytics reports.
+//   Programmatic access to YouTube features.
 // Documentation:
-//   http://developers.google.com/youtube/analytics/
+//   https://developers.google.com/youtube/v3
+// Classes:
+//   GTLYouTubeI18nRegion (0 custom class methods, 4 custom properties)
 
-#import "GTLYouTubeAnalyticsConstants.h"
+#import "GTLYouTubeI18nRegion.h"
 
-#import "GTLYouTubeAnalyticsBatchReportDefinitionList.h"
-#import "GTLYouTubeAnalyticsBatchReportDefinitionTemplate.h"
-#import "GTLYouTubeAnalyticsBatchReportList.h"
-#import "GTLYouTubeAnalyticsBatchReportTemplate.h"
-#import "GTLYouTubeAnalyticsResultTable.h"
+#import "GTLYouTubeI18nRegionSnippet.h"
 
-#import "GTLQueryYouTubeAnalytics.h"
-#import "GTLServiceYouTubeAnalytics.h"
+// ----------------------------------------------------------------------------
+//
+//   GTLYouTubeI18nRegion
+//
+
+@implementation GTLYouTubeI18nRegion
+@dynamic ETag, identifier, kind, snippet;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      @"etag", @"ETag",
+      @"id", @"identifier",
+      nil];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"youtube#i18nRegion"];
+}
+
+@end

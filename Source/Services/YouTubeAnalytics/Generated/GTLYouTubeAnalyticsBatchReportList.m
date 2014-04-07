@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeAnalytics.h
+//  GTLYouTubeAnalyticsBatchReportList.m
 //
 
 // ----------------------------------------------------------------------------
@@ -25,14 +25,30 @@
 //   Retrieve your YouTube Analytics reports.
 // Documentation:
 //   http://developers.google.com/youtube/analytics/
+// Classes:
+//   GTLYouTubeAnalyticsBatchReportList (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubeAnalyticsConstants.h"
-
-#import "GTLYouTubeAnalyticsBatchReportDefinitionList.h"
-#import "GTLYouTubeAnalyticsBatchReportDefinitionTemplate.h"
 #import "GTLYouTubeAnalyticsBatchReportList.h"
-#import "GTLYouTubeAnalyticsBatchReportTemplate.h"
-#import "GTLYouTubeAnalyticsResultTable.h"
 
-#import "GTLQueryYouTubeAnalytics.h"
-#import "GTLServiceYouTubeAnalytics.h"
+#import "GTLYouTubeAnalyticsBatchReportTemplate.h"
+
+// ----------------------------------------------------------------------------
+//
+//   GTLYouTubeAnalyticsBatchReportList
+//
+
+@implementation GTLYouTubeAnalyticsBatchReportList
+@dynamic items, kind;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLYouTubeAnalyticsBatchReportTemplate class]
+                                forKey:@"items"];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"youtubeAnalytics#batchReportList"];
+}
+
+@end

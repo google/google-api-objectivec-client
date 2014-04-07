@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideoStatus.m
+//  GTLYouTubeI18nLanguage.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,16 +26,39 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoStatus (0 custom class methods, 8 custom properties)
+//   GTLYouTubeI18nLanguage (0 custom class methods, 4 custom properties)
 
-#import "GTLYouTubeVideoStatus.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
+
+@class GTLYouTubeI18nLanguageSnippet;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoStatus
+//   GTLYouTubeI18nLanguage
 //
 
-@implementation GTLYouTubeVideoStatus
-@dynamic embeddable, failureReason, license, privacyStatus, publicStatsViewable,
-         publishAt, rejectionReason, uploadStatus;
+// An i18nLanguage resource identifies a UI language currently supported by
+// YouTube.
+
+@interface GTLYouTubeI18nLanguage : GTLObject
+
+// Etag of this resource.
+@property (copy) NSString *ETag;
+
+// The ID that YouTube uses to uniquely identify the i18n language.
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+@property (copy) NSString *identifier;
+
+// Identifies what kind of resource this is. Value: the fixed string
+// "youtube#i18nLanguage".
+@property (copy) NSString *kind;
+
+// The snippet object contains basic details about the i18n language, such as
+// language code and human-readable name.
+@property (retain) GTLYouTubeI18nLanguageSnippet *snippet;
+
 @end

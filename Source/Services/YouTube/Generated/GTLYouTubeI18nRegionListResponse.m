@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideoStatus.m
+//  GTLYouTubeI18nRegionListResponse.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,16 +26,36 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoStatus (0 custom class methods, 8 custom properties)
+//   GTLYouTubeI18nRegionListResponse (0 custom class methods, 5 custom properties)
 
-#import "GTLYouTubeVideoStatus.h"
+#import "GTLYouTubeI18nRegionListResponse.h"
+
+#import "GTLYouTubeI18nRegion.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoStatus
+//   GTLYouTubeI18nRegionListResponse
 //
 
-@implementation GTLYouTubeVideoStatus
-@dynamic embeddable, failureReason, license, privacyStatus, publicStatsViewable,
-         publishAt, rejectionReason, uploadStatus;
+@implementation GTLYouTubeI18nRegionListResponse
+@dynamic ETag, eventId, items, kind, visitorId;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"etag"
+                                forKey:@"ETag"];
+  return map;
+}
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLYouTubeI18nRegion class]
+                                forKey:@"items"];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"youtube#i18nRegionListResponse"];
+}
+
 @end

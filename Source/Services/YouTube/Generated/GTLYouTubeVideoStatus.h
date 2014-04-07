@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoStatus (0 custom class methods, 7 custom properties)
+//   GTLYouTubeVideoStatus (0 custom class methods, 8 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -60,6 +60,11 @@
 // be viewed by everyone. Note that the view count, likes, etc will still be
 // visible if this is disabled.
 @property (retain) NSNumber *publicStatsViewable;  // boolValue
+
+// The date and time when the video is scheduled to publish. It can be set only
+// if the privacy status of the video is private. The value is specified in ISO
+// 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
+@property (retain) GTLDateTime *publishAt;
 
 // This value explains why YouTube rejected an uploaded video. This property is
 // only present if the uploadStatus property indicates that the upload was

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideoStatus.m
+//  GTLYouTubeI18nRegion.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,16 +26,38 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoStatus (0 custom class methods, 8 custom properties)
+//   GTLYouTubeI18nRegion (0 custom class methods, 4 custom properties)
 
-#import "GTLYouTubeVideoStatus.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
+
+@class GTLYouTubeI18nRegionSnippet;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoStatus
+//   GTLYouTubeI18nRegion
 //
 
-@implementation GTLYouTubeVideoStatus
-@dynamic embeddable, failureReason, license, privacyStatus, publicStatsViewable,
-         publishAt, rejectionReason, uploadStatus;
+// A i18nRegion resource identifies a region where YouTube is available.
+
+@interface GTLYouTubeI18nRegion : GTLObject
+
+// Etag of this resource.
+@property (copy) NSString *ETag;
+
+// The ID that YouTube uses to uniquely identify the i18n region.
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+@property (copy) NSString *identifier;
+
+// Identifies what kind of resource this is. Value: the fixed string
+// "youtube#i18nRegion".
+@property (copy) NSString *kind;
+
+// The snippet object contains basic details about the i18n region, such as
+// region code and human-readable name.
+@property (retain) GTLYouTubeI18nRegionSnippet *snippet;
+
 @end

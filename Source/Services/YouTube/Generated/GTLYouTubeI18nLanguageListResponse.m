@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideoStatus.m
+//  GTLYouTubeI18nLanguageListResponse.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,16 +26,36 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoStatus (0 custom class methods, 8 custom properties)
+//   GTLYouTubeI18nLanguageListResponse (0 custom class methods, 5 custom properties)
 
-#import "GTLYouTubeVideoStatus.h"
+#import "GTLYouTubeI18nLanguageListResponse.h"
+
+#import "GTLYouTubeI18nLanguage.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoStatus
+//   GTLYouTubeI18nLanguageListResponse
 //
 
-@implementation GTLYouTubeVideoStatus
-@dynamic embeddable, failureReason, license, privacyStatus, publicStatsViewable,
-         publishAt, rejectionReason, uploadStatus;
+@implementation GTLYouTubeI18nLanguageListResponse
+@dynamic ETag, eventId, items, kind, visitorId;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"etag"
+                                forKey:@"ETag"];
+  return map;
+}
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLYouTubeI18nLanguage class]
+                                forKey:@"items"];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"youtube#i18nLanguageListResponse"];
+}
+
 @end
