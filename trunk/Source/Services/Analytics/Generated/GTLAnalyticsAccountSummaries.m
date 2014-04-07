@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAnalyticsSegment.m
+//  GTLAnalyticsAccountSummaries.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,28 +26,30 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsSegment (0 custom class methods, 9 custom properties)
+//   GTLAnalyticsAccountSummaries (0 custom class methods, 8 custom properties)
 
-#import "GTLAnalyticsSegment.h"
+#import "GTLAnalyticsAccountSummaries.h"
+
+#import "GTLAnalyticsAccountSummary.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAnalyticsSegment
+//   GTLAnalyticsAccountSummaries
 //
 
-@implementation GTLAnalyticsSegment
-@dynamic created, definition, identifier, kind, name, segmentId, selfLink, type,
-         updated;
+@implementation GTLAnalyticsAccountSummaries
+@dynamic items, itemsPerPage, kind, nextLink, previousLink, startIndex,
+         totalResults, username;
 
-+ (NSDictionary *)propertyToJSONKeyMap {
++ (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+    [NSDictionary dictionaryWithObject:[GTLAnalyticsAccountSummary class]
+                                forKey:@"items"];
   return map;
 }
 
 + (void)load {
-  [self registerObjectClassForKind:@"analytics#segment"];
+  [self registerObjectClassForKind:@"analytics#accountSummaries"];
 }
 
 @end

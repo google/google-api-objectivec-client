@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAnalyticsSegment.h
+//  GTLAnalyticsWebPropertySummary.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsSegment (0 custom class methods, 9 custom properties)
+//   GTLAnalyticsWebPropertySummary (0 custom class methods, 7 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,41 +34,38 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLAnalyticsProfileSummary;
+
 // ----------------------------------------------------------------------------
 //
-//   GTLAnalyticsSegment
+//   GTLAnalyticsWebPropertySummary
 //
 
-// JSON template for an Analytics segment.
+// JSON template for an Analytics WebPropertySummary. WebPropertySummary returns
+// basic information (i.e., summary) for a web property.
 
-@interface GTLAnalyticsSegment : GTLObject
+@interface GTLAnalyticsWebPropertySummary : GTLObject
 
-// Time the segment was created.
-@property (retain) GTLDateTime *created;
-
-// Segment definition.
-@property (copy) NSString *definition;
-
-// Segment ID.
+// Web property ID of the form UA-XXXXX-YY.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// Resource type for Analytics segment.
+// Internal ID for this web property.
+@property (copy) NSString *internalWebPropertyId;
+
+// Resource type for Analytics WebPropertySummary.
 @property (copy) NSString *kind;
 
-// Segment name.
+// Level for this web property. Possible values are STANDARD or PREMIUM.
+@property (copy) NSString *level;
+
+// Web property name.
 @property (copy) NSString *name;
 
-// Segment ID. Can be used with the 'segment' parameter in Core Reporting API.
-@property (copy) NSString *segmentId;
+// List of profiles under this web property.
+@property (retain) NSArray *profiles;  // of GTLAnalyticsProfileSummary
 
-// Link for this segment.
-@property (copy) NSString *selfLink;
-
-// Type for a segment. Possible values are "BUILT_IN" or "CUSTOM".
-@property (copy) NSString *type;
-
-// Time the segment was last modified.
-@property (retain) GTLDateTime *updated;
+// Website url for this web property.
+@property (copy) NSString *websiteUrl;
 
 @end

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAnalyticsSegment.h
+//  GTLAnalyticsAccountSummary.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsSegment (0 custom class methods, 9 custom properties)
+//   GTLAnalyticsAccountSummary (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,41 +34,29 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLAnalyticsWebPropertySummary;
+
 // ----------------------------------------------------------------------------
 //
-//   GTLAnalyticsSegment
+//   GTLAnalyticsAccountSummary
 //
 
-// JSON template for an Analytics segment.
+// JSON template for an Analytics AccountSummary. An AccountSummary is a
+// lightweight tree comprised of properties/profiles.
 
-@interface GTLAnalyticsSegment : GTLObject
+@interface GTLAnalyticsAccountSummary : GTLObject
 
-// Time the segment was created.
-@property (retain) GTLDateTime *created;
-
-// Segment definition.
-@property (copy) NSString *definition;
-
-// Segment ID.
+// Account ID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// Resource type for Analytics segment.
+// Resource type for Analytics AccountSummary.
 @property (copy) NSString *kind;
 
-// Segment name.
+// Account name.
 @property (copy) NSString *name;
 
-// Segment ID. Can be used with the 'segment' parameter in Core Reporting API.
-@property (copy) NSString *segmentId;
-
-// Link for this segment.
-@property (copy) NSString *selfLink;
-
-// Type for a segment. Possible values are "BUILT_IN" or "CUSTOM".
-@property (copy) NSString *type;
-
-// Time the segment was last modified.
-@property (retain) GTLDateTime *updated;
+// List of web properties under this account.
+@property (retain) NSArray *webProperties;  // of GTLAnalyticsWebPropertySummary
 
 @end
