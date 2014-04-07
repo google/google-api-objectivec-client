@@ -14,25 +14,37 @@
  */
 
 //
-//  GTLYouTubeAnalytics.h
+//  GTLYouTubeChannelSectionContentDetails.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   YouTube Analytics API (youtubeAnalytics/v1)
+//   YouTube Data API (youtube/v3)
 // Description:
-//   Retrieve your YouTube Analytics reports.
+//   Programmatic access to YouTube features.
 // Documentation:
-//   http://developers.google.com/youtube/analytics/
+//   https://developers.google.com/youtube/v3
+// Classes:
+//   GTLYouTubeChannelSectionContentDetails (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubeAnalyticsConstants.h"
+#import "GTLYouTubeChannelSectionContentDetails.h"
 
-#import "GTLYouTubeAnalyticsBatchReportDefinitionList.h"
-#import "GTLYouTubeAnalyticsBatchReportDefinitionTemplate.h"
-#import "GTLYouTubeAnalyticsBatchReportList.h"
-#import "GTLYouTubeAnalyticsBatchReportTemplate.h"
-#import "GTLYouTubeAnalyticsResultTable.h"
+// ----------------------------------------------------------------------------
+//
+//   GTLYouTubeChannelSectionContentDetails
+//
 
-#import "GTLQueryYouTubeAnalytics.h"
-#import "GTLServiceYouTubeAnalytics.h"
+@implementation GTLYouTubeChannelSectionContentDetails
+@dynamic channels, playlists;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      [NSString class], @"channels",
+      [NSString class], @"playlists",
+      nil];
+  return map;
+}
+
+@end

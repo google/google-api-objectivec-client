@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (39 custom class methods, 52 custom properties)
+//   GTLQueryYouTube (45 custom class methods, 52 custom properties)
 
 #import "GTLQueryYouTube.h"
 
@@ -35,7 +35,11 @@
 #import "GTLYouTubeChannel.h"
 #import "GTLYouTubeChannelBannerResource.h"
 #import "GTLYouTubeChannelListResponse.h"
+#import "GTLYouTubeChannelSection.h"
+#import "GTLYouTubeChannelSectionListResponse.h"
 #import "GTLYouTubeGuideCategoryListResponse.h"
+#import "GTLYouTubeI18nLanguageListResponse.h"
+#import "GTLYouTubeI18nRegionListResponse.h"
 #import "GTLYouTubeInvideoBranding.h"
 #import "GTLYouTubeLiveBroadcast.h"
 #import "GTLYouTubeLiveBroadcastListResponse.h"
@@ -119,6 +123,53 @@
 }
 
 #pragma mark -
+#pragma mark "channelSections" methods
+// These create a GTLQueryYouTube object.
+
++ (id)queryForChannelSectionsDeleteWithIdentifier:(NSString *)identifier {
+  NSString *methodName = @"youtube.channelSections.delete";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.identifier = identifier;
+  return query;
+}
+
++ (id)queryForChannelSectionsInsertWithObject:(GTLYouTubeChannelSection *)object
+                                         part:(NSString *)part {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"youtube.channelSections.insert";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.part = part;
+  query.expectedObjectClass = [GTLYouTubeChannelSection class];
+  return query;
+}
+
++ (id)queryForChannelSectionsListWithPart:(NSString *)part {
+  NSString *methodName = @"youtube.channelSections.list";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.part = part;
+  query.expectedObjectClass = [GTLYouTubeChannelSectionListResponse class];
+  return query;
+}
+
++ (id)queryForChannelSectionsUpdateWithObject:(GTLYouTubeChannelSection *)object
+                                         part:(NSString *)part {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"youtube.channelSections.update";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.part = part;
+  query.expectedObjectClass = [GTLYouTubeChannelSection class];
+  return query;
+}
+
+#pragma mark -
 #pragma mark "channels" methods
 // These create a GTLQueryYouTube object.
 
@@ -153,6 +204,30 @@
   GTLQueryYouTube *query = [self queryWithMethodName:methodName];
   query.part = part;
   query.expectedObjectClass = [GTLYouTubeGuideCategoryListResponse class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "i18nLanguages" methods
+// These create a GTLQueryYouTube object.
+
++ (id)queryForI18nLanguagesListWithPart:(NSString *)part {
+  NSString *methodName = @"youtube.i18nLanguages.list";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.part = part;
+  query.expectedObjectClass = [GTLYouTubeI18nLanguageListResponse class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "i18nRegions" methods
+// These create a GTLQueryYouTube object.
+
++ (id)queryForI18nRegionsListWithPart:(NSString *)part {
+  NSString *methodName = @"youtube.i18nRegions.list";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.part = part;
+  query.expectedObjectClass = [GTLYouTubeI18nRegionListResponse class];
   return query;
 }
 

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   http://developers.google.com/youtube/analytics/
 // Classes:
-//   GTLQueryYouTubeAnalytics (1 custom class methods, 10 custom properties)
+//   GTLQueryYouTubeAnalytics (3 custom class methods, 12 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -46,15 +46,51 @@
 //
 // Method-specific parameters; see the comments below for more information.
 //
+@property (copy) NSString *batchReportDefinitionId;
 @property (copy) NSString *dimensions;
 @property (copy) NSString *endDate;
 @property (copy) NSString *filters;
 @property (copy) NSString *ids;
 @property (assign) NSInteger maxResults;
 @property (copy) NSString *metrics;
+@property (copy) NSString *onBehalfOfContentOwner;
 @property (copy) NSString *sort;
 @property (copy) NSString *startDate;
 @property (assign) NSInteger startIndex;
+
+#pragma mark -
+#pragma mark "batchReportDefinitions" methods
+// These create a GTLQueryYouTubeAnalytics object.
+
+// Method: youtubeAnalytics.batchReportDefinitions.list
+// Retrieves a list of available batch report definitions.
+//  Required:
+//   onBehalfOfContentOwner: The onBehalfOfContentOwner parameter identifies the
+//     content owner that the user is acting on behalf of.
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTubeAnalyticsYtAnalyticsMonetaryReadonly
+//   kGTLAuthScopeYouTubeAnalyticsYtAnalyticsReadonly
+// Fetches a GTLYouTubeAnalyticsBatchReportDefinitionList.
++ (id)queryForBatchReportDefinitionsListWithOnBehalfOfContentOwner:(NSString *)onBehalfOfContentOwner;
+
+#pragma mark -
+#pragma mark "batchReports" methods
+// These create a GTLQueryYouTubeAnalytics object.
+
+// Method: youtubeAnalytics.batchReports.list
+// Retrieves a list of processed batch reports.
+//  Required:
+//   batchReportDefinitionId: The batchReportDefinitionId parameter specifies
+//     the ID of the batch reportort definition for which you are retrieving
+//     reports.
+//   onBehalfOfContentOwner: The onBehalfOfContentOwner parameter identifies the
+//     content owner that the user is acting on behalf of.
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTubeAnalyticsYtAnalyticsMonetaryReadonly
+//   kGTLAuthScopeYouTubeAnalyticsYtAnalyticsReadonly
+// Fetches a GTLYouTubeAnalyticsBatchReportList.
++ (id)queryForBatchReportsListWithBatchReportDefinitionId:(NSString *)batchReportDefinitionId
+                                   onBehalfOfContentOwner:(NSString *)onBehalfOfContentOwner;
 
 #pragma mark -
 #pragma mark "reports" methods

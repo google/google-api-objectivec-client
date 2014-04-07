@@ -14,25 +14,40 @@
  */
 
 //
-//  GTLYouTubeAnalytics.h
+//  GTLYouTubeI18nRegionSnippet.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   YouTube Analytics API (youtubeAnalytics/v1)
+//   YouTube Data API (youtube/v3)
 // Description:
-//   Retrieve your YouTube Analytics reports.
+//   Programmatic access to YouTube features.
 // Documentation:
-//   http://developers.google.com/youtube/analytics/
+//   https://developers.google.com/youtube/v3
+// Classes:
+//   GTLYouTubeI18nRegionSnippet (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubeAnalyticsConstants.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLYouTubeAnalyticsBatchReportDefinitionList.h"
-#import "GTLYouTubeAnalyticsBatchReportDefinitionTemplate.h"
-#import "GTLYouTubeAnalyticsBatchReportList.h"
-#import "GTLYouTubeAnalyticsBatchReportTemplate.h"
-#import "GTLYouTubeAnalyticsResultTable.h"
+// ----------------------------------------------------------------------------
+//
+//   GTLYouTubeI18nRegionSnippet
+//
 
-#import "GTLQueryYouTubeAnalytics.h"
-#import "GTLServiceYouTubeAnalytics.h"
+// Basic details about an i18n region, such as region code and human-readable
+// name.
+
+@interface GTLYouTubeI18nRegionSnippet : GTLObject
+
+// The region code as a 2-letter ISO country code.
+@property (copy) NSString *gl;
+
+// The human-readable name of the region.
+@property (copy) NSString *name;
+
+@end

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideoStatus.m
+//  GTLYouTubeI18nLanguageSnippet.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,16 +26,28 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoStatus (0 custom class methods, 8 custom properties)
+//   GTLYouTubeI18nLanguageSnippet (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubeVideoStatus.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoStatus
+//   GTLYouTubeI18nLanguageSnippet
 //
 
-@implementation GTLYouTubeVideoStatus
-@dynamic embeddable, failureReason, license, privacyStatus, publicStatsViewable,
-         publishAt, rejectionReason, uploadStatus;
+// Basic details about an i18n language, such as language code and
+// human-readable name.
+
+@interface GTLYouTubeI18nLanguageSnippet : GTLObject
+
+// A short BCP-47 code that uniquely identifies a language.
+@property (copy) NSString *hl;
+
+// The human-readable name of the language in the language itself.
+@property (copy) NSString *name;
+
 @end

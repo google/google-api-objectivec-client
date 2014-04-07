@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeVideoStatus.m
+//  GTLYouTubeChannelSectionSnippet.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,16 +26,37 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoStatus (0 custom class methods, 8 custom properties)
+//   GTLYouTubeChannelSectionSnippet (0 custom class methods, 5 custom properties)
 
-#import "GTLYouTubeVideoStatus.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoStatus
+//   GTLYouTubeChannelSectionSnippet
 //
 
-@implementation GTLYouTubeVideoStatus
-@dynamic embeddable, failureReason, license, privacyStatus, publicStatsViewable,
-         publishAt, rejectionReason, uploadStatus;
+// Basic details about a channelsection, including title, style and position.
+
+@interface GTLYouTubeChannelSectionSnippet : GTLObject
+
+// The ID that YouTube uses to uniquely identify the channel that published the
+// channelSection.
+@property (copy) NSString *channelId;
+
+// The position of the channelSection in the channel.
+@property (retain) NSNumber *position;  // unsignedIntValue
+
+// The style of the channelSection.
+@property (copy) NSString *style;
+
+// The channelSection's title for multiple_playlists and multiple_channels.
+@property (copy) NSString *title;
+
+// The type of the channelSection.
+@property (copy) NSString *type;
+
 @end

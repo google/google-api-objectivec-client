@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,16 +26,19 @@
 // Documentation:
 //   http://developers.google.com/youtube/analytics/
 // Classes:
-//   GTLQueryYouTubeAnalytics (1 custom class methods, 10 custom properties)
+//   GTLQueryYouTubeAnalytics (3 custom class methods, 12 custom properties)
 
 #import "GTLQueryYouTubeAnalytics.h"
 
+#import "GTLYouTubeAnalyticsBatchReportDefinitionList.h"
+#import "GTLYouTubeAnalyticsBatchReportList.h"
 #import "GTLYouTubeAnalyticsResultTable.h"
 
 @implementation GTLQueryYouTubeAnalytics
 
-@dynamic dimensions, endDate, fields, filters, ids, maxResults, metrics, sort,
-         startDate, startIndex;
+@dynamic batchReportDefinitionId, dimensions, endDate, fields, filters, ids,
+         maxResults, metrics, onBehalfOfContentOwner, sort, startDate,
+         startIndex;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map =
@@ -46,6 +49,32 @@
       @"start-index", @"startIndex",
       nil];
   return map;
+}
+
+#pragma mark -
+#pragma mark "batchReportDefinitions" methods
+// These create a GTLQueryYouTubeAnalytics object.
+
++ (id)queryForBatchReportDefinitionsListWithOnBehalfOfContentOwner:(NSString *)onBehalfOfContentOwner {
+  NSString *methodName = @"youtubeAnalytics.batchReportDefinitions.list";
+  GTLQueryYouTubeAnalytics *query = [self queryWithMethodName:methodName];
+  query.onBehalfOfContentOwner = onBehalfOfContentOwner;
+  query.expectedObjectClass = [GTLYouTubeAnalyticsBatchReportDefinitionList class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "batchReports" methods
+// These create a GTLQueryYouTubeAnalytics object.
+
++ (id)queryForBatchReportsListWithBatchReportDefinitionId:(NSString *)batchReportDefinitionId
+                                   onBehalfOfContentOwner:(NSString *)onBehalfOfContentOwner {
+  NSString *methodName = @"youtubeAnalytics.batchReports.list";
+  GTLQueryYouTubeAnalytics *query = [self queryWithMethodName:methodName];
+  query.batchReportDefinitionId = batchReportDefinitionId;
+  query.onBehalfOfContentOwner = onBehalfOfContentOwner;
+  query.expectedObjectClass = [GTLYouTubeAnalyticsBatchReportList class];
+  return query;
 }
 
 #pragma mark -
