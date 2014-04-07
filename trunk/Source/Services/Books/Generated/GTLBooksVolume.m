@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
 //   GTLBooksVolume (0 custom class methods, 11 custom properties)
-//   GTLBooksVolumeAccessInfo (0 custom class methods, 13 custom properties)
+//   GTLBooksVolumeAccessInfo (0 custom class methods, 14 custom properties)
 //   GTLBooksVolumeLayerInfo (0 custom class methods, 1 custom properties)
 //   GTLBooksVolumeRecommendedInfo (0 custom class methods, 1 custom properties)
 //   GTLBooksVolumeSaleInfo (0 custom class methods, 8 custom properties)
@@ -87,8 +87,8 @@
 //
 
 @implementation GTLBooksVolumeAccessInfo
-@dynamic accessViewStatus, country, downloadAccess, embeddable, epub,
-         explicitOfflineLicenseManagement, pdf, publicDomain,
+@dynamic accessViewStatus, country, downloadAccess, driveImportedContentLink,
+         embeddable, epub, explicitOfflineLicenseManagement, pdf, publicDomain,
          quoteSharingAllowed, textToSpeechPermission, viewability, viewOrderUrl,
          webReaderLink;
 @end

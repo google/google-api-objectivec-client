@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,8 @@
 // Documentation:
 //   https://developers.google.com/google-apps/calendar/firstapp
 // Classes:
-//   GTLCalendarCalendarListEntry (0 custom class methods, 16 custom properties)
+//   GTLCalendarCalendarListEntry (0 custom class methods, 17 custom properties)
+//   GTLCalendarCalendarListEntryNotificationSettings (0 custom class methods, 1 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,7 +35,9 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLCalendarCalendarListEntryNotificationSettings;
 @class GTLCalendarEventReminder;
+@class GTLCalendarNotification;
 
 // ----------------------------------------------------------------------------
 //
@@ -92,6 +95,8 @@
 // Geographic location of the calendar as free-form text. Optional. Read-only.
 @property (copy) NSString *location;
 
+@property (retain) GTLCalendarCalendarListEntryNotificationSettings *notificationSettings;
+
 // Whether the calendar is the primary calendar of the authenticated user.
 // Read-only. Optional. The default is False.
 @property (retain) NSNumber *primary;  // boolValue
@@ -109,4 +114,14 @@
 // The time zone of the calendar. Optional. Read-only.
 @property (copy) NSString *timeZone;
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLCalendarCalendarListEntryNotificationSettings
+//
+
+@interface GTLCalendarCalendarListEntryNotificationSettings : GTLObject
+@property (retain) NSArray *notifications;  // of GTLCalendarNotification
 @end

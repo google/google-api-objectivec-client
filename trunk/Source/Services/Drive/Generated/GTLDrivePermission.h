@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -63,7 +63,10 @@
 // The ETag of the permission.
 @property (copy) NSString *ETag;
 
-// The ID of the permission.
+// The ID of the user this permission refers to, and identical to the
+// permissionId in the About and Files resources. When making a
+// drive.permissions.insert request, exactly one of 'id' or 'value' fields must
+// be specified.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
@@ -93,7 +96,8 @@
 @property (copy) NSString *type;
 
 // The email address or domain name for the entity. This is used during inserts
-// and is not populated in responses.
+// and is not populated in responses. When making a drive.permissions.insert
+// request, exactly one of 'id' or 'value' fields must be specified.
 @property (copy) NSString *value;
 
 // Whether the link is required for this permission.

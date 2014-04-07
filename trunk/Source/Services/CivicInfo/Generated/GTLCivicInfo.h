@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,6 +31,8 @@
 #import "GTLCivicInfoCandidate.h"
 #import "GTLCivicInfoChannel.h"
 #import "GTLCivicInfoContest.h"
+#import "GTLCivicInfoDivisionSearchResponse.h"
+#import "GTLCivicInfoDivisionSearchResult.h"
 #import "GTLCivicInfoElection.h"
 #import "GTLCivicInfoElectionOfficial.h"
 #import "GTLCivicInfoElectionsQueryResponse.h"

@@ -14,19 +14,19 @@
  */
 
 //
-//  GTLDoubleClickBidManagerListQueriesResponse.h
+//  GTLCivicInfoDivisionSearchResponse.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   DoubleClick Bid Manager API (doubleclickbidmanager/v1)
+//   Google Civic Information API (civicinfo/us_v1)
 // Description:
-//   API for viewing and managing your reports in DoubleClick Bid Manager.
+//   An API for accessing civic information.
 // Documentation:
-//   https://developers.google.com/bid-manager/
+//   https://developers.google.com/civic-information
 // Classes:
-//   GTLDoubleClickBidManagerListQueriesResponse (0 custom class methods, 2 custom properties)
+//   GTLCivicInfoDivisionSearchResponse (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,22 +34,25 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLDoubleClickBidManagerQuery;
+@class GTLCivicInfoDivisionSearchResult;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLDoubleClickBidManagerListQueriesResponse
+//   GTLCivicInfoDivisionSearchResponse
 //
 
-// List queries response.
+// The result of a division search query.
 
-@interface GTLDoubleClickBidManagerListQueriesResponse : GTLObject
+@interface GTLCivicInfoDivisionSearchResponse : GTLObject
 
 // Identifies what kind of resource this is. Value: the fixed string
-// "doubleclickbidmanager#listQueriesResponse".
+// "civicinfo#divisionSearchResponse".
 @property (copy) NSString *kind;
 
-// Retrieved queries.
-@property (retain) NSArray *queries;  // of GTLDoubleClickBidManagerQuery
+@property (retain) NSArray *results;  // of GTLCivicInfoDivisionSearchResult
+
+// The result of the request. One of: success, addressUnparseable,
+// noAddressParameter, internalLookupFailure
+@property (copy) NSString *status;
 
 @end

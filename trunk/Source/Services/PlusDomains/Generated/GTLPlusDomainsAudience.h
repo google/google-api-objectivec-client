@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/+/domains/
 // Classes:
-//   GTLPlusDomainsAudience (0 custom class methods, 4 custom properties)
+//   GTLPlusDomainsAudience (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -51,6 +51,10 @@
 
 // Identifies this resource as an audience. Value: "plus#audience".
 @property (copy) NSString *kind;
+
+// The number of people in this circle. This only applies if entity_type is
+// CIRCLE.
+@property (retain) NSNumber *memberCount;  // unsignedIntValue
 
 // The circle members' visibility as chosen by the owner of the circle. This
 // only applies for items with "item.type" equals "circle". Possible values are:

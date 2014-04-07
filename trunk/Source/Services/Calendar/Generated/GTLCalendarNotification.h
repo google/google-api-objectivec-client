@@ -14,19 +14,19 @@
  */
 
 //
-//  GTLDoubleClickBidManagerListQueriesResponse.h
+//  GTLCalendarNotification.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   DoubleClick Bid Manager API (doubleclickbidmanager/v1)
+//   Calendar API (calendar/v3)
 // Description:
-//   API for viewing and managing your reports in DoubleClick Bid Manager.
+//   Lets you manipulate events and other calendar data.
 // Documentation:
-//   https://developers.google.com/bid-manager/
+//   https://developers.google.com/google-apps/calendar/firstapp
 // Classes:
-//   GTLDoubleClickBidManagerListQueriesResponse (0 custom class methods, 2 custom properties)
+//   GTLCalendarNotification (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,22 +34,25 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLDoubleClickBidManagerQuery;
-
 // ----------------------------------------------------------------------------
 //
-//   GTLDoubleClickBidManagerListQueriesResponse
+//   GTLCalendarNotification
 //
 
-// List queries response.
+@interface GTLCalendarNotification : GTLObject
 
-@interface GTLDoubleClickBidManagerListQueriesResponse : GTLObject
+// The method used to deliver the notification. Possible values are:
+// - "email" - Reminders are sent via email.
+// - "sms" - Reminders are sent via SMS.
+@property (copy) NSString *method;
 
-// Identifies what kind of resource this is. Value: the fixed string
-// "doubleclickbidmanager#listQueriesResponse".
-@property (copy) NSString *kind;
-
-// Retrieved queries.
-@property (retain) NSArray *queries;  // of GTLDoubleClickBidManagerQuery
+// The type of notification. Possible values are:
+// - "eventCreation" - Notification sent when a new event has been put on the
+// calendar.
+// - "eventChange" - Notification sent when an event was changed.
+// - "eventCancellation" - Notification sent when an event was cancelled.
+// - "eventResponse" - Notification sent when an event was changed.
+// - "agenda" - An agenda with the events of the day (sent out in the morning).
+@property (copy) NSString *type;
 
 @end

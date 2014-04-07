@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,9 +27,11 @@
 // Documentation:
 //   https://developers.google.com/discovery/
 // Classes:
-//   GTLDiscoveryJsonSchema (0 custom class methods, 19 custom properties)
+//   GTLDiscoveryJsonSchema (0 custom class methods, 20 custom properties)
 //   GTLDiscoveryJsonSchemaAnnotations (0 custom class methods, 1 custom properties)
 //   GTLDiscoveryJsonSchemaProperties (0 custom class methods, 0 custom properties)
+//   GTLDiscoveryJsonSchemaVariant (0 custom class methods, 2 custom properties)
+//   GTLDiscoveryJsonSchemaVariantMapItem (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -40,6 +42,8 @@
 @class GTLDiscoveryJsonSchema;
 @class GTLDiscoveryJsonSchemaAnnotations;
 @class GTLDiscoveryJsonSchemaProperties;
+@class GTLDiscoveryJsonSchemaVariant;
+@class GTLDiscoveryJsonSchemaVariantMapItem;
 
 // ----------------------------------------------------------------------------
 //
@@ -122,6 +126,11 @@
 // http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.1
 @property (copy) NSString *type;
 
+// In a variant data type, the value of one property is used to determine how to
+// interpret the entire entity. Its value must exist in a map of descriminant
+// values to schema names.
+@property (retain) GTLDiscoveryJsonSchemaVariant *variant;
+
 @end
 
 
@@ -148,4 +157,31 @@
 // GTLDiscoveryJsonSchema. Use -additionalJSONKeys and
 // -additionalPropertyForName: to get the list of properties and then fetch
 // them; or -additionalProperties to fetch them all at once.
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLDiscoveryJsonSchemaVariant
+//
+
+@interface GTLDiscoveryJsonSchemaVariant : GTLObject
+
+// The name of the type discriminant property.
+@property (copy) NSString *discriminant;
+
+// The map of discriminant value to schema to use for parsing..
+@property (retain) NSArray *map;  // of GTLDiscoveryJsonSchemaVariantMapItem
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLDiscoveryJsonSchemaVariantMapItem
+//
+
+@interface GTLDiscoveryJsonSchemaVariantMapItem : GTLObject
+@property (copy) NSString *xRef;
+@property (copy) NSString *typeValue;
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,11 +26,13 @@
 // Documentation:
 //   https://developers.google.com/google-apps/calendar/firstapp
 // Classes:
-//   GTLCalendarCalendarListEntry (0 custom class methods, 16 custom properties)
+//   GTLCalendarCalendarListEntry (0 custom class methods, 17 custom properties)
+//   GTLCalendarCalendarListEntryNotificationSettings (0 custom class methods, 1 custom properties)
 
 #import "GTLCalendarCalendarListEntry.h"
 
 #import "GTLCalendarEventReminder.h"
+#import "GTLCalendarNotification.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -40,7 +42,8 @@
 @implementation GTLCalendarCalendarListEntry
 @dynamic accessRole, backgroundColor, colorId, defaultReminders,
          descriptionProperty, ETag, foregroundColor, hidden, identifier, kind,
-         location, primary, selected, summary, summaryOverride, timeZone;
+         location, notificationSettings, primary, selected, summary,
+         summaryOverride, timeZone;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -61,6 +64,24 @@
 
 + (void)load {
   [self registerObjectClassForKind:@"calendar#calendarListEntry"];
+}
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLCalendarCalendarListEntryNotificationSettings
+//
+
+@implementation GTLCalendarCalendarListEntryNotificationSettings
+@dynamic notifications;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLCalendarNotification class]
+                                forKey:@"notifications"];
+  return map;
 }
 
 @end

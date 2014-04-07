@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,6 +56,7 @@
                       [GTLCalendarFreeBusyGroup class],
                       [GTLCalendarFreeBusyRequestItem class],
                       [GTLCalendarFreeBusyResponse class],
+                      [GTLCalendarNotification class],
                       [GTLCalendarSetting class],
                       [GTLCalendarSettings class],
                       [GTLCalendarTimePeriod class],

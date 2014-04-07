@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -455,7 +455,7 @@
 //      kGTLDriveVisibilityPrivate: The new file will be visible to only the
 //        owner.
 //  Upload Parameters:
-//   Maximum size: 10GB
+//   Maximum size: 1024GB
 //   Accepted MIME type(s): */*
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
@@ -580,7 +580,7 @@
 //   useContentAsIndexableText: Whether to use the content as indexable text.
 //     (Default false)
 //  Upload Parameters:
-//   Maximum size: 10GB
+//   Maximum size: 1024GB
 //   Accepted MIME type(s): */*
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
