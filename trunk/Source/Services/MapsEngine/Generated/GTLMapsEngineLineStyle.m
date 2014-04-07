@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLMapsEngineLayer.m
+//  GTLMapsEngineLineStyle.m
 //
 
 // ----------------------------------------------------------------------------
@@ -27,40 +27,37 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineLayer (0 custom class methods, 14 custom properties)
+//   GTLMapsEngineLineStyle (0 custom class methods, 4 custom properties)
+//   GTLMapsEngineLineStyleStroke (0 custom class methods, 3 custom properties)
 
-#import "GTLMapsEngineLayer.h"
+#import "GTLMapsEngineLineStyle.h"
 
-#import "GTLMapsEngineDatasource.h"
-#import "GTLMapsEngineVectorStyle.h"
+#import "GTLMapsEngineBorder.h"
+#import "GTLMapsEngineLabelStyle.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLMapsEngineLayer
+//   GTLMapsEngineLineStyle
 //
 
-@implementation GTLMapsEngineLayer
-@dynamic bbox, creationTime, datasources, datasourceType, descriptionProperty,
-         draftAccessList, identifier, lastModifiedTime, name, processingStatus,
-         projectId, publishedAccessList, style, tags;
-
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"description", @"descriptionProperty",
-      @"id", @"identifier",
-      nil];
-  return map;
-}
+@implementation GTLMapsEngineLineStyle
+@dynamic border, dash, label, stroke;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSNumber class], @"bbox",
-      [GTLMapsEngineDatasource class], @"datasources",
-      [NSString class], @"tags",
-      nil];
+    [NSDictionary dictionaryWithObject:[NSNumber class]
+                                forKey:@"dash"];
   return map;
 }
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLMapsEngineLineStyleStroke
+//
+
+@implementation GTLMapsEngineLineStyleStroke
+@dynamic color, opacity, width;
 @end

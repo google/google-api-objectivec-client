@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineLayer (0 custom class methods, 10 custom properties)
+//   GTLMapsEngineLayer (0 custom class methods, 14 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,6 +36,7 @@
 #endif
 
 @class GTLMapsEngineDatasource;
+@class GTLMapsEngineVectorStyle;
 
 // ----------------------------------------------------------------------------
 //
@@ -70,6 +71,11 @@
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
 
+// The name of an access list of the Map Editor type. The user on whose behalf
+// the request is being sent must be an editor on that access list. Read About
+// access lists in the Google Maps Engine help center for more information.
+@property (copy) NSString *draftAccessList;
+
 // A globally unique ID, used to refer to this Layer.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
@@ -81,8 +87,20 @@
 // The name of this Layer, supplied by the author.
 @property (copy) NSString *name;
 
+// The processing status of this layer.
+@property (copy) NSString *processingStatus;
+
 // The ID of the project that this Layer is in.
 @property (copy) NSString *projectId;
+
+// The access list to whom view permissions are granted. The value must be the
+// name of a Maps Engine access list of the Map Viewer type, and the user must
+// be a viewer on that list. Read About access lists in the Google Maps Engine
+// help center for more information.
+@property (copy) NSString *publishedAccessList;
+
+// The Styling information for a vector layer.
+@property (retain) GTLMapsEngineVectorStyle *style;
 
 // Tags of this Layer.
 @property (retain) NSArray *tags;  // of NSString

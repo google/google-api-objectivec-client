@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineRasterCollection (0 custom class methods, 10 custom properties)
+//   GTLMapsEngineRasterCollection (0 custom class methods, 12 custom properties)
 
 #import "GTLMapsEngineRasterCollection.h"
 
@@ -37,8 +37,9 @@
 //
 
 @implementation GTLMapsEngineRasterCollection
-@dynamic bbox, creationTime, descriptionProperty, identifier, lastModifiedTime,
-         mosaic, name, projectId, rasterType, tags;
+@dynamic attribution, bbox, creationTime, descriptionProperty, draftAccessList,
+         identifier, lastModifiedTime, mosaic, name, projectId, rasterType,
+         tags;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
