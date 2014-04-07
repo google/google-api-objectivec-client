@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLMapsEngineLayer.m
+//  GTLMapsEngineIconStyle.h
 //
 
 // ----------------------------------------------------------------------------
@@ -27,40 +27,30 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineLayer (0 custom class methods, 14 custom properties)
+//   GTLMapsEngineIconStyle (0 custom class methods, 2 custom properties)
 
-#import "GTLMapsEngineLayer.h"
-
-#import "GTLMapsEngineDatasource.h"
-#import "GTLMapsEngineVectorStyle.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLMapsEngineLayer
+//   GTLMapsEngineIconStyle
 //
 
-@implementation GTLMapsEngineLayer
-@dynamic bbox, creationTime, datasources, datasourceType, descriptionProperty,
-         draftAccessList, identifier, lastModifiedTime, name, processingStatus,
-         projectId, publishedAccessList, style, tags;
+// Style for icon, this is part of point style.
 
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"description", @"descriptionProperty",
-      @"id", @"identifier",
-      nil];
-  return map;
-}
+@interface GTLMapsEngineIconStyle : GTLObject
 
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSNumber class], @"bbox",
-      [GTLMapsEngineDatasource class], @"datasources",
-      [NSString class], @"tags",
-      nil];
-  return map;
-}
+// Custom icon id.
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+@property (copy) NSString *identifier;
+
+// Stock icon name. To use a stock icon, prefix it with 'gx_'. See Stock icon
+// names for valid icon names. For example, to specify small_red, set name to
+// 'gx_small_red'.
+@property (copy) NSString *name;
 
 @end

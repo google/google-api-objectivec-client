@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLMapsEngineLayer.m
+//  GTLMapsEngineVectorStyle.h
 //
 
 // ----------------------------------------------------------------------------
@@ -27,40 +27,36 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineLayer (0 custom class methods, 14 custom properties)
+//   GTLMapsEngineVectorStyle (0 custom class methods, 3 custom properties)
 
-#import "GTLMapsEngineLayer.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLMapsEngineDatasource.h"
-#import "GTLMapsEngineVectorStyle.h"
+@class GTLMapsEngineDisplayRule;
+@class GTLMapsEngineFeatureInfo;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLMapsEngineLayer
+//   GTLMapsEngineVectorStyle
 //
 
-@implementation GTLMapsEngineLayer
-@dynamic bbox, creationTime, datasources, datasourceType, descriptionProperty,
-         draftAccessList, identifier, lastModifiedTime, name, processingStatus,
-         projectId, publishedAccessList, style, tags;
+// A vector style contains styling information for vector layer.
 
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"description", @"descriptionProperty",
-      @"id", @"identifier",
-      nil];
-  return map;
-}
+@interface GTLMapsEngineVectorStyle : GTLObject
 
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSNumber class], @"bbox",
-      [GTLMapsEngineDatasource class], @"datasources",
-      [NSString class], @"tags",
-      nil];
-  return map;
-}
+// Display rules of the vector style. The first matched rule will apply to the
+// features. If no display rule is provided, a default display rule will be
+// generated according to Geometry type.
+@property (retain) NSArray *displayRules;  // of GTLMapsEngineDisplayRule
+
+// Individual feature info, this is called Info Window in Maps Engine UI. If not
+// provided, a default template with all attributes will be generated.
+@property (retain) GTLMapsEngineFeatureInfo *featureInfo;
+
+// The type of the vector style. Currently, only displayRule is supported.
+@property (copy) NSString *type;
 
 @end

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLMapsEngineLayer.m
+//  GTLMapsEngineZoomLevels.h
 //
 
 // ----------------------------------------------------------------------------
@@ -27,40 +27,27 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineLayer (0 custom class methods, 14 custom properties)
+//   GTLMapsEngineZoomLevels (0 custom class methods, 2 custom properties)
 
-#import "GTLMapsEngineLayer.h"
-
-#import "GTLMapsEngineDatasource.h"
-#import "GTLMapsEngineVectorStyle.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLMapsEngineLayer
+//   GTLMapsEngineZoomLevels
 //
 
-@implementation GTLMapsEngineLayer
-@dynamic bbox, creationTime, datasources, datasourceType, descriptionProperty,
-         draftAccessList, identifier, lastModifiedTime, name, processingStatus,
-         projectId, publishedAccessList, style, tags;
+// Zoom level range. Zoom levels are restricted between 0 and 24, inclusive.
 
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"description", @"descriptionProperty",
-      @"id", @"identifier",
-      nil];
-  return map;
-}
+@interface GTLMapsEngineZoomLevels : GTLObject
 
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSNumber class], @"bbox",
-      [GTLMapsEngineDatasource class], @"datasources",
-      [NSString class], @"tags",
-      nil];
-  return map;
-}
+// Maximum zoom level.
+@property (retain) NSNumber *max;  // intValue
+
+// Minimum zoom level.
+@property (retain) NSNumber *min;  // intValue
 
 @end

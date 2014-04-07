@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLQueryMapsEngine (28 custom class methods, 25 custom properties)
+//   GTLQueryMapsEngine (32 custom class methods, 26 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -37,6 +37,8 @@
 
 @class GTLMapsEngineFeature;
 @class GTLMapsEngineImage;
+@class GTLMapsEngineLayer;
+@class GTLMapsEngineRasterCollection;
 @class GTLMapsEngineTable;
 
 @interface GTLQueryMapsEngine : GTLQuery
@@ -69,6 +71,7 @@
 @property (retain) GTLDateTime *modifiedBefore;
 @property (copy) NSString *orderBy;
 @property (copy) NSString *pageToken;
+@property (assign) BOOL process;
 @property (copy) NSString *projectId;
 // "request" has different types for some query methods; see the documentation
 // for the right type for each query method.
@@ -157,6 +160,16 @@
 #pragma mark "layers" methods
 // These create a GTLQueryMapsEngine object.
 
+// Method: mapsengine.layers.create
+// Create a layer asset.
+//  Optional:
+//   request: For this method, "request" should be of type GTLMapsEngineLayer.
+//   process: Whether to queue the created layer for processing.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+// Fetches a GTLMapsEngineLayer.
++ (id)queryForLayersCreate;
+
 // Method: mapsengine.layers.get
 // Return metadata for a particular layer.
 //  Required:
@@ -226,6 +239,28 @@
 + (id)queryForLayersParentsListWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
+#pragma mark "layers" methods
+// These create a GTLQueryMapsEngine object.
+
+// Method: mapsengine.layers.process
+// Process a layer asset.
+//  Required:
+//   identifier: The ID of the layer.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+// Fetches a GTLMapsEngineProcessResponse.
++ (id)queryForLayersProcessWithIdentifier:(NSString *)identifier;
+
+// Method: mapsengine.layers.publish
+// Publish a layer asset.
+//  Required:
+//   identifier: The ID of the layer.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+// Fetches a GTLMapsEnginePublishResponse.
++ (id)queryForLayersPublishWithIdentifier:(NSString *)identifier;
+
+#pragma mark -
 #pragma mark "maps" methods
 // These create a GTLQueryMapsEngine object.
 
@@ -292,6 +327,16 @@
 #pragma mark -
 #pragma mark "rasterCollections" methods
 // These create a GTLQueryMapsEngine object.
+
+// Method: mapsengine.rasterCollections.create
+// Create a raster collection asset.
+//  Optional:
+//   request: For this method, "request" should be of type
+//     GTLMapsEngineRasterCollection.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+// Fetches a GTLMapsEngineRasterCollection.
++ (id)queryForRasterCollectionsCreate;
 
 // Method: mapsengine.rasterCollections.get
 // Return metadata for a particular raster collection.

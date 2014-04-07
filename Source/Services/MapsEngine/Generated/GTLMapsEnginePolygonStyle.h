@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLMapsEngineLayer.m
+//  GTLMapsEnginePolygonStyle.h
 //
 
 // ----------------------------------------------------------------------------
@@ -27,40 +27,31 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineLayer (0 custom class methods, 14 custom properties)
+//   GTLMapsEnginePolygonStyle (0 custom class methods, 2 custom properties)
 
-#import "GTLMapsEngineLayer.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLMapsEngineDatasource.h"
-#import "GTLMapsEngineVectorStyle.h"
+@class GTLMapsEngineBorder;
+@class GTLMapsEngineColor;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLMapsEngineLayer
+//   GTLMapsEnginePolygonStyle
 //
 
-@implementation GTLMapsEngineLayer
-@dynamic bbox, creationTime, datasources, datasourceType, descriptionProperty,
-         draftAccessList, identifier, lastModifiedTime, name, processingStatus,
-         projectId, publishedAccessList, style, tags;
+// Style for polygons.
 
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"description", @"descriptionProperty",
-      @"id", @"identifier",
-      nil];
-  return map;
-}
+@interface GTLMapsEnginePolygonStyle : GTLObject
 
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSNumber class], @"bbox",
-      [GTLMapsEngineDatasource class], @"datasources",
-      [NSString class], @"tags",
-      nil];
-  return map;
-}
+// Fill color of the polygon. If not provided, the polygon will be transparent
+// and not visible if there is no border.
+@property (retain) GTLMapsEngineColor *fill;
+
+// Border of the polygon. 0 < border.width <= 10.
+@property (retain) GTLMapsEngineBorder *stroke;
 
 @end

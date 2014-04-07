@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLMapsEngineLayer.m
+//  GTLMapsEngineFeatureInfo.h
 //
 
 // ----------------------------------------------------------------------------
@@ -27,40 +27,25 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineLayer (0 custom class methods, 14 custom properties)
+//   GTLMapsEngineFeatureInfo (0 custom class methods, 1 custom properties)
 
-#import "GTLMapsEngineLayer.h"
-
-#import "GTLMapsEngineDatasource.h"
-#import "GTLMapsEngineVectorStyle.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLMapsEngineLayer
+//   GTLMapsEngineFeatureInfo
 //
 
-@implementation GTLMapsEngineLayer
-@dynamic bbox, creationTime, datasources, datasourceType, descriptionProperty,
-         draftAccessList, identifier, lastModifiedTime, name, processingStatus,
-         projectId, publishedAccessList, style, tags;
+// A feature info contains information about individual feature.
 
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"description", @"descriptionProperty",
-      @"id", @"identifier",
-      nil];
-  return map;
-}
+@interface GTLMapsEngineFeatureInfo : GTLObject
 
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSNumber class], @"bbox",
-      [GTLMapsEngineDatasource class], @"datasources",
-      [NSString class], @"tags",
-      nil];
-  return map;
-}
+// HTML template of the info window. If not provided, a default template with
+// all attributes will be generated.
+@property (copy) NSString *content;
 
 @end

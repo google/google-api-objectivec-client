@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLQueryMapsEngine (28 custom class methods, 25 custom properties)
+//   GTLQueryMapsEngine (32 custom class methods, 26 custom properties)
 
 #import "GTLQueryMapsEngine.h"
 
@@ -39,7 +39,9 @@
 #import "GTLMapsEngineMap.h"
 #import "GTLMapsEngineMapsListResponse.h"
 #import "GTLMapsEngineParentsListResponse.h"
+#import "GTLMapsEngineProcessResponse.h"
 #import "GTLMapsEngineProjectsListResponse.h"
+#import "GTLMapsEnginePublishResponse.h"
 #import "GTLMapsEngineRasterCollection.h"
 #import "GTLMapsEngineRastercollectionsListResponse.h"
 #import "GTLMapsEngineRastersListResponse.h"
@@ -52,7 +54,7 @@
 
 @dynamic bbox, createdAfter, createdBefore, creatorEmail, featureIds, features,
          fields, filename, gxIds, identifier, include, intersects, limit,
-         maxResults, modifiedAfter, modifiedBefore, orderBy, pageToken,
+         maxResults, modifiedAfter, modifiedBefore, orderBy, pageToken, process,
          projectId, request, select, tableId, type, version, where;
 
 + (NSDictionary *)parameterNameMap {
@@ -110,6 +112,13 @@
 #pragma mark "layers" methods
 // These create a GTLQueryMapsEngine object.
 
++ (id)queryForLayersCreate {
+  NSString *methodName = @"mapsengine.layers.create";
+  GTLQueryMapsEngine *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLMapsEngineLayer class];
+  return query;
+}
+
 + (id)queryForLayersGetWithIdentifier:(NSString *)identifier {
   NSString *methodName = @"mapsengine.layers.get";
   GTLQueryMapsEngine *query = [self queryWithMethodName:methodName];
@@ -134,6 +143,26 @@
   GTLQueryMapsEngine *query = [self queryWithMethodName:methodName];
   query.identifier = identifier;
   query.expectedObjectClass = [GTLMapsEngineParentsListResponse class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "layers" methods
+// These create a GTLQueryMapsEngine object.
+
++ (id)queryForLayersProcessWithIdentifier:(NSString *)identifier {
+  NSString *methodName = @"mapsengine.layers.process";
+  GTLQueryMapsEngine *query = [self queryWithMethodName:methodName];
+  query.identifier = identifier;
+  query.expectedObjectClass = [GTLMapsEngineProcessResponse class];
+  return query;
+}
+
++ (id)queryForLayersPublishWithIdentifier:(NSString *)identifier {
+  NSString *methodName = @"mapsengine.layers.publish";
+  GTLQueryMapsEngine *query = [self queryWithMethodName:methodName];
+  query.identifier = identifier;
+  query.expectedObjectClass = [GTLMapsEnginePublishResponse class];
   return query;
 }
 
@@ -170,6 +199,13 @@
 #pragma mark -
 #pragma mark "rasterCollections" methods
 // These create a GTLQueryMapsEngine object.
+
++ (id)queryForRasterCollectionsCreate {
+  NSString *methodName = @"mapsengine.rasterCollections.create";
+  GTLQueryMapsEngine *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLMapsEngineRasterCollection class];
+  return query;
+}
 
 + (id)queryForRasterCollectionsGetWithIdentifier:(NSString *)identifier {
   NSString *methodName = @"mapsengine.rasterCollections.get";

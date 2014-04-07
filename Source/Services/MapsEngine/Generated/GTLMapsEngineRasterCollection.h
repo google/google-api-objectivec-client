@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineRasterCollection (0 custom class methods, 10 custom properties)
+//   GTLMapsEngineRasterCollection (0 custom class methods, 12 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -45,6 +45,9 @@
 
 @interface GTLMapsEngineRasterCollection : GTLObject
 
+// The name of the attribution to be used for this RasterCollection.
+@property (copy) NSString *attribution;
+
 // An array of four numbers (west, south, east, north) which define the
 // rectangular bounding box which contains all of the data in this
 // RasterCollection. The numbers represent latitudes and longitudes in decimal
@@ -58,6 +61,11 @@
 // The description of this RasterCollection, supplied by the author.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
+
+// The name of an access list of the Map Editor type. The user on whose behalf
+// the request is being sent must be an editor on that access list. Read About
+// access lists in the Google Maps Engine help center for more information.
+@property (copy) NSString *draftAccessList;
 
 // A globally unique ID, used to refer to this RasterCollection.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
@@ -76,8 +84,7 @@
 // The ID of the project that this RasterCollection is in.
 @property (copy) NSString *projectId;
 
-// The type of rasters contained within this RasterCollection. Always "image"
-// today.
+// The type of rasters contained within this RasterCollection.
 @property (copy) NSString *rasterType;
 
 // Tags of this RasterCollection.

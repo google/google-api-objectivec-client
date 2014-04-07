@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLMapsEngineLayer.m
+//  GTLMapsEngineLabelStyle.h
 //
 
 // ----------------------------------------------------------------------------
@@ -27,40 +27,45 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineLayer (0 custom class methods, 14 custom properties)
+//   GTLMapsEngineLabelStyle (0 custom class methods, 7 custom properties)
 
-#import "GTLMapsEngineLayer.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLMapsEngineDatasource.h"
-#import "GTLMapsEngineVectorStyle.h"
+@class GTLMapsEngineColor;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLMapsEngineLayer
+//   GTLMapsEngineLabelStyle
 //
 
-@implementation GTLMapsEngineLayer
-@dynamic bbox, creationTime, datasources, datasourceType, descriptionProperty,
-         draftAccessList, identifier, lastModifiedTime, name, processingStatus,
-         projectId, publishedAccessList, style, tags;
+// Text label style.
 
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"description", @"descriptionProperty",
-      @"id", @"identifier",
-      nil];
-  return map;
-}
+@interface GTLMapsEngineLabelStyle : GTLObject
 
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSNumber class], @"bbox",
-      [GTLMapsEngineDatasource class], @"datasources",
-      [NSString class], @"tags",
-      nil];
-  return map;
-}
+// Color of the text. If not provided, default to black.
+@property (copy) NSString *color;
+
+// The column value of the feature to be displayed.
+@property (copy) NSString *column;
+
+// Font style of the label, defaults to 'normal'.
+@property (copy) NSString *fontStyle;
+
+// Font weight of the label, defaults to 'normal'.
+@property (copy) NSString *fontWeight;
+
+// Opacity of the text.
+@property (retain) NSNumber *opacity;  // doubleValue
+
+// Outline color of the text.
+@property (retain) GTLMapsEngineColor *outline;
+
+// Font size of the label, in pixels. 8 <= size <= 15. If not provided, a
+// default size will be provided.
+@property (retain) NSNumber *size;  // doubleValue
 
 @end

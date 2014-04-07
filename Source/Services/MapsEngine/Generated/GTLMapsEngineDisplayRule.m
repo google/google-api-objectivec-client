@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLMapsEngineLayer.m
+//  GTLMapsEngineDisplayRule.m
 //
 
 // ----------------------------------------------------------------------------
@@ -27,39 +27,28 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineLayer (0 custom class methods, 14 custom properties)
+//   GTLMapsEngineDisplayRule (0 custom class methods, 6 custom properties)
 
-#import "GTLMapsEngineLayer.h"
+#import "GTLMapsEngineDisplayRule.h"
 
-#import "GTLMapsEngineDatasource.h"
-#import "GTLMapsEngineVectorStyle.h"
+#import "GTLMapsEngineFilter.h"
+#import "GTLMapsEngineLineStyle.h"
+#import "GTLMapsEnginePointStyle.h"
+#import "GTLMapsEnginePolygonStyle.h"
+#import "GTLMapsEngineZoomLevels.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLMapsEngineLayer
+//   GTLMapsEngineDisplayRule
 //
 
-@implementation GTLMapsEngineLayer
-@dynamic bbox, creationTime, datasources, datasourceType, descriptionProperty,
-         draftAccessList, identifier, lastModifiedTime, name, processingStatus,
-         projectId, publishedAccessList, style, tags;
-
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"description", @"descriptionProperty",
-      @"id", @"identifier",
-      nil];
-  return map;
-}
+@implementation GTLMapsEngineDisplayRule
+@dynamic filters, lineOptions, name, pointOptions, polygonOptions, zoomLevels;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSNumber class], @"bbox",
-      [GTLMapsEngineDatasource class], @"datasources",
-      [NSString class], @"tags",
-      nil];
+    [NSDictionary dictionaryWithObject:[GTLMapsEngineFilter class]
+                                forKey:@"filters"];
   return map;
 }
 
