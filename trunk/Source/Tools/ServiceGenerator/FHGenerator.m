@@ -2414,7 +2414,7 @@ static NSString *MappedParamName(NSString *name) {
   }
   NSString *lowerScopeName = [scopeName lowercaseString];
   NSString *lowerApiName = [self.api.name lowercaseString];
-  if ([lowerScopeName isEqual:lowerApiName]) {
+  if (([scopeName length] == 0) || [lowerScopeName isEqual:lowerApiName]) {
     // Leaf was just service name, nothing to add to the scope constant.
     result = prefix;
   } else {
