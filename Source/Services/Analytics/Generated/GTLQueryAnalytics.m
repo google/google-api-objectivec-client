@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,11 +26,12 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLQueryAnalytics (48 custom class methods, 27 custom properties)
+//   GTLQueryAnalytics (49 custom class methods, 27 custom properties)
 
 #import "GTLQueryAnalytics.h"
 
 #import "GTLAnalyticsAccounts.h"
+#import "GTLAnalyticsAccountSummaries.h"
 #import "GTLAnalyticsColumns.h"
 #import "GTLAnalyticsCustomDataSources.h"
 #import "GTLAnalyticsDailyUploadAppend.h"
@@ -136,6 +137,17 @@
   NSString *methodName = @"analytics.management.accounts.list";
   GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLAnalyticsAccounts class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "management.accountSummaries" methods
+// These create a GTLQueryAnalytics object.
+
++ (id)queryForManagementAccountSummariesList {
+  NSString *methodName = @"analytics.management.accountSummaries.list";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLAnalyticsAccountSummaries class];
   return query;
 }
 

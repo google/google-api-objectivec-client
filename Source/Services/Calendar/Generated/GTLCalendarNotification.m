@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLCalendar.h
+//  GTLCalendarNotification.m
 //
 
 // ----------------------------------------------------------------------------
@@ -25,31 +25,16 @@
 //   Lets you manipulate events and other calendar data.
 // Documentation:
 //   https://developers.google.com/google-apps/calendar/firstapp
+// Classes:
+//   GTLCalendarNotification (0 custom class methods, 2 custom properties)
 
-#import "GTLCalendarConstants.h"
-
-#import "GTLCalendarAcl.h"
-#import "GTLCalendarAclRule.h"
-#import "GTLCalendarCalendar.h"
-#import "GTLCalendarCalendarList.h"
-#import "GTLCalendarCalendarListEntry.h"
-#import "GTLCalendarChannel.h"
-#import "GTLCalendarColorDefinition.h"
-#import "GTLCalendarColors.h"
-#import "GTLCalendarError.h"
-#import "GTLCalendarEvent.h"
-#import "GTLCalendarEventAttendee.h"
-#import "GTLCalendarEventDateTime.h"
-#import "GTLCalendarEventReminder.h"
-#import "GTLCalendarEvents.h"
-#import "GTLCalendarFreeBusyCalendar.h"
-#import "GTLCalendarFreeBusyGroup.h"
-#import "GTLCalendarFreeBusyRequestItem.h"
-#import "GTLCalendarFreeBusyResponse.h"
 #import "GTLCalendarNotification.h"
-#import "GTLCalendarSetting.h"
-#import "GTLCalendarSettings.h"
-#import "GTLCalendarTimePeriod.h"
 
-#import "GTLQueryCalendar.h"
-#import "GTLServiceCalendar.h"
+// ----------------------------------------------------------------------------
+//
+//   GTLCalendarNotification
+//
+
+@implementation GTLCalendarNotification
+@dynamic method, type;
+@end

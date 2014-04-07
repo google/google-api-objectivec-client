@@ -26,17 +26,30 @@
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLQueryCivicInfo (3 custom class methods, 6 custom properties)
+//   GTLQueryCivicInfo (4 custom class methods, 7 custom properties)
 
 #import "GTLQueryCivicInfo.h"
 
+#import "GTLCivicInfoDivisionSearchResponse.h"
 #import "GTLCivicInfoElectionsQueryResponse.h"
 #import "GTLCivicInfoRepresentativeInfoResponse.h"
 #import "GTLCivicInfoVoterInfoResponse.h"
 
 @implementation GTLQueryCivicInfo
 
-@dynamic address, electionId, fields, includeOffices, ocdId, officialOnly;
+@dynamic address, electionId, fields, includeOffices, ocdId, officialOnly,
+         query;
+
+#pragma mark -
+#pragma mark "divisions" methods
+// These create a GTLQueryCivicInfo object.
+
++ (id)queryForDivisionsSearch {
+  NSString *methodName = @"civicinfo.divisions.search";
+  GTLQueryCivicInfo *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLCivicInfoDivisionSearchResponse class];
+  return query;
+}
 
 #pragma mark -
 #pragma mark "elections" methods

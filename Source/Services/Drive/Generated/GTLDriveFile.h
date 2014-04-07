@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -184,7 +184,7 @@
 // root folder.
 @property (retain) NSArray *parents;  // of GTLDriveParentReference
 
-// The list of properties. This is a write-only field.
+// The list of properties.
 @property (retain) NSArray *properties;  // of GTLDriveProperty
 
 // The number of quota bytes used by this file.

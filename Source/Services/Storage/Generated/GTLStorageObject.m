@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 // Classes:
-//   GTLStorageObject (0 custom class methods, 23 custom properties)
+//   GTLStorageObject (0 custom class methods, 24 custom properties)
 //   GTLStorageObjectMetadata (0 custom class methods, 0 custom properties)
 //   GTLStorageObjectOwner (0 custom class methods, 2 custom properties)
 
@@ -43,7 +43,8 @@
 @dynamic acl, bucket, cacheControl, componentCount, contentDisposition,
          contentEncoding, contentLanguage, contentType, crc32c, ETag,
          generation, identifier, kind, md5Hash, mediaLink, metadata,
-         metageneration, name, owner, selfLink, size, timeDeleted, updated;
+         metageneration, name, owner, selfLink, size, storageClass, timeDeleted,
+         updated;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

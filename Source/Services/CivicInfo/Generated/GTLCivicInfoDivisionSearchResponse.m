@@ -14,41 +14,41 @@
  */
 
 //
-//  GTLPlusDomainsAudience.m
+//  GTLCivicInfoDivisionSearchResponse.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google+ Domains API (plusDomains/v1)
+//   Google Civic Information API (civicinfo/us_v1)
 // Description:
-//   The Google+ API enables developers to build on top of the Google+ platform.
+//   An API for accessing civic information.
 // Documentation:
-//   https://developers.google.com/+/domains/
+//   https://developers.google.com/civic-information
 // Classes:
-//   GTLPlusDomainsAudience (0 custom class methods, 5 custom properties)
+//   GTLCivicInfoDivisionSearchResponse (0 custom class methods, 3 custom properties)
 
-#import "GTLPlusDomainsAudience.h"
+#import "GTLCivicInfoDivisionSearchResponse.h"
 
-#import "GTLPlusDomainsAclentryResource.h"
+#import "GTLCivicInfoDivisionSearchResult.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLPlusDomainsAudience
+//   GTLCivicInfoDivisionSearchResponse
 //
 
-@implementation GTLPlusDomainsAudience
-@dynamic ETag, item, kind, memberCount, visibility;
+@implementation GTLCivicInfoDivisionSearchResponse
+@dynamic kind, results, status;
 
-+ (NSDictionary *)propertyToJSONKeyMap {
++ (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"etag"
-                                forKey:@"ETag"];
+    [NSDictionary dictionaryWithObject:[GTLCivicInfoDivisionSearchResult class]
+                                forKey:@"results"];
   return map;
 }
 
 + (void)load {
-  [self registerObjectClassForKind:@"plus#audience"];
+  [self registerObjectClassForKind:@"civicinfo#divisionSearchResponse"];
 }
 
 @end

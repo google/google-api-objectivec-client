@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLQueryCivicInfo (3 custom class methods, 6 custom properties)
+//   GTLQueryCivicInfo (4 custom class methods, 7 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -51,6 +51,22 @@
 @property (assign) BOOL includeOffices;
 @property (copy) NSString *ocdId;
 @property (assign) BOOL officialOnly;
+@property (copy) NSString *query;
+
+#pragma mark -
+#pragma mark "divisions" methods
+// These create a GTLQueryCivicInfo object.
+
+// Method: civicinfo.divisions.search
+// Searches for political divisions by their natural name or OCD ID.
+//  Optional:
+//   query: The search query. Queries can cover any parts of a OCD ID or a human
+//     readable division name. All words given in the query are treated as
+//     required patterns. In addition to that, most query operators of the
+//     Apache Lucene library are supported. See
+//     http://lucene.apache.org/core/2_9_4/queryparsersyntax.html
+// Fetches a GTLCivicInfoDivisionSearchResponse.
++ (id)queryForDivisionsSearch;
 
 #pragma mark -
 #pragma mark "elections" methods

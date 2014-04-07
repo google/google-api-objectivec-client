@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 // Classes:
-//   GTLStorageObject (0 custom class methods, 23 custom properties)
+//   GTLStorageObject (0 custom class methods, 24 custom properties)
 //   GTLStorageObjectMetadata (0 custom class methods, 0 custom properties)
 //   GTLStorageObjectOwner (0 custom class methods, 2 custom properties)
 
@@ -115,6 +115,9 @@
 
 // Content-Length of the data in bytes.
 @property (retain) NSNumber *size;  // unsignedLongLongValue
+
+// Storage class of the object.
+@property (copy) NSString *storageClass;
 
 // Deletion time of the object in RFC 3339 format. Will be returned if and only
 // if this version of the object has been deleted.
