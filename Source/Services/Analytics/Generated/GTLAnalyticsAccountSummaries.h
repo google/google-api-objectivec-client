@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAnalyticsSegments.h
+//  GTLAnalyticsAccountSummaries.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsSegments (0 custom class methods, 8 custom properties)
+//   GTLAnalyticsAccountSummaries (0 custom class methods, 8 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,23 +34,24 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLAnalyticsSegment;
+@class GTLAnalyticsAccountSummary;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAnalyticsSegments
+//   GTLAnalyticsAccountSummaries
 //
 
-// An segment collection lists Analytics segments that the user has access to.
-// Each resource in the collection corresponds to a single Analytics segment.
+// An AccountSummary collection lists a summary of accounts, properties and
+// views (profiles) to which the user has access. Each resource in the
+// collection corresponds to a single AccountSummary.
 
 // This class supports NSFastEnumeration over its "items" property. It also
 // supports -itemAtIndex: to retrieve individual objects from "items".
 
-@interface GTLAnalyticsSegments : GTLCollectionObject
+@interface GTLAnalyticsAccountSummaries : GTLCollectionObject
 
-// A list of segments.
-@property (retain) NSArray *items;  // of GTLAnalyticsSegment
+// A list of AccountSummaries.
+@property (retain) NSArray *items;  // of GTLAnalyticsAccountSummary
 
 // The maximum number of resources the response can contain, regardless of the
 // actual number of resources returned. Its value ranges from 1 to 1000 with a
@@ -58,13 +59,13 @@
 // parameter.
 @property (retain) NSNumber *itemsPerPage;  // intValue
 
-// Collection type for segments.
+// Collection type.
 @property (copy) NSString *kind;
 
-// Link to next page for this segment collection.
+// Link to next page for this AccountSummary collection.
 @property (copy) NSString *nextLink;
 
-// Link to previous page for this segment collection.
+// Link to previous page for this AccountSummary collection.
 @property (copy) NSString *previousLink;
 
 // The starting index of the resources, which is 1 by default or otherwise

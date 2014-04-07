@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,6 +34,8 @@
 #import "GTLAnalyticsAccount.m"
 #import "GTLAnalyticsAccountRef.m"
 #import "GTLAnalyticsAccounts.m"
+#import "GTLAnalyticsAccountSummaries.m"
+#import "GTLAnalyticsAccountSummary.m"
 #import "GTLAnalyticsColumn.m"
 #import "GTLAnalyticsColumns.m"
 #import "GTLAnalyticsCustomDataSource.m"
@@ -52,6 +54,7 @@
 #import "GTLAnalyticsProfile.m"
 #import "GTLAnalyticsProfileRef.m"
 #import "GTLAnalyticsProfiles.m"
+#import "GTLAnalyticsProfileSummary.m"
 #import "GTLAnalyticsRealtimeData.m"
 #import "GTLAnalyticsSegment.m"
 #import "GTLAnalyticsSegments.m"
@@ -61,6 +64,7 @@
 #import "GTLAnalyticsWebproperties.m"
 #import "GTLAnalyticsWebproperty.m"
 #import "GTLAnalyticsWebPropertyRef.m"
+#import "GTLAnalyticsWebPropertySummary.m"
 
 #import "GTLQueryAnalytics.m"
 #import "GTLServiceAnalytics.m"

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -95,7 +95,8 @@
 @property (copy) NSString *name;
 
 // The metric that the experiment is optimizing. Valid values:
-// "ga:goal(n)Completions", "ga:bounces", "ga:pageviews", "ga:timeOnSite",
+// "ga:goal(n)Completions", "ga:adsenseAdsClicks", "ga:adsenseAdsViewed",
+// "ga:adsenseRevenue", "ga:bounces", "ga:pageviews", "ga:timeOnSite",
 // "ga:transactions", "ga:transactionRevenue". This field is required if status
 // is "RUNNING" and servingFramework is one of "REDIRECT" or "API".
 @property (copy) NSString *objectiveMetric;

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,6 +41,8 @@
                       [GTLAnalyticsAccount class],
                       [GTLAnalyticsAccountRef class],
                       [GTLAnalyticsAccounts class],
+                      [GTLAnalyticsAccountSummaries class],
+                      [GTLAnalyticsAccountSummary class],
                       [GTLAnalyticsColumn class],
                       [GTLAnalyticsColumns class],
                       [GTLAnalyticsCustomDataSource class],
@@ -59,6 +61,7 @@
                       [GTLAnalyticsProfile class],
                       [GTLAnalyticsProfileRef class],
                       [GTLAnalyticsProfiles class],
+                      [GTLAnalyticsProfileSummary class],
                       [GTLAnalyticsRealtimeData class],
                       [GTLAnalyticsSegment class],
                       [GTLAnalyticsSegments class],
@@ -68,6 +71,7 @@
                       [GTLAnalyticsWebproperties class],
                       [GTLAnalyticsWebproperty class],
                       [GTLAnalyticsWebPropertyRef class],
+                      [GTLAnalyticsWebPropertySummary class],
                       nil];
   return classes;
 }

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsProfile (0 custom class methods, 21 custom properties)
+//   GTLAnalyticsProfile (0 custom class methods, 23 custom properties)
 //   GTLAnalyticsProfileChildLink (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsProfileParentLink (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsProfilePermissions (0 custom class methods, 1 custom properties)
@@ -104,6 +104,14 @@
 
 // The site search query parameters for this view (profile).
 @property (copy) NSString *siteSearchQueryParameters;
+
+// Whether or not Analytics will strip search category parameters from the URLs
+// in your reports.
+@property (retain) NSNumber *stripSiteSearchCategoryParameters;  // boolValue
+
+// Whether or not Analytics will strip search query parameters from the URLs in
+// your reports.
+@property (retain) NSNumber *stripSiteSearchQueryParameters;  // boolValue
 
 // Time zone for which this view (profile) has been configured. Time zones are
 // identified by strings from the TZ database.

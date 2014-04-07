@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAnalyticsSegment.h
+//  GTLAnalyticsProfileSummary.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsSegment (0 custom class methods, 9 custom properties)
+//   GTLAnalyticsProfileSummary (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,39 +36,25 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAnalyticsSegment
+//   GTLAnalyticsProfileSummary
 //
 
-// JSON template for an Analytics segment.
+// JSON template for an Analytics ProfileSummary. ProfileSummary returns basic
+// information (i.e., summary) for a profile.
 
-@interface GTLAnalyticsSegment : GTLObject
+@interface GTLAnalyticsProfileSummary : GTLObject
 
-// Time the segment was created.
-@property (retain) GTLDateTime *created;
-
-// Segment definition.
-@property (copy) NSString *definition;
-
-// Segment ID.
+// View (profile) ID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// Resource type for Analytics segment.
+// Resource type for Analytics ProfileSummary.
 @property (copy) NSString *kind;
 
-// Segment name.
+// View (profile) name.
 @property (copy) NSString *name;
 
-// Segment ID. Can be used with the 'segment' parameter in Core Reporting API.
-@property (copy) NSString *segmentId;
-
-// Link for this segment.
-@property (copy) NSString *selfLink;
-
-// Type for a segment. Possible values are "BUILT_IN" or "CUSTOM".
+// View (Profile) type. Supported types: WEB or APP.
 @property (copy) NSString *type;
-
-// Time the segment was last modified.
-@property (retain) GTLDateTime *updated;
 
 @end

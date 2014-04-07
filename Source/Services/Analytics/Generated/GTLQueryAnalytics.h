@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLQueryAnalytics (48 custom class methods, 27 custom properties)
+//   GTLQueryAnalytics (49 custom class methods, 27 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -216,6 +216,23 @@
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsAccounts.
 + (id)queryForManagementAccountsList;
+
+#pragma mark -
+#pragma mark "management.accountSummaries" methods
+// These create a GTLQueryAnalytics object.
+
+// Method: analytics.management.accountSummaries.list
+// Lists account summaries (lightweight tree comprised of
+// accounts/properties/profiles) to which the user has access.
+//  Optional:
+//   maxResults: The maximum number of filters to include in this response.
+//   startIndex: An index of the first entity to retrieve. Use this parameter as
+//     a pagination mechanism along with the max-results parameter.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
+//   kGTLAuthScopeAnalyticsReadonly
+// Fetches a GTLAnalyticsAccountSummaries.
++ (id)queryForManagementAccountSummariesList;
 
 #pragma mark -
 #pragma mark "management.accountUserLinks" methods

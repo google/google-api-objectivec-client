@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAnalyticsSegment.m
+//  GTLAnalyticsProfileSummary.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,18 +26,17 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsSegment (0 custom class methods, 9 custom properties)
+//   GTLAnalyticsProfileSummary (0 custom class methods, 4 custom properties)
 
-#import "GTLAnalyticsSegment.h"
+#import "GTLAnalyticsProfileSummary.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAnalyticsSegment
+//   GTLAnalyticsProfileSummary
 //
 
-@implementation GTLAnalyticsSegment
-@dynamic created, definition, identifier, kind, name, segmentId, selfLink, type,
-         updated;
+@implementation GTLAnalyticsProfileSummary
+@dynamic identifier, kind, name, type;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -47,7 +46,7 @@
 }
 
 + (void)load {
-  [self registerObjectClassForKind:@"analytics#segment"];
+  [self registerObjectClassForKind:@"analytics#profileSummary"];
 }
 
 @end

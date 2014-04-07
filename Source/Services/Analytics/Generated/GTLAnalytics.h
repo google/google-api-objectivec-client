@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,6 +31,8 @@
 #import "GTLAnalyticsAccount.h"
 #import "GTLAnalyticsAccountRef.h"
 #import "GTLAnalyticsAccounts.h"
+#import "GTLAnalyticsAccountSummaries.h"
+#import "GTLAnalyticsAccountSummary.h"
 #import "GTLAnalyticsColumn.h"
 #import "GTLAnalyticsColumns.h"
 #import "GTLAnalyticsCustomDataSource.h"
@@ -49,6 +51,7 @@
 #import "GTLAnalyticsProfile.h"
 #import "GTLAnalyticsProfileRef.h"
 #import "GTLAnalyticsProfiles.h"
+#import "GTLAnalyticsProfileSummary.h"
 #import "GTLAnalyticsRealtimeData.h"
 #import "GTLAnalyticsSegment.h"
 #import "GTLAnalyticsSegments.h"
@@ -58,6 +61,7 @@
 #import "GTLAnalyticsWebproperties.h"
 #import "GTLAnalyticsWebproperty.h"
 #import "GTLAnalyticsWebPropertyRef.h"
+#import "GTLAnalyticsWebPropertySummary.h"
 
 #import "GTLQueryAnalytics.h"
 #import "GTLServiceAnalytics.h"
