@@ -43,15 +43,16 @@
 
 // The method used to deliver the notification. Possible values are:
 // - "email" - Reminders are sent via email.
-// - "sms" - Reminders are sent via SMS.
+// - "sms" - Reminders are sent via SMS. This value is read-only and is ignored
+// on inserts and updates.
 @property (copy) NSString *method;
 
 // The type of notification. Possible values are:
-// - "eventCreation" - Notification sent when a new event has been put on the
+// - "eventCreation" - Notification sent when a new event is put on the
 // calendar.
-// - "eventChange" - Notification sent when an event was changed.
-// - "eventCancellation" - Notification sent when an event was cancelled.
-// - "eventResponse" - Notification sent when an event was changed.
+// - "eventChange" - Notification sent when an event is changed.
+// - "eventCancellation" - Notification sent when an event is cancelled.
+// - "eventResponse" - Notification sent when an event is changed.
 // - "agenda" - An agenda with the events of the day (sent out in the morning).
 @property (copy) NSString *type;
 

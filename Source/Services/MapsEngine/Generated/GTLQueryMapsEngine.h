@@ -57,7 +57,6 @@
 @property (retain) GTLDateTime *createdAfter;
 @property (retain) GTLDateTime *createdBefore;
 @property (copy) NSString *creatorEmail;
-@property (retain) NSArray *featureIds;  // of NSString
 @property (retain) NSArray *features;  // of GTLMapsEngineFeature
 @property (copy) NSString *filename;
 @property (retain) NSArray *gxIds;  // of NSString
@@ -71,6 +70,7 @@
 @property (retain) GTLDateTime *modifiedBefore;
 @property (copy) NSString *orderBy;
 @property (copy) NSString *pageToken;
+@property (retain) NSArray *primaryKeys;  // of NSString
 @property (assign) BOOL process;
 @property (copy) NSString *projectId;
 // "request" has different types for some query methods; see the documentation
@@ -525,8 +525,8 @@
 //  Required:
 //   identifier: The ID of the table that contains the features to be deleted.
 //  Optional:
-//   featureIds: NSArray
 //   gxIds: NSArray
+//   primaryKeys: NSArray
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 + (id)queryForTablesFeaturesBatchDeleteWithIdentifier:(NSString *)identifier;

@@ -95,6 +95,7 @@
 // Geographic location of the calendar as free-form text. Optional. Read-only.
 @property (copy) NSString *location;
 
+// The notifications that the authenticated user is receiving for this calendar.
 @property (retain) GTLCalendarCalendarListEntryNotificationSettings *notificationSettings;
 
 // Whether the calendar is the primary calendar of the authenticated user.
@@ -123,5 +124,8 @@
 //
 
 @interface GTLCalendarCalendarListEntryNotificationSettings : GTLObject
+
+// The list of notifications set for this calendar.
 @property (retain) NSArray *notifications;  // of GTLCalendarNotification
+
 @end

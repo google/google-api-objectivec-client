@@ -115,7 +115,7 @@
 //      kGTLAnalyticsSamplingLevelHigherPrecision: Returns a more accurate
 //        response using a large sample size, but this may result in the
 //        response being slower.
-//   segment: An Analytics advanced segment to be applied to data.
+//   segment: An Analytics segment to be applied to data.
 //   sort: A comma-separated list of dimensions or metrics that determine the
 //     sort order for Analytics data.
 //   startIndex: An index of the first entity to retrieve. Use this parameter as
@@ -742,12 +742,11 @@
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.management.segments.list
-// Lists advanced segments to which the user has access.
+// Lists segments to which the user has access.
 //  Optional:
-//   maxResults: The maximum number of advanced segments to include in this
-//     response.
-//   startIndex: An index of the first advanced segment to retrieve. Use this
-//     parameter as a pagination mechanism along with the max-results parameter.
+//   maxResults: The maximum number of segments to include in this response.
+//   startIndex: An index of the first segment to retrieve. Use this parameter
+//     as a pagination mechanism along with the max-results parameter.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalytics
 //   kGTLAuthScopeAnalyticsEdit
