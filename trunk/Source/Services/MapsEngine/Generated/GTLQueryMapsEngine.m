@@ -52,15 +52,14 @@
 
 @implementation GTLQueryMapsEngine
 
-@dynamic bbox, createdAfter, createdBefore, creatorEmail, featureIds, features,
-         fields, filename, gxIds, identifier, include, intersects, limit,
-         maxResults, modifiedAfter, modifiedBefore, orderBy, pageToken, process,
-         projectId, request, select, tableId, type, version, where;
+@dynamic bbox, createdAfter, createdBefore, creatorEmail, features, fields,
+         filename, gxIds, identifier, include, intersects, limit, maxResults,
+         modifiedAfter, modifiedBefore, orderBy, pageToken, primaryKeys,
+         process, projectId, request, select, tableId, type, version, where;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
-      @"feature_ids", @"featureIds",
       @"gx_ids", @"gxIds",
       @"id", @"identifier",
       nil];
@@ -70,9 +69,9 @@
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSString class], @"feature_ids",
       [GTLMapsEngineFeature class], @"features",
       [NSString class], @"gx_ids",
+      [NSString class], @"primaryKeys",
       nil];
   return map;
 }

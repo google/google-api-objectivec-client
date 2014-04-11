@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -178,9 +178,9 @@
 // Method: calendar.calendarList.insert
 // Adds an entry to the user's calendar list.
 //  Optional:
-//   colorRgbFormat: Whether to use the 'foregroundColor' and 'backgroundColor'
+//   colorRgbFormat: Whether to use the foregroundColor and backgroundColor
 //     fields to write the calendar colors (RGB). If this feature is used, the
-//     index-based 'colorId' field will be set to the best matching option
+//     index-based colorId field will be set to the best matching option
 //     automatically. Optional. The default is False.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar

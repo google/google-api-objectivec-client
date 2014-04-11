@@ -91,8 +91,8 @@
 @property (retain) GTLBigqueryTableReference *tableReference;
 
 // [Output-only] Describes the table type. The following values are supported:
-// TABLE: A normal BigQuery table. VIEW: A special table that stores a complex
-// query for future use. The default value is TABLE.
+// TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query.
+// The default value is TABLE.
 @property (copy) NSString *type;
 
 // [Optional] The view definition.
