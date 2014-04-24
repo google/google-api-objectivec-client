@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/google-apps/calendar/firstapp
 // Classes:
-//   GTLCalendarCalendarListEntry (0 custom class methods, 17 custom properties)
+//   GTLCalendarCalendarListEntry (0 custom class methods, 18 custom properties)
 //   GTLCalendarCalendarListEntryNotificationSettings (0 custom class methods, 1 custom properties)
 
 #import "GTLCalendarCalendarListEntry.h"
@@ -40,7 +40,7 @@
 //
 
 @implementation GTLCalendarCalendarListEntry
-@dynamic accessRole, backgroundColor, colorId, defaultReminders,
+@dynamic accessRole, backgroundColor, colorId, defaultReminders, deleted,
          descriptionProperty, ETag, foregroundColor, hidden, identifier, kind,
          location, notificationSettings, primary, selected, summary,
          summaryOverride, timeZone;

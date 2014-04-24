@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -84,7 +84,8 @@
 + (id)queryForStatesDeleteWithStateKey:(NSInteger)stateKey;
 
 // Method: appstate.states.get
-// Retrieves the data corresponding to the passed key.
+// Retrieves the data corresponding to the passed key. If the key does not exist
+// on the server, an HTTP 404 will be returned.
 //  Required:
 //   stateKey: The key for the data to be retrieved. (0..3)
 //  Authorization scope(s):

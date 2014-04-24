@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,7 +52,8 @@
 // The maximum RAM usage of this tier in bytes.
 @property (retain) NSNumber *RAM;  // longLongValue
 
-// The applicable regions for this tier. Can be us-east1 and europe-west1.
+// The applicable regions for this tier. Can be us-east1, europe-west1, or
+// asia-east1.
 @property (retain) NSArray *region;  // of NSString
 
 // An identifier for the service tier, for example D1, D2 etc. For related

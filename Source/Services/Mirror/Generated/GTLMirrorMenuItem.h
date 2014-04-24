@@ -62,6 +62,11 @@
 // - READ_ALOUD - Read the timeline item's speakableText aloud; if this field is
 // not set, read the text field; if none of those fields are set, this menu item
 // is ignored.
+// - GET_MEDIA_INPUT - Allow users to provide media payloads to Glassware from a
+// menu item (currently, only transcribed text from voice input is supported).
+// Subscribe to notifications when users invoke this menu item to receive the
+// timeline item ID. Retrieve the media from the timeline item in the payload
+// property.
 // - VOICE_CALL - Initiate a phone call using the timeline item's
 // creator.phoneNumber attribute as recipient.
 // - NAVIGATE - Navigate to the timeline item's location.
@@ -83,6 +88,8 @@
 // - When the action is OPEN_URI, the payload is the URL of the website to view.
 // - When the action is PLAY_VIDEO, the payload is the streaming URL of the
 // video
+// - When the action is GET_MEDIA_INPUT, the payload is the text transcription
+// of a user's speech input
 @property (copy) NSString *payload;
 
 // If set to true on a CUSTOM menu item, that item will be removed from the menu

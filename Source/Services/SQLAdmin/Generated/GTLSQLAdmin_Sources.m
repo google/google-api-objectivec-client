@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,10 +34,16 @@
 #import "GTLSQLAdminBackupConfiguration.m"
 #import "GTLSQLAdminBackupRun.m"
 #import "GTLSQLAdminBackupRunsListResponse.m"
+#import "GTLSQLAdminBinLogCoordinates.m"
+#import "GTLSQLAdminCloneContext.m"
+#import "GTLSQLAdminDatabaseFlags.m"
 #import "GTLSQLAdminDatabaseInstance.m"
 #import "GTLSQLAdminExportContext.m"
+#import "GTLSQLAdminFlag.m"
+#import "GTLSQLAdminFlagsListResponse.m"
 #import "GTLSQLAdminImportContext.m"
 #import "GTLSQLAdminInstanceOperation.m"
+#import "GTLSQLAdminInstancesCloneResponse.m"
 #import "GTLSQLAdminInstancesDeleteResponse.m"
 #import "GTLSQLAdminInstancesExportResponse.m"
 #import "GTLSQLAdminInstancesImportResponse.m"

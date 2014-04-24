@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLSQLAdminInstancesSetRootPasswordResponse.h
+//  GTLSQLAdminFlag.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,29 +26,29 @@
 // Documentation:
 //   https://developers.google.com/cloud-sql/docs/admin-api/
 // Classes:
-//   GTLSQLAdminInstancesSetRootPasswordResponse (0 custom class methods, 2 custom properties)
+//   GTLSQLAdminFlag (0 custom class methods, 7 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLSQLAdminFlag.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLSQLAdminInstancesSetRootPasswordResponse
+//   GTLSQLAdminFlag
 //
 
-// Database instance set root password response.
+@implementation GTLSQLAdminFlag
+@dynamic allowedStringValues, appliesTo, kind, maxValue, minValue, name, type;
 
-@interface GTLSQLAdminInstancesSetRootPasswordResponse : GTLObject
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      [NSString class], @"allowedStringValues",
+      [NSString class], @"appliesTo",
+      nil];
+  return map;
+}
 
-// This is always sql#instancesSetRootPassword.
-@property (copy) NSString *kind;
-
-// An identifier that uniquely identifies the operation. You can use this
-// identifier to retrieve the Operations resource that has information about the
-// operation.
-@property (copy) NSString *operation;
++ (void)load {
+  [self registerObjectClassForKind:@"sql#flag"];
+}
 
 @end

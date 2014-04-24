@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/google-apps/calendar/firstapp
 // Classes:
-//   GTLCalendarEvents (0 custom class methods, 10 custom properties)
+//   GTLCalendarEvents (0 custom class methods, 11 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -81,6 +81,11 @@
 // Token used to access the next page of this result. Omitted if no further
 // results are available.
 @property (copy) NSString *nextPageToken;
+
+// Token used at a later point in time to retrieve only the entries that have
+// changed since this result was returned. Omitted if further results are
+// available, in which case nextPageToken is provided.
+@property (copy) NSString *nextSyncToken;
 
 // Title of the calendar. Read-only.
 @property (copy) NSString *summary;

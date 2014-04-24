@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLSQLAdminInstancesSetRootPasswordResponse.h
+//  GTLSQLAdminCloneContext.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/cloud-sql/docs/admin-api/
 // Classes:
-//   GTLSQLAdminInstancesSetRootPasswordResponse (0 custom class methods, 2 custom properties)
+//   GTLSQLAdminCloneContext (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,21 +34,29 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLSQLAdminBinLogCoordinates;
+
 // ----------------------------------------------------------------------------
 //
-//   GTLSQLAdminInstancesSetRootPasswordResponse
+//   GTLSQLAdminCloneContext
 //
 
-// Database instance set root password response.
+// Database instance clone context.
 
-@interface GTLSQLAdminInstancesSetRootPasswordResponse : GTLObject
+@interface GTLSQLAdminCloneContext : GTLObject
 
-// This is always sql#instancesSetRootPassword.
+// Binary log coordinates, if specified, indentify the the position up to which
+// the source instance should be cloned. If not specified, the source instance
+// is cloned up to the most recent binary log coordintes.
+@property (retain) GTLSQLAdminBinLogCoordinates *binLogCoordinates;
+
+// Name of the Cloud SQL instance to be created as a clone.
+@property (copy) NSString *destinationInstanceName;
+
+// This is always sql#cloneContext.
 @property (copy) NSString *kind;
 
-// An identifier that uniquely identifies the operation. You can use this
-// identifier to retrieve the Operations resource that has information about the
-// operation.
-@property (copy) NSString *operation;
+// Name of the Cloud SQL instance to be cloned.
+@property (copy) NSString *sourceInstanceName;
 
 @end

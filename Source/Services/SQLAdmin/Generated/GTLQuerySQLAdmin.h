@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/cloud-sql/docs/admin-api/
 // Classes:
-//   GTLQuerySQLAdmin (21 custom class methods, 13 custom properties)
+//   GTLQuerySQLAdmin (23 custom class methods, 14 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -34,6 +34,7 @@
   #import "GTLQuery.h"
 #endif
 
+@class GTLSQLAdminCloneContext;
 @class GTLSQLAdminDatabaseInstance;
 @class GTLSQLAdminExportContext;
 @class GTLSQLAdminImportContext;
@@ -52,6 +53,7 @@
 // Method-specific parameters; see the comments below for more information.
 //
 @property (copy) NSString *backupConfiguration;
+@property (retain) GTLSQLAdminCloneContext *cloneContext;
 @property (copy) NSString *commonName;
 @property (copy) NSString *dueTime;
 @property (retain) GTLSQLAdminExportContext *exportContext;
@@ -108,8 +110,30 @@
                     backupConfiguration:(NSString *)backupConfiguration;
 
 #pragma mark -
+#pragma mark "flags" methods
+// These create a GTLQuerySQLAdmin object.
+
+// Method: sql.flags.list
+// List all available database flags for Google Cloud SQL instances.
+//  Authorization scope(s):
+//   kGTLAuthScopeSQLAdminSqlserviceAdmin
+// Fetches a GTLSQLAdminFlagsListResponse.
++ (id)queryForFlagsList;
+
+#pragma mark -
 #pragma mark "instances" methods
 // These create a GTLQuerySQLAdmin object.
+
+// Method: sql.instances.clone
+// Creates a Cloud SQL instance as a clone of the source instance.
+//  Required:
+//   project: Project ID of the source as well as the clone Cloud SQL instance.
+//  Optional:
+//   cloneContext: Contains details about the clone operation.
+//  Authorization scope(s):
+//   kGTLAuthScopeSQLAdminSqlserviceAdmin
+// Fetches a GTLSQLAdminInstancesCloneResponse.
++ (id)queryForInstancesCloneWithProject:(NSString *)project;
 
 // Method: sql.instances.delete
 // Deletes a Cloud SQL instance.

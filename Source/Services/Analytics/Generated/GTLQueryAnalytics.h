@@ -95,7 +95,7 @@
 //     an end date formatted as YYYY-MM-DD, or as a relative date (e.g., today,
 //     yesterday, or 7daysAgo). The default value is yesterday.
 //   metrics: A comma-separated list of Analytics metrics. E.g.,
-//     'ga:visits,ga:pageviews'. At least one metric must be specified.
+//     'ga:sessions,ga:pageviews'. At least one metric must be specified.
 //  Optional:
 //   dimensions: A comma-separated list of Analytics dimensions. E.g.,
 //     'ga:browser,ga:city'.
@@ -184,7 +184,7 @@
 //   ids: Unique table ID for retrieving real time data. Table ID is of the form
 //     ga:XXXX, where XXXX is the Analytics view (profile) ID.
 //   metrics: A comma-separated list of real time metrics. E.g.,
-//     'rt:activeVisitors'. At least one metric must be specified.
+//     'rt:activeUsers'. At least one metric must be specified.
 //  Optional:
 //   dimensions: A comma-separated list of real time dimensions. E.g.,
 //     'rt:medium,rt:city'.

@@ -218,7 +218,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0510;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "DriveSample" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -316,7 +316,6 @@
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
@@ -326,7 +325,6 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = DriveSample;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = app;
@@ -336,7 +334,6 @@
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../../Source/build/$(CONFIGURATION)/";
@@ -344,7 +341,6 @@
 				GCC_MODEL_TUNING = G5;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = DriveSample;
 				WRAPPER_EXTENSION = app;
 			};
@@ -363,9 +359,12 @@
 					../../Source/HTTPFetcher,
 					../../Source/Utilities,
 					../../Source/OAuth2,
+					../../Source/OAuth2/Mac,
+					../../Source/Objects,
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
-					"-DGTL_BUILT_AS_FRAMEWORK=1",
+					"-DGTL_BUILT_AS_FRAMEWORK=0",
 					"-DDEBUG=1",
 				);
 				SDKROOT = macosx;
@@ -389,8 +388,10 @@
 					../../Source/HTTPFetcher,
 					../../Source/Utilities,
 					../../Source/OAuth2,
+					../../Source/OAuth2/Mac,
+					../../Source/Objects,
 				);
-				OTHER_CFLAGS = "-DGTL_BUILT_AS_FRAMEWORK=1";
+				OTHER_CFLAGS = "-DGTL_BUILT_AS_FRAMEWORK=0";
 				SDKROOT = macosx;
 				WARNING_CFLAGS = (
 					"-Wall",

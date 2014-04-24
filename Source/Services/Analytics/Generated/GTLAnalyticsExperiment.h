@@ -96,7 +96,7 @@
 
 // The metric that the experiment is optimizing. Valid values:
 // "ga:goal(n)Completions", "ga:adsenseAdsClicks", "ga:adsenseAdsViewed",
-// "ga:adsenseRevenue", "ga:bounces", "ga:pageviews", "ga:timeOnSite",
+// "ga:adsenseRevenue", "ga:bounces", "ga:pageviews", "ga:sessionDuration",
 // "ga:transactions", "ga:transactionRevenue". This field is required if status
 // is "RUNNING" and servingFramework is one of "REDIRECT" or "API".
 @property (copy) NSString *objectiveMetric;

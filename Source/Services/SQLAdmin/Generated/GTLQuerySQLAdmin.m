@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,16 +26,19 @@
 // Documentation:
 //   https://developers.google.com/cloud-sql/docs/admin-api/
 // Classes:
-//   GTLQuerySQLAdmin (21 custom class methods, 13 custom properties)
+//   GTLQuerySQLAdmin (23 custom class methods, 14 custom properties)
 
 #import "GTLQuerySQLAdmin.h"
 
 #import "GTLSQLAdminBackupRun.h"
 #import "GTLSQLAdminBackupRunsListResponse.h"
+#import "GTLSQLAdminCloneContext.h"
 #import "GTLSQLAdminDatabaseInstance.h"
 #import "GTLSQLAdminExportContext.h"
+#import "GTLSQLAdminFlagsListResponse.h"
 #import "GTLSQLAdminImportContext.h"
 #import "GTLSQLAdminInstanceOperation.h"
+#import "GTLSQLAdminInstancesCloneResponse.h"
 #import "GTLSQLAdminInstancesDeleteResponse.h"
 #import "GTLSQLAdminInstancesExportResponse.h"
 #import "GTLSQLAdminInstancesImportResponse.h"
@@ -56,9 +59,9 @@
 
 @implementation GTLQuerySQLAdmin
 
-@dynamic backupConfiguration, commonName, dueTime, exportContext, fields,
-         importContext, instance, maxResults, operation, pageToken, project,
-         setRootPasswordContext, sha1Fingerprint;
+@dynamic backupConfiguration, cloneContext, commonName, dueTime, exportContext,
+         fields, importContext, instance, maxResults, operation, pageToken,
+         project, setRootPasswordContext, sha1Fingerprint;
 
 #pragma mark -
 #pragma mark "backupRuns" methods
@@ -91,8 +94,27 @@
 }
 
 #pragma mark -
+#pragma mark "flags" methods
+// These create a GTLQuerySQLAdmin object.
+
++ (id)queryForFlagsList {
+  NSString *methodName = @"sql.flags.list";
+  GTLQuerySQLAdmin *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLSQLAdminFlagsListResponse class];
+  return query;
+}
+
+#pragma mark -
 #pragma mark "instances" methods
 // These create a GTLQuerySQLAdmin object.
+
++ (id)queryForInstancesCloneWithProject:(NSString *)project {
+  NSString *methodName = @"sql.instances.clone";
+  GTLQuerySQLAdmin *query = [self queryWithMethodName:methodName];
+  query.project = project;
+  query.expectedObjectClass = [GTLSQLAdminInstancesCloneResponse class];
+  return query;
+}
 
 + (id)queryForInstancesDeleteWithProject:(NSString *)project
                                 instance:(NSString *)instance {

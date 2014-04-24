@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/glass
 // Classes:
-//   GTLQueryMirror (22 custom class methods, 11 custom properties)
+//   GTLQueryMirror (23 custom class methods, 14 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -34,6 +34,7 @@
   #import "GTLQuery.h"
 #endif
 
+@class GTLMirrorAccount;
 @class GTLMirrorContact;
 @class GTLMirrorSubscription;
 @class GTLMirrorTimelineItem;
@@ -50,6 +51,8 @@
 //
 // Method-specific parameters; see the comments below for more information.
 //
+@property (copy) NSString *accountName;
+@property (copy) NSString *accountType;
 @property (copy) NSString *attachmentId;
 @property (copy) NSString *bundleId;
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
@@ -61,6 +64,24 @@
 @property (copy) NSString *pageToken;
 @property (assign) BOOL pinnedOnly;
 @property (copy) NSString *sourceItemId;
+@property (copy) NSString *userToken;
+
+#pragma mark -
+#pragma mark "accounts" methods
+// These create a GTLQueryMirror object.
+
+// Method: mirror.accounts.insert
+// Inserts a new account for a user
+//  Required:
+//   userToken: The ID for the user.
+//   accountType: Account type to be passed to Android Account Manager.
+//   accountName: The name of the account to be passed to the Android Account
+//     Manager.
+// Fetches a GTLMirrorAccount.
++ (id)queryForAccountsInsertWithObject:(GTLMirrorAccount *)object
+                             userToken:(NSString *)userToken
+                           accountType:(NSString *)accountType
+                           accountName:(NSString *)accountName;
 
 #pragma mark -
 #pragma mark "contacts" methods

@@ -19,8 +19,8 @@
 
 #import "DriveSampleWindowController.h"
 
-#import "GTL/GTLUtilities.h"
-#import "GTL/GTMHTTPFetcherLogging.h"
+#import "GTLUtilities.h"
+#import "GTMHTTPFetcherLogging.h"
 
 // Segmented control indices.
 enum {
