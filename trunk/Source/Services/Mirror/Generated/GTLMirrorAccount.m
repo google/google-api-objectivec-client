@@ -14,41 +14,48 @@
  */
 
 //
-//  GTLSQLAdminInstancesSetRootPasswordResponse.h
+//  GTLMirrorAccount.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud SQL Administration API (sqladmin/v1beta3)
+//   Google Mirror API (mirror/v1)
 // Description:
-//   API for Cloud SQL database instance management.
+//   API for interacting with Glass users via the timeline.
 // Documentation:
-//   https://developers.google.com/cloud-sql/docs/admin-api/
+//   https://developers.google.com/glass
 // Classes:
-//   GTLSQLAdminInstancesSetRootPasswordResponse (0 custom class methods, 2 custom properties)
+//   GTLMirrorAccount (0 custom class methods, 4 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLMirrorAccount.h"
+
+#import "GTLMirrorAuthToken.h"
+#import "GTLMirrorUserData.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLSQLAdminInstancesSetRootPasswordResponse
+//   GTLMirrorAccount
 //
 
-// Database instance set root password response.
+@implementation GTLMirrorAccount
+@dynamic authTokens, features, password, userDataProperty;
 
-@interface GTLSQLAdminInstancesSetRootPasswordResponse : GTLObject
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"userData"
+                                forKey:@"userDataProperty"];
+  return map;
+}
 
-// This is always sql#instancesSetRootPassword.
-@property (copy) NSString *kind;
-
-// An identifier that uniquely identifies the operation. You can use this
-// identifier to retrieve the Operations resource that has information about the
-// operation.
-@property (copy) NSString *operation;
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      [GTLMirrorAuthToken class], @"authTokens",
+      [NSString class], @"features",
+      [GTLMirrorUserData class], @"userData",
+      nil];
+  return map;
+}
 
 @end

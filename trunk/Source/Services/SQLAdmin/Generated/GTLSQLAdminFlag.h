@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLSQLAdminInstancesSetRootPasswordResponse.h
+//  GTLSQLAdminFlag.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/cloud-sql/docs/admin-api/
 // Classes:
-//   GTLSQLAdminInstancesSetRootPasswordResponse (0 custom class methods, 2 custom properties)
+//   GTLSQLAdminFlag (0 custom class methods, 7 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,19 +36,36 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLSQLAdminInstancesSetRootPasswordResponse
+//   GTLSQLAdminFlag
 //
 
-// Database instance set root password response.
+// A Google Cloud SQL service flag resource.
 
-@interface GTLSQLAdminInstancesSetRootPasswordResponse : GTLObject
+@interface GTLSQLAdminFlag : GTLObject
 
-// This is always sql#instancesSetRootPassword.
+// For STRING flags, a list of strings that the value can be set to.
+@property (retain) NSArray *allowedStringValues;  // of NSString
+
+// The database version this flag applies to. Currently this can only be
+// [MYSQL_5_5].
+@property (retain) NSArray *appliesTo;  // of NSString
+
+// This is always sql#flag.
 @property (copy) NSString *kind;
 
-// An identifier that uniquely identifies the operation. You can use this
-// identifier to retrieve the Operations resource that has information about the
-// operation.
-@property (copy) NSString *operation;
+// For INTEGER flags, the maximum allowed value.
+@property (retain) NSNumber *maxValue;  // longLongValue
+
+// For INTEGER flags, the minimum allowed value.
+@property (retain) NSNumber *minValue;  // longLongValue
+
+// This is the name of the flag. Flag names always use underscores, not hyphens,
+// e.g. max_allowed_packet
+@property (copy) NSString *name;
+
+// The type of the flag. Flags are typed to being BOOLEAN, STRING, INTEGER or
+// NONE. NONE is used for flags which do not take a value, such as
+// skip_grant_tables.
+@property (copy) NSString *type;
 
 @end

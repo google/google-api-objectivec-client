@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/google-apps/calendar/firstapp
 // Classes:
-//   GTLQueryCalendar (34 custom class methods, 31 custom properties)
+//   GTLQueryCalendar (37 custom class methods, 32 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -78,6 +78,7 @@
 @property (assign) BOOL showHidden;
 @property (assign) BOOL showHiddenInvitations;
 @property (assign) BOOL singleEvents;
+@property (copy) NSString *syncToken;
 @property (copy) NSString *text;
 @property (retain) GTLDateTime *timeMax;
 @property (retain) GTLDateTime *timeMin;
@@ -124,6 +125,19 @@
 // Returns the rules in the access control list for the calendar.
 //  Required:
 //   calendarId: Calendar identifier.
+//  Optional:
+//   maxResults: Maximum number of entries returned on one result page.
+//     Optional.
+//   pageToken: Token specifying which result page to return. Optional.
+//   showDeleted: Whether to include deleted acls in the result. Deleted acls
+//     are represented by with 'role' equal to 'none'. Deleted acls will always
+//     be included if 'syncToken' is provided. Optional. The default is False.
+//   syncToken: Token obtained from the 'nextSyncToken' field returned as part
+//     of the result of a previous call to this method. It makes the result of
+//     this call contain only entries that have changed since the last call,
+//     including entries that have been removed in the meantime (they will have
+//     the 'role' set to 'none'). Optional. The default is to return to all
+//     entries.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarAcl.
@@ -152,6 +166,29 @@
 + (id)queryForAclUpdateWithObject:(GTLCalendarAclRule *)object
                        calendarId:(NSString *)calendarId
                            ruleId:(NSString *)ruleId;
+
+// Method: calendar.acl.watch
+// Watch for changes to ACL resources.
+//  Required:
+//   calendarId: Calendar identifier.
+//  Optional:
+//   maxResults: Maximum number of entries returned on one result page.
+//     Optional.
+//   pageToken: Token specifying which result page to return. Optional.
+//   showDeleted: Whether to include deleted acls in the result. Deleted acls
+//     are represented by with 'role' equal to 'none'. Deleted acls will always
+//     be included if 'syncToken' is provided. Optional. The default is False.
+//   syncToken: Token obtained from the 'nextSyncToken' field returned as part
+//     of the result of a previous call to this method. It makes the result of
+//     this call contain only entries that have changed since the last call,
+//     including entries that have been removed in the meantime (they will have
+//     the 'role' set to 'none'). Optional. The default is to return to all
+//     entries.
+//  Authorization scope(s):
+//   kGTLAuthScopeCalendar
+// Fetches a GTLCalendarChannel.
++ (id)queryForAclWatchWithObject:(GTLCalendarChannel *)object
+                      calendarId:(NSString *)calendarId;
 
 #pragma mark -
 #pragma mark "calendarList" methods
@@ -202,7 +239,13 @@
 //        private.
 //      kGTLCalendarMinAccessRoleWriter: The user can read and modify events.
 //   pageToken: Token specifying which result page to return. Optional.
+//   showDeleted: Whether to include deleted calendar list entries in the
+//     result. Optional. The default is False.
 //   showHidden: Whether to show hidden entries. Optional. The default is False.
+//   syncToken: Token obtained from the 'nextSyncToken' field returned on the
+//     last result page of the previous method's call. It makes the result of
+//     this call contain only entries that have changed since the last call.
+//     Optional. The default is to return all entries.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 //   kGTLAuthScopeCalendarReadonly
@@ -239,6 +282,34 @@
 // Fetches a GTLCalendarCalendarListEntry.
 + (id)queryForCalendarListUpdateWithObject:(GTLCalendarCalendarListEntry *)object
                                 calendarId:(NSString *)calendarId;
+
+// Method: calendar.calendarList.watch
+// Watch for changes to CalendarList resources.
+//  Optional:
+//   maxResults: Maximum number of entries returned on one result page.
+//     Optional.
+//   minAccessRole: The minimum access role for the user in the returned
+//     entires. Optional. The default is no restriction.
+//      kGTLCalendarMinAccessRoleFreeBusyReader: The user can read free/busy
+//        information.
+//      kGTLCalendarMinAccessRoleOwner: The user can read and modify events and
+//        access control lists.
+//      kGTLCalendarMinAccessRoleReader: The user can read events that are not
+//        private.
+//      kGTLCalendarMinAccessRoleWriter: The user can read and modify events.
+//   pageToken: Token specifying which result page to return. Optional.
+//   showDeleted: Whether to include deleted calendar list entries in the
+//     result. Optional. The default is False.
+//   showHidden: Whether to show hidden entries. Optional. The default is False.
+//   syncToken: Token obtained from the 'nextSyncToken' field returned on the
+//     last result page of the previous method's call. It makes the result of
+//     this call contain only entries that have changed since the last call.
+//     Optional. The default is to return all entries.
+//  Authorization scope(s):
+//   kGTLAuthScopeCalendar
+//   kGTLAuthScopeCalendarReadonly
+// Fetches a GTLCalendarChannel.
++ (id)queryForCalendarListWatchWithObject:(GTLCalendarChannel *)object;
 
 #pragma mark -
 #pragma mark "calendars" methods
@@ -472,6 +543,10 @@
 //     return single one-off events and instances of recurring events, but not
 //     the underlying recurring events themselves. Optional. The default is
 //     False.
+//   syncToken: Token obtained from the 'nextSyncToken' field returned on the
+//     last result page of the previous method's call. It makes the result of
+//     this call contain only entries that have changed since the last call.
+//     Optional. The default is to return all entries.
 //   timeMax: Upper bound (exclusive) for an event's start time to filter by.
 //     Optional. The default is not to filter by start time.
 //   timeMin: Lower bound (inclusive) for an event's end time to filter by.
@@ -616,6 +691,10 @@
 //     return single one-off events and instances of recurring events, but not
 //     the underlying recurring events themselves. Optional. The default is
 //     False.
+//   syncToken: Token obtained from the 'nextSyncToken' field returned on the
+//     last result page of the previous method's call. It makes the result of
+//     this call contain only entries that have changed since the last call.
+//     Optional. The default is to return all entries.
 //   timeMax: Upper bound (exclusive) for an event's start time to filter by.
 //     Optional. The default is not to filter by start time.
 //   timeMin: Lower bound (inclusive) for an event's end time to filter by.
@@ -671,10 +750,34 @@
 
 // Method: calendar.settings.list
 // Returns all user settings for the authenticated user.
+//  Optional:
+//   maxResults: Maximum number of entries returned on one result page.
+//     Optional.
+//   pageToken: Token specifying which result page to return. Optional.
+//   syncToken: Token obtained from the 'nextSyncToken' field returned on the
+//     last result page of the previous method's call. It makes the result of
+//     this call contain only entries that have changed since the last call.
+//     Optional. The default is to return all entries.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 //   kGTLAuthScopeCalendarReadonly
 // Fetches a GTLCalendarSettings.
 + (id)queryForSettingsList;
+
+// Method: calendar.settings.watch
+// Watch for changes to Settings resources.
+//  Optional:
+//   maxResults: Maximum number of entries returned on one result page.
+//     Optional.
+//   pageToken: Token specifying which result page to return. Optional.
+//   syncToken: Token obtained from the 'nextSyncToken' field returned on the
+//     last result page of the previous method's call. It makes the result of
+//     this call contain only entries that have changed since the last call.
+//     Optional. The default is to return all entries.
+//  Authorization scope(s):
+//   kGTLAuthScopeCalendar
+//   kGTLAuthScopeCalendarReadonly
+// Fetches a GTLCalendarChannel.
++ (id)queryForSettingsWatchWithObject:(GTLCalendarChannel *)object;
 
 @end

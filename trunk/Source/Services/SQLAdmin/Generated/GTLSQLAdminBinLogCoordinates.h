@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLSQLAdminInstancesSetRootPasswordResponse.h
+//  GTLSQLAdminBinLogCoordinates.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/cloud-sql/docs/admin-api/
 // Classes:
-//   GTLSQLAdminInstancesSetRootPasswordResponse (0 custom class methods, 2 custom properties)
+//   GTLSQLAdminBinLogCoordinates (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,19 +36,20 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLSQLAdminInstancesSetRootPasswordResponse
+//   GTLSQLAdminBinLogCoordinates
 //
 
-// Database instance set root password response.
+// Binary log coordinates.
 
-@interface GTLSQLAdminInstancesSetRootPasswordResponse : GTLObject
+@interface GTLSQLAdminBinLogCoordinates : GTLObject
 
-// This is always sql#instancesSetRootPassword.
+// Name of the binary log file for a Cloud SQL instance.
+@property (copy) NSString *binLogFileName;
+
+// Position (offset) within the binary log file.
+@property (retain) NSNumber *binLogPosition;  // longLongValue
+
+// This is always sql#binLogCoordinates.
 @property (copy) NSString *kind;
-
-// An identifier that uniquely identifies the operation. You can use this
-// identifier to retrieve the Operations resource that has information about the
-// operation.
-@property (copy) NSString *operation;
 
 @end

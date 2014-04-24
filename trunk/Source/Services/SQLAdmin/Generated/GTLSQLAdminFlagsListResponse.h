@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLSQLAdminInstancesSetRootPasswordResponse.h
+//  GTLSQLAdminFlagsListResponse.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/cloud-sql/docs/admin-api/
 // Classes:
-//   GTLSQLAdminInstancesSetRootPasswordResponse (0 custom class methods, 2 custom properties)
+//   GTLSQLAdminFlagsListResponse (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,21 +34,24 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLSQLAdminFlag;
+
 // ----------------------------------------------------------------------------
 //
-//   GTLSQLAdminInstancesSetRootPasswordResponse
+//   GTLSQLAdminFlagsListResponse
 //
 
-// Database instance set root password response.
+// Flags list response.
 
-@interface GTLSQLAdminInstancesSetRootPasswordResponse : GTLObject
+// This class supports NSFastEnumeration over its "items" property. It also
+// supports -itemAtIndex: to retrieve individual objects from "items".
 
-// This is always sql#instancesSetRootPassword.
+@interface GTLSQLAdminFlagsListResponse : GTLCollectionObject
+
+// List of flags.
+@property (retain) NSArray *items;  // of GTLSQLAdminFlag
+
+// This is always sql#flagsList.
 @property (copy) NSString *kind;
-
-// An identifier that uniquely identifies the operation. You can use this
-// identifier to retrieve the Operations resource that has information about the
-// operation.
-@property (copy) NSString *operation;
 
 @end

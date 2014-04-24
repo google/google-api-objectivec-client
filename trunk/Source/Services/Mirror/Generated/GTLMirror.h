@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,8 +28,10 @@
 
 #import "GTLMirrorConstants.h"
 
+#import "GTLMirrorAccount.h"
 #import "GTLMirrorAttachment.h"
 #import "GTLMirrorAttachmentsListResponse.h"
+#import "GTLMirrorAuthToken.h"
 #import "GTLMirrorCommand.h"
 #import "GTLMirrorContact.h"
 #import "GTLMirrorContactsListResponse.h"
@@ -44,6 +46,7 @@
 #import "GTLMirrorTimelineItem.h"
 #import "GTLMirrorTimelineListResponse.h"
 #import "GTLMirrorUserAction.h"
+#import "GTLMirrorUserData.h"
 
 #import "GTLQueryMirror.h"
 #import "GTLServiceMirror.h"

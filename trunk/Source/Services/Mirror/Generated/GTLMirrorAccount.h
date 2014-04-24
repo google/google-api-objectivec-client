@@ -14,19 +14,19 @@
  */
 
 //
-//  GTLSQLAdminInstancesSetRootPasswordResponse.h
+//  GTLMirrorAccount.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud SQL Administration API (sqladmin/v1beta3)
+//   Google Mirror API (mirror/v1)
 // Description:
-//   API for Cloud SQL database instance management.
+//   API for interacting with Glass users via the timeline.
 // Documentation:
-//   https://developers.google.com/cloud-sql/docs/admin-api/
+//   https://developers.google.com/glass
 // Classes:
-//   GTLSQLAdminInstancesSetRootPasswordResponse (0 custom class methods, 2 custom properties)
+//   GTLMirrorAccount (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,21 +34,22 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLMirrorAuthToken;
+@class GTLMirrorUserData;
+
 // ----------------------------------------------------------------------------
 //
-//   GTLSQLAdminInstancesSetRootPasswordResponse
+//   GTLMirrorAccount
 //
 
-// Database instance set root password response.
+// Represents an account passed into the Account Manager on Glass.
 
-@interface GTLSQLAdminInstancesSetRootPasswordResponse : GTLObject
+@interface GTLMirrorAccount : GTLObject
+@property (retain) NSArray *authTokens;  // of GTLMirrorAuthToken
+@property (retain) NSArray *features;  // of NSString
+@property (copy) NSString *password;
 
-// This is always sql#instancesSetRootPassword.
-@property (copy) NSString *kind;
-
-// An identifier that uniquely identifies the operation. You can use this
-// identifier to retrieve the Operations resource that has information about the
-// operation.
-@property (copy) NSString *operation;
+// Remapped to 'userDataProperty' to avoid GTLObject's 'userData'.
+@property (retain) NSArray *userDataProperty;  // of GTLMirrorUserData
 
 @end

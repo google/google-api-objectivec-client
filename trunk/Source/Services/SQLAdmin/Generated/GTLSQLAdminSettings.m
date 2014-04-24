@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,11 +26,12 @@
 // Documentation:
 //   https://developers.google.com/cloud-sql/docs/admin-api/
 // Classes:
-//   GTLSQLAdminSettings (0 custom class methods, 10 custom properties)
+//   GTLSQLAdminSettings (0 custom class methods, 11 custom properties)
 
 #import "GTLSQLAdminSettings.h"
 
 #import "GTLSQLAdminBackupConfiguration.h"
+#import "GTLSQLAdminDatabaseFlags.h"
 #import "GTLSQLAdminIpConfiguration.h"
 #import "GTLSQLAdminLocationPreference.h"
 
@@ -41,7 +42,7 @@
 
 @implementation GTLSQLAdminSettings
 @dynamic activationPolicy, authorizedGaeApplications, backupConfiguration,
-         ipConfiguration, kind, locationPreference, pricingPlan,
+         databaseFlags, ipConfiguration, kind, locationPreference, pricingPlan,
          replicationType, settingsVersion, tier;
 
 + (NSDictionary *)arrayPropertyToClassMap {
@@ -49,6 +50,7 @@
     [NSDictionary dictionaryWithObjectsAndKeys:
       [NSString class], @"authorizedGaeApplications",
       [GTLSQLAdminBackupConfiguration class], @"backupConfiguration",
+      [GTLSQLAdminDatabaseFlags class], @"databaseFlags",
       nil];
   return map;
 }

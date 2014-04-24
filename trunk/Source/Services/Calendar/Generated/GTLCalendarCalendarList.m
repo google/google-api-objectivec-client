@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/google-apps/calendar/firstapp
 // Classes:
-//   GTLCalendarCalendarList (0 custom class methods, 4 custom properties)
+//   GTLCalendarCalendarList (0 custom class methods, 5 custom properties)
 
 #import "GTLCalendarCalendarList.h"
 
@@ -38,7 +38,7 @@
 //
 
 @implementation GTLCalendarCalendarList
-@dynamic ETag, items, kind, nextPageToken;
+@dynamic ETag, items, kind, nextPageToken, nextSyncToken;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

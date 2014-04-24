@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/google-apps/calendar/firstapp
 // Classes:
-//   GTLQueryCalendar (34 custom class methods, 31 custom properties)
+//   GTLQueryCalendar (37 custom class methods, 32 custom properties)
 
 #import "GTLQueryCalendar.h"
 
@@ -51,8 +51,8 @@
          maxAttendees, maxResults, minAccessRole, orderBy, originalStart,
          pageToken, privateExtendedProperty, q, ruleId, sendNotifications,
          setting, sharedExtendedProperty, showDeleted, showHidden,
-         showHiddenInvitations, singleEvents, text, timeMax, timeMin, timeZone,
-         updatedMin;
+         showHiddenInvitations, singleEvents, syncToken, text, timeMax, timeMin,
+         timeZone, updatedMin;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
@@ -141,6 +141,20 @@
   return query;
 }
 
++ (id)queryForAclWatchWithObject:(GTLCalendarChannel *)object
+                      calendarId:(NSString *)calendarId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"calendar.acl.watch";
+  GTLQueryCalendar *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.calendarId = calendarId;
+  query.expectedObjectClass = [GTLCalendarChannel class];
+  return query;
+}
+
 #pragma mark -
 #pragma mark "calendarList" methods
 // These create a GTLQueryCalendar object.
@@ -204,6 +218,18 @@
   query.bodyObject = object;
   query.calendarId = calendarId;
   query.expectedObjectClass = [GTLCalendarCalendarListEntry class];
+  return query;
+}
+
++ (id)queryForCalendarListWatchWithObject:(GTLCalendarChannel *)object {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"calendar.calendarList.watch";
+  GTLQueryCalendar *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.expectedObjectClass = [GTLCalendarChannel class];
   return query;
 }
 
@@ -463,6 +489,18 @@
   NSString *methodName = @"calendar.settings.list";
   GTLQueryCalendar *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLCalendarSettings class];
+  return query;
+}
+
++ (id)queryForSettingsWatchWithObject:(GTLCalendarChannel *)object {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"calendar.settings.watch";
+  GTLQueryCalendar *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.expectedObjectClass = [GTLCalendarChannel class];
   return query;
 }
 

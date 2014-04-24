@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,10 +41,16 @@
                       [GTLSQLAdminBackupConfiguration class],
                       [GTLSQLAdminBackupRun class],
                       [GTLSQLAdminBackupRunsListResponse class],
+                      [GTLSQLAdminBinLogCoordinates class],
+                      [GTLSQLAdminCloneContext class],
+                      [GTLSQLAdminDatabaseFlags class],
                       [GTLSQLAdminDatabaseInstance class],
                       [GTLSQLAdminExportContext class],
+                      [GTLSQLAdminFlag class],
+                      [GTLSQLAdminFlagsListResponse class],
                       [GTLSQLAdminImportContext class],
                       [GTLSQLAdminInstanceOperation class],
+                      [GTLSQLAdminInstancesCloneResponse class],
                       [GTLSQLAdminInstancesDeleteResponse class],
                       [GTLSQLAdminInstancesExportResponse class],
                       [GTLSQLAdminInstancesImportResponse class],
