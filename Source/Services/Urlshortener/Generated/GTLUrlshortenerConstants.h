@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,7 +38,7 @@
 // Manage your goo.gl short URLs
 GTL_EXTERN NSString * const kGTLAuthScopeUrlshortener;  // "https://www.googleapis.com/auth/urlshortener"
 
-// Projection
+// GTLQueryUrlshortener - Projection
 GTL_EXTERN NSString * const kGTLUrlshortenerProjectionAnalyticsClicks;  // "ANALYTICS_CLICKS"
 GTL_EXTERN NSString * const kGTLUrlshortenerProjectionAnalyticsTopStrings;  // "ANALYTICS_TOP_STRINGS"
 GTL_EXTERN NSString * const kGTLUrlshortenerProjectionFull;     // "FULL"

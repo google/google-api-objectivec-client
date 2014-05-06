@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,7 +57,7 @@ GTL_EXTERN NSString * const kGTLAuthScopePlusDomainsUserinfoEmail;  // "https://
 // View basic information about your account
 GTL_EXTERN NSString * const kGTLAuthScopePlusDomainsUserinfoProfile;  // "https://www.googleapis.com/auth/userinfo.profile"
 
-// Collection
+// GTLQueryPlusDomains - Collection
 GTL_EXTERN NSString * const kGTLPlusDomainsCollectionCircled;   // "circled"
 GTL_EXTERN NSString * const kGTLPlusDomainsCollectionCloud;     // "cloud"
 GTL_EXTERN NSString * const kGTLPlusDomainsCollectionPlusoners;  // "plusoners"
@@ -65,10 +65,10 @@ GTL_EXTERN NSString * const kGTLPlusDomainsCollectionResharers;  // "resharers"
 GTL_EXTERN NSString * const kGTLPlusDomainsCollectionSharedto;  // "sharedto"
 GTL_EXTERN NSString * const kGTLPlusDomainsCollectionUser;      // "user"
 
-// OrderBy
+// GTLQueryPlusDomains - OrderBy
 GTL_EXTERN NSString * const kGTLPlusDomainsOrderByAlphabetical;  // "alphabetical"
 GTL_EXTERN NSString * const kGTLPlusDomainsOrderByBest;         // "best"
 
-// SortOrder
+// GTLQueryPlusDomains - SortOrder
 GTL_EXTERN NSString * const kGTLPlusDomainsSortOrderAscending;  // "ascending"
 GTL_EXTERN NSString * const kGTLPlusDomainsSortOrderDescending;  // "descending"

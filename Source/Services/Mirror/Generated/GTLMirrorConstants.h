@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,6 +40,6 @@ GTL_EXTERN NSString * const kGTLAuthScopeMirrorGlassLocation;  // "https://www.g
 // View and manage your Glass timeline
 GTL_EXTERN NSString * const kGTLAuthScopeMirrorGlassTimeline;  // "https://www.googleapis.com/auth/glass.timeline"
 
-// OrderBy
+// GTLQueryMirror - OrderBy
 GTL_EXTERN NSString * const kGTLMirrorOrderByDisplayTime;  // "displayTime"
 GTL_EXTERN NSString * const kGTLMirrorOrderByWriteTime;    // "writeTime"

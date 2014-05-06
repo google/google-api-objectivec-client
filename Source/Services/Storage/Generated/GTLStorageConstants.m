@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud Storage API (storage/v1beta2)
+//   Cloud Storage API (storage/v1)
 // Description:
 //   Lets you store and retrieve potentially-large, immutable data objects.
 // Documentation:
@@ -33,6 +33,23 @@ NSString * const kGTLAuthScopeStorageDevstorageFullControl = @"https://www.googl
 NSString * const kGTLAuthScopeStorageDevstorageReadOnly    = @"https://www.googleapis.com/auth/devstorage.read_only";
 NSString * const kGTLAuthScopeStorageDevstorageReadWrite   = @"https://www.googleapis.com/auth/devstorage.read_write";
 
-// Projection
+// GTLQueryStorage - DestinationPredefinedAcl
+NSString * const kGTLStorageDestinationPredefinedAclAuthenticatedRead = @"authenticatedRead";
+NSString * const kGTLStorageDestinationPredefinedAclBucketOwnerFullControl = @"bucketOwnerFullControl";
+NSString * const kGTLStorageDestinationPredefinedAclBucketOwnerRead = @"bucketOwnerRead";
+NSString * const kGTLStorageDestinationPredefinedAclPrivate    = @"private";
+NSString * const kGTLStorageDestinationPredefinedAclProjectPrivate = @"projectPrivate";
+NSString * const kGTLStorageDestinationPredefinedAclPublicRead = @"publicRead";
+
+// GTLQueryStorage - PredefinedAcl
+NSString * const kGTLStoragePredefinedAclAuthenticatedRead     = @"authenticatedRead";
+NSString * const kGTLStoragePredefinedAclBucketOwnerFullControl = @"bucketOwnerFullControl";
+NSString * const kGTLStoragePredefinedAclBucketOwnerRead       = @"bucketOwnerRead";
+NSString * const kGTLStoragePredefinedAclPrivate               = @"private";
+NSString * const kGTLStoragePredefinedAclProjectPrivate        = @"projectPrivate";
+NSString * const kGTLStoragePredefinedAclPublicRead            = @"publicRead";
+NSString * const kGTLStoragePredefinedAclPublicReadWrite       = @"publicReadWrite";
+
+// GTLQueryStorage - Projection
 NSString * const kGTLStorageProjectionFull  = @"full";
 NSString * const kGTLStorageProjectionNoAcl = @"noAcl";

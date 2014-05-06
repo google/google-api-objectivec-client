@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,14 +34,14 @@ NSString * const kGTLAuthScopeAnalyticsEdit        = @"https://www.googleapis.co
 NSString * const kGTLAuthScopeAnalyticsManageUsers = @"https://www.googleapis.com/auth/analytics.manage.users";
 NSString * const kGTLAuthScopeAnalyticsReadonly    = @"https://www.googleapis.com/auth/analytics.readonly";
 
-// Output
+// GTLQueryAnalytics - Output
 NSString * const kGTLAnalyticsOutputDataTable = @"dataTable";
 NSString * const kGTLAnalyticsOutputJson      = @"json";
 
-// SamplingLevel
+// GTLQueryAnalytics - SamplingLevel
 NSString * const kGTLAnalyticsSamplingLevelDefault         = @"DEFAULT";
 NSString * const kGTLAnalyticsSamplingLevelFaster          = @"FASTER";
 NSString * const kGTLAnalyticsSamplingLevelHigherPrecision = @"HIGHER_PRECISION";
 
-// Type
+// GTLQueryAnalytics - Type
 NSString * const kGTLAnalyticsTypeCost = @"cost";

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,11 +35,11 @@ NSString * const kGTLAuthScopeBigqueryDevstorageFullControl = @"https://www.goog
 NSString * const kGTLAuthScopeBigqueryDevstorageReadOnly    = @"https://www.googleapis.com/auth/devstorage.read_only";
 NSString * const kGTLAuthScopeBigqueryDevstorageReadWrite   = @"https://www.googleapis.com/auth/devstorage.read_write";
 
-// Projection
+// GTLQueryBigquery - Projection
 NSString * const kGTLBigqueryProjectionFull    = @"full";
 NSString * const kGTLBigqueryProjectionMinimal = @"minimal";
 
-// StateFilter
+// GTLQueryBigquery - StateFilter
 NSString * const kGTLBigqueryStateFilterDone    = @"done";
 NSString * const kGTLBigqueryStateFilterPending = @"pending";
 NSString * const kGTLBigqueryStateFilterRunning = @"running";

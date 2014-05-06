@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,11 +46,11 @@ GTL_EXTERN NSString * const kGTLAuthScopeBigqueryDevstorageReadOnly;  // "https:
 // Manage your data in Google Cloud Storage
 GTL_EXTERN NSString * const kGTLAuthScopeBigqueryDevstorageReadWrite;  // "https://www.googleapis.com/auth/devstorage.read_write"
 
-// Projection
+// GTLQueryBigquery - Projection
 GTL_EXTERN NSString * const kGTLBigqueryProjectionFull;     // "full"
 GTL_EXTERN NSString * const kGTLBigqueryProjectionMinimal;  // "minimal"
 
-// StateFilter
+// GTLQueryBigquery - StateFilter
 GTL_EXTERN NSString * const kGTLBigqueryStateFilterDone;     // "done"
 GTL_EXTERN NSString * const kGTLBigqueryStateFilterPending;  // "pending"
 GTL_EXTERN NSString * const kGTLBigqueryStateFilterRunning;  // "running"
