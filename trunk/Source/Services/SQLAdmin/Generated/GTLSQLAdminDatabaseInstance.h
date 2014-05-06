@@ -50,7 +50,8 @@
 // The current disk usage of the instance in bytes.
 @property (retain) NSNumber *currentDiskSize;  // longLongValue
 
-// The database engine type and version, for example MYSQL_5_5 for MySQL 5.5.
+// The database engine type and version. Can be MYSQL_5_5 or MYSQL_5_6. Defaults
+// to MYSQL_5_5. The databaseVersion can not be changed after instance creation.
 @property (copy) NSString *databaseVersion;
 
 // HTTP 1.1 Entity tag for the resource.

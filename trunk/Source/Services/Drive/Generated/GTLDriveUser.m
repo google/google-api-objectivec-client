@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveUser (0 custom class methods, 5 custom properties)
+//   GTLDriveUser (0 custom class methods, 6 custom properties)
 //   GTLDriveUserPicture (0 custom class methods, 1 custom properties)
 
 #import "GTLDriveUser.h"
@@ -37,7 +37,8 @@
 //
 
 @implementation GTLDriveUser
-@dynamic displayName, isAuthenticatedUser, kind, permissionId, picture;
+@dynamic displayName, emailAddress, isAuthenticatedUser, kind, permissionId,
+         picture;
 
 + (void)load {
   [self registerObjectClassForKind:@"drive#user"];
