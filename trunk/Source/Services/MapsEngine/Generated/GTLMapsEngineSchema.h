@@ -28,7 +28,6 @@
 //   https://developers.google.com/maps-engine/
 // Classes:
 //   GTLMapsEngineSchema (0 custom class methods, 3 custom properties)
-//   GTLMapsEngineSchemaColumnsItem (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,7 +35,7 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLMapsEngineSchemaColumnsItem;
+@class GTLMapsEngineTableColumn;
 
 // ----------------------------------------------------------------------------
 //
@@ -48,9 +47,9 @@
 
 @interface GTLMapsEngineSchema : GTLObject
 
-// An array of column objects. The first object in the array must be named
+// An array of TableColumn objects. The first object in the array must be named
 // geometry and be of type points, lineStrings, polygons, or mixedGeometry.
-@property (retain) NSArray *columns;  // of GTLMapsEngineSchemaColumnsItem
+@property (retain) NSArray *columns;  // of GTLMapsEngineTableColumn
 
 // The name of the column that contains a feature's geometry. This field can be
 // omitted during table create; Google Maps Engine supports only a single
@@ -60,29 +59,5 @@
 
 // The name of the column that contains the unique identifier of a Feature.
 @property (copy) NSString *primaryKey;
-
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLMapsEngineSchemaColumnsItem
-//
-
-@interface GTLMapsEngineSchemaColumnsItem : GTLObject
-
-// The column name.
-@property (copy) NSString *name;
-
-// The type of data stored in this column. Accepted values are:
-// - integer
-// - double
-// - boolean
-// - string
-// - mixedGeometry
-// - points
-// - lineStrings
-// - polygons
-@property (copy) NSString *type;
 
 @end

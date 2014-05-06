@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLMapsEngineMapItem.h
+//  GTLMapsEngineTableColumn.m
 //
 
 // ----------------------------------------------------------------------------
@@ -27,18 +27,15 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineMapItem (0 custom class methods, 0 custom properties)
+//   GTLMapsEngineTableColumn (0 custom class methods, 2 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLMapsEngineTableColumn.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLMapsEngineMapItem
+//   GTLMapsEngineTableColumn
 //
 
-@interface GTLMapsEngineMapItem : GTLObject
+@implementation GTLMapsEngineTableColumn
+@dynamic name, type;
 @end

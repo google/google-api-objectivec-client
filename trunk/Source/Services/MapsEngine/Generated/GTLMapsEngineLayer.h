@@ -63,8 +63,7 @@
 // array is a reference to a Vector Table.
 @property (retain) NSArray *datasources;  // of GTLMapsEngineDatasource
 
-// The type of the datasources used to build this Layer. One of either "table"
-// or "image".
+// The type of the datasources used to build this Layer.
 @property (copy) NSString *datasourceType;
 
 // The description of this Layer, supplied by the author.

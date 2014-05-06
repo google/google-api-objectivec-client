@@ -40,14 +40,12 @@
 //   GTLMapsEngineGeoJsonLineString
 //
 
-// Line String
-
 @interface GTLMapsEngineGeoJsonLineString : GTLObject
 
-// The coordinates of this line string as an array of two or more positions.
+// An array of two or more positions, representing a line.
 @property (retain) NSArray *coordinates;  // of NSArray of NSNumber (doubleValue)
 
-// Identifies this object as a line string.
+// Identifies this object as a GeoJsonLineString.
 @property (copy) NSString *type;
 
 @end

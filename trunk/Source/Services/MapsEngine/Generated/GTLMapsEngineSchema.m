@@ -28,9 +28,10 @@
 //   https://developers.google.com/maps-engine/
 // Classes:
 //   GTLMapsEngineSchema (0 custom class methods, 3 custom properties)
-//   GTLMapsEngineSchemaColumnsItem (0 custom class methods, 2 custom properties)
 
 #import "GTLMapsEngineSchema.h"
+
+#import "GTLMapsEngineTableColumn.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -42,19 +43,9 @@
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLMapsEngineSchemaColumnsItem class]
+    [NSDictionary dictionaryWithObject:[GTLMapsEngineTableColumn class]
                                 forKey:@"columns"];
   return map;
 }
 
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLMapsEngineSchemaColumnsItem
-//
-
-@implementation GTLMapsEngineSchemaColumnsItem
-@dynamic name, type;
 @end

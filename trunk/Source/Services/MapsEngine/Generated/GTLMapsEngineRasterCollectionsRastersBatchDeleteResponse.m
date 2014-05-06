@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLMapsEngineMapItem.h
+//  GTLMapsEngineRasterCollectionsRastersBatchDeleteResponse.m
 //
 
 // ----------------------------------------------------------------------------
@@ -27,18 +27,14 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineMapItem (0 custom class methods, 0 custom properties)
+//   GTLMapsEngineRasterCollectionsRastersBatchDeleteResponse (0 custom class methods, 0 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLMapsEngineRasterCollectionsRastersBatchDeleteResponse.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLMapsEngineMapItem
+//   GTLMapsEngineRasterCollectionsRastersBatchDeleteResponse
 //
 
-@interface GTLMapsEngineMapItem : GTLObject
+@implementation GTLMapsEngineRasterCollectionsRastersBatchDeleteResponse
 @end

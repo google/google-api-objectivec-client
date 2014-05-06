@@ -80,21 +80,13 @@
 // date-time value (e.g. 1970-01-01T00:00:00Z).
 @property (retain) GTLDateTime *lastModifiedTime;
 
-// The mask processing type of this Raster. Valid values include "autoMask",
-// "alphaChannelMask", "noMask", "imageMask".
+// The mask processing type of this Raster.
 @property (copy) NSString *maskType;
 
 // The name of this Raster, supplied by the author.
 @property (copy) NSString *name;
 
-// The processing status of this Raster. The raster processing status values can
-// be:
-// 'notReady': The raster is not ready to be processed - some files have not
-// been uploaded.
-// 'ready': The raster is queued for processing.
-// 'processing': The raster is currently processing.
-// 'complete': Processing has completed successfully.
-// 'failed': Processing failed to complete.
+// The processing status of this Raster.
 @property (copy) NSString *processingStatus;
 
 // The ID of the project that this Raster is in.

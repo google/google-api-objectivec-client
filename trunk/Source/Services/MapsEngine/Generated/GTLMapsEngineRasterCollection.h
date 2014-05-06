@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineRasterCollection (0 custom class methods, 12 custom properties)
+//   GTLMapsEngineRasterCollection (0 custom class methods, 13 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -54,7 +54,7 @@
 // degrees.
 @property (retain) NSArray *bbox;  // of NSNumber (doubleValue)
 
-// The creation time of this rasterCollection. The value is an RFC 3339
+// The creation time of this RasterCollection. The value is an RFC 3339
 // formatted date-time value (e.g. 1970-01-01T00:00:00Z).
 @property (retain) GTLDateTime *creationTime;
 
@@ -71,7 +71,7 @@
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// The last modified time of this rasterCollection. The value is an RFC 3339
+// The last modified time of this RasterCollection. The value is an RFC 3339
 // formatted date-time value (e.g. 1970-01-01T00:00:00Z).
 @property (retain) GTLDateTime *lastModifiedTime;
 
@@ -80,6 +80,9 @@
 
 // The name of this RasterCollection, supplied by the author.
 @property (copy) NSString *name;
+
+// The processing status of this RasterCollection.
+@property (copy) NSString *processingStatus;
 
 // The ID of the project that this RasterCollection is in.
 @property (copy) NSString *projectId;

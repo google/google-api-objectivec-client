@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLMapsEngineResource.h
+//  GTLMapsEngineAsset.h
 //
 
 // ----------------------------------------------------------------------------
@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineResource (0 custom class methods, 10 custom properties)
+//   GTLMapsEngineAsset (0 custom class methods, 10 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -37,7 +37,7 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLMapsEngineResource
+//   GTLMapsEngineAsset
 //
 
 // An asset is any Google Maps Engine resource that has a globally unique ID.
@@ -46,7 +46,7 @@
 // More detailed information about an asset can be obtained by querying the
 // asset's particular endpoint.
 
-@interface GTLMapsEngineResource : GTLObject
+@interface GTLMapsEngineAsset : GTLObject
 
 // An array of four numbers (west, south, east, north) which define the
 // rectangular bounding box which contains all of the data in this asset. The

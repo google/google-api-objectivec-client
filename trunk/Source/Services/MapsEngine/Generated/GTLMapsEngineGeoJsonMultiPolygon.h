@@ -40,15 +40,12 @@
 //   GTLMapsEngineGeoJsonMultiPolygon
 //
 
-// Multi Polygon
-
 @interface GTLMapsEngineGeoJsonMultiPolygon : GTLObject
 
-// The coordinates of this multi-polygon as an array of polygon coordinate
-// arrays.
+// An array of at least two GeoJsonPolygon coordinate arrays.
 @property (retain) NSArray *coordinates;  // of NSArray of NSArray of NSArray of NSNumber (doubleValue)
 
-// Identifies this object as a multi-polygon.
+// Identifies this object as a GeoJsonMultiPolygon.
 @property (copy) NSString *type;
 
 @end

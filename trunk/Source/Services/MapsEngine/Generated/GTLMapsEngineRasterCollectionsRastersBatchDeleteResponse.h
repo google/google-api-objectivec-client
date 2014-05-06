@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLMapsEngineResource.m
+//  GTLMapsEngineRasterCollectionsRastersBatchDeleteResponse.h
 //
 
 // ----------------------------------------------------------------------------
@@ -27,35 +27,20 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineResource (0 custom class methods, 10 custom properties)
+//   GTLMapsEngineRasterCollectionsRastersBatchDeleteResponse (0 custom class methods, 0 custom properties)
 
-#import "GTLMapsEngineResource.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLMapsEngineResource
+//   GTLMapsEngineRasterCollectionsRastersBatchDeleteResponse
 //
 
-@implementation GTLMapsEngineResource
-@dynamic bbox, creationTime, descriptionProperty, identifier, lastModifiedTime,
-         name, projectId, resource, tags, type;
+// The response returned by a call to rasterCollections.rasters.batchDelete.
 
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"description", @"descriptionProperty",
-      @"id", @"identifier",
-      nil];
-  return map;
-}
-
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSNumber class], @"bbox",
-      [NSString class], @"tags",
-      nil];
-  return map;
-}
-
+@interface GTLMapsEngineRasterCollectionsRastersBatchDeleteResponse : GTLObject
 @end

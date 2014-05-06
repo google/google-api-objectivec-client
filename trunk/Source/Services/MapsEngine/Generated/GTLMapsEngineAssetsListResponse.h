@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLMapsEngineMapItem.h
+//  GTLMapsEngineAssetsListResponse.h
 //
 
 // ----------------------------------------------------------------------------
@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineMapItem (0 custom class methods, 0 custom properties)
+//   GTLMapsEngineAssetsListResponse (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -35,10 +35,21 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLMapsEngineAsset;
+
 // ----------------------------------------------------------------------------
 //
-//   GTLMapsEngineMapItem
+//   GTLMapsEngineAssetsListResponse
 //
 
-@interface GTLMapsEngineMapItem : GTLObject
+// The response returned by a call to resources.List.
+
+@interface GTLMapsEngineAssetsListResponse : GTLObject
+
+// Assets returned.
+@property (retain) NSArray *assets;  // of GTLMapsEngineAsset
+
+// Next page token.
+@property (copy) NSString *nextPageToken;
+
 @end

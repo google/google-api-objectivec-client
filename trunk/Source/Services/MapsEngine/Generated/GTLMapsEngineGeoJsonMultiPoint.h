@@ -42,10 +42,10 @@
 
 @interface GTLMapsEngineGeoJsonMultiPoint : GTLObject
 
-// The coordinates of this multi-point as an array of positions.
+// An array of at least two GeoJsonPoint coordinate arrays.
 @property (retain) NSArray *coordinates;  // of NSArray of NSNumber (doubleValue)
 
-// Identifies this object as a multi-point.
+// Identifies this object as a GeoJsonMultiPoint.
 @property (copy) NSString *type;
 
 @end

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLMapsEngineMapItem.h
+//  GTLMapsEngineRasterCollectionsRastersBatchInsertResponse.h
 //
 
 // ----------------------------------------------------------------------------
@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineMapItem (0 custom class methods, 0 custom properties)
+//   GTLMapsEngineRasterCollectionsRastersBatchInsertResponse (0 custom class methods, 0 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -37,8 +37,10 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLMapsEngineMapItem
+//   GTLMapsEngineRasterCollectionsRastersBatchInsertResponse
 //
 
-@interface GTLMapsEngineMapItem : GTLObject
+// The response returned by a call to rasterCollections.rasters.batchInsert.
+
+@interface GTLMapsEngineRasterCollectionsRastersBatchInsertResponse : GTLObject
 @end
