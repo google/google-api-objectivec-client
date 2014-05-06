@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@
 NSString * const kGTLAuthScopeOrkut         = @"https://www.googleapis.com/auth/orkut";
 NSString * const kGTLAuthScopeOrkutReadonly = @"https://www.googleapis.com/auth/orkut.readonly";
 
-// Collection
+// GTLQueryOrkut - Collection
 NSString * const kGTLOrkutCollectionAll    = @"all";
 NSString * const kGTLOrkutCollectionScraps = @"scraps";
 NSString * const kGTLOrkutCollectionStream = @"stream";
 
-// OrderBy
+// GTLQueryOrkut - OrderBy
 NSString * const kGTLOrkutOrderByAscending  = @"ascending";
 NSString * const kGTLOrkutOrderByDescending = @"descending";
 NSString * const kGTLOrkutOrderById         = @"id";
