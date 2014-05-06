@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud Storage API (storage/v1beta2)
+//   Cloud Storage API (storage/v1)
 // Description:
 //   Lets you store and retrieve potentially-large, immutable data objects.
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 // Classes:
-//   GTLStorageBucket (0 custom class methods, 17 custom properties)
+//   GTLStorageBucket (0 custom class methods, 18 custom properties)
 //   GTLStorageBucketCorsItem (0 custom class methods, 4 custom properties)
 //   GTLStorageBucketLifecycle (0 custom class methods, 1 custom properties)
 //   GTLStorageBucketLogging (0 custom class methods, 2 custom properties)
@@ -49,8 +49,8 @@
 
 @implementation GTLStorageBucket
 @dynamic acl, cors, defaultObjectAcl, ETag, identifier, kind, lifecycle,
-         location, logging, metageneration, name, owner, selfLink, storageClass,
-         timeCreated, versioning, website;
+         location, logging, metageneration, name, owner, projectNumber,
+         selfLink, storageClass, timeCreated, versioning, website;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

@@ -20,19 +20,22 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud Storage API (storage/v1beta2)
+//   Cloud Storage API (storage/v1)
 // Description:
 //   Lets you store and retrieve potentially-large, immutable data objects.
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 // Classes:
-//   GTLStorageObjectAccessControl (0 custom class methods, 12 custom properties)
+//   GTLStorageObjectAccessControl (0 custom class methods, 13 custom properties)
+//   GTLStorageObjectAccessControlProjectTeam (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
 #else
   #import "GTLObject.h"
 #endif
+
+@class GTLStorageObjectAccessControlProjectTeam;
 
 // ----------------------------------------------------------------------------
 //
@@ -58,6 +61,7 @@
 // - group-groupId
 // - group-email
 // - domain-domain
+// - project-team-projectId
 // - allUsers
 // - allAuthenticatedUsers Examples:
 // - The user liz@example.com would be user-liz@example.com.
@@ -86,10 +90,29 @@
 // The name of the object.
 @property (copy) NSString *object;
 
+// The project team associated with the entity, if any.
+@property (retain) GTLStorageObjectAccessControlProjectTeam *projectTeam;
+
 // The access permission for the entity. Can be READER or OWNER.
 @property (copy) NSString *role;
 
 // The link to this access-control entry.
 @property (copy) NSString *selfLink;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLStorageObjectAccessControlProjectTeam
+//
+
+@interface GTLStorageObjectAccessControlProjectTeam : GTLObject
+
+// The project number.
+@property (copy) NSString *projectNumber;
+
+// The team. Can be owners, editors, or viewers.
+@property (copy) NSString *team;
 
 @end
