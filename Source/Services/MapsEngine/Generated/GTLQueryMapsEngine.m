@@ -27,10 +27,12 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLQueryMapsEngine (32 custom class methods, 26 custom properties)
+//   GTLQueryMapsEngine (35 custom class methods, 26 custom properties)
 
 #import "GTLQueryMapsEngine.h"
 
+#import "GTLMapsEngineAsset.h"
+#import "GTLMapsEngineAssetsListResponse.h"
 #import "GTLMapsEngineFeature.h"
 #import "GTLMapsEngineFeaturesListResponse.h"
 #import "GTLMapsEngineImage.h"
@@ -44,9 +46,11 @@
 #import "GTLMapsEnginePublishResponse.h"
 #import "GTLMapsEngineRasterCollection.h"
 #import "GTLMapsEngineRastercollectionsListResponse.h"
+#import "GTLMapsEngineRasterCollectionsRasterBatchDeleteRequest.h"
+#import "GTLMapsEngineRasterCollectionsRastersBatchDeleteResponse.h"
+#import "GTLMapsEngineRasterCollectionsRastersBatchInsertRequest.h"
+#import "GTLMapsEngineRasterCollectionsRastersBatchInsertResponse.h"
 #import "GTLMapsEngineRastersListResponse.h"
-#import "GTLMapsEngineResource.h"
-#import "GTLMapsEngineResourcesListResponse.h"
 #import "GTLMapsEngineTable.h"
 #import "GTLMapsEngineTablesListResponse.h"
 
@@ -84,14 +88,14 @@
   NSString *methodName = @"mapsengine.assets.get";
   GTLQueryMapsEngine *query = [self queryWithMethodName:methodName];
   query.identifier = identifier;
-  query.expectedObjectClass = [GTLMapsEngineResource class];
+  query.expectedObjectClass = [GTLMapsEngineAsset class];
   return query;
 }
 
 + (id)queryForAssetsList {
   NSString *methodName = @"mapsengine.assets.list";
   GTLQueryMapsEngine *query = [self queryWithMethodName:methodName];
-  query.expectedObjectClass = [GTLMapsEngineResourcesListResponse class];
+  query.expectedObjectClass = [GTLMapsEngineAssetsListResponse class];
   return query;
 }
 
@@ -234,8 +238,36 @@
 }
 
 #pragma mark -
+#pragma mark "rasterCollections" methods
+// These create a GTLQueryMapsEngine object.
+
++ (id)queryForRasterCollectionsProcessWithIdentifier:(NSString *)identifier {
+  NSString *methodName = @"mapsengine.rasterCollections.process";
+  GTLQueryMapsEngine *query = [self queryWithMethodName:methodName];
+  query.identifier = identifier;
+  query.expectedObjectClass = [GTLMapsEngineProcessResponse class];
+  return query;
+}
+
+#pragma mark -
 #pragma mark "rasterCollections.rasters" methods
 // These create a GTLQueryMapsEngine object.
+
++ (id)queryForRasterCollectionsRastersBatchDeleteWithIdentifier:(NSString *)identifier {
+  NSString *methodName = @"mapsengine.rasterCollections.rasters.batchDelete";
+  GTLQueryMapsEngine *query = [self queryWithMethodName:methodName];
+  query.identifier = identifier;
+  query.expectedObjectClass = [GTLMapsEngineRasterCollectionsRastersBatchDeleteResponse class];
+  return query;
+}
+
++ (id)queryForRasterCollectionsRastersBatchInsertWithIdentifier:(NSString *)identifier {
+  NSString *methodName = @"mapsengine.rasterCollections.rasters.batchInsert";
+  GTLQueryMapsEngine *query = [self queryWithMethodName:methodName];
+  query.identifier = identifier;
+  query.expectedObjectClass = [GTLMapsEngineRasterCollectionsRastersBatchInsertResponse class];
+  return query;
+}
 
 + (id)queryForRasterCollectionsRastersListWithIdentifier:(NSString *)identifier {
   NSString *methodName = @"mapsengine.rasterCollections.rasters.list";

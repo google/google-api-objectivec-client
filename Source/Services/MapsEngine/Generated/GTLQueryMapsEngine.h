@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLQueryMapsEngine (32 custom class methods, 26 custom properties)
+//   GTLQueryMapsEngine (35 custom class methods, 26 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -39,6 +39,8 @@
 @class GTLMapsEngineImage;
 @class GTLMapsEngineLayer;
 @class GTLMapsEngineRasterCollection;
+@class GTLMapsEngineRasterCollectionsRasterBatchDeleteRequest;
+@class GTLMapsEngineRasterCollectionsRastersBatchInsertRequest;
 @class GTLMapsEngineTable;
 
 @interface GTLQueryMapsEngine : GTLQuery
@@ -93,7 +95,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
-// Fetches a GTLMapsEngineResource.
+// Fetches a GTLMapsEngineAsset.
 + (id)queryForAssetsGetWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.assets.list
@@ -133,7 +135,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
-// Fetches a GTLMapsEngineResourcesListResponse.
+// Fetches a GTLMapsEngineAssetsListResponse.
 + (id)queryForAssetsList;
 
 #pragma mark -
@@ -403,8 +405,50 @@
 + (id)queryForRasterCollectionsParentsListWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
+#pragma mark "rasterCollections" methods
+// These create a GTLQueryMapsEngine object.
+
+// Method: mapsengine.rasterCollections.process
+// Process a raster collection asset.
+//  Required:
+//   identifier: The ID of the raster collection.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+// Fetches a GTLMapsEngineProcessResponse.
++ (id)queryForRasterCollectionsProcessWithIdentifier:(NSString *)identifier;
+
+#pragma mark -
 #pragma mark "rasterCollections.rasters" methods
 // These create a GTLQueryMapsEngine object.
+
+// Method: mapsengine.rasterCollections.rasters.batchDelete
+// Remove rasters from an existing raster collection.
+// Up to 50 rasters can be included in a single batchDelete request. Each
+// batchDelete request is atomic.
+//  Required:
+//   identifier: The ID of the raster collection to which these rasters belong.
+//  Optional:
+//   request: For this method, "request" should be of type
+//     GTLMapsEngineRasterCollectionsRasterBatchDeleteRequest.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+// Fetches a GTLMapsEngineRasterCollectionsRastersBatchDeleteResponse.
++ (id)queryForRasterCollectionsRastersBatchDeleteWithIdentifier:(NSString *)identifier;
+
+// Method: mapsengine.rasterCollections.rasters.batchInsert
+// Add rasters to an existing raster collection. Rasters must be successfully
+// processed in order to be added to a raster collection.
+// Up to 50 rasters can be included in a single batchInsert request. Each
+// batchInsert request is atomic.
+//  Required:
+//   identifier: The ID of the raster collection to which these rasters belong.
+//  Optional:
+//   request: For this method, "request" should be of type
+//     GTLMapsEngineRasterCollectionsRastersBatchInsertRequest.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+// Fetches a GTLMapsEngineRasterCollectionsRastersBatchInsertResponse.
++ (id)queryForRasterCollectionsRastersBatchInsertWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.rasterCollections.rasters.list
 // Return all rasters within a raster collection.

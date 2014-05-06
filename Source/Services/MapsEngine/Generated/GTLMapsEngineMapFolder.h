@@ -44,7 +44,7 @@
 
 @interface GTLMapsEngineMapFolder : GTLObject
 
-// The contents of this Folder.
+// The contents of this MapFolder.
 @property (retain) NSArray *contents;  // of GTLMapsEngineMapItem
 
 // An array of four numbers (west, south, east, north) which defines the
@@ -52,16 +52,16 @@
 // latitude and longitude in decimal degrees.
 @property (retain) NSArray *defaultViewport;  // of NSNumber (doubleValue)
 
-// A user defined alias for this Folder, specific to this Map.
+// A user defined alias for this MapFolder, specific to this Map.
 @property (copy) NSString *key;
 
-// The name of this Folder.
+// The name of this MapFolder.
 @property (copy) NSString *name;
 
-// Identifies this object as a Folder. (( constant "folder" ))
+// Identifies this object as a MapFolder.
 @property (copy) NSString *type;
 
-// The visibility setting of this Folder. One of "defaultOn" or "defaultOff".
+// The visibility setting of this MapFolder. One of "defaultOn" or "defaultOff".
 @property (copy) NSString *visibility;
 
 @end

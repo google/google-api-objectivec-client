@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLMapsEngineMapItem.h
+//  GTLMapsEngineRasterCollectionsRasterBatchDeleteRequest.h
 //
 
 // ----------------------------------------------------------------------------
@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineMapItem (0 custom class methods, 0 custom properties)
+//   GTLMapsEngineRasterCollectionsRasterBatchDeleteRequest (0 custom class methods, 1 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -37,8 +37,14 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLMapsEngineMapItem
+//   GTLMapsEngineRasterCollectionsRasterBatchDeleteRequest
 //
 
-@interface GTLMapsEngineMapItem : GTLObject
+// The request sent to rasterCollections.Rasters.BatchDelete.
+
+@interface GTLMapsEngineRasterCollectionsRasterBatchDeleteRequest : GTLObject
+
+// An array of Raster asset IDs to be removed from this RasterCollection.
+@property (retain) NSArray *ids;  // of NSString
+
 @end

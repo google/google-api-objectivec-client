@@ -40,7 +40,5 @@
 //   GTLMapsEngineGeoJsonGeometry
 //
 
-// A geometry object
-
 @interface GTLMapsEngineGeoJsonGeometry : GTLObject
 @end

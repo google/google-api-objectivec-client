@@ -48,8 +48,7 @@
 // formatted date-time value (1970-01-01T00:00:00Z).
 @property (retain) GTLDateTime *end;
 
-// The precision of acquisition time. Valid values include: 'year', 'month',
-// 'day', 'hour', 'minute' and 'second'.
+// The precision of acquisition time.
 @property (copy) NSString *precision;
 
 // The acquisition time, or start time if acquisition time is a range. The value

@@ -47,21 +47,21 @@
 // latitude and longitude in decimal degrees.
 @property (retain) NSArray *defaultViewport;  // of NSNumber (doubleValue)
 
-// The ID of this Layer. This ID can be used to request more details about this
-// Layer.
+// The ID of this MapLayer. This ID can be used to request more details about
+// this layer.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// A user defined alias for this Layer, specific to this Map.
+// A user defined alias for this MapLayer, specific to this Map.
 @property (copy) NSString *key;
 
-// The name of this Layer.
+// The name of this MapLayer.
 @property (copy) NSString *name;
 
-// Identifies this object as a Layer. (( constant "layer" ))
+// Identifies this object as a MapLayer.
 @property (copy) NSString *type;
 
-// The visibility setting of this Layer. One of "defaultOn" or "defaultOff".
+// The visibility setting of this MapLayer. One of "defaultOn" or "defaultOff".
 @property (copy) NSString *visibility;
 
 @end

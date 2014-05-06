@@ -47,16 +47,17 @@
 // latitude and longitude in decimal degrees.
 @property (retain) NSArray *defaultViewport;  // of NSNumber (doubleValue)
 
-// The URL to the KML file represented by this KmlLink.
+// The URL to the KML file represented by this MapKmlLink.
 @property (copy) NSString *kmlUrl;
 
-// The name of this KmlLink.
+// The name of this MapKmlLink.
 @property (copy) NSString *name;
 
-// Identifies this object as a KmlLink. (( constant "kmlLink" ))
+// Identifies this object as a MapKmlLink.
 @property (copy) NSString *type;
 
-// The visibility setting of this KmlLink. One of "defaultOn" or "defaultOff".
+// The visibility setting of this MapKmlLink. One of "defaultOn" or
+// "defaultOff".
 @property (copy) NSString *visibility;
 
 @end

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLMapsEngineMapItem.h
+//  GTLMapsEngineRasterCollectionsRasterBatchDeleteRequest.m
 //
 
 // ----------------------------------------------------------------------------
@@ -27,18 +27,23 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineMapItem (0 custom class methods, 0 custom properties)
+//   GTLMapsEngineRasterCollectionsRasterBatchDeleteRequest (0 custom class methods, 1 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLMapsEngineRasterCollectionsRasterBatchDeleteRequest.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLMapsEngineMapItem
+//   GTLMapsEngineRasterCollectionsRasterBatchDeleteRequest
 //
 
-@interface GTLMapsEngineMapItem : GTLObject
+@implementation GTLMapsEngineRasterCollectionsRasterBatchDeleteRequest
+@dynamic ids;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[NSString class]
+                                forKey:@"ids"];
+  return map;
+}
+
 @end

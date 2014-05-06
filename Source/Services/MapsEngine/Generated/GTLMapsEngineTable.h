@@ -78,14 +78,7 @@
 // The name of this table, supplied by the author.
 @property (copy) NSString *name;
 
-// The processing status of this table. The supported processing status values
-// are:
-// - notReady: The table is not ready to be processed - some files have not been
-// uploaded.
-// - ready: The table is queued for processing.
-// - processing: The table is currently processing.
-// - complete: Processing has completed successfully.
-// - failed: Processing failed to complete.
+// The processing status of this table.
 @property (copy) NSString *processingStatus;
 
 // The ID of the project to which the table belongs.

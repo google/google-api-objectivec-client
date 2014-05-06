@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLMapsEngineResourcesListResponse.m
+//  GTLMapsEngineRasterCollectionsRastersBatchInsertRequest.m
 //
 
 // ----------------------------------------------------------------------------
@@ -27,24 +27,22 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineResourcesListResponse (0 custom class methods, 2 custom properties)
+//   GTLMapsEngineRasterCollectionsRastersBatchInsertRequest (0 custom class methods, 1 custom properties)
 
-#import "GTLMapsEngineResourcesListResponse.h"
-
-#import "GTLMapsEngineResource.h"
+#import "GTLMapsEngineRasterCollectionsRastersBatchInsertRequest.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLMapsEngineResourcesListResponse
+//   GTLMapsEngineRasterCollectionsRastersBatchInsertRequest
 //
 
-@implementation GTLMapsEngineResourcesListResponse
-@dynamic assets, nextPageToken;
+@implementation GTLMapsEngineRasterCollectionsRastersBatchInsertRequest
+@dynamic ids;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLMapsEngineResource class]
-                                forKey:@"assets"];
+    [NSDictionary dictionaryWithObject:[NSString class]
+                                forKey:@"ids"];
   return map;
 }
 

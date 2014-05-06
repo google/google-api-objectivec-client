@@ -42,14 +42,15 @@
 //   GTLMapsEngineGeoJsonGeometryCollection
 //
 
-// Geometry Collection
+// A heterogenous collection of GeoJsonGeometry objects.
 
 @interface GTLMapsEngineGeoJsonGeometryCollection : GTLObject
 
-// The geometry objects that are contained within this geometry collection.
+// An array of geometry objects. There must be at least 2 different types of
+// geometries in the array.
 @property (retain) NSArray *geometries;  // of GTLMapsEngineGeoJsonGeometry
 
-// Identifies this object as a geometry collection.
+// Identifies this object as a GeoJsonGeometryCollection.
 @property (copy) NSString *type;
 
 @end

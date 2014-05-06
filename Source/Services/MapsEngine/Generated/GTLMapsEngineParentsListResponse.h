@@ -49,7 +49,7 @@
 // Next page token.
 @property (copy) NSString *nextPageToken;
 
-// Resources returned.
+// The parent assets.
 @property (retain) NSArray *parents;  // of GTLMapsEngineParent
 
 @end

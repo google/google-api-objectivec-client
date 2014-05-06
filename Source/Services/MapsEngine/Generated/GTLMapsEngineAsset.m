@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLMapsEngineMapItem.h
+//  GTLMapsEngineAsset.m
 //
 
 // ----------------------------------------------------------------------------
@@ -27,18 +27,35 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineMapItem (0 custom class methods, 0 custom properties)
+//   GTLMapsEngineAsset (0 custom class methods, 10 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLMapsEngineAsset.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLMapsEngineMapItem
+//   GTLMapsEngineAsset
 //
 
-@interface GTLMapsEngineMapItem : GTLObject
+@implementation GTLMapsEngineAsset
+@dynamic bbox, creationTime, descriptionProperty, identifier, lastModifiedTime,
+         name, projectId, resource, tags, type;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      @"description", @"descriptionProperty",
+      @"id", @"identifier",
+      nil];
+  return map;
+}
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      [NSNumber class], @"bbox",
+      [NSString class], @"tags",
+      nil];
+  return map;
+}
+
 @end

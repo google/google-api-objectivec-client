@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLMapsEngineMapItem.h
+//  GTLMapsEngineTableColumn.h
 //
 
 // ----------------------------------------------------------------------------
@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineMapItem (0 custom class methods, 0 custom properties)
+//   GTLMapsEngineTableColumn (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -37,8 +37,15 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLMapsEngineMapItem
+//   GTLMapsEngineTableColumn
 //
 
-@interface GTLMapsEngineMapItem : GTLObject
+@interface GTLMapsEngineTableColumn : GTLObject
+
+// The column name.
+@property (copy) NSString *name;
+
+// The type of data stored in this column.
+@property (copy) NSString *type;
+
 @end

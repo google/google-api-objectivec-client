@@ -44,11 +44,10 @@
 
 @interface GTLMapsEngineGeoJsonMultiLineString : GTLObject
 
-// The coordinates of this multi-line string as an array of line string
-// coordinate arrays.
+// An array of at least two GeoJsonLineString coordinate arrays.
 @property (retain) NSArray *coordinates;  // of NSArray of NSArray of NSNumber (doubleValue)
 
-// Identifies this object as a multi-line string.
+// Identifies this object as a GeoJsonMultiLineString.
 @property (copy) NSString *type;
 
 @end

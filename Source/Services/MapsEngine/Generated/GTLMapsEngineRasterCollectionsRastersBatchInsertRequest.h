@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLMapsEngineResourcesListResponse.h
+//  GTLMapsEngineRasterCollectionsRastersBatchInsertRequest.h
 //
 
 // ----------------------------------------------------------------------------
@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineResourcesListResponse (0 custom class methods, 2 custom properties)
+//   GTLMapsEngineRasterCollectionsRastersBatchInsertRequest (0 custom class methods, 1 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -35,21 +35,16 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLMapsEngineResource;
-
 // ----------------------------------------------------------------------------
 //
-//   GTLMapsEngineResourcesListResponse
+//   GTLMapsEngineRasterCollectionsRastersBatchInsertRequest
 //
 
-// The response returned by a call to resources.List.
+// The request sent to rasterCollections.Rasters.BatchInsert.
 
-@interface GTLMapsEngineResourcesListResponse : GTLObject
+@interface GTLMapsEngineRasterCollectionsRastersBatchInsertRequest : GTLObject
 
-// Assets returned.
-@property (retain) NSArray *assets;  // of GTLMapsEngineResource
-
-// Next page token.
-@property (copy) NSString *nextPageToken;
+// An array of Raster asset IDs to be added to this RasterCollection.
+@property (retain) NSArray *ids;  // of NSString
 
 @end

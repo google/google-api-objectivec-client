@@ -42,11 +42,10 @@
 
 @interface GTLMapsEngineGeoJsonPoint : GTLObject
 
-// The coordinates of this point as a position in [longitude, latitude] or
-// [longitude, latitude, altitude] form.
+// A single GeoJsonPosition, specifying the location of the point.
 @property (retain) NSArray *coordinates;  // of NSNumber (doubleValue)
 
-// Identifies this object as a point.
+// Identifies this object as a GeoJsonPoint.
 @property (copy) NSString *type;
 
 @end
