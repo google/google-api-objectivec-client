@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud Storage API (storage/v1beta2)
+//   Cloud Storage API (storage/v1)
 // Description:
 //   Lets you store and retrieve potentially-large, immutable data objects.
 // Documentation:
@@ -52,14 +52,14 @@
 // Access controls on the object.
 @property (retain) NSArray *acl;  // of GTLStorageObjectAccessControl
 
-// The bucket containing this object.
+// The name of the bucket containing this object.
 @property (copy) NSString *bucket;
 
 // Cache-Control directive for the object data.
 @property (copy) NSString *cacheControl;
 
 // Number of underlying components that make up this object. Components are
-// accumulated by compose operations and are limited to a count of 32.
+// accumulated by compose operations.
 @property (retain) NSNumber *componentCount;  // intValue
 
 // Content-Disposition of the object data.
@@ -99,9 +99,10 @@
 // User-provided metadata, in key/value pairs.
 @property (retain) GTLStorageObjectMetadata *metadata;
 
-// The generation of the metadata for this object at this generation. Used for
-// metadata versioning. Has no meaning outside of the context of this
-// generation.
+// The version of the metadata for this object at this generation. Used for
+// preconditions and for detecting changes in metadata. A metageneration number
+// is only meaningful in the context of a particular generation of a particular
+// object.
 @property (retain) NSNumber *metageneration;  // longLongValue
 
 // The name of this object. Required if not specified by URL parameter.

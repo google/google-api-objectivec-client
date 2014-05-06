@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,19 +20,22 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud Storage API (storage/v1beta2)
+//   Cloud Storage API (storage/v1)
 // Description:
 //   Lets you store and retrieve potentially-large, immutable data objects.
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 // Classes:
-//   GTLStorageBucketAccessControl (0 custom class methods, 10 custom properties)
+//   GTLStorageBucketAccessControl (0 custom class methods, 11 custom properties)
+//   GTLStorageBucketAccessControlProjectTeam (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
 #else
   #import "GTLObject.h"
 #endif
+
+@class GTLStorageBucketAccessControlProjectTeam;
 
 // ----------------------------------------------------------------------------
 //
@@ -58,6 +61,7 @@
 // - group-groupId
 // - group-email
 // - domain-domain
+// - project-team-projectId
 // - allUsers
 // - allAuthenticatedUsers Examples:
 // - The user liz@example.com would be user-liz@example.com.
@@ -80,10 +84,29 @@
 // storage#bucketAccessControl.
 @property (copy) NSString *kind;
 
+// The project team associated with the entity, if any.
+@property (retain) GTLStorageBucketAccessControlProjectTeam *projectTeam;
+
 // The access permission for the entity. Can be READER, WRITER, or OWNER.
 @property (copy) NSString *role;
 
 // The link to this access-control entry.
 @property (copy) NSString *selfLink;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLStorageBucketAccessControlProjectTeam
+//
+
+@interface GTLStorageBucketAccessControlProjectTeam : GTLObject
+
+// The project number.
+@property (copy) NSString *projectNumber;
+
+// The team. Can be owners, editors, or viewers.
+@property (copy) NSString *team;
 
 @end

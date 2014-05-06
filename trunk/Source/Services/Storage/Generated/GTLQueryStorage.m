@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud Storage API (storage/v1beta2)
+//   Cloud Storage API (storage/v1)
 // Description:
 //   Lets you store and retrieve potentially-large, immutable data objects.
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 // Classes:
-//   GTLQueryStorage (34 custom class methods, 30 custom properties)
+//   GTLQueryStorage (34 custom class methods, 33 custom properties)
 //   GTLStorageObjectsComposeSourceObjectsItem (0 custom class methods, 3 custom properties)
 //   GTLStorageObjectsComposeSourceObjectsItemObjectPreconditions (0 custom class methods, 1 custom properties)
 
@@ -44,13 +44,15 @@
 
 @implementation GTLQueryStorage
 
-@dynamic bucket, delimiter, destination, destinationResource, destinationBucket,
-         destinationObject, entity, fields, generation, ifGenerationMatch,
-         ifGenerationNotMatch, ifMetagenerationMatch, ifMetagenerationNotMatch,
+@dynamic bucket, contentEncoding, delimiter, destination, destinationResource,
+         destinationBucket, destinationObject, destinationPredefinedAcl, entity,
+         fields, generation, ifGenerationMatch, ifGenerationNotMatch,
+         ifMetagenerationMatch, ifMetagenerationNotMatch,
          ifSourceGenerationMatch, ifSourceGenerationNotMatch,
          ifSourceMetagenerationMatch, ifSourceMetagenerationNotMatch, kind,
-         maxResults, name, object, pageToken, prefix, project, projection,
-         sourceBucket, sourceGeneration, sourceObject, sourceObjects, versions;
+         maxResults, name, object, pageToken, predefinedAcl, prefix, project,
+         projection, sourceBucket, sourceGeneration, sourceObject,
+         sourceObjects, versions;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map =

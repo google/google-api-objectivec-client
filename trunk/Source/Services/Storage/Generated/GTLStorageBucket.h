@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud Storage API (storage/v1beta2)
+//   Cloud Storage API (storage/v1)
 // Description:
 //   Lets you store and retrieve potentially-large, immutable data objects.
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 // Classes:
-//   GTLStorageBucket (0 custom class methods, 17 custom properties)
+//   GTLStorageBucket (0 custom class methods, 18 custom properties)
 //   GTLStorageBucketCorsItem (0 custom class methods, 4 custom properties)
 //   GTLStorageBucketLifecycle (0 custom class methods, 1 custom properties)
 //   GTLStorageBucketLogging (0 custom class methods, 2 custom properties)
@@ -83,13 +83,13 @@
 // The kind of item this is. For buckets, this is always storage#bucket.
 @property (copy) NSString *kind;
 
-// The bucket's lifecycle configuration. See object lifecycle management for
-// more information.
+// The bucket's lifecycle configuration. See lifecycle management for more
+// information.
 @property (retain) GTLStorageBucketLifecycle *lifecycle;
 
 // The location of the bucket. Object data for objects in the bucket resides in
-// physical storage within this region. Typical values are US and EU. Defaults
-// to US. See the developer's guide for the authoritative list.
+// physical storage within this region. Defaults to US. See the developer's
+// guide for the authoritative list.
 @property (copy) NSString *location;
 
 // The bucket's logging configuration, which defines the destination bucket and
@@ -102,16 +102,19 @@
 // The name of the bucket.
 @property (copy) NSString *name;
 
-// The owner of the bucket. This will always be the project team's owner group.
+// The owner of the bucket. This is always the project team's owner group.
 @property (retain) GTLStorageBucketOwner *owner;
+
+// The project number of the project the bucket belongs to.
+@property (retain) NSNumber *projectNumber;  // unsignedLongLongValue
 
 // The URI of this bucket.
 @property (copy) NSString *selfLink;
 
-// The bucket's storage class. This defines how objects in the bucket will be
-// stored and determines the SLA and the cost of storage. Typical values are
-// STANDARD and DURABLE_REDUCED_AVAILABILITY. Defaults to STANDARD. See the
-// developer's guide for the authoritative list.
+// The bucket's storage class. This defines how objects in the bucket are stored
+// and determines the SLA and the cost of storage. Typical values are STANDARD
+// and DURABLE_REDUCED_AVAILABILITY. Defaults to STANDARD. See the developer's
+// guide for the authoritative list.
 @property (copy) NSString *storageClass;
 
 // Creation time of the bucket in RFC 3339 format.
@@ -137,9 +140,9 @@
 // preflight responses.
 @property (retain) NSNumber *maxAgeSeconds;  // intValue
 
-// The list of HTTP methods on which to include CORS response headers, e.g. GET,
-// OPTIONS, POST. Note, "*" is permitted in the list of methods, and means "any
-// method".
+// The list of HTTP methods on which to include CORS response headers, (GET,
+// OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means
+// "any method".
 @property (retain) NSArray *method;  // of NSString
 
 // The list of Origins eligible to receive CORS response headers. Note: "*" is
@@ -190,7 +193,7 @@
 
 @interface GTLStorageBucketOwner : GTLObject
 
-// The entity, in the form group-groupId.
+// The entity, in the form project-owner-projectId.
 @property (copy) NSString *entity;
 
 // The ID for the entity.
@@ -252,7 +255,7 @@
 
 @interface GTLStorageBucketLifecycleRuleItemAction : GTLObject
 
-// Type of the action, e.g. Delete.
+// Type of the action. Currently, only Delete is supported.
 @property (copy) NSString *type;
 
 @end
@@ -269,9 +272,9 @@
 // reaches the specified age.
 @property (retain) NSNumber *age;  // intValue
 
-// A date in RFC 3339 format with only the date part, e.g. "2013-01-15". This
-// condition is satisfied when an object is created before midnight of the
-// specified date in UTC.
+// A date in RFC 3339 format with only the date part (for instance,
+// "2013-01-15"). This condition is satisfied when an object is created before
+// midnight of the specified date in UTC.
 @property (retain) GTLDateTime *createdBefore;  // Date only (yyyy-mm-dd)
 
 // Relevant only for versioned objects. If the value is true, this condition
