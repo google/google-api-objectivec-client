@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,12 +41,12 @@ GTL_EXTERN NSString * const kGTLAuthScopeOrkut;          // "https://www.googlea
 // View your Orkut data
 GTL_EXTERN NSString * const kGTLAuthScopeOrkutReadonly;  // "https://www.googleapis.com/auth/orkut.readonly"
 
-// Collection
+// GTLQueryOrkut - Collection
 GTL_EXTERN NSString * const kGTLOrkutCollectionAll;     // "all"
 GTL_EXTERN NSString * const kGTLOrkutCollectionScraps;  // "scraps"
 GTL_EXTERN NSString * const kGTLOrkutCollectionStream;  // "stream"
 
-// OrderBy
+// GTLQueryOrkut - OrderBy
 GTL_EXTERN NSString * const kGTLOrkutOrderByAscending;   // "ascending"
 GTL_EXTERN NSString * const kGTLOrkutOrderByDescending;  // "descending"
 GTL_EXTERN NSString * const kGTLOrkutOrderById;          // "id"

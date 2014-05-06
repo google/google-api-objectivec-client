@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,12 +32,12 @@
 NSString * const kGTLAuthScopeCalendar         = @"https://www.googleapis.com/auth/calendar";
 NSString * const kGTLAuthScopeCalendarReadonly = @"https://www.googleapis.com/auth/calendar.readonly";
 
-// MinAccessRole
+// GTLQueryCalendar - MinAccessRole
 NSString * const kGTLCalendarMinAccessRoleFreeBusyReader = @"freeBusyReader";
 NSString * const kGTLCalendarMinAccessRoleOwner          = @"owner";
 NSString * const kGTLCalendarMinAccessRoleReader         = @"reader";
 NSString * const kGTLCalendarMinAccessRoleWriter         = @"writer";
 
-// OrderBy
+// GTLQueryCalendar - OrderBy
 NSString * const kGTLCalendarOrderByStartTime = @"startTime";
 NSString * const kGTLCalendarOrderByUpdated   = @"updated";

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,21 +40,21 @@ GTL_EXTERN NSString * const kGTLAuthScopeBlogger;          // "https://www.googl
 // View your Blogger account
 GTL_EXTERN NSString * const kGTLAuthScopeBloggerReadonly;  // "https://www.googleapis.com/auth/blogger.readonly"
 
-// OrderBy
+// GTLQueryBlogger - OrderBy
 GTL_EXTERN NSString * const kGTLBloggerOrderByPublished;  // "published"
 GTL_EXTERN NSString * const kGTLBloggerOrderByUpdated;    // "updated"
 
-// Range
+// GTLQueryBlogger - Range
 GTL_EXTERN NSString * const kGTLBloggerRangeAll;      // "all"
 GTL_EXTERN NSString * const kGTLBloggerRangeX30days;  // "30DAYS"
 GTL_EXTERN NSString * const kGTLBloggerRangeX7days;   // "7DAYS"
 
-// Role
+// GTLQueryBlogger - Role
 GTL_EXTERN NSString * const kGTLBloggerRoleAdmin;   // "ADMIN"
 GTL_EXTERN NSString * const kGTLBloggerRoleAuthor;  // "AUTHOR"
 GTL_EXTERN NSString * const kGTLBloggerRoleReader;  // "READER"
 
-// Status
+// GTLQueryBlogger - Status
 GTL_EXTERN NSString * const kGTLBloggerStatusDraft;      // "draft"
 GTL_EXTERN NSString * const kGTLBloggerStatusEmptied;    // "emptied"
 GTL_EXTERN NSString * const kGTLBloggerStatusLive;       // "live"
@@ -62,7 +62,7 @@ GTL_EXTERN NSString * const kGTLBloggerStatusPending;    // "pending"
 GTL_EXTERN NSString * const kGTLBloggerStatusScheduled;  // "scheduled"
 GTL_EXTERN NSString * const kGTLBloggerStatusSpam;       // "spam"
 
-// View
+// GTLQueryBlogger - View
 GTL_EXTERN NSString * const kGTLBloggerViewAdmin;   // "ADMIN"
 GTL_EXTERN NSString * const kGTLBloggerViewAuthor;  // "AUTHOR"
 GTL_EXTERN NSString * const kGTLBloggerViewReader;  // "READER"

@@ -57,7 +57,8 @@ static NSString *kReturnsSchemaParameterKey       = @"returnsSchema";
 static NSString *kAllMethodObjectParametersKey    = @"allMethodObjectParameters";
 static NSString *kAllMethodObjectParameterRefsKey = @"allMethodObjectParameterRefs";
 static NSString *kSameNamedParametersKey          = @"sameNamedParameters";
-static NSString *kBuiltRPCUrlStringKey            = @"builtRPCUrlStringKey";
+static NSString *kBuiltRPCUrlStringKey            = @"builtRPCUrlString";
+static NSString *kIsItemsSchemaKey                = @"isItemsSchema";
 
 typedef enum {
   kGenerateInterface = 1,
@@ -206,6 +207,26 @@ static NSArray *DictionaryObjectsSortedByKeys(NSDictionary *dict) {
   return result;
 }
 
+static NSString *ConstantName(NSString *grouping, NSString *name) {
+  // Some constants are things like "@self", so remove the "@" for the name
+  // we generated.
+  if ([name hasPrefix:@"@"]) {
+    name = [name substringFromIndex:1];
+  }
+
+  // Some services use enum values that are all caps. These end up looking
+  // pretty bad, so if the name is all caps, we downcase it and hope that
+  // ends up better.
+  if ([name isEqual:[name uppercaseString]]) {
+    name = [name lowercaseString];
+  }
+
+  NSString *formattedName = [FHUtils objcName:name shouldCapitalize:YES];
+  NSString *result =
+    [NSString stringWithFormat:@"k%@%@", grouping, formattedName];
+  return result;
+}
+
 @implementation FHGenerator
 
 @synthesize api = api_,
@@ -307,8 +328,7 @@ static NSArray *DictionaryObjectsSortedByKeys(NSDictionary *dict) {
     [method.returns setProperty:generatorAsValue forKey:kWrappedGeneratorKey];
     [method.returns setProperty:[methodName stringByAppendingString:@"-Returns"]
                          forKey:kNameKey];
-    [method.returns.resolvedSchema setProperty:[NSNumber numberWithBool:YES]
-                                        forKey:kReturnsSchemaParameterKey];
+    [method.returns.resolvedSchema setProperty:@YES forKey:kReturnsSchemaParameterKey];
 
     // Spin over the parameters
     for (NSString *paramName in method.parameters.additionalProperties) {
@@ -336,6 +356,7 @@ static NSArray *DictionaryObjectsSortedByKeys(NSDictionary *dict) {
 
   [self adornSchemas:schema.properties parentSchema:schema];
   [self adornSchema:schema.items name:@"item" parentSchema:schema];
+  [schema.items setProperty:@YES forKey:kIsItemsSchemaKey];
 
   // If the this schema's name ends in 's', drop it and use it for the
   // name of the subschema.  If the schema had properties, add "additions"
@@ -2594,8 +2615,7 @@ static NSString *MappedParamName(NSString *name) {
         if (![objcType1 isEqual:objcType2]) {
           // Mark the parameters to be overloaded to handle multiple types.
           for (GTLDiscoveryJsonSchema *sameNamedParam in sameNamed) {
-            [sameNamedParam setProperty:[NSNumber numberWithBool:YES]
-                                 forKey:kOverloadedParameterTypeKey];
+            [sameNamedParam setProperty:@YES forKey:kOverloadedParameterTypeKey];
           }
           // Messages for this are reported lower so there is one line for all
           // duplicates.
@@ -2603,8 +2623,7 @@ static NSString *MappedParamName(NSString *name) {
           // If the previous was overloaded, we have to mark this new one as
           // overloaded also.
           if ([previousParam propertyForKey:kOverloadedParameterTypeKey]) {
-            [param setProperty:[NSNumber numberWithBool:YES]
-                        forKey:kOverloadedParameterTypeKey];
+            [param setProperty:@YES forKey:kOverloadedParameterTypeKey];
           }
         }
         if (!GTL_AreEqualOrBothNil(itemsClassName1, itemsClassName2)) {
@@ -2614,14 +2633,11 @@ static NSString *MappedParamName(NSString *name) {
           } else if (![objcType2 isEqual:@"NSArray"]) {
             // obj1 array, obj2 not
             // TODO: fix the above issue.
-            [param.resolvedSchema setProperty:[NSNumber numberWithBool:YES]
-                                       forKey:kOverloadedParameterArrayItemKey];
+            [param.resolvedSchema setProperty:@YES forKey:kOverloadedParameterArrayItemKey];
           } else {
             // Both are arrays, but they take different types.
-            [param.resolvedSchema setProperty:[NSNumber numberWithBool:YES]
-                                       forKey:kOverloadedParameterArrayItemKey];
-            [previousParam.resolvedSchema setProperty:[NSNumber numberWithBool:YES]
-                                               forKey:kOverloadedParameterArrayItemKey];
+            [param.resolvedSchema setProperty:@YES forKey:kOverloadedParameterArrayItemKey];
+            [previousParam.resolvedSchema setProperty:@YES forKey:kOverloadedParameterArrayItemKey];
             NSString *errStr =
               [NSString stringWithFormat:@"Parameter '%@' has repeated type '%@' and '%@' (methods %@ and %@), will support anything in the array.",
                param.name,
@@ -2724,6 +2740,11 @@ static NSString *MappedParamName(NSString *name) {
   if (result == nil) {
     NSMutableDictionary *worker = [NSMutableDictionary dictionary];
 
+    // Note: schemas also have an enumDescriptions property, we don't do
+    // anything with it when reporting the enums in the constants files. The
+    // only place that seems to set them is the for the query parameters,
+    // and we report the enums & comments on the query methods instead.
+
     // Values from query parameters
     for (GTLDiscoveryRpcMethod *method in self.allMethods) {
       NSArray *methodParameters = DictionaryObjectsSortedByKeys(method.parameters.additionalProperties);
@@ -2737,15 +2758,69 @@ static NSString *MappedParamName(NSString *name) {
              param.name, param.method.name, param.type];
           }
           // Merge in these values
-          NSMutableDictionary *groupMap = [worker objectForKey:param.capObjCName];
+          NSString *groupName = [NSString stringWithFormat:@"%@ - %@",
+                                 self.generator.objcQueryClassName,
+                                 param.capObjCName];
+          NSMutableDictionary *groupMap = [worker objectForKey:groupName];
           if (groupMap == nil) {
             groupMap = [NSMutableDictionary dictionary];
-            [worker setObject:groupMap forKey:param.capObjCName];
+            [worker setObject:groupMap forKey:groupName];
           }
           for (NSString *enumValue in enumProperty) {
             NSString *constName = [param constantNamed:enumValue];
             [groupMap setObject:enumValue forKey:constName];
           }
+        }
+      }
+    }
+
+    // Check all the schemes for enums.
+    for (GTLDiscoveryJsonSchema *schema in self.allSchemas) {
+      NSArray *enumProperty = schema.enumProperty;
+      if ([enumProperty count] > 0) {
+        if (![schema.type isEqual:@"string"]) {
+          [NSException raise:kFatalGeneration
+                      format:@"Collecting enum values, '%@'is type %@ (instead of string)",
+           schema.fullSchemaName, schema.type];
+        }
+        // We want to group it by the property/field the thing is hung on. The
+        // catch is arrays (of arrays)*, we don't want to use the "item" schema
+        // so need to walk up and find the right parent schema.
+        //   schema - has the enum
+        //   parentScheme - will be where to scope it
+        //   propertySchema - will be what to group it as
+        GTLDiscoveryJsonSchema *parentSchema = schema.parentSchema;
+        GTLDiscoveryJsonSchema *propertySchema = schema;
+        while ([[propertySchema propertyForKey:kIsItemsSchemaKey] boolValue]) {
+          propertySchema = parentSchema;
+          parentSchema = parentSchema.parentSchema;
+        }
+        NSString *groupBase = parentSchema.objcClassName;
+        NSString *groupLeaf = propertySchema.capObjCName;
+        if (parentSchema == nil || propertySchema == nil) {
+          // If we failed to find parent schemas to make the grouping, use
+          // [service] [schema].  This happens when something has a root schema
+          // that is just the string type, and the reference it from other
+          // places.
+          groupBase = [NSString stringWithFormat:@"%@%@",
+                       kProjectPrefix,
+                       self.generator.formattedApiName];
+          groupLeaf = schema.capObjCName;
+        }
+        NSString *groupName = [NSString stringWithFormat:@"%@ - %@",
+                               groupBase, groupLeaf];
+        NSString *groupPrefix = [NSString stringWithFormat:@"%@_%@_",
+                                 groupBase, groupLeaf];
+        if ([worker objectForKey:groupName]) {
+          [NSException raise:kFatalGeneration
+                      format:@"Collecting enum values, %@ needed group name '%@', but it is already in use.",
+           schema.fullSchemaName, groupName];
+        }
+        NSMutableDictionary *groupMap = [NSMutableDictionary dictionary];
+        [worker setObject:groupMap forKey:groupName];
+        for (NSString *enumValue in enumProperty) {
+          NSString *constName = ConstantName(groupPrefix, enumValue);
+          [groupMap setObject:enumValue forKey:constName];
         }
       }
     }
@@ -3569,24 +3644,11 @@ static NSString *OverrideName(NSString *name, EQueryOrObject queryOrObject,
 }
 
 - (NSString *)constantNamed:(NSString *)name {
-  // Some constants are things like "@self", so remove the "@" for the name
-  // we generated.
-  if ([name hasPrefix:@"@"]) {
-    name = [name substringFromIndex:1];
-  }
-
-  // Some services use enum values that are all caps. These end up looking
-  // pretty bad, so if the name is all caps, we downcase it and hope that
-  // ends up better.
-  if ([name isEqual:[name uppercaseString]]) {
-    name = [name lowercaseString];
-  }
-
-  NSString *formattedName = [FHUtils objcName:name shouldCapitalize:YES];
-  NSString *result =
-    [NSString stringWithFormat:@"k%@%@%@%@",
-     kProjectPrefix, self.generator.formattedApiName, self.capObjCName,
-     formattedName];
+  NSString *group = [NSString stringWithFormat:@"%@%@%@",
+                     kProjectPrefix,
+                     self.generator.formattedApiName,
+                     self.capObjCName];
+  NSString *result = ConstantName(group, name);
   return result;
 }
 

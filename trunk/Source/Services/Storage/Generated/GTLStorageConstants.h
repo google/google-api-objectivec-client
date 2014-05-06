@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud Storage API (storage/v1beta2)
+//   Cloud Storage API (storage/v1)
 // Description:
 //   Lets you store and retrieve potentially-large, immutable data objects.
 // Documentation:
@@ -42,6 +42,23 @@ GTL_EXTERN NSString * const kGTLAuthScopeStorageDevstorageReadOnly;  // "https:/
 // Manage your data in Google Cloud Storage
 GTL_EXTERN NSString * const kGTLAuthScopeStorageDevstorageReadWrite;  // "https://www.googleapis.com/auth/devstorage.read_write"
 
-// Projection
+// GTLQueryStorage - DestinationPredefinedAcl
+GTL_EXTERN NSString * const kGTLStorageDestinationPredefinedAclAuthenticatedRead;  // "authenticatedRead"
+GTL_EXTERN NSString * const kGTLStorageDestinationPredefinedAclBucketOwnerFullControl;  // "bucketOwnerFullControl"
+GTL_EXTERN NSString * const kGTLStorageDestinationPredefinedAclBucketOwnerRead;  // "bucketOwnerRead"
+GTL_EXTERN NSString * const kGTLStorageDestinationPredefinedAclPrivate;  // "private"
+GTL_EXTERN NSString * const kGTLStorageDestinationPredefinedAclProjectPrivate;  // "projectPrivate"
+GTL_EXTERN NSString * const kGTLStorageDestinationPredefinedAclPublicRead;  // "publicRead"
+
+// GTLQueryStorage - PredefinedAcl
+GTL_EXTERN NSString * const kGTLStoragePredefinedAclAuthenticatedRead;  // "authenticatedRead"
+GTL_EXTERN NSString * const kGTLStoragePredefinedAclBucketOwnerFullControl;  // "bucketOwnerFullControl"
+GTL_EXTERN NSString * const kGTLStoragePredefinedAclBucketOwnerRead;  // "bucketOwnerRead"
+GTL_EXTERN NSString * const kGTLStoragePredefinedAclPrivate;    // "private"
+GTL_EXTERN NSString * const kGTLStoragePredefinedAclProjectPrivate;  // "projectPrivate"
+GTL_EXTERN NSString * const kGTLStoragePredefinedAclPublicRead;  // "publicRead"
+GTL_EXTERN NSString * const kGTLStoragePredefinedAclPublicReadWrite;  // "publicReadWrite"
+
+// GTLQueryStorage - Projection
 GTL_EXTERN NSString * const kGTLStorageProjectionFull;   // "full"
 GTL_EXTERN NSString * const kGTLStorageProjectionNoAcl;  // "noAcl"
