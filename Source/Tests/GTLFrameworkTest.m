@@ -13,11 +13,11 @@
  * limitations under the License.
  */
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
 #import "GTLFramework.h"
 
-@interface GTLFrameworkTest : SenTestCase
+@interface GTLFrameworkTest : XCTestCase
 @end
 
 @implementation GTLFrameworkTest
@@ -30,9 +30,9 @@
 
   GTLFrameworkVersion(&major, &minor, &release);
 
-  STAssertTrue(major != NSUIntegerMax, @"version unset");
-  STAssertTrue(minor != NSUIntegerMax, @"version unset");
-  STAssertTrue(release != NSUIntegerMax, @"version unset");
+  XCTAssertTrue(major != NSUIntegerMax, @"version unset");
+  XCTAssertTrue(minor != NSUIntegerMax, @"version unset");
+  XCTAssertTrue(release != NSUIntegerMax, @"version unset");
 
   // Check that the Framework bundle's Info.plist has the proper version,
   // matching the GTLFrameworkVersion call
@@ -42,7 +42,7 @@
 
   NSString *plistPath = @"Resources/GTLFramework-Info.plist";
   NSDictionary *infoDict = [NSDictionary dictionaryWithContentsOfFile:plistPath];
-  STAssertNotNil(infoDict, @"Could not find GTLFramework-Info.plist");
+  XCTAssertNotNil(infoDict, @"Could not find GTLFramework-Info.plist");
 
   if (infoDict) {
 
@@ -50,7 +50,7 @@
 
     NSString *plistVersionStr = [infoDict valueForKey:@"CFBundleVersion"];
 
-    STAssertEqualObjects(plistVersionStr, binaryVersionStr,
+    XCTAssertEqualObjects(plistVersionStr, binaryVersionStr,
                          @"Binary/plist version mismatch");
   }
 }

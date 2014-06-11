@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
 #import <objc/runtime.h>
 
@@ -60,7 +60,7 @@
 @dynamic altPrime;
 @end
 
-@interface GTLQueryTest : SenTestCase
+@interface GTLQueryTest : XCTestCase
 @end
 
 @implementation GTLQueryTest
@@ -69,14 +69,14 @@
   GTLTestingQuery *query;
 
   query = [GTLTestingQuery queryWithMethodName:nil];
-  STAssertNil(query, @"nil method name");
+  XCTAssertNil(query, @"nil method name");
 
   query = [GTLTestingQuery queryWithMethodName:@""];
-  STAssertNil(query, @"empty method name");
+  XCTAssertNil(query, @"empty method name");
 
   NSString *methodName = @"foo.bar.baz";
   query = [GTLTestingQuery queryWithMethodName:methodName];
-  STAssertNotNil(query, @"failed to make query");
+  XCTAssertNotNil(query, @"failed to make query");
 
   NSMutableDictionary *expected;
 
@@ -88,73 +88,73 @@
               @"test user", @"user-id",
               @"12345", @"msgId",
               nil];
-  STAssertEqualObjects(query.JSON, expected, nil);
+  XCTAssertEqualObjects(query.JSON, expected);
 
   query.alt = @"simple";
   expected[@"alt"] = @"simple";
-  STAssertEqualObjects(query.JSON, expected, nil);
+  XCTAssertEqualObjects(query.JSON, expected);
 
   query.qS = @"foo bar baz";
   expected[@"q.s"] = @"foo bar baz";
-  STAssertEqualObjects(query.JSON, expected, nil);
+  XCTAssertEqualObjects(query.JSON, expected);
 
   query.maxResults = 15;
   expected[@"max_results"] = @15U;
-  STAssertEqualObjects(query.JSON, expected, nil);
-  STAssertEquals(query.maxResults, (NSUInteger)15, nil);
+  XCTAssertEqualObjects(query.JSON, expected);
+  XCTAssertEqual(query.maxResults, (NSUInteger)15);
   
   query.aNumber = -10;
   expected[@"aNumber"] = @-10;
-  STAssertEqualObjects(query.JSON, expected, nil);
-  STAssertEquals(query.aNumber, (NSInteger)-10, nil);
+  XCTAssertEqualObjects(query.JSON, expected);
+  XCTAssertEqual(query.aNumber, (NSInteger)-10);
 
   query.aLongLong = -1000000000;
   expected[@"aLongLong"] = @-1000000000LL;
-  STAssertEqualObjects(query.JSON, expected, nil);
-  STAssertEquals(query.aLongLong, (long long)-1000000000, nil);
+  XCTAssertEqualObjects(query.JSON, expected);
+  XCTAssertEqual(query.aLongLong, (long long)-1000000000);
 
   query.aULongLong = 1000000000;
   expected[@"aULongLong"] = @1000000000ULL;
-  STAssertEqualObjects(query.JSON, expected, nil);
+  XCTAssertEqualObjects(query.JSON, expected);
 #if __LP64__
   // For reasons I can't currently explain, this fails in 32bit release only.
   // Debug 32bit passes.  So it has to be something about how things expand
   // and compiler settings.
-  STAssertEquals((unsigned long long)query.aULongLong, (unsigned long long)1000000000, nil);
+  XCTAssertEqual((unsigned long long)query.aULongLong, (unsigned long long)1000000000);
 #endif
   
   query.cost = 123.4f;
   expected[@"cost"] = @123.4f;
-  STAssertEqualObjects(query.JSON, expected, nil);
-  STAssertEquals(query.cost, 123.4f, nil);
+  XCTAssertEqualObjects(query.JSON, expected);
+  XCTAssertEqualWithAccuracy(query.cost, 123.4f, 0.001);
   
   query.minValue = 20.0;
   expected[@"minValue"] = @20.0;
-  STAssertEqualObjects(query.JSON, expected, nil);
-  STAssertEquals(query.minValue, 20.0, nil);
+  XCTAssertEqualObjects(query.JSON, expected);
+  XCTAssertEqualWithAccuracy(query.minValue, 20.0, 0.001);
 
   query.preferred = NO;
   expected[@"preferred"] = @NO;
-  STAssertEqualObjects(query.JSON, expected, nil);
-  STAssertFalse(query.preferred, nil);
+  XCTAssertEqualObjects(query.JSON, expected);
+  XCTAssertFalse(query.preferred);
   
   // test setting array of basic types
   
   // string
   query.arrayString = @[@"foo bar"];
   expected[@"arrayString"] = @[@"foo bar"];
-  STAssertEqualObjects(query.JSON, expected, nil);
+  XCTAssertEqualObjects(query.JSON, expected);
 
   // number
   query.arrayNumber = @[@1234];
   expected[@"arrayNumber"] = @[@1234];
-  STAssertEqualObjects(query.JSON, expected, nil);
+  XCTAssertEqualObjects(query.JSON, expected);
   
   // date
   NSString * const dateStr = @"2011-01-14T15:00:00-01:00";
   query.arrayDate = @[ [GTLDateTime dateTimeWithRFC3339String:dateStr] ];
   expected[@"arrayDate"] = @[dateStr];
-  STAssertEqualObjects(query.JSON, expected, nil);  
+  XCTAssertEqualObjects(query.JSON, expected);  
 }
 
 - (void)testParameterNameSubStrings {
@@ -164,7 +164,7 @@
   
   GTLTestingQueryWithPrimeKey *obj =
     [GTLTestingQueryWithPrimeKey queryWithMethodName:@"foo.bar.baz"];
-  STAssertNotNil(obj, @"failed to make query");
+  XCTAssertNotNil(obj, @"failed to make query");
 
   // Test lookup for a setter.
   
@@ -172,12 +172,12 @@
   obj.altPrime = @"for subclass";
   NSDictionary *expected = @{ @"alt": @"for base class",
                               @"altPrime": @"for subclass" };
-  STAssertEqualObjects(obj.JSON, expected, nil);
+  XCTAssertEqualObjects(obj.JSON, expected);
   
   // Test lookup for a getter.
   
-  STAssertEqualObjects(obj.alt, @"for base class", nil);
-  STAssertEqualObjects(obj.altPrime, @"for subclass", nil);
+  XCTAssertEqualObjects(obj.alt, @"for base class");
+  XCTAssertEqualObjects(obj.altPrime, @"for subclass");
 }
 
 

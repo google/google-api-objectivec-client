@@ -13,11 +13,11 @@
  * limitations under the License.
  */
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
 #import "GTLUtilities.h"
 
-@interface GTLUtilitiesTest : SenTestCase
+@interface GTLUtilitiesTest : XCTestCase
 @end
 
 @implementation GTLUtilitiesTest
@@ -29,28 +29,28 @@
 
   input = nil;
   output = [GTLUtilities stringByPercentEncodingUTF8ForString:input];
-  STAssertNil(output, @"nil test");
+  XCTAssertNil(output, @"nil test");
 
   input = @"";
   output = [GTLUtilities stringByPercentEncodingUTF8ForString:input];
-  STAssertEqualObjects(output, input, @"empty string");
+  XCTAssertEqualObjects(output, input, @"empty string");
 
   input = @"Fred & Wilma";
   output = [GTLUtilities stringByPercentEncodingUTF8ForString:input];
-  STAssertEqualObjects(output, input, @"plain string");
+  XCTAssertEqualObjects(output, input, @"plain string");
 
   input = [NSString stringWithFormat:@"The Beach at S%Cte", (unichar)0x00E8];
   output = [GTLUtilities stringByPercentEncodingUTF8ForString:input];
-  STAssertEqualObjects(output, @"The Beach at S%C3%A8te", @"8-bit failure");
+  XCTAssertEqualObjects(output, @"The Beach at S%C3%A8te", @"8-bit failure");
 
   input = @"\ttab\tline1\rline2%percent\nline3";
   output = [GTLUtilities stringByPercentEncodingUTF8ForString:input];
-  STAssertEqualObjects(output, @"%09tab%09line1%0Dline2%25percent%0Aline3",
+  XCTAssertEqualObjects(output, @"%09tab%09line1%0Dline2%25percent%0Aline3",
                        @"control char");
 
   input = [NSString stringWithFormat:@"photo%C.jpg", (unichar)0x53C3];
   output = [GTLUtilities stringByPercentEncodingUTF8ForString:input];
-  STAssertEqualObjects(output, @"photo%E5%8F%83.jpg", @"cjk failure");
+  XCTAssertEqualObjects(output, @"photo%E5%8F%83.jpg", @"cjk failure");
 }
 
 - (void)testURLEncodingForURI {
@@ -60,26 +60,26 @@
 
   input = nil;
   output = [GTLUtilities stringByURLEncodingForURI:input];
-  STAssertNil(output, @"nil test");
+  XCTAssertNil(output, @"nil test");
 
   input = @"";
   output = [GTLUtilities stringByURLEncodingForURI:input];
-  STAssertEqualObjects(output, input, @"empty string");
+  XCTAssertEqualObjects(output, input, @"empty string");
 
   input = @"abcdef";
   output = [GTLUtilities stringByURLEncodingForURI:input];
   expected = @"abcdef";
-  STAssertEqualObjects(output, expected, @"plain string");
+  XCTAssertEqualObjects(output, expected, @"plain string");
 
   input = @"abc def";
   output = [GTLUtilities stringByURLEncodingForURI:input];
   expected = @"abc%20def";
-  STAssertEqualObjects(output, expected, @"plain string with space");
+  XCTAssertEqualObjects(output, expected, @"plain string with space");
 
   input = @"abc!*'();:@&=+$,/?%#[]def";
   output = [GTLUtilities stringByURLEncodingForURI:input];
   expected = @"abc%21%2A%27%28%29%3B%3A%40%26%3D%2B%24%2C%2F%3F%25%23%5B%5Ddef";
-  STAssertEqualObjects(output, expected, @"all chars to escape");
+  XCTAssertEqualObjects(output, expected, @"all chars to escape");
 }
 
 - (void)testURLEncodingForStringParameter {
@@ -89,26 +89,26 @@
 
   input = nil;
   output = [GTLUtilities stringByURLEncodingStringParameter:input];
-  STAssertNil(output, @"nil test");
+  XCTAssertNil(output, @"nil test");
 
   input = @"";
   output = [GTLUtilities stringByURLEncodingStringParameter:input];
-  STAssertEqualObjects(output, input, @"empty string");
+  XCTAssertEqualObjects(output, input, @"empty string");
 
   input = @"abcdef";
   output = [GTLUtilities stringByURLEncodingStringParameter:input];
   expected = @"abcdef";
-  STAssertEqualObjects(output, expected, @"plain string");
+  XCTAssertEqualObjects(output, expected, @"plain string");
 
   input = @"abc def";
   output = [GTLUtilities stringByURLEncodingStringParameter:input];
   expected = @"abc+def";
-  STAssertEqualObjects(output, expected, @"plain string with space");
+  XCTAssertEqualObjects(output, expected, @"plain string with space");
 
   input = @"abc!*'();:@&=+$,/?%#[]def";
   output = [GTLUtilities stringByURLEncodingStringParameter:input];
   expected = @"abc%21%2A%27%28%29%3B%3A%40%26%3D%2B%24%2C%2F%3F%25%23%5B%5Ddef";
-  STAssertEqualObjects(output, expected, @"all chars to escape");
+  XCTAssertEqualObjects(output, expected, @"all chars to escape");
 }
 
 #pragma mark -
@@ -122,40 +122,40 @@
   inputStr = nil;
   inputDict = nil;
   output = [GTLUtilities URLWithString:inputStr queryParameters:inputDict];
-  STAssertNil(output, @"nil string test");
+  XCTAssertNil(output, @"nil string test");
 
   inputStr = @"";
   output = [GTLUtilities URLWithString:inputStr queryParameters:inputDict];
-  STAssertNil(output, @"empty string");
+  XCTAssertNil(output, @"empty string");
 
   inputStr = nil;
   inputDict = @{@"b": @"1"};
   output = [GTLUtilities URLWithString:inputStr queryParameters:inputDict];
-  STAssertNil(output, @"nil string with params");
+  XCTAssertNil(output, @"nil string with params");
 
   inputStr = @"";
   output = [GTLUtilities URLWithString:inputStr queryParameters:inputDict];
-  STAssertNil(output, @"empty string with params");
+  XCTAssertNil(output, @"empty string with params");
 
   inputStr = @"http://www.google.com";
   inputDict = nil;
   output = [GTLUtilities URLWithString:inputStr queryParameters:inputDict];
   expected = [NSURL URLWithString:@"http://www.google.com"];
-  STAssertEqualObjects(output, expected, @"plain string");
+  XCTAssertEqualObjects(output, expected, @"plain string");
 
   inputDict = @{};
   output = [GTLUtilities URLWithString:inputStr queryParameters:inputDict];
-  STAssertEqualObjects(output, expected, @"plain string with empty params");
+  XCTAssertEqualObjects(output, expected, @"plain string with empty params");
 
   inputDict = @{@"a": @"1", @"b": @"&"};
   output = [GTLUtilities URLWithString:inputStr queryParameters:inputDict];
   expected = [NSURL URLWithString:@"http://www.google.com?a=1&b=%26"];
-  STAssertEqualObjects(output, expected, @"simple build");
+  XCTAssertEqualObjects(output, expected, @"simple build");
 
   inputStr = @"http://www.google.com?q=spam";
   output = [GTLUtilities URLWithString:inputStr queryParameters:inputDict];
   expected = [NSURL URLWithString:@"http://www.google.com?q=spam&a=1&b=%26"];
-  STAssertEqualObjects(output, expected, @"existing query args");
+  XCTAssertEqualObjects(output, expected, @"existing query args");
 }
 
 #pragma mark -
@@ -165,51 +165,51 @@
   NSNumber *result;
 
   result = GTL_EnsureNSNumber(nil);
-  STAssertNil(result, nil);
+  XCTAssertNil(result);
 
   // Give it a number, get the same thing back
   num = @12;
   result = GTL_EnsureNSNumber(num);
-  STAssertEqualObjects(result, num, nil);
-  STAssertEquals(result, num, nil);
+  XCTAssertEqualObjects(result, num);
+  XCTAssertEqual(result, num);
 
   // Give it a string, and it converts...
   num = @0;
   result = GTL_EnsureNSNumber((NSNumber*)@"");
-  STAssertEqualObjects(result, num, nil);
+  XCTAssertEqualObjects(result, num);
 
   num = @0;
   result = GTL_EnsureNSNumber((NSNumber*)@"0");
-  STAssertEqualObjects(result, num, nil);
+  XCTAssertEqualObjects(result, num);
 
   num = @1000.01;
   result = GTL_EnsureNSNumber((NSNumber*)@"1000.01");
-  STAssertEqualObjects(result, num, nil);
+  XCTAssertEqualObjects(result, num);
 
   num = @-1000.01;
   result = GTL_EnsureNSNumber((NSNumber*)@"-1000.01");
-  STAssertEqualObjects(result, num, nil);
+  XCTAssertEqualObjects(result, num);
 
   // Check the values of the NSNumber objects created from strings.
   result = GTL_EnsureNSNumber((NSNumber*)@"1");
-  STAssertEquals([result longLongValue], 1LL, nil);
+  XCTAssertEqual([result longLongValue], 1LL);
 
   result = GTL_EnsureNSNumber((NSNumber*)@"-1");
-  STAssertEquals([result longLongValue], -1LL, nil);
+  XCTAssertEqual([result longLongValue], -1LL);
 
   result = GTL_EnsureNSNumber((NSNumber*)@"71100000000007780");
-  STAssertEquals([result longLongValue], 71100000000007780LL, nil);
+  XCTAssertEqual([result longLongValue], 71100000000007780LL);
 
   result = GTL_EnsureNSNumber((NSNumber*)@"-71100000000007780");
-  STAssertEquals([result longLongValue], -71100000000007780LL, nil);
+  XCTAssertEqual([result longLongValue], -71100000000007780LL);
 
   NSString *ullongmaxStr = [[NSNumber numberWithUnsignedLongLong:ULLONG_MAX] stringValue];
   result = GTL_EnsureNSNumber((NSNumber*)ullongmaxStr);
-  STAssertEquals([result unsignedLongLongValue], ULLONG_MAX, nil);
+  XCTAssertEqual([result unsignedLongLongValue], ULLONG_MAX);
 
   NSString *llongminStr = [[NSNumber numberWithLongLong:LLONG_MIN] stringValue];
   result = GTL_EnsureNSNumber((NSNumber*)llongminStr);
-  STAssertEquals([result longLongValue], LLONG_MIN, nil);
+  XCTAssertEqual([result longLongValue], LLONG_MIN);
 }
 
 #pragma mark -
@@ -220,7 +220,7 @@
   NSUInteger numItems = [testArray count];
 
   // test that we got an equal copy
-  STAssertEqualObjects(copyArray, testArray,
+  XCTAssertEqualObjects(copyArray, testArray,
                        @"Array copy failed (%lu items)",
                        (unsigned long) numItems);
 
@@ -233,7 +233,7 @@
   id objCopy = [enumCopy nextObject];
 
   while (objTest) {
-    STAssertTrue(objTest != objCopy,
+    XCTAssertTrue(objTest != objCopy,
                   @"array copy is reusing original object (%lu items)",
                  (unsigned long) numItems);
 
@@ -248,7 +248,7 @@
   NSUInteger numItems = [testDict count];
 
   // test that we got an equal copy
-  STAssertEqualObjects(copyDict, testDict,
+  XCTAssertEqualObjects(copyDict, testDict,
                        @"Dict copy failed (%lu items)",
                        (unsigned long) numItems);
 
@@ -261,7 +261,7 @@
     id objTest = testDict[testKey];
     id objCopy = copyDict[testKey];
 
-    STAssertTrue(objTest != objCopy,
+    XCTAssertTrue(objTest != objCopy,
                   @"dict copy is reusing original object (%lu items)",
                  (unsigned long) numItems);
 
