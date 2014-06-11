@@ -13,11 +13,11 @@
  * limitations under the License.
  */
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
 #import "GTLBase64.h"
 
-@interface GTLBase64Test : SenTestCase
+@interface GTLBase64Test : XCTestCase
 @end
 
 @implementation GTLBase64Test
@@ -35,45 +35,45 @@
   // Encoding
   NSData *data = nil;
   NSString *result = GTLEncodeBase64(data);
-  STAssertNil(result, @"nil base64 data");
+  XCTAssertNil(result, @"nil base64 data");
 
   data = [NSData data];
   result = GTLEncodeBase64(data);
   NSString *expected = @"";
-  STAssertEqualObjects(result, expected, @"empty base64 data");
+  XCTAssertEqualObjects(result, expected, @"empty base64 data");
 
   NSString *str = testStr;
   data = [testStr dataUsingEncoding:NSUTF8StringEncoding];
 
   result = GTLEncodeBase64(data);
   expected = testEncodedStd;
-  STAssertEqualObjects(result, expected, @"test data");
+  XCTAssertEqualObjects(result, expected, @"test data");
 
   result = GTLEncodeWebSafeBase64(data);
   expected = testEncodedWeb;
-  STAssertEqualObjects(result, expected, @"test data ws");
+  XCTAssertEqualObjects(result, expected, @"test data ws");
 
   // Decoding
   str = nil;
   data = GTLDecodeBase64(str);
-  STAssertNil(data, @"nil string");
+  XCTAssertNil(data, @"nil string");
 
   str = @"kjh"; // not valid base64
   data = GTLDecodeBase64(str);
-  STAssertNil(data, @"invalid string");
+  XCTAssertNil(data, @"invalid string");
 
   str = @"";
   data = GTLDecodeBase64(str);
-  STAssertEqualObjects(data, [NSData data], @"empty string");
+  XCTAssertEqualObjects(data, [NSData data], @"empty string");
 
   str = testEncodedStd;
   data = GTLDecodeBase64(str);
   NSData *expectedData = [testStr dataUsingEncoding:NSUTF8StringEncoding];
-  STAssertEqualObjects(data, expectedData, @"test string");
+  XCTAssertEqualObjects(data, expectedData, @"test string");
 
   str = testEncodedWeb;
   data = GTLDecodeWebSafeBase64(str);
   expectedData = [testStr dataUsingEncoding:NSUTF8StringEncoding];
-  STAssertEqualObjects(data, expectedData, @"test string ws");
+  XCTAssertEqualObjects(data, expectedData, @"test string ws");
 }
 @end
