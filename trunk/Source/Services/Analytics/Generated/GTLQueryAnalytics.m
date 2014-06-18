@@ -26,28 +26,37 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLQueryAnalytics (49 custom class methods, 27 custom properties)
+//   GTLQueryAnalytics (72 custom class methods, 30 custom properties)
 
 #import "GTLQueryAnalytics.h"
 
 #import "GTLAnalyticsAccounts.h"
 #import "GTLAnalyticsAccountSummaries.h"
+#import "GTLAnalyticsAccountTicket.h"
 #import "GTLAnalyticsColumns.h"
 #import "GTLAnalyticsCustomDataSources.h"
 #import "GTLAnalyticsDailyUploadAppend.h"
 #import "GTLAnalyticsDailyUploads.h"
+#import "GTLAnalyticsEntityAdWordsLink.h"
+#import "GTLAnalyticsEntityAdWordsLinks.h"
 #import "GTLAnalyticsEntityUserLink.h"
 #import "GTLAnalyticsEntityUserLinks.h"
 #import "GTLAnalyticsExperiment.h"
 #import "GTLAnalyticsExperiments.h"
+#import "GTLAnalyticsFilter.h"
+#import "GTLAnalyticsFilters.h"
 #import "GTLAnalyticsGaData.h"
 #import "GTLAnalyticsGoal.h"
 #import "GTLAnalyticsGoals.h"
 #import "GTLAnalyticsMcfData.h"
 #import "GTLAnalyticsProfile.h"
+#import "GTLAnalyticsProfileFilterLink.h"
+#import "GTLAnalyticsProfileFilterLinks.h"
 #import "GTLAnalyticsProfiles.h"
 #import "GTLAnalyticsRealtimeData.h"
 #import "GTLAnalyticsSegments.h"
+#import "GTLAnalyticsUnsampledReport.h"
+#import "GTLAnalyticsUnsampledReports.h"
 #import "GTLAnalyticsUpload.h"
 #import "GTLAnalyticsUploads.h"
 #import "GTLAnalyticsWebproperties.h"
@@ -56,9 +65,10 @@
 @implementation GTLQueryAnalytics
 
 @dynamic accountId, appendNumber, customDataImportUids, customDataSourceId,
-         date, dimensions, endDate, experimentId, fields, filters, goalId, ids,
-         linkId, maxResults, metrics, output, profileId, reportType, reset,
-         samplingLevel, segment, sort, startDate, startIndex, type, uploadId,
+         date, dimensions, endDate, experimentId, fields, filterId, filters,
+         goalId, ids, linkId, maxResults, metrics, output, profileId,
+         reportType, reset, samplingLevel, segment, sort, startDate, startIndex,
+         type, unsampledReportId, uploadId, webPropertyAdWordsLinkId,
          webPropertyId;
 
 + (NSDictionary *)parameterNameMap {
@@ -373,6 +383,84 @@
 }
 
 #pragma mark -
+#pragma mark "management.filters" methods
+// These create a GTLQueryAnalytics object.
+
++ (id)queryForManagementFiltersDeleteWithAccountId:(NSString *)accountId
+                                          filterId:(NSString *)filterId {
+  NSString *methodName = @"analytics.management.filters.delete";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.filterId = filterId;
+  query.expectedObjectClass = [GTLAnalyticsFilter class];
+  return query;
+}
+
++ (id)queryForManagementFiltersGetWithAccountId:(NSString *)accountId
+                                       filterId:(NSString *)filterId {
+  NSString *methodName = @"analytics.management.filters.get";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.filterId = filterId;
+  query.expectedObjectClass = [GTLAnalyticsFilter class];
+  return query;
+}
+
++ (id)queryForManagementFiltersInsertWithObject:(GTLAnalyticsFilter *)object
+                                      accountId:(NSString *)accountId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"analytics.management.filters.insert";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.accountId = accountId;
+  query.expectedObjectClass = [GTLAnalyticsFilter class];
+  return query;
+}
+
++ (id)queryForManagementFiltersListWithAccountId:(NSString *)accountId {
+  NSString *methodName = @"analytics.management.filters.list";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.expectedObjectClass = [GTLAnalyticsFilters class];
+  return query;
+}
+
++ (id)queryForManagementFiltersPatchWithObject:(GTLAnalyticsFilter *)object
+                                     accountId:(NSString *)accountId
+                                      filterId:(NSString *)filterId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"analytics.management.filters.patch";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.accountId = accountId;
+  query.filterId = filterId;
+  query.expectedObjectClass = [GTLAnalyticsFilter class];
+  return query;
+}
+
++ (id)queryForManagementFiltersUpdateWithObject:(GTLAnalyticsFilter *)object
+                                      accountId:(NSString *)accountId
+                                       filterId:(NSString *)filterId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"analytics.management.filters.update";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.accountId = accountId;
+  query.filterId = filterId;
+  query.expectedObjectClass = [GTLAnalyticsFilter class];
+  return query;
+}
+
+#pragma mark -
 #pragma mark "management.goals" methods
 // These create a GTLQueryAnalytics object.
 
@@ -457,6 +545,107 @@
   query.profileId = profileId;
   query.goalId = goalId;
   query.expectedObjectClass = [GTLAnalyticsGoal class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "management.profileFilterLinks" methods
+// These create a GTLQueryAnalytics object.
+
++ (id)queryForManagementProfileFilterLinksDeleteWithAccountId:(NSString *)accountId
+                                                webPropertyId:(NSString *)webPropertyId
+                                                    profileId:(NSString *)profileId
+                                                       linkId:(NSString *)linkId {
+  NSString *methodName = @"analytics.management.profileFilterLinks.delete";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.profileId = profileId;
+  query.linkId = linkId;
+  return query;
+}
+
++ (id)queryForManagementProfileFilterLinksGetWithAccountId:(NSString *)accountId
+                                             webPropertyId:(NSString *)webPropertyId
+                                                 profileId:(NSString *)profileId
+                                                    linkId:(NSString *)linkId {
+  NSString *methodName = @"analytics.management.profileFilterLinks.get";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.profileId = profileId;
+  query.linkId = linkId;
+  query.expectedObjectClass = [GTLAnalyticsProfileFilterLink class];
+  return query;
+}
+
++ (id)queryForManagementProfileFilterLinksInsertWithObject:(GTLAnalyticsProfileFilterLink *)object
+                                                 accountId:(NSString *)accountId
+                                             webPropertyId:(NSString *)webPropertyId
+                                                 profileId:(NSString *)profileId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"analytics.management.profileFilterLinks.insert";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.profileId = profileId;
+  query.expectedObjectClass = [GTLAnalyticsProfileFilterLink class];
+  return query;
+}
+
++ (id)queryForManagementProfileFilterLinksListWithAccountId:(NSString *)accountId
+                                              webPropertyId:(NSString *)webPropertyId
+                                                  profileId:(NSString *)profileId {
+  NSString *methodName = @"analytics.management.profileFilterLinks.list";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.profileId = profileId;
+  query.expectedObjectClass = [GTLAnalyticsProfileFilterLinks class];
+  return query;
+}
+
++ (id)queryForManagementProfileFilterLinksPatchWithObject:(GTLAnalyticsProfileFilterLink *)object
+                                                accountId:(NSString *)accountId
+                                            webPropertyId:(NSString *)webPropertyId
+                                                profileId:(NSString *)profileId
+                                                   linkId:(NSString *)linkId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"analytics.management.profileFilterLinks.patch";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.profileId = profileId;
+  query.linkId = linkId;
+  query.expectedObjectClass = [GTLAnalyticsProfileFilterLink class];
+  return query;
+}
+
++ (id)queryForManagementProfileFilterLinksUpdateWithObject:(GTLAnalyticsProfileFilterLink *)object
+                                                 accountId:(NSString *)accountId
+                                             webPropertyId:(NSString *)webPropertyId
+                                                 profileId:(NSString *)profileId
+                                                    linkId:(NSString *)linkId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"analytics.management.profileFilterLinks.update";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.profileId = profileId;
+  query.linkId = linkId;
+  query.expectedObjectClass = [GTLAnalyticsProfileFilterLink class];
   return query;
 }
 
@@ -628,6 +817,54 @@
 }
 
 #pragma mark -
+#pragma mark "management.unsampledReports" methods
+// These create a GTLQueryAnalytics object.
+
++ (id)queryForManagementUnsampledReportsGetWithAccountId:(NSString *)accountId
+                                           webPropertyId:(NSString *)webPropertyId
+                                               profileId:(NSString *)profileId
+                                       unsampledReportId:(NSString *)unsampledReportId {
+  NSString *methodName = @"analytics.management.unsampledReports.get";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.profileId = profileId;
+  query.unsampledReportId = unsampledReportId;
+  query.expectedObjectClass = [GTLAnalyticsUnsampledReport class];
+  return query;
+}
+
++ (id)queryForManagementUnsampledReportsInsertWithObject:(GTLAnalyticsUnsampledReport *)object
+                                               accountId:(NSString *)accountId
+                                           webPropertyId:(NSString *)webPropertyId
+                                               profileId:(NSString *)profileId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"analytics.management.unsampledReports.insert";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.profileId = profileId;
+  query.expectedObjectClass = [GTLAnalyticsUnsampledReport class];
+  return query;
+}
+
++ (id)queryForManagementUnsampledReportsListWithAccountId:(NSString *)accountId
+                                            webPropertyId:(NSString *)webPropertyId
+                                                profileId:(NSString *)profileId {
+  NSString *methodName = @"analytics.management.unsampledReports.list";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.profileId = profileId;
+  query.expectedObjectClass = [GTLAnalyticsUnsampledReports class];
+  return query;
+}
+
+#pragma mark -
 #pragma mark "management.uploads" methods
 // These create a GTLQueryAnalytics object.
 
@@ -665,6 +902,17 @@
   query.webPropertyId = webPropertyId;
   query.customDataSourceId = customDataSourceId;
   query.expectedObjectClass = [GTLAnalyticsUploads class];
+  return query;
+}
+
++ (id)queryForManagementUploadsMigrateDataImportWithAccountId:(NSString *)accountId
+                                                webPropertyId:(NSString *)webPropertyId
+                                           customDataSourceId:(NSString *)customDataSourceId {
+  NSString *methodName = @"analytics.management.uploads.migrateDataImport";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.customDataSourceId = customDataSourceId;
   return query;
 }
 
@@ -751,6 +999,95 @@
 }
 
 #pragma mark -
+#pragma mark "management.webPropertyAdWordsLinks" methods
+// These create a GTLQueryAnalytics object.
+
++ (id)queryForManagementWebPropertyAdWordsLinksDeleteWithAccountId:(NSString *)accountId
+                                                     webPropertyId:(NSString *)webPropertyId
+                                          webPropertyAdWordsLinkId:(NSString *)webPropertyAdWordsLinkId {
+  NSString *methodName = @"analytics.management.webPropertyAdWordsLinks.delete";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.webPropertyAdWordsLinkId = webPropertyAdWordsLinkId;
+  return query;
+}
+
++ (id)queryForManagementWebPropertyAdWordsLinksGetWithAccountId:(NSString *)accountId
+                                                  webPropertyId:(NSString *)webPropertyId
+                                       webPropertyAdWordsLinkId:(NSString *)webPropertyAdWordsLinkId {
+  NSString *methodName = @"analytics.management.webPropertyAdWordsLinks.get";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.webPropertyAdWordsLinkId = webPropertyAdWordsLinkId;
+  query.expectedObjectClass = [GTLAnalyticsEntityAdWordsLink class];
+  return query;
+}
+
++ (id)queryForManagementWebPropertyAdWordsLinksInsertWithObject:(GTLAnalyticsEntityAdWordsLink *)object
+                                                      accountId:(NSString *)accountId
+                                                  webPropertyId:(NSString *)webPropertyId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"analytics.management.webPropertyAdWordsLinks.insert";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.expectedObjectClass = [GTLAnalyticsEntityAdWordsLink class];
+  return query;
+}
+
++ (id)queryForManagementWebPropertyAdWordsLinksListWithAccountId:(NSString *)accountId
+                                                   webPropertyId:(NSString *)webPropertyId {
+  NSString *methodName = @"analytics.management.webPropertyAdWordsLinks.list";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.expectedObjectClass = [GTLAnalyticsEntityAdWordsLinks class];
+  return query;
+}
+
++ (id)queryForManagementWebPropertyAdWordsLinksPatchWithObject:(GTLAnalyticsEntityAdWordsLink *)object
+                                                     accountId:(NSString *)accountId
+                                                 webPropertyId:(NSString *)webPropertyId
+                                      webPropertyAdWordsLinkId:(NSString *)webPropertyAdWordsLinkId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"analytics.management.webPropertyAdWordsLinks.patch";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.webPropertyAdWordsLinkId = webPropertyAdWordsLinkId;
+  query.expectedObjectClass = [GTLAnalyticsEntityAdWordsLink class];
+  return query;
+}
+
++ (id)queryForManagementWebPropertyAdWordsLinksUpdateWithObject:(GTLAnalyticsEntityAdWordsLink *)object
+                                                      accountId:(NSString *)accountId
+                                                  webPropertyId:(NSString *)webPropertyId
+                                       webPropertyAdWordsLinkId:(NSString *)webPropertyAdWordsLinkId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"analytics.management.webPropertyAdWordsLinks.update";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.webPropertyAdWordsLinkId = webPropertyAdWordsLinkId;
+  query.expectedObjectClass = [GTLAnalyticsEntityAdWordsLink class];
+  return query;
+}
+
+#pragma mark -
 #pragma mark "management.webpropertyUserLinks" methods
 // These create a GTLQueryAnalytics object.
 
@@ -818,6 +1155,22 @@
   GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
   query.reportType = reportType;
   query.expectedObjectClass = [GTLAnalyticsColumns class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "provisioning" methods
+// These create a GTLQueryAnalytics object.
+
++ (id)queryForProvisioningCreateAccountTicketWithObject:(GTLAnalyticsAccountTicket *)object {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"analytics.provisioning.createAccountTicket";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.expectedObjectClass = [GTLAnalyticsAccountTicket class];
   return query;
 }
 

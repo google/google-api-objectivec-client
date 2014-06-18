@@ -41,6 +41,9 @@ GTL_EXTERN NSString * const kGTLAuthScopeAnalytics;             // "https://www.
 GTL_EXTERN NSString * const kGTLAuthScopeAnalyticsEdit;         // "https://www.googleapis.com/auth/analytics.edit"
 // Manage Google Analytics Account users by email address
 GTL_EXTERN NSString * const kGTLAuthScopeAnalyticsManageUsers;  // "https://www.googleapis.com/auth/analytics.manage.users"
+// Create a new Google Analytics account along with its default property and
+// view
+GTL_EXTERN NSString * const kGTLAuthScopeAnalyticsProvision;    // "https://www.googleapis.com/auth/analytics.provision"
 // View your Google Analytics data
 GTL_EXTERN NSString * const kGTLAuthScopeAnalyticsReadonly;     // "https://www.googleapis.com/auth/analytics.readonly"
 

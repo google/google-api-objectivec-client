@@ -32,6 +32,7 @@
 NSString * const kGTLAuthScopeAnalytics            = @"https://www.googleapis.com/auth/analytics";
 NSString * const kGTLAuthScopeAnalyticsEdit        = @"https://www.googleapis.com/auth/analytics.edit";
 NSString * const kGTLAuthScopeAnalyticsManageUsers = @"https://www.googleapis.com/auth/analytics.manage.users";
+NSString * const kGTLAuthScopeAnalyticsProvision   = @"https://www.googleapis.com/auth/analytics.provision";
 NSString * const kGTLAuthScopeAnalyticsReadonly    = @"https://www.googleapis.com/auth/analytics.readonly";
 
 // GTLQueryAnalytics - Output

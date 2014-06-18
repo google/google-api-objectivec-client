@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAnalyticsCustomDataSource.m
+//  GTLAnalyticsUnsampledReport.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,40 +26,35 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsCustomDataSource (0 custom class methods, 15 custom properties)
-//   GTLAnalyticsCustomDataSourceChildLink (0 custom class methods, 2 custom properties)
-//   GTLAnalyticsCustomDataSourceParentLink (0 custom class methods, 2 custom properties)
+//   GTLAnalyticsUnsampledReport (0 custom class methods, 19 custom properties)
+//   GTLAnalyticsUnsampledReportCloudStorageDownloadDetails (0 custom class methods, 2 custom properties)
+//   GTLAnalyticsUnsampledReportDriveDownloadDetails (0 custom class methods, 1 custom properties)
 
-#import "GTLAnalyticsCustomDataSource.h"
+#import "GTLAnalyticsUnsampledReport.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAnalyticsCustomDataSource
+//   GTLAnalyticsUnsampledReport
 //
 
-@implementation GTLAnalyticsCustomDataSource
-@dynamic accountId, childLink, created, descriptionProperty, identifier,
-         importBehavior, kind, name, parentLink, profilesLinked, selfLink, type,
-         updated, uploadType, webPropertyId;
+@implementation GTLAnalyticsUnsampledReport
+@dynamic accountId, cloudStorageDownloadDetails, created, dimensions,
+         downloadType, driveDownloadDetails, endDate, filters, identifier, kind,
+         metrics, profileId, segment, selfLink, startDate, status, title,
+         updated, webPropertyId;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
-      @"description", @"descriptionProperty",
+      @"end-date", @"endDate",
       @"id", @"identifier",
+      @"start-date", @"startDate",
       nil];
   return map;
 }
 
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[NSString class]
-                                forKey:@"profilesLinked"];
-  return map;
-}
-
 + (void)load {
-  [self registerObjectClassForKind:@"analytics#customDataSource"];
+  [self registerObjectClassForKind:@"analytics#unsampledReport"];
 }
 
 @end
@@ -67,19 +62,19 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAnalyticsCustomDataSourceChildLink
+//   GTLAnalyticsUnsampledReportCloudStorageDownloadDetails
 //
 
-@implementation GTLAnalyticsCustomDataSourceChildLink
-@dynamic href, type;
+@implementation GTLAnalyticsUnsampledReportCloudStorageDownloadDetails
+@dynamic bucketId, objectId;
 @end
 
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAnalyticsCustomDataSourceParentLink
+//   GTLAnalyticsUnsampledReportDriveDownloadDetails
 //
 
-@implementation GTLAnalyticsCustomDataSourceParentLink
-@dynamic href, type;
+@implementation GTLAnalyticsUnsampledReportDriveDownloadDetails
+@dynamic documentId;
 @end

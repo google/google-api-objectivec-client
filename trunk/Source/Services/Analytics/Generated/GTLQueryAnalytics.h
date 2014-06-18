@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLQueryAnalytics (49 custom class methods, 27 custom properties)
+//   GTLQueryAnalytics (72 custom class methods, 30 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -34,10 +34,15 @@
   #import "GTLQuery.h"
 #endif
 
+@class GTLAnalyticsAccountTicket;
+@class GTLAnalyticsEntityAdWordsLink;
 @class GTLAnalyticsEntityUserLink;
 @class GTLAnalyticsExperiment;
+@class GTLAnalyticsFilter;
 @class GTLAnalyticsGoal;
 @class GTLAnalyticsProfile;
+@class GTLAnalyticsProfileFilterLink;
+@class GTLAnalyticsUnsampledReport;
 @class GTLAnalyticsWebproperty;
 
 @interface GTLQueryAnalytics : GTLQuery
@@ -60,6 +65,7 @@
 @property (copy) NSString *dimensions;
 @property (copy) NSString *endDate;
 @property (copy) NSString *experimentId;
+@property (copy) NSString *filterId;
 @property (copy) NSString *filters;
 @property (copy) NSString *goalId;
 @property (copy) NSString *ids;
@@ -76,7 +82,9 @@
 @property (copy) NSString *startDate;
 @property (assign) NSInteger startIndex;
 @property (copy) NSString *type;
+@property (copy) NSString *unsampledReportId;
 @property (copy) NSString *uploadId;
+@property (copy) NSString *webPropertyAdWordsLinkId;
 @property (copy) NSString *webPropertyId;
 
 #pragma mark -
@@ -489,6 +497,81 @@
                                        experimentId:(NSString *)experimentId;
 
 #pragma mark -
+#pragma mark "management.filters" methods
+// These create a GTLQueryAnalytics object.
+
+// Method: analytics.management.filters.delete
+// Delete a filter.
+//  Required:
+//   accountId: Account ID to delete the filter for.
+//   filterId: ID of the filter to be deleted.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
+// Fetches a GTLAnalyticsFilter.
++ (id)queryForManagementFiltersDeleteWithAccountId:(NSString *)accountId
+                                          filterId:(NSString *)filterId;
+
+// Method: analytics.management.filters.get
+// Returns a filters to which the user has access.
+//  Required:
+//   accountId: Account ID to retrieve filters for.
+//   filterId: Filter ID to retrieve filters for.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
+//   kGTLAuthScopeAnalyticsReadonly
+// Fetches a GTLAnalyticsFilter.
++ (id)queryForManagementFiltersGetWithAccountId:(NSString *)accountId
+                                       filterId:(NSString *)filterId;
+
+// Method: analytics.management.filters.insert
+// Create a new filter.
+//  Required:
+//   accountId: Account ID to create filter for.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
+// Fetches a GTLAnalyticsFilter.
++ (id)queryForManagementFiltersInsertWithObject:(GTLAnalyticsFilter *)object
+                                      accountId:(NSString *)accountId;
+
+// Method: analytics.management.filters.list
+// Lists all filters for an account
+//  Required:
+//   accountId: Account ID to retrieve filters for.
+//  Optional:
+//   maxResults: The maximum number of filters to include in this response.
+//   startIndex: An index of the first entity to retrieve. Use this parameter as
+//     a pagination mechanism along with the max-results parameter.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
+//   kGTLAuthScopeAnalyticsReadonly
+// Fetches a GTLAnalyticsFilters.
++ (id)queryForManagementFiltersListWithAccountId:(NSString *)accountId;
+
+// Method: analytics.management.filters.patch
+// Updates an existing filter. This method supports patch semantics.
+//  Required:
+//   accountId: Account ID to which the filter belongs.
+//   filterId: ID of the filter to be updated.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
+// Fetches a GTLAnalyticsFilter.
++ (id)queryForManagementFiltersPatchWithObject:(GTLAnalyticsFilter *)object
+                                     accountId:(NSString *)accountId
+                                      filterId:(NSString *)filterId;
+
+// Method: analytics.management.filters.update
+// Updates an existing filter.
+//  Required:
+//   accountId: Account ID to which the filter belongs.
+//   filterId: ID of the filter to be updated.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
+// Fetches a GTLAnalyticsFilter.
++ (id)queryForManagementFiltersUpdateWithObject:(GTLAnalyticsFilter *)object
+                                      accountId:(NSString *)accountId
+                                       filterId:(NSString *)filterId;
+
+#pragma mark -
 #pragma mark "management.goals" methods
 // These create a GTLQueryAnalytics object.
 
@@ -578,6 +661,109 @@
                                 webPropertyId:(NSString *)webPropertyId
                                     profileId:(NSString *)profileId
                                        goalId:(NSString *)goalId;
+
+#pragma mark -
+#pragma mark "management.profileFilterLinks" methods
+// These create a GTLQueryAnalytics object.
+
+// Method: analytics.management.profileFilterLinks.delete
+// Delete a profile filter link.
+//  Required:
+//   accountId: Account ID to which the profile filter link belongs.
+//   webPropertyId: Web property Id to which the profile filter link belongs.
+//   profileId: Profile ID to which the filter link belongs.
+//   linkId: ID of the profile filter link to delete.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
++ (id)queryForManagementProfileFilterLinksDeleteWithAccountId:(NSString *)accountId
+                                                webPropertyId:(NSString *)webPropertyId
+                                                    profileId:(NSString *)profileId
+                                                       linkId:(NSString *)linkId;
+
+// Method: analytics.management.profileFilterLinks.get
+// Returns a single profile filter link.
+//  Required:
+//   accountId: Account ID to retrieve profile filter link for.
+//   webPropertyId: Web property Id to retrieve profile filter link for.
+//   profileId: Profile ID to retrieve filter link for.
+//   linkId: ID of the profile filter link.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
+//   kGTLAuthScopeAnalyticsReadonly
+// Fetches a GTLAnalyticsProfileFilterLink.
++ (id)queryForManagementProfileFilterLinksGetWithAccountId:(NSString *)accountId
+                                             webPropertyId:(NSString *)webPropertyId
+                                                 profileId:(NSString *)profileId
+                                                    linkId:(NSString *)linkId;
+
+// Method: analytics.management.profileFilterLinks.insert
+// Create a new profile filter link.
+//  Required:
+//   accountId: Account ID to create profile filter link for.
+//   webPropertyId: Web property Id to create profile filter link for.
+//   profileId: Profile ID to create filter link for.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
+// Fetches a GTLAnalyticsProfileFilterLink.
++ (id)queryForManagementProfileFilterLinksInsertWithObject:(GTLAnalyticsProfileFilterLink *)object
+                                                 accountId:(NSString *)accountId
+                                             webPropertyId:(NSString *)webPropertyId
+                                                 profileId:(NSString *)profileId;
+
+// Method: analytics.management.profileFilterLinks.list
+// Lists all profile filter links for a profile.
+//  Required:
+//   accountId: Account ID to retrieve profile filter links for.
+//   webPropertyId: Web property Id for profile filter links for. Can either be
+//     a specific web property ID or '~all', which refers to all the web
+//     properties that user has access to.
+//   profileId: Profile ID to retrieve filter links for. Can either be a
+//     specific profile ID or '~all', which refers to all the profiles that user
+//     has access to.
+//  Optional:
+//   maxResults: The maximum number of profile filter links to include in this
+//     response.
+//   startIndex: An index of the first entity to retrieve. Use this parameter as
+//     a pagination mechanism along with the max-results parameter.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
+//   kGTLAuthScopeAnalyticsReadonly
+// Fetches a GTLAnalyticsProfileFilterLinks.
++ (id)queryForManagementProfileFilterLinksListWithAccountId:(NSString *)accountId
+                                              webPropertyId:(NSString *)webPropertyId
+                                                  profileId:(NSString *)profileId;
+
+// Method: analytics.management.profileFilterLinks.patch
+// Update an existing profile filter link. This method supports patch semantics.
+//  Required:
+//   accountId: Account ID to which profile filter link belongs.
+//   webPropertyId: Web property Id to which profile filter link belongs
+//   profileId: Profile ID to which filter link belongs
+//   linkId: ID of the profile filter link to be updated.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
+// Fetches a GTLAnalyticsProfileFilterLink.
++ (id)queryForManagementProfileFilterLinksPatchWithObject:(GTLAnalyticsProfileFilterLink *)object
+                                                accountId:(NSString *)accountId
+                                            webPropertyId:(NSString *)webPropertyId
+                                                profileId:(NSString *)profileId
+                                                   linkId:(NSString *)linkId;
+
+// Method: analytics.management.profileFilterLinks.update
+// Update an existing profile filter link.
+//  Required:
+//   accountId: Account ID to which profile filter link belongs.
+//   webPropertyId: Web property Id to which profile filter link belongs
+//   profileId: Profile ID to which filter link belongs
+//   linkId: ID of the profile filter link to be updated.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
+// Fetches a GTLAnalyticsProfileFilterLink.
++ (id)queryForManagementProfileFilterLinksUpdateWithObject:(GTLAnalyticsProfileFilterLink *)object
+                                                 accountId:(NSString *)accountId
+                                             webPropertyId:(NSString *)webPropertyId
+                                                 profileId:(NSString *)profileId
+                                                    linkId:(NSString *)linkId;
 
 #pragma mark -
 #pragma mark "management.profiles" methods
@@ -708,7 +894,11 @@
 //  Required:
 //   accountId: Account ID which the given view (profile) belongs to.
 //   webPropertyId: Web Property ID which the given view (profile) belongs to.
-//   profileId: View (Profile) ID to retrieve the profile-user links for
+//     Can either be a specific web property ID or '~all', which refers to all
+//     the web properties that user has access to.
+//   profileId: View (Profile) ID to retrieve the profile-user links for. Can
+//     either be a specific profile ID or '~all', which refers to all the
+//     profiles that user has access to.
 //  Optional:
 //   maxResults: The maximum number of profile-user links to include in this
 //     response.
@@ -753,6 +943,65 @@
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsSegments.
 + (id)queryForManagementSegmentsList;
+
+#pragma mark -
+#pragma mark "management.unsampledReports" methods
+// These create a GTLQueryAnalytics object.
+
+// Method: analytics.management.unsampledReports.get
+// Returns a single unsampled report.
+//  Required:
+//   accountId: Account ID to retrieve unsampled report for.
+//   webPropertyId: Web property ID to retrieve unsampled reports for.
+//   profileId: View (Profile) ID to retrieve unsampled report for.
+//   unsampledReportId: ID of the unsampled report to retrieve.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
+//   kGTLAuthScopeAnalyticsReadonly
+// Fetches a GTLAnalyticsUnsampledReport.
++ (id)queryForManagementUnsampledReportsGetWithAccountId:(NSString *)accountId
+                                           webPropertyId:(NSString *)webPropertyId
+                                               profileId:(NSString *)profileId
+                                       unsampledReportId:(NSString *)unsampledReportId;
+
+// Method: analytics.management.unsampledReports.insert
+// Create a new unsampled report.
+//  Required:
+//   accountId: Account ID to create the unsampled report for.
+//   webPropertyId: Web property ID to create the unsampled report for.
+//   profileId: View (Profile) ID to create the unsampled report for.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
+// Fetches a GTLAnalyticsUnsampledReport.
++ (id)queryForManagementUnsampledReportsInsertWithObject:(GTLAnalyticsUnsampledReport *)object
+                                               accountId:(NSString *)accountId
+                                           webPropertyId:(NSString *)webPropertyId
+                                               profileId:(NSString *)profileId;
+
+// Method: analytics.management.unsampledReports.list
+// Lists unsampled reports to which the user has access.
+//  Required:
+//   accountId: Account ID to retrieve unsampled reports for. Must be a specific
+//     account ID, ~all is not supported.
+//   webPropertyId: Web property ID to retrieve unsampled reports for. Must be a
+//     specific web property ID, ~all is not supported.
+//   profileId: View (Profile) ID to retrieve unsampled reports for. Must be a
+//     specific view (profile) ID, ~all is not supported.
+//  Optional:
+//   maxResults: The maximum number of unsampled reports to include in this
+//     response.
+//   startIndex: An index of the first unsampled report to retrieve. Use this
+//     parameter as a pagination mechanism along with the max-results parameter.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
+//   kGTLAuthScopeAnalyticsReadonly
+// Fetches a GTLAnalyticsUnsampledReports.
++ (id)queryForManagementUnsampledReportsListWithAccountId:(NSString *)accountId
+                                            webPropertyId:(NSString *)webPropertyId
+                                                profileId:(NSString *)profileId;
 
 #pragma mark -
 #pragma mark "management.uploads" methods
@@ -808,6 +1057,19 @@
 + (id)queryForManagementUploadsListWithAccountId:(NSString *)accountId
                                    webPropertyId:(NSString *)webPropertyId
                               customDataSourceId:(NSString *)customDataSourceId;
+
+// Method: analytics.management.uploads.migrateDataImport
+// Migrate custom data source and data imports to latest version.
+//  Required:
+//   accountId: Account Id for migration.
+//   webPropertyId: Web property Id for migration.
+//   customDataSourceId: Custom data source Id for migration.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsEdit
++ (id)queryForManagementUploadsMigrateDataImportWithAccountId:(NSString *)accountId
+                                                webPropertyId:(NSString *)webPropertyId
+                                           customDataSourceId:(NSString *)customDataSourceId;
 
 // Method: analytics.management.uploads.uploadData
 // Upload data for a custom data source.
@@ -899,6 +1161,95 @@
                                         webPropertyId:(NSString *)webPropertyId;
 
 #pragma mark -
+#pragma mark "management.webPropertyAdWordsLinks" methods
+// These create a GTLQueryAnalytics object.
+
+// Method: analytics.management.webPropertyAdWordsLinks.delete
+// Deletes a web property-AdWords link.
+//  Required:
+//   accountId: ID of the account which the given web property belongs to.
+//   webPropertyId: Web property ID to delete the AdWords link for.
+//   webPropertyAdWordsLinkId: Web property AdWords link ID.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
++ (id)queryForManagementWebPropertyAdWordsLinksDeleteWithAccountId:(NSString *)accountId
+                                                     webPropertyId:(NSString *)webPropertyId
+                                          webPropertyAdWordsLinkId:(NSString *)webPropertyAdWordsLinkId;
+
+// Method: analytics.management.webPropertyAdWordsLinks.get
+// Returns a web property-AdWords link to which the user has access.
+//  Required:
+//   accountId: ID of the account which the given web property belongs to.
+//   webPropertyId: Web property ID to retrieve the AdWords link for.
+//   webPropertyAdWordsLinkId: Web property-AdWords link ID.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
+//   kGTLAuthScopeAnalyticsReadonly
+// Fetches a GTLAnalyticsEntityAdWordsLink.
++ (id)queryForManagementWebPropertyAdWordsLinksGetWithAccountId:(NSString *)accountId
+                                                  webPropertyId:(NSString *)webPropertyId
+                                       webPropertyAdWordsLinkId:(NSString *)webPropertyAdWordsLinkId;
+
+// Method: analytics.management.webPropertyAdWordsLinks.insert
+// Creates a webProperty-AdWords link.
+//  Required:
+//   accountId: ID of the Google Analytics account to create the link for.
+//   webPropertyId: Web property ID to create the link for.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
+// Fetches a GTLAnalyticsEntityAdWordsLink.
++ (id)queryForManagementWebPropertyAdWordsLinksInsertWithObject:(GTLAnalyticsEntityAdWordsLink *)object
+                                                      accountId:(NSString *)accountId
+                                                  webPropertyId:(NSString *)webPropertyId;
+
+// Method: analytics.management.webPropertyAdWordsLinks.list
+// Lists webProperty-AdWords links for a given web property.
+//  Required:
+//   accountId: ID of the account which the given web property belongs to.
+//   webPropertyId: Web property ID to retrieve the AdWords links for.
+//  Optional:
+//   maxResults: The maximum number of webProperty-AdWords links to include in
+//     this response.
+//   startIndex: An index of the first webProperty-AdWords link to retrieve. Use
+//     this parameter as a pagination mechanism along with the max-results
+//     parameter.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
+//   kGTLAuthScopeAnalyticsReadonly
+// Fetches a GTLAnalyticsEntityAdWordsLinks.
++ (id)queryForManagementWebPropertyAdWordsLinksListWithAccountId:(NSString *)accountId
+                                                   webPropertyId:(NSString *)webPropertyId;
+
+// Method: analytics.management.webPropertyAdWordsLinks.patch
+// Updates an existing webProperty-AdWords link. This method supports patch
+// semantics.
+//  Required:
+//   accountId: ID of the account which the given web property belongs to.
+//   webPropertyId: Web property ID to retrieve the AdWords link for.
+//   webPropertyAdWordsLinkId: Web property-AdWords link ID.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
+// Fetches a GTLAnalyticsEntityAdWordsLink.
++ (id)queryForManagementWebPropertyAdWordsLinksPatchWithObject:(GTLAnalyticsEntityAdWordsLink *)object
+                                                     accountId:(NSString *)accountId
+                                                 webPropertyId:(NSString *)webPropertyId
+                                      webPropertyAdWordsLinkId:(NSString *)webPropertyAdWordsLinkId;
+
+// Method: analytics.management.webPropertyAdWordsLinks.update
+// Updates an existing webProperty-AdWords link.
+//  Required:
+//   accountId: ID of the account which the given web property belongs to.
+//   webPropertyId: Web property ID to retrieve the AdWords link for.
+//   webPropertyAdWordsLinkId: Web property-AdWords link ID.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
+// Fetches a GTLAnalyticsEntityAdWordsLink.
++ (id)queryForManagementWebPropertyAdWordsLinksUpdateWithObject:(GTLAnalyticsEntityAdWordsLink *)object
+                                                      accountId:(NSString *)accountId
+                                                  webPropertyId:(NSString *)webPropertyId
+                                       webPropertyAdWordsLinkId:(NSString *)webPropertyAdWordsLinkId;
+
+#pragma mark -
 #pragma mark "management.webpropertyUserLinks" methods
 // These create a GTLQueryAnalytics object.
 
@@ -931,6 +1282,8 @@
 //  Required:
 //   accountId: Account ID which the given web property belongs to.
 //   webPropertyId: Web Property ID for the webProperty-user links to retrieve.
+//     Can either be a specific web property ID or '~all', which refers to all
+//     the web properties that user has access to.
 //  Optional:
 //   maxResults: The maximum number of webProperty-user Links to include in this
 //     response.
@@ -972,5 +1325,16 @@
 //   kGTLAuthScopeAnalyticsReadonly
 // Fetches a GTLAnalyticsColumns.
 + (id)queryForMetadataColumnsListWithReportType:(NSString *)reportType;
+
+#pragma mark -
+#pragma mark "provisioning" methods
+// These create a GTLQueryAnalytics object.
+
+// Method: analytics.provisioning.createAccountTicket
+// Creates an account ticket.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsProvision
+// Fetches a GTLAnalyticsAccountTicket.
++ (id)queryForProvisioningCreateAccountTicketWithObject:(GTLAnalyticsAccountTicket *)object;
 
 @end
