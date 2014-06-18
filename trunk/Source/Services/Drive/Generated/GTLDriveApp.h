@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveApp (0 custom class methods, 22 custom properties)
+//   GTLDriveApp (0 custom class methods, 24 custom properties)
 //   GTLDriveAppIconsItem (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -58,6 +58,10 @@
 
 // The url to create a new file with this app.
 @property (copy) NSString *createUrl;
+
+// Whether the app has drive-wide scope. An app with drive-wide scope can access
+// all files in the user's drive.
+@property (retain) NSNumber *hasDriveWideScope;  // boolValue
 
 // The various icons for the app.
 @property (retain) NSArray *icons;  // of GTLDriveAppIconsItem
@@ -115,6 +119,9 @@
 
 // Whether this app supports opening more than one file.
 @property (retain) NSNumber *supportsMultiOpen;  // boolValue
+
+// Whether this app supports creating new files when offline.
+@property (retain) NSNumber *supportsOfflineCreate;  // boolValue
 
 // Whether the app is selected as the default handler for the types it supports.
 @property (retain) NSNumber *useByDefault;  // boolValue

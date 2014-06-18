@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLQueryMapsEngine (35 custom class methods, 26 custom properties)
+//   GTLQueryMapsEngine (37 custom class methods, 26 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -38,6 +38,7 @@
 @class GTLMapsEngineFeature;
 @class GTLMapsEngineImage;
 @class GTLMapsEngineLayer;
+@class GTLMapsEngineMap;
 @class GTLMapsEngineRasterCollection;
 @class GTLMapsEngineRasterCollectionsRasterBatchDeleteRequest;
 @class GTLMapsEngineRasterCollectionsRastersBatchInsertRequest;
@@ -266,6 +267,15 @@
 #pragma mark "maps" methods
 // These create a GTLQueryMapsEngine object.
 
+// Method: mapsengine.maps.create
+// Create a map asset.
+//  Optional:
+//   request: For this method, "request" should be of type GTLMapsEngineMap.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+// Fetches a GTLMapsEngineMap.
++ (id)queryForMapsCreate;
+
 // Method: mapsengine.maps.get
 // Return metadata for a particular map.
 //  Required:
@@ -313,6 +323,15 @@
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineMapsListResponse.
 + (id)queryForMapsList;
+
+// Method: mapsengine.maps.publish
+// Publish a map asset.
+//  Required:
+//   identifier: The ID of the map.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+// Fetches a GTLMapsEnginePublishResponse.
++ (id)queryForMapsPublishWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "projects" methods
@@ -492,7 +511,7 @@
 //   identifier: The ID of the raster asset.
 //   filename: The file name of this uploaded file.
 //  Upload Parameters:
-//   Maximum size: 1GB
+//   Maximum size: 10GB
 //   Accepted MIME type(s): */*
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine

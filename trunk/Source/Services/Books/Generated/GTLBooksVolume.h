@@ -33,7 +33,7 @@
 //   GTLBooksVolumeSaleInfo (0 custom class methods, 8 custom properties)
 //   GTLBooksVolumeSearchInfo (0 custom class methods, 1 custom properties)
 //   GTLBooksVolumeUserInfo (0 custom class methods, 11 custom properties)
-//   GTLBooksVolumeVolumeInfo (0 custom class methods, 21 custom properties)
+//   GTLBooksVolumeVolumeInfo (0 custom class methods, 22 custom properties)
 //   GTLBooksVolumeAccessInfoEpub (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeAccessInfoPdf (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeLayerInfoLayersItem (0 custom class methods, 2 custom properties)
@@ -394,6 +394,9 @@
 
 // The number of review ratings for this volume.
 @property (retain) NSNumber *ratingsCount;  // intValue
+
+// The reading modes available for this volume.
+@property (retain) id readingModes;
 
 // Volume subtitle. (In LITE projection.)
 @property (copy) NSString *subtitle;

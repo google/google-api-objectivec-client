@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,7 +46,7 @@
 
 // The time, as a combined date-time value (formatted according to RFC 3339). A
 // time zone offset is required unless a time zone is explicitly specified in
-// 'timeZone'.
+// timeZone.
 @property (retain) GTLDateTime *dateTime;
 
 // The name of the time zone in which the time is specified (e.g.

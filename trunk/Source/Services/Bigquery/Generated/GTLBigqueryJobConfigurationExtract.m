@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/bigquery/docs/overview
 // Classes:
-//   GTLBigqueryJobConfigurationExtract (0 custom class methods, 6 custom properties)
+//   GTLBigqueryJobConfigurationExtract (0 custom class methods, 7 custom properties)
 
 #import "GTLBigqueryJobConfigurationExtract.h"
 
@@ -38,8 +38,8 @@
 //
 
 @implementation GTLBigqueryJobConfigurationExtract
-@dynamic destinationFormat, destinationUri, destinationUris, fieldDelimiter,
-         printHeader, sourceTable;
+@dynamic compression, destinationFormat, destinationUri, destinationUris,
+         fieldDelimiter, printHeader, sourceTable;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =

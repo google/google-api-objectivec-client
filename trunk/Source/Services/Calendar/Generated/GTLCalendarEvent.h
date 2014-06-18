@@ -72,12 +72,12 @@
 
 // Whether attendees may have been omitted from the event's representation. When
 // retrieving an event, this may be due to a restriction specified by the
-// 'maxAttendee' query parameter. When updating an event, this can be used to
-// only update the participant's response. Optional. The default is False.
+// maxAttendee query parameter. When updating an event, this can be used to only
+// update the participant's response. Optional. The default is False.
 @property (retain) NSNumber *attendeesOmitted;  // boolValue
 
-// The color of the event. This is an ID referring to an entry in the "event"
-// section of the colors definition (see the "colors" endpoint). Optional.
+// The color of the event. This is an ID referring to an entry in the event
+// section of the colors definition (see the colors endpoint). Optional.
 @property (copy) NSString *colorId;
 
 // Creation time of the event (as a RFC 3339 timestamp). Read-only.
@@ -154,9 +154,9 @@
 @property (retain) NSNumber *locked;  // boolValue
 
 // The organizer of the event. If the organizer is also an attendee, this is
-// indicated with a separate entry in 'attendees' with the 'organizer' field set
-// to True. To change the organizer, use the "move" operation. Read-only, except
-// when importing an event.
+// indicated with a separate entry in attendees with the organizer field set to
+// True. To change the organizer, use the move operation. Read-only, except when
+// importing an event.
 @property (retain) GTLCalendarEventOrganizer *organizer;
 
 // For an instance of a recurring event, this is the time at which this event

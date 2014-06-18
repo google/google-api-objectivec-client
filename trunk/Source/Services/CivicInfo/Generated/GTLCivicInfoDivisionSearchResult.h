@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Civic Information API (civicinfo/us_v1)
+//   Google Civic Information API (civicinfo/v1)
 // Description:
 //   An API for accessing civic information.
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoDivisionSearchResult (0 custom class methods, 2 custom properties)
+//   GTLCivicInfoDivisionSearchResult (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -42,6 +42,14 @@
 // Represents a political geographic division that matches the requested query.
 
 @interface GTLCivicInfoDivisionSearchResult : GTLObject
+
+// Other Open Civic Data identifiers that refer to the same division -- for
+// example, those that refer to other political divisions whose boundaries are
+// defined to be coterminous with this one. For example,
+// ocd-division/country:us/state:wy will include an alias of
+// ocd-division/country:us/state:wy/cd:1, since Wyoming has only one
+// Congressional district.
+@property (retain) NSArray *aliases;  // of NSString
 
 // The name of the division.
 @property (copy) NSString *name;

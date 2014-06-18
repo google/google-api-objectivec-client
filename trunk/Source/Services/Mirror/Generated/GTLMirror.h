@@ -41,6 +41,7 @@
 #import "GTLMirrorMenuValue.h"
 #import "GTLMirrorNotification.h"
 #import "GTLMirrorNotificationConfig.h"
+#import "GTLMirrorSetting.h"
 #import "GTLMirrorSubscription.h"
 #import "GTLMirrorSubscriptionsListResponse.h"
 #import "GTLMirrorTimelineItem.h"

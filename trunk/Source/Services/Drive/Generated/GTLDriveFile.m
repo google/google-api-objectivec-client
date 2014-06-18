@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 45 custom properties)
+//   GTLDriveFile (0 custom class methods, 49 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
 //   GTLDriveFileImageMediaMetadata (0 custom class methods, 21 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
@@ -53,11 +53,12 @@
          embedLink, ETag, explicitlyTrashed, exportLinks, fileExtension,
          fileSize, headRevisionId, iconLink, identifier, imageMediaMetadata,
          indexableText, kind, labels, lastModifyingUser, lastModifyingUserName,
-         lastViewedByMeDate, md5Checksum, mimeType, modifiedByMeDate,
-         modifiedDate, openWithLinks, originalFilename, ownerNames, owners,
-         parents, properties, quotaBytesUsed, selfLink, shared,
-         sharedWithMeDate, thumbnail, thumbnailLink, title, userPermission,
-         webContentLink, webViewLink, writersCanShare;
+         lastViewedByMeDate, markedViewedByMeDate, md5Checksum, mimeType,
+         modifiedByMeDate, modifiedDate, openWithLinks, originalFilename,
+         ownerNames, owners, parents, permissions, properties, quotaBytesUsed,
+         selfLink, shared, sharedWithMeDate, sharingUser, thumbnail,
+         thumbnailLink, title, userPermission, version, webContentLink,
+         webViewLink, writersCanShare;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -75,6 +76,7 @@
       [NSString class], @"ownerNames",
       [GTLDriveUser class], @"owners",
       [GTLDriveParentReference class], @"parents",
+      [GTLDrivePermission class], @"permissions",
       [GTLDriveProperty class], @"properties",
       nil];
   return map;

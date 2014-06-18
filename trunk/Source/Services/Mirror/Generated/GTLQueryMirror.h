@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/glass
 // Classes:
-//   GTLQueryMirror (23 custom class methods, 14 custom properties)
+//   GTLQueryMirror (24 custom class methods, 14 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -159,6 +159,21 @@
 //   kGTLAuthScopeMirrorGlassTimeline
 // Fetches a GTLMirrorLocationsListResponse.
 + (id)queryForLocationsList;
+
+#pragma mark -
+#pragma mark "settings" methods
+// These create a GTLQueryMirror object.
+
+// Method: mirror.settings.get
+// Gets a single setting by ID.
+//  Required:
+//   identifier: The ID of the setting. The following IDs are valid:
+//     - locale - The key to the user’s language/locale (BCP 47 identifier) that
+//     Glassware should use to render localized content.
+//  Authorization scope(s):
+//   kGTLAuthScopeMirrorGlassTimeline
+// Fetches a GTLMirrorSetting.
++ (id)queryForSettingsGetWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "subscriptions" methods

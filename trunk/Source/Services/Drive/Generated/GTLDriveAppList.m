@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveAppList (0 custom class methods, 4 custom properties)
+//   GTLDriveAppList (0 custom class methods, 5 custom properties)
 
 #import "GTLDriveAppList.h"
 
@@ -38,7 +38,7 @@
 //
 
 @implementation GTLDriveAppList
-@dynamic ETag, items, kind, selfLink;
+@dynamic defaultAppIds, ETag, items, kind, selfLink;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -49,8 +49,10 @@
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLDriveApp class]
-                                forKey:@"items"];
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      [NSString class], @"defaultAppIds",
+      [GTLDriveApp class], @"items",
+      nil];
   return map;
 }
 

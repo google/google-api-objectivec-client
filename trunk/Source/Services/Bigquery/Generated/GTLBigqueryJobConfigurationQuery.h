@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/bigquery/docs/overview
 // Classes:
-//   GTLBigqueryJobConfigurationQuery (0 custom class methods, 9 custom properties)
+//   GTLBigqueryJobConfigurationQuery (0 custom class methods, 10 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -45,7 +45,7 @@
 @interface GTLBigqueryJobConfigurationQuery : GTLObject
 
 // If true, allows the query to produce arbitrarily large result tables at a
-// slight cost in performance. Requires destination_table to be set.
+// slight cost in performance. Requires destinationTable to be set.
 @property (retain) NSNumber *allowLargeResults;  // boolValue
 
 // [Optional] Specifies whether the job is allowed to create new tables. The
@@ -63,6 +63,11 @@
 // [Optional] Describes the table where the query results should be stored. If
 // not present, a new table will be created to store the results.
 @property (retain) GTLBigqueryTableReference *destinationTable;
+
+// [Experimental] Flattens all nested and repeated fields in the query results.
+// The default value is true. allowLargeResults must be true if this is set to
+// false.
+@property (retain) NSNumber *flattenResults;  // boolValue
 
 // [Deprecated] This property is deprecated.
 @property (retain) NSNumber *preserveNulls;  // boolValue

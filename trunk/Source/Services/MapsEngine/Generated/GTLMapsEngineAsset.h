@@ -48,8 +48,7 @@
 
 @interface GTLMapsEngineAsset : GTLObject
 
-// An array of four numbers (west, south, east, north) which define the
-// rectangular bounding box which contains all of the data in this asset. The
+// A rectangular bounding box which contains all of the data in this asset. The
 // numbers represent latitude and longitude in decimal degrees.
 @property (retain) NSArray *bbox;  // of NSNumber (doubleValue)
 

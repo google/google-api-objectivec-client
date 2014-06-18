@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLQueryMapsEngine (35 custom class methods, 26 custom properties)
+//   GTLQueryMapsEngine (37 custom class methods, 26 custom properties)
 
 #import "GTLQueryMapsEngine.h"
 
@@ -173,6 +173,13 @@
 #pragma mark "maps" methods
 // These create a GTLQueryMapsEngine object.
 
++ (id)queryForMapsCreate {
+  NSString *methodName = @"mapsengine.maps.create";
+  GTLQueryMapsEngine *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLMapsEngineMap class];
+  return query;
+}
+
 + (id)queryForMapsGetWithIdentifier:(NSString *)identifier {
   NSString *methodName = @"mapsengine.maps.get";
   GTLQueryMapsEngine *query = [self queryWithMethodName:methodName];
@@ -185,6 +192,14 @@
   NSString *methodName = @"mapsengine.maps.list";
   GTLQueryMapsEngine *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLMapsEngineMapsListResponse class];
+  return query;
+}
+
++ (id)queryForMapsPublishWithIdentifier:(NSString *)identifier {
+  NSString *methodName = @"mapsengine.maps.publish";
+  GTLQueryMapsEngine *query = [self queryWithMethodName:methodName];
+  query.identifier = identifier;
+  query.expectedObjectClass = [GTLMapsEnginePublishResponse class];
   return query;
 }
 

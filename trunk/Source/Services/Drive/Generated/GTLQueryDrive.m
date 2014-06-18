@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLQueryDrive (58 custom class methods, 37 custom properties)
+//   GTLQueryDrive (59 custom class methods, 43 custom properties)
 
 #import "GTLQueryDrive.h"
 
@@ -56,14 +56,15 @@
 
 @implementation GTLQueryDrive
 
-@dynamic appId, baseRevision, changeId, childId, commentId, convert, email,
+@dynamic addParents, appFilterExtensions, appFilterMimeTypes, appId,
+         baseRevision, changeId, childId, commentId, convert, email,
          emailMessage, fields, fileId, folderId, includeDeleted,
-         includeSubscribed, maxChangeIdCount, maxResults, newRevision, ocr,
-         ocrLanguage, pageToken, parentId, permissionId, pinned, projection,
-         propertyKey, q, replyId, revisionId, sendNotificationEmails,
-         setModifiedDate, startChangeId, timedTextLanguage, timedTextTrackName,
-         transferOwnership, updatedMin, updateViewedDate,
-         useContentAsIndexableText, visibility;
+         includeSubscribed, languageCode, maxChangeIdCount, maxResults,
+         newRevision, ocr, ocrLanguage, pageToken, parentId, permissionId,
+         pinned, projection, propertyKey, q, removeParents, replyId, revision,
+         revisionId, sendNotificationEmails, setModifiedDate, startChangeId,
+         timedTextLanguage, timedTextTrackName, transferOwnership, updatedMin,
+         updateViewedDate, useContentAsIndexableText, visibility;
 
 #pragma mark -
 #pragma mark "about" methods
@@ -285,6 +286,12 @@
   NSString *methodName = @"drive.files.delete";
   GTLQueryDrive *query = [self queryWithMethodName:methodName];
   query.fileId = fileId;
+  return query;
+}
+
++ (id)queryForFilesEmptyTrash {
+  NSString *methodName = @"drive.files.emptyTrash";
+  GTLQueryDrive *query = [self queryWithMethodName:methodName];
   return query;
 }
 

@@ -14,41 +14,45 @@
  */
 
 //
-//  GTLCivicInfoElectionsQueryResponse.m
+//  GTLMirrorSetting.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Civic Information API (civicinfo/v1)
+//   Google Mirror API (mirror/v1)
 // Description:
-//   An API for accessing civic information.
+//   API for interacting with Glass users via the timeline.
 // Documentation:
-//   https://developers.google.com/civic-information
+//   https://developers.google.com/glass
 // Classes:
-//   GTLCivicInfoElectionsQueryResponse (0 custom class methods, 2 custom properties)
+//   GTLMirrorSetting (0 custom class methods, 3 custom properties)
 
-#import "GTLCivicInfoElectionsQueryResponse.h"
-
-#import "GTLCivicInfoElection.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLCivicInfoElectionsQueryResponse
+//   GTLMirrorSetting
 //
 
-@implementation GTLCivicInfoElectionsQueryResponse
-@dynamic elections, kind;
+// A setting for Glass.
 
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLCivicInfoElection class]
-                                forKey:@"elections"];
-  return map;
-}
+@interface GTLMirrorSetting : GTLObject
 
-+ (void)load {
-  [self registerObjectClassForKind:@"civicinfo#electionsQueryResponse"];
-}
+// The setting's ID. The following IDs are valid:
+// - locale - The key to the user’s language/locale (BCP 47 identifier) that
+// Glassware should use to render localized content.
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+@property (copy) NSString *identifier;
+
+// The type of resource. This is always mirror#setting.
+@property (copy) NSString *kind;
+
+// The setting value, as a string.
+@property (copy) NSString *value;
 
 @end

@@ -51,6 +51,7 @@
                       [GTLMirrorMenuValue class],
                       [GTLMirrorNotification class],
                       [GTLMirrorNotificationConfig class],
+                      [GTLMirrorSetting class],
                       [GTLMirrorSubscription class],
                       [GTLMirrorSubscriptionsListResponse class],
                       [GTLMirrorTimelineItem class],

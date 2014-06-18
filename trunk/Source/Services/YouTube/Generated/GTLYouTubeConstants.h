@@ -208,6 +208,22 @@ GTL_EXTERN NSString * const kGTLYouTubeContentRating_AcbRating_AcbPg;  // "acbPg
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_AcbRating_AcbR18plus;  // "acbR18plus"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_AcbRating_AcbUnrated;  // "acbUnrated"
 
+// GTLYouTubeContentRating - AgcomRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_AgcomRating_AgcomT;  // "agcomT"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_AgcomRating_AgcomUnrated;  // "agcomUnrated"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_AgcomRating_AgcomVm14;  // "agcomVm14"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_AgcomRating_AgcomVm18;  // "agcomVm18"
+
+// GTLYouTubeContentRating - AnatelRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_AnatelRating_AnatelA;  // "anatelA"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_AnatelRating_AnatelF;  // "anatelF"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_AnatelRating_AnatelI;  // "anatelI"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_AnatelRating_AnatelI10;  // "anatelI10"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_AnatelRating_AnatelI12;  // "anatelI12"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_AnatelRating_AnatelI7;  // "anatelI7"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_AnatelRating_AnatelR;  // "anatelR"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_AnatelRating_AnatelUnrated;  // "anatelUnrated"
+
 // GTLYouTubeContentRating - BbfcRating
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_BbfcRating_Bbfc12;  // "bbfc12"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_BbfcRating_Bbfc12a;  // "bbfc12a"
@@ -217,6 +233,26 @@ GTL_EXTERN NSString * const kGTLYouTubeContentRating_BbfcRating_BbfcPg;  // "bbf
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_BbfcRating_BbfcR18;  // "bbfcR18"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_BbfcRating_BbfcU;  // "bbfcU"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_BbfcRating_BbfcUnrated;  // "bbfcUnrated"
+
+// GTLYouTubeContentRating - BfvcRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_BfvcRating_Bfvc13;  // "bfvc13"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_BfvcRating_Bfvc15;  // "bfvc15"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_BfvcRating_Bfvc18;  // "bfvc18"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_BfvcRating_Bfvc20;  // "bfvc20"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_BfvcRating_BfvcB;  // "bfvcB"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_BfvcRating_BfvcE;  // "bfvcE"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_BfvcRating_BfvcG;  // "bfvcG"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_BfvcRating_BfvcUnrated;  // "bfvcUnrated"
+
+// GTLYouTubeContentRating - BmukkRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_BmukkRating_Bmukk10;  // "bmukk10"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_BmukkRating_Bmukk12;  // "bmukk12"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_BmukkRating_Bmukk14;  // "bmukk14"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_BmukkRating_Bmukk16;  // "bmukk16"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_BmukkRating_Bmukk6;  // "bmukk6"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_BmukkRating_Bmukk8;  // "bmukk8"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_BmukkRating_BmukkAa;  // "bmukkAa"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_BmukkRating_BmukkUnrated;  // "bmukkUnrated"
 
 // GTLYouTubeContentRating - CatvfrRating
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_CatvfrRating_Catvfr13plus;  // "catvfr13plus"
@@ -242,6 +278,31 @@ GTL_EXTERN NSString * const kGTLYouTubeContentRating_CbfcRating_CbfcU;  // "cbfc
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_CbfcRating_CbfcUA;  // "cbfcUA"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_CbfcRating_CbfcUnrated;  // "cbfcUnrated"
 
+// GTLYouTubeContentRating - CccRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CccRating_Ccc14;  // "ccc14"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CccRating_Ccc18;  // "ccc18"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CccRating_Ccc18s;  // "ccc18s"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CccRating_Ccc18v;  // "ccc18v"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CccRating_Ccc6;  // "ccc6"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CccRating_CccTe;  // "cccTe"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CccRating_CccUnrated;  // "cccUnrated"
+
+// GTLYouTubeContentRating - CceRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CceRating_CceM12;  // "cceM12"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CceRating_CceM16;  // "cceM16"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CceRating_CceM18;  // "cceM18"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CceRating_CceM4;  // "cceM4"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CceRating_CceM6;  // "cceM6"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CceRating_CceUnrated;  // "cceUnrated"
+
+// GTLYouTubeContentRating - ChfilmRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_ChfilmRating_Chfilm0;  // "chfilm0"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_ChfilmRating_Chfilm12;  // "chfilm12"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_ChfilmRating_Chfilm16;  // "chfilm16"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_ChfilmRating_Chfilm18;  // "chfilm18"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_ChfilmRating_Chfilm6;  // "chfilm6"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_ChfilmRating_ChfilmUnrated;  // "chfilmUnrated"
+
 // GTLYouTubeContentRating - ChvrsRating
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_ChvrsRating_Chvrs14a;  // "chvrs14a"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_ChvrsRating_Chvrs18a;  // "chvrs18a"
@@ -250,6 +311,43 @@ GTL_EXTERN NSString * const kGTLYouTubeContentRating_ChvrsRating_ChvrsG;  // "ch
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_ChvrsRating_ChvrsPg;  // "chvrsPg"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_ChvrsRating_ChvrsR;  // "chvrsR"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_ChvrsRating_ChvrsUnrated;  // "chvrsUnrated"
+
+// GTLYouTubeContentRating - CicfRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CicfRating_CicfE;  // "cicfE"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CicfRating_CicfKntEna;  // "cicfKntEna"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CicfRating_CicfKtEa;  // "cicfKtEa"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CicfRating_CicfUnrated;  // "cicfUnrated"
+
+// GTLYouTubeContentRating - CnaRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CnaRating_Cna12;  // "cna12"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CnaRating_Cna15;  // "cna15"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CnaRating_Cna18;  // "cna18"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CnaRating_Cna18plus;  // "cna18plus"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CnaRating_CnaAp;  // "cnaAp"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CnaRating_CnaUnrated;  // "cnaUnrated"
+
+// GTLYouTubeContentRating - CsaRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CsaRating_Csa10;  // "csa10"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CsaRating_Csa12;  // "csa12"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CsaRating_Csa16;  // "csa16"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CsaRating_Csa18;  // "csa18"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CsaRating_CsaInterdiction;  // "csaInterdiction"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CsaRating_CsaUnrated;  // "csaUnrated"
+
+// GTLYouTubeContentRating - CscfRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CscfRating_Cscf12;  // "cscf12"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CscfRating_Cscf16;  // "cscf16"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CscfRating_Cscf18;  // "cscf18"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CscfRating_Cscf6;  // "cscf6"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CscfRating_CscfA;  // "cscfA"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CscfRating_CscfUnrated;  // "cscfUnrated"
+
+// GTLYouTubeContentRating - CzfilmRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CzfilmRating_Czfilm12;  // "czfilm12"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CzfilmRating_Czfilm14;  // "czfilm14"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CzfilmRating_Czfilm18;  // "czfilm18"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CzfilmRating_CzfilmU;  // "czfilmU"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_CzfilmRating_CzfilmUnrated;  // "czfilmUnrated"
 
 // GTLYouTubeContentRating - DjctqRating
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_DjctqRating_Djctq10;  // "djctq10"
@@ -260,12 +358,46 @@ GTL_EXTERN NSString * const kGTLYouTubeContentRating_DjctqRating_Djctq18;  // "d
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_DjctqRating_DjctqL;  // "djctqL"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_DjctqRating_DjctqUnrated;  // "djctqUnrated"
 
+// GTLYouTubeContentRating - EefilmRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_EefilmRating_EefilmK12;  // "eefilmK12"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_EefilmRating_EefilmK14;  // "eefilmK14"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_EefilmRating_EefilmK16;  // "eefilmK16"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_EefilmRating_EefilmK6;  // "eefilmK6"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_EefilmRating_EefilmL;  // "eefilmL"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_EefilmRating_EefilmMs12;  // "eefilmMs12"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_EefilmRating_EefilmMs6;  // "eefilmMs6"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_EefilmRating_EefilmPere;  // "eefilmPere"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_EefilmRating_EefilmUnrated;  // "eefilmUnrated"
+
+// GTLYouTubeContentRating - EgfilmRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_EgfilmRating_Egfilm18;  // "egfilm18"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_EgfilmRating_EgfilmBn;  // "egfilmBn"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_EgfilmRating_EgfilmGn;  // "egfilmGn"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_EgfilmRating_EgfilmUnrated;  // "egfilmUnrated"
+
 // GTLYouTubeContentRating - EirinRating
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_EirinRating_EirinG;  // "eirinG"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_EirinRating_EirinPg12;  // "eirinPg12"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_EirinRating_EirinR15plus;  // "eirinR15plus"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_EirinRating_EirinR18plus;  // "eirinR18plus"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_EirinRating_EirinUnrated;  // "eirinUnrated"
+
+// GTLYouTubeContentRating - FcbmRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_FcbmRating_Fcbm18;  // "fcbm18"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_FcbmRating_Fcbm18pa;  // "fcbm18pa"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_FcbmRating_Fcbm18pl;  // "fcbm18pl"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_FcbmRating_Fcbm18sg;  // "fcbm18sg"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_FcbmRating_Fcbm18sx;  // "fcbm18sx"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_FcbmRating_FcbmP13;  // "fcbmP13"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_FcbmRating_FcbmU;  // "fcbmU"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_FcbmRating_FcbmUnrated;  // "fcbmUnrated"
+
+// GTLYouTubeContentRating - FcoRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_FcoRating_FcoI;  // "fcoI"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_FcoRating_FcoIia;  // "fcoIia"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_FcoRating_FcoIib;  // "fcoIib"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_FcoRating_FcoIii;  // "fcoIii"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_FcoRating_FcoUnrated;  // "fcoUnrated"
 
 // GTLYouTubeContentRating - FmocRating
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_FmocRating_Fmoc10;  // "fmoc10"
@@ -276,6 +408,18 @@ GTL_EXTERN NSString * const kGTLYouTubeContentRating_FmocRating_FmocE;  // "fmoc
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_FmocRating_FmocU;  // "fmocU"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_FmocRating_FmocUnrated;  // "fmocUnrated"
 
+// GTLYouTubeContentRating - FpbRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_FpbRating_Fpb1012Pg;  // "fpb1012Pg"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_FpbRating_Fpb13;  // "fpb13"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_FpbRating_Fpb16;  // "fpb16"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_FpbRating_Fpb18;  // "fpb18"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_FpbRating_Fpb79Pg;  // "fpb79Pg"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_FpbRating_FpbA;  // "fpbA"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_FpbRating_FpbPg;  // "fpbPg"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_FpbRating_FpbUnrated;  // "fpbUnrated"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_FpbRating_FpbX18;  // "fpbX18"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_FpbRating_FpbXx;  // "fpbXx"
+
 // GTLYouTubeContentRating - FskRating
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_FskRating_Fsk0;  // "fsk0"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_FskRating_Fsk12;  // "fsk12"
@@ -283,6 +427,13 @@ GTL_EXTERN NSString * const kGTLYouTubeContentRating_FskRating_Fsk16;  // "fsk16
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_FskRating_Fsk18;  // "fsk18"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_FskRating_Fsk6;  // "fsk6"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_FskRating_FskUnrated;  // "fskUnrated"
+
+// GTLYouTubeContentRating - GrfilmRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_GrfilmRating_GrfilmE;  // "grfilmE"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_GrfilmRating_GrfilmK;  // "grfilmK"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_GrfilmRating_GrfilmK13;  // "grfilmK13"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_GrfilmRating_GrfilmK17;  // "grfilmK17"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_GrfilmRating_GrfilmUnrated;  // "grfilmUnrated"
 
 // GTLYouTubeContentRating - IcaaRating
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_IcaaRating_Icaa12;  // "icaa12"
@@ -294,6 +445,44 @@ GTL_EXTERN NSString * const kGTLYouTubeContentRating_IcaaRating_IcaaApta;  // "i
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_IcaaRating_IcaaUnrated;  // "icaaUnrated"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_IcaaRating_IcaaX;  // "icaaX"
 
+// GTLYouTubeContentRating - IfcoRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_IfcoRating_Ifco12;  // "ifco12"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_IfcoRating_Ifco15;  // "ifco15"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_IfcoRating_Ifco18;  // "ifco18"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_IfcoRating_IfcoG;  // "ifcoG"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_IfcoRating_IfcoPg;  // "ifcoPg"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_IfcoRating_IfcoUnrated;  // "ifcoUnrated"
+
+// GTLYouTubeContentRating - IlfilmRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_IlfilmRating_Ilfilm12;  // "ilfilm12"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_IlfilmRating_Ilfilm16;  // "ilfilm16"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_IlfilmRating_Ilfilm18;  // "ilfilm18"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_IlfilmRating_IlfilmAa;  // "ilfilmAa"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_IlfilmRating_IlfilmUnrated;  // "ilfilmUnrated"
+
+// GTLYouTubeContentRating - IncaaRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_IncaaRating_IncaaAtp;  // "incaaAtp"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_IncaaRating_IncaaC;  // "incaaC"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_IncaaRating_IncaaSam13;  // "incaaSam13"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_IncaaRating_IncaaSam16;  // "incaaSam16"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_IncaaRating_IncaaSam18;  // "incaaSam18"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_IncaaRating_IncaaUnrated;  // "incaaUnrated"
+
+// GTLYouTubeContentRating - KfcbRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_KfcbRating_Kfcb16plus;  // "kfcb16plus"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_KfcbRating_KfcbG;  // "kfcbG"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_KfcbRating_KfcbPg;  // "kfcbPg"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_KfcbRating_KfcbR;  // "kfcbR"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_KfcbRating_KfcbUnrated;  // "kfcbUnrated"
+
+// GTLYouTubeContentRating - KijkwijzerRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_KijkwijzerRating_Kijkwijzer12;  // "kijkwijzer12"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_KijkwijzerRating_Kijkwijzer16;  // "kijkwijzer16"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_KijkwijzerRating_Kijkwijzer6;  // "kijkwijzer6"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_KijkwijzerRating_Kijkwijzer9;  // "kijkwijzer9"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_KijkwijzerRating_KijkwijzerAl;  // "kijkwijzerAl"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_KijkwijzerRating_KijkwijzerUnrated;  // "kijkwijzerUnrated"
+
 // GTLYouTubeContentRating - KmrbRating
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_KmrbRating_Kmrb12plus;  // "kmrb12plus"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_KmrbRating_Kmrb15plus;  // "kmrb15plus"
@@ -301,6 +490,57 @@ GTL_EXTERN NSString * const kGTLYouTubeContentRating_KmrbRating_KmrbAll;  // "km
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_KmrbRating_KmrbR;  // "kmrbR"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_KmrbRating_KmrbTeenr;  // "kmrbTeenr"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_KmrbRating_KmrbUnrated;  // "kmrbUnrated"
+
+// GTLYouTubeContentRating - LsfRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_LsfRating_LsfA;  // "lsfA"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_LsfRating_LsfBo;  // "lsfBo"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_LsfRating_LsfD;  // "lsfD"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_LsfRating_LsfR;  // "lsfR"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_LsfRating_LsfSu;  // "lsfSu"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_LsfRating_LsfUnrated;  // "lsfUnrated"
+
+// GTLYouTubeContentRating - MccaaRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MccaaRating_Mccaa12;  // "mccaa12"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MccaaRating_Mccaa12a;  // "mccaa12a"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MccaaRating_Mccaa14;  // "mccaa14"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MccaaRating_Mccaa15;  // "mccaa15"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MccaaRating_Mccaa16;  // "mccaa16"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MccaaRating_Mccaa18;  // "mccaa18"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MccaaRating_MccaaPg;  // "mccaaPg"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MccaaRating_MccaaU;  // "mccaaU"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MccaaRating_MccaaUnrated;  // "mccaaUnrated"
+
+// GTLYouTubeContentRating - MccypRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MccypRating_Mccyp11;  // "mccyp11"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MccypRating_Mccyp15;  // "mccyp15"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MccypRating_Mccyp7;  // "mccyp7"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MccypRating_MccypA;  // "mccypA"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MccypRating_MccypUnrated;  // "mccypUnrated"
+
+// GTLYouTubeContentRating - MdaRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MdaRating_MdaG;  // "mdaG"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MdaRating_MdaM18;  // "mdaM18"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MdaRating_MdaNc16;  // "mdaNc16"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MdaRating_MdaPg;  // "mdaPg"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MdaRating_MdaPg13;  // "mdaPg13"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MdaRating_MdaR21;  // "mdaR21"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MdaRating_MdaUnrated;  // "mdaUnrated"
+
+// GTLYouTubeContentRating - MedietilsynetRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MedietilsynetRating_Medietilsynet11;  // "medietilsynet11"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MedietilsynetRating_Medietilsynet15;  // "medietilsynet15"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MedietilsynetRating_Medietilsynet18;  // "medietilsynet18"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MedietilsynetRating_Medietilsynet7;  // "medietilsynet7"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MedietilsynetRating_MedietilsynetA;  // "medietilsynetA"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MedietilsynetRating_MedietilsynetUnrated;  // "medietilsynetUnrated"
+
+// GTLYouTubeContentRating - MekuRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MekuRating_Meku12;  // "meku12"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MekuRating_Meku16;  // "meku16"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MekuRating_Meku18;  // "meku18"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MekuRating_Meku7;  // "meku7"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MekuRating_MekuS;  // "mekuS"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MekuRating_MekuUnrated;  // "mekuUnrated"
 
 // GTLYouTubeContentRating - MibacRating
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_MibacRating_MibacT;  // "mibacT"
@@ -310,6 +550,24 @@ GTL_EXTERN NSString * const kGTLYouTubeContentRating_MibacRating_MibacVm12;  // 
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_MibacRating_MibacVm14;  // "mibacVm14"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_MibacRating_MibacVm18;  // "mibacVm18"
 
+// GTLYouTubeContentRating - MocRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MocRating_Moc12;  // "moc12"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MocRating_Moc15;  // "moc15"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MocRating_Moc18;  // "moc18"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MocRating_Moc7;  // "moc7"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MocRating_MocBanned;  // "mocBanned"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MocRating_MocE;  // "mocE"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MocRating_MocT;  // "mocT"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MocRating_MocUnrated;  // "mocUnrated"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MocRating_MocX;  // "mocX"
+
+// GTLYouTubeContentRating - MoctwRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MoctwRating_MoctwG;  // "moctwG"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MoctwRating_MoctwP;  // "moctwP"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MoctwRating_MoctwPg;  // "moctwPg"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MoctwRating_MoctwR;  // "moctwR"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MoctwRating_MoctwUnrated;  // "moctwUnrated"
+
 // GTLYouTubeContentRating - MpaaRating
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_MpaaRating_MpaaG;  // "mpaaG"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_MpaaRating_MpaaNc17;  // "mpaaNc17"
@@ -317,6 +575,58 @@ GTL_EXTERN NSString * const kGTLYouTubeContentRating_MpaaRating_MpaaPg;  // "mpa
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_MpaaRating_MpaaPg13;  // "mpaaPg13"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_MpaaRating_MpaaR;  // "mpaaR"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_MpaaRating_MpaaUnrated;  // "mpaaUnrated"
+
+// GTLYouTubeContentRating - MtrcbRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MtrcbRating_MtrcbG;  // "mtrcbG"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MtrcbRating_MtrcbPg;  // "mtrcbPg"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MtrcbRating_MtrcbR13;  // "mtrcbR13"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MtrcbRating_MtrcbR16;  // "mtrcbR16"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MtrcbRating_MtrcbR18;  // "mtrcbR18"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MtrcbRating_MtrcbUnrated;  // "mtrcbUnrated"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_MtrcbRating_MtrcbX;  // "mtrcbX"
+
+// GTLYouTubeContentRating - NbcplRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NbcplRating_Nbcpl18plus;  // "nbcpl18plus"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NbcplRating_NbcplI;  // "nbcplI"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NbcplRating_NbcplIi;  // "nbcplIi"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NbcplRating_NbcplIii;  // "nbcplIii"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NbcplRating_NbcplIv;  // "nbcplIv"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NbcplRating_NbcplUnrated;  // "nbcplUnrated"
+
+// GTLYouTubeContentRating - NbcRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NbcRating_Nbc12plus;  // "nbc12plus"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NbcRating_Nbc15plus;  // "nbc15plus"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NbcRating_Nbc18plus;  // "nbc18plus"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NbcRating_Nbc18plusr;  // "nbc18plusr"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NbcRating_NbcG;  // "nbcG"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NbcRating_NbcPg;  // "nbcPg"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NbcRating_NbcPu;  // "nbcPu"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NbcRating_NbcUnrated;  // "nbcUnrated"
+
+// GTLYouTubeContentRating - NfrcRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NfrcRating_NfrcA;  // "nfrcA"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NfrcRating_NfrcB;  // "nfrcB"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NfrcRating_NfrcC;  // "nfrcC"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NfrcRating_NfrcD;  // "nfrcD"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NfrcRating_NfrcUnrated;  // "nfrcUnrated"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NfrcRating_NfrcX;  // "nfrcX"
+
+// GTLYouTubeContentRating - NfvcbRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NfvcbRating_Nfvcb12;  // "nfvcb12"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NfvcbRating_Nfvcb12a;  // "nfvcb12a"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NfvcbRating_Nfvcb15;  // "nfvcb15"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NfvcbRating_Nfvcb18;  // "nfvcb18"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NfvcbRating_NfvcbG;  // "nfvcbG"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NfvcbRating_NfvcbPg;  // "nfvcbPg"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NfvcbRating_NfvcbRe;  // "nfvcbRe"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NfvcbRating_NfvcbUnrated;  // "nfvcbUnrated"
+
+// GTLYouTubeContentRating - NkclvRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NkclvRating_Nkclv12plus;  // "nkclv12plus"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NkclvRating_Nkclv18plus;  // "nkclv18plus"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NkclvRating_Nkclv7plus;  // "nkclv7plus"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NkclvRating_NkclvU;  // "nkclvU"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_NkclvRating_NkclvUnrated;  // "nkclvUnrated"
 
 // GTLYouTubeContentRating - OflcRating
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_OflcRating_OflcG;  // "oflcG"
@@ -328,6 +638,30 @@ GTL_EXTERN NSString * const kGTLYouTubeContentRating_OflcRating_OflcR16;  // "of
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_OflcRating_OflcR18;  // "oflcR18"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_OflcRating_OflcUnrated;  // "oflcUnrated"
 
+// GTLYouTubeContentRating - PefilmRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_PefilmRating_Pefilm14;  // "pefilm14"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_PefilmRating_Pefilm18;  // "pefilm18"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_PefilmRating_PefilmPg;  // "pefilmPg"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_PefilmRating_PefilmPt;  // "pefilmPt"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_PefilmRating_PefilmUnrated;  // "pefilmUnrated"
+
+// GTLYouTubeContentRating - RcnofRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_RcnofRating_RcnofI;  // "rcnofI"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_RcnofRating_RcnofIi;  // "rcnofIi"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_RcnofRating_RcnofIii;  // "rcnofIii"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_RcnofRating_RcnofIv;  // "rcnofIv"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_RcnofRating_RcnofUnrated;  // "rcnofUnrated"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_RcnofRating_RcnofV;  // "rcnofV"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_RcnofRating_RcnofVi;  // "rcnofVi"
+
+// GTLYouTubeContentRating - ResorteviolenciaRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_ResorteviolenciaRating_ResorteviolenciaA;  // "resorteviolenciaA"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_ResorteviolenciaRating_ResorteviolenciaB;  // "resorteviolenciaB"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_ResorteviolenciaRating_ResorteviolenciaC;  // "resorteviolenciaC"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_ResorteviolenciaRating_ResorteviolenciaD;  // "resorteviolenciaD"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_ResorteviolenciaRating_ResorteviolenciaE;  // "resorteviolenciaE"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_ResorteviolenciaRating_ResorteviolenciaUnrated;  // "resorteviolenciaUnrated"
+
 // GTLYouTubeContentRating - RtcRating
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_RtcRating_RtcA;  // "rtcA"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_RtcRating_RtcAa;  // "rtcAa"
@@ -337,6 +671,13 @@ GTL_EXTERN NSString * const kGTLYouTubeContentRating_RtcRating_RtcC;  // "rtcC"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_RtcRating_RtcD;  // "rtcD"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_RtcRating_RtcUnrated;  // "rtcUnrated"
 
+// GTLYouTubeContentRating - RteRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_RteRating_RteCh;  // "rteCh"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_RteRating_RteGa;  // "rteGa"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_RteRating_RteMa;  // "rteMa"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_RteRating_RtePs;  // "rtePs"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_RteRating_RteUnrated;  // "rteUnrated"
+
 // GTLYouTubeContentRating - RussiaRating
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_RussiaRating_Russia0;  // "russia0"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_RussiaRating_Russia12;  // "russia12"
@@ -344,6 +685,29 @@ GTL_EXTERN NSString * const kGTLYouTubeContentRating_RussiaRating_Russia16;  // 
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_RussiaRating_Russia18;  // "russia18"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_RussiaRating_Russia6;  // "russia6"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_RussiaRating_RussiaUnrated;  // "russiaUnrated"
+
+// GTLYouTubeContentRating - SkfilmRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_SkfilmRating_SkfilmG;  // "skfilmG"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_SkfilmRating_SkfilmP2;  // "skfilmP2"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_SkfilmRating_SkfilmP5;  // "skfilmP5"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_SkfilmRating_SkfilmP8;  // "skfilmP8"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_SkfilmRating_SkfilmUnrated;  // "skfilmUnrated"
+
+// GTLYouTubeContentRating - SmaisRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_SmaisRating_Smais12;  // "smais12"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_SmaisRating_Smais14;  // "smais14"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_SmaisRating_Smais16;  // "smais16"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_SmaisRating_Smais18;  // "smais18"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_SmaisRating_Smais7;  // "smais7"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_SmaisRating_SmaisL;  // "smaisL"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_SmaisRating_SmaisUnrated;  // "smaisUnrated"
+
+// GTLYouTubeContentRating - SmsaRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_SmsaRating_Smsa11;  // "smsa11"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_SmsaRating_Smsa15;  // "smsa15"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_SmsaRating_Smsa7;  // "smsa7"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_SmsaRating_SmsaA;  // "smsaA"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_SmsaRating_SmsaUnrated;  // "smsaUnrated"
 
 // GTLYouTubeContentRating - TvpgRating
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_TvpgRating_Pg14;  // "pg14"

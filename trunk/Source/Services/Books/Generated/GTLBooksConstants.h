@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,7 +38,7 @@
 // Manage your books
 GTL_EXTERN NSString * const kGTLAuthScopeBooks;  // "https://www.googleapis.com/auth/books"
 
-// AcquireMethod
+// GTLQueryBooks - AcquireMethod
 GTL_EXTERN NSString * const kGTLBooksAcquireMethodPreordered;   // "PREORDERED"
 GTL_EXTERN NSString * const kGTLBooksAcquireMethodPreviouslyRented;  // "PREVIOUSLY_RENTED"
 GTL_EXTERN NSString * const kGTLBooksAcquireMethodPublicDomain;  // "PUBLIC_DOMAIN"
@@ -47,7 +47,7 @@ GTL_EXTERN NSString * const kGTLBooksAcquireMethodRented;       // "RENTED"
 GTL_EXTERN NSString * const kGTLBooksAcquireMethodSample;       // "SAMPLE"
 GTL_EXTERN NSString * const kGTLBooksAcquireMethodUploaded;     // "UPLOADED"
 
-// Action
+// GTLQueryBooks - Action
 GTL_EXTERN NSString * const kGTLBooksActionBookmark;  // "bookmark"
 GTL_EXTERN NSString * const kGTLBooksActionChapter;   // "chapter"
 GTL_EXTERN NSString * const kGTLBooksActionNextPage;  // "next-page"
@@ -55,50 +55,50 @@ GTL_EXTERN NSString * const kGTLBooksActionPrevPage;  // "prev-page"
 GTL_EXTERN NSString * const kGTLBooksActionScroll;    // "scroll"
 GTL_EXTERN NSString * const kGTLBooksActionSearch;    // "search"
 
-// Association
+// GTLQueryBooks - Association
 GTL_EXTERN NSString * const kGTLBooksAssociationEndOfSample;  // "end-of-sample"
 GTL_EXTERN NSString * const kGTLBooksAssociationEndOfVolume;  // "end-of-volume"
 
-// Download
+// GTLQueryBooks - Download
 GTL_EXTERN NSString * const kGTLBooksDownloadEpub;  // "epub"
 
-// Features
+// GTLQueryBooks - Features
 GTL_EXTERN NSString * const kGTLBooksFeaturesRentals;  // "RENTALS"
 
-// Filter
+// GTLQueryBooks - Filter
 GTL_EXTERN NSString * const kGTLBooksFilterEbooks;      // "ebooks"
 GTL_EXTERN NSString * const kGTLBooksFilterFreeEbooks;  // "free-ebooks"
 GTL_EXTERN NSString * const kGTLBooksFilterFull;        // "full"
 GTL_EXTERN NSString * const kGTLBooksFilterPaidEbooks;  // "paid-ebooks"
 GTL_EXTERN NSString * const kGTLBooksFilterPartial;     // "partial"
 
-// LibraryRestrict
+// GTLQueryBooks - LibraryRestrict
 GTL_EXTERN NSString * const kGTLBooksLibraryRestrictMyLibrary;  // "my-library"
 GTL_EXTERN NSString * const kGTLBooksLibraryRestrictNoRestrict;  // "no-restrict"
 
-// LicenseTypes
+// GTLQueryBooks - LicenseTypes
 GTL_EXTERN NSString * const kGTLBooksLicenseTypesBoth;        // "BOTH"
 GTL_EXTERN NSString * const kGTLBooksLicenseTypesConcurrent;  // "CONCURRENT"
 GTL_EXTERN NSString * const kGTLBooksLicenseTypesDownload;    // "DOWNLOAD"
 
-// OrderBy
+// GTLQueryBooks - OrderBy
 GTL_EXTERN NSString * const kGTLBooksOrderByNewest;     // "newest"
 GTL_EXTERN NSString * const kGTLBooksOrderByRelevance;  // "relevance"
 
-// PrintType
+// GTLQueryBooks - PrintType
 GTL_EXTERN NSString * const kGTLBooksPrintTypeAll;        // "all"
 GTL_EXTERN NSString * const kGTLBooksPrintTypeBooks;      // "books"
 GTL_EXTERN NSString * const kGTLBooksPrintTypeMagazines;  // "magazines"
 
-// ProcessingState
+// GTLQueryBooks - ProcessingState
 GTL_EXTERN NSString * const kGTLBooksProcessingStateCompletedFailed;  // "COMPLETED_FAILED"
 GTL_EXTERN NSString * const kGTLBooksProcessingStateCompletedSuccess;  // "COMPLETED_SUCCESS"
 GTL_EXTERN NSString * const kGTLBooksProcessingStateRunning;    // "RUNNING"
 
-// Projection
+// GTLQueryBooks - Projection
 GTL_EXTERN NSString * const kGTLBooksProjectionFull;  // "full"
 GTL_EXTERN NSString * const kGTLBooksProjectionLite;  // "lite"
 
-// Rating
+// GTLQueryBooks - Rating
 GTL_EXTERN NSString * const kGTLBooksRatingHaveIt;         // "HAVE_IT"
 GTL_EXTERN NSString * const kGTLBooksRatingNotInterested;  // "NOT_INTERESTED"

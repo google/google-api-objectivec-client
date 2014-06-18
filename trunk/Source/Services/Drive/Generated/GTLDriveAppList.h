@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveAppList (0 custom class methods, 4 custom properties)
+//   GTLDriveAppList (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -48,6 +48,9 @@
 // supports -itemAtIndex: to retrieve individual objects from "items".
 
 @interface GTLDriveAppList : GTLCollectionObject
+
+// List of app IDs that the user has specified to use by default.
+@property (retain) NSArray *defaultAppIds;  // of NSString
 
 // The ETag of the list.
 @property (copy) NSString *ETag;

@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/glass
 // Classes:
-//   GTLQueryMirror (23 custom class methods, 14 custom properties)
+//   GTLQueryMirror (24 custom class methods, 14 custom properties)
 
 #import "GTLQueryMirror.h"
 
@@ -37,6 +37,7 @@
 #import "GTLMirrorContactsListResponse.h"
 #import "GTLMirrorLocation.h"
 #import "GTLMirrorLocationsListResponse.h"
+#import "GTLMirrorSetting.h"
 #import "GTLMirrorSubscription.h"
 #import "GTLMirrorSubscriptionsListResponse.h"
 #import "GTLMirrorTimelineItem.h"
@@ -159,6 +160,18 @@
   NSString *methodName = @"mirror.locations.list";
   GTLQueryMirror *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLMirrorLocationsListResponse class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "settings" methods
+// These create a GTLQueryMirror object.
+
++ (id)queryForSettingsGetWithIdentifier:(NSString *)identifier {
+  NSString *methodName = @"mirror.settings.get";
+  GTLQueryMirror *query = [self queryWithMethodName:methodName];
+  query.identifier = identifier;
+  query.expectedObjectClass = [GTLMirrorSetting class];
   return query;
 }
 

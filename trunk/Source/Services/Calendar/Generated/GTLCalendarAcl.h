@@ -56,11 +56,12 @@
 @property (copy) NSString *kind;
 
 // Token used to access the next page of this result. Omitted if no further
-// results are available.
+// results are available, in which case nextSyncToken is provided.
 @property (copy) NSString *nextPageToken;
 
 // Token used at a later point in time to retrieve only the entries that have
-// changed since this result was returned.
+// changed since this result was returned. Omitted if further results are
+// available, in which case nextPageToken is provided.
 @property (copy) NSString *nextSyncToken;
 
 @end

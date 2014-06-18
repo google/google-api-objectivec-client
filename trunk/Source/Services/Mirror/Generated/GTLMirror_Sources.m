@@ -44,6 +44,7 @@
 #import "GTLMirrorMenuValue.m"
 #import "GTLMirrorNotification.m"
 #import "GTLMirrorNotificationConfig.m"
+#import "GTLMirrorSetting.m"
 #import "GTLMirrorSubscription.m"
 #import "GTLMirrorSubscriptionsListResponse.m"
 #import "GTLMirrorTimelineItem.m"
