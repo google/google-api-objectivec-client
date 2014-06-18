@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsCustomDataSource (0 custom class methods, 13 custom properties)
+//   GTLAnalyticsCustomDataSource (0 custom class methods, 15 custom properties)
 //   GTLAnalyticsCustomDataSourceChildLink (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsCustomDataSourceParentLink (0 custom class methods, 2 custom properties)
 
@@ -64,6 +64,8 @@
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
+@property (copy) NSString *importBehavior;
+
 // Resource type for Analytics custom data source.
 @property (copy) NSString *kind;
 
@@ -85,6 +87,8 @@
 
 // Time this custom data source was last modified.
 @property (retain) GTLDateTime *updated;
+
+@property (copy) NSString *uploadType;
 
 // Web property ID of the form UA-XXXXX-YY to which this custom data source
 // belongs.

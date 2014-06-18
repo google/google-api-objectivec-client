@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAnalyticsCustomDataSource.m
+//  GTLAnalyticsEntityAdWordsLink.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,40 +26,40 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsCustomDataSource (0 custom class methods, 15 custom properties)
-//   GTLAnalyticsCustomDataSourceChildLink (0 custom class methods, 2 custom properties)
-//   GTLAnalyticsCustomDataSourceParentLink (0 custom class methods, 2 custom properties)
+//   GTLAnalyticsEntityAdWordsLink (0 custom class methods, 7 custom properties)
+//   GTLAnalyticsEntityAdWordsLinkEntity (0 custom class methods, 1 custom properties)
 
-#import "GTLAnalyticsCustomDataSource.h"
+#import "GTLAnalyticsEntityAdWordsLink.h"
+
+#import "GTLAnalyticsAdWordsAccount.h"
+#import "GTLAnalyticsWebPropertyRef.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAnalyticsCustomDataSource
+//   GTLAnalyticsEntityAdWordsLink
 //
 
-@implementation GTLAnalyticsCustomDataSource
-@dynamic accountId, childLink, created, descriptionProperty, identifier,
-         importBehavior, kind, name, parentLink, profilesLinked, selfLink, type,
-         updated, uploadType, webPropertyId;
+@implementation GTLAnalyticsEntityAdWordsLink
+@dynamic adWordsAccounts, entity, identifier, kind, name, profileIds, selfLink;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"description", @"descriptionProperty",
-      @"id", @"identifier",
-      nil];
+    [NSDictionary dictionaryWithObject:@"id"
+                                forKey:@"identifier"];
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[NSString class]
-                                forKey:@"profilesLinked"];
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      [GTLAnalyticsAdWordsAccount class], @"adWordsAccounts",
+      [NSString class], @"profileIds",
+      nil];
   return map;
 }
 
 + (void)load {
-  [self registerObjectClassForKind:@"analytics#customDataSource"];
+  [self registerObjectClassForKind:@"analytics#entityAdWordsLink"];
 }
 
 @end
@@ -67,19 +67,9 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAnalyticsCustomDataSourceChildLink
+//   GTLAnalyticsEntityAdWordsLinkEntity
 //
 
-@implementation GTLAnalyticsCustomDataSourceChildLink
-@dynamic href, type;
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLAnalyticsCustomDataSourceParentLink
-//
-
-@implementation GTLAnalyticsCustomDataSourceParentLink
-@dynamic href, type;
+@implementation GTLAnalyticsEntityAdWordsLinkEntity
+@dynamic webPropertyRef;
 @end

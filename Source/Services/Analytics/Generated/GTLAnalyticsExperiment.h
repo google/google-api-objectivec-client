@@ -85,9 +85,9 @@
 // Resource type for an Analytics experiment. This field is read-only.
 @property (copy) NSString *kind;
 
-// Specifies the minimum length of the experiment. Can be changed for a running
-// experiment. This field may not be changed for an experiments whose status is
-// ENDED.
+// An integer number in [3, 90]. Specifies the minimum length of the experiment.
+// Can be changed for a running experiment. This field may not be changed for an
+// experiments whose status is ENDED.
 @property (retain) NSNumber *minimumExperimentLengthInDays;  // intValue
 
 // Experiment name. This field may not be changed for an experiment whose status
