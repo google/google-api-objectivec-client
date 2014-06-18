@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 45 custom properties)
+//   GTLDriveFile (0 custom class methods, 49 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
 //   GTLDriveFileImageMediaMetadata (0 custom class methods, 21 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
@@ -144,6 +144,10 @@
 // Last time this file was viewed by the user (formatted RFC 3339 timestamp).
 @property (retain) GTLDateTime *lastViewedByMeDate;
 
+// Time this file was explicitly marked viewed by the user (formatted RFC 3339
+// timestamp).
+@property (retain) GTLDateTime *markedViewedByMeDate;
+
 // An MD5 checksum for the content of this file. This is populated only for
 // files with content stored in Drive.
 @property (copy) NSString *md5Checksum;
@@ -184,6 +188,9 @@
 // root folder.
 @property (retain) NSArray *parents;  // of GTLDriveParentReference
 
+// The list of permissions for users with access to this file.
+@property (retain) NSArray *permissions;  // of GTLDrivePermission
+
 // The list of properties.
 @property (retain) NSArray *properties;  // of GTLDriveProperty
 
@@ -200,6 +207,9 @@
 // timestamp).
 @property (retain) GTLDateTime *sharedWithMeDate;
 
+// User that shared the item with the current user, if available.
+@property (retain) GTLDriveUser *sharingUser;
+
 // Thumbnail for the file. Only accepted on upload and for files that are not
 // already thumbnailed by Google.
 @property (retain) GTLDriveFileThumbnail *thumbnail;
@@ -212,6 +222,11 @@
 
 // The permissions for the authenticated user on this file.
 @property (retain) GTLDrivePermission *userPermission;
+
+// A monotonically increasing version number for the file. This reflects every
+// change made to the file on the server, even those not visible to the
+// requesting user.
+@property (retain) NSNumber *version;  // longLongValue
 
 // A link for downloading the content of the file in a browser using cookie
 // based authentication. In cases where the content is shared publicly, the

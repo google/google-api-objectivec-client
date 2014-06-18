@@ -48,9 +48,8 @@
 // The name of the attribution to be used for this RasterCollection.
 @property (copy) NSString *attribution;
 
-// An array of four numbers (west, south, east, north) which define the
-// rectangular bounding box which contains all of the data in this
-// RasterCollection. The numbers represent latitudes and longitudes in decimal
+// A rectangular bounding box which contains all of the data in this
+// RasterCollection. The numbers represent latitude and longitude in decimal
 // degrees.
 @property (retain) NSArray *bbox;  // of NSNumber (doubleValue)
 

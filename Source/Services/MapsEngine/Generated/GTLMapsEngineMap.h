@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineMap (0 custom class methods, 11 custom properties)
+//   GTLMapsEngineMap (0 custom class methods, 13 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -46,8 +46,7 @@
 
 @interface GTLMapsEngineMap : GTLObject
 
-// An array of four numbers (west, south, east, north) which define the
-// rectangular bounding box which contains all of the data in this Map. The
+// A rectangular bounding box which contains all of the data in this Map. The
 // numbers represent latitude and longitude in decimal degrees.
 @property (retain) NSArray *bbox;  // of NSNumber (doubleValue)
 
@@ -67,6 +66,11 @@
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
 
+// The name of an access list of the Map Editor type. The user on whose behalf
+// the request is being sent must be an editor on that access list. Read About
+// access lists in the Google Maps Engine help center for more information.
+@property (copy) NSString *draftAccessList;
+
 // A globally unique ID, used to refer to this Map.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
@@ -80,6 +84,12 @@
 
 // The ID of the project that this Map is in.
 @property (copy) NSString *projectId;
+
+// The access list to whom view permissions are granted. The value must be the
+// name of a Maps Engine access list of the Map Viewer type, and the user must
+// be a viewer on that list. Read About access lists in the Google Maps Engine
+// help center for more information.
+@property (copy) NSString *publishedAccessList;
 
 // Tags of this Map.
 @property (retain) NSArray *tags;  // of NSString

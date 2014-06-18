@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/bigquery/docs/overview
 // Classes:
-//   GTLBigqueryJobConfigurationQuery (0 custom class methods, 9 custom properties)
+//   GTLBigqueryJobConfigurationQuery (0 custom class methods, 10 custom properties)
 
 #import "GTLBigqueryJobConfigurationQuery.h"
 
@@ -40,5 +40,6 @@
 
 @implementation GTLBigqueryJobConfigurationQuery
 @dynamic allowLargeResults, createDisposition, defaultDataset, destinationTable,
-         preserveNulls, priority, query, useQueryCache, writeDisposition;
+         flattenResults, preserveNulls, priority, query, useQueryCache,
+         writeDisposition;
 @end

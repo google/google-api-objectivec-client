@@ -37,8 +37,9 @@
 // Authorization scope
 // View your circles and the people and pages in them
 GTL_EXTERN NSString * const kGTLAuthScopePlusDomainsPlusCirclesRead;  // "https://www.googleapis.com/auth/plus.circles.read"
-// Manage your circles and add people and pages, who will be notified and may
-// appear on your public Google+ profile
+// Manage your circles and add people and pages. People and pages you add to
+// your circles will be notified. Others may see this information publicly.
+// People you add to circles can use Hangouts with you.
 GTL_EXTERN NSString * const kGTLAuthScopePlusDomainsPlusCirclesWrite;  // "https://www.googleapis.com/auth/plus.circles.write"
 // Know your basic profile info and list of people in your circles.
 GTL_EXTERN NSString * const kGTLAuthScopePlusDomainsPlusLogin;  // "https://www.googleapis.com/auth/plus.login"

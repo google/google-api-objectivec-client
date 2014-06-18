@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/bigquery/docs/overview
 // Classes:
-//   GTLBigqueryJobConfigurationExtract (0 custom class methods, 6 custom properties)
+//   GTLBigqueryJobConfigurationExtract (0 custom class methods, 7 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -42,6 +42,10 @@
 //
 
 @interface GTLBigqueryJobConfigurationExtract : GTLObject
+
+// [Optional] The compression type to use for exported files. Possible values
+// include GZIP and NONE. The default value is NONE.
+@property (copy) NSString *compression;
 
 // [Experimental] Optional and defaults to CSV. Format with which files should
 // be exported. To export to CSV, specify "CSV". Tables with nested or repeated

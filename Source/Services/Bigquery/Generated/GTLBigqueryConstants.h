@@ -45,6 +45,8 @@ GTL_EXTERN NSString * const kGTLAuthScopeBigqueryDevstorageFullControl;  // "htt
 GTL_EXTERN NSString * const kGTLAuthScopeBigqueryDevstorageReadOnly;  // "https://www.googleapis.com/auth/devstorage.read_only"
 // Manage your data in Google Cloud Storage
 GTL_EXTERN NSString * const kGTLAuthScopeBigqueryDevstorageReadWrite;  // "https://www.googleapis.com/auth/devstorage.read_write"
+// Insert data into Google BigQuery
+GTL_EXTERN NSString * const kGTLAuthScopeBigqueryInsertdata;    // "https://www.googleapis.com/auth/bigquery.insertdata"
 
 // GTLQueryBigquery - Projection
 GTL_EXTERN NSString * const kGTLBigqueryProjectionFull;     // "full"

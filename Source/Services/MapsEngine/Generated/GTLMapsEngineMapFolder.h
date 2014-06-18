@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineMapFolder (0 custom class methods, 6 custom properties)
+//   GTLMapsEngineMapFolder (0 custom class methods, 7 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -43,14 +43,16 @@
 //
 
 @interface GTLMapsEngineMapFolder : GTLObject
-
-// The contents of this MapFolder.
 @property (retain) NSArray *contents;  // of GTLMapsEngineMapItem
 
 // An array of four numbers (west, south, east, north) which defines the
 // rectangular bounding box of the default viewport. The numbers represent
 // latitude and longitude in decimal degrees.
 @property (retain) NSArray *defaultViewport;  // of NSNumber (doubleValue)
+
+// The expandability setting of this MapFolder. If true, the folder can be
+// expanded.
+@property (retain) NSNumber *expandable;  // boolValue
 
 // A user defined alias for this MapFolder, specific to this Map.
 @property (copy) NSString *key;

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Civic Information API (civicinfo/us_v1)
+//   Google Civic Information API (civicinfo/v1)
 // Description:
 //   An API for accessing civic information.
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoOffice (0 custom class methods, 4 custom properties)
+//   GTLCivicInfoOffice (0 custom class methods, 5 custom properties)
 
 #import "GTLCivicInfoOffice.h"
 
@@ -38,7 +38,7 @@
 //
 
 @implementation GTLCivicInfoOffice
-@dynamic level, name, officialIds, sources;
+@dynamic divisionId, level, name, officialIds, sources;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =

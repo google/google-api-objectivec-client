@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Civic Information API (civicinfo/us_v1)
+//   Google Civic Information API (civicinfo/v1)
 // Description:
 //   An API for accessing civic information.
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoOffice (0 custom class methods, 4 custom properties)
+//   GTLCivicInfoOffice (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -44,6 +44,9 @@
 // Information about an Office held by one or more Officials.
 
 @interface GTLCivicInfoOffice : GTLObject
+
+// The OCD ID of the division this office is part of.
+@property (copy) NSString *divisionId;
 
 // The level of this elected office. One of: federal, state, county, city, other
 @property (copy) NSString *level;

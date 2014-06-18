@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,13 +47,13 @@
 
 @interface GTLCalendarColors : GTLObject
 
-// Palette of calendar colors, mapping from the color ID to its definition. An
-// 'calendarListEntry' resource refers to one of these color IDs in its 'color'
+// Palette of calendar colors, mapping from the color ID to its definition. A
+// calendarListEntry resource refers to one of these color IDs in its color
 // field. Read-only.
 @property (retain) GTLCalendarColorsCalendar *calendar;
 
 // Palette of event colors, mapping from the color ID to its definition. An
-// 'event' resource may refer to one of these color IDs in its 'color' field.
+// event resource may refer to one of these color IDs in its color field.
 // Read-only.
 @property (retain) GTLCalendarColorsEvent *event;
 

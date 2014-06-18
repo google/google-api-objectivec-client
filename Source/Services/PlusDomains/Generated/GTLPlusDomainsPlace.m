@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/+/domains/
 // Classes:
-//   GTLPlusDomainsPlace (0 custom class methods, 4 custom properties)
+//   GTLPlusDomainsPlace (0 custom class methods, 5 custom properties)
 //   GTLPlusDomainsPlaceAddress (0 custom class methods, 1 custom properties)
 //   GTLPlusDomainsPlacePosition (0 custom class methods, 2 custom properties)
 
@@ -38,7 +38,14 @@
 //
 
 @implementation GTLPlusDomainsPlace
-@dynamic address, displayName, kind, position;
+@dynamic address, displayName, identifier, kind, position;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"id"
+                                forKey:@"identifier"];
+  return map;
+}
 
 + (void)load {
   [self registerObjectClassForKind:@"plus#place"];

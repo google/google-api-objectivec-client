@@ -34,6 +34,7 @@ NSString * const kGTLAuthScopeBigqueryCloudPlatform         = @"https://www.goog
 NSString * const kGTLAuthScopeBigqueryDevstorageFullControl = @"https://www.googleapis.com/auth/devstorage.full_control";
 NSString * const kGTLAuthScopeBigqueryDevstorageReadOnly    = @"https://www.googleapis.com/auth/devstorage.read_only";
 NSString * const kGTLAuthScopeBigqueryDevstorageReadWrite   = @"https://www.googleapis.com/auth/devstorage.read_write";
+NSString * const kGTLAuthScopeBigqueryInsertdata            = @"https://www.googleapis.com/auth/bigquery.insertdata";
 
 // GTLQueryBigquery - Projection
 NSString * const kGTLBigqueryProjectionFull    = @"full";

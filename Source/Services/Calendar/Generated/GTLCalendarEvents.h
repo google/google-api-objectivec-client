@@ -62,7 +62,7 @@
 
 // The default reminders on the calendar for the authenticated user. These
 // reminders apply to all events on this calendar that do not explicitly
-// override them (i.e. do not have 'reminders.useDefault' set to 'true').
+// override them (i.e. do not have reminders.useDefault set to True).
 @property (retain) NSArray *defaultReminders;  // of GTLCalendarEventReminder
 
 // Description of the calendar. Read-only.
@@ -79,7 +79,7 @@
 @property (copy) NSString *kind;
 
 // Token used to access the next page of this result. Omitted if no further
-// results are available.
+// results are available, in which case nextSyncToken is provided.
 @property (copy) NSString *nextPageToken;
 
 // Token used at a later point in time to retrieve only the entries that have

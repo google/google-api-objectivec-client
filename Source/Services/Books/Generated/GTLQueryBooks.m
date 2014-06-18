@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLQueryBooks (37 custom class methods, 58 custom properties)
+//   GTLQueryBooks (40 custom class methods, 65 custom properties)
 
 #import "GTLQueryBooks.h"
 
@@ -41,6 +41,7 @@
 #import "GTLBooksDownloadAccesses.h"
 #import "GTLBooksLayersummaries.h"
 #import "GTLBooksLayersummary.h"
+#import "GTLBooksOffers.h"
 #import "GTLBooksReadingPosition.h"
 #import "GTLBooksRequestAccess.h"
 #import "GTLBooksVolume.h"
@@ -51,13 +52,14 @@
 
 @implementation GTLQueryBooks
 
-@dynamic acquireMethod, action, allowWebDefinitions, annotationDataId,
-         annotationId, association, contentVersion, country, cpksver,
-         deviceCookie, download, driveDocumentId, endOffset, endPosition,
-         features, fields, filter, h, langRestrict, layerId, layerIds,
-         libraryRestrict, licenseTypes, locale, maxResults, mimeType, name,
-         nonce, orderBy, pageIds, pageToken, partner, position, printType,
-         processingState, projection, q, rating, scale, shelf, showDeleted,
+@dynamic acquireMethod, action, allowWebDefinitions, androidId,
+         annotationDataId, annotationId, association, contentVersion, country,
+         cpksver, device, deviceCookie, download, driveDocumentId, endOffset,
+         endPosition, features, fields, filter, h, langRestrict, layerId,
+         layerIds, libraryRestrict, licenseTypes, locale, manufacturer,
+         maxResults, mimeType, model, name, nonce, offerId, orderBy, pageIds,
+         pageToken, partner, position, printType, processingState, product,
+         projection, q, rating, scale, serial, shelf, showDeleted,
          showOnlySummaryInResponse, showPreorders, source, startIndex,
          startOffset, startPosition, summaryId, timestamp, updatedMax,
          updatedMin, uploadClientToken, userId, volumeAnnotationsVersion,
@@ -421,6 +423,29 @@
   query.volumeId = volumeId;
   query.timestamp = timestamp;
   query.position = position;
+  return query;
+}
+
+#pragma mark -
+#pragma mark "promooffer" methods
+// These create a GTLQueryBooks object.
+
++ (id)queryForPromoofferAccept {
+  NSString *methodName = @"books.promooffer.accept";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  return query;
+}
+
++ (id)queryForPromoofferDismiss {
+  NSString *methodName = @"books.promooffer.dismiss";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  return query;
+}
+
++ (id)queryForPromoofferGet {
+  NSString *methodName = @"books.promooffer.get";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLBooksOffers class];
   return query;
 }
 

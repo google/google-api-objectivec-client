@@ -94,6 +94,9 @@ NSString * const kGTLMapsEngineImage_ProcessingStatus_NotReady = @"notReady";
 NSString * const kGTLMapsEngineImage_ProcessingStatus_Processing = @"processing";
 NSString * const kGTLMapsEngineImage_ProcessingStatus_Ready    = @"ready";
 
+// GTLMapsEngineImage - RasterType
+NSString * const kGTLMapsEngineImage_RasterType_Image = @"image";
+
 // GTLMapsEngineLabelStyle - FontStyle
 NSString * const kGTLMapsEngineLabelStyle_FontStyle_Italic = @"italic";
 NSString * const kGTLMapsEngineLabelStyle_FontStyle_Normal = @"normal";
@@ -116,6 +119,15 @@ NSString * const kGTLMapsEngineLayer_ProcessingStatus_Ready    = @"ready";
 // GTLMapsEngineMap - Versions
 NSString * const kGTLMapsEngineMap_Versions_Draft     = @"draft";
 NSString * const kGTLMapsEngineMap_Versions_Published = @"published";
+
+// GTLMapsEngineMapFolder - Type
+NSString * const kGTLMapsEngineMapFolder_Type_Folder = @"folder";
+
+// GTLMapsEngineMapKmlLink - Type
+NSString * const kGTLMapsEngineMapKmlLink_Type_KmlLink = @"kmlLink";
+
+// GTLMapsEngineMapLayer - Type
+NSString * const kGTLMapsEngineMapLayer_Type_Layer = @"layer";
 
 // GTLMapsEngineRasterCollection - ProcessingStatus
 NSString * const kGTLMapsEngineRasterCollection_ProcessingStatus_Complete = @"complete";

@@ -48,9 +48,8 @@
 
 @interface GTLMapsEngineLayer : GTLObject
 
-// An array of four numbers (west, south, east, north) which define the
-// rectangular bounding box which contains all of the data in this Layer. The
-// numbers represent latitudes and longitudes in decimal degrees.
+// A rectangular bounding box which contains all of the data in this Layer. The
+// numbers represent latitude and longitude in decimal degrees.
 @property (retain) NSArray *bbox;  // of NSNumber (doubleValue)
 
 // The creation time of this layer. The value is an RFC 3339 formatted date-time

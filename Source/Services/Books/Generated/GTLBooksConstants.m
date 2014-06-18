@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@
 // Authorization scope
 NSString * const kGTLAuthScopeBooks = @"https://www.googleapis.com/auth/books";
 
-// AcquireMethod
+// GTLQueryBooks - AcquireMethod
 NSString * const kGTLBooksAcquireMethodPreordered       = @"PREORDERED";
 NSString * const kGTLBooksAcquireMethodPreviouslyRented = @"PREVIOUSLY_RENTED";
 NSString * const kGTLBooksAcquireMethodPublicDomain     = @"PUBLIC_DOMAIN";
@@ -40,7 +40,7 @@ NSString * const kGTLBooksAcquireMethodRented           = @"RENTED";
 NSString * const kGTLBooksAcquireMethodSample           = @"SAMPLE";
 NSString * const kGTLBooksAcquireMethodUploaded         = @"UPLOADED";
 
-// Action
+// GTLQueryBooks - Action
 NSString * const kGTLBooksActionBookmark = @"bookmark";
 NSString * const kGTLBooksActionChapter  = @"chapter";
 NSString * const kGTLBooksActionNextPage = @"next-page";
@@ -48,50 +48,50 @@ NSString * const kGTLBooksActionPrevPage = @"prev-page";
 NSString * const kGTLBooksActionScroll   = @"scroll";
 NSString * const kGTLBooksActionSearch   = @"search";
 
-// Association
+// GTLQueryBooks - Association
 NSString * const kGTLBooksAssociationEndOfSample = @"end-of-sample";
 NSString * const kGTLBooksAssociationEndOfVolume = @"end-of-volume";
 
-// Download
+// GTLQueryBooks - Download
 NSString * const kGTLBooksDownloadEpub = @"epub";
 
-// Features
+// GTLQueryBooks - Features
 NSString * const kGTLBooksFeaturesRentals = @"RENTALS";
 
-// Filter
+// GTLQueryBooks - Filter
 NSString * const kGTLBooksFilterEbooks     = @"ebooks";
 NSString * const kGTLBooksFilterFreeEbooks = @"free-ebooks";
 NSString * const kGTLBooksFilterFull       = @"full";
 NSString * const kGTLBooksFilterPaidEbooks = @"paid-ebooks";
 NSString * const kGTLBooksFilterPartial    = @"partial";
 
-// LibraryRestrict
+// GTLQueryBooks - LibraryRestrict
 NSString * const kGTLBooksLibraryRestrictMyLibrary  = @"my-library";
 NSString * const kGTLBooksLibraryRestrictNoRestrict = @"no-restrict";
 
-// LicenseTypes
+// GTLQueryBooks - LicenseTypes
 NSString * const kGTLBooksLicenseTypesBoth       = @"BOTH";
 NSString * const kGTLBooksLicenseTypesConcurrent = @"CONCURRENT";
 NSString * const kGTLBooksLicenseTypesDownload   = @"DOWNLOAD";
 
-// OrderBy
+// GTLQueryBooks - OrderBy
 NSString * const kGTLBooksOrderByNewest    = @"newest";
 NSString * const kGTLBooksOrderByRelevance = @"relevance";
 
-// PrintType
+// GTLQueryBooks - PrintType
 NSString * const kGTLBooksPrintTypeAll       = @"all";
 NSString * const kGTLBooksPrintTypeBooks     = @"books";
 NSString * const kGTLBooksPrintTypeMagazines = @"magazines";
 
-// ProcessingState
+// GTLQueryBooks - ProcessingState
 NSString * const kGTLBooksProcessingStateCompletedFailed  = @"COMPLETED_FAILED";
 NSString * const kGTLBooksProcessingStateCompletedSuccess = @"COMPLETED_SUCCESS";
 NSString * const kGTLBooksProcessingStateRunning          = @"RUNNING";
 
-// Projection
+// GTLQueryBooks - Projection
 NSString * const kGTLBooksProjectionFull = @"full";
 NSString * const kGTLBooksProjectionLite = @"lite";
 
-// Rating
+// GTLQueryBooks - Rating
 NSString * const kGTLBooksRatingHaveIt        = @"HAVE_IT";
 NSString * const kGTLBooksRatingNotInterested = @"NOT_INTERESTED";

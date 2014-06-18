@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (45 custom class methods, 52 custom properties)
+//   GTLQueryYouTube (45 custom class methods, 54 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -75,6 +75,8 @@
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 @property (copy) NSString *locale;
+@property (copy) NSString *location;
+@property (copy) NSString *locationRadius;
 @property (assign) BOOL managedByMe;
 @property (assign) NSUInteger maxResults;
 @property (assign) BOOL mine;
@@ -1385,6 +1387,18 @@
 //   forMine: The forMine parameter restricts the search to only retrieve videos
 //     owned by the authenticated user. If you set this parameter to true, then
 //     the type parameter's value must also be set to video.
+//   location: The location parameter restricts a search to videos that have a
+//     geographical location specified in their metadata. The value is a string
+//     that specifies geographic latitude/longitude coordinates e.g.
+//     (37.42307,-122.08427)
+//   locationRadius: The locationRadius, in conjunction with the location
+//     parameter, defines a geographic area. If the geographic coordinates
+//     associated with a video fall within that area, then the video may be
+//     included in search results. This parameter value must be a floating point
+//     number followed by a measurement unit. Valid measurement units are m, km,
+//     ft, and mi. For example, valid parameter values include 1500m, 5km,
+//     10000ft, and 0.75mi. The API does not support locationRadius parameter
+//     values larger than 1000 kilometers.
 //   maxResults: The maxResults parameter specifies the maximum number of items
 //     that should be returned in the result set. (0..50, default 5)
 //   onBehalfOfContentOwner: Note: This parameter is intended exclusively for

@@ -102,6 +102,9 @@ GTL_EXTERN NSString * const kGTLMapsEngineImage_ProcessingStatus_NotReady;  // "
 GTL_EXTERN NSString * const kGTLMapsEngineImage_ProcessingStatus_Processing;  // "processing"
 GTL_EXTERN NSString * const kGTLMapsEngineImage_ProcessingStatus_Ready;  // "ready"
 
+// GTLMapsEngineImage - RasterType
+GTL_EXTERN NSString * const kGTLMapsEngineImage_RasterType_Image;  // "image"
+
 // GTLMapsEngineLabelStyle - FontStyle
 GTL_EXTERN NSString * const kGTLMapsEngineLabelStyle_FontStyle_Italic;  // "italic"
 GTL_EXTERN NSString * const kGTLMapsEngineLabelStyle_FontStyle_Normal;  // "normal"
@@ -124,6 +127,15 @@ GTL_EXTERN NSString * const kGTLMapsEngineLayer_ProcessingStatus_Ready;  // "rea
 // GTLMapsEngineMap - Versions
 GTL_EXTERN NSString * const kGTLMapsEngineMap_Versions_Draft;   // "draft"
 GTL_EXTERN NSString * const kGTLMapsEngineMap_Versions_Published;  // "published"
+
+// GTLMapsEngineMapFolder - Type
+GTL_EXTERN NSString * const kGTLMapsEngineMapFolder_Type_Folder;  // "folder"
+
+// GTLMapsEngineMapKmlLink - Type
+GTL_EXTERN NSString * const kGTLMapsEngineMapKmlLink_Type_KmlLink;  // "kmlLink"
+
+// GTLMapsEngineMapLayer - Type
+GTL_EXTERN NSString * const kGTLMapsEngineMapLayer_Type_Layer;  // "layer"
 
 // GTLMapsEngineRasterCollection - ProcessingStatus
 GTL_EXTERN NSString * const kGTLMapsEngineRasterCollection_ProcessingStatus_Complete;  // "complete"

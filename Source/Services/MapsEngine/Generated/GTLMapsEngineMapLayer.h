@@ -48,7 +48,7 @@
 @property (retain) NSArray *defaultViewport;  // of NSNumber (doubleValue)
 
 // The ID of this MapLayer. This ID can be used to request more details about
-// this layer.
+// the layer.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 

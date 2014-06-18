@@ -33,7 +33,7 @@
 //   GTLBooksVolumeSaleInfo (0 custom class methods, 8 custom properties)
 //   GTLBooksVolumeSearchInfo (0 custom class methods, 1 custom properties)
 //   GTLBooksVolumeUserInfo (0 custom class methods, 11 custom properties)
-//   GTLBooksVolumeVolumeInfo (0 custom class methods, 21 custom properties)
+//   GTLBooksVolumeVolumeInfo (0 custom class methods, 22 custom properties)
 //   GTLBooksVolumeAccessInfoEpub (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeAccessInfoPdf (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeLayerInfoLayersItem (0 custom class methods, 2 custom properties)
@@ -181,7 +181,7 @@
          contentVersion, descriptionProperty, dimensions, imageLinks,
          industryIdentifiers, infoLink, language, mainCategory, pageCount,
          previewLink, printedPageCount, printType, publishedDate, publisher,
-         ratingsCount, subtitle, title;
+         ratingsCount, readingModes, subtitle, title;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

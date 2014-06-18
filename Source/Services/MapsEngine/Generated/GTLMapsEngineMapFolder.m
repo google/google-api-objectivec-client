@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineMapFolder (0 custom class methods, 6 custom properties)
+//   GTLMapsEngineMapFolder (0 custom class methods, 7 custom properties)
 
 #import "GTLMapsEngineMapFolder.h"
 
@@ -39,7 +39,7 @@
 //
 
 @implementation GTLMapsEngineMapFolder
-@dynamic contents, defaultViewport, key, name, type, visibility;
+@dynamic contents, defaultViewport, expandable, key, name, type, visibility;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =

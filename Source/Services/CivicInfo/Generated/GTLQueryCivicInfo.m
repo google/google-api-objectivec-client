@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Civic Information API (civicinfo/us_v1)
+//   Google Civic Information API (civicinfo/v1)
 // Description:
 //   An API for accessing civic information.
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLQueryCivicInfo (4 custom class methods, 7 custom properties)
+//   GTLQueryCivicInfo (4 custom class methods, 8 custom properties)
 
 #import "GTLQueryCivicInfo.h"
 
@@ -38,7 +38,7 @@
 @implementation GTLQueryCivicInfo
 
 @dynamic address, electionId, fields, includeOffices, ocdId, officialOnly,
-         query;
+         query, recursive;
 
 #pragma mark -
 #pragma mark "divisions" methods

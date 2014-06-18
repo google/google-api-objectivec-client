@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLQueryBooks (37 custom class methods, 58 custom properties)
+//   GTLQueryBooks (40 custom class methods, 65 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -52,6 +52,7 @@
 @property (retain) NSArray *acquireMethod;  // of NSString
 @property (copy) NSString *action;
 @property (assign) BOOL allowWebDefinitions;
+@property (copy) NSString *androidId;
 // "annotationDataId" has different types for some query methods; see the
 // documentation for the right type for each query method.
 @property (retain) id annotationDataId;
@@ -60,6 +61,7 @@
 @property (copy) NSString *contentVersion;
 @property (copy) NSString *country;
 @property (copy) NSString *cpksver;
+@property (copy) NSString *device;
 @property (copy) NSString *deviceCookie;
 @property (copy) NSString *download;
 @property (copy) NSString *driveDocumentId;
@@ -74,10 +76,13 @@
 @property (copy) NSString *libraryRestrict;
 @property (copy) NSString *licenseTypes;
 @property (copy) NSString *locale;
+@property (copy) NSString *manufacturer;
 @property (assign) NSUInteger maxResults;
 @property (copy) NSString *mimeType;
+@property (copy) NSString *model;
 @property (copy) NSString *name;
 @property (copy) NSString *nonce;
+@property (copy) NSString *offerId;
 @property (copy) NSString *orderBy;
 @property (retain) NSArray *pageIds;  // of NSString
 @property (copy) NSString *pageToken;
@@ -85,10 +90,12 @@
 @property (copy) NSString *position;
 @property (copy) NSString *printType;
 @property (retain) NSArray *processingState;  // of NSString
+@property (copy) NSString *product;
 @property (copy) NSString *projection;
 @property (copy) NSString *q;
 @property (copy) NSString *rating;
 @property (assign) NSInteger scale;
+@property (copy) NSString *serial;
 @property (copy) NSString *shelf;
 @property (assign) BOOL showDeleted;
 @property (assign) BOOL showOnlySummaryInResponse;
@@ -621,6 +628,54 @@
 + (id)queryForMylibraryReadingpositionsSetPositionWithVolumeId:(NSString *)volumeId
                                                      timestamp:(NSString *)timestamp
                                                       position:(NSString *)position;
+
+#pragma mark -
+#pragma mark "promooffer" methods
+// These create a GTLQueryBooks object.
+
+// Method: books.promooffer.accept
+
+//  Optional:
+//   androidId: device android_id
+//   device: device device
+//   manufacturer: device manufacturer
+//   model: device model
+//   offerId: NSString
+//   product: device product
+//   serial: device serial
+//   volumeId: Volume id to exercise the offer
+//     Note: For this method, "volumeId" should be of type NSString.
+//  Authorization scope(s):
+//   kGTLAuthScopeBooks
++ (id)queryForPromoofferAccept;
+
+// Method: books.promooffer.dismiss
+
+//  Optional:
+//   androidId: device android_id
+//   device: device device
+//   manufacturer: device manufacturer
+//   model: device model
+//   offerId: Offer to dimiss
+//   product: device product
+//   serial: device serial
+//  Authorization scope(s):
+//   kGTLAuthScopeBooks
++ (id)queryForPromoofferDismiss;
+
+// Method: books.promooffer.get
+// Returns a list of promo offers available to the user
+//  Optional:
+//   androidId: device android_id
+//   device: device device
+//   manufacturer: device manufacturer
+//   model: device model
+//   product: device product
+//   serial: device serial
+//  Authorization scope(s):
+//   kGTLAuthScopeBooks
+// Fetches a GTLBooksOffers.
++ (id)queryForPromoofferGet;
 
 #pragma mark -
 #pragma mark "volumes.associated" methods

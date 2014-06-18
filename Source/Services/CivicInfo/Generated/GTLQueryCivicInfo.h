@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Civic Information API (civicinfo/us_v1)
+//   Google Civic Information API (civicinfo/v1)
 // Description:
 //   An API for accessing civic information.
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLQueryCivicInfo (4 custom class methods, 7 custom properties)
+//   GTLQueryCivicInfo (4 custom class methods, 8 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -52,6 +52,7 @@
 @property (copy) NSString *ocdId;
 @property (assign) BOOL officialOnly;
 @property (copy) NSString *query;
+@property (assign) BOOL recursive;
 
 #pragma mark -
 #pragma mark "divisions" methods
@@ -106,6 +107,10 @@
 //     (Default true)
 //   ocdId: The division to look up. May only be specified if the address field
 //     is not given in the request body.
+//   recursive: When ocd_id is supplied, return all divisions which are
+//     hierarchically nested within the queried division. For example, if
+//     querying ocd-division/country:us/district:dc, this would also return all
+//     DC's wards and ANCs. (Default false)
 // Fetches a GTLCivicInfoRepresentativeInfoResponse.
 + (id)queryForRepresentativesRepresentativeInfoQuery;
 

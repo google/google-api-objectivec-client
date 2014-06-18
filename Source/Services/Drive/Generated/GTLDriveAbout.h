@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,12 +26,13 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveAbout (0 custom class methods, 20 custom properties)
+//   GTLDriveAbout (0 custom class methods, 22 custom properties)
 //   GTLDriveAboutAdditionalRoleInfoItem (0 custom class methods, 2 custom properties)
 //   GTLDriveAboutExportFormatsItem (0 custom class methods, 2 custom properties)
 //   GTLDriveAboutFeaturesItem (0 custom class methods, 2 custom properties)
 //   GTLDriveAboutImportFormatsItem (0 custom class methods, 2 custom properties)
 //   GTLDriveAboutMaxUploadSizesItem (0 custom class methods, 2 custom properties)
+//   GTLDriveAboutQuotaBytesByServiceItem (0 custom class methods, 2 custom properties)
 //   GTLDriveAboutAdditionalRoleInfoItemRoleSetsItem (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -46,6 +47,7 @@
 @class GTLDriveAboutFeaturesItem;
 @class GTLDriveAboutImportFormatsItem;
 @class GTLDriveAboutMaxUploadSizesItem;
+@class GTLDriveAboutQuotaBytesByServiceItem;
 @class GTLDriveUser;
 
 // ----------------------------------------------------------------------------
@@ -83,6 +85,10 @@
 // This is always drive#about.
 @property (copy) NSString *kind;
 
+// The user's language or locale code, as defined by BCP 47, with some
+// extensions from Unicode's LDML format (http://www.unicode.org/reports/tr35/).
+@property (copy) NSString *languageCode;
+
 // The largest change id.
 @property (retain) NSNumber *largestChangeId;  // longLongValue
 
@@ -95,6 +101,9 @@
 
 // The current user's ID as visible in the permissions collection.
 @property (copy) NSString *permissionId;
+
+// The amount of storage quota used by different Google services.
+@property (retain) NSArray *quotaBytesByService;  // of GTLDriveAboutQuotaBytesByServiceItem
 
 // The total number of quota bytes.
 @property (retain) NSNumber *quotaBytesTotal;  // longLongValue
@@ -199,6 +208,22 @@
 
 // The file type.
 @property (copy) NSString *type;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveAboutQuotaBytesByServiceItem
+//
+
+@interface GTLDriveAboutQuotaBytesByServiceItem : GTLObject
+
+// The storage quota bytes used by the service.
+@property (retain) NSNumber *bytesUsed;  // longLongValue
+
+// The service's name, e.g. DRIVE, GMAIL, or PHOTOS.
+@property (copy) NSString *serviceName;
 
 @end
 

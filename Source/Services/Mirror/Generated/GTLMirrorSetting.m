@@ -14,41 +14,39 @@
  */
 
 //
-//  GTLCivicInfoElectionsQueryResponse.m
+//  GTLMirrorSetting.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Civic Information API (civicinfo/v1)
+//   Google Mirror API (mirror/v1)
 // Description:
-//   An API for accessing civic information.
+//   API for interacting with Glass users via the timeline.
 // Documentation:
-//   https://developers.google.com/civic-information
+//   https://developers.google.com/glass
 // Classes:
-//   GTLCivicInfoElectionsQueryResponse (0 custom class methods, 2 custom properties)
+//   GTLMirrorSetting (0 custom class methods, 3 custom properties)
 
-#import "GTLCivicInfoElectionsQueryResponse.h"
-
-#import "GTLCivicInfoElection.h"
+#import "GTLMirrorSetting.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLCivicInfoElectionsQueryResponse
+//   GTLMirrorSetting
 //
 
-@implementation GTLCivicInfoElectionsQueryResponse
-@dynamic elections, kind;
+@implementation GTLMirrorSetting
+@dynamic identifier, kind, value;
 
-+ (NSDictionary *)arrayPropertyToClassMap {
++ (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLCivicInfoElection class]
-                                forKey:@"elections"];
+    [NSDictionary dictionaryWithObject:@"id"
+                                forKey:@"identifier"];
   return map;
 }
 
 + (void)load {
-  [self registerObjectClassForKind:@"civicinfo#electionsQueryResponse"];
+  [self registerObjectClassForKind:@"mirror#setting"];
 }
 
 @end
