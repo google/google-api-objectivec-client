@@ -304,7 +304,8 @@
 // These create a GTLQueryBigquery object.
 
 // Method: bigquery.tabledata.insertAll
-// Inserts the supplied rows into the table.
+// Streams data into BigQuery one record at a time without needing to run a load
+// job.
 //  Required:
 //   projectId: Project ID of the destination table.
 //   datasetId: Dataset ID of the destination table.

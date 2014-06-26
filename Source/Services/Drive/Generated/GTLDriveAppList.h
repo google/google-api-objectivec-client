@@ -49,7 +49,8 @@
 
 @interface GTLDriveAppList : GTLCollectionObject
 
-// List of app IDs that the user has specified to use by default.
+// List of app IDs that the user has specified to use by default. The list is in
+// reverse-priority order (lowest to highest).
 @property (retain) NSArray *defaultAppIds;  // of NSString
 
 // The ETag of the list.
