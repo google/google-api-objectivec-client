@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveAbout (0 custom class methods, 22 custom properties)
+//   GTLDriveAbout (0 custom class methods, 23 custom properties)
 //   GTLDriveAboutAdditionalRoleInfoItem (0 custom class methods, 2 custom properties)
 //   GTLDriveAboutExportFormatsItem (0 custom class methods, 2 custom properties)
 //   GTLDriveAboutFeaturesItem (0 custom class methods, 2 custom properties)
@@ -49,8 +49,8 @@
          importFormats, isCurrentAppInstalled, kind, languageCode,
          largestChangeId, maxUploadSizes, name, permissionId,
          quotaBytesByService, quotaBytesTotal, quotaBytesUsed,
-         quotaBytesUsedAggregate, quotaBytesUsedInTrash, remainingChangeIds,
-         rootFolderId, selfLink, user;
+         quotaBytesUsedAggregate, quotaBytesUsedInTrash, quotaType,
+         remainingChangeIds, rootFolderId, selfLink, user;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

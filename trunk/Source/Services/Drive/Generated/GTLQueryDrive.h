@@ -481,7 +481,7 @@
 //      kGTLDriveVisibilityPrivate: The new file will be visible to only the
 //        owner.
 //  Upload Parameters:
-//   Maximum size: 1024GB
+//   Maximum size: 5120GB
 //   Accepted MIME type(s): */*
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
@@ -610,7 +610,7 @@
 //   useContentAsIndexableText: Whether to use the content as indexable text.
 //     (Default false)
 //  Upload Parameters:
-//   Maximum size: 1024GB
+//   Maximum size: 5120GB
 //   Accepted MIME type(s): */*
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive

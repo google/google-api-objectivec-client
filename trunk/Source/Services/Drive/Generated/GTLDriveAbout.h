@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveAbout (0 custom class methods, 22 custom properties)
+//   GTLDriveAbout (0 custom class methods, 23 custom properties)
 //   GTLDriveAboutAdditionalRoleInfoItem (0 custom class methods, 2 custom properties)
 //   GTLDriveAboutExportFormatsItem (0 custom class methods, 2 custom properties)
 //   GTLDriveAboutFeaturesItem (0 custom class methods, 2 custom properties)
@@ -116,6 +116,11 @@
 
 // The number of quota bytes used by trashed items.
 @property (retain) NSNumber *quotaBytesUsedInTrash;  // longLongValue
+
+// The type of the user's storage quota. Possible values are:
+// - LIMITED
+// - UNLIMITED
+@property (copy) NSString *quotaType;
 
 // The number of remaining change ids.
 @property (retain) NSNumber *remainingChangeIds;  // longLongValue
