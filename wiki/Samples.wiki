@@ -20,14 +20,8 @@
 
 [http://code.google.com/p/google-api-objectivec-client/source/browse/#svn%2Ftrunk%2FExamples%2FDriveSample Sample application] that uses the Google Drive API. ||
 
-==Google Latitude API==
-[http://code.google.com/p/google-api-objectivec-client/source/browse/#svn%2Ftrunk%2FExamples%2FLatitudeSample Sample application] that uses the Google Latitude API. ||
-
 ==Google Plus API==
 [http://code.google.com/p/google-api-objectivec-client/source/browse/#svn%2Ftrunk%2FExamples%2FPlusSample Sample application] that uses the Google Plus API. ||
-
-==Shopping API==
-[http://code.google.com/p/google-api-objectivec-client/source/browse/#svn%2Ftrunk%2FExamples%2FShoppingSample Sample application] that uses the Shopping API. ||
 
 ==Tasks API==
 [http://code.google.com/p/google-api-objectivec-client/source/browse/#svn%2Ftrunk%2FExamples%2FTasksSample Sample application] Tasks API. ||
