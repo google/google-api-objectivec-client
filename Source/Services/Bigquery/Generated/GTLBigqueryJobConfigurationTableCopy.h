@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/bigquery/docs/overview
 // Classes:
-//   GTLBigqueryJobConfigurationTableCopy (0 custom class methods, 4 custom properties)
+//   GTLBigqueryJobConfigurationTableCopy (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -54,8 +54,11 @@
 // [Required] The destination table
 @property (retain) GTLBigqueryTableReference *destinationTable;
 
-// [Required] Source table to copy.
+// [Pick one] Source table to copy.
 @property (retain) GTLBigqueryTableReference *sourceTable;
+
+// [Pick one] Source tables to copy.
+@property (retain) NSArray *sourceTables;  // of GTLBigqueryTableReference
 
 // [Optional] Specifies the action that occurs if the destination table already
 // exists. The following values are supported: WRITE_TRUNCATE: If the table

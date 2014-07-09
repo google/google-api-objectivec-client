@@ -35,7 +35,7 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLMapsEngineRaster;
+@class GTLMapsEngineRasterCollectionRaster;
 
 // ----------------------------------------------------------------------------
 //
@@ -50,6 +50,6 @@
 @property (copy) NSString *nextPageToken;
 
 // Resources returned.
-@property (retain) NSArray *rasters;  // of GTLMapsEngineRaster
+@property (retain) NSArray *rasters;  // of GTLMapsEngineRasterCollectionRaster
 
 @end

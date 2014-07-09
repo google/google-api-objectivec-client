@@ -148,9 +148,9 @@
 // The height of the media object.
 @property (copy) NSString *height;
 
-// An identifier for the target. Your app can choose how to identify targets.
-// The target.id is required if you are writing an activity that does not have a
-// corresponding web page or target.url property.
+// An identifier for the object. Your app can choose how to identify objects.
+// The object.id is required if you are writing an action that does not have a
+// corresponding web page or object.url property.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
@@ -225,7 +225,7 @@
 // specified in ISO15022.
 @property (copy) NSString *tickerSymbol;
 
-// The schema.org URL that best describes the referenced target and matches the
+// The schema.org URL that best describes the referenced object and matches the
 // type of moment.
 @property (copy) NSString *type;
 

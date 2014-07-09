@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/bigquery/docs/overview
 // Classes:
-//   GTLBigqueryJobConfigurationTableCopy (0 custom class methods, 4 custom properties)
+//   GTLBigqueryJobConfigurationTableCopy (0 custom class methods, 5 custom properties)
 
 #import "GTLBigqueryJobConfigurationTableCopy.h"
 
@@ -38,5 +38,14 @@
 //
 
 @implementation GTLBigqueryJobConfigurationTableCopy
-@dynamic createDisposition, destinationTable, sourceTable, writeDisposition;
+@dynamic createDisposition, destinationTable, sourceTable, sourceTables,
+         writeDisposition;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLBigqueryTableReference class]
+                                forKey:@"sourceTables"];
+  return map;
+}
+
 @end

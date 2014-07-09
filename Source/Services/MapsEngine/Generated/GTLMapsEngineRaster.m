@@ -27,9 +27,12 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineRaster (0 custom class methods, 9 custom properties)
+//   GTLMapsEngineRaster (0 custom class methods, 16 custom properties)
 
 #import "GTLMapsEngineRaster.h"
+
+#import "GTLMapsEngineAcquisitionTime.h"
+#import "GTLMapsEngineFile.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -37,13 +40,15 @@
 //
 
 @implementation GTLMapsEngineRaster
-@dynamic bbox, creationTime, descriptionProperty, identifier, lastModifiedTime,
-         name, projectId, rasterType, tags;
+@dynamic acquisitionTime, attribution, bbox, creationTime, descriptionProperty,
+         draftAccessList, ETag, files, identifier, lastModifiedTime, maskType,
+         name, processingStatus, projectId, rasterType, tags;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
       @"description", @"descriptionProperty",
+      @"etag", @"ETag",
       @"id", @"identifier",
       nil];
   return map;
@@ -53,6 +58,7 @@
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
       [NSNumber class], @"bbox",
+      [GTLMapsEngineFile class], @"files",
       [NSString class], @"tags",
       nil];
   return map;

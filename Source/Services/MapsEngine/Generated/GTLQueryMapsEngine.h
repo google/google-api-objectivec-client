@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLQueryMapsEngine (37 custom class methods, 26 custom properties)
+//   GTLQueryMapsEngine (51 custom class methods, 27 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -36,9 +36,9 @@
 #endif
 
 @class GTLMapsEngineFeature;
-@class GTLMapsEngineImage;
 @class GTLMapsEngineLayer;
 @class GTLMapsEngineMap;
+@class GTLMapsEngineRaster;
 @class GTLMapsEngineRasterCollection;
 @class GTLMapsEngineRasterCollectionsRasterBatchDeleteRequest;
 @class GTLMapsEngineRasterCollectionsRastersBatchInsertRequest;
@@ -81,6 +81,7 @@
 @property (retain) id request;
 @property (copy) NSString *select;
 @property (copy) NSString *tableId;
+@property (copy) NSString *tags;
 @property (copy) NSString *type;
 @property (copy) NSString *version;
 @property (copy) NSString *where;
@@ -127,6 +128,8 @@
 //     list all available projects with their IDs, send a Projects: list
 //     request. You can also find your project ID as the value of the
 //     DashboardPlace:cid URL parameter when signed in to mapsengine.google.com.
+//   tags: A comma separated list of tags. Returned assets will contain all the
+//     tags from the list.
 //   type: An asset type restriction. If set, only resources of this type will
 //     be returned.
 //      kGTLMapsEngineTypeLayer: Return layers.
@@ -163,6 +166,15 @@
 #pragma mark "layers" methods
 // These create a GTLQueryMapsEngine object.
 
+// Method: mapsengine.layers.cancelProcessing
+// Cancel processing on a layer asset.
+//  Required:
+//   identifier: The ID of the layer.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+// Fetches a GTLMapsEngineProcessResponse.
++ (id)queryForLayersCancelProcessingWithIdentifier:(NSString *)identifier;
+
 // Method: mapsengine.layers.create
 // Create a layer asset.
 //  Optional:
@@ -172,6 +184,17 @@
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEngineLayer.
 + (id)queryForLayersCreate;
+
+// Method: mapsengine.layers.delete
+// Delete a layer.
+//  Required:
+//   identifier: The ID of the layer. Only the layer creator or project owner
+//     are permitted to delete. If the layer is published, or included in a map,
+//     the request will fail. Unpublish the layer, and remove it from all maps
+//     prior to deleting.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
++ (id)queryForLayersDeleteWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.layers.get
 // Return metadata for a particular layer.
@@ -215,6 +238,8 @@
 //     list all available projects with their IDs, send a Projects: list
 //     request. You can also find your project ID as the value of the
 //     DashboardPlace:cid URL parameter when signed in to mapsengine.google.com.
+//   tags: A comma separated list of tags. Returned assets will contain all the
+//     tags from the list.
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
@@ -245,6 +270,18 @@
 #pragma mark "layers" methods
 // These create a GTLQueryMapsEngine object.
 
+// Method: mapsengine.layers.patch
+// Mutate a layer asset. Note that if a VectorStyle object is provided, it fully
+// replaces the original VectorStyle present in the layer. This is a known
+// issue.
+//  Required:
+//   identifier: The ID of the layer.
+//  Optional:
+//   request: For this method, "request" should be of type GTLMapsEngineLayer.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
++ (id)queryForLayersPatchWithIdentifier:(NSString *)identifier;
+
 // Method: mapsengine.layers.process
 // Process a layer asset.
 //  Required:
@@ -263,6 +300,15 @@
 // Fetches a GTLMapsEnginePublishResponse.
 + (id)queryForLayersPublishWithIdentifier:(NSString *)identifier;
 
+// Method: mapsengine.layers.unpublish
+// Unpublish a layer asset.
+//  Required:
+//   identifier: The ID of the layer.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+// Fetches a GTLMapsEnginePublishResponse.
++ (id)queryForLayersUnpublishWithIdentifier:(NSString *)identifier;
+
 #pragma mark -
 #pragma mark "maps" methods
 // These create a GTLQueryMapsEngine object.
@@ -275,6 +321,16 @@
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEngineMap.
 + (id)queryForMapsCreate;
+
+// Method: mapsengine.maps.delete
+// Delete a map.
+//  Required:
+//   identifier: The ID of the map. Only the map creator or project owner are
+//     permitted to delete. If the map is published the request will fail.
+//     Unpublish the map prior to deleting.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
++ (id)queryForMapsDeleteWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.maps.get
 // Return metadata for a particular map.
@@ -318,11 +374,23 @@
 //     list all available projects with their IDs, send a Projects: list
 //     request. You can also find your project ID as the value of the
 //     DashboardPlace:cid URL parameter when signed in to mapsengine.google.com.
+//   tags: A comma separated list of tags. Returned assets will contain all the
+//     tags from the list.
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineMapsListResponse.
 + (id)queryForMapsList;
+
+// Method: mapsengine.maps.patch
+// Mutate a map asset.
+//  Required:
+//   identifier: The ID of the map.
+//  Optional:
+//   request: For this method, "request" should be of type GTLMapsEngineMap.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
++ (id)queryForMapsPatchWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.maps.publish
 // Publish a map asset.
@@ -332,6 +400,15 @@
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEnginePublishResponse.
 + (id)queryForMapsPublishWithIdentifier:(NSString *)identifier;
+
+// Method: mapsengine.maps.unpublish
+// Unpublish a map asset.
+//  Required:
+//   identifier: The ID of the map.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+// Fetches a GTLMapsEnginePublishResponse.
++ (id)queryForMapsUnpublishWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "projects" methods
@@ -349,6 +426,15 @@
 #pragma mark "rasterCollections" methods
 // These create a GTLQueryMapsEngine object.
 
+// Method: mapsengine.rasterCollections.cancelProcessing
+// Cancel processing on a raster collection asset.
+//  Required:
+//   identifier: The ID of the raster collection.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+// Fetches a GTLMapsEngineProcessResponse.
++ (id)queryForRasterCollectionsCancelProcessingWithIdentifier:(NSString *)identifier;
+
 // Method: mapsengine.rasterCollections.create
 // Create a raster collection asset.
 //  Optional:
@@ -358,6 +444,17 @@
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEngineRasterCollection.
 + (id)queryForRasterCollectionsCreate;
+
+// Method: mapsengine.rasterCollections.delete
+// Delete a raster collection.
+//  Required:
+//   identifier: The ID of the raster collection. Only the raster collection
+//     creator or project owner are permitted to delete. If the rastor
+//     collection is included in a layer, the request will fail. Remove the
+//     raster collection from all layers prior to deleting.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
++ (id)queryForRasterCollectionsDeleteWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.rasterCollections.get
 // Return metadata for a particular raster collection.
@@ -397,6 +494,8 @@
 //     list all available projects with their IDs, send a Projects: list
 //     request. You can also find your project ID as the value of the
 //     DashboardPlace:cid URL parameter when signed in to mapsengine.google.com.
+//   tags: A comma separated list of tags. Returned assets will contain all the
+//     tags from the list.
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
@@ -426,6 +525,17 @@
 #pragma mark -
 #pragma mark "rasterCollections" methods
 // These create a GTLQueryMapsEngine object.
+
+// Method: mapsengine.rasterCollections.patch
+// Mutate a raster collection asset.
+//  Required:
+//   identifier: The ID of the raster collection.
+//  Optional:
+//   request: For this method, "request" should be of type
+//     GTLMapsEngineRasterCollection.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
++ (id)queryForRasterCollectionsPatchWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.rasterCollections.process
 // Process a raster collection asset.
@@ -495,11 +605,27 @@
 //   pageToken: The continuation token, used to page through large result sets.
 //     To get the next page of results, set this parameter to the value of
 //     nextPageToken from the previous response.
+//   tags: A comma separated list of tags. Returned assets will contain all the
+//     tags from the list.
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineRastersListResponse.
 + (id)queryForRasterCollectionsRastersListWithIdentifier:(NSString *)identifier;
+
+#pragma mark -
+#pragma mark "rasters" methods
+// These create a GTLQueryMapsEngine object.
+
+// Method: mapsengine.rasters.delete
+// Delete a raster.
+//  Required:
+//   identifier: The ID of the raster. Only the raster creator or project owner
+//     are permitted to delete. If the raster is included in a layer or mosaic,
+//     the request will fail. Remove it from all parents prior to deleting.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
++ (id)queryForRastersDeleteWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "rasters.files" methods
@@ -530,7 +656,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
-// Fetches a GTLMapsEngineImage.
+// Fetches a GTLMapsEngineRaster.
 + (id)queryForRastersGetWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
@@ -557,13 +683,23 @@
 #pragma mark "rasters" methods
 // These create a GTLQueryMapsEngine object.
 
+// Method: mapsengine.rasters.patch
+// Mutate a raster asset.
+//  Required:
+//   identifier: The ID of the raster.
+//  Optional:
+//   request: For this method, "request" should be of type GTLMapsEngineRaster.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
++ (id)queryForRastersPatchWithIdentifier:(NSString *)identifier;
+
 // Method: mapsengine.rasters.upload
 // Create a skeleton raster asset for upload.
 //  Optional:
-//   request: For this method, "request" should be of type GTLMapsEngineImage.
+//   request: For this method, "request" should be of type GTLMapsEngineRaster.
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
-// Fetches a GTLMapsEngineImage.
+// Fetches a GTLMapsEngineRaster.
 + (id)queryForRastersUpload;
 
 #pragma mark -
@@ -578,6 +714,16 @@
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEngineTable.
 + (id)queryForTablesCreate;
+
+// Method: mapsengine.tables.delete
+// Delete a table.
+//  Required:
+//   identifier: The ID of the table. Only the table creator or project owner
+//     are permitted to delete. If the table is included in a layer, the request
+//     will fail. Remove it from all layers prior to deleting.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
++ (id)queryForTablesDeleteWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "tables.features" methods
@@ -753,6 +899,8 @@
 //     list all available projects with their IDs, send a Projects: list
 //     request. You can also find your project ID as the value of the
 //     DashboardPlace:cid URL parameter when signed in to mapsengine.google.com.
+//   tags: A comma separated list of tags. Returned assets will contain all the
+//     tags from the list.
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
@@ -782,6 +930,16 @@
 #pragma mark -
 #pragma mark "tables" methods
 // These create a GTLQueryMapsEngine object.
+
+// Method: mapsengine.tables.patch
+// Mutate a table asset.
+//  Required:
+//   identifier: The ID of the table.
+//  Optional:
+//   request: For this method, "request" should be of type GTLMapsEngineTable.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
++ (id)queryForTablesPatchWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.tables.upload
 // Create a placeholder table asset to which table files can be uploaded.

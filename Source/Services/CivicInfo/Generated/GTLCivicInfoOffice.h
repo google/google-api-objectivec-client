@@ -45,7 +45,7 @@
 
 @interface GTLCivicInfoOffice : GTLObject
 
-// The OCD ID of the division this office is part of.
+// The OCD ID of the division with which this office is associated.
 @property (copy) NSString *divisionId;
 
 // The level of this elected office. One of: federal, state, county, city, other
@@ -54,7 +54,8 @@
 // The human-readable name of the office.
 @property (copy) NSString *name;
 
-// List of people who presently hold the office.
+// List of keys in the officials object of people who presently hold this
+// office.
 @property (retain) NSArray *officialIds;  // of NSString
 
 // A list of sources for this office. If multiple sources are listed, the data

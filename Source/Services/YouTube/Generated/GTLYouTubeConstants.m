@@ -736,6 +736,11 @@ NSString * const kGTLYouTubeLiveBroadcastStatus_LifeCycleStatus_Revoked = @"revo
 NSString * const kGTLYouTubeLiveBroadcastStatus_LifeCycleStatus_Testing = @"testing";
 NSString * const kGTLYouTubeLiveBroadcastStatus_LifeCycleStatus_TestStarting = @"testStarting";
 
+// GTLYouTubeLiveBroadcastStatus - LiveBroadcastPriority
+NSString * const kGTLYouTubeLiveBroadcastStatus_LiveBroadcastPriority_High = @"high";
+NSString * const kGTLYouTubeLiveBroadcastStatus_LiveBroadcastPriority_Low = @"low";
+NSString * const kGTLYouTubeLiveBroadcastStatus_LiveBroadcastPriority_Normal = @"normal";
+
 // GTLYouTubeLiveBroadcastStatus - PrivacyStatus
 NSString * const kGTLYouTubeLiveBroadcastStatus_PrivacyStatus_Private = @"private";
 NSString * const kGTLYouTubeLiveBroadcastStatus_PrivacyStatus_Public = @"public";

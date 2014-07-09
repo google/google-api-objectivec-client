@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,7 +52,7 @@
 @property (copy) NSString *locationDescription;
 
 // The date and time when the video was recorded. The value is specified in ISO
-// 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
+// 8601 (YYYY-MM-DDThh:mm:ss.sssZ) format.
 @property (retain) GTLDateTime *recordingDate;
 
 @end

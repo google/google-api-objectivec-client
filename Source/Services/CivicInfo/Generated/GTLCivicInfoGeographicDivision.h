@@ -43,8 +43,8 @@
 
 @interface GTLCivicInfoGeographicDivision : GTLObject
 
-// Any other valid OCD IDs that refer to the same division. For example, if
-// ocd_id above is ocd-division/country:us/district:dc, this will contain
+// Any other valid OCD IDs that refer to the same division. For example, if this
+// division's OCD ID is ocd-division/country:us/district:dc, this will contain
 // ocd-division/country:us/state:dc.
 @property (retain) NSArray *alsoKnownAs;  // of NSString
 

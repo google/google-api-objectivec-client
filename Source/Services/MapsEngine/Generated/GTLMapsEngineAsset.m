@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineAsset (0 custom class methods, 10 custom properties)
+//   GTLMapsEngineAsset (0 custom class methods, 11 custom properties)
 
 #import "GTLMapsEngineAsset.h"
 
@@ -37,13 +37,14 @@
 //
 
 @implementation GTLMapsEngineAsset
-@dynamic bbox, creationTime, descriptionProperty, identifier, lastModifiedTime,
-         name, projectId, resource, tags, type;
+@dynamic bbox, creationTime, descriptionProperty, ETag, identifier,
+         lastModifiedTime, name, projectId, resource, tags, type;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
       @"description", @"descriptionProperty",
+      @"etag", @"ETag",
       @"id", @"identifier",
       nil];
   return map;

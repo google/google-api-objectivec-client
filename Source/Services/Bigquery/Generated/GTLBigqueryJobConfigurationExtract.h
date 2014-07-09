@@ -47,10 +47,9 @@
 // include GZIP and NONE. The default value is NONE.
 @property (copy) NSString *compression;
 
-// [Experimental] Optional and defaults to CSV. Format with which files should
-// be exported. To export to CSV, specify "CSV". Tables with nested or repeated
-// fields cannot be exported as CSV. To export to newline-delimited JSON,
-// specify "NEWLINE_DELIMITED_JSON".
+// [Optional] The exported file format. Possible values include CSV,
+// NEWLINE_DELIMITED_JSON and AVRO. The default value is CSV. Tables with nested
+// or repeated fields cannot be exported as CSV.
 @property (copy) NSString *destinationFormat;
 
 // [Pick one] DEPRECATED: Use destinationUris instead, passing only one URI as

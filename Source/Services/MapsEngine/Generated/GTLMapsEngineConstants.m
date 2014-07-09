@@ -81,22 +81,6 @@ NSString * const kGTLMapsEngineGeoJsonPoint_Type_Point = @"Point";
 // GTLMapsEngineGeoJsonPolygon - Type
 NSString * const kGTLMapsEngineGeoJsonPolygon_Type_Polygon = @"Polygon";
 
-// GTLMapsEngineImage - MaskType
-NSString * const kGTLMapsEngineImage_MaskType_AlphaChannelMask = @"alphaChannelMask";
-NSString * const kGTLMapsEngineImage_MaskType_AutoMask         = @"autoMask";
-NSString * const kGTLMapsEngineImage_MaskType_ImageMask        = @"imageMask";
-NSString * const kGTLMapsEngineImage_MaskType_NoMask           = @"noMask";
-
-// GTLMapsEngineImage - ProcessingStatus
-NSString * const kGTLMapsEngineImage_ProcessingStatus_Complete = @"complete";
-NSString * const kGTLMapsEngineImage_ProcessingStatus_Failed   = @"failed";
-NSString * const kGTLMapsEngineImage_ProcessingStatus_NotReady = @"notReady";
-NSString * const kGTLMapsEngineImage_ProcessingStatus_Processing = @"processing";
-NSString * const kGTLMapsEngineImage_ProcessingStatus_Ready    = @"ready";
-
-// GTLMapsEngineImage - RasterType
-NSString * const kGTLMapsEngineImage_RasterType_Image = @"image";
-
 // GTLMapsEngineLabelStyle - FontStyle
 NSString * const kGTLMapsEngineLabelStyle_FontStyle_Italic = @"italic";
 NSString * const kGTLMapsEngineLabelStyle_FontStyle_Normal = @"normal";
@@ -128,6 +112,22 @@ NSString * const kGTLMapsEngineMapKmlLink_Type_KmlLink = @"kmlLink";
 
 // GTLMapsEngineMapLayer - Type
 NSString * const kGTLMapsEngineMapLayer_Type_Layer = @"layer";
+
+// GTLMapsEngineRaster - MaskType
+NSString * const kGTLMapsEngineRaster_MaskType_AlphaChannelMask = @"alphaChannelMask";
+NSString * const kGTLMapsEngineRaster_MaskType_AutoMask        = @"autoMask";
+NSString * const kGTLMapsEngineRaster_MaskType_ImageMask       = @"imageMask";
+NSString * const kGTLMapsEngineRaster_MaskType_NoMask          = @"noMask";
+
+// GTLMapsEngineRaster - ProcessingStatus
+NSString * const kGTLMapsEngineRaster_ProcessingStatus_Complete = @"complete";
+NSString * const kGTLMapsEngineRaster_ProcessingStatus_Failed  = @"failed";
+NSString * const kGTLMapsEngineRaster_ProcessingStatus_NotReady = @"notReady";
+NSString * const kGTLMapsEngineRaster_ProcessingStatus_Processing = @"processing";
+NSString * const kGTLMapsEngineRaster_ProcessingStatus_Ready   = @"ready";
+
+// GTLMapsEngineRaster - RasterType
+NSString * const kGTLMapsEngineRaster_RasterType_Image = @"image";
 
 // GTLMapsEngineRasterCollection - ProcessingStatus
 NSString * const kGTLMapsEngineRasterCollection_ProcessingStatus_Complete = @"complete";

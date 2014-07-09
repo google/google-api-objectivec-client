@@ -46,10 +46,6 @@
 // A vector style contains styling information for vector layer.
 
 @interface GTLMapsEngineVectorStyle : GTLObject
-
-// Display rules of the vector style. The first matched rule will apply to the
-// features. If no display rule is provided, a default display rule will be
-// generated according to Geometry type.
 @property (retain) NSArray *displayRules;  // of GTLMapsEngineDisplayRule
 
 // Individual feature info, this is called Info Window in Maps Engine UI. If not
