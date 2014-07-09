@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineLayer (0 custom class methods, 14 custom properties)
+//   GTLMapsEngineLayer (0 custom class methods, 15 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -73,6 +73,9 @@
 // the request is being sent must be an editor on that access list. Read About
 // access lists in the Google Maps Engine help center for more information.
 @property (copy) NSString *draftAccessList;
+
+// The ETag, used to refer to the current version of the asset.
+@property (copy) NSString *ETag;
 
 // A globally unique ID, used to refer to this Layer.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').

@@ -89,22 +89,6 @@ GTL_EXTERN NSString * const kGTLMapsEngineGeoJsonPoint_Type_Point;  // "Point"
 // GTLMapsEngineGeoJsonPolygon - Type
 GTL_EXTERN NSString * const kGTLMapsEngineGeoJsonPolygon_Type_Polygon;  // "Polygon"
 
-// GTLMapsEngineImage - MaskType
-GTL_EXTERN NSString * const kGTLMapsEngineImage_MaskType_AlphaChannelMask;  // "alphaChannelMask"
-GTL_EXTERN NSString * const kGTLMapsEngineImage_MaskType_AutoMask;  // "autoMask"
-GTL_EXTERN NSString * const kGTLMapsEngineImage_MaskType_ImageMask;  // "imageMask"
-GTL_EXTERN NSString * const kGTLMapsEngineImage_MaskType_NoMask;  // "noMask"
-
-// GTLMapsEngineImage - ProcessingStatus
-GTL_EXTERN NSString * const kGTLMapsEngineImage_ProcessingStatus_Complete;  // "complete"
-GTL_EXTERN NSString * const kGTLMapsEngineImage_ProcessingStatus_Failed;  // "failed"
-GTL_EXTERN NSString * const kGTLMapsEngineImage_ProcessingStatus_NotReady;  // "notReady"
-GTL_EXTERN NSString * const kGTLMapsEngineImage_ProcessingStatus_Processing;  // "processing"
-GTL_EXTERN NSString * const kGTLMapsEngineImage_ProcessingStatus_Ready;  // "ready"
-
-// GTLMapsEngineImage - RasterType
-GTL_EXTERN NSString * const kGTLMapsEngineImage_RasterType_Image;  // "image"
-
 // GTLMapsEngineLabelStyle - FontStyle
 GTL_EXTERN NSString * const kGTLMapsEngineLabelStyle_FontStyle_Italic;  // "italic"
 GTL_EXTERN NSString * const kGTLMapsEngineLabelStyle_FontStyle_Normal;  // "normal"
@@ -136,6 +120,22 @@ GTL_EXTERN NSString * const kGTLMapsEngineMapKmlLink_Type_KmlLink;  // "kmlLink"
 
 // GTLMapsEngineMapLayer - Type
 GTL_EXTERN NSString * const kGTLMapsEngineMapLayer_Type_Layer;  // "layer"
+
+// GTLMapsEngineRaster - MaskType
+GTL_EXTERN NSString * const kGTLMapsEngineRaster_MaskType_AlphaChannelMask;  // "alphaChannelMask"
+GTL_EXTERN NSString * const kGTLMapsEngineRaster_MaskType_AutoMask;  // "autoMask"
+GTL_EXTERN NSString * const kGTLMapsEngineRaster_MaskType_ImageMask;  // "imageMask"
+GTL_EXTERN NSString * const kGTLMapsEngineRaster_MaskType_NoMask;  // "noMask"
+
+// GTLMapsEngineRaster - ProcessingStatus
+GTL_EXTERN NSString * const kGTLMapsEngineRaster_ProcessingStatus_Complete;  // "complete"
+GTL_EXTERN NSString * const kGTLMapsEngineRaster_ProcessingStatus_Failed;  // "failed"
+GTL_EXTERN NSString * const kGTLMapsEngineRaster_ProcessingStatus_NotReady;  // "notReady"
+GTL_EXTERN NSString * const kGTLMapsEngineRaster_ProcessingStatus_Processing;  // "processing"
+GTL_EXTERN NSString * const kGTLMapsEngineRaster_ProcessingStatus_Ready;  // "ready"
+
+// GTLMapsEngineRaster - RasterType
+GTL_EXTERN NSString * const kGTLMapsEngineRaster_RasterType_Image;  // "image"
 
 // GTLMapsEngineRasterCollection - ProcessingStatus
 GTL_EXTERN NSString * const kGTLMapsEngineRasterCollection_ProcessingStatus_Complete;  // "complete"

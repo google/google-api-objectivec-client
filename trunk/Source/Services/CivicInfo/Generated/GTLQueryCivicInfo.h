@@ -97,8 +97,8 @@
 // These create a GTLQueryCivicInfo object.
 
 // Method: civicinfo.representatives.representativeInfoQuery
-// Looks up political geography and (optionally) representative information
-// based on an address.
+// Looks up political geography and representative information based on an
+// address or Open Civic Data division identifier.
 //  Optional:
 //   address: The address to look up. May only be specified if the field ocdId
 //     is not given in the URL.

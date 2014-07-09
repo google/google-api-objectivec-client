@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLMapsEngineImage.h
+//  GTLMapsEngineRasterCollectionRaster.h
 //
 
 // ----------------------------------------------------------------------------
@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineImage (0 custom class methods, 15 custom properties)
+//   GTLMapsEngineRasterCollectionRaster (0 custom class methods, 9 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -35,23 +35,14 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLMapsEngineAcquisitionTime;
-@class GTLMapsEngineFile;
-
 // ----------------------------------------------------------------------------
 //
-//   GTLMapsEngineImage
+//   GTLMapsEngineRasterCollectionRaster
 //
 
-// A geo-referenced raster.
+// A raster resource.
 
-@interface GTLMapsEngineImage : GTLObject
-
-// The acquisition time of this Raster.
-@property (retain) GTLMapsEngineAcquisitionTime *acquisitionTime;
-
-// The name of the attribution to be used for this Raster.
-@property (copy) NSString *attribution;
+@interface GTLMapsEngineRasterCollectionRaster : GTLObject
 
 // A rectangular bounding box which contains all of the data in this Raster. The
 // numbers represent latitude and longitude in decimal degrees.
@@ -65,12 +56,6 @@
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
 
-// The Map Editors access list to share this Raster with.
-@property (copy) NSString *draftAccessList;
-
-// The files associated with this Raster.
-@property (retain) NSArray *files;  // of GTLMapsEngineFile
-
 // A globally unique ID, used to refer to this Raster.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
@@ -79,14 +64,8 @@
 // date-time value (e.g. 1970-01-01T00:00:00Z).
 @property (retain) GTLDateTime *lastModifiedTime;
 
-// The mask processing type of this Raster.
-@property (copy) NSString *maskType;
-
 // The name of this Raster, supplied by the author.
 @property (copy) NSString *name;
-
-// The processing status of this Raster.
-@property (copy) NSString *processingStatus;
 
 // The ID of the project that this Raster is in.
 @property (copy) NSString *projectId;

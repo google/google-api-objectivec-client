@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineRasterCollection (0 custom class methods, 13 custom properties)
+//   GTLMapsEngineRasterCollection (0 custom class methods, 14 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -46,7 +46,7 @@
 @interface GTLMapsEngineRasterCollection : GTLObject
 
 // The name of the attribution to be used for this RasterCollection.
-@property (copy) NSString *attribution;
+@property (retain) id attribution;
 
 // A rectangular bounding box which contains all of the data in this
 // RasterCollection. The numbers represent latitude and longitude in decimal
@@ -65,6 +65,9 @@
 // the request is being sent must be an editor on that access list. Read About
 // access lists in the Google Maps Engine help center for more information.
 @property (copy) NSString *draftAccessList;
+
+// The ETag, used to refer to the current version of the asset.
+@property (copy) NSString *ETag;
 
 // A globally unique ID, used to refer to this RasterCollection.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').

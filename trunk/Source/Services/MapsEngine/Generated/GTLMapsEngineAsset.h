@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineAsset (0 custom class methods, 10 custom properties)
+//   GTLMapsEngineAsset (0 custom class methods, 11 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -59,6 +59,9 @@
 // The asset's description.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
+
+// The ETag, used to refer to the current version of the asset.
+@property (copy) NSString *ETag;
 
 // The asset's globally unique ID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').

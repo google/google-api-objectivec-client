@@ -748,6 +748,11 @@ GTL_EXTERN NSString * const kGTLYouTubeLiveBroadcastStatus_LifeCycleStatus_Revok
 GTL_EXTERN NSString * const kGTLYouTubeLiveBroadcastStatus_LifeCycleStatus_Testing;  // "testing"
 GTL_EXTERN NSString * const kGTLYouTubeLiveBroadcastStatus_LifeCycleStatus_TestStarting;  // "testStarting"
 
+// GTLYouTubeLiveBroadcastStatus - LiveBroadcastPriority
+GTL_EXTERN NSString * const kGTLYouTubeLiveBroadcastStatus_LiveBroadcastPriority_High;  // "high"
+GTL_EXTERN NSString * const kGTLYouTubeLiveBroadcastStatus_LiveBroadcastPriority_Low;  // "low"
+GTL_EXTERN NSString * const kGTLYouTubeLiveBroadcastStatus_LiveBroadcastPriority_Normal;  // "normal"
+
 // GTLYouTubeLiveBroadcastStatus - PrivacyStatus
 GTL_EXTERN NSString * const kGTLYouTubeLiveBroadcastStatus_PrivacyStatus_Private;  // "private"
 GTL_EXTERN NSString * const kGTLYouTubeLiveBroadcastStatus_PrivacyStatus_Public;  // "public"

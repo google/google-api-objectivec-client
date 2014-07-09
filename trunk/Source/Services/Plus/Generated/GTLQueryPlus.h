@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -166,11 +166,11 @@
 // These create a GTLQueryPlus object.
 
 // Method: plus.moments.insert
-// Record a moment representing a user's activity such as making a purchase or
+// Record a moment representing a user's action such as making a purchase or
 // commenting on a blog.
 //  Required:
-//   userId: The ID of the user to record activities for. The only valid values
-//     are "me" and the ID of the authenticated user.
+//   userId: The ID of the user to record actions for. The only valid values are
+//     "me" and the ID of the authenticated user.
 //   collection: The collection to which to write moments.
 //      kGTLPlusCollectionVault: The default collection for writing new moments.
 //  Optional:

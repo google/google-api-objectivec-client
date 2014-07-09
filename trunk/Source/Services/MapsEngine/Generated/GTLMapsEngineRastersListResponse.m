@@ -31,7 +31,7 @@
 
 #import "GTLMapsEngineRastersListResponse.h"
 
-#import "GTLMapsEngineRaster.h"
+#import "GTLMapsEngineRasterCollectionRaster.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -43,7 +43,7 @@
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLMapsEngineRaster class]
+    [NSDictionary dictionaryWithObject:[GTLMapsEngineRasterCollectionRaster class]
                                 forKey:@"rasters"];
   return map;
 }
