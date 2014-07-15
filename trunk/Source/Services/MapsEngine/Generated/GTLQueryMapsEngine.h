@@ -271,9 +271,7 @@
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.layers.patch
-// Mutate a layer asset. Note that if a VectorStyle object is provided, it fully
-// replaces the original VectorStyle present in the layer. This is a known
-// issue.
+// Mutate a layer asset.
 //  Required:
 //   identifier: The ID of the layer.
 //  Optional:
@@ -499,7 +497,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
-// Fetches a GTLMapsEngineRastercollectionsListResponse.
+// Fetches a GTLMapsEngineRasterCollectionsListResponse.
 + (id)queryForRasterCollectionsList;
 
 #pragma mark -
@@ -610,7 +608,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
-// Fetches a GTLMapsEngineRastersListResponse.
+// Fetches a GTLMapsEngineRasterCollectionsRastersListResponse.
 + (id)queryForRasterCollectionsRastersListWithIdentifier:(NSString *)identifier;
 
 #pragma mark -

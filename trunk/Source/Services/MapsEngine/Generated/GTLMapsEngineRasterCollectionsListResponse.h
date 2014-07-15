@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLMapsEngineRastercollectionsListResponse.m
+//  GTLMapsEngineRasterCollectionsListResponse.h
 //
 
 // ----------------------------------------------------------------------------
@@ -27,25 +27,29 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineRastercollectionsListResponse (0 custom class methods, 2 custom properties)
+//   GTLMapsEngineRasterCollectionsListResponse (0 custom class methods, 2 custom properties)
 
-#import "GTLMapsEngineRastercollectionsListResponse.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLMapsEngineRasterCollection.h"
+@class GTLMapsEngineRasterCollection;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLMapsEngineRastercollectionsListResponse
+//   GTLMapsEngineRasterCollectionsListResponse
 //
 
-@implementation GTLMapsEngineRastercollectionsListResponse
-@dynamic nextPageToken, rasterCollections;
+// The response returned by a call to raster_collections.List.
 
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLMapsEngineRasterCollection class]
-                                forKey:@"rasterCollections"];
-  return map;
-}
+@interface GTLMapsEngineRasterCollectionsListResponse : GTLObject
+
+// Next page token.
+@property (copy) NSString *nextPageToken;
+
+// Resources returned.
+@property (retain) NSArray *rasterCollections;  // of GTLMapsEngineRasterCollection
 
 @end

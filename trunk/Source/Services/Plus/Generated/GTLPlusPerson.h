@@ -30,7 +30,7 @@
 //   GTLPlusPersonAgeRange (0 custom class methods, 2 custom properties)
 //   GTLPlusPersonCover (0 custom class methods, 3 custom properties)
 //   GTLPlusPersonEmailsItem (0 custom class methods, 2 custom properties)
-//   GTLPlusPersonImage (0 custom class methods, 1 custom properties)
+//   GTLPlusPersonImage (0 custom class methods, 2 custom properties)
 //   GTLPlusPersonName (0 custom class methods, 6 custom properties)
 //   GTLPlusPersonOrganizationsItem (0 custom class methods, 9 custom properties)
 //   GTLPlusPersonPlacesLivedItem (0 custom class methods, 2 custom properties)
@@ -252,6 +252,9 @@
 //
 
 @interface GTLPlusPersonImage : GTLObject
+
+// Whether the person's profile photo is the default one
+@property (retain) NSNumber *isDefault;  // boolValue
 
 // The URL of the person's profile photo. To resize the image and crop it to a
 // square, append the query string ?sz=x, where x is the dimension in pixels of

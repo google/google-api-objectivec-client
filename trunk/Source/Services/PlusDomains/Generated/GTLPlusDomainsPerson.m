@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@
 //   GTLPlusDomainsPerson (0 custom class methods, 28 custom properties)
 //   GTLPlusDomainsPersonCover (0 custom class methods, 3 custom properties)
 //   GTLPlusDomainsPersonEmailsItem (0 custom class methods, 2 custom properties)
-//   GTLPlusDomainsPersonImage (0 custom class methods, 1 custom properties)
+//   GTLPlusDomainsPersonImage (0 custom class methods, 2 custom properties)
 //   GTLPlusDomainsPersonName (0 custom class methods, 6 custom properties)
 //   GTLPlusDomainsPersonOrganizationsItem (0 custom class methods, 9 custom properties)
 //   GTLPlusDomainsPersonPlacesLivedItem (0 custom class methods, 2 custom properties)
@@ -104,7 +104,7 @@
 //
 
 @implementation GTLPlusDomainsPersonImage
-@dynamic url;
+@dynamic isDefault, url;
 @end
 
 

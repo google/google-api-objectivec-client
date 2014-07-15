@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLMapsEngineRasterCollectionRaster.m
+//  GTLMapsEngineRasterCollectionsRaster.m
 //
 
 // ----------------------------------------------------------------------------
@@ -27,16 +27,16 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineRasterCollectionRaster (0 custom class methods, 9 custom properties)
+//   GTLMapsEngineRasterCollectionsRaster (0 custom class methods, 9 custom properties)
 
-#import "GTLMapsEngineRasterCollectionRaster.h"
+#import "GTLMapsEngineRasterCollectionsRaster.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLMapsEngineRasterCollectionRaster
+//   GTLMapsEngineRasterCollectionsRaster
 //
 
-@implementation GTLMapsEngineRasterCollectionRaster
+@implementation GTLMapsEngineRasterCollectionsRaster
 @dynamic bbox, creationTime, descriptionProperty, identifier, lastModifiedTime,
          name, projectId, rasterType, tags;
 

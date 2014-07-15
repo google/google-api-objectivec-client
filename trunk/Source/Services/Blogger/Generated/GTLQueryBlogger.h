@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -83,16 +83,16 @@
 // These create a GTLQueryBlogger object.
 
 // Method: blogger.blogs.get
-// Gets one blog by id.
+// Gets one blog by ID.
 //  Required:
 //   blogId: The ID of the blog to get.
 //  Optional:
 //   maxPosts: Maximum number of posts to pull back with the blog.
-//   view: Access level with which to view the blogs. Note that some fields
+//   view: Access level with which to view the blog. Note that some fields
 //     require elevated access.
-//      kGTLBloggerViewAdmin: Admin level detail
-//      kGTLBloggerViewAuthor: Author level detail
-//      kGTLBloggerViewReader: Reader level detail
+//      kGTLBloggerViewAdmin: Admin level detail.
+//      kGTLBloggerViewAuthor: Author level detail.
+//      kGTLBloggerViewReader: Reader level detail.
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
@@ -104,11 +104,11 @@
 //  Required:
 //   url: The URL of the blog to retrieve.
 //  Optional:
-//   view: Access level with which to view the blogs. Note that some fields
+//   view: Access level with which to view the blog. Note that some fields
 //     require elevated access.
-//      kGTLBloggerViewAdmin: Admin level detail
-//      kGTLBloggerViewAuthor: Author level detail
-//      kGTLBloggerViewReader: Reader level detail
+//      kGTLBloggerViewAdmin: Admin level detail.
+//      kGTLBloggerViewAuthor: Author level detail.
+//      kGTLBloggerViewReader: Reader level detail.
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
@@ -126,14 +126,22 @@
 //   role: User access types for blogs to include in the results, e.g. AUTHOR
 //     will return blogs where the user has author level access. If no roles are
 //     specified, defaults to ADMIN and AUTHOR roles.
-//      kGTLBloggerRoleAdmin: Admin role - User has Admin level access.
-//      kGTLBloggerRoleAuthor: Author role - User has Author level access.
-//      kGTLBloggerRoleReader: Reader role - User has Reader level access.
+//      kGTLBloggerRoleAdmin: Admin role - Blogs where the user has Admin level
+//        access.
+//      kGTLBloggerRoleAuthor: Author role - Blogs where the user has Author
+//        level access.
+//      kGTLBloggerRoleReader: Reader role - Blogs where the user has Reader
+//        level access (to a private blog).
+//   status: Blog statuses to include in the result (default: Live blogs only).
+//     Note that ADMIN access is required to view deleted blogs. (Default
+//     kGTLBloggerStatusLive)
+//      kGTLBloggerStatusDeleted: Blog has been deleted by an administrator.
+//      kGTLBloggerStatusLive: Blog is currently live.
 //   view: Access level with which to view the blogs. Note that some fields
 //     require elevated access.
-//      kGTLBloggerViewAdmin: Admin level detail
-//      kGTLBloggerViewAuthor: Author level detail
-//      kGTLBloggerViewReader: Reader level detail
+//      kGTLBloggerViewAdmin: Admin level detail.
+//      kGTLBloggerViewAuthor: Author level detail.
+//      kGTLBloggerViewReader: Reader level detail.
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
@@ -166,7 +174,7 @@
 // Method: blogger.comments.approve
 // Marks a comment as not spam.
 //  Required:
-//   blogId: The Id of the Blog.
+//   blogId: The ID of the Blog.
 //   postId: The ID of the Post.
 //   commentId: The ID of the comment to mark as not spam.
 //  Authorization scope(s):
@@ -177,9 +185,9 @@
                               commentId:(NSString *)commentId;
 
 // Method: blogger.comments.delete
-// Delete a comment by id.
+// Delete a comment by ID.
 //  Required:
-//   blogId: The Id of the Blog.
+//   blogId: The ID of the Blog.
 //   postId: The ID of the Post.
 //   commentId: The ID of the comment to delete.
 //  Authorization scope(s):
@@ -189,7 +197,7 @@
                              commentId:(NSString *)commentId;
 
 // Method: blogger.comments.get
-// Gets one comment by id.
+// Gets one comment by ID.
 //  Required:
 //   blogId: ID of the blog to containing the comment.
 //   postId: ID of the post to fetch posts from.
@@ -262,7 +270,7 @@
 // Method: blogger.comments.markAsSpam
 // Marks a comment as spam.
 //  Required:
-//   blogId: The Id of the Blog.
+//   blogId: The ID of the Blog.
 //   postId: The ID of the Post.
 //   commentId: The ID of the comment to mark as spam.
 //  Authorization scope(s):
@@ -275,7 +283,7 @@
 // Method: blogger.comments.removeContent
 // Removes the content of a comment.
 //  Required:
-//   blogId: The Id of the Blog.
+//   blogId: The ID of the Blog.
 //   postId: The ID of the Post.
 //   commentId: The ID of the comment to delete content from.
 //  Authorization scope(s):
@@ -290,9 +298,9 @@
 // These create a GTLQueryBlogger object.
 
 // Method: blogger.pages.delete
-// Delete a page by id.
+// Delete a page by ID.
 //  Required:
-//   blogId: The Id of the Blog.
+//   blogId: The ID of the Blog.
 //   pageId: The ID of the Page.
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
@@ -300,7 +308,7 @@
                              pageId:(NSString *)pageId;
 
 // Method: blogger.pages.get
-// Gets one blog page by id.
+// Gets one blog page by ID.
 //  Required:
 //   blogId: ID of the blog containing the page.
 //   pageId: The ID of the page to get.
@@ -320,6 +328,8 @@
 // Add a page.
 //  Required:
 //   blogId: ID of the blog to add the page to.
+//  Optional:
+//   isDraft: Whether to create the page as a draft (default: false).
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 // Fetches a GTLBloggerPage.
@@ -351,6 +361,11 @@
 //  Required:
 //   blogId: The ID of the Blog.
 //   pageId: The ID of the Page.
+//  Optional:
+//   publish: Whether a publish action should be performed when the page is
+//     updated (default: false).
+//   revert: Whether a revert action should be performed when the page is
+//     updated (default: false).
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 // Fetches a GTLBloggerPage.
@@ -363,6 +378,11 @@
 //  Required:
 //   blogId: The ID of the Blog.
 //   pageId: The ID of the Page.
+//  Optional:
+//   publish: Whether a publish action should be performed when the page is
+//     updated (default: false).
+//   revert: Whether a revert action should be performed when the page is
+//     updated (default: false).
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 // Fetches a GTLBloggerPage.
@@ -393,9 +413,9 @@
 // These create a GTLQueryBlogger object.
 
 // Method: blogger.posts.delete
-// Delete a post by id.
+// Delete a post by ID.
 //  Required:
-//   blogId: The Id of the Blog.
+//   blogId: The ID of the Blog.
 //   postId: The ID of the Post.
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
@@ -403,7 +423,7 @@
                              postId:(NSString *)postId;
 
 // Method: blogger.posts.get
-// Get a post by id.
+// Get a post by ID.
 //  Required:
 //   blogId: ID of the blog to fetch the post from.
 //   postId: The ID of the post
@@ -518,12 +538,16 @@
                             postId:(NSString *)postId;
 
 // Method: blogger.posts.publish
-// Publish a draft post.
+// Publishes a draft post, optionally at the specific time of the given
+// publishDate parameter.
 //  Required:
 //   blogId: The ID of the Blog.
 //   postId: The ID of the Post.
 //  Optional:
-//   publishDate: The date and time to schedule the publishing of the Blog.
+//   publishDate: Optional date and time to schedule the publishing of the Blog.
+//     If no publishDate parameter is given, the post is either published at the
+//     a previously saved schedule date (if present), or the current time. If a
+//     future date is given, the post will be scheduled to be published.
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 // Fetches a GTLBloggerPost.
@@ -587,7 +611,7 @@
 // These create a GTLQueryBlogger object.
 
 // Method: blogger.postUserInfos.get
-// Gets one post and user info pair, by post id and user id. The post user info
+// Gets one post and user info pair, by post ID and user ID. The post user info
 // contains per-user information about the post, such as access rights, specific
 // to the user.
 //  Required:
@@ -648,7 +672,7 @@
 // These create a GTLQueryBlogger object.
 
 // Method: blogger.users.get
-// Gets one user by id.
+// Gets one user by ID.
 //  Required:
 //   userId: The ID of the user to get.
 //  Authorization scope(s):

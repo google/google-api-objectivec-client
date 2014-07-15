@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLBloggerBlog (0 custom class methods, 12 custom properties)
+//   GTLBloggerBlog (0 custom class methods, 13 custom properties)
 //   GTLBloggerBlogLocale (0 custom class methods, 3 custom properties)
 //   GTLBloggerBlogPages (0 custom class methods, 2 custom properties)
 //   GTLBloggerBlogPosts (0 custom class methods, 3 custom properties)
@@ -80,6 +80,9 @@
 
 // The API REST URL to fetch this resource from.
 @property (copy) NSString *selfLink;
+
+// The status of the blog.
+@property (copy) NSString *status;
 
 // RFC 3339 date-time when this blog was last updated.
 @property (retain) GTLDateTime *updated;

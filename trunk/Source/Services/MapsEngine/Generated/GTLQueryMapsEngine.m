@@ -45,12 +45,12 @@
 #import "GTLMapsEnginePublishResponse.h"
 #import "GTLMapsEngineRaster.h"
 #import "GTLMapsEngineRasterCollection.h"
-#import "GTLMapsEngineRastercollectionsListResponse.h"
+#import "GTLMapsEngineRasterCollectionsListResponse.h"
 #import "GTLMapsEngineRasterCollectionsRasterBatchDeleteRequest.h"
 #import "GTLMapsEngineRasterCollectionsRastersBatchDeleteResponse.h"
 #import "GTLMapsEngineRasterCollectionsRastersBatchInsertRequest.h"
 #import "GTLMapsEngineRasterCollectionsRastersBatchInsertResponse.h"
-#import "GTLMapsEngineRastersListResponse.h"
+#import "GTLMapsEngineRasterCollectionsRastersListResponse.h"
 #import "GTLMapsEngineTable.h"
 #import "GTLMapsEngineTablesListResponse.h"
 
@@ -304,7 +304,7 @@
 + (id)queryForRasterCollectionsList {
   NSString *methodName = @"mapsengine.rasterCollections.list";
   GTLQueryMapsEngine *query = [self queryWithMethodName:methodName];
-  query.expectedObjectClass = [GTLMapsEngineRastercollectionsListResponse class];
+  query.expectedObjectClass = [GTLMapsEngineRasterCollectionsListResponse class];
   return query;
 }
 
@@ -363,7 +363,7 @@
   NSString *methodName = @"mapsengine.rasterCollections.rasters.list";
   GTLQueryMapsEngine *query = [self queryWithMethodName:methodName];
   query.identifier = identifier;
-  query.expectedObjectClass = [GTLMapsEngineRastersListResponse class];
+  query.expectedObjectClass = [GTLMapsEngineRasterCollectionsRastersListResponse class];
   return query;
 }
 
