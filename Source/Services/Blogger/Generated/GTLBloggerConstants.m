@@ -47,6 +47,7 @@ NSString * const kGTLBloggerRoleAuthor = @"AUTHOR";
 NSString * const kGTLBloggerRoleReader = @"READER";
 
 // GTLQueryBlogger - Status
+NSString * const kGTLBloggerStatusDeleted   = @"DELETED";
 NSString * const kGTLBloggerStatusDraft     = @"draft";
 NSString * const kGTLBloggerStatusEmptied   = @"emptied";
 NSString * const kGTLBloggerStatusLive      = @"live";

@@ -61,9 +61,10 @@
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
 
-// The name of an access list of the Map Editor type. The user on whose behalf
-// the request is being sent must be an editor on that access list. Read About
-// access lists in the Google Maps Engine help center for more information.
+// Deprecated: The name of an access list of the Map Editor type. The user on
+// whose behalf the request is being sent must be an editor on that access list.
+// Read About access lists in the Google Maps Engine help center for more
+// information.
 @property (copy) NSString *draftAccessList;
 
 // The ETag, used to refer to the current version of the asset.

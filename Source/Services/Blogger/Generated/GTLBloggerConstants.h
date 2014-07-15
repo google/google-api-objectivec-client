@@ -55,6 +55,7 @@ GTL_EXTERN NSString * const kGTLBloggerRoleAuthor;  // "AUTHOR"
 GTL_EXTERN NSString * const kGTLBloggerRoleReader;  // "READER"
 
 // GTLQueryBlogger - Status
+GTL_EXTERN NSString * const kGTLBloggerStatusDeleted;    // "DELETED"
 GTL_EXTERN NSString * const kGTLBloggerStatusDraft;      // "draft"
 GTL_EXTERN NSString * const kGTLBloggerStatusEmptied;    // "emptied"
 GTL_EXTERN NSString * const kGTLBloggerStatusLive;       // "live"

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLMapsEngineRasterCollectionRaster.h
+//  GTLMapsEngineRasterCollectionsRaster.h
 //
 
 // ----------------------------------------------------------------------------
@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineRasterCollectionRaster (0 custom class methods, 9 custom properties)
+//   GTLMapsEngineRasterCollectionsRaster (0 custom class methods, 9 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -37,12 +37,12 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLMapsEngineRasterCollectionRaster
+//   GTLMapsEngineRasterCollectionsRaster
 //
 
 // A raster resource.
 
-@interface GTLMapsEngineRasterCollectionRaster : GTLObject
+@interface GTLMapsEngineRasterCollectionsRaster : GTLObject
 
 // A rectangular bounding box which contains all of the data in this Raster. The
 // numbers represent latitude and longitude in decimal degrees.

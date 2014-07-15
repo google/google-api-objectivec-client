@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLBloggerPost (0 custom class methods, 17 custom properties)
+//   GTLBloggerPost (0 custom class methods, 18 custom properties)
 //   GTLBloggerPostAuthor (0 custom class methods, 4 custom properties)
 //   GTLBloggerPostBlog (0 custom class methods, 1 custom properties)
 //   GTLBloggerPostImagesItem (0 custom class methods, 1 custom properties)
@@ -85,6 +85,9 @@
 
 // RFC 3339 date-time when this Post was published.
 @property (retain) GTLDateTime *published;
+
+// Comment control and display setting for readers of this post.
+@property (copy) NSString *readerComments;
 
 // The container of comments on this Post.
 @property (retain) GTLBloggerPostReplies *replies;
