@@ -44,11 +44,8 @@
             urlQueryParameters = urlQueryParameters_,
             additionalHTTPHeaders = additionalHTTPHeaders_,
             expectedObjectClass = expectedObjectClass_,
-            shouldSkipAuthorization = skipAuthorization_;
-
-#if NS_BLOCKS_AVAILABLE
-@synthesize completionBlock = completionBlock_;
-#endif
+            shouldSkipAuthorization = skipAuthorization_,
+            completionBlock = completionBlock_;
 
 + (id)queryWithMethodName:(NSString *)methodName {
   return [[[self alloc] initWithMethodName:methodName] autorelease];
@@ -77,9 +74,7 @@
   [uploadParameters_ release];
   [urlQueryParameters_ release];
   [additionalHTTPHeaders_ release];
-#if NS_BLOCKS_AVAILABLE
   [completionBlock_ release];
-#endif
 
   [super dealloc];
 }
@@ -102,9 +97,7 @@
   query.additionalHTTPHeaders = self.additionalHTTPHeaders;
   query.expectedObjectClass = self.expectedObjectClass;
   query.shouldSkipAuthorization = self.shouldSkipAuthorization;
-#if NS_BLOCKS_AVAILABLE
   query.completionBlock = self.completionBlock;
-#endif
   return query;
 }
 
@@ -151,9 +144,7 @@
 }
 
 - (void)executionDidStop {
-#if NS_BLOCKS_AVAILABLE
   self.completionBlock = nil;
-#endif
 }
 
 + (NSString *)nextRequestID {
