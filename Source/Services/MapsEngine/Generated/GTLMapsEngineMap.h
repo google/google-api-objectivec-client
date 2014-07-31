@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineMap (0 custom class methods, 14 custom properties)
+//   GTLMapsEngineMap (0 custom class methods, 15 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -68,7 +68,16 @@
 
 // Deprecated: The name of an access list of the Map Editor type. The user on
 // whose behalf the request is being sent must be an editor on that access list.
-// Read About access lists in the Google Maps Engine help center for more
+// Note: Google Maps Engine no longer uses access lists. For backward
+// compatibility, the API still accepts access lists for projects that are
+// already using access lists. If you created a GME account/project after July
+// 14th, 2014, you will not be able to send API requests that include access
+// lists. The API does not yet support the new permissions model. When you
+// create a map via the API without specifying permissions, the account that
+// created the map is the owner and has effective administrator access. Users
+// can then use the Maps Engine user interface to adjust the permissions. This
+// is a temporary workaround until the API supports the new permissions model.
+// Read Add new users and groups in the Google Maps Engine help center for more
 // information.
 @property (copy) NSString *draftAccessList;
 
@@ -86,13 +95,17 @@
 // The name of this Map, supplied by the author.
 @property (copy) NSString *name;
 
+// The processing status of this map. Map processing is automatically started
+// once a map becomes ready for processing.
+@property (copy) NSString *processingStatus;
+
 // The ID of the project that this Map is in.
 @property (copy) NSString *projectId;
 
 // Deprecated: The access list to whom view permissions are granted. The value
 // must be the name of a Maps Engine access list of the Map Viewer type, and the
-// user must be a viewer on that list. Read About access lists in the Google
-// Maps Engine help center for more information.
+// user must be a viewer on that list. Read Share data, layers, and maps in the
+// Google Maps Engine help center for more information.
 @property (copy) NSString *publishedAccessList;
 
 // Tags of this Map.

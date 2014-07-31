@@ -41,7 +41,7 @@ GTL_EXTERN NSString * const kGTLAuthScopePlusLogin;            // "https://www.g
 GTL_EXTERN NSString * const kGTLAuthScopePlusMe;               // "https://www.googleapis.com/auth/plus.me"
 // View your email address
 GTL_EXTERN NSString * const kGTLAuthScopePlusUserinfoEmail;    // "https://www.googleapis.com/auth/userinfo.email"
-// View basic information about your account
+// View your basic profile info
 GTL_EXTERN NSString * const kGTLAuthScopePlusUserinfoProfile;  // "https://www.googleapis.com/auth/userinfo.profile"
 
 // GTLQueryPlus - Collection

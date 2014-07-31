@@ -100,6 +100,13 @@ NSString * const kGTLMapsEngineLayer_ProcessingStatus_NotReady = @"notReady";
 NSString * const kGTLMapsEngineLayer_ProcessingStatus_Processing = @"processing";
 NSString * const kGTLMapsEngineLayer_ProcessingStatus_Ready    = @"ready";
 
+// GTLMapsEngineMap - ProcessingStatus
+NSString * const kGTLMapsEngineMap_ProcessingStatus_Complete   = @"complete";
+NSString * const kGTLMapsEngineMap_ProcessingStatus_Failed     = @"failed";
+NSString * const kGTLMapsEngineMap_ProcessingStatus_NotReady   = @"notReady";
+NSString * const kGTLMapsEngineMap_ProcessingStatus_Processing = @"processing";
+NSString * const kGTLMapsEngineMap_ProcessingStatus_Ready      = @"ready";
+
 // GTLMapsEngineMap - Versions
 NSString * const kGTLMapsEngineMap_Versions_Draft     = @"draft";
 NSString * const kGTLMapsEngineMap_Versions_Published = @"published";
@@ -112,12 +119,6 @@ NSString * const kGTLMapsEngineMapKmlLink_Type_KmlLink = @"kmlLink";
 
 // GTLMapsEngineMapLayer - Type
 NSString * const kGTLMapsEngineMapLayer_Type_Layer = @"layer";
-
-// GTLMapsEngineRaster - MaskType
-NSString * const kGTLMapsEngineRaster_MaskType_AlphaChannelMask = @"alphaChannelMask";
-NSString * const kGTLMapsEngineRaster_MaskType_AutoMask        = @"autoMask";
-NSString * const kGTLMapsEngineRaster_MaskType_ImageMask       = @"imageMask";
-NSString * const kGTLMapsEngineRaster_MaskType_NoMask          = @"noMask";
 
 // GTLMapsEngineRaster - ProcessingStatus
 NSString * const kGTLMapsEngineRaster_ProcessingStatus_Complete = @"complete";

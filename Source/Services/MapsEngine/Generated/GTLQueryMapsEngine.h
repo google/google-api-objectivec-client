@@ -811,7 +811,7 @@
 //   limit: The total number of features to return from the query, irrespective
 //     of the number of pages.
 //   maxResults: The maximum number of items to include in the response, used
-//     for paging.
+//     for paging. The maximum supported value is 1000.
 //   orderBy: An SQL-like order by clause used to sort results. If this
 //     parameter is not included, the order of features is undefined.
 //   pageToken: The continuation token, used to page through large result sets.

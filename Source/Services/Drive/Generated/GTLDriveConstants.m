@@ -37,6 +37,10 @@ NSString * const kGTLAuthScopeDriveMetadataReadonly = @"https://www.googleapis.c
 NSString * const kGTLAuthScopeDriveReadonly         = @"https://www.googleapis.com/auth/drive.readonly";
 NSString * const kGTLAuthScopeDriveScripts          = @"https://www.googleapis.com/auth/drive.scripts";
 
+// GTLQueryDrive - Corpus
+NSString * const kGTLDriveCorpusDefault = @"DEFAULT";
+NSString * const kGTLDriveCorpusDomain  = @"DOMAIN";
+
 // GTLQueryDrive - Projection
 NSString * const kGTLDriveProjectionBasic = @"BASIC";
 NSString * const kGTLDriveProjectionFull  = @"FULL";

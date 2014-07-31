@@ -47,7 +47,7 @@
 @interface GTLMapsEngineTablesListResponse : GTLObject
 
 // Next page token.
-@property (copy) NSString *nextPageToken;
+@property (copy) NSString *nextPageToken;  // GTLBase64 can encode/decode (probably web-safe format)
 
 // Resources returned.
 @property (retain) NSArray *tables;  // of GTLMapsEngineTable
