@@ -73,15 +73,11 @@ extern NSString *const kGTLServiceTicketParsingStoppedNotification ;
 // since it's more useful when code sense expansions show the argument
 // types rather than the typedefs
 
-#if NS_BLOCKS_AVAILABLE
 typedef void (^GTLServiceCompletionHandler)(GTLServiceTicket *ticket, id object, NSError *error);
 
 typedef void (^GTLServiceUploadProgressBlock)(GTLServiceTicket *ticket, unsigned long long numberOfBytesRead, unsigned long long dataLength);
-#else
-typedef void *GTLServiceCompletionHandler;
 
-typedef void *GTLServiceUploadProgressBlock;
-#endif // NS_BLOCKS_AVAILABLE
+typedef BOOL (^GTLServiceRetryBlock)(GTLServiceTicket *ticket, BOOL suggestedWillRetry, NSError *error);
 
 #pragma mark -
 
@@ -102,17 +98,8 @@ typedef void *GTLServiceUploadProgressBlock;
 
   SEL uploadProgressSelector_; // optional
 
-#if NS_BLOCKS_AVAILABLE
-  BOOL (^retryBlock_)(GTLServiceTicket *, BOOL, NSError *);
-  void (^uploadProgressBlock_)(GTLServiceTicket *ticket,
-                               unsigned long long numberOfBytesRead,
-                               unsigned long long dataLength);
-#elif !__LP64__
-  // Placeholders: for 32-bit builds, keep the size of the object's ivar section
-  // the same with and without blocks
-  id retryPlaceholder_;
-  id uploadProgressPlaceholder_;
-#endif
+  GTLServiceRetryBlock retryBlock_;
+  GTLServiceUploadProgressBlock uploadProgressBlock_;
 
   NSUInteger uploadChunkSize_;      // zero when uploading via multi-part MIME http body
 
@@ -121,6 +108,8 @@ typedef void *GTLServiceUploadProgressBlock;
   NSTimeInterval maxRetryInterval_; // default to 600. seconds
 
   BOOL shouldFetchNextPages_;
+
+  BOOL allowInsecureQueries_;
 
   NSString *apiKey_;
   BOOL isRESTDataWrapperRequired_;
@@ -152,10 +141,8 @@ typedef void *GTLServiceUploadProgressBlock;
                           delegate:(id)delegate
                  didFinishSelector:(SEL)finishedSelector GTL_NONNULL((1));
 
-#if NS_BLOCKS_AVAILABLE
 - (GTLServiceTicket *)executeQuery:(id<GTLQueryProtocol>)query
-                 completionHandler:(void (^)(GTLServiceTicket *ticket, id object, NSError *error))handler GTL_NONNULL((1));
-#endif
+                 completionHandler:(GTLServiceCompletionHandler)handler GTL_NONNULL((1));
 
 // Automatic page fetches
 //
@@ -196,13 +183,11 @@ typedef void *GTLServiceUploadProgressBlock;
 //
 // If present, it should have the signature:
 //   -(BOOL)ticket:(GTLServiceTicket *)ticket willRetry:(BOOL)suggestedWillRetry forError:(NSError *)error
-// and return YES to cause a retry.  Note that unlike the GTMHTTPFetcher retry
+// and return YES to cause a retry.  Note that unlike the fetcher retry
 // selector, this selector's first argument is a ticket, not a fetcher.
 
 @property (nonatomic, assign) SEL retrySelector;
-#if NS_BLOCKS_AVAILABLE
-@property (copy) BOOL (^retryBlock)(GTLServiceTicket *ticket, BOOL suggestedWillRetry, NSError *error);
-#endif
+@property (copy) GTLServiceRetryBlock retryBlock;
 
 @property (nonatomic, assign) NSTimeInterval maxRetryInterval;
 
@@ -236,23 +221,21 @@ typedef void *GTLServiceUploadProgressBlock;
                                         delegate:(id)delegate
                                didFinishSelector:(SEL)finishedSelector GTL_NONNULL((1));
 
-#if NS_BLOCKS_AVAILABLE
 - (GTLServiceTicket *)fetchObjectWithMethodNamed:(NSString *)methodName
                                       parameters:(NSDictionary *)parameters
                                      objectClass:(Class)objectClass
-                               completionHandler:(void (^)(GTLServiceTicket *ticket, id object, NSError *error))handler GTL_NONNULL((1));
+                               completionHandler:(GTLServiceCompletionHandler)handler GTL_NONNULL((1));
 
 - (GTLServiceTicket *)fetchObjectWithMethodNamed:(NSString *)methodName
                                  insertingObject:(GTLObject *)bodyObject
                                      objectClass:(Class)objectClass
-                               completionHandler:(void (^)(GTLServiceTicket *ticket, id object, NSError *error))handler GTL_NONNULL((1));
+                               completionHandler:(GTLServiceCompletionHandler)handler GTL_NONNULL((1));
 
 - (GTLServiceTicket *)fetchObjectWithMethodNamed:(NSString *)methodName
                                       parameters:(NSDictionary *)parameters
                                  insertingObject:(GTLObject *)bodyObject
                                      objectClass:(Class)objectClass
-                               completionHandler:(void (^)(GTLServiceTicket *ticket, id object, NSError *error))handler GTL_NONNULL((1));
-#endif
+                               completionHandler:(GTLServiceCompletionHandler)handler GTL_NONNULL((1));
 
 #pragma mark REST Fetch Methods
 
@@ -285,22 +268,20 @@ typedef void *GTLServiceUploadProgressBlock;
                                delegate:(id)delegate
                       didFinishSelector:(SEL)finishedSelector GTL_NONNULL((1));
 
-#if NS_BLOCKS_AVAILABLE
 - (GTLServiceTicket *)fetchObjectWithURL:(NSURL *)objectURL
-                       completionHandler:(void (^)(GTLServiceTicket *ticket, id object, NSError *error))handler GTL_NONNULL((1));
+                       completionHandler:(GTLServiceCompletionHandler)handler GTL_NONNULL((1));
 
 - (GTLServiceTicket *)fetchObjectByInsertingObject:(GTLObject *)bodyToPut
                                             forURL:(NSURL *)destinationURL
-                                 completionHandler:(void (^)(GTLServiceTicket *ticket, id object, NSError *error))handler GTL_NONNULL((1));
+                                 completionHandler:(GTLServiceCompletionHandler)handler GTL_NONNULL((1));
 
 - (GTLServiceTicket *)fetchObjectByUpdatingObject:(GTLObject *)bodyToPut
                                            forURL:(NSURL *)destinationURL
-                                completionHandler:(void (^)(GTLServiceTicket *ticket, id object, NSError *error))handler GTL_NONNULL((1));
+                                completionHandler:(GTLServiceCompletionHandler)handler GTL_NONNULL((1));
 
 - (GTLServiceTicket *)deleteResourceURL:(NSURL *)destinationURL
                                    ETag:(NSString *)etagOrNil
-                      completionHandler:(void (^)(GTLServiceTicket *ticket, id object, NSError *error))handler GTL_NONNULL((1));
-#endif
+                      completionHandler:(GTLServiceCompletionHandler)handler GTL_NONNULL((1));
 
 #pragma mark User Properties
 
@@ -362,6 +343,13 @@ typedef void *GTLServiceUploadProgressBlock;
 // NSModalPanelRunLoopMode as one of the modes.
 @property (nonatomic, retain) NSArray *runLoopModes;
 
+// Normally, API requests must be made only via SSL to protect the user's
+// data and the authentication token.  This property allows the application
+// to make non-SSL requests and localhost requests for testing.
+//
+// Defaults to NO.
+@property (nonatomic, assign) BOOL allowInsecureQueries;
+
 // Applications needing an additional identifier in the server logs may specify
 // one.
 @property (nonatomic, copy) NSString *userAgentAddition;
@@ -399,7 +387,7 @@ typedef void *GTLServiceUploadProgressBlock;
 // was called operationQueue)
 @property (nonatomic, retain) NSOperationQueue *parseQueue;
 
-// The fetcher service object issues the GTMHTTPFetcher instances
+// The fetcher service object issues the fetcher instances
 // for this API service
 @property (nonatomic, retain) GTMHTTPFetcherService *fetcherService;
 
@@ -449,9 +437,7 @@ typedef void *GTLServiceUploadProgressBlock;
 //        ofTotalByteCount:(unsigned long long)dataLength;
 @property (nonatomic, assign) SEL uploadProgressSelector;
 
-#if NS_BLOCKS_AVAILABLE
-@property (copy) void (^uploadProgressBlock)(GTLServiceTicket *ticket, unsigned long long numberOfBytesRead, unsigned long long dataLength);
-#endif
+@property (copy) GTLServiceUploadProgressBlock uploadProgressBlock;
 
 // Wait synchronously for fetch to complete (strongly discouraged)
 //
@@ -490,17 +476,8 @@ typedef void *GTLServiceUploadProgressBlock;
   SEL retrySelector_;
   NSTimeInterval maxRetryInterval_;
 
-#if NS_BLOCKS_AVAILABLE
-  BOOL (^retryBlock_)(GTLServiceTicket *, BOOL, NSError *);
-  void (^uploadProgressBlock_)(GTLServiceTicket *ticket,
-                               unsigned long long numberOfBytesRead,
-                               unsigned long long dataLength);
-#elif !__LP64__
-  // Placeholders: for 32-bit builds, keep the size of the object's ivar section
-  // the same with and without blocks
-  id retryPlaceholder_;
-  id uploadProgressPlaceholder_;
-#endif
+  GTLServiceRetryBlock retryBlock_;
+  GTLServiceUploadProgressBlock uploadProgressBlock_;
 
   GTLObject *postedObject_;
   GTLObject *fetchedObject_;
@@ -565,9 +542,7 @@ typedef void *GTLServiceUploadProgressBlock;
 
 @property (nonatomic, assign, getter=isRetryEnabled) BOOL retryEnabled;
 @property (nonatomic, assign) SEL retrySelector;
-#if NS_BLOCKS_AVAILABLE
-@property (copy) BOOL (^retryBlock)(GTLServiceTicket *ticket, BOOL suggestedWillRetry, NSError *error);
-#endif
+@property (copy) GTLServiceRetryBlock retryBlock;
 @property (nonatomic, assign) NSTimeInterval maxRetryInterval;
 
 #pragma mark Status
@@ -583,9 +558,7 @@ typedef void *GTLServiceUploadProgressBlock;
 
 #pragma mark Upload
 
-#if NS_BLOCKS_AVAILABLE
-@property (copy) void (^uploadProgressBlock)(GTLServiceTicket *ticket, unsigned long long numberOfBytesRead, unsigned long long dataLength);
-#endif
+@property (copy) GTLServiceUploadProgressBlock uploadProgressBlock;
 
 @end
 
