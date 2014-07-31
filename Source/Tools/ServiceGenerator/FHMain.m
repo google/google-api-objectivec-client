@@ -384,7 +384,7 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
   GTMHTTPFetcherService *fetcherService = self.discoveryService.fetcherService;
   GTMHTTPFetcher *fetcher = [fetcherService fetcherWithURL:url];
   fetcher.comment = [@"Fetching: " stringByAppendingString:reportingName];
-
+  fetcher.allowLocalhostRequest = YES;
   BOOL started = [fetcher beginFetchWithCompletionHandler:^(NSData *data, NSError *error) {
     self.numberOfActiveNetworkActions -= 1;
 
@@ -421,6 +421,7 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
       fprintf(stderr,
               "%s The api description doesn't appear to be a discovery rpc description\n",
               kERROR);
+      self.status = 5;
       self.state = FHMain_Done;
       return;
     }
@@ -432,6 +433,7 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
     self.numberOfActiveNetworkActions += 1;
   } else {
     fprintf(stderr, "%s Failed to fetch the api description\n", kERROR);
+    self.status = 6;
     self.state = FHMain_Done;
     return NO;
   }

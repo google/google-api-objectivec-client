@@ -31,7 +31,8 @@
   static NSCharacterSet *letterSet = nil;
   if (!letterSet) {
     // Just want a-zA-Z
-    NSMutableCharacterSet *setBuilder = [NSCharacterSet characterSetWithRange:NSMakeRange('a', 26)];
+    NSMutableCharacterSet *setBuilder =
+        [NSMutableCharacterSet characterSetWithRange:NSMakeRange('a', 26)];
     [setBuilder addCharactersInRange:NSMakeRange('A', 26)];
     // Use immutable versions for speed in our checks.
     letterSet = [setBuilder copy];
