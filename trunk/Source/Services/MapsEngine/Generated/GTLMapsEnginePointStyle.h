@@ -47,7 +47,8 @@
 
 @interface GTLMapsEnginePointStyle : GTLObject
 
-// Icon for the point; exactly one field in 'icon' must be set.
+// Icon for the point; if it isn't null, exactly one field in 'icon' must be
+// set.
 @property (retain) GTLMapsEngineIconStyle *icon;
 
 // Label style for the point.

@@ -76,7 +76,7 @@
 // The cover photo content.
 @property (retain) GTLPlusDomainsPersonCover *cover;
 
-// The current location for this person.
+// (this field is not currently used)
 @property (copy) NSString *currentLocation;
 
 // The name of this person, which is suitable for display.

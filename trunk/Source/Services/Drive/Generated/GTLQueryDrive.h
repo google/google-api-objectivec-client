@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLQueryDrive (59 custom class methods, 43 custom properties)
+//   GTLQueryDrive (59 custom class methods, 44 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -65,6 +65,7 @@
 @property (copy) NSString *childId;
 @property (copy) NSString *commentId;
 @property (assign) BOOL convert;
+@property (copy) NSString *corpus;
 @property (copy) NSString *email;
 @property (copy) NSString *emailMessage;
 @property (copy) NSString *fileId;
@@ -495,6 +496,9 @@
 // Method: drive.files.list
 // Lists the user's files.
 //  Optional:
+//   corpus: The body of items (files/documents) to which the query applies.
+//      kGTLDriveCorpusDefault: The items that the user has accessed.
+//      kGTLDriveCorpusDomain: Items shared to the user's domain.
 //   maxResults: Maximum number of files to return. (Default 100)
 //   pageToken: Page token for files.
 //   projection: This parameter is deprecated and has no function.

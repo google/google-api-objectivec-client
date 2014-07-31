@@ -108,6 +108,13 @@ GTL_EXTERN NSString * const kGTLMapsEngineLayer_ProcessingStatus_NotReady;  // "
 GTL_EXTERN NSString * const kGTLMapsEngineLayer_ProcessingStatus_Processing;  // "processing"
 GTL_EXTERN NSString * const kGTLMapsEngineLayer_ProcessingStatus_Ready;  // "ready"
 
+// GTLMapsEngineMap - ProcessingStatus
+GTL_EXTERN NSString * const kGTLMapsEngineMap_ProcessingStatus_Complete;  // "complete"
+GTL_EXTERN NSString * const kGTLMapsEngineMap_ProcessingStatus_Failed;  // "failed"
+GTL_EXTERN NSString * const kGTLMapsEngineMap_ProcessingStatus_NotReady;  // "notReady"
+GTL_EXTERN NSString * const kGTLMapsEngineMap_ProcessingStatus_Processing;  // "processing"
+GTL_EXTERN NSString * const kGTLMapsEngineMap_ProcessingStatus_Ready;  // "ready"
+
 // GTLMapsEngineMap - Versions
 GTL_EXTERN NSString * const kGTLMapsEngineMap_Versions_Draft;   // "draft"
 GTL_EXTERN NSString * const kGTLMapsEngineMap_Versions_Published;  // "published"
@@ -120,12 +127,6 @@ GTL_EXTERN NSString * const kGTLMapsEngineMapKmlLink_Type_KmlLink;  // "kmlLink"
 
 // GTLMapsEngineMapLayer - Type
 GTL_EXTERN NSString * const kGTLMapsEngineMapLayer_Type_Layer;  // "layer"
-
-// GTLMapsEngineRaster - MaskType
-GTL_EXTERN NSString * const kGTLMapsEngineRaster_MaskType_AlphaChannelMask;  // "alphaChannelMask"
-GTL_EXTERN NSString * const kGTLMapsEngineRaster_MaskType_AutoMask;  // "autoMask"
-GTL_EXTERN NSString * const kGTLMapsEngineRaster_MaskType_ImageMask;  // "imageMask"
-GTL_EXTERN NSString * const kGTLMapsEngineRaster_MaskType_NoMask;  // "noMask"
 
 // GTLMapsEngineRaster - ProcessingStatus
 GTL_EXTERN NSString * const kGTLMapsEngineRaster_ProcessingStatus_Complete;  // "complete"

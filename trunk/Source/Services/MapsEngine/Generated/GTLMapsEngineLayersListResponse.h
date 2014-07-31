@@ -50,6 +50,6 @@
 @property (retain) NSArray *layers;  // of GTLMapsEngineLayer
 
 // Next page token.
-@property (copy) NSString *nextPageToken;
+@property (copy) NSString *nextPageToken;  // GTLBase64 can encode/decode (probably web-safe format)
 
 @end

@@ -51,6 +51,10 @@ GTL_EXTERN NSString * const kGTLAuthScopeDriveReadonly;         // "https://www.
 // Modify your Google Apps Script scripts' behavior
 GTL_EXTERN NSString * const kGTLAuthScopeDriveScripts;          // "https://www.googleapis.com/auth/drive.scripts"
 
+// GTLQueryDrive - Corpus
+GTL_EXTERN NSString * const kGTLDriveCorpusDefault;  // "DEFAULT"
+GTL_EXTERN NSString * const kGTLDriveCorpusDomain;   // "DOMAIN"
+
 // GTLQueryDrive - Projection
 GTL_EXTERN NSString * const kGTLDriveProjectionBasic;  // "BASIC"
 GTL_EXTERN NSString * const kGTLDriveProjectionFull;   // "FULL"

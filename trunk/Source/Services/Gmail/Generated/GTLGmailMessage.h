@@ -58,9 +58,9 @@
 // The parsed email structure in the message parts.
 @property (retain) GTLGmailMessagePart *payload;
 
-// The entire email message in an RFC 2822 formatted string. Returned in
-// messages.get and drafts.get responses when the format=RAW parameter is
-// supplied.
+// The entire email message in an RFC 2822 formatted and URL-safe base64 encoded
+// string. Returned in messages.get and drafts.get responses when the format=RAW
+// parameter is supplied.
 @property (copy) NSString *raw;  // GTLBase64 can encode/decode (probably web-safe format)
 
 // Estimated size in bytes of the message.
