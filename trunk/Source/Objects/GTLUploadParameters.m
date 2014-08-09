@@ -27,21 +27,30 @@
             data = data_,
             fileHandle = fileHandle_,
             uploadLocationURL = uploadLocationURL_,
+            fileURL = fileURL_,
             slug = slug_,
             shouldSendUploadOnly = shouldSendUploadOnly_;
 
-+ (GTLUploadParameters *)uploadParametersWithData:(NSData *)data
-                                         MIMEType:(NSString *)mimeType {
-  GTLUploadParameters *params = [[[GTLUploadParameters alloc] init] autorelease];
++ (instancetype)uploadParametersWithData:(NSData *)data
+                                MIMEType:(NSString *)mimeType {
+  GTLUploadParameters *params = [[[self alloc] init] autorelease];
   params.data = data;
   params.MIMEType = mimeType;
   return params;
 }
 
-+ (GTLUploadParameters *)uploadParametersWithFileHandle:(NSFileHandle *)fileHandle
-                                               MIMEType:(NSString *)mimeType {
-  GTLUploadParameters *params = [[[GTLUploadParameters alloc] init] autorelease];
++ (instancetype)uploadParametersWithFileHandle:(NSFileHandle *)fileHandle
+                                      MIMEType:(NSString *)mimeType {
+  GTLUploadParameters *params = [[[self alloc] init] autorelease];
   params.fileHandle = fileHandle;
+  params.MIMEType = mimeType;
+  return params;
+}
+
++ (instancetype)uploadParametersWithFileURL:(NSURL *)fileURL
+                                   MIMEType:(NSString *)mimeType {
+  GTLUploadParameters *params = [[[self alloc] init] autorelease];
+  params.fileURL = fileURL;
   params.MIMEType = mimeType;
   return params;
 }
@@ -51,6 +60,7 @@
   newParams.MIMEType = self.MIMEType;
   newParams.data = self.data;
   newParams.fileHandle = self.fileHandle;
+  newParams.fileURL = self.fileURL;
   newParams.uploadLocationURL = self.uploadLocationURL;
   newParams.slug = self.slug;
   newParams.shouldSendUploadOnly = self.shouldSendUploadOnly;
@@ -61,6 +71,7 @@
   [MIMEType_ release];
   [data_ release];
   [fileHandle_ release];
+  [fileURL_ release];
   [uploadLocationURL_ release];
   [slug_ release];
 
@@ -80,6 +91,11 @@
 
   if (fileHandle_) {
     str = [NSString stringWithFormat:@"fileHandle:%@", fileHandle_];
+    [array addObject:str];
+  }
+
+  if (fileURL_) {
+    str = [NSString stringWithFormat:@"file:%@", [fileURL_ path]];
     [array addObject:str];
   }
 

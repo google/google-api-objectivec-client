@@ -233,6 +233,7 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   if (!isServerRunning_) return;
 
   GTLService *service = [[[GTLService alloc] init] autorelease];
+  service.allowInsecureQueries = YES;
 
   GTLServiceCompletionHandler completionBlock;
   GTLServiceTicket *ticket;
@@ -314,6 +315,7 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   GTLService *service = [[[GTLService alloc] init] autorelease];
   service.rpcURL = [testServer_ localURLForFile:kRPCValidName];
   service.apiVersion = @"v1";
+  service.allowInsecureQueries = YES;
 
   service.authorizer = [GTLTestAuthorizer authorizerWithValue:@"catpaws"];
 
@@ -463,6 +465,7 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   GTLService *service = [[[GTLService alloc] init] autorelease];
   service.rpcURL = [testServer_ localURLForFile:kRPCValidName];
   service.apiVersion = @"v1";
+  service.allowInsecureQueries = YES;
 
   // declare the surrogates we want instantiated
   service.surrogates = @{ (id<NSCopying>)[GTLTasksTask class] : [MyTask class],
@@ -522,6 +525,7 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   service.rpcURL = [testServer_ localURLForFile:kRPCPageAName];
   service.apiVersion = @"v1";
   service.shouldFetchNextPages = YES;
+  service.allowInsecureQueries = YES;
 
   GTLServiceCompletionHandler completionBlock;
 
@@ -591,7 +595,8 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   GTLService *service = [[[GTLService alloc] init] autorelease];
   service.rpcURL = [testServer_ localURLForFile:kBatchRPCName];
   service.apiVersion = @"v1";
-  
+  service.allowInsecureQueries = YES;
+
   GTLServiceCompletionHandler completionBlock;
   
   completionBlock = ^(GTLServiceTicket *ticket, id object, NSError *error) {
@@ -703,6 +708,7 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   service.rpcURL = [testServer_ localURLForFile:kBatchRPCPageAName];
   service.apiVersion = @"v1";
   service.shouldFetchNextPages = YES;
+  service.allowInsecureQueries = YES;
 
   // Query for one item
   GTLQueryTasksTest *query1 = [GTLQueryTasksTest queryForTasksGetWithTasklist:@"MTQwNzM4MjM0NzE2NDExMDgxOTM6MDow"
