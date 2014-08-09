@@ -23,7 +23,36 @@
 #import <Foundation/Foundation.h>
 
 #import "GTLDefines.h"
-#import "GTMHTTPFetcherService.h"
+
+// Fetcher bridging macros -- Internal library use only.
+//
+// GTL_USE_SESSION_FETCHER should be set to force the GTL library to use
+// GTMSessionFetcher rather than the older GTMHTTPFetcher.  The session
+// fetcher requires iOS 7/OS X 10.9 and supports out-of-process uploads.
+
+#ifndef GTL_USE_SESSION_FETCHER
+  #if GTM_USE_SESSION_FETCHER
+    #define GTL_USE_SESSION_FETCHER 1
+  #else
+    #define GTL_USE_SESSION_FETCHER 0
+  #endif  // GTM_USE_SESSION_FETCHER
+#endif  // GTL_USE_SESSION_FETCHER
+
+#if GTL_USE_SESSION_FETCHER
+  #define GTLUploadFetcherClass GTMSessionUploadFetcher
+  #define GTLUploadFetcherClassStr @"GTMSessionUploadFetcher"
+
+  #import "GTMSessionFetcher.h"
+  #import "GTMSessionFetcherService.h"
+#else
+  // !GTL_USE_SESSION_FETCHER
+  #define GTLUploadFetcherClass GTMHTTPUploadFetcher
+  #define GTLUploadFetcherClassStr @"GTMHTTPUploadFetcher"
+
+  #import "GTMHTTPFetcher.h"
+  #import "GTMHTTPFetcherService.h"
+#endif  // GTL_USE_SESSION_FETCHER
+
 #import "GTLBatchQuery.h"
 #import "GTLBatchResult.h"
 #import "GTLDateTime.h"
@@ -68,10 +97,6 @@ extern NSString *const kGTLServiceTicketParsingStoppedNotification ;
 @class GTLServiceTicket;
 
 // Block types used for fetch callbacks
-//
-// These typedefs are not used in the header file method declarations
-// since it's more useful when code sense expansions show the argument
-// types rather than the typedefs
 
 typedef void (^GTLServiceCompletionHandler)(GTLServiceTicket *ticket, id object, NSError *error);
 
@@ -89,7 +114,7 @@ typedef BOOL (^GTLServiceRetryBlock)(GTLServiceTicket *ticket, BOOL suggestedWil
  @private
   NSOperationQueue *parseQueue_;
   NSString *userAgent_;
-  GTMHTTPFetcherService *fetcherService_;
+  GTMBridgeFetcherService *fetcherService_;
   NSString *userAgentAddition_;
 
   NSMutableDictionary *serviceProperties_; // initial values for properties in future tickets
@@ -389,14 +414,16 @@ typedef BOOL (^GTLServiceRetryBlock)(GTLServiceTicket *ticket, BOOL suggestedWil
 
 // The fetcher service object issues the fetcher instances
 // for this API service
-@property (nonatomic, retain) GTMHTTPFetcherService *fetcherService;
+@property (nonatomic, retain) GTMBridgeFetcherService *fetcherService;
 
 // Default storage for cookies is in the service object's fetchHistory.
 //
 // Apps that want to share cookies between all standalone fetchers and the
 // service object may specify static application-wide cookie storage,
 // kGTMHTTPFetcherCookieStorageMethodStatic.
+#if !GTL_USE_SESSION_FETCHER
 @property (nonatomic, assign) NSInteger cookieStorageMethod;
+#endif
 
 // When sending REST style queries, should the payload be wrapped in a "data"
 // element, and will the reply be wrapped in an "data" element.
@@ -469,7 +496,7 @@ typedef BOOL (^GTLServiceRetryBlock)(GTLServiceTicket *ticket, BOOL suggestedWil
   NSMutableDictionary *ticketProperties_;
   NSDictionary *surrogates_;
 
-  GTMHTTPFetcher *objectFetcher_;
+  GTMBridgeFetcher *objectFetcher_;
   SEL uploadProgressSelector_;
   BOOL shouldFetchNextPages_;
   BOOL isRetryEnabled_;
@@ -510,7 +537,7 @@ typedef BOOL (^GTLServiceRetryBlock)(GTLServiceTicket *ticket, BOOL suggestedWil
 - (void)resumeUpload;
 - (BOOL)isUploadPaused;
 
-@property (nonatomic, retain) GTMHTTPFetcher *objectFetcher;
+@property (nonatomic, retain) GTMBridgeFetcher *objectFetcher;
 @property (nonatomic, assign) SEL uploadProgressSelector;
 
 // Services which do not require an user authorization may require a developer
@@ -564,7 +591,7 @@ typedef BOOL (^GTLServiceRetryBlock)(GTLServiceTicket *ticket, BOOL suggestedWil
 
 
 // Category to provide opaque access to tickets stored in fetcher properties
-@interface GTMHTTPFetcher (GTLServiceTicketAdditions)
+@interface GTMBridgeFetcher (GTLServiceTicketAdditions)
 - (id)ticket;
 @end
 
