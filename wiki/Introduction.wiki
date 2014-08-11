@@ -452,7 +452,7 @@ service.delegateQueue = [NSOperationQueue mainQueue];
 }}}
 Queries made from any thread can be called back on a background thread by providing a background queue, as in this example:
 {{{
-service.delegateQueue = [[[NSOperationQueue alloc] init] autorelease];
+service.delegateQueue = [[NSOperationQueue alloc] init];
 }}}
 When a delegate queue is specified, there is no requirement for a run loop to be running on the thread that executes the query.
 
@@ -519,12 +519,11 @@ Finally, applications may subclass `GTLObject`s to add ivars and methods.  To ha
 {{{
 GTLServicePhotos *service = [[GTLServicePhotos alloc] init];
 
-service.surrogates = [NSDictionary dictionaryWithObjectsAndKeys:
-  [MyPhoto class], [GTLPhoto class],
-  [MyAlbum class], [GTLAlbum class],
-  nil];
+service.surrogates = @{ 
+  [GTLPhoto class] : [MyPhoto class],
+  [GTLAlbum class] : [MyAlbum class]
+};
 }}}
-
 === Passing Data to Query Callbacks ===
 
 It is often useful to pass an NSObject to a callback, particularly when using selector callbacks rather than blocks. 
