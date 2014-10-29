@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLQueryDrive (59 custom class methods, 44 custom properties)
+//   GTLQueryDrive (59 custom class methods, 45 custom properties)
 
 #import "GTLQueryDrive.h"
 
@@ -56,9 +56,9 @@
 
 @implementation GTLQueryDrive
 
-@dynamic addParents, appFilterExtensions, appFilterMimeTypes, appId,
-         baseRevision, changeId, childId, commentId, convert, corpus, email,
-         emailMessage, fields, fileId, folderId, includeDeleted,
+@dynamic acknowledgeAbuse, addParents, appFilterExtensions, appFilterMimeTypes,
+         appId, baseRevision, changeId, childId, commentId, convert, corpus,
+         email, emailMessage, fields, fileId, folderId, includeDeleted,
          includeSubscribed, languageCode, maxChangeIdCount, maxResults,
          newRevision, ocr, ocrLanguage, pageToken, parentId, permissionId,
          pinned, projection, propertyKey, q, removeParents, replyId, revision,

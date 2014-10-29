@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Civic Information API (civicinfo/v1)
+//   Google Civic Information API (civicinfo/v2)
 // Description:
 //   An API for accessing civic information.
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoDivisionSearchResponse (0 custom class methods, 3 custom properties)
+//   GTLCivicInfoDivisionSearchResponse (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -50,9 +50,4 @@
 @property (copy) NSString *kind;
 
 @property (retain) NSArray *results;  // of GTLCivicInfoDivisionSearchResult
-
-// The result of the request. One of: success, addressUnparseable,
-// noAddressParameter, internalLookupFailure
-@property (copy) NSString *status;
-
 @end

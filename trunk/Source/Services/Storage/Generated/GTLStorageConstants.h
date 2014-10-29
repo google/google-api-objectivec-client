@@ -35,6 +35,8 @@
 #endif
 
 // Authorization scope
+// View and manage your data across Google Cloud Platform services
+GTL_EXTERN NSString * const kGTLAuthScopeStorageCloudPlatform;  // "https://www.googleapis.com/auth/cloud-platform"
 // Manage your data and permissions in Google Cloud Storage
 GTL_EXTERN NSString * const kGTLAuthScopeStorageDevstorageFullControl;  // "https://www.googleapis.com/auth/devstorage.full_control"
 // View your data in Google Cloud Storage

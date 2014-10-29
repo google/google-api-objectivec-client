@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Civic Information API (civicinfo/v1)
+//   Google Civic Information API (civicinfo/v2)
 // Description:
 //   An API for accessing civic information.
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoContest (0 custom class methods, 16 custom properties)
+//   GTLCivicInfoContest (0 custom class methods, 17 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -66,9 +66,12 @@
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// The level of office for this contest. One of: federal, state, county, city,
-// other
-@property (copy) NSString *level;
+// The levels of government of the office for this contest. There may be more
+// than one in cases where a jurisdiction effectively acts at two different
+// levels of government; for example, the mayor of the District of Columbia acts
+// at "locality" level, but also effectively at both "administrative-area-2" and
+// "administrative-area-1".
+@property (retain) NSArray *level;  // of NSString
 
 // The number of candidates that will be elected to office in this contest.
 @property (retain) NSNumber *numberElected;  // longLongValue
@@ -93,6 +96,9 @@
 // A link to the referendum. This field is only populated for contests of type
 // 'Referendum'.
 @property (copy) NSString *referendumUrl;
+
+// The roles which this office fulfills.
+@property (retain) NSArray *roles;  // of NSString
 
 // A list of sources for this contest. If multiple sources are listed, the data
 // has been aggregated from those sources.

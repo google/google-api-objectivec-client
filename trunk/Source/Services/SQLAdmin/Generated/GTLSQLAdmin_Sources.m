@@ -49,6 +49,7 @@
 #import "GTLSQLAdminInstancesImportResponse.m"
 #import "GTLSQLAdminInstancesInsertResponse.m"
 #import "GTLSQLAdminInstancesListResponse.m"
+#import "GTLSQLAdminInstancesPromoteReplicaResponse.m"
 #import "GTLSQLAdminInstancesResetSslConfigResponse.m"
 #import "GTLSQLAdminInstancesRestartResponse.m"
 #import "GTLSQLAdminInstancesRestoreBackupResponse.m"

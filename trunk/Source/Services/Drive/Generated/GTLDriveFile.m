@@ -26,13 +26,14 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 49 custom properties)
+//   GTLDriveFile (0 custom class methods, 50 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
 //   GTLDriveFileImageMediaMetadata (0 custom class methods, 21 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
 //   GTLDriveFileLabels (0 custom class methods, 5 custom properties)
 //   GTLDriveFileOpenWithLinks (0 custom class methods, 0 custom properties)
 //   GTLDriveFileThumbnail (0 custom class methods, 2 custom properties)
+//   GTLDriveFileVideoMediaMetadata (0 custom class methods, 3 custom properties)
 //   GTLDriveFileImageMediaMetadataLocation (0 custom class methods, 3 custom properties)
 
 #import "GTLDriveFile.h"
@@ -57,8 +58,8 @@
          modifiedByMeDate, modifiedDate, openWithLinks, originalFilename,
          ownerNames, owners, parents, permissions, properties, quotaBytesUsed,
          selfLink, shared, sharedWithMeDate, sharingUser, thumbnail,
-         thumbnailLink, title, userPermission, version, webContentLink,
-         webViewLink, writersCanShare;
+         thumbnailLink, title, userPermission, version, videoMediaMetadata,
+         webContentLink, webViewLink, writersCanShare;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -157,6 +158,16 @@
 
 @implementation GTLDriveFileThumbnail
 @dynamic image, mimeType;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveFileVideoMediaMetadata
+//
+
+@implementation GTLDriveFileVideoMediaMetadata
+@dynamic durationMillis, height, width;
 @end
 
 

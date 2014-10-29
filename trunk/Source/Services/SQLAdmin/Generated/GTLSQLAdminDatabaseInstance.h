@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/cloud-sql/docs/admin-api/
 // Classes:
-//   GTLSQLAdminDatabaseInstance (0 custom class methods, 12 custom properties)
+//   GTLSQLAdminDatabaseInstance (0 custom class methods, 15 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -51,7 +51,7 @@
 @property (retain) NSNumber *currentDiskSize;  // longLongValue
 
 // The database engine type and version. Can be MYSQL_5_5 or MYSQL_5_6. Defaults
-// to MYSQL_5_5. The databaseVersion can not be changed after instance creation.
+// to MYSQL_5_5. The databaseVersion cannot be changed after instance creation.
 @property (copy) NSString *databaseVersion;
 
 // HTTP 1.1 Entity tag for the resource.
@@ -60,11 +60,19 @@
 // Name of the Cloud SQL instance. This does not include the project ID.
 @property (copy) NSString *instance;
 
+// The instance type. This can be one of the following.
+// CLOUD_SQL_INSTANCE: Regular Cloud SQL instance.
+// READ_REPLICA_INSTANCE: Cloud SQL instance acting as a read-replica.
+@property (copy) NSString *instanceType;
+
 // The assigned IP addresses for the instance.
 @property (retain) NSArray *ipAddresses;  // of GTLSQLAdminIpMapping
 
 // This is always sql#instance.
 @property (copy) NSString *kind;
+
+// The name of the instance which will act as master in the replication setup.
+@property (copy) NSString *masterInstanceName;
 
 // The maximum disk size of the instance in bytes.
 @property (retain) NSNumber *maxDiskSize;  // longLongValue
@@ -77,6 +85,9 @@
 // europe-west1. Defaults to us-central. The region can not be changed after
 // instance creation.
 @property (copy) NSString *region;
+
+// The replicas of the instance.
+@property (retain) NSArray *replicaNames;  // of NSString
 
 // SSL configuration.
 @property (retain) GTLSQLAdminSslCert *serverCaCert;

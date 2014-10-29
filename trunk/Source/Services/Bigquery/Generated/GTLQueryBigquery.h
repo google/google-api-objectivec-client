@@ -217,6 +217,8 @@
 
 // Method: bigquery.jobs.list
 // Lists all the Jobs in the specified project that were started by the user.
+// The job list returns in reverse chronological order of when the jobs were
+// created, starting with the most recent job created.
 //  Required:
 //   projectId: Project ID of the jobs to list
 //  Optional:
@@ -261,11 +263,7 @@
 //     set is large. In addition to this limit, responses are also limited to 10
 //     MB. By default, there is no maximum row count, and only the byte limit
 //     applies.
-//   preserveNulls: [Deprecated] If set to false, maps null values in the query
-//     response to the column's default value. Only specify if you have older
-//     code that can not handle null values in the query response. The default
-//     value is true. This flag is deprecated and will be ignored in a future
-//     version of BigQuery.
+//   preserveNulls: [Deprecated] This property is deprecated.
 //   timeoutMs: [Optional] How long to wait for the query to complete, in
 //     milliseconds, before the request times out and returns. Note that this is
 //     only a timeout for the request, not the query. If the query takes longer

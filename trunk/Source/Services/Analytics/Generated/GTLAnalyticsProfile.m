@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsProfile (0 custom class methods, 23 custom properties)
+//   GTLAnalyticsProfile (0 custom class methods, 24 custom properties)
 //   GTLAnalyticsProfileChildLink (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsProfileParentLink (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsProfilePermissions (0 custom class methods, 1 custom properties)
@@ -40,9 +40,9 @@
 
 @implementation GTLAnalyticsProfile
 @dynamic accountId, childLink, created, currency, defaultPage,
-         eCommerceTracking, excludeQueryParameters, identifier,
-         internalWebPropertyId, kind, name, parentLink, permissions, selfLink,
-         siteSearchCategoryParameters, siteSearchQueryParameters,
+         eCommerceTracking, enhancedECommerceTracking, excludeQueryParameters,
+         identifier, internalWebPropertyId, kind, name, parentLink, permissions,
+         selfLink, siteSearchCategoryParameters, siteSearchQueryParameters,
          stripSiteSearchCategoryParameters, stripSiteSearchQueryParameters,
          timezone, type, updated, webPropertyId, websiteUrl;
 

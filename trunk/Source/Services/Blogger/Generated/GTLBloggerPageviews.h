@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,7 +45,7 @@
 @interface GTLBloggerPageviews : GTLObject
 
 // Blog Id
-@property (retain) NSNumber *blogId;  // longLongValue
+@property (copy) NSString *blogId;
 
 // The container of posts in this blog.
 @property (retain) NSArray *counts;  // of GTLBloggerPageviewsCountsItem

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -312,6 +312,7 @@
 //   Accepted MIME type(s): image/*, video/*
 //  Authorization scope(s):
 //   kGTLAuthScopePlusDomainsPlusLogin
+//   kGTLAuthScopePlusDomainsPlusMe
 //   kGTLAuthScopePlusDomainsPlusMediaUpload
 // Fetches a GTLPlusDomainsMedia.
 + (id)queryForMediaInsertWithObject:(GTLPlusDomainsMedia *)object

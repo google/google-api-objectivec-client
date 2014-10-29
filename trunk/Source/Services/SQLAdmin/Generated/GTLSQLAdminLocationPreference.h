@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,7 +47,7 @@
 
 @interface GTLSQLAdminLocationPreference : GTLObject
 
-// The AppEngine application to follow, it must be in the same region as the
+// The App Engine application to follow, it must be in the same region as the
 // Cloud SQL instance.
 @property (copy) NSString *followGaeApplication;
 

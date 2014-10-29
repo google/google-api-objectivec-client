@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,11 +27,12 @@
 //   https://developers.google.com/bigquery/docs/overview
 // Classes:
 //   GTLBigqueryDataset (0 custom class methods, 10 custom properties)
-//   GTLBigqueryDatasetAccessItem (0 custom class methods, 5 custom properties)
+//   GTLBigqueryDatasetAccessItem (0 custom class methods, 6 custom properties)
 
 #import "GTLBigqueryDataset.h"
 
 #import "GTLBigqueryDatasetReference.h"
+#import "GTLBigqueryTableReference.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -70,5 +71,5 @@
 //
 
 @implementation GTLBigqueryDatasetAccessItem
-@dynamic domain, groupByEmail, role, specialGroup, userByEmail;
+@dynamic domain, groupByEmail, role, specialGroup, userByEmail, view;
 @end

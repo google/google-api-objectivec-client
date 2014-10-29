@@ -27,13 +27,16 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineIconStyle (0 custom class methods, 2 custom properties)
+//   GTLMapsEngineIconStyle (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
 #else
   #import "GTLObject.h"
 #endif
+
+@class GTLMapsEngineScaledShape;
+@class GTLMapsEngineScalingFunction;
 
 // ----------------------------------------------------------------------------
 //
@@ -52,5 +55,11 @@
 // names for valid icon names. For example, to specify small_red, set name to
 // 'gx_small_red'.
 @property (copy) NSString *name;
+
+// A scalable shape.
+@property (retain) GTLMapsEngineScaledShape *scaledShape;
+
+// The function used to scale shapes. Required when a scaledShape is specified.
+@property (retain) GTLMapsEngineScalingFunction *scalingFunction;
 
 @end

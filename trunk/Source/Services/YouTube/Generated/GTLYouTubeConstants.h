@@ -192,6 +192,12 @@ GTL_EXTERN NSString * const kGTLYouTubeChannelSectionSnippet_Type_SinglePlaylist
 GTL_EXTERN NSString * const kGTLYouTubeChannelSectionSnippet_Type_Subscriptions;  // "subscriptions"
 GTL_EXTERN NSString * const kGTLYouTubeChannelSectionSnippet_Type_UpcomingEvents;  // "upcomingEvents"
 
+// GTLYouTubeChannelStatus - LongUploadsStatus
+GTL_EXTERN NSString * const kGTLYouTubeChannelStatus_LongUploadsStatus_Allowed;  // "allowed"
+GTL_EXTERN NSString * const kGTLYouTubeChannelStatus_LongUploadsStatus_Disallowed;  // "disallowed"
+GTL_EXTERN NSString * const kGTLYouTubeChannelStatus_LongUploadsStatus_Eligible;  // "eligible"
+GTL_EXTERN NSString * const kGTLYouTubeChannelStatus_LongUploadsStatus_LongUploadsUnspecified;  // "longUploadsUnspecified"
+
 // GTLYouTubeChannelStatus - PrivacyStatus
 GTL_EXTERN NSString * const kGTLYouTubeChannelStatus_PrivacyStatus_Private;  // "private"
 GTL_EXTERN NSString * const kGTLYouTubeChannelStatus_PrivacyStatus_Public;  // "public"
@@ -636,6 +642,8 @@ GTL_EXTERN NSString * const kGTLYouTubeContentRating_OflcRating_OflcR13;  // "of
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_OflcRating_OflcR15;  // "oflcR15"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_OflcRating_OflcR16;  // "oflcR16"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_OflcRating_OflcR18;  // "oflcR18"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_OflcRating_OflcRp13;  // "oflcRp13"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_OflcRating_OflcRp16;  // "oflcRp16"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_OflcRating_OflcUnrated;  // "oflcUnrated"
 
 // GTLYouTubeContentRating - PefilmRating

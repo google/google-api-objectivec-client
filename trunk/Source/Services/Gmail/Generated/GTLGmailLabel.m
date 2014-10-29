@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/gmail/api/
 // Classes:
-//   GTLGmailLabel (0 custom class methods, 5 custom properties)
+//   GTLGmailLabel (0 custom class methods, 9 custom properties)
 
 #import "GTLGmailLabel.h"
 
@@ -36,7 +36,8 @@
 //
 
 @implementation GTLGmailLabel
-@dynamic identifier, labelListVisibility, messageListVisibility, name, type;
+@dynamic identifier, labelListVisibility, messageListVisibility, messagesTotal,
+         messagesUnread, name, threadsTotal, threadsUnread, type;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

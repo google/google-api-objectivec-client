@@ -180,6 +180,7 @@
 //   ifMetagenerationNotMatch: If set, only deletes the bucket if its
 //     metageneration does not match this value.
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadWrite
 + (id)queryForBucketsDeleteWithBucket:(NSString *)bucket;
@@ -198,6 +199,7 @@
 //      kGTLStorageProjectionFull: Include all properties.
 //      kGTLStorageProjectionNoAcl: Omit acl and defaultObjectAcl properties.
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadOnly
 //   kGTLAuthScopeStorageDevstorageReadWrite
@@ -225,6 +227,7 @@
 //      kGTLStorageProjectionFull: Include all properties.
 //      kGTLStorageProjectionNoAcl: Omit acl and defaultObjectAcl properties.
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadWrite
 // Fetches a GTLStorageBucket.
@@ -243,6 +246,7 @@
 //      kGTLStorageProjectionFull: Include all properties.
 //      kGTLStorageProjectionNoAcl: Omit acl and defaultObjectAcl properties.
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadOnly
 //   kGTLAuthScopeStorageDevstorageReadWrite
@@ -273,6 +277,7 @@
 //      kGTLStorageProjectionFull: Include all properties.
 //      kGTLStorageProjectionNoAcl: Omit acl and defaultObjectAcl properties.
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadWrite
 // Fetches a GTLStorageBucket.
@@ -303,6 +308,7 @@
 //      kGTLStorageProjectionFull: Include all properties.
 //      kGTLStorageProjectionNoAcl: Omit acl and defaultObjectAcl properties.
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadWrite
 // Fetches a GTLStorageBucket.
@@ -316,6 +322,7 @@
 // Method: storage.channels.stop
 // Stop watching resources through this channel
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadOnly
 //   kGTLAuthScopeStorageDevstorageReadWrite
@@ -547,6 +554,7 @@
 //     object's current metageneration matches the given value.
 //   kind: The kind of item this is. (Default storage#composeRequest)
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadWrite
 // Fetches a GTLStorageObject.
@@ -605,6 +613,7 @@
 //   sourceGeneration: If present, selects a specific revision of the source
 //     object (as opposed to the latest version, the default).
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadWrite
 // Fetches a GTLStorageObject.
@@ -631,13 +640,14 @@
 //   ifMetagenerationNotMatch: Makes the operation conditional on whether the
 //     object's current metageneration does not match the given value.
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadWrite
 + (id)queryForObjectsDeleteWithBucket:(NSString *)bucket
                                object:(NSString *)object;
 
 // Method: storage.objects.get
-// Retrieves objects or their metadata.
+// Retrieves an object or its metadata.
 //  Required:
 //   bucket: Name of the bucket in which the object resides.
 //   object: Name of the object.
@@ -656,6 +666,7 @@
 //      kGTLStorageProjectionFull: Include all properties.
 //      kGTLStorageProjectionNoAcl: Omit the acl property.
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadOnly
 //   kGTLAuthScopeStorageDevstorageReadWrite
@@ -703,6 +714,7 @@
 //  Upload Parameters:
 //   Accepted MIME type(s): */*
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadWrite
 // Fetches a GTLStorageObject.
@@ -730,6 +742,7 @@
 //      kGTLStorageProjectionNoAcl: Omit the acl property.
 //   versions: If true, lists all versions of a file as distinct results.
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadOnly
 //   kGTLAuthScopeStorageDevstorageReadWrite
@@ -768,6 +781,7 @@
 //      kGTLStorageProjectionFull: Include all properties.
 //      kGTLStorageProjectionNoAcl: Omit the acl property.
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadWrite
 // Fetches a GTLStorageObject.
@@ -807,6 +821,7 @@
 //      kGTLStorageProjectionFull: Include all properties.
 //      kGTLStorageProjectionNoAcl: Omit the acl property.
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadWrite
 // Fetches a GTLStorageObject.
@@ -834,6 +849,7 @@
 //      kGTLStorageProjectionNoAcl: Omit the acl property.
 //   versions: If true, lists all versions of a file as distinct results.
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadOnly
 //   kGTLAuthScopeStorageDevstorageReadWrite

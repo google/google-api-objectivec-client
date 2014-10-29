@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/cloud-sql/docs/admin-api/
 // Classes:
-//   GTLSQLAdminDatabaseInstance (0 custom class methods, 12 custom properties)
+//   GTLSQLAdminDatabaseInstance (0 custom class methods, 15 custom properties)
 
 #import "GTLSQLAdminDatabaseInstance.h"
 
@@ -40,8 +40,9 @@
 //
 
 @implementation GTLSQLAdminDatabaseInstance
-@dynamic currentDiskSize, databaseVersion, ETag, instance, ipAddresses, kind,
-         maxDiskSize, project, region, serverCaCert, settings, state;
+@dynamic currentDiskSize, databaseVersion, ETag, instance, instanceType,
+         ipAddresses, kind, masterInstanceName, maxDiskSize, project, region,
+         replicaNames, serverCaCert, settings, state;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -52,8 +53,10 @@
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLSQLAdminIpMapping class]
-                                forKey:@"ipAddresses"];
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      [GTLSQLAdminIpMapping class], @"ipAddresses",
+      [NSString class], @"replicaNames",
+      nil];
   return map;
 }
 

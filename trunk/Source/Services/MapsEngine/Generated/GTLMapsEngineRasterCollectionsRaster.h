@@ -45,7 +45,8 @@
 @interface GTLMapsEngineRasterCollectionsRaster : GTLObject
 
 // A rectangular bounding box which contains all of the data in this Raster. The
-// numbers represent latitude and longitude in decimal degrees.
+// box is expressed as \"west, south, east, north\". The numbers represent
+// latitudes and longitudes in decimal degrees.
 @property (retain) NSArray *bbox;  // of NSNumber (doubleValue)
 
 // The creation time of this raster. The value is an RFC 3339 formatted

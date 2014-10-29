@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,22 +14,28 @@
  */
 
 //
-//  GTLDiscoveryConstants.m
+//  GTLMapsEngineSizeRange.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   APIs Discovery Service (discovery/v1)
+//   Google Maps Engine API (mapsengine/v1)
 // Description:
-//   Lets you discover information about other Google APIs, such as what APIs
-//   are available, the resource and method details for each API
+//   The Google Maps Engine API allows developers to store and query geospatial
+//   vector and raster data.
 // Documentation:
-//   https://developers.google.com/discovery/
+//   https://developers.google.com/maps-engine/
+// Classes:
+//   GTLMapsEngineSizeRange (0 custom class methods, 2 custom properties)
 
-#import "GTLDiscoveryConstants.h"
+#import "GTLMapsEngineSizeRange.h"
 
-// Label
-NSString * const kGTLDiscoveryLabelDeprecated = @"deprecated";
-NSString * const kGTLDiscoveryLabelGraduated  = @"graduated";
-NSString * const kGTLDiscoveryLabelLabs       = @"labs";
+// ----------------------------------------------------------------------------
+//
+//   GTLMapsEngineSizeRange
+//
+
+@implementation GTLMapsEngineSizeRange
+@dynamic max, min;
+@end

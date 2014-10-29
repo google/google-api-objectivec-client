@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/cloud-sql/docs/admin-api/
 // Classes:
-//   GTLSQLAdminSettings (0 custom class methods, 11 custom properties)
+//   GTLSQLAdminSettings (0 custom class methods, 12 custom properties)
 
 #import "GTLSQLAdminSettings.h"
 
@@ -42,8 +42,9 @@
 
 @implementation GTLSQLAdminSettings
 @dynamic activationPolicy, authorizedGaeApplications, backupConfiguration,
-         databaseFlags, ipConfiguration, kind, locationPreference, pricingPlan,
-         replicationType, settingsVersion, tier;
+         databaseFlags, databaseReplicationEnabled, ipConfiguration, kind,
+         locationPreference, pricingPlan, replicationType, settingsVersion,
+         tier;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =

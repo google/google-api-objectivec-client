@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Civic Information API (civicinfo/v1)
+//   Google Civic Information API (civicinfo/v2)
 // Description:
 //   An API for accessing civic information.
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoDivisionSearchResponse (0 custom class methods, 3 custom properties)
+//   GTLCivicInfoDivisionSearchResponse (0 custom class methods, 2 custom properties)
 
 #import "GTLCivicInfoDivisionSearchResponse.h"
 
@@ -38,7 +38,7 @@
 //
 
 @implementation GTLCivicInfoDivisionSearchResponse
-@dynamic kind, results, status;
+@dynamic kind, results;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =

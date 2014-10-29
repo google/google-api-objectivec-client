@@ -48,6 +48,11 @@ NSString * const kGTLGmailLabel_Type_System = @"system";
 NSString * const kGTLGmailLabel_Type_User   = @"user";
 
 // GTLQueryGmail - Format
-NSString * const kGTLGmailFormatFull    = @"full";
-NSString * const kGTLGmailFormatMinimal = @"minimal";
-NSString * const kGTLGmailFormatRaw     = @"raw";
+NSString * const kGTLGmailFormatFull     = @"full";
+NSString * const kGTLGmailFormatMetadata = @"metadata";
+NSString * const kGTLGmailFormatMinimal  = @"minimal";
+NSString * const kGTLGmailFormatRaw      = @"raw";
+
+// GTLQueryGmail - InternalDateSource
+NSString * const kGTLGmailInternalDateSourceDateHeader   = @"dateHeader";
+NSString * const kGTLGmailInternalDateSourceReceivedTime = @"receivedTime";

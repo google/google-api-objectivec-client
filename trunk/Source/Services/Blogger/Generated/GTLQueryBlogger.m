@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLQueryBlogger (31 custom class methods, 29 custom properties)
+//   GTLQueryBlogger (33 custom class methods, 29 custom properties)
 
 #import "GTLQueryBlogger.h"
 
@@ -240,6 +240,26 @@
   NSString *methodName = @"blogger.pages.patch";
   GTLQueryBlogger *query = [self queryWithMethodName:methodName];
   query.bodyObject = object;
+  query.blogId = blogId;
+  query.pageId = pageId;
+  query.expectedObjectClass = [GTLBloggerPage class];
+  return query;
+}
+
++ (id)queryForPagesPublishWithBlogId:(NSString *)blogId
+                              pageId:(NSString *)pageId {
+  NSString *methodName = @"blogger.pages.publish";
+  GTLQueryBlogger *query = [self queryWithMethodName:methodName];
+  query.blogId = blogId;
+  query.pageId = pageId;
+  query.expectedObjectClass = [GTLBloggerPage class];
+  return query;
+}
+
++ (id)queryForPagesRevertWithBlogId:(NSString *)blogId
+                             pageId:(NSString *)pageId {
+  NSString *methodName = @"blogger.pages.revert";
+  GTLQueryBlogger *query = [self queryWithMethodName:methodName];
   query.blogId = blogId;
   query.pageId = pageId;
   query.expectedObjectClass = [GTLBloggerPage class];

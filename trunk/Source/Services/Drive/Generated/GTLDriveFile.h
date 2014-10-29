@@ -26,13 +26,14 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 49 custom properties)
+//   GTLDriveFile (0 custom class methods, 50 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
 //   GTLDriveFileImageMediaMetadata (0 custom class methods, 21 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
 //   GTLDriveFileLabels (0 custom class methods, 5 custom properties)
 //   GTLDriveFileOpenWithLinks (0 custom class methods, 0 custom properties)
 //   GTLDriveFileThumbnail (0 custom class methods, 2 custom properties)
+//   GTLDriveFileVideoMediaMetadata (0 custom class methods, 3 custom properties)
 //   GTLDriveFileImageMediaMetadataLocation (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -48,6 +49,7 @@
 @class GTLDriveFileLabels;
 @class GTLDriveFileOpenWithLinks;
 @class GTLDriveFileThumbnail;
+@class GTLDriveFileVideoMediaMetadata;
 @class GTLDriveParentReference;
 @class GTLDrivePermission;
 @class GTLDriveProperty;
@@ -62,16 +64,16 @@
 
 @interface GTLDriveFile : GTLObject
 
-// A link for opening the file in using a relevant Google editor or viewer.
+// A link for opening the file in a relevant Google editor or viewer.
 @property (copy) NSString *alternateLink;
 
-// Whether this file is in the appdata folder.
+// Whether this file is in the Application Data folder.
 @property (retain) NSNumber *appDataContents;  // boolValue
 
 // Whether the file can be copied by the current user.
 @property (retain) NSNumber *copyable;  // boolValue
 
-// Create time for this file (formatted ISO8601 timestamp).
+// Create time for this file (formatted RFC 3339 timestamp).
 @property (retain) GTLDateTime *createdDate;
 
 // A link to open this file with the user's default app for this file. Only
@@ -227,6 +229,9 @@
 // change made to the file on the server, even those not visible to the
 // requesting user.
 @property (retain) NSNumber *version;  // longLongValue
+
+// Metadata about video media. This will only be present for video types.
+@property (retain) GTLDriveFileVideoMediaMetadata *videoMediaMetadata;
 
 // A link for downloading the content of the file in a browser using cookie
 // based authentication. In cases where the content is shared publicly, the
@@ -393,6 +398,25 @@
 
 // The MIME type of the thumbnail.
 @property (copy) NSString *mimeType;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveFileVideoMediaMetadata
+//
+
+@interface GTLDriveFileVideoMediaMetadata : GTLObject
+
+// The duration of the video in milliseconds.
+@property (retain) NSNumber *durationMillis;  // longLongValue
+
+// The height of the video in pixels.
+@property (retain) NSNumber *height;  // intValue
+
+// The width of the video in pixels.
+@property (retain) NSNumber *width;  // intValue
 
 @end
 

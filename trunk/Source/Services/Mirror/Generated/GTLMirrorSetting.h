@@ -46,6 +46,8 @@
 // The setting's ID. The following IDs are valid:
 // - locale - The key to the user’s language/locale (BCP 47 identifier) that
 // Glassware should use to render localized content.
+// - timezone - The key to the user’s current time zone region as defined in the
+// tz database. Example: America/Los_Angeles.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 

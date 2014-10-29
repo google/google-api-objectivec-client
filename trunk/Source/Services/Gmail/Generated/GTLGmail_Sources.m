@@ -43,6 +43,7 @@
 #import "GTLGmailMessagePart.m"
 #import "GTLGmailMessagePartBody.m"
 #import "GTLGmailMessagePartHeader.m"
+#import "GTLGmailProfile.m"
 #import "GTLGmailThread.m"
 
 #import "GTLQueryGmail.m"

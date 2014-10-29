@@ -23,11 +23,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Civic Information API (civicinfo/v1)
+//   Google Civic Information API (civicinfo/v2)
 // Description:
 //   An API for accessing civic information.
 // Documentation:
 //   https://developers.google.com/civic-information
+
+#import "GTLCivicInfoConstants.m"
 
 #import "GTLCivicInfoAdministrationRegion.m"
 #import "GTLCivicInfoAdministrativeBody.m"
@@ -44,6 +46,7 @@
 #import "GTLCivicInfoOffice.m"
 #import "GTLCivicInfoOfficial.m"
 #import "GTLCivicInfoPollingLocation.m"
+#import "GTLCivicInfoRepresentativeInfoData.m"
 #import "GTLCivicInfoRepresentativeInfoResponse.m"
 #import "GTLCivicInfoSimpleAddressType.m"
 #import "GTLCivicInfoSource.m"

@@ -29,6 +29,7 @@
 #import "GTLStorageConstants.h"
 
 // Authorization scope
+NSString * const kGTLAuthScopeStorageCloudPlatform         = @"https://www.googleapis.com/auth/cloud-platform";
 NSString * const kGTLAuthScopeStorageDevstorageFullControl = @"https://www.googleapis.com/auth/devstorage.full_control";
 NSString * const kGTLAuthScopeStorageDevstorageReadOnly    = @"https://www.googleapis.com/auth/devstorage.read_only";
 NSString * const kGTLAuthScopeStorageDevstorageReadWrite   = @"https://www.googleapis.com/auth/devstorage.read_write";

@@ -41,6 +41,7 @@
 #import "GTLCalendarColors.m"
 #import "GTLCalendarError.m"
 #import "GTLCalendarEvent.m"
+#import "GTLCalendarEventAttachment.m"
 #import "GTLCalendarEventAttendee.m"
 #import "GTLCalendarEventDateTime.m"
 #import "GTLCalendarEventReminder.m"

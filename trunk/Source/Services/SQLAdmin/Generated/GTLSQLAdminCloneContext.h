@@ -45,9 +45,9 @@
 
 @interface GTLSQLAdminCloneContext : GTLObject
 
-// Binary log coordinates, if specified, indentify the the position up to which
-// the source instance should be cloned. If not specified, the source instance
-// is cloned up to the most recent binary log coordintes.
+// Binary log coordinates, if specified, indentify the position up to which the
+// source instance should be cloned. If not specified, the source instance is
+// cloned up to the most recent binary log coordinates.
 @property (retain) GTLSQLAdminBinLogCoordinates *binLogCoordinates;
 
 // Name of the Cloud SQL instance to be created as a clone.
