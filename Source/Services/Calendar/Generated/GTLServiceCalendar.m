@@ -48,6 +48,7 @@
                       [GTLCalendarColors class],
                       [GTLCalendarError class],
                       [GTLCalendarEvent class],
+                      [GTLCalendarEventAttachment class],
                       [GTLCalendarEventAttendee class],
                       [GTLCalendarEventDateTime class],
                       [GTLCalendarEventReminder class],

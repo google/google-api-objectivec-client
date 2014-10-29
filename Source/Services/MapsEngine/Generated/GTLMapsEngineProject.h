@@ -40,15 +40,15 @@
 //   GTLMapsEngineProject
 //
 
-// A project groups a collection of resources.
+// A Maps Engine project groups a collection of resources.
 
 @interface GTLMapsEngineProject : GTLObject
 
-// An ID used to refer to this project.
+// An ID used to refer to this Maps Engine project.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
-// A user provided name for this project.
+// A user provided name for this Maps Engine project.
 @property (copy) NSString *name;
 
 @end

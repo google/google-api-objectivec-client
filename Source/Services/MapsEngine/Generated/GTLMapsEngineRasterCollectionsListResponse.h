@@ -42,7 +42,11 @@
 //   GTLMapsEngineRasterCollectionsListResponse
 //
 
-// The response returned by a call to raster_collections.List.
+// The response returned by a call to raster_collections.List. Note: The list
+// response does not include all the fields available in a raster collection.
+// Refer to the RasterCollection resource description for details of the fields
+// that are not included. You'll need to send a get request to retrieve the
+// additional fields for each raster collection.
 
 @interface GTLMapsEngineRasterCollectionsListResponse : GTLObject
 

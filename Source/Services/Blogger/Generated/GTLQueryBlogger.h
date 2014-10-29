@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLQueryBlogger (31 custom class methods, 29 custom properties)
+//   GTLQueryBlogger (33 custom class methods, 29 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -372,6 +372,28 @@
 + (id)queryForPagesPatchWithObject:(GTLBloggerPage *)object
                             blogId:(NSString *)blogId
                             pageId:(NSString *)pageId;
+
+// Method: blogger.pages.publish
+// Publishes a draft page.
+//  Required:
+//   blogId: The ID of the blog.
+//   pageId: The ID of the page.
+//  Authorization scope(s):
+//   kGTLAuthScopeBlogger
+// Fetches a GTLBloggerPage.
++ (id)queryForPagesPublishWithBlogId:(NSString *)blogId
+                              pageId:(NSString *)pageId;
+
+// Method: blogger.pages.revert
+// Revert a published or scheduled page to draft state.
+//  Required:
+//   blogId: The ID of the blog.
+//   pageId: The ID of the page.
+//  Authorization scope(s):
+//   kGTLAuthScopeBlogger
+// Fetches a GTLBloggerPage.
++ (id)queryForPagesRevertWithBlogId:(NSString *)blogId
+                             pageId:(NSString *)pageId;
 
 // Method: blogger.pages.update
 // Update a page.

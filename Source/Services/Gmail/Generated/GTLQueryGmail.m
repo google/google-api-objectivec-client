@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/gmail/api/
 // Classes:
-//   GTLQueryGmail (29 custom class methods, 17 custom properties)
+//   GTLQueryGmail (30 custom class methods, 19 custom properties)
 
 #import "GTLQueryGmail.h"
 
@@ -39,13 +39,15 @@
 #import "GTLGmailListThreadsResponse.h"
 #import "GTLGmailMessage.h"
 #import "GTLGmailMessagePartBody.h"
+#import "GTLGmailProfile.h"
 #import "GTLGmailThread.h"
 
 @implementation GTLQueryGmail
 
 @dynamic addLabelIds, draft, fields, format, identifier, includeSpamTrash,
-         label, labelId, labelIds, maxResults, message, messageId, pageToken, q,
-         removeLabelIds, startHistoryId, userId;
+         internalDateSource, label, labelId, labelIds, maxResults, message,
+         messageId, metadataHeaders, pageToken, q, removeLabelIds,
+         startHistoryId, userId;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map =
@@ -59,6 +61,7 @@
     [NSDictionary dictionaryWithObjectsAndKeys:
       [NSString class], @"addLabelIds",
       [NSString class], @"labelIds",
+      [NSString class], @"metadataHeaders",
       [NSString class], @"removeLabelIds",
       nil];
   return map;
@@ -109,6 +112,17 @@
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.uploadParameters = uploadParametersOrNil;
   query.expectedObjectClass = [GTLGmailDraft class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "users" methods
+// These create a GTLQueryGmail object.
+
++ (id)queryForUsersGetProfile {
+  NSString *methodName = @"gmail.users.getProfile";
+  GTLQueryGmail *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLGmailProfile class];
   return query;
 }
 

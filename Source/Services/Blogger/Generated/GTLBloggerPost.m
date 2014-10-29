@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLBloggerPost (0 custom class methods, 18 custom properties)
+//   GTLBloggerPost (0 custom class methods, 19 custom properties)
 //   GTLBloggerPostAuthor (0 custom class methods, 4 custom properties)
 //   GTLBloggerPostBlog (0 custom class methods, 1 custom properties)
 //   GTLBloggerPostImagesItem (0 custom class methods, 1 custom properties)
@@ -44,14 +44,16 @@
 //
 
 @implementation GTLBloggerPost
-@dynamic author, blog, content, customMetaData, identifier, images, kind,
+@dynamic author, blog, content, customMetaData, ETag, identifier, images, kind,
          labels, location, published, readerComments, replies, selfLink, status,
          title, titleLink, updated, url;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      @"etag", @"ETag",
+      @"id", @"identifier",
+      nil];
   return map;
 }
 

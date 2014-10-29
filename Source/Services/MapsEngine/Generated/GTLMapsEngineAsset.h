@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineAsset (0 custom class methods, 11 custom properties)
+//   GTLMapsEngineAsset (0 custom class methods, 14 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -49,12 +49,17 @@
 @interface GTLMapsEngineAsset : GTLObject
 
 // A rectangular bounding box which contains all of the data in this asset. The
-// numbers represent latitude and longitude in decimal degrees.
+// box is expressed as \"west, south, east, north\". The numbers represent
+// latitude and longitude in decimal degrees.
 @property (retain) NSArray *bbox;  // of NSNumber (doubleValue)
 
 // The creation time of this asset. The value is an RFC 3339-formatted date-time
 // value (for example, 1970-01-01T00:00:00Z).
 @property (retain) GTLDateTime *creationTime;
+
+// The email address of the creator of this asset. This is only returned on GET
+// requests and not LIST requests.
+@property (copy) NSString *creatorEmail;
 
 // The asset's description.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
@@ -70,6 +75,10 @@
 // The last modified time of this asset. The value is an RFC 3339-formatted
 // date-time value (for example, 1970-01-01T00:00:00Z).
 @property (retain) GTLDateTime *lastModifiedTime;
+
+// The email address of the last modifier of this asset. This is only returned
+// on GET requests and not LIST requests.
+@property (copy) NSString *lastModifierEmail;
 
 // The asset's name.
 @property (copy) NSString *name;
@@ -88,5 +97,8 @@
 
 // The type of asset. One of raster, rasterCollection, table, map, or layer.
 @property (copy) NSString *type;
+
+// If true, WRITERs of the asset are able to edit the asset permissions.
+@property (retain) NSNumber *writersCanEditPermissions;  // boolValue
 
 @end

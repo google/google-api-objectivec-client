@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineLayer (0 custom class methods, 15 custom properties)
+//   GTLMapsEngineLayer (0 custom class methods, 20 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -49,20 +49,28 @@
 @interface GTLMapsEngineLayer : GTLObject
 
 // A rectangular bounding box which contains all of the data in this Layer. The
-// numbers represent latitude and longitude in decimal degrees.
+// box is expressed as \"west, south, east, north\". The numbers represent
+// latitude and longitude in decimal degrees.
 @property (retain) NSArray *bbox;  // of NSNumber (doubleValue)
 
 // The creation time of this layer. The value is an RFC 3339 formatted date-time
 // value (e.g. 1970-01-01T00:00:00Z).
 @property (retain) GTLDateTime *creationTime;
 
-// An array of datasources used to build this Layer. If datasourceType is
-// "image", then each element in this array is a reference to an Image or
-// RasterCollection. If datasourceType is "table" then each element in this
-// array is a reference to a Vector Table.
+// The email address of the creator of this layer. This is only returned on GET
+// requests and not LIST requests.
+@property (copy) NSString *creatorEmail;
+
+// An array of datasources used to build this layer. If layerType is "image", or
+// layerType is not specified and datasourceType is "image", then each element
+// in this array is a reference to an Image or RasterCollection. If layerType is
+// "vector", or layerType is not specified and datasourceType is "table" then
+// each element in this array is a reference to a Vector Table.
 @property (retain) NSArray *datasources;  // of GTLMapsEngineDatasource
 
-// The type of the datasources used to build this Layer.
+// Deprecated: The type of the datasources used to build this Layer. Note: This
+// has been replaced by layerType, but is still available for now to maintain
+// backward compatibility.
 @property (copy) NSString *datasourceType;
 
 // The description of this Layer, supplied by the author.
@@ -71,17 +79,12 @@
 
 // Deprecated: The name of an access list of the Map Editor type. The user on
 // whose behalf the request is being sent must be an editor on that access list.
-// Note: Google Maps Engine no longer uses access lists. For backward
-// compatibility, the API still accepts access lists for projects that are
-// already using access lists. If you created a GME account/project after July
-// 14th, 2014, you will not be able to send API requests that include access
-// lists. The API does not yet support the new permissions model. When you
-// create a map via the API without specifying permissions, the account that
-// created the map is the owner and has effective administrator access. Users
-// can then use the Maps Engine user interface to adjust the permissions. This
-// is a temporary workaround until the API supports the new permissions model.
-// Read Add new users and groups in the Google Maps Engine help center for more
-// information.
+// Note: Google Maps Engine no longer uses access lists. Instead, each asset has
+// its own list of permissions. For backward compatibility, the API still
+// accepts access lists for projects that are already using access lists. If you
+// created a GME account/project after July 14th, 2014, you will not be able to
+// send API requests that include access lists. Note: This is an input field
+// only. It is not returned in response to a list or get request.
 @property (copy) NSString *draftAccessList;
 
 // The ETag, used to refer to the current version of the asset.
@@ -95,6 +98,15 @@
 // date-time value (e.g. 1970-01-01T00:00:00Z).
 @property (retain) GTLDateTime *lastModifiedTime;
 
+// The email address of the last modifier of this layer. This is only returned
+// on GET requests and not LIST requests.
+@property (copy) NSString *lastModifierEmail;
+
+// The type of the datasources used to build this Layer. This should be used
+// instead of datasourceType. At least one of layerType and datasourceType and
+// must be specified, but layerType takes precedence.
+@property (copy) NSString *layerType;
+
 // The name of this Layer, supplied by the author.
 @property (copy) NSString *name;
 
@@ -106,14 +118,28 @@
 
 // Deprecated: The access list to whom view permissions are granted. The value
 // must be the name of a Maps Engine access list of the Map Viewer type, and the
-// user must be a viewer on that list. Read Share data, layers, and maps in the
-// Google Maps Engine help center for more information.
+// user must be a viewer on that list. Note: Google Maps Engine no longer uses
+// access lists. Instead, each asset has its own list of permissions. For
+// backward compatibility, the API still accepts access lists for projects that
+// are already using access lists. If you created a GME account/project after
+// July 14th, 2014, you will not be able to send API requests that include
+// access lists. Note: This is an input field only. It is not returned in
+// response to a list or get request.
 @property (copy) NSString *publishedAccessList;
 
-// The Styling information for a vector layer.
+// The publishing status of this layer.
+@property (copy) NSString *publishingStatus;
+
+// The styling information for a vector layer. Note: Style information is
+// returned in response to a get request but not a list request. After
+// requesting a list of layers, you'll need to send a get request to retrieve
+// the VectorStyles for each layer.
 @property (retain) GTLMapsEngineVectorStyle *style;
 
 // Tags of this Layer.
 @property (retain) NSArray *tags;  // of NSString
+
+// If true, WRITERs of the asset are able to edit the asset permissions.
+@property (retain) NSNumber *writersCanEditPermissions;  // boolValue
 
 @end

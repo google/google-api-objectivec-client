@@ -27,7 +27,7 @@
 //   https://developers.google.com/bigquery/docs/overview
 // Classes:
 //   GTLBigqueryDataset (0 custom class methods, 10 custom properties)
-//   GTLBigqueryDatasetAccessItem (0 custom class methods, 5 custom properties)
+//   GTLBigqueryDatasetAccessItem (0 custom class methods, 6 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -37,6 +37,7 @@
 
 @class GTLBigqueryDatasetAccessItem;
 @class GTLBigqueryDatasetReference;
+@class GTLBigqueryTableReference;
 
 // ----------------------------------------------------------------------------
 //
@@ -121,5 +122,12 @@
 // [Pick one] An email address of a user to grant access to. For example:
 // fred@example.com.
 @property (copy) NSString *userByEmail;
+
+// [Pick one] A view from a different dataset to grant access to. Queries
+// executed against that view will have read access to tables in this dataset.
+// The role field is not required when this field is set. If that view is
+// updated by any user, access to the view needs to be granted again via an
+// update operation.
+@property (retain) GTLBigqueryTableReference *view;
 
 @end

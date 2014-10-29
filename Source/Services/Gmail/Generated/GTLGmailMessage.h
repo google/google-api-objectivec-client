@@ -74,7 +74,7 @@
 // - The requested threadId must be specified on the Message or Draft.Message
 // you supply with your request.
 // - The References and In-Reply-To headers must be set in compliance with the
-// <a href="https://tools.ietf.org/html/rfc2822"RFC 2822 standard.
+// RFC 2822 standard.
 // - The Subject headers must match.
 @property (copy) NSString *threadId;
 

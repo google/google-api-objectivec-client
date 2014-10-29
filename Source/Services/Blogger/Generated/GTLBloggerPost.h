@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLBloggerPost (0 custom class methods, 18 custom properties)
+//   GTLBloggerPost (0 custom class methods, 19 custom properties)
 //   GTLBloggerPostAuthor (0 custom class methods, 4 custom properties)
 //   GTLBloggerPostBlog (0 custom class methods, 1 custom properties)
 //   GTLBloggerPostImagesItem (0 custom class methods, 1 custom properties)
@@ -66,6 +66,9 @@
 
 // The JSON meta-data for the Post.
 @property (copy) NSString *customMetaData;
+
+// Etag of the resource.
+@property (copy) NSString *ETag;
 
 // The identifier of this Post.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').

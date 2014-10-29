@@ -46,6 +46,7 @@
 #import "GTLSQLAdminInstancesImportResponse.h"
 #import "GTLSQLAdminInstancesInsertResponse.h"
 #import "GTLSQLAdminInstancesListResponse.h"
+#import "GTLSQLAdminInstancesPromoteReplicaResponse.h"
 #import "GTLSQLAdminInstancesResetSslConfigResponse.h"
 #import "GTLSQLAdminInstancesRestartResponse.h"
 #import "GTLSQLAdminInstancesRestoreBackupResponse.h"

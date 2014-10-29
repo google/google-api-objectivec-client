@@ -58,6 +58,11 @@ GTL_EXTERN NSString * const kGTLGmailLabel_Type_System;  // "system"
 GTL_EXTERN NSString * const kGTLGmailLabel_Type_User;    // "user"
 
 // GTLQueryGmail - Format
-GTL_EXTERN NSString * const kGTLGmailFormatFull;     // "full"
-GTL_EXTERN NSString * const kGTLGmailFormatMinimal;  // "minimal"
-GTL_EXTERN NSString * const kGTLGmailFormatRaw;      // "raw"
+GTL_EXTERN NSString * const kGTLGmailFormatFull;      // "full"
+GTL_EXTERN NSString * const kGTLGmailFormatMetadata;  // "metadata"
+GTL_EXTERN NSString * const kGTLGmailFormatMinimal;   // "minimal"
+GTL_EXTERN NSString * const kGTLGmailFormatRaw;       // "raw"
+
+// GTLQueryGmail - InternalDateSource
+GTL_EXTERN NSString * const kGTLGmailInternalDateSourceDateHeader;  // "dateHeader"
+GTL_EXTERN NSString * const kGTLGmailInternalDateSourceReceivedTime;  // "receivedTime"

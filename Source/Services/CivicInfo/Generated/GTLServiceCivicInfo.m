@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Civic Information API (civicinfo/v1)
+//   Google Civic Information API (civicinfo/v2)
 // Description:
 //   An API for accessing civic information.
 // Documentation:
@@ -53,6 +53,7 @@
                       [GTLCivicInfoOffice class],
                       [GTLCivicInfoOfficial class],
                       [GTLCivicInfoPollingLocation class],
+                      [GTLCivicInfoRepresentativeInfoData class],
                       [GTLCivicInfoRepresentativeInfoResponse class],
                       [GTLCivicInfoSimpleAddressType class],
                       [GTLCivicInfoSource class],
@@ -66,7 +67,7 @@
   self = [super init];
   if (self) {
     // Version from discovery.
-    self.apiVersion = @"v1";
+    self.apiVersion = @"v2";
 
     // From discovery.  Where to send JSON-RPC.
     // Turn off prettyPrint for this service to save bandwidth (especially on

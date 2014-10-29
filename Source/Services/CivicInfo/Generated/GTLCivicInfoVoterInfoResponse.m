@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Civic Information API (civicinfo/v1)
+//   Google Civic Information API (civicinfo/v2)
 // Description:
 //   An API for accessing civic information.
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoVoterInfoResponse (0 custom class methods, 8 custom properties)
+//   GTLCivicInfoVoterInfoResponse (0 custom class methods, 10 custom properties)
 
 #import "GTLCivicInfoVoterInfoResponse.h"
 
@@ -42,14 +42,16 @@
 //
 
 @implementation GTLCivicInfoVoterInfoResponse
-@dynamic contests, earlyVoteSites, election, kind, normalizedInput,
-         pollingLocations, state, status;
+@dynamic contests, dropOffLocations, earlyVoteSites, election, kind,
+         normalizedInput, otherElections, pollingLocations, precinctId, state;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
       [GTLCivicInfoContest class], @"contests",
+      [GTLCivicInfoPollingLocation class], @"dropOffLocations",
       [GTLCivicInfoPollingLocation class], @"earlyVoteSites",
+      [GTLCivicInfoElection class], @"otherElections",
       [GTLCivicInfoPollingLocation class], @"pollingLocations",
       [GTLCivicInfoAdministrationRegion class], @"state",
       nil];

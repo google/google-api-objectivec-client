@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/gmail/api/
 // Classes:
-//   GTLQueryGmail (29 custom class methods, 17 custom properties)
+//   GTLQueryGmail (30 custom class methods, 19 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -56,12 +56,14 @@
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 @property (assign) BOOL includeSpamTrash;
+@property (copy) NSString *internalDateSource;
 @property (retain) GTLGmailLabel *label;
 @property (copy) NSString *labelId;
 @property (retain) NSArray *labelIds;  // of NSString
 @property (assign) NSUInteger maxResults;
 @property (retain) GTLGmailMessage *message;
 @property (copy) NSString *messageId;
+@property (retain) NSArray *metadataHeaders;  // of NSString
 @property (copy) NSString *pageToken;
 @property (copy) NSString *q;
 @property (retain) NSArray *removeLabelIds;  // of NSString
@@ -106,6 +108,7 @@
 //  Optional:
 //   format: The format to return the draft in. (Default kGTLGmailFormatFull)
 //      kGTLGmailFormatFull: "full"
+//      kGTLGmailFormatMetadata: "metadata"
 //      kGTLGmailFormatMinimal: "minimal"
 //      kGTLGmailFormatRaw: "raw"
 //   identifier: The ID of the draft to retrieve.
@@ -167,6 +170,23 @@
 //   kGTLAuthScopeGmailModify
 // Fetches a GTLGmailDraft.
 + (id)queryForUsersDraftsUpdateWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
+
+#pragma mark -
+#pragma mark "users" methods
+// These create a GTLQueryGmail object.
+
+// Method: gmail.users.getProfile
+// Gets the current user's Gmail profile.
+//  Optional:
+//   userId: The user's email address. The special value me can be used to
+//     indicate the authenticated user. (Default me)
+//  Authorization scope(s):
+//   kGTLAuthScopeGmail
+//   kGTLAuthScopeGmailCompose
+//   kGTLAuthScopeGmailModify
+//   kGTLAuthScopeGmailReadonly
+// Fetches a GTLGmailProfile.
++ (id)queryForUsersGetProfile;
 
 #pragma mark -
 #pragma mark "users.history" methods
@@ -316,9 +336,12 @@
 //  Optional:
 //   format: The format to return the message in. (Default kGTLGmailFormatFull)
 //      kGTLGmailFormatFull: "full"
+//      kGTLGmailFormatMetadata: "metadata"
 //      kGTLGmailFormatMinimal: "minimal"
 //      kGTLGmailFormatRaw: "raw"
 //   identifier: The ID of the message to retrieve.
+//   metadataHeaders: When given and format is METADATA, only include headers
+//     specified.
 //   userId: The user's email address. The special value me can be used to
 //     indicate the authenticated user. (Default me)
 //  Authorization scope(s):
@@ -329,10 +352,15 @@
 + (id)queryForUsersMessagesGet;
 
 // Method: gmail.users.messages.import
-// Directly imports a message into only this user's mailbox, similar to
-// receiving via SMTP. Does not send a message.
+// Imports a message into only this user's mailbox, with standard email delivery
+// scanning and classification similar to receiving via SMTP. Does not send a
+// message.
 //  Optional:
 //   message: GTLGmailMessage
+//   internalDateSource: Source for Gmail's internal date of the message.
+//     (Default kGTLGmailInternalDateSourceDateHeader)
+//      kGTLGmailInternalDateSourceDateHeader: "dateHeader"
+//      kGTLGmailInternalDateSourceReceivedTime: "receivedTime"
 //   userId: The user's email address. The special value me can be used to
 //     indicate the authenticated user. (Default me)
 //  Upload Parameters:
@@ -345,10 +373,14 @@
 + (id)queryForUsersMessagesImportWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
 // Method: gmail.users.messages.insert
-// Directly inserts a message into only this user's mailbox. Does not send a
-// message.
+// Directly inserts a message into only this user's mailbox similar to IMAP
+// APPEND, bypassing most scanning and classification. Does not send a message.
 //  Optional:
 //   message: GTLGmailMessage
+//   internalDateSource: Source for Gmail's internal date of the message.
+//     (Default kGTLGmailInternalDateSourceReceivedTime)
+//      kGTLGmailInternalDateSourceDateHeader: "dateHeader"
+//      kGTLGmailInternalDateSourceReceivedTime: "receivedTime"
 //   userId: The user's email address. The special value me can be used to
 //     indicate the authenticated user. (Default me)
 //  Upload Parameters:
@@ -453,7 +485,13 @@
 // Method: gmail.users.threads.get
 // Gets the specified thread.
 //  Optional:
+//   format: The format to return the messages in. (Default kGTLGmailFormatFull)
+//      kGTLGmailFormatFull: "full"
+//      kGTLGmailFormatMetadata: "metadata"
+//      kGTLGmailFormatMinimal: "minimal"
 //   identifier: The ID of the thread to retrieve.
+//   metadataHeaders: When given and format is METADATA, only include headers
+//     specified.
 //   userId: The user's email address. The special value me can be used to
 //     indicate the authenticated user. (Default me)
 //  Authorization scope(s):

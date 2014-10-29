@@ -120,11 +120,13 @@
 // Storage class of the object.
 @property (copy) NSString *storageClass;
 
-// Deletion time of the object in RFC 3339 format. Will be returned if and only
-// if this version of the object has been deleted.
+// The deletion time of the object in RFC 3339 format. Will be returned if and
+// only if this version of the object has been deleted.
 @property (retain) GTLDateTime *timeDeleted;
 
-// Modification time of the object metadata in RFC 3339 format.
+// The creation or modification time of the object in RFC 3339 format. For
+// buckets with versioning enabled, changing an object's metadata does not
+// change this property.
 @property (retain) GTLDateTime *updated;
 
 @end

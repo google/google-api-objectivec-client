@@ -40,6 +40,7 @@
 #import "GTLGmailMessagePart.h"
 #import "GTLGmailMessagePartBody.h"
 #import "GTLGmailMessagePartHeader.h"
+#import "GTLGmailProfile.h"
 #import "GTLGmailThread.h"
 
 #import "GTLQueryGmail.h"

@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Civic Information API (civicinfo/v1)
+//   Google Civic Information API (civicinfo/v2)
 // Description:
 //   An API for accessing civic information.
 // Documentation:
@@ -42,7 +42,7 @@
 //   GTLCivicInfoOfficial
 //
 
-// Information about a official holding an elected office.
+// Information about a person holding an elected office.
 
 @interface GTLCivicInfoOfficial : GTLObject
 

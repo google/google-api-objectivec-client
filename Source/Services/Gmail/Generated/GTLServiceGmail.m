@@ -50,6 +50,7 @@
                       [GTLGmailMessagePart class],
                       [GTLGmailMessagePartBody class],
                       [GTLGmailMessagePartHeader class],
+                      [GTLGmailProfile class],
                       [GTLGmailThread class],
                       nil];
   return classes;

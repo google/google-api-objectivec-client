@@ -38,6 +38,7 @@
 #import "GTLCalendarColors.h"
 #import "GTLCalendarError.h"
 #import "GTLCalendarEvent.h"
+#import "GTLCalendarEventAttachment.h"
 #import "GTLCalendarEventAttendee.h"
 #import "GTLCalendarEventDateTime.h"
 #import "GTLCalendarEventReminder.h"

@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEnginePolygonStyle (0 custom class methods, 2 custom properties)
+//   GTLMapsEnginePolygonStyle (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -37,6 +37,7 @@
 
 @class GTLMapsEngineBorder;
 @class GTLMapsEngineColor;
+@class GTLMapsEngineLabelStyle;
 
 // ----------------------------------------------------------------------------
 //
@@ -50,6 +51,9 @@
 // Fill color of the polygon. If not provided, the polygon will be transparent
 // and not visible if there is no border.
 @property (retain) GTLMapsEngineColor *fill;
+
+// Label style for the polygon.
+@property (retain) GTLMapsEngineLabelStyle *label;
 
 // Border of the polygon. 0 < border.width <= 10.
 @property (retain) GTLMapsEngineBorder *stroke;

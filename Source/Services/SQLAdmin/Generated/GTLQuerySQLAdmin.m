@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/cloud-sql/docs/admin-api/
 // Classes:
-//   GTLQuerySQLAdmin (23 custom class methods, 14 custom properties)
+//   GTLQuerySQLAdmin (24 custom class methods, 14 custom properties)
 
 #import "GTLQuerySQLAdmin.h"
 
@@ -44,6 +44,7 @@
 #import "GTLSQLAdminInstancesImportResponse.h"
 #import "GTLSQLAdminInstancesInsertResponse.h"
 #import "GTLSQLAdminInstancesListResponse.h"
+#import "GTLSQLAdminInstancesPromoteReplicaResponse.h"
 #import "GTLSQLAdminInstancesResetSslConfigResponse.h"
 #import "GTLSQLAdminInstancesRestartResponse.h"
 #import "GTLSQLAdminInstancesRestoreBackupResponse.h"
@@ -191,6 +192,16 @@
   query.project = project;
   query.instance = instance;
   query.expectedObjectClass = [GTLSQLAdminInstancesUpdateResponse class];
+  return query;
+}
+
++ (id)queryForInstancesPromoteReplicaWithProject:(NSString *)project
+                                        instance:(NSString *)instance {
+  NSString *methodName = @"sql.instances.promoteReplica";
+  GTLQuerySQLAdmin *query = [self queryWithMethodName:methodName];
+  query.project = project;
+  query.instance = instance;
+  query.expectedObjectClass = [GTLSQLAdminInstancesPromoteReplicaResponse class];
   return query;
 }
 

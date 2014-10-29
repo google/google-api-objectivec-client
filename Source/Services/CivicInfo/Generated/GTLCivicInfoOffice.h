@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Civic Information API (civicinfo/v1)
+//   Google Civic Information API (civicinfo/v2)
 // Description:
 //   An API for accessing civic information.
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoOffice (0 custom class methods, 5 custom properties)
+//   GTLCivicInfoOffice (0 custom class methods, 6 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -48,15 +48,25 @@
 // The OCD ID of the division with which this office is associated.
 @property (copy) NSString *divisionId;
 
-// The level of this elected office. One of: federal, state, county, city, other
-@property (copy) NSString *level;
+// The levels of government of which this office is part. There may be more than
+// one in cases where a jurisdiction effectively acts at two different levels of
+// government; for example, the mayor of the District of Columbia acts at
+// "locality" level, but also effectively at both "administrative-area-2" and
+// "administrative-area-1".
+@property (retain) NSArray *levels;  // of NSString
 
 // The human-readable name of the office.
 @property (copy) NSString *name;
 
-// List of keys in the officials object of people who presently hold this
+// List of indices in the officials array of people who presently hold this
 // office.
-@property (retain) NSArray *officialIds;  // of NSString
+@property (retain) NSArray *officialIndices;  // of NSNumber (unsignedIntValue)
+
+// The roles which this office fulfills. Roles are not meant to be exhaustive,
+// or to exactly specify the entire set of responsibilities of a given office,
+// but are meant to be rough categories that are useful for general selection
+// from or sorting of a list of offices.
+@property (retain) NSArray *roles;  // of NSString
 
 // A list of sources for this office. If multiple sources are listed, the data
 // has been aggregated from those sources.

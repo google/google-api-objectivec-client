@@ -56,6 +56,7 @@
                       [GTLSQLAdminInstancesImportResponse class],
                       [GTLSQLAdminInstancesInsertResponse class],
                       [GTLSQLAdminInstancesListResponse class],
+                      [GTLSQLAdminInstancesPromoteReplicaResponse class],
                       [GTLSQLAdminInstancesResetSslConfigResponse class],
                       [GTLSQLAdminInstancesRestartResponse class],
                       [GTLSQLAdminInstancesRestoreBackupResponse class],

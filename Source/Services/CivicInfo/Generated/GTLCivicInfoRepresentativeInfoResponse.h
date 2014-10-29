@@ -20,16 +20,14 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Civic Information API (civicinfo/v1)
+//   Google Civic Information API (civicinfo/v2)
 // Description:
 //   An API for accessing civic information.
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoRepresentativeInfoResponse (0 custom class methods, 6 custom properties)
+//   GTLCivicInfoRepresentativeInfoResponse (0 custom class methods, 5 custom properties)
 //   GTLCivicInfoRepresentativeInfoResponseDivisions (0 custom class methods, 0 custom properties)
-//   GTLCivicInfoRepresentativeInfoResponseOffices (0 custom class methods, 0 custom properties)
-//   GTLCivicInfoRepresentativeInfoResponseOfficials (0 custom class methods, 0 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -41,8 +39,6 @@
 @class GTLCivicInfoOffice;
 @class GTLCivicInfoOfficial;
 @class GTLCivicInfoRepresentativeInfoResponseDivisions;
-@class GTLCivicInfoRepresentativeInfoResponseOffices;
-@class GTLCivicInfoRepresentativeInfoResponseOfficials;
 @class GTLCivicInfoSimpleAddressType;
 
 // ----------------------------------------------------------------------------
@@ -66,17 +62,11 @@
 
 // Elected offices referenced by the divisions listed above. Will only be
 // present if includeOffices was true in the request.
-@property (retain) GTLCivicInfoRepresentativeInfoResponseOffices *offices;
+@property (retain) NSArray *offices;  // of GTLCivicInfoOffice
 
 // Officials holding the offices listed above. Will only be present if
 // includeOffices was true in the request.
-@property (retain) GTLCivicInfoRepresentativeInfoResponseOfficials *officials;
-
-// The result of the request. One of: success, noStreetSegmentFound,
-// addressUnparseable, noAddressParameter, multipleStreetSegmentsFound,
-// electionOver, electionUnknown, internalLookupFailure,
-// RequestedBothAddressAndOcdId
-@property (copy) NSString *status;
+@property (retain) NSArray *officials;  // of GTLCivicInfoOfficial
 
 @end
 
@@ -91,30 +81,4 @@
 // GTLCivicInfoGeographicDivision. Use -additionalJSONKeys and
 // -additionalPropertyForName: to get the list of properties and then fetch
 // them; or -additionalProperties to fetch them all at once.
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLCivicInfoRepresentativeInfoResponseOffices
-//
-
-@interface GTLCivicInfoRepresentativeInfoResponseOffices : GTLObject
-// This object is documented as having more properties that are
-// GTLCivicInfoOffice. Use -additionalJSONKeys and -additionalPropertyForName:
-// to get the list of properties and then fetch them; or -additionalProperties
-// to fetch them all at once.
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLCivicInfoRepresentativeInfoResponseOfficials
-//
-
-@interface GTLCivicInfoRepresentativeInfoResponseOfficials : GTLObject
-// This object is documented as having more properties that are
-// GTLCivicInfoOfficial. Use -additionalJSONKeys and -additionalPropertyForName:
-// to get the list of properties and then fetch them; or -additionalProperties
-// to fetch them all at once.
 @end

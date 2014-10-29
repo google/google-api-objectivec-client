@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Civic Information API (civicinfo/v1)
+//   Google Civic Information API (civicinfo/v2)
 // Description:
 //   An API for accessing civic information.
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoVoterInfoResponse (0 custom class methods, 8 custom properties)
+//   GTLCivicInfoVoterInfoResponse (0 custom class methods, 10 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -49,10 +49,17 @@
 
 @interface GTLCivicInfoVoterInfoResponse : GTLObject
 
-// Contests that will appear on the voter's ballot
+// Contests that will appear on the voter's ballot.
 @property (retain) NSArray *contests;  // of GTLCivicInfoContest
 
-// Locations where the voter is eligible to vote early, prior to election day
+// Locations where a voter is eligible to drop off a completed ballot. The voter
+// must have received and completed a ballot prior to arriving at the location.
+// The location may not have ballots available on the premises. These locations
+// could be open on or before election day as indicated in the pollingHours
+// field.
+@property (retain) NSArray *dropOffLocations;  // of GTLCivicInfoPollingLocation
+
+// Locations where the voter is eligible to vote early, prior to election day.
 @property (retain) NSArray *earlyVoteSites;  // of GTLCivicInfoPollingLocation
 
 // The election that was queried.
@@ -65,19 +72,18 @@
 // The normalized version of the requested address
 @property (retain) GTLCivicInfoSimpleAddressType *normalizedInput;
 
-// Locations where the voter is eligible to vote on election day. For states
-// with mail-in voting only, these locations will be nearby drop box locations.
-// Drop box locations are free to the voter and may be used instead of placing
-// the ballot in the mail.
+// If no election ID was specified in the query, and there was more than one
+// election with data for the given voter, this will contain information about
+// the other elections that could apply.
+@property (retain) NSArray *otherElections;  // of GTLCivicInfoElection
+
+// Locations where the voter is eligible to vote on election day.
 @property (retain) NSArray *pollingLocations;  // of GTLCivicInfoPollingLocation
+
+@property (copy) NSString *precinctId;
 
 // Local Election Information for the state that the voter votes in. For the US,
 // there will only be one element in this array.
 @property (retain) NSArray *state;  // of GTLCivicInfoAdministrationRegion
-
-// The result of the request. One of: success, noStreetSegmentFound,
-// addressUnparseable, noAddressParameter, multipleStreetSegmentsFound,
-// electionOver, electionUnknown, internalLookupFailure
-@property (copy) NSString *status;
 
 @end

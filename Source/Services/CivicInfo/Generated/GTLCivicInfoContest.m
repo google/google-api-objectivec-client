@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Civic Information API (civicinfo/v1)
+//   Google Civic Information API (civicinfo/v2)
 // Description:
 //   An API for accessing civic information.
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoContest (0 custom class methods, 16 custom properties)
+//   GTLCivicInfoContest (0 custom class methods, 17 custom properties)
 
 #import "GTLCivicInfoContest.h"
 
@@ -43,7 +43,7 @@
 @dynamic ballotPlacement, candidates, district, electorateSpecifications,
          identifier, level, numberElected, numberVotingFor, office,
          primaryParty, referendumSubtitle, referendumTitle, referendumUrl,
-         sources, special, type;
+         roles, sources, special, type;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -56,6 +56,8 @@
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
       [GTLCivicInfoCandidate class], @"candidates",
+      [NSString class], @"level",
+      [NSString class], @"roles",
       [GTLCivicInfoSource class], @"sources",
       nil];
   return map;

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/glass
 // Classes:
-//   GTLMirrorMenuItem (0 custom class methods, 5 custom properties)
+//   GTLMirrorMenuItem (0 custom class methods, 6 custom properties)
 
 #import "GTLMirrorMenuItem.h"
 
@@ -38,12 +38,15 @@
 //
 
 @implementation GTLMirrorMenuItem
-@dynamic action, identifier, payload, removeWhenSelected, values;
+@dynamic action, contextualCommand, identifier, payload, removeWhenSelected,
+         values;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      @"contextual_command", @"contextualCommand",
+      @"id", @"identifier",
+      nil];
   return map;
 }
 

@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/gmail/api/
 // Classes:
-//   GTLGmailLabel (0 custom class methods, 5 custom properties)
+//   GTLGmailLabel (0 custom class methods, 9 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -53,8 +53,20 @@
 // The visibility of the label in the message list in the Gmail web interface.
 @property (copy) NSString *messageListVisibility;
 
+// The total number of messages with the label.
+@property (retain) NSNumber *messagesTotal;  // intValue
+
+// The number of unread messages with the label.
+@property (retain) NSNumber *messagesUnread;  // intValue
+
 // The display name of the label.
 @property (copy) NSString *name;
+
+// The total number of threads with the label.
+@property (retain) NSNumber *threadsTotal;  // intValue
+
+// The number of unread threads with the label.
+@property (retain) NSNumber *threadsUnread;  // intValue
 
 // The owner type for the label. User labels are created by the user and can be
 // modified and deleted by the user and can be applied to any message or thread.

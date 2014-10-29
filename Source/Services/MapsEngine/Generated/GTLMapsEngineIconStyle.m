@@ -27,9 +27,12 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLMapsEngineIconStyle (0 custom class methods, 2 custom properties)
+//   GTLMapsEngineIconStyle (0 custom class methods, 4 custom properties)
 
 #import "GTLMapsEngineIconStyle.h"
+
+#import "GTLMapsEngineScaledShape.h"
+#import "GTLMapsEngineScalingFunction.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -37,7 +40,7 @@
 //
 
 @implementation GTLMapsEngineIconStyle
-@dynamic identifier, name;
+@dynamic identifier, name, scaledShape, scalingFunction;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

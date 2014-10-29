@@ -42,11 +42,11 @@
 
 @interface GTLMapsEngineGeoJsonPolygon : GTLObject
 
-// An array of LinearRings, each of which is an array of four or more
-// GeoJsonPositions. The first and last coordinates in each LinearRing must be
-// the same. For polygons with multiple rings, the first LinearRing is the
-// external ring, with subsequent rings being interior rings (i.e. hole). All
-// LinearRings must contain GeoJsonPositions in counter-clockwise order.
+// An array of LinearRings. A LinearRing is a GeoJsonLineString which is closed
+// (that is, the first and last GeoJsonPositions are equal), and which contains
+// at least four GeoJsonPositions. For polygons with multiple rings, the first
+// LinearRing is the exterior ring, and any subsequent rings are interior rings
+// (that is, holes).
 @property (retain) NSArray *coordinates;  // of NSArray of NSArray of NSNumber (doubleValue)
 
 // Identifies this object as a GeoJsonPolygon.

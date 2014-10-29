@@ -20,16 +20,14 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Civic Information API (civicinfo/v1)
+//   Google Civic Information API (civicinfo/v2)
 // Description:
 //   An API for accessing civic information.
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoRepresentativeInfoResponse (0 custom class methods, 6 custom properties)
+//   GTLCivicInfoRepresentativeInfoResponse (0 custom class methods, 5 custom properties)
 //   GTLCivicInfoRepresentativeInfoResponseDivisions (0 custom class methods, 0 custom properties)
-//   GTLCivicInfoRepresentativeInfoResponseOffices (0 custom class methods, 0 custom properties)
-//   GTLCivicInfoRepresentativeInfoResponseOfficials (0 custom class methods, 0 custom properties)
 
 #import "GTLCivicInfoRepresentativeInfoResponse.h"
 
@@ -44,7 +42,16 @@
 //
 
 @implementation GTLCivicInfoRepresentativeInfoResponse
-@dynamic divisions, kind, normalizedInput, offices, officials, status;
+@dynamic divisions, kind, normalizedInput, offices, officials;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      [GTLCivicInfoOffice class], @"offices",
+      [GTLCivicInfoOfficial class], @"officials",
+      nil];
+  return map;
+}
 
 + (void)load {
   [self registerObjectClassForKind:@"civicinfo#representativeInfoResponse"];
@@ -62,34 +69,6 @@
 
 + (Class)classForAdditionalProperties {
   return [GTLCivicInfoGeographicDivision class];
-}
-
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLCivicInfoRepresentativeInfoResponseOffices
-//
-
-@implementation GTLCivicInfoRepresentativeInfoResponseOffices
-
-+ (Class)classForAdditionalProperties {
-  return [GTLCivicInfoOffice class];
-}
-
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLCivicInfoRepresentativeInfoResponseOfficials
-//
-
-@implementation GTLCivicInfoRepresentativeInfoResponseOfficials
-
-+ (Class)classForAdditionalProperties {
-  return [GTLCivicInfoOfficial class];
 }
 
 @end

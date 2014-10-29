@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Civic Information API (civicinfo/v1)
+//   Google Civic Information API (civicinfo/v2)
 // Description:
 //   An API for accessing civic information.
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoGeographicDivision (0 custom class methods, 4 custom properties)
+//   GTLCivicInfoGeographicDivision (0 custom class methods, 3 custom properties)
 
 #import "GTLCivicInfoGeographicDivision.h"
 
@@ -36,13 +36,13 @@
 //
 
 @implementation GTLCivicInfoGeographicDivision
-@dynamic alsoKnownAs, name, officeIds, scope;
+@dynamic alsoKnownAs, name, officeIndices;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
       [NSString class], @"alsoKnownAs",
-      [NSString class], @"officeIds",
+      [NSNumber class], @"officeIndices",
       nil];
   return map;
 }

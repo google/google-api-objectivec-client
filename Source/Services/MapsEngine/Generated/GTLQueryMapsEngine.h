@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/maps-engine/
 // Classes:
-//   GTLQueryMapsEngine (51 custom class methods, 27 custom properties)
+//   GTLQueryMapsEngine (77 custom class methods, 32 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -36,8 +36,11 @@
 #endif
 
 @class GTLMapsEngineFeature;
+@class GTLMapsEngineIcon;
 @class GTLMapsEngineLayer;
 @class GTLMapsEngineMap;
+@class GTLMapsEnginePermissionsBatchDeleteRequest;
+@class GTLMapsEnginePermissionsBatchUpdateRequest;
 @class GTLMapsEngineRaster;
 @class GTLMapsEngineRasterCollection;
 @class GTLMapsEngineRasterCollectionsRasterBatchDeleteRequest;
@@ -62,6 +65,7 @@
 @property (copy) NSString *creatorEmail;
 @property (retain) NSArray *features;  // of GTLMapsEngineFeature
 @property (copy) NSString *filename;
+@property (assign) BOOL force;
 @property (retain) NSArray *gxIds;  // of NSString
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
@@ -71,14 +75,18 @@
 @property (assign) NSUInteger maxResults;
 @property (retain) GTLDateTime *modifiedAfter;
 @property (retain) GTLDateTime *modifiedBefore;
+@property (assign) BOOL normalizeGeometries;
 @property (copy) NSString *orderBy;
 @property (copy) NSString *pageToken;
 @property (retain) NSArray *primaryKeys;  // of NSString
 @property (assign) BOOL process;
+@property (copy) NSString *processingStatus;
 @property (copy) NSString *projectId;
 // "request" has different types for some query methods; see the documentation
 // for the right type for each query method.
 @property (retain) id request;
+@property (copy) NSString *role;
+@property (copy) NSString *search;
 @property (copy) NSString *select;
 @property (copy) NSString *tableId;
 @property (copy) NSString *tags;
@@ -128,14 +136,19 @@
 //     list all available projects with their IDs, send a Projects: list
 //     request. You can also find your project ID as the value of the
 //     DashboardPlace:cid URL parameter when signed in to mapsengine.google.com.
+//   role: The role parameter indicates that the response should only contain
+//     assets where the current user has the specified level of access.
+//      kGTLMapsEngineRoleOwner: The user can read, write and administer the
+//        asset.
+//      kGTLMapsEngineRoleReader: The user can read the asset.
+//      kGTLMapsEngineRoleWriter: The user can read and write the asset.
+//   search: An unstructured search string used to filter the set of results
+//     based on asset metadata.
 //   tags: A comma separated list of tags. Returned assets will contain all the
 //     tags from the list.
-//   type: An asset type restriction. If set, only resources of this type will
-//     be returned.
-//      kGTLMapsEngineTypeLayer: Return layers.
-//      kGTLMapsEngineTypeMap: Return maps.
-//      kGTLMapsEngineTypeRasterCollection: Return raster collections.
-//      kGTLMapsEngineTypeTable: Return tables.
+//   type: A comma separated list of asset types. Returned assets will have one
+//     of the types from the provided list. Supported values are 'map', 'layer',
+//     'rasterCollection' and 'table'.
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
@@ -161,6 +174,20 @@
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineParentsListResponse.
 + (id)queryForAssetsParentsListWithIdentifier:(NSString *)identifier;
+
+#pragma mark -
+#pragma mark "assets.permissions" methods
+// These create a GTLQueryMapsEngine object.
+
+// Method: mapsengine.assets.permissions.list
+// Return all of the permissions for the specified asset.
+//  Required:
+//   identifier: The ID of the asset whose permissions will be listed.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+//   kGTLAuthScopeMapsEngineReadonly
+// Fetches a GTLMapsEnginePermissionsListResponse.
++ (id)queryForAssetsPermissionsListWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "layers" methods
@@ -201,7 +228,10 @@
 //  Required:
 //   identifier: The ID of the layer.
 //  Optional:
-//   version: NSString
+//   version: Deprecated: The version parameter indicates which version of the
+//     layer should be returned. When version is set to published, the published
+//     version of the layer will be returned. Please use the layers.getPublished
+//     endpoint instead.
 //      kGTLMapsEngineVersionDraft: The draft version.
 //      kGTLMapsEngineVersionPublished: The published version.
 //  Authorization scope(s):
@@ -209,6 +239,16 @@
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineLayer.
 + (id)queryForLayersGetWithIdentifier:(NSString *)identifier;
+
+// Method: mapsengine.layers.getPublished
+// Return the published metadata for a particular layer.
+//  Required:
+//   identifier: The ID of the layer.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+//   kGTLAuthScopeMapsEngineReadonly
+// Fetches a GTLMapsEnginePublishedLayer.
++ (id)queryForLayersGetPublishedWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.layers.list
 // Return all layers readable by the current user.
@@ -234,10 +274,26 @@
 //   pageToken: The continuation token, used to page through large result sets.
 //     To get the next page of results, set this parameter to the value of
 //     nextPageToken from the previous response.
+//   processingStatus: NSString
+//      kGTLMapsEngineProcessingStatusComplete: The layer has completed
+//        processing.
+//      kGTLMapsEngineProcessingStatusFailed: The layer has failed processing.
+//      kGTLMapsEngineProcessingStatusNotReady: The layer is not ready for
+//        processing.
+//      kGTLMapsEngineProcessingStatusProcessing: The layer is processing.
+//      kGTLMapsEngineProcessingStatusReady: The layer is ready for processing.
 //   projectId: The ID of a Maps Engine project, used to filter the response. To
 //     list all available projects with their IDs, send a Projects: list
 //     request. You can also find your project ID as the value of the
 //     DashboardPlace:cid URL parameter when signed in to mapsengine.google.com.
+//   role: The role parameter indicates that the response should only contain
+//     assets where the current user has the specified level of access.
+//      kGTLMapsEngineRoleOwner: The user can read, write and administer the
+//        asset.
+//      kGTLMapsEngineRoleReader: The user can read the asset.
+//      kGTLMapsEngineRoleWriter: The user can read and write the asset.
+//   search: An unstructured search string used to filter the set of results
+//     based on asset metadata.
 //   tags: A comma separated list of tags. Returned assets will contain all the
 //     tags from the list.
 //  Authorization scope(s):
@@ -245,6 +301,24 @@
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineLayersListResponse.
 + (id)queryForLayersList;
+
+// Method: mapsengine.layers.listPublished
+// Return all published layers readable by the current user.
+//  Optional:
+//   maxResults: The maximum number of items to include in a single response
+//     page. The maximum supported value is 100.
+//   pageToken: The continuation token, used to page through large result sets.
+//     To get the next page of results, set this parameter to the value of
+//     nextPageToken from the previous response.
+//   projectId: The ID of a Maps Engine project, used to filter the response. To
+//     list all available projects with their IDs, send a Projects: list
+//     request. You can also find your project ID as the value of the
+//     DashboardPlace:cid URL parameter when signed in to mapsengine.google.com.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+//   kGTLAuthScopeMapsEngineReadonly
+// Fetches a GTLMapsEnginePublishedLayersListResponse.
++ (id)queryForLayersListPublished;
 
 #pragma mark -
 #pragma mark "layers.parents" methods
@@ -280,6 +354,50 @@
 //   kGTLAuthScopeMapsEngine
 + (id)queryForLayersPatchWithIdentifier:(NSString *)identifier;
 
+#pragma mark -
+#pragma mark "layers.permissions" methods
+// These create a GTLQueryMapsEngine object.
+
+// Method: mapsengine.layers.permissions.batchDelete
+// Remove permission entries from an already existing asset.
+//  Required:
+//   identifier: The ID of the asset from which permissions will be removed.
+//  Optional:
+//   request: For this method, "request" should be of type
+//     GTLMapsEnginePermissionsBatchDeleteRequest.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+// Fetches a GTLMapsEnginePermissionsBatchDeleteResponse.
++ (id)queryForLayersPermissionsBatchDeleteWithIdentifier:(NSString *)identifier;
+
+// Method: mapsengine.layers.permissions.batchUpdate
+// Add or update permission entries to an already existing asset.
+// An asset can hold up to 20 different permission entries. Each batchInsert
+// request is atomic.
+//  Required:
+//   identifier: The ID of the asset to which permissions will be added.
+//  Optional:
+//   request: For this method, "request" should be of type
+//     GTLMapsEnginePermissionsBatchUpdateRequest.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+// Fetches a GTLMapsEnginePermissionsBatchUpdateResponse.
++ (id)queryForLayersPermissionsBatchUpdateWithIdentifier:(NSString *)identifier;
+
+// Method: mapsengine.layers.permissions.list
+// Return all of the permissions for the specified asset.
+//  Required:
+//   identifier: The ID of the asset whose permissions will be listed.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+//   kGTLAuthScopeMapsEngineReadonly
+// Fetches a GTLMapsEnginePermissionsListResponse.
++ (id)queryForLayersPermissionsListWithIdentifier:(NSString *)identifier;
+
+#pragma mark -
+#pragma mark "layers" methods
+// These create a GTLQueryMapsEngine object.
+
 // Method: mapsengine.layers.process
 // Process a layer asset.
 //  Required:
@@ -293,6 +411,10 @@
 // Publish a layer asset.
 //  Required:
 //   identifier: The ID of the layer.
+//  Optional:
+//   force: If set to true, the API will allow publication of the layer even if
+//     it's out of date. If not true, you'll need to reprocess any out-of-date
+//     layer before publishing.
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEnginePublishResponse.
@@ -335,7 +457,10 @@
 //  Required:
 //   identifier: The ID of the map.
 //  Optional:
-//   version: NSString
+//   version: Deprecated: The version parameter indicates which version of the
+//     map should be returned. When version is set to published, the published
+//     version of the map will be returned. Please use the maps.getPublished
+//     endpoint instead.
 //      kGTLMapsEngineVersionDraft: The draft version.
 //      kGTLMapsEngineVersionPublished: The published version.
 //  Authorization scope(s):
@@ -343,6 +468,16 @@
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineMap.
 + (id)queryForMapsGetWithIdentifier:(NSString *)identifier;
+
+// Method: mapsengine.maps.getPublished
+// Return the published metadata for a particular map.
+//  Required:
+//   identifier: The ID of the map.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+//   kGTLAuthScopeMapsEngineReadonly
+// Fetches a GTLMapsEnginePublishedMap.
++ (id)queryForMapsGetPublishedWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.maps.list
 // Return all maps readable by the current user.
@@ -368,10 +503,25 @@
 //   pageToken: The continuation token, used to page through large result sets.
 //     To get the next page of results, set this parameter to the value of
 //     nextPageToken from the previous response.
+//   processingStatus: NSString
+//      kGTLMapsEngineProcessingStatusComplete: The map has completed
+//        processing.
+//      kGTLMapsEngineProcessingStatusFailed: The map has failed processing.
+//      kGTLMapsEngineProcessingStatusNotReady: The map is not ready for
+//        processing.
+//      kGTLMapsEngineProcessingStatusProcessing: The map is processing.
 //   projectId: The ID of a Maps Engine project, used to filter the response. To
 //     list all available projects with their IDs, send a Projects: list
 //     request. You can also find your project ID as the value of the
 //     DashboardPlace:cid URL parameter when signed in to mapsengine.google.com.
+//   role: The role parameter indicates that the response should only contain
+//     assets where the current user has the specified level of access.
+//      kGTLMapsEngineRoleOwner: The user can read, write and administer the
+//        asset.
+//      kGTLMapsEngineRoleReader: The user can read the asset.
+//      kGTLMapsEngineRoleWriter: The user can read and write the asset.
+//   search: An unstructured search string used to filter the set of results
+//     based on asset metadata.
 //   tags: A comma separated list of tags. Returned assets will contain all the
 //     tags from the list.
 //  Authorization scope(s):
@@ -379,6 +529,24 @@
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineMapsListResponse.
 + (id)queryForMapsList;
+
+// Method: mapsengine.maps.listPublished
+// Return all published maps readable by the current user.
+//  Optional:
+//   maxResults: The maximum number of items to include in a single response
+//     page. The maximum supported value is 100.
+//   pageToken: The continuation token, used to page through large result sets.
+//     To get the next page of results, set this parameter to the value of
+//     nextPageToken from the previous response.
+//   projectId: The ID of a Maps Engine project, used to filter the response. To
+//     list all available projects with their IDs, send a Projects: list
+//     request. You can also find your project ID as the value of the
+//     DashboardPlace:cid URL parameter when signed in to mapsengine.google.com.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+//   kGTLAuthScopeMapsEngineReadonly
+// Fetches a GTLMapsEnginePublishedMapsListResponse.
++ (id)queryForMapsListPublished;
 
 // Method: mapsengine.maps.patch
 // Mutate a map asset.
@@ -390,10 +558,58 @@
 //   kGTLAuthScopeMapsEngine
 + (id)queryForMapsPatchWithIdentifier:(NSString *)identifier;
 
+#pragma mark -
+#pragma mark "maps.permissions" methods
+// These create a GTLQueryMapsEngine object.
+
+// Method: mapsengine.maps.permissions.batchDelete
+// Remove permission entries from an already existing asset.
+//  Required:
+//   identifier: The ID of the asset from which permissions will be removed.
+//  Optional:
+//   request: For this method, "request" should be of type
+//     GTLMapsEnginePermissionsBatchDeleteRequest.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+// Fetches a GTLMapsEnginePermissionsBatchDeleteResponse.
++ (id)queryForMapsPermissionsBatchDeleteWithIdentifier:(NSString *)identifier;
+
+// Method: mapsengine.maps.permissions.batchUpdate
+// Add or update permission entries to an already existing asset.
+// An asset can hold up to 20 different permission entries. Each batchInsert
+// request is atomic.
+//  Required:
+//   identifier: The ID of the asset to which permissions will be added.
+//  Optional:
+//   request: For this method, "request" should be of type
+//     GTLMapsEnginePermissionsBatchUpdateRequest.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+// Fetches a GTLMapsEnginePermissionsBatchUpdateResponse.
++ (id)queryForMapsPermissionsBatchUpdateWithIdentifier:(NSString *)identifier;
+
+// Method: mapsengine.maps.permissions.list
+// Return all of the permissions for the specified asset.
+//  Required:
+//   identifier: The ID of the asset whose permissions will be listed.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+//   kGTLAuthScopeMapsEngineReadonly
+// Fetches a GTLMapsEnginePermissionsListResponse.
++ (id)queryForMapsPermissionsListWithIdentifier:(NSString *)identifier;
+
+#pragma mark -
+#pragma mark "maps" methods
+// These create a GTLQueryMapsEngine object.
+
 // Method: mapsengine.maps.publish
 // Publish a map asset.
 //  Required:
 //   identifier: The ID of the map.
+//  Optional:
+//   force: If set to true, the API will allow publication of the map even if
+//     it's out of date. If false, the map must have a processingStatus of
+//     complete before publishing.
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEnginePublishResponse.
@@ -407,6 +623,53 @@
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEnginePublishResponse.
 + (id)queryForMapsUnpublishWithIdentifier:(NSString *)identifier;
+
+#pragma mark -
+#pragma mark "projects.icons" methods
+// These create a GTLQueryMapsEngine object.
+
+// Method: mapsengine.projects.icons.create
+// Create an icon.
+//  Required:
+//   projectId: The ID of the project.
+//  Optional:
+//   request: For this method, "request" should be of type GTLMapsEngineIcon.
+//  Upload Parameters:
+//   Maximum size: 100KB
+//   Accepted MIME type(s): */*
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+// Fetches a GTLMapsEngineIcon.
++ (id)queryForProjectsIconsCreateWithProjectId:(NSString *)projectId
+                              uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
+
+// Method: mapsengine.projects.icons.get
+// Return an icon or its associated metadata
+//  Required:
+//   projectId: The ID of the project.
+//   identifier: The ID of the icon.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+//   kGTLAuthScopeMapsEngineReadonly
+// Fetches a GTLMapsEngineIcon.
++ (id)queryForProjectsIconsGetWithProjectId:(NSString *)projectId
+                                 identifier:(NSString *)identifier;
+
+// Method: mapsengine.projects.icons.list
+// Return all icons in the current project
+//  Required:
+//   projectId: The ID of the project.
+//  Optional:
+//   maxResults: The maximum number of items to include in a single response
+//     page. The maximum supported value is 50.
+//   pageToken: The continuation token, used to page through large result sets.
+//     To get the next page of results, set this parameter to the value of
+//     nextPageToken from the previous response.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+//   kGTLAuthScopeMapsEngineReadonly
+// Fetches a GTLMapsEngineIconsListResponse.
++ (id)queryForProjectsIconsListWithProjectId:(NSString *)projectId;
 
 #pragma mark -
 #pragma mark "projects" methods
@@ -488,10 +751,29 @@
 //   pageToken: The continuation token, used to page through large result sets.
 //     To get the next page of results, set this parameter to the value of
 //     nextPageToken from the previous response.
+//   processingStatus: NSString
+//      kGTLMapsEngineProcessingStatusComplete: The raster collection has
+//        completed processing.
+//      kGTLMapsEngineProcessingStatusFailed: The raster collection has failed
+//        processing.
+//      kGTLMapsEngineProcessingStatusNotReady: The raster collection is not
+//        ready for processing.
+//      kGTLMapsEngineProcessingStatusProcessing: The raster collection is
+//        processing.
+//      kGTLMapsEngineProcessingStatusReady: The raster collection is ready for
+//        processing.
 //   projectId: The ID of a Maps Engine project, used to filter the response. To
 //     list all available projects with their IDs, send a Projects: list
 //     request. You can also find your project ID as the value of the
 //     DashboardPlace:cid URL parameter when signed in to mapsengine.google.com.
+//   role: The role parameter indicates that the response should only contain
+//     assets where the current user has the specified level of access.
+//      kGTLMapsEngineRoleOwner: The user can read, write and administer the
+//        asset.
+//      kGTLMapsEngineRoleReader: The user can read the asset.
+//      kGTLMapsEngineRoleWriter: The user can read and write the asset.
+//   search: An unstructured search string used to filter the set of results
+//     based on asset metadata.
 //   tags: A comma separated list of tags. Returned assets will contain all the
 //     tags from the list.
 //  Authorization scope(s):
@@ -534,6 +816,50 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 + (id)queryForRasterCollectionsPatchWithIdentifier:(NSString *)identifier;
+
+#pragma mark -
+#pragma mark "rasterCollections.permissions" methods
+// These create a GTLQueryMapsEngine object.
+
+// Method: mapsengine.rasterCollections.permissions.batchDelete
+// Remove permission entries from an already existing asset.
+//  Required:
+//   identifier: The ID of the asset from which permissions will be removed.
+//  Optional:
+//   request: For this method, "request" should be of type
+//     GTLMapsEnginePermissionsBatchDeleteRequest.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+// Fetches a GTLMapsEnginePermissionsBatchDeleteResponse.
++ (id)queryForRasterCollectionsPermissionsBatchDeleteWithIdentifier:(NSString *)identifier;
+
+// Method: mapsengine.rasterCollections.permissions.batchUpdate
+// Add or update permission entries to an already existing asset.
+// An asset can hold up to 20 different permission entries. Each batchInsert
+// request is atomic.
+//  Required:
+//   identifier: The ID of the asset to which permissions will be added.
+//  Optional:
+//   request: For this method, "request" should be of type
+//     GTLMapsEnginePermissionsBatchUpdateRequest.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+// Fetches a GTLMapsEnginePermissionsBatchUpdateResponse.
++ (id)queryForRasterCollectionsPermissionsBatchUpdateWithIdentifier:(NSString *)identifier;
+
+// Method: mapsengine.rasterCollections.permissions.list
+// Return all of the permissions for the specified asset.
+//  Required:
+//   identifier: The ID of the asset whose permissions will be listed.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+//   kGTLAuthScopeMapsEngineReadonly
+// Fetches a GTLMapsEnginePermissionsListResponse.
++ (id)queryForRasterCollectionsPermissionsListWithIdentifier:(NSString *)identifier;
+
+#pragma mark -
+#pragma mark "rasterCollections" methods
+// These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.rasterCollections.process
 // Process a raster collection asset.
@@ -603,6 +929,14 @@
 //   pageToken: The continuation token, used to page through large result sets.
 //     To get the next page of results, set this parameter to the value of
 //     nextPageToken from the previous response.
+//   role: The role parameter indicates that the response should only contain
+//     assets where the current user has the specified level of access.
+//      kGTLMapsEngineRoleOwner: The user can read, write and administer the
+//        asset.
+//      kGTLMapsEngineRoleReader: The user can read the asset.
+//      kGTLMapsEngineRoleWriter: The user can read and write the asset.
+//   search: An unstructured search string used to filter the set of results
+//     based on asset metadata.
 //   tags: A comma separated list of tags. Returned assets will contain all the
 //     tags from the list.
 //  Authorization scope(s):
@@ -657,6 +991,59 @@
 // Fetches a GTLMapsEngineRaster.
 + (id)queryForRastersGetWithIdentifier:(NSString *)identifier;
 
+// Method: mapsengine.rasters.list
+// Return all rasters readable by the current user.
+//  Required:
+//   projectId: The ID of a Maps Engine project, used to filter the response. To
+//     list all available projects with their IDs, send a Projects: list
+//     request. You can also find your project ID as the value of the
+//     DashboardPlace:cid URL parameter when signed in to mapsengine.google.com.
+//  Optional:
+//   bbox: A bounding box, expressed as "west,south,east,north". If set, only
+//     assets which intersect this bounding box will be returned.
+//   createdAfter: An RFC 3339 formatted date-time value (e.g.
+//     1970-01-01T00:00:00Z). Returned assets will have been created at or after
+//     this time.
+//   createdBefore: An RFC 3339 formatted date-time value (e.g.
+//     1970-01-01T00:00:00Z). Returned assets will have been created at or
+//     before this time.
+//   creatorEmail: An email address representing a user. Returned assets that
+//     have been created by the user associated with the provided email address.
+//   maxResults: The maximum number of items to include in a single response
+//     page. The maximum supported value is 100.
+//   modifiedAfter: An RFC 3339 formatted date-time value (e.g.
+//     1970-01-01T00:00:00Z). Returned assets will have been modified at or
+//     after this time.
+//   modifiedBefore: An RFC 3339 formatted date-time value (e.g.
+//     1970-01-01T00:00:00Z). Returned assets will have been modified at or
+//     before this time.
+//   pageToken: The continuation token, used to page through large result sets.
+//     To get the next page of results, set this parameter to the value of
+//     nextPageToken from the previous response.
+//   processingStatus: NSString
+//      kGTLMapsEngineProcessingStatusComplete: The raster has completed
+//        processing.
+//      kGTLMapsEngineProcessingStatusFailed: The raster has failed processing.
+//      kGTLMapsEngineProcessingStatusNotReady: The raster is not ready for
+//        processing.
+//      kGTLMapsEngineProcessingStatusProcessing: The raster is processing.
+//      kGTLMapsEngineProcessingStatusReady: The raster is ready for processing.
+//   role: The role parameter indicates that the response should only contain
+//     assets where the current user has the specified level of access.
+//      kGTLMapsEngineRoleOwner: The user can read, write and administer the
+//        asset.
+//      kGTLMapsEngineRoleReader: The user can read the asset.
+//      kGTLMapsEngineRoleWriter: The user can read and write the asset.
+//   search: An unstructured search string used to filter the set of results
+//     based on asset metadata.
+//   tags: A comma separated list of tags. Returned assets will contain all the
+//     tags from the list.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+//   kGTLAuthScopeMapsEngineReadonly
+// Fetches a GTLMapsEngineRastersListResponse.
++ (id)queryForRastersListWithProjectId:(NSString *)projectId;
+
 #pragma mark -
 #pragma mark "rasters.parents" methods
 // These create a GTLQueryMapsEngine object.
@@ -690,6 +1077,59 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 + (id)queryForRastersPatchWithIdentifier:(NSString *)identifier;
+
+#pragma mark -
+#pragma mark "rasters.permissions" methods
+// These create a GTLQueryMapsEngine object.
+
+// Method: mapsengine.rasters.permissions.batchDelete
+// Remove permission entries from an already existing asset.
+//  Required:
+//   identifier: The ID of the asset from which permissions will be removed.
+//  Optional:
+//   request: For this method, "request" should be of type
+//     GTLMapsEnginePermissionsBatchDeleteRequest.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+// Fetches a GTLMapsEnginePermissionsBatchDeleteResponse.
++ (id)queryForRastersPermissionsBatchDeleteWithIdentifier:(NSString *)identifier;
+
+// Method: mapsengine.rasters.permissions.batchUpdate
+// Add or update permission entries to an already existing asset.
+// An asset can hold up to 20 different permission entries. Each batchInsert
+// request is atomic.
+//  Required:
+//   identifier: The ID of the asset to which permissions will be added.
+//  Optional:
+//   request: For this method, "request" should be of type
+//     GTLMapsEnginePermissionsBatchUpdateRequest.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+// Fetches a GTLMapsEnginePermissionsBatchUpdateResponse.
++ (id)queryForRastersPermissionsBatchUpdateWithIdentifier:(NSString *)identifier;
+
+// Method: mapsengine.rasters.permissions.list
+// Return all of the permissions for the specified asset.
+//  Required:
+//   identifier: The ID of the asset whose permissions will be listed.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+//   kGTLAuthScopeMapsEngineReadonly
+// Fetches a GTLMapsEnginePermissionsListResponse.
++ (id)queryForRastersPermissionsListWithIdentifier:(NSString *)identifier;
+
+#pragma mark -
+#pragma mark "rasters" methods
+// These create a GTLQueryMapsEngine object.
+
+// Method: mapsengine.rasters.process
+// Process a raster asset.
+//  Required:
+//   identifier: The ID of the raster.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+// Fetches a GTLMapsEngineProcessResponse.
++ (id)queryForRastersProcessWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.rasters.upload
 // Create a skeleton raster asset for upload.
@@ -752,6 +1192,12 @@
 //   identifier: The ID of the table to append the features to.
 //  Optional:
 //   features: NSArray
+//   normalizeGeometries: If true, the server will normalize feature geometries.
+//     It is assumed that the South Pole is exterior to any polygons given. See
+//     here for a list of normalizations. If false, all feature geometries must
+//     be given already normalized. The points in all LinearRings must be listed
+//     in counter-clockwise order, and LinearRings may not intersect. (Default
+//     true)
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 + (id)queryForTablesFeaturesBatchInsertWithIdentifier:(NSString *)identifier;
@@ -777,6 +1223,12 @@
 //   identifier: The ID of the table containing the features to be patched.
 //  Optional:
 //   features: NSArray
+//   normalizeGeometries: If true, the server will normalize feature geometries.
+//     It is assumed that the South Pole is exterior to any polygons given. See
+//     here for a list of normalizations. If false, all feature geometries must
+//     be given already normalized. The points in all LinearRings must be listed
+//     in counter-clockwise order, and LinearRings may not intersect. (Default
+//     true)
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 + (id)queryForTablesFeaturesBatchPatchWithIdentifier:(NSString *)identifier;
@@ -893,10 +1345,26 @@
 //   pageToken: The continuation token, used to page through large result sets.
 //     To get the next page of results, set this parameter to the value of
 //     nextPageToken from the previous response.
+//   processingStatus: NSString
+//      kGTLMapsEngineProcessingStatusComplete: The table has completed
+//        processing.
+//      kGTLMapsEngineProcessingStatusFailed: The table has failed processing.
+//      kGTLMapsEngineProcessingStatusNotReady: The table is not ready for
+//        processing.
+//      kGTLMapsEngineProcessingStatusProcessing: The table is processing.
+//      kGTLMapsEngineProcessingStatusReady: The table is ready for processing.
 //   projectId: The ID of a Maps Engine project, used to filter the response. To
 //     list all available projects with their IDs, send a Projects: list
 //     request. You can also find your project ID as the value of the
 //     DashboardPlace:cid URL parameter when signed in to mapsengine.google.com.
+//   role: The role parameter indicates that the response should only contain
+//     assets where the current user has the specified level of access.
+//      kGTLMapsEngineRoleOwner: The user can read, write and administer the
+//        asset.
+//      kGTLMapsEngineRoleReader: The user can read the asset.
+//      kGTLMapsEngineRoleWriter: The user can read and write the asset.
+//   search: An unstructured search string used to filter the set of results
+//     based on asset metadata.
 //   tags: A comma separated list of tags. Returned assets will contain all the
 //     tags from the list.
 //  Authorization scope(s):
@@ -938,6 +1406,59 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 + (id)queryForTablesPatchWithIdentifier:(NSString *)identifier;
+
+#pragma mark -
+#pragma mark "tables.permissions" methods
+// These create a GTLQueryMapsEngine object.
+
+// Method: mapsengine.tables.permissions.batchDelete
+// Remove permission entries from an already existing asset.
+//  Required:
+//   identifier: The ID of the asset from which permissions will be removed.
+//  Optional:
+//   request: For this method, "request" should be of type
+//     GTLMapsEnginePermissionsBatchDeleteRequest.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+// Fetches a GTLMapsEnginePermissionsBatchDeleteResponse.
++ (id)queryForTablesPermissionsBatchDeleteWithIdentifier:(NSString *)identifier;
+
+// Method: mapsengine.tables.permissions.batchUpdate
+// Add or update permission entries to an already existing asset.
+// An asset can hold up to 20 different permission entries. Each batchInsert
+// request is atomic.
+//  Required:
+//   identifier: The ID of the asset to which permissions will be added.
+//  Optional:
+//   request: For this method, "request" should be of type
+//     GTLMapsEnginePermissionsBatchUpdateRequest.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+// Fetches a GTLMapsEnginePermissionsBatchUpdateResponse.
++ (id)queryForTablesPermissionsBatchUpdateWithIdentifier:(NSString *)identifier;
+
+// Method: mapsengine.tables.permissions.list
+// Return all of the permissions for the specified asset.
+//  Required:
+//   identifier: The ID of the asset whose permissions will be listed.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+//   kGTLAuthScopeMapsEngineReadonly
+// Fetches a GTLMapsEnginePermissionsListResponse.
++ (id)queryForTablesPermissionsListWithIdentifier:(NSString *)identifier;
+
+#pragma mark -
+#pragma mark "tables" methods
+// These create a GTLQueryMapsEngine object.
+
+// Method: mapsengine.tables.process
+// Process a table asset.
+//  Required:
+//   identifier: The ID of the table.
+//  Authorization scope(s):
+//   kGTLAuthScopeMapsEngine
+// Fetches a GTLMapsEngineProcessResponse.
++ (id)queryForTablesProcessWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.tables.upload
 // Create a placeholder table asset to which table files can be uploaded.

@@ -55,9 +55,7 @@
 @property (copy) NSString *domain;
 
 // The email address of the user this permission refers to. This is an
-// output-only field which is present when the permission type is user and the
-// given user's Google+ profile privacy settings allow exposing their email
-// address.
+// output-only field which is present when the permission type is user.
 @property (copy) NSString *emailAddress;
 
 // The ETag of the permission.

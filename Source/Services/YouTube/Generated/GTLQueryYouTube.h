@@ -606,7 +606,7 @@
 //     credentials for each separate channel.
 //   walltime: The walltime parameter specifies the wall clock time at which the
 //     specified slate change will occur. The value is specified in ISO 8601
-//     (YYYY-MM-DDThh:mm:ss.sZ) format.
+//     (YYYY-MM-DDThh:mm:ss.sssZ) format.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 // Fetches a GTLYouTubeLiveBroadcast.
