@@ -79,8 +79,9 @@
 //   instance: Cloud SQL instance ID. This does not include the project ID.
 //   backupConfiguration: Identifier for the backup configuration. This gets
 //     generated automatically when a backup configuration is created.
-//   dueTime: The time when this run is due to start in RFC 3339 format, for
-//     example 2012-11-15T16:19:00.094Z.
+//   dueTime: The start time of the four-hour backup window. The backup can
+//     occur any time in the window. The time is in RFC 3339 format, for example
+//     2012-11-15T16:19:00.094Z.
 //  Authorization scope(s):
 //   kGTLAuthScopeSQLAdminSqlserviceAdmin
 // Fetches a GTLSQLAdminBackupRun.
@@ -266,8 +267,9 @@
 //   instance: Cloud SQL instance ID. This does not include the project ID.
 //   backupConfiguration: The identifier of the backup configuration. This gets
 //     generated automatically when a backup configuration is created.
-//   dueTime: The time when this run is due to start in RFC 3339 format, for
-//     example 2012-11-15T16:19:00.094Z.
+//   dueTime: The start time of the four-hour backup window. The backup can
+//     occur any time in the window. The time is in RFC 3339 format, for example
+//     2012-11-15T16:19:00.094Z.
 //  Authorization scope(s):
 //   kGTLAuthScopeSQLAdminSqlserviceAdmin
 // Fetches a GTLSQLAdminInstancesRestoreBackupResponse.

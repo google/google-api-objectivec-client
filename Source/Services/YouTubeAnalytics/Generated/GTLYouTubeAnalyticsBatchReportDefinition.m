@@ -14,39 +14,39 @@
  */
 
 //
-//  GTLSQLAdminIpConfiguration.m
+//  GTLYouTubeAnalyticsBatchReportDefinition.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud SQL Administration API (sqladmin/v1beta3)
+//   YouTube Analytics API (youtubeAnalytics/v1)
 // Description:
-//   API for Cloud SQL database instance management.
+//   Retrieve your YouTube Analytics reports.
 // Documentation:
-//   https://developers.google.com/cloud-sql/docs/admin-api/
+//   http://developers.google.com/youtube/analytics/
 // Classes:
-//   GTLSQLAdminIpConfiguration (0 custom class methods, 4 custom properties)
+//   GTLYouTubeAnalyticsBatchReportDefinition (0 custom class methods, 5 custom properties)
 
-#import "GTLSQLAdminIpConfiguration.h"
+#import "GTLYouTubeAnalyticsBatchReportDefinition.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLSQLAdminIpConfiguration
+//   GTLYouTubeAnalyticsBatchReportDefinition
 //
 
-@implementation GTLSQLAdminIpConfiguration
-@dynamic authorizedNetworks, enabled, kind, requireSsl;
+@implementation GTLYouTubeAnalyticsBatchReportDefinition
+@dynamic identifier, kind, name, status, type;
 
-+ (NSDictionary *)arrayPropertyToClassMap {
++ (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[NSString class]
-                                forKey:@"authorizedNetworks"];
+    [NSDictionary dictionaryWithObject:@"id"
+                                forKey:@"identifier"];
   return map;
 }
 
 + (void)load {
-  [self registerObjectClassForKind:@"sql#ipConfiguration"];
+  [self registerObjectClassForKind:@"youtubeAnalytics#batchReportDefinition"];
 }
 
 @end

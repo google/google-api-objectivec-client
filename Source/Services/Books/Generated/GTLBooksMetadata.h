@@ -14,19 +14,20 @@
  */
 
 //
-//  GTLYouTubeAnalyticsBatchReportDefinitionList.h
+//  GTLBooksMetadata.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   YouTube Analytics API (youtubeAnalytics/v1)
+//   Books API (books/v1)
 // Description:
-//   Retrieve your YouTube Analytics reports.
+//   Lets you search for books and manage your Google Books library.
 // Documentation:
-//   http://developers.google.com/youtube/analytics/
+//   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLYouTubeAnalyticsBatchReportDefinitionList (0 custom class methods, 2 custom properties)
+//   GTLBooksMetadata (0 custom class methods, 2 custom properties)
+//   GTLBooksMetadataItemsItem (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,27 +35,36 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLYouTubeAnalyticsBatchReportDefinition;
+@class GTLBooksMetadataItemsItem;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeAnalyticsBatchReportDefinitionList
+//   GTLBooksMetadata
 //
-
-// A paginated list of batchReportDefinition resources returned in response to a
-// youtubeAnalytics.batchReportDefinitions.list request.
 
 // This class supports NSFastEnumeration over its "items" property. It also
 // supports -itemAtIndex: to retrieve individual objects from "items".
 
-@interface GTLYouTubeAnalyticsBatchReportDefinitionList : GTLCollectionObject
+@interface GTLBooksMetadata : GTLCollectionObject
 
-// A list of batchReportDefinition resources that match the request criteria.
-@property (retain) NSArray *items;  // of GTLYouTubeAnalyticsBatchReportDefinition
+// A list of offline dictionary metadata.
+@property (retain) NSArray *items;  // of GTLBooksMetadataItemsItem
 
-// This value specifies the type of data included in the API response. For the
-// list method, the kind property value is
-// youtubeAnalytics#batchReportDefinitionList.
+// Resource type.
 @property (copy) NSString *kind;
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksMetadataItemsItem
+//
+
+@interface GTLBooksMetadataItemsItem : GTLObject
+@property (copy) NSString *downloadUrl;
+@property (copy) NSString *encryptedKey;
+@property (copy) NSString *language;
+@property (retain) NSNumber *size;  // longLongValue
+@property (retain) NSNumber *version;  // longLongValue
 @end

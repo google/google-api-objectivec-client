@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeAnalyticsBatchReportTemplate.h
+//  GTLYouTubeAnalyticsBatchReport.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,9 +26,9 @@
 // Documentation:
 //   http://developers.google.com/youtube/analytics/
 // Classes:
-//   GTLYouTubeAnalyticsBatchReportTemplate (0 custom class methods, 5 custom properties)
-//   GTLYouTubeAnalyticsBatchReportTemplateOutputsItem (0 custom class methods, 3 custom properties)
-//   GTLYouTubeAnalyticsBatchReportTemplateTimeSpan (0 custom class methods, 2 custom properties)
+//   GTLYouTubeAnalyticsBatchReport (0 custom class methods, 6 custom properties)
+//   GTLYouTubeAnalyticsBatchReportOutputsItem (0 custom class methods, 3 custom properties)
+//   GTLYouTubeAnalyticsBatchReportTimeSpan (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,31 +36,35 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLYouTubeAnalyticsBatchReportTemplateOutputsItem;
-@class GTLYouTubeAnalyticsBatchReportTemplateTimeSpan;
+@class GTLYouTubeAnalyticsBatchReportOutputsItem;
+@class GTLYouTubeAnalyticsBatchReportTimeSpan;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeAnalyticsBatchReportTemplate
+//   GTLYouTubeAnalyticsBatchReport
 //
 
 // Contains single batchReport resource.
 
-@interface GTLYouTubeAnalyticsBatchReportTemplate : GTLObject
+@interface GTLYouTubeAnalyticsBatchReport : GTLObject
 
 // The ID that YouTube assigns and uses to uniquely identify the report.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
+// This value specifies the type of data of this item. For batch report the kind
+// property value is youtubeAnalytics#batchReport.
+@property (copy) NSString *kind;
+
 // Report outputs.
-@property (retain) NSArray *outputs;  // of GTLYouTubeAnalyticsBatchReportTemplateOutputsItem
+@property (retain) NSArray *outputs;  // of GTLYouTubeAnalyticsBatchReportOutputsItem
 
 // The ID of the the report definition.
 @property (copy) NSString *reportId;
 
 // Period included in the report. For reports containing all entities endTime is
 // not set. Both startTime and endTime are inclusive.
-@property (retain) GTLYouTubeAnalyticsBatchReportTemplateTimeSpan *timeSpan;
+@property (retain) GTLYouTubeAnalyticsBatchReportTimeSpan *timeSpan;
 
 // The time when the report was updated.
 @property (retain) GTLDateTime *timeUpdated;
@@ -70,10 +74,10 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeAnalyticsBatchReportTemplateOutputsItem
+//   GTLYouTubeAnalyticsBatchReportOutputsItem
 //
 
-@interface GTLYouTubeAnalyticsBatchReportTemplateOutputsItem : GTLObject
+@interface GTLYouTubeAnalyticsBatchReportOutputsItem : GTLObject
 
 // Cloud storage URL to download this report. This URL is valid for 30 minutes.
 @property (copy) NSString *downloadUrl;
@@ -89,10 +93,10 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeAnalyticsBatchReportTemplateTimeSpan
+//   GTLYouTubeAnalyticsBatchReportTimeSpan
 //
 
-@interface GTLYouTubeAnalyticsBatchReportTemplateTimeSpan : GTLObject
+@interface GTLYouTubeAnalyticsBatchReportTimeSpan : GTLObject
 
 // End of the period included in the report. Inclusive. For reports containing
 // all entities endTime is not set.

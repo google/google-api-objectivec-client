@@ -36,9 +36,9 @@
 #endif
 
 // Authorization scope
-// View and manage your Google Maps Engine data
+// View and manage your Google My Maps data
 GTL_EXTERN NSString * const kGTLAuthScopeMapsEngine;          // "https://www.googleapis.com/auth/mapsengine"
-// View your Google Maps Engine data
+// View your Google My Maps data
 GTL_EXTERN NSString * const kGTLAuthScopeMapsEngineReadonly;  // "https://www.googleapis.com/auth/mapsengine.readonly"
 
 // GTLMapsEngineAcquisitionTime - Precision

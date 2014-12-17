@@ -14,19 +14,20 @@
  */
 
 //
-//  GTLSQLAdminIpConfiguration.h
+//  GTLBooksCategory.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud SQL Administration API (sqladmin/v1beta3)
+//   Books API (books/v1)
 // Description:
-//   API for Cloud SQL database instance management.
+//   Lets you search for books and manage your Google Books library.
 // Documentation:
-//   https://developers.google.com/cloud-sql/docs/admin-api/
+//   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLSQLAdminIpConfiguration (0 custom class methods, 4 custom properties)
+//   GTLBooksCategory (0 custom class methods, 2 custom properties)
+//   GTLBooksCategoryItemsItem (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,28 +35,34 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLBooksCategoryItemsItem;
+
 // ----------------------------------------------------------------------------
 //
-//   GTLSQLAdminIpConfiguration
+//   GTLBooksCategory
 //
 
-// IP Management configuration.
+// This class supports NSFastEnumeration over its "items" property. It also
+// supports -itemAtIndex: to retrieve individual objects from "items".
 
-@interface GTLSQLAdminIpConfiguration : GTLObject
+@interface GTLBooksCategory : GTLCollectionObject
 
-// The list of external networks that are allowed to connect to the instance
-// using the IP. In CIDR notation, also known as 'slash' notation (e.g.
-// 192.168.100.0/24).
-@property (retain) NSArray *authorizedNetworks;  // of NSString
+// A list of onboarding categories.
+@property (retain) NSArray *items;  // of GTLBooksCategoryItemsItem
 
-// Whether the instance should be assigned an IP address or not.
-@property (retain) NSNumber *enabled;  // boolValue
-
-// This is always sql#ipConfiguration.
+// Resource type.
 @property (copy) NSString *kind;
 
-// Whether the mysqld should default to 'REQUIRE X509' for users connecting over
-// IP.
-@property (retain) NSNumber *requireSsl;  // boolValue
+@end
 
+
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksCategoryItemsItem
+//
+
+@interface GTLBooksCategoryItemsItem : GTLObject
+@property (copy) NSString *badgeUrl;
+@property (copy) NSString *categoryId;
+@property (copy) NSString *name;
 @end

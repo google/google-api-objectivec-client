@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/google-apps/calendar/firstapp
 // Classes:
-//   GTLCalendarEventAttachment (0 custom class methods, 1 custom properties)
+//   GTLCalendarEventAttachment (0 custom class methods, 0 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -40,8 +40,4 @@
 //
 
 @interface GTLCalendarEventAttachment : GTLObject
-
-// File name.
-@property (copy) NSString *title;
-
 @end

@@ -38,10 +38,10 @@
 + (NSArray *)checkClasses {
   NSArray *classes = [NSArray arrayWithObjects:
                       [GTLQueryYouTubeAnalytics class],
+                      [GTLYouTubeAnalyticsBatchReport class],
+                      [GTLYouTubeAnalyticsBatchReportDefinition class],
                       [GTLYouTubeAnalyticsBatchReportDefinitionList class],
-                      [GTLYouTubeAnalyticsBatchReportDefinitionTemplate class],
                       [GTLYouTubeAnalyticsBatchReportList class],
-                      [GTLYouTubeAnalyticsBatchReportTemplate class],
                       [GTLYouTubeAnalyticsResultTable class],
                       nil];
   return classes;

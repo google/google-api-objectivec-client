@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeContentRating (0 custom class methods, 63 custom properties)
+//   GTLYouTubeContentRating (0 custom class methods, 64 custom properties)
 
 #import "GTLYouTubeContentRating.h"
 
@@ -39,14 +39,22 @@
 @dynamic acbRating, agcomRating, anatelRating, bbfcRating, bfvcRating,
          bmukkRating, catvfrRating, catvRating, cbfcRating, cccRating,
          cceRating, chfilmRating, chvrsRating, cicfRating, cnaRating, csaRating,
-         cscfRating, czfilmRating, djctqRating, eefilmRating, egfilmRating,
-         eirinRating, fcbmRating, fcoRating, fmocRating, fpbRating, fskRating,
-         grfilmRating, icaaRating, ifcoRating, ilfilmRating, incaaRating,
-         kfcbRating, kijkwijzerRating, kmrbRating, lsfRating, mccaaRating,
-         mccypRating, mdaRating, medietilsynetRating, mekuRating, mibacRating,
-         mocRating, moctwRating, mpaaRating, mtrcbRating, nbcplRating,
-         nbcRating, nfrcRating, nfvcbRating, nkclvRating, oflcRating,
-         pefilmRating, rcnofRating, resorteviolenciaRating, rtcRating,
-         rteRating, russiaRating, skfilmRating, smaisRating, smsaRating,
-         tvpgRating, ytRating;
+         cscfRating, czfilmRating, djctqRating, djctqRatingReasons,
+         eefilmRating, egfilmRating, eirinRating, fcbmRating, fcoRating,
+         fmocRating, fpbRating, fskRating, grfilmRating, icaaRating, ifcoRating,
+         ilfilmRating, incaaRating, kfcbRating, kijkwijzerRating, kmrbRating,
+         lsfRating, mccaaRating, mccypRating, mdaRating, medietilsynetRating,
+         mekuRating, mibacRating, mocRating, moctwRating, mpaaRating,
+         mtrcbRating, nbcplRating, nbcRating, nfrcRating, nfvcbRating,
+         nkclvRating, oflcRating, pefilmRating, rcnofRating,
+         resorteviolenciaRating, rtcRating, rteRating, russiaRating,
+         skfilmRating, smaisRating, smsaRating, tvpgRating, ytRating;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[NSString class]
+                                forKey:@"djctqRatingReasons"];
+  return map;
+}
+
 @end

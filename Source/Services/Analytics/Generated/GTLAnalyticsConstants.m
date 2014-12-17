@@ -29,11 +29,12 @@
 #import "GTLAnalyticsConstants.h"
 
 // Authorization scope
-NSString * const kGTLAuthScopeAnalytics            = @"https://www.googleapis.com/auth/analytics";
-NSString * const kGTLAuthScopeAnalyticsEdit        = @"https://www.googleapis.com/auth/analytics.edit";
-NSString * const kGTLAuthScopeAnalyticsManageUsers = @"https://www.googleapis.com/auth/analytics.manage.users";
-NSString * const kGTLAuthScopeAnalyticsProvision   = @"https://www.googleapis.com/auth/analytics.provision";
-NSString * const kGTLAuthScopeAnalyticsReadonly    = @"https://www.googleapis.com/auth/analytics.readonly";
+NSString * const kGTLAuthScopeAnalytics                    = @"https://www.googleapis.com/auth/analytics";
+NSString * const kGTLAuthScopeAnalyticsEdit                = @"https://www.googleapis.com/auth/analytics.edit";
+NSString * const kGTLAuthScopeAnalyticsManageUsers         = @"https://www.googleapis.com/auth/analytics.manage.users";
+NSString * const kGTLAuthScopeAnalyticsManageUsersReadonly = @"https://www.googleapis.com/auth/analytics.manage.users.readonly";
+NSString * const kGTLAuthScopeAnalyticsProvision           = @"https://www.googleapis.com/auth/analytics.provision";
+NSString * const kGTLAuthScopeAnalyticsReadonly            = @"https://www.googleapis.com/auth/analytics.readonly";
 
 // GTLQueryAnalytics - Output
 NSString * const kGTLAnalyticsOutputDataTable = @"dataTable";

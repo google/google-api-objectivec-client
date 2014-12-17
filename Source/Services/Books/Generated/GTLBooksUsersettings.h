@@ -14,19 +14,20 @@
  */
 
 //
-//  GTLBigqueryJobReference.h
+//  GTLBooksUsersettings.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   BigQuery API (bigquery/v2)
+//   Books API (books/v1)
 // Description:
-//   A data platform for customers to create, manage, share and query data.
+//   Lets you search for books and manage your Google Books library.
 // Documentation:
-//   https://developers.google.com/bigquery/docs/overview
+//   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLBigqueryJobReference (0 custom class methods, 2 custom properties)
+//   GTLBooksUsersettings (0 custom class methods, 2 custom properties)
+//   GTLBooksUsersettingsNotesExport (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,19 +35,30 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLBooksUsersettingsNotesExport;
+
 // ----------------------------------------------------------------------------
 //
-//   GTLBigqueryJobReference
+//   GTLBooksUsersettings
 //
 
-@interface GTLBigqueryJobReference : GTLObject
+@interface GTLBooksUsersettings : GTLObject
 
-// [Required] The ID of the job. The ID must contain only letters (a-z, A-Z),
-// numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024
-// characters.
-@property (copy) NSString *jobId;
+// Resource type.
+@property (copy) NSString *kind;
 
-// [Required] The ID of the project containing this job.
-@property (copy) NSString *projectId;
+// User settings in sub-objects, each for different purposes.
+@property (retain) GTLBooksUsersettingsNotesExport *notesExport;
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksUsersettingsNotesExport
+//
+
+@interface GTLBooksUsersettingsNotesExport : GTLObject
+@property (copy) NSString *folderName;
+@property (retain) NSNumber *isEnabled;  // boolValue
 @end

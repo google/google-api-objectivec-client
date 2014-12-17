@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,13 +41,14 @@
 
 @interface GTLBigqueryTableReference : GTLObject
 
-// [Required] ID of the dataset containing the table.
+// [Required] The ID of the dataset containing this table.
 @property (copy) NSString *datasetId;
 
-// [Required] ID of the project billed for storage of the table.
+// [Required] The ID of the project containing this table.
 @property (copy) NSString *projectId;
 
-// [Required] ID of the table.
+// [Required] The ID of the table. The ID must contain only letters (a-z, A-Z),
+// numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
 @property (copy) NSString *tableId;
 
 @end

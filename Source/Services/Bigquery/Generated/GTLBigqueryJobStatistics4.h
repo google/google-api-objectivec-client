@@ -14,39 +14,36 @@
  */
 
 //
-//  GTLSQLAdminIpConfiguration.m
+//  GTLBigqueryJobStatistics4.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud SQL Administration API (sqladmin/v1beta3)
+//   BigQuery API (bigquery/v2)
 // Description:
-//   API for Cloud SQL database instance management.
+//   A data platform for customers to create, manage, share and query data.
 // Documentation:
-//   https://developers.google.com/cloud-sql/docs/admin-api/
+//   https://developers.google.com/bigquery/docs/overview
 // Classes:
-//   GTLSQLAdminIpConfiguration (0 custom class methods, 4 custom properties)
+//   GTLBigqueryJobStatistics4 (0 custom class methods, 1 custom properties)
 
-#import "GTLSQLAdminIpConfiguration.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLSQLAdminIpConfiguration
+//   GTLBigqueryJobStatistics4
 //
 
-@implementation GTLSQLAdminIpConfiguration
-@dynamic authorizedNetworks, enabled, kind, requireSsl;
+@interface GTLBigqueryJobStatistics4 : GTLObject
 
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[NSString class]
-                                forKey:@"authorizedNetworks"];
-  return map;
-}
-
-+ (void)load {
-  [self registerObjectClassForKind:@"sql#ipConfiguration"];
-}
+// [Output-only] Number of files per destination URI or URI pattern specified in
+// the extract configuration. These values will be in the same order as the URIs
+// specified in the 'destinationUris' field.
+@property (retain) NSArray *destinationUriFileCounts;  // of NSNumber (longLongValue)
 
 @end

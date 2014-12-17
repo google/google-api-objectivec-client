@@ -31,10 +31,10 @@
 
 #import "GTLYouTubeAnalyticsConstants.m"
 
+#import "GTLYouTubeAnalyticsBatchReport.m"
+#import "GTLYouTubeAnalyticsBatchReportDefinition.m"
 #import "GTLYouTubeAnalyticsBatchReportDefinitionList.m"
-#import "GTLYouTubeAnalyticsBatchReportDefinitionTemplate.m"
 #import "GTLYouTubeAnalyticsBatchReportList.m"
-#import "GTLYouTubeAnalyticsBatchReportTemplate.m"
 #import "GTLYouTubeAnalyticsResultTable.m"
 
 #import "GTLQueryYouTubeAnalytics.m"

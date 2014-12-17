@@ -14,48 +14,60 @@
  */
 
 //
-//  GTLYouTubeVideoGetRatingResponse.m
+//  GTLBooksMetadata.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   YouTube Data API (youtube/v3)
+//   Books API (books/v1)
 // Description:
-//   Programmatic access to YouTube features.
+//   Lets you search for books and manage your Google Books library.
 // Documentation:
-//   https://developers.google.com/youtube/v3
+//   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLYouTubeVideoGetRatingResponse (0 custom class methods, 5 custom properties)
+//   GTLBooksMetadata (0 custom class methods, 2 custom properties)
+//   GTLBooksMetadataItemsItem (0 custom class methods, 5 custom properties)
 
-#import "GTLYouTubeVideoGetRatingResponse.h"
-
-#import "GTLYouTubeVideoRating.h"
+#import "GTLBooksMetadata.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoGetRatingResponse
+//   GTLBooksMetadata
 //
 
-@implementation GTLYouTubeVideoGetRatingResponse
-@dynamic ETag, eventId, items, kind, visitorId;
-
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"etag"
-                                forKey:@"ETag"];
-  return map;
-}
+@implementation GTLBooksMetadata
+@dynamic items, kind;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLYouTubeVideoRating class]
+    [NSDictionary dictionaryWithObject:[GTLBooksMetadataItemsItem class]
                                 forKey:@"items"];
   return map;
 }
 
 + (void)load {
-  [self registerObjectClassForKind:@"youtube#videoGetRatingResponse"];
+  [self registerObjectClassForKind:@"dictionary#metadata"];
+}
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksMetadataItemsItem
+//
+
+@implementation GTLBooksMetadataItemsItem
+@dynamic downloadUrl, encryptedKey, language, size, version;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      @"download_url", @"downloadUrl",
+      @"encrypted_key", @"encryptedKey",
+      nil];
+  return map;
 }
 
 @end

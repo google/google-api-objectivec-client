@@ -74,7 +74,8 @@
 @property (retain) NSNumber *eCommerceTracking;  // boolValue
 
 // Indicates whether enhanced ecommerce tracking is enabled for this view
-// (profile).
+// (profile). This property can only be enabled if ecommerce tracking is
+// enabled.
 @property (retain) NSNumber *enhancedECommerceTracking;  // boolValue
 
 // The query parameters that are excluded from this view (profile).
