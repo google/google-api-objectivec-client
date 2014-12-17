@@ -211,10 +211,10 @@ static NSMutableDictionary *gQueryArrayPropertyToClassMapCache = nil;
   // note that initialize is guaranteed by the runtime to be called in a
   // thread-safe manner
   if (gQueryParameterNameMapCache == nil) {
-    gQueryParameterNameMapCache = [GTLUtilities newStaticDictionary];
+    gQueryParameterNameMapCache = [[NSMutableDictionary alloc] init];
   }
   if (gQueryArrayPropertyToClassMapCache == nil) {
-    gQueryArrayPropertyToClassMapCache = [GTLUtilities newStaticDictionary];
+    gQueryArrayPropertyToClassMapCache = [[NSMutableDictionary alloc] init];
   }
 }
 

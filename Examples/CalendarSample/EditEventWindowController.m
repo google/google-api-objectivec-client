@@ -121,17 +121,9 @@
   completionHandler_ = [handler copy];
   event_ = [event retain];
 
-  [NSApp beginSheet:[self window]
-     modalForWindow:window
-      modalDelegate:self
-     didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:)
-        contextInfo:nil];
+  [window beginSheet:[self window] completionHandler:nil];
 
   [self retain];
-}
-
-- (void)sheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode  contextInfo:(void  *)contextInfo {
-
 }
 
 - (void)closeDialogWithReturnCode:(NSInteger)returnCode {
@@ -143,17 +135,19 @@
     completionHandler_ = nil;
   }
 
-  [[self window] orderOut:self];
-  [NSApp endSheet:[self window]];
+  NSWindow *sheet = [self window];
+  NSWindow *parent = [sheet sheetParent];
+  [parent endSheet:sheet];
+
   [self autorelease];
 }
 
 - (IBAction)saveButtonClicked:(id)sender {
-  [self closeDialogWithReturnCode:NSOKButton];
+  [self closeDialogWithReturnCode:NSModalResponseOK];
 }
 
 - (IBAction)cancelButtonClicked:(id)sender {
-  [self closeDialogWithReturnCode:NSCancelButton];
+  [self closeDialogWithReturnCode:NSModalResponseCancel];
 }
 
 @end

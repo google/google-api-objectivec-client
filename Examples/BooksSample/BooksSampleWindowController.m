@@ -196,21 +196,18 @@ NSString *const kKeychainItemName = @"Books Sample: Google Books";
 - (IBAction)removeAllFromMyLibraryClicked:(id)sender {
   // Make the user confirm that the all books on the shelf should be deleted
   GTLBooksBookshelf *shelf = [self selectedBookshelf];
-  NSBeginAlertSheet(@"Delete All", @"Delete", @"Cancel", nil,
-                    [self window], self,
-                    @selector(deleteAllSheetDidEnd:returnCode:contextInfo:),
-                    nil, nil, @"Delete %@ volumes for shelf \"%@\"?",
-                    shelf.volumeCount, shelf.title);
+  NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+  alert.messageText = [NSString stringWithFormat:@"Delete %@ volumes for shelf \"%@\"?",
+                       shelf.volumeCount, shelf.title];
+  [alert addButtonWithTitle:@"Delete"];
+  [alert addButtonWithTitle:@"Cancel"];
+  [alert beginSheetModalForWindow:[self window]
+                completionHandler:^(NSModalResponse returnCode) {
+                  if (returnCode == NSAlertFirstButtonReturn) {
+                    [self removeAllMyVolumes];
+                  }
+                }];
 };
-
-- (void)deleteAllSheetDidEnd:(NSWindow *)sheet
-                  returnCode:(int)returnCode
-                 contextInfo:(void *)contextInfo {
-  if (returnCode == NSAlertDefaultReturn) {
-    [self removeAllMyVolumes];
-  }
-}
-
 
 - (IBAction)APIConsoleClicked:(id)sender {
   NSURL *url = [NSURL URLWithString:@"https://code.google.com/apis/console"];
@@ -340,7 +337,7 @@ NSString *const kKeychainItemName = @"Books Sample: Google Books";
     // Make a pop-up menu item including the bookshelf name and
     // the number of books
     NSString *title = [NSString stringWithFormat:@"%@ (%@)",
-                       shelf.title, shelf.volumeCount];
+                       shelf.title, shelf.volumeCount ?: @"-"];
 
     NSMenuItem *menuItem = [menu addItemWithTitle:title
                                            action:@selector(bookshelfPopupChanged:)
@@ -579,6 +576,7 @@ NSString *const kKeychainItemName = @"Books Sample: Google Books";
 
       // Book image URLs are not https so they can't be authorized
       fetcher.authorizer = nil;
+      fetcher.allowedInsecureSchemes = @[ @"http" ];
       [fetcher setCommentWithFormat:@"image for volume \"%@\"",
        volume.volumeInfo.title];
 
@@ -723,8 +721,11 @@ NSString *const kKeychainItemName = @"Books Sample: Google Books";
                                      arguments:argList] autorelease];
     va_end(argList);
   }
-  NSBeginAlertSheet(title, nil, nil, nil, [self window], nil, nil,
-                    nil, nil, @"%@", result);
+  NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+  alert.messageText = title;
+  alert.informativeText = result;
+  [alert beginSheetModalForWindow:[self window]
+                completionHandler:nil];
 }
 
 #pragma mark Client ID Sheet
@@ -742,20 +743,11 @@ NSString *const kKeychainItemName = @"Books Sample: Google Books";
 
 - (IBAction)clientIDClicked:(id)sender {
   // Show the sheet for developers to enter their client ID and client secret
-  [NSApp beginSheet:clientIDSheet_
-     modalForWindow:[self window]
-      modalDelegate:self
-     didEndSelector:@selector(clientIDSheetDidEnd:returnCode:contextInfo:)
-        contextInfo:NULL];
+  [[self window] beginSheet:clientIDSheet_ completionHandler:nil];
 }
 
 - (IBAction)clientIDDoneClicked:(id)sender {
-  [NSApp endSheet:clientIDSheet_ returnCode:NSOKButton];
-}
-
-- (void)clientIDSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
-  [sheet orderOut:self];
-  [self updateUI];
+  [[self window] endSheet:[sender window]];
 }
 
 #pragma mark Text field delegate methods

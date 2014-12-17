@@ -170,7 +170,7 @@ NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
   [openPanel beginSheetModalForWindow:[self window]
                     completionHandler:^(NSInteger result) {
     // Callback
-    if (result == NSOKButton) {
+    if (result == NSFileHandlingPanelOKButton) {
       // The user chose a file.
       NSString *path = [[openPanel URL] path];
       [_uploadPathField setStringValue:path];
@@ -669,8 +669,11 @@ NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
                                     arguments:argList];
     va_end(argList);
   }
-  NSBeginAlertSheet(title, nil, nil, nil, [self window], nil, nil,
-                    nil, nil, @"%@", result);
+  NSAlert *alert = [[NSAlert alloc] init];
+  alert.messageText = title;
+  alert.informativeText = result;
+  [alert beginSheetModalForWindow:[self window]
+                completionHandler:nil];
 }
 
 #pragma mark - Client ID Sheet
@@ -688,20 +691,11 @@ NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
 
 - (IBAction)clientIDClicked:(id)sender {
   // Show the sheet for developers to enter their client ID and client secret
-  [NSApp beginSheet:_clientIDSheet
-     modalForWindow:[self window]
-      modalDelegate:self
-     didEndSelector:@selector(clientIDSheetDidEnd:returnCode:contextInfo:)
-        contextInfo:NULL];
+  [[self window] beginSheet:_clientIDSheet completionHandler:nil];
 }
 
 - (IBAction)clientIDDoneClicked:(id)sender {
-  [NSApp endSheet:_clientIDSheet returnCode:NSOKButton];
-}
-
-- (void)clientIDSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
-  [sheet orderOut:self];
-  [self updateUI];
+  [[self window] endSheet:[sender window]];
 }
 
 #pragma mark - Text field delegate methods

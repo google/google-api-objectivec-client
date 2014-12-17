@@ -179,18 +179,16 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
   GTLDriveFile *file = [self selectedFileListEntry];
   NSString *title = file.title;
 
-  NSBeginAlertSheet(@"Delete", nil, @"Cancel", nil,
-                    [self window], self,
-                    @selector(deleteFileSheetDidEnd:returnCode:contextInfo:),
-                    nil, nil, @"Delete \"%@\"?", title);
-}
-
-- (void)deleteFileSheetDidEnd:(NSWindow *)sheet
-                   returnCode:(int)returnCode
-                  contextInfo:(void *)contextInfo {
-  if (returnCode == NSAlertDefaultReturn) {
-    [self deleteSelectedFile];
-  }
+  NSAlert *alert = [[NSAlert alloc] init];
+  alert.messageText = [NSString stringWithFormat:@"Delete \"%@\"?", title];
+  [alert addButtonWithTitle:@"Delete"];
+  [alert addButtonWithTitle:@"Cancel"];
+  [alert beginSheetModalForWindow:[self window]
+                completionHandler:^(NSModalResponse returnCode) {
+    if (returnCode == NSAlertFirstButtonReturn) {
+      [self deleteSelectedFile];
+    }
+  }];
 }
 
 - (IBAction)uploadFileClicked:(id)sender {
@@ -201,7 +199,7 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
   [openPanel beginSheetModalForWindow:[self window]
                     completionHandler:^(NSInteger result) {
     // Callback.
-    if (result == NSOKButton) {
+    if (result == NSFileHandlingPanelOKButton) {
       // The user chose a file and clicked OK.
       //
       // Start uploading (deferred briefly since
@@ -715,7 +713,7 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
     [savePanel beginSheetModalForWindow:[self window]
                       completionHandler:^(NSInteger result) {
       // Callback
-      if (result == NSOKButton) {
+      if (result == NSFileHandlingPanelOKButton) {
         NSString *savePath = [[savePanel URL] path];
 
         // Use a GTMHTTPFetcher object to download the file with authorization.
@@ -1018,8 +1016,11 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
                                     arguments:argList];
     va_end(argList);
   }
-  NSBeginAlertSheet(title, nil, nil, nil, [self window], nil, nil,
-                    nil, nil, @"%@", result);
+  NSAlert *alert = [[NSAlert alloc] init];
+  alert.messageText = title;
+  alert.informativeText = result;
+  [alert beginSheetModalForWindow:[self window]
+                completionHandler:nil];
 }
 
 #pragma mark Client ID Sheet
@@ -1037,20 +1038,11 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 
 - (IBAction)clientIDClicked:(id)sender {
   // Show the sheet for developers to enter their client ID and client secret
-  [NSApp beginSheet:_clientIDSheet
-     modalForWindow:[self window]
-      modalDelegate:self
-     didEndSelector:@selector(clientIDSheetDidEnd:returnCode:contextInfo:)
-        contextInfo:NULL];
+  [[self window] beginSheet:_clientIDSheet completionHandler:nil];
 }
 
 - (IBAction)clientIDDoneClicked:(id)sender {
-  [NSApp endSheet:_clientIDSheet returnCode:NSOKButton];
-}
-
-- (void)clientIDSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
-  [sheet orderOut:self];
-  [self updateUI];
+  [[self window] endSheet:[sender window]];
 }
 
 #pragma mark Text field delegate methods

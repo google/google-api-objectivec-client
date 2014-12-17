@@ -179,36 +179,32 @@ NSString *const kKeychainItemName = @"BloggerSample: Google Blogger";
 - (IBAction)deletePostClicked:(id)sender {
   GTLBloggerPost *selectedPost = [self selectedPost];
 
-  NSBeginAlertSheet(@"Delete", nil, @"Cancel", nil,
-                    [self window], self,
-                    @selector(deletePostSheetDidEnd:returnCode:contextInfo:),
-                    nil, nil, @"Delete \"%@\"?", selectedPost.title);
-}
-
-- (void)deletePostSheetDidEnd:(NSWindow *)sheet
-                   returnCode:(int)returnCode
-                  contextInfo:(void *)contextInfo {
-  if (returnCode == NSAlertDefaultReturn) {
-    [self deleteSelectedPost];
-  }
+  NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+  alert.messageText = [NSString stringWithFormat:@"Delete \"%@\"?", selectedPost.title];
+  [alert addButtonWithTitle:@"Delete"];
+  [alert addButtonWithTitle:@"Cancel"];
+  [alert beginSheetModalForWindow:[self window]
+                completionHandler:^(NSModalResponse returnCode) {
+    if (returnCode == NSAlertFirstButtonReturn) {
+      [self deleteSelectedPost];
+    }
+  }];
 }
 
 - (IBAction)deleteAllPostsClicked:(id)sender {
   GTLBloggerBlog *selectedBlog = [self selectedBlog];
 
-  NSBeginAlertSheet(@"Delete", nil, @"Cancel", nil,
-                    [self window], self,
-                    @selector(deleteAllPostsSheetDidEnd:returnCode:contextInfo:),
-                    nil, nil, @"Permanently delete ALL posts for blog \"%@\"?",
-                    selectedBlog.name);
-}
-
-- (void)deleteAllPostsSheetDidEnd:(NSWindow *)sheet
-                       returnCode:(int)returnCode
-                      contextInfo:(void *)contextInfo {
-  if (returnCode == NSAlertDefaultReturn) {
-    [self deleteAllPosts];
-  }
+  NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+  alert.messageText = [NSString stringWithFormat:@"Permanently delete ALL posts for blog \"%@\"?",
+                       selectedBlog.name];
+  [alert addButtonWithTitle:@"Delete"];
+  [alert addButtonWithTitle:@"Cancel"];
+  [alert beginSheetModalForWindow:[self window]
+                completionHandler:^(NSModalResponse returnCode) {
+    if (returnCode == NSAlertFirstButtonReturn) {
+      [self deleteAllPosts];
+    }
+  }];
 }
 
 - (IBAction)APIConsoleClicked:(id)sender {
@@ -619,8 +615,11 @@ NSString *const kKeychainItemName = @"BloggerSample: Google Blogger";
                                      arguments:argList] autorelease];
     va_end(argList);
   }
-  NSBeginAlertSheet(title, nil, nil, nil, [self window], nil, nil,
-                    nil, nil, @"%@", result);
+  NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+  alert.messageText = title;
+  alert.informativeText = result;
+  [alert beginSheetModalForWindow:[self window]
+                completionHandler:nil];
 }
 
 #pragma mark Client ID Sheet
@@ -638,22 +637,11 @@ NSString *const kKeychainItemName = @"BloggerSample: Google Blogger";
 
 - (IBAction)clientIDClicked:(id)sender {
   // Show the sheet for developers to enter their client ID and client secret
-  [NSApp beginSheet:clientIDSheet_
-     modalForWindow:[self window]
-      modalDelegate:self
-     didEndSelector:@selector(clientIDSheetDidEnd:returnCode:contextInfo:)
-        contextInfo:NULL];
+  [[self window] beginSheet:clientIDSheet_ completionHandler:nil];
 }
 
 - (IBAction)clientIDDoneClicked:(id)sender {
-  [NSApp endSheet:clientIDSheet_ returnCode:NSOKButton];
-}
-
-- (void)clientIDSheetDidEnd:(NSWindow *)sheet
-                 returnCode:(NSInteger)returnCode
-                contextInfo:(void *)contextInfo {
-  [sheet orderOut:self];
-  [self updateUI];
+  [[self window] endSheet:[sender window]];
 }
 
 #pragma mark Text field delegate methods

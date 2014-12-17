@@ -206,18 +206,16 @@ NSString *const kKeychainItemName = @"TasksSample: Google Tasks";
   GTLTasksTaskList *tasklist = [self selectedTaskList];
   NSString *title = tasklist.title;
 
-  NSBeginAlertSheet(@"Delete", nil, @"Cancel", nil,
-                    [self window], self,
-                    @selector(deleteTaskListSheetDidEnd:returnCode:contextInfo:),
-                    nil, nil, @"Delete \"%@\"?", title);
-}
-
-- (void)deleteTaskListSheetDidEnd:(NSWindow *)sheet
-                       returnCode:(int)returnCode
-                      contextInfo:(void *)contextInfo {
-  if (returnCode == NSAlertDefaultReturn) {
-    [self deleteSelectedTaskList];
-  }
+  NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+  alert.messageText = [NSString stringWithFormat:@"Delete \"%@\"?", title];
+  [alert addButtonWithTitle:@"Delete"];
+  [alert addButtonWithTitle:@"Cancel"];
+  [alert beginSheetModalForWindow:[self window]
+                completionHandler:^(NSModalResponse returnCode) {
+    if (returnCode == NSAlertFirstButtonReturn) {
+      [self deleteSelectedTaskList];
+    }
+  }];
 }
 
 - (IBAction)addTaskClicked:(id)sender {
@@ -232,18 +230,16 @@ NSString *const kKeychainItemName = @"TasksSample: Google Tasks";
   GTLTasksTask *task = [self selectedTask];
   NSString *title = task.title;
 
-  NSBeginAlertSheet(@"Delete", nil, @"Cancel", nil,
-                    [self window], self,
-                    @selector(deleteTaskSheetDidEnd:returnCode:contextInfo:),
-                    nil, nil, @"Delete \"%@\"?", title);
-}
-
-- (void)deleteTaskSheetDidEnd:(NSWindow *)sheet
-                   returnCode:(int)returnCode
-                  contextInfo:(void *)contextInfo {
-  if (returnCode == NSAlertDefaultReturn) {
-    [self deleteSelectedTask];
-  }
+  NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+  alert.messageText = [NSString stringWithFormat:@"Delete \"%@\"?", title];
+  [alert addButtonWithTitle:@"Delete"];
+  [alert addButtonWithTitle:@"Cancel"];
+  [alert beginSheetModalForWindow:[self window]
+                completionHandler:^(NSModalResponse returnCode) {
+    if (returnCode == NSAlertFirstButtonReturn) {
+      [self deleteSelectedTask];
+    }
+  }];
 }
 
 - (IBAction)completeTaskClicked:(id)sender {
@@ -1048,8 +1044,11 @@ static NSString *const kGTLChildTasksProperty = @"childTasks";
                                      arguments:argList] autorelease];
     va_end(argList);
   }
-  NSBeginAlertSheet(title, nil, nil, nil, [self window], nil, nil,
-                    nil, nil, @"%@", result);
+  NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+  alert.messageText = title;
+  alert.informativeText = result;
+  [alert beginSheetModalForWindow:[self window]
+                completionHandler:nil];
 }
 
 #pragma mark Client ID Sheet
@@ -1067,20 +1066,11 @@ static NSString *const kGTLChildTasksProperty = @"childTasks";
 
 - (IBAction)clientIDClicked:(id)sender {
   // Show the sheet for developers to enter their client ID and client secret
-  [NSApp beginSheet:clientIDSheet_
-     modalForWindow:[self window]
-      modalDelegate:self
-     didEndSelector:@selector(clientIDSheetDidEnd:returnCode:contextInfo:)
-        contextInfo:NULL];
+  [[self window] beginSheet:clientIDSheet_ completionHandler:nil];
 }
 
 - (IBAction)clientIDDoneClicked:(id)sender {
-  [NSApp endSheet:clientIDSheet_ returnCode:NSOKButton];
-}
-
-- (void)clientIDSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
-  [sheet orderOut:self];
-  [self updateUI];
+  [[self window] endSheet:[sender window]];
 }
 
 #pragma mark Text field delegate methods
