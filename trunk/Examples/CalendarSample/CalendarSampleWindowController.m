@@ -236,18 +236,16 @@ NSString *const kKeychainItemName = @"CalendarSample: Google Calendar";
   GTLCalendarCalendarListEntry *calendar = [self selectedCalendarListEntry];
   NSString *title = calendar.summary;
 
-  NSBeginAlertSheet(@"Delete", nil, @"Cancel", nil,
-                    [self window], self,
-                    @selector(deleteCalendarSheetDidEnd:returnCode:contextInfo:),
-                    nil, nil, @"Delete \"%@\"?", title);
-}
-
-- (void)deleteCalendarSheetDidEnd:(NSWindow *)sheet
-                       returnCode:(int)returnCode
-                      contextInfo:(void *)contextInfo {
-  if (returnCode == NSAlertDefaultReturn) {
-    [self deleteSelectedCalendar];
-  }
+  NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+  alert.messageText = [NSString stringWithFormat:@"Delete \"%@\"?", title];
+  [alert addButtonWithTitle:@"Delete"];
+  [alert addButtonWithTitle:@"Cancel"];
+  [alert beginSheetModalForWindow:[self window]
+                completionHandler:^(NSModalResponse returnCode) {
+    if (returnCode == NSAlertFirstButtonReturn) {
+      [self deleteSelectedCalendar];
+    }
+  }];
 }
 
 - (IBAction)addEntry:(id)sender {
@@ -581,7 +579,7 @@ NSString *const kKeychainItemName = @"CalendarSample: Google Calendar";
                           event:newEvent
               completionHandler:^(NSInteger returnCode, GTLCalendarEvent *event) {
                 // Callback
-                if (returnCode == NSOKButton) {
+                if (returnCode == NSModalResponseOK) {
                   [self addEvent:event];
                 }
               }];
@@ -622,7 +620,7 @@ NSString *const kKeychainItemName = @"CalendarSample: Google Calendar";
                             event:eventToEdit
                 completionHandler:^(NSInteger returnCode, GTLCalendarEvent *event) {
                   // Callback
-                  if (returnCode == NSOKButton) {
+                  if (returnCode == NSModalResponseOK) {
                     [self editSelectedEventWithEvent:event];
                   }
                 }];
@@ -699,10 +697,11 @@ NSString *const kKeychainItemName = @"CalendarSample: Google Calendar";
                                  minute:(int)minute
                                  second:(int)second {
 
-  int const kComponentBits = (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit
-                              | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit);
+  NSUInteger const kComponentBits = (NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay
+      | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond);
 
-  NSCalendar *cal = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+  NSCalendar *cal =
+      [[[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian] autorelease];
 
   NSDateComponents *dateComponents = [cal components:kComponentBits
                                             fromDate:[NSDate date]];
@@ -839,7 +838,7 @@ NSString *const kKeychainItemName = @"CalendarSample: Google Calendar";
                         ACLRule:newRule
               completionHandler:^(NSInteger returnCode, GTLCalendarAclRule *rule) {
                 // Callback
-                if (returnCode == NSOKButton) {
+                if (returnCode == NSModalResponseOK) {
                   [self addACLRule:rule];
                 }
               }];
@@ -880,7 +879,7 @@ NSString *const kKeychainItemName = @"CalendarSample: Google Calendar";
                           ACLRule:ruleToEdit
                 completionHandler:^(NSInteger returnCode, GTLCalendarAclRule *rule) {
                   // Callback
-                  if (returnCode == NSOKButton) {
+                  if (returnCode == NSModalResponseOK) {
                     [self editSelectedACLRuleWithRule:rule];
                   }
                 }];
@@ -1170,8 +1169,11 @@ NSString *const kKeychainItemName = @"CalendarSample: Google Calendar";
                                      arguments:argList] autorelease];
     va_end(argList);
   }
-  NSBeginAlertSheet(title, nil, nil, nil, [self window], nil, nil,
-                    nil, nil, @"%@", result);
+  NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+  alert.messageText = title;
+  alert.informativeText = result;
+  [alert beginSheetModalForWindow:[self window]
+                completionHandler:nil];
 }
 
 #pragma mark Client ID Sheet
@@ -1189,20 +1191,11 @@ NSString *const kKeychainItemName = @"CalendarSample: Google Calendar";
 
 - (IBAction)clientIDClicked:(id)sender {
   // Show the sheet for developers to enter their client ID and client secret
-  [NSApp beginSheet:clientIDSheet_
-     modalForWindow:[self window]
-      modalDelegate:self
-     didEndSelector:@selector(clientIDSheetDidEnd:returnCode:contextInfo:)
-        contextInfo:NULL];
+  [[self window] beginSheet:clientIDSheet_ completionHandler:nil];
 }
 
 - (IBAction)clientIDDoneClicked:(id)sender {
-  [NSApp endSheet:clientIDSheet_ returnCode:NSOKButton];
-}
-
-- (void)clientIDSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
-  [sheet orderOut:self];
-  [self updateUI];
+  [[self window] endSheet:[sender window]];
 }
 
 #pragma mark Text field delegate methods

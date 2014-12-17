@@ -182,7 +182,7 @@ static CFStringRef SelectorKeyCopyDescriptionCallBack(const void *key) {
   //       jsonKey
   @synchronized([GTLRuntimeCommon class]) {
     if (gDispatchCache == nil) {
-      gDispatchCache = [GTLUtilities newStaticDictionary];
+      gDispatchCache = [[NSMutableDictionary alloc] init];
     }
 
     CFMutableDictionaryRef classDict =

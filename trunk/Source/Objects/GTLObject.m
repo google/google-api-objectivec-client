@@ -485,7 +485,7 @@ static NSMutableDictionary *gKindMap = nil;
   NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 
   if (gKindMap == nil) {
-    gKindMap = [GTLUtilities newStaticDictionary];
+    gKindMap = [[NSMutableDictionary alloc] init];
   }
 
   Class selfClass = [self class];
@@ -587,10 +587,10 @@ static NSMutableDictionary *gArrayPropertyToClassMapCache = nil;
   // Note that initialize is guaranteed by the runtime to be called in a
   // thread-safe manner
   if (gJSONKeyMapCache == nil) {
-    gJSONKeyMapCache = [GTLUtilities newStaticDictionary];
+    gJSONKeyMapCache = [[NSMutableDictionary alloc] init];
   }
   if (gArrayPropertyToClassMapCache == nil) {
-    gArrayPropertyToClassMapCache = [GTLUtilities newStaticDictionary];
+    gArrayPropertyToClassMapCache = [[NSMutableDictionary alloc] init];
   }
 }
 

@@ -406,8 +406,11 @@ NSString *const kKeychainItemName = @"URL Shortener Sample: Google URL Shortener
                                      arguments:argList] autorelease];
     va_end(argList);
   }
-  NSBeginAlertSheet(title, nil, nil, nil, [self window], nil, nil,
-                    nil, nil, @"%@", result);
+  NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+  alert.messageText = title;
+  alert.informativeText = result;
+  [alert beginSheetModalForWindow:[self window]
+                completionHandler:nil];
 }
 
 #pragma mark Client ID Sheet
@@ -425,22 +428,12 @@ NSString *const kKeychainItemName = @"URL Shortener Sample: Google URL Shortener
 //
 
 - (IBAction)clientIDClicked:(id)sender {
-  // show the sheet for developers to enter client ID and client secret
-  [NSApp beginSheet:clientIDSheet_
-     modalForWindow:[self window]
-      modalDelegate:self
-     didEndSelector:@selector(clientIDSheetDidEnd:returnCode:contextInfo:)
-        contextInfo:NULL];
+  // Show the sheet for developers to enter their client ID and client secret
+  [[self window] beginSheet:clientIDSheet_ completionHandler:nil];
 }
 
 - (IBAction)clientIDDoneClicked:(id)sender {
-  [NSApp endSheet:clientIDSheet_ returnCode:NSOKButton];
-}
-
-- (void)clientIDSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
-  [sheet orderOut:self];
-
-  [self updateUI];
+  [[self window] endSheet:[sender window]];
 }
 
 #pragma mark Text field delegate methods

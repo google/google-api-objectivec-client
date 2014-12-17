@@ -82,9 +82,6 @@ NSNumber *GTL_EnsureNSNumber(NSNumber *num);
 + (NSURL *)URLWithString:(NSString *)urlString
          queryParameters:(NSDictionary *)queryParameters;
 
-// Allocate a global dictionary
-+ (NSMutableDictionary *)newStaticDictionary;
-
 // Walk up the class tree merging dictionaries and return the result.
 + (NSDictionary *)mergedClassDictionaryForSelector:(SEL)selector
                                         startClass:(Class)startClass
