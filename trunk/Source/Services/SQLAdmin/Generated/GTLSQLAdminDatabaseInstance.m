@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/cloud-sql/docs/admin-api/
 // Classes:
-//   GTLSQLAdminDatabaseInstance (0 custom class methods, 15 custom properties)
+//   GTLSQLAdminDatabaseInstance (0 custom class methods, 17 custom properties)
 
 #import "GTLSQLAdminDatabaseInstance.h"
 
@@ -41,8 +41,9 @@
 
 @implementation GTLSQLAdminDatabaseInstance
 @dynamic currentDiskSize, databaseVersion, ETag, instance, instanceType,
-         ipAddresses, kind, masterInstanceName, maxDiskSize, project, region,
-         replicaNames, serverCaCert, settings, state;
+         ipAddresses, ipv6Address, kind, masterInstanceName, maxDiskSize,
+         project, region, replicaNames, serverCaCert,
+         serviceAccountEmailAddress, settings, state;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

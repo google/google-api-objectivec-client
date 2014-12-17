@@ -149,6 +149,7 @@ NSString * const kGTLYouTubeActivitySnippet_Type_Subscription  = @"subscription"
 NSString * const kGTLYouTubeActivitySnippet_Type_Upload        = @"upload";
 
 // GTLYouTubeCdnSettings - IngestionType
+NSString * const kGTLYouTubeCdnSettings_IngestionType_Dash = @"dash";
 NSString * const kGTLYouTubeCdnSettings_IngestionType_Rtmp = @"rtmp";
 
 // GTLYouTubeChannelConversionPing - Context
@@ -351,6 +352,20 @@ NSString * const kGTLYouTubeContentRating_DjctqRating_Djctq16  = @"djctq16";
 NSString * const kGTLYouTubeContentRating_DjctqRating_Djctq18  = @"djctq18";
 NSString * const kGTLYouTubeContentRating_DjctqRating_DjctqL   = @"djctqL";
 NSString * const kGTLYouTubeContentRating_DjctqRating_DjctqUnrated = @"djctqUnrated";
+
+// GTLYouTubeContentRating - DjctqRatingReasons
+NSString * const kGTLYouTubeContentRating_DjctqRatingReasons_DjctqCriminalActs = @"djctqCriminalActs";
+NSString * const kGTLYouTubeContentRating_DjctqRatingReasons_DjctqDrugs = @"djctqDrugs";
+NSString * const kGTLYouTubeContentRating_DjctqRatingReasons_DjctqExplicitSex = @"djctqExplicitSex";
+NSString * const kGTLYouTubeContentRating_DjctqRatingReasons_DjctqExtremeViolence = @"djctqExtremeViolence";
+NSString * const kGTLYouTubeContentRating_DjctqRatingReasons_DjctqIllegalDrugs = @"djctqIllegalDrugs";
+NSString * const kGTLYouTubeContentRating_DjctqRatingReasons_DjctqImpactingContent = @"djctqImpactingContent";
+NSString * const kGTLYouTubeContentRating_DjctqRatingReasons_DjctqInappropriateLanguage = @"djctqInappropriateLanguage";
+NSString * const kGTLYouTubeContentRating_DjctqRatingReasons_DjctqLegalDrugs = @"djctqLegalDrugs";
+NSString * const kGTLYouTubeContentRating_DjctqRatingReasons_DjctqNudity = @"djctqNudity";
+NSString * const kGTLYouTubeContentRating_DjctqRatingReasons_DjctqSex = @"djctqSex";
+NSString * const kGTLYouTubeContentRating_DjctqRatingReasons_DjctqSexualContent = @"djctqSexualContent";
+NSString * const kGTLYouTubeContentRating_DjctqRatingReasons_DjctqViolence = @"djctqViolence";
 
 // GTLYouTubeContentRating - EefilmRating
 NSString * const kGTLYouTubeContentRating_EefilmRating_EefilmK12 = @"eefilmK12";

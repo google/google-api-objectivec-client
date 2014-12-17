@@ -121,8 +121,9 @@
 // specify "NEWLINE_DELIMITED_JSON". The default value is CSV.
 @property (copy) NSString *sourceFormat;
 
-// [Required] The fully-qualified URIs that point to your data on Google Cloud
-// Storage.
+// [Required] The fully-qualified URIs that point to your data in Google Cloud
+// Storage. Wildcard names are only supported when they appear at the end of the
+// URI.
 @property (retain) NSArray *sourceUris;  // of NSString
 
 // [Optional] Specifies the action that occurs if the destination table already

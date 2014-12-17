@@ -75,10 +75,12 @@
 // since the epoch.
 @property (retain) NSNumber *lastModifiedTime;  // longLongValue
 
-// [Output-only] The size of the table in bytes.
+// [Output-only] The size of the table in bytes. This property is unavailable
+// for tables that are actively receiving streaming inserts.
 @property (retain) NSNumber *numBytes;  // longLongValue
 
-// [Output-only] The number of rows of data in this table.
+// [Output-only] The number of rows of data in this table. This property is
+// unavailable for tables that are actively receiving streaming inserts.
 @property (retain) NSNumber *numRows;  // unsignedLongLongValue
 
 // [Optional] Describes the schema of this table.

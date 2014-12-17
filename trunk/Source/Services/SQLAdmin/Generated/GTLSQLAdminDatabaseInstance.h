@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/cloud-sql/docs/admin-api/
 // Classes:
-//   GTLSQLAdminDatabaseInstance (0 custom class methods, 15 custom properties)
+//   GTLSQLAdminDatabaseInstance (0 custom class methods, 17 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -68,6 +68,9 @@
 // The assigned IP addresses for the instance.
 @property (retain) NSArray *ipAddresses;  // of GTLSQLAdminIpMapping
 
+// The IPv6 address assigned to the instance.
+@property (copy) NSString *ipv6Address;
+
 // This is always sql#instance.
 @property (copy) NSString *kind;
 
@@ -81,9 +84,9 @@
 // apps domain is prefixed if applicable.
 @property (copy) NSString *project;
 
-// The geographical region. Can be us-east1, us-central, asia-east1 or
-// europe-west1. Defaults to us-central. The region can not be changed after
-// instance creation.
+// The geographical region. Can be us-central, asia-east1 or europe-west1.
+// Defaults to us-central. The region can not be changed after instance
+// creation.
 @property (copy) NSString *region;
 
 // The replicas of the instance.
@@ -91,6 +94,9 @@
 
 // SSL configuration.
 @property (retain) GTLSQLAdminSslCert *serverCaCert;
+
+// The service account email address assigned to the instance.
+@property (copy) NSString *serviceAccountEmailAddress;
 
 // The user settings.
 @property (retain) GTLSQLAdminSettings *settings;

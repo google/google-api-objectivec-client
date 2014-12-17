@@ -338,7 +338,6 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
 //   kGTLAuthScopeDriveFile
-//   kGTLAuthScopeDriveReadonly
 // Fetches a GTLDriveComment.
 + (id)queryForCommentsInsertWithObject:(GTLDriveComment *)object
                                 fileId:(NSString *)fileId;
@@ -575,6 +574,7 @@
 //   fileId: The ID of the file to trash.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveAppsReadonly
 //   kGTLAuthScopeDriveFile
 // Fetches a GTLDriveFile.
@@ -586,6 +586,7 @@
 //   fileId: The ID of the file to untrash.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
+//   kGTLAuthScopeDriveAppdata
 //   kGTLAuthScopeDriveAppsReadonly
 //   kGTLAuthScopeDriveFile
 // Fetches a GTLDriveFile.

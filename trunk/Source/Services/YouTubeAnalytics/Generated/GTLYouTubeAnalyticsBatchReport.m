@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeAnalyticsBatchReportDefinitionTemplate.m
+//  GTLYouTubeAnalyticsBatchReport.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,18 +26,19 @@
 // Documentation:
 //   http://developers.google.com/youtube/analytics/
 // Classes:
-//   GTLYouTubeAnalyticsBatchReportDefinitionTemplate (0 custom class methods, 5 custom properties)
-//   GTLYouTubeAnalyticsBatchReportDefinitionTemplateDefaultOutputItem (0 custom class methods, 2 custom properties)
+//   GTLYouTubeAnalyticsBatchReport (0 custom class methods, 6 custom properties)
+//   GTLYouTubeAnalyticsBatchReportOutputsItem (0 custom class methods, 3 custom properties)
+//   GTLYouTubeAnalyticsBatchReportTimeSpan (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubeAnalyticsBatchReportDefinitionTemplate.h"
+#import "GTLYouTubeAnalyticsBatchReport.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeAnalyticsBatchReportDefinitionTemplate
+//   GTLYouTubeAnalyticsBatchReport
 //
 
-@implementation GTLYouTubeAnalyticsBatchReportDefinitionTemplate
-@dynamic defaultOutput, identifier, name, status, type;
+@implementation GTLYouTubeAnalyticsBatchReport
+@dynamic identifier, kind, outputs, reportId, timeSpan, timeUpdated;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -48,9 +49,13 @@
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLYouTubeAnalyticsBatchReportDefinitionTemplateDefaultOutputItem class]
-                                forKey:@"defaultOutput"];
+    [NSDictionary dictionaryWithObject:[GTLYouTubeAnalyticsBatchReportOutputsItem class]
+                                forKey:@"outputs"];
   return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"youtubeAnalytics#batchReport"];
 }
 
 @end
@@ -58,9 +63,19 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeAnalyticsBatchReportDefinitionTemplateDefaultOutputItem
+//   GTLYouTubeAnalyticsBatchReportOutputsItem
 //
 
-@implementation GTLYouTubeAnalyticsBatchReportDefinitionTemplateDefaultOutputItem
-@dynamic format, type;
+@implementation GTLYouTubeAnalyticsBatchReportOutputsItem
+@dynamic downloadUrl, format, type;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLYouTubeAnalyticsBatchReportTimeSpan
+//
+
+@implementation GTLYouTubeAnalyticsBatchReportTimeSpan
+@dynamic endTime, startTime;
 @end

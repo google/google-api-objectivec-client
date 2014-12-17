@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,7 +43,7 @@
 
 @interface GTLBigqueryTableFieldSchema : GTLObject
 
-// [Optional] The field description.
+// [Optional] The field description. The maximum length is 16K characters.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
 
@@ -55,7 +55,9 @@
 // REPEATED. The default value is NULLABLE.
 @property (copy) NSString *mode;
 
-// [Required] The field name.
+// [Required] The field name. The name must contain only letters (a-z, A-Z),
+// numbers (0-9), or underscores (_), and must start with a letter or
+// underscore. The maximum length is 128 characters.
 @property (copy) NSString *name;
 
 // [Required] The field data type. Possible values include STRING, INTEGER,

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeAnalyticsBatchReportDefinitionTemplate.h
+//  GTLYouTubeAnalyticsBatchReportDefinition.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,8 +26,7 @@
 // Documentation:
 //   http://developers.google.com/youtube/analytics/
 // Classes:
-//   GTLYouTubeAnalyticsBatchReportDefinitionTemplate (0 custom class methods, 5 custom properties)
-//   GTLYouTubeAnalyticsBatchReportDefinitionTemplateDefaultOutputItem (0 custom class methods, 2 custom properties)
+//   GTLYouTubeAnalyticsBatchReportDefinition (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -35,24 +34,23 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLYouTubeAnalyticsBatchReportDefinitionTemplateDefaultOutputItem;
-
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeAnalyticsBatchReportDefinitionTemplate
+//   GTLYouTubeAnalyticsBatchReportDefinition
 //
 
 // Contains single batchReportDefinition resource.
 
-@interface GTLYouTubeAnalyticsBatchReportDefinitionTemplate : GTLObject
-
-// Default report definition's output.
-@property (retain) NSArray *defaultOutput;  // of GTLYouTubeAnalyticsBatchReportDefinitionTemplateDefaultOutputItem
+@interface GTLYouTubeAnalyticsBatchReportDefinition : GTLObject
 
 // The ID that YouTube assigns and uses to uniquely identify the report
 // definition.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
+
+// This value specifies the type of data of this item. For batch report
+// definition the kind property value is youtubeAnalytics#batchReportDefinition.
+@property (copy) NSString *kind;
 
 // Name of the report definition.
 @property (copy) NSString *name;
@@ -61,22 +59,6 @@
 @property (copy) NSString *status;
 
 // Type of the report definition.
-@property (copy) NSString *type;
-
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubeAnalyticsBatchReportDefinitionTemplateDefaultOutputItem
-//
-
-@interface GTLYouTubeAnalyticsBatchReportDefinitionTemplateDefaultOutputItem : GTLObject
-
-// Format of the output.
-@property (copy) NSString *format;
-
-// Type of the output.
 @property (copy) NSString *type;
 
 @end

@@ -14,39 +14,41 @@
  */
 
 //
-//  GTLSQLAdminIpConfiguration.m
+//  GTLBooksVolume2.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud SQL Administration API (sqladmin/v1beta3)
+//   Books API (books/v1)
 // Description:
-//   API for Cloud SQL database instance management.
+//   Lets you search for books and manage your Google Books library.
 // Documentation:
-//   https://developers.google.com/cloud-sql/docs/admin-api/
+//   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLSQLAdminIpConfiguration (0 custom class methods, 4 custom properties)
+//   GTLBooksVolume2 (0 custom class methods, 3 custom properties)
 
-#import "GTLSQLAdminIpConfiguration.h"
+#import "GTLBooksVolume2.h"
+
+#import "GTLBooksVolume.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLSQLAdminIpConfiguration
+//   GTLBooksVolume2
 //
 
-@implementation GTLSQLAdminIpConfiguration
-@dynamic authorizedNetworks, enabled, kind, requireSsl;
+@implementation GTLBooksVolume2
+@dynamic items, kind, nextPageToken;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[NSString class]
-                                forKey:@"authorizedNetworks"];
+    [NSDictionary dictionaryWithObject:[GTLBooksVolume class]
+                                forKey:@"items"];
   return map;
 }
 
 + (void)load {
-  [self registerObjectClassForKind:@"sql#ipConfiguration"];
+  [self registerObjectClassForKind:@"onboarding#volume"];
 }
 
 @end

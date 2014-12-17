@@ -30,7 +30,7 @@
 
 #import "GTLYouTubeAnalyticsBatchReportDefinitionList.h"
 
-#import "GTLYouTubeAnalyticsBatchReportDefinitionTemplate.h"
+#import "GTLYouTubeAnalyticsBatchReportDefinition.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -42,7 +42,7 @@
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLYouTubeAnalyticsBatchReportDefinitionTemplate class]
+    [NSDictionary dictionaryWithObject:[GTLYouTubeAnalyticsBatchReportDefinition class]
                                 forKey:@"items"];
   return map;
 }

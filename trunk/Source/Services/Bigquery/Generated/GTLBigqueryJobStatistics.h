@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/bigquery/docs/overview
 // Classes:
-//   GTLBigqueryJobStatistics (0 custom class methods, 6 custom properties)
+//   GTLBigqueryJobStatistics (0 custom class methods, 7 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,6 +36,7 @@
 
 @class GTLBigqueryJobStatistics2;
 @class GTLBigqueryJobStatistics3;
+@class GTLBigqueryJobStatistics4;
 
 // ----------------------------------------------------------------------------
 //
@@ -51,6 +52,9 @@
 // [Output-only] End time of this job, in milliseconds since the epoch. This
 // field will be present whenever a job is in the DONE state.
 @property (retain) NSNumber *endTime;  // longLongValue
+
+// [Output-only] Statistics for an extract job.
+@property (retain) GTLBigqueryJobStatistics4 *extract;
 
 // [Output-only] Statistics for a load job.
 @property (retain) GTLBigqueryJobStatistics3 *load;

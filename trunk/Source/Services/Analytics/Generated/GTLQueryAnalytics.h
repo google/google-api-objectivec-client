@@ -278,6 +278,7 @@
 //     parameter as a pagination mechanism along with the max-results parameter.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalyticsManageUsers
+//   kGTLAuthScopeAnalyticsManageUsersReadonly
 // Fetches a GTLAnalyticsEntityUserLinks.
 + (id)queryForManagementAccountUserLinksListWithAccountId:(NSString *)accountId;
 
@@ -907,6 +908,7 @@
 //     parameter as a pagination mechanism along with the max-results parameter.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalyticsManageUsers
+//   kGTLAuthScopeAnalyticsManageUsersReadonly
 // Fetches a GTLAnalyticsEntityUserLinks.
 + (id)queryForManagementProfileUserLinksListWithAccountId:(NSString *)accountId
                                             webPropertyId:(NSString *)webPropertyId
@@ -1293,6 +1295,7 @@
 //     parameter.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalyticsManageUsers
+//   kGTLAuthScopeAnalyticsManageUsersReadonly
 // Fetches a GTLAnalyticsEntityUserLinks.
 + (id)queryForManagementWebpropertyUserLinksListWithAccountId:(NSString *)accountId
                                                 webPropertyId:(NSString *)webPropertyId;

@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLQueryBooks (40 custom class methods, 65 custom properties)
+//   GTLQueryBooks (45 custom class methods, 68 custom properties)
 
 #import "GTLQueryBooks.h"
 
@@ -37,14 +37,18 @@
 #import "GTLBooksAnnotationsSummary.h"
 #import "GTLBooksBookshelf.h"
 #import "GTLBooksBookshelves.h"
+#import "GTLBooksCategory.h"
 #import "GTLBooksCloudloadingResource.h"
 #import "GTLBooksDownloadAccesses.h"
 #import "GTLBooksLayersummaries.h"
 #import "GTLBooksLayersummary.h"
+#import "GTLBooksMetadata.h"
 #import "GTLBooksOffers.h"
 #import "GTLBooksReadingPosition.h"
 #import "GTLBooksRequestAccess.h"
+#import "GTLBooksUsersettings.h"
 #import "GTLBooksVolume.h"
+#import "GTLBooksVolume2.h"
 #import "GTLBooksVolumeannotation.h"
 #import "GTLBooksVolumeannotations.h"
 #import "GTLBooksVolumes.h"
@@ -53,17 +57,17 @@
 @implementation GTLQueryBooks
 
 @dynamic acquireMethod, action, allowWebDefinitions, androidId,
-         annotationDataId, annotationId, association, contentVersion, country,
-         cpksver, device, deviceCookie, download, driveDocumentId, endOffset,
-         endPosition, features, fields, filter, h, langRestrict, layerId,
-         layerIds, libraryRestrict, licenseTypes, locale, manufacturer,
-         maxResults, mimeType, model, name, nonce, offerId, orderBy, pageIds,
-         pageToken, partner, position, printType, processingState, product,
-         projection, q, rating, scale, serial, shelf, showDeleted,
-         showOnlySummaryInResponse, showPreorders, source, startIndex,
-         startOffset, startPosition, summaryId, timestamp, updatedMax,
-         updatedMin, uploadClientToken, userId, volumeAnnotationsVersion,
-         volumeId, volumeIds, volumePosition, w;
+         annotationDataId, annotationId, association, categoryId,
+         contentVersion, country, cpksver, device, deviceCookie, download,
+         driveDocumentId, endOffset, endPosition, features, fields, filter, h,
+         langRestrict, layerId, layerIds, libraryRestrict, licenseTypes, locale,
+         manufacturer, maxResults, mimeType, model, name, nonce, offerId,
+         orderBy, pageIds, pageSize, pageToken, partner, position, printType,
+         processingState, product, projection, q, rating, scale, serial,
+         settings, shelf, showDeleted, showOnlySummaryInResponse, showPreorders,
+         source, startIndex, startOffset, startPosition, summaryId, timestamp,
+         updatedMax, updatedMin, uploadClientToken, userId,
+         volumeAnnotationsVersion, volumeId, volumeIds, volumePosition, w;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map =
@@ -79,6 +83,7 @@
   NSDictionary *map =
     [NSDictionary dictionaryWithObjectsAndKeys:
       [NSString class], @"acquireMethod",
+      [NSString class], @"categoryId",
       [NSString class], @"features",
       [NSString class], @"layerIds",
       [NSString class], @"pageIds",
@@ -151,6 +156,18 @@
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.bodyObject = object;
   query.expectedObjectClass = [GTLBooksCloudloadingResource class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "dictionary" methods
+// These create a GTLQueryBooks object.
+
++ (id)queryForDictionaryListOfflineMetadataWithCpksver:(NSString *)cpksver {
+  NSString *methodName = @"books.dictionary.listOfflineMetadata";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.cpksver = cpksver;
+  query.expectedObjectClass = [GTLBooksMetadata class];
   return query;
 }
 
@@ -238,6 +255,13 @@
 #pragma mark "myconfig" methods
 // These create a GTLQueryBooks object.
 
++ (id)queryForMyconfigGetUserSettings {
+  NSString *methodName = @"books.myconfig.getUserSettings";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLBooksUsersettings class];
+  return query;
+}
+
 + (id)queryForMyconfigReleaseDownloadAccessWithVolumeIds:(NSArray *)volumeIds
                                                  cpksver:(NSString *)cpksver {
   NSString *methodName = @"books.myconfig.releaseDownloadAccess";
@@ -271,6 +295,13 @@
   query.nonce = nonce;
   query.cpksver = cpksver;
   query.expectedObjectClass = [GTLBooksVolumes class];
+  return query;
+}
+
++ (id)queryForMyconfigUpdateUserSettings {
+  NSString *methodName = @"books.myconfig.updateUserSettings";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLBooksUsersettings class];
   return query;
 }
 
@@ -423,6 +454,24 @@
   query.volumeId = volumeId;
   query.timestamp = timestamp;
   query.position = position;
+  return query;
+}
+
+#pragma mark -
+#pragma mark "onboarding" methods
+// These create a GTLQueryBooks object.
+
++ (id)queryForOnboardingListCategories {
+  NSString *methodName = @"books.onboarding.listCategories";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLBooksCategory class];
+  return query;
+}
+
++ (id)queryForOnboardingListCategoryVolumes {
+  NSString *methodName = @"books.onboarding.listCategoryVolumes";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLBooksVolume2 class];
   return query;
 }
 

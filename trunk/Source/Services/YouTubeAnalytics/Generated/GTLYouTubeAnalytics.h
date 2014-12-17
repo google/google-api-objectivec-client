@@ -28,10 +28,10 @@
 
 #import "GTLYouTubeAnalyticsConstants.h"
 
+#import "GTLYouTubeAnalyticsBatchReport.h"
+#import "GTLYouTubeAnalyticsBatchReportDefinition.h"
 #import "GTLYouTubeAnalyticsBatchReportDefinitionList.h"
-#import "GTLYouTubeAnalyticsBatchReportDefinitionTemplate.h"
 #import "GTLYouTubeAnalyticsBatchReportList.h"
-#import "GTLYouTubeAnalyticsBatchReportTemplate.h"
 #import "GTLYouTubeAnalyticsResultTable.h"
 
 #import "GTLQueryYouTubeAnalytics.h"

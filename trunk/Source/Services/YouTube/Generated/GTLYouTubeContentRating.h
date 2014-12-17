@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeContentRating (0 custom class methods, 63 custom properties)
+//   GTLYouTubeContentRating (0 custom class methods, 64 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -40,7 +40,7 @@
 //
 
 // Ratings schemes. The country-specific ratings are mostly for movies and
-// shows.
+// shows. NEXT_ID: 65
 
 @interface GTLYouTubeContentRating : GTLObject
 
@@ -103,6 +103,8 @@
 // Rating system in Brazil - Department of Justice, Rating, Titles and
 // Qualification
 @property (copy) NSString *djctqRating;
+
+@property (retain) NSArray *djctqRatingReasons;  // of NSString
 
 // Rating system for Estonia - Estonia Rating System
 @property (copy) NSString *eefilmRating;
