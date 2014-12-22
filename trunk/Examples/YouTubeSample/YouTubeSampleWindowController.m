@@ -209,7 +209,7 @@ NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
 }
 
 - (IBAction)APIConsoleClicked:(id)sender {
-  NSURL *url = [NSURL URLWithString:@"https://code.google.com/apis/console"];
+  NSURL *url = [NSURL URLWithString:@"https://console.developers.google.com/"];
   [[NSWorkspace sharedWorkspace] openURL:url];
 }
 
@@ -687,7 +687,7 @@ NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
 // into the source rather than ask the user for them.
 //
 // The string values are obtained from the API Console,
-// https://code.google.com/apis/console
+// https://console.developers.google.com/
 
 - (IBAction)clientIDClicked:(id)sender {
   // Show the sheet for developers to enter their client ID and client secret

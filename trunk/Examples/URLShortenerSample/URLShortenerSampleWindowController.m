@@ -167,7 +167,7 @@ NSString *const kKeychainItemName = @"URL Shortener Sample: Google URL Shortener
 }
 
 - (IBAction)APIConsoleClicked:(id)sender {
-  NSURL *url = [NSURL URLWithString:@"https://code.google.com/apis/console"];
+  NSURL *url = [NSURL URLWithString:@"https://console.developers.google.com/"];
   [[NSWorkspace sharedWorkspace] openURL:url];
 }
 
@@ -424,7 +424,7 @@ NSString *const kKeychainItemName = @"URL Shortener Sample: Google URL Shortener
 // into the source rather than ask the user for them.
 //
 // The string values are obtained from the API Console,
-// https://code.google.com/apis/console
+// https://console.developers.google.com/
 //
 
 - (IBAction)clientIDClicked:(id)sender {
