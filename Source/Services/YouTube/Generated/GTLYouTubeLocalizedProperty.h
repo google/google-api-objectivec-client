@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLocalizedProperty (0 custom class methods, 2 custom properties)
+//   GTLYouTubeLocalizedProperty (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,6 +34,7 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLYouTubeLanguageTag;
 @class GTLYouTubeLocalizedString;
 
 // ----------------------------------------------------------------------------
@@ -41,15 +42,13 @@
 //   GTLYouTubeLocalizedProperty
 //
 
-// Represent a property available in different languages.
-
 @interface GTLYouTubeLocalizedProperty : GTLObject
 
-// Default value for the localized property.
 // Remapped to 'defaultProperty' to avoid language reserved word 'default'.
 @property (copy) NSString *defaultProperty;
 
-// The localized values.
-@property (retain) NSArray *localized;  // of GTLYouTubeLocalizedString
+// The language of the default property.
+@property (retain) GTLYouTubeLanguageTag *defaultLanguage;
 
+@property (retain) NSArray *localized;  // of GTLYouTubeLocalizedString
 @end

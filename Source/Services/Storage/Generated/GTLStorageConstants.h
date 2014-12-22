@@ -61,6 +61,14 @@ GTL_EXTERN NSString * const kGTLStoragePredefinedAclProjectPrivate;  // "project
 GTL_EXTERN NSString * const kGTLStoragePredefinedAclPublicRead;  // "publicRead"
 GTL_EXTERN NSString * const kGTLStoragePredefinedAclPublicReadWrite;  // "publicReadWrite"
 
+// GTLQueryStorage - PredefinedDefaultObjectAcl
+GTL_EXTERN NSString * const kGTLStoragePredefinedDefaultObjectAclAuthenticatedRead;  // "authenticatedRead"
+GTL_EXTERN NSString * const kGTLStoragePredefinedDefaultObjectAclBucketOwnerFullControl;  // "bucketOwnerFullControl"
+GTL_EXTERN NSString * const kGTLStoragePredefinedDefaultObjectAclBucketOwnerRead;  // "bucketOwnerRead"
+GTL_EXTERN NSString * const kGTLStoragePredefinedDefaultObjectAclPrivate;  // "private"
+GTL_EXTERN NSString * const kGTLStoragePredefinedDefaultObjectAclProjectPrivate;  // "projectPrivate"
+GTL_EXTERN NSString * const kGTLStoragePredefinedDefaultObjectAclPublicRead;  // "publicRead"
+
 // GTLQueryStorage - Projection
 GTL_EXTERN NSString * const kGTLStorageProjectionFull;   // "full"
 GTL_EXTERN NSString * const kGTLStorageProjectionNoAcl;  // "noAcl"

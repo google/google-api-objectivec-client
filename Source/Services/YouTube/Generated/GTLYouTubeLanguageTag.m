@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLocalizedString.h
+//  GTLYouTubeLanguageTag.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,20 +26,15 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLocalizedString (0 custom class methods, 2 custom properties)
+//   GTLYouTubeLanguageTag (0 custom class methods, 1 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLYouTubeLanguageTag.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLocalizedString
+//   GTLYouTubeLanguageTag
 //
 
-@interface GTLYouTubeLocalizedString : GTLObject
-@property (copy) NSString *language;
-@property (copy) NSString *value;
+@implementation GTLYouTubeLanguageTag
+@dynamic value;
 @end

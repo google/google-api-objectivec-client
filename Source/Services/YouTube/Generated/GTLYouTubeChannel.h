@@ -26,7 +26,8 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannel (0 custom class methods, 13 custom properties)
+//   GTLYouTubeChannel (0 custom class methods, 14 custom properties)
+//   GTLYouTubeChannelLocalizations (0 custom class methods, 0 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -39,6 +40,8 @@
 @class GTLYouTubeChannelContentDetails;
 @class GTLYouTubeChannelContentOwnerDetails;
 @class GTLYouTubeChannelConversionPings;
+@class GTLYouTubeChannelLocalization;
+@class GTLYouTubeChannelLocalizations;
 @class GTLYouTubeChannelSnippet;
 @class GTLYouTubeChannelStatistics;
 @class GTLYouTubeChannelStatus;
@@ -89,6 +92,9 @@
 // "youtube#channel".
 @property (copy) NSString *kind;
 
+// Localizations for different languages
+@property (retain) GTLYouTubeChannelLocalizations *localizations;
+
 // The snippet object contains basic details about the channel, such as its
 // title, description, and thumbnail images.
 @property (retain) GTLYouTubeChannelSnippet *snippet;
@@ -104,4 +110,17 @@
 // associated with the channel.
 @property (retain) GTLYouTubeChannelTopicDetails *topicDetails;
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLYouTubeChannelLocalizations
+//
+
+@interface GTLYouTubeChannelLocalizations : GTLObject
+// This object is documented as having more properties that are
+// GTLYouTubeChannelLocalization. Use -additionalJSONKeys and
+// -additionalPropertyForName: to get the list of properties and then fetch
+// them; or -additionalProperties to fetch them all at once.
 @end

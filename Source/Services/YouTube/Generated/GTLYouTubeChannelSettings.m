@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelSettings (0 custom class methods, 12 custom properties)
+//   GTLYouTubeChannelSettings (0 custom class methods, 13 custom properties)
 
 #import "GTLYouTubeChannelSettings.h"
 
@@ -36,10 +36,10 @@
 //
 
 @implementation GTLYouTubeChannelSettings
-@dynamic defaultTab, descriptionProperty, featuredChannelsTitle,
-         featuredChannelsUrls, keywords, moderateComments, profileColor,
-         showBrowseView, showRelatedChannels, title, trackingAnalyticsAccountId,
-         unsubscribedTrailer;
+@dynamic defaultLanguage, defaultTab, descriptionProperty,
+         featuredChannelsTitle, featuredChannelsUrls, keywords,
+         moderateComments, profileColor, showBrowseView, showRelatedChannels,
+         title, trackingAnalyticsAccountId, unsubscribedTrailer;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
