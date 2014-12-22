@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLocalizedString.h
+//  GTLYouTubeChannelLocalization.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,20 +26,23 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLocalizedString (0 custom class methods, 2 custom properties)
+//   GTLYouTubeChannelLocalization (0 custom class methods, 2 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLYouTubeChannelLocalization.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLocalizedString
+//   GTLYouTubeChannelLocalization
 //
 
-@interface GTLYouTubeLocalizedString : GTLObject
-@property (copy) NSString *language;
-@property (copy) NSString *value;
+@implementation GTLYouTubeChannelLocalization
+@dynamic descriptionProperty, title;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"description"
+                                forKey:@"descriptionProperty"];
+  return map;
+}
+
 @end

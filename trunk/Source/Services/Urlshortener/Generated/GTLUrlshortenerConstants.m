@@ -24,7 +24,7 @@
 // Description:
 //   Lets you create, inspect, and manage goo.gl short URLs
 // Documentation:
-//   http://code.google.com/apis/urlshortener/v1/getting_started.html
+//   https://developers.google.com/url-shortener/v1/getting_started
 
 #import "GTLUrlshortenerConstants.h"
 

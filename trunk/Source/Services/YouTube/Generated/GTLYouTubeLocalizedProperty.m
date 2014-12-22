@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,10 +26,11 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLocalizedProperty (0 custom class methods, 2 custom properties)
+//   GTLYouTubeLocalizedProperty (0 custom class methods, 3 custom properties)
 
 #import "GTLYouTubeLocalizedProperty.h"
 
+#import "GTLYouTubeLanguageTag.h"
 #import "GTLYouTubeLocalizedString.h"
 
 // ----------------------------------------------------------------------------
@@ -38,7 +39,7 @@
 //
 
 @implementation GTLYouTubeLocalizedProperty
-@dynamic defaultProperty, localized;
+@dynamic defaultProperty, defaultLanguage, localized;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

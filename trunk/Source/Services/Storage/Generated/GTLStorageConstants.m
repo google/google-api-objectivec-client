@@ -51,6 +51,14 @@ NSString * const kGTLStoragePredefinedAclProjectPrivate        = @"projectPrivat
 NSString * const kGTLStoragePredefinedAclPublicRead            = @"publicRead";
 NSString * const kGTLStoragePredefinedAclPublicReadWrite       = @"publicReadWrite";
 
+// GTLQueryStorage - PredefinedDefaultObjectAcl
+NSString * const kGTLStoragePredefinedDefaultObjectAclAuthenticatedRead = @"authenticatedRead";
+NSString * const kGTLStoragePredefinedDefaultObjectAclBucketOwnerFullControl = @"bucketOwnerFullControl";
+NSString * const kGTLStoragePredefinedDefaultObjectAclBucketOwnerRead = @"bucketOwnerRead";
+NSString * const kGTLStoragePredefinedDefaultObjectAclPrivate  = @"private";
+NSString * const kGTLStoragePredefinedDefaultObjectAclProjectPrivate = @"projectPrivate";
+NSString * const kGTLStoragePredefinedDefaultObjectAclPublicRead = @"publicRead";
+
 // GTLQueryStorage - Projection
 NSString * const kGTLStorageProjectionFull  = @"full";
 NSString * const kGTLStorageProjectionNoAcl = @"noAcl";

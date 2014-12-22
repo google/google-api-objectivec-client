@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 // Classes:
-//   GTLQueryStorage (34 custom class methods, 33 custom properties)
+//   GTLQueryStorage (34 custom class methods, 34 custom properties)
 //   GTLStorageObjectsComposeSourceObjectsItem (0 custom class methods, 3 custom properties)
 //   GTLStorageObjectsComposeSourceObjectsItemObjectPreconditions (0 custom class methods, 1 custom properties)
 
@@ -79,6 +79,7 @@
 @property (copy) NSString *object;
 @property (copy) NSString *pageToken;
 @property (copy) NSString *predefinedAcl;
+@property (copy) NSString *predefinedDefaultObjectAcl;
 @property (copy) NSString *prefix;
 @property (copy) NSString *project;
 @property (copy) NSString *projection;
@@ -221,6 +222,21 @@
 //        access, and allUsers get READER access.
 //      kGTLStoragePredefinedAclPublicReadWrite: Project team owners get OWNER
 //        access, and allUsers get WRITER access.
+//   predefinedDefaultObjectAcl: Apply a predefined set of default object access
+//     controls to this bucket.
+//      kGTLStoragePredefinedDefaultObjectAclAuthenticatedRead: Object owner
+//        gets OWNER access, and allAuthenticatedUsers get READER access.
+//      kGTLStoragePredefinedDefaultObjectAclBucketOwnerFullControl: Object
+//        owner gets OWNER access, and project team owners get OWNER access.
+//      kGTLStoragePredefinedDefaultObjectAclBucketOwnerRead: Object owner gets
+//        OWNER access, and project team owners get READER access.
+//      kGTLStoragePredefinedDefaultObjectAclPrivate: Object owner gets OWNER
+//        access.
+//      kGTLStoragePredefinedDefaultObjectAclProjectPrivate: Object owner gets
+//        OWNER access, and project team members get access according to their
+//        roles.
+//      kGTLStoragePredefinedDefaultObjectAclPublicRead: Object owner gets OWNER
+//        access, and allUsers get READER access.
 //   projection: Set of properties to return. Defaults to noAcl, unless the
 //     bucket resource specifies acl or defaultObjectAcl properties, when it
 //     defaults to full.
@@ -273,6 +289,21 @@
 //        access, and allUsers get READER access.
 //      kGTLStoragePredefinedAclPublicReadWrite: Project team owners get OWNER
 //        access, and allUsers get WRITER access.
+//   predefinedDefaultObjectAcl: Apply a predefined set of default object access
+//     controls to this bucket.
+//      kGTLStoragePredefinedDefaultObjectAclAuthenticatedRead: Object owner
+//        gets OWNER access, and allAuthenticatedUsers get READER access.
+//      kGTLStoragePredefinedDefaultObjectAclBucketOwnerFullControl: Object
+//        owner gets OWNER access, and project team owners get OWNER access.
+//      kGTLStoragePredefinedDefaultObjectAclBucketOwnerRead: Object owner gets
+//        OWNER access, and project team owners get READER access.
+//      kGTLStoragePredefinedDefaultObjectAclPrivate: Object owner gets OWNER
+//        access.
+//      kGTLStoragePredefinedDefaultObjectAclProjectPrivate: Object owner gets
+//        OWNER access, and project team members get access according to their
+//        roles.
+//      kGTLStoragePredefinedDefaultObjectAclPublicRead: Object owner gets OWNER
+//        access, and allUsers get READER access.
 //   projection: Set of properties to return. Defaults to full.
 //      kGTLStorageProjectionFull: Include all properties.
 //      kGTLStorageProjectionNoAcl: Omit acl and defaultObjectAcl properties.
@@ -304,6 +335,21 @@
 //        access, and allUsers get READER access.
 //      kGTLStoragePredefinedAclPublicReadWrite: Project team owners get OWNER
 //        access, and allUsers get WRITER access.
+//   predefinedDefaultObjectAcl: Apply a predefined set of default object access
+//     controls to this bucket.
+//      kGTLStoragePredefinedDefaultObjectAclAuthenticatedRead: Object owner
+//        gets OWNER access, and allAuthenticatedUsers get READER access.
+//      kGTLStoragePredefinedDefaultObjectAclBucketOwnerFullControl: Object
+//        owner gets OWNER access, and project team owners get OWNER access.
+//      kGTLStoragePredefinedDefaultObjectAclBucketOwnerRead: Object owner gets
+//        OWNER access, and project team owners get READER access.
+//      kGTLStoragePredefinedDefaultObjectAclPrivate: Object owner gets OWNER
+//        access.
+//      kGTLStoragePredefinedDefaultObjectAclProjectPrivate: Object owner gets
+//        OWNER access, and project team members get access according to their
+//        roles.
+//      kGTLStoragePredefinedDefaultObjectAclPublicRead: Object owner gets OWNER
+//        access, and allUsers get READER access.
 //   projection: Set of properties to return. Defaults to full.
 //      kGTLStorageProjectionFull: Include all properties.
 //      kGTLStorageProjectionNoAcl: Omit acl and defaultObjectAcl properties.

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeChannelSnippet.h
+//  GTLYouTubeChannelLocalization.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelSnippet (0 custom class methods, 6 custom properties)
+//   GTLYouTubeChannelLocalization (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,38 +34,20 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLYouTubeChannelLocalization;
-@class GTLYouTubeThumbnailDetails;
-
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeChannelSnippet
+//   GTLYouTubeChannelLocalization
 //
 
-// Basic details about a channel, including title, description and thumbnails.
+// Channel localization setting
 
-@interface GTLYouTubeChannelSnippet : GTLObject
+@interface GTLYouTubeChannelLocalization : GTLObject
 
-// The language of the channel's default title and description.
-@property (copy) NSString *defaultLanguage;
-
-// The description of the channel.
+// The localized strings for channel's description.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
 
-// Localized title and description, read-only.
-@property (retain) GTLYouTubeChannelLocalization *localized;
-
-// The date and time that the channel was created. The value is specified in ISO
-// 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-@property (retain) GTLDateTime *publishedAt;
-
-// A map of thumbnail images associated with the channel. For each object in the
-// map, the key is the name of the thumbnail image, and the value is an object
-// that contains other information about the thumbnail.
-@property (retain) GTLYouTubeThumbnailDetails *thumbnails;
-
-// The channel's title.
+// The localized strings for channel's title, read-only.
 @property (copy) NSString *title;
 
 @end
