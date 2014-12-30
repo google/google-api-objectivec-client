@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLQueryBooks (45 custom class methods, 68 custom properties)
+//   GTLQueryBooks (45 custom class methods, 69 custom properties)
 
 #import "GTLQueryBooks.h"
 
@@ -63,7 +63,7 @@
          langRestrict, layerId, layerIds, libraryRestrict, licenseTypes, locale,
          manufacturer, maxResults, mimeType, model, name, nonce, offerId,
          orderBy, pageIds, pageSize, pageToken, partner, position, printType,
-         processingState, product, projection, q, rating, scale, serial,
+         processingState, product, projection, q, rating, reason, scale, serial,
          settings, shelf, showDeleted, showOnlySummaryInResponse, showPreorders,
          source, startIndex, startOffset, startPosition, summaryId, timestamp,
          updatedMax, updatedMin, uploadClientToken, userId,

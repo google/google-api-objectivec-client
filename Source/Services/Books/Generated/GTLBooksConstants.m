@@ -95,3 +95,6 @@ NSString * const kGTLBooksProjectionLite = @"lite";
 // GTLQueryBooks - Rating
 NSString * const kGTLBooksRatingHaveIt        = @"HAVE_IT";
 NSString * const kGTLBooksRatingNotInterested = @"NOT_INTERESTED";
+
+// GTLQueryBooks - Reason
+NSString * const kGTLBooksReasonOnboarding = @"ONBOARDING";

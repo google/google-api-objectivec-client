@@ -102,3 +102,6 @@ GTL_EXTERN NSString * const kGTLBooksProjectionLite;  // "lite"
 // GTLQueryBooks - Rating
 GTL_EXTERN NSString * const kGTLBooksRatingHaveIt;         // "HAVE_IT"
 GTL_EXTERN NSString * const kGTLBooksRatingNotInterested;  // "NOT_INTERESTED"
+
+// GTLQueryBooks - Reason
+GTL_EXTERN NSString * const kGTLBooksReasonOnboarding;  // "ONBOARDING"
