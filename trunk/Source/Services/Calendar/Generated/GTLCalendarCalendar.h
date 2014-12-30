@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,7 +61,8 @@
 // Title of the calendar.
 @property (copy) NSString *summary;
 
-// The time zone of the calendar. Optional.
+// The time zone of the calendar. (Formatted as an IANA Time Zone Database name,
+// e.g. "Europe/Zurich".) Optional.
 @property (copy) NSString *timeZone;
 
 @end

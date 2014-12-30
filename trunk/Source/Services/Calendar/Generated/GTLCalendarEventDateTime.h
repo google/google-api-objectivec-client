@@ -49,10 +49,11 @@
 // timeZone.
 @property (retain) GTLDateTime *dateTime;
 
-// The name of the time zone in which the time is specified (e.g.
-// "Europe/Zurich"). For recurring events this field is required and specifies
-// the time zone in which the recurrence is expanded. For single events this
-// field is optional and indicates a custom time zone for the event start/end.
+// The time zone in which the time is specified. (Formatted as an IANA Time Zone
+// Database name, e.g. "Europe/Zurich".) For recurring events this field is
+// required and specifies the time zone in which the recurrence is expanded. For
+// single events this field is optional and indicates a custom time zone for the
+// event start/end.
 @property (copy) NSString *timeZone;
 
 @end

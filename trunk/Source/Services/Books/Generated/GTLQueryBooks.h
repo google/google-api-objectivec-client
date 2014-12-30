@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLQueryBooks (45 custom class methods, 68 custom properties)
+//   GTLQueryBooks (45 custom class methods, 69 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -97,6 +97,7 @@
 @property (copy) NSString *projection;
 @property (copy) NSString *q;
 @property (copy) NSString *rating;
+@property (copy) NSString *reason;
 @property (assign) NSInteger scale;
 @property (copy) NSString *serial;
 @property (retain) GTLBooksUsersettings *settings;
@@ -533,6 +534,8 @@
 //   shelf: ID of bookshelf to which to add a volume.
 //   volumeId: ID of volume to add.
 //  Optional:
+//   reason: The reason for which the book is added to the library.
+//      kGTLBooksReasonOnboarding: Volumes added from onboarding flow.
 //   source: String to identify the originator of this request.
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
