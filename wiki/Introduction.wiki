@@ -557,6 +557,32 @@ service.retryEnabled = YES;
 
 The default errors retried are http status 408 (request timeout), 503 (service unavailable), and 504 (gateway timeout), `NSURLErrorNetworkConnectionLost`, and `NSURLErrorTimedOut`.  You may specify a maximum retry interval other than the default of 1 minute, and can provide an optional retry selector to customize the criteria for each retry attempt.
 
+=== Testing ===
+
+For unit tests, queries can be executed without any network activity. When testing, set the `testBlock` property of a query or service object. The `testBlock` should call its response parameter with an object or error. 
+
+{{{
+  query.testBlock = ^(GTLServiceTicket *ticket, GTLQueryTestResponse testResponse) {
+    // The query is available from the ticket.
+    GTLQuery *testQuery = ticket.originalQuery;
+
+    // The testBlock can create a GTLObject or GTLBatchResult, or an NSError.
+    //
+    // Here, we will make a GTLObject as the test response.
+    GTLTasksTask *task = [GTLTasksTask object];
+    task.title = @"My Fake Task";
+
+    GTLTasksTasks *tasks = [GTLTasksTasks object];
+    tasks.items = @[ task ];
+
+    NSError *testError = nil;
+
+    testResponse(tasks, testError);
+  };
+}}}
+
+When a service or query has a `testBlock`, that will be used instead of the normal network activity. Since the `executeQuery:` invocation is asynchronous, the unit test should use either `GTLService` `waitForTicket:timeout:fetchedObject:error:` or with `XCTestCase` `waitForExpectationsWithTimeout:` to wait for the completion handler to be called.
+
 === Using APIs Without Generated Classes ===
 
 The Google APIs Client Library for Objective-C includes generated service, query and data classes. These are Objective-C files constructed by processing the output of the [https://code.google.com/apis/discovery/ Google APIs Discovery Service]. The generated classes are derived from `GTLService`, `GTLQuery`, and `GTLObject`.
