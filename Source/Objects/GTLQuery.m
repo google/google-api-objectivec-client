@@ -45,7 +45,8 @@
             additionalHTTPHeaders = additionalHTTPHeaders_,
             expectedObjectClass = expectedObjectClass_,
             shouldSkipAuthorization = skipAuthorization_,
-            completionBlock = completionBlock_;
+            completionBlock = completionBlock_,
+            testBlock = testBlock_;
 
 + (id)queryWithMethodName:(NSString *)methodName {
   return [[[self alloc] initWithMethodName:methodName] autorelease];
@@ -75,6 +76,7 @@
   [urlQueryParameters_ release];
   [additionalHTTPHeaders_ release];
   [completionBlock_ release];
+  [testBlock_ release];
 
   [super dealloc];
 }
@@ -98,6 +100,7 @@
   query.expectedObjectClass = self.expectedObjectClass;
   query.shouldSkipAuthorization = self.shouldSkipAuthorization;
   query.completionBlock = self.completionBlock;
+  query.testBlock = self.testBlock;
   return query;
 }
 
@@ -145,6 +148,7 @@
 
 - (void)executionDidStop {
   self.completionBlock = nil;
+  self.testBlock = nil;
 }
 
 + (NSString *)nextRequestID {

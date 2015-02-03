@@ -29,6 +29,7 @@
   BOOL skipAuthorization_;
   NSDictionary *additionalHTTPHeaders_;
   NSDictionary *urlQueryParameters_;
+  GTLQueryTestBlock testBlock_;
 }
 
 // Queries included in this batch.  Each query should have a unique requestID.
@@ -46,6 +47,12 @@
 // Any URL query parameters to add to the query (useful for debugging with some
 // services).
 @property (copy) NSDictionary *urlQueryParameters;
+
+// Apps may provide a test block on the query or service to avoid network activity
+// during testing.
+//
+// See the description of GTLQueryTestBlock for additional details.
+@property (copy) GTLQueryTestBlock testBlock;
 
 + (id)batchQuery;
 + (id)batchQueryWithQueries:(NSArray *)array;

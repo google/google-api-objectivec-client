@@ -187,7 +187,8 @@ static NSString *ETagIfPresent(GTLObject *obj) {
             rpcUploadURL = rpcUploadURL_,
             allowInsecureQueries = allowInsecureQueries_,
             retryBlock = retryBlock_,
-            uploadProgressBlock = uploadProgressBlock_;
+            uploadProgressBlock = uploadProgressBlock_,
+            testBlock = testBlock_;
 
 + (Class)ticketClass {
   return [GTLServiceTicket class];
@@ -231,6 +232,7 @@ static NSString *ETagIfPresent(GTLObject *obj) {
   [surrogates_ release];
   [uploadProgressBlock_ release];
   [retryBlock_ release];
+  [testBlock_ release];
   [apiKey_ release];
   [apiVersion_ release];
   [rpcURL_ release];
@@ -419,7 +421,7 @@ static NSString *ETagIfPresent(GTLObject *obj) {
                                   isREST:(BOOL)isREST
                                 delegate:(id)delegate
                        didFinishSelector:(SEL)finishedSelector
-                       completionHandler:(id)completionHandler // GTLServiceCompletionHandler
+                       completionHandler:(GTLServiceCompletionHandler)completionHandler
                           executingQuery:(id<GTLQueryProtocol>)query
                                   ticket:(GTLServiceTicket *)ticket {
 
@@ -480,8 +482,25 @@ static NSString *ETagIfPresent(GTLObject *obj) {
   ticket.postedObject = bodyObject;
 
   ticket.executingQuery = query;
-  if (ticket.originalQuery == nil) {
-    ticket.originalQuery = query;
+
+  GTLQuery *originalQuery = (GTLQuery *)ticket.originalQuery;
+  if (originalQuery == nil) {
+    originalQuery = (GTLQuery *)query;
+    ticket.originalQuery = originalQuery;
+  }
+
+  GTLQueryTestBlock testBlock = originalQuery.testBlock;
+  if (!testBlock) {
+    testBlock = self.testBlock;
+  }
+
+  if (testBlock) {
+    [self simulateFetchWithTicket:ticket
+                        testBlock:testBlock
+                         delegate:delegate
+                didFinishSelector:finishedSelector
+                completionHandler:completionHandler];
+    return ticket;
   }
 
   GTMBridgeFetcherService *fetcherService = self.fetcherService;
@@ -744,7 +763,7 @@ static NSString *ETagIfPresent(GTLObject *obj) {
                               urlQueryParameters:(NSDictionary *)urlQueryParameters
                                         delegate:(id)delegate
                                didFinishSelector:(SEL)finishedSelector
-                               completionHandler:(id)completionHandler // GTLServiceCompletionHandler
+                               completionHandler:(GTLServiceCompletionHandler)completionHandler
                                   executingQuery:(id<GTLQueryProtocol>)executingQuery
                                           ticket:(GTLServiceTicket *)ticket {
   GTL_DEBUG_ASSERT([methodName length] > 0, @"Got an empty method name");
@@ -817,7 +836,7 @@ static NSString *ETagIfPresent(GTLObject *obj) {
 - (GTLServiceTicket *)executeBatchQuery:(GTLBatchQuery *)batch
                                delegate:(id)delegate
                       didFinishSelector:(SEL)finishedSelector
-                      completionHandler:(id)completionHandler // GTLServiceCompletionHandler
+                      completionHandler:(GTLServiceCompletionHandler)completionHandler
                                  ticket:(GTLServiceTicket *)ticket {
   GTLBatchQuery *batchCopy = [[batch copy] autorelease];
   NSArray *queries = batchCopy.queries;
@@ -936,7 +955,7 @@ static NSString *ETagIfPresent(GTLObject *obj) {
                             mayAuthorize:(BOOL)mayAuthorize
                                 delegate:(id)delegate
                        didFinishSelector:(SEL)finishedSelector
-                       completionHandler:(id)completionHandler // GTLServiceCompletionHandler
+                       completionHandler:(GTLServiceCompletionHandler)completionHandler
                                   ticket:(GTLServiceTicket *)ticket {
   // if no URL was supplied, treat this as if the fetch failed (below)
   // and immediately return a nil ticket, skipping the callbacks
@@ -1379,43 +1398,10 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
         completionBlock(ticket, object, error);
       }
     } else {
-      // Batch query
-      //
-      // We'll step through the queries of the original batch, not of the
-      // batch result
-      GTLBatchQuery *batchQuery = (GTLBatchQuery *)originalQuery;
-      GTLBatchResult *batchResult = (GTLBatchResult *)object;
-      NSDictionary *successes = batchResult.successes;
-      NSDictionary *failures = batchResult.failures;
-
-      for (GTLQuery *oneQuery in batchQuery.queries) {
-        GTLServiceCompletionHandler completionBlock = oneQuery.completionBlock;
-        if (completionBlock) {
-          // If there was no networking error, look for a query-specific
-          // error or result
-          GTLObject *oneResult = nil;
-          NSError *oneError = error;
-          if (oneError == nil) {
-            NSString *requestID = [oneQuery requestID];
-            GTLErrorObject *gtlError = [failures objectForKey:requestID];
-            if (gtlError) {
-              oneError = [gtlError foundationError];
-            } else {
-              oneResult = [successes objectForKey:requestID];
-              if (oneResult == nil) {
-                // We found neither a success nor a failure for this
-                // query, unexpectedly
-                GTL_DEBUG_LOG(@"GTLService: Batch result missing for request %@",
-                              requestID);
-                oneError = [NSError errorWithDomain:kGTLServiceErrorDomain
-                                               code:kGTLErrorQueryResultMissing
-                                           userInfo:nil];
-              }
-            }
-          }
-          completionBlock(ticket, oneResult, oneError);
-        }
-      }
+      [self invokeBatchCompletionsWithTicket:ticket
+                                  batchQuery:(GTLBatchQuery *)originalQuery
+                                 batchResult:(GTLBatchResult *)object
+                                       error:error];
     }
 
     // Release query callback blocks
@@ -1440,6 +1426,111 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
   // release their blocks here to avoid unintended retain loops
   ticket.retryBlock = nil;
   ticket.uploadProgressBlock = nil;
+}
+
+- (void)invokeBatchCompletionsWithTicket:(GTLServiceTicket *)ticket
+                              batchQuery:(GTLBatchQuery *)batchQuery
+                             batchResult:(GTLBatchResult *)batchResult
+                                   error:(NSError *)error {
+  // Batch query
+  //
+  // We'll step through the queries of the original batch, not of the
+  // batch result
+  NSDictionary *successes = batchResult.successes;
+  NSDictionary *failures = batchResult.failures;
+
+  for (GTLQuery *oneQuery in batchQuery.queries) {
+    GTLServiceCompletionHandler completionBlock = oneQuery.completionBlock;
+    if (completionBlock) {
+      // If there was no networking error, look for a query-specific
+      // error or result
+      GTLObject *oneResult = nil;
+      NSError *oneError = error;
+      if (oneError == nil) {
+        NSString *requestID = [oneQuery requestID];
+        GTLErrorObject *gtlError = [failures objectForKey:requestID];
+        if (gtlError) {
+          oneError = [gtlError foundationError];
+        } else {
+          oneResult = [successes objectForKey:requestID];
+          if (oneResult == nil) {
+            // We found neither a success nor a failure for this
+            // query, unexpectedly
+            GTL_DEBUG_LOG(@"GTLService: Batch result missing for request %@",
+                          requestID);
+            oneError = [NSError errorWithDomain:kGTLServiceErrorDomain
+                                           code:kGTLErrorQueryResultMissing
+                                       userInfo:nil];
+          }
+        }
+      }
+      completionBlock(ticket, oneResult, oneError);
+    }
+  }
+}
+
+- (void)simulateFetchWithTicket:(GTLServiceTicket *)ticket
+                      testBlock:(GTLQueryTestBlock)testBlock
+                       delegate:(id)delegate
+              didFinishSelector:(SEL)finishedSelector
+              completionHandler:(GTLServiceCompletionHandler)completionHandler {
+
+  GTLQuery *originalQuery = (GTLQuery *)ticket.originalQuery;
+  ticket.executingQuery = originalQuery;
+
+  testBlock(ticket, ^(id testObject, NSError *testError) {
+    dispatch_async(dispatch_get_main_queue(), ^{
+      if (testError) {
+        // During simulation, we invoke any retry selector or block, but ignore the result.
+        const BOOL willRetry = NO;
+        GTLServiceRetryBlock retryBlock = ticket.retryBlock;
+        SEL retrySelector = ticket.retrySelector;
+        if (retrySelector) {
+          (void)[self invokeRetrySelector:retrySelector
+                                 delegate:delegate
+                                   ticket:ticket
+                                willRetry:willRetry
+                                    error:testError];
+        }
+
+        if (retryBlock) {
+          (void)retryBlock(ticket, willRetry, testError);
+        }
+      }
+
+      if (![originalQuery isBatchQuery]) {
+        // Single query
+        GTLServiceCompletionHandler completionBlock = originalQuery.completionBlock;
+        if (completionBlock) {
+          completionBlock(ticket, testObject, testError);
+        }
+      } else {
+        // Batch query
+        GTL_DEBUG_ASSERT(!testObject || [testObject isKindOfClass:[GTLBatchResult class]],
+            @"Batch queries should have result objects of type GTLBatchResult (not %@)",
+            [testObject class]);
+
+        [self invokeBatchCompletionsWithTicket:ticket
+                                    batchQuery:(GTLBatchQuery *)originalQuery
+                                   batchResult:(GTLBatchResult *)testObject
+                                         error:testError];
+      } // isBatchQuery
+
+      if (finishedSelector) {
+        [[self class] invokeCallback:finishedSelector
+                              target:delegate
+                              ticket:ticket
+                              object:testObject
+                               error:testError];
+      }
+      if (completionHandler) {
+        completionHandler(ticket, testObject, testError);
+      }
+      ticket.hasCalledCallback = YES;
+
+      [originalQuery executionDidStop];
+    });  // dispatch_async
+  });  // testBlock
 }
 
 #pragma mark -
