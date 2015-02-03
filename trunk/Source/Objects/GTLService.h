@@ -125,6 +125,7 @@ typedef BOOL (^GTLServiceRetryBlock)(GTLServiceTicket *ticket, BOOL suggestedWil
 
   GTLServiceRetryBlock retryBlock_;
   GTLServiceUploadProgressBlock uploadProgressBlock_;
+  GTLQueryTestBlock testBlock_;
 
   NSUInteger uploadChunkSize_;      // zero when uploading via multi-part MIME http body
 
@@ -215,6 +216,11 @@ typedef BOOL (^GTLServiceRetryBlock)(GTLServiceTicket *ticket, BOOL suggestedWil
 @property (copy) GTLServiceRetryBlock retryBlock;
 
 @property (nonatomic, assign) NSTimeInterval maxRetryInterval;
+
+// A test block can be provided to test service calls without any network activity.
+//
+// See the description of GTLQueryTestBlock for additional details.
+@property (nonatomic, copy) GTLQueryTestBlock testBlock;
 
 //
 // Fetches may be done using RPC or REST APIs, without creating

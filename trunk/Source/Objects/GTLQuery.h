@@ -39,6 +39,22 @@
 @end
 
 @class GTLServiceTicket;
+@class GTLQuery;
+
+// The test block enables testing of query execution without any network activity.
+//
+// The test block must finish by calling the response block, passing either an object
+// (GTLObject or GTLBatchResult) or an NSError.
+//
+// The query is available to the test block code as ticket.originalQuery.
+//
+// Because query execution is asynchronous, the test code must wait for a callback,
+// either with GTLService's waitForTicket:timeout:fetchedObject:error: or with XCTestCase's
+// waitForExpectationsWithTimeout:
+//
+// Example usage is available in GTLServiceTest.
+typedef void (^GTLQueryTestResponse)(id object, NSError *error);
+typedef void (^GTLQueryTestBlock)(GTLServiceTicket *testTicket, GTLQueryTestResponse testResponse);
 
 @interface GTLQuery : NSObject <GTLQueryProtocol> {
  @private
@@ -53,6 +69,7 @@
   Class expectedObjectClass_;
   BOOL skipAuthorization_;
   void (^completionBlock_)(GTLServiceTicket *ticket, id object, NSError *error);
+  GTLQueryTestBlock testBlock_;
 }
 
 // The rpc method name.
@@ -107,6 +124,10 @@
 //     // the batch execution failed
 //   }
 @property (copy) void (^completionBlock)(GTLServiceTicket *ticket, id object, NSError *error);
+
+// Apps may provide a test block on the query or service to avoid network activity
+// during testing.  See the description above for GTLQueryTestBlock.
+@property (copy) GTLQueryTestBlock testBlock;
 
 // methodName is the RPC method name to use.
 + (id)queryWithMethodName:(NSString *)methodName GTL_NONNULL((1));
