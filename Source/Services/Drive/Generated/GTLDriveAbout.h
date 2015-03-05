@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveAbout (0 custom class methods, 23 custom properties)
+//   GTLDriveAbout (0 custom class methods, 24 custom properties)
 //   GTLDriveAboutAdditionalRoleInfoItem (0 custom class methods, 2 custom properties)
 //   GTLDriveAboutExportFormatsItem (0 custom class methods, 2 custom properties)
 //   GTLDriveAboutFeaturesItem (0 custom class methods, 2 custom properties)
@@ -74,6 +74,9 @@
 
 // List of additional features enabled on this account.
 @property (retain) NSArray *features;  // of GTLDriveAboutFeaturesItem
+
+// The palette of allowable folder colors as RGB hex strings.
+@property (retain) NSArray *folderColorPalette;  // of NSString
 
 // The allowable import formats.
 @property (retain) NSArray *importFormats;  // of GTLDriveAboutImportFormatsItem

@@ -100,9 +100,13 @@ extern NSString *const kGTLServiceTicketParsingStoppedNotification ;
 
 typedef void (^GTLServiceCompletionHandler)(GTLServiceTicket *ticket, id object, NSError *error);
 
-typedef void (^GTLServiceUploadProgressBlock)(GTLServiceTicket *ticket, unsigned long long numberOfBytesRead, unsigned long long dataLength);
+typedef void (^GTLServiceUploadProgressBlock)(GTLServiceTicket *ticket,
+                                              unsigned long long totalBytesUploaded,
+                                              unsigned long long totalBytesExpectedToUpload);
 
-typedef BOOL (^GTLServiceRetryBlock)(GTLServiceTicket *ticket, BOOL suggestedWillRetry, NSError *error);
+typedef BOOL (^GTLServiceRetryBlock)(GTLServiceTicket *ticket,
+                                     BOOL suggestedWillRetry,
+                                     NSError *error);
 
 #pragma mark -
 
@@ -144,6 +148,10 @@ typedef BOOL (^GTLServiceRetryBlock)(GTLServiceTicket *ticket, BOOL suggestedWil
   NSURL *rpcUploadURL_;
   NSDictionary *urlQueryParameters_;
   NSDictionary *additionalHTTPHeaders_;
+
+#if GTL_USE_SESSION_FETCHER
+  NSArray *runLoopModes_;
+#endif
 }
 
 #pragma mark Query Execution
@@ -472,6 +480,25 @@ typedef BOOL (^GTLServiceRetryBlock)(GTLServiceTicket *ticket, BOOL suggestedWil
 
 @property (copy) GTLServiceUploadProgressBlock uploadProgressBlock;
 
+@end
+
+@interface GTLService (TestingSupport)
+
+// Convenience method to create a mock GTL service just for testing.
+//
+// Queries executed by this mock service will not perform any network operation,
+// but will invoke callbacks and provide the supplied data or error to the
+// completion handler.
+//
+// You can make more customized mocks by setting the test block property of the service
+// or query; the test block can inspect the query as ticket.originalQuery
+//
+// See the description of GTLQueryTestBlock for more details on customized testing.
+//
+// Example usage is in the unit test method testMockServiceConvenienceMethod.
++ (instancetype)mockServiceWithFakedObject:(id)objectOrNil
+                                fakedError:(NSError *)error;
+
 // Wait synchronously for fetch to complete (strongly discouraged)
 //
 // This just runs the current event loop until the fetch completes
@@ -489,6 +516,7 @@ typedef BOOL (^GTLServiceRetryBlock)(GTLServiceTicket *ticket, BOOL suggestedWil
               timeout:(NSTimeInterval)timeoutInSeconds
         fetchedObject:(GTLObject **)outObjectOrNil
                 error:(NSError **)outErrorOrNil GTL_NONNULL((1));
+
 @end
 
 #pragma mark -

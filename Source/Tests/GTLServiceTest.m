@@ -130,6 +130,8 @@
   // notification counters
   int parseStartedCount_;
   int parseStoppedCount_;
+
+  NSURL *fileToRemove_;
 }
 
 @end
@@ -204,6 +206,14 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   testServer_ = nil;
 
   isServerRunning_ = NO;
+
+  if (fileToRemove_) {
+    NSError *fileError = nil;
+    XCTAssert([[NSFileManager defaultManager] removeItemAtURL:fileToRemove_ error:&fileError],
+              @"%@", fileError);
+    [fileToRemove_ release];
+    fileToRemove_ = nil;
+  }
 }
 
 #pragma mark Notification callbacks
@@ -312,9 +322,8 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
 
   service.authorizer = [GTLTestAuthorizer authorizerWithValue:@"catpaws"];
 
-  GTLServiceCompletionHandler completionBlock;
-
-  completionBlock = ^(GTLServiceTicket *ticket, id object, NSError *error) {
+  GTLServiceCompletionHandler completionBlock = ^(GTLServiceTicket *ticket,
+                                                  id object, NSError *error) {
     GTLTasksTasks *tasks = object;
 
     XCTAssertNil(error);
@@ -331,7 +340,8 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
     XCTAssertEqualObjects(item.updated.RFC3339String, @"2011-04-29T22:14:47.779Z");
   };
 
-  GTLQueryTasksTest *query = [GTLQueryTasksTest queryForTasksListWithTasklist:@"MDg0NTg2OTA1ODg4OTI3MzgyMzQ6NDow"];
+  GTLQueryTasksTest *query =
+      [GTLQueryTasksTest queryForTasksListWithTasklist:@"MDg0NTg2OTA1ODg4OTI3MzgyMzQ6NDow"];
 
   query.showCompleted = YES;
   query.showHidden = NO;
@@ -348,11 +358,18 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   GTLServiceTicket *ticket = [service executeQuery:query
                                  completionHandler:completionBlock];
 
+  __block unsigned long long maxUploadProgress = 0;
+  ticket.uploadProgressBlock = ^(GTLServiceTicket *ticket, unsigned long long numberOfBytesRead,
+                                 unsigned long long dataLength) {
+    maxUploadProgress = numberOfBytesRead;
+  };
+  
   NSString *headerValue = [ticket.objectFetcher.mutableRequest valueForHTTPHeaderField:@"X-Feline"];
   XCTAssertEqualObjects(headerValue, @"Fluffy");
 
   [self service:service waitForTicket:ticket];
-  XCTAssertTrue(ticket.hasCalledCallback);
+  XCTAssert(ticket.hasCalledCallback);
+  XCTAssertGreaterThan(maxUploadProgress, 0ULL);
 
   //
   // test: fetch single query with error returned
@@ -760,15 +777,27 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
                    error:NULL];
 }
 
+- (GTLTasksTasks *)taskItemsForTestBlocks {
+  GTLTasksTask *task1 = [GTLTasksTask object];
+  task1.title = @"task alpha";
+  GTLTasksTask *task2 = [GTLTasksTask object];
+  task2.title = @"task beta";
+
+  GTLTasksTasks *tasks = [GTLTasksTasks object];
+  tasks.items = @[ task1, task2 ];
+  return tasks;
+}
+
 - (void)testServiceRPCTestBlock {
   // Test a single query.
   testServer_ = nil;
 
   XCTestExpectation *expectExecuteCompletion = [self expectationWithDescription:@"Execute block"];
   XCTestExpectation *expectQueryCompletion = [self expectationWithDescription:@"Query block"];
+  XCTestExpectation *expectProgress = [self expectationWithDescription:@"Upload progress"];
 
   GTLService *service = [[[GTLService alloc] init] autorelease];
-  service.rpcURL = [NSURL URLWithString:@"example.invalid"];
+  service.rpcURL = [NSURL URLWithString:@"https://example.invalid"];
 
   GTLQueryTasksTest *query = [GTLQueryTasksTest queryForTasksListWithTasklist:@"abcd"];
   query.requestID = @"gtl_11";
@@ -777,14 +806,7 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
     GTLQuery *testQuery = ticket.originalQuery;
     XCTAssertEqualObjects(testQuery.requestID, @"gtl_11");
 
-    GTLTasksTask *task1 = [GTLTasksTask object];
-    task1.title = @"task alpha";
-    GTLTasksTask *task2 = [GTLTasksTask object];
-    task2.title = @"task beta";
-
-    GTLTasksTasks *tasks = [GTLTasksTasks object];
-    tasks.items = @[ task1, task2 ];
-
+    GTLTasksTasks *tasks = [self taskItemsForTestBlocks];
     testResponse(tasks, nil);
   };
 
@@ -821,9 +843,151 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
     [expectExecuteCompletion fulfill];
   }];
 
+  ticket.uploadProgressBlock = ^(GTLServiceTicket *ticket,
+                                 unsigned long long totalBytesUploaded,
+                                 unsigned long long totalBytesExpectedToUpload) {
+    if (totalBytesUploaded == totalBytesExpectedToUpload) {
+      [expectProgress fulfill];
+    }
+  };
+
   [self waitForExpectationsWithTimeout:5 handler:^(NSError *error) {
     XCTAssertTrue(ticket.hasCalledCallback);
   }];
+}
+
+- (void)testMockServiceConvenienceMethod {
+  testServer_ = nil;
+
+  // Test executing a query on the mock service, with success.
+  XCTestExpectation *expectExecuteCompletion = [self expectationWithDescription:@"Completion"];
+
+  GTLObject *fakedObject = [GTLObject object];
+
+  GTLService *service = [GTLService mockServiceWithFakedObject:fakedObject
+                                                    fakedError:nil];
+
+  GTLQueryTasksTest *query = [GTLQueryTasksTest queryForTasksListWithTasklist:@"abcd"];
+  query.requestID = @"gtl_11";
+
+  [service executeQuery:query
+      completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
+        XCTAssertEqualObjects(object, fakedObject);
+        XCTAssertNil(error);
+        [expectExecuteCompletion fulfill];
+  }];
+  [self waitForExpectationsWithTimeout:5 handler:nil];
+
+  // Test executing a query on the mock service, with an error.
+  expectExecuteCompletion = [self expectationWithDescription:@"Completion with Error"];
+
+  NSError *fakedError = [NSError errorWithDomain:@"com.example" code:-1 userInfo:nil];
+
+  service = [GTLService mockServiceWithFakedObject:nil
+                                        fakedError:fakedError];
+  [service executeQuery:query
+      completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
+        XCTAssertNil(object);
+        XCTAssertEqualObjects(error, fakedError);
+        [expectExecuteCompletion fulfill];
+  }];
+  [self waitForExpectationsWithTimeout:5 handler:nil];
+}
+
+// Tests for uploadParams using data, file URL, and file handle.
+- (NSData *)tempDataForUploading {
+  NSMutableString *string = [NSMutableString string];
+  for (int index = 0; index < 1000; index++) {
+    [string appendFormat:@"%c", 'A' + (index % 26)];
+  }
+  return [string dataUsingEncoding:NSUTF8StringEncoding];
+}
+
+- (NSURL *)tempFileURLForUploading {
+  // Write a file that we can test uploading.
+  NSURL *tempDir = [NSURL fileURLWithPath:NSTemporaryDirectory()];
+  NSURL *tempFileURL = [tempDir URLByAppendingPathComponent:@"testServiceRPCFileUploadTestBlock"];
+  NSError *writeError = nil;
+  NSData *data = [self tempDataForUploading];
+  BOOL didWrite = [data writeToURL:tempFileURL
+                           options:NSDataWritingAtomic
+                             error:&writeError];
+  XCTAssert(didWrite, @"%@", writeError);
+  fileToRemove_ = [tempFileURL copy];
+  return tempFileURL;
+}
+
+- (void)testServiceRPCDataUploadTestBlock {
+  GTLUploadParameters *uploadParameters =
+      [GTLUploadParameters uploadParametersWithData:[self tempDataForUploading]
+                                           MIMEType:@"text/plain"];
+  [self performServiceRPCUploadTestBlockWithParameters:uploadParameters];
+}
+
+
+- (void)testServiceRPCFileURLUploadTestBlock {
+  GTLUploadParameters *uploadParameters =
+      [GTLUploadParameters uploadParametersWithFileURL:[self tempFileURLForUploading]
+                                              MIMEType:@"text/plain"];
+  [self performServiceRPCUploadTestBlockWithParameters:uploadParameters];
+}
+
+- (void)testServiceRPCFileHandleUploadTestBlock {
+  NSError *readingError = nil;
+  NSURL *fileURL = [self tempFileURLForUploading];
+  NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingFromURL:fileURL
+                                                                 error:&readingError];
+  XCTAssertNotNil(fileHandle, @"%@", readingError);
+  GTLUploadParameters *uploadParameters =
+      [GTLUploadParameters uploadParametersWithFileHandle:fileHandle
+                                                 MIMEType:@"text/plain"];
+  [self performServiceRPCUploadTestBlockWithParameters:uploadParameters];
+}
+
+// This method allows testing each flavor of upload: data, file URL, and file handle.
+- (void)performServiceRPCUploadTestBlockWithParameters:(GTLUploadParameters *)uploadParameters {
+  // Test a single query.
+  testServer_ = nil;
+
+  XCTestExpectation *expectExecuteCompletion = [self expectationWithDescription:@"Execute block"];
+  XCTestExpectation *expectQueryCompletion = [self expectationWithDescription:@"Query block"];
+  XCTestExpectation *expectProgress = [self expectationWithDescription:@"Upload progress"];
+
+  GTLService *service = [[[GTLService alloc] init] autorelease];
+  service.rpcUploadURL = [NSURL URLWithString:@"https://example.invalid"];
+
+  GTLQueryTasksTest *query = [GTLQueryTasksTest queryForTasksListWithTasklist:@"abcd"];
+  query.uploadParameters = uploadParameters;
+
+  query.testBlock = ^(GTLServiceTicket *ticket, GTLQueryTestResponse testResponse) {
+    GTLTasksTasks *tasks = [self taskItemsForTestBlocks];
+    testResponse(tasks, nil);
+  };
+
+  query.completionBlock = ^(GTLServiceTicket *ticket, id object, NSError *error) {
+    [expectQueryCompletion fulfill];
+  };
+
+  GTLServiceTicket *ticket = [service executeQuery:query
+                                 completionHandler:^(GTLServiceTicket *ticket,
+                                                     id object,
+                                                     NSError *error) {
+    [expectExecuteCompletion fulfill];
+  }];
+
+  __block int progressCallbackCounter = 0;
+  ticket.uploadProgressBlock = ^(GTLServiceTicket *ticket,
+                                 unsigned long long totalBytesUploaded,
+                                 unsigned long long totalBytesExpectedToUpload) {
+    ++progressCallbackCounter;
+    if (totalBytesUploaded == totalBytesExpectedToUpload) {
+      [expectProgress fulfill];
+      XCTAssertEqual(progressCallbackCounter, 3);
+      XCTAssertGreaterThan(totalBytesUploaded, [[self tempDataForUploading] length]);
+    }
+  };
+
+  [self waitForExpectationsWithTimeout:5 handler:nil];
 }
 
 - (void)testServiceRPCErrorTestBlock {
@@ -835,7 +999,7 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   XCTestExpectation *expectRetryBlock = [self expectationWithDescription:@"Retry block"];
 
   GTLService *service = [[[GTLService alloc] init] autorelease];
-  service.rpcURL = [NSURL URLWithString:@"example.invalid"];
+  service.rpcURL = [NSURL URLWithString:@"https://example.invalid"];
 
   GTLQueryTasksTest *query = [GTLQueryTasksTest queryForTasksListWithTasklist:@"abcd"];
   query.requestID = @"gtl_13";
@@ -905,7 +1069,7 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   XCTestExpectation *expectQuery2Completion = [self expectationWithDescription:@"Query2 block"];
 
   GTLService *service = [[[GTLService alloc] init] autorelease];
-  service.rpcURL = [NSURL URLWithString:@"example.invalid"];
+  service.rpcURL = [NSURL URLWithString:@"https://example.invalid"];
 
   GTLBatchQuery *batchQuery = [self batchQueryForTest];
 
@@ -994,7 +1158,7 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   XCTestExpectation *expectQuery2Completion = [self expectationWithDescription:@"Query2 block"];
 
   GTLService *service = [[[GTLService alloc] init] autorelease];
-  service.rpcURL = [NSURL URLWithString:@"example.invalid"];
+  service.rpcURL = [NSURL URLWithString:@"https://example.invalid"];
 
   GTLBatchQuery *batchQuery = [self batchQueryForTest];
 
