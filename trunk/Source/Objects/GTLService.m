@@ -239,6 +239,9 @@ static NSString *ETagIfPresent(GTLObject *obj) {
   [rpcUploadURL_ release];
   [urlQueryParameters_ release];
   [additionalHTTPHeaders_ release];
+#if GTL_USE_SESSION_FETCHER
+  [runLoopModes_ release];
+#endif
 
   [super dealloc];
 }
@@ -497,6 +500,7 @@ static NSString *ETagIfPresent(GTLObject *obj) {
   if (testBlock) {
     [self simulateFetchWithTicket:ticket
                         testBlock:testBlock
+                       dataToPost:dataToPost
                          delegate:delegate
                 didFinishSelector:finishedSelector
                 completionHandler:completionHandler];
@@ -1134,7 +1138,7 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
   id<GTLQueryProtocol> executingQuery = ticket.executingQuery;
   if ([executingQuery isBatchQuery]) {
     // build a dictionary of expected classes for the batch responses
-    GTLBatchQuery *batchQuery = executingQuery;
+    GTLBatchQuery *batchQuery = (GTLBatchQuery *)executingQuery;
     NSArray *queries = batchQuery.queries;
     NSDictionary *batchClassMap = [NSMutableDictionary dictionaryWithCapacity:[queries count]];
     for (GTLQuery *query in queries) {
@@ -1471,6 +1475,7 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 
 - (void)simulateFetchWithTicket:(GTLServiceTicket *)ticket
                       testBlock:(GTLQueryTestBlock)testBlock
+                     dataToPost:(NSData *)dataToPost
                        delegate:(id)delegate
               didFinishSelector:(SEL)finishedSelector
               completionHandler:(GTLServiceCompletionHandler)completionHandler {
@@ -1478,8 +1483,10 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
   GTLQuery *originalQuery = (GTLQuery *)ticket.originalQuery;
   ticket.executingQuery = originalQuery;
 
+  NSOperationQueue *delegateQueue = self.delegateQueue ?: [NSOperationQueue mainQueue];
+
   testBlock(ticket, ^(id testObject, NSError *testError) {
-    dispatch_async(dispatch_get_main_queue(), ^{
+    [delegateQueue addOperationWithBlock:^{
       if (testError) {
         // During simulation, we invoke any retry selector or block, but ignore the result.
         const BOOL willRetry = NO;
@@ -1495,6 +1502,24 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 
         if (retryBlock) {
           (void)retryBlock(ticket, willRetry, testError);
+        }
+      } else {
+        // Simulate upload progress, calling back up to three times.
+        if (ticket.uploadProgressBlock || ticket.uploadProgressSelector) {
+          GTLQuery *query = (GTLQuery *)ticket.originalQuery;
+          unsigned long long uploadLength = [self simulatedUploadLengthForQuery:query
+                                                                     dataToPost:dataToPost];
+          unsigned long long sendReportSize = uploadLength / 3 + 1;
+          unsigned long long totalSentSoFar = 0;
+          while (totalSentSoFar < uploadLength) {
+            unsigned long long bytesRemaining = uploadLength - totalSentSoFar;
+            sendReportSize = MIN(sendReportSize, bytesRemaining);
+            totalSentSoFar += sendReportSize;
+
+            [self invokeProgressCallbackForTicket:ticket
+                                   deliveredBytes:(unsigned long long)totalSentSoFar
+                                       totalBytes:(unsigned long long)uploadLength];
+          }
         }
       }
 
@@ -1529,8 +1554,39 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
       ticket.hasCalledCallback = YES;
 
       [originalQuery executionDidStop];
-    });  // dispatch_async
+    }];  // addOperationWithBlock:
   });  // testBlock
+}
+
+- (unsigned long long)simulatedUploadLengthForQuery:(GTLQuery *)query
+                                         dataToPost:(NSData *)dataToPost {
+  // We're uploading the body object and other posted metadata, plus optionally the
+  // data or file specified in the upload parameters.
+  unsigned long long uploadLength = [dataToPost length];
+
+  GTLUploadParameters *uploadParameters = query.uploadParameters;
+  if (uploadParameters) {
+    NSData *uploadData = uploadParameters.data;
+    if (uploadData) {
+      uploadLength += [uploadData length];
+    } else {
+      NSURL *fileURL = uploadParameters.fileURL;
+      if (fileURL) {
+        NSError *fileError = nil;
+        NSNumber *fileSizeNum = nil;
+        if ([fileURL getResourceValue:&fileSizeNum
+                               forKey:NSURLFileSizeKey
+                                error:&fileError]) {
+          uploadLength += [fileSizeNum unsignedLongLongValue];
+        }
+      } else {
+        NSFileHandle *fileHandle = uploadParameters.fileHandle;
+        unsigned long long fileLength = [fileHandle seekToEndOfFile];
+        uploadLength += fileLength;
+      }
+    }
+  }
+  return uploadLength;
 }
 
 #pragma mark -
@@ -1597,38 +1653,6 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
     [retryInvocation getReturnValue:&willRetry];
   }
   return willRetry;
-}
-
-- (BOOL)waitForTicket:(GTLServiceTicket *)ticket
-              timeout:(NSTimeInterval)timeoutInSeconds
-        fetchedObject:(GTLObject **)outObjectOrNil
-                error:(NSError **)outErrorOrNil {
-
-  NSDate* giveUpDate = [NSDate dateWithTimeIntervalSinceNow:timeoutInSeconds];
-
-  // loop until the fetch completes with an object or an error,
-  // or until the timeout has expired
-  while (![ticket hasCalledCallback]
-         && [giveUpDate timeIntervalSinceNow] > 0) {
-
-    // run the current run loop 1/1000 of a second to give the networking
-    // code a chance to work
-    NSDate *stopDate = [NSDate dateWithTimeIntervalSinceNow:0.001];
-    [[NSRunLoop currentRunLoop] runUntilDate:stopDate];
-  }
-
-  NSError *fetchError = ticket.fetchError;
-
-  if (![ticket hasCalledCallback] && fetchError == nil) {
-    fetchError = [NSError errorWithDomain:kGTLServiceErrorDomain
-                                     code:kGTLErrorWaitTimedOut
-                                 userInfo:nil];
-  }
-
-  if (outObjectOrNil) *outObjectOrNil = ticket.fetchedObject;
-  if (outErrorOrNil)  *outErrorOrNil = fetchError;
-
-  return (fetchError == nil);
 }
 
 #pragma mark -
@@ -1837,7 +1861,7 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
                           delegate:(id)delegate
                  didFinishSelector:(SEL)finishedSelector {
   if ([queryObj isBatchQuery]) {
-   return [self executeBatchQuery:queryObj
+   return [self executeBatchQuery:(GTLBatchQuery *)queryObj
                          delegate:delegate
                 didFinishSelector:finishedSelector
                 completionHandler:NULL
@@ -1865,7 +1889,7 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 - (GTLServiceTicket *)executeQuery:(id<GTLQueryProtocol>)queryObj
                  completionHandler:(void (^)(GTLServiceTicket *ticket, id object, NSError *error))handler {
   if ([queryObj isBatchQuery]) {
-    return [self executeBatchQuery:queryObj
+    return [self executeBatchQuery:(GTLBatchQuery *)queryObj
                           delegate:nil
                  didFinishSelector:NULL
                  completionHandler:handler
@@ -2238,16 +2262,19 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 }
 
 - (void)setRunLoopModes:(NSArray *)array {
-#if !GTL_USE_SESSION_FETCHER
+#if GTL_USE_SESSION_FETCHER
+  [runLoopModes_ autorelease];
+  runLoopModes_ = [array copy];
+#else
   self.fetcherService.runLoopModes = array;
 #endif
 }
 
 - (NSArray *)runLoopModes {
-#if !GTL_USE_SESSION_FETCHER
-  return self.fetcherService.runLoopModes;
+#if GTL_USE_SESSION_FETCHER
+  return runLoopModes_;
 #else
-  return nil;
+  return self.fetcherService.runLoopModes;
 #endif
 }
 
@@ -2350,6 +2377,50 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
     }
   }
   uploadChunkSize_ = val;
+}
+
+@end
+
+@implementation GTLService (TestingSupport)
+
++ (instancetype)mockServiceWithFakedObject:(id)objectOrNil
+                                fakedError:(NSError *)errorOrNil {
+  GTLService *service = [[GTLService alloc] init];
+  service.rpcURL = [NSURL URLWithString:@"https://example.invalid"];
+  service.testBlock = ^(GTLServiceTicket *ticket, GTLQueryTestResponse testResponse) {
+    testResponse(objectOrNil, errorOrNil);
+  };
+  return service;
+}
+
+- (BOOL)waitForTicket:(GTLServiceTicket *)ticket
+              timeout:(NSTimeInterval)timeoutInSeconds
+        fetchedObject:(GTLObject **)outObjectOrNil
+                error:(NSError **)outErrorOrNil {
+
+  NSDate* giveUpDate = [NSDate dateWithTimeIntervalSinceNow:timeoutInSeconds];
+
+  // Loop until the fetch completes with an object or an error,
+  // or until the timeout has expired
+  while (![ticket hasCalledCallback] && [giveUpDate timeIntervalSinceNow] > 0) {
+    // Run the current run loop 1/1000 of a second to give the networking
+    // code a chance to work
+    NSDate *stopDate = [NSDate dateWithTimeIntervalSinceNow:0.001];
+    [[NSRunLoop currentRunLoop] runUntilDate:stopDate];
+  }
+
+  NSError *fetchError = ticket.fetchError;
+
+  if (![ticket hasCalledCallback] && fetchError == nil) {
+    fetchError = [NSError errorWithDomain:kGTLServiceErrorDomain
+                                     code:kGTLErrorWaitTimedOut
+                                 userInfo:nil];
+  }
+
+  if (outObjectOrNil) *outObjectOrNil = ticket.fetchedObject;
+  if (outErrorOrNil) *outErrorOrNil = fetchError;
+
+  return (fetchError == nil);
 }
 
 @end
@@ -2486,6 +2557,17 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
   return service_;
 }
 
+- (void)setObjectFetcher:(GTMBridgeFetcher *)fetcher {
+  [objectFetcher_ autorelease];
+  objectFetcher_ = [fetcher retain];
+
+  [self updateObjectFetcherProgressCallbacks];
+}
+
+- (GTMBridgeFetcher *)objectFetcher {
+  return objectFetcher_;
+}
+
 - (void)setUserData:(id)userData {
   [self setProperty:userData forKey:kServiceUserDataPropertyKey];
 }
@@ -2543,57 +2625,53 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 }
 
 - (void)setUploadProgressSelector:(SEL)progressSelector {
-  uploadProgressSelector_ = progressSelector;
+  if (uploadProgressSelector_ != progressSelector) {
+    uploadProgressSelector_ = progressSelector;
 
-  // if the user is turning on the progress selector in the ticket after the
-  // ticket's fetcher has been created, we need to give the fetcher our sentData
-  // callback.
-  //
-  // The progress monitor must be set in the service prior to creation of the
-  // ticket on 10.4 and iPhone 2.0, since on those systems the upload data must
-  // be wrapped with a ProgressMonitorInputStream prior to the creation of the
-  // fetcher.
-  if (progressSelector != NULL) {
-#if GTL_USE_SESSION_FETCHER
-    __block GTMSessionFetcher *fetcher = [self objectFetcher];
-    fetcher.sendProgressBlock = ^(int64_t bytesSent, int64_t totalBytesSent,
-                                  int64_t totalBytesExpectedToSend) {
-      [service_ objectFetcher:fetcher
-                 didSendBytes:(NSInteger)bytesSent
-               totalBytesSent:(NSInteger)totalBytesSent
-     totalBytesExpectedToSend:(NSInteger)totalBytesExpectedToSend];
-    };
-#else
-    SEL sentDataSel = @selector(objectFetcher:didSendBytes:totalBytesSent:totalBytesExpectedToSend:);
-    [[self objectFetcher] setSentDataSelector:sentDataSel];
-#endif
-  }
-}
-
-- (void)setUploadProgressBlock:(GTLServiceUploadProgressBlock)block {
-  [uploadProgressBlock_ autorelease];
-  uploadProgressBlock_ = [block copy];
-
-  if (uploadProgressBlock_) {
-    // As above, we need the fetcher to call us back when bytes are sent.
-#if GTL_USE_SESSION_FETCHER
-    __block GTMSessionFetcher *fetcher = [self objectFetcher];
-    fetcher.sendProgressBlock = ^(int64_t bytesSent, int64_t totalBytesSent,
-                                  int64_t totalBytesExpectedToSend) {
-      [service_ objectFetcher:fetcher
-                 didSendBytes:(NSInteger)bytesSent
-               totalBytesSent:(NSInteger)totalBytesSent
-     totalBytesExpectedToSend:(NSInteger)totalBytesExpectedToSend];
-    };
-#else
-    SEL sentDataSel = @selector(objectFetcher:didSendBytes:totalBytesSent:totalBytesExpectedToSend:);
-    [[self objectFetcher] setSentDataSelector:sentDataSel];
-#endif
+    [self updateObjectFetcherProgressCallbacks];
   }
 }
 
 - (GTLServiceUploadProgressBlock)uploadProgressBlock {
   return uploadProgressBlock_;
+}
+
+- (void)setUploadProgressBlock:(GTLServiceUploadProgressBlock)block {
+  if (uploadProgressBlock_ != block) {
+    [uploadProgressBlock_ autorelease];
+    uploadProgressBlock_ = [block copy];
+
+    [self updateObjectFetcherProgressCallbacks];
+  }
+}
+
+- (void)updateObjectFetcherProgressCallbacks {
+  // Internal method. Do not override.
+  GTMBridgeFetcher *fetcher = [self objectFetcher];
+
+#if GTL_USE_SESSION_FETCHER
+  GTMSessionFetcherSendProgressBlock fetcherSentDataBlock = ^(int64_t bytesSent,
+                                                              int64_t totalBytesSent,
+                                                              int64_t totalBytesExpectedToSend) {
+    [service_ objectFetcher:fetcher
+               didSendBytes:(NSInteger)bytesSent
+             totalBytesSent:(NSInteger)totalBytesSent
+   totalBytesExpectedToSend:(NSInteger)totalBytesExpectedToSend];
+  };
+
+  if (uploadProgressSelector_ || uploadProgressBlock_) {
+    fetcher.sendProgressBlock = fetcherSentDataBlock;
+  } else {
+    fetcher.sendProgressBlock = nil;
+  }
+#else
+  if (uploadProgressSelector_ || uploadProgressBlock_) {
+    SEL sentDataSel = @selector(objectFetcher:didSendBytes:totalBytesSent:totalBytesExpectedToSend:);
+    [fetcher setSentDataSelector:sentDataSel];
+  } else {
+    [fetcher setSentDataSelector:NULL];
+  }
+#endif  // GTL_USE_SESSION_FETCHER
 }
 
 - (NSInteger)statusCode {

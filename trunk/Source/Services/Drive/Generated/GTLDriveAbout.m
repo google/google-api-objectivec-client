@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveAbout (0 custom class methods, 23 custom properties)
+//   GTLDriveAbout (0 custom class methods, 24 custom properties)
 //   GTLDriveAboutAdditionalRoleInfoItem (0 custom class methods, 2 custom properties)
 //   GTLDriveAboutExportFormatsItem (0 custom class methods, 2 custom properties)
 //   GTLDriveAboutFeaturesItem (0 custom class methods, 2 custom properties)
@@ -46,8 +46,8 @@
 
 @implementation GTLDriveAbout
 @dynamic additionalRoleInfo, domainSharingPolicy, ETag, exportFormats, features,
-         importFormats, isCurrentAppInstalled, kind, languageCode,
-         largestChangeId, maxUploadSizes, name, permissionId,
+         folderColorPalette, importFormats, isCurrentAppInstalled, kind,
+         languageCode, largestChangeId, maxUploadSizes, name, permissionId,
          quotaBytesByService, quotaBytesTotal, quotaBytesUsed,
          quotaBytesUsedAggregate, quotaBytesUsedInTrash, quotaType,
          remainingChangeIds, rootFolderId, selfLink, user;
@@ -65,6 +65,7 @@
       [GTLDriveAboutAdditionalRoleInfoItem class], @"additionalRoleInfo",
       [GTLDriveAboutExportFormatsItem class], @"exportFormats",
       [GTLDriveAboutFeaturesItem class], @"features",
+      [NSString class], @"folderColorPalette",
       [GTLDriveAboutImportFormatsItem class], @"importFormats",
       [GTLDriveAboutMaxUploadSizesItem class], @"maxUploadSizes",
       [GTLDriveAboutQuotaBytesByServiceItem class], @"quotaBytesByService",

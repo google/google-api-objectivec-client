@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 50 custom properties)
+//   GTLDriveFile (0 custom class methods, 51 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
 //   GTLDriveFileImageMediaMetadata (0 custom class methods, 21 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
@@ -112,6 +112,12 @@
 // The size of the file in bytes. This is only populated for files with content
 // stored in Drive.
 @property (retain) NSNumber *fileSize;  // longLongValue
+
+// Folder color as an RGB hex string if the file is a folder. The list of
+// supported colors is available in the folderColorPalette field of the About
+// resource. If an unsupported color is specified, it will be changed to the
+// closest color in the palette.
+@property (copy) NSString *folderColorRgb;
 
 // The ID of the file's head revision. This will only be populated for files
 // with content stored in Drive.
