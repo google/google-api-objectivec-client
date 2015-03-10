@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -253,9 +253,9 @@
 //     assume for any unqualified table names in the query. If not set, all
 //     table names in the query string must be qualified in the format
 //     'datasetId.tableId'.
-//   dryRun: [Optional] If set, don't actually run the query. A valid query will
-//     return an empty response, while an invalid query will return the same
-//     error it would if it wasn't a dry run. The default value is false.
+//   dryRun: [Optional] If set, don't actually run this job. A valid query will
+//     return a mostly empty response with some processing statistics, while an
+//     invalid query will return the same error it would if it wasn't a dry run.
 //   kind: The resource type of the request. (Default bigquery#queryRequest)
 //   maxResults: [Optional] The maximum number of rows of data to return per
 //     page of results. Setting this flag to a small value such as 1000 and then

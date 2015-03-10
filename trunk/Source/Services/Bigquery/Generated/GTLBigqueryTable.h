@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -73,7 +73,7 @@
 
 // [Output-only] The time when this table was last modified, in milliseconds
 // since the epoch.
-@property (retain) NSNumber *lastModifiedTime;  // longLongValue
+@property (retain) NSNumber *lastModifiedTime;  // unsignedLongLongValue
 
 // [Output-only] The size of the table in bytes. This property is unavailable
 // for tables that are actively receiving streaming inserts.

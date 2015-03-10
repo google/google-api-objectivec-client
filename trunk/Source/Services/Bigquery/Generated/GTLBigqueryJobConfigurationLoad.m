@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/bigquery/docs/overview
 // Classes:
-//   GTLBigqueryJobConfigurationLoad (0 custom class methods, 16 custom properties)
+//   GTLBigqueryJobConfigurationLoad (0 custom class methods, 17 custom properties)
 
 #import "GTLBigqueryJobConfigurationLoad.h"
 
@@ -41,13 +41,16 @@
 @implementation GTLBigqueryJobConfigurationLoad
 @dynamic allowJaggedRows, allowQuotedNewlines, createDisposition,
          destinationTable, encoding, fieldDelimiter, ignoreUnknownValues,
-         maxBadRecords, quote, schema, schemaInline, schemaInlineFormat,
-         skipLeadingRows, sourceFormat, sourceUris, writeDisposition;
+         maxBadRecords, projectionFields, quote, schema, schemaInline,
+         schemaInlineFormat, skipLeadingRows, sourceFormat, sourceUris,
+         writeDisposition;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[NSString class]
-                                forKey:@"sourceUris"];
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      [NSString class], @"projectionFields",
+      [NSString class], @"sourceUris",
+      nil];
   return map;
 }
 

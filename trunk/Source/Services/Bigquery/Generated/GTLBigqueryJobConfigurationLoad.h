@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/bigquery/docs/overview
 // Classes:
-//   GTLBigqueryJobConfigurationLoad (0 custom class methods, 16 custom properties)
+//   GTLBigqueryJobConfigurationLoad (0 custom class methods, 17 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -88,6 +88,14 @@
 // 'invalid' error is returned in the job result and the job fails. The default
 // value is 0, which requires that all records are valid.
 @property (retain) NSNumber *maxBadRecords;  // intValue
+
+// [Experimental] Names(case-sensitive) of properties to keep when importing
+// data. If this is populated, only the specified properties will be imported
+// for each entity. Currently, this is only supported for DATASTORE_BACKUP
+// imports and only top level properties are supported. If any specified
+// property is not found in the Datastore 'Kind' being imported, that is an
+// error. Note: This feature is experimental and can change in the future.
+@property (retain) NSArray *projectionFields;  // of NSString
 
 // [Optional] The value that is used to quote data sections in a CSV file.
 // BigQuery converts the string to ISO-8859-1 encoding, and then uses the first
