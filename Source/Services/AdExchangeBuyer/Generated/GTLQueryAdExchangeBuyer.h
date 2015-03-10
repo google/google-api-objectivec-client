@@ -1,0 +1,343 @@
+/* Copyright (c) 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+//
+//  GTLQueryAdExchangeBuyer.h
+//
+
+// ----------------------------------------------------------------------------
+// NOTE: This file is generated from Google APIs Discovery Service.
+// Service:
+//   Ad Exchange Buyer API (adexchangebuyer/v1.3)
+// Description:
+//   Accesses your bidding-account information, submits creatives for
+//   validation, finds available direct deals, and retrieves performance
+//   reports.
+// Documentation:
+//   https://developers.google.com/ad-exchange/buyer-rest
+// Classes:
+//   GTLQueryAdExchangeBuyer (21 custom class methods, 11 custom properties)
+
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLQuery.h"
+#else
+  #import "GTLQuery.h"
+#endif
+
+@class GTLAdExchangeBuyerAccount;
+@class GTLAdExchangeBuyerBudget;
+@class GTLAdExchangeBuyerCreative;
+@class GTLAdExchangeBuyerPretargetingConfig;
+
+@interface GTLQueryAdExchangeBuyer : GTLQuery
+
+//
+// Parameters valid on all methods.
+//
+
+// Selector specifying which fields to include in a partial response.
+@property (copy) NSString *fields;
+
+//
+// Method-specific parameters; see the comments below for more information.
+//
+// "accountId" has different types for some query methods; see the documentation
+// for the right type for each query method.
+@property (retain) id accountId;
+@property (assign) long long billingId;
+// "buyerCreativeId" has different types for some query methods; see the
+// documentation for the right type for each query method.
+@property (retain) id buyerCreativeId;
+@property (assign) long long configId;
+@property (copy) NSString *endDateTime;
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+// "identifier" has different types for some query methods; see the
+// documentation for the right type for each query method.
+@property (retain) id identifier;
+@property (assign) NSUInteger maxResults;
+@property (copy) NSString *pageToken;
+@property (copy) NSString *startDateTime;
+@property (copy) NSString *statusFilter;
+
+#pragma mark -
+#pragma mark "accounts" methods
+// These create a GTLQueryAdExchangeBuyer object.
+
+// Method: adexchangebuyer.accounts.get
+// Gets one account by ID.
+//  Required:
+//   identifier: The account id
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerAccount.
++ (id)queryForAccountsGetWithIdentifier:(NSInteger)identifier;
+
+// Method: adexchangebuyer.accounts.list
+// Retrieves the authenticated user's list of accounts.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerAccountsList.
++ (id)queryForAccountsList;
+
+// Method: adexchangebuyer.accounts.patch
+// Updates an existing account. This method supports patch semantics.
+//  Required:
+//   identifier: The account id
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerAccount.
++ (id)queryForAccountsPatchWithObject:(GTLAdExchangeBuyerAccount *)object
+                           identifier:(NSInteger)identifier;
+
+// Method: adexchangebuyer.accounts.update
+// Updates an existing account.
+//  Required:
+//   identifier: The account id
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerAccount.
++ (id)queryForAccountsUpdateWithObject:(GTLAdExchangeBuyerAccount *)object
+                            identifier:(NSInteger)identifier;
+
+#pragma mark -
+#pragma mark "billingInfo" methods
+// These create a GTLQueryAdExchangeBuyer object.
+
+// Method: adexchangebuyer.billingInfo.get
+// Returns the billing information for one account specified by account ID.
+//  Required:
+//   accountId: The account id.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerBillingInfo.
++ (id)queryForBillingInfoGetWithAccountId:(NSInteger)accountId;
+
+// Method: adexchangebuyer.billingInfo.list
+// Retrieves a list of billing information for all accounts of the authenticated
+// user.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerBillingInfoList.
++ (id)queryForBillingInfoList;
+
+#pragma mark -
+#pragma mark "budget" methods
+// These create a GTLQueryAdExchangeBuyer object.
+
+// Method: adexchangebuyer.budget.get
+// Returns the budget information for the adgroup specified by the accountId and
+// billingId.
+//  Required:
+//   accountId: The account id to get the budget information for.
+//   billingId: The billing id to get the budget information for.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerBudget.
++ (id)queryForBudgetGetWithAccountId:(long long)accountId
+                           billingId:(long long)billingId;
+
+// Method: adexchangebuyer.budget.patch
+// Updates the budget amount for the budget of the adgroup specified by the
+// accountId and billingId, with the budget amount in the request. This method
+// supports patch semantics.
+//  Required:
+//   accountId: The account id associated with the budget being updated.
+//   billingId: The billing id associated with the budget being updated.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerBudget.
++ (id)queryForBudgetPatchWithObject:(GTLAdExchangeBuyerBudget *)object
+                          accountId:(long long)accountId
+                          billingId:(long long)billingId;
+
+// Method: adexchangebuyer.budget.update
+// Updates the budget amount for the budget of the adgroup specified by the
+// accountId and billingId, with the budget amount in the request.
+//  Required:
+//   accountId: The account id associated with the budget being updated.
+//   billingId: The billing id associated with the budget being updated.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerBudget.
++ (id)queryForBudgetUpdateWithObject:(GTLAdExchangeBuyerBudget *)object
+                           accountId:(long long)accountId
+                           billingId:(long long)billingId;
+
+#pragma mark -
+#pragma mark "creatives" methods
+// These create a GTLQueryAdExchangeBuyer object.
+
+// Method: adexchangebuyer.creatives.get
+// Gets the status for a single creative. A creative will be available 30-40
+// minutes after submission.
+//  Required:
+//   accountId: The id for the account that will serve this creative.
+//   buyerCreativeId: The buyer-specific id for this creative.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerCreative.
++ (id)queryForCreativesGetWithAccountId:(NSInteger)accountId
+                        buyerCreativeId:(NSString *)buyerCreativeId;
+
+// Method: adexchangebuyer.creatives.insert
+// Submit a new creative.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerCreative.
++ (id)queryForCreativesInsertWithObject:(GTLAdExchangeBuyerCreative *)object;
+
+// Method: adexchangebuyer.creatives.list
+// Retrieves a list of the authenticated user's active creatives. A creative
+// will be available 30-40 minutes after submission.
+//  Optional:
+//   accountId: When specified, only creatives for the given account ids are
+//     returned.
+//     Note: For this method, "accountId" should be of type NSArray.
+//   buyerCreativeId: When specified, only creatives for the given buyer
+//     creative ids are returned.
+//     Note: For this method, "buyerCreativeId" should be of type NSArray.
+//   maxResults: Maximum number of entries returned on one result page. If not
+//     set, the default is 100. Optional. (1..1000)
+//   pageToken: A continuation token, used to page through ad clients. To
+//     retrieve the next page, set this parameter to the value of
+//     "nextPageToken" from the previous response. Optional.
+//   statusFilter: When specified, only creatives having the given status are
+//     returned.
+//      kGTLAdExchangeBuyerStatusFilterApproved: Creatives which have been
+//        approved.
+//      kGTLAdExchangeBuyerStatusFilterDisapproved: Creatives which have been
+//        disapproved.
+//      kGTLAdExchangeBuyerStatusFilterNotChecked: Creatives whose status is not
+//        yet checked.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerCreativesList.
++ (id)queryForCreativesList;
+
+#pragma mark -
+#pragma mark "directDeals" methods
+// These create a GTLQueryAdExchangeBuyer object.
+
+// Method: adexchangebuyer.directDeals.get
+// Gets one direct deal by ID.
+//  Required:
+//   identifier: The direct deal id
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerDirectDeal.
++ (id)queryForDirectDealsGetWithIdentifier:(long long)identifier;
+
+// Method: adexchangebuyer.directDeals.list
+// Retrieves the authenticated user's list of direct deals.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerDirectDealsList.
++ (id)queryForDirectDealsList;
+
+#pragma mark -
+#pragma mark "performanceReport" methods
+// These create a GTLQueryAdExchangeBuyer object.
+
+// Method: adexchangebuyer.performanceReport.list
+// Retrieves the authenticated user's list of performance metrics.
+//  Required:
+//   accountId: The account id to get the reports.
+//   endDateTime: The end time of the report in ISO 8601 timestamp format using
+//     UTC.
+//   startDateTime: The start time of the report in ISO 8601 timestamp format
+//     using UTC.
+//  Optional:
+//   maxResults: Maximum number of entries returned on one result page. If not
+//     set, the default is 100. Optional. (1..1000)
+//   pageToken: A continuation token, used to page through performance reports.
+//     To retrieve the next page, set this parameter to the value of
+//     "nextPageToken" from the previous response. Optional.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerPerformanceReportList.
++ (id)queryForPerformanceReportListWithAccountId:(long long)accountId
+                                     endDateTime:(NSString *)endDateTime
+                                   startDateTime:(NSString *)startDateTime;
+
+#pragma mark -
+#pragma mark "pretargetingConfig" methods
+// These create a GTLQueryAdExchangeBuyer object.
+
+// Method: adexchangebuyer.pretargetingConfig.delete
+// Deletes an existing pretargeting config.
+//  Required:
+//   accountId: The account id to delete the pretargeting config for.
+//   configId: The specific id of the configuration to delete.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
++ (id)queryForPretargetingConfigDeleteWithAccountId:(long long)accountId
+                                           configId:(long long)configId;
+
+// Method: adexchangebuyer.pretargetingConfig.get
+// Gets a specific pretargeting configuration
+//  Required:
+//   accountId: The account id to get the pretargeting config for.
+//   configId: The specific id of the configuration to retrieve.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerPretargetingConfig.
++ (id)queryForPretargetingConfigGetWithAccountId:(long long)accountId
+                                        configId:(long long)configId;
+
+// Method: adexchangebuyer.pretargetingConfig.insert
+// Inserts a new pretargeting configuration.
+//  Required:
+//   accountId: The account id to insert the pretargeting config for.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerPretargetingConfig.
++ (id)queryForPretargetingConfigInsertWithObject:(GTLAdExchangeBuyerPretargetingConfig *)object
+                                       accountId:(long long)accountId;
+
+// Method: adexchangebuyer.pretargetingConfig.list
+// Retrieves a list of the authenticated user's pretargeting configurations.
+//  Required:
+//   accountId: The account id to get the pretargeting configs for.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerPretargetingConfigList.
++ (id)queryForPretargetingConfigListWithAccountId:(long long)accountId;
+
+// Method: adexchangebuyer.pretargetingConfig.patch
+// Updates an existing pretargeting config. This method supports patch
+// semantics.
+//  Required:
+//   accountId: The account id to update the pretargeting config for.
+//   configId: The specific id of the configuration to update.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerPretargetingConfig.
++ (id)queryForPretargetingConfigPatchWithObject:(GTLAdExchangeBuyerPretargetingConfig *)object
+                                      accountId:(long long)accountId
+                                       configId:(long long)configId;
+
+// Method: adexchangebuyer.pretargetingConfig.update
+// Updates an existing pretargeting config.
+//  Required:
+//   accountId: The account id to update the pretargeting config for.
+//   configId: The specific id of the configuration to update.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerPretargetingConfig.
++ (id)queryForPretargetingConfigUpdateWithObject:(GTLAdExchangeBuyerPretargetingConfig *)object
+                                       accountId:(long long)accountId
+                                        configId:(long long)configId;
+
+@end
