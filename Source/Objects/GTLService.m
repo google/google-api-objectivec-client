@@ -2343,38 +2343,31 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 - (void)setServiceUploadChunkSize:(NSUInteger)val {
 
   if (val == kGTLStandardUploadChunkSize) {
-    // determine an appropriate upload chunk size for the system
+    // determine an appropriate upload chunk size for the system.
+    // The upload server prefers multiples of 256K.
+    const NSUInteger kMegabyte = 4 * 256 * 1024;
 
-#if GTL_USE_SESSION_FETCHER
-    BOOL doesSupportSentDataCallback = YES;
-#else
-    BOOL doesSupportSentDataCallback = [GTMHTTPFetcher doesSupportSentDataCallback];
-#endif
-    if (!doesSupportSentDataCallback) {
-      // for 10.4 and iPhone 2, we need a small upload chunk size so there
-      // are frequent intrachunk callbacks for progress monitoring
-      val = 75000;
-    } else {
 #if GTL_IPHONE
-      val = 1000000;
+    // For iPhone, we're balancing an increased upload size with
+    // limiting the memory used for the upload data buffer.
+    val = 4 * kMegabyte;
 #else
-      if (NSFoundationVersionNumber >= 751.00) {
-        // Mac OS X 10.6
-        //
-        // we'll pick a huge upload chunk size, which minimizes http overhead
-        // and server effort, and we'll hope that NSURLConnection can finally
-        // handle big uploads reliably
-        val = 25000000;
-      } else {
-        // Mac OS X 10.5
-        //
-        // NSURLConnection is more reliable on POSTs in 10.5 than it was in
-        // 10.4, but it still fails mysteriously on big uploads on some
-        // systems, so we'll limit the chunks to a megabyte
-        val = 1000000;
-      }
-#endif
+    if (NSFoundationVersionNumber >= 751.00) {
+      // Mac OS X 10.6
+      //
+      // we'll pick a huge upload chunk size, which minimizes http overhead
+      // and server effort, and we'll hope that NSURLConnection can finally
+      // handle big uploads reliably
+      val = 25 * kMegabyte;
+    } else {
+      // Mac OS X 10.5
+      //
+      // NSURLConnection is more reliable on POSTs in 10.5 than it was in
+      // 10.4, but it still fails mysteriously on big uploads on some
+      // systems, so we'll limit the chunks to a megabyte
+      val = kMegabyte;
     }
+#endif
   }
   uploadChunkSize_ = val;
 }
