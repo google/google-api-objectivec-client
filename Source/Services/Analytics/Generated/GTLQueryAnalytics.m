@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLQueryAnalytics (72 custom class methods, 30 custom properties)
+//   GTLQueryAnalytics (82 custom class methods, 33 custom properties)
 
 #import "GTLQueryAnalytics.h"
 
@@ -35,6 +35,10 @@
 #import "GTLAnalyticsAccountTicket.h"
 #import "GTLAnalyticsColumns.h"
 #import "GTLAnalyticsCustomDataSources.h"
+#import "GTLAnalyticsCustomDimension.h"
+#import "GTLAnalyticsCustomDimensions.h"
+#import "GTLAnalyticsCustomMetric.h"
+#import "GTLAnalyticsCustomMetrics.h"
 #import "GTLAnalyticsDailyUploadAppend.h"
 #import "GTLAnalyticsDailyUploads.h"
 #import "GTLAnalyticsEntityAdWordsLink.h"
@@ -65,11 +69,12 @@
 @implementation GTLQueryAnalytics
 
 @dynamic accountId, appendNumber, customDataImportUids, customDataSourceId,
-         date, dimensions, endDate, experimentId, fields, filterId, filters,
-         goalId, ids, linkId, maxResults, metrics, output, profileId,
-         reportType, reset, samplingLevel, segment, sort, startDate, startIndex,
-         type, unsampledReportId, uploadId, webPropertyAdWordsLinkId,
-         webPropertyId;
+         customDimensionId, customMetricId, date, dimensions, endDate,
+         experimentId, fields, filterId, filters, goalId, ids,
+         ignoreCustomDataSourceLinks, linkId, maxResults, metrics, output,
+         profileId, reportType, reset, samplingLevel, segment, sort, startDate,
+         startIndex, type, unsampledReportId, uploadId,
+         webPropertyAdWordsLinkId, webPropertyId;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map =
@@ -223,6 +228,162 @@
   query.accountId = accountId;
   query.webPropertyId = webPropertyId;
   query.expectedObjectClass = [GTLAnalyticsCustomDataSources class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "management.customDimensions" methods
+// These create a GTLQueryAnalytics object.
+
++ (id)queryForManagementCustomDimensionsGetWithAccountId:(NSString *)accountId
+                                           webPropertyId:(NSString *)webPropertyId
+                                       customDimensionId:(NSString *)customDimensionId {
+  NSString *methodName = @"analytics.management.customDimensions.get";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.customDimensionId = customDimensionId;
+  query.expectedObjectClass = [GTLAnalyticsCustomDimension class];
+  return query;
+}
+
++ (id)queryForManagementCustomDimensionsInsertWithObject:(GTLAnalyticsCustomDimension *)object
+                                               accountId:(NSString *)accountId
+                                           webPropertyId:(NSString *)webPropertyId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"analytics.management.customDimensions.insert";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.expectedObjectClass = [GTLAnalyticsCustomDimension class];
+  return query;
+}
+
++ (id)queryForManagementCustomDimensionsListWithAccountId:(NSString *)accountId
+                                            webPropertyId:(NSString *)webPropertyId {
+  NSString *methodName = @"analytics.management.customDimensions.list";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.expectedObjectClass = [GTLAnalyticsCustomDimensions class];
+  return query;
+}
+
++ (id)queryForManagementCustomDimensionsPatchWithObject:(GTLAnalyticsCustomDimension *)object
+                                              accountId:(NSString *)accountId
+                                          webPropertyId:(NSString *)webPropertyId
+                                      customDimensionId:(NSString *)customDimensionId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"analytics.management.customDimensions.patch";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.customDimensionId = customDimensionId;
+  query.expectedObjectClass = [GTLAnalyticsCustomDimension class];
+  return query;
+}
+
++ (id)queryForManagementCustomDimensionsUpdateWithObject:(GTLAnalyticsCustomDimension *)object
+                                               accountId:(NSString *)accountId
+                                           webPropertyId:(NSString *)webPropertyId
+                                       customDimensionId:(NSString *)customDimensionId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"analytics.management.customDimensions.update";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.customDimensionId = customDimensionId;
+  query.expectedObjectClass = [GTLAnalyticsCustomDimension class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "management.customMetrics" methods
+// These create a GTLQueryAnalytics object.
+
++ (id)queryForManagementCustomMetricsGetWithAccountId:(NSString *)accountId
+                                        webPropertyId:(NSString *)webPropertyId
+                                       customMetricId:(NSString *)customMetricId {
+  NSString *methodName = @"analytics.management.customMetrics.get";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.customMetricId = customMetricId;
+  query.expectedObjectClass = [GTLAnalyticsCustomMetric class];
+  return query;
+}
+
++ (id)queryForManagementCustomMetricsInsertWithObject:(GTLAnalyticsCustomMetric *)object
+                                            accountId:(NSString *)accountId
+                                        webPropertyId:(NSString *)webPropertyId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"analytics.management.customMetrics.insert";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.expectedObjectClass = [GTLAnalyticsCustomMetric class];
+  return query;
+}
+
++ (id)queryForManagementCustomMetricsListWithAccountId:(NSString *)accountId
+                                         webPropertyId:(NSString *)webPropertyId {
+  NSString *methodName = @"analytics.management.customMetrics.list";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.expectedObjectClass = [GTLAnalyticsCustomMetrics class];
+  return query;
+}
+
++ (id)queryForManagementCustomMetricsPatchWithObject:(GTLAnalyticsCustomMetric *)object
+                                           accountId:(NSString *)accountId
+                                       webPropertyId:(NSString *)webPropertyId
+                                      customMetricId:(NSString *)customMetricId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"analytics.management.customMetrics.patch";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.customMetricId = customMetricId;
+  query.expectedObjectClass = [GTLAnalyticsCustomMetric class];
+  return query;
+}
+
++ (id)queryForManagementCustomMetricsUpdateWithObject:(GTLAnalyticsCustomMetric *)object
+                                            accountId:(NSString *)accountId
+                                        webPropertyId:(NSString *)webPropertyId
+                                       customMetricId:(NSString *)customMetricId {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"analytics.management.customMetrics.update";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.customMetricId = customMetricId;
+  query.expectedObjectClass = [GTLAnalyticsCustomMetric class];
   return query;
 }
 
