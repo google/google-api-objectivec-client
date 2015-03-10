@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLQueryAnalytics (72 custom class methods, 30 custom properties)
+//   GTLQueryAnalytics (82 custom class methods, 33 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -35,6 +35,8 @@
 #endif
 
 @class GTLAnalyticsAccountTicket;
+@class GTLAnalyticsCustomDimension;
+@class GTLAnalyticsCustomMetric;
 @class GTLAnalyticsEntityAdWordsLink;
 @class GTLAnalyticsEntityUserLink;
 @class GTLAnalyticsExperiment;
@@ -61,6 +63,8 @@
 @property (assign) NSInteger appendNumber;
 @property (retain) NSArray *customDataImportUids;  // of NSString
 @property (copy) NSString *customDataSourceId;
+@property (copy) NSString *customDimensionId;
+@property (copy) NSString *customMetricId;
 @property (copy) NSString *date;
 @property (copy) NSString *dimensions;
 @property (copy) NSString *endDate;
@@ -69,6 +73,7 @@
 @property (copy) NSString *filters;
 @property (copy) NSString *goalId;
 @property (copy) NSString *ids;
+@property (assign) BOOL ignoreCustomDataSourceLinks;
 @property (copy) NSString *linkId;
 @property (assign) NSInteger maxResults;
 @property (copy) NSString *metrics;
@@ -316,6 +321,172 @@
 // Fetches a GTLAnalyticsCustomDataSources.
 + (id)queryForManagementCustomDataSourcesListWithAccountId:(NSString *)accountId
                                              webPropertyId:(NSString *)webPropertyId;
+
+#pragma mark -
+#pragma mark "management.customDimensions" methods
+// These create a GTLQueryAnalytics object.
+
+// Method: analytics.management.customDimensions.get
+// Get a custom dimension to which the user has access.
+//  Required:
+//   accountId: Account ID for the custom dimension to retrieve.
+//   webPropertyId: Web property ID for the custom dimension to retrieve.
+//   customDimensionId: The ID of the custom dimension to retrieve.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
+//   kGTLAuthScopeAnalyticsReadonly
+// Fetches a GTLAnalyticsCustomDimension.
++ (id)queryForManagementCustomDimensionsGetWithAccountId:(NSString *)accountId
+                                           webPropertyId:(NSString *)webPropertyId
+                                       customDimensionId:(NSString *)customDimensionId;
+
+// Method: analytics.management.customDimensions.insert
+// Create a new custom dimension.
+//  Required:
+//   accountId: Account ID for the custom dimension to create.
+//   webPropertyId: Web property ID for the custom dimension to create.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
+// Fetches a GTLAnalyticsCustomDimension.
++ (id)queryForManagementCustomDimensionsInsertWithObject:(GTLAnalyticsCustomDimension *)object
+                                               accountId:(NSString *)accountId
+                                           webPropertyId:(NSString *)webPropertyId;
+
+// Method: analytics.management.customDimensions.list
+// Lists custom dimensions to which the user has access.
+//  Required:
+//   accountId: Account ID for the custom dimensions to retrieve.
+//   webPropertyId: Web property ID for the custom dimensions to retrieve.
+//  Optional:
+//   maxResults: The maximum number of custom dimensions to include in this
+//     response.
+//   startIndex: An index of the first entity to retrieve. Use this parameter as
+//     a pagination mechanism along with the max-results parameter.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsReadonly
+// Fetches a GTLAnalyticsCustomDimensions.
++ (id)queryForManagementCustomDimensionsListWithAccountId:(NSString *)accountId
+                                            webPropertyId:(NSString *)webPropertyId;
+
+// Method: analytics.management.customDimensions.patch
+// Updates an existing custom dimension. This method supports patch semantics.
+//  Required:
+//   accountId: Account ID for the custom dimension to update.
+//   webPropertyId: Web property ID for the custom dimension to update.
+//   customDimensionId: Custom dimension ID for the custom dimension to update.
+//  Optional:
+//   ignoreCustomDataSourceLinks: Force the update and ignore any warnings
+//     related to the custom dimension being linked to a custom data source /
+//     data set. (Default false)
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
+// Fetches a GTLAnalyticsCustomDimension.
++ (id)queryForManagementCustomDimensionsPatchWithObject:(GTLAnalyticsCustomDimension *)object
+                                              accountId:(NSString *)accountId
+                                          webPropertyId:(NSString *)webPropertyId
+                                      customDimensionId:(NSString *)customDimensionId;
+
+// Method: analytics.management.customDimensions.update
+// Updates an existing custom dimension.
+//  Required:
+//   accountId: Account ID for the custom dimension to update.
+//   webPropertyId: Web property ID for the custom dimension to update.
+//   customDimensionId: Custom dimension ID for the custom dimension to update.
+//  Optional:
+//   ignoreCustomDataSourceLinks: Force the update and ignore any warnings
+//     related to the custom dimension being linked to a custom data source /
+//     data set. (Default false)
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
+// Fetches a GTLAnalyticsCustomDimension.
++ (id)queryForManagementCustomDimensionsUpdateWithObject:(GTLAnalyticsCustomDimension *)object
+                                               accountId:(NSString *)accountId
+                                           webPropertyId:(NSString *)webPropertyId
+                                       customDimensionId:(NSString *)customDimensionId;
+
+#pragma mark -
+#pragma mark "management.customMetrics" methods
+// These create a GTLQueryAnalytics object.
+
+// Method: analytics.management.customMetrics.get
+// Get a custom metric to which the user has access.
+//  Required:
+//   accountId: Account ID for the custom metric to retrieve.
+//   webPropertyId: Web property ID for the custom metric to retrieve.
+//   customMetricId: The ID of the custom metric to retrieve.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
+//   kGTLAuthScopeAnalyticsReadonly
+// Fetches a GTLAnalyticsCustomMetric.
++ (id)queryForManagementCustomMetricsGetWithAccountId:(NSString *)accountId
+                                        webPropertyId:(NSString *)webPropertyId
+                                       customMetricId:(NSString *)customMetricId;
+
+// Method: analytics.management.customMetrics.insert
+// Create a new custom metric.
+//  Required:
+//   accountId: Account ID for the custom metric to create.
+//   webPropertyId: Web property ID for the custom dimension to create.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
+// Fetches a GTLAnalyticsCustomMetric.
++ (id)queryForManagementCustomMetricsInsertWithObject:(GTLAnalyticsCustomMetric *)object
+                                            accountId:(NSString *)accountId
+                                        webPropertyId:(NSString *)webPropertyId;
+
+// Method: analytics.management.customMetrics.list
+// Lists custom metrics to which the user has access.
+//  Required:
+//   accountId: Account ID for the custom metrics to retrieve.
+//   webPropertyId: Web property ID for the custom metrics to retrieve.
+//  Optional:
+//   maxResults: The maximum number of custom metrics to include in this
+//     response.
+//   startIndex: An index of the first entity to retrieve. Use this parameter as
+//     a pagination mechanism along with the max-results parameter.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalytics
+//   kGTLAuthScopeAnalyticsReadonly
+// Fetches a GTLAnalyticsCustomMetrics.
++ (id)queryForManagementCustomMetricsListWithAccountId:(NSString *)accountId
+                                         webPropertyId:(NSString *)webPropertyId;
+
+// Method: analytics.management.customMetrics.patch
+// Updates an existing custom metric. This method supports patch semantics.
+//  Required:
+//   accountId: Account ID for the custom metric to update.
+//   webPropertyId: Web property ID for the custom metric to update.
+//   customMetricId: Custom metric ID for the custom metric to update.
+//  Optional:
+//   ignoreCustomDataSourceLinks: Force the update and ignore any warnings
+//     related to the custom metric being linked to a custom data source / data
+//     set. (Default false)
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
+// Fetches a GTLAnalyticsCustomMetric.
++ (id)queryForManagementCustomMetricsPatchWithObject:(GTLAnalyticsCustomMetric *)object
+                                           accountId:(NSString *)accountId
+                                       webPropertyId:(NSString *)webPropertyId
+                                      customMetricId:(NSString *)customMetricId;
+
+// Method: analytics.management.customMetrics.update
+// Updates an existing custom metric.
+//  Required:
+//   accountId: Account ID for the custom metric to update.
+//   webPropertyId: Web property ID for the custom metric to update.
+//   customMetricId: Custom metric ID for the custom metric to update.
+//  Optional:
+//   ignoreCustomDataSourceLinks: Force the update and ignore any warnings
+//     related to the custom metric being linked to a custom data source / data
+//     set. (Default false)
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
+// Fetches a GTLAnalyticsCustomMetric.
++ (id)queryForManagementCustomMetricsUpdateWithObject:(GTLAnalyticsCustomMetric *)object
+                                            accountId:(NSString *)accountId
+                                        webPropertyId:(NSString *)webPropertyId
+                                       customMetricId:(NSString *)customMetricId;
 
 #pragma mark -
 #pragma mark "management.dailyUploads" methods
