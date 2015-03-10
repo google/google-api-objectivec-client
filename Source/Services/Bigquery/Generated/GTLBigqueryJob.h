@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/bigquery/docs/overview
 // Classes:
-//   GTLBigqueryJob (0 custom class methods, 8 custom properties)
+//   GTLBigqueryJob (0 custom class methods, 9 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -72,5 +72,8 @@
 // [Output-only] The status of this job. Examine this value when polling an
 // asynchronous job to see if the job is complete.
 @property (retain) GTLBigqueryJobStatus *status;
+
+// [Output-only] Email address of the user who ran the job.
+@property (copy) NSString *userEmail;
 
 @end
