@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -68,6 +68,7 @@
                       [GTLYouTubeChannelSection class],
                       [GTLYouTubeChannelSectionContentDetails class],
                       [GTLYouTubeChannelSectionListResponse class],
+                      [GTLYouTubeChannelSectionLocalization class],
                       [GTLYouTubeChannelSectionSnippet class],
                       [GTLYouTubeChannelSettings class],
                       [GTLYouTubeChannelSnippet class],
@@ -114,6 +115,7 @@
                       [GTLYouTubePlaylistItemSnippet class],
                       [GTLYouTubePlaylistItemStatus class],
                       [GTLYouTubePlaylistListResponse class],
+                      [GTLYouTubePlaylistLocalization class],
                       [GTLYouTubePlaylistPlayer class],
                       [GTLYouTubePlaylistSnippet class],
                       [GTLYouTubePlaylistStatus class],
@@ -148,6 +150,7 @@
                       [GTLYouTubeVideoGetRatingResponse class],
                       [GTLYouTubeVideoListResponse class],
                       [GTLYouTubeVideoLiveStreamingDetails class],
+                      [GTLYouTubeVideoLocalization class],
                       [GTLYouTubeVideoMonetizationDetails class],
                       [GTLYouTubeVideoPlayer class],
                       [GTLYouTubeVideoProcessingDetails class],

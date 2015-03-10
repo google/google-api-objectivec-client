@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@
 #endif
 
 // Authorization scope
-// View and manage the files and documents in your Google Drive
+// View and manage the files in your Google Drive
 GTL_EXTERN NSString * const kGTLAuthScopeDrive;                 // "https://www.googleapis.com/auth/drive"
 // View and manage its own configuration data in your Google Drive
 GTL_EXTERN NSString * const kGTLAuthScopeDriveAppdata;          // "https://www.googleapis.com/auth/drive.appdata"
@@ -44,9 +44,9 @@ GTL_EXTERN NSString * const kGTLAuthScopeDriveAppsReadonly;     // "https://www.
 // View and manage Google Drive files that you have opened or created with this
 // app
 GTL_EXTERN NSString * const kGTLAuthScopeDriveFile;             // "https://www.googleapis.com/auth/drive.file"
-// View metadata for files and documents in your Google Drive
+// View metadata for files in your Google Drive
 GTL_EXTERN NSString * const kGTLAuthScopeDriveMetadataReadonly;  // "https://www.googleapis.com/auth/drive.metadata.readonly"
-// View the files and documents in your Google Drive
+// View the files in your Google Drive
 GTL_EXTERN NSString * const kGTLAuthScopeDriveReadonly;         // "https://www.googleapis.com/auth/drive.readonly"
 // Modify your Google Apps Script scripts' behavior
 GTL_EXTERN NSString * const kGTLAuthScopeDriveScripts;          // "https://www.googleapis.com/auth/drive.scripts"

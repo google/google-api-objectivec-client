@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -258,6 +258,7 @@
 //   maxResults: Maximum number of buckets to return.
 //   pageToken: A previously-returned page token representing part of the larger
 //     set of results to view.
+//   prefix: Filter results to buckets whose names begin with this prefix.
 //   projection: Set of properties to return. Defaults to noAcl.
 //      kGTLStorageProjectionFull: Include all properties.
 //      kGTLStorageProjectionNoAcl: Omit acl and defaultObjectAcl properties.

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/bid-manager/
 // Classes:
-//   GTLDoubleClickBidManagerQueryMetadata (0 custom class methods, 10 custom properties)
+//   GTLDoubleClickBidManagerQueryMetadata (0 custom class methods, 11 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -58,6 +58,13 @@
 
 // The time when the latest report started to run.
 @property (retain) NSNumber *latestReportRunTimeMs;  // longLongValue
+
+// Locale of the generated reports. Valid values are cs CZECH de GERMAN en
+// ENGLISH es SPANISH fr FRENCH it ITALIAN ja JAPANESE ko KOREAN pl POLISH pt-BR
+// BRAZILIAN_PORTUGUESE ru RUSSIAN tr TURKISH uk UKRAINIAN zh-CN CHINA_CHINESE
+// zh-TW TAIWAN_CHINESE
+// An locale string not in the list above will generate reports in English.
+@property (copy) NSString *locale;
 
 // Number of reports that have been generated for the query.
 @property (retain) NSNumber *reportCount;  // intValue

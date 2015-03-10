@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,8 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelSection (0 custom class methods, 5 custom properties)
+//   GTLYouTubeChannelSection (0 custom class methods, 6 custom properties)
+//   GTLYouTubeChannelSectionLocalizations (0 custom class methods, 0 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -35,6 +36,8 @@
 #endif
 
 @class GTLYouTubeChannelSectionContentDetails;
+@class GTLYouTubeChannelSectionLocalization;
+@class GTLYouTubeChannelSectionLocalizations;
 @class GTLYouTubeChannelSectionSnippet;
 
 // ----------------------------------------------------------------------------
@@ -42,18 +45,16 @@
 //   GTLYouTubeChannelSection
 //
 
-// TODO(lxz) follow up with adiamondstein@ to fullfill the doc before deploying
-
 @interface GTLYouTubeChannelSection : GTLObject
 
-// The contentDetails object contains details about the ChannelSection content,
-// such as playlists and channels.
+// The contentDetails object contains details about the channel section content,
+// such as a list of playlists or channels featured in the section.
 @property (retain) GTLYouTubeChannelSectionContentDetails *contentDetails;
 
 // Etag of this resource.
 @property (copy) NSString *ETag;
 
-// The ID that YouTube uses to uniquely identify the ChannelSection.
+// The ID that YouTube uses to uniquely identify the channel section.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
@@ -61,8 +62,24 @@
 // "youtube#channelSection".
 @property (copy) NSString *kind;
 
-// The snippet object contains basic details about the ChannelSection, such as
+// Localizations for different languages
+@property (retain) GTLYouTubeChannelSectionLocalizations *localizations;
+
+// The snippet object contains basic details about the channel section, such as
 // its type, style and title.
 @property (retain) GTLYouTubeChannelSectionSnippet *snippet;
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLYouTubeChannelSectionLocalizations
+//
+
+@interface GTLYouTubeChannelSectionLocalizations : GTLObject
+// This object is documented as having more properties that are
+// GTLYouTubeChannelSectionLocalization. Use -additionalJSONKeys and
+// -additionalPropertyForName: to get the list of properties and then fetch
+// them; or -additionalProperties to fetch them all at once.
 @end

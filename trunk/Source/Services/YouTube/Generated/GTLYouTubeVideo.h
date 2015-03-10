@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,8 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideo (0 custom class methods, 18 custom properties)
+//   GTLYouTubeVideo (0 custom class methods, 19 custom properties)
+//   GTLYouTubeVideoLocalizations (0 custom class methods, 0 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -39,6 +40,8 @@
 @class GTLYouTubeVideoConversionPings;
 @class GTLYouTubeVideoFileDetails;
 @class GTLYouTubeVideoLiveStreamingDetails;
+@class GTLYouTubeVideoLocalization;
+@class GTLYouTubeVideoLocalizations;
 @class GTLYouTubeVideoMonetizationDetails;
 @class GTLYouTubeVideoPlayer;
 @class GTLYouTubeVideoProcessingDetails;
@@ -92,6 +95,9 @@
 // is an upcoming, live, or completed live broadcast.
 @property (retain) GTLYouTubeVideoLiveStreamingDetails *liveStreamingDetails;
 
+// List with all localizations.
+@property (retain) GTLYouTubeVideoLocalizations *localizations;
+
 // The monetizationDetails object encapsulates information about the
 // monetization status of the video.
 @property (retain) GTLYouTubeVideoMonetizationDetails *monetizationDetails;
@@ -139,4 +145,17 @@
 // associated with the video.
 @property (retain) GTLYouTubeVideoTopicDetails *topicDetails;
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLYouTubeVideoLocalizations
+//
+
+@interface GTLYouTubeVideoLocalizations : GTLObject
+// This object is documented as having more properties that are
+// GTLYouTubeVideoLocalization. Use -additionalJSONKeys and
+// -additionalPropertyForName: to get the list of properties and then fetch
+// them; or -additionalProperties to fetch them all at once.
 @end

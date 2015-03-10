@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeChannelSectionSnippet.h
+//  GTLYouTubeVideoLocalization.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelSectionSnippet (0 custom class methods, 7 custom properties)
+//   GTLYouTubeVideoLocalization (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,37 +34,20 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLYouTubeChannelSectionLocalization;
-
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeChannelSectionSnippet
+//   GTLYouTubeVideoLocalization
 //
 
-// Basic details about a channel section, including title, style and position.
+// Localized versions of certain video properties (e.g. title).
 
-@interface GTLYouTubeChannelSectionSnippet : GTLObject
+@interface GTLYouTubeVideoLocalization : GTLObject
 
-// The ID that YouTube uses to uniquely identify the channel that published the
-// channel section.
-@property (copy) NSString *channelId;
+// Localized version of the video's description.
+// Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
+@property (copy) NSString *descriptionProperty;
 
-// The language of the channel section's default title and description.
-@property (copy) NSString *defaultLanguage;
-
-// Localized title, read-only.
-@property (retain) GTLYouTubeChannelSectionLocalization *localized;
-
-// The position of the channel section in the channel.
-@property (retain) NSNumber *position;  // unsignedIntValue
-
-// The style of the channel section.
-@property (copy) NSString *style;
-
-// The channel section's title for multiple_playlists and multiple_channels.
+// Localized version of the video's title.
 @property (copy) NSString *title;
-
-// The type of the channel section.
-@property (copy) NSString *type;
 
 @end

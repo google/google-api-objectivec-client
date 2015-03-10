@@ -14,10 +14,7 @@
  */
 
 //
-//  GTLGmail_Sources.m
-//
-// This file can be compiled into projects to avoid adding the individual
-// source files for this service.
+//  GTLGmailHistoryMessageAdded.h
 //
 
 // ----------------------------------------------------------------------------
@@ -28,27 +25,22 @@
 //   The Gmail REST API.
 // Documentation:
 //   https://developers.google.com/gmail/api/
+// Classes:
+//   GTLGmailHistoryMessageAdded (0 custom class methods, 1 custom properties)
 
-#import "GTLGmailConstants.m"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLGmailDraft.m"
-#import "GTLGmailHistory.m"
-#import "GTLGmailHistoryLabelAdded.m"
-#import "GTLGmailHistoryLabelRemoved.m"
-#import "GTLGmailHistoryMessageAdded.m"
-#import "GTLGmailHistoryMessageDeleted.m"
-#import "GTLGmailLabel.m"
-#import "GTLGmailListDraftsResponse.m"
-#import "GTLGmailListHistoryResponse.m"
-#import "GTLGmailListLabelsResponse.m"
-#import "GTLGmailListMessagesResponse.m"
-#import "GTLGmailListThreadsResponse.m"
-#import "GTLGmailMessage.m"
-#import "GTLGmailMessagePart.m"
-#import "GTLGmailMessagePartBody.m"
-#import "GTLGmailMessagePartHeader.m"
-#import "GTLGmailProfile.m"
-#import "GTLGmailThread.m"
+@class GTLGmailMessage;
 
-#import "GTLQueryGmail.m"
-#import "GTLServiceGmail.m"
+// ----------------------------------------------------------------------------
+//
+//   GTLGmailHistoryMessageAdded
+//
+
+@interface GTLGmailHistoryMessageAdded : GTLObject
+@property (retain) GTLGmailMessage *message;
+@end

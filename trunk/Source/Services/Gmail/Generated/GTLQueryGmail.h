@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/gmail/api/
 // Classes:
-//   GTLQueryGmail (30 custom class methods, 19 custom properties)
+//   GTLQueryGmail (30 custom class methods, 22 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -51,6 +51,7 @@
 // Method-specific parameters; see the comments below for more information.
 //
 @property (retain) NSArray *addLabelIds;  // of NSString
+@property (assign) BOOL deleted;
 @property (retain) GTLGmailDraft *draft;
 @property (copy) NSString *format;
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
@@ -64,7 +65,9 @@
 @property (retain) GTLGmailMessage *message;
 @property (copy) NSString *messageId;
 @property (retain) NSArray *metadataHeaders;  // of NSString
+@property (assign) BOOL neverMarkSpam;
 @property (copy) NSString *pageToken;
+@property (assign) BOOL processForCalendar;
 @property (copy) NSString *q;
 @property (retain) NSArray *removeLabelIds;  // of NSString
 @property (assign) unsigned long long startHistoryId;
@@ -357,10 +360,17 @@
 // message.
 //  Optional:
 //   message: GTLGmailMessage
+//   deleted: Mark the email as permanently deleted (not TRASH) and only visible
+//     in Google Apps Vault to a Vault administrator. Only used for Google Apps
+//     for Work accounts. (Default false)
 //   internalDateSource: Source for Gmail's internal date of the message.
 //     (Default kGTLGmailInternalDateSourceDateHeader)
 //      kGTLGmailInternalDateSourceDateHeader: "dateHeader"
 //      kGTLGmailInternalDateSourceReceivedTime: "receivedTime"
+//   neverMarkSpam: Ignore the Gmail spam classifier decision and never mark
+//     this email as SPAM in the mailbox. (Default false)
+//   processForCalendar: Process calendar invites in the email and add any
+//     extracted meetings to the Google Calendar for this user. (Default false)
 //   userId: The user's email address. The special value me can be used to
 //     indicate the authenticated user. (Default me)
 //  Upload Parameters:

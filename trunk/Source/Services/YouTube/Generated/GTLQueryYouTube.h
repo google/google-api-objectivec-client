@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (45 custom class methods, 54 custom properties)
+//   GTLQueryYouTube (45 custom class methods, 55 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -96,6 +96,7 @@
 @property (copy) NSString *rating;
 @property (copy) NSString *regionCode;
 @property (copy) NSString *relatedToVideoId;
+@property (copy) NSString *relevanceLanguage;
 @property (copy) NSString *safeSearch;
 @property (assign) BOOL stabilize;
 @property (copy) NSString *streamId;
@@ -133,6 +134,7 @@
 //     and contentDetails.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 // Fetches a GTLYouTubeActivity.
 + (id)queryForActivitiesInsertWithObject:(GTLYouTubeActivity *)object
                                     part:(NSString *)part;
@@ -184,6 +186,7 @@
 //     activity feed.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeReadonly
 // Fetches a GTLYouTubeActivityListResponse.
 + (id)queryForActivitiesListWithPart:(NSString *)part;
@@ -220,6 +223,7 @@
 //   Accepted MIME type(s): application/octet-stream, image/jpeg, image/png
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeUpload
 // Fetches a GTLYouTubeChannelBannerResource.
 + (id)queryForChannelBannersInsertWithObject:(GTLYouTubeChannelBannerResource *)object
@@ -249,6 +253,7 @@
 //     specified YouTube content owner.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeYoutubepartner
 + (id)queryForChannelSectionsDeleteWithIdentifier:(NSString *)identifier;
 
@@ -291,6 +296,7 @@
 //     credentials for each separate channel.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubeChannelSection.
 + (id)queryForChannelSectionsInsertWithObject:(GTLYouTubeChannelSection *)object
@@ -330,6 +336,7 @@
 //     specified YouTube content owner.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeReadonly
 //   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubeChannelSectionListResponse.
@@ -357,6 +364,7 @@
 //     specified YouTube content owner.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubeChannelSection.
 + (id)queryForChannelSectionsUpdateWithObject:(GTLYouTubeChannelSection *)object
@@ -413,6 +421,7 @@
 //     prevPageToken properties identify other pages that could be retrieved.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeReadonly
 //   kGTLAuthScopeYouTubeYoutubepartner
 //   kGTLAuthScopeYouTubeYoutubepartnerChannelAudit
@@ -442,6 +451,7 @@
 //     owner.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubeChannel.
 + (id)queryForChannelsUpdateWithObject:(GTLYouTubeChannel *)object
@@ -475,6 +485,7 @@
 //     value is an ISO 3166-1 alpha-2 country code.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeReadonly
 //   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubeGuideCategoryListResponse.
@@ -496,6 +507,7 @@
 //     values in the API response. (Default en_US)
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeReadonly
 //   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubeI18nLanguageListResponse.
@@ -517,6 +529,7 @@
 //     values in the API response. (Default en_US)
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeReadonly
 //   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubeI18nRegionListResponse.
@@ -571,6 +584,7 @@
 //     video stream.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 // Fetches a GTLYouTubeLiveBroadcast.
 + (id)queryForLiveBroadcastsBindWithIdentifier:(NSString *)identifier
                                           part:(NSString *)part;
@@ -633,6 +647,7 @@
 //     (YYYY-MM-DDThh:mm:ss.sssZ) format.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 // Fetches a GTLYouTubeLiveBroadcast.
 + (id)queryForLiveBroadcastsControlWithIdentifier:(NSString *)identifier
                                              part:(NSString *)part;
@@ -673,6 +688,7 @@
 //     credentials for each separate channel.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 + (id)queryForLiveBroadcastsDeleteWithIdentifier:(NSString *)identifier;
 
 // Method: youtube.liveBroadcasts.insert
@@ -714,6 +730,7 @@
 //     credentials for each separate channel.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 // Fetches a GTLYouTubeLiveBroadcast.
 + (id)queryForLiveBroadcastsInsertWithObject:(GTLYouTubeLiveBroadcast *)object
                                         part:(NSString *)part;
@@ -775,6 +792,7 @@
 //     prevPageToken properties identify other pages that could be retrieved.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeReadonly
 // Fetches a GTLYouTubeLiveBroadcastListResponse.
 + (id)queryForLiveBroadcastsListWithPart:(NSString *)part;
@@ -838,6 +856,7 @@
 //     credentials for each separate channel.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 // Fetches a GTLYouTubeLiveBroadcast.
 + (id)queryForLiveBroadcastsTransitionWithBroadcastStatus:(NSString *)broadcastStatus
                                                identifier:(NSString *)identifier
@@ -892,6 +911,7 @@
 //     credentials for each separate channel.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 // Fetches a GTLYouTubeLiveBroadcast.
 + (id)queryForLiveBroadcastsUpdateWithObject:(GTLYouTubeLiveBroadcast *)object
                                         part:(NSString *)part;
@@ -936,6 +956,7 @@
 //     credentials for each separate channel.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 + (id)queryForLiveStreamsDeleteWithIdentifier:(NSString *)identifier;
 
 // Method: youtube.liveStreams.insert
@@ -978,6 +999,7 @@
 //     credentials for each separate channel.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 // Fetches a GTLYouTubeLiveStream.
 + (id)queryForLiveStreamsInsertWithObject:(GTLYouTubeLiveStream *)object
                                      part:(NSString *)part;
@@ -1032,6 +1054,7 @@
 //     prevPageToken properties identify other pages that could be retrieved.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeReadonly
 // Fetches a GTLYouTubeLiveStreamListResponse.
 + (id)queryForLiveStreamsListWithPart:(NSString *)part;
@@ -1080,6 +1103,7 @@
 //     credentials for each separate channel.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 // Fetches a GTLYouTubeLiveStream.
 + (id)queryForLiveStreamsUpdateWithObject:(GTLYouTubeLiveStream *)object
                                      part:(NSString *)part;
@@ -1096,6 +1120,7 @@
 //     property specifies the playlist item's ID.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeYoutubepartner
 + (id)queryForPlaylistItemsDeleteWithIdentifier:(NSString *)identifier;
 
@@ -1121,6 +1146,7 @@
 //     specified YouTube content owner.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubePlaylistItem.
 + (id)queryForPlaylistItemsInsertWithObject:(GTLYouTubePlaylistItem *)object
@@ -1169,6 +1195,7 @@
 //     only the playlist items that contain the specified video.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeReadonly
 //   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubePlaylistItemListResponse.
@@ -1196,6 +1223,7 @@
 //     settings.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubePlaylistItem.
 + (id)queryForPlaylistItemsUpdateWithObject:(GTLYouTubePlaylistItem *)object
@@ -1225,6 +1253,7 @@
 //     specified YouTube content owner.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeYoutubepartner
 + (id)queryForPlaylistsDeleteWithIdentifier:(NSString *)identifier;
 
@@ -1267,6 +1296,7 @@
 //     credentials for each separate channel.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubePlaylist.
 + (id)queryForPlaylistsInsertWithObject:(GTLYouTubePlaylist *)object
@@ -1330,6 +1360,7 @@
 //     prevPageToken properties identify other pages that could be retrieved.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeReadonly
 //   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubePlaylistListResponse.
@@ -1367,6 +1398,7 @@
 //     specified YouTube content owner.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubePlaylist.
 + (id)queryForPlaylistsUpdateWithObject:(GTLYouTubePlaylist *)object
@@ -1469,6 +1501,13 @@
 //     that are related to the video that the parameter value identifies. The
 //     parameter value must be set to a YouTube video ID and, if you are using
 //     this parameter, the type parameter must be set to video.
+//   relevanceLanguage: The relevanceLanguage parameter instructs the API to
+//     return search results that are most relevant to the specified language.
+//     The parameter value is typically an ISO 639-1 two-letter language code.
+//     However, you should use the values zh-Hans for simplified Chinese and
+//     zh-Hant for traditional Chinese. Please note that results in other
+//     languages will still be returned if they are highly relevant to the
+//     search query term.
 //   safeSearch: The safeSearch parameter indicates whether the search results
 //     should include restricted content as well as standard content.
 //      kGTLYouTubeSafeSearchModerate: YouTube will filter some content from
@@ -1551,6 +1590,7 @@
 //      kGTLYouTubeVideoTypeMovie: Only retrieve movies.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeReadonly
 //   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubeSearchListResponse.
@@ -1568,6 +1608,7 @@
 //     property specifies the YouTube subscription ID.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeYoutubepartner
 + (id)queryForSubscriptionsDeleteWithIdentifier:(NSString *)identifier;
 
@@ -1581,6 +1622,7 @@
 //     and contentDetails.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubeSubscription.
 + (id)queryForSubscriptionsInsertWithObject:(GTLYouTubeSubscription *)object
@@ -1652,6 +1694,7 @@
 //     prevPageToken properties identify other pages that could be retrieved.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeReadonly
 //   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubeSubscriptionListResponse.
@@ -1681,6 +1724,7 @@
 //   Accepted MIME type(s): application/octet-stream, image/jpeg, image/png
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeUpload
 //   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubeThumbnailSetResponse.
@@ -1706,6 +1750,7 @@
 //     value is an ISO 3166-1 alpha-2 country code.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeReadonly
 //   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubeVideoCategoryListResponse.
@@ -1735,6 +1780,7 @@
 //     specified YouTube content owner.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeYoutubepartner
 + (id)queryForVideosDeleteWithIdentifier:(NSString *)identifier;
 
@@ -1760,6 +1806,7 @@
 //     specified YouTube content owner.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubeVideoGetRatingResponse.
 + (id)queryForVideosGetRatingWithIdentifier:(NSString *)identifier;
@@ -1771,7 +1818,7 @@
 //     identifies the properties that the write operation will set as well as
 //     the properties that the API response will include.
 //     The part names that you can include in the parameter value are snippet,
-//     contentDetails, fileDetails, liveStreamingDetails, player,
+//     contentDetails, fileDetails, liveStreamingDetails, localizations, player,
 //     processingDetails, recordingDetails, statistics, status, suggestions, and
 //     topicDetails. However, not all of those parts contain properties that can
 //     be set when setting or updating a video's metadata. For example, the
@@ -1820,6 +1867,7 @@
 //   Accepted MIME type(s): application/octet-stream, video/*
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeUpload
 //   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubeVideo.
@@ -1833,7 +1881,7 @@
 //   part: The part parameter specifies a comma-separated list of one or more
 //     video resource properties that the API response will include. The part
 //     names that you can include in the parameter value are id, snippet,
-//     contentDetails, fileDetails, liveStreamingDetails, player,
+//     contentDetails, fileDetails, liveStreamingDetails, localizations, player,
 //     processingDetails, recordingDetails, statistics, status, suggestions, and
 //     topicDetails.
 //     If the parameter identifies a property that contains child properties,
@@ -1845,6 +1893,13 @@
 //   chart: The chart parameter identifies the chart that you want to retrieve.
 //      kGTLYouTubeChartMostPopular: Return the most popular videos for the
 //        specified content region and video category.
+//   hl: The hl parameter instructs the API to return a localized version of the
+//     video details. If localized text is nor available for the requested
+//     language, the localizations object in the API response will contain the
+//     requested information in the default language instead. The parameter
+//     value is a BCP-47 language code. Your application can determine whether
+//     the requested localization was returned by checking the value of the
+//     snippet.localized.language property in the API response.
 //   identifier: The id parameter specifies a comma-separated list of the
 //     YouTube video ID(s) for the resource(s) that are being retrieved. In a
 //     video resource, the id property specifies the video's ID.
@@ -1887,6 +1942,7 @@
 //     not restricted to a particular category. (Default 0)
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeReadonly
 //   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubeVideoListResponse.
@@ -1918,6 +1974,7 @@
 //     specified YouTube content owner.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeYoutubepartner
 + (id)queryForVideosRateWithIdentifier:(NSString *)identifier
                                 rating:(NSString *)rating;
@@ -1929,7 +1986,7 @@
 //     identifies the properties that the write operation will set as well as
 //     the properties that the API response will include.
 //     The part names that you can include in the parameter value are snippet,
-//     contentDetails, fileDetails, liveStreamingDetails, player,
+//     contentDetails, fileDetails, liveStreamingDetails, localizations, player,
 //     processingDetails, recordingDetails, statistics, status, suggestions, and
 //     topicDetails.
 //     Note that this method will override the existing values for all of the
@@ -1961,6 +2018,7 @@
 //     specified YouTube content owner.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubeVideo.
 + (id)queryForVideosUpdateWithObject:(GTLYouTubeVideo *)object
@@ -1990,6 +2048,7 @@
 //   Accepted MIME type(s): application/octet-stream, image/jpeg, image/png
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeUpload
 //   kGTLAuthScopeYouTubeYoutubepartner
 + (id)queryForWatermarksSetWithObject:(GTLYouTubeInvideoBranding *)object
@@ -2013,6 +2072,7 @@
 //     owner.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
 //   kGTLAuthScopeYouTubeYoutubepartner
 + (id)queryForWatermarksUnsetWithChannelId:(NSString *)channelId;
 

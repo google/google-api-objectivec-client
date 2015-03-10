@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (45 custom class methods, 54 custom properties)
+//   GTLQueryYouTube (45 custom class methods, 55 custom properties)
 
 #import "GTLQueryYouTube.h"
 
@@ -67,10 +67,10 @@
          notifySubscribers, offsetTimeMs, onBehalfOfContentOwner,
          onBehalfOfContentOwnerChannel, order, pageToken, part, playlistId,
          publishedAfter, publishedBefore, q, rating, regionCode,
-         relatedToVideoId, safeSearch, stabilize, streamId, topicId, type,
-         videoCaption, videoCategoryId, videoDefinition, videoDimension,
-         videoDuration, videoEmbeddable, videoId, videoLicense, videoSyndicated,
-         videoType, walltime;
+         relatedToVideoId, relevanceLanguage, safeSearch, stabilize, streamId,
+         topicId, type, videoCaption, videoCategoryId, videoDefinition,
+         videoDimension, videoDuration, videoEmbeddable, videoId, videoLicense,
+         videoSyndicated, videoType, walltime;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map =

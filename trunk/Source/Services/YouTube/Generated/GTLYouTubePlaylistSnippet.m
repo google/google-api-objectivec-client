@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,10 +26,11 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlaylistSnippet (0 custom class methods, 7 custom properties)
+//   GTLYouTubePlaylistSnippet (0 custom class methods, 9 custom properties)
 
 #import "GTLYouTubePlaylistSnippet.h"
 
+#import "GTLYouTubePlaylistLocalization.h"
 #import "GTLYouTubeThumbnailDetails.h"
 
 // ----------------------------------------------------------------------------
@@ -38,8 +39,8 @@
 //
 
 @implementation GTLYouTubePlaylistSnippet
-@dynamic channelId, channelTitle, descriptionProperty, publishedAt, tags,
-         thumbnails, title;
+@dynamic channelId, channelTitle, defaultLanguage, descriptionProperty,
+         localized, publishedAt, tags, thumbnails, title;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

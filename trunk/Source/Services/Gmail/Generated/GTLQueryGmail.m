@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/gmail/api/
 // Classes:
-//   GTLQueryGmail (30 custom class methods, 19 custom properties)
+//   GTLQueryGmail (30 custom class methods, 22 custom properties)
 
 #import "GTLQueryGmail.h"
 
@@ -44,10 +44,11 @@
 
 @implementation GTLQueryGmail
 
-@dynamic addLabelIds, draft, fields, format, identifier, includeSpamTrash,
-         internalDateSource, label, labelId, labelIds, maxResults, message,
-         messageId, metadataHeaders, pageToken, q, removeLabelIds,
-         startHistoryId, userId;
+@dynamic addLabelIds, deleted, draft, fields, format, identifier,
+         includeSpamTrash, internalDateSource, label, labelId, labelIds,
+         maxResults, message, messageId, metadataHeaders, neverMarkSpam,
+         pageToken, processForCalendar, q, removeLabelIds, startHistoryId,
+         userId;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map =

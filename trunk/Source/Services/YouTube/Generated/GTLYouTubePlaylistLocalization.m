@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubePlaylist.m
+//  GTLYouTubePlaylistLocalization.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,51 +26,23 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubePlaylist (0 custom class methods, 8 custom properties)
-//   GTLYouTubePlaylistLocalizations (0 custom class methods, 0 custom properties)
+//   GTLYouTubePlaylistLocalization (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubePlaylist.h"
-
-#import "GTLYouTubePlaylistContentDetails.h"
 #import "GTLYouTubePlaylistLocalization.h"
-#import "GTLYouTubePlaylistPlayer.h"
-#import "GTLYouTubePlaylistSnippet.h"
-#import "GTLYouTubePlaylistStatus.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubePlaylist
+//   GTLYouTubePlaylistLocalization
 //
 
-@implementation GTLYouTubePlaylist
-@dynamic contentDetails, ETag, identifier, kind, localizations, player, snippet,
-         status;
+@implementation GTLYouTubePlaylistLocalization
+@dynamic descriptionProperty, title;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"etag", @"ETag",
-      @"id", @"identifier",
-      nil];
+    [NSDictionary dictionaryWithObject:@"description"
+                                forKey:@"descriptionProperty"];
   return map;
-}
-
-+ (void)load {
-  [self registerObjectClassForKind:@"youtube#playlist"];
-}
-
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubePlaylistLocalizations
-//
-
-@implementation GTLYouTubePlaylistLocalizations
-
-+ (Class)classForAdditionalProperties {
-  return [GTLYouTubePlaylistLocalization class];
 }
 
 @end

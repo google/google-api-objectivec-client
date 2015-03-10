@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoSnippet (0 custom class methods, 9 custom properties)
+//   GTLYouTubeVideoSnippet (0 custom class methods, 11 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -35,6 +35,7 @@
 #endif
 
 @class GTLYouTubeThumbnailDetails;
+@class GTLYouTubeVideoLocalization;
 
 // ----------------------------------------------------------------------------
 //
@@ -56,6 +57,9 @@
 // Channel title for the channel that the video belongs to.
 @property (copy) NSString *channelTitle;
 
+// The language of the videos's default snippet.
+@property (copy) NSString *defaultLanguage;
+
 // The video's description.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
@@ -63,6 +67,10 @@
 // Indicates if the video is an upcoming/active live broadcast. Or it's "none"
 // if the video is not an upcoming/active live broadcast.
 @property (copy) NSString *liveBroadcastContent;
+
+// Localized snippet selected with the hl parameter. If no such localization
+// exists, this field is populated with the default snippet. (Read-only)
+@property (retain) GTLYouTubeVideoLocalization *localized;
 
 // The date and time that the video was uploaded. The value is specified in ISO
 // 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
