@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +33,7 @@
 //   GTLBooksVolumeSaleInfo (0 custom class methods, 8 custom properties)
 //   GTLBooksVolumeSearchInfo (0 custom class methods, 1 custom properties)
 //   GTLBooksVolumeUserInfo (0 custom class methods, 11 custom properties)
-//   GTLBooksVolumeVolumeInfo (0 custom class methods, 22 custom properties)
+//   GTLBooksVolumeVolumeInfo (0 custom class methods, 23 custom properties)
 //   GTLBooksVolumeAccessInfoEpub (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeAccessInfoPdf (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeLayerInfoLayersItem (0 custom class methods, 2 custom properties)
@@ -181,7 +181,7 @@
          contentVersion, descriptionProperty, dimensions, imageLinks,
          industryIdentifiers, infoLink, language, mainCategory, pageCount,
          previewLink, printedPageCount, printType, publishedDate, publisher,
-         ratingsCount, readingModes, subtitle, title;
+         ratingsCount, readingModes, samplePageCount, subtitle, title;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

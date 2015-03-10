@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLQueryBooks (45 custom class methods, 69 custom properties)
+//   GTLQueryBooks (45 custom class methods, 70 custom properties)
 
 #import "GTLQueryBooks.h"
 
@@ -66,8 +66,9 @@
          processingState, product, projection, q, rating, reason, scale, serial,
          settings, shelf, showDeleted, showOnlySummaryInResponse, showPreorders,
          source, startIndex, startOffset, startPosition, summaryId, timestamp,
-         updatedMax, updatedMin, uploadClientToken, userId,
-         volumeAnnotationsVersion, volumeId, volumeIds, volumePosition, w;
+         updatedMax, updatedMin, uploadClientToken, userLibraryConsistentRead,
+         userId, volumeAnnotationsVersion, volumeId, volumeIds, volumePosition,
+         w;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map =
@@ -75,6 +76,7 @@
       @"drive_document_id", @"driveDocumentId",
       @"mime_type", @"mimeType",
       @"upload_client_token", @"uploadClientToken",
+      @"user_library_consistent_read", @"userLibraryConsistentRead",
       nil];
   return map;
 }

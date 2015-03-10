@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,8 +56,9 @@ GTL_EXTERN NSString * const kGTLBooksActionScroll;    // "scroll"
 GTL_EXTERN NSString * const kGTLBooksActionSearch;    // "search"
 
 // GTLQueryBooks - Association
-GTL_EXTERN NSString * const kGTLBooksAssociationEndOfSample;  // "end-of-sample"
-GTL_EXTERN NSString * const kGTLBooksAssociationEndOfVolume;  // "end-of-volume"
+GTL_EXTERN NSString * const kGTLBooksAssociationEndOfSample;    // "end-of-sample"
+GTL_EXTERN NSString * const kGTLBooksAssociationEndOfVolume;    // "end-of-volume"
+GTL_EXTERN NSString * const kGTLBooksAssociationRelatedForPlay;  // "related-for-play"
 
 // GTLQueryBooks - Download
 GTL_EXTERN NSString * const kGTLBooksDownloadEpub;  // "epub"
@@ -104,4 +105,6 @@ GTL_EXTERN NSString * const kGTLBooksRatingHaveIt;         // "HAVE_IT"
 GTL_EXTERN NSString * const kGTLBooksRatingNotInterested;  // "NOT_INTERESTED"
 
 // GTLQueryBooks - Reason
+GTL_EXTERN NSString * const kGTLBooksReasonIosPrex;     // "IOS_PREX"
+GTL_EXTERN NSString * const kGTLBooksReasonIosSearch;   // "IOS_SEARCH"
 GTL_EXTERN NSString * const kGTLBooksReasonOnboarding;  // "ONBOARDING"
