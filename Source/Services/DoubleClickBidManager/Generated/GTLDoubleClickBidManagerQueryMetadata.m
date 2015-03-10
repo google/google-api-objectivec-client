@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/bid-manager/
 // Classes:
-//   GTLDoubleClickBidManagerQueryMetadata (0 custom class methods, 10 custom properties)
+//   GTLDoubleClickBidManagerQueryMetadata (0 custom class methods, 11 custom properties)
 
 #import "GTLDoubleClickBidManagerQueryMetadata.h"
 
@@ -37,8 +37,8 @@
 
 @implementation GTLDoubleClickBidManagerQueryMetadata
 @dynamic dataRange, format, googleCloudStoragePathForLatestReport,
-         googleDrivePathForLatestReport, latestReportRunTimeMs, reportCount,
-         running, sendNotification, shareEmailAddress, title;
+         googleDrivePathForLatestReport, latestReportRunTimeMs, locale,
+         reportCount, running, sendNotification, shareEmailAddress, title;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =

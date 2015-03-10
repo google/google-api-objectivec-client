@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,6 +61,7 @@
 #import "GTLYouTubeChannelSection.m"
 #import "GTLYouTubeChannelSectionContentDetails.m"
 #import "GTLYouTubeChannelSectionListResponse.m"
+#import "GTLYouTubeChannelSectionLocalization.m"
 #import "GTLYouTubeChannelSectionSnippet.m"
 #import "GTLYouTubeChannelSettings.m"
 #import "GTLYouTubeChannelSnippet.m"
@@ -107,6 +108,7 @@
 #import "GTLYouTubePlaylistItemSnippet.m"
 #import "GTLYouTubePlaylistItemStatus.m"
 #import "GTLYouTubePlaylistListResponse.m"
+#import "GTLYouTubePlaylistLocalization.m"
 #import "GTLYouTubePlaylistPlayer.m"
 #import "GTLYouTubePlaylistSnippet.m"
 #import "GTLYouTubePlaylistStatus.m"
@@ -141,6 +143,7 @@
 #import "GTLYouTubeVideoGetRatingResponse.m"
 #import "GTLYouTubeVideoListResponse.m"
 #import "GTLYouTubeVideoLiveStreamingDetails.m"
+#import "GTLYouTubeVideoLocalization.m"
 #import "GTLYouTubeVideoMonetizationDetails.m"
 #import "GTLYouTubeVideoPlayer.m"
 #import "GTLYouTubeVideoProcessingDetails.m"

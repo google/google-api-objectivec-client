@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,8 @@
 //   Licensing API to view and manage license for your domain.
 // Documentation:
 //   https://developers.google.com/google-apps/licensing/
+
+#import "GTLLicensingConstants.h"
 
 #import "GTLLicensingLicenseAssignment.h"
 #import "GTLLicensingLicenseAssignmentInsert.h"

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/gmail/api/
 // Classes:
-//   GTLGmailHistory (0 custom class methods, 2 custom properties)
+//   GTLGmailHistory (0 custom class methods, 6 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,6 +34,10 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLGmailHistoryLabelAdded;
+@class GTLGmailHistoryLabelRemoved;
+@class GTLGmailHistoryMessageAdded;
+@class GTLGmailHistoryMessageDeleted;
 @class GTLGmailMessage;
 
 // ----------------------------------------------------------------------------
@@ -41,8 +45,8 @@
 //   GTLGmailHistory
 //
 
-// A record of a change to the user's mailbox. Each history contains a list of
-// the messages that were affected by this change.
+// A record of a change to the user's mailbox. Each history change may affect
+// multiple messages in multiple ways.
 
 @interface GTLGmailHistory : GTLObject
 
@@ -50,7 +54,21 @@
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (retain) NSNumber *identifier;  // unsignedLongLongValue
 
-// The messages that changed in this history record.
+// Labels added to messages in this history record.
+@property (retain) NSArray *labelsAdded;  // of GTLGmailHistoryLabelAdded
+
+// Labels removed from messages in this history record.
+@property (retain) NSArray *labelsRemoved;  // of GTLGmailHistoryLabelRemoved
+
+// List of messages changed in this history record. The fields for specific
+// change types, such as messagesAdded may duplicate messages in this field. We
+// recommend using the specific change-type fields instead of this.
 @property (retain) NSArray *messages;  // of GTLGmailMessage
+
+// Messages added to the mailbox in this history record.
+@property (retain) NSArray *messagesAdded;  // of GTLGmailHistoryMessageAdded
+
+// Messages deleted (not Trashed) from the mailbox in this history record.
+@property (retain) NSArray *messagesDeleted;  // of GTLGmailHistoryMessageDeleted
 
 @end

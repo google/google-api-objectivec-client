@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -66,6 +66,8 @@
 //   productId: Name for product
 //   skuId: Name for sku
 //   userId: email id or unique Id of the user
+//  Authorization scope(s):
+//   kGTLAuthScopeLicensingAppsLicensing
 + (id)queryForLicenseAssignmentsDeleteWithProductId:(NSString *)productId
                                               skuId:(NSString *)skuId
                                              userId:(NSString *)userId;
@@ -76,6 +78,8 @@
 //   productId: Name for product
 //   skuId: Name for sku
 //   userId: email id or unique Id of the user
+//  Authorization scope(s):
+//   kGTLAuthScopeLicensingAppsLicensing
 // Fetches a GTLLicensingLicenseAssignment.
 + (id)queryForLicenseAssignmentsGetWithProductId:(NSString *)productId
                                            skuId:(NSString *)skuId
@@ -86,6 +90,8 @@
 //  Required:
 //   productId: Name for product
 //   skuId: Name for sku
+//  Authorization scope(s):
+//   kGTLAuthScopeLicensingAppsLicensing
 // Fetches a GTLLicensingLicenseAssignment.
 + (id)queryForLicenseAssignmentsInsertWithObject:(GTLLicensingLicenseAssignmentInsert *)object
                                        productId:(NSString *)productId
@@ -102,6 +108,8 @@
 //     positive. Optional. Default value is 100. (1..1000, default 100)
 //   pageToken: Token to fetch the next page.Optional. By default server will
 //     return first page
+//  Authorization scope(s):
+//   kGTLAuthScopeLicensingAppsLicensing
 // Fetches a GTLLicensingLicenseAssignmentList.
 + (id)queryForLicenseAssignmentsListForProductWithProductId:(NSString *)productId
                                                  customerId:(NSString *)customerId;
@@ -118,6 +126,8 @@
 //     positive. Optional. Default value is 100. (1..1000, default 100)
 //   pageToken: Token to fetch the next page.Optional. By default server will
 //     return first page
+//  Authorization scope(s):
+//   kGTLAuthScopeLicensingAppsLicensing
 // Fetches a GTLLicensingLicenseAssignmentList.
 + (id)queryForLicenseAssignmentsListForProductAndSkuWithProductId:(NSString *)productId
                                                             skuId:(NSString *)skuId
@@ -129,6 +139,8 @@
 //   productId: Name for product
 //   skuId: Name for sku for which license would be revoked
 //   userId: email id or unique Id of the user
+//  Authorization scope(s):
+//   kGTLAuthScopeLicensingAppsLicensing
 // Fetches a GTLLicensingLicenseAssignment.
 + (id)queryForLicenseAssignmentsPatchWithObject:(GTLLicensingLicenseAssignment *)object
                                       productId:(NSString *)productId
@@ -141,6 +153,8 @@
 //   productId: Name for product
 //   skuId: Name for sku for which license would be revoked
 //   userId: email id or unique Id of the user
+//  Authorization scope(s):
+//   kGTLAuthScopeLicensingAppsLicensing
 // Fetches a GTLLicensingLicenseAssignment.
 + (id)queryForLicenseAssignmentsUpdateWithObject:(GTLLicensingLicenseAssignment *)object
                                        productId:(NSString *)productId

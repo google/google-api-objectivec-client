@@ -14,10 +14,7 @@
  */
 
 //
-//  GTLGmail_Sources.m
-//
-// This file can be compiled into projects to avoid adding the individual
-// source files for this service.
+//  GTLGmailHistoryMessageDeleted.m
 //
 
 // ----------------------------------------------------------------------------
@@ -28,27 +25,18 @@
 //   The Gmail REST API.
 // Documentation:
 //   https://developers.google.com/gmail/api/
+// Classes:
+//   GTLGmailHistoryMessageDeleted (0 custom class methods, 1 custom properties)
 
-#import "GTLGmailConstants.m"
+#import "GTLGmailHistoryMessageDeleted.h"
 
-#import "GTLGmailDraft.m"
-#import "GTLGmailHistory.m"
-#import "GTLGmailHistoryLabelAdded.m"
-#import "GTLGmailHistoryLabelRemoved.m"
-#import "GTLGmailHistoryMessageAdded.m"
-#import "GTLGmailHistoryMessageDeleted.m"
-#import "GTLGmailLabel.m"
-#import "GTLGmailListDraftsResponse.m"
-#import "GTLGmailListHistoryResponse.m"
-#import "GTLGmailListLabelsResponse.m"
-#import "GTLGmailListMessagesResponse.m"
-#import "GTLGmailListThreadsResponse.m"
-#import "GTLGmailMessage.m"
-#import "GTLGmailMessagePart.m"
-#import "GTLGmailMessagePartBody.m"
-#import "GTLGmailMessagePartHeader.m"
-#import "GTLGmailProfile.m"
-#import "GTLGmailThread.m"
+#import "GTLGmailMessage.h"
 
-#import "GTLQueryGmail.m"
-#import "GTLServiceGmail.m"
+// ----------------------------------------------------------------------------
+//
+//   GTLGmailHistoryMessageDeleted
+//
+
+@implementation GTLGmailHistoryMessageDeleted
+@dynamic message;
+@end

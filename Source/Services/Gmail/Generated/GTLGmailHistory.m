@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,10 +26,14 @@
 // Documentation:
 //   https://developers.google.com/gmail/api/
 // Classes:
-//   GTLGmailHistory (0 custom class methods, 2 custom properties)
+//   GTLGmailHistory (0 custom class methods, 6 custom properties)
 
 #import "GTLGmailHistory.h"
 
+#import "GTLGmailHistoryLabelAdded.h"
+#import "GTLGmailHistoryLabelRemoved.h"
+#import "GTLGmailHistoryMessageAdded.h"
+#import "GTLGmailHistoryMessageDeleted.h"
 #import "GTLGmailMessage.h"
 
 // ----------------------------------------------------------------------------
@@ -38,7 +42,8 @@
 //
 
 @implementation GTLGmailHistory
-@dynamic identifier, messages;
+@dynamic identifier, labelsAdded, labelsRemoved, messages, messagesAdded,
+         messagesDeleted;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
@@ -49,8 +54,13 @@
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLGmailMessage class]
-                                forKey:@"messages"];
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      [GTLGmailHistoryLabelAdded class], @"labelsAdded",
+      [GTLGmailHistoryLabelRemoved class], @"labelsRemoved",
+      [GTLGmailMessage class], @"messages",
+      [GTLGmailHistoryMessageAdded class], @"messagesAdded",
+      [GTLGmailHistoryMessageDeleted class], @"messagesDeleted",
+      nil];
   return map;
 }
 

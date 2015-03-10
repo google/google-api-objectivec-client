@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,7 +43,8 @@
 
 @interface GTLGmailListHistoryResponse : GTLObject
 
-// List of history records.
+// List of history records. Any messages contained in the response will
+// typically only have id and threadId fields populated.
 @property (retain) NSArray *history;  // of GTLGmailHistory
 
 // The ID of the mailbox's current history record.

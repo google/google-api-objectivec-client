@@ -14,29 +14,19 @@
  */
 
 //
-//  GTLYouTubeChannelSectionSnippet.m
+//  GTLLicensingConstants.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   YouTube Data API (youtube/v3)
+//   Enterprise License Manager API (licensing/v1)
 // Description:
-//   Programmatic access to YouTube features.
+//   Licensing API to view and manage license for your domain.
 // Documentation:
-//   https://developers.google.com/youtube/v3
-// Classes:
-//   GTLYouTubeChannelSectionSnippet (0 custom class methods, 7 custom properties)
+//   https://developers.google.com/google-apps/licensing/
 
-#import "GTLYouTubeChannelSectionSnippet.h"
+#import "GTLLicensingConstants.h"
 
-#import "GTLYouTubeChannelSectionLocalization.h"
-
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubeChannelSectionSnippet
-//
-
-@implementation GTLYouTubeChannelSectionSnippet
-@dynamic channelId, defaultLanguage, localized, position, style, title, type;
-@end
+// Authorization scope
+NSString * const kGTLAuthScopeLicensingAppsLicensing = @"https://www.googleapis.com/auth/apps.licensing";

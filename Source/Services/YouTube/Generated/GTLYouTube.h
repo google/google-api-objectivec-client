@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,6 +58,7 @@
 #import "GTLYouTubeChannelSection.h"
 #import "GTLYouTubeChannelSectionContentDetails.h"
 #import "GTLYouTubeChannelSectionListResponse.h"
+#import "GTLYouTubeChannelSectionLocalization.h"
 #import "GTLYouTubeChannelSectionSnippet.h"
 #import "GTLYouTubeChannelSettings.h"
 #import "GTLYouTubeChannelSnippet.h"
@@ -104,6 +105,7 @@
 #import "GTLYouTubePlaylistItemSnippet.h"
 #import "GTLYouTubePlaylistItemStatus.h"
 #import "GTLYouTubePlaylistListResponse.h"
+#import "GTLYouTubePlaylistLocalization.h"
 #import "GTLYouTubePlaylistPlayer.h"
 #import "GTLYouTubePlaylistSnippet.h"
 #import "GTLYouTubePlaylistStatus.h"
@@ -138,6 +140,7 @@
 #import "GTLYouTubeVideoGetRatingResponse.h"
 #import "GTLYouTubeVideoListResponse.h"
 #import "GTLYouTubeVideoLiveStreamingDetails.h"
+#import "GTLYouTubeVideoLocalization.h"
 #import "GTLYouTubeVideoMonetizationDetails.h"
 #import "GTLYouTubeVideoPlayer.h"
 #import "GTLYouTubeVideoProcessingDetails.h"
