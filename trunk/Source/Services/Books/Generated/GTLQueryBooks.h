@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLQueryBooks (45 custom class methods, 69 custom properties)
+//   GTLQueryBooks (45 custom class methods, 70 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -114,6 +114,7 @@
 @property (copy) NSString *updatedMax;
 @property (copy) NSString *updatedMin;
 @property (copy) NSString *uploadClientToken;
+@property (assign) BOOL userLibraryConsistentRead;
 @property (copy) NSString *userId;
 @property (copy) NSString *volumeAnnotationsVersion;
 // "volumeId" has different types for some query methods; see the documentation
@@ -535,7 +536,9 @@
 //   volumeId: ID of volume to add.
 //  Optional:
 //   reason: The reason for which the book is added to the library.
-//      kGTLBooksReasonOnboarding: Volumes added from onboarding flow.
+//      kGTLBooksReasonIosPrex: Volumes added from the PREX flow on iOS.
+//      kGTLBooksReasonIosSearch: Volumes added from the Search flow on iOS.
+//      kGTLBooksReasonOnboarding: Volumes added from the Onboarding flow.
 //   source: String to identify the originator of this request.
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
@@ -595,6 +598,8 @@
 //   shelf: ID of bookshelf from which to remove a volume.
 //   volumeId: ID of volume to remove.
 //  Optional:
+//   reason: The reason for which the book is removed from the library.
+//      kGTLBooksReasonOnboarding: Samples removed from the Onboarding flow.
 //   source: String to identify the originator of this request.
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
@@ -757,6 +762,7 @@
 //        end-of-sample.
 //      kGTLBooksAssociationEndOfVolume: Recommendations for display
 //        end-of-volume.
+//      kGTLBooksAssociationRelatedForPlay: Related volumes for Play Store.
 //   locale: ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used
 //     for generating recommendations.
 //   source: String to identify the originator of this request.
@@ -781,6 +787,7 @@
 //      kGTLBooksProjectionLite: Includes a subset of fields in volumeInfo and
 //        accessInfo.
 //   source: String to identify the originator of this request.
+//   userLibraryConsistentRead: BOOL
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
 // Fetches a GTLBooksVolume.

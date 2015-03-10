@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
 //   GTLBooksOffers (0 custom class methods, 2 custom properties)
-//   GTLBooksOffersItemsItem (0 custom class methods, 3 custom properties)
+//   GTLBooksOffersItemsItem (0 custom class methods, 4 custom properties)
 //   GTLBooksOffersItemsItemItemsItem (0 custom class methods, 6 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -68,6 +68,7 @@
 
 @interface GTLBooksOffersItemsItem : GTLCollectionObject
 @property (copy) NSString *artUrl;
+@property (copy) NSString *gservicesKey;
 
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;

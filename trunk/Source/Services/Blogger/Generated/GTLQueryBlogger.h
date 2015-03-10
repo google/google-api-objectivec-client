@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -261,6 +261,12 @@
 //   pageToken: Continuation token if request is paged.
 //   startDate: Earliest date of comment to fetch, a date-time with RFC 3339
 //     formatting.
+//   status: NSArray
+//      kGTLBloggerStatusEmptied: Comments that have had their content removed
+//      kGTLBloggerStatusLive: Comments that are publicly visible
+//      kGTLBloggerStatusPending: Comments that are awaiting administrator
+//        approval
+//      kGTLBloggerStatusSpam: Comments marked as spam by the administrator
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
@@ -339,9 +345,11 @@
 // Method: blogger.pages.list
 // Retrieves the pages for a blog, optionally including non-LIVE statuses.
 //  Required:
-//   blogId: ID of the blog to fetch pages from.
+//   blogId: ID of the blog to fetch Pages from.
 //  Optional:
 //   fetchBodies: Whether to retrieve the Page bodies.
+//   maxResults: Maximum number of Pages to fetch.
+//   pageToken: Continuation token if the request is paged.
 //   status: NSArray
 //      kGTLBloggerStatusDraft: Draft (unpublished) Pages
 //      kGTLBloggerStatusLive: Pages that are publicly visible
