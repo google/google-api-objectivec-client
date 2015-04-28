@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,9 +24,10 @@
 // Description:
 //   A data platform for customers to create, manage, share and query data.
 // Documentation:
-//   https://developers.google.com/bigquery/docs/overview
+//   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryJobConfigurationQuery (0 custom class methods, 10 custom properties)
+//   GTLBigqueryJobConfigurationQuery (0 custom class methods, 11 custom properties)
+//   GTLBigqueryJobConfigurationQueryTableDefinitions (0 custom class methods, 0 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -35,6 +36,8 @@
 #endif
 
 @class GTLBigqueryDatasetReference;
+@class GTLBigqueryExternalDataConfiguration;
+@class GTLBigqueryJobConfigurationQueryTableDefinitions;
 @class GTLBigqueryTableReference;
 
 // ----------------------------------------------------------------------------
@@ -64,8 +67,8 @@
 // not present, a new table will be created to store the results.
 @property (retain) GTLBigqueryTableReference *destinationTable;
 
-// [Experimental] Flattens all nested and repeated fields in the query results.
-// The default value is true. allowLargeResults must be true if this is set to
+// [Optional] Flattens all nested and repeated fields in the query results. The
+// default value is true. allowLargeResults must be true if this is set to
 // false.
 @property (retain) NSNumber *flattenResults;  // boolValue
 
@@ -78,6 +81,12 @@
 
 // [Required] BigQuery SQL query to execute.
 @property (copy) NSString *query;
+
+// [Experimental] If querying an external data source outside of BigQuery,
+// describes the data format, location and other properties of the data source.
+// By defining these properties, the data source can then be queried as if it
+// were a standard BigQuery table.
+@property (retain) GTLBigqueryJobConfigurationQueryTableDefinitions *tableDefinitions;
 
 // [Optional] Whether to look for the result in the query cache. The query cache
 // is a best-effort cache that will be flushed whenever tables in the query are
@@ -96,4 +105,17 @@
 // completion.
 @property (copy) NSString *writeDisposition;
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLBigqueryJobConfigurationQueryTableDefinitions
+//
+
+@interface GTLBigqueryJobConfigurationQueryTableDefinitions : GTLObject
+// This object is documented as having more properties that are
+// GTLBigqueryExternalDataConfiguration. Use -additionalJSONKeys and
+// -additionalPropertyForName: to get the list of properties and then fetch
+// them; or -additionalProperties to fetch them all at once.
 @end

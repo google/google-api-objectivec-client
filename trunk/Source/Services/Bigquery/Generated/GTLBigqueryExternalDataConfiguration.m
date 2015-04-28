@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLBigqueryJobStatistics.m
+//  GTLBigqueryExternalDataConfiguration.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,20 +26,27 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryJobStatistics (0 custom class methods, 7 custom properties)
+//   GTLBigqueryExternalDataConfiguration (0 custom class methods, 7 custom properties)
 
-#import "GTLBigqueryJobStatistics.h"
+#import "GTLBigqueryExternalDataConfiguration.h"
 
-#import "GTLBigqueryJobStatistics2.h"
-#import "GTLBigqueryJobStatistics3.h"
-#import "GTLBigqueryJobStatistics4.h"
+#import "GTLBigqueryCsvOptions.h"
+#import "GTLBigqueryTableSchema.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBigqueryJobStatistics
+//   GTLBigqueryExternalDataConfiguration
 //
 
-@implementation GTLBigqueryJobStatistics
-@dynamic creationTime, endTime, extract, load, query, startTime,
-         totalBytesProcessed;
+@implementation GTLBigqueryExternalDataConfiguration
+@dynamic compression, csvOptions, ignoreUnknownValues, maxBadRecords, schema,
+         sourceFormat, sourceUris;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[NSString class]
+                                forKey:@"sourceUris"];
+  return map;
+}
+
 @end

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLBigqueryJobStatistics.m
+//  GTLBigqueryCsvOptions.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,20 +26,16 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryJobStatistics (0 custom class methods, 7 custom properties)
+//   GTLBigqueryCsvOptions (0 custom class methods, 6 custom properties)
 
-#import "GTLBigqueryJobStatistics.h"
-
-#import "GTLBigqueryJobStatistics2.h"
-#import "GTLBigqueryJobStatistics3.h"
-#import "GTLBigqueryJobStatistics4.h"
+#import "GTLBigqueryCsvOptions.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBigqueryJobStatistics
+//   GTLBigqueryCsvOptions
 //
 
-@implementation GTLBigqueryJobStatistics
-@dynamic creationTime, endTime, extract, load, query, startTime,
-         totalBytesProcessed;
+@implementation GTLBigqueryCsvOptions
+@dynamic allowJaggedRows, allowQuotedNewlines, encoding, fieldDelimiter, quote,
+         skipLeadingRows;
 @end

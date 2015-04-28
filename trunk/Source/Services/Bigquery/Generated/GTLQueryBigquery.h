@@ -24,9 +24,9 @@
 // Description:
 //   A data platform for customers to create, manage, share and query data.
 // Documentation:
-//   https://developers.google.com/bigquery/docs/overview
+//   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLQueryBigquery (20 custom class methods, 21 custom properties)
+//   GTLQueryBigquery (20 custom class methods, 23 custom properties)
 //   GTLBigqueryTabledataInsertAllRowsItem (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -38,6 +38,7 @@
 @class GTLBigqueryDataset;
 @class GTLBigqueryDatasetReference;
 @class GTLBigqueryJob;
+@class GTLBigqueryJsonObject;
 @class GTLBigqueryTable;
 @class GTLBigqueryTabledataInsertAllRowsItem;
 
@@ -59,6 +60,7 @@
 @property (retain) GTLBigqueryDatasetReference *defaultDataset;
 @property (assign) BOOL deleteContents;
 @property (assign) BOOL dryRun;
+@property (assign) BOOL ignoreUnknownValues;
 @property (copy) NSString *jobId;
 @property (copy) NSString *kind;
 @property (assign) NSUInteger maxResults;
@@ -68,6 +70,7 @@
 @property (copy) NSString *projection;
 @property (copy) NSString *query;
 @property (retain) NSArray *rows;  // of GTLBigqueryTabledataInsertAllRowsItem
+@property (assign) BOOL skipInvalidRows;
 @property (assign) unsigned long long startIndex;
 @property (retain) NSArray *stateFilter;  // of NSString
 @property (copy) NSString *tableId;
@@ -118,9 +121,8 @@
 + (id)queryForDatasetsInsertWithObject:(GTLBigqueryDataset *)object;
 
 // Method: bigquery.datasets.list
-// Lists all the datasets in the specified project to which the caller has read
-// access; however, a project owner can list (but not necessarily get) all
-// datasets in his project.
+// Lists all datasets in the specified project to which you have been granted
+// the READER dataset role.
 //  Required:
 //   projectId: Project ID of the datasets to be listed
 //  Optional:
@@ -168,7 +170,9 @@
 // These create a GTLQueryBigquery object.
 
 // Method: bigquery.jobs.get
-// Retrieves the specified job by ID.
+// Returns information about a specific job. Job information is available for a
+// six month period after creation. Requires that you're the person who ran the
+// job, or have the Is Owner project role.
 //  Required:
 //   projectId: Project ID of the requested job
 //   jobId: Job ID of the requested job
@@ -200,7 +204,7 @@
                                          jobId:(NSString *)jobId;
 
 // Method: bigquery.jobs.insert
-// Starts a new asynchronous job.
+// Starts a new asynchronous job. Requires the Can View project role.
 //  Optional:
 //   projectId: Project ID of the project that will be billed for the job
 //  Upload Parameters:
@@ -216,9 +220,10 @@
                   uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
 // Method: bigquery.jobs.list
-// Lists all the Jobs in the specified project that were started by the user.
-// The job list returns in reverse chronological order of when the jobs were
-// created, starting with the most recent job created.
+// Lists all jobs that you started in the specified project. The job list
+// returns in reverse chronological order of when the jobs were created,
+// starting with the most recent job created. Requires the Can View project
+// role, or the Is Owner project role if you set the allUsers property.
 //  Required:
 //   projectId: Project ID of the jobs to list
 //  Optional:
@@ -286,7 +291,7 @@
 // These create a GTLQueryBigquery object.
 
 // Method: bigquery.projects.list
-// Lists the projects to which you have at least read access.
+// Lists all projects to which you have been granted any project role.
 //  Optional:
 //   maxResults: Maximum number of results to return
 //   pageToken: Page token, returned by a previous call, to request the next
@@ -303,15 +308,21 @@
 
 // Method: bigquery.tabledata.insertAll
 // Streams data into BigQuery one record at a time without needing to run a load
-// job.
+// job. Requires the WRITER dataset role.
 //  Required:
 //   projectId: Project ID of the destination table.
 //   datasetId: Dataset ID of the destination table.
 //   tableId: Table ID of the destination table.
 //  Optional:
+//   ignoreUnknownValues: [Optional] Accept rows that contain values that do not
+//     match the schema. The unknown values are ignored. Default is false, which
+//     treats unknown values as errors.
 //   kind: The resource type of the response. (Default
 //     bigquery#tableDataInsertAllRequest)
 //   rows: The rows to insert.
+//   skipInvalidRows: [Optional] Insert all valid rows of a request, even if
+//     invalid rows exist. The default value is false, which causes the entire
+//     request to fail if any invalid rows exist.
 //  Authorization scope(s):
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
@@ -322,7 +333,8 @@
                                       tableId:(NSString *)tableId;
 
 // Method: bigquery.tabledata.list
-// Retrieves table data from a specified set of rows.
+// Retrieves table data from a specified set of rows. Requires the READER
+// dataset role.
 //  Required:
 //   projectId: Project ID of the table to read
 //   datasetId: Dataset ID of the table to read
@@ -386,7 +398,7 @@
 + (id)queryForTablesInsertWithObject:(GTLBigqueryTable *)object;
 
 // Method: bigquery.tables.list
-// Lists all tables in the specified dataset.
+// Lists all tables in the specified dataset. Requires the READER dataset role.
 //  Required:
 //   projectId: Project ID of the tables to list
 //   datasetId: Dataset ID of the tables to list
@@ -440,14 +452,12 @@
 // These object are used only to pass a collection of parameters to a
 // method as a single item.
 
-@class GTLBigqueryJsonObject;
-
 // ----------------------------------------------------------------------------
 //
 //   GTLBigqueryTabledataInsertAllRowsItem
 //
 
-// Used for 'item' parameter on '(null)'.
+// Used for 'rows' parameter on 'bigquery.tabledata.insertAll'.
 
 @interface GTLBigqueryTabledataInsertAllRowsItem : GTLObject
 
