@@ -333,11 +333,11 @@ NSNumber *GTL_EnsureNSNumber(NSNumber *num) {
       // does not correctly create an NSNumber for large values like
       // 71100000000007780.
       if ([str hasPrefix:@"-"]) {
-        newNum = [NSNumber numberWithLongLong:[str longLongValue]];
+        newNum = @([str longLongValue]);
       } else {
         const char *utf8 = [str UTF8String];
         unsigned long long ull = strtoull(utf8, NULL, 10);
-        newNum = [NSNumber numberWithUnsignedLongLong:ull];
+        newNum = @(ull);
       }
     }
     if (newNum) {

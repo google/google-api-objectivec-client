@@ -29,13 +29,15 @@
             uploadLocationURL = uploadLocationURL_,
             fileURL = fileURL_,
             slug = slug_,
-            shouldSendUploadOnly = shouldSendUploadOnly_;
+            shouldSendUploadOnly = shouldSendUploadOnly_,
+            useBackgroundSession = useBackgroundSession_;
 
 + (instancetype)uploadParametersWithData:(NSData *)data
                                 MIMEType:(NSString *)mimeType {
   GTLUploadParameters *params = [[[self alloc] init] autorelease];
   params.data = data;
   params.MIMEType = mimeType;
+  params.useBackgroundSession = YES;
   return params;
 }
 
@@ -44,6 +46,7 @@
   GTLUploadParameters *params = [[[self alloc] init] autorelease];
   params.fileHandle = fileHandle;
   params.MIMEType = mimeType;
+  params.useBackgroundSession = YES;
   return params;
 }
 
@@ -52,6 +55,7 @@
   GTLUploadParameters *params = [[[self alloc] init] autorelease];
   params.fileURL = fileURL;
   params.MIMEType = mimeType;
+  params.useBackgroundSession = YES;
   return params;
 }
 
@@ -64,6 +68,7 @@
   newParams.uploadLocationURL = self.uploadLocationURL;
   newParams.slug = self.slug;
   newParams.shouldSendUploadOnly = self.shouldSendUploadOnly;
+  newParams.useBackgroundSession = self.useBackgroundSession;
   return newParams;
 }
 
@@ -78,6 +83,7 @@
   [super dealloc];
 }
 
+#if DEBUG
 - (NSString *)description {
   NSMutableArray *array = [NSMutableArray array];
   NSString *str = [NSString stringWithFormat:@"MIMEType:%@", MIMEType_];
@@ -114,10 +120,15 @@
     [array addObject:@"shouldSendUploadOnly"];
   }
 
+  if (useBackgroundSession_) {
+    [array addObject:@"useBackgroundSession"];
+  }
+
   NSString *descStr = [array componentsJoinedByString:@", "];
   str = [NSString stringWithFormat:@"%@ %p: {%@}",
          [self class], self, descStr];
   return str;
 }
+#endif
 
 @end

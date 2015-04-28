@@ -460,8 +460,7 @@ static NSString *ETagIfPresent(GTLObject *obj) {
   if (isREST && [apiKey length] > 0) {
     NSString *const kDeveloperAPIQueryParamKey = @"key";
     NSDictionary *queryParameters;
-    queryParameters = [NSDictionary dictionaryWithObject:apiKey
-                                                  forKey:kDeveloperAPIQueryParamKey];
+    queryParameters = @{ kDeveloperAPIQueryParamKey : apiKey };
     targetURL = [GTLUtilities URLWithString:[targetURL absoluteString]
                             queryParameters:queryParameters];
   }
@@ -658,9 +657,16 @@ static NSString *ETagIfPresent(GTLObject *obj) {
     } else if (uploadData) {
       fetcher.uploadData = uploadData;
     } else if (uploadFileHandle) {
+#if DEBUG
+      if (uploadParams.useBackgroundSession) {
+        NSLog(@"Warning: GTLUploadParameters should be supplied an uploadFileURL rather"
+              @" than a file handle to support background uploads.\n  %@", uploadParams);
+      }
+#endif
       fetcher.uploadFileHandle = uploadFileHandle;
     }
   }
+  fetcher.useBackgroundSession = uploadParams.useBackgroundSession;
 #else  // !GTL_USE_SESSION_FETCHER
   if (uploadLocationURL) {
     // Resuming with the session fetcher and a file handle.
@@ -977,9 +983,7 @@ static NSString *ETagIfPresent(GTLObject *obj) {
     NSDictionary *json = bodyObject.JSON;
     if (isRESTDataWrapperRequired_) {
       // create the top-level "data" object
-      NSDictionary *dataDict = [NSDictionary dictionaryWithObject:json
-                                                           forKey:@"data"];
-      whatToSend = dataDict;
+      whatToSend = @{ @"data" : json };
     } else {
       whatToSend = json;
     }
@@ -1085,8 +1089,7 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
             // error response visible in the error object.
             NSString *reasonStr = [[[NSString alloc] initWithData:data
                                                          encoding:NSUTF8StringEncoding] autorelease];
-            NSDictionary *userInfo = [NSDictionary dictionaryWithObject:reasonStr
-                                                                 forKey:NSLocalizedFailureReasonErrorKey];
+            NSDictionary *userInfo = @{ NSLocalizedFailureReasonErrorKey : reasonStr };
             error = [NSError errorWithDomain:kGTMBridgeFetcherStatusDomain
                                         code:status
                                     userInfo:userInfo];
@@ -2421,29 +2424,29 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 @implementation GTLServiceTicket
 
 @synthesize shouldFetchNextPages = shouldFetchNextPages_,
-  surrogates = surrogates_,
-  uploadProgressSelector = uploadProgressSelector_,
-  retryEnabled = isRetryEnabled_,
-  hasCalledCallback = hasCalledCallback_,
-  retrySelector = retrySelector_,
-  maxRetryInterval = maxRetryInterval_,
-  objectFetcher = objectFetcher_,
-  postedObject = postedObject_,
-  fetchedObject = fetchedObject_,
-  executingQuery = executingQuery_,
-  originalQuery = originalQuery_,
-  fetchError = fetchError_,
-  pagesFetchedCounter = pagesFetchedCounter_,
-  APIKey = apiKey_,
-  parseOperation = parseOperation_,
-  isREST = isREST_,
-  retryBlock = retryBlock_;
+            surrogates = surrogates_,
+            uploadProgressSelector = uploadProgressSelector_,
+            retryEnabled = isRetryEnabled_,
+            hasCalledCallback = hasCalledCallback_,
+            retrySelector = retrySelector_,
+            maxRetryInterval = maxRetryInterval_,
+            objectFetcher = objectFetcher_,
+            postedObject = postedObject_,
+            fetchedObject = fetchedObject_,
+            executingQuery = executingQuery_,
+            originalQuery = originalQuery_,
+            fetchError = fetchError_,
+            pagesFetchedCounter = pagesFetchedCounter_,
+            APIKey = apiKey_,
+            parseOperation = parseOperation_,
+            isREST = isREST_,
+            retryBlock = retryBlock_;
 
-+ (id)ticketForService:(GTLService *)service {
++ (instancetype)ticketForService:(GTLService *)service {
   return [[[self alloc] initWithService:service] autorelease];
 }
 
-- (id)initWithService:(GTLService *)service {
+- (instancetype)initWithService:(GTLService *)service {
   self = [super init];
   if (self) {
     service_ = [service retain];

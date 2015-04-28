@@ -292,8 +292,7 @@ static void DynamicInteger32Setter(id self, SEL sel, NSInteger val) {
                                       returnClass:NULL
                                    containedClass:NULL
                                           jsonKey:&jsonKey]) {
-    NSNumber *num = [NSNumber numberWithInteger:val];
-    [self setJSONValue:num forKey:jsonKey];
+    [self setJSONValue:@(val) forKey:jsonKey];
   }
 }
 
@@ -324,8 +323,7 @@ static void DynamicUInteger32Setter(id self, SEL sel, NSUInteger val) {
                                       returnClass:NULL
                                    containedClass:NULL
                                           jsonKey:&jsonKey]) {
-    NSNumber *num = [NSNumber numberWithUnsignedInteger:val];
-    [self setJSONValue:num forKey:jsonKey];
+    [self setJSONValue:@(val) forKey:jsonKey];
   }
 }
 
@@ -358,8 +356,7 @@ static void DynamicLongLongSetter(id self, SEL sel, long long val) {
                                       returnClass:NULL
                                    containedClass:NULL
                                           jsonKey:&jsonKey]) {
-    NSNumber *num = [NSNumber numberWithLongLong:val];
-    [self setJSONValue:num forKey:jsonKey];
+    [self setJSONValue:@(val) forKey:jsonKey];
   }
 }
 
@@ -390,8 +387,7 @@ static void DynamicULongLongSetter(id self, SEL sel, unsigned long long val) {
                                       returnClass:NULL
                                    containedClass:NULL
                                           jsonKey:&jsonKey]) {
-    NSNumber *num = [NSNumber numberWithUnsignedLongLong:val];
-    [self setJSONValue:num forKey:jsonKey];
+    [self setJSONValue:@(val) forKey:jsonKey];
   }
 }
 
@@ -422,8 +418,7 @@ static void DynamicFloatSetter(id self, SEL sel, float val) {
                                       returnClass:NULL
                                    containedClass:NULL
                                           jsonKey:&jsonKey]) {
-    NSNumber *num = [NSNumber numberWithFloat:val];
-    [self setJSONValue:num forKey:jsonKey];
+    [self setJSONValue:@(val) forKey:jsonKey];
   }
 }
 
@@ -454,8 +449,7 @@ static void DynamicDoubleSetter(id self, SEL sel, double val) {
                                       returnClass:NULL
                                    containedClass:NULL
                                           jsonKey:&jsonKey]) {
-    NSNumber *num = [NSNumber numberWithDouble:val];
-    [self setJSONValue:num forKey:jsonKey];
+    [self setJSONValue:@(val) forKey:jsonKey];
   }
 }
 
@@ -485,8 +479,7 @@ static void DynamicBooleanSetter(id self, SEL sel, BOOL val) {
                                       returnClass:NULL
                                    containedClass:NULL
                                           jsonKey:&jsonKey]) {
-    NSNumber *num = [NSNumber numberWithBool:val];
-    [self setJSONValue:num forKey:jsonKey];
+    [self setJSONValue:@(val) forKey:jsonKey];
   }
 }
 

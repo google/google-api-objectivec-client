@@ -738,7 +738,8 @@ static Class gAdditionalPropsClass = Nil;
   XCTAssertNil(err);
   XCTAssertNotNil(json);
 
-  GTLTestingObject *obj = [GTLTestingAdditionalPropertiesObject objectWithJSON:json];
+  GTLTestingAdditionalPropertiesObject *obj =
+      [GTLTestingAdditionalPropertiesObject objectWithJSON:json];
   XCTAssertNotNil(obj);
 
   // test getting basic types
@@ -786,7 +787,8 @@ static Class gAdditionalPropsClass = Nil;
   XCTAssertNil(err);
   XCTAssertNotNil(json);
 
-  GTLTestingObject *obj = [GTLTestingAdditionalPropertiesObject objectWithJSON:json];
+  GTLTestingAdditionalPropertiesObject *obj =
+      [GTLTestingAdditionalPropertiesObject objectWithJSON:json];
   XCTAssertNotNil(obj);
 
   [GTLTestingAdditionalPropertiesObject setAdditionalPropsClass:[GTLTestingObject class]];
@@ -843,7 +845,8 @@ static Class gAdditionalPropsClass = Nil;
   XCTAssertNil(err);
   XCTAssertNotNil(json);
 
-  GTLTestingObject *obj = [GTLTestingAdditionalPropertiesObject objectWithJSON:json];
+  GTLTestingAdditionalPropertiesObject *obj =
+      [GTLTestingAdditionalPropertiesObject objectWithJSON:json];
   XCTAssertNotNil(obj);
 
   // test getting when it can be anything
@@ -909,7 +912,8 @@ static Class gAdditionalPropsClass = Nil;
   XCTAssertNil(err);
   XCTAssertNotNil(json);
 
-  GTLTestingObject *obj = [GTLTestingAdditionalPropertiesObject objectWithJSON:json];
+  GTLTestingAdditionalPropertiesObject *obj =
+      [GTLTestingAdditionalPropertiesObject objectWithJSON:json];
   XCTAssertNotNil(obj);
 
   // test getting arrays of basic types
@@ -958,7 +962,8 @@ static Class gAdditionalPropsClass = Nil;
   XCTAssertNil(err);
   XCTAssertNotNil(json);
 
-  GTLTestingObject *obj = [GTLTestingAdditionalPropertiesObject objectWithJSON:json];
+  GTLTestingAdditionalPropertiesObject *obj =
+      [GTLTestingAdditionalPropertiesObject objectWithJSON:json];
   XCTAssertNotNil(obj);
 
   [GTLTestingAdditionalPropertiesObject setAdditionalPropsClass:[GTLTestingObject class]];
@@ -1006,7 +1011,8 @@ static Class gAdditionalPropsClass = Nil;
   XCTAssertNil(err);
   XCTAssertNotNil(json);
 
-  GTLTestingObject *obj = [GTLTestingAdditionalPropertiesObject objectWithJSON:json];
+  GTLTestingAdditionalPropertiesObject *obj =
+      [GTLTestingAdditionalPropertiesObject objectWithJSON:json];
   XCTAssertNotNil(obj);
 
   // test getting arrays of arrays of...

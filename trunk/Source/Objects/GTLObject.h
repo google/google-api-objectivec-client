@@ -36,9 +36,7 @@
 @end
 
 @interface GTLObject : NSObject <NSCopying> {
-
  @private
-
   NSMutableDictionary *json_;
 
   // Used when creating the subobjects from this one.
@@ -65,8 +63,8 @@
 // These methods are intended for users of the library
 //
 
-+ (id)object;
-+ (id)objectWithJSON:(NSMutableDictionary *)dict;
++ (instancetype)object;
++ (instancetype)objectWithJSON:(NSMutableDictionary *)dict;
 
 - (id)copyWithZone:(NSZone *)zone;
 

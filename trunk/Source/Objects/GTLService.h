@@ -347,10 +347,10 @@ typedef BOOL (^GTLServiceRetryBlock)(GTLServiceTicket *ticket,
 // using MyCalendarItemSubclass instead of GTLItemCalendar and
 // MyCalendarEventSubclass instead of GTLItemCalendarEvent.
 //
-//  NSDictionary *surrogates = [NSDictionary dictionaryWithObjectsAndKeys:
-//    [MyCalendarEntrySubclass class], [GTLItemCalendar class],
-//    [MyCalendarEventSubclass class], [GTLItemCalendarEvent class],
-//    nil];
+//  NSDictionary *surrogates = @{
+//    [GTLItemCalendar class] : [MyCalendarEntrySubclass class],
+//    [GTLItemCalendarEvent class] : [MyCalendarEventSubclass class]
+//  };
 //  [calendarService setServiceSurrogates:surrogates];
 //
 @property (nonatomic, retain) NSDictionary *surrogates;
@@ -525,6 +525,7 @@ typedef BOOL (^GTLServiceRetryBlock)(GTLServiceTicket *ticket,
 // Ticket base class
 //
 @interface GTLServiceTicket : NSObject {
+ @private
   GTLService *service_;
 
   NSMutableDictionary *ticketProperties_;
@@ -554,9 +555,9 @@ typedef BOOL (^GTLServiceRetryBlock)(GTLServiceTicket *ticket,
   NSOperation *parseOperation_;
 }
 
-+ (id)ticketForService:(GTLService *)service;
++ (instancetype)ticketForService:(GTLService *)service;
 
-- (id)initWithService:(GTLService *)service;
+- (instancetype)initWithService:(GTLService *)service;
 
 - (id)service;
 

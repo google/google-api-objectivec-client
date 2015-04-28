@@ -93,6 +93,7 @@ typedef enum {
 @property (readonly) NSString *objcName;
 @property (readonly) NSString *capObjCName;
 @property (readonly) NSString *forceNameComment;
+@property (readonly) GTLDiscoveryJsonSchema *methodParam;
 @property (readonly) GTLDiscoveryRpcMethod *method;
 @property (readonly, getter=isParameter) BOOL parameter;
 @property (readonly) GTLDiscoveryJsonSchema *parentSchema;
@@ -165,10 +166,10 @@ typedef enum {
 - (NSString *)headerForSchema:(GTLDiscoveryJsonSchema *)schema;
 - (NSString *)sourceForSchema:(GTLDiscoveryJsonSchema *)schema;
 
-- (id)initWithApi:(GTLDiscoveryRpcDescription *)api
-             verboseLevel:(NSUInteger)verboseLevel
-    allowRootURLOverrides:(BOOL)allowRootURLOverrides
-    formattedNameOverride:(NSString *)formattedNameOverride;
+- (instancetype)initWithApi:(GTLDiscoveryRpcDescription *)api
+               verboseLevel:(NSUInteger)verboseLevel
+      allowRootURLOverrides:(BOOL)allowRootURLOverrides
+      formattedNameOverride:(NSString *)formattedNameOverride;
 
 - (void)adornMethods:(GTLDiscoveryRpcDescriptionMethods *)methods;
 - (void)adornSchema:(GTLDiscoveryJsonSchema *)schema
@@ -182,9 +183,11 @@ typedef enum {
 - (NSString *)serviceClassGeneratedInfo;
 - (NSString *)queryClassesGeneratedInfo;
 - (NSString *)schemaClassesGeneratedInfo:(GTLDiscoveryJsonSchema *)schema;
+- (NSSet *)methodObjectTopLevelClassDeps;
 - (NSString *)generateQueryMethodParametersBlockForMode:(GeneratorMode)mode;
 - (NSString *)generateQueryClassForMode:(GeneratorMode)mode;
 - (NSSet *)neededClassesForSchema:(GTLDiscoveryJsonSchema *)schema;
+- (NSArray *)recursivelyNeededClassesForSchemaSorted:(GTLDiscoveryJsonSchema *)schema;
 - (NSString *)generateObjectClassForSchema:(GTLDiscoveryJsonSchema *)schema
                                    forMode:(GeneratorMode)mode
                    includeClassDescription:(BOOL)includeClassDescription
@@ -236,20 +239,20 @@ static NSString *ConstantName(NSString *grouping, NSString *name) {
 @synthesize warnings = warnings_,
             infos = infos_;
 
-+ (id)generatorForApi:(GTLDiscoveryRpcDescription *)api
-             verboseLevel:(NSUInteger)verboseLevel
-    allowRootURLOverrides:(BOOL)allowRootURLOverrides
-    formattedNameOverride:(NSString *)formattedNameOverride {
++ (instancetype)generatorForApi:(GTLDiscoveryRpcDescription *)api
+                   verboseLevel:(NSUInteger)verboseLevel
+          allowRootURLOverrides:(BOOL)allowRootURLOverrides
+          formattedNameOverride:(NSString *)formattedNameOverride {
   return [[[self alloc] initWithApi:api
                        verboseLevel:verboseLevel
               allowRootURLOverrides:allowRootURLOverrides
               formattedNameOverride:formattedNameOverride] autorelease];
 }
 
-- (id)initWithApi:(GTLDiscoveryRpcDescription *)api
-             verboseLevel:(NSUInteger)verboseLevel
-    allowRootURLOverrides:(BOOL)allowRootURLOverrides
-    formattedNameOverride:(NSString *)formattedNameOverride {
+- (instancetype)initWithApi:(GTLDiscoveryRpcDescription *)api
+               verboseLevel:(NSUInteger)verboseLevel
+      allowRootURLOverrides:(BOOL)allowRootURLOverrides
+      formattedNameOverride:(NSString *)formattedNameOverride {
   self = [super init];
   if (self != nil) {
     api_ = [api retain];
@@ -406,6 +409,15 @@ static NSString *ConstantName(NSString *grouping, NSString *name) {
     messageHandler(kFHGeneratorHandlerMessageWarning, warning);
   }
 
+  // Sanity check anything on the service itself.
+  if ([[self.api builtRPCUrlString] length] == 0) {
+    NSString *str =
+      [NSString stringWithFormat:@"Unable to determine RPC URL (rootUrl: \"%@\", rpcPath: \"%@\", older rpcUrl: \"%@\")",
+       self.api.rootUrl, self.api.rpcPath, self.api.rpcUrl];
+    messageHandler(kFHGeneratorHandlerMessageError, str);
+    gotError = YES;
+  }
+
   // Spin over the methods, checking for things that map to the same name
   NSMutableDictionary *worker = [NSMutableDictionary dictionary];
   NSArray *allUnorderedMethods = [self.api.methods.additionalProperties allValues];
@@ -515,13 +527,12 @@ static NSString *ConstantName(NSString *grouping, NSString *name) {
   NSString *querySource = self.querySource;
   NSString *queryFileNameBase = self.objcQueryClassName;
 
-  NSMutableDictionary *result =
-    [NSMutableDictionary dictionaryWithObjectsAndKeys:
-     serviceHeader, [serviceFileNameBase stringByAppendingPathExtension:@"h"],
-     serviceSource, [serviceFileNameBase stringByAppendingPathExtension:@"m"],
-     queryHeader, [queryFileNameBase stringByAppendingPathExtension:@"h"],
-     querySource, [queryFileNameBase stringByAppendingPathExtension:@"m"],
-     nil];
+  NSMutableDictionary *result = [[@{
+    [serviceFileNameBase stringByAppendingPathExtension:@"h"] : serviceHeader,
+    [serviceFileNameBase stringByAppendingPathExtension:@"m"] : serviceSource,
+    [queryFileNameBase stringByAppendingPathExtension:@"h"] : queryHeader,
+    [queryFileNameBase stringByAppendingPathExtension:@"m"] : querySource,
+  } mutableCopy] autorelease];
 
   for (GTLDiscoveryJsonSchema *schema in self.api.topLevelObjectSchemas) {
     NSString *objectClassFileNameBase = schema.objcClassName;
@@ -866,22 +877,15 @@ static NSString *ConstantName(NSString *grouping, NSString *name) {
   [parts addObject:importQueryBase];
 
   // Forward declare the classes used in query methods.
-  NSMutableArray *neededSchema = [NSMutableArray array];
-  for (GTLDiscoveryJsonSchema *methodParamSchema in self.api.allMethodObjectParameterReferences) {
-    // Don't use isEqual: (containsObject:) because two schema could have
-    // identicial json, but be different names, so check the raw object pointers
-    // instead.
-    if ([neededSchema indexOfObjectIdenticalTo:methodParamSchema] == NSNotFound) {
-      [neededSchema addObject:methodParamSchema];
-    }
-  }
-  NSArray *classNames = [neededSchema valueForKey:@"objcClassName"];
-  if ([classNames count] > 0) {
+  NSMutableSet *neededClasses = [NSMutableSet set];
+  [neededClasses addObjectsFromArray:[self.api.allMethodObjectParameterReferences valueForKey:@"objcClassName"]];
+  [neededClasses unionSet:[self methodObjectTopLevelClassDeps]];
+  if ([neededClasses count] > 0) {
     // Sort to stablize the order.
-    classNames =
-      [classNames sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+    NSArray *sortedClassNames =
+      [[neededClasses allObjects] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     NSMutableString *classForwards = [NSMutableString string];
-    for (NSString *name in classNames) {
+    for (NSString *name in sortedClassNames) {
       [classForwards appendFormat:@"@class %@;\n", name];
     }
     [parts addObject:classForwards];
@@ -918,36 +922,24 @@ static NSString *ConstantName(NSString *grouping, NSString *name) {
 
   // Import the classes used in query methods (here we also need the return
   // classes for the expectedObjectType).
-  NSMutableArray *neededSchema = [NSMutableArray array];
-  for (GTLDiscoveryJsonSchema *methodParamSchema in self.api.allMethodObjectParameterReferences) {
-    // Don't use isEqual: (containsObject:) because two schema could have
-    // identical JSON, but with different names. Check the raw object pointers
-    // instead.
-    if ([neededSchema indexOfObjectIdenticalTo:methodParamSchema] == NSNotFound) {
-      [neededSchema addObject:methodParamSchema];
-    }
-  }
+  NSMutableSet *neededClasses = [NSMutableSet set];
+  [neededClasses addObjectsFromArray:[self.api.allMethodObjectParameterReferences valueForKey:@"objcClassName"]];
   for (GTLDiscoveryRpcMethod *method in self.api.allMethods) {
     GTLDiscoveryJsonSchema *returnsSchema = method.returns.resolvedSchema;
     if (returnsSchema) {
-      // Don't use isEqual: (containsObject:) because two schema could have
-      // identical JSON, but with different names. Check the raw object pointers
-      // instead.
-      if ([neededSchema indexOfObjectIdenticalTo:returnsSchema] == NSNotFound) {
-        [neededSchema addObject:returnsSchema];
-      }
+      [neededClasses addObject:returnsSchema.objcClassName];
     }
   }
-  NSArray *classNames = [neededSchema valueForKey:@"objcClassName"];
-  if ([classNames count] > 0) {
+  [neededClasses unionSet:[self methodObjectTopLevelClassDeps]];
+  if ([neededClasses count] > 0) {
     // Sort to stablize the order.
-    classNames =
-      [classNames sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+    NSArray *sortedClassNames =
+      [[neededClasses allObjects] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     // Only need to import the top level ones as those are files.
     NSArray *topLevelSchemaNames =
       [self.api.topLevelObjectSchemas valueForKey:@"objcClassName"];
     NSMutableString *classImports = [NSMutableString string];
-    for (NSString *name in classNames) {
+    for (NSString *name in sortedClassNames) {
       if ([topLevelSchemaNames containsObject:name]) {
         [classImports appendFormat:@"#import \"%@.h\"\n", name];
       }
@@ -1085,16 +1077,8 @@ static NSString *ConstantName(NSString *grouping, NSString *name) {
 
   // Forward-declare the classes needed by the schema so they can reference
   // each other (i.e.-tree structures, etc.)
-  NSMutableSet *allNeededClasses = [NSMutableSet set];
-  NSSet *neededClasses = [self neededClassesForSchema:schema];
-  [allNeededClasses unionSet:neededClasses];
-  for (GTLDiscoveryJsonSchema *subSchema in schema.childObjectSchemas) {
-    neededClasses = [self neededClassesForSchema:subSchema];
-    [allNeededClasses unionSet:neededClasses];
-  }
-  if ([allNeededClasses count] > 0) {
-    NSArray *sortedAllNeededClasses =
-      [[allNeededClasses allObjects] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+  NSArray *sortedAllNeededClasses = [self recursivelyNeededClassesForSchemaSorted:schema];
+  if ([sortedAllNeededClasses count] > 0) {
     NSMutableArray *subParts = [NSMutableArray array];
     for (NSString *className in sortedAllNeededClasses) {
       NSString *aLine = [NSString stringWithFormat:@"@class %@;\n", className];
@@ -1147,16 +1131,8 @@ static NSString *ConstantName(NSString *grouping, NSString *name) {
   // need to include their headers so things compile.
   // NOTE: really only need the ones used as additional properties or as items
   // in additonal properties, but that's a bit heaver to calculate.
-  NSMutableSet *allNeededClasses = [NSMutableSet set];
-  NSSet *neededClasses = [self neededClassesForSchema:schema];
-  [allNeededClasses unionSet:neededClasses];
-  for (GTLDiscoveryJsonSchema *subSchema in schema.childObjectSchemas) {
-    neededClasses = [self neededClassesForSchema:subSchema];
-    [allNeededClasses unionSet:neededClasses];
-  }
-  if ([allNeededClasses count] > 0) {
-    NSArray *sortedAllNeededClasses =
-      [[allNeededClasses allObjects] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+  NSArray *sortedAllNeededClasses = [self recursivelyNeededClassesForSchemaSorted:schema];
+  if ([sortedAllNeededClasses count] > 0) {
     NSArray *topLevelSchemaNames =
       [self.api.topLevelObjectSchemas valueForKey:@"objcClassName"];
     NSMutableArray *subParts = [NSMutableArray array];
@@ -1309,6 +1285,19 @@ static NSString *ConstantName(NSString *grouping, NSString *name) {
   return result;
 }
 
+- (NSSet *)methodObjectTopLevelClassDeps {
+  NSMutableSet *worker = [NSMutableSet set];
+  for (GTLDiscoveryJsonSchema *param in self.api.allMethodObjectParameters) {
+    [worker addObjectsFromArray:[self recursivelyNeededClassesForSchemaSorted:param]];
+  }
+  if ([worker count]) {
+    NSArray *topLevelSchemaNames =
+        [self.api.topLevelObjectSchemas valueForKey:@"objcClassName"];
+    [worker intersectSet:[NSSet setWithArray:topLevelSchemaNames]];
+  }
+  return worker;
+}
+
 - (NSString *)generateQueryMethodParametersBlockForMode:(GeneratorMode)mode {
   NSString *result = nil;
 
@@ -1332,32 +1321,29 @@ static NSString *ConstantName(NSString *grouping, NSString *name) {
         // to not repeat it.
         // Forward declare the classes needed by the schema so they can reference
         // each other (i.e.-tree structures, etc.)
-        NSMutableSet *allNeededClasses = [NSMutableSet set];
-        NSSet *neededClasses = [self neededClassesForSchema:param];
-        [allNeededClasses unionSet:neededClasses];
-        for (GTLDiscoveryJsonSchema *subSchema in param.childObjectSchemas) {
-          neededClasses = [self neededClassesForSchema:subSchema];
-          [allNeededClasses unionSet:neededClasses];
-        }
-        if ([allNeededClasses count] > 0) {
-          NSArray *sortedAllNeededClasses =
-            [[allNeededClasses allObjects] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+        NSArray *sortedAllNeededClasses = [self recursivelyNeededClassesForSchemaSorted:param];
+        if ([sortedAllNeededClasses count] > 0) {
           NSMutableArray *atClasses = [NSMutableArray array];
+          NSArray *topLevelSchemaNames =
+              [self.api.topLevelObjectSchemas valueForKey:@"objcClassName"];
           for (NSString *className in sortedAllNeededClasses) {
-            NSString *aLine = [NSString stringWithFormat:@"@class %@;\n", className];
-            [atClasses addObject:aLine];
+            if (![topLevelSchemaNames containsObject:className]) {
+              NSString *aLine = [NSString stringWithFormat:@"@class %@;\n", className];
+              [atClasses addObject:aLine];
+            }
           }
-          [aBlock addObject:[atClasses componentsJoinedByString:@""]];
+          if ([atClasses count]) {
+            [aBlock addObject:[atClasses componentsJoinedByString:@""]];
+          }
         }
       }
-      // TODO: if any of these ever reference a top level schema, we probably
-      // need to import it here in the implementation.
 
       NSString *extraClassComment = nil;
       if (mode == kGenerateInterface) {
+        GTLDiscoveryJsonSchema *methodParam = param.methodParam;
         extraClassComment =
           [NSString stringWithFormat:@"Used for '%@' parameter on '%@'.",
-           param.objcName, param.method.name];
+           methodParam.objcName, methodParam.method.name];
       }
       NSString *objectClassStr = [self generateObjectClassForSchema:param
                                                             forMode:mode
@@ -1979,6 +1965,19 @@ static NSString *MappedParamName(NSString *name) {
   return result;
 }
 
+- (NSArray *)recursivelyNeededClassesForSchemaSorted:(GTLDiscoveryJsonSchema *)schema {
+  NSMutableSet *allNeededClasses = [NSMutableSet set];
+  NSSet *neededClasses = [self neededClassesForSchema:schema];
+  [allNeededClasses unionSet:neededClasses];
+  for (GTLDiscoveryJsonSchema *subSchema in schema.childObjectSchemas) {
+    neededClasses = [self neededClassesForSchema:subSchema];
+    [allNeededClasses unionSet:neededClasses];
+  }
+  NSArray *sortedAllNeededClasses =
+    [[allNeededClasses allObjects] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+  return sortedAllNeededClasses;
+}
+
 - (NSString *)generateObjectClassForSchema:(GTLDiscoveryJsonSchema *)schema
                                    forMode:(GeneratorMode)mode
                    includeClassDescription:(BOOL)includeClassDescription
@@ -2537,8 +2536,7 @@ static NSString *MappedParamName(NSString *name) {
   // methods.  However, there are some that come back from discovery that
   // don't make sense at the method level for the GTL library, so we filter
   // those out.
-  NSArray *commonParamsToSkip =
-    [NSArray arrayWithObjects:
+  NSArray *commonParamsToSkip = @[
      @"alt", // GTL only supports JSON
      @"key", // GTL handles the API key on the service, per method is need in
              //   the ObjectiveC use case.
@@ -2547,7 +2545,7 @@ static NSString *MappedParamName(NSString *name) {
      @"userIp", // Not needed for client software, only needed for servers
                 // making request on behalf of lots of users.
      @"quotaUser", // Another form of userIp.
-     nil];
+  ];
 
   NSArray *allCommonParams = DictionaryObjectsSortedByKeys(self.parameters.additionalProperties);
   for (GTLDiscoveryJsonSchema *param in allCommonParams) {
@@ -2999,11 +2997,14 @@ static NSString *MappedParamName(NSString *name) {
     if (![result length]) {
       // Fall back to the older rpc URL if need be.
       result = self.rpcUrl;
-
-      NSString *str =
-        [NSString stringWithFormat:@"API didn't have a rootUrl and/or rpcPath ('%@' & '%@'), using old rpcUrl (%@).",
-         rootUrlString, rpcPathString, result];
-      [generator addWarning:str];
+      if ([result length]) {
+        NSString *str =
+          [NSString stringWithFormat:@"API didn't have a rootUrl and/or rpcPath ('%@' & '%@'), using old rpcUrl (%@).",
+           rootUrlString, rpcPathString, result];
+        [generator addWarning:str];
+      } else {
+        result = nil;  // Avoid storing empty string.
+      }
     } else if (!didOverride) {
       // Warn if the old and new values differ.
       if (self.rpcUrl && ![result isEqual:self.rpcUrl]) {
@@ -3327,9 +3328,19 @@ static NSString *OverrideName(NSString *name, EQueryOrObject queryOrObject,
   return result;
 }
 
+// The direct parameter off a method that is the parent/grandparent of
+// any child schema.
+- (GTLDiscoveryJsonSchema *)methodParam {
+  GTLDiscoveryJsonSchema *parent = self;
+  while (parent.parentSchema != nil) {
+    parent = parent.parentSchema;
+  }
+  return parent;
+}
+
 - (GTLDiscoveryRpcMethod *)method {
   GTLDiscoveryRpcMethod *result =
-    [[self propertyForKey:kWrappedMethodKey] nonretainedObjectValue];
+    [[self.methodParam propertyForKey:kWrappedMethodKey] nonretainedObjectValue];
   return result;
 }
 
