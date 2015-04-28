@@ -24,7 +24,7 @@
 // Description:
 //   A data platform for customers to create, manage, share and query data.
 // Documentation:
-//   https://developers.google.com/bigquery/docs/overview
+//   https://cloud.google.com/bigquery/
 // Classes:
 //   GTLBigqueryJobConfigurationLoad (0 custom class methods, 17 custom properties)
 
@@ -45,8 +45,10 @@
 @interface GTLBigqueryJobConfigurationLoad : GTLObject
 
 // [Optional] Accept rows that are missing trailing optional columns. The
-// missing values are treated as nulls. Default is false which treats short rows
-// as errors. Only applicable to CSV, ignored for other formats.
+// missing values are treated as nulls. If false, records with missing trailing
+// columns are treated as bad records, and if there are too many bad records, an
+// invalid error is returned in the job result. The default value is false. Only
+// applicable to CSV, ignored for other formats.
 @property (retain) NSNumber *allowJaggedRows;  // boolValue
 
 // Indicates if BigQuery should allow quoted data sections that contain newline
@@ -77,24 +79,27 @@
 // (',').
 @property (copy) NSString *fieldDelimiter;
 
-// [Optional] Accept rows that contain values that do not match the schema. The
-// unknown values are ignored. Default is false which treats unknown values as
-// errors. For CSV this ignores extra values at the end of a line. For JSON this
-// ignores named values that do not match any column name.
+// [Optional] Indicates if BigQuery should allow extra values that are not
+// represented in the table schema. If true, the extra values are ignored. If
+// false, records with extra columns are treated as bad records, and if there
+// are too many bad records, an invalid error is returned in the job result. The
+// default value is false. The sourceFormat property determines what BigQuery
+// treats as an extra value: CSV: Trailing columns JSON: Named values that don't
+// match any column names
 @property (retain) NSNumber *ignoreUnknownValues;  // boolValue
 
 // [Optional] The maximum number of bad records that BigQuery can ignore when
-// running the job. If the number of bad records exceeds this value, an
-// 'invalid' error is returned in the job result and the job fails. The default
-// value is 0, which requires that all records are valid.
+// running the job. If the number of bad records exceeds this value, an invalid
+// error is returned in the job result. The default value is 0, which requires
+// that all records are valid.
 @property (retain) NSNumber *maxBadRecords;  // intValue
 
-// [Experimental] Names(case-sensitive) of properties to keep when importing
-// data. If this is populated, only the specified properties will be imported
-// for each entity. Currently, this is only supported for DATASTORE_BACKUP
-// imports and only top level properties are supported. If any specified
-// property is not found in the Datastore 'Kind' being imported, that is an
-// error. Note: This feature is experimental and can change in the future.
+// [Experimental] If sourceFormat is set to "DATASTORE_BACKUP", indicates which
+// entity properties to load into BigQuery from a Cloud Datastore backup.
+// Property names are case sensitive and must be top-level properties. If no
+// properties are specified, BigQuery loads all properties. If any named
+// property isn't found in the Cloud Datastore backup, an invalid error is
+// returned in the job result.
 @property (retain) NSArray *projectionFields;  // of NSString
 
 // [Optional] The value that is used to quote data sections in a CSV file.
@@ -130,8 +135,8 @@
 @property (copy) NSString *sourceFormat;
 
 // [Required] The fully-qualified URIs that point to your data in Google Cloud
-// Storage. Wildcard names are only supported when they appear at the end of the
-// URI.
+// Storage. Each URI can contain one '*' wildcard character and it must come
+// after the 'bucket' name.
 @property (retain) NSArray *sourceUris;  // of NSString
 
 // [Optional] Specifies the action that occurs if the destination table already

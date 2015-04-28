@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,9 +24,9 @@
 // Description:
 //   A data platform for customers to create, manage, share and query data.
 // Documentation:
-//   https://developers.google.com/bigquery/docs/overview
+//   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryDataset (0 custom class methods, 10 custom properties)
+//   GTLBigqueryDataset (0 custom class methods, 11 custom properties)
 //   GTLBigqueryDatasetAccessItem (0 custom class methods, 6 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -62,6 +62,18 @@
 
 // [Required] A reference that identifies the dataset.
 @property (retain) GTLBigqueryDatasetReference *datasetReference;
+
+// [Experimental] The default lifetime of all tables in the dataset, in
+// milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this
+// property is set, all newly-created tables in the dataset will have an
+// expirationTime property set to the creation time plus the value in this
+// property, and changing the value will only affect new tables, not existing
+// ones. When the expirationTime for a given table is reached, that table will
+// be deleted automatically. If a table's expirationTime is modified or removed
+// before the table expires, or if you provide an explicit expirationTime when
+// creating a table, that value takes precedence over the default expiration
+// time indicated by this property.
+@property (retain) NSNumber *defaultTableExpirationMs;  // longLongValue
 
 // [Optional] A user-friendly description of the dataset.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.

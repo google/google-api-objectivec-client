@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,9 +24,9 @@
 // Description:
 //   A data platform for customers to create, manage, share and query data.
 // Documentation:
-//   https://developers.google.com/bigquery/docs/overview
+//   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLQueryBigquery (20 custom class methods, 21 custom properties)
+//   GTLQueryBigquery (20 custom class methods, 23 custom properties)
 //   GTLBigqueryTabledataInsertAllRowsItem (0 custom class methods, 2 custom properties)
 
 #import "GTLQueryBigquery.h"
@@ -37,6 +37,7 @@
 #import "GTLBigqueryGetQueryResultsResponse.h"
 #import "GTLBigqueryJob.h"
 #import "GTLBigqueryJobList.h"
+#import "GTLBigqueryJsonObject.h"
 #import "GTLBigqueryProjectList.h"
 #import "GTLBigqueryQueryResponse.h"
 #import "GTLBigqueryTable.h"
@@ -47,9 +48,9 @@
 @implementation GTLQueryBigquery
 
 @dynamic all, allUsers, datasetId, defaultDataset, deleteContents, dryRun,
-         fields, jobId, kind, maxResults, pageToken, preserveNulls, projectId,
-         projection, query, rows, startIndex, stateFilter, tableId, timeoutMs,
-         useQueryCache;
+         fields, ignoreUnknownValues, jobId, kind, maxResults, pageToken,
+         preserveNulls, projectId, projection, query, rows, skipInvalidRows,
+         startIndex, stateFilter, tableId, timeoutMs, useQueryCache;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =
