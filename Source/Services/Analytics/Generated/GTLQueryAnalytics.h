@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLQueryAnalytics (82 custom class methods, 33 custom properties)
+//   GTLQueryAnalytics (78 custom class methods, 29 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -60,12 +60,10 @@
 // Method-specific parameters; see the comments below for more information.
 //
 @property (copy) NSString *accountId;
-@property (assign) NSInteger appendNumber;
 @property (retain) NSArray *customDataImportUids;  // of NSString
 @property (copy) NSString *customDataSourceId;
 @property (copy) NSString *customDimensionId;
 @property (copy) NSString *customMetricId;
-@property (copy) NSString *date;
 @property (copy) NSString *dimensions;
 @property (copy) NSString *endDate;
 @property (copy) NSString *experimentId;
@@ -80,13 +78,11 @@
 @property (copy) NSString *output;
 @property (copy) NSString *profileId;
 @property (copy) NSString *reportType;
-@property (assign) BOOL reset;
 @property (copy) NSString *samplingLevel;
 @property (copy) NSString *segment;
 @property (copy) NSString *sort;
 @property (copy) NSString *startDate;
 @property (assign) NSInteger startIndex;
-@property (copy) NSString *type;
 @property (copy) NSString *unsampledReportId;
 @property (copy) NSString *uploadId;
 @property (copy) NSString *webPropertyAdWordsLinkId;
@@ -487,83 +483,6 @@
                                             accountId:(NSString *)accountId
                                         webPropertyId:(NSString *)webPropertyId
                                        customMetricId:(NSString *)customMetricId;
-
-#pragma mark -
-#pragma mark "management.dailyUploads" methods
-// These create a GTLQueryAnalytics object.
-
-// Method: analytics.management.dailyUploads.delete
-// Delete uploaded data for the given date.
-//  Required:
-//   accountId: Account Id associated with daily upload delete.
-//   webPropertyId: Web property Id associated with daily upload delete.
-//   customDataSourceId: Custom data source Id associated with daily upload
-//     delete.
-//   date: Date for which data is to be deleted. Date should be formatted as
-//     YYYY-MM-DD.
-//   type: Type of data for this delete.
-//      kGTLAnalyticsTypeCost: Value for specifying cost data upload.
-//  Authorization scope(s):
-//   kGTLAuthScopeAnalytics
-//   kGTLAuthScopeAnalyticsEdit
-+ (id)queryForManagementDailyUploadsDeleteWithAccountId:(NSString *)accountId
-                                          webPropertyId:(NSString *)webPropertyId
-                                     customDataSourceId:(NSString *)customDataSourceId
-                                                   date:(NSString *)date
-                                                   type:(NSString *)type;
-
-// Method: analytics.management.dailyUploads.list
-// List daily uploads to which the user has access.
-//  Required:
-//   accountId: Account Id for the daily uploads to retrieve.
-//   webPropertyId: Web property Id for the daily uploads to retrieve.
-//   customDataSourceId: Custom data source Id for daily uploads to retrieve.
-//   startDate: Start date of the form YYYY-MM-DD.
-//   endDate: End date of the form YYYY-MM-DD.
-//  Optional:
-//   maxResults: The maximum number of custom data sources to include in this
-//     response.
-//   startIndex: A 1-based index of the first daily upload to retrieve. Use this
-//     parameter as a pagination mechanism along with the max-results parameter.
-//  Authorization scope(s):
-//   kGTLAuthScopeAnalytics
-//   kGTLAuthScopeAnalyticsReadonly
-// Fetches a GTLAnalyticsDailyUploads.
-+ (id)queryForManagementDailyUploadsListWithAccountId:(NSString *)accountId
-                                        webPropertyId:(NSString *)webPropertyId
-                                   customDataSourceId:(NSString *)customDataSourceId
-                                            startDate:(NSString *)startDate
-                                              endDate:(NSString *)endDate;
-
-// Method: analytics.management.dailyUploads.upload
-// Update/Overwrite data for a custom data source.
-//  Required:
-//   accountId: Account Id associated with daily upload.
-//   webPropertyId: Web property Id associated with daily upload.
-//   customDataSourceId: Custom data source Id to which the data being uploaded
-//     belongs.
-//   date: Date for which data is uploaded. Date should be formatted as
-//     YYYY-MM-DD.
-//   appendNumber: Append number for this upload indexed from 1. (1..20)
-//   type: Type of data for this upload.
-//      kGTLAnalyticsTypeCost: Value for specifying cost data upload.
-//  Optional:
-//   reset: Reset/Overwrite all previous appends for this date and start over
-//     with this file as the first upload. (Default false)
-//  Upload Parameters:
-//   Maximum size: 5MB
-//   Accepted MIME type(s): application/octet-stream
-//  Authorization scope(s):
-//   kGTLAuthScopeAnalytics
-//   kGTLAuthScopeAnalyticsEdit
-// Fetches a GTLAnalyticsDailyUploadAppend.
-+ (id)queryForManagementDailyUploadsUploadWithAccountId:(NSString *)accountId
-                                          webPropertyId:(NSString *)webPropertyId
-                                     customDataSourceId:(NSString *)customDataSourceId
-                                                   date:(NSString *)date
-                                           appendNumber:(NSInteger)appendNumber
-                                                   type:(NSString *)type
-                                       uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
 #pragma mark -
 #pragma mark "management.experiments" methods
@@ -1231,19 +1150,6 @@
 + (id)queryForManagementUploadsListWithAccountId:(NSString *)accountId
                                    webPropertyId:(NSString *)webPropertyId
                               customDataSourceId:(NSString *)customDataSourceId;
-
-// Method: analytics.management.uploads.migrateDataImport
-// Migrate custom data source and data imports to latest version.
-//  Required:
-//   accountId: Account Id for migration.
-//   webPropertyId: Web property Id for migration.
-//   customDataSourceId: Custom data source Id for migration.
-//  Authorization scope(s):
-//   kGTLAuthScopeAnalytics
-//   kGTLAuthScopeAnalyticsEdit
-+ (id)queryForManagementUploadsMigrateDataImportWithAccountId:(NSString *)accountId
-                                                webPropertyId:(NSString *)webPropertyId
-                                           customDataSourceId:(NSString *)customDataSourceId;
 
 // Method: analytics.management.uploads.uploadData
 // Upload data for a custom data source.
