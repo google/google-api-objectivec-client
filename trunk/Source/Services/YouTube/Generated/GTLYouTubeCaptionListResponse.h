@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeChannelSnippet.m
+//  GTLYouTubeCaptionListResponse.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,27 +26,40 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelSnippet (0 custom class methods, 7 custom properties)
+//   GTLYouTubeCaptionListResponse (0 custom class methods, 5 custom properties)
 
-#import "GTLYouTubeChannelSnippet.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLYouTubeChannelLocalization.h"
-#import "GTLYouTubeThumbnailDetails.h"
+@class GTLYouTubeCaption;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeChannelSnippet
+//   GTLYouTubeCaptionListResponse
 //
 
-@implementation GTLYouTubeChannelSnippet
-@dynamic country, defaultLanguage, descriptionProperty, localized, publishedAt,
-         thumbnails, title;
+// This class supports NSFastEnumeration over its "items" property. It also
+// supports -itemAtIndex: to retrieve individual objects from "items".
 
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"description"
-                                forKey:@"descriptionProperty"];
-  return map;
-}
+@interface GTLYouTubeCaptionListResponse : GTLCollectionObject
+
+// Etag of this resource.
+@property (copy) NSString *ETag;
+
+// Serialized EventId of the request which produced this response.
+@property (copy) NSString *eventId;
+
+// A list of captions that match the request criteria.
+@property (retain) NSArray *items;  // of GTLYouTubeCaption
+
+// Identifies what kind of resource this is. Value: the fixed string
+// "youtube#captionListResponse".
+@property (copy) NSString *kind;
+
+// The visitorId identifies the visitor.
+@property (copy) NSString *visitorId;
 
 @end

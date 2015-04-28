@@ -57,6 +57,12 @@ NSString * const kGTLYouTubeEventTypeCompleted = @"completed";
 NSString * const kGTLYouTubeEventTypeLive      = @"live";
 NSString * const kGTLYouTubeEventTypeUpcoming  = @"upcoming";
 
+// GTLQueryYouTube - ModerationStatus
+NSString * const kGTLYouTubeModerationStatusHeldForReview = @"heldForReview";
+NSString * const kGTLYouTubeModerationStatusLikelySpam    = @"likelySpam";
+NSString * const kGTLYouTubeModerationStatusPublished     = @"published";
+NSString * const kGTLYouTubeModerationStatusRejected      = @"rejected";
+
 // GTLQueryYouTube - MyRating
 NSString * const kGTLYouTubeMyRatingDislike = @"dislike";
 NSString * const kGTLYouTubeMyRatingLike    = @"like";
@@ -80,6 +86,17 @@ NSString * const kGTLYouTubeRatingNone    = @"none";
 NSString * const kGTLYouTubeSafeSearchModerate = @"moderate";
 NSString * const kGTLYouTubeSafeSearchNone     = @"none";
 NSString * const kGTLYouTubeSafeSearchStrict   = @"strict";
+
+// GTLQueryYouTube - TextFormat
+NSString * const kGTLYouTubeTextFormatHtml      = @"html";
+NSString * const kGTLYouTubeTextFormatPlainText = @"plainText";
+
+// GTLQueryYouTube - Tfmt
+NSString * const kGTLYouTubeTfmtSbv  = @"sbv";
+NSString * const kGTLYouTubeTfmtScc  = @"scc";
+NSString * const kGTLYouTubeTfmtSrt  = @"srt";
+NSString * const kGTLYouTubeTfmtTtml = @"ttml";
+NSString * const kGTLYouTubeTfmtVtt  = @"vtt";
 
 // GTLQueryYouTube - VideoCaption
 NSString * const kGTLYouTubeVideoCaptionAny           = @"any";
@@ -149,6 +166,27 @@ NSString * const kGTLYouTubeActivitySnippet_Type_Social        = @"social";
 NSString * const kGTLYouTubeActivitySnippet_Type_Subscription  = @"subscription";
 NSString * const kGTLYouTubeActivitySnippet_Type_Upload        = @"upload";
 
+// GTLYouTubeCaptionSnippet - AudioTrackType
+NSString * const kGTLYouTubeCaptionSnippet_AudioTrackType_Commentary = @"commentary";
+NSString * const kGTLYouTubeCaptionSnippet_AudioTrackType_Descriptive = @"descriptive";
+NSString * const kGTLYouTubeCaptionSnippet_AudioTrackType_Primary = @"primary";
+NSString * const kGTLYouTubeCaptionSnippet_AudioTrackType_Unknown = @"unknown";
+
+// GTLYouTubeCaptionSnippet - FailureReason
+NSString * const kGTLYouTubeCaptionSnippet_FailureReason_ProcessingFailed = @"processingFailed";
+NSString * const kGTLYouTubeCaptionSnippet_FailureReason_UnknownFormat = @"unknownFormat";
+NSString * const kGTLYouTubeCaptionSnippet_FailureReason_UnsupportedFormat = @"unsupportedFormat";
+
+// GTLYouTubeCaptionSnippet - Status
+NSString * const kGTLYouTubeCaptionSnippet_Status_Failed  = @"failed";
+NSString * const kGTLYouTubeCaptionSnippet_Status_Serving = @"serving";
+NSString * const kGTLYouTubeCaptionSnippet_Status_Syncing = @"syncing";
+
+// GTLYouTubeCaptionSnippet - TrackKind
+NSString * const kGTLYouTubeCaptionSnippet_TrackKind_Asr      = @"ASR";
+NSString * const kGTLYouTubeCaptionSnippet_TrackKind_Forced   = @"forced";
+NSString * const kGTLYouTubeCaptionSnippet_TrackKind_Standard = @"standard";
+
 // GTLYouTubeCdnSettings - IngestionType
 NSString * const kGTLYouTubeCdnSettings_IngestionType_Dash = @"dash";
 NSString * const kGTLYouTubeCdnSettings_IngestionType_Rtmp = @"rtmp";
@@ -192,6 +230,18 @@ NSString * const kGTLYouTubeChannelStatus_LongUploadsStatus_LongUploadsUnspecifi
 NSString * const kGTLYouTubeChannelStatus_PrivacyStatus_Private = @"private";
 NSString * const kGTLYouTubeChannelStatus_PrivacyStatus_Public = @"public";
 NSString * const kGTLYouTubeChannelStatus_PrivacyStatus_Unlisted = @"unlisted";
+
+// GTLYouTubeCommentSnippet - ModerationStatus
+NSString * const kGTLYouTubeCommentSnippet_ModerationStatus_HeldForReview = @"heldForReview";
+NSString * const kGTLYouTubeCommentSnippet_ModerationStatus_LikelySpam = @"likelySpam";
+NSString * const kGTLYouTubeCommentSnippet_ModerationStatus_Published = @"published";
+NSString * const kGTLYouTubeCommentSnippet_ModerationStatus_Rejected = @"rejected";
+
+// GTLYouTubeCommentSnippet - ViewerRating
+NSString * const kGTLYouTubeCommentSnippet_ViewerRating_Dislike = @"dislike";
+NSString * const kGTLYouTubeCommentSnippet_ViewerRating_Like   = @"like";
+NSString * const kGTLYouTubeCommentSnippet_ViewerRating_None   = @"none";
+NSString * const kGTLYouTubeCommentSnippet_ViewerRating_Unspecified = @"unspecified";
 
 // GTLYouTubeContentRating - AcbRating
 NSString * const kGTLYouTubeContentRating_AcbRating_AcbC       = @"acbC";

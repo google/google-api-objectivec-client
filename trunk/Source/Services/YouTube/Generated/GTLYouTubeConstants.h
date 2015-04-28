@@ -70,6 +70,12 @@ GTL_EXTERN NSString * const kGTLYouTubeEventTypeCompleted;  // "completed"
 GTL_EXTERN NSString * const kGTLYouTubeEventTypeLive;       // "live"
 GTL_EXTERN NSString * const kGTLYouTubeEventTypeUpcoming;   // "upcoming"
 
+// GTLQueryYouTube - ModerationStatus
+GTL_EXTERN NSString * const kGTLYouTubeModerationStatusHeldForReview;  // "heldForReview"
+GTL_EXTERN NSString * const kGTLYouTubeModerationStatusLikelySpam;  // "likelySpam"
+GTL_EXTERN NSString * const kGTLYouTubeModerationStatusPublished;  // "published"
+GTL_EXTERN NSString * const kGTLYouTubeModerationStatusRejected;  // "rejected"
+
 // GTLQueryYouTube - MyRating
 GTL_EXTERN NSString * const kGTLYouTubeMyRatingDislike;  // "dislike"
 GTL_EXTERN NSString * const kGTLYouTubeMyRatingLike;     // "like"
@@ -93,6 +99,17 @@ GTL_EXTERN NSString * const kGTLYouTubeRatingNone;     // "none"
 GTL_EXTERN NSString * const kGTLYouTubeSafeSearchModerate;  // "moderate"
 GTL_EXTERN NSString * const kGTLYouTubeSafeSearchNone;      // "none"
 GTL_EXTERN NSString * const kGTLYouTubeSafeSearchStrict;    // "strict"
+
+// GTLQueryYouTube - TextFormat
+GTL_EXTERN NSString * const kGTLYouTubeTextFormatHtml;       // "html"
+GTL_EXTERN NSString * const kGTLYouTubeTextFormatPlainText;  // "plainText"
+
+// GTLQueryYouTube - Tfmt
+GTL_EXTERN NSString * const kGTLYouTubeTfmtSbv;   // "sbv"
+GTL_EXTERN NSString * const kGTLYouTubeTfmtScc;   // "scc"
+GTL_EXTERN NSString * const kGTLYouTubeTfmtSrt;   // "srt"
+GTL_EXTERN NSString * const kGTLYouTubeTfmtTtml;  // "ttml"
+GTL_EXTERN NSString * const kGTLYouTubeTfmtVtt;   // "vtt"
 
 // GTLQueryYouTube - VideoCaption
 GTL_EXTERN NSString * const kGTLYouTubeVideoCaptionAny;         // "any"
@@ -162,6 +179,27 @@ GTL_EXTERN NSString * const kGTLYouTubeActivitySnippet_Type_Social;  // "social"
 GTL_EXTERN NSString * const kGTLYouTubeActivitySnippet_Type_Subscription;  // "subscription"
 GTL_EXTERN NSString * const kGTLYouTubeActivitySnippet_Type_Upload;  // "upload"
 
+// GTLYouTubeCaptionSnippet - AudioTrackType
+GTL_EXTERN NSString * const kGTLYouTubeCaptionSnippet_AudioTrackType_Commentary;  // "commentary"
+GTL_EXTERN NSString * const kGTLYouTubeCaptionSnippet_AudioTrackType_Descriptive;  // "descriptive"
+GTL_EXTERN NSString * const kGTLYouTubeCaptionSnippet_AudioTrackType_Primary;  // "primary"
+GTL_EXTERN NSString * const kGTLYouTubeCaptionSnippet_AudioTrackType_Unknown;  // "unknown"
+
+// GTLYouTubeCaptionSnippet - FailureReason
+GTL_EXTERN NSString * const kGTLYouTubeCaptionSnippet_FailureReason_ProcessingFailed;  // "processingFailed"
+GTL_EXTERN NSString * const kGTLYouTubeCaptionSnippet_FailureReason_UnknownFormat;  // "unknownFormat"
+GTL_EXTERN NSString * const kGTLYouTubeCaptionSnippet_FailureReason_UnsupportedFormat;  // "unsupportedFormat"
+
+// GTLYouTubeCaptionSnippet - Status
+GTL_EXTERN NSString * const kGTLYouTubeCaptionSnippet_Status_Failed;  // "failed"
+GTL_EXTERN NSString * const kGTLYouTubeCaptionSnippet_Status_Serving;  // "serving"
+GTL_EXTERN NSString * const kGTLYouTubeCaptionSnippet_Status_Syncing;  // "syncing"
+
+// GTLYouTubeCaptionSnippet - TrackKind
+GTL_EXTERN NSString * const kGTLYouTubeCaptionSnippet_TrackKind_Asr;  // "ASR"
+GTL_EXTERN NSString * const kGTLYouTubeCaptionSnippet_TrackKind_Forced;  // "forced"
+GTL_EXTERN NSString * const kGTLYouTubeCaptionSnippet_TrackKind_Standard;  // "standard"
+
 // GTLYouTubeCdnSettings - IngestionType
 GTL_EXTERN NSString * const kGTLYouTubeCdnSettings_IngestionType_Dash;  // "dash"
 GTL_EXTERN NSString * const kGTLYouTubeCdnSettings_IngestionType_Rtmp;  // "rtmp"
@@ -205,6 +243,18 @@ GTL_EXTERN NSString * const kGTLYouTubeChannelStatus_LongUploadsStatus_LongUploa
 GTL_EXTERN NSString * const kGTLYouTubeChannelStatus_PrivacyStatus_Private;  // "private"
 GTL_EXTERN NSString * const kGTLYouTubeChannelStatus_PrivacyStatus_Public;  // "public"
 GTL_EXTERN NSString * const kGTLYouTubeChannelStatus_PrivacyStatus_Unlisted;  // "unlisted"
+
+// GTLYouTubeCommentSnippet - ModerationStatus
+GTL_EXTERN NSString * const kGTLYouTubeCommentSnippet_ModerationStatus_HeldForReview;  // "heldForReview"
+GTL_EXTERN NSString * const kGTLYouTubeCommentSnippet_ModerationStatus_LikelySpam;  // "likelySpam"
+GTL_EXTERN NSString * const kGTLYouTubeCommentSnippet_ModerationStatus_Published;  // "published"
+GTL_EXTERN NSString * const kGTLYouTubeCommentSnippet_ModerationStatus_Rejected;  // "rejected"
+
+// GTLYouTubeCommentSnippet - ViewerRating
+GTL_EXTERN NSString * const kGTLYouTubeCommentSnippet_ViewerRating_Dislike;  // "dislike"
+GTL_EXTERN NSString * const kGTLYouTubeCommentSnippet_ViewerRating_Like;  // "like"
+GTL_EXTERN NSString * const kGTLYouTubeCommentSnippet_ViewerRating_None;  // "none"
+GTL_EXTERN NSString * const kGTLYouTubeCommentSnippet_ViewerRating_Unspecified;  // "unspecified"
 
 // GTLYouTubeContentRating - AcbRating
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_AcbRating_AcbC;  // "acbC"

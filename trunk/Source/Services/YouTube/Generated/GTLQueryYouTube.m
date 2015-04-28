@@ -26,17 +26,23 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (45 custom class methods, 55 custom properties)
+//   GTLQueryYouTube (61 custom class methods, 69 custom properties)
 
 #import "GTLQueryYouTube.h"
 
 #import "GTLYouTubeActivity.h"
 #import "GTLYouTubeActivityListResponse.h"
+#import "GTLYouTubeCaption.h"
+#import "GTLYouTubeCaptionListResponse.h"
 #import "GTLYouTubeChannel.h"
 #import "GTLYouTubeChannelBannerResource.h"
 #import "GTLYouTubeChannelListResponse.h"
 #import "GTLYouTubeChannelSection.h"
 #import "GTLYouTubeChannelSectionListResponse.h"
+#import "GTLYouTubeComment.h"
+#import "GTLYouTubeCommentListResponse.h"
+#import "GTLYouTubeCommentThread.h"
+#import "GTLYouTubeCommentThreadListResponse.h"
 #import "GTLYouTubeGuideCategoryListResponse.h"
 #import "GTLYouTubeI18nLanguageListResponse.h"
 #import "GTLYouTubeI18nRegionListResponse.h"
@@ -54,20 +60,25 @@
 #import "GTLYouTubeSubscriptionListResponse.h"
 #import "GTLYouTubeThumbnailSetResponse.h"
 #import "GTLYouTubeVideo.h"
+#import "GTLYouTubeVideoAbuseReport.h"
+#import "GTLYouTubeVideoAbuseReportReasonListResponse.h"
 #import "GTLYouTubeVideoCategoryListResponse.h"
 #import "GTLYouTubeVideoGetRatingResponse.h"
 #import "GTLYouTubeVideoListResponse.h"
 
 @implementation GTLQueryYouTube
 
-@dynamic autoLevels, broadcastStatus, categoryId, channelId, channelType, chart,
+@dynamic allThreadsRelatedToChannelId, autoLevels, banAuthor, broadcastStatus,
+         categoryId, channelId, channelType, chart, debugProjectIdOverride,
          displaySlate, eventType, fields, forChannelId, forContentOwner,
-         forMine, forUsername, hl, home, identifier, locale, location,
-         locationRadius, managedByMe, maxResults, mine, myRating, mySubscribers,
-         notifySubscribers, offsetTimeMs, onBehalfOfContentOwner,
-         onBehalfOfContentOwnerChannel, order, pageToken, part, playlistId,
-         publishedAfter, publishedBefore, q, rating, regionCode,
-         relatedToVideoId, relevanceLanguage, safeSearch, stabilize, streamId,
+         forDeveloper, forMine, forUsername, hl, home, identifier, locale,
+         location, locationRadius, managedByMe, maxResults, mine,
+         moderationStatus, myRating, mySubscribers, notifySubscribers,
+         offsetTimeMs, onBehalfOf, onBehalfOfContentOwner,
+         onBehalfOfContentOwnerChannel, order, pageToken, parentId, part,
+         playlistId, publishedAfter, publishedBefore, q, rating, regionCode,
+         relatedToVideoId, relevanceLanguage, report, safeSearch, searchTerms,
+         shareOnGooglePlus, stabilize, streamId, sync, textFormat, tfmt, tlang,
          topicId, type, videoCaption, videoCategoryId, videoDefinition,
          videoDimension, videoDuration, videoEmbeddable, videoId, videoLicense,
          videoSyndicated, videoType, walltime;
@@ -102,6 +113,66 @@
   GTLQueryYouTube *query = [self queryWithMethodName:methodName];
   query.part = part;
   query.expectedObjectClass = [GTLYouTubeActivityListResponse class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "captions" methods
+// These create a GTLQueryYouTube object.
+
++ (id)queryForCaptionsDeleteWithIdentifier:(NSString *)identifier {
+  NSString *methodName = @"youtube.captions.delete";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.identifier = identifier;
+  return query;
+}
+
++ (id)queryForCaptionsDownloadWithIdentifier:(NSString *)identifier {
+  NSString *methodName = @"youtube.captions.download";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.identifier = identifier;
+  return query;
+}
+
++ (id)queryForCaptionsInsertWithObject:(GTLYouTubeCaption *)object
+                                  part:(NSString *)part
+                      uploadParameters:(GTLUploadParameters *)uploadParametersOrNil {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"youtube.captions.insert";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.part = part;
+  query.uploadParameters = uploadParametersOrNil;
+  query.expectedObjectClass = [GTLYouTubeCaption class];
+  return query;
+}
+
++ (id)queryForCaptionsListWithPart:(NSString *)part
+                           videoId:(NSString *)videoId {
+  NSString *methodName = @"youtube.captions.list";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.part = part;
+  query.videoId = videoId;
+  query.expectedObjectClass = [GTLYouTubeCaptionListResponse class];
+  return query;
+}
+
++ (id)queryForCaptionsUpdateWithObject:(GTLYouTubeCaption *)object
+                                  part:(NSString *)part
+                      uploadParameters:(GTLUploadParameters *)uploadParametersOrNil {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"youtube.captions.update";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.part = part;
+  query.uploadParameters = uploadParametersOrNil;
+  query.expectedObjectClass = [GTLYouTubeCaption class];
   return query;
 }
 
@@ -193,6 +264,109 @@
   query.bodyObject = object;
   query.part = part;
   query.expectedObjectClass = [GTLYouTubeChannel class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "comments" methods
+// These create a GTLQueryYouTube object.
+
++ (id)queryForCommentsDeleteWithIdentifier:(NSString *)identifier {
+  NSString *methodName = @"youtube.comments.delete";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.identifier = identifier;
+  return query;
+}
+
++ (id)queryForCommentsInsertWithObject:(GTLYouTubeComment *)object
+                                  part:(NSString *)part {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"youtube.comments.insert";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.part = part;
+  query.expectedObjectClass = [GTLYouTubeComment class];
+  return query;
+}
+
++ (id)queryForCommentsListWithPart:(NSString *)part {
+  NSString *methodName = @"youtube.comments.list";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.part = part;
+  query.expectedObjectClass = [GTLYouTubeCommentListResponse class];
+  return query;
+}
+
++ (id)queryForCommentsMarkAsSpamWithIdentifier:(NSString *)identifier {
+  NSString *methodName = @"youtube.comments.markAsSpam";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.identifier = identifier;
+  return query;
+}
+
++ (id)queryForCommentsSetModerationStatusWithIdentifier:(NSString *)identifier
+                                       moderationStatus:(NSString *)moderationStatus {
+  NSString *methodName = @"youtube.comments.setModerationStatus";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.identifier = identifier;
+  query.moderationStatus = moderationStatus;
+  return query;
+}
+
++ (id)queryForCommentsUpdateWithObject:(GTLYouTubeComment *)object
+                                  part:(NSString *)part {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"youtube.comments.update";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.part = part;
+  query.expectedObjectClass = [GTLYouTubeComment class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "commentThreads" methods
+// These create a GTLQueryYouTube object.
+
++ (id)queryForCommentThreadsInsertWithObject:(GTLYouTubeCommentThread *)object
+                                        part:(NSString *)part {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"youtube.commentThreads.insert";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.part = part;
+  query.expectedObjectClass = [GTLYouTubeCommentThread class];
+  return query;
+}
+
++ (id)queryForCommentThreadsListWithPart:(NSString *)part {
+  NSString *methodName = @"youtube.commentThreads.list";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.part = part;
+  query.expectedObjectClass = [GTLYouTubeCommentThreadListResponse class];
+  return query;
+}
+
++ (id)queryForCommentThreadsUpdateWithObject:(GTLYouTubeCommentThread *)object
+                                        part:(NSString *)part {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"youtube.commentThreads.update";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.part = part;
+  query.expectedObjectClass = [GTLYouTubeCommentThread class];
   return query;
 }
 
@@ -512,6 +686,18 @@
 }
 
 #pragma mark -
+#pragma mark "videoAbuseReportReasons" methods
+// These create a GTLQueryYouTube object.
+
++ (id)queryForVideoAbuseReportReasonsListWithPart:(NSString *)part {
+  NSString *methodName = @"youtube.videoAbuseReportReasons.list";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.part = part;
+  query.expectedObjectClass = [GTLYouTubeVideoAbuseReportReasonListResponse class];
+  return query;
+}
+
+#pragma mark -
 #pragma mark "videoCategories" methods
 // These create a GTLQueryYouTube object.
 
@@ -572,6 +758,12 @@
   GTLQueryYouTube *query = [self queryWithMethodName:methodName];
   query.identifier = identifier;
   query.rating = rating;
+  return query;
+}
+
++ (id)queryForVideosReportAbuse {
+  NSString *methodName = @"youtube.videos.reportAbuse";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
   return query;
 }
 

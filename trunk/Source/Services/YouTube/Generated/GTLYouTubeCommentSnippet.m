@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeChannelSnippet.m
+//  GTLYouTubeCommentSnippet.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,27 +26,20 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelSnippet (0 custom class methods, 7 custom properties)
+//   GTLYouTubeCommentSnippet (0 custom class methods, 16 custom properties)
 
-#import "GTLYouTubeChannelSnippet.h"
+#import "GTLYouTubeCommentSnippet.h"
 
-#import "GTLYouTubeChannelLocalization.h"
-#import "GTLYouTubeThumbnailDetails.h"
+#import "GTLYouTubeChannelId.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeChannelSnippet
+//   GTLYouTubeCommentSnippet
 //
 
-@implementation GTLYouTubeChannelSnippet
-@dynamic country, defaultLanguage, descriptionProperty, localized, publishedAt,
-         thumbnails, title;
-
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"description"
-                                forKey:@"descriptionProperty"];
-  return map;
-}
-
+@implementation GTLYouTubeCommentSnippet
+@dynamic authorChannelId, authorChannelUrl, authorDisplayName,
+         authorGoogleplusProfileUrl, authorProfileImageUrl, canRate, channelId,
+         likeCount, moderationStatus, parentId, publishedAt, textDisplay,
+         textOriginal, updatedAt, videoId, viewerRating;
 @end
