@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 // Classes:
-//   GTLQueryStorage (34 custom class methods, 34 custom properties)
+//   GTLQueryStorage (35 custom class methods, 36 custom properties)
 //   GTLStorageObjectsComposeSourceObjectsItem (0 custom class methods, 3 custom properties)
 //   GTLStorageObjectsComposeSourceObjectsItemObjectPreconditions (0 custom class methods, 1 custom properties)
 
@@ -74,6 +74,7 @@
 @property (assign) long long ifSourceMetagenerationMatch;
 @property (assign) long long ifSourceMetagenerationNotMatch;
 @property (copy) NSString *kind;
+@property (assign) long long maxBytesRewrittenPerCall;
 @property (assign) NSUInteger maxResults;
 @property (copy) NSString *name;
 @property (copy) NSString *object;
@@ -83,6 +84,7 @@
 @property (copy) NSString *prefix;
 @property (copy) NSString *project;
 @property (copy) NSString *projection;
+@property (copy) NSString *rewriteToken;
 @property (copy) NSString *sourceBucket;
 @property (assign) long long sourceGeneration;
 @property (copy) NSString *sourceObject;
@@ -781,13 +783,15 @@
 //     prefixes. Duplicate prefixes are omitted.
 //   maxResults: Maximum number of items plus prefixes to return. As duplicate
 //     prefixes are omitted, fewer total results may be returned than requested.
+//     The default value of this parameter is 1,000 items.
 //   pageToken: A previously-returned page token representing part of the larger
 //     set of results to view.
 //   prefix: Filter results to objects whose names begin with this prefix.
 //   projection: Set of properties to return. Defaults to noAcl.
 //      kGTLStorageProjectionFull: Include all properties.
 //      kGTLStorageProjectionNoAcl: Omit the acl property.
-//   versions: If true, lists all versions of a file as distinct results.
+//   versions: If true, lists all versions of an object as distinct results. The
+//     default is false. For more information, see Object Versioning.
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
@@ -835,6 +839,81 @@
 + (id)queryForObjectsPatchWithObject:(GTLStorageObject *)object
                               bucket:(NSString *)bucket
                               object:(NSString *)object;
+
+// Method: storage.objects.rewrite
+// Rewrites a source object to a destination object. Optionally overrides
+// metadata.
+//  Required:
+//   sourceBucket: Name of the bucket in which to find the source object.
+//   sourceObject: Name of the source object.
+//   destinationBucket: Name of the bucket in which to store the new object.
+//     Overrides the provided object metadata's bucket value, if any.
+//   destinationObject: Name of the new object. Required when the object
+//     metadata is not otherwise provided. Overrides the object metadata's name
+//     value, if any.
+//  Optional:
+//   destinationResource: GTLStorageObject
+//   destinationPredefinedAcl: Apply a predefined set of access controls to the
+//     destination object.
+//      kGTLStorageDestinationPredefinedAclAuthenticatedRead: Object owner gets
+//        OWNER access, and allAuthenticatedUsers get READER access.
+//      kGTLStorageDestinationPredefinedAclBucketOwnerFullControl: Object owner
+//        gets OWNER access, and project team owners get OWNER access.
+//      kGTLStorageDestinationPredefinedAclBucketOwnerRead: Object owner gets
+//        OWNER access, and project team owners get READER access.
+//      kGTLStorageDestinationPredefinedAclPrivate: Object owner gets OWNER
+//        access.
+//      kGTLStorageDestinationPredefinedAclProjectPrivate: Object owner gets
+//        OWNER access, and project team members get access according to their
+//        roles.
+//      kGTLStorageDestinationPredefinedAclPublicRead: Object owner gets OWNER
+//        access, and allUsers get READER access.
+//   ifGenerationMatch: Makes the operation conditional on whether the
+//     destination object's current generation matches the given value.
+//   ifGenerationNotMatch: Makes the operation conditional on whether the
+//     destination object's current generation does not match the given value.
+//   ifMetagenerationMatch: Makes the operation conditional on whether the
+//     destination object's current metageneration matches the given value.
+//   ifMetagenerationNotMatch: Makes the operation conditional on whether the
+//     destination object's current metageneration does not match the given
+//     value.
+//   ifSourceGenerationMatch: Makes the operation conditional on whether the
+//     source object's generation matches the given value.
+//   ifSourceGenerationNotMatch: Makes the operation conditional on whether the
+//     source object's generation does not match the given value.
+//   ifSourceMetagenerationMatch: Makes the operation conditional on whether the
+//     source object's current metageneration matches the given value.
+//   ifSourceMetagenerationNotMatch: Makes the operation conditional on whether
+//     the source object's current metageneration does not match the given
+//     value.
+//   maxBytesRewrittenPerCall: The maximum number of bytes that will be
+//     rewritten per Rewrite request. Most callers shouldn't need to specify
+//     this parameter - it is primarily in place to support testing. If
+//     specified the value must be an integral multiple of 1 MiB (1048576).
+//     Also, this only applies to requests where the source and destination span
+//     locations and/or storage classes. Finally, this value must not change
+//     across Rewrite calls else you'll get an error that the rewrite token is
+//     invalid.
+//   projection: Set of properties to return. Defaults to noAcl, unless the
+//     object resource specifies the acl property, when it defaults to full.
+//      kGTLStorageProjectionFull: Include all properties.
+//      kGTLStorageProjectionNoAcl: Omit the acl property.
+//   rewriteToken: Include this field (from the previous Rewrite response) on
+//     each Rewrite request after the first one, until the Rewrite response
+//     'done' flag is true. Calls that provide a rewriteToken can omit all other
+//     request fields, but if included those fields must match the values
+//     provided in the first rewrite request.
+//   sourceGeneration: If present, selects a specific revision of the source
+//     object (as opposed to the latest version, the default).
+//  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
+//   kGTLAuthScopeStorageDevstorageFullControl
+//   kGTLAuthScopeStorageDevstorageReadWrite
+// Fetches a GTLStorageRewriteResponse.
++ (id)queryForObjectsRewriteWithSourceBucket:(NSString *)sourceBucket
+                                sourceObject:(NSString *)sourceObject
+                           destinationBucket:(NSString *)destinationBucket
+                           destinationObject:(NSString *)destinationObject;
 
 // Method: storage.objects.update
 // Updates an object's metadata.
@@ -888,13 +967,15 @@
 //     prefixes. Duplicate prefixes are omitted.
 //   maxResults: Maximum number of items plus prefixes to return. As duplicate
 //     prefixes are omitted, fewer total results may be returned than requested.
+//     The default value of this parameter is 1,000 items.
 //   pageToken: A previously-returned page token representing part of the larger
 //     set of results to view.
 //   prefix: Filter results to objects whose names begin with this prefix.
 //   projection: Set of properties to return. Defaults to noAcl.
 //      kGTLStorageProjectionFull: Include all properties.
 //      kGTLStorageProjectionNoAcl: Omit the acl property.
-//   versions: If true, lists all versions of a file as distinct results.
+//   versions: If true, lists all versions of an object as distinct results. The
+//     default is false. For more information, see Object Versioning.
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
@@ -918,7 +999,7 @@
 //   GTLStorageObjectsComposeSourceObjectsItem
 //
 
-// Used for 'item' parameter on '(null)'.
+// Used for 'sourceObjects' parameter on 'storage.objects.compose'.
 
 @interface GTLStorageObjectsComposeSourceObjectsItem : GTLObject
 

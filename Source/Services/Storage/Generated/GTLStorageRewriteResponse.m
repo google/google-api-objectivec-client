@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLStorage.h
+//  GTLStorageRewriteResponse.m
 //
 
 // ----------------------------------------------------------------------------
@@ -25,19 +25,23 @@
 //   Lets you store and retrieve potentially-large, immutable data objects.
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
+// Classes:
+//   GTLStorageRewriteResponse (0 custom class methods, 6 custom properties)
 
-#import "GTLStorageConstants.h"
-
-#import "GTLStorageBucket.h"
-#import "GTLStorageBucketAccessControl.h"
-#import "GTLStorageBucketAccessControls.h"
-#import "GTLStorageBuckets.h"
-#import "GTLStorageChannel.h"
-#import "GTLStorageObject.h"
-#import "GTLStorageObjectAccessControl.h"
-#import "GTLStorageObjectAccessControls.h"
-#import "GTLStorageObjects.h"
 #import "GTLStorageRewriteResponse.h"
 
-#import "GTLQueryStorage.h"
-#import "GTLServiceStorage.h"
+#import "GTLStorageObject.h"
+
+// ----------------------------------------------------------------------------
+//
+//   GTLStorageRewriteResponse
+//
+
+@implementation GTLStorageRewriteResponse
+@dynamic done, kind, objectSize, resource, rewriteToken, totalBytesRewritten;
+
++ (void)load {
+  [self registerObjectClassForKind:@"storage#rewriteResponse"];
+}
+
+@end
