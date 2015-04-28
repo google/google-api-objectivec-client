@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 // Classes:
-//   GTLQueryStorage (34 custom class methods, 34 custom properties)
+//   GTLQueryStorage (35 custom class methods, 36 custom properties)
 //   GTLStorageObjectsComposeSourceObjectsItem (0 custom class methods, 3 custom properties)
 //   GTLStorageObjectsComposeSourceObjectsItemObjectPreconditions (0 custom class methods, 1 custom properties)
 
@@ -41,6 +41,7 @@
 #import "GTLStorageObjectAccessControl.h"
 #import "GTLStorageObjectAccessControls.h"
 #import "GTLStorageObjects.h"
+#import "GTLStorageRewriteResponse.h"
 
 @implementation GTLQueryStorage
 
@@ -50,9 +51,10 @@
          ifMetagenerationMatch, ifMetagenerationNotMatch,
          ifSourceGenerationMatch, ifSourceGenerationNotMatch,
          ifSourceMetagenerationMatch, ifSourceMetagenerationNotMatch, kind,
-         maxResults, name, object, pageToken, predefinedAcl,
-         predefinedDefaultObjectAcl, prefix, project, projection, sourceBucket,
-         sourceGeneration, sourceObject, sourceObjects, versions;
+         maxBytesRewrittenPerCall, maxResults, name, object, pageToken,
+         predefinedAcl, predefinedDefaultObjectAcl, prefix, project, projection,
+         rewriteToken, sourceBucket, sourceGeneration, sourceObject,
+         sourceObjects, versions;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map =
@@ -479,6 +481,20 @@
   query.bucket = bucket;
   query.object = object_param;
   query.expectedObjectClass = [GTLStorageObject class];
+  return query;
+}
+
++ (id)queryForObjectsRewriteWithSourceBucket:(NSString *)sourceBucket
+                                sourceObject:(NSString *)sourceObject
+                           destinationBucket:(NSString *)destinationBucket
+                           destinationObject:(NSString *)destinationObject {
+  NSString *methodName = @"storage.objects.rewrite";
+  GTLQueryStorage *query = [self queryWithMethodName:methodName];
+  query.sourceBucket = sourceBucket;
+  query.sourceObject = sourceObject;
+  query.destinationBucket = destinationBucket;
+  query.destinationObject = destinationObject;
+  query.expectedObjectClass = [GTLStorageRewriteResponse class];
   return query;
 }
 

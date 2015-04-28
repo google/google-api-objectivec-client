@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLStorage.h
+//  GTLStorageRewriteResponse.h
 //
 
 // ----------------------------------------------------------------------------
@@ -25,19 +25,32 @@
 //   Lets you store and retrieve potentially-large, immutable data objects.
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
+// Classes:
+//   GTLStorageRewriteResponse (0 custom class methods, 6 custom properties)
 
-#import "GTLStorageConstants.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLStorageBucket.h"
-#import "GTLStorageBucketAccessControl.h"
-#import "GTLStorageBucketAccessControls.h"
-#import "GTLStorageBuckets.h"
-#import "GTLStorageChannel.h"
-#import "GTLStorageObject.h"
-#import "GTLStorageObjectAccessControl.h"
-#import "GTLStorageObjectAccessControls.h"
-#import "GTLStorageObjects.h"
-#import "GTLStorageRewriteResponse.h"
+@class GTLStorageObject;
 
-#import "GTLQueryStorage.h"
-#import "GTLServiceStorage.h"
+// ----------------------------------------------------------------------------
+//
+//   GTLStorageRewriteResponse
+//
+
+// A Rewrite response.
+
+@interface GTLStorageRewriteResponse : GTLObject
+@property (retain) NSNumber *done;  // boolValue
+
+// The kind of item this is.
+@property (copy) NSString *kind;
+
+@property (retain) NSNumber *objectSize;  // unsignedLongLongValue
+@property (retain) GTLStorageObject *resource;
+@property (copy) NSString *rewriteToken;
+@property (retain) NSNumber *totalBytesRewritten;  // unsignedLongLongValue
+@end

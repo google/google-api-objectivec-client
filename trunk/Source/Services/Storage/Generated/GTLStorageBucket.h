@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -112,9 +112,9 @@
 @property (copy) NSString *selfLink;
 
 // The bucket's storage class. This defines how objects in the bucket are stored
-// and determines the SLA and the cost of storage. Typical values are STANDARD
-// and DURABLE_REDUCED_AVAILABILITY. Defaults to STANDARD. See the developer's
-// guide for the authoritative list.
+// and determines the SLA and the cost of storage. Values include STANDARD,
+// NEARLINE and DURABLE_REDUCED_AVAILABILITY. Defaults to STANDARD. For more
+// information, see storage classes.
 @property (copy) NSString *storageClass;
 
 // Creation time of the bucket in RFC 3339 format.
