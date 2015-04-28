@@ -234,6 +234,7 @@
 //     indicate the authenticated user. (Default me)
 //  Authorization scope(s):
 //   kGTLAuthScopeGmail
+//   kGTLAuthScopeGmailLabels
 //   kGTLAuthScopeGmailModify
 // Fetches a GTLGmailLabel.
 + (id)queryForUsersLabelsCreate;
@@ -247,6 +248,7 @@
 //     indicate the authenticated user. (Default me)
 //  Authorization scope(s):
 //   kGTLAuthScopeGmail
+//   kGTLAuthScopeGmailLabels
 //   kGTLAuthScopeGmailModify
 + (id)queryForUsersLabelsDelete;
 
@@ -258,6 +260,7 @@
 //     indicate the authenticated user. (Default me)
 //  Authorization scope(s):
 //   kGTLAuthScopeGmail
+//   kGTLAuthScopeGmailLabels
 //   kGTLAuthScopeGmailModify
 //   kGTLAuthScopeGmailReadonly
 // Fetches a GTLGmailLabel.
@@ -270,6 +273,7 @@
 //     indicate the authenticated user. (Default me)
 //  Authorization scope(s):
 //   kGTLAuthScopeGmail
+//   kGTLAuthScopeGmailLabels
 //   kGTLAuthScopeGmailModify
 //   kGTLAuthScopeGmailReadonly
 // Fetches a GTLGmailListLabelsResponse.
@@ -284,6 +288,7 @@
 //     indicate the authenticated user. (Default me)
 //  Authorization scope(s):
 //   kGTLAuthScopeGmail
+//   kGTLAuthScopeGmailLabels
 //   kGTLAuthScopeGmailModify
 // Fetches a GTLGmailLabel.
 + (id)queryForUsersLabelsPatch;
@@ -297,6 +302,7 @@
 //     indicate the authenticated user. (Default me)
 //  Authorization scope(s):
 //   kGTLAuthScopeGmail
+//   kGTLAuthScopeGmailLabels
 //   kGTLAuthScopeGmailModify
 // Fetches a GTLGmailLabel.
 + (id)queryForUsersLabelsUpdate;
@@ -378,6 +384,7 @@
 //   Accepted MIME type(s): message/rfc822
 //  Authorization scope(s):
 //   kGTLAuthScopeGmail
+//   kGTLAuthScopeGmailInsert
 //   kGTLAuthScopeGmailModify
 // Fetches a GTLGmailMessage.
 + (id)queryForUsersMessagesImportWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
@@ -387,6 +394,9 @@
 // APPEND, bypassing most scanning and classification. Does not send a message.
 //  Optional:
 //   message: GTLGmailMessage
+//   deleted: Mark the email as permanently deleted (not TRASH) and only visible
+//     in Google Apps Vault to a Vault administrator. Only used for Google Apps
+//     for Work accounts. (Default false)
 //   internalDateSource: Source for Gmail's internal date of the message.
 //     (Default kGTLGmailInternalDateSourceReceivedTime)
 //      kGTLGmailInternalDateSourceDateHeader: "dateHeader"
@@ -398,6 +408,7 @@
 //   Accepted MIME type(s): message/rfc822
 //  Authorization scope(s):
 //   kGTLAuthScopeGmail
+//   kGTLAuthScopeGmailInsert
 //   kGTLAuthScopeGmailModify
 // Fetches a GTLGmailMessage.
 + (id)queryForUsersMessagesInsertWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil;

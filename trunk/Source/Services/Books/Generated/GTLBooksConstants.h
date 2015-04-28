@@ -82,6 +82,10 @@ GTL_EXTERN NSString * const kGTLBooksLicenseTypesBoth;        // "BOTH"
 GTL_EXTERN NSString * const kGTLBooksLicenseTypesConcurrent;  // "CONCURRENT"
 GTL_EXTERN NSString * const kGTLBooksLicenseTypesDownload;    // "DOWNLOAD"
 
+// GTLQueryBooks - MaxAllowedMaturityRating
+GTL_EXTERN NSString * const kGTLBooksMaxAllowedMaturityRatingMature;  // "mature"
+GTL_EXTERN NSString * const kGTLBooksMaxAllowedMaturityRatingNotMature;  // "not-mature"
+
 // GTLQueryBooks - OrderBy
 GTL_EXTERN NSString * const kGTLBooksOrderByNewest;     // "newest"
 GTL_EXTERN NSString * const kGTLBooksOrderByRelevance;  // "relevance"

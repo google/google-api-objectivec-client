@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLBloggerPageList (0 custom class methods, 3 custom properties)
+//   GTLBloggerPageList (0 custom class methods, 4 custom properties)
 
 #import "GTLBloggerPageList.h"
 
@@ -38,7 +38,14 @@
 //
 
 @implementation GTLBloggerPageList
-@dynamic items, kind, nextPageToken;
+@dynamic ETag, items, kind, nextPageToken;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"etag"
+                                forKey:@"ETag"];
+  return map;
+}
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =

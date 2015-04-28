@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLQueryBooks (45 custom class methods, 70 custom properties)
+//   GTLQueryBooks (44 custom class methods, 70 custom properties)
 
 #import "GTLQueryBooks.h"
 
@@ -61,14 +61,14 @@
          contentVersion, country, cpksver, device, deviceCookie, download,
          driveDocumentId, endOffset, endPosition, features, fields, filter, h,
          langRestrict, layerId, layerIds, libraryRestrict, licenseTypes, locale,
-         manufacturer, maxResults, mimeType, model, name, nonce, offerId,
-         orderBy, pageIds, pageSize, pageToken, partner, position, printType,
-         processingState, product, projection, q, rating, reason, scale, serial,
-         settings, shelf, showDeleted, showOnlySummaryInResponse, showPreorders,
-         source, startIndex, startOffset, startPosition, summaryId, timestamp,
-         updatedMax, updatedMin, uploadClientToken, userLibraryConsistentRead,
-         userId, volumeAnnotationsVersion, volumeId, volumeIds, volumePosition,
-         w;
+         manufacturer, maxAllowedMaturityRating, maxResults, mimeType, model,
+         name, nonce, offerId, orderBy, pageSize, pageToken, partner, position,
+         printType, processingState, product, projection, q, rating, reason,
+         scale, serial, settings, shelf, showDeleted, showOnlySummaryInResponse,
+         showPreorders, source, startIndex, startOffset, startPosition,
+         summaryId, timestamp, updatedMax, updatedMin, uploadClientToken,
+         userLibraryConsistentRead, userId, volumeAnnotationsVersion, volumeId,
+         volumeIds, volumePosition, w;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map =
@@ -88,7 +88,6 @@
       [NSString class], @"categoryId",
       [NSString class], @"features",
       [NSString class], @"layerIds",
-      [NSString class], @"pageIds",
       [NSString class], @"processingState",
       [NSString class], @"volumeIds",
       nil];
@@ -315,14 +314,6 @@
   NSString *methodName = @"books.mylibrary.annotations.delete";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.annotationId = annotationId;
-  return query;
-}
-
-+ (id)queryForMylibraryAnnotationsGetWithAnnotationId:(NSString *)annotationId {
-  NSString *methodName = @"books.mylibrary.annotations.get";
-  GTLQueryBooks *query = [self queryWithMethodName:methodName];
-  query.annotationId = annotationId;
-  query.expectedObjectClass = [GTLBooksAnnotation class];
   return query;
 }
 

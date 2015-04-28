@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/fit/rest/
 // Classes:
-//   GTLQueryFitness (11 custom class methods, 16 custom properties)
+//   GTLQueryFitness (12 custom class methods, 16 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -189,6 +189,20 @@
 #pragma mark -
 #pragma mark "users.dataSources" methods
 // These create a GTLQueryFitness object.
+
+// Method: fitness.users.dataSources.delete
+// Delete the data source if there are no datapoints associated with it
+//  Required:
+//   userId: Retrieve a data source for the person identified. Use me to
+//     indicate the authenticated user. Only me is supported at this time.
+//   dataSourceId: The data stream ID of the data source to delete.
+//  Authorization scope(s):
+//   kGTLAuthScopeFitnessActivityWrite
+//   kGTLAuthScopeFitnessBodyWrite
+//   kGTLAuthScopeFitnessLocationWrite
+// Fetches a GTLFitnessDataSource.
++ (id)queryForUsersDataSourcesDeleteWithUserId:(NSString *)userId
+                                  dataSourceId:(NSString *)dataSourceId;
 
 // Method: fitness.users.dataSources.get
 // Returns a data source identified by a data stream ID.

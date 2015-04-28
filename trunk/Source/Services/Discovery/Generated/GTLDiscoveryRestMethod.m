@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/discovery/
 // Classes:
-//   GTLDiscoveryRestMethod (0 custom class methods, 14 custom properties)
+//   GTLDiscoveryRestMethod (0 custom class methods, 15 custom properties)
 //   GTLDiscoveryRestMethodMediaUpload (0 custom class methods, 3 custom properties)
 //   GTLDiscoveryRestMethodParameters (0 custom class methods, 0 custom properties)
 //   GTLDiscoveryRestMethodRequest (0 custom class methods, 2 custom properties)
@@ -48,7 +48,8 @@
 @implementation GTLDiscoveryRestMethod
 @dynamic descriptionProperty, etagRequired, httpMethod, identifier, mediaUpload,
          parameterOrder, parameters, path, request, response, scopes,
-         supportsMediaDownload, supportsMediaUpload, supportsSubscription;
+         supportsMediaDownload, supportsMediaUpload, supportsSubscription,
+         useMediaDownloadService;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

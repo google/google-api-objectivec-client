@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/fit/rest/
 // Classes:
-//   GTLQueryFitness (11 custom class methods, 16 custom properties)
+//   GTLQueryFitness (12 custom class methods, 16 custom properties)
 
 #import "GTLQueryFitness.h"
 
@@ -110,6 +110,16 @@
 #pragma mark -
 #pragma mark "users.dataSources" methods
 // These create a GTLQueryFitness object.
+
++ (id)queryForUsersDataSourcesDeleteWithUserId:(NSString *)userId
+                                  dataSourceId:(NSString *)dataSourceId {
+  NSString *methodName = @"fitness.users.dataSources.delete";
+  GTLQueryFitness *query = [self queryWithMethodName:methodName];
+  query.userId = userId;
+  query.dataSourceId = dataSourceId;
+  query.expectedObjectClass = [GTLFitnessDataSource class];
+  return query;
+}
 
 + (id)queryForUsersDataSourcesGetWithUserId:(NSString *)userId
                                dataSourceId:(NSString *)dataSourceId {

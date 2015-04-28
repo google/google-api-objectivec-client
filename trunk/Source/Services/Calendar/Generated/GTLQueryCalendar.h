@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -241,7 +241,7 @@
 //     default the value is 100 entries. The page size can never be larger than
 //     250 entries. Optional.
 //   minAccessRole: The minimum access role for the user in the returned
-//     entires. Optional. The default is no restriction.
+//     entries. Optional. The default is no restriction.
 //      kGTLCalendarMinAccessRoleFreeBusyReader: The user can read free/busy
 //        information.
 //      kGTLCalendarMinAccessRoleOwner: The user can read and modify events and
@@ -311,7 +311,7 @@
 //     default the value is 100 entries. The page size can never be larger than
 //     250 entries. Optional.
 //   minAccessRole: The minimum access role for the user in the returned
-//     entires. Optional. The default is no restriction.
+//     entries. Optional. The default is no restriction.
 //      kGTLCalendarMinAccessRoleFreeBusyReader: The user can read free/busy
 //        information.
 //      kGTLCalendarMinAccessRoleOwner: The user can read and modify events and
@@ -348,8 +348,8 @@
 // These create a GTLQueryCalendar object.
 
 // Method: calendar.calendars.clear
-// Clears a primary calendar. This operation deletes all data associated with
-// the primary calendar of an account and cannot be undone.
+// Clears a primary calendar. This operation deletes all events associated with
+// the primary calendar of an account.
 //  Required:
 //   calendarId: Calendar identifier.
 //  Authorization scope(s):
@@ -357,7 +357,8 @@
 + (id)queryForCalendarsClearWithCalendarId:(NSString *)calendarId;
 
 // Method: calendar.calendars.delete
-// Deletes a secondary calendar.
+// Deletes a secondary calendar. Use calendars.clear for clearing all events on
+// primary calendars.
 //  Required:
 //   calendarId: Calendar identifier.
 //  Authorization scope(s):

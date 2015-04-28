@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/fit/rest/
 // Classes:
-//   GTLFitnessSession (0 custom class methods, 8 custom properties)
+//   GTLFitnessSession (0 custom class methods, 9 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -45,6 +45,13 @@
 // information.
 
 @interface GTLFitnessSession : GTLObject
+
+// Session active time. While start_time_millis and end_time_millis define the
+// full session time, the active time can be shorter and specified by
+// active_time_millis. If the inactive time during the session is known, it
+// should also be inserted via a com.google.activity.segment data point with a
+// STILL activity value
+@property (retain) NSNumber *activeTimeMillis;  // longLongValue
 
 // The type of activity this session represents.
 @property (retain) NSNumber *activityType;  // intValue

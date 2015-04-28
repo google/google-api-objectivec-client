@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/fit/rest/
 // Classes:
-//   GTLFitnessSession (0 custom class methods, 8 custom properties)
+//   GTLFitnessSession (0 custom class methods, 9 custom properties)
 
 #import "GTLFitnessSession.h"
 
@@ -38,8 +38,8 @@
 //
 
 @implementation GTLFitnessSession
-@dynamic activityType, application, descriptionProperty, endTimeMillis,
-         identifier, modifiedTimeMillis, name, startTimeMillis;
+@dynamic activeTimeMillis, activityType, application, descriptionProperty,
+         endTimeMillis, identifier, modifiedTimeMillis, name, startTimeMillis;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

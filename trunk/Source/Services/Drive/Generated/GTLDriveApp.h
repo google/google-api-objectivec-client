@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -87,7 +87,8 @@
 @property (copy) NSString *objectType;
 
 // The template url for opening files with this app. The template will contain
-// {ids} and/or {exportIds} to be replaced by the actual file ids.
+// {ids} and/or {exportIds} to be replaced by the actual file ids. See Open
+// Files for the full documentation.
 @property (copy) NSString *openUrlTemplate;
 
 // The list of primary file extensions.
