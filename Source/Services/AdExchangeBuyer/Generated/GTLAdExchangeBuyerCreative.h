@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -87,9 +87,8 @@
 // not be set in requests.
 @property (retain) NSArray *disapprovalReasons;  // of GTLAdExchangeBuyerCreativeDisapprovalReasonsItem
 
-// The filtering reasons for the creative. If this feature is not enabled,
-// please ask your technical account manager. Read-only. This field should not
-// be set in requests.
+// The filtering reasons for the creative. Read-only. This field should not be
+// set in requests.
 @property (retain) GTLAdExchangeBuyerCreativeFilteringReasons *filteringReasons;
 
 // Ad height.

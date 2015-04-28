@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLBloggerPageList (0 custom class methods, 3 custom properties)
+//   GTLBloggerPageList (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -45,6 +45,9 @@
 // supports -itemAtIndex: to retrieve individual objects from "items".
 
 @interface GTLBloggerPageList : GTLCollectionObject
+
+// Etag of the response.
+@property (copy) NSString *ETag;
 
 // The list of Pages for a Blog.
 @property (retain) NSArray *items;  // of GTLBloggerPage

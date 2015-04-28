@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLBloggerCommentList (0 custom class methods, 4 custom properties)
+//   GTLBloggerCommentList (0 custom class methods, 5 custom properties)
 
 #import "GTLBloggerCommentList.h"
 
@@ -38,7 +38,14 @@
 //
 
 @implementation GTLBloggerCommentList
-@dynamic items, kind, nextPageToken, prevPageToken;
+@dynamic ETag, items, kind, nextPageToken, prevPageToken;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:@"etag"
+                                forKey:@"ETag"];
+  return map;
+}
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map =

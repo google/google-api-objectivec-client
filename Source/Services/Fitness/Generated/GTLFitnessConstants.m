@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,8 +41,12 @@ NSString * const kGTLFitnessDataSource_Type_Derived = @"derived";
 NSString * const kGTLFitnessDataSource_Type_Raw     = @"raw";
 
 // GTLFitnessDataTypeField - Format
-NSString * const kGTLFitnessDataTypeField_Format_FloatPoint = @"floatPoint";
-NSString * const kGTLFitnessDataTypeField_Format_Integer    = @"integer";
+NSString * const kGTLFitnessDataTypeField_Format_FloatList   = @"floatList";
+NSString * const kGTLFitnessDataTypeField_Format_FloatPoint  = @"floatPoint";
+NSString * const kGTLFitnessDataTypeField_Format_Integer     = @"integer";
+NSString * const kGTLFitnessDataTypeField_Format_IntegerList = @"integerList";
+NSString * const kGTLFitnessDataTypeField_Format_Map         = @"map";
+NSString * const kGTLFitnessDataTypeField_Format_String      = @"string";
 
 // GTLFitnessDevice - Type
 NSString * const kGTLFitnessDevice_Type_ChestStrap = @"chestStrap";

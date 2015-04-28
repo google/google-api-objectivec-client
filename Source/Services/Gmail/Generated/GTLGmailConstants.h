@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,6 +39,10 @@
 GTL_EXTERN NSString * const kGTLAuthScopeGmail;          // "https://mail.google.com/"
 // Manage drafts and send emails
 GTL_EXTERN NSString * const kGTLAuthScopeGmailCompose;   // "https://www.googleapis.com/auth/gmail.compose"
+// Insert mail into your mailbox
+GTL_EXTERN NSString * const kGTLAuthScopeGmailInsert;    // "https://www.googleapis.com/auth/gmail.insert"
+// Manage mailbox labels
+GTL_EXTERN NSString * const kGTLAuthScopeGmailLabels;    // "https://www.googleapis.com/auth/gmail.labels"
 // View and modify but not delete your email
 GTL_EXTERN NSString * const kGTLAuthScopeGmailModify;    // "https://www.googleapis.com/auth/gmail.modify"
 // View your emails messages and settings

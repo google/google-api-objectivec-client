@@ -33,7 +33,7 @@
 //   GTLBooksVolumeSaleInfo (0 custom class methods, 8 custom properties)
 //   GTLBooksVolumeSearchInfo (0 custom class methods, 1 custom properties)
 //   GTLBooksVolumeUserInfo (0 custom class methods, 11 custom properties)
-//   GTLBooksVolumeVolumeInfo (0 custom class methods, 23 custom properties)
+//   GTLBooksVolumeVolumeInfo (0 custom class methods, 24 custom properties)
 //   GTLBooksVolumeAccessInfoEpub (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeAccessInfoPdf (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeLayerInfoLayersItem (0 custom class methods, 2 custom properties)
@@ -373,6 +373,8 @@
 // The main category to which this volume belongs. It will be the category from
 // the categories list returned below that has the highest weight.
 @property (copy) NSString *mainCategory;
+
+@property (copy) NSString *maturityRating;
 
 // Total number of pages as per publisher metadata.
 @property (retain) NSNumber *pageCount;  // intValue

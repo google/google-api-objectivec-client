@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,8 +53,12 @@ GTL_EXTERN NSString * const kGTLFitnessDataSource_Type_Derived;  // "derived"
 GTL_EXTERN NSString * const kGTLFitnessDataSource_Type_Raw;     // "raw"
 
 // GTLFitnessDataTypeField - Format
+GTL_EXTERN NSString * const kGTLFitnessDataTypeField_Format_FloatList;  // "floatList"
 GTL_EXTERN NSString * const kGTLFitnessDataTypeField_Format_FloatPoint;  // "floatPoint"
 GTL_EXTERN NSString * const kGTLFitnessDataTypeField_Format_Integer;  // "integer"
+GTL_EXTERN NSString * const kGTLFitnessDataTypeField_Format_IntegerList;  // "integerList"
+GTL_EXTERN NSString * const kGTLFitnessDataTypeField_Format_Map;  // "map"
+GTL_EXTERN NSString * const kGTLFitnessDataTypeField_Format_String;  // "string"
 
 // GTLFitnessDevice - Type
 GTL_EXTERN NSString * const kGTLFitnessDevice_Type_ChestStrap;  // "chestStrap"

@@ -75,6 +75,10 @@ NSString * const kGTLBooksLicenseTypesBoth       = @"BOTH";
 NSString * const kGTLBooksLicenseTypesConcurrent = @"CONCURRENT";
 NSString * const kGTLBooksLicenseTypesDownload   = @"DOWNLOAD";
 
+// GTLQueryBooks - MaxAllowedMaturityRating
+NSString * const kGTLBooksMaxAllowedMaturityRatingMature    = @"mature";
+NSString * const kGTLBooksMaxAllowedMaturityRatingNotMature = @"not-mature";
+
 // GTLQueryBooks - OrderBy
 NSString * const kGTLBooksOrderByNewest    = @"newest";
 NSString * const kGTLBooksOrderByRelevance = @"relevance";

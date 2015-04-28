@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/blogger/docs/3.0/getting_started
 // Classes:
-//   GTLBloggerCommentList (0 custom class methods, 4 custom properties)
+//   GTLBloggerCommentList (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -45,6 +45,9 @@
 // supports -itemAtIndex: to retrieve individual objects from "items".
 
 @interface GTLBloggerCommentList : GTLCollectionObject
+
+// Etag of the response.
+@property (copy) NSString *ETag;
 
 // The List of Comments for a Post.
 @property (retain) NSArray *items;  // of GTLBloggerComment

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/discovery/
 // Classes:
-//   GTLDiscoveryRpcMethod (0 custom class methods, 13 custom properties)
+//   GTLDiscoveryRpcMethod (0 custom class methods, 14 custom properties)
 //   GTLDiscoveryRpcMethodMediaUpload (0 custom class methods, 2 custom properties)
 //   GTLDiscoveryRpcMethodParameters (0 custom class methods, 0 custom properties)
 //   GTLDiscoveryRpcMethodReturns (0 custom class methods, 1 custom properties)
@@ -93,6 +93,10 @@
 
 // Whether this method supports subscriptions.
 @property (retain) NSNumber *supportsSubscription;  // boolValue
+
+// Indicates that downloads from this method should use the download service URL
+// (i.e. "/download"). Only applies if the method supports media download.
+@property (retain) NSNumber *useMediaDownloadService;  // boolValue
 
 @end
 

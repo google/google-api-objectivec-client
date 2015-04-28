@@ -222,7 +222,8 @@
 // already thumbnailed by Google.
 @property (retain) GTLDriveFileThumbnail *thumbnail;
 
-// A link to the file's thumbnail.
+// A short-lived link to the file's thumbnail. Typically lasts on the order of
+// hours.
 @property (copy) NSString *thumbnailLink;
 
 // The title of this file.
@@ -370,7 +371,8 @@
 // Whether this file is starred by the user.
 @property (retain) NSNumber *starred;  // boolValue
 
-// Whether this file has been trashed.
+// Whether this file has been trashed. This label applies to all users accessing
+// the file; however, only owners are allowed to see and untrash files.
 @property (retain) NSNumber *trashed;  // boolValue
 
 // Whether this file has been viewed by this user.
@@ -399,7 +401,8 @@
 
 @interface GTLDriveFileThumbnail : GTLObject
 
-// The URL-safe Base64 encoded bytes of the thumbnail image.
+// The URL-safe Base64 encoded bytes of the thumbnail image. It should conform
+// to RFC 4648 section 5.
 @property (copy) NSString *image;  // GTLBase64 can encode/decode (probably web-safe format)
 
 // The MIME type of the thumbnail.

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -67,6 +67,8 @@
 //        counts.
 //      kGTLUrlshortenerProjectionFull: Returns the creation timestamp and all
 //        available analytics.
+//  Authorization scope(s):
+//   kGTLAuthScopeUrlshortener
 // Fetches a GTLUrlshortenerUrl.
 + (id)queryForUrlGetWithShortUrl:(NSString *)shortUrl;
 

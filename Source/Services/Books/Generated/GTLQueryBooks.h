@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLQueryBooks (45 custom class methods, 70 custom properties)
+//   GTLQueryBooks (44 custom class methods, 70 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -79,6 +79,7 @@
 @property (copy) NSString *licenseTypes;
 @property (copy) NSString *locale;
 @property (copy) NSString *manufacturer;
+@property (copy) NSString *maxAllowedMaturityRating;
 @property (assign) NSUInteger maxResults;
 @property (copy) NSString *mimeType;
 @property (copy) NSString *model;
@@ -86,7 +87,6 @@
 @property (copy) NSString *nonce;
 @property (copy) NSString *offerId;
 @property (copy) NSString *orderBy;
-@property (retain) NSArray *pageIds;  // of NSString
 @property (assign) NSUInteger pageSize;
 @property (copy) NSString *pageToken;
 @property (copy) NSString *partner;
@@ -433,8 +433,9 @@
                                            cpksver:(NSString *)cpksver;
 
 // Method: books.myconfig.updateUserSettings
-// Sets the settings for the user. Unspecified sub-objects will retain the
-// existing value.
+// Sets the settings for the user. If a sub-object is specified, it will
+// overwrite the existing sub-object stored in the server. Unspecified
+// sub-objects will retain the existing value.
 //  Optional:
 //   settings: GTLBooksUsersettings
 //  Authorization scope(s):
@@ -456,17 +457,6 @@
 //   kGTLAuthScopeBooks
 + (id)queryForMylibraryAnnotationsDeleteWithAnnotationId:(NSString *)annotationId;
 
-// Method: books.mylibrary.annotations.get
-// Gets an annotation by its ID.
-//  Required:
-//   annotationId: The ID for the annotation to retrieve.
-//  Optional:
-//   source: String to identify the originator of this request.
-//  Authorization scope(s):
-//   kGTLAuthScopeBooks
-// Fetches a GTLBooksAnnotation.
-+ (id)queryForMylibraryAnnotationsGetWithAnnotationId:(NSString *)annotationId;
-
 // Method: books.mylibrary.annotations.insert
 // Inserts a new annotation.
 //  Optional:
@@ -486,7 +476,6 @@
 //   layerId: The layer ID to limit annotation by.
 //   layerIds: The layer ID(s) to limit annotation by.
 //   maxResults: Maximum number of results to return (0..40)
-//   pageIds: The page ID(s) for the volume that is being queried.
 //   pageToken: The value of the nextToken from the previous page.
 //   showDeleted: Set to true to return deleted annotations. updatedMin must be
 //     in the request to use this. Defaults to false.
@@ -692,6 +681,12 @@
 //   categoryId: List of category ids requested.
 //   locale: ISO-639-1 language and ISO-3166-1 country code. Default is en-US if
 //     unset.
+//   maxAllowedMaturityRating: The maximum allowed maturity rating of returned
+//     volumes. Books with a higher maturity rating are filtered out.
+//      kGTLBooksMaxAllowedMaturityRatingMature: Show books which are rated
+//        mature or lower.
+//      kGTLBooksMaxAllowedMaturityRatingNotMature: Show books which are rated
+//        not mature.
 //   pageSize: Number of maximum results per page to be included in the
 //     response.
 //   pageToken: The value of the nextToken from the previous page.
@@ -765,6 +760,12 @@
 //      kGTLBooksAssociationRelatedForPlay: Related volumes for Play Store.
 //   locale: ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used
 //     for generating recommendations.
+//   maxAllowedMaturityRating: The maximum allowed maturity rating of returned
+//     recommendations. Books with a higher maturity rating are filtered out.
+//      kGTLBooksMaxAllowedMaturityRatingMature: Show books which are rated
+//        mature or lower.
+//      kGTLBooksMaxAllowedMaturityRatingNotMature: Show books which are rated
+//        not mature.
 //   source: String to identify the originator of this request.
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
@@ -878,6 +879,12 @@
 //  Optional:
 //   locale: ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used
 //     for generating recommendations.
+//   maxAllowedMaturityRating: The maximum allowed maturity rating of returned
+//     recommendations. Books with a higher maturity rating are filtered out.
+//      kGTLBooksMaxAllowedMaturityRatingMature: Show books which are rated
+//        mature or lower.
+//      kGTLBooksMaxAllowedMaturityRatingNotMature: Show books which are rated
+//        not mature.
 //   source: String to identify the originator of this request.
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
