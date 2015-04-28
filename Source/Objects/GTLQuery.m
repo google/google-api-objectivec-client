@@ -48,11 +48,11 @@
             completionBlock = completionBlock_,
             testBlock = testBlock_;
 
-+ (id)queryWithMethodName:(NSString *)methodName {
++ (instancetype)queryWithMethodName:(NSString *)methodName {
   return [[[self alloc] initWithMethodName:methodName] autorelease];
 }
 
-- (id)initWithMethodName:(NSString *)methodName {
+- (instancetype)initWithMethodName:(NSString *)methodName {
   self = [super init];
   if (self) {
     requestID_ = [[[self class] nextRequestID] retain];

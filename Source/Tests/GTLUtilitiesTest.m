@@ -203,11 +203,11 @@
   result = GTL_EnsureNSNumber((NSNumber*)@"-71100000000007780");
   XCTAssertEqual([result longLongValue], -71100000000007780LL);
 
-  NSString *ullongmaxStr = [[NSNumber numberWithUnsignedLongLong:ULLONG_MAX] stringValue];
+  NSString *ullongmaxStr = [@(ULLONG_MAX) stringValue];
   result = GTL_EnsureNSNumber((NSNumber*)ullongmaxStr);
   XCTAssertEqual([result unsignedLongLongValue], ULLONG_MAX);
 
-  NSString *llongminStr = [[NSNumber numberWithLongLong:LLONG_MIN] stringValue];
+  NSString *llongminStr = [@(LLONG_MIN) stringValue];
   result = GTL_EnsureNSNumber((NSNumber*)llongminStr);
   XCTAssertEqual([result longLongValue], LLONG_MIN);
 }

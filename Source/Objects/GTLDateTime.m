@@ -48,12 +48,6 @@ static const NSInteger kGTLUndefinedDateComponent = NSUndefinedDateComponent;
 
 @end
 
-static NSCharacterSet *gDashSet = nil;
-static NSCharacterSet *gTSet = nil;
-static NSCharacterSet *gColonSet = nil;
-static NSCharacterSet *gPlusMinusZSet = nil;
-static NSMutableDictionary *gCalendarsForTimeZones = nil;
-
 @implementation GTLDateTime
 
 // A note about milliseconds_:
@@ -77,19 +71,6 @@ static NSMutableDictionary *gCalendarsForTimeZones = nil;
             milliseconds = milliseconds_,
             offsetSeconds = offsetSeconds_,
             universalTime = isUniversalTime_;
-
-+ (void)initialize {
-  // Note that initialize is guaranteed by the runtime to be called in a
-  // thread-safe manner.
-  if (gDashSet == nil) {
-    gDashSet = [[NSCharacterSet characterSetWithCharactersInString:@"-"] retain];
-    gTSet = [[NSCharacterSet characterSetWithCharactersInString:@"Tt "] retain];
-    gColonSet = [[NSCharacterSet characterSetWithCharactersInString:@":"] retain];
-    gPlusMinusZSet = [[NSCharacterSet characterSetWithCharactersInString:@"+-zZ"] retain];
-
-    gCalendarsForTimeZones = [[NSMutableDictionary alloc] init];
-  }
-}
 
 + (GTLDateTime *)dateTimeWithRFC3339String:(NSString *)str {
   if (str == nil) return nil;
@@ -129,16 +110,24 @@ static NSMutableDictionary *gCalendarsForTimeZones = nil;
 #else
   // NSDateComponents added timeZone: in Mac OS X 10.7.
   NSTimeZone *tz = nil;
-  if ([components respondsToSelector:@selector(timeZone)]) {
+
+#if defined(MAC_OS_X_VERSION_10_7) && MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_7
+  BOOL hasTimeZone = YES;
+#else
+  BOOL hasTimeZone = [components respondsToSelector:@selector(timeZone)];
+#endif
+  if (hasTimeZone) {
     tz = [components timeZone];
   }
-#endif
+#endif  // GTL_IPHONE
   return [self dateTimeWithDate:date timeZone:tz];
 }
 
 - (void)dealloc {
   [dateComponents_ release];
   [timeZone_ release];
+  [cachedDate_ release];
+  [cachedRFC3339String_ release];
   [super dealloc];
 }
 
@@ -201,7 +190,6 @@ static NSMutableDictionary *gCalendarsForTimeZones = nil;
 #endif  // !GTL_CAN_TRUST_DATE_COMPONENTS_ISEQUAL
 
 - (BOOL)isEqual:(GTLDateTime *)other {
-
   if (self == other) return YES;
   if (![other isKindOfClass:[GTLDateTime class]]) return NO;
 
@@ -211,16 +199,20 @@ static NSMutableDictionary *gCalendarsForTimeZones = nil;
   BOOL areDateComponentsEqual = [self doesDateComponents:self.dateComponents
                                      equalDateComponents:other.dateComponents];
 #endif
+  if (!areDateComponentsEqual) return NO;
 
   NSTimeZone *tz1 = self.timeZone;
   NSTimeZone *tz2 = other.timeZone;
   BOOL areTimeZonesEqual = (tz1 == tz2 || (tz2 && [tz1 isEqual:tz2]));
 
-  return self.offsetSeconds == other.offsetSeconds
-    && self.isUniversalTime == other.isUniversalTime
-    && self.milliseconds == other.milliseconds
-    && areDateComponentsEqual
-    && areTimeZonesEqual;
+  return areTimeZonesEqual
+    && self.offsetSeconds == other.offsetSeconds
+    && self.universalTime == other.universalTime
+    && self.milliseconds == other.milliseconds;
+}
+
+- (NSUInteger)hash {
+  return [[self date] hash];
 }
 
 - (NSString *)description {
@@ -233,7 +225,7 @@ static NSMutableDictionary *gCalendarsForTimeZones = nil;
     return timeZone_;
   }
 
-  if (self.isUniversalTime) {
+  if (self.universalTime) {
     NSTimeZone *ztz = [NSTimeZone timeZoneWithName:@"Universal"];
     return ztz;
   }
@@ -260,6 +252,13 @@ static NSMutableDictionary *gCalendarsForTimeZones = nil;
 }
 
 - (NSCalendar *)calendarForTimeZone:(NSTimeZone *)tz {
+  static NSMutableDictionary *gCalendarsForTimeZones;
+
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    gCalendarsForTimeZones = [[NSMutableDictionary alloc] init];
+  });
+
   NSCalendar *cal = nil;
   @synchronized(gCalendarsForTimeZones) {
     id tzKey = (tz ? tz : [NSNull null]);
@@ -286,6 +285,10 @@ static NSMutableDictionary *gCalendarsForTimeZones = nil;
 }
 
 - (NSDate *)date {
+  @synchronized(self) {
+    if (cachedDate_) return cachedDate_;
+  }
+
   NSDateComponents *dateComponents = self.dateComponents;
   NSTimeInterval extraMillisecondsAsSeconds = 0.0;
   NSCalendar *cal;
@@ -325,6 +328,10 @@ static NSMutableDictionary *gCalendarsForTimeZones = nil;
 #endif
   }
 
+  @synchronized(self) {
+    [cachedDate_ release];
+    cachedDate_ = [date retain];
+  }
   return date;
 }
 
@@ -333,6 +340,10 @@ static NSMutableDictionary *gCalendarsForTimeZones = nil;
 }
 
 - (NSString *)RFC3339String {
+  @synchronized(self) {
+    if (cachedRFC3339String_) return cachedRFC3339String_;
+  }
+
   NSDateComponents *dateComponents = self.dateComponents;
   NSInteger offset = self.offsetSeconds;
 
@@ -342,7 +353,7 @@ static NSMutableDictionary *gCalendarsForTimeZones = nil;
 
     NSString *timeOffsetString; // timeOffsetString like "-08:00"
 
-    if (self.isUniversalTime) {
+    if (self.universalTime) {
      timeOffsetString = @"Z";
     } else if (offset == kGTLUndefinedDateComponent) {
       // unknown offset is rendered as -00:00 per
@@ -373,6 +384,10 @@ static NSMutableDictionary *gCalendarsForTimeZones = nil;
     (long)[dateComponents year], (long)[dateComponents month],
     (long)[dateComponents day], timeString];
 
+  @synchronized(self) {
+    [cachedRFC3339String_ release];
+    cachedRFC3339String_ = [dateString retain];
+  }
   return dateString;
 }
 
@@ -416,6 +431,18 @@ static NSMutableDictionary *gCalendarsForTimeZones = nil;
 }
 
 - (void)setFromRFC3339String:(NSString *)str {
+  static NSCharacterSet *gDashSet;
+  static NSCharacterSet *gTSet;
+  static NSCharacterSet *gColonSet;
+  static NSCharacterSet *gPlusMinusZSet;
+
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    gDashSet = [[NSCharacterSet characterSetWithCharactersInString:@"-"] retain];
+    gTSet = [[NSCharacterSet characterSetWithCharactersInString:@"Tt "] retain];
+    gColonSet = [[NSCharacterSet characterSetWithCharactersInString:@":"] retain];
+    gPlusMinusZSet = [[NSCharacterSet characterSetWithCharactersInString:@"+-zZ"] retain];
+  });
 
   NSInteger year = kGTLUndefinedDateComponent;
   NSInteger month = kGTLUndefinedDateComponent;

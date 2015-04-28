@@ -54,8 +54,8 @@
 // See the description of GTLQueryTestBlock for additional details.
 @property (copy) GTLQueryTestBlock testBlock;
 
-+ (id)batchQuery;
-+ (id)batchQueryWithQueries:(NSArray *)array;
++ (instancetype)batchQuery;
++ (instancetype)batchQueryWithQueries:(NSArray *)array;
 
 - (void)addQuery:(GTLQuery *)query GTL_NONNULL((1));
 

@@ -42,11 +42,11 @@ static NSString *const kUserDataPropertyKey = @"_userData";
             surrogates = surrogates_,
             userProperties = userProperties_;
 
-+ (id)object {
++ (instancetype)object {
   return [[[self alloc] init] autorelease];
 }
 
-+ (id)objectWithJSON:(NSMutableDictionary *)dict {
++ (instancetype)objectWithJSON:(NSMutableDictionary *)dict {
   GTLObject *obj = [self object];
   obj.JSON = dict;
   return obj;
@@ -482,30 +482,28 @@ static NSMutableDictionary *gKindMap = nil;
 
 + (void)registerObjectClassForKind:(NSString *)kind {
   // there's no autorelease pool in place at +load time, so we'll create our own
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+  @autoreleasepool {
 
-  if (gKindMap == nil) {
-    gKindMap = [[NSMutableDictionary alloc] init];
-  }
+    if (gKindMap == nil) {
+      gKindMap = [[NSMutableDictionary alloc] init];
+    }
 
-  Class selfClass = [self class];
+    Class selfClass = [self class];
 
 #if DEBUG
-  // ensure this is a unique registration
-  if ([gKindMap objectForKey:kind] != nil ) {
-    GTL_DEBUG_LOG(@"%@ (%@) registration conflicts with %@",
-                  selfClass, kind, [gKindMap objectForKey:kind]);
-  }
-  if ([[gKindMap allKeysForObject:selfClass] count] != 0) {
-    GTL_DEBUG_LOG(@"%@ (%@) registration conflicts with %@",
-                  selfClass, kind, [gKindMap allKeysForObject:selfClass]);
-  }
+    // ensure this is a unique registration
+    if ([gKindMap objectForKey:kind] != nil ) {
+      GTL_DEBUG_LOG(@"%@ (%@) registration conflicts with %@",
+                    selfClass, kind, [gKindMap objectForKey:kind]);
+    }
+    if ([[gKindMap allKeysForObject:selfClass] count] != 0) {
+      GTL_DEBUG_LOG(@"%@ (%@) registration conflicts with %@",
+                    selfClass, kind, [gKindMap allKeysForObject:selfClass]);
+    }
 #endif
 
-  [gKindMap setValue:selfClass forKey:kind];
-
-  // we drain here to keep the clang static analyzer quiet
-  [pool drain];
+    [gKindMap setValue:selfClass forKey:kind];
+  }
 }
 
 #pragma mark Object Instantiation

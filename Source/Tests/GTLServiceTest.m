@@ -63,7 +63,7 @@
 @dynamic maxResults, pageToken, task, tasklist, fields, showCompleted,
          showDeleted, showHidden;
 
-+ (id)queryForTasksListWithTasklist:(NSString *)tasklist {
++ (instancetype)queryForTasksListWithTasklist:(NSString *)tasklist {
   NSString *methodName = @"tasks.tasks.list";
   GTLQueryTasksTest *query = [self queryWithMethodName:methodName];
   query.tasklist = tasklist;
@@ -71,9 +71,9 @@
   return query;
 }
 
-+ (id)queryForTasksUpdateWithObject:(GTLTasksTask *)object
-                           tasklist:(NSString *)tasklist
-                               task:(NSString *)task {
++ (instancetype)queryForTasksUpdateWithObject:(GTLTasksTask *)object
+                                     tasklist:(NSString *)tasklist
+                                         task:(NSString *)task {
   if (object == nil) {
     return nil;
   }
@@ -86,8 +86,8 @@
   return query;
 }
 
-+ (id)queryForTasksDeleteWithTasklist:(NSString *)tasklist
-                                 task:(NSString *)task {
++ (instancetype)queryForTasksDeleteWithTasklist:(NSString *)tasklist
+                                           task:(NSString *)task {
   NSString *methodName = @"tasks.tasks.delete";
   GTLQueryTasksTest *query = [self queryWithMethodName:methodName];
   query.tasklist = tasklist;
@@ -96,8 +96,8 @@
 }
 
 
-+ (id)queryForTasksGetWithTasklist:(NSString *)tasklist
-                              task:(NSString *)task {
++ (instancetype)queryForTasksGetWithTasklist:(NSString *)tasklist
+                                        task:(NSString *)task {
   NSString *methodName = @"tasks.tasks.get";
   GTLQueryTasksTest *query = [self queryWithMethodName:methodName];
   query.tasklist = tasklist;

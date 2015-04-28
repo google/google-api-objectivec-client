@@ -26,12 +26,12 @@
             urlQueryParameters = urlQueryParameters_,
             testBlock = testBlock_;
 
-+ (id)batchQuery {
++ (instancetype)batchQuery {
   GTLBatchQuery *obj = [[[self alloc] init] autorelease];
   return obj;
 }
 
-+ (id)batchQueryWithQueries:(NSArray *)queries {
++ (instancetype)batchQueryWithQueries:(NSArray *)queries {
   GTLBatchQuery *obj = [self batchQuery];
   obj.queries = queries;
   return obj;

@@ -27,9 +27,7 @@
 @dynamic data;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map = [NSDictionary dictionaryWithObject:[GTLErrorObjectData class]
-                                                  forKey:@"data"];
-  return map;
+  return @{ @"data" : [GTLErrorObjectData class] };
 }
 
 - (NSError *)foundationError {

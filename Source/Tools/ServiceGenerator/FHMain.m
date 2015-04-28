@@ -272,6 +272,8 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
     rootURLOverrides_ = YES;
 
     discoveryService_ = [[GTLServiceDiscovery alloc] init];
+    discoveryService_.allowInsecureQueries = YES;
+
     // We aren't bundled, so add a good UA.
     discoveryService_.userAgent = @"com.google.ServiceGenerator";
   }
@@ -685,7 +687,7 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
       if ([version isEqual:@"-"]) {
         [self.apisToSkip addObject:apiName];
       } else {
-        NSArray *pair = [NSArray arrayWithObjects:apiName, version, nil];
+        NSArray *pair = @[ apiName, version ];
         [self.apisToFetch addObject:pair];
       }
       self.state = FHMain_Describe;
@@ -784,8 +786,7 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
           if ([self.apisToSkip containsObject:apiName]) {
             fprintf(stderr, " - %s Will skip '%s'.\n", kINFO, [apiName UTF8String]);
           } else {
-            NSArray *pair =
-              [NSArray arrayWithObjects:apiName, listItem.version, nil];
+            NSArray *pair = @[ apiName, listItem.version ];
             [self.apisToFetch addObject:pair];
           }
         }
@@ -939,7 +940,7 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
       // Apply any name override.
       NSString *formattedNameOverride = nil;
       NSString *apiVersion =
-      [NSString stringWithFormat:@"%@:%@", api.name, api.version];
+          [NSString stringWithFormat:@"%@:%@", api.name, api.version];
       formattedNameOverride = [formattedNames_ objectForKey:apiVersion];
       if (formattedNameOverride == nil) {
         formattedNameOverride = [formattedNames_ objectForKey:api.name];

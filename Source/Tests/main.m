@@ -17,12 +17,8 @@
 #import <Cocoa/Cocoa.h>
 
 int main(int argc, char *argv[]) {
-
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-
-  NSLog(@"DevelopmentTestTool running");
-
-  [pool release];
-
+  @autoreleasepool {
+    NSLog(@"DevelopmentTestTool running");
+  }
   return 0;
 }
