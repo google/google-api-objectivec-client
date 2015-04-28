@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (45 custom class methods, 55 custom properties)
+//   GTLQueryYouTube (61 custom class methods, 69 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -35,9 +35,12 @@
 #endif
 
 @class GTLYouTubeActivity;
+@class GTLYouTubeCaption;
 @class GTLYouTubeChannel;
 @class GTLYouTubeChannelBannerResource;
 @class GTLYouTubeChannelSection;
+@class GTLYouTubeComment;
+@class GTLYouTubeCommentThread;
 @class GTLYouTubeInvideoBranding;
 @class GTLYouTubeLiveBroadcast;
 @class GTLYouTubeLiveStream;
@@ -45,6 +48,7 @@
 @class GTLYouTubePlaylistItem;
 @class GTLYouTubeSubscription;
 @class GTLYouTubeVideo;
+@class GTLYouTubeVideoAbuseReport;
 
 @interface GTLQueryYouTube : GTLQuery
 
@@ -58,16 +62,20 @@
 //
 // Method-specific parameters; see the comments below for more information.
 //
+@property (copy) NSString *allThreadsRelatedToChannelId;
 @property (assign) BOOL autoLevels;
+@property (assign) BOOL banAuthor;
 @property (copy) NSString *broadcastStatus;
 @property (copy) NSString *categoryId;
 @property (copy) NSString *channelId;
 @property (copy) NSString *channelType;
 @property (copy) NSString *chart;
+@property (assign) long long debugProjectIdOverride;
 @property (assign) BOOL displaySlate;
 @property (copy) NSString *eventType;
 @property (copy) NSString *forChannelId;
 @property (assign) BOOL forContentOwner;
+@property (assign) BOOL forDeveloper;
 @property (assign) BOOL forMine;
 @property (copy) NSString *forUsername;
 @property (copy) NSString *hl;
@@ -80,14 +88,17 @@
 @property (assign) BOOL managedByMe;
 @property (assign) NSUInteger maxResults;
 @property (assign) BOOL mine;
+@property (copy) NSString *moderationStatus;
 @property (copy) NSString *myRating;
 @property (assign) BOOL mySubscribers;
 @property (assign) BOOL notifySubscribers;
 @property (assign) unsigned long long offsetTimeMs;
+@property (copy) NSString *onBehalfOf;
 @property (copy) NSString *onBehalfOfContentOwner;
 @property (copy) NSString *onBehalfOfContentOwnerChannel;
 @property (copy) NSString *order;
 @property (copy) NSString *pageToken;
+@property (copy) NSString *parentId;
 @property (copy) NSString *part;
 @property (copy) NSString *playlistId;
 @property (retain) GTLDateTime *publishedAfter;
@@ -97,9 +108,16 @@
 @property (copy) NSString *regionCode;
 @property (copy) NSString *relatedToVideoId;
 @property (copy) NSString *relevanceLanguage;
+@property (retain) GTLYouTubeVideoAbuseReport *report;
 @property (copy) NSString *safeSearch;
+@property (copy) NSString *searchTerms;
+@property (assign) BOOL shareOnGooglePlus;
 @property (assign) BOOL stabilize;
 @property (copy) NSString *streamId;
+@property (assign) BOOL sync;
+@property (copy) NSString *textFormat;
+@property (copy) NSString *tfmt;
+@property (copy) NSString *tlang;
 @property (copy) NSString *topicId;
 @property (copy) NSString *type;
 @property (copy) NSString *videoCaption;
@@ -190,6 +208,137 @@
 //   kGTLAuthScopeYouTubeReadonly
 // Fetches a GTLYouTubeActivityListResponse.
 + (id)queryForActivitiesListWithPart:(NSString *)part;
+
+#pragma mark -
+#pragma mark "captions" methods
+// These create a GTLQueryYouTube object.
+
+// Method: youtube.captions.delete
+// Deletes a specified caption track.
+//  Required:
+//   identifier: The id parameter identifies the caption track that is being
+//     deleted. The value is a caption track ID as identified by the id property
+//     in a caption resource.
+//  Optional:
+//   debugProjectIdOverride: The debugProjectIdOverride parameter should be used
+//     for mimicking a request for a certain project ID
+//   onBehalfOf: ID of the Google+ Page for the channel that the request is be
+//     on behalf of
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTubeForceSsl
++ (id)queryForCaptionsDeleteWithIdentifier:(NSString *)identifier;
+
+// Method: youtube.captions.download
+// Downloads a caption track. The caption track is returned in its original
+// format unless the request specifies a value for the tfmt parameter and in its
+// original language unless the request specifies a value for the tlang
+// parameter.
+//  Required:
+//   identifier: The id parameter identifies the caption track that is being
+//     retrieved. The value is a caption track ID as identified by the id
+//     property in a caption resource.
+//  Optional:
+//   debugProjectIdOverride: The debugProjectIdOverride parameter should be used
+//     for mimicking a request for a certain project ID
+//   onBehalfOf: ID of the Google+ Page for the channel that the request is be
+//     on behalf of
+//   tfmt: The tfmt parameter specifies that the caption track should be
+//     returned in a specific format. If the parameter is not included in the
+//     request, the track is returned in its original format.
+//      kGTLYouTubeTfmtSbv: SubViewer subtitle.
+//      kGTLYouTubeTfmtScc: Scenarist Closed Caption format.
+//      kGTLYouTubeTfmtSrt: SubRip subtitle.
+//      kGTLYouTubeTfmtTtml: Timed Text Markup Language caption.
+//      kGTLYouTubeTfmtVtt: Web Video Text Tracks caption.
+//   tlang: The tlang parameter specifies that the API response should return a
+//     translation of the specified caption track. The parameter value is an ISO
+//     639-1 two-letter language code that identifies the desired caption
+//     language. The translation is generated by using machine translation, such
+//     as Google Translate.
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTubeForceSsl
++ (id)queryForCaptionsDownloadWithIdentifier:(NSString *)identifier;
+
+// Method: youtube.captions.insert
+// Uploads a caption track.
+//  Required:
+//   part: The part parameter specifies the caption resource parts that the API
+//     response will include. Set the parameter value to snippet.
+//  Optional:
+//   debugProjectIdOverride: The debugProjectIdOverride parameter should be used
+//     for mimicking a request for a certain project ID.
+//   onBehalfOf: ID of the Google+ Page for the channel that the request is be
+//     on behalf of
+//   sync: The sync parameter indicates whether YouTube should automatically
+//     synchronize the caption file with the audio track of the video. If you
+//     set the value to true, YouTube will disregard any time codes that are in
+//     the uploaded caption file and generate new time codes for the captions.
+//     You should set the sync parameter to true if you are uploading a
+//     transcript, which has no time codes, or if you suspect the time codes in
+//     your file are incorrect and want YouTube to try to fix them.
+//  Upload Parameters:
+//   Maximum size: 100MB
+//   Accepted MIME type(s): */*, application/octet-stream, text/xml
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTubeForceSsl
+// Fetches a GTLYouTubeCaption.
++ (id)queryForCaptionsInsertWithObject:(GTLYouTubeCaption *)object
+                                  part:(NSString *)part
+                      uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
+
+// Method: youtube.captions.list
+// Returns a list of caption tracks that are associated with a specified video.
+// Note that the API response does not contain the actual captions and that the
+// captions.download method provides the ability to retrieve a caption track.
+//  Required:
+//   part: The part parameter specifies a comma-separated list of one or more
+//     caption resource parts that the API response will include. The part names
+//     that you can include in the parameter value are id and snippet.
+//   videoId: The videoId parameter specifies the YouTube video ID of the video
+//     for which the API should return caption tracks.
+//  Optional:
+//   debugProjectIdOverride: The debugProjectIdOverride parameter should be used
+//     for mimicking a request for a certain project ID.
+//   identifier: The id parameter specifies a comma-separated list of IDs that
+//     identify the caption resources that should be retrieved. Each ID must
+//     identify a caption track associated with the specified video.
+//   onBehalfOf: ID of the Google+ Page for the channel that the request is on
+//     behalf of.
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTubeForceSsl
+// Fetches a GTLYouTubeCaptionListResponse.
++ (id)queryForCaptionsListWithPart:(NSString *)part
+                           videoId:(NSString *)videoId;
+
+// Method: youtube.captions.update
+// Updates a caption track. When updating a caption track, you can change the
+// track's draft status, upload a new caption file for the track, or both.
+//  Required:
+//   part: The part parameter serves two purposes in this operation. It
+//     identifies the properties that the write operation will set as well as
+//     the properties that the API response will include. Set the property value
+//     to snippet if you are updating the track's draft status. Otherwise, set
+//     the property value to id.
+//  Optional:
+//   debugProjectIdOverride: The debugProjectIdOverride parameter should be used
+//     for mimicking a request for a certain project ID.
+//   onBehalfOf: ID of the Google+ Page for the channel that the request is be
+//     on behalf of
+//   sync: Note: The API server only processes the parameter value if the
+//     request contains an updated caption file.
+//     The sync parameter indicates whether YouTube should automatically
+//     synchronize the caption file with the audio track of the video. If you
+//     set the value to true, YouTube will automatically synchronize the caption
+//     track with the audio track.
+//  Upload Parameters:
+//   Maximum size: 100MB
+//   Accepted MIME type(s): */*, application/octet-stream, text/xml
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTubeForceSsl
+// Fetches a GTLYouTubeCaption.
++ (id)queryForCaptionsUpdateWithObject:(GTLYouTubeCaption *)object
+                                  part:(NSString *)part
+                      uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
 #pragma mark -
 #pragma mark "channelBanners" methods
@@ -317,6 +466,14 @@
 //  Optional:
 //   channelId: The channelId parameter specifies a YouTube channel ID. The API
 //     will only return that channel's channelSections.
+//   hl: The hl parameter indicates that the snippet.localized property values
+//     in the returned channelSection resources should be in the specified
+//     language if localized values for that language are available. For
+//     example, if the API request specifies hl=de, the snippet.localized
+//     properties in the API response will contain German titles if German
+//     titles are available. Channel owners can provide localized channel
+//     section titles using either the channelSections.insert or
+//     channelSections.update method.
 //   identifier: The id parameter specifies a comma-separated list of the
 //     YouTube channelSection ID(s) for the resource(s) that are being
 //     retrieved. In a channelSection resource, the id property specifies the
@@ -392,6 +549,8 @@
 //     thereby requesting YouTube channels associated with that category.
 //   forUsername: The forUsername parameter specifies a YouTube username,
 //     thereby requesting the channel associated with that username.
+//   hl: The hl parameter should be used for filter out the properties that are
+//     not in the given language. Used for the brandingSettings part.
 //   identifier: The id parameter specifies a comma-separated list of the
 //     YouTube channel ID(s) for the resource(s) that are being retrieved. In a
 //     channel resource, the id property specifies the channel's YouTube channel
@@ -456,6 +615,208 @@
 // Fetches a GTLYouTubeChannel.
 + (id)queryForChannelsUpdateWithObject:(GTLYouTubeChannel *)object
                                   part:(NSString *)part;
+
+#pragma mark -
+#pragma mark "comments" methods
+// These create a GTLQueryYouTube object.
+
+// Method: youtube.comments.delete
+// Deletes a comment.
+//  Required:
+//   identifier: The id parameter specifies the comment ID for the resource that
+//     should be deleted.
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTubeForceSsl
++ (id)queryForCommentsDeleteWithIdentifier:(NSString *)identifier;
+
+// Method: youtube.comments.insert
+// Creates a new comment.
+// Note: to create a top level comment it is also necessary to create a comment
+// thread. Both are accomplished through the commentThreads resource.
+//  Required:
+//   part: The part parameter serves two purposes in this operation. It
+//     identifies the properties that the write operation will set as well as
+//     the properties that the API response will include.
+//     The part names that you can include in the parameter value are id and
+//     snippet. However only snippet contains properties that can be set.
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTubeForceSsl
+// Fetches a GTLYouTubeComment.
++ (id)queryForCommentsInsertWithObject:(GTLYouTubeComment *)object
+                                  part:(NSString *)part;
+
+// Method: youtube.comments.list
+// Returns a list of comments that match the API request parameters.
+//  Required:
+//   part: The part parameter specifies the comment resource parts that the API
+//     response will include. Supported values are id and snippet.
+//  Optional:
+//   identifier: The id parameter specifies a comma-separated list of comment
+//     IDs for the resources that should be retrieved.
+//   maxResults: The maxResults parameter specifies the maximum number of items
+//     that should be returned in the result set.
+//     Note: This parameter is not supported for use in conjunction with the id
+//     parameter. (1..100, default 20)
+//   pageToken: The pageToken parameter identifies a specific page in the result
+//     set that should be returned. In an API response, the nextPageToken
+//     property identifies the next page of the result that can be retrieved.
+//     Note: This parameter is not supported for use in conjunction with the id
+//     parameter.
+//   parentId: The parentId parameter specifies the ID of the comment for which
+//     replies should be retrieved.
+//     Note: Currently YouTube features only one level of replies (ie replies to
+//     top level comments). However replies to replies may be supported in the
+//     future.
+//   textFormat: Set this parameter's value to html or plainText to instruct the
+//     API to return the comments left by users formatted as HTML or as plain
+//     text. (Default "FORMAT_HTML")
+//      kGTLYouTubeTextFormatHtml: Returns the comments in HTML format.
+//      kGTLYouTubeTextFormatPlainText: Returns the comments in plain text
+//        format.
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTubeForceSsl
+// Fetches a GTLYouTubeCommentListResponse.
++ (id)queryForCommentsListWithPart:(NSString *)part;
+
+// Method: youtube.comments.markAsSpam
+// Expresses the caller's opinion that a comment is spam.
+//  Required:
+//   identifier: The id parameter specifies a comma-separated list of IDs of
+//     comments which should get flagged as spam.
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTubeForceSsl
++ (id)queryForCommentsMarkAsSpamWithIdentifier:(NSString *)identifier;
+
+// Method: youtube.comments.setModerationStatus
+// Sets the moderation status of one or more comments.
+//  Required:
+//   identifier: The id parameter specifies a comma-separated list of IDs of
+//     comments whose moderation status should be updated.
+//   moderationStatus: Determines the new moderation status of the specified
+//     comments.
+//      kGTLYouTubeModerationStatusHeldForReview: Marks a comment as awaiting
+//        review by a moderator.
+//      kGTLYouTubeModerationStatusPublished: Clears a comment for public
+//        display.
+//      kGTLYouTubeModerationStatusRejected: Rejects a comment as not fit for
+//        display.
+//        Note: currently there is no way to list or otherwise discover a
+//        rejected comment. However it is possible to change its moderation
+//        status as long as its ID is still known.
+//        Note: Currently, if you reject a comment you effectively also hide all
+//        its replies as there is no longer any way to discover them. This may
+//        change in the future.
+//  Optional:
+//   banAuthor: The banAuthor paramter, if set to true, adds the author of the
+//     comment to the ban list. This means all future comments of the author
+//     will autmomatically be rejected.
+//     Note: This parameter is only valid in combination with moderationStatus
+//     'rejected'. (Default false)
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTubeForceSsl
++ (id)queryForCommentsSetModerationStatusWithIdentifier:(NSString *)identifier
+                                       moderationStatus:(NSString *)moderationStatus;
+
+// Method: youtube.comments.update
+// Modifies an existing comment.
+//  Required:
+//   part: The part parameter serves two purposes in this operation. It
+//     identifies the properties that the write operation will set as well as
+//     the properties that the API response will include.
+//     The part names that you can include in the parameter value are id and
+//     snippet. However only snippet contains properties that can be updated.
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTubeForceSsl
+// Fetches a GTLYouTubeComment.
++ (id)queryForCommentsUpdateWithObject:(GTLYouTubeComment *)object
+                                  part:(NSString *)part;
+
+#pragma mark -
+#pragma mark "commentThreads" methods
+// These create a GTLQueryYouTube object.
+
+// Method: youtube.commentThreads.insert
+// Creates a new comment thread and top level comment.
+//  Required:
+//   part: The part parameter serves two purposes in this operation. It
+//     identifies the properties that the write operation will set as well as
+//     the properties that the API response will include.
+//     The part names that you can include in the parameter value are id and
+//     snippet. However only snippet contains properties that can be set.
+//  Optional:
+//   shareOnGooglePlus: The shareOnGooglePlus determines whether this thread
+//     should also be posted on Google+. (Default false)
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTubeForceSsl
+// Fetches a GTLYouTubeCommentThread.
++ (id)queryForCommentThreadsInsertWithObject:(GTLYouTubeCommentThread *)object
+                                        part:(NSString *)part;
+
+// Method: youtube.commentThreads.list
+// Returns a list of comment threads that match the API request parameters.
+//  Required:
+//   part: The part parameter specifies the commentThread resource parts that
+//     the API response will include. Supported values are id, snippet and
+//     replies.
+//  Optional:
+//   allThreadsRelatedToChannelId: The allThreadsRelatedToChannelId parameter
+//     instructs the API to return the comment threads of all videos of the
+//     channel and the channel comments as well.
+//   channelId: The channelId parameter instructs the API to return the comment
+//     threads for all the channel comments (not including comments left on
+//     videos).
+//   identifier: The id parameter specifies a comma-separated list of comment
+//     thread IDs for the resources that should be retrieved.
+//   maxResults: The maxResults parameter specifies the maximum number of items
+//     that should be returned in the result set.
+//     Note: This parameter is not supported for use in conjunction with the id
+//     parameter. (1..100, default 20)
+//   moderationStatus: Set this parameter to limit the returned comment threads
+//     to a particular moderation state.
+//     Note: This parameter is not supported for use in conjunction with the id
+//     parameter. (Default kGTLYouTubeModerationStatusPublished)
+//      kGTLYouTubeModerationStatusHeldForReview: Returns only comment threads
+//        awaiting review by a moderator.
+//      kGTLYouTubeModerationStatusLikelySpam: Returns only comment threads
+//        classified as likely being spam.
+//      kGTLYouTubeModerationStatusPublished: Returns only published comment
+//        threads.
+//   pageToken: The pageToken parameter identifies a specific page in the result
+//     set that should be returned. In an API response, the nextPageToken
+//     property identifies the next page of the result that can be retrieved.
+//     Note: This parameter is not supported for use in conjunction with the id
+//     parameter.
+//   searchTerms: The searchTerms parameter instructs the API to limit the
+//     returned comments to those which contain the specified search terms.
+//     Note: This parameter is not supported for use in conjunction with the id
+//     parameter.
+//   textFormat: Set this parameter's value to html or plainText to instruct the
+//     API to return the comments left by users in html formatted or in plain
+//     text. (Default "FORMAT_HTML")
+//      kGTLYouTubeTextFormatHtml: Returns the comments in HTML format.
+//      kGTLYouTubeTextFormatPlainText: Returns the comments in plain text
+//        format.
+//   videoId: The videoId parameter instructs the API to return the comment
+//     threads for the video specified by the video id.
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTubeForceSsl
+// Fetches a GTLYouTubeCommentThreadListResponse.
++ (id)queryForCommentThreadsListWithPart:(NSString *)part;
+
+// Method: youtube.commentThreads.update
+// Modifies an existing comment.
+//  Required:
+//   part: The part parameter serves two purposes in this operation. It
+//     identifies the properties that the write operation will set as well as
+//     the properties that the API response will include.
+//     The part names that you can include in the parameter value are id,
+//     snippet and replies. However only snippet contains properties that can be
+//     updated.
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTubeForceSsl
+// Fetches a GTLYouTubeCommentThread.
++ (id)queryForCommentThreadsUpdateWithObject:(GTLYouTubeCommentThread *)object
+                                        part:(NSString *)part;
 
 #pragma mark -
 #pragma mark "guideCategories" methods
@@ -1319,6 +1680,8 @@
 //  Optional:
 //   channelId: This value indicates that the API should only return the
 //     specified channel's playlists.
+//   hl: The hl parameter should be used for filter out the properties that are
+//     not in the given language. Used for the snippet part.
 //   identifier: The id parameter specifies a comma-separated list of the
 //     YouTube playlist ID(s) for the resource(s) that are being retrieved. In a
 //     playlist resource, the id property specifies the playlist's YouTube
@@ -1441,6 +1804,12 @@
 //     onBehalfOfContentOwner parameter. The user must be authenticated using a
 //     CMS account linked to the specified content owner and
 //     onBehalfOfContentOwner must be provided.
+//   forDeveloper: The forDeveloper parameter restricts the search to only
+//     retrieve videos uploaded via the developer's application or website. The
+//     API server uses the request's authorization credentials to identify the
+//     developer. Therefore, a developer can restrict results to videos uploaded
+//     through the developer's own app or website but not to videos uploaded
+//     through other apps or sites.
 //   forMine: The forMine parameter restricts the search to only retrieve videos
 //     owned by the authenticated user. If you set this parameter to true, then
 //     the type parameter's value must also be set to video.
@@ -1732,6 +2101,26 @@
                       uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
 #pragma mark -
+#pragma mark "videoAbuseReportReasons" methods
+// These create a GTLQueryYouTube object.
+
+// Method: youtube.videoAbuseReportReasons.list
+// Returns a list of abuse reasons that can be used for reporting abusive
+// videos.
+//  Required:
+//   part: The part parameter specifies the videoCategory resource parts that
+//     the API response will include. Supported values are id and snippet.
+//  Optional:
+//   hl: The hl parameter specifies the language that should be used for text
+//     values in the API response. (Default en_US)
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
+//   kGTLAuthScopeYouTubeReadonly
+// Fetches a GTLYouTubeVideoAbuseReportReasonListResponse.
++ (id)queryForVideoAbuseReportReasonsListWithPart:(NSString *)part;
+
+#pragma mark -
 #pragma mark "videoCategories" methods
 // These create a GTLQueryYouTube object.
 
@@ -1978,6 +2367,27 @@
 //   kGTLAuthScopeYouTubeYoutubepartner
 + (id)queryForVideosRateWithIdentifier:(NSString *)identifier
                                 rating:(NSString *)rating;
+
+// Method: youtube.videos.reportAbuse
+// Report abuse for a video.
+//  Optional:
+//   report: GTLYouTubeVideoAbuseReport
+//   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
+//     YouTube content partners.
+//     The onBehalfOfContentOwner parameter indicates that the request's
+//     authorization credentials identify a YouTube CMS user who is acting on
+//     behalf of the content owner specified in the parameter value. This
+//     parameter is intended for YouTube content partners that own and manage
+//     many different YouTube channels. It allows content owners to authenticate
+//     once and get access to all their video and channel data, without having
+//     to provide authentication credentials for each individual channel. The
+//     CMS account that the user authenticates with must be linked to the
+//     specified YouTube content owner.
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
+//   kGTLAuthScopeYouTubeYoutubepartner
++ (id)queryForVideosReportAbuse;
 
 // Method: youtube.videos.update
 // Updates a video's metadata.

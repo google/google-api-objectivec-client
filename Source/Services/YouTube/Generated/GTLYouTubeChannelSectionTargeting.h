@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeChannelSnippet.m
+//  GTLYouTubeChannelSectionTargeting.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,27 +26,30 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelSnippet (0 custom class methods, 7 custom properties)
+//   GTLYouTubeChannelSectionTargeting (0 custom class methods, 3 custom properties)
 
-#import "GTLYouTubeChannelSnippet.h"
-
-#import "GTLYouTubeChannelLocalization.h"
-#import "GTLYouTubeThumbnailDetails.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeChannelSnippet
+//   GTLYouTubeChannelSectionTargeting
 //
 
-@implementation GTLYouTubeChannelSnippet
-@dynamic country, defaultLanguage, descriptionProperty, localized, publishedAt,
-         thumbnails, title;
+// ChannelSection targeting setting.
 
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"description"
-                                forKey:@"descriptionProperty"];
-  return map;
-}
+@interface GTLYouTubeChannelSectionTargeting : GTLObject
+
+// The country the channel section is targeting.
+@property (retain) NSArray *countries;  // of NSString
+
+// The language the channel section is targeting.
+@property (retain) NSArray *languages;  // of NSString
+
+// The region the channel section is targeting.
+@property (retain) NSArray *regions;  // of NSString
 
 @end

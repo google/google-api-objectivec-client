@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveBroadcastStatus (0 custom class methods, 4 custom properties)
+//   GTLYouTubeLiveBroadcastStatus (0 custom class methods, 5 custom properties)
 
 #import "GTLYouTubeLiveBroadcastStatus.h"
 
@@ -36,5 +36,6 @@
 //
 
 @implementation GTLYouTubeLiveBroadcastStatus
-@dynamic lifeCycleStatus, liveBroadcastPriority, privacyStatus, recordingStatus;
+@dynamic isDefaultBroadcast, lifeCycleStatus, liveBroadcastPriority,
+         privacyStatus, recordingStatus;
 @end

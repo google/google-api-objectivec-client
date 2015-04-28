@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeChannelSnippet.m
+//  GTLYouTubeVideoAbuseReportReasonListResponse.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,27 +26,36 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelSnippet (0 custom class methods, 7 custom properties)
+//   GTLYouTubeVideoAbuseReportReasonListResponse (0 custom class methods, 5 custom properties)
 
-#import "GTLYouTubeChannelSnippet.h"
+#import "GTLYouTubeVideoAbuseReportReasonListResponse.h"
 
-#import "GTLYouTubeChannelLocalization.h"
-#import "GTLYouTubeThumbnailDetails.h"
+#import "GTLYouTubeVideoAbuseReportReason.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeChannelSnippet
+//   GTLYouTubeVideoAbuseReportReasonListResponse
 //
 
-@implementation GTLYouTubeChannelSnippet
-@dynamic country, defaultLanguage, descriptionProperty, localized, publishedAt,
-         thumbnails, title;
+@implementation GTLYouTubeVideoAbuseReportReasonListResponse
+@dynamic ETag, eventId, items, kind, visitorId;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"description"
-                                forKey:@"descriptionProperty"];
+    [NSDictionary dictionaryWithObject:@"etag"
+                                forKey:@"ETag"];
   return map;
+}
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLYouTubeVideoAbuseReportReason class]
+                                forKey:@"items"];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"youtube#videoAbuseReportReasonListResponse"];
 }
 
 @end

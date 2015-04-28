@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveBroadcastStatus.h
+//  GTLYouTubeVideoAbuseReportReasonListResponse.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveBroadcastStatus (0 custom class methods, 5 custom properties)
+//   GTLYouTubeVideoAbuseReportReasonListResponse (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,31 +34,32 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLYouTubeVideoAbuseReportReason;
+
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveBroadcastStatus
+//   GTLYouTubeVideoAbuseReportReasonListResponse
 //
 
-@interface GTLYouTubeLiveBroadcastStatus : GTLObject
+// This class supports NSFastEnumeration over its "items" property. It also
+// supports -itemAtIndex: to retrieve individual objects from "items".
 
-// Whether or not this broadcast is the default broadcast
-@property (retain) NSNumber *isDefaultBroadcast;  // boolValue
+@interface GTLYouTubeVideoAbuseReportReasonListResponse : GTLCollectionObject
 
-// The broadcast's status. The status can be updated using the API's
-// liveBroadcasts.transition method.
-@property (copy) NSString *lifeCycleStatus;
+// Etag of this resource.
+@property (copy) NSString *ETag;
 
-// Priority of the live broadcast event (internal state).
-@property (copy) NSString *liveBroadcastPriority;
+// Serialized EventId of the request which produced this response.
+@property (copy) NSString *eventId;
 
-// The broadcast's privacy status. Note that the broadcast represents exactly
-// one YouTube video, so the privacy settings are identical to those supported
-// for videos. In addition, you can set this field by modifying the broadcast
-// resource or by setting the privacyStatus field of the corresponding video
-// resource.
-@property (copy) NSString *privacyStatus;
+// A list of valid abuse reasons that are used with video.ReportAbuse.
+@property (retain) NSArray *items;  // of GTLYouTubeVideoAbuseReportReason
 
-// The broadcast's recording status.
-@property (copy) NSString *recordingStatus;
+// Identifies what kind of resource this is. Value: the fixed string
+// "youtube#videoAbuseReportReasonListResponse".
+@property (copy) NSString *kind;
+
+// The visitorId identifies the visitor.
+@property (copy) NSString *visitorId;
 
 @end

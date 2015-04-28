@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelSection (0 custom class methods, 6 custom properties)
+//   GTLYouTubeChannelSection (0 custom class methods, 7 custom properties)
 //   GTLYouTubeChannelSectionLocalizations (0 custom class methods, 0 custom properties)
 
 #import "GTLYouTubeChannelSection.h"
@@ -34,6 +34,7 @@
 #import "GTLYouTubeChannelSectionContentDetails.h"
 #import "GTLYouTubeChannelSectionLocalization.h"
 #import "GTLYouTubeChannelSectionSnippet.h"
+#import "GTLYouTubeChannelSectionTargeting.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -41,7 +42,8 @@
 //
 
 @implementation GTLYouTubeChannelSection
-@dynamic contentDetails, ETag, identifier, kind, localizations, snippet;
+@dynamic contentDetails, ETag, identifier, kind, localizations, snippet,
+         targeting;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =

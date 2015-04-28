@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeChannelSnippet.m
+//  GTLYouTubeVideoAbuseReportReasonSnippet.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,27 +26,30 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelSnippet (0 custom class methods, 7 custom properties)
+//   GTLYouTubeVideoAbuseReportReasonSnippet (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubeChannelSnippet.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLYouTubeChannelLocalization.h"
-#import "GTLYouTubeThumbnailDetails.h"
+@class GTLYouTubeVideoAbuseReportSecondaryReason;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeChannelSnippet
+//   GTLYouTubeVideoAbuseReportReasonSnippet
 //
 
-@implementation GTLYouTubeChannelSnippet
-@dynamic country, defaultLanguage, descriptionProperty, localized, publishedAt,
-         thumbnails, title;
+// Basic details about a video category, such as its localized title.
 
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"description"
-                                forKey:@"descriptionProperty"];
-  return map;
-}
+@interface GTLYouTubeVideoAbuseReportReasonSnippet : GTLObject
+
+// The localized label belonging to this abuse report reason.
+@property (copy) NSString *label;
+
+// The secondary reasons associated with this reason, if any are available.
+// (There might be 0 or more.)
+@property (retain) NSArray *secondaryReasons;  // of GTLYouTubeVideoAbuseReportSecondaryReason
 
 @end

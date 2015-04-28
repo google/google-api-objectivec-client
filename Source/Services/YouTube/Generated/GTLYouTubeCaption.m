@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeChannelSnippet.m
+//  GTLYouTubeCaption.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,27 +26,31 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelSnippet (0 custom class methods, 7 custom properties)
+//   GTLYouTubeCaption (0 custom class methods, 4 custom properties)
 
-#import "GTLYouTubeChannelSnippet.h"
+#import "GTLYouTubeCaption.h"
 
-#import "GTLYouTubeChannelLocalization.h"
-#import "GTLYouTubeThumbnailDetails.h"
+#import "GTLYouTubeCaptionSnippet.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeChannelSnippet
+//   GTLYouTubeCaption
 //
 
-@implementation GTLYouTubeChannelSnippet
-@dynamic country, defaultLanguage, descriptionProperty, localized, publishedAt,
-         thumbnails, title;
+@implementation GTLYouTubeCaption
+@dynamic ETag, identifier, kind, snippet;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"description"
-                                forKey:@"descriptionProperty"];
+    [NSDictionary dictionaryWithObjectsAndKeys:
+      @"etag", @"ETag",
+      @"id", @"identifier",
+      nil];
   return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"youtube#caption"];
 }
 
 @end

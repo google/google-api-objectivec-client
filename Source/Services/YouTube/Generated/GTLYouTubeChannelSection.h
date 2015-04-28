@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelSection (0 custom class methods, 6 custom properties)
+//   GTLYouTubeChannelSection (0 custom class methods, 7 custom properties)
 //   GTLYouTubeChannelSectionLocalizations (0 custom class methods, 0 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -39,6 +39,7 @@
 @class GTLYouTubeChannelSectionLocalization;
 @class GTLYouTubeChannelSectionLocalizations;
 @class GTLYouTubeChannelSectionSnippet;
+@class GTLYouTubeChannelSectionTargeting;
 
 // ----------------------------------------------------------------------------
 //
@@ -68,6 +69,10 @@
 // The snippet object contains basic details about the channel section, such as
 // its type, style and title.
 @property (retain) GTLYouTubeChannelSectionSnippet *snippet;
+
+// The targeting object contains basic targeting settings about the channel
+// section.
+@property (retain) GTLYouTubeChannelSectionTargeting *targeting;
 
 @end
 

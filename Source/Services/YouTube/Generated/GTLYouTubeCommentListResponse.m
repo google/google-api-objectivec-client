@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeChannelSnippet.m
+//  GTLYouTubeCommentListResponse.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,27 +26,39 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelSnippet (0 custom class methods, 7 custom properties)
+//   GTLYouTubeCommentListResponse (0 custom class methods, 8 custom properties)
 
-#import "GTLYouTubeChannelSnippet.h"
+#import "GTLYouTubeCommentListResponse.h"
 
-#import "GTLYouTubeChannelLocalization.h"
-#import "GTLYouTubeThumbnailDetails.h"
+#import "GTLYouTubeComment.h"
+#import "GTLYouTubePageInfo.h"
+#import "GTLYouTubeTokenPagination.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeChannelSnippet
+//   GTLYouTubeCommentListResponse
 //
 
-@implementation GTLYouTubeChannelSnippet
-@dynamic country, defaultLanguage, descriptionProperty, localized, publishedAt,
-         thumbnails, title;
+@implementation GTLYouTubeCommentListResponse
+@dynamic ETag, eventId, items, kind, nextPageToken, pageInfo, tokenPagination,
+         visitorId;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"description"
-                                forKey:@"descriptionProperty"];
+    [NSDictionary dictionaryWithObject:@"etag"
+                                forKey:@"ETag"];
   return map;
+}
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map =
+    [NSDictionary dictionaryWithObject:[GTLYouTubeComment class]
+                                forKey:@"items"];
+  return map;
+}
+
++ (void)load {
+  [self registerObjectClassForKind:@"youtube#commentListResponse"];
 }
 
 @end

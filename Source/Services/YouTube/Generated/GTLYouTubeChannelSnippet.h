@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeChannelSnippet (0 custom class methods, 6 custom properties)
+//   GTLYouTubeChannelSnippet (0 custom class methods, 7 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -45,6 +45,9 @@
 // Basic details about a channel, including title, description and thumbnails.
 
 @interface GTLYouTubeChannelSnippet : GTLObject
+
+// The country of the channel.
+@property (copy) NSString *country;
 
 // The language of the channel's default title and description.
 @property (copy) NSString *defaultLanguage;
