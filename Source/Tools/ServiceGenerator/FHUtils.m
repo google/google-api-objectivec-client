@@ -193,45 +193,6 @@
 
 #pragma mark -
 
-+ (NSString *)dictionaryStringFromPairs:(NSDictionary *)pairs
-                            quoteValues:(BOOL)quoteValues {
-  if ([pairs count] == 0) {
-    return nil;
-  }
-
-  NSMutableString *result = [NSMutableString string];
-  NSArray *sortedKeys =
-    [[pairs allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-
-  NSString *valueBefore = @"";
-  NSString *valueAfter = @"";
-  if (quoteValues) {
-    valueBefore = @"@\"";
-    valueAfter = @"\"";
-  }
-
-  if ([sortedKeys count] == 1) {
-    // One item, dictionaryWithObject:forKey:
-    NSString *key = [sortedKeys objectAtIndex:0];
-    NSString *value = [pairs objectForKey:key];
-    [result appendFormat:@"    [NSDictionary dictionaryWithObject:%@%@%@\n",
-     valueBefore, value, valueAfter];
-    [result appendFormat:@"                                forKey:@\"%@\"];\n", key];
-
-  } else {
-    // More than one item, varargs time.
-    [result appendString:@"    [NSDictionary dictionaryWithObjectsAndKeys:\n"];
-    for (NSString *key in sortedKeys) {
-      NSString *value = [pairs objectForKey:key];
-      [result appendFormat:@"      %@%@%@, @\"%@\",\n",
-       valueBefore, value, valueAfter,  key];
-    }
-    [result appendString:@"      nil];\n"];
-
-  }
-  return result;
-}
-
 + (NSString *)classMapForMethodNamed:(NSString *)methodName
                                pairs:(NSDictionary *)pairs
                          quoteValues:(BOOL)quoteValues {
@@ -240,11 +201,24 @@
   }
 
   NSMutableString *result = [NSMutableString string];
+  NSString *valueBefore = @"";
+  NSString *valueAfter = @"";
+  if (quoteValues) {
+    valueBefore = @"@\"";
+    valueAfter = @"\"";
+  }
+
+  NSArray *sortedKeys =
+    [[pairs allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
   [result appendFormat:@"+ (NSDictionary *)%@ {\n", methodName];
-  [result appendString:@"  NSDictionary *map =\n"];
-  NSString *dictStr = [self dictionaryStringFromPairs:pairs
-                                          quoteValues:quoteValues];
-  [result appendString:dictStr];
+  [result appendString:@"  NSDictionary *map = @{\n"];
+  NSString *lastKey = sortedKeys.lastObject;
+  for (NSString *key in sortedKeys) {
+    NSString *value = [pairs objectForKey:key];
+    [result appendFormat:@"    @\"%@\" : %@%@%@%@\n",
+     key, valueBefore, value, valueAfter, (key == lastKey ? @"" : @",")];
+  }
+  [result appendString:@"  };\n"];
   [result appendString:@"  return map;\n"];
   [result appendString:@"}\n"];
   return result;
@@ -319,10 +293,9 @@
   if (urlString == nil) {
     return nil;
   }
-  NSDictionary *dict =
-    [NSDictionary dictionaryWithObject:value forKey:paramName];
+  NSDictionary *params = @{ paramName : value };
   NSURL *resultURL = [GTLUtilities URLWithString:urlString
-                                    queryParameters:dict];
+                                    queryParameters:params];
   NSString *result = [resultURL absoluteString];
   return result;
 }

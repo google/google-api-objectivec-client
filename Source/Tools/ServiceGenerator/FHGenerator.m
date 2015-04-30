@@ -778,14 +778,12 @@ static NSString *ConstantName(NSString *grouping, NSString *name) {
                                                    linePrefix:@"// "];
   [initializeMethod appendString:wrappedComment];
   [initializeMethod appendString:@"+ (NSArray *)checkClasses {\n"];
-  [initializeMethod appendString:@"  NSArray *classes = [NSArray arrayWithObjects:\n"];
-  [initializeMethod appendFormat:@"                      [%@ class],\n",
-   self.objcQueryClassName];
+  [initializeMethod appendString:@"  NSArray *classes = @[\n"];
+  [initializeMethod appendFormat:@"    [%@ class]", self.objcQueryClassName];
   for (GTLDiscoveryJsonSchema *schema in self.api.topLevelObjectSchemas) {
-    [initializeMethod appendFormat:@"                      [%@ class],\n",
-     schema.objcClassName];
+    [initializeMethod appendFormat:@",\n    [%@ class]", schema.objcClassName];
   }
-  [initializeMethod appendString:@"                      nil];\n"];
+  [initializeMethod appendString:@"\n  ];\n"];
   [initializeMethod appendString:@"  return classes;\n"];
   [initializeMethod appendString:@"}\n"];
   [initializeMethod appendString:@"#endif  // DEBUG\n"];
@@ -830,7 +828,7 @@ static NSString *ConstantName(NSString *grouping, NSString *name) {
 
   // Provide -init to set the default values.
   NSMutableString *initMethod = [NSMutableString string];
-  [initMethod appendString:@"- (id)init {\n"];
+  [initMethod appendString:@"- (instancetype)init {\n"];
   [initMethod appendString:@"  self = [super init];\n"];
   [initMethod appendString:@"  if (self) {\n"];
   [initMethod appendString:@"    // Version from discovery.\n"];
@@ -1469,7 +1467,7 @@ static NSString *MappedParamName(NSString *name) {
             && [notRetainedPredicate_ evaluateWithObject:paramObjCName]) {
           clangDirective = @" NS_RETURNS_NOT_RETAINED";
         }
-        NSString *propertyLine = [NSString stringWithFormat:@"@property (%@%@) %@%@%@%@;%@\n",
+        NSString *propertyLine = [NSString stringWithFormat:@"@property (nonatomic, %@%@) %@%@%@%@;%@\n",
                                   objcPropertySemantics, extraAttributes, objcType,
                                   (asPtr ? @" *" : @" "),
                                   paramObjCName,
@@ -1735,7 +1733,7 @@ static NSString *MappedParamName(NSString *name) {
       }
     }
 
-    NSString *initialLine = [NSString stringWithFormat:@"+ (id)%@",
+    NSString *initialLine = [NSString stringWithFormat:@"+ (instancetype)%@",
                              method.objcQueryForName];
     [methodStr appendString:initialLine];
     NSUInteger nameWidth = [initialLine length];
@@ -2062,7 +2060,7 @@ static NSString *MappedParamName(NSString *name) {
       } else {
         comment = [@"  // " stringByAppendingString:comment];
       }
-      NSString *propertyLine = [NSString stringWithFormat:@"@property (%@, readonly) %@%@%@;%@\n",
+      NSString *propertyLine = [NSString stringWithFormat:@"@property (nonatomic, %@, readonly) %@%@%@;%@\n",
                                 objcPropertySemantics, objcType,
                                 (asPtr ? @" *" : @" "),
                                 @"items", comment];
@@ -2144,7 +2142,7 @@ static NSString *MappedParamName(NSString *name) {
         if ([notRetainedPredicate_ evaluateWithObject:propertyObjCName]) {
           clangDirective = @" NS_RETURNS_NOT_RETAINED";
         }
-        NSString *propertyLine = [NSString stringWithFormat:@"@property (%@%@) %@%@%@%@;%@\n",
+        NSString *propertyLine = [NSString stringWithFormat:@"@property (nonatomic, %@%@) %@%@%@%@;%@\n",
                                   objcPropertySemantics, extraAttributes, objcType,
                                   (asPtr ? @" *" : @" "),
                                   propertyObjCName, clangDirective, comment];

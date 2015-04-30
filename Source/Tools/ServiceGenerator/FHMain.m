@@ -149,7 +149,7 @@ typedef enum {
 @property (assign) int argc;
 @property (assign) char * const *argv;
 
-- (id)initWithArgc:(int)argc argv:(char * const *)argv;
+- (instancetype)initWithArgc:(int)argc argv:(char * const *)argv;
 - (int)run;
 
 @end
@@ -257,7 +257,7 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
             postWaitState = postWaitState_,
             status = status_;
 
-- (id)initWithArgc:(int)argc argv:(char * const *)argv {
+- (instancetype)initWithArgc:(int)argc argv:(char * const *)argv {
   self = [super init];
   if (self != nil) {
     argc_ = argc;
@@ -339,7 +339,7 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
           [self.appName UTF8String]);
   fprintf(outputFile, "\n");
 
-  fprintf(outputFile, "  Requried Flags:\n\n");
+  fprintf(outputFile, "  Required Flags:\n\n");
   for (uint32_t idx = 0; idx < ARRAY_COUNT(requiredFlags); ++idx) {
     ArgInfo *info = &requiredFlags[idx];
 
@@ -376,6 +376,13 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
     fprintf(outputFile, "%s\n", [wrapped UTF8String]);
   }
 
+  // Report the path so when the tool is run in Xcode, it's easy to find its built location.
+  uint32_t pathLen = MAXPATHLEN;
+  char path[MAXPATHLEN];
+  if (_NSGetExecutablePath(path, &pathLen) == 0) {
+    fprintf(outputFile, "ServiceGenerator path:\n\n");
+    fprintf(outputFile, "  %s\n", path);
+  }
   self.status = 2;
   self.state = FHMain_Done;
 }
