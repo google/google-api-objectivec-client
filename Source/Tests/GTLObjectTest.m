@@ -164,6 +164,54 @@ static Class gAdditionalPropsClass = Nil;
   XCTAssertEqualObjects(obj.JSON, expected);
 }
 
+- (GTLTestingObject *)objectFromRoundTripArchiveDearchiveWithObject:(GTLTestingObject *)obj {
+  NSString *key = @"Red iguana";
+  NSMutableData *data = [NSMutableData data];
+
+  NSKeyedArchiver *archiver =
+      [[[NSKeyedArchiver alloc] initForWritingWithMutableData:data] autorelease];
+  [archiver encodeObject:obj forKey:key];
+  [archiver finishEncoding];
+
+  NSKeyedUnarchiver *unarchiver =
+      [[[NSKeyedUnarchiver alloc] initForReadingWithData:data] autorelease];
+  GTLTestingObject *obj2 = [unarchiver decodeObjectForKey:key];
+  [unarchiver finishDecoding];
+
+  return obj2;
+}
+
+- (void)testSecureCodingEmptyObject {
+  GTLTestingObject *obj = [GTLTestingObject object];
+  XCTAssertNotNil(obj);
+  XCTAssertNil(obj.JSON);
+
+  GTLTestingObject *obj2 = [self objectFromRoundTripArchiveDearchiveWithObject:obj];
+  XCTAssertNotNil(obj2);
+
+  XCTAssertEqualObjects(obj2.JSON, obj.JSON);
+  XCTAssertNotEqual(obj2, obj);
+  XCTAssertNil(obj2.JSON);
+}
+
+- (void)testSecureCoding {
+  NSString * const jsonStr =
+      @"{\"a_date\":\"2011-01-14T15:00:00-01:00\",\"a.num\":1234,\"a_str\":\"foo bar\"}";
+  NSError *err = nil;
+  NSMutableDictionary *json = [GTLJSONParser objectWithString:jsonStr
+                                                        error:&err];
+  XCTAssertNotNil(json);
+  GTLTestingObject *obj = [GTLTestingObject objectWithJSON:json];
+  XCTAssertNotNil(obj);
+
+  GTLTestingObject *obj2 = [self objectFromRoundTripArchiveDearchiveWithObject:obj];
+  XCTAssertNotNil(obj2);
+
+  XCTAssertEqualObjects(obj2.JSON, obj.JSON);
+  XCTAssertNotEqual(obj2.JSON, obj.JSON);
+  XCTAssert([obj2.JSON isKindOfClass:[NSMutableDictionary class]]);
+}
+
 - (void)testGetBasicTypes {
   NSString * const jsonStr =
     @"{\"a_date\":\"2011-01-14T15:00:00-01:00\",\"a.num\":1234,\"a_str\":\"foo bar\"}";

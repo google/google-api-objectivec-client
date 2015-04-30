@@ -35,7 +35,7 @@
 - (void)createItemsWithClassMap:(NSDictionary *)batchClassMap;
 @end
 
-@interface GTLObject : NSObject <NSCopying> {
+@interface GTLObject : NSObject <NSCopying, NSSecureCoding> {
  @private
   NSMutableDictionary *json_;
 

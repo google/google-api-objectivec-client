@@ -25,6 +25,8 @@
 
 static NSString *const kUserDataPropertyKey = @"_userData";
 
+static NSString *const kGTLObjectJSONCoderKey = @"json";
+
 @interface GTLObject () <GTLRuntimeCommon>
 + (NSMutableArray *)allDeclaredProperties;
 + (NSArray *)allKnownKeys;
@@ -111,6 +113,23 @@ static NSString *const kUserDataPropertyKey = @"_userData";
   [userProperties_ release];
 
   [super dealloc];
+}
+
++ (BOOL)supportsSecureCoding {
+  return YES;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)decoder {
+  self = [super init];
+  if (self) {
+    json_ = [[decoder decodeObjectOfClass:[NSMutableDictionary class]
+                                   forKey:kGTLObjectJSONCoderKey] retain];
+  }
+  return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder {
+  [encoder encodeObject:json_ forKey:kGTLObjectJSONCoderKey];
 }
 
 #pragma mark JSON values
