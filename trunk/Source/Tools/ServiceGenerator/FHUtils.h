@@ -60,10 +60,6 @@
 + (NSString *)stringOfLinesFromString:(NSString *)str
                            linePrefix:(NSString *)linePrefix;
 
-// Helper to generate a dictionary based on pairs.
-+ (NSString *)dictionaryStringFromPairs:(NSDictionary *)pairs
-                            quoteValues:(BOOL)quoteValues;
-
 // Helper to generate a class method that returns a mapping (dictionary).
 + (NSString *)classMapForMethodNamed:(NSString *)methodName
                                pairs:(NSDictionary *)pairs
