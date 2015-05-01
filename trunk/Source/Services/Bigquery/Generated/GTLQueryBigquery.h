@@ -49,33 +49,33 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (copy) NSString *fields;
+@property (nonatomic, copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (assign) BOOL all;
-@property (assign) BOOL allUsers;
-@property (copy) NSString *datasetId;
-@property (retain) GTLBigqueryDatasetReference *defaultDataset;
-@property (assign) BOOL deleteContents;
-@property (assign) BOOL dryRun;
-@property (assign) BOOL ignoreUnknownValues;
-@property (copy) NSString *jobId;
-@property (copy) NSString *kind;
-@property (assign) NSUInteger maxResults;
-@property (copy) NSString *pageToken;
-@property (assign) BOOL preserveNulls;
-@property (copy) NSString *projectId;
-@property (copy) NSString *projection;
-@property (copy) NSString *query;
-@property (retain) NSArray *rows;  // of GTLBigqueryTabledataInsertAllRowsItem
-@property (assign) BOOL skipInvalidRows;
-@property (assign) unsigned long long startIndex;
-@property (retain) NSArray *stateFilter;  // of NSString
-@property (copy) NSString *tableId;
-@property (assign) NSUInteger timeoutMs;
-@property (assign) BOOL useQueryCache;
+@property (nonatomic, assign) BOOL all;
+@property (nonatomic, assign) BOOL allUsers;
+@property (nonatomic, copy) NSString *datasetId;
+@property (nonatomic, retain) GTLBigqueryDatasetReference *defaultDataset;
+@property (nonatomic, assign) BOOL deleteContents;
+@property (nonatomic, assign) BOOL dryRun;
+@property (nonatomic, assign) BOOL ignoreUnknownValues;
+@property (nonatomic, copy) NSString *jobId;
+@property (nonatomic, copy) NSString *kind;
+@property (nonatomic, assign) NSUInteger maxResults;
+@property (nonatomic, copy) NSString *pageToken;
+@property (nonatomic, assign) BOOL preserveNulls;
+@property (nonatomic, copy) NSString *projectId;
+@property (nonatomic, copy) NSString *projection;
+@property (nonatomic, copy) NSString *query;
+@property (nonatomic, retain) NSArray *rows;  // of GTLBigqueryTabledataInsertAllRowsItem
+@property (nonatomic, assign) BOOL skipInvalidRows;
+@property (nonatomic, assign) unsigned long long startIndex;
+@property (nonatomic, retain) NSArray *stateFilter;  // of NSString
+@property (nonatomic, copy) NSString *tableId;
+@property (nonatomic, assign) NSUInteger timeoutMs;
+@property (nonatomic, assign) BOOL useQueryCache;
 
 #pragma mark -
 #pragma mark "datasets" methods
@@ -95,8 +95,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
-+ (id)queryForDatasetsDeleteWithProjectId:(NSString *)projectId
-                                datasetId:(NSString *)datasetId;
++ (instancetype)queryForDatasetsDeleteWithProjectId:(NSString *)projectId
+                                          datasetId:(NSString *)datasetId;
 
 // Method: bigquery.datasets.get
 // Returns the dataset specified by datasetID.
@@ -107,8 +107,8 @@
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
 // Fetches a GTLBigqueryDataset.
-+ (id)queryForDatasetsGetWithProjectId:(NSString *)projectId
-                             datasetId:(NSString *)datasetId;
++ (instancetype)queryForDatasetsGetWithProjectId:(NSString *)projectId
+                                       datasetId:(NSString *)datasetId;
 
 // Method: bigquery.datasets.insert
 // Creates a new empty dataset.
@@ -118,7 +118,7 @@
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
 // Fetches a GTLBigqueryDataset.
-+ (id)queryForDatasetsInsertWithObject:(GTLBigqueryDataset *)object;
++ (instancetype)queryForDatasetsInsertWithObject:(GTLBigqueryDataset *)object;
 
 // Method: bigquery.datasets.list
 // Lists all datasets in the specified project to which you have been granted
@@ -134,7 +134,7 @@
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
 // Fetches a GTLBigqueryDatasetList.
-+ (id)queryForDatasetsListWithProjectId:(NSString *)projectId;
++ (instancetype)queryForDatasetsListWithProjectId:(NSString *)projectId;
 
 // Method: bigquery.datasets.patch
 // Updates information in an existing dataset. The update method replaces the
@@ -148,9 +148,9 @@
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
 // Fetches a GTLBigqueryDataset.
-+ (id)queryForDatasetsPatchWithObject:(GTLBigqueryDataset *)object
-                            projectId:(NSString *)projectId
-                            datasetId:(NSString *)datasetId;
++ (instancetype)queryForDatasetsPatchWithObject:(GTLBigqueryDataset *)object
+                                      projectId:(NSString *)projectId
+                                      datasetId:(NSString *)datasetId;
 
 // Method: bigquery.datasets.update
 // Updates information in an existing dataset. The update method replaces the
@@ -163,7 +163,7 @@
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
 // Fetches a GTLBigqueryDataset.
-+ (id)queryForDatasetsUpdateWithObject:(GTLBigqueryDataset *)object;
++ (instancetype)queryForDatasetsUpdateWithObject:(GTLBigqueryDataset *)object;
 
 #pragma mark -
 #pragma mark "jobs" methods
@@ -180,8 +180,8 @@
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
 // Fetches a GTLBigqueryJob.
-+ (id)queryForJobsGetWithProjectId:(NSString *)projectId
-                             jobId:(NSString *)jobId;
++ (instancetype)queryForJobsGetWithProjectId:(NSString *)projectId
+                                       jobId:(NSString *)jobId;
 
 // Method: bigquery.jobs.getQueryResults
 // Retrieves the results of a query job.
@@ -200,8 +200,8 @@
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
 // Fetches a GTLBigqueryGetQueryResultsResponse.
-+ (id)queryForJobsGetQueryResultsWithProjectId:(NSString *)projectId
-                                         jobId:(NSString *)jobId;
++ (instancetype)queryForJobsGetQueryResultsWithProjectId:(NSString *)projectId
+                                                   jobId:(NSString *)jobId;
 
 // Method: bigquery.jobs.insert
 // Starts a new asynchronous job. Requires the Can View project role.
@@ -216,8 +216,8 @@
 //   kGTLAuthScopeBigqueryDevstorageReadOnly
 //   kGTLAuthScopeBigqueryDevstorageReadWrite
 // Fetches a GTLBigqueryJob.
-+ (id)queryForJobsInsertWithObject:(GTLBigqueryJob *)object
-                  uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
++ (instancetype)queryForJobsInsertWithObject:(GTLBigqueryJob *)object
+                            uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
 // Method: bigquery.jobs.list
 // Lists all jobs that you started in the specified project. The job list
@@ -243,7 +243,7 @@
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
 // Fetches a GTLBigqueryJobList.
-+ (id)queryForJobsListWithProjectId:(NSString *)projectId;
++ (instancetype)queryForJobsListWithProjectId:(NSString *)projectId;
 
 // Method: bigquery.jobs.query
 // Runs a BigQuery SQL query synchronously and returns query results if the
@@ -283,8 +283,8 @@
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
 // Fetches a GTLBigqueryQueryResponse.
-+ (id)queryForJobsQueryWithProjectId:(NSString *)projectId
-                               query:(NSString *)query;
++ (instancetype)queryForJobsQueryWithProjectId:(NSString *)projectId
+                                         query:(NSString *)query;
 
 #pragma mark -
 #pragma mark "projects" methods
@@ -300,7 +300,7 @@
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
 // Fetches a GTLBigqueryProjectList.
-+ (id)queryForProjectsList;
++ (instancetype)queryForProjectsList;
 
 #pragma mark -
 #pragma mark "tabledata" methods
@@ -328,9 +328,9 @@
 //   kGTLAuthScopeBigqueryCloudPlatform
 //   kGTLAuthScopeBigqueryInsertdata
 // Fetches a GTLBigqueryTableDataInsertAllResponse.
-+ (id)queryForTabledataInsertAllWithProjectId:(NSString *)projectId
-                                    datasetId:(NSString *)datasetId
-                                      tableId:(NSString *)tableId;
++ (instancetype)queryForTabledataInsertAllWithProjectId:(NSString *)projectId
+                                              datasetId:(NSString *)datasetId
+                                                tableId:(NSString *)tableId;
 
 // Method: bigquery.tabledata.list
 // Retrieves table data from a specified set of rows. Requires the READER
@@ -348,9 +348,9 @@
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
 // Fetches a GTLBigqueryTableDataList.
-+ (id)queryForTabledataListWithProjectId:(NSString *)projectId
-                               datasetId:(NSString *)datasetId
-                                 tableId:(NSString *)tableId;
++ (instancetype)queryForTabledataListWithProjectId:(NSString *)projectId
+                                         datasetId:(NSString *)datasetId
+                                           tableId:(NSString *)tableId;
 
 #pragma mark -
 #pragma mark "tables" methods
@@ -366,9 +366,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
-+ (id)queryForTablesDeleteWithProjectId:(NSString *)projectId
-                              datasetId:(NSString *)datasetId
-                                tableId:(NSString *)tableId;
++ (instancetype)queryForTablesDeleteWithProjectId:(NSString *)projectId
+                                        datasetId:(NSString *)datasetId
+                                          tableId:(NSString *)tableId;
 
 // Method: bigquery.tables.get
 // Gets the specified table resource by table ID. This method does not return
@@ -382,9 +382,9 @@
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
 // Fetches a GTLBigqueryTable.
-+ (id)queryForTablesGetWithProjectId:(NSString *)projectId
-                           datasetId:(NSString *)datasetId
-                             tableId:(NSString *)tableId;
++ (instancetype)queryForTablesGetWithProjectId:(NSString *)projectId
+                                     datasetId:(NSString *)datasetId
+                                       tableId:(NSString *)tableId;
 
 // Method: bigquery.tables.insert
 // Creates a new, empty table in the dataset.
@@ -395,7 +395,7 @@
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
 // Fetches a GTLBigqueryTable.
-+ (id)queryForTablesInsertWithObject:(GTLBigqueryTable *)object;
++ (instancetype)queryForTablesInsertWithObject:(GTLBigqueryTable *)object;
 
 // Method: bigquery.tables.list
 // Lists all tables in the specified dataset. Requires the READER dataset role.
@@ -410,8 +410,8 @@
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
 // Fetches a GTLBigqueryTableList.
-+ (id)queryForTablesListWithProjectId:(NSString *)projectId
-                            datasetId:(NSString *)datasetId;
++ (instancetype)queryForTablesListWithProjectId:(NSString *)projectId
+                                      datasetId:(NSString *)datasetId;
 
 // Method: bigquery.tables.patch
 // Updates information in an existing table. The update method replaces the
@@ -426,10 +426,10 @@
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
 // Fetches a GTLBigqueryTable.
-+ (id)queryForTablesPatchWithObject:(GTLBigqueryTable *)object
-                          projectId:(NSString *)projectId
-                          datasetId:(NSString *)datasetId
-                            tableId:(NSString *)tableId;
++ (instancetype)queryForTablesPatchWithObject:(GTLBigqueryTable *)object
+                                    projectId:(NSString *)projectId
+                                    datasetId:(NSString *)datasetId
+                                      tableId:(NSString *)tableId;
 
 // Method: bigquery.tables.update
 // Updates information in an existing table. The update method replaces the
@@ -443,7 +443,7 @@
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
 // Fetches a GTLBigqueryTable.
-+ (id)queryForTablesUpdateWithObject:(GTLBigqueryTable *)object;
++ (instancetype)queryForTablesUpdateWithObject:(GTLBigqueryTable *)object;
 
 @end
 
@@ -463,10 +463,10 @@
 
 // [Optional] A unique ID for each row. BigQuery uses this property to detect
 // duplicate insertion requests on a best-effort basis.
-@property (copy) NSString *insertId;
+@property (nonatomic, copy) NSString *insertId;
 
 // [Required] A JSON object that contains a row of data. The object's properties
 // and values must match the destination table's schema.
-@property (retain) GTLBigqueryJsonObject *json;
+@property (nonatomic, retain) GTLBigqueryJsonObject *json;
 
 @end

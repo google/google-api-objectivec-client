@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,9 +45,9 @@
 @interface GTLCalendarFreeBusyCalendar : GTLObject
 
 // List of time ranges during which this calendar should be regarded as busy.
-@property (retain) NSArray *busy;  // of GTLCalendarTimePeriod
+@property (nonatomic, retain) NSArray *busy;  // of GTLCalendarTimePeriod
 
 // Optional error(s) (if computation for the calendar failed).
-@property (retain) NSArray *errors;  // of GTLCalendarError
+@property (nonatomic, retain) NSArray *errors;  // of GTLCalendarError
 
 @end

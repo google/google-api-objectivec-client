@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,16 +44,16 @@
 @interface GTLAppStateGetResponse : GTLObject
 
 // The current app state version.
-@property (copy) NSString *currentStateVersion;
+@property (nonatomic, copy) NSString *currentStateVersion;
 
 // The requested data.
-@property (copy) NSString *data;
+@property (nonatomic, copy) NSString *data;
 
 // Uniquely identifies the type of this resource. Value is always the fixed
 // string appstate#getResponse.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The key for the data.
-@property (retain) NSNumber *stateKey;  // intValue
+@property (nonatomic, retain) NSNumber *stateKey;  // intValue
 
 @end

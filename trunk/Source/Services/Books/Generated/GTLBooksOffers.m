@@ -41,9 +41,9 @@
 @dynamic items, kind;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLBooksOffersItemsItem class]
-                                forKey:@"items"];
+  NSDictionary *map = @{
+    @"items" : [GTLBooksOffersItemsItem class]
+  };
   return map;
 }
 
@@ -63,16 +63,16 @@
 @dynamic artUrl, gservicesKey, identifier, items;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+  NSDictionary *map = @{
+    @"identifier" : @"id"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLBooksOffersItemsItemItemsItem class]
-                                forKey:@"items"];
+  NSDictionary *map = @{
+    @"items" : [GTLBooksOffersItemsItemItemsItem class]
+  };
   return map;
 }
 
@@ -89,9 +89,9 @@
          volumeId;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"description"
-                                forKey:@"descriptionProperty"];
+  NSDictionary *map = @{
+    @"descriptionProperty" : @"description"
+  };
   return map;
 }
 

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,19 +50,19 @@
 @interface GTLMapsEngineLineStyle : GTLObject
 
 // Border of the line. 0 < border.width <= 5.
-@property (retain) GTLMapsEngineBorder *border;
+@property (nonatomic, retain) GTLMapsEngineBorder *border;
 
 // Dash defines the pattern of the line, the values are pixel lengths of
 // alternating dash and gap. If dash is not provided, then it means a solid
 // line. Dash can contain up to 10 values and must contain even number of
 // values.
-@property (retain) NSArray *dash;  // of NSNumber (doubleValue)
+@property (nonatomic, retain) NSArray *dash;  // of NSNumber (doubleValue)
 
 // Label style for the line.
-@property (retain) GTLMapsEngineLabelStyle *label;
+@property (nonatomic, retain) GTLMapsEngineLabelStyle *label;
 
 // Stroke of the line.
-@property (retain) GTLMapsEngineLineStyleStroke *stroke;
+@property (nonatomic, retain) GTLMapsEngineLineStyleStroke *stroke;
 
 @end
 
@@ -75,13 +75,13 @@
 @interface GTLMapsEngineLineStyleStroke : GTLObject
 
 // Color of the line.
-@property (copy) NSString *color;
+@property (nonatomic, copy) NSString *color;
 
 // Opacity of the line.
-@property (retain) NSNumber *opacity;  // doubleValue
+@property (nonatomic, retain) NSNumber *opacity;  // doubleValue
 
 // Width of the line, in pixels. 0 <= width <= 10. If width is set to 0, the
 // line will be invisible.
-@property (retain) NSNumber *width;  // doubleValue
+@property (nonatomic, retain) NSNumber *width;  // doubleValue
 
 @end

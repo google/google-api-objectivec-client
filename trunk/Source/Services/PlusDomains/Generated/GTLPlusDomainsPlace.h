@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,20 +47,20 @@
 @interface GTLPlusDomainsPlace : GTLObject
 
 // The physical address of the place.
-@property (retain) GTLPlusDomainsPlaceAddress *address;
+@property (nonatomic, retain) GTLPlusDomainsPlaceAddress *address;
 
 // The display name of the place.
-@property (copy) NSString *displayName;
+@property (nonatomic, copy) NSString *displayName;
 
 // The id of the place.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Identifies this resource as a place. Value: "plus#place".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The position of the place.
-@property (retain) GTLPlusDomainsPlacePosition *position;
+@property (nonatomic, retain) GTLPlusDomainsPlacePosition *position;
 
 @end
 
@@ -73,7 +73,7 @@
 @interface GTLPlusDomainsPlaceAddress : GTLObject
 
 // The formatted address for display.
-@property (copy) NSString *formatted;
+@property (nonatomic, copy) NSString *formatted;
 
 @end
 
@@ -86,9 +86,9 @@
 @interface GTLPlusDomainsPlacePosition : GTLObject
 
 // The latitude of this position.
-@property (retain) NSNumber *latitude;  // doubleValue
+@property (nonatomic, retain) NSNumber *latitude;  // doubleValue
 
 // The longitude of this position.
-@property (retain) NSNumber *longitude;  // doubleValue
+@property (nonatomic, retain) NSNumber *longitude;  // doubleValue
 
 @end

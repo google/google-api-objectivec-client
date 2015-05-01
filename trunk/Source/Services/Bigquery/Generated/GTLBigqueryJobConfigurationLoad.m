@@ -46,11 +46,10 @@
          writeDisposition;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSString class], @"projectionFields",
-      [NSString class], @"sourceUris",
-      nil];
+  NSDictionary *map = @{
+    @"projectionFields" : [NSString class],
+    @"sourceUris" : [NSString class]
+  };
   return map;
 }
 

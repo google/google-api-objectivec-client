@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,24 +45,24 @@
 @interface GTLQPXExpressTaxInfo : GTLObject
 
 // Whether this is a government charge or a carrier surcharge.
-@property (copy) NSString *chargeType;
+@property (nonatomic, copy) NSString *chargeType;
 
 // The code to enter in the ticket's tax box.
-@property (copy) NSString *code;
+@property (nonatomic, copy) NSString *code;
 
 // For government charges, the country levying the charge.
-@property (copy) NSString *country;
+@property (nonatomic, copy) NSString *country;
 
 // Identifier uniquely identifying this tax in a response. Not present for
 // unnamed carrier surcharges.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Identifies this as a tax information object. Value: the fixed string
 // qpxexpress#taxInfo.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The price of the tax in the sales or equivalent currency.
-@property (copy) NSString *salePrice;
+@property (nonatomic, copy) NSString *salePrice;
 
 @end

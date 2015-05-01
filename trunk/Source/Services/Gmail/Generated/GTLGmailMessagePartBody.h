@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,15 +46,15 @@
 // When present, contains the ID of an external attachment that can be retrieved
 // in a separate messages.attachments.get request. When not present, the entire
 // content of the message part body is contained in the data field.
-@property (copy) NSString *attachmentId;
+@property (nonatomic, copy) NSString *attachmentId;
 
 // The body data of a MIME message part. May be empty for MIME container types
 // that have no message body or when the body data is sent as a separate
 // attachment. An attachment ID is present if the body data is contained in a
 // separate attachment.
-@property (copy) NSString *data;  // GTLBase64 can encode/decode (probably web-safe format)
+@property (nonatomic, copy) NSString *data;  // GTLBase64 can encode/decode (probably web-safe format)
 
 // Total number of bytes in the body of the message part.
-@property (retain) NSNumber *size;  // intValue
+@property (nonatomic, retain) NSNumber *size;  // intValue
 
 @end

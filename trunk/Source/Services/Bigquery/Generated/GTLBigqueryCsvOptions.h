@@ -46,24 +46,24 @@
 // values. If false, records with missing trailing columns are treated as bad
 // records, and if there are too many bad records, an invalid error is returned
 // in the job result. The default value is false.
-@property (retain) NSNumber *allowJaggedRows;  // boolValue
+@property (nonatomic, retain) NSNumber *allowJaggedRows;  // boolValue
 
 // [Optional] Indicates if BigQuery should allow quoted data sections that
 // contain newline characters in a CSV file. The default value is false.
-@property (retain) NSNumber *allowQuotedNewlines;  // boolValue
+@property (nonatomic, retain) NSNumber *allowQuotedNewlines;  // boolValue
 
 // [Optional] The character encoding of the data. The supported values are UTF-8
 // or ISO-8859-1. The default value is UTF-8. BigQuery decodes the data after
 // the raw, binary data has been split using the values of the quote and
 // fieldDelimiter properties.
-@property (copy) NSString *encoding;
+@property (nonatomic, copy) NSString *encoding;
 
 // [Optional] The separator for fields in a CSV file. BigQuery converts the
 // string to ISO-8859-1 encoding, and then uses the first byte of the encoded
 // string to split the data in its raw, binary state. BigQuery also supports the
 // escape sequence "\t" to specify a tab separator. The default value is a comma
 // (',').
-@property (copy) NSString *fieldDelimiter;
+@property (nonatomic, copy) NSString *fieldDelimiter;
 
 // [Optional] The value that is used to quote data sections in a CSV file.
 // BigQuery converts the string to ISO-8859-1 encoding, and then uses the first
@@ -72,11 +72,11 @@
 // sections, set the property value to an empty string. If your data contains
 // quoted newline characters, you must also set the allowQuotedNewlines property
 // to true.
-@property (copy) NSString *quote;
+@property (nonatomic, copy) NSString *quote;
 
 // [Optional] The number of rows at the top of a CSV file that BigQuery will
 // skip when reading the data. The default value is 0. This property is useful
 // if you have header rows in the file that should be skipped.
-@property (retain) NSNumber *skipLeadingRows;  // intValue
+@property (nonatomic, retain) NSNumber *skipLeadingRows;  // intValue
 
 @end

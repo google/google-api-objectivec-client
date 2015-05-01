@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,17 +47,17 @@
 @interface GTLBooksAnnotations : GTLCollectionObject
 
 // A list of annotations.
-@property (retain) NSArray *items;  // of GTLBooksAnnotation
+@property (nonatomic, retain) NSArray *items;  // of GTLBooksAnnotation
 
 // Resource type.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Token to pass in for pagination for the next page. This will not be present
 // if this request does not have more results.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 // Total number of annotations found. This may be greater than the number of
 // notes returned in this response if results have been paginated.
-@property (retain) NSNumber *totalItems;  // intValue
+@property (nonatomic, retain) NSNumber *totalItems;  // intValue
 
 @end

@@ -49,13 +49,13 @@
 // exist. If it does not, a 'notFound' error is returned in the job result. The
 // default value is CREATE_IF_NEEDED. Creation, truncation and append actions
 // occur as one atomic update upon job completion.
-@property (copy) NSString *createDisposition;
+@property (nonatomic, copy) NSString *createDisposition;
 
 // [Required] The destination table of the link job.
-@property (retain) GTLBigqueryTableReference *destinationTable;
+@property (nonatomic, retain) GTLBigqueryTableReference *destinationTable;
 
 // [Required] URI of source table to link.
-@property (retain) NSArray *sourceUri;  // of NSString
+@property (nonatomic, retain) NSArray *sourceUri;  // of NSString
 
 // [Optional] Specifies the action that occurs if the destination table already
 // exists. The following values are supported: WRITE_TRUNCATE: If the table
@@ -66,6 +66,6 @@
 // and only occurs if BigQuery is able to complete the job successfully.
 // Creation, truncation and append actions occur as one atomic update upon job
 // completion.
-@property (copy) NSString *writeDisposition;
+@property (nonatomic, copy) NSString *writeDisposition;
 
 @end

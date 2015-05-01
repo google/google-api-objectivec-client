@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,39 +46,39 @@
 
 // Completion date of the task (as a RFC 3339 timestamp). This field is omitted
 // if the task has not been completed.
-@property (retain) GTLDateTime *completed;
+@property (nonatomic, retain) GTLDateTime *completed;
 
 // Flag indicating whether the task has been deleted. The default if False.
-@property (retain) NSNumber *deleted;  // boolValue
+@property (nonatomic, retain) NSNumber *deleted;  // boolValue
 
 // Due date of the task (as a RFC 3339 timestamp). Optional.
-@property (retain) GTLDateTime *due;
+@property (nonatomic, retain) GTLDateTime *due;
 
 // ETag of the resource.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // Flag indicating whether the task is hidden. This is the case if the task had
 // been marked completed when the task list was last cleared. The default is
 // False. This field is read-only.
-@property (retain) NSNumber *hidden;  // boolValue
+@property (nonatomic, retain) NSNumber *hidden;  // boolValue
 
 // Task identifier.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Type of the resource. This is always "tasks#task".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Collection of links. This collection is read-only.
-@property (retain) NSArray *links;  // of GTLTasksTaskLinksItem
+@property (nonatomic, retain) NSArray *links;  // of GTLTasksTaskLinksItem
 
 // Notes describing the task. Optional.
-@property (copy) NSString *notes;
+@property (nonatomic, copy) NSString *notes;
 
 // Parent task identifier. This field is omitted if it is a top-level task. This
 // field is read-only. Use the "move" method to move the task under a different
 // parent or to the top level.
-@property (copy) NSString *parent;
+@property (nonatomic, copy) NSString *parent;
 
 // String indicating the position of the task among its sibling tasks under the
 // same parent task or at the top level. If this string is greater than another
@@ -86,19 +86,19 @@
 // the task is positioned after the other task under the same parent task (or at
 // the top level). This field is read-only. Use the "move" method to move the
 // task to another position.
-@property (copy) NSString *position;
+@property (nonatomic, copy) NSString *position;
 
 // URL pointing to this task. Used to retrieve, update, or delete this task.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // Status of the task. This is either "needsAction" or "completed".
-@property (copy) NSString *status;
+@property (nonatomic, copy) NSString *status;
 
 // Title of the task.
-@property (copy) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 // Last modification time of the task (as a RFC 3339 timestamp).
-@property (retain) GTLDateTime *updated;
+@property (nonatomic, retain) GTLDateTime *updated;
 
 @end
 
@@ -112,12 +112,12 @@
 
 // The description. In HTML speak: Everything between <a> and </a>.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (copy) NSString *descriptionProperty;
+@property (nonatomic, copy) NSString *descriptionProperty;
 
 // The URL.
-@property (copy) NSString *link;
+@property (nonatomic, copy) NSString *link;
 
 // Type of the link, e.g. "email".
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end

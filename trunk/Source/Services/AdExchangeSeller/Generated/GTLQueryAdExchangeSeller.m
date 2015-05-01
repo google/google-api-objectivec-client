@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,13 +51,12 @@
          sort, startDate, startIndex;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSString class], @"dimension",
-      [NSString class], @"filter",
-      [NSString class], @"metric",
-      [NSString class], @"sort",
-      nil];
+  NSDictionary *map = @{
+    @"dimension" : [NSString class],
+    @"filter" : [NSString class],
+    @"metric" : [NSString class],
+    @"sort" : [NSString class]
+  };
   return map;
 }
 
@@ -65,7 +64,7 @@
 #pragma mark "accounts.adclients" methods
 // These create a GTLQueryAdExchangeSeller object.
 
-+ (id)queryForAccountsAdclientsListWithAccountId:(NSString *)accountId {
++ (instancetype)queryForAccountsAdclientsListWithAccountId:(NSString *)accountId {
   NSString *methodName = @"adexchangeseller.accounts.adclients.list";
   GTLQueryAdExchangeSeller *query = [self queryWithMethodName:methodName];
   query.accountId = accountId;
@@ -77,7 +76,7 @@
 #pragma mark "accounts.alerts" methods
 // These create a GTLQueryAdExchangeSeller object.
 
-+ (id)queryForAccountsAlertsListWithAccountId:(NSString *)accountId {
++ (instancetype)queryForAccountsAlertsListWithAccountId:(NSString *)accountId {
   NSString *methodName = @"adexchangeseller.accounts.alerts.list";
   GTLQueryAdExchangeSeller *query = [self queryWithMethodName:methodName];
   query.accountId = accountId;
@@ -89,9 +88,9 @@
 #pragma mark "accounts.customchannels" methods
 // These create a GTLQueryAdExchangeSeller object.
 
-+ (id)queryForAccountsCustomchannelsGetWithAccountId:(NSString *)accountId
-                                          adClientId:(NSString *)adClientId
-                                     customChannelId:(NSString *)customChannelId {
++ (instancetype)queryForAccountsCustomchannelsGetWithAccountId:(NSString *)accountId
+                                                    adClientId:(NSString *)adClientId
+                                               customChannelId:(NSString *)customChannelId {
   NSString *methodName = @"adexchangeseller.accounts.customchannels.get";
   GTLQueryAdExchangeSeller *query = [self queryWithMethodName:methodName];
   query.accountId = accountId;
@@ -101,8 +100,8 @@
   return query;
 }
 
-+ (id)queryForAccountsCustomchannelsListWithAccountId:(NSString *)accountId
-                                           adClientId:(NSString *)adClientId {
++ (instancetype)queryForAccountsCustomchannelsListWithAccountId:(NSString *)accountId
+                                                     adClientId:(NSString *)adClientId {
   NSString *methodName = @"adexchangeseller.accounts.customchannels.list";
   GTLQueryAdExchangeSeller *query = [self queryWithMethodName:methodName];
   query.accountId = accountId;
@@ -115,7 +114,7 @@
 #pragma mark "accounts" methods
 // These create a GTLQueryAdExchangeSeller object.
 
-+ (id)queryForAccountsGetWithAccountId:(NSString *)accountId {
++ (instancetype)queryForAccountsGetWithAccountId:(NSString *)accountId {
   NSString *methodName = @"adexchangeseller.accounts.get";
   GTLQueryAdExchangeSeller *query = [self queryWithMethodName:methodName];
   query.accountId = accountId;
@@ -123,7 +122,7 @@
   return query;
 }
 
-+ (id)queryForAccountsList {
++ (instancetype)queryForAccountsList {
   NSString *methodName = @"adexchangeseller.accounts.list";
   GTLQueryAdExchangeSeller *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLAdExchangeSellerAccounts class];
@@ -134,7 +133,7 @@
 #pragma mark "accounts.metadata.dimensions" methods
 // These create a GTLQueryAdExchangeSeller object.
 
-+ (id)queryForAccountsMetadataDimensionsListWithAccountId:(NSString *)accountId {
++ (instancetype)queryForAccountsMetadataDimensionsListWithAccountId:(NSString *)accountId {
   NSString *methodName = @"adexchangeseller.accounts.metadata.dimensions.list";
   GTLQueryAdExchangeSeller *query = [self queryWithMethodName:methodName];
   query.accountId = accountId;
@@ -146,7 +145,7 @@
 #pragma mark "accounts.metadata.metrics" methods
 // These create a GTLQueryAdExchangeSeller object.
 
-+ (id)queryForAccountsMetadataMetricsListWithAccountId:(NSString *)accountId {
++ (instancetype)queryForAccountsMetadataMetricsListWithAccountId:(NSString *)accountId {
   NSString *methodName = @"adexchangeseller.accounts.metadata.metrics.list";
   GTLQueryAdExchangeSeller *query = [self queryWithMethodName:methodName];
   query.accountId = accountId;
@@ -158,8 +157,8 @@
 #pragma mark "accounts.preferreddeals" methods
 // These create a GTLQueryAdExchangeSeller object.
 
-+ (id)queryForAccountsPreferreddealsGetWithAccountId:(NSString *)accountId
-                                              dealId:(NSString *)dealId {
++ (instancetype)queryForAccountsPreferreddealsGetWithAccountId:(NSString *)accountId
+                                                        dealId:(NSString *)dealId {
   NSString *methodName = @"adexchangeseller.accounts.preferreddeals.get";
   GTLQueryAdExchangeSeller *query = [self queryWithMethodName:methodName];
   query.accountId = accountId;
@@ -168,7 +167,7 @@
   return query;
 }
 
-+ (id)queryForAccountsPreferreddealsListWithAccountId:(NSString *)accountId {
++ (instancetype)queryForAccountsPreferreddealsListWithAccountId:(NSString *)accountId {
   NSString *methodName = @"adexchangeseller.accounts.preferreddeals.list";
   GTLQueryAdExchangeSeller *query = [self queryWithMethodName:methodName];
   query.accountId = accountId;
@@ -180,9 +179,9 @@
 #pragma mark "accounts.reports" methods
 // These create a GTLQueryAdExchangeSeller object.
 
-+ (id)queryForAccountsReportsGenerateWithAccountId:(NSString *)accountId
-                                         startDate:(NSString *)startDate
-                                           endDate:(NSString *)endDate {
++ (instancetype)queryForAccountsReportsGenerateWithAccountId:(NSString *)accountId
+                                                   startDate:(NSString *)startDate
+                                                     endDate:(NSString *)endDate {
   NSString *methodName = @"adexchangeseller.accounts.reports.generate";
   GTLQueryAdExchangeSeller *query = [self queryWithMethodName:methodName];
   query.accountId = accountId;
@@ -196,8 +195,8 @@
 #pragma mark "accounts.reports.saved" methods
 // These create a GTLQueryAdExchangeSeller object.
 
-+ (id)queryForAccountsReportsSavedGenerateWithAccountId:(NSString *)accountId
-                                          savedReportId:(NSString *)savedReportId {
++ (instancetype)queryForAccountsReportsSavedGenerateWithAccountId:(NSString *)accountId
+                                                    savedReportId:(NSString *)savedReportId {
   NSString *methodName = @"adexchangeseller.accounts.reports.saved.generate";
   GTLQueryAdExchangeSeller *query = [self queryWithMethodName:methodName];
   query.accountId = accountId;
@@ -206,7 +205,7 @@
   return query;
 }
 
-+ (id)queryForAccountsReportsSavedListWithAccountId:(NSString *)accountId {
++ (instancetype)queryForAccountsReportsSavedListWithAccountId:(NSString *)accountId {
   NSString *methodName = @"adexchangeseller.accounts.reports.saved.list";
   GTLQueryAdExchangeSeller *query = [self queryWithMethodName:methodName];
   query.accountId = accountId;
@@ -218,8 +217,8 @@
 #pragma mark "accounts.urlchannels" methods
 // These create a GTLQueryAdExchangeSeller object.
 
-+ (id)queryForAccountsUrlchannelsListWithAccountId:(NSString *)accountId
-                                        adClientId:(NSString *)adClientId {
++ (instancetype)queryForAccountsUrlchannelsListWithAccountId:(NSString *)accountId
+                                                  adClientId:(NSString *)adClientId {
   NSString *methodName = @"adexchangeseller.accounts.urlchannels.list";
   GTLQueryAdExchangeSeller *query = [self queryWithMethodName:methodName];
   query.accountId = accountId;

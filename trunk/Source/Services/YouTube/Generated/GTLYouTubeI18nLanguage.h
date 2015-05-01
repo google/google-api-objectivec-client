@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,18 +47,18 @@
 @interface GTLYouTubeI18nLanguage : GTLObject
 
 // Etag of this resource.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The ID that YouTube uses to uniquely identify the i18n language.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Identifies what kind of resource this is. Value: the fixed string
 // "youtube#i18nLanguage".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The snippet object contains basic details about the i18n language, such as
 // language code and human-readable name.
-@property (retain) GTLYouTubeI18nLanguageSnippet *snippet;
+@property (nonatomic, retain) GTLYouTubeI18nLanguageSnippet *snippet;
 
 @end

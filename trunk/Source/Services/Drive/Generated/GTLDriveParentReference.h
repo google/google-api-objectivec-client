@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,18 +45,18 @@
 
 // The ID of the parent.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Whether or not the parent is the root folder.
-@property (retain) NSNumber *isRoot;  // boolValue
+@property (nonatomic, retain) NSNumber *isRoot;  // boolValue
 
 // This is always drive#parentReference.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // A link to the parent.
-@property (copy) NSString *parentLink;
+@property (nonatomic, copy) NSString *parentLink;
 
 // A link back to this reference.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 @end

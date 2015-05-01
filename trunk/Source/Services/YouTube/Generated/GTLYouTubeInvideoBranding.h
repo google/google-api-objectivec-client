@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,9 +43,9 @@
 //
 
 @interface GTLYouTubeInvideoBranding : GTLObject
-@property (copy) NSString *imageBytes;  // GTLBase64 can encode/decode (probably web-safe format)
-@property (copy) NSString *imageUrl;
-@property (retain) GTLYouTubeInvideoPosition *position;
-@property (copy) NSString *targetChannelId;
-@property (retain) GTLYouTubeInvideoTiming *timing;
+@property (nonatomic, copy) NSString *imageBytes;  // GTLBase64 can encode/decode (probably web-safe format)
+@property (nonatomic, copy) NSString *imageUrl;
+@property (nonatomic, retain) GTLYouTubeInvideoPosition *position;
+@property (nonatomic, copy) NSString *targetChannelId;
+@property (nonatomic, retain) GTLYouTubeInvideoTiming *timing;
 @end

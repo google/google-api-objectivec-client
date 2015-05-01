@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,9 +41,9 @@
 @dynamic kind, reports;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLDoubleClickBidManagerReport class]
-                                forKey:@"reports"];
+  NSDictionary *map = @{
+    @"reports" : [GTLDoubleClickBidManagerReport class]
+  };
   return map;
 }
 

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,12 +50,11 @@
          type, version;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [GTLSpectrumDeviceDescriptor class], @"deviceDescs",
-      [GTLSpectrumGeoLocation class], @"locations",
-      [GTLSpectrumMessage class], @"spectra",
-      nil];
+  NSDictionary *map = @{
+    @"deviceDescs" : [GTLSpectrumDeviceDescriptor class],
+    @"locations" : [GTLSpectrumGeoLocation class],
+    @"spectra" : [GTLSpectrumMessage class]
+  };
   return map;
 }
 
@@ -63,42 +62,42 @@
 #pragma mark "paws" methods
 // These create a GTLQuerySpectrum object.
 
-+ (id)queryForPawsGetSpectrum {
++ (instancetype)queryForPawsGetSpectrum {
   NSString *methodName = @"spectrum.paws.getSpectrum";
   GTLQuerySpectrum *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLSpectrumPawsGetSpectrumResponse class];
   return query;
 }
 
-+ (id)queryForPawsGetSpectrumBatch {
++ (instancetype)queryForPawsGetSpectrumBatch {
   NSString *methodName = @"spectrum.paws.getSpectrumBatch";
   GTLQuerySpectrum *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLSpectrumPawsGetSpectrumBatchResponse class];
   return query;
 }
 
-+ (id)queryForPawsInit {
++ (instancetype)queryForPawsInit {
   NSString *methodName = @"spectrum.paws.init";
   GTLQuerySpectrum *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLSpectrumPawsInitResponse class];
   return query;
 }
 
-+ (id)queryForPawsNotifySpectrumUse {
++ (instancetype)queryForPawsNotifySpectrumUse {
   NSString *methodName = @"spectrum.paws.notifySpectrumUse";
   GTLQuerySpectrum *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLSpectrumPawsNotifySpectrumUseResponse class];
   return query;
 }
 
-+ (id)queryForPawsRegister {
++ (instancetype)queryForPawsRegister {
   NSString *methodName = @"spectrum.paws.register";
   GTLQuerySpectrum *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLSpectrumPawsRegisterResponse class];
   return query;
 }
 
-+ (id)queryForPawsVerifyDevice {
++ (instancetype)queryForPawsVerifyDevice {
   NSString *methodName = @"spectrum.paws.verifyDevice";
   GTLQuerySpectrum *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLSpectrumPawsVerifyDeviceResponse class];

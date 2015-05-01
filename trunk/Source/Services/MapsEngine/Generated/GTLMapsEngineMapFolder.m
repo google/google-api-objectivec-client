@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,11 +42,10 @@
 @dynamic contents, defaultViewport, expandable, key, name, type, visibility;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [GTLMapsEngineMapItem class], @"contents",
-      [NSNumber class], @"defaultViewport",
-      nil];
+  NSDictionary *map = @{
+    @"contents" : [GTLMapsEngineMapItem class],
+    @"defaultViewport" : [NSNumber class]
+  };
   return map;
 }
 

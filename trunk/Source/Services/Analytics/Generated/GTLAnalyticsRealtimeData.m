@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,18 +44,17 @@
          totalResults, totalsForAllResults;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+  NSDictionary *map = @{
+    @"identifier" : @"id"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [GTLAnalyticsRealtimeDataColumnHeadersItem class], @"columnHeaders",
-      [NSString class], @"rows",
-      nil];
+  NSDictionary *map = @{
+    @"columnHeaders" : [GTLAnalyticsRealtimeDataColumnHeadersItem class],
+    @"rows" : [NSString class]
+  };
   return map;
 }
 
@@ -96,18 +95,17 @@
 @dynamic dimensions, filters, ids, maxResults, metrics, sort;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"max-results"
-                                forKey:@"maxResults"];
+  NSDictionary *map = @{
+    @"maxResults" : @"max-results"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSString class], @"metrics",
-      [NSString class], @"sort",
-      nil];
+  NSDictionary *map = @{
+    @"metrics" : [NSString class],
+    @"sort" : [NSString class]
+  };
   return map;
 }
 

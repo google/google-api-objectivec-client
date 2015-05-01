@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,9 +44,9 @@
 @interface GTLDoubleClickBidManagerFilterPair : GTLObject
 
 // Filter type.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 // Filter value.
-@property (copy) NSString *value;
+@property (nonatomic, copy) NSString *value;
 
 @end

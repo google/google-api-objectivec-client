@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,9 +42,9 @@
 @dynamic layers, nextPageToken;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLMapsEnginePublishedLayer class]
-                                forKey:@"layers"];
+  NSDictionary *map = @{
+    @"layers" : [GTLMapsEnginePublishedLayer class]
+  };
   return map;
 }
 

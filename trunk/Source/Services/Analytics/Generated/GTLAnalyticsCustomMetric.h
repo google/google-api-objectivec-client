@@ -47,52 +47,52 @@
 @interface GTLAnalyticsCustomMetric : GTLObject
 
 // Account ID.
-@property (copy) NSString *accountId;
+@property (nonatomic, copy) NSString *accountId;
 
 // Boolean indicating whether the custom metric is active.
-@property (retain) NSNumber *active;  // boolValue
+@property (nonatomic, retain) NSNumber *active;  // boolValue
 
 // Time the custom metric was created.
-@property (retain) GTLDateTime *created;
+@property (nonatomic, retain) GTLDateTime *created;
 
 // Custom metric ID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Index of the custom metric.
-@property (retain) NSNumber *index;  // intValue
+@property (nonatomic, retain) NSNumber *index;  // intValue
 
 // Kind value for a custom metric. Set to "analytics#customMetric". It is a
 // read-only field.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Max value of custom metric.
-@property (copy) NSString *maxValue;
+@property (nonatomic, copy) NSString *maxValue;
 
 // Min value of custom metric.
-@property (copy) NSString *minValue;
+@property (nonatomic, copy) NSString *minValue;
 
 // Name of the custom metric.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // Parent link for the custom metric. Points to the property to which the custom
 // metric belongs.
-@property (retain) GTLAnalyticsCustomMetricParentLink *parentLink;
+@property (nonatomic, retain) GTLAnalyticsCustomMetricParentLink *parentLink;
 
 // Scope of the custom metric: HIT or PRODUCT.
-@property (copy) NSString *scope;
+@property (nonatomic, copy) NSString *scope;
 
 // Link for the custom metric
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // Data type of custom metric.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 // Time the custom metric was last modified.
-@property (retain) GTLDateTime *updated;
+@property (nonatomic, retain) GTLDateTime *updated;
 
 // Property ID.
-@property (copy) NSString *webPropertyId;
+@property (nonatomic, copy) NSString *webPropertyId;
 
 @end
 
@@ -105,9 +105,9 @@
 @interface GTLAnalyticsCustomMetricParentLink : GTLObject
 
 // Link to the property to which the custom metric belongs.
-@property (copy) NSString *href;
+@property (nonatomic, copy) NSString *href;
 
 // Type of the parent link. Set to "analytics#webproperty".
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end

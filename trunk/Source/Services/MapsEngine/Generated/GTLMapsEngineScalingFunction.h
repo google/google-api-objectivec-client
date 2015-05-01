@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,17 +48,17 @@
 @interface GTLMapsEngineScalingFunction : GTLObject
 
 // Name of the numeric column used to scale a shape.
-@property (copy) NSString *column;
+@property (nonatomic, copy) NSString *column;
 
 // The type of scaling function to use. Defaults to SQRT. Currently only linear
 // and square root scaling are supported.
-@property (copy) NSString *scalingType;
+@property (nonatomic, copy) NSString *scalingType;
 
 // The range of shape sizes, in pixels. For circles, the size corresponds to the
 // diameter.
-@property (retain) GTLMapsEngineSizeRange *sizeRange;
+@property (nonatomic, retain) GTLMapsEngineSizeRange *sizeRange;
 
 // The range of values to display across the size range.
-@property (retain) GTLMapsEngineValueRange *valueRange;
+@property (nonatomic, retain) GTLMapsEngineValueRange *valueRange;
 
 @end

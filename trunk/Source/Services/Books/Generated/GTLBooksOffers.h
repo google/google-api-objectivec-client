@@ -50,10 +50,10 @@
 @interface GTLBooksOffers : GTLCollectionObject
 
 // A list of offers.
-@property (retain) NSArray *items;  // of GTLBooksOffersItemsItem
+@property (nonatomic, retain) NSArray *items;  // of GTLBooksOffersItemsItem
 
 // Resource type.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 @end
 
@@ -67,13 +67,13 @@
 // supports -itemAtIndex: to retrieve individual objects from "items".
 
 @interface GTLBooksOffersItemsItem : GTLCollectionObject
-@property (copy) NSString *artUrl;
-@property (copy) NSString *gservicesKey;
+@property (nonatomic, copy) NSString *artUrl;
+@property (nonatomic, copy) NSString *gservicesKey;
 
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
-@property (retain) NSArray *items;  // of GTLBooksOffersItemsItemItemsItem
+@property (nonatomic, retain) NSArray *items;  // of GTLBooksOffersItemsItemItemsItem
 @end
 
 
@@ -83,13 +83,13 @@
 //
 
 @interface GTLBooksOffersItemsItemItemsItem : GTLObject
-@property (copy) NSString *author;
-@property (copy) NSString *canonicalVolumeLink;
-@property (copy) NSString *coverUrl;
+@property (nonatomic, copy) NSString *author;
+@property (nonatomic, copy) NSString *canonicalVolumeLink;
+@property (nonatomic, copy) NSString *coverUrl;
 
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (copy) NSString *descriptionProperty;
+@property (nonatomic, copy) NSString *descriptionProperty;
 
-@property (copy) NSString *title;
-@property (copy) NSString *volumeId;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *volumeId;
 @end

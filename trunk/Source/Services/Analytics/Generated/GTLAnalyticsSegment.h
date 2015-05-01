@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,31 +44,31 @@
 @interface GTLAnalyticsSegment : GTLObject
 
 // Time the segment was created.
-@property (retain) GTLDateTime *created;
+@property (nonatomic, retain) GTLDateTime *created;
 
 // Segment definition.
-@property (copy) NSString *definition;
+@property (nonatomic, copy) NSString *definition;
 
 // Segment ID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Resource type for Analytics segment.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Segment name.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // Segment ID. Can be used with the 'segment' parameter in Core Reporting API.
-@property (copy) NSString *segmentId;
+@property (nonatomic, copy) NSString *segmentId;
 
 // Link for this segment.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // Type for a segment. Possible values are "BUILT_IN" or "CUSTOM".
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 // Time the segment was last modified.
-@property (retain) GTLDateTime *updated;
+@property (nonatomic, retain) GTLDateTime *updated;
 
 @end

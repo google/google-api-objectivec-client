@@ -46,10 +46,10 @@
 
 // [Optional] The compression type of the data source. Possible values include
 // GZIP and NONE. The default value is NONE.
-@property (copy) NSString *compression;
+@property (nonatomic, copy) NSString *compression;
 
 // Additional properties to set if sourceFormat is set to CSV.
-@property (retain) GTLBigqueryCsvOptions *csvOptions;
+@property (nonatomic, retain) GTLBigqueryCsvOptions *csvOptions;
 
 // [Optional] Indicates if BigQuery should allow extra values that are not
 // represented in the table schema. If true, the extra values are ignored. If
@@ -57,25 +57,25 @@
 // are too many bad records, an invalid error is returned in the job result. The
 // default value is false. The sourceFormat property determines what BigQuery
 // treats as an extra value: CSV: Trailing columns
-@property (retain) NSNumber *ignoreUnknownValues;  // boolValue
+@property (nonatomic, retain) NSNumber *ignoreUnknownValues;  // boolValue
 
 // [Optional] The maximum number of bad records that BigQuery can ignore when
 // reading data. If the number of bad records exceeds this value, an invalid
 // error is returned in the job result. The default value is 0, which requires
 // that all records are valid.
-@property (retain) NSNumber *maxBadRecords;  // intValue
+@property (nonatomic, retain) NSNumber *maxBadRecords;  // intValue
 
 // [Required] The schema for the data.
-@property (retain) GTLBigqueryTableSchema *schema;
+@property (nonatomic, retain) GTLBigqueryTableSchema *schema;
 
 // [Optional] The data format. External data sources must be in CSV format. The
 // default value is CSV.
-@property (copy) NSString *sourceFormat;
+@property (nonatomic, copy) NSString *sourceFormat;
 
 // [Required] The fully-qualified URIs that point to your data in Google Cloud
 // Storage. Each URI can contain one '*' wildcard character and it must come
 // after the 'bucket' name. CSV limits related to load jobs apply to external
 // data sources, plus an additional limit of 10 GB maximum size across all URIs.
-@property (retain) NSArray *sourceUris;  // of NSString
+@property (nonatomic, retain) NSArray *sourceUris;  // of NSString
 
 @end

@@ -47,57 +47,57 @@
 
 // [Output-only] The time when this table was created, in milliseconds since the
 // epoch.
-@property (retain) NSNumber *creationTime;  // longLongValue
+@property (nonatomic, retain) NSNumber *creationTime;  // longLongValue
 
 // [Optional] A user-friendly description of this table.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (copy) NSString *descriptionProperty;
+@property (nonatomic, copy) NSString *descriptionProperty;
 
 // [Output-only] A hash of this resource.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // [Optional] The time when this table expires, in milliseconds since the epoch.
 // If not present, the table will persist indefinitely. Expired tables will be
 // deleted and their storage reclaimed.
-@property (retain) NSNumber *expirationTime;  // longLongValue
+@property (nonatomic, retain) NSNumber *expirationTime;  // longLongValue
 
 // [Optional] A descriptive name for this table.
-@property (copy) NSString *friendlyName;
+@property (nonatomic, copy) NSString *friendlyName;
 
 // [Output-only] An opaque ID uniquely identifying the table.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // [Output-only] The type of the resource.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // [Output-only] The time when this table was last modified, in milliseconds
 // since the epoch.
-@property (retain) NSNumber *lastModifiedTime;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *lastModifiedTime;  // unsignedLongLongValue
 
 // [Output-only] The size of the table in bytes. This property is unavailable
 // for tables that are actively receiving streaming inserts.
-@property (retain) NSNumber *numBytes;  // longLongValue
+@property (nonatomic, retain) NSNumber *numBytes;  // longLongValue
 
 // [Output-only] The number of rows of data in this table. This property is
 // unavailable for tables that are actively receiving streaming inserts.
-@property (retain) NSNumber *numRows;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *numRows;  // unsignedLongLongValue
 
 // [Optional] Describes the schema of this table.
-@property (retain) GTLBigqueryTableSchema *schema;
+@property (nonatomic, retain) GTLBigqueryTableSchema *schema;
 
 // [Output-only] A URL that can be used to access this resource again.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // [Required] Reference describing the ID of this table.
-@property (retain) GTLBigqueryTableReference *tableReference;
+@property (nonatomic, retain) GTLBigqueryTableReference *tableReference;
 
 // [Output-only] Describes the table type. The following values are supported:
 // TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query.
 // The default value is TABLE.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 // [Optional] The view definition.
-@property (retain) GTLBigqueryViewDefinition *view;
+@property (nonatomic, retain) GTLBigqueryViewDefinition *view;
 
 @end

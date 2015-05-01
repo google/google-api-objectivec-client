@@ -61,81 +61,81 @@
 
 // Information about supported additional roles per file type. The most specific
 // type takes precedence.
-@property (retain) NSArray *additionalRoleInfo;  // of GTLDriveAboutAdditionalRoleInfoItem
+@property (nonatomic, retain) NSArray *additionalRoleInfo;  // of GTLDriveAboutAdditionalRoleInfoItem
 
 // The domain sharing policy for the current user.
-@property (copy) NSString *domainSharingPolicy;
+@property (nonatomic, copy) NSString *domainSharingPolicy;
 
 // The ETag of the item.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The allowable export formats.
-@property (retain) NSArray *exportFormats;  // of GTLDriveAboutExportFormatsItem
+@property (nonatomic, retain) NSArray *exportFormats;  // of GTLDriveAboutExportFormatsItem
 
 // List of additional features enabled on this account.
-@property (retain) NSArray *features;  // of GTLDriveAboutFeaturesItem
+@property (nonatomic, retain) NSArray *features;  // of GTLDriveAboutFeaturesItem
 
 // The palette of allowable folder colors as RGB hex strings.
-@property (retain) NSArray *folderColorPalette;  // of NSString
+@property (nonatomic, retain) NSArray *folderColorPalette;  // of NSString
 
 // The allowable import formats.
-@property (retain) NSArray *importFormats;  // of GTLDriveAboutImportFormatsItem
+@property (nonatomic, retain) NSArray *importFormats;  // of GTLDriveAboutImportFormatsItem
 
 // A boolean indicating whether the authenticated app is installed by the
 // authenticated user.
-@property (retain) NSNumber *isCurrentAppInstalled;  // boolValue
+@property (nonatomic, retain) NSNumber *isCurrentAppInstalled;  // boolValue
 
 // This is always drive#about.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The user's language or locale code, as defined by BCP 47, with some
 // extensions from Unicode's LDML format (http://www.unicode.org/reports/tr35/).
-@property (copy) NSString *languageCode;
+@property (nonatomic, copy) NSString *languageCode;
 
 // The largest change id.
-@property (retain) NSNumber *largestChangeId;  // longLongValue
+@property (nonatomic, retain) NSNumber *largestChangeId;  // longLongValue
 
 // List of max upload sizes for each file type. The most specific type takes
 // precedence.
-@property (retain) NSArray *maxUploadSizes;  // of GTLDriveAboutMaxUploadSizesItem
+@property (nonatomic, retain) NSArray *maxUploadSizes;  // of GTLDriveAboutMaxUploadSizesItem
 
 // The name of the current user.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // The current user's ID as visible in the permissions collection.
-@property (copy) NSString *permissionId;
+@property (nonatomic, copy) NSString *permissionId;
 
 // The amount of storage quota used by different Google services.
-@property (retain) NSArray *quotaBytesByService;  // of GTLDriveAboutQuotaBytesByServiceItem
+@property (nonatomic, retain) NSArray *quotaBytesByService;  // of GTLDriveAboutQuotaBytesByServiceItem
 
 // The total number of quota bytes.
-@property (retain) NSNumber *quotaBytesTotal;  // longLongValue
+@property (nonatomic, retain) NSNumber *quotaBytesTotal;  // longLongValue
 
 // The number of quota bytes used by Google Drive.
-@property (retain) NSNumber *quotaBytesUsed;  // longLongValue
+@property (nonatomic, retain) NSNumber *quotaBytesUsed;  // longLongValue
 
 // The number of quota bytes used by all Google apps (Drive, Picasa, etc.).
-@property (retain) NSNumber *quotaBytesUsedAggregate;  // longLongValue
+@property (nonatomic, retain) NSNumber *quotaBytesUsedAggregate;  // longLongValue
 
 // The number of quota bytes used by trashed items.
-@property (retain) NSNumber *quotaBytesUsedInTrash;  // longLongValue
+@property (nonatomic, retain) NSNumber *quotaBytesUsedInTrash;  // longLongValue
 
 // The type of the user's storage quota. Possible values are:
 // - LIMITED
 // - UNLIMITED
-@property (copy) NSString *quotaType;
+@property (nonatomic, copy) NSString *quotaType;
 
 // The number of remaining change ids.
-@property (retain) NSNumber *remainingChangeIds;  // longLongValue
+@property (nonatomic, retain) NSNumber *remainingChangeIds;  // longLongValue
 
 // The id of the root folder.
-@property (copy) NSString *rootFolderId;
+@property (nonatomic, copy) NSString *rootFolderId;
 
 // A link back to this item.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // The authenticated user.
-@property (retain) GTLDriveUser *user;
+@property (nonatomic, retain) GTLDriveUser *user;
 
 @end
 
@@ -148,10 +148,10 @@
 @interface GTLDriveAboutAdditionalRoleInfoItem : GTLObject
 
 // The supported additional roles per primary role.
-@property (retain) NSArray *roleSets;  // of GTLDriveAboutAdditionalRoleInfoItemRoleSetsItem
+@property (nonatomic, retain) NSArray *roleSets;  // of GTLDriveAboutAdditionalRoleInfoItemRoleSetsItem
 
 // The content type that this additional role info applies to.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end
 
@@ -164,10 +164,10 @@
 @interface GTLDriveAboutExportFormatsItem : GTLObject
 
 // The content type to convert from.
-@property (copy) NSString *source;
+@property (nonatomic, copy) NSString *source;
 
 // The possible content types to convert to.
-@property (retain) NSArray *targets;  // of NSString
+@property (nonatomic, retain) NSArray *targets;  // of NSString
 
 @end
 
@@ -180,10 +180,10 @@
 @interface GTLDriveAboutFeaturesItem : GTLObject
 
 // The name of the feature.
-@property (copy) NSString *featureName;
+@property (nonatomic, copy) NSString *featureName;
 
 // The request limit rate for this feature, in queries per second.
-@property (retain) NSNumber *featureRate;  // doubleValue
+@property (nonatomic, retain) NSNumber *featureRate;  // doubleValue
 
 @end
 
@@ -196,10 +196,10 @@
 @interface GTLDriveAboutImportFormatsItem : GTLObject
 
 // The imported file's content type to convert from.
-@property (copy) NSString *source;
+@property (nonatomic, copy) NSString *source;
 
 // The possible content types to convert to.
-@property (retain) NSArray *targets;  // of NSString
+@property (nonatomic, retain) NSArray *targets;  // of NSString
 
 @end
 
@@ -212,10 +212,10 @@
 @interface GTLDriveAboutMaxUploadSizesItem : GTLObject
 
 // The max upload size for this type.
-@property (retain) NSNumber *size;  // longLongValue
+@property (nonatomic, retain) NSNumber *size;  // longLongValue
 
 // The file type.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end
 
@@ -228,10 +228,10 @@
 @interface GTLDriveAboutQuotaBytesByServiceItem : GTLObject
 
 // The storage quota bytes used by the service.
-@property (retain) NSNumber *bytesUsed;  // longLongValue
+@property (nonatomic, retain) NSNumber *bytesUsed;  // longLongValue
 
 // The service's name, e.g. DRIVE, GMAIL, or PHOTOS.
-@property (copy) NSString *serviceName;
+@property (nonatomic, copy) NSString *serviceName;
 
 @end
 
@@ -244,9 +244,9 @@
 @interface GTLDriveAboutAdditionalRoleInfoItemRoleSetsItem : GTLObject
 
 // The supported additional roles with the primary role.
-@property (retain) NSArray *additionalRoles;  // of NSString
+@property (nonatomic, retain) NSArray *additionalRoles;  // of NSString
 
 // A primary permission role.
-@property (copy) NSString *primaryRole;
+@property (nonatomic, copy) NSString *primaryRole;
 
 @end

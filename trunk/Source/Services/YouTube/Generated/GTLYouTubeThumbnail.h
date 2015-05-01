@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,12 +44,12 @@
 @interface GTLYouTubeThumbnail : GTLObject
 
 // (Optional) Height of the thumbnail image.
-@property (retain) NSNumber *height;  // unsignedIntValue
+@property (nonatomic, retain) NSNumber *height;  // unsignedIntValue
 
 // The thumbnail image's URL.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 // (Optional) Width of the thumbnail image.
-@property (retain) NSNumber *width;  // unsignedIntValue
+@property (nonatomic, retain) NSNumber *width;  // unsignedIntValue
 
 @end

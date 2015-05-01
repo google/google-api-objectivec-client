@@ -41,9 +41,9 @@
 @dynamic f;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLBigqueryTableCell class]
-                                forKey:@"f"];
+  NSDictionary *map = @{
+    @"f" : [GTLBigqueryTableCell class]
+  };
   return map;
 }
 

@@ -45,9 +45,9 @@
 
 // The localized strings for channel's description.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (copy) NSString *descriptionProperty;
+@property (nonatomic, copy) NSString *descriptionProperty;
 
 // The localized strings for channel's title.
-@property (copy) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 @end

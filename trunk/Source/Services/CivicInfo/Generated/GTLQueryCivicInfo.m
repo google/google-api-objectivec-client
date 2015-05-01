@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,11 +42,10 @@
          officialOnly, query, recursive, roles;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSString class], @"levels",
-      [NSString class], @"roles",
-      nil];
+  NSDictionary *map = @{
+    @"levels" : [NSString class],
+    @"roles" : [NSString class]
+  };
   return map;
 }
 
@@ -54,7 +53,7 @@
 #pragma mark "divisions" methods
 // These create a GTLQueryCivicInfo object.
 
-+ (id)queryForDivisionsSearch {
++ (instancetype)queryForDivisionsSearch {
   NSString *methodName = @"civicinfo.divisions.search";
   GTLQueryCivicInfo *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLCivicInfoDivisionSearchResponse class];
@@ -65,14 +64,14 @@
 #pragma mark "elections" methods
 // These create a GTLQueryCivicInfo object.
 
-+ (id)queryForElectionsElectionQuery {
++ (instancetype)queryForElectionsElectionQuery {
   NSString *methodName = @"civicinfo.elections.electionQuery";
   GTLQueryCivicInfo *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLCivicInfoElectionsQueryResponse class];
   return query;
 }
 
-+ (id)queryForElectionsVoterInfoQueryWithAddress:(NSString *)address {
++ (instancetype)queryForElectionsVoterInfoQueryWithAddress:(NSString *)address {
   NSString *methodName = @"civicinfo.elections.voterInfoQuery";
   GTLQueryCivicInfo *query = [self queryWithMethodName:methodName];
   query.address = address;
@@ -84,14 +83,14 @@
 #pragma mark "representatives" methods
 // These create a GTLQueryCivicInfo object.
 
-+ (id)queryForRepresentativesRepresentativeInfoByAddress {
++ (instancetype)queryForRepresentativesRepresentativeInfoByAddress {
   NSString *methodName = @"civicinfo.representatives.representativeInfoByAddress";
   GTLQueryCivicInfo *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLCivicInfoRepresentativeInfoResponse class];
   return query;
 }
 
-+ (id)queryForRepresentativesRepresentativeInfoByDivisionWithOcdId:(NSString *)ocdId {
++ (instancetype)queryForRepresentativesRepresentativeInfoByDivisionWithOcdId:(NSString *)ocdId {
   NSString *methodName = @"civicinfo.representatives.representativeInfoByDivision";
   GTLQueryCivicInfo *query = [self queryWithMethodName:methodName];
   query.ocdId = ocdId;

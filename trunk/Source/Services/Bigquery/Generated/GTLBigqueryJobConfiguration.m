@@ -45,9 +45,9 @@
 @dynamic copyProperty, dryRun, extract, link, load, query;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"copy"
-                                forKey:@"copyProperty"];
+  NSDictionary *map = @{
+    @"copyProperty" : @"copy"
+  };
   return map;
 }
 

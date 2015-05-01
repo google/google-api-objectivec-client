@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,30 +42,30 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (copy) NSString *fields;
+@property (nonatomic, copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (copy) NSString *accountId;
-@property (copy) NSString *adClientId;
-@property (copy) NSString *customChannelId;
-@property (copy) NSString *dealId;
-@property (retain) NSArray *dimension;  // of NSString
-@property (copy) NSString *endDate;
-@property (retain) NSArray *filter;  // of NSString
-@property (copy) NSString *locale;
+@property (nonatomic, copy) NSString *accountId;
+@property (nonatomic, copy) NSString *adClientId;
+@property (nonatomic, copy) NSString *customChannelId;
+@property (nonatomic, copy) NSString *dealId;
+@property (nonatomic, retain) NSArray *dimension;  // of NSString
+@property (nonatomic, copy) NSString *endDate;
+@property (nonatomic, retain) NSArray *filter;  // of NSString
+@property (nonatomic, copy) NSString *locale;
 // "maxResults" has different types for some query methods; see the
 // documentation for the right type for each query method.
-@property (retain) id maxResults;
-@property (retain) NSArray *metric;  // of NSString
-@property (copy) NSString *pageToken;
-@property (copy) NSString *savedReportId;
-@property (retain) NSArray *sort;  // of NSString
-@property (copy) NSString *startDate;
+@property (nonatomic, retain) id maxResults;
+@property (nonatomic, retain) NSArray *metric;  // of NSString
+@property (nonatomic, copy) NSString *pageToken;
+@property (nonatomic, copy) NSString *savedReportId;
+@property (nonatomic, retain) NSArray *sort;  // of NSString
+@property (nonatomic, copy) NSString *startDate;
 // "startIndex" has different types for some query methods; see the
 // documentation for the right type for each query method.
-@property (retain) id startIndex;
+@property (nonatomic, retain) id startIndex;
 
 #pragma mark -
 #pragma mark "accounts.adclients" methods
@@ -86,7 +86,7 @@
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSeller
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSellerReadonly
 // Fetches a GTLAdExchangeSellerAdClients.
-+ (id)queryForAccountsAdclientsListWithAccountId:(NSString *)accountId;
++ (instancetype)queryForAccountsAdclientsListWithAccountId:(NSString *)accountId;
 
 #pragma mark -
 #pragma mark "accounts.alerts" methods
@@ -104,7 +104,7 @@
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSeller
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSellerReadonly
 // Fetches a GTLAdExchangeSellerAlerts.
-+ (id)queryForAccountsAlertsListWithAccountId:(NSString *)accountId;
++ (instancetype)queryForAccountsAlertsListWithAccountId:(NSString *)accountId;
 
 #pragma mark -
 #pragma mark "accounts.customchannels" methods
@@ -120,9 +120,9 @@
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSeller
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSellerReadonly
 // Fetches a GTLAdExchangeSellerCustomChannel.
-+ (id)queryForAccountsCustomchannelsGetWithAccountId:(NSString *)accountId
-                                          adClientId:(NSString *)adClientId
-                                     customChannelId:(NSString *)customChannelId;
++ (instancetype)queryForAccountsCustomchannelsGetWithAccountId:(NSString *)accountId
+                                                    adClientId:(NSString *)adClientId
+                                               customChannelId:(NSString *)customChannelId;
 
 // Method: adexchangeseller.accounts.customchannels.list
 // List all custom channels in the specified ad client for this Ad Exchange
@@ -141,8 +141,8 @@
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSeller
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSellerReadonly
 // Fetches a GTLAdExchangeSellerCustomChannels.
-+ (id)queryForAccountsCustomchannelsListWithAccountId:(NSString *)accountId
-                                           adClientId:(NSString *)adClientId;
++ (instancetype)queryForAccountsCustomchannelsListWithAccountId:(NSString *)accountId
+                                                     adClientId:(NSString *)adClientId;
 
 #pragma mark -
 #pragma mark "accounts" methods
@@ -157,7 +157,7 @@
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSeller
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSellerReadonly
 // Fetches a GTLAdExchangeSellerAccount.
-+ (id)queryForAccountsGetWithAccountId:(NSString *)accountId;
++ (instancetype)queryForAccountsGetWithAccountId:(NSString *)accountId;
 
 // Method: adexchangeseller.accounts.list
 // List all accounts available to this Ad Exchange account.
@@ -172,7 +172,7 @@
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSeller
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSellerReadonly
 // Fetches a GTLAdExchangeSellerAccounts.
-+ (id)queryForAccountsList;
++ (instancetype)queryForAccountsList;
 
 #pragma mark -
 #pragma mark "accounts.metadata.dimensions" methods
@@ -186,7 +186,7 @@
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSeller
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSellerReadonly
 // Fetches a GTLAdExchangeSellerMetadata.
-+ (id)queryForAccountsMetadataDimensionsListWithAccountId:(NSString *)accountId;
++ (instancetype)queryForAccountsMetadataDimensionsListWithAccountId:(NSString *)accountId;
 
 #pragma mark -
 #pragma mark "accounts.metadata.metrics" methods
@@ -200,7 +200,7 @@
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSeller
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSellerReadonly
 // Fetches a GTLAdExchangeSellerMetadata.
-+ (id)queryForAccountsMetadataMetricsListWithAccountId:(NSString *)accountId;
++ (instancetype)queryForAccountsMetadataMetricsListWithAccountId:(NSString *)accountId;
 
 #pragma mark -
 #pragma mark "accounts.preferreddeals" methods
@@ -215,8 +215,8 @@
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSeller
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSellerReadonly
 // Fetches a GTLAdExchangeSellerPreferredDeal.
-+ (id)queryForAccountsPreferreddealsGetWithAccountId:(NSString *)accountId
-                                              dealId:(NSString *)dealId;
++ (instancetype)queryForAccountsPreferreddealsGetWithAccountId:(NSString *)accountId
+                                                        dealId:(NSString *)dealId;
 
 // Method: adexchangeseller.accounts.preferreddeals.list
 // List the preferred deals for this Ad Exchange account.
@@ -226,7 +226,7 @@
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSeller
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSellerReadonly
 // Fetches a GTLAdExchangeSellerPreferredDeals.
-+ (id)queryForAccountsPreferreddealsListWithAccountId:(NSString *)accountId;
++ (instancetype)queryForAccountsPreferreddealsListWithAccountId:(NSString *)accountId;
 
 #pragma mark -
 #pragma mark "accounts.reports" methods
@@ -259,9 +259,9 @@
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSeller
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSellerReadonly
 // Fetches a GTLAdExchangeSellerReport.
-+ (id)queryForAccountsReportsGenerateWithAccountId:(NSString *)accountId
-                                         startDate:(NSString *)startDate
-                                           endDate:(NSString *)endDate;
++ (instancetype)queryForAccountsReportsGenerateWithAccountId:(NSString *)accountId
+                                                   startDate:(NSString *)startDate
+                                                     endDate:(NSString *)endDate;
 
 #pragma mark -
 #pragma mark "accounts.reports.saved" methods
@@ -284,8 +284,8 @@
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSeller
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSellerReadonly
 // Fetches a GTLAdExchangeSellerReport.
-+ (id)queryForAccountsReportsSavedGenerateWithAccountId:(NSString *)accountId
-                                          savedReportId:(NSString *)savedReportId;
++ (instancetype)queryForAccountsReportsSavedGenerateWithAccountId:(NSString *)accountId
+                                                    savedReportId:(NSString *)savedReportId;
 
 // Method: adexchangeseller.accounts.reports.saved.list
 // List all saved reports in this Ad Exchange account.
@@ -302,7 +302,7 @@
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSeller
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSellerReadonly
 // Fetches a GTLAdExchangeSellerSavedReports.
-+ (id)queryForAccountsReportsSavedListWithAccountId:(NSString *)accountId;
++ (instancetype)queryForAccountsReportsSavedListWithAccountId:(NSString *)accountId;
 
 #pragma mark -
 #pragma mark "accounts.urlchannels" methods
@@ -325,7 +325,7 @@
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSeller
 //   kGTLAuthScopeAdExchangeSellerAdexchangeSellerReadonly
 // Fetches a GTLAdExchangeSellerUrlChannels.
-+ (id)queryForAccountsUrlchannelsListWithAccountId:(NSString *)accountId
-                                        adClientId:(NSString *)adClientId;
++ (instancetype)queryForAccountsUrlchannelsListWithAccountId:(NSString *)accountId
+                                                  adClientId:(NSString *)adClientId;
 
 @end

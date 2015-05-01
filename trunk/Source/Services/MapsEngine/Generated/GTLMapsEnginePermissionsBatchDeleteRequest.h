@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,6 +47,6 @@
 // An array of permission ids to be removed. This could be the email address of
 // the user or group this permission refers to, or the string "anyone" for
 // public permissions.
-@property (retain) NSArray *ids;  // of NSString
+@property (nonatomic, retain) NSArray *ids;  // of NSString
 
 @end

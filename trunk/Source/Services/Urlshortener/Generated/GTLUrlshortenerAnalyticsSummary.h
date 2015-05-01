@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,18 +44,18 @@
 @interface GTLUrlshortenerAnalyticsSummary : GTLObject
 
 // Click analytics over all time.
-@property (retain) GTLUrlshortenerAnalyticsSnapshot *allTime;
+@property (nonatomic, retain) GTLUrlshortenerAnalyticsSnapshot *allTime;
 
 // Click analytics over the last day.
-@property (retain) GTLUrlshortenerAnalyticsSnapshot *day;
+@property (nonatomic, retain) GTLUrlshortenerAnalyticsSnapshot *day;
 
 // Click analytics over the last month.
-@property (retain) GTLUrlshortenerAnalyticsSnapshot *month;
+@property (nonatomic, retain) GTLUrlshortenerAnalyticsSnapshot *month;
 
 // Click analytics over the last two hours.
-@property (retain) GTLUrlshortenerAnalyticsSnapshot *twoHours;
+@property (nonatomic, retain) GTLUrlshortenerAnalyticsSnapshot *twoHours;
 
 // Click analytics over the last week.
-@property (retain) GTLUrlshortenerAnalyticsSnapshot *week;
+@property (nonatomic, retain) GTLUrlshortenerAnalyticsSnapshot *week;
 
 @end

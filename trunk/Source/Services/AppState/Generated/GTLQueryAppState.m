@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,7 +43,7 @@
 #pragma mark "states" methods
 // These create a GTLQueryAppState object.
 
-+ (id)queryForStatesClearWithStateKey:(NSInteger)stateKey {
++ (instancetype)queryForStatesClearWithStateKey:(NSInteger)stateKey {
   NSString *methodName = @"appstate.states.clear";
   GTLQueryAppState *query = [self queryWithMethodName:methodName];
   query.stateKey = stateKey;
@@ -51,14 +51,14 @@
   return query;
 }
 
-+ (id)queryForStatesDeleteWithStateKey:(NSInteger)stateKey {
++ (instancetype)queryForStatesDeleteWithStateKey:(NSInteger)stateKey {
   NSString *methodName = @"appstate.states.delete";
   GTLQueryAppState *query = [self queryWithMethodName:methodName];
   query.stateKey = stateKey;
   return query;
 }
 
-+ (id)queryForStatesGetWithStateKey:(NSInteger)stateKey {
++ (instancetype)queryForStatesGetWithStateKey:(NSInteger)stateKey {
   NSString *methodName = @"appstate.states.get";
   GTLQueryAppState *query = [self queryWithMethodName:methodName];
   query.stateKey = stateKey;
@@ -66,15 +66,15 @@
   return query;
 }
 
-+ (id)queryForStatesList {
++ (instancetype)queryForStatesList {
   NSString *methodName = @"appstate.states.list";
   GTLQueryAppState *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLAppStateListResponse class];
   return query;
 }
 
-+ (id)queryForStatesUpdateWithObject:(GTLAppStateUpdateRequest *)object
-                            stateKey:(NSInteger)stateKey {
++ (instancetype)queryForStatesUpdateWithObject:(GTLAppStateUpdateRequest *)object
+                                      stateKey:(NSInteger)stateKey {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;

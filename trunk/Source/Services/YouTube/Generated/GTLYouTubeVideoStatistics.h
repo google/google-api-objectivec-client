@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,20 +45,20 @@
 @interface GTLYouTubeVideoStatistics : GTLObject
 
 // The number of comments for the video.
-@property (retain) NSNumber *commentCount;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *commentCount;  // unsignedLongLongValue
 
 // The number of users who have indicated that they disliked the video by giving
 // it a negative rating.
-@property (retain) NSNumber *dislikeCount;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *dislikeCount;  // unsignedLongLongValue
 
 // The number of users who currently have the video marked as a favorite video.
-@property (retain) NSNumber *favoriteCount;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *favoriteCount;  // unsignedLongLongValue
 
 // The number of users who have indicated that they liked the video by giving it
 // a positive rating.
-@property (retain) NSNumber *likeCount;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *likeCount;  // unsignedLongLongValue
 
 // The number of times the video has been viewed.
-@property (retain) NSNumber *viewCount;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *viewCount;  // unsignedLongLongValue
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,25 +42,25 @@
 @interface GTLBooksReadingPosition : GTLObject
 
 // Position in an EPUB as a CFI.
-@property (copy) NSString *epubCfiPosition;
+@property (nonatomic, copy) NSString *epubCfiPosition;
 
 // Position in a volume for image-based content.
-@property (copy) NSString *gbImagePosition;
+@property (nonatomic, copy) NSString *gbImagePosition;
 
 // Position in a volume for text-based content.
-@property (copy) NSString *gbTextPosition;
+@property (nonatomic, copy) NSString *gbTextPosition;
 
 // Resource type for a reading position.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Position in a PDF file.
-@property (copy) NSString *pdfPosition;
+@property (nonatomic, copy) NSString *pdfPosition;
 
 // Timestamp when this reading position was last updated (formatted UTC
 // timestamp with millisecond resolution).
-@property (retain) GTLDateTime *updated;
+@property (nonatomic, retain) GTLDateTime *updated;
 
 // Volume id associated with this reading position.
-@property (copy) NSString *volumeId;
+@property (nonatomic, copy) NSString *volumeId;
 
 @end

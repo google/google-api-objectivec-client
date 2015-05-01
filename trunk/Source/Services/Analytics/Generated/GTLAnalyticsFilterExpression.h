@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,10 +44,10 @@
 @interface GTLAnalyticsFilterExpression : GTLObject
 
 // Determines if the filter is case sensitive.
-@property (retain) NSNumber *caseSensitive;  // boolValue
+@property (nonatomic, retain) NSNumber *caseSensitive;  // boolValue
 
 // Filter expression value
-@property (copy) NSString *expressionValue;
+@property (nonatomic, copy) NSString *expressionValue;
 
 // Field to filter. Possible values:
 // - Content and Traffic
@@ -134,10 +134,10 @@
 // - SOCIAL_NETWORK,
 // - SOCIAL_ACTION,
 // - SOCIAL_ACTION_TARGET,
-@property (copy) NSString *field;
+@property (nonatomic, copy) NSString *field;
 
 // Kind value for filter expression
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Match type for this filter. Possible values are BEGINS_WITH, EQUAL,
 // ENDS_WITH, CONTAINS, MATCHES. Include and Exclude filters can use any match
@@ -145,6 +145,6 @@
 // Search and Replace expressions in the Search and Replace filter and all
 // filter expressions in the Advanced filter default to MATCHES. User should not
 // set match type for those filters.
-@property (copy) NSString *matchType;
+@property (nonatomic, copy) NSString *matchType;
 
 @end

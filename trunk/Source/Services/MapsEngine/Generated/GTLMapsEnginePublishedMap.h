@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,25 +47,25 @@
 @interface GTLMapsEnginePublishedMap : GTLObject
 
 // The contents of this Map.
-@property (retain) NSArray *contents;  // of GTLMapsEngineMapItem
+@property (nonatomic, retain) NSArray *contents;  // of GTLMapsEngineMapItem
 
 // An array of four numbers (west, south, east, north) which defines the
 // rectangular bounding box of the default viewport. The numbers represent
 // latitude and longitude in decimal degrees.
-@property (retain) NSArray *defaultViewport;  // of NSNumber (doubleValue)
+@property (nonatomic, retain) NSArray *defaultViewport;  // of NSNumber (doubleValue)
 
 // The description of this Map, supplied by the author.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (copy) NSString *descriptionProperty;
+@property (nonatomic, copy) NSString *descriptionProperty;
 
 // A globally unique ID, used to refer to this Map.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The name of this Map, supplied by the author.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // The ID of the project that this Map is in.
-@property (copy) NSString *projectId;
+@property (nonatomic, copy) NSString *projectId;
 
 @end

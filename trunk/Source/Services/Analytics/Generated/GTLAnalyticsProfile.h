@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,88 +51,88 @@
 @interface GTLAnalyticsProfile : GTLObject
 
 // Account ID to which this view (profile) belongs.
-@property (copy) NSString *accountId;
+@property (nonatomic, copy) NSString *accountId;
 
 // Child link for this view (profile). Points to the list of goals for this view
 // (profile).
-@property (retain) GTLAnalyticsProfileChildLink *childLink;
+@property (nonatomic, retain) GTLAnalyticsProfileChildLink *childLink;
 
 // Time this view (profile) was created.
-@property (retain) GTLDateTime *created;
+@property (nonatomic, retain) GTLDateTime *created;
 
 // The currency type associated with this view (profile). The supported values
 // are:
 // ARS, AUD, BGN, BRL, CAD, CHF, CNY, CZK, DKK, EUR, GBP, HKD, HUF, IDR, INR,
 // JPY, KRW, LTL, MXN, NOK, NZD, PHP, PLN, RUB, SEK, THB, TRY, TWD, USD, VND,
 // ZAR
-@property (copy) NSString *currency;
+@property (nonatomic, copy) NSString *currency;
 
 // Default page for this view (profile).
-@property (copy) NSString *defaultPage;
+@property (nonatomic, copy) NSString *defaultPage;
 
 // Indicates whether ecommerce tracking is enabled for this view (profile).
-@property (retain) NSNumber *eCommerceTracking;  // boolValue
+@property (nonatomic, retain) NSNumber *eCommerceTracking;  // boolValue
 
 // Indicates whether enhanced ecommerce tracking is enabled for this view
 // (profile). This property can only be enabled if ecommerce tracking is
 // enabled.
-@property (retain) NSNumber *enhancedECommerceTracking;  // boolValue
+@property (nonatomic, retain) NSNumber *enhancedECommerceTracking;  // boolValue
 
 // The query parameters that are excluded from this view (profile).
-@property (copy) NSString *excludeQueryParameters;
+@property (nonatomic, copy) NSString *excludeQueryParameters;
 
 // View (Profile) ID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Internal ID for the web property to which this view (profile) belongs.
-@property (copy) NSString *internalWebPropertyId;
+@property (nonatomic, copy) NSString *internalWebPropertyId;
 
 // Resource type for Analytics view (profile).
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Name of this view (profile).
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // Parent link for this view (profile). Points to the web property to which this
 // view (profile) belongs.
-@property (retain) GTLAnalyticsProfileParentLink *parentLink;
+@property (nonatomic, retain) GTLAnalyticsProfileParentLink *parentLink;
 
 // Permissions the user has for this view (profile).
-@property (retain) GTLAnalyticsProfilePermissions *permissions;
+@property (nonatomic, retain) GTLAnalyticsProfilePermissions *permissions;
 
 // Link for this view (profile).
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // Site search category parameters for this view (profile).
-@property (copy) NSString *siteSearchCategoryParameters;
+@property (nonatomic, copy) NSString *siteSearchCategoryParameters;
 
 // The site search query parameters for this view (profile).
-@property (copy) NSString *siteSearchQueryParameters;
+@property (nonatomic, copy) NSString *siteSearchQueryParameters;
 
 // Whether or not Analytics will strip search category parameters from the URLs
 // in your reports.
-@property (retain) NSNumber *stripSiteSearchCategoryParameters;  // boolValue
+@property (nonatomic, retain) NSNumber *stripSiteSearchCategoryParameters;  // boolValue
 
 // Whether or not Analytics will strip search query parameters from the URLs in
 // your reports.
-@property (retain) NSNumber *stripSiteSearchQueryParameters;  // boolValue
+@property (nonatomic, retain) NSNumber *stripSiteSearchQueryParameters;  // boolValue
 
 // Time zone for which this view (profile) has been configured. Time zones are
 // identified by strings from the TZ database.
-@property (copy) NSString *timezone;
+@property (nonatomic, copy) NSString *timezone;
 
 // View (Profile) type. Supported types: WEB or APP.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 // Time this view (profile) was last modified.
-@property (retain) GTLDateTime *updated;
+@property (nonatomic, retain) GTLDateTime *updated;
 
 // Web property ID of the form UA-XXXXX-YY to which this view (profile) belongs.
-@property (copy) NSString *webPropertyId;
+@property (nonatomic, copy) NSString *webPropertyId;
 
 // Website URL for this view (profile).
-@property (copy) NSString *websiteUrl;
+@property (nonatomic, copy) NSString *websiteUrl;
 
 @end
 
@@ -145,10 +145,10 @@
 @interface GTLAnalyticsProfileChildLink : GTLObject
 
 // Link to the list of goals for this view (profile).
-@property (copy) NSString *href;
+@property (nonatomic, copy) NSString *href;
 
 // Value is "analytics#goals".
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end
 
@@ -161,10 +161,10 @@
 @interface GTLAnalyticsProfileParentLink : GTLObject
 
 // Link to the web property to which this view (profile) belongs.
-@property (copy) NSString *href;
+@property (nonatomic, copy) NSString *href;
 
 // Value is "analytics#webproperty".
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end
 
@@ -179,6 +179,6 @@
 // All the permissions that the user has for this view (profile). These include
 // any implied permissions (e.g., EDIT implies VIEW) or inherited permissions
 // from the parent web property.
-@property (retain) NSArray *effective;  // of NSString
+@property (nonatomic, retain) NSArray *effective;  // of NSString
 
 @end

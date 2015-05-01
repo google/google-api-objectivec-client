@@ -47,43 +47,43 @@
 @interface GTLAnalyticsCustomDimension : GTLObject
 
 // Account ID.
-@property (copy) NSString *accountId;
+@property (nonatomic, copy) NSString *accountId;
 
 // Boolean indicating whether the custom dimension is active.
-@property (retain) NSNumber *active;  // boolValue
+@property (nonatomic, retain) NSNumber *active;  // boolValue
 
 // Time the custom dimension was created.
-@property (retain) GTLDateTime *created;
+@property (nonatomic, retain) GTLDateTime *created;
 
 // Custom dimension ID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Index of the custom dimension.
-@property (retain) NSNumber *index;  // intValue
+@property (nonatomic, retain) NSNumber *index;  // intValue
 
 // Kind value for a custom dimension. Set to "analytics#customDimension". It is
 // a read-only field.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Name of the custom dimension.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // Parent link for the custom dimension. Points to the property to which the
 // custom dimension belongs.
-@property (retain) GTLAnalyticsCustomDimensionParentLink *parentLink;
+@property (nonatomic, retain) GTLAnalyticsCustomDimensionParentLink *parentLink;
 
 // Scope of the custom dimension: HIT, SESSION, USER or PRODUCT.
-@property (copy) NSString *scope;
+@property (nonatomic, copy) NSString *scope;
 
 // Link for the custom dimension
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // Time the custom dimension was last modified.
-@property (retain) GTLDateTime *updated;
+@property (nonatomic, retain) GTLDateTime *updated;
 
 // Property ID.
-@property (copy) NSString *webPropertyId;
+@property (nonatomic, copy) NSString *webPropertyId;
 
 @end
 
@@ -96,9 +96,9 @@
 @interface GTLAnalyticsCustomDimensionParentLink : GTLObject
 
 // Link to the property to which the custom dimension belongs.
-@property (copy) NSString *href;
+@property (nonatomic, copy) NSString *href;
 
 // Type of the parent link. Set to "analytics#webproperty".
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end

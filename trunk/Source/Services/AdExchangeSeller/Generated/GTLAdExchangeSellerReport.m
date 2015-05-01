@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,14 +41,13 @@
 @dynamic averages, headers, kind, rows, totalMatchedRows, totals, warnings;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSString class], @"averages",
-      [GTLAdExchangeSellerReportHeadersItem class], @"headers",
-      [NSString class], @"rows",
-      [NSString class], @"totals",
-      [NSString class], @"warnings",
-      nil];
+  NSDictionary *map = @{
+    @"averages" : [NSString class],
+    @"headers" : [GTLAdExchangeSellerReportHeadersItem class],
+    @"rows" : [NSString class],
+    @"totals" : [NSString class],
+    @"warnings" : [NSString class]
+  };
   return map;
 }
 

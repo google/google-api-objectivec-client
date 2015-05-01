@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,13 +45,13 @@
 @interface GTLMapsEngineFilter : GTLObject
 
 // The column name to filter on.
-@property (copy) NSString *column;
+@property (nonatomic, copy) NSString *column;
 
 // Operation used to evaluate the filter.
 // Remapped to 'operatorProperty' to avoid language reserved word 'operator'.
-@property (copy) NSString *operatorProperty;
+@property (nonatomic, copy) NSString *operatorProperty;
 
 // Value to be evaluated against attribute.
-@property (retain) id value;
+@property (nonatomic, retain) id value;
 
 @end

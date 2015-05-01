@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,12 +45,12 @@
 @interface GTLBloggerBlogUserInfo : GTLObject
 
 // The Blog resource.
-@property (retain) GTLBloggerBlog *blog;
+@property (nonatomic, retain) GTLBloggerBlog *blog;
 
 // Information about a User for the Blog.
-@property (retain) GTLBloggerBlogPerUserInfo *blogUserInfo;
+@property (nonatomic, retain) GTLBloggerBlogPerUserInfo *blogUserInfo;
 
 // The kind of this entity. Always blogger#blogUserInfo
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 @end

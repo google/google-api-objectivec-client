@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,34 +36,34 @@
 // Method compiled in debug builds just to check that all the needed support
 // classes are present at link time.
 + (NSArray *)checkClasses {
-  NSArray *classes = [NSArray arrayWithObjects:
-                      [GTLQueryCivicInfo class],
-                      [GTLCivicInfoAdministrationRegion class],
-                      [GTLCivicInfoAdministrativeBody class],
-                      [GTLCivicInfoCandidate class],
-                      [GTLCivicInfoChannel class],
-                      [GTLCivicInfoContest class],
-                      [GTLCivicInfoDivisionSearchResponse class],
-                      [GTLCivicInfoDivisionSearchResult class],
-                      [GTLCivicInfoElection class],
-                      [GTLCivicInfoElectionOfficial class],
-                      [GTLCivicInfoElectionsQueryResponse class],
-                      [GTLCivicInfoElectoralDistrict class],
-                      [GTLCivicInfoGeographicDivision class],
-                      [GTLCivicInfoOffice class],
-                      [GTLCivicInfoOfficial class],
-                      [GTLCivicInfoPollingLocation class],
-                      [GTLCivicInfoRepresentativeInfoData class],
-                      [GTLCivicInfoRepresentativeInfoResponse class],
-                      [GTLCivicInfoSimpleAddressType class],
-                      [GTLCivicInfoSource class],
-                      [GTLCivicInfoVoterInfoResponse class],
-                      nil];
+  NSArray *classes = @[
+    [GTLQueryCivicInfo class],
+    [GTLCivicInfoAdministrationRegion class],
+    [GTLCivicInfoAdministrativeBody class],
+    [GTLCivicInfoCandidate class],
+    [GTLCivicInfoChannel class],
+    [GTLCivicInfoContest class],
+    [GTLCivicInfoDivisionSearchResponse class],
+    [GTLCivicInfoDivisionSearchResult class],
+    [GTLCivicInfoElection class],
+    [GTLCivicInfoElectionOfficial class],
+    [GTLCivicInfoElectionsQueryResponse class],
+    [GTLCivicInfoElectoralDistrict class],
+    [GTLCivicInfoGeographicDivision class],
+    [GTLCivicInfoOffice class],
+    [GTLCivicInfoOfficial class],
+    [GTLCivicInfoPollingLocation class],
+    [GTLCivicInfoRepresentativeInfoData class],
+    [GTLCivicInfoRepresentativeInfoResponse class],
+    [GTLCivicInfoSimpleAddressType class],
+    [GTLCivicInfoSource class],
+    [GTLCivicInfoVoterInfoResponse class]
+  ];
   return classes;
 }
 #endif  // DEBUG
 
-- (id)init {
+- (instancetype)init {
   self = [super init];
   if (self) {
     // Version from discovery.

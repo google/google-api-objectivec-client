@@ -44,6 +44,6 @@
 @interface GTLYouTubeChannelSectionLocalization : GTLObject
 
 // The localized strings for channel section's title.
-@property (copy) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 @end

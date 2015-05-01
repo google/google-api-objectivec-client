@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,21 +47,21 @@
 @interface GTLCalendarSettings : GTLCollectionObject
 
 // Etag of the collection.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // List of user settings.
-@property (retain) NSArray *items;  // of GTLCalendarSetting
+@property (nonatomic, retain) NSArray *items;  // of GTLCalendarSetting
 
 // Type of the collection ("calendar#settings").
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Token used to access the next page of this result. Omitted if no further
 // results are available, in which case nextSyncToken is provided.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 // Token used at a later point in time to retrieve only the entries that have
 // changed since this result was returned. Omitted if further results are
 // available, in which case nextPageToken is provided.
-@property (copy) NSString *nextSyncToken;
+@property (nonatomic, copy) NSString *nextSyncToken;
 
 @end

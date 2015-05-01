@@ -44,20 +44,20 @@
 @interface GTLBigqueryTableDataList : GTLObject
 
 // A hash of this page of results.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The resource type of the response.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // A token used for paging results. Providing this token instead of the
 // startIndex parameter can help you retrieve stable results when an underlying
 // table is changing.
-@property (copy) NSString *pageToken;
+@property (nonatomic, copy) NSString *pageToken;
 
 // Rows of results.
-@property (retain) NSArray *rows;  // of GTLBigqueryTableRow
+@property (nonatomic, retain) NSArray *rows;  // of GTLBigqueryTableRow
 
 // The total number of rows in the complete table.
-@property (retain) NSNumber *totalRows;  // longLongValue
+@property (nonatomic, retain) NSNumber *totalRows;  // longLongValue
 
 @end

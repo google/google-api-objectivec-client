@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,32 +47,32 @@
 @interface GTLBloggerUser : GTLObject
 
 // Profile summary information.
-@property (copy) NSString *about;
+@property (nonatomic, copy) NSString *about;
 
 // The container of blogs for this user.
-@property (retain) GTLBloggerUserBlogs *blogs;
+@property (nonatomic, retain) GTLBloggerUserBlogs *blogs;
 
 // The timestamp of when this profile was created, in seconds since epoch.
-@property (retain) GTLDateTime *created;
+@property (nonatomic, retain) GTLDateTime *created;
 
 // The display name.
-@property (copy) NSString *displayName;
+@property (nonatomic, copy) NSString *displayName;
 
 // The identifier for this User.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The kind of this entity. Always blogger#user
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // This user's locale
-@property (retain) GTLBloggerUserLocale *locale;
+@property (nonatomic, retain) GTLBloggerUserLocale *locale;
 
 // The API REST URL to fetch this resource from.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // The user's profile page.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 @end
 
@@ -85,7 +85,7 @@
 @interface GTLBloggerUserBlogs : GTLObject
 
 // The URL of the Blogs for this user.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 @end
 
@@ -98,12 +98,12 @@
 @interface GTLBloggerUserLocale : GTLObject
 
 // The user's country setting.
-@property (copy) NSString *country;
+@property (nonatomic, copy) NSString *country;
 
 // The user's language setting.
-@property (copy) NSString *language;
+@property (nonatomic, copy) NSString *language;
 
 // The user's language variant setting.
-@property (copy) NSString *variant;
+@property (nonatomic, copy) NSString *variant;
 
 @end

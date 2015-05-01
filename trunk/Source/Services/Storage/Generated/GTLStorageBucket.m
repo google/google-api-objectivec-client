@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,21 +53,19 @@
          selfLink, storageClass, timeCreated, versioning, website;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"etag", @"ETag",
-      @"id", @"identifier",
-      nil];
+  NSDictionary *map = @{
+    @"ETag" : @"etag",
+    @"identifier" : @"id"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [GTLStorageBucketAccessControl class], @"acl",
-      [GTLStorageBucketCorsItem class], @"cors",
-      [GTLStorageObjectAccessControl class], @"defaultObjectAcl",
-      nil];
+  NSDictionary *map = @{
+    @"acl" : [GTLStorageBucketAccessControl class],
+    @"cors" : [GTLStorageBucketCorsItem class],
+    @"defaultObjectAcl" : [GTLStorageObjectAccessControl class]
+  };
   return map;
 }
 
@@ -87,12 +85,11 @@
 @dynamic maxAgeSeconds, method, origin, responseHeader;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSString class], @"method",
-      [NSString class], @"origin",
-      [NSString class], @"responseHeader",
-      nil];
+  NSDictionary *map = @{
+    @"method" : [NSString class],
+    @"origin" : [NSString class],
+    @"responseHeader" : [NSString class]
+  };
   return map;
 }
 
@@ -108,9 +105,9 @@
 @dynamic rule;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLStorageBucketLifecycleRuleItem class]
-                                forKey:@"rule"];
+  NSDictionary *map = @{
+    @"rule" : [GTLStorageBucketLifecycleRuleItem class]
+  };
   return map;
 }
 

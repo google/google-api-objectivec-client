@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,12 +44,12 @@
 @interface GTLGmailListDraftsResponse : GTLObject
 
 // List of drafts.
-@property (retain) NSArray *drafts;  // of GTLGmailDraft
+@property (nonatomic, retain) NSArray *drafts;  // of GTLGmailDraft
 
 // Token to retrieve the next page of results in the list.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 // Estimated total number of results.
-@property (retain) NSNumber *resultSizeEstimate;  // unsignedIntValue
+@property (nonatomic, retain) NSNumber *resultSizeEstimate;  // unsignedIntValue
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,30 +36,30 @@
 // Method compiled in debug builds just to check that all the needed support
 // classes are present at link time.
 + (NSArray *)checkClasses {
-  NSArray *classes = [NSArray arrayWithObjects:
-                      [GTLQueryDoubleClickBidManager class],
-                      [GTLDoubleClickBidManagerDownloadLineItemsResponse class],
-                      [GTLDoubleClickBidManagerFilterPair class],
-                      [GTLDoubleClickBidManagerListQueriesResponse class],
-                      [GTLDoubleClickBidManagerListReportsResponse class],
-                      [GTLDoubleClickBidManagerParameters class],
-                      [GTLDoubleClickBidManagerQuery class],
-                      [GTLDoubleClickBidManagerQueryMetadata class],
-                      [GTLDoubleClickBidManagerQuerySchedule class],
-                      [GTLDoubleClickBidManagerReport class],
-                      [GTLDoubleClickBidManagerReportFailure class],
-                      [GTLDoubleClickBidManagerReportKey class],
-                      [GTLDoubleClickBidManagerReportMetadata class],
-                      [GTLDoubleClickBidManagerReportStatus class],
-                      [GTLDoubleClickBidManagerRowStatus class],
-                      [GTLDoubleClickBidManagerUploadLineItemsResponse class],
-                      [GTLDoubleClickBidManagerUploadStatus class],
-                      nil];
+  NSArray *classes = @[
+    [GTLQueryDoubleClickBidManager class],
+    [GTLDoubleClickBidManagerDownloadLineItemsResponse class],
+    [GTLDoubleClickBidManagerFilterPair class],
+    [GTLDoubleClickBidManagerListQueriesResponse class],
+    [GTLDoubleClickBidManagerListReportsResponse class],
+    [GTLDoubleClickBidManagerParameters class],
+    [GTLDoubleClickBidManagerQuery class],
+    [GTLDoubleClickBidManagerQueryMetadata class],
+    [GTLDoubleClickBidManagerQuerySchedule class],
+    [GTLDoubleClickBidManagerReport class],
+    [GTLDoubleClickBidManagerReportFailure class],
+    [GTLDoubleClickBidManagerReportKey class],
+    [GTLDoubleClickBidManagerReportMetadata class],
+    [GTLDoubleClickBidManagerReportStatus class],
+    [GTLDoubleClickBidManagerRowStatus class],
+    [GTLDoubleClickBidManagerUploadLineItemsResponse class],
+    [GTLDoubleClickBidManagerUploadStatus class]
+  ];
   return classes;
 }
 #endif  // DEBUG
 
-- (id)init {
+- (instancetype)init {
   self = [super init];
   if (self) {
     // Version from discovery.

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,24 +48,24 @@
 
 // Web property ID of the form UA-XXXXX-YY.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Internal ID for this web property.
-@property (copy) NSString *internalWebPropertyId;
+@property (nonatomic, copy) NSString *internalWebPropertyId;
 
 // Resource type for Analytics WebPropertySummary.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Level for this web property. Possible values are STANDARD or PREMIUM.
-@property (copy) NSString *level;
+@property (nonatomic, copy) NSString *level;
 
 // Web property name.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // List of profiles under this web property.
-@property (retain) NSArray *profiles;  // of GTLAnalyticsProfileSummary
+@property (nonatomic, retain) NSArray *profiles;  // of GTLAnalyticsProfileSummary
 
 // Website url for this web property.
-@property (copy) NSString *websiteUrl;
+@property (nonatomic, copy) NSString *websiteUrl;
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,13 +49,13 @@
 
 // Border color/width of the shape. If not specified the shape won't have a
 // border.
-@property (retain) GTLMapsEngineBorder *border;
+@property (nonatomic, retain) GTLMapsEngineBorder *border;
 
 // The fill color of the shape. If not specified the shape will be transparent
 // (although the borders may not be).
-@property (retain) GTLMapsEngineColor *fill;
+@property (nonatomic, retain) GTLMapsEngineColor *fill;
 
 // Name of the shape.
-@property (copy) NSString *shape;
+@property (nonatomic, copy) NSString *shape;
 
 @end

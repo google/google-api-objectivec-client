@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,6 +44,6 @@
 @interface GTLYouTubeVideoProjectDetails : GTLObject
 
 // A list of project tags associated with the video during the upload.
-@property (retain) NSArray *tags;  // of NSString
+@property (nonatomic, retain) NSArray *tags;  // of NSString
 
 @end

@@ -49,7 +49,7 @@
 
 // If true, allows the query to produce arbitrarily large result tables at a
 // slight cost in performance. Requires destinationTable to be set.
-@property (retain) NSNumber *allowLargeResults;  // boolValue
+@property (nonatomic, retain) NSNumber *allowLargeResults;  // boolValue
 
 // [Optional] Specifies whether the job is allowed to create new tables. The
 // following values are supported: CREATE_IF_NEEDED: If the table does not
@@ -57,42 +57,42 @@
 // exist. If it does not, a 'notFound' error is returned in the job result. The
 // default value is CREATE_IF_NEEDED. Creation, truncation and append actions
 // occur as one atomic update upon job completion.
-@property (copy) NSString *createDisposition;
+@property (nonatomic, copy) NSString *createDisposition;
 
 // [Optional] Specifies the default dataset to use for unqualified table names
 // in the query.
-@property (retain) GTLBigqueryDatasetReference *defaultDataset;
+@property (nonatomic, retain) GTLBigqueryDatasetReference *defaultDataset;
 
 // [Optional] Describes the table where the query results should be stored. If
 // not present, a new table will be created to store the results.
-@property (retain) GTLBigqueryTableReference *destinationTable;
+@property (nonatomic, retain) GTLBigqueryTableReference *destinationTable;
 
 // [Optional] Flattens all nested and repeated fields in the query results. The
 // default value is true. allowLargeResults must be true if this is set to
 // false.
-@property (retain) NSNumber *flattenResults;  // boolValue
+@property (nonatomic, retain) NSNumber *flattenResults;  // boolValue
 
 // [Deprecated] This property is deprecated.
-@property (retain) NSNumber *preserveNulls;  // boolValue
+@property (nonatomic, retain) NSNumber *preserveNulls;  // boolValue
 
 // [Optional] Specifies a priority for the query. Possible values include
 // INTERACTIVE and BATCH. The default value is INTERACTIVE.
-@property (copy) NSString *priority;
+@property (nonatomic, copy) NSString *priority;
 
 // [Required] BigQuery SQL query to execute.
-@property (copy) NSString *query;
+@property (nonatomic, copy) NSString *query;
 
 // [Experimental] If querying an external data source outside of BigQuery,
 // describes the data format, location and other properties of the data source.
 // By defining these properties, the data source can then be queried as if it
 // were a standard BigQuery table.
-@property (retain) GTLBigqueryJobConfigurationQueryTableDefinitions *tableDefinitions;
+@property (nonatomic, retain) GTLBigqueryJobConfigurationQueryTableDefinitions *tableDefinitions;
 
 // [Optional] Whether to look for the result in the query cache. The query cache
 // is a best-effort cache that will be flushed whenever tables in the query are
 // modified. Moreover, the query cache is only available when a query does not
 // have a destination table specified.
-@property (retain) NSNumber *useQueryCache;  // boolValue
+@property (nonatomic, retain) NSNumber *useQueryCache;  // boolValue
 
 // [Optional] Specifies the action that occurs if the destination table already
 // exists. The following values are supported: WRITE_TRUNCATE: If the table
@@ -103,7 +103,7 @@
 // and only occurs if BigQuery is able to complete the job successfully.
 // Creation, truncation and append actions occur as one atomic update upon job
 // completion.
-@property (copy) NSString *writeDisposition;
+@property (nonatomic, copy) NSString *writeDisposition;
 
 @end
 

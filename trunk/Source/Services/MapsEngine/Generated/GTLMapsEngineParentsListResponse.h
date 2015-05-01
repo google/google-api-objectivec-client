@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,9 +47,9 @@
 @interface GTLMapsEngineParentsListResponse : GTLObject
 
 // Next page token.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 // The parent assets.
-@property (retain) NSArray *parents;  // of GTLMapsEngineParent
+@property (nonatomic, retain) NSArray *parents;  // of GTLMapsEngineParent
 
 @end

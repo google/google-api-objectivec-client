@@ -43,16 +43,16 @@
          modifiedTimeMillis, pageToken, session, sessionId, startTime, userId;
 
 + (NSDictionary *)parameterNameMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"data_source"
-                                forKey:@"dataSource"];
+  NSDictionary *map = @{
+    @"dataSource" : @"data_source"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[NSString class]
-                                forKey:@"dataTypeName"];
+  NSDictionary *map = @{
+    @"dataTypeName" : [NSString class]
+  };
   return map;
 }
 
@@ -60,7 +60,7 @@
 #pragma mark "users.dataSources" methods
 // These create a GTLQueryFitness object.
 
-+ (id)queryForUsersDataSourcesCreateWithUserId:(NSString *)userId {
++ (instancetype)queryForUsersDataSourcesCreateWithUserId:(NSString *)userId {
   NSString *methodName = @"fitness.users.dataSources.create";
   GTLQueryFitness *query = [self queryWithMethodName:methodName];
   query.userId = userId;
@@ -72,9 +72,9 @@
 #pragma mark "users.dataSources.datasets" methods
 // These create a GTLQueryFitness object.
 
-+ (id)queryForUsersDataSourcesDatasetsDeleteWithUserId:(NSString *)userId
-                                          dataSourceId:(NSString *)dataSourceId
-                                             datasetId:(NSString *)datasetId {
++ (instancetype)queryForUsersDataSourcesDatasetsDeleteWithUserId:(NSString *)userId
+                                                    dataSourceId:(NSString *)dataSourceId
+                                                       datasetId:(NSString *)datasetId {
   NSString *methodName = @"fitness.users.dataSources.datasets.delete";
   GTLQueryFitness *query = [self queryWithMethodName:methodName];
   query.userId = userId;
@@ -83,9 +83,9 @@
   return query;
 }
 
-+ (id)queryForUsersDataSourcesDatasetsGetWithUserId:(NSString *)userId
-                                       dataSourceId:(NSString *)dataSourceId
-                                          datasetId:(NSString *)datasetId {
++ (instancetype)queryForUsersDataSourcesDatasetsGetWithUserId:(NSString *)userId
+                                                 dataSourceId:(NSString *)dataSourceId
+                                                    datasetId:(NSString *)datasetId {
   NSString *methodName = @"fitness.users.dataSources.datasets.get";
   GTLQueryFitness *query = [self queryWithMethodName:methodName];
   query.userId = userId;
@@ -95,9 +95,9 @@
   return query;
 }
 
-+ (id)queryForUsersDataSourcesDatasetsPatchWithUserId:(NSString *)userId
-                                         dataSourceId:(NSString *)dataSourceId
-                                            datasetId:(NSString *)datasetId {
++ (instancetype)queryForUsersDataSourcesDatasetsPatchWithUserId:(NSString *)userId
+                                                   dataSourceId:(NSString *)dataSourceId
+                                                      datasetId:(NSString *)datasetId {
   NSString *methodName = @"fitness.users.dataSources.datasets.patch";
   GTLQueryFitness *query = [self queryWithMethodName:methodName];
   query.userId = userId;
@@ -111,8 +111,8 @@
 #pragma mark "users.dataSources" methods
 // These create a GTLQueryFitness object.
 
-+ (id)queryForUsersDataSourcesDeleteWithUserId:(NSString *)userId
-                                  dataSourceId:(NSString *)dataSourceId {
++ (instancetype)queryForUsersDataSourcesDeleteWithUserId:(NSString *)userId
+                                            dataSourceId:(NSString *)dataSourceId {
   NSString *methodName = @"fitness.users.dataSources.delete";
   GTLQueryFitness *query = [self queryWithMethodName:methodName];
   query.userId = userId;
@@ -121,8 +121,8 @@
   return query;
 }
 
-+ (id)queryForUsersDataSourcesGetWithUserId:(NSString *)userId
-                               dataSourceId:(NSString *)dataSourceId {
++ (instancetype)queryForUsersDataSourcesGetWithUserId:(NSString *)userId
+                                         dataSourceId:(NSString *)dataSourceId {
   NSString *methodName = @"fitness.users.dataSources.get";
   GTLQueryFitness *query = [self queryWithMethodName:methodName];
   query.userId = userId;
@@ -131,7 +131,7 @@
   return query;
 }
 
-+ (id)queryForUsersDataSourcesListWithUserId:(NSString *)userId {
++ (instancetype)queryForUsersDataSourcesListWithUserId:(NSString *)userId {
   NSString *methodName = @"fitness.users.dataSources.list";
   GTLQueryFitness *query = [self queryWithMethodName:methodName];
   query.userId = userId;
@@ -139,8 +139,8 @@
   return query;
 }
 
-+ (id)queryForUsersDataSourcesPatchWithUserId:(NSString *)userId
-                                 dataSourceId:(NSString *)dataSourceId {
++ (instancetype)queryForUsersDataSourcesPatchWithUserId:(NSString *)userId
+                                           dataSourceId:(NSString *)dataSourceId {
   NSString *methodName = @"fitness.users.dataSources.patch";
   GTLQueryFitness *query = [self queryWithMethodName:methodName];
   query.userId = userId;
@@ -149,8 +149,8 @@
   return query;
 }
 
-+ (id)queryForUsersDataSourcesUpdateWithUserId:(NSString *)userId
-                                  dataSourceId:(NSString *)dataSourceId {
++ (instancetype)queryForUsersDataSourcesUpdateWithUserId:(NSString *)userId
+                                            dataSourceId:(NSString *)dataSourceId {
   NSString *methodName = @"fitness.users.dataSources.update";
   GTLQueryFitness *query = [self queryWithMethodName:methodName];
   query.userId = userId;
@@ -163,8 +163,8 @@
 #pragma mark "users.sessions" methods
 // These create a GTLQueryFitness object.
 
-+ (id)queryForUsersSessionsDeleteWithUserId:(NSString *)userId
-                                  sessionId:(NSString *)sessionId {
++ (instancetype)queryForUsersSessionsDeleteWithUserId:(NSString *)userId
+                                            sessionId:(NSString *)sessionId {
   NSString *methodName = @"fitness.users.sessions.delete";
   GTLQueryFitness *query = [self queryWithMethodName:methodName];
   query.userId = userId;
@@ -172,7 +172,7 @@
   return query;
 }
 
-+ (id)queryForUsersSessionsListWithUserId:(NSString *)userId {
++ (instancetype)queryForUsersSessionsListWithUserId:(NSString *)userId {
   NSString *methodName = @"fitness.users.sessions.list";
   GTLQueryFitness *query = [self queryWithMethodName:methodName];
   query.userId = userId;
@@ -180,8 +180,8 @@
   return query;
 }
 
-+ (id)queryForUsersSessionsUpdateWithUserId:(NSString *)userId
-                                  sessionId:(NSString *)sessionId {
++ (instancetype)queryForUsersSessionsUpdateWithUserId:(NSString *)userId
+                                            sessionId:(NSString *)sessionId {
   NSString *methodName = @"fitness.users.sessions.update";
   GTLQueryFitness *query = [self queryWithMethodName:methodName];
   query.userId = userId;

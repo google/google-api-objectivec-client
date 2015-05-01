@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,21 +58,19 @@
          status, summary, transparency, updated, visibility;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"description", @"descriptionProperty",
-      @"etag", @"ETag",
-      @"id", @"identifier",
-      nil];
+  NSDictionary *map = @{
+    @"descriptionProperty" : @"description",
+    @"ETag" : @"etag",
+    @"identifier" : @"id"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [GTLCalendarEventAttendee class], @"attendees",
-      [NSString class], @"recurrence",
-      nil];
+  NSDictionary *map = @{
+    @"attendees" : [GTLCalendarEventAttendee class],
+    @"recurrence" : [NSString class]
+  };
   return map;
 }
 
@@ -92,11 +90,10 @@
 @dynamic displayName, email, identifier, selfProperty;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"id", @"identifier",
-      @"self", @"selfProperty",
-      nil];
+  NSDictionary *map = @{
+    @"identifier" : @"id",
+    @"selfProperty" : @"self"
+  };
   return map;
 }
 
@@ -112,9 +109,9 @@
 @dynamic privateProperty, shared;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"private"
-                                forKey:@"privateProperty"];
+  NSDictionary *map = @{
+    @"privateProperty" : @"private"
+  };
   return map;
 }
 
@@ -140,11 +137,10 @@
 @dynamic displayName, email, identifier, selfProperty;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"id", @"identifier",
-      @"self", @"selfProperty",
-      nil];
+  NSDictionary *map = @{
+    @"identifier" : @"id",
+    @"selfProperty" : @"self"
+  };
   return map;
 }
 
@@ -160,9 +156,9 @@
 @dynamic overrides, useDefault;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLCalendarEventReminder class]
-                                forKey:@"overrides"];
+  NSDictionary *map = @{
+    @"overrides" : [GTLCalendarEventReminder class]
+  };
   return map;
 }
 

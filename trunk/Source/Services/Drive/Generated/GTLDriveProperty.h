@@ -51,21 +51,21 @@
 @interface GTLDriveProperty : GTLObject
 
 // ETag of the property.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The key of this property.
-@property (copy) NSString *key;
+@property (nonatomic, copy) NSString *key;
 
 // This is always drive#property.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The link back to this property.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // The value of this property.
-@property (copy) NSString *value;
+@property (nonatomic, copy) NSString *value;
 
 // The visibility of this property.
-@property (copy) NSString *visibility;
+@property (nonatomic, copy) NSString *visibility;
 
 @end

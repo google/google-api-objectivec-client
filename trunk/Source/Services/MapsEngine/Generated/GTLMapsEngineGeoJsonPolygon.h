@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,9 +47,9 @@
 // at least four GeoJsonPositions. For polygons with multiple rings, the first
 // LinearRing is the exterior ring, and any subsequent rings are interior rings
 // (that is, holes).
-@property (retain) NSArray *coordinates;  // of NSArray of NSArray of NSNumber (doubleValue)
+@property (nonatomic, retain) NSArray *coordinates;  // of NSArray of NSArray of NSNumber (doubleValue)
 
 // Identifies this object as a GeoJsonPolygon.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end

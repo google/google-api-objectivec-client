@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,24 +46,24 @@
 @interface GTLAdExchangeBuyerBudget : GTLObject
 
 // The id of the account. This is required for get and update requests.
-@property (retain) NSNumber *accountId;  // longLongValue
+@property (nonatomic, retain) NSNumber *accountId;  // longLongValue
 
 // The billing id to determine which adgroup to provide budget information for.
 // This is required for get and update requests.
-@property (retain) NSNumber *billingId;  // longLongValue
+@property (nonatomic, retain) NSNumber *billingId;  // longLongValue
 
 // The budget amount to apply for the billingId provided. This is required for
 // update requests.
-@property (retain) NSNumber *budgetAmount;  // longLongValue
+@property (nonatomic, retain) NSNumber *budgetAmount;  // longLongValue
 
 // The currency code for the buyer. This cannot be altered here.
-@property (copy) NSString *currencyCode;
+@property (nonatomic, copy) NSString *currencyCode;
 
 // The unique id that describes this item.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The kind of the resource, i.e. "adexchangebuyer#budget".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 @end

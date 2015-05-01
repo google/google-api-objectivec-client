@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,62 +56,62 @@
 @interface GTLBloggerPost : GTLObject
 
 // The author of this Post.
-@property (retain) GTLBloggerPostAuthor *author;
+@property (nonatomic, retain) GTLBloggerPostAuthor *author;
 
 // Data about the blog containing this Post.
-@property (retain) GTLBloggerPostBlog *blog;
+@property (nonatomic, retain) GTLBloggerPostBlog *blog;
 
 // The content of the Post. May contain HTML markup.
-@property (copy) NSString *content;
+@property (nonatomic, copy) NSString *content;
 
 // The JSON meta-data for the Post.
-@property (copy) NSString *customMetaData;
+@property (nonatomic, copy) NSString *customMetaData;
 
 // Etag of the resource.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The identifier of this Post.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Display image for the Post.
-@property (retain) NSArray *images;  // of GTLBloggerPostImagesItem
+@property (nonatomic, retain) NSArray *images;  // of GTLBloggerPostImagesItem
 
 // The kind of this entity. Always blogger#post
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The list of labels this Post was tagged with.
-@property (retain) NSArray *labels;  // of NSString
+@property (nonatomic, retain) NSArray *labels;  // of NSString
 
 // The location for geotagged posts.
-@property (retain) GTLBloggerPostLocation *location;
+@property (nonatomic, retain) GTLBloggerPostLocation *location;
 
 // RFC 3339 date-time when this Post was published.
-@property (retain) GTLDateTime *published;
+@property (nonatomic, retain) GTLDateTime *published;
 
 // Comment control and display setting for readers of this post.
-@property (copy) NSString *readerComments;
+@property (nonatomic, copy) NSString *readerComments;
 
 // The container of comments on this Post.
-@property (retain) GTLBloggerPostReplies *replies;
+@property (nonatomic, retain) GTLBloggerPostReplies *replies;
 
 // The API REST URL to fetch this resource from.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // Status of the post. Only set for admin-level requests
-@property (copy) NSString *status;
+@property (nonatomic, copy) NSString *status;
 
 // The title of the Post.
-@property (copy) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 // The title link URL, similar to atom's related link.
-@property (copy) NSString *titleLink;
+@property (nonatomic, copy) NSString *titleLink;
 
 // RFC 3339 date-time when this Post was last updated.
-@property (retain) GTLDateTime *updated;
+@property (nonatomic, retain) GTLDateTime *updated;
 
 // The URL where this Post is displayed.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 @end
 
@@ -124,17 +124,17 @@
 @interface GTLBloggerPostAuthor : GTLObject
 
 // The display name.
-@property (copy) NSString *displayName;
+@property (nonatomic, copy) NSString *displayName;
 
 // The identifier of the Post creator.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The Post author's avatar.
-@property (retain) GTLBloggerPostAuthorImage *image;
+@property (nonatomic, retain) GTLBloggerPostAuthorImage *image;
 
 // The URL of the Post creator's Profile page.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 @end
 
@@ -148,7 +148,7 @@
 
 // The identifier of the Blog that contains this Post.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 @end
 
@@ -159,7 +159,7 @@
 //
 
 @interface GTLBloggerPostImagesItem : GTLObject
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 @end
 
 
@@ -171,16 +171,16 @@
 @interface GTLBloggerPostLocation : GTLObject
 
 // Location's latitude.
-@property (retain) NSNumber *lat;  // doubleValue
+@property (nonatomic, retain) NSNumber *lat;  // doubleValue
 
 // Location's longitude.
-@property (retain) NSNumber *lng;  // doubleValue
+@property (nonatomic, retain) NSNumber *lng;  // doubleValue
 
 // Location name.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // Location's viewport span. Can be used when rendering a map preview.
-@property (copy) NSString *span;
+@property (nonatomic, copy) NSString *span;
 
 @end
 
@@ -196,13 +196,13 @@
 @interface GTLBloggerPostReplies : GTLCollectionObject
 
 // The List of Comments for this Post.
-@property (retain) NSArray *items;  // of GTLBloggerComment
+@property (nonatomic, retain) NSArray *items;  // of GTLBloggerComment
 
 // The URL of the comments on this post.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // The count of comments on this post.
-@property (retain) NSNumber *totalItems;  // longLongValue
+@property (nonatomic, retain) NSNumber *totalItems;  // longLongValue
 
 @end
 
@@ -215,6 +215,6 @@
 @interface GTLBloggerPostAuthorImage : GTLObject
 
 // The Post author's avatar URL.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 @end

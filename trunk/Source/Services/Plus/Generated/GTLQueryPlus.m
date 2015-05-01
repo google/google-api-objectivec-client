@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,9 +46,9 @@
          userId;
 
 + (NSDictionary *)parameterNameMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+  NSDictionary *map = @{
+    @"identifier" : @"id"
+  };
   return map;
 }
 
@@ -56,7 +56,7 @@
 #pragma mark "activities" methods
 // These create a GTLQueryPlus object.
 
-+ (id)queryForActivitiesGetWithActivityId:(NSString *)activityId {
++ (instancetype)queryForActivitiesGetWithActivityId:(NSString *)activityId {
   NSString *methodName = @"plus.activities.get";
   GTLQueryPlus *query = [self queryWithMethodName:methodName];
   query.activityId = activityId;
@@ -64,8 +64,8 @@
   return query;
 }
 
-+ (id)queryForActivitiesListWithUserId:(NSString *)userId
-                            collection:(NSString *)collection {
++ (instancetype)queryForActivitiesListWithUserId:(NSString *)userId
+                                      collection:(NSString *)collection {
   NSString *methodName = @"plus.activities.list";
   GTLQueryPlus *query = [self queryWithMethodName:methodName];
   query.userId = userId;
@@ -74,7 +74,7 @@
   return query;
 }
 
-+ (id)queryForActivitiesSearchWithQuery:(NSString *)query_param {
++ (instancetype)queryForActivitiesSearchWithQuery:(NSString *)query_param {
   NSString *methodName = @"plus.activities.search";
   GTLQueryPlus *query = [self queryWithMethodName:methodName];
   query.query = query_param;
@@ -86,7 +86,7 @@
 #pragma mark "comments" methods
 // These create a GTLQueryPlus object.
 
-+ (id)queryForCommentsGetWithCommentId:(NSString *)commentId {
++ (instancetype)queryForCommentsGetWithCommentId:(NSString *)commentId {
   NSString *methodName = @"plus.comments.get";
   GTLQueryPlus *query = [self queryWithMethodName:methodName];
   query.commentId = commentId;
@@ -94,7 +94,7 @@
   return query;
 }
 
-+ (id)queryForCommentsListWithActivityId:(NSString *)activityId {
++ (instancetype)queryForCommentsListWithActivityId:(NSString *)activityId {
   NSString *methodName = @"plus.comments.list";
   GTLQueryPlus *query = [self queryWithMethodName:methodName];
   query.activityId = activityId;
@@ -106,9 +106,9 @@
 #pragma mark "moments" methods
 // These create a GTLQueryPlus object.
 
-+ (id)queryForMomentsInsertWithObject:(GTLPlusMoment *)object
-                               userId:(NSString *)userId
-                           collection:(NSString *)collection {
++ (instancetype)queryForMomentsInsertWithObject:(GTLPlusMoment *)object
+                                         userId:(NSString *)userId
+                                     collection:(NSString *)collection {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -122,8 +122,8 @@
   return query;
 }
 
-+ (id)queryForMomentsListWithUserId:(NSString *)userId
-                         collection:(NSString *)collection {
++ (instancetype)queryForMomentsListWithUserId:(NSString *)userId
+                                   collection:(NSString *)collection {
   NSString *methodName = @"plus.moments.list";
   GTLQueryPlus *query = [self queryWithMethodName:methodName];
   query.userId = userId;
@@ -132,7 +132,7 @@
   return query;
 }
 
-+ (id)queryForMomentsRemoveWithIdentifier:(NSString *)identifier {
++ (instancetype)queryForMomentsRemoveWithIdentifier:(NSString *)identifier {
   NSString *methodName = @"plus.moments.remove";
   GTLQueryPlus *query = [self queryWithMethodName:methodName];
   query.identifier = identifier;
@@ -143,7 +143,7 @@
 #pragma mark "people" methods
 // These create a GTLQueryPlus object.
 
-+ (id)queryForPeopleGetWithUserId:(NSString *)userId {
++ (instancetype)queryForPeopleGetWithUserId:(NSString *)userId {
   NSString *methodName = @"plus.people.get";
   GTLQueryPlus *query = [self queryWithMethodName:methodName];
   query.userId = userId;
@@ -151,8 +151,8 @@
   return query;
 }
 
-+ (id)queryForPeopleListWithUserId:(NSString *)userId
-                        collection:(NSString *)collection {
++ (instancetype)queryForPeopleListWithUserId:(NSString *)userId
+                                  collection:(NSString *)collection {
   NSString *methodName = @"plus.people.list";
   GTLQueryPlus *query = [self queryWithMethodName:methodName];
   query.userId = userId;
@@ -161,8 +161,8 @@
   return query;
 }
 
-+ (id)queryForPeopleListByActivityWithActivityId:(NSString *)activityId
-                                      collection:(NSString *)collection {
++ (instancetype)queryForPeopleListByActivityWithActivityId:(NSString *)activityId
+                                                collection:(NSString *)collection {
   NSString *methodName = @"plus.people.listByActivity";
   GTLQueryPlus *query = [self queryWithMethodName:methodName];
   query.activityId = activityId;
@@ -171,7 +171,7 @@
   return query;
 }
 
-+ (id)queryForPeopleSearchWithQuery:(NSString *)query_param {
++ (instancetype)queryForPeopleSearchWithQuery:(NSString *)query_param {
   NSString *methodName = @"plus.people.search";
   GTLQueryPlus *query = [self queryWithMethodName:methodName];
   query.query = query_param;

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,6 +46,6 @@
 @interface GTLWebmastersSitesListResponse : GTLObject
 
 // Access level information for a Webmaster Tools site.
-@property (retain) NSArray *siteEntry;  // of GTLWebmastersWmxSite
+@property (nonatomic, retain) NSArray *siteEntry;  // of GTLWebmastersWmxSite
 
 @end

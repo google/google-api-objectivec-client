@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,43 +46,43 @@
 // The date and time that the broadcast actually ended. This information is only
 // available once the broadcast's state is complete. The value is specified in
 // ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-@property (retain) GTLDateTime *actualEndTime;
+@property (nonatomic, retain) GTLDateTime *actualEndTime;
 
 // The date and time that the broadcast actually started. This information is
 // only available once the broadcast's state is live. The value is specified in
 // ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-@property (retain) GTLDateTime *actualStartTime;
+@property (nonatomic, retain) GTLDateTime *actualStartTime;
 
 // The ID that YouTube uses to uniquely identify the channel that is publishing
 // the broadcast.
-@property (copy) NSString *channelId;
+@property (nonatomic, copy) NSString *channelId;
 
 // The broadcast's description. As with the title, you can set this field by
 // modifying the broadcast resource or by setting the description field of the
 // corresponding video resource.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (copy) NSString *descriptionProperty;
+@property (nonatomic, copy) NSString *descriptionProperty;
 
 // The date and time that the broadcast was added to YouTube's live broadcast
 // schedule. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-@property (retain) GTLDateTime *publishedAt;
+@property (nonatomic, retain) GTLDateTime *publishedAt;
 
 // The date and time that the broadcast is scheduled to end. The value is
 // specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-@property (retain) GTLDateTime *scheduledEndTime;
+@property (nonatomic, retain) GTLDateTime *scheduledEndTime;
 
 // The date and time that the broadcast is scheduled to start. The value is
 // specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-@property (retain) GTLDateTime *scheduledStartTime;
+@property (nonatomic, retain) GTLDateTime *scheduledStartTime;
 
 // A map of thumbnail images associated with the broadcast. For each nested
 // object in this object, the key is the name of the thumbnail image, and the
 // value is an object that contains other information about the thumbnail.
-@property (retain) GTLYouTubeThumbnailDetails *thumbnails;
+@property (nonatomic, retain) GTLYouTubeThumbnailDetails *thumbnails;
 
 // The broadcast's title. Note that the broadcast represents exactly one YouTube
 // video. You can set this field by modifying the broadcast resource or by
 // setting the title field of the corresponding video resource.
-@property (copy) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 @end

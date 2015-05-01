@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,27 +47,27 @@
 @interface GTLCivicInfoOfficial : GTLObject
 
 // Addresses at which to contact the official.
-@property (retain) NSArray *address;  // of GTLCivicInfoSimpleAddressType
+@property (nonatomic, retain) NSArray *address;  // of GTLCivicInfoSimpleAddressType
 
 // A list of known (social) media channels for this official.
-@property (retain) NSArray *channels;  // of GTLCivicInfoChannel
+@property (nonatomic, retain) NSArray *channels;  // of GTLCivicInfoChannel
 
 // The direct email addresses for the official.
-@property (retain) NSArray *emails;  // of NSString
+@property (nonatomic, retain) NSArray *emails;  // of NSString
 
 // The official's name.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // The full name of the party the official belongs to.
-@property (copy) NSString *party;
+@property (nonatomic, copy) NSString *party;
 
 // The official's public contact phone numbers.
-@property (retain) NSArray *phones;  // of NSString
+@property (nonatomic, retain) NSArray *phones;  // of NSString
 
 // A URL for a photo of the official.
-@property (copy) NSString *photoUrl;
+@property (nonatomic, copy) NSString *photoUrl;
 
 // The official's public website URLs.
-@property (retain) NSArray *urls;  // of NSString
+@property (nonatomic, retain) NSArray *urls;  // of NSString
 
 @end

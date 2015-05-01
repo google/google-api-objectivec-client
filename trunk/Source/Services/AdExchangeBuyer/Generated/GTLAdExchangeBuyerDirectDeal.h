@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,48 +46,48 @@
 @interface GTLAdExchangeBuyerDirectDeal : GTLObject
 
 // The account id of the buyer this deal is for.
-@property (retain) NSNumber *accountId;  // intValue
+@property (nonatomic, retain) NSNumber *accountId;  // intValue
 
 // The name of the advertiser this deal is for.
-@property (copy) NSString *advertiser;
+@property (nonatomic, copy) NSString *advertiser;
 
 // The currency code that applies to the fixed_cpm value. If not set then
 // assumed to be USD.
-@property (copy) NSString *currencyCode;
+@property (nonatomic, copy) NSString *currencyCode;
 
 // End time for when this deal stops being active. If not set then this deal is
 // valid until manually disabled by the publisher. In seconds since the epoch.
-@property (retain) NSNumber *endTime;  // longLongValue
+@property (nonatomic, retain) NSNumber *endTime;  // longLongValue
 
 // The fixed price for this direct deal. In cpm micros of currency according to
 // currency_code. If set, then this deal is eligible for the fixed price tier of
 // buying (highest priority, pay exactly the configured fixed price).
-@property (retain) NSNumber *fixedCpm;  // longLongValue
+@property (nonatomic, retain) NSNumber *fixedCpm;  // longLongValue
 
 // Deal id.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSNumber *identifier;  // longLongValue
+@property (nonatomic, retain) NSNumber *identifier;  // longLongValue
 
 // Resource type.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Deal name.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // The minimum price for this direct deal. In cpm micros of currency according
 // to currency_code. If set, then this deal is eligible for the private exchange
 // tier of buying (below fixed price priority, run as a second price auction).
-@property (retain) NSNumber *privateExchangeMinCpm;  // longLongValue
+@property (nonatomic, retain) NSNumber *privateExchangeMinCpm;  // longLongValue
 
 // If true, the publisher has opted to have their blocks ignored when a creative
 // is bid with for this deal.
-@property (retain) NSNumber *publisherBlocksOverriden;  // boolValue
+@property (nonatomic, retain) NSNumber *publisherBlocksOverriden;  // boolValue
 
 // The name of the publisher offering this direct deal.
-@property (copy) NSString *sellerNetwork;
+@property (nonatomic, copy) NSString *sellerNetwork;
 
 // Start time for when this deal becomes active. If not set then this deal is
 // active immediately upon creation. In seconds since the epoch.
-@property (retain) NSNumber *startTime;  // longLongValue
+@property (nonatomic, retain) NSNumber *startTime;  // longLongValue
 
 @end

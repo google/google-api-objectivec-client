@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,18 +46,18 @@
 @interface GTLDoubleClickBidManagerParameters : GTLObject
 
 // Filters used to match traffic data in your report.
-@property (retain) NSArray *filters;  // of GTLDoubleClickBidManagerFilterPair
+@property (nonatomic, retain) NSArray *filters;  // of GTLDoubleClickBidManagerFilterPair
 
 // Data is grouped by the filters listed in this field.
-@property (retain) NSArray *groupBys;  // of NSString
+@property (nonatomic, retain) NSArray *groupBys;  // of NSString
 
 // Whether to include data from Invite Media.
-@property (retain) NSNumber *includeInviteData;  // boolValue
+@property (nonatomic, retain) NSNumber *includeInviteData;  // boolValue
 
 // Metrics to include as columns in your report.
-@property (retain) NSArray *metrics;  // of NSString
+@property (nonatomic, retain) NSArray *metrics;  // of NSString
 
 // Report type.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end

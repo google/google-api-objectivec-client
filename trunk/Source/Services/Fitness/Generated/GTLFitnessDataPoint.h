@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,37 +55,37 @@
 
 // Used for version checking during transformation; that is, a datapoint can
 // only replace another datapoint that has an older computation time stamp.
-@property (retain) NSNumber *computationTimeMillis;  // longLongValue
+@property (nonatomic, retain) NSNumber *computationTimeMillis;  // longLongValue
 
 // The data type defining the format of the values in this data point.
-@property (copy) NSString *dataTypeName;
+@property (nonatomic, copy) NSString *dataTypeName;
 
 // The end time of the interval represented by this data point, in nanoseconds
 // since epoch.
-@property (retain) NSNumber *endTimeNanos;  // longLongValue
+@property (nonatomic, retain) NSNumber *endTimeNanos;  // longLongValue
 
 // Indicates the last time this data point was modified. Useful only in contexts
 // where we are listing the data changes, rather than representing the current
 // state of the data.
-@property (retain) NSNumber *modifiedTimeMillis;  // longLongValue
+@property (nonatomic, retain) NSNumber *modifiedTimeMillis;  // longLongValue
 
 // If the data point is contained in a dataset for a derived data source, this
 // field will be populated with the data source stream ID that created the data
 // point originally.
-@property (copy) NSString *originDataSourceId;
+@property (nonatomic, copy) NSString *originDataSourceId;
 
 // The raw timestamp from the original SensorEvent.
-@property (retain) NSNumber *rawTimestampNanos;  // longLongValue
+@property (nonatomic, retain) NSNumber *rawTimestampNanos;  // longLongValue
 
 // The start time of the interval represented by this data point, in nanoseconds
 // since epoch.
-@property (retain) NSNumber *startTimeNanos;  // longLongValue
+@property (nonatomic, retain) NSNumber *startTimeNanos;  // longLongValue
 
 // Values of each data type field for the data point. It is expected that each
 // value corresponding to a data type field will occur in the same order that
 // the field is listed with in the data type specified in a data source.
 // Only one of integer and floating point fields will be populated, depending on
 // the format enum value within data source's type field.
-@property (retain) NSArray *value;  // of GTLFitnessValue
+@property (nonatomic, retain) NSArray *value;  // of GTLFitnessValue
 
 @end

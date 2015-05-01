@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,10 +42,10 @@
 @interface GTLCalendarColorDefinition : GTLObject
 
 // The background color associated with this color definition.
-@property (copy) NSString *background;
+@property (nonatomic, copy) NSString *background;
 
 // The foreground color that can be used to write on top of a background with
 // 'background' color.
-@property (copy) NSString *foreground;
+@property (nonatomic, copy) NSString *foreground;
 
 @end

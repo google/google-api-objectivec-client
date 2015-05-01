@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -62,11 +62,10 @@
          published, radius, title, updated, url, verb;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"etag", @"ETag",
-      @"id", @"identifier",
-      nil];
+  NSDictionary *map = @{
+    @"ETag" : @"etag",
+    @"identifier" : @"id"
+  };
   return map;
 }
 
@@ -86,9 +85,9 @@
 @dynamic displayName, identifier, image, name, url;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+  NSDictionary *map = @{
+    @"identifier" : @"id"
+  };
   return map;
 }
 
@@ -105,16 +104,16 @@
          plusoners, replies, resharers, statusForViewer, url;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+  NSDictionary *map = @{
+    @"identifier" : @"id"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLPlusDomainsActivityObjectAttachmentsItem class]
-                                forKey:@"attachments"];
+  NSDictionary *map = @{
+    @"attachments" : [GTLPlusDomainsActivityObjectAttachmentsItem class]
+  };
   return map;
 }
 
@@ -160,9 +159,9 @@
 @dynamic displayName, identifier, image, url;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+  NSDictionary *map = @{
+    @"identifier" : @"id"
+  };
   return map;
 }
 
@@ -179,18 +178,17 @@
          previewThumbnails, thumbnails, url;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+  NSDictionary *map = @{
+    @"identifier" : @"id"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [GTLPlusDomainsActivityObjectAttachmentsItemPreviewThumbnailsItem class], @"previewThumbnails",
-      [GTLPlusDomainsActivityObjectAttachmentsItemThumbnailsItem class], @"thumbnails",
-      nil];
+  NSDictionary *map = @{
+    @"previewThumbnails" : [GTLPlusDomainsActivityObjectAttachmentsItemPreviewThumbnailsItem class],
+    @"thumbnails" : [GTLPlusDomainsActivityObjectAttachmentsItemThumbnailsItem class]
+  };
   return map;
 }
 
@@ -296,9 +294,9 @@
 @dynamic descriptionProperty, image, url;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"description"
-                                forKey:@"descriptionProperty"];
+  NSDictionary *map = @{
+    @"descriptionProperty" : @"description"
+  };
   return map;
 }
 

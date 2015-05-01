@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,15 +46,15 @@
 @interface GTLDoubleClickBidManagerReportStatus : GTLObject
 
 // If the report failed, this records the cause.
-@property (retain) GTLDoubleClickBidManagerReportFailure *failure;
+@property (nonatomic, retain) GTLDoubleClickBidManagerReportFailure *failure;
 
 // The time when this report either completed successfully or failed.
-@property (retain) NSNumber *finishTimeMs;  // longLongValue
+@property (nonatomic, retain) NSNumber *finishTimeMs;  // longLongValue
 
 // The file type of the report.
-@property (copy) NSString *format;
+@property (nonatomic, copy) NSString *format;
 
 // The state of the report.
-@property (copy) NSString *state;
+@property (nonatomic, copy) NSString *state;
 
 @end

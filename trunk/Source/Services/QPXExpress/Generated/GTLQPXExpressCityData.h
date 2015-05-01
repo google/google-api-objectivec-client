@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,17 +46,17 @@
 @interface GTLQPXExpressCityData : GTLObject
 
 // The IATA character ID of a city. For example, for Boston this is BOS.
-@property (copy) NSString *code;
+@property (nonatomic, copy) NSString *code;
 
 // The two-character country code of the country the city is located in. For
 // example, US for the United States of America.
-@property (copy) NSString *country;
+@property (nonatomic, copy) NSString *country;
 
 // Identifies this as a city, typically with one or more airports. Value: the
 // fixed string qpxexpress#cityData.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The full name of a city. An example would be: New York.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 @end

@@ -42,17 +42,17 @@
 @interface GTLBigqueryJobStatistics3 : GTLObject
 
 // [Output-only] Number of bytes of source data in a joad job.
-@property (retain) NSNumber *inputFileBytes;  // longLongValue
+@property (nonatomic, retain) NSNumber *inputFileBytes;  // longLongValue
 
 // [Output-only] Number of source files in a load job.
-@property (retain) NSNumber *inputFiles;  // longLongValue
+@property (nonatomic, retain) NSNumber *inputFiles;  // longLongValue
 
 // [Output-only] Size of the loaded data in bytes. Note that while an import job
 // is in the running state, this value may change.
-@property (retain) NSNumber *outputBytes;  // longLongValue
+@property (nonatomic, retain) NSNumber *outputBytes;  // longLongValue
 
 // [Output-only] Number of rows imported in a load job. Note that while an
 // import job is in the running state, this value may change.
-@property (retain) NSNumber *outputRows;  // longLongValue
+@property (nonatomic, retain) NSNumber *outputRows;  // longLongValue
 
 @end

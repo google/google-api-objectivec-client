@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,6 +52,6 @@
 // must contain start and stop frequencies in which the device can operate.
 // Channel identifiers are optional. When specified, the database should not
 // return available spectrum that falls outside these ranges or channel IDs.
-@property (retain) NSArray *frequencyRanges;  // of GTLSpectrumFrequencyRange
+@property (nonatomic, retain) NSArray *frequencyRanges;  // of GTLSpectrumFrequencyRange
 
 @end

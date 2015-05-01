@@ -43,9 +43,9 @@
 
 // The ID of this abuse report secondary reason.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The localized label for this abuse report secondary reason.
-@property (copy) NSString *label;
+@property (nonatomic, copy) NSString *label;
 
 @end

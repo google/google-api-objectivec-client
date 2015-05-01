@@ -41,9 +41,9 @@
 @dynamic fields;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLBigqueryTableFieldSchema class]
-                                forKey:@"fields"];
+  NSDictionary *map = @{
+    @"fields" : [GTLBigqueryTableFieldSchema class]
+  };
   return map;
 }
 

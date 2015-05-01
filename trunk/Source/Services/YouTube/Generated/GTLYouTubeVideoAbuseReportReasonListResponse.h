@@ -47,19 +47,19 @@
 @interface GTLYouTubeVideoAbuseReportReasonListResponse : GTLCollectionObject
 
 // Etag of this resource.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // Serialized EventId of the request which produced this response.
-@property (copy) NSString *eventId;
+@property (nonatomic, copy) NSString *eventId;
 
 // A list of valid abuse reasons that are used with video.ReportAbuse.
-@property (retain) NSArray *items;  // of GTLYouTubeVideoAbuseReportReason
+@property (nonatomic, retain) NSArray *items;  // of GTLYouTubeVideoAbuseReportReason
 
 // Identifies what kind of resource this is. Value: the fixed string
 // "youtube#videoAbuseReportReasonListResponse".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The visitorId identifies the visitor.
-@property (copy) NSString *visitorId;
+@property (nonatomic, copy) NSString *visitorId;
 
 @end

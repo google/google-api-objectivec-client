@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,7 +47,7 @@
 
 // Identifies what kind of resource this is. Value: the fixed string
 // "civicinfo#divisionSearchResponse".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
-@property (retain) NSArray *results;  // of GTLCivicInfoDivisionSearchResult
+@property (nonatomic, retain) NSArray *results;  // of GTLCivicInfoDivisionSearchResult
 @end

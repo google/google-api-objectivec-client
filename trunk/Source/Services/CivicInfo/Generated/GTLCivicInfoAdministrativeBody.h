@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,47 +49,47 @@
 
 // A URL provided by this administrative body for information on absentee
 // voting.
-@property (copy) NSString *absenteeVotingInfoUrl;
+@property (nonatomic, copy) NSString *absenteeVotingInfoUrl;
 
 // A URL provided by this administrative body to give contest information to the
 // voter.
-@property (copy) NSString *ballotInfoUrl;
+@property (nonatomic, copy) NSString *ballotInfoUrl;
 
 // The mailing address of this administrative body.
-@property (retain) GTLCivicInfoSimpleAddressType *correspondenceAddress;
+@property (nonatomic, retain) GTLCivicInfoSimpleAddressType *correspondenceAddress;
 
 // A URL provided by this administrative body for looking up general election
 // information.
-@property (copy) NSString *electionInfoUrl;
+@property (nonatomic, copy) NSString *electionInfoUrl;
 
 // The election officials for this election administrative body.
-@property (retain) NSArray *electionOfficials;  // of GTLCivicInfoElectionOfficial
+@property (nonatomic, retain) NSArray *electionOfficials;  // of GTLCivicInfoElectionOfficial
 
 // A URL provided by this administrative body for confirming that the voter is
 // registered to vote.
-@property (copy) NSString *electionRegistrationConfirmationUrl;
+@property (nonatomic, copy) NSString *electionRegistrationConfirmationUrl;
 
 // A URL provided by this administrative body for looking up how to register to
 // vote.
-@property (copy) NSString *electionRegistrationUrl;
+@property (nonatomic, copy) NSString *electionRegistrationUrl;
 
 // A URL provided by this administrative body describing election rules to the
 // voter.
-@property (copy) NSString *electionRulesUrl;
+@property (nonatomic, copy) NSString *electionRulesUrl;
 
 // A description of the hours of operation for this administrative body.
-@property (copy) NSString *hoursOfOperation;
+@property (nonatomic, copy) NSString *hoursOfOperation;
 
 // The name of this election administrative body.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // The physical address of this administrative body.
-@property (retain) GTLCivicInfoSimpleAddressType *physicalAddress;
+@property (nonatomic, retain) GTLCivicInfoSimpleAddressType *physicalAddress;
 
 // A description of the services this administrative body may provide.
-@property (retain) NSArray *voterServices;  // of NSString
+@property (nonatomic, retain) NSArray *voterServices;  // of NSString
 
 // A URL provided by this administrative body for looking up where to vote.
-@property (copy) NSString *votingLocationFinderUrl;
+@property (nonatomic, copy) NSString *votingLocationFinderUrl;
 
 @end

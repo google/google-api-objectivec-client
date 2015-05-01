@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,9 +49,9 @@
 
 // Icon for the point; if it isn't null, exactly one of 'name', 'id' or
 // 'scaledShape' must be set.
-@property (retain) GTLMapsEngineIconStyle *icon;
+@property (nonatomic, retain) GTLMapsEngineIconStyle *icon;
 
 // Label style for the point.
-@property (retain) GTLMapsEngineLabelStyle *label;
+@property (nonatomic, retain) GTLMapsEngineLabelStyle *label;
 
 @end

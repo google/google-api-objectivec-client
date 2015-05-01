@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,27 +51,27 @@
 @interface GTLAdSenseHostAdUnit : GTLObject
 
 // Identity code of this ad unit, not necessarily unique across ad clients.
-@property (copy) NSString *code;
+@property (nonatomic, copy) NSString *code;
 
 // Settings specific to content ads (AFC) and highend mobile content ads (AFMC).
-@property (retain) GTLAdSenseHostAdUnitContentAdsSettings *contentAdsSettings;
+@property (nonatomic, retain) GTLAdSenseHostAdUnitContentAdsSettings *contentAdsSettings;
 
 // Custom style information specific to this ad unit.
-@property (retain) GTLAdSenseHostAdStyle *customStyle;
+@property (nonatomic, retain) GTLAdSenseHostAdStyle *customStyle;
 
 // Unique identifier of this ad unit. This should be considered an opaque
 // identifier; it is not safe to rely on it being in any particular format.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Kind of resource this is, in this case adsensehost#adUnit.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Settings specific to WAP mobile content ads (AFMC).
-@property (retain) GTLAdSenseHostAdUnitMobileContentAdsSettings *mobileContentAdsSettings;
+@property (nonatomic, retain) GTLAdSenseHostAdUnitMobileContentAdsSettings *mobileContentAdsSettings;
 
 // Name of this ad unit.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // Status of this ad unit. Possible values are:
 // NEW: Indicates that the ad unit was created within the last seven days and
@@ -80,7 +80,7 @@
 // seven days.
 // INACTIVE: Indicates that there has been no activity on this ad unit in the
 // last seven days.
-@property (copy) NSString *status;
+@property (nonatomic, copy) NSString *status;
 
 @end
 
@@ -93,13 +93,13 @@
 @interface GTLAdSenseHostAdUnitContentAdsSettings : GTLObject
 
 // The backup option to be used in instances where no ad is available.
-@property (retain) GTLAdSenseHostAdUnitContentAdsSettingsBackupOption *backupOption;
+@property (nonatomic, retain) GTLAdSenseHostAdUnitContentAdsSettingsBackupOption *backupOption;
 
 // Size of this ad unit. Size values are in the form SIZE_{width}_{height}.
-@property (copy) NSString *size;
+@property (nonatomic, copy) NSString *size;
 
 // Type of this ad unit. Possible values are TEXT, TEXT_IMAGE, IMAGE and LINK.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end
 
@@ -112,16 +112,16 @@
 @interface GTLAdSenseHostAdUnitMobileContentAdsSettings : GTLObject
 
 // The markup language to use for this ad unit.
-@property (copy) NSString *markupLanguage;
+@property (nonatomic, copy) NSString *markupLanguage;
 
 // The scripting language to use for this ad unit.
-@property (copy) NSString *scriptingLanguage;
+@property (nonatomic, copy) NSString *scriptingLanguage;
 
 // Size of this ad unit.
-@property (copy) NSString *size;
+@property (nonatomic, copy) NSString *size;
 
 // Type of this ad unit.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end
 
@@ -136,12 +136,12 @@
 // Color to use when type is set to COLOR. These are represented as six
 // hexadecimal characters, similar to HTML color codes, but without the leading
 // hash.
-@property (copy) NSString *color;
+@property (nonatomic, copy) NSString *color;
 
 // Type of the backup option. Possible values are BLANK, COLOR and URL.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 // URL to use when type is set to URL.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 @end

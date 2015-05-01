@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,22 +47,22 @@
 @interface GTLPlusDomainsAudiencesFeed : GTLCollectionObject
 
 // ETag of this response for caching purposes.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The audiences in this result.
-@property (retain) NSArray *items;  // of GTLPlusDomainsAudience
+@property (nonatomic, retain) NSArray *items;  // of GTLPlusDomainsAudience
 
 // Identifies this resource as a collection of audiences. Value:
 // "plus#audienceFeed".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The continuation token, which is used to page through large result sets.
 // Provide this value in a subsequent request to return the next page of
 // results.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 // The total number of ACL entries. The number of entries in this response may
 // be smaller due to paging.
-@property (retain) NSNumber *totalItems;  // intValue
+@property (nonatomic, retain) NSNumber *totalItems;  // intValue
 
 @end

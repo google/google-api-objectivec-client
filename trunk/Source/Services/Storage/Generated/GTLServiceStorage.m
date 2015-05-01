@@ -36,24 +36,24 @@
 // Method compiled in debug builds just to check that all the needed support
 // classes are present at link time.
 + (NSArray *)checkClasses {
-  NSArray *classes = [NSArray arrayWithObjects:
-                      [GTLQueryStorage class],
-                      [GTLStorageBucket class],
-                      [GTLStorageBucketAccessControl class],
-                      [GTLStorageBucketAccessControls class],
-                      [GTLStorageBuckets class],
-                      [GTLStorageChannel class],
-                      [GTLStorageObject class],
-                      [GTLStorageObjectAccessControl class],
-                      [GTLStorageObjectAccessControls class],
-                      [GTLStorageObjects class],
-                      [GTLStorageRewriteResponse class],
-                      nil];
+  NSArray *classes = @[
+    [GTLQueryStorage class],
+    [GTLStorageBucket class],
+    [GTLStorageBucketAccessControl class],
+    [GTLStorageBucketAccessControls class],
+    [GTLStorageBuckets class],
+    [GTLStorageChannel class],
+    [GTLStorageObject class],
+    [GTLStorageObjectAccessControl class],
+    [GTLStorageObjectAccessControls class],
+    [GTLStorageObjects class],
+    [GTLStorageRewriteResponse class]
+  ];
   return classes;
 }
 #endif  // DEBUG
 
-- (id)init {
+- (instancetype)init {
   self = [super init];
   if (self) {
     // Version from discovery.

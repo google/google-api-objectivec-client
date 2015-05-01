@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,23 +52,23 @@
 @interface GTLQPXExpressData : GTLObject
 
 // The aircraft that is flying between an origin and destination.
-@property (retain) NSArray *aircraft;  // of GTLQPXExpressAircraftData
+@property (nonatomic, retain) NSArray *aircraft;  // of GTLQPXExpressAircraftData
 
 // The airport of an origin or destination.
-@property (retain) NSArray *airport;  // of GTLQPXExpressAirportData
+@property (nonatomic, retain) NSArray *airport;  // of GTLQPXExpressAirportData
 
 // The airline carrier of the aircraft flying between an origin and destination.
 // Allowed values are IATA carrier codes.
-@property (retain) NSArray *carrier;  // of GTLQPXExpressCarrierData
+@property (nonatomic, retain) NSArray *carrier;  // of GTLQPXExpressCarrierData
 
 // The city that is either the origin or destination of part of a trip.
-@property (retain) NSArray *city;  // of GTLQPXExpressCityData
+@property (nonatomic, retain) NSArray *city;  // of GTLQPXExpressCityData
 
 // Identifies this as QPX Express response resource, including a trip's airport,
 // city, taxes, airline, and aircraft. Value: the fixed string qpxexpress#data.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The taxes due for flying between an origin and a destination.
-@property (retain) NSArray *tax;  // of GTLQPXExpressTaxData
+@property (nonatomic, retain) NSArray *tax;  // of GTLQPXExpressTaxData
 
 @end

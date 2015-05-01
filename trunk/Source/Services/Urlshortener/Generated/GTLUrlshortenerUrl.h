@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,26 +45,26 @@
 
 // A summary of the click analytics for the short and long URL. Might not be
 // present if not requested or currently unavailable.
-@property (retain) GTLUrlshortenerAnalyticsSummary *analytics;
+@property (nonatomic, retain) GTLUrlshortenerAnalyticsSummary *analytics;
 
 // Time the short URL was created; ISO 8601 representation using the
 // yyyy-MM-dd'T'HH:mm:ss.SSSZZ format, e.g. "2010-10-14T19:01:24.944+00:00".
-@property (copy) NSString *created;
+@property (nonatomic, copy) NSString *created;
 
 // Short URL, e.g. "http://goo.gl/l6MS".
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The fixed string "urlshortener#url".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Long URL, e.g. "http://www.google.com/". Might not be present if the status
 // is "REMOVED".
-@property (copy) NSString *longUrl;
+@property (nonatomic, copy) NSString *longUrl;
 
 // Status of the target URL. Possible values: "OK", "MALWARE", "PHISHING", or
 // "REMOVED". A URL might be marked "REMOVED" if it was flagged as spam, for
 // example.
-@property (copy) NSString *status;
+@property (nonatomic, copy) NSString *status;
 
 @end

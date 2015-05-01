@@ -46,10 +46,10 @@
 @interface GTLBigqueryTableDataInsertAllResponse : GTLObject
 
 // An array of errors for rows that were not inserted.
-@property (retain) NSArray *insertErrors;  // of GTLBigqueryTableDataInsertAllResponseInsertErrorsItem
+@property (nonatomic, retain) NSArray *insertErrors;  // of GTLBigqueryTableDataInsertAllResponseInsertErrorsItem
 
 // The resource type of the response.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 @end
 
@@ -62,9 +62,9 @@
 @interface GTLBigqueryTableDataInsertAllResponseInsertErrorsItem : GTLObject
 
 // Error information for the row indicated by the index property.
-@property (retain) NSArray *errors;  // of GTLBigqueryErrorProto
+@property (nonatomic, retain) NSArray *errors;  // of GTLBigqueryErrorProto
 
 // The index of the row that error applies to.
-@property (retain) NSNumber *index;  // unsignedIntValue
+@property (nonatomic, retain) NSNumber *index;  // unsignedIntValue
 
 @end

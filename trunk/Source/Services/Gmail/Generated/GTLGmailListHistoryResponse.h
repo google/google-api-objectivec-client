@@ -45,12 +45,12 @@
 
 // List of history records. Any messages contained in the response will
 // typically only have id and threadId fields populated.
-@property (retain) NSArray *history;  // of GTLGmailHistory
+@property (nonatomic, retain) NSArray *history;  // of GTLGmailHistory
 
 // The ID of the mailbox's current history record.
-@property (retain) NSNumber *historyId;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *historyId;  // unsignedLongLongValue
 
 // Page token to retrieve the next page of results in the list.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 @end

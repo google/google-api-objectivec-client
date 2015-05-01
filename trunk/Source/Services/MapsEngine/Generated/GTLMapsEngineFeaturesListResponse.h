@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,16 +49,16 @@
 
 // An indicator of the maximum rate at which queries may be made, if all queries
 // were as expensive as this query.
-@property (retain) NSNumber *allowedQueriesPerSecond;  // doubleValue
+@property (nonatomic, retain) NSNumber *allowedQueriesPerSecond;  // doubleValue
 
 // Resources returned.
-@property (retain) NSArray *features;  // of GTLMapsEngineFeature
+@property (nonatomic, retain) NSArray *features;  // of GTLMapsEngineFeature
 
 // Next page token.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 // The feature schema.
-@property (retain) GTLMapsEngineSchema *schema;
+@property (nonatomic, retain) GTLMapsEngineSchema *schema;
 
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 @end

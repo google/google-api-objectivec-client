@@ -45,13 +45,13 @@
 
 // [Output-only] Final error result of the job. If present, indicates that the
 // job has completed and was unsuccessful.
-@property (retain) GTLBigqueryErrorProto *errorResult;
+@property (nonatomic, retain) GTLBigqueryErrorProto *errorResult;
 
 // [Output-only] All errors encountered during the running of the job. Errors
 // here do not necessarily mean that the job has completed or was unsuccessful.
-@property (retain) NSArray *errors;  // of GTLBigqueryErrorProto
+@property (nonatomic, retain) NSArray *errors;  // of GTLBigqueryErrorProto
 
 // [Output-only] Running state of the job.
-@property (copy) NSString *state;
+@property (nonatomic, copy) NSString *state;
 
 @end

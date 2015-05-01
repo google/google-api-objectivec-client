@@ -42,6 +42,6 @@
 // Brief description of the live stream status.
 
 @interface GTLYouTubeLiveStreamStatus : GTLObject
-@property (retain) NSNumber *isDefaultStream;  // boolValue
-@property (copy) NSString *streamStatus;
+@property (nonatomic, retain) NSNumber *isDefaultStream;  // boolValue
+@property (nonatomic, copy) NSString *streamStatus;
 @end

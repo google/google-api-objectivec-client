@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,55 +47,55 @@
 
 // Rate of various prefiltering statuses per match. Please refer to the
 // callout-status-codes.txt file for different statuses.
-@property (retain) NSArray *calloutStatusRate;  // of any JSON type
+@property (nonatomic, retain) NSArray *calloutStatusRate;  // of any JSON type
 
 // Average QPS for cookie matcher operations.
-@property (retain) NSArray *cookieMatcherStatusRate;  // of any JSON type
+@property (nonatomic, retain) NSArray *cookieMatcherStatusRate;  // of any JSON type
 
 // Rate of ads with a given status. Please refer to the
 // creative-status-codes.txt file for different statuses.
-@property (retain) NSArray *creativeStatusRate;  // of any JSON type
+@property (nonatomic, retain) NSArray *creativeStatusRate;  // of any JSON type
 
 // Average QPS for hosted match operations.
-@property (retain) NSArray *hostedMatchStatusRate;  // of any JSON type
+@property (nonatomic, retain) NSArray *hostedMatchStatusRate;  // of any JSON type
 
 // Resource type.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The 50th percentile round trip latency(ms) as perceived from Google servers
 // for the duration period covered by the report.
-@property (retain) NSNumber *latency50thPercentile;  // doubleValue
+@property (nonatomic, retain) NSNumber *latency50thPercentile;  // doubleValue
 
 // The 85th percentile round trip latency(ms) as perceived from Google servers
 // for the duration period covered by the report.
-@property (retain) NSNumber *latency85thPercentile;  // doubleValue
+@property (nonatomic, retain) NSNumber *latency85thPercentile;  // doubleValue
 
 // The 95th percentile round trip latency(ms) as perceived from Google servers
 // for the duration period covered by the report.
-@property (retain) NSNumber *latency95thPercentile;  // doubleValue
+@property (nonatomic, retain) NSNumber *latency95thPercentile;  // doubleValue
 
 // Rate of various quota account statuses per quota check.
-@property (retain) NSNumber *noQuotaInRegion;  // doubleValue
+@property (nonatomic, retain) NSNumber *noQuotaInRegion;  // doubleValue
 
 // Rate of various quota account statuses per quota check.
-@property (retain) NSNumber *outOfQuota;  // doubleValue
+@property (nonatomic, retain) NSNumber *outOfQuota;  // doubleValue
 
 // Average QPS for pixel match requests from clients.
-@property (retain) NSNumber *pixelMatchRequests;  // doubleValue
+@property (nonatomic, retain) NSNumber *pixelMatchRequests;  // doubleValue
 
 // Average QPS for pixel match responses from clients.
-@property (retain) NSNumber *pixelMatchResponses;  // doubleValue
+@property (nonatomic, retain) NSNumber *pixelMatchResponses;  // doubleValue
 
 // The configured quota limits for this account.
-@property (retain) NSNumber *quotaConfiguredLimit;  // doubleValue
+@property (nonatomic, retain) NSNumber *quotaConfiguredLimit;  // doubleValue
 
 // The throttled quota limits for this account.
-@property (retain) NSNumber *quotaThrottledLimit;  // doubleValue
+@property (nonatomic, retain) NSNumber *quotaThrottledLimit;  // doubleValue
 
 // The trading location of this data.
-@property (copy) NSString *region;
+@property (nonatomic, copy) NSString *region;
 
 // The unix timestamp of the starting time of this performance data.
-@property (retain) NSNumber *timestamp;  // longLongValue
+@property (nonatomic, retain) NSNumber *timestamp;  // longLongValue
 
 @end

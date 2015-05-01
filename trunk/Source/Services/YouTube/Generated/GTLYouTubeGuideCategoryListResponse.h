@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,33 +49,33 @@
 @interface GTLYouTubeGuideCategoryListResponse : GTLCollectionObject
 
 // Etag of this resource.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // Serialized EventId of the request which produced this response.
-@property (copy) NSString *eventId;
+@property (nonatomic, copy) NSString *eventId;
 
 // A list of categories that can be associated with YouTube channels. In this
 // map, the category ID is the map key, and its value is the corresponding
 // guideCategory resource.
-@property (retain) NSArray *items;  // of GTLYouTubeGuideCategory
+@property (nonatomic, retain) NSArray *items;  // of GTLYouTubeGuideCategory
 
 // Identifies what kind of resource this is. Value: the fixed string
 // "youtube#guideCategoryListResponse".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The token that can be used as the value of the pageToken parameter to
 // retrieve the next page in the result set.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
-@property (retain) GTLYouTubePageInfo *pageInfo;
+@property (nonatomic, retain) GTLYouTubePageInfo *pageInfo;
 
 // The token that can be used as the value of the pageToken parameter to
 // retrieve the previous page in the result set.
-@property (copy) NSString *prevPageToken;
+@property (nonatomic, copy) NSString *prevPageToken;
 
-@property (retain) GTLYouTubeTokenPagination *tokenPagination;
+@property (nonatomic, retain) GTLYouTubeTokenPagination *tokenPagination;
 
 // The visitorId identifies the visitor.
-@property (copy) NSString *visitorId;
+@property (nonatomic, copy) NSString *visitorId;
 
 @end

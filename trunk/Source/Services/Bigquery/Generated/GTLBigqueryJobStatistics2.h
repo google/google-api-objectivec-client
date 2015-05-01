@@ -42,9 +42,9 @@
 @interface GTLBigqueryJobStatistics2 : GTLObject
 
 // [Output-only] Whether the query result was fetched from the query cache.
-@property (retain) NSNumber *cacheHit;  // boolValue
+@property (nonatomic, retain) NSNumber *cacheHit;  // boolValue
 
 // [Output-only] Total bytes processed for this job.
-@property (retain) NSNumber *totalBytesProcessed;  // longLongValue
+@property (nonatomic, retain) NSNumber *totalBytesProcessed;  // longLongValue
 
 @end

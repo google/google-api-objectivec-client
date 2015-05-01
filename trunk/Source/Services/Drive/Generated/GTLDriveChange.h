@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,25 +46,25 @@
 @interface GTLDriveChange : GTLObject
 
 // Whether the file has been deleted.
-@property (retain) NSNumber *deleted;  // boolValue
+@property (nonatomic, retain) NSNumber *deleted;  // boolValue
 
 // The updated state of the file. Present if the file has not been deleted.
-@property (retain) GTLDriveFile *file;
+@property (nonatomic, retain) GTLDriveFile *file;
 
 // The ID of the file associated with this change.
-@property (copy) NSString *fileId;
+@property (nonatomic, copy) NSString *fileId;
 
 // The ID of the change.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSNumber *identifier;  // longLongValue
+@property (nonatomic, retain) NSNumber *identifier;  // longLongValue
 
 // This is always drive#change.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The time of this modification.
-@property (retain) GTLDateTime *modificationDate;
+@property (nonatomic, retain) GTLDateTime *modificationDate;
 
 // A link back to this change.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 @end

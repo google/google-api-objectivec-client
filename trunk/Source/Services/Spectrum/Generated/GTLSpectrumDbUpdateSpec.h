@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,6 +49,6 @@
 // A required list of one or more databases. A device should update its
 // preconfigured list of databases to replace (only) the database that provided
 // the response with the specified entries.
-@property (retain) NSArray *databases;  // of GTLSpectrumDatabaseSpec
+@property (nonatomic, retain) NSArray *databases;  // of GTLSpectrumDatabaseSpec
 
 @end

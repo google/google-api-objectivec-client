@@ -46,19 +46,19 @@
 @interface GTLBigqueryTableList : GTLObject
 
 // A hash of this page of results.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The type of list.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // A token to request the next page of results.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 // Tables in the requested dataset.
-@property (retain) NSArray *tables;  // of GTLBigqueryTableListTablesItem
+@property (nonatomic, retain) NSArray *tables;  // of GTLBigqueryTableListTablesItem
 
 // The total number of tables in the dataset.
-@property (retain) NSNumber *totalItems;  // intValue
+@property (nonatomic, retain) NSNumber *totalItems;  // intValue
 
 @end
 
@@ -71,19 +71,19 @@
 @interface GTLBigqueryTableListTablesItem : GTLObject
 
 // The user-friendly name for this table.
-@property (copy) NSString *friendlyName;
+@property (nonatomic, copy) NSString *friendlyName;
 
 // An opaque ID of the table
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The resource type.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // A reference uniquely identifying the table.
-@property (retain) GTLBigqueryTableReference *tableReference;
+@property (nonatomic, retain) GTLBigqueryTableReference *tableReference;
 
 // The type of table. Possible values are: TABLE, VIEW.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end

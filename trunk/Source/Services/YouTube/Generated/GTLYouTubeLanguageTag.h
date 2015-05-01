@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,5 +40,5 @@
 //
 
 @interface GTLYouTubeLanguageTag : GTLObject
-@property (copy) NSString *value;
+@property (nonatomic, copy) NSString *value;
 @end

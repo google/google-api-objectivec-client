@@ -51,29 +51,29 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (copy) NSString *fields;
+@property (nonatomic, copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (retain) NSArray *csvInstance;  // of any JSON type
-@property (copy) NSString *hostedModelName;
+@property (nonatomic, retain) NSArray *csvInstance;  // of any JSON type
+@property (nonatomic, copy) NSString *hostedModelName;
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 // "input" has different types for some query methods; see the documentation for
 // the right type for each query method.
-@property (retain) id input;
-@property (assign) NSUInteger maxResults;
-@property (copy) NSString *modelType;
-@property (copy) NSString *output;
-@property (copy) NSString *pageToken;
-@property (copy) NSString *project;
-@property (copy) NSString *sourceModel;
-@property (copy) NSString *storageDataLocation;
-@property (copy) NSString *storagePMMLLocation;
-@property (copy) NSString *storagePMMLModelLocation;
-@property (retain) NSArray *trainingInstances;  // of GTLPredictionTrainedmodelsInsertTrainingInstancesItem
-@property (retain) NSArray *utility;  // of GTLPredictionTrainedmodelsInsertUtilityItem
+@property (nonatomic, retain) id input;
+@property (nonatomic, assign) NSUInteger maxResults;
+@property (nonatomic, copy) NSString *modelType;
+@property (nonatomic, copy) NSString *output;
+@property (nonatomic, copy) NSString *pageToken;
+@property (nonatomic, copy) NSString *project;
+@property (nonatomic, copy) NSString *sourceModel;
+@property (nonatomic, copy) NSString *storageDataLocation;
+@property (nonatomic, copy) NSString *storagePMMLLocation;
+@property (nonatomic, copy) NSString *storagePMMLModelLocation;
+@property (nonatomic, retain) NSArray *trainingInstances;  // of GTLPredictionTrainedmodelsInsertTrainingInstancesItem
+@property (nonatomic, retain) NSArray *utility;  // of GTLPredictionTrainedmodelsInsertUtilityItem
 
 #pragma mark -
 #pragma mark "hostedmodels" methods
@@ -91,8 +91,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopePrediction
 // Fetches a GTLPredictionOutput.
-+ (id)queryForHostedmodelsPredictWithProject:(NSString *)project
-                             hostedModelName:(NSString *)hostedModelName;
++ (instancetype)queryForHostedmodelsPredictWithProject:(NSString *)project
+                                       hostedModelName:(NSString *)hostedModelName;
 
 #pragma mark -
 #pragma mark "trainedmodels" methods
@@ -106,8 +106,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopePrediction
 // Fetches a GTLPredictionAnalyze.
-+ (id)queryForTrainedmodelsAnalyzeWithProject:(NSString *)project
-                                   identifier:(NSString *)identifier;
++ (instancetype)queryForTrainedmodelsAnalyzeWithProject:(NSString *)project
+                                             identifier:(NSString *)identifier;
 
 // Method: prediction.trainedmodels.delete
 // Delete a trained model.
@@ -116,8 +116,8 @@
 //   identifier: The unique name for the predictive model.
 //  Authorization scope(s):
 //   kGTLAuthScopePrediction
-+ (id)queryForTrainedmodelsDeleteWithProject:(NSString *)project
-                                  identifier:(NSString *)identifier;
++ (instancetype)queryForTrainedmodelsDeleteWithProject:(NSString *)project
+                                            identifier:(NSString *)identifier;
 
 // Method: prediction.trainedmodels.get
 // Check training status of your model.
@@ -127,8 +127,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopePrediction
 // Fetches a GTLPredictionInsert2.
-+ (id)queryForTrainedmodelsGetWithProject:(NSString *)project
-                               identifier:(NSString *)identifier;
++ (instancetype)queryForTrainedmodelsGetWithProject:(NSString *)project
+                                         identifier:(NSString *)identifier;
 
 // Method: prediction.trainedmodels.insert
 // Train a Prediction API model.
@@ -151,7 +151,7 @@
 //   kGTLAuthScopePredictionDevstorageReadOnly
 //   kGTLAuthScopePredictionDevstorageReadWrite
 // Fetches a GTLPredictionInsert2.
-+ (id)queryForTrainedmodelsInsertWithProject:(NSString *)project;
++ (instancetype)queryForTrainedmodelsInsertWithProject:(NSString *)project;
 
 // Method: prediction.trainedmodels.list
 // List available models.
@@ -163,7 +163,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopePrediction
 // Fetches a GTLPredictionList.
-+ (id)queryForTrainedmodelsListWithProject:(NSString *)project;
++ (instancetype)queryForTrainedmodelsListWithProject:(NSString *)project;
 
 // Method: prediction.trainedmodels.predict
 // Submit model id and request a prediction.
@@ -177,8 +177,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopePrediction
 // Fetches a GTLPredictionOutput.
-+ (id)queryForTrainedmodelsPredictWithProject:(NSString *)project
-                                   identifier:(NSString *)identifier;
++ (instancetype)queryForTrainedmodelsPredictWithProject:(NSString *)project
+                                             identifier:(NSString *)identifier;
 
 // Method: prediction.trainedmodels.update
 // Add new data to a trained model.
@@ -191,8 +191,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopePrediction
 // Fetches a GTLPredictionInsert2.
-+ (id)queryForTrainedmodelsUpdateWithProject:(NSString *)project
-                                  identifier:(NSString *)identifier;
++ (instancetype)queryForTrainedmodelsUpdateWithProject:(NSString *)project
+                                            identifier:(NSString *)identifier;
 
 @end
 
@@ -213,7 +213,7 @@
 @interface GTLPredictionHostedmodelsPredictInput : GTLObject
 
 // A list of input features, these can be strings or doubles.
-@property (retain) NSArray *csvInstance;  // of any JSON type
+@property (nonatomic, retain) NSArray *csvInstance;  // of any JSON type
 
 @end
 
@@ -227,10 +227,10 @@
 @interface GTLPredictionTrainedmodelsInsertTrainingInstancesItem : GTLObject
 
 // The input features for this instance.
-@property (retain) NSArray *csvInstance;  // of any JSON type
+@property (nonatomic, retain) NSArray *csvInstance;  // of any JSON type
 
 // The generic output value - could be regression or class label.
-@property (copy) NSString *output;
+@property (nonatomic, copy) NSString *output;
 
 @end
 
@@ -262,6 +262,6 @@
 @interface GTLPredictionTrainedmodelsPredictInput : GTLObject
 
 // A list of input features, these can be strings or doubles.
-@property (retain) NSArray *csvInstance;  // of any JSON type
+@property (nonatomic, retain) NSArray *csvInstance;  // of any JSON type
 
 @end

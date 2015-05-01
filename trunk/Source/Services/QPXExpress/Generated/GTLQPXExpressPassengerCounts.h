@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,22 +47,22 @@
 @interface GTLQPXExpressPassengerCounts : GTLObject
 
 // The number of passengers that are adults.
-@property (retain) NSNumber *adultCount;  // intValue
+@property (nonatomic, retain) NSNumber *adultCount;  // intValue
 
 // The number of passengers that are children.
-@property (retain) NSNumber *childCount;  // intValue
+@property (nonatomic, retain) NSNumber *childCount;  // intValue
 
 // The number of passengers that are infants travelling in the lap of an adult.
-@property (retain) NSNumber *infantInLapCount;  // intValue
+@property (nonatomic, retain) NSNumber *infantInLapCount;  // intValue
 
 // The number of passengers that are infants each assigned a seat.
-@property (retain) NSNumber *infantInSeatCount;  // intValue
+@property (nonatomic, retain) NSNumber *infantInSeatCount;  // intValue
 
 // Identifies this as a passenger count object, representing the number of
 // passengers. Value: the fixed string qpxexpress#passengerCounts.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The number of passengers that are senior citizens.
-@property (retain) NSNumber *seniorCount;  // intValue
+@property (nonatomic, retain) NSNumber *seniorCount;  // intValue
 
 @end

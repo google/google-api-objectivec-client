@@ -44,6 +44,6 @@
 @interface GTLBigqueryTableSchema : GTLObject
 
 // Describes the fields in a table.
-@property (retain) NSArray *fields;  // of GTLBigqueryTableFieldSchema
+@property (nonatomic, retain) NSArray *fields;  // of GTLBigqueryTableFieldSchema
 
 @end

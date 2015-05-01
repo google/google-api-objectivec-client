@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,17 +49,17 @@
 
 // The colors included in the style. These are represented as six hexadecimal
 // characters, similar to HTML color codes, but without the leading hash.
-@property (retain) GTLAdSenseHostAdStyleColors *colors;
+@property (nonatomic, retain) GTLAdSenseHostAdStyleColors *colors;
 
 // The style of the corners in the ad. Possible values are SQUARE,
 // SLIGHTLY_ROUNDED and VERY_ROUNDED.
-@property (copy) NSString *corners;
+@property (nonatomic, copy) NSString *corners;
 
 // The font which is included in the style.
-@property (retain) GTLAdSenseHostAdStyleFont *font;
+@property (nonatomic, retain) GTLAdSenseHostAdStyleFont *font;
 
 // Kind this is, in this case adsensehost#adStyle.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 @end
 
@@ -72,19 +72,19 @@
 @interface GTLAdSenseHostAdStyleColors : GTLObject
 
 // The color of the ad background.
-@property (copy) NSString *background;
+@property (nonatomic, copy) NSString *background;
 
 // The color of the ad border.
-@property (copy) NSString *border;
+@property (nonatomic, copy) NSString *border;
 
 // The color of the ad text.
-@property (copy) NSString *text;
+@property (nonatomic, copy) NSString *text;
 
 // The color of the ad title.
-@property (copy) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 // The color of the ad url.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 @end
 
@@ -98,10 +98,10 @@
 
 // The family of the font. Possible values are: ACCOUNT_DEFAULT_FAMILY,
 // ADSENSE_DEFAULT_FAMILY, ARIAL, TIMES and VERDANA.
-@property (copy) NSString *family;
+@property (nonatomic, copy) NSString *family;
 
 // The size of the font. Possible values are: ACCOUNT_DEFAULT_SIZE,
 // ADSENSE_DEFAULT_SIZE, SMALL, MEDIUM and LARGE.
-@property (copy) NSString *size;
+@property (nonatomic, copy) NSString *size;
 
 @end

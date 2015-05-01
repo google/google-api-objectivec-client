@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,23 +45,23 @@
 // An array of four numbers (west, south, east, north) which defines the
 // rectangular bounding box of the default viewport. The numbers represent
 // latitude and longitude in decimal degrees.
-@property (retain) NSArray *defaultViewport;  // of NSNumber (doubleValue)
+@property (nonatomic, retain) NSArray *defaultViewport;  // of NSNumber (doubleValue)
 
 // The ID of this MapLayer. This ID can be used to request more details about
 // the layer.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // A user defined alias for this MapLayer, specific to this Map.
-@property (copy) NSString *key;
+@property (nonatomic, copy) NSString *key;
 
 // The name of this MapLayer.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // Identifies this object as a MapLayer.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 // The visibility setting of this MapLayer. One of "defaultOn" or "defaultOff".
-@property (copy) NSString *visibility;
+@property (nonatomic, copy) NSString *visibility;
 
 @end

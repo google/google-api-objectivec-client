@@ -41,9 +41,9 @@
          reportCount, running, sendNotification, shareEmailAddress, title;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[NSString class]
-                                forKey:@"shareEmailAddress"];
+  NSDictionary *map = @{
+    @"shareEmailAddress" : [NSString class]
+  };
   return map;
 }
 

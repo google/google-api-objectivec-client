@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,14 +47,14 @@
 @interface GTLAnalyticsColumn : GTLObject
 
 // Map of attribute name and value for this column.
-@property (retain) GTLAnalyticsColumnAttributes *attributes;
+@property (nonatomic, retain) GTLAnalyticsColumnAttributes *attributes;
 
 // Column id.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Resource type for Analytics column.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 @end
 

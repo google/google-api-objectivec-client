@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,14 +46,14 @@
 @interface GTLYouTubeActivityContentDetailsRecommendation : GTLObject
 
 // The reason that the resource is recommended to the user.
-@property (copy) NSString *reason;
+@property (nonatomic, copy) NSString *reason;
 
 // The resourceId object contains information that identifies the recommended
 // resource.
-@property (retain) GTLYouTubeResourceId *resourceId;
+@property (nonatomic, retain) GTLYouTubeResourceId *resourceId;
 
 // The seedResourceId object contains information about the resource that caused
 // the recommendation.
-@property (retain) GTLYouTubeResourceId *seedResourceId;
+@property (nonatomic, retain) GTLYouTubeResourceId *seedResourceId;
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,6 +45,6 @@
 
 // The text string associated with this item. For example, for an org field:
 // ACME, inc. For an email field: smith@example.com.
-@property (copy) NSString *text;
+@property (nonatomic, copy) NSString *text;
 
 @end

@@ -44,43 +44,43 @@
 @interface GTLDoubleClickBidManagerQueryMetadata : GTLObject
 
 // Range of report data.
-@property (copy) NSString *dataRange;
+@property (nonatomic, copy) NSString *dataRange;
 
 // Format of the generated report.
-@property (copy) NSString *format;
+@property (nonatomic, copy) NSString *format;
 
 // The path to the location in Google Cloud Storage where the latest report is
 // stored.
-@property (copy) NSString *googleCloudStoragePathForLatestReport;
+@property (nonatomic, copy) NSString *googleCloudStoragePathForLatestReport;
 
 // The path in Google Drive for the latest report.
-@property (copy) NSString *googleDrivePathForLatestReport;
+@property (nonatomic, copy) NSString *googleDrivePathForLatestReport;
 
 // The time when the latest report started to run.
-@property (retain) NSNumber *latestReportRunTimeMs;  // longLongValue
+@property (nonatomic, retain) NSNumber *latestReportRunTimeMs;  // longLongValue
 
 // Locale of the generated reports. Valid values are cs CZECH de GERMAN en
 // ENGLISH es SPANISH fr FRENCH it ITALIAN ja JAPANESE ko KOREAN pl POLISH pt-BR
 // BRAZILIAN_PORTUGUESE ru RUSSIAN tr TURKISH uk UKRAINIAN zh-CN CHINA_CHINESE
 // zh-TW TAIWAN_CHINESE
 // An locale string not in the list above will generate reports in English.
-@property (copy) NSString *locale;
+@property (nonatomic, copy) NSString *locale;
 
 // Number of reports that have been generated for the query.
-@property (retain) NSNumber *reportCount;  // intValue
+@property (nonatomic, retain) NSNumber *reportCount;  // intValue
 
 // Whether the latest report is currently running.
-@property (retain) NSNumber *running;  // boolValue
+@property (nonatomic, retain) NSNumber *running;  // boolValue
 
 // Whether to send an email notification when a report is ready. Default to
 // false.
-@property (retain) NSNumber *sendNotification;  // boolValue
+@property (nonatomic, retain) NSNumber *sendNotification;  // boolValue
 
 // List of email addresses which are sent email notifications when the report is
 // finished. Separate from sendNotification.
-@property (retain) NSArray *shareEmailAddress;  // of NSString
+@property (nonatomic, retain) NSArray *shareEmailAddress;  // of NSString
 
 // Query title. It is used to name the reports generated from this query.
-@property (copy) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 @end

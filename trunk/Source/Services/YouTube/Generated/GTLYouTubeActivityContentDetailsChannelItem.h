@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,6 +47,6 @@
 
 // The resourceId object contains information that identifies the resource that
 // was added to the channel.
-@property (retain) GTLYouTubeResourceId *resourceId;
+@property (nonatomic, retain) GTLYouTubeResourceId *resourceId;
 
 @end

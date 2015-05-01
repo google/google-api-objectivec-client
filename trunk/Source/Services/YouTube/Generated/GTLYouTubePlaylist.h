@@ -69,32 +69,32 @@
 @interface GTLYouTubePlaylist : GTLObject
 
 // The contentDetails object contains information like video count.
-@property (retain) GTLYouTubePlaylistContentDetails *contentDetails;
+@property (nonatomic, retain) GTLYouTubePlaylistContentDetails *contentDetails;
 
 // Etag of this resource.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The ID that YouTube uses to uniquely identify the playlist.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Identifies what kind of resource this is. Value: the fixed string
 // "youtube#playlist".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Localizations for different languages
-@property (retain) GTLYouTubePlaylistLocalizations *localizations;
+@property (nonatomic, retain) GTLYouTubePlaylistLocalizations *localizations;
 
 // The player object contains information that you would use to play the
 // playlist in an embedded player.
-@property (retain) GTLYouTubePlaylistPlayer *player;
+@property (nonatomic, retain) GTLYouTubePlaylistPlayer *player;
 
 // The snippet object contains basic details about the playlist, such as its
 // title and description.
-@property (retain) GTLYouTubePlaylistSnippet *snippet;
+@property (nonatomic, retain) GTLYouTubePlaylistSnippet *snippet;
 
 // The status object contains status information for the playlist.
-@property (retain) GTLYouTubePlaylistStatus *status;
+@property (nonatomic, retain) GTLYouTubePlaylistStatus *status;
 
 @end
 

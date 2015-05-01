@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,15 +48,15 @@
 @interface GTLPredictionList : GTLCollectionObject
 
 // List of models.
-@property (retain) NSArray *items;  // of GTLPredictionInsert2
+@property (nonatomic, retain) NSArray *items;  // of GTLPredictionInsert2
 
 // What kind of resource this is.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Pagination token to fetch the next page, if one exists.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 // A URL to re-request this resource.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 @end

@@ -48,17 +48,17 @@
 @interface GTLYouTubeVideoAbuseReportReason : GTLObject
 
 // Etag of this resource.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The ID of this abuse report reason.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Identifies what kind of resource this is. Value: the fixed string
 // "youtube#videoAbuseReportReason".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The snippet object contains basic details about the abuse report reason.
-@property (retain) GTLYouTubeVideoAbuseReportReasonSnippet *snippet;
+@property (nonatomic, retain) GTLYouTubeVideoAbuseReportReasonSnippet *snippet;
 
 @end

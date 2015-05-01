@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,42 +42,42 @@
 @interface GTLCalendarEventAttendee : GTLObject
 
 // Number of additional guests. Optional. The default is 0.
-@property (retain) NSNumber *additionalGuests;  // intValue
+@property (nonatomic, retain) NSNumber *additionalGuests;  // intValue
 
 // The attendee's response comment. Optional.
-@property (copy) NSString *comment;
+@property (nonatomic, copy) NSString *comment;
 
 // The attendee's name, if available. Optional.
-@property (copy) NSString *displayName;
+@property (nonatomic, copy) NSString *displayName;
 
 // The attendee's email address, if available. This field must be present when
 // adding an attendee.
-@property (copy) NSString *email;
+@property (nonatomic, copy) NSString *email;
 
 // The attendee's Profile ID, if available.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Whether this is an optional attendee. Optional. The default is False.
-@property (retain) NSNumber *optional;  // boolValue
+@property (nonatomic, retain) NSNumber *optional;  // boolValue
 
 // Whether the attendee is the organizer of the event. Read-only. The default is
 // False.
-@property (retain) NSNumber *organizer;  // boolValue
+@property (nonatomic, retain) NSNumber *organizer;  // boolValue
 
 // Whether the attendee is a resource. Read-only. The default is False.
-@property (retain) NSNumber *resource;  // boolValue
+@property (nonatomic, retain) NSNumber *resource;  // boolValue
 
 // The attendee's response status. Possible values are:
 // - "needsAction" - The attendee has not responded to the invitation.
 // - "declined" - The attendee has declined the invitation.
 // - "tentative" - The attendee has tentatively accepted the invitation.
 // - "accepted" - The attendee has accepted the invitation.
-@property (copy) NSString *responseStatus;
+@property (nonatomic, copy) NSString *responseStatus;
 
 // Whether this entry represents the calendar on which this copy of the event
 // appears. Read-only. The default is False.
 // Remapped to 'selfProperty' to avoid language reserved word 'self'.
-@property (retain) NSNumber *selfProperty;  // boolValue
+@property (nonatomic, retain) NSNumber *selfProperty;  // boolValue
 
 @end

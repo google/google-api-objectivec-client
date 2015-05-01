@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,15 +48,15 @@
 @interface GTLCivicInfoRepresentativeInfoData : GTLObject
 
 // Political geographic divisions that contain the requested address.
-@property (retain) GTLCivicInfoRepresentativeInfoDataDivisions *divisions;
+@property (nonatomic, retain) GTLCivicInfoRepresentativeInfoDataDivisions *divisions;
 
 // Elected offices referenced by the divisions listed above. Will only be
 // present if includeOffices was true in the request.
-@property (retain) NSArray *offices;  // of GTLCivicInfoOffice
+@property (nonatomic, retain) NSArray *offices;  // of GTLCivicInfoOffice
 
 // Officials holding the offices listed above. Will only be present if
 // includeOffices was true in the request.
-@property (retain) NSArray *officials;  // of GTLCivicInfoOfficial
+@property (nonatomic, retain) NSArray *officials;  // of GTLCivicInfoOfficial
 
 @end
 

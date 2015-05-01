@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,19 +48,19 @@
 
 // A custom message to display for this promotion. This field is currently
 // ignored unless the promoted item is a website.
-@property (copy) NSString *customMessage;
+@property (nonatomic, copy) NSString *customMessage;
 
 // Identifies the promoted item.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) GTLYouTubePromotedItemId *identifier;
+@property (nonatomic, retain) GTLYouTubePromotedItemId *identifier;
 
 // If true, the content owner's name will be used when displaying the promotion.
 // This field can only be set when the update is made on behalf of the content
 // owner.
-@property (retain) NSNumber *promotedByContentOwner;  // boolValue
+@property (nonatomic, retain) NSNumber *promotedByContentOwner;  // boolValue
 
 // The temporal position within the video where the promoted item will be
 // displayed. If present, it overrides the default timing.
-@property (retain) GTLYouTubeInvideoTiming *timing;
+@property (nonatomic, retain) GTLYouTubeInvideoTiming *timing;
 
 @end

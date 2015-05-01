@@ -50,46 +50,46 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (copy) NSString *fields;
+@property (nonatomic, copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (copy) NSString *bucket;
-@property (copy) NSString *contentEncoding;
-@property (copy) NSString *delimiter;
-@property (retain) GTLStorageObject *destination;
-@property (retain) GTLStorageObject *destinationResource;
-@property (copy) NSString *destinationBucket;
-@property (copy) NSString *destinationObject;
-@property (copy) NSString *destinationPredefinedAcl;
-@property (copy) NSString *entity;
-@property (assign) long long generation;
-@property (assign) long long ifGenerationMatch;
-@property (assign) long long ifGenerationNotMatch;
-@property (assign) long long ifMetagenerationMatch;
-@property (assign) long long ifMetagenerationNotMatch;
-@property (assign) long long ifSourceGenerationMatch;
-@property (assign) long long ifSourceGenerationNotMatch;
-@property (assign) long long ifSourceMetagenerationMatch;
-@property (assign) long long ifSourceMetagenerationNotMatch;
-@property (copy) NSString *kind;
-@property (assign) long long maxBytesRewrittenPerCall;
-@property (assign) NSUInteger maxResults;
-@property (copy) NSString *name;
-@property (copy) NSString *object;
-@property (copy) NSString *pageToken;
-@property (copy) NSString *predefinedAcl;
-@property (copy) NSString *predefinedDefaultObjectAcl;
-@property (copy) NSString *prefix;
-@property (copy) NSString *project;
-@property (copy) NSString *projection;
-@property (copy) NSString *rewriteToken;
-@property (copy) NSString *sourceBucket;
-@property (assign) long long sourceGeneration;
-@property (copy) NSString *sourceObject;
-@property (retain) NSArray *sourceObjects;  // of GTLStorageObjectsComposeSourceObjectsItem
-@property (assign) BOOL versions;
+@property (nonatomic, copy) NSString *bucket;
+@property (nonatomic, copy) NSString *contentEncoding;
+@property (nonatomic, copy) NSString *delimiter;
+@property (nonatomic, retain) GTLStorageObject *destination;
+@property (nonatomic, retain) GTLStorageObject *destinationResource;
+@property (nonatomic, copy) NSString *destinationBucket;
+@property (nonatomic, copy) NSString *destinationObject;
+@property (nonatomic, copy) NSString *destinationPredefinedAcl;
+@property (nonatomic, copy) NSString *entity;
+@property (nonatomic, assign) long long generation;
+@property (nonatomic, assign) long long ifGenerationMatch;
+@property (nonatomic, assign) long long ifGenerationNotMatch;
+@property (nonatomic, assign) long long ifMetagenerationMatch;
+@property (nonatomic, assign) long long ifMetagenerationNotMatch;
+@property (nonatomic, assign) long long ifSourceGenerationMatch;
+@property (nonatomic, assign) long long ifSourceGenerationNotMatch;
+@property (nonatomic, assign) long long ifSourceMetagenerationMatch;
+@property (nonatomic, assign) long long ifSourceMetagenerationNotMatch;
+@property (nonatomic, copy) NSString *kind;
+@property (nonatomic, assign) long long maxBytesRewrittenPerCall;
+@property (nonatomic, assign) NSUInteger maxResults;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *object;
+@property (nonatomic, copy) NSString *pageToken;
+@property (nonatomic, copy) NSString *predefinedAcl;
+@property (nonatomic, copy) NSString *predefinedDefaultObjectAcl;
+@property (nonatomic, copy) NSString *prefix;
+@property (nonatomic, copy) NSString *project;
+@property (nonatomic, copy) NSString *projection;
+@property (nonatomic, copy) NSString *rewriteToken;
+@property (nonatomic, copy) NSString *sourceBucket;
+@property (nonatomic, assign) long long sourceGeneration;
+@property (nonatomic, copy) NSString *sourceObject;
+@property (nonatomic, retain) NSArray *sourceObjects;  // of GTLStorageObjectsComposeSourceObjectsItem
+@property (nonatomic, assign) BOOL versions;
 
 #pragma mark -
 #pragma mark "bucketAccessControls" methods
@@ -105,8 +105,8 @@
 //     allAuthenticatedUsers.
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
-+ (id)queryForBucketAccessControlsDeleteWithBucket:(NSString *)bucket
-                                            entity:(NSString *)entity;
++ (instancetype)queryForBucketAccessControlsDeleteWithBucket:(NSString *)bucket
+                                                      entity:(NSString *)entity;
 
 // Method: storage.bucketAccessControls.get
 // Returns the ACL entry for the specified entity on the specified bucket.
@@ -118,8 +118,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageBucketAccessControl.
-+ (id)queryForBucketAccessControlsGetWithBucket:(NSString *)bucket
-                                         entity:(NSString *)entity;
++ (instancetype)queryForBucketAccessControlsGetWithBucket:(NSString *)bucket
+                                                   entity:(NSString *)entity;
 
 // Method: storage.bucketAccessControls.insert
 // Creates a new ACL entry on the specified bucket.
@@ -128,8 +128,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageBucketAccessControl.
-+ (id)queryForBucketAccessControlsInsertWithObject:(GTLStorageBucketAccessControl *)object
-                                            bucket:(NSString *)bucket;
++ (instancetype)queryForBucketAccessControlsInsertWithObject:(GTLStorageBucketAccessControl *)object
+                                                      bucket:(NSString *)bucket;
 
 // Method: storage.bucketAccessControls.list
 // Retrieves ACL entries on the specified bucket.
@@ -138,7 +138,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageBucketAccessControls.
-+ (id)queryForBucketAccessControlsListWithBucket:(NSString *)bucket;
++ (instancetype)queryForBucketAccessControlsListWithBucket:(NSString *)bucket;
 
 // Method: storage.bucketAccessControls.patch
 // Updates an ACL entry on the specified bucket. This method supports patch
@@ -151,9 +151,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageBucketAccessControl.
-+ (id)queryForBucketAccessControlsPatchWithObject:(GTLStorageBucketAccessControl *)object
-                                           bucket:(NSString *)bucket
-                                           entity:(NSString *)entity;
++ (instancetype)queryForBucketAccessControlsPatchWithObject:(GTLStorageBucketAccessControl *)object
+                                                     bucket:(NSString *)bucket
+                                                     entity:(NSString *)entity;
 
 // Method: storage.bucketAccessControls.update
 // Updates an ACL entry on the specified bucket.
@@ -165,9 +165,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageBucketAccessControl.
-+ (id)queryForBucketAccessControlsUpdateWithObject:(GTLStorageBucketAccessControl *)object
-                                            bucket:(NSString *)bucket
-                                            entity:(NSString *)entity;
++ (instancetype)queryForBucketAccessControlsUpdateWithObject:(GTLStorageBucketAccessControl *)object
+                                                      bucket:(NSString *)bucket
+                                                      entity:(NSString *)entity;
 
 #pragma mark -
 #pragma mark "buckets" methods
@@ -186,7 +186,7 @@
 //   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadWrite
-+ (id)queryForBucketsDeleteWithBucket:(NSString *)bucket;
++ (instancetype)queryForBucketsDeleteWithBucket:(NSString *)bucket;
 
 // Method: storage.buckets.get
 // Returns metadata for the specified bucket.
@@ -207,7 +207,7 @@
 //   kGTLAuthScopeStorageDevstorageReadOnly
 //   kGTLAuthScopeStorageDevstorageReadWrite
 // Fetches a GTLStorageBucket.
-+ (id)queryForBucketsGetWithBucket:(NSString *)bucket;
++ (instancetype)queryForBucketsGetWithBucket:(NSString *)bucket;
 
 // Method: storage.buckets.insert
 // Creates a new bucket.
@@ -249,8 +249,8 @@
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadWrite
 // Fetches a GTLStorageBucket.
-+ (id)queryForBucketsInsertWithObject:(GTLStorageBucket *)object
-                              project:(NSString *)project;
++ (instancetype)queryForBucketsInsertWithObject:(GTLStorageBucket *)object
+                                        project:(NSString *)project;
 
 // Method: storage.buckets.list
 // Retrieves a list of buckets for a given project.
@@ -270,7 +270,7 @@
 //   kGTLAuthScopeStorageDevstorageReadOnly
 //   kGTLAuthScopeStorageDevstorageReadWrite
 // Fetches a GTLStorageBuckets.
-+ (id)queryForBucketsListWithProject:(NSString *)project;
++ (instancetype)queryForBucketsListWithProject:(NSString *)project;
 
 // Method: storage.buckets.patch
 // Updates a bucket. This method supports patch semantics.
@@ -315,8 +315,8 @@
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadWrite
 // Fetches a GTLStorageBucket.
-+ (id)queryForBucketsPatchWithObject:(GTLStorageBucket *)object
-                              bucket:(NSString *)bucket;
++ (instancetype)queryForBucketsPatchWithObject:(GTLStorageBucket *)object
+                                        bucket:(NSString *)bucket;
 
 // Method: storage.buckets.update
 // Updates a bucket.
@@ -361,8 +361,8 @@
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadWrite
 // Fetches a GTLStorageBucket.
-+ (id)queryForBucketsUpdateWithObject:(GTLStorageBucket *)object
-                               bucket:(NSString *)bucket;
++ (instancetype)queryForBucketsUpdateWithObject:(GTLStorageBucket *)object
+                                         bucket:(NSString *)bucket;
 
 #pragma mark -
 #pragma mark "channels" methods
@@ -375,7 +375,7 @@
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadOnly
 //   kGTLAuthScopeStorageDevstorageReadWrite
-+ (id)queryForChannelsStopWithObject:(GTLStorageChannel *)object;
++ (instancetype)queryForChannelsStopWithObject:(GTLStorageChannel *)object;
 
 #pragma mark -
 #pragma mark "defaultObjectAccessControls" methods
@@ -391,8 +391,8 @@
 //     allAuthenticatedUsers.
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
-+ (id)queryForDefaultObjectAccessControlsDeleteWithBucket:(NSString *)bucket
-                                                   entity:(NSString *)entity;
++ (instancetype)queryForDefaultObjectAccessControlsDeleteWithBucket:(NSString *)bucket
+                                                             entity:(NSString *)entity;
 
 // Method: storage.defaultObjectAccessControls.get
 // Returns the default object ACL entry for the specified entity on the
@@ -405,8 +405,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControl.
-+ (id)queryForDefaultObjectAccessControlsGetWithBucket:(NSString *)bucket
-                                                entity:(NSString *)entity;
++ (instancetype)queryForDefaultObjectAccessControlsGetWithBucket:(NSString *)bucket
+                                                          entity:(NSString *)entity;
 
 // Method: storage.defaultObjectAccessControls.insert
 // Creates a new default object ACL entry on the specified bucket.
@@ -415,8 +415,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControl.
-+ (id)queryForDefaultObjectAccessControlsInsertWithObject:(GTLStorageObjectAccessControl *)object
-                                                   bucket:(NSString *)bucket;
++ (instancetype)queryForDefaultObjectAccessControlsInsertWithObject:(GTLStorageObjectAccessControl *)object
+                                                             bucket:(NSString *)bucket;
 
 // Method: storage.defaultObjectAccessControls.list
 // Retrieves default object ACL entries on the specified bucket.
@@ -430,7 +430,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControls.
-+ (id)queryForDefaultObjectAccessControlsListWithBucket:(NSString *)bucket;
++ (instancetype)queryForDefaultObjectAccessControlsListWithBucket:(NSString *)bucket;
 
 // Method: storage.defaultObjectAccessControls.patch
 // Updates a default object ACL entry on the specified bucket. This method
@@ -443,9 +443,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControl.
-+ (id)queryForDefaultObjectAccessControlsPatchWithObject:(GTLStorageObjectAccessControl *)object
-                                                  bucket:(NSString *)bucket
-                                                  entity:(NSString *)entity;
++ (instancetype)queryForDefaultObjectAccessControlsPatchWithObject:(GTLStorageObjectAccessControl *)object
+                                                            bucket:(NSString *)bucket
+                                                            entity:(NSString *)entity;
 
 // Method: storage.defaultObjectAccessControls.update
 // Updates a default object ACL entry on the specified bucket.
@@ -457,9 +457,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControl.
-+ (id)queryForDefaultObjectAccessControlsUpdateWithObject:(GTLStorageObjectAccessControl *)object
-                                                   bucket:(NSString *)bucket
-                                                   entity:(NSString *)entity;
++ (instancetype)queryForDefaultObjectAccessControlsUpdateWithObject:(GTLStorageObjectAccessControl *)object
+                                                             bucket:(NSString *)bucket
+                                                             entity:(NSString *)entity;
 
 #pragma mark -
 #pragma mark "objectAccessControls" methods
@@ -479,9 +479,9 @@
 //     opposed to the latest version, the default).
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
-+ (id)queryForObjectAccessControlsDeleteWithBucket:(NSString *)bucket
-                                            object:(NSString *)object
-                                            entity:(NSString *)entity;
++ (instancetype)queryForObjectAccessControlsDeleteWithBucket:(NSString *)bucket
+                                                      object:(NSString *)object
+                                                      entity:(NSString *)entity;
 
 // Method: storage.objectAccessControls.get
 // Returns the ACL entry for the specified entity on the specified object.
@@ -497,9 +497,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControl.
-+ (id)queryForObjectAccessControlsGetWithBucket:(NSString *)bucket
-                                         object:(NSString *)object
-                                         entity:(NSString *)entity;
++ (instancetype)queryForObjectAccessControlsGetWithBucket:(NSString *)bucket
+                                                   object:(NSString *)object
+                                                   entity:(NSString *)entity;
 
 // Method: storage.objectAccessControls.insert
 // Creates a new ACL entry on the specified object.
@@ -512,9 +512,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControl.
-+ (id)queryForObjectAccessControlsInsertWithObject:(GTLStorageObjectAccessControl *)object
-                                            bucket:(NSString *)bucket
-                                            object:(NSString *)object;
++ (instancetype)queryForObjectAccessControlsInsertWithObject:(GTLStorageObjectAccessControl *)object
+                                                      bucket:(NSString *)bucket
+                                                      object:(NSString *)object;
 
 // Method: storage.objectAccessControls.list
 // Retrieves ACL entries on the specified object.
@@ -527,8 +527,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControls.
-+ (id)queryForObjectAccessControlsListWithBucket:(NSString *)bucket
-                                          object:(NSString *)object;
++ (instancetype)queryForObjectAccessControlsListWithBucket:(NSString *)bucket
+                                                    object:(NSString *)object;
 
 // Method: storage.objectAccessControls.patch
 // Updates an ACL entry on the specified object. This method supports patch
@@ -545,10 +545,10 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControl.
-+ (id)queryForObjectAccessControlsPatchWithObject:(GTLStorageObjectAccessControl *)object
-                                           bucket:(NSString *)bucket
-                                           object:(NSString *)object
-                                           entity:(NSString *)entity;
++ (instancetype)queryForObjectAccessControlsPatchWithObject:(GTLStorageObjectAccessControl *)object
+                                                     bucket:(NSString *)bucket
+                                                     object:(NSString *)object
+                                                     entity:(NSString *)entity;
 
 // Method: storage.objectAccessControls.update
 // Updates an ACL entry on the specified object.
@@ -564,10 +564,10 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControl.
-+ (id)queryForObjectAccessControlsUpdateWithObject:(GTLStorageObjectAccessControl *)object
-                                            bucket:(NSString *)bucket
-                                            object:(NSString *)object
-                                            entity:(NSString *)entity;
++ (instancetype)queryForObjectAccessControlsUpdateWithObject:(GTLStorageObjectAccessControl *)object
+                                                      bucket:(NSString *)bucket
+                                                      object:(NSString *)object
+                                                      entity:(NSString *)entity;
 
 #pragma mark -
 #pragma mark "objects" methods
@@ -607,8 +607,8 @@
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadWrite
 // Fetches a GTLStorageObject.
-+ (id)queryForObjectsComposeWithDestinationBucket:(NSString *)destinationBucket
-                                destinationObject:(NSString *)destinationObject;
++ (instancetype)queryForObjectsComposeWithDestinationBucket:(NSString *)destinationBucket
+                                          destinationObject:(NSString *)destinationObject;
 
 // Method: storage.objects.copy
 // Copies an object to a specified location. Optionally overrides metadata.
@@ -666,10 +666,10 @@
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadWrite
 // Fetches a GTLStorageObject.
-+ (id)queryForObjectsCopyWithSourceBucket:(NSString *)sourceBucket
-                             sourceObject:(NSString *)sourceObject
-                        destinationBucket:(NSString *)destinationBucket
-                        destinationObject:(NSString *)destinationObject;
++ (instancetype)queryForObjectsCopyWithSourceBucket:(NSString *)sourceBucket
+                                       sourceObject:(NSString *)sourceObject
+                                  destinationBucket:(NSString *)destinationBucket
+                                  destinationObject:(NSString *)destinationObject;
 
 // Method: storage.objects.delete
 // Deletes an object and its metadata. Deletions are permanent if versioning is
@@ -692,8 +692,8 @@
 //   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadWrite
-+ (id)queryForObjectsDeleteWithBucket:(NSString *)bucket
-                               object:(NSString *)object;
++ (instancetype)queryForObjectsDeleteWithBucket:(NSString *)bucket
+                                         object:(NSString *)object;
 
 // Method: storage.objects.get
 // Retrieves an object or its metadata.
@@ -720,8 +720,8 @@
 //   kGTLAuthScopeStorageDevstorageReadOnly
 //   kGTLAuthScopeStorageDevstorageReadWrite
 // Fetches a GTLStorageObject.
-+ (id)queryForObjectsGetWithBucket:(NSString *)bucket
-                            object:(NSString *)object;
++ (instancetype)queryForObjectsGetWithBucket:(NSString *)bucket
+                                      object:(NSString *)object;
 
 // Method: storage.objects.insert
 // Stores a new object and metadata.
@@ -767,9 +767,9 @@
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadWrite
 // Fetches a GTLStorageObject.
-+ (id)queryForObjectsInsertWithObject:(GTLStorageObject *)object
-                               bucket:(NSString *)bucket
-                     uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
++ (instancetype)queryForObjectsInsertWithObject:(GTLStorageObject *)object
+                                         bucket:(NSString *)bucket
+                               uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
 // Method: storage.objects.list
 // Retrieves a list of objects matching the criteria.
@@ -798,7 +798,7 @@
 //   kGTLAuthScopeStorageDevstorageReadOnly
 //   kGTLAuthScopeStorageDevstorageReadWrite
 // Fetches a GTLStorageObjects.
-+ (id)queryForObjectsListWithBucket:(NSString *)bucket;
++ (instancetype)queryForObjectsListWithBucket:(NSString *)bucket;
 
 // Method: storage.objects.patch
 // Updates an object's metadata. This method supports patch semantics.
@@ -836,9 +836,9 @@
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadWrite
 // Fetches a GTLStorageObject.
-+ (id)queryForObjectsPatchWithObject:(GTLStorageObject *)object
-                              bucket:(NSString *)bucket
-                              object:(NSString *)object;
++ (instancetype)queryForObjectsPatchWithObject:(GTLStorageObject *)object
+                                        bucket:(NSString *)bucket
+                                        object:(NSString *)object;
 
 // Method: storage.objects.rewrite
 // Rewrites a source object to a destination object. Optionally overrides
@@ -910,10 +910,10 @@
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadWrite
 // Fetches a GTLStorageRewriteResponse.
-+ (id)queryForObjectsRewriteWithSourceBucket:(NSString *)sourceBucket
-                                sourceObject:(NSString *)sourceObject
-                           destinationBucket:(NSString *)destinationBucket
-                           destinationObject:(NSString *)destinationObject;
++ (instancetype)queryForObjectsRewriteWithSourceBucket:(NSString *)sourceBucket
+                                          sourceObject:(NSString *)sourceObject
+                                     destinationBucket:(NSString *)destinationBucket
+                                     destinationObject:(NSString *)destinationObject;
 
 // Method: storage.objects.update
 // Updates an object's metadata.
@@ -951,9 +951,9 @@
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadWrite
 // Fetches a GTLStorageObject.
-+ (id)queryForObjectsUpdateWithObject:(GTLStorageObject *)object
-                               bucket:(NSString *)bucket
-                               object:(NSString *)object;
++ (instancetype)queryForObjectsUpdateWithObject:(GTLStorageObject *)object
+                                         bucket:(NSString *)bucket
+                                         object:(NSString *)object;
 
 // Method: storage.objects.watchAll
 // Watch for changes on all objects in a bucket.
@@ -982,8 +982,8 @@
 //   kGTLAuthScopeStorageDevstorageReadOnly
 //   kGTLAuthScopeStorageDevstorageReadWrite
 // Fetches a GTLStorageChannel.
-+ (id)queryForObjectsWatchAllWithObject:(GTLStorageChannel *)object
-                                 bucket:(NSString *)bucket;
++ (instancetype)queryForObjectsWatchAllWithObject:(GTLStorageChannel *)object
+                                           bucket:(NSString *)bucket;
 
 @end
 
@@ -1004,14 +1004,14 @@
 @interface GTLStorageObjectsComposeSourceObjectsItem : GTLObject
 
 // The generation of this object to use as the source.
-@property (retain) NSNumber *generation;  // longLongValue
+@property (nonatomic, retain) NSNumber *generation;  // longLongValue
 
 // The source object's name. The source object's bucket is implicitly the
 // destination bucket.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // Conditions that must be met for this operation to execute.
-@property (retain) GTLStorageObjectsComposeSourceObjectsItemObjectPreconditions *objectPreconditions;
+@property (nonatomic, retain) GTLStorageObjectsComposeSourceObjectsItemObjectPreconditions *objectPreconditions;
 
 @end
 
@@ -1025,6 +1025,6 @@
 // Only perform the composition if the generation of the source object that
 // would be used matches this value. If this value and a generation are both
 // specified, they must be the same value or the call will fail.
-@property (retain) NSNumber *ifGenerationMatch;  // longLongValue
+@property (nonatomic, retain) NSNumber *ifGenerationMatch;  // longLongValue
 
 @end

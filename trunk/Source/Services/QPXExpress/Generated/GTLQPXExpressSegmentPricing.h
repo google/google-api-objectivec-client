@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,16 +48,16 @@
 
 // A segment identifier unique within a single solution. It is used to refer to
 // different parts of the same solution.
-@property (copy) NSString *fareId;
+@property (nonatomic, copy) NSString *fareId;
 
 // Details of the free baggage allowance on this segment.
-@property (retain) NSArray *freeBaggageOption;  // of GTLQPXExpressFreeBaggageAllowance
+@property (nonatomic, retain) NSArray *freeBaggageOption;  // of GTLQPXExpressFreeBaggageAllowance
 
 // Identifies this as a segment pricing object, representing the price of this
 // segment. Value: the fixed string qpxexpress#segmentPricing.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Unique identifier in the response of this segment.
-@property (copy) NSString *segmentId;
+@property (nonatomic, copy) NSString *segmentId;
 
 @end

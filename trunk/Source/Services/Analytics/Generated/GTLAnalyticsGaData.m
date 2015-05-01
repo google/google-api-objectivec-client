@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,18 +49,17 @@
          sampleSize, sampleSpace, selfLink, totalResults, totalsForAllResults;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+  NSDictionary *map = @{
+    @"identifier" : @"id"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [GTLAnalyticsGaDataColumnHeadersItem class], @"columnHeaders",
-      [NSString class], @"rows",
-      nil];
+  NSDictionary *map = @{
+    @"columnHeaders" : [GTLAnalyticsGaDataColumnHeadersItem class],
+    @"rows" : [NSString class]
+  };
   return map;
 }
 
@@ -90,11 +89,10 @@
 @dynamic cols, rows;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [GTLAnalyticsGaDataDataTableColsItem class], @"cols",
-      [GTLAnalyticsGaDataDataTableRowsItem class], @"rows",
-      nil];
+  NSDictionary *map = @{
+    @"cols" : [GTLAnalyticsGaDataDataTableColsItem class],
+    @"rows" : [GTLAnalyticsGaDataDataTableRowsItem class]
+  };
   return map;
 }
 
@@ -122,22 +120,20 @@
          segment, sort, startDate, startIndex;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"end-date", @"endDate",
-      @"max-results", @"maxResults",
-      @"start-date", @"startDate",
-      @"start-index", @"startIndex",
-      nil];
+  NSDictionary *map = @{
+    @"endDate" : @"end-date",
+    @"maxResults" : @"max-results",
+    @"startDate" : @"start-date",
+    @"startIndex" : @"start-index"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSString class], @"metrics",
-      [NSString class], @"sort",
-      nil];
+  NSDictionary *map = @{
+    @"metrics" : [NSString class],
+    @"sort" : [NSString class]
+  };
   return map;
 }
 
@@ -167,9 +163,9 @@
 @dynamic identifier, label, type;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+  NSDictionary *map = @{
+    @"identifier" : @"id"
+  };
   return map;
 }
 
@@ -185,9 +181,9 @@
 @dynamic c;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLAnalyticsGaDataDataTableRowsItemCItem class]
-                                forKey:@"c"];
+  NSDictionary *map = @{
+    @"c" : [GTLAnalyticsGaDataDataTableRowsItemCItem class]
+  };
   return map;
 }
 

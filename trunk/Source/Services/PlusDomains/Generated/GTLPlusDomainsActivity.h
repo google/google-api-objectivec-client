@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -81,74 +81,74 @@
 @interface GTLPlusDomainsActivity : GTLObject
 
 // Identifies who has access to see this activity.
-@property (retain) GTLPlusDomainsAcl *access;
+@property (nonatomic, retain) GTLPlusDomainsAcl *access;
 
 // The person who performed this activity.
-@property (retain) GTLPlusDomainsActivityActor *actor;
+@property (nonatomic, retain) GTLPlusDomainsActivityActor *actor;
 
 // Street address where this activity occurred.
-@property (copy) NSString *address;
+@property (nonatomic, copy) NSString *address;
 
 // Additional content added by the person who shared this activity, applicable
 // only when resharing an activity.
-@property (copy) NSString *annotation;
+@property (nonatomic, copy) NSString *annotation;
 
 // If this activity is a crosspost from another system, this property specifies
 // the ID of the original activity.
-@property (copy) NSString *crosspostSource;
+@property (nonatomic, copy) NSString *crosspostSource;
 
 // ETag of this response for caching purposes.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // Latitude and longitude where this activity occurred. Format is latitude
 // followed by longitude, space separated.
-@property (copy) NSString *geocode;
+@property (nonatomic, copy) NSString *geocode;
 
 // The ID of this activity.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Identifies this resource as an activity. Value: "plus#activity".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The location where this activity occurred.
-@property (retain) GTLPlusDomainsPlace *location;
+@property (nonatomic, retain) GTLPlusDomainsPlace *location;
 
 // The object of this activity.
-@property (retain) GTLPlusDomainsActivityObject *object;
+@property (nonatomic, retain) GTLPlusDomainsActivityObject *object;
 
 // ID of the place where this activity occurred.
-@property (copy) NSString *placeId;
+@property (nonatomic, copy) NSString *placeId;
 
 // Name of the place where this activity occurred.
-@property (copy) NSString *placeName;
+@property (nonatomic, copy) NSString *placeName;
 
 // The service provider that initially published this activity.
-@property (retain) GTLPlusDomainsActivityProvider *provider;
+@property (nonatomic, retain) GTLPlusDomainsActivityProvider *provider;
 
 // The time at which this activity was initially published. Formatted as an RFC
 // 3339 timestamp.
-@property (retain) GTLDateTime *published;
+@property (nonatomic, retain) GTLDateTime *published;
 
 // Radius, in meters, of the region where this activity occurred, centered at
 // the latitude and longitude identified in geocode.
-@property (copy) NSString *radius;
+@property (nonatomic, copy) NSString *radius;
 
 // Title of this activity.
-@property (copy) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 // The time at which this activity was last updated. Formatted as an RFC 3339
 // timestamp.
-@property (retain) GTLDateTime *updated;
+@property (nonatomic, retain) GTLDateTime *updated;
 
 // The link to this activity.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 // This activity's verb, which indicates the action that was performed. Possible
 // values include, but are not limited to, the following values:
 // - "post" - Publish content to the stream.
 // - "share" - Reshare an activity.
-@property (copy) NSString *verb;
+@property (nonatomic, copy) NSString *verb;
 
 @end
 
@@ -161,20 +161,20 @@
 @interface GTLPlusDomainsActivityActor : GTLObject
 
 // The name of the actor, suitable for display.
-@property (copy) NSString *displayName;
+@property (nonatomic, copy) NSString *displayName;
 
 // The ID of the actor's Person resource.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The image representation of the actor.
-@property (retain) GTLPlusDomainsActivityActorImage *image;
+@property (nonatomic, retain) GTLPlusDomainsActivityActorImage *image;
 
 // An object representation of the individual components of name.
-@property (retain) GTLPlusDomainsActivityActorName *name;
+@property (nonatomic, retain) GTLPlusDomainsActivityActorName *name;
 
 // The link to the actor's Google profile.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 @end
 
@@ -188,44 +188,44 @@
 
 // If this activity's object is itself another activity, such as when a person
 // reshares an activity, this property specifies the original activity's actor.
-@property (retain) GTLPlusDomainsActivityObjectActor *actor;
+@property (nonatomic, retain) GTLPlusDomainsActivityObjectActor *actor;
 
 // The media objects attached to this activity.
-@property (retain) NSArray *attachments;  // of GTLPlusDomainsActivityObjectAttachmentsItem
+@property (nonatomic, retain) NSArray *attachments;  // of GTLPlusDomainsActivityObjectAttachmentsItem
 
 // The HTML-formatted content, which is suitable for display.
-@property (copy) NSString *content;
+@property (nonatomic, copy) NSString *content;
 
 // The ID of the object. When resharing an activity, this is the ID of the
 // activity that is being reshared.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The type of the object. Possible values include, but are not limited to, the
 // following values:
 // - "note" - Textual content.
 // - "activity" - A Google+ activity.
-@property (copy) NSString *objectType;
+@property (nonatomic, copy) NSString *objectType;
 
 // The content (text) as provided by the author, which is stored without any
 // HTML formatting. When creating or updating an activity, this value must be
 // supplied as plain text in the request.
-@property (copy) NSString *originalContent;
+@property (nonatomic, copy) NSString *originalContent;
 
 // People who +1'd this activity.
-@property (retain) GTLPlusDomainsActivityObjectPlusoners *plusoners;
+@property (nonatomic, retain) GTLPlusDomainsActivityObjectPlusoners *plusoners;
 
 // Comments in reply to this activity.
-@property (retain) GTLPlusDomainsActivityObjectReplies *replies;
+@property (nonatomic, retain) GTLPlusDomainsActivityObjectReplies *replies;
 
 // People who reshared this activity.
-@property (retain) GTLPlusDomainsActivityObjectResharers *resharers;
+@property (nonatomic, retain) GTLPlusDomainsActivityObjectResharers *resharers;
 
 // Status of the activity as seen by the viewer.
-@property (retain) GTLPlusDomainsActivityObjectStatusForViewer *statusForViewer;
+@property (nonatomic, retain) GTLPlusDomainsActivityObjectStatusForViewer *statusForViewer;
 
 // The URL that points to the linked resource.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 @end
 
@@ -238,7 +238,7 @@
 @interface GTLPlusDomainsActivityProvider : GTLObject
 
 // Name of the service provider.
-@property (copy) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 @end
 
@@ -253,7 +253,7 @@
 // The URL of the actor's profile photo. To resize the image and crop it to a
 // square, append the query string ?sz=x, where x is the dimension in pixels of
 // each side.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 @end
 
@@ -266,10 +266,10 @@
 @interface GTLPlusDomainsActivityActorName : GTLObject
 
 // The family name ("last name") of the actor.
-@property (copy) NSString *familyName;
+@property (nonatomic, copy) NSString *familyName;
 
 // The given name ("first name") of the actor.
-@property (copy) NSString *givenName;
+@property (nonatomic, copy) NSString *givenName;
 
 @end
 
@@ -282,17 +282,17 @@
 @interface GTLPlusDomainsActivityObjectActor : GTLObject
 
 // The original actor's name, which is suitable for display.
-@property (copy) NSString *displayName;
+@property (nonatomic, copy) NSString *displayName;
 
 // ID of the original actor.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The image representation of the original actor.
-@property (retain) GTLPlusDomainsActivityObjectActorImage *image;
+@property (nonatomic, retain) GTLPlusDomainsActivityObjectActorImage *image;
 
 // A link to the original actor's Google profile.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 @end
 
@@ -306,23 +306,23 @@
 
 // If the attachment is an article, this property contains a snippet of text
 // from the article. It can also include descriptions for other types.
-@property (copy) NSString *content;
+@property (nonatomic, copy) NSString *content;
 
 // The title of the attachment, such as a photo caption or an article title.
-@property (copy) NSString *displayName;
+@property (nonatomic, copy) NSString *displayName;
 
 // If the attachment is a video, the embeddable link.
-@property (retain) GTLPlusDomainsActivityObjectAttachmentsItemEmbed *embed;
+@property (nonatomic, retain) GTLPlusDomainsActivityObjectAttachmentsItemEmbed *embed;
 
 // The full image URL for photo attachments.
-@property (retain) GTLPlusDomainsActivityObjectAttachmentsItemFullImage *fullImage;
+@property (nonatomic, retain) GTLPlusDomainsActivityObjectAttachmentsItemFullImage *fullImage;
 
 // The ID of the attachment.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The preview image for photos or videos.
-@property (retain) GTLPlusDomainsActivityObjectAttachmentsItemImage *image;
+@property (nonatomic, retain) GTLPlusDomainsActivityObjectAttachmentsItemImage *image;
 
 // The type of media object. Possible values include, but are not limited to,
 // the following values:
@@ -330,19 +330,19 @@
 // - "album" - A photo album.
 // - "video" - A video.
 // - "article" - An article, specified by a link.
-@property (copy) NSString *objectType;
+@property (nonatomic, copy) NSString *objectType;
 
 // When previewing, these are the optional thumbnails for the post. When posting
 // an article, choose one by setting the attachment.image.url property. If you
 // don't choose one, one will be chosen for you.
-@property (retain) NSArray *previewThumbnails;  // of GTLPlusDomainsActivityObjectAttachmentsItemPreviewThumbnailsItem
+@property (nonatomic, retain) NSArray *previewThumbnails;  // of GTLPlusDomainsActivityObjectAttachmentsItemPreviewThumbnailsItem
 
 // If the attachment is an album, this property is a list of potential
 // additional thumbnails from the album.
-@property (retain) NSArray *thumbnails;  // of GTLPlusDomainsActivityObjectAttachmentsItemThumbnailsItem
+@property (nonatomic, retain) NSArray *thumbnails;  // of GTLPlusDomainsActivityObjectAttachmentsItemThumbnailsItem
 
 // The link to the attachment, which should be of type text/html.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 @end
 
@@ -355,10 +355,10 @@
 @interface GTLPlusDomainsActivityObjectPlusoners : GTLObject
 
 // The URL for the collection of people who +1'd this activity.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // Total number of people who +1'd this activity.
-@property (retain) NSNumber *totalItems;  // unsignedIntValue
+@property (nonatomic, retain) NSNumber *totalItems;  // unsignedIntValue
 
 @end
 
@@ -371,10 +371,10 @@
 @interface GTLPlusDomainsActivityObjectReplies : GTLObject
 
 // The URL for the collection of comments in reply to this activity.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // Total number of comments on this activity.
-@property (retain) NSNumber *totalItems;  // unsignedIntValue
+@property (nonatomic, retain) NSNumber *totalItems;  // unsignedIntValue
 
 @end
 
@@ -387,10 +387,10 @@
 @interface GTLPlusDomainsActivityObjectResharers : GTLObject
 
 // The URL for the collection of resharers.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // Total number of people who reshared this activity.
-@property (retain) NSNumber *totalItems;  // unsignedIntValue
+@property (nonatomic, retain) NSNumber *totalItems;  // unsignedIntValue
 
 @end
 
@@ -403,19 +403,19 @@
 @interface GTLPlusDomainsActivityObjectStatusForViewer : GTLObject
 
 // Whether the viewer can comment on the activity.
-@property (retain) NSNumber *canComment;  // boolValue
+@property (nonatomic, retain) NSNumber *canComment;  // boolValue
 
 // Whether the viewer can +1 the activity.
-@property (retain) NSNumber *canPlusone;  // boolValue
+@property (nonatomic, retain) NSNumber *canPlusone;  // boolValue
 
 // Whether the viewer can edit or delete the activity.
-@property (retain) NSNumber *canUpdate;  // boolValue
+@property (nonatomic, retain) NSNumber *canUpdate;  // boolValue
 
 // Whether the viewer has +1'd the activity.
-@property (retain) NSNumber *isPlusOned;  // boolValue
+@property (nonatomic, retain) NSNumber *isPlusOned;  // boolValue
 
 // Whether reshares are disabled for the activity.
-@property (retain) NSNumber *resharingDisabled;  // boolValue
+@property (nonatomic, retain) NSNumber *resharingDisabled;  // boolValue
 
 @end
 
@@ -428,7 +428,7 @@
 @interface GTLPlusDomainsActivityObjectActorImage : GTLObject
 
 // A URL that points to a thumbnail photo of the original actor.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 @end
 
@@ -441,10 +441,10 @@
 @interface GTLPlusDomainsActivityObjectAttachmentsItemEmbed : GTLObject
 
 // Media type of the link.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 // URL of the link.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 @end
 
@@ -457,16 +457,16 @@
 @interface GTLPlusDomainsActivityObjectAttachmentsItemFullImage : GTLObject
 
 // The height, in pixels, of the linked resource.
-@property (retain) NSNumber *height;  // unsignedIntValue
+@property (nonatomic, retain) NSNumber *height;  // unsignedIntValue
 
 // Media type of the link.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 // URL of the image.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 // The width, in pixels, of the linked resource.
-@property (retain) NSNumber *width;  // unsignedIntValue
+@property (nonatomic, retain) NSNumber *width;  // unsignedIntValue
 
 @end
 
@@ -479,16 +479,16 @@
 @interface GTLPlusDomainsActivityObjectAttachmentsItemImage : GTLObject
 
 // The height, in pixels, of the linked resource.
-@property (retain) NSNumber *height;  // unsignedIntValue
+@property (nonatomic, retain) NSNumber *height;  // unsignedIntValue
 
 // Media type of the link.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 // Image URL.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 // The width, in pixels, of the linked resource.
-@property (retain) NSNumber *width;  // unsignedIntValue
+@property (nonatomic, retain) NSNumber *width;  // unsignedIntValue
 
 @end
 
@@ -501,7 +501,7 @@
 @interface GTLPlusDomainsActivityObjectAttachmentsItemPreviewThumbnailsItem : GTLObject
 
 // URL of the thumbnail image.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 @end
 
@@ -515,13 +515,13 @@
 
 // Potential name of the thumbnail.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (copy) NSString *descriptionProperty;
+@property (nonatomic, copy) NSString *descriptionProperty;
 
 // Image resource.
-@property (retain) GTLPlusDomainsActivityObjectAttachmentsItemThumbnailsItemImage *image;
+@property (nonatomic, retain) GTLPlusDomainsActivityObjectAttachmentsItemThumbnailsItemImage *image;
 
 // URL of the webpage containing the image.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 @end
 
@@ -534,15 +534,15 @@
 @interface GTLPlusDomainsActivityObjectAttachmentsItemThumbnailsItemImage : GTLObject
 
 // The height, in pixels, of the linked resource.
-@property (retain) NSNumber *height;  // unsignedIntValue
+@property (nonatomic, retain) NSNumber *height;  // unsignedIntValue
 
 // Media type of the link.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 // Image url.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 // The width, in pixels, of the linked resource.
-@property (retain) NSNumber *width;  // unsignedIntValue
+@property (nonatomic, retain) NSNumber *width;  // unsignedIntValue
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,16 +44,16 @@
 @interface GTLAnalyticsAccountRef : GTLObject
 
 // Link for this account.
-@property (copy) NSString *href;
+@property (nonatomic, copy) NSString *href;
 
 // Account ID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Analytics account reference.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Account name.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 @end

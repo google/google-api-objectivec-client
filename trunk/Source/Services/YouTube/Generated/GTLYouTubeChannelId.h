@@ -40,5 +40,5 @@
 //
 
 @interface GTLYouTubeChannelId : GTLObject
-@property (copy) NSString *value;
+@property (nonatomic, copy) NSString *value;
 @end

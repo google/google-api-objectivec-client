@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,23 +42,23 @@
 @interface GTLTasksTaskList : GTLObject
 
 // ETag of the resource.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // Task list identifier.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Type of the resource. This is always "tasks#taskList".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // URL pointing to this task list. Used to retrieve, update, or delete this task
 // list.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // Title of the task list.
-@property (copy) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 // Last modification time of the task list (as a RFC 3339 timestamp).
-@property (retain) GTLDateTime *updated;
+@property (nonatomic, retain) GTLDateTime *updated;
 
 @end

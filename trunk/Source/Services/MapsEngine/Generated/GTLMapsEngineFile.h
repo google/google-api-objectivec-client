@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,12 +45,12 @@
 @interface GTLMapsEngineFile : GTLObject
 
 // The name of the file.
-@property (copy) NSString *filename;
+@property (nonatomic, copy) NSString *filename;
 
 // The size of the file in bytes.
-@property (retain) NSNumber *size;  // longLongValue
+@property (nonatomic, retain) NSNumber *size;  // longLongValue
 
 // The upload status of the file.
-@property (copy) NSString *uploadStatus;
+@property (nonatomic, copy) NSString *uploadStatus;
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,7 +46,7 @@
 @interface GTLSpectrumGeoLocationEllipse : GTLObject
 
 // A required geo-spatial point representing the center of the ellipse.
-@property (retain) GTLSpectrumGeoLocationPoint *center;
+@property (nonatomic, retain) GTLSpectrumGeoLocationPoint *center;
 
 // A floating-point number that expresses the orientation of the ellipse,
 // representing the rotation, in degrees, of the semi-major axis from North
@@ -54,16 +54,16 @@
 // North-South direction, orientation is 0 degrees; conversely, if the
 // uncertainty is greatest along the East-West direction, orientation is 90
 // degrees. When orientation is not present, the orientation is assumed to be 0.
-@property (retain) NSNumber *orientation;  // doubleValue
+@property (nonatomic, retain) NSNumber *orientation;  // doubleValue
 
 // A floating-point number that expresses the location uncertainty along the
 // major axis of the ellipse. May be required by the regulatory domain. When the
 // uncertainty is optional, the default value is 0.
-@property (retain) NSNumber *semiMajorAxis;  // doubleValue
+@property (nonatomic, retain) NSNumber *semiMajorAxis;  // doubleValue
 
 // A floating-point number that expresses the location uncertainty along the
 // minor axis of the ellipse. May be required by the regulatory domain. When the
 // uncertainty is optional, the default value is 0.
-@property (retain) NSNumber *semiMinorAxis;  // doubleValue
+@property (nonatomic, retain) NSNumber *semiMinorAxis;  // doubleValue
 
 @end

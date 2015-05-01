@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,38 +42,38 @@
 @interface GTLBooksBookshelf : GTLObject
 
 // Whether this bookshelf is PUBLIC or PRIVATE.
-@property (copy) NSString *access;
+@property (nonatomic, copy) NSString *access;
 
 // Created time for this bookshelf (formatted UTC timestamp with millisecond
 // resolution).
-@property (retain) GTLDateTime *created;
+@property (nonatomic, retain) GTLDateTime *created;
 
 // Description of this bookshelf.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (copy) NSString *descriptionProperty;
+@property (nonatomic, copy) NSString *descriptionProperty;
 
 // Id of this bookshelf, only unique by user.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSNumber *identifier;  // intValue
+@property (nonatomic, retain) NSNumber *identifier;  // intValue
 
 // Resource type for bookshelf metadata.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // URL to this resource.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // Title of this bookshelf.
-@property (copy) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 // Last modified time of this bookshelf (formatted UTC timestamp with
 // millisecond resolution).
-@property (retain) GTLDateTime *updated;
+@property (nonatomic, retain) GTLDateTime *updated;
 
 // Number of volumes in this bookshelf.
-@property (retain) NSNumber *volumeCount;  // intValue
+@property (nonatomic, retain) NSNumber *volumeCount;  // intValue
 
 // Last time a volume was added or removed from this bookshelf (formatted UTC
 // timestamp with millisecond resolution).
-@property (retain) GTLDateTime *volumesLastUpdated;
+@property (nonatomic, retain) GTLDateTime *volumesLastUpdated;
 
 @end

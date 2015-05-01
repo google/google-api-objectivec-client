@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,10 +45,10 @@
 @interface GTLYouTubeLocalizedProperty : GTLObject
 
 // Remapped to 'defaultProperty' to avoid language reserved word 'default'.
-@property (copy) NSString *defaultProperty;
+@property (nonatomic, copy) NSString *defaultProperty;
 
 // The language of the default property.
-@property (retain) GTLYouTubeLanguageTag *defaultLanguage;
+@property (nonatomic, retain) GTLYouTubeLanguageTag *defaultLanguage;
 
-@property (retain) NSArray *localized;  // of GTLYouTubeLocalizedString
+@property (nonatomic, retain) NSArray *localized;  // of GTLYouTubeLocalizedString
 @end

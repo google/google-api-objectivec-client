@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -54,15 +54,15 @@
 @interface GTLQPXExpressSliceInfo : GTLObject
 
 // The duration of the slice in minutes.
-@property (retain) NSNumber *duration;  // intValue
+@property (nonatomic, retain) NSNumber *duration;  // intValue
 
 // Identifies this as a slice object. A slice represents a traveller's intent,
 // the portion of a low-fare search corresponding to a traveler's request to get
 // between two points. One-way journeys are generally expressed using 1 slice,
 // round-trips using 2. Value: the fixed string qpxexpress#sliceInfo.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The segment(s) constituting the slice.
-@property (retain) NSArray *segment;  // of GTLQPXExpressSegmentInfo
+@property (nonatomic, retain) NSArray *segment;  // of GTLQPXExpressSegmentInfo
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,9 +43,9 @@
 @interface GTLMapsEngineGeoJsonPoint : GTLObject
 
 // A single GeoJsonPosition, specifying the location of the point.
-@property (retain) NSArray *coordinates;  // of NSNumber (doubleValue)
+@property (nonatomic, retain) NSArray *coordinates;  // of NSNumber (doubleValue)
 
 // Identifies this object as a GeoJsonPoint.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end

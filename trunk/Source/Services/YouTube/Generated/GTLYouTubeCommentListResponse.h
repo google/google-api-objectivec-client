@@ -49,26 +49,26 @@
 @interface GTLYouTubeCommentListResponse : GTLCollectionObject
 
 // Etag of this resource.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // Serialized EventId of the request which produced this response.
-@property (copy) NSString *eventId;
+@property (nonatomic, copy) NSString *eventId;
 
 // A list of comments that match the request criteria.
-@property (retain) NSArray *items;  // of GTLYouTubeComment
+@property (nonatomic, retain) NSArray *items;  // of GTLYouTubeComment
 
 // Identifies what kind of resource this is. Value: the fixed string
 // "youtube#commentListResponse".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The token that can be used as the value of the pageToken parameter to
 // retrieve the next page in the result set.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
-@property (retain) GTLYouTubePageInfo *pageInfo;
-@property (retain) GTLYouTubeTokenPagination *tokenPagination;
+@property (nonatomic, retain) GTLYouTubePageInfo *pageInfo;
+@property (nonatomic, retain) GTLYouTubeTokenPagination *tokenPagination;
 
 // The visitorId identifies the visitor.
-@property (copy) NSString *visitorId;
+@property (nonatomic, copy) NSString *visitorId;
 
 @end

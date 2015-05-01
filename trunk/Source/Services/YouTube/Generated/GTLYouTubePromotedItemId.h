@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,19 +46,19 @@
 // If type is recentUpload, this field identifies the channel from which to take
 // the recent upload. If missing, the channel is assumed to be the same channel
 // for which the invideoPromotion is set.
-@property (copy) NSString *recentlyUploadedBy;
+@property (nonatomic, copy) NSString *recentlyUploadedBy;
 
 // Describes the type of the promoted item.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 // If the promoted item represents a video, this field represents the unique
 // YouTube ID identifying it. This field will be present only if type has the
 // value video.
-@property (copy) NSString *videoId;
+@property (nonatomic, copy) NSString *videoId;
 
 // If the promoted item represents a website, this field represents the url
 // pointing to the website. This field will be present only if type has the
 // value website.
-@property (copy) NSString *websiteUrl;
+@property (nonatomic, copy) NSString *websiteUrl;
 
 @end

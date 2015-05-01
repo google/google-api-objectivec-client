@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,9 +48,9 @@
 
 // Identifies this as a QPX Express API search response resource. Value: the
 // fixed string qpxExpress#tripsSearch.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // All possible solutions to the QPX Express search request.
-@property (retain) GTLQPXExpressTripOptionsResponse *trips;
+@property (nonatomic, retain) GTLQPXExpressTripOptionsResponse *trips;
 
 @end

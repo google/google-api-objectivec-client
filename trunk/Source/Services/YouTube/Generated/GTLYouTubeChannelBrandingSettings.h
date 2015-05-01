@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,15 +49,15 @@
 @interface GTLYouTubeChannelBrandingSettings : GTLObject
 
 // Branding properties for the channel view.
-@property (retain) GTLYouTubeChannelSettings *channel;
+@property (nonatomic, retain) GTLYouTubeChannelSettings *channel;
 
 // Additional experimental branding properties.
-@property (retain) NSArray *hints;  // of GTLYouTubePropertyValue
+@property (nonatomic, retain) NSArray *hints;  // of GTLYouTubePropertyValue
 
 // Branding properties for branding images.
-@property (retain) GTLYouTubeImageSettings *image;
+@property (nonatomic, retain) GTLYouTubeImageSettings *image;
 
 // Branding properties for the watch page.
-@property (retain) GTLYouTubeWatchSettings *watch;
+@property (nonatomic, retain) GTLYouTubeWatchSettings *watch;
 
 @end

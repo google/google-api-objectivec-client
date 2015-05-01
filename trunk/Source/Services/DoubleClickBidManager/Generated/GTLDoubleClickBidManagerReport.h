@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,12 +48,12 @@
 @interface GTLDoubleClickBidManagerReport : GTLObject
 
 // Key used to identify a report.
-@property (retain) GTLDoubleClickBidManagerReportKey *key;
+@property (nonatomic, retain) GTLDoubleClickBidManagerReportKey *key;
 
 // Report metadata.
-@property (retain) GTLDoubleClickBidManagerReportMetadata *metadata;
+@property (nonatomic, retain) GTLDoubleClickBidManagerReportMetadata *metadata;
 
 // Report parameters.
-@property (retain) GTLDoubleClickBidManagerParameters *params;
+@property (nonatomic, retain) GTLDoubleClickBidManagerParameters *params;
 
 @end

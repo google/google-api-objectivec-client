@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,15 +46,15 @@
 
 // View (profile) ID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Resource type for Analytics ProfileSummary.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // View (profile) name.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // View (Profile) type. Supported types: WEB or APP.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end

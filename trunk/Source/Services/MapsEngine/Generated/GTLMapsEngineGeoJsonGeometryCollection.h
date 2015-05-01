@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,9 +48,9 @@
 
 // An array of geometry objects. There must be at least 2 different types of
 // geometries in the array.
-@property (retain) NSArray *geometries;  // of GTLMapsEngineGeoJsonGeometry
+@property (nonatomic, retain) NSArray *geometries;  // of GTLMapsEngineGeoJsonGeometry
 
 // Identifies this object as a GeoJsonGeometryCollection.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end

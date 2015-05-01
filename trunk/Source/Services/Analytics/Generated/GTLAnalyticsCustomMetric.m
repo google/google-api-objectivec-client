@@ -42,12 +42,11 @@
          webPropertyId;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"id", @"identifier",
-      @"max_value", @"maxValue",
-      @"min_value", @"minValue",
-      nil];
+  NSDictionary *map = @{
+    @"identifier" : @"id",
+    @"maxValue" : @"max_value",
+    @"minValue" : @"min_value"
+  };
   return map;
 }
 

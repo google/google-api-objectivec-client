@@ -47,17 +47,17 @@
 @interface GTLYouTubeCaption : GTLObject
 
 // Etag of this resource.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The ID that YouTube uses to uniquely identify the caption track.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Identifies what kind of resource this is. Value: the fixed string
 // "youtube#caption".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The snippet object contains basic details about the caption.
-@property (retain) GTLYouTubeCaptionSnippet *snippet;
+@property (nonatomic, retain) GTLYouTubeCaptionSnippet *snippet;
 
 @end

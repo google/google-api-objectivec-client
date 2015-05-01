@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,17 +47,17 @@
 @interface GTLAnalyticsProfileFilterLink : GTLObject
 
 // Filter for this link.
-@property (retain) GTLAnalyticsFilterRef *filterRef;
+@property (nonatomic, retain) GTLAnalyticsFilterRef *filterRef;
 
 // Profile filter link ID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Resource type for Analytics filter.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // View (Profile) for this link.
-@property (retain) GTLAnalyticsProfileRef *profileRef;
+@property (nonatomic, retain) GTLAnalyticsProfileRef *profileRef;
 
 // The rank of this profile filter link relative to the other filters linked to
 // the same profile.
@@ -70,9 +70,9 @@
 // link will move all existing filters with the same or lower rank down the
 // list. After the link is inserted/updated/deleted all profile filter links
 // will be renumbered starting at 1.
-@property (retain) NSNumber *rank;  // intValue
+@property (nonatomic, retain) NSNumber *rank;  // intValue
 
 // Link for this profile filter link.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 @end

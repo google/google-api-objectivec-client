@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,12 +42,12 @@
 // Basic details about a video category, such as its localized title.
 
 @interface GTLYouTubeVideoCategorySnippet : GTLObject
-@property (retain) NSNumber *assignable;  // boolValue
+@property (nonatomic, retain) NSNumber *assignable;  // boolValue
 
 // The YouTube channel that created the video category.
-@property (copy) NSString *channelId;
+@property (nonatomic, copy) NSString *channelId;
 
 // The video category's title.
-@property (copy) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 @end

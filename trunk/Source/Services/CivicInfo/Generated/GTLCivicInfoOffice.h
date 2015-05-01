@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,30 +46,30 @@
 @interface GTLCivicInfoOffice : GTLObject
 
 // The OCD ID of the division with which this office is associated.
-@property (copy) NSString *divisionId;
+@property (nonatomic, copy) NSString *divisionId;
 
 // The levels of government of which this office is part. There may be more than
 // one in cases where a jurisdiction effectively acts at two different levels of
 // government; for example, the mayor of the District of Columbia acts at
 // "locality" level, but also effectively at both "administrative-area-2" and
 // "administrative-area-1".
-@property (retain) NSArray *levels;  // of NSString
+@property (nonatomic, retain) NSArray *levels;  // of NSString
 
 // The human-readable name of the office.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // List of indices in the officials array of people who presently hold this
 // office.
-@property (retain) NSArray *officialIndices;  // of NSNumber (unsignedIntValue)
+@property (nonatomic, retain) NSArray *officialIndices;  // of NSNumber (unsignedIntValue)
 
 // The roles which this office fulfills. Roles are not meant to be exhaustive,
 // or to exactly specify the entire set of responsibilities of a given office,
 // but are meant to be rough categories that are useful for general selection
 // from or sorting of a list of offices.
-@property (retain) NSArray *roles;  // of NSString
+@property (nonatomic, retain) NSArray *roles;  // of NSString
 
 // A list of sources for this office. If multiple sources are listed, the data
 // has been aggregated from those sources.
-@property (retain) NSArray *sources;  // of GTLCivicInfoSource
+@property (nonatomic, retain) NSArray *sources;  // of GTLCivicInfoSource
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,12 +44,12 @@
 
 // Unique identifier of this saved report.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Kind of resource this is, in this case adexchangeseller#savedReport.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // This saved report's name.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 @end

@@ -46,21 +46,20 @@
          messagesDeleted;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+  NSDictionary *map = @{
+    @"identifier" : @"id"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [GTLGmailHistoryLabelAdded class], @"labelsAdded",
-      [GTLGmailHistoryLabelRemoved class], @"labelsRemoved",
-      [GTLGmailMessage class], @"messages",
-      [GTLGmailHistoryMessageAdded class], @"messagesAdded",
-      [GTLGmailHistoryMessageDeleted class], @"messagesDeleted",
-      nil];
+  NSDictionary *map = @{
+    @"labelsAdded" : [GTLGmailHistoryLabelAdded class],
+    @"labelsRemoved" : [GTLGmailHistoryLabelRemoved class],
+    @"messages" : [GTLGmailMessage class],
+    @"messagesAdded" : [GTLGmailHistoryMessageAdded class],
+    @"messagesDeleted" : [GTLGmailHistoryMessageDeleted class]
+  };
   return map;
 }
 

@@ -44,9 +44,9 @@
 // [Required] A unique ID for this dataset, without the project name. The ID
 // must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The
 // maximum length is 1,024 characters.
-@property (copy) NSString *datasetId;
+@property (nonatomic, copy) NSString *datasetId;
 
 // [Optional] The ID of the project containing this dataset.
-@property (copy) NSString *projectId;
+@property (nonatomic, copy) NSString *projectId;
 
 @end

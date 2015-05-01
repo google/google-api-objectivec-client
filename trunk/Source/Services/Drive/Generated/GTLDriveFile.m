@@ -62,24 +62,22 @@
          videoMediaMetadata, webContentLink, webViewLink, writersCanShare;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"description", @"descriptionProperty",
-      @"etag", @"ETag",
-      @"id", @"identifier",
-      nil];
+  NSDictionary *map = @{
+    @"descriptionProperty" : @"description",
+    @"ETag" : @"etag",
+    @"identifier" : @"id"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSString class], @"ownerNames",
-      [GTLDriveUser class], @"owners",
-      [GTLDriveParentReference class], @"parents",
-      [GTLDrivePermission class], @"permissions",
-      [GTLDriveProperty class], @"properties",
-      nil];
+  NSDictionary *map = @{
+    @"ownerNames" : [NSString class],
+    @"owners" : [GTLDriveUser class],
+    @"parents" : [GTLDriveParentReference class],
+    @"permissions" : [GTLDrivePermission class],
+    @"properties" : [GTLDriveProperty class]
+  };
   return map;
 }
 

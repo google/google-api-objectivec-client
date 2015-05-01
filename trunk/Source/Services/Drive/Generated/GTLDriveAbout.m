@@ -53,23 +53,22 @@
          remainingChangeIds, rootFolderId, selfLink, user;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"etag"
-                                forKey:@"ETag"];
+  NSDictionary *map = @{
+    @"ETag" : @"etag"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [GTLDriveAboutAdditionalRoleInfoItem class], @"additionalRoleInfo",
-      [GTLDriveAboutExportFormatsItem class], @"exportFormats",
-      [GTLDriveAboutFeaturesItem class], @"features",
-      [NSString class], @"folderColorPalette",
-      [GTLDriveAboutImportFormatsItem class], @"importFormats",
-      [GTLDriveAboutMaxUploadSizesItem class], @"maxUploadSizes",
-      [GTLDriveAboutQuotaBytesByServiceItem class], @"quotaBytesByService",
-      nil];
+  NSDictionary *map = @{
+    @"additionalRoleInfo" : [GTLDriveAboutAdditionalRoleInfoItem class],
+    @"exportFormats" : [GTLDriveAboutExportFormatsItem class],
+    @"features" : [GTLDriveAboutFeaturesItem class],
+    @"folderColorPalette" : [NSString class],
+    @"importFormats" : [GTLDriveAboutImportFormatsItem class],
+    @"maxUploadSizes" : [GTLDriveAboutMaxUploadSizesItem class],
+    @"quotaBytesByService" : [GTLDriveAboutQuotaBytesByServiceItem class]
+  };
   return map;
 }
 
@@ -89,9 +88,9 @@
 @dynamic roleSets, type;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLDriveAboutAdditionalRoleInfoItemRoleSetsItem class]
-                                forKey:@"roleSets"];
+  NSDictionary *map = @{
+    @"roleSets" : [GTLDriveAboutAdditionalRoleInfoItemRoleSetsItem class]
+  };
   return map;
 }
 
@@ -107,9 +106,9 @@
 @dynamic source, targets;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[NSString class]
-                                forKey:@"targets"];
+  NSDictionary *map = @{
+    @"targets" : [NSString class]
+  };
   return map;
 }
 
@@ -135,9 +134,9 @@
 @dynamic source, targets;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[NSString class]
-                                forKey:@"targets"];
+  NSDictionary *map = @{
+    @"targets" : [NSString class]
+  };
   return map;
 }
 
@@ -173,9 +172,9 @@
 @dynamic additionalRoles, primaryRole;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[NSString class]
-                                forKey:@"additionalRoles"];
+  NSDictionary *map = @{
+    @"additionalRoles" : [NSString class]
+  };
   return map;
 }
 

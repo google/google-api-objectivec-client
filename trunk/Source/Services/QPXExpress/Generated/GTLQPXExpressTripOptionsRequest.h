@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,17 +50,17 @@
 // Do not return solutions that cost more than this price. The alphabetical part
 // of the price is in ISO 4217. The format, in regex, is [A-Z]{3}\d+(\.\d+)?
 // Example: $102.07
-@property (copy) NSString *maxPrice;
+@property (nonatomic, copy) NSString *maxPrice;
 
 // Counts for each passenger type in the request.
-@property (retain) GTLQPXExpressPassengerCounts *passengers;
+@property (nonatomic, retain) GTLQPXExpressPassengerCounts *passengers;
 
 // Return only solutions with refundable fares.
-@property (retain) NSNumber *refundable;  // boolValue
+@property (nonatomic, retain) NSNumber *refundable;  // boolValue
 
 // IATA country code representing the point of sale. This determines the
 // "equivalent amount paid" currency for the ticket.
-@property (copy) NSString *saleCountry;
+@property (nonatomic, copy) NSString *saleCountry;
 
 // The slices that make up the itinerary of this trip. A slice represents a
 // traveler's intent, the portion of a low-fare search corresponding to a
@@ -68,9 +68,9 @@
 // expressed using one slice, round-trips using two. An example of a one slice
 // trip with three segments might be BOS-SYD, SYD-LAX, LAX-BOS if the traveler
 // only stopped in SYD and LAX just long enough to change planes.
-@property (retain) NSArray *slice;  // of GTLQPXExpressSliceInput
+@property (nonatomic, retain) NSArray *slice;  // of GTLQPXExpressSliceInput
 
 // The number of solutions to return, maximum 500.
-@property (retain) NSNumber *solutions;  // intValue
+@property (nonatomic, retain) NSNumber *solutions;  // intValue
 
 @end

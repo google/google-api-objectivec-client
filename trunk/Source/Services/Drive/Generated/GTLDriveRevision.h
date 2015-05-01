@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,69 +49,69 @@
 
 // Short term download URL for the file. This will only be populated on files
 // with content stored in Drive.
-@property (copy) NSString *downloadUrl;
+@property (nonatomic, copy) NSString *downloadUrl;
 
 // The ETag of the revision.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // Links for exporting Google Docs to specific formats.
-@property (retain) GTLDriveRevisionExportLinks *exportLinks;
+@property (nonatomic, retain) GTLDriveRevisionExportLinks *exportLinks;
 
 // The size of the revision in bytes. This will only be populated on files with
 // content stored in Drive.
-@property (retain) NSNumber *fileSize;  // longLongValue
+@property (nonatomic, retain) NSNumber *fileSize;  // longLongValue
 
 // The ID of the revision.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // This is always drive#revision.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The last user to modify this revision.
-@property (retain) GTLDriveUser *lastModifyingUser;
+@property (nonatomic, retain) GTLDriveUser *lastModifyingUser;
 
 // Name of the last user to modify this revision.
-@property (copy) NSString *lastModifyingUserName;
+@property (nonatomic, copy) NSString *lastModifyingUserName;
 
 // An MD5 checksum for the content of this revision. This will only be populated
 // on files with content stored in Drive.
-@property (copy) NSString *md5Checksum;
+@property (nonatomic, copy) NSString *md5Checksum;
 
 // The MIME type of the revision.
-@property (copy) NSString *mimeType;
+@property (nonatomic, copy) NSString *mimeType;
 
 // Last time this revision was modified (formatted RFC 3339 timestamp).
-@property (retain) GTLDateTime *modifiedDate;
+@property (nonatomic, retain) GTLDateTime *modifiedDate;
 
 // The original filename when this revision was created. This will only be
 // populated on files with content stored in Drive.
-@property (copy) NSString *originalFilename;
+@property (nonatomic, copy) NSString *originalFilename;
 
 // Whether this revision is pinned to prevent automatic purging. This will only
 // be populated and can only be modified on files with content stored in Drive
 // which are not Google Docs. Revisions can also be pinned when they are created
 // through the drive.files.insert/update/copy by using the pinned query
 // parameter.
-@property (retain) NSNumber *pinned;  // boolValue
+@property (nonatomic, retain) NSNumber *pinned;  // boolValue
 
 // Whether subsequent revisions will be automatically republished. This is only
 // populated and can only be modified for Google Docs.
-@property (retain) NSNumber *publishAuto;  // boolValue
+@property (nonatomic, retain) NSNumber *publishAuto;  // boolValue
 
 // Whether this revision is published. This is only populated and can only be
 // modified for Google Docs.
-@property (retain) NSNumber *published;  // boolValue
+@property (nonatomic, retain) NSNumber *published;  // boolValue
 
 // A link to the published revision.
-@property (copy) NSString *publishedLink;
+@property (nonatomic, copy) NSString *publishedLink;
 
 // Whether this revision is published outside the domain. This is only populated
 // and can only be modified for Google Docs.
-@property (retain) NSNumber *publishedOutsideDomain;  // boolValue
+@property (nonatomic, retain) NSNumber *publishedOutsideDomain;  // boolValue
 
 // A link back to this revision.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 @end
 

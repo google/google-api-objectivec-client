@@ -42,9 +42,9 @@
          totalResults, username;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLAnalyticsCustomDimension class]
-                                forKey:@"items"];
+  NSDictionary *map = @{
+    @"items" : [GTLAnalyticsCustomDimension class]
+  };
   return map;
 }
 

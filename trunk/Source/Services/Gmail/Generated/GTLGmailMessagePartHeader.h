@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,10 +42,10 @@
 @interface GTLGmailMessagePartHeader : GTLObject
 
 // The name of the header before the : separator. For example, To.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // The value of the header after the : separator. For example,
 // someuser@example.com.
-@property (copy) NSString *value;
+@property (nonatomic, copy) NSString *value;
 
 @end

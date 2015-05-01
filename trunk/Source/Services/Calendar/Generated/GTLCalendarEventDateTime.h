@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,18 +42,18 @@
 @interface GTLCalendarEventDateTime : GTLObject
 
 // The date, in the format "yyyy-mm-dd", if this is an all-day event.
-@property (retain) GTLDateTime *date;  // Date only (yyyy-mm-dd)
+@property (nonatomic, retain) GTLDateTime *date;  // Date only (yyyy-mm-dd)
 
 // The time, as a combined date-time value (formatted according to RFC 3339). A
 // time zone offset is required unless a time zone is explicitly specified in
 // timeZone.
-@property (retain) GTLDateTime *dateTime;
+@property (nonatomic, retain) GTLDateTime *dateTime;
 
 // The time zone in which the time is specified. (Formatted as an IANA Time Zone
 // Database name, e.g. "Europe/Zurich".) For recurring events this field is
 // required and specifies the time zone in which the recurrence is expanded. For
 // single events this field is optional and indicates a custom time zone for the
 // event start/end.
-@property (copy) NSString *timeZone;
+@property (nonatomic, copy) NSString *timeZone;
 
 @end

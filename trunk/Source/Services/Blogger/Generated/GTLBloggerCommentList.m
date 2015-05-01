@@ -41,16 +41,16 @@
 @dynamic ETag, items, kind, nextPageToken, prevPageToken;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"etag"
-                                forKey:@"ETag"];
+  NSDictionary *map = @{
+    @"ETag" : @"etag"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLBloggerComment class]
-                                forKey:@"items"];
+  NSDictionary *map = @{
+    @"items" : [GTLBloggerComment class]
+  };
   return map;
 }
 

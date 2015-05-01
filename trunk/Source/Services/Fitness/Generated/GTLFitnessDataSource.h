@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -60,7 +60,7 @@
 @interface GTLFitnessDataSource : GTLObject
 
 // Information about an application which feeds sensor data into the platform.
-@property (retain) GTLFitnessApplication *application;
+@property (nonatomic, retain) GTLFitnessApplication *application;
 
 // A unique identifier for the data stream produced by this data source. The
 // identifier includes:
@@ -85,28 +85,28 @@
 // Finally, the developer project number is obfuscated when read by any REST or
 // Android client that did not create the data source. Only the data source
 // creator will see the developer project number in clear and normal form.
-@property (copy) NSString *dataStreamId;
+@property (nonatomic, copy) NSString *dataStreamId;
 
 // The stream name uniquely identifies this particular data source among other
 // data sources of the same type from the same underlying producer. Setting the
 // stream name is optional, but should be done whenever an application exposes
 // two streams for the same data type, or when a device has two equivalent
 // sensors.
-@property (copy) NSString *dataStreamName;
+@property (nonatomic, copy) NSString *dataStreamName;
 
 // The data type defines the schema for a stream of data being collected by,
 // inserted into, or queried from the Fitness API.
-@property (retain) GTLFitnessDataType *dataType;
+@property (nonatomic, retain) GTLFitnessDataType *dataType;
 
 // Representation of an integrated device (such as a phone or a wearable) that
 // can hold sensors.
-@property (retain) GTLFitnessDevice *device;
+@property (nonatomic, retain) GTLFitnessDevice *device;
 
 // An end-user visible name for this data source.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // A constant describing the type of this data source. Indicates whether this
 // data source produces raw or derived data.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,10 +45,10 @@
 @interface GTLBooksUsersettings : GTLObject
 
 // Resource type.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // User settings in sub-objects, each for different purposes.
-@property (retain) GTLBooksUsersettingsNotesExport *notesExport;
+@property (nonatomic, retain) GTLBooksUsersettingsNotesExport *notesExport;
 
 @end
 
@@ -59,6 +59,6 @@
 //
 
 @interface GTLBooksUsersettingsNotesExport : GTLObject
-@property (copy) NSString *folderName;
-@property (retain) NSNumber *isEnabled;  // boolValue
+@property (nonatomic, copy) NSString *folderName;
+@property (nonatomic, retain) NSNumber *isEnabled;  // boolValue
 @end

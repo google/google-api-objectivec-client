@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,39 +45,39 @@
 @interface GTLCalendarChannel : GTLObject
 
 // The address where notifications are delivered for this channel.
-@property (copy) NSString *address;
+@property (nonatomic, copy) NSString *address;
 
 // Date and time of notification channel expiration, expressed as a Unix
 // timestamp, in milliseconds. Optional.
-@property (retain) NSNumber *expiration;  // longLongValue
+@property (nonatomic, retain) NSNumber *expiration;  // longLongValue
 
 // A UUID or similar unique string that identifies this channel.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Identifies this as a notification channel used to watch for changes to a
 // resource. Value: the fixed string "api#channel".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Additional parameters controlling delivery channel behavior. Optional.
-@property (retain) GTLCalendarChannelParams *params;
+@property (nonatomic, retain) GTLCalendarChannelParams *params;
 
 // A Boolean value to indicate whether payload is wanted. Optional.
-@property (retain) NSNumber *payload;  // boolValue
+@property (nonatomic, retain) NSNumber *payload;  // boolValue
 
 // An opaque ID that identifies the resource being watched on this channel.
 // Stable across different API versions.
-@property (copy) NSString *resourceId;
+@property (nonatomic, copy) NSString *resourceId;
 
 // A version-specific identifier for the watched resource.
-@property (copy) NSString *resourceUri;
+@property (nonatomic, copy) NSString *resourceUri;
 
 // An arbitrary string delivered to the target address with each notification
 // delivered over this channel. Optional.
-@property (copy) NSString *token;
+@property (nonatomic, copy) NSString *token;
 
 // The type of delivery mechanism used for this channel.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end
 

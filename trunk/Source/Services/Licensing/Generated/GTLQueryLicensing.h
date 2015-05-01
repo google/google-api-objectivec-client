@@ -44,17 +44,17 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (copy) NSString *fields;
+@property (nonatomic, copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (copy) NSString *customerId;
-@property (assign) NSUInteger maxResults;
-@property (copy) NSString *pageToken;
-@property (copy) NSString *productId;
-@property (copy) NSString *skuId;
-@property (copy) NSString *userId;
+@property (nonatomic, copy) NSString *customerId;
+@property (nonatomic, assign) NSUInteger maxResults;
+@property (nonatomic, copy) NSString *pageToken;
+@property (nonatomic, copy) NSString *productId;
+@property (nonatomic, copy) NSString *skuId;
+@property (nonatomic, copy) NSString *userId;
 
 #pragma mark -
 #pragma mark "licenseAssignments" methods
@@ -68,9 +68,9 @@
 //   userId: email id or unique Id of the user
 //  Authorization scope(s):
 //   kGTLAuthScopeLicensingAppsLicensing
-+ (id)queryForLicenseAssignmentsDeleteWithProductId:(NSString *)productId
-                                              skuId:(NSString *)skuId
-                                             userId:(NSString *)userId;
++ (instancetype)queryForLicenseAssignmentsDeleteWithProductId:(NSString *)productId
+                                                        skuId:(NSString *)skuId
+                                                       userId:(NSString *)userId;
 
 // Method: licensing.licenseAssignments.get
 // Get license assignment of a particular product and sku for a user
@@ -81,9 +81,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeLicensingAppsLicensing
 // Fetches a GTLLicensingLicenseAssignment.
-+ (id)queryForLicenseAssignmentsGetWithProductId:(NSString *)productId
-                                           skuId:(NSString *)skuId
-                                          userId:(NSString *)userId;
++ (instancetype)queryForLicenseAssignmentsGetWithProductId:(NSString *)productId
+                                                     skuId:(NSString *)skuId
+                                                    userId:(NSString *)userId;
 
 // Method: licensing.licenseAssignments.insert
 // Assign License.
@@ -93,9 +93,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeLicensingAppsLicensing
 // Fetches a GTLLicensingLicenseAssignment.
-+ (id)queryForLicenseAssignmentsInsertWithObject:(GTLLicensingLicenseAssignmentInsert *)object
-                                       productId:(NSString *)productId
-                                           skuId:(NSString *)skuId;
++ (instancetype)queryForLicenseAssignmentsInsertWithObject:(GTLLicensingLicenseAssignmentInsert *)object
+                                                 productId:(NSString *)productId
+                                                     skuId:(NSString *)skuId;
 
 // Method: licensing.licenseAssignments.listForProduct
 // List license assignments for given product of the customer.
@@ -111,8 +111,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeLicensingAppsLicensing
 // Fetches a GTLLicensingLicenseAssignmentList.
-+ (id)queryForLicenseAssignmentsListForProductWithProductId:(NSString *)productId
-                                                 customerId:(NSString *)customerId;
++ (instancetype)queryForLicenseAssignmentsListForProductWithProductId:(NSString *)productId
+                                                           customerId:(NSString *)customerId;
 
 // Method: licensing.licenseAssignments.listForProductAndSku
 // List license assignments for given product and sku of the customer.
@@ -129,9 +129,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeLicensingAppsLicensing
 // Fetches a GTLLicensingLicenseAssignmentList.
-+ (id)queryForLicenseAssignmentsListForProductAndSkuWithProductId:(NSString *)productId
-                                                            skuId:(NSString *)skuId
-                                                       customerId:(NSString *)customerId;
++ (instancetype)queryForLicenseAssignmentsListForProductAndSkuWithProductId:(NSString *)productId
+                                                                      skuId:(NSString *)skuId
+                                                                 customerId:(NSString *)customerId;
 
 // Method: licensing.licenseAssignments.patch
 // Assign License. This method supports patch semantics.
@@ -142,10 +142,10 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeLicensingAppsLicensing
 // Fetches a GTLLicensingLicenseAssignment.
-+ (id)queryForLicenseAssignmentsPatchWithObject:(GTLLicensingLicenseAssignment *)object
-                                      productId:(NSString *)productId
-                                          skuId:(NSString *)skuId
-                                         userId:(NSString *)userId;
++ (instancetype)queryForLicenseAssignmentsPatchWithObject:(GTLLicensingLicenseAssignment *)object
+                                                productId:(NSString *)productId
+                                                    skuId:(NSString *)skuId
+                                                   userId:(NSString *)userId;
 
 // Method: licensing.licenseAssignments.update
 // Assign License.
@@ -156,9 +156,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeLicensingAppsLicensing
 // Fetches a GTLLicensingLicenseAssignment.
-+ (id)queryForLicenseAssignmentsUpdateWithObject:(GTLLicensingLicenseAssignment *)object
-                                       productId:(NSString *)productId
-                                           skuId:(NSString *)skuId
-                                          userId:(NSString *)userId;
++ (instancetype)queryForLicenseAssignmentsUpdateWithObject:(GTLLicensingLicenseAssignment *)object
+                                                 productId:(NSString *)productId
+                                                     skuId:(NSString *)skuId
+                                                    userId:(NSString *)userId;
 
 @end

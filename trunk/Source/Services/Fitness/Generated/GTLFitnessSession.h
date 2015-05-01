@@ -51,33 +51,33 @@
 // active_time_millis. If the inactive time during the session is known, it
 // should also be inserted via a com.google.activity.segment data point with a
 // STILL activity value
-@property (retain) NSNumber *activeTimeMillis;  // longLongValue
+@property (nonatomic, retain) NSNumber *activeTimeMillis;  // longLongValue
 
 // The type of activity this session represents.
-@property (retain) NSNumber *activityType;  // intValue
+@property (nonatomic, retain) NSNumber *activityType;  // intValue
 
 // The application that created the session.
-@property (retain) GTLFitnessApplication *application;
+@property (nonatomic, retain) GTLFitnessApplication *application;
 
 // A description for this session.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (copy) NSString *descriptionProperty;
+@property (nonatomic, copy) NSString *descriptionProperty;
 
 // An end time, in milliseconds since epoch, inclusive.
-@property (retain) NSNumber *endTimeMillis;  // longLongValue
+@property (nonatomic, retain) NSNumber *endTimeMillis;  // longLongValue
 
 // A client-generated identifier that is unique across all sessions owned by
 // this particular user.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // A timestamp that indicates when the session was last modified.
-@property (retain) NSNumber *modifiedTimeMillis;  // longLongValue
+@property (nonatomic, retain) NSNumber *modifiedTimeMillis;  // longLongValue
 
 // A human readable name of the session.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // A start time, in milliseconds since epoch, inclusive.
-@property (retain) NSNumber *startTimeMillis;  // longLongValue
+@property (nonatomic, retain) NSNumber *startTimeMillis;  // longLongValue
 
 @end

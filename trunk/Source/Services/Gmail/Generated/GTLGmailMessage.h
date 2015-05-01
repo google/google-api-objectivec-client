@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,28 +46,28 @@
 @interface GTLGmailMessage : GTLObject
 
 // The ID of the last history record that modified this message.
-@property (retain) NSNumber *historyId;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *historyId;  // unsignedLongLongValue
 
 // The immutable ID of the message.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // List of IDs of labels applied to this message.
-@property (retain) NSArray *labelIds;  // of NSString
+@property (nonatomic, retain) NSArray *labelIds;  // of NSString
 
 // The parsed email structure in the message parts.
-@property (retain) GTLGmailMessagePart *payload;
+@property (nonatomic, retain) GTLGmailMessagePart *payload;
 
 // The entire email message in an RFC 2822 formatted and base64url encoded
 // string. Returned in messages.get and drafts.get responses when the format=RAW
 // parameter is supplied.
-@property (copy) NSString *raw;  // GTLBase64 can encode/decode (probably web-safe format)
+@property (nonatomic, copy) NSString *raw;  // GTLBase64 can encode/decode (probably web-safe format)
 
 // Estimated size in bytes of the message.
-@property (retain) NSNumber *sizeEstimate;  // intValue
+@property (nonatomic, retain) NSNumber *sizeEstimate;  // intValue
 
 // A short part of the message text.
-@property (copy) NSString *snippet;
+@property (nonatomic, copy) NSString *snippet;
 
 // The ID of the thread the message belongs to. To add a message or draft to a
 // thread, the following criteria must be met:
@@ -76,6 +76,6 @@
 // - The References and In-Reply-To headers must be set in compliance with the
 // RFC 2822 standard.
 // - The Subject headers must match.
-@property (copy) NSString *threadId;
+@property (nonatomic, copy) NSString *threadId;
 
 @end

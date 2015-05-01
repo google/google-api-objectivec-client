@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,30 +45,30 @@
 
 // The video content's display aspect ratio, which specifies the aspect ratio in
 // which the video should be displayed.
-@property (retain) NSNumber *aspectRatio;  // doubleValue
+@property (nonatomic, retain) NSNumber *aspectRatio;  // doubleValue
 
 // The video stream's bitrate, in bits per second.
-@property (retain) NSNumber *bitrateBps;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *bitrateBps;  // unsignedLongLongValue
 
 // The video codec that the stream uses.
-@property (copy) NSString *codec;
+@property (nonatomic, copy) NSString *codec;
 
 // The video stream's frame rate, in frames per second.
-@property (retain) NSNumber *frameRateFps;  // doubleValue
+@property (nonatomic, retain) NSNumber *frameRateFps;  // doubleValue
 
 // The encoded video content's height in pixels.
-@property (retain) NSNumber *heightPixels;  // unsignedIntValue
+@property (nonatomic, retain) NSNumber *heightPixels;  // unsignedIntValue
 
 // The amount that YouTube needs to rotate the original source content to
 // properly display the video.
-@property (copy) NSString *rotation;
+@property (nonatomic, copy) NSString *rotation;
 
 // A value that uniquely identifies a video vendor. Typically, the value is a
 // four-letter vendor code.
-@property (copy) NSString *vendor;
+@property (nonatomic, copy) NSString *vendor;
 
 // The encoded video content's width in pixels. You can calculate the video's
 // encoding aspect ratio as width_pixels / height_pixels.
-@property (retain) NSNumber *widthPixels;  // unsignedIntValue
+@property (nonatomic, retain) NSNumber *widthPixels;  // unsignedIntValue
 
 @end

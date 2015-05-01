@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,6 +46,6 @@
 
 // HTML template of the info window. If not provided, a default template with
 // all attributes will be generated.
-@property (copy) NSString *content;
+@property (nonatomic, copy) NSString *content;
 
 @end

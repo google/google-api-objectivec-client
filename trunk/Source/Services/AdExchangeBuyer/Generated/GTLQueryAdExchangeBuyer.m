@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,9 +51,9 @@
          identifier, maxResults, pageToken, startDateTime, statusFilter;
 
 + (NSDictionary *)parameterNameMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+  NSDictionary *map = @{
+    @"identifier" : @"id"
+  };
   return map;
 }
 
@@ -61,7 +61,7 @@
 #pragma mark "accounts" methods
 // These create a GTLQueryAdExchangeBuyer object.
 
-+ (id)queryForAccountsGetWithIdentifier:(NSInteger)identifier {
++ (instancetype)queryForAccountsGetWithIdentifier:(NSInteger)identifier {
   NSString *methodName = @"adexchangebuyer.accounts.get";
   GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
   query.identifier = [NSNumber numberWithInteger:identifier];
@@ -69,15 +69,15 @@
   return query;
 }
 
-+ (id)queryForAccountsList {
++ (instancetype)queryForAccountsList {
   NSString *methodName = @"adexchangebuyer.accounts.list";
   GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLAdExchangeBuyerAccountsList class];
   return query;
 }
 
-+ (id)queryForAccountsPatchWithObject:(GTLAdExchangeBuyerAccount *)object
-                           identifier:(NSInteger)identifier {
++ (instancetype)queryForAccountsPatchWithObject:(GTLAdExchangeBuyerAccount *)object
+                                     identifier:(NSInteger)identifier {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -90,8 +90,8 @@
   return query;
 }
 
-+ (id)queryForAccountsUpdateWithObject:(GTLAdExchangeBuyerAccount *)object
-                            identifier:(NSInteger)identifier {
++ (instancetype)queryForAccountsUpdateWithObject:(GTLAdExchangeBuyerAccount *)object
+                                      identifier:(NSInteger)identifier {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -108,7 +108,7 @@
 #pragma mark "billingInfo" methods
 // These create a GTLQueryAdExchangeBuyer object.
 
-+ (id)queryForBillingInfoGetWithAccountId:(NSInteger)accountId {
++ (instancetype)queryForBillingInfoGetWithAccountId:(NSInteger)accountId {
   NSString *methodName = @"adexchangebuyer.billingInfo.get";
   GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
   query.accountId = [NSNumber numberWithInteger:accountId];
@@ -116,7 +116,7 @@
   return query;
 }
 
-+ (id)queryForBillingInfoList {
++ (instancetype)queryForBillingInfoList {
   NSString *methodName = @"adexchangebuyer.billingInfo.list";
   GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLAdExchangeBuyerBillingInfoList class];
@@ -127,8 +127,8 @@
 #pragma mark "budget" methods
 // These create a GTLQueryAdExchangeBuyer object.
 
-+ (id)queryForBudgetGetWithAccountId:(long long)accountId
-                           billingId:(long long)billingId {
++ (instancetype)queryForBudgetGetWithAccountId:(long long)accountId
+                                     billingId:(long long)billingId {
   NSString *methodName = @"adexchangebuyer.budget.get";
   GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
   query.accountId = [NSNumber numberWithLongLong:accountId];
@@ -137,9 +137,9 @@
   return query;
 }
 
-+ (id)queryForBudgetPatchWithObject:(GTLAdExchangeBuyerBudget *)object
-                          accountId:(long long)accountId
-                          billingId:(long long)billingId {
++ (instancetype)queryForBudgetPatchWithObject:(GTLAdExchangeBuyerBudget *)object
+                                    accountId:(long long)accountId
+                                    billingId:(long long)billingId {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -153,9 +153,9 @@
   return query;
 }
 
-+ (id)queryForBudgetUpdateWithObject:(GTLAdExchangeBuyerBudget *)object
-                           accountId:(long long)accountId
-                           billingId:(long long)billingId {
++ (instancetype)queryForBudgetUpdateWithObject:(GTLAdExchangeBuyerBudget *)object
+                                     accountId:(long long)accountId
+                                     billingId:(long long)billingId {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -173,8 +173,8 @@
 #pragma mark "creatives" methods
 // These create a GTLQueryAdExchangeBuyer object.
 
-+ (id)queryForCreativesGetWithAccountId:(NSInteger)accountId
-                        buyerCreativeId:(NSString *)buyerCreativeId {
++ (instancetype)queryForCreativesGetWithAccountId:(NSInteger)accountId
+                                  buyerCreativeId:(NSString *)buyerCreativeId {
   NSString *methodName = @"adexchangebuyer.creatives.get";
   GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
   query.accountId = [NSNumber numberWithInteger:accountId];
@@ -183,7 +183,7 @@
   return query;
 }
 
-+ (id)queryForCreativesInsertWithObject:(GTLAdExchangeBuyerCreative *)object {
++ (instancetype)queryForCreativesInsertWithObject:(GTLAdExchangeBuyerCreative *)object {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -195,7 +195,7 @@
   return query;
 }
 
-+ (id)queryForCreativesList {
++ (instancetype)queryForCreativesList {
   NSString *methodName = @"adexchangebuyer.creatives.list";
   GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLAdExchangeBuyerCreativesList class];
@@ -206,7 +206,7 @@
 #pragma mark "directDeals" methods
 // These create a GTLQueryAdExchangeBuyer object.
 
-+ (id)queryForDirectDealsGetWithIdentifier:(long long)identifier {
++ (instancetype)queryForDirectDealsGetWithIdentifier:(long long)identifier {
   NSString *methodName = @"adexchangebuyer.directDeals.get";
   GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
   query.identifier = [NSNumber numberWithLongLong:identifier];
@@ -214,7 +214,7 @@
   return query;
 }
 
-+ (id)queryForDirectDealsList {
++ (instancetype)queryForDirectDealsList {
   NSString *methodName = @"adexchangebuyer.directDeals.list";
   GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLAdExchangeBuyerDirectDealsList class];
@@ -225,9 +225,9 @@
 #pragma mark "performanceReport" methods
 // These create a GTLQueryAdExchangeBuyer object.
 
-+ (id)queryForPerformanceReportListWithAccountId:(long long)accountId
-                                     endDateTime:(NSString *)endDateTime
-                                   startDateTime:(NSString *)startDateTime {
++ (instancetype)queryForPerformanceReportListWithAccountId:(long long)accountId
+                                               endDateTime:(NSString *)endDateTime
+                                             startDateTime:(NSString *)startDateTime {
   NSString *methodName = @"adexchangebuyer.performanceReport.list";
   GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
   query.accountId = [NSNumber numberWithLongLong:accountId];
@@ -241,8 +241,8 @@
 #pragma mark "pretargetingConfig" methods
 // These create a GTLQueryAdExchangeBuyer object.
 
-+ (id)queryForPretargetingConfigDeleteWithAccountId:(long long)accountId
-                                           configId:(long long)configId {
++ (instancetype)queryForPretargetingConfigDeleteWithAccountId:(long long)accountId
+                                                     configId:(long long)configId {
   NSString *methodName = @"adexchangebuyer.pretargetingConfig.delete";
   GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
   query.accountId = [NSNumber numberWithLongLong:accountId];
@@ -250,8 +250,8 @@
   return query;
 }
 
-+ (id)queryForPretargetingConfigGetWithAccountId:(long long)accountId
-                                        configId:(long long)configId {
++ (instancetype)queryForPretargetingConfigGetWithAccountId:(long long)accountId
+                                                  configId:(long long)configId {
   NSString *methodName = @"adexchangebuyer.pretargetingConfig.get";
   GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
   query.accountId = [NSNumber numberWithLongLong:accountId];
@@ -260,8 +260,8 @@
   return query;
 }
 
-+ (id)queryForPretargetingConfigInsertWithObject:(GTLAdExchangeBuyerPretargetingConfig *)object
-                                       accountId:(long long)accountId {
++ (instancetype)queryForPretargetingConfigInsertWithObject:(GTLAdExchangeBuyerPretargetingConfig *)object
+                                                 accountId:(long long)accountId {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -274,7 +274,7 @@
   return query;
 }
 
-+ (id)queryForPretargetingConfigListWithAccountId:(long long)accountId {
++ (instancetype)queryForPretargetingConfigListWithAccountId:(long long)accountId {
   NSString *methodName = @"adexchangebuyer.pretargetingConfig.list";
   GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
   query.accountId = [NSNumber numberWithLongLong:accountId];
@@ -282,9 +282,9 @@
   return query;
 }
 
-+ (id)queryForPretargetingConfigPatchWithObject:(GTLAdExchangeBuyerPretargetingConfig *)object
-                                      accountId:(long long)accountId
-                                       configId:(long long)configId {
++ (instancetype)queryForPretargetingConfigPatchWithObject:(GTLAdExchangeBuyerPretargetingConfig *)object
+                                                accountId:(long long)accountId
+                                                 configId:(long long)configId {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -298,9 +298,9 @@
   return query;
 }
 
-+ (id)queryForPretargetingConfigUpdateWithObject:(GTLAdExchangeBuyerPretargetingConfig *)object
-                                       accountId:(long long)accountId
-                                        configId:(long long)configId {
++ (instancetype)queryForPretargetingConfigUpdateWithObject:(GTLAdExchangeBuyerPretargetingConfig *)object
+                                                 accountId:(long long)accountId
+                                                  configId:(long long)configId {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;

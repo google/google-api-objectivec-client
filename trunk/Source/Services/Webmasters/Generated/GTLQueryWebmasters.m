@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,8 +47,8 @@
 #pragma mark "sitemaps" methods
 // These create a GTLQueryWebmasters object.
 
-+ (id)queryForSitemapsDeleteWithSiteUrl:(NSString *)siteUrl
-                               feedpath:(NSString *)feedpath {
++ (instancetype)queryForSitemapsDeleteWithSiteUrl:(NSString *)siteUrl
+                                         feedpath:(NSString *)feedpath {
   NSString *methodName = @"webmasters.sitemaps.delete";
   GTLQueryWebmasters *query = [self queryWithMethodName:methodName];
   query.siteUrl = siteUrl;
@@ -56,8 +56,8 @@
   return query;
 }
 
-+ (id)queryForSitemapsGetWithSiteUrl:(NSString *)siteUrl
-                            feedpath:(NSString *)feedpath {
++ (instancetype)queryForSitemapsGetWithSiteUrl:(NSString *)siteUrl
+                                      feedpath:(NSString *)feedpath {
   NSString *methodName = @"webmasters.sitemaps.get";
   GTLQueryWebmasters *query = [self queryWithMethodName:methodName];
   query.siteUrl = siteUrl;
@@ -66,7 +66,7 @@
   return query;
 }
 
-+ (id)queryForSitemapsListWithSiteUrl:(NSString *)siteUrl {
++ (instancetype)queryForSitemapsListWithSiteUrl:(NSString *)siteUrl {
   NSString *methodName = @"webmasters.sitemaps.list";
   GTLQueryWebmasters *query = [self queryWithMethodName:methodName];
   query.siteUrl = siteUrl;
@@ -74,8 +74,8 @@
   return query;
 }
 
-+ (id)queryForSitemapsSubmitWithSiteUrl:(NSString *)siteUrl
-                               feedpath:(NSString *)feedpath {
++ (instancetype)queryForSitemapsSubmitWithSiteUrl:(NSString *)siteUrl
+                                         feedpath:(NSString *)feedpath {
   NSString *methodName = @"webmasters.sitemaps.submit";
   GTLQueryWebmasters *query = [self queryWithMethodName:methodName];
   query.siteUrl = siteUrl;
@@ -87,21 +87,21 @@
 #pragma mark "sites" methods
 // These create a GTLQueryWebmasters object.
 
-+ (id)queryForSitesAddWithSiteUrl:(NSString *)siteUrl {
++ (instancetype)queryForSitesAddWithSiteUrl:(NSString *)siteUrl {
   NSString *methodName = @"webmasters.sites.add";
   GTLQueryWebmasters *query = [self queryWithMethodName:methodName];
   query.siteUrl = siteUrl;
   return query;
 }
 
-+ (id)queryForSitesDeleteWithSiteUrl:(NSString *)siteUrl {
++ (instancetype)queryForSitesDeleteWithSiteUrl:(NSString *)siteUrl {
   NSString *methodName = @"webmasters.sites.delete";
   GTLQueryWebmasters *query = [self queryWithMethodName:methodName];
   query.siteUrl = siteUrl;
   return query;
 }
 
-+ (id)queryForSitesGetWithSiteUrl:(NSString *)siteUrl {
++ (instancetype)queryForSitesGetWithSiteUrl:(NSString *)siteUrl {
   NSString *methodName = @"webmasters.sites.get";
   GTLQueryWebmasters *query = [self queryWithMethodName:methodName];
   query.siteUrl = siteUrl;
@@ -109,7 +109,7 @@
   return query;
 }
 
-+ (id)queryForSitesList {
++ (instancetype)queryForSitesList {
   NSString *methodName = @"webmasters.sites.list";
   GTLQueryWebmasters *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLWebmastersSitesListResponse class];
@@ -120,7 +120,7 @@
 #pragma mark "urlcrawlerrorscounts" methods
 // These create a GTLQueryWebmasters object.
 
-+ (id)queryForUrlcrawlerrorscountsQueryWithSiteUrl:(NSString *)siteUrl {
++ (instancetype)queryForUrlcrawlerrorscountsQueryWithSiteUrl:(NSString *)siteUrl {
   NSString *methodName = @"webmasters.urlcrawlerrorscounts.query";
   GTLQueryWebmasters *query = [self queryWithMethodName:methodName];
   query.siteUrl = siteUrl;
@@ -132,10 +132,10 @@
 #pragma mark "urlcrawlerrorssamples" methods
 // These create a GTLQueryWebmasters object.
 
-+ (id)queryForUrlcrawlerrorssamplesGetWithSiteUrl:(NSString *)siteUrl
-                                              url:(NSString *)url
-                                         category:(NSString *)category
-                                         platform:(NSString *)platform {
++ (instancetype)queryForUrlcrawlerrorssamplesGetWithSiteUrl:(NSString *)siteUrl
+                                                        url:(NSString *)url
+                                                   category:(NSString *)category
+                                                   platform:(NSString *)platform {
   NSString *methodName = @"webmasters.urlcrawlerrorssamples.get";
   GTLQueryWebmasters *query = [self queryWithMethodName:methodName];
   query.siteUrl = siteUrl;
@@ -146,9 +146,9 @@
   return query;
 }
 
-+ (id)queryForUrlcrawlerrorssamplesListWithSiteUrl:(NSString *)siteUrl
-                                          category:(NSString *)category
-                                          platform:(NSString *)platform {
++ (instancetype)queryForUrlcrawlerrorssamplesListWithSiteUrl:(NSString *)siteUrl
+                                                    category:(NSString *)category
+                                                    platform:(NSString *)platform {
   NSString *methodName = @"webmasters.urlcrawlerrorssamples.list";
   GTLQueryWebmasters *query = [self queryWithMethodName:methodName];
   query.siteUrl = siteUrl;
@@ -158,10 +158,10 @@
   return query;
 }
 
-+ (id)queryForUrlcrawlerrorssamplesMarkAsFixedWithSiteUrl:(NSString *)siteUrl
-                                                      url:(NSString *)url
-                                                 category:(NSString *)category
-                                                 platform:(NSString *)platform {
++ (instancetype)queryForUrlcrawlerrorssamplesMarkAsFixedWithSiteUrl:(NSString *)siteUrl
+                                                                url:(NSString *)url
+                                                           category:(NSString *)category
+                                                           platform:(NSString *)platform {
   NSString *methodName = @"webmasters.urlcrawlerrorssamples.markAsFixed";
   GTLQueryWebmasters *query = [self queryWithMethodName:methodName];
   query.siteUrl = siteUrl;

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,33 +44,33 @@
 @interface GTLWebmastersWmxSitemap : GTLObject
 
 // The various content types in the sitemap.
-@property (retain) NSArray *contents;  // of GTLWebmastersWmxSitemapContent
+@property (nonatomic, retain) NSArray *contents;  // of GTLWebmastersWmxSitemapContent
 
 // Number of errors in the sitemap - issues with the sitemap itself, that needs
 // to be fixed before it can be processed correctly.
-@property (retain) NSNumber *errors;  // longLongValue
+@property (nonatomic, retain) NSNumber *errors;  // longLongValue
 
 // If true, the sitemap has not been processed.
-@property (retain) NSNumber *isPending;  // boolValue
+@property (nonatomic, retain) NSNumber *isPending;  // boolValue
 
 // If true, the sitemap is a collection of sitemaps.
-@property (retain) NSNumber *isSitemapsIndex;  // boolValue
+@property (nonatomic, retain) NSNumber *isSitemapsIndex;  // boolValue
 
 // Date & time in which this sitemap was last downloaded. Date format is in RFC
 // 3339 format (yyyy-mm-dd).
-@property (retain) GTLDateTime *lastDownloaded;
+@property (nonatomic, retain) GTLDateTime *lastDownloaded;
 
 // Date & time in which this sitemap was submitted. Date format is in RFC 3339
 // format (yyyy-mm-dd).
-@property (retain) GTLDateTime *lastSubmitted;
+@property (nonatomic, retain) GTLDateTime *lastSubmitted;
 
 // The url of the sitemap.
-@property (copy) NSString *path;
+@property (nonatomic, copy) NSString *path;
 
 // The type of the sitemap (for example "sitemap").
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 // Number of warnings for the sitemap - issues with URLs in the sitemaps.
-@property (retain) NSNumber *warnings;  // longLongValue
+@property (nonatomic, retain) NSNumber *warnings;  // longLongValue
 
 @end

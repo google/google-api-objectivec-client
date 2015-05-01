@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,15 +43,15 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (copy) NSString *fields;
+@property (nonatomic, copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (copy) NSString *currentDataVersion;
-@property (copy) NSString *currentStateVersion;
-@property (assign) BOOL includeData;
-@property (assign) NSInteger stateKey;
+@property (nonatomic, copy) NSString *currentDataVersion;
+@property (nonatomic, copy) NSString *currentStateVersion;
+@property (nonatomic, assign) BOOL includeData;
+@property (nonatomic, assign) NSInteger stateKey;
 
 #pragma mark -
 #pragma mark "states" methods
@@ -69,7 +69,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAppState
 // Fetches a GTLAppStateWriteResult.
-+ (id)queryForStatesClearWithStateKey:(NSInteger)stateKey;
++ (instancetype)queryForStatesClearWithStateKey:(NSInteger)stateKey;
 
 // Method: appstate.states.delete
 // Deletes a key and the data associated with it. The key is removed and no
@@ -81,7 +81,7 @@
 //   stateKey: The key for the data to be retrieved. (0..3)
 //  Authorization scope(s):
 //   kGTLAuthScopeAppState
-+ (id)queryForStatesDeleteWithStateKey:(NSInteger)stateKey;
++ (instancetype)queryForStatesDeleteWithStateKey:(NSInteger)stateKey;
 
 // Method: appstate.states.get
 // Retrieves the data corresponding to the passed key. If the key does not exist
@@ -91,7 +91,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAppState
 // Fetches a GTLAppStateGetResponse.
-+ (id)queryForStatesGetWithStateKey:(NSInteger)stateKey;
++ (instancetype)queryForStatesGetWithStateKey:(NSInteger)stateKey;
 
 // Method: appstate.states.list
 // Lists all the states keys, and optionally the state data.
@@ -101,7 +101,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAppState
 // Fetches a GTLAppStateListResponse.
-+ (id)queryForStatesList;
++ (instancetype)queryForStatesList;
 
 // Method: appstate.states.update
 // Update the data associated with the input key if and only if the passed
@@ -118,7 +118,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAppState
 // Fetches a GTLAppStateWriteResult.
-+ (id)queryForStatesUpdateWithObject:(GTLAppStateUpdateRequest *)object
-                            stateKey:(NSInteger)stateKey;
++ (instancetype)queryForStatesUpdateWithObject:(GTLAppStateUpdateRequest *)object
+                                      stateKey:(NSInteger)stateKey;
 
 @end

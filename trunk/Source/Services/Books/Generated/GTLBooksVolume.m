@@ -66,11 +66,10 @@
          saleInfo, searchInfo, selfLink, userInfo, volumeInfo;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"etag", @"ETag",
-      @"id", @"identifier",
-      nil];
+  NSDictionary *map = @{
+    @"ETag" : @"etag",
+    @"identifier" : @"id"
+  };
   return map;
 }
 
@@ -103,9 +102,9 @@
 @dynamic layers;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLBooksVolumeLayerInfoLayersItem class]
-                                forKey:@"layers"];
+  NSDictionary *map = @{
+    @"layers" : [GTLBooksVolumeLayerInfoLayersItem class]
+  };
   return map;
 }
 
@@ -132,9 +131,9 @@
          saleability;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLBooksVolumeSaleInfoOffersItem class]
-                                forKey:@"offers"];
+  NSDictionary *map = @{
+    @"offers" : [GTLBooksVolumeSaleInfoOffersItem class]
+  };
   return map;
 }
 
@@ -162,9 +161,9 @@
          userUploadedVolumeInfo;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"copy"
-                                forKey:@"copyProperty"];
+  NSDictionary *map = @{
+    @"copyProperty" : @"copy"
+  };
   return map;
 }
 
@@ -185,19 +184,18 @@
          title;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"description"
-                                forKey:@"descriptionProperty"];
+  NSDictionary *map = @{
+    @"descriptionProperty" : @"description"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSString class], @"authors",
-      [NSString class], @"categories",
-      [GTLBooksVolumeVolumeInfoIndustryIdentifiersItem class], @"industryIdentifiers",
-      nil];
+  NSDictionary *map = @{
+    @"authors" : [NSString class],
+    @"categories" : [NSString class],
+    @"industryIdentifiers" : [GTLBooksVolumeVolumeInfoIndustryIdentifiersItem class]
+  };
   return map;
 }
 
@@ -323,9 +321,9 @@
 @dynamic identifierProperty, type;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"identifier"
-                                forKey:@"identifierProperty"];
+  NSDictionary *map = @{
+    @"identifierProperty" : @"identifier"
+  };
   return map;
 }
 

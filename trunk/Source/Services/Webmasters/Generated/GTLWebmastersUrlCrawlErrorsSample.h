@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,18 +44,18 @@
 @interface GTLWebmastersUrlCrawlErrorsSample : GTLObject
 
 // The time the error was first detected, in RFC 3339 format.
-@property (retain) GTLDateTime *firstDetected;
+@property (nonatomic, retain) GTLDateTime *firstDetected;
 
 // The time when the URL was last crawled, in RFC 3339 format.
-@property (retain) GTLDateTime *lastCrawled;
+@property (nonatomic, retain) GTLDateTime *lastCrawled;
 
 // The URL of an error, relative to the site.
-@property (copy) NSString *pageUrl;
+@property (nonatomic, copy) NSString *pageUrl;
 
 // The HTTP response code, if any.
-@property (retain) NSNumber *responseCode;  // intValue
+@property (nonatomic, retain) NSNumber *responseCode;  // intValue
 
 // Additional details about the URL, set only when calling get().
-@property (retain) GTLWebmastersUrlSampleDetails *urlDetails;
+@property (nonatomic, retain) GTLWebmastersUrlSampleDetails *urlDetails;
 
 @end

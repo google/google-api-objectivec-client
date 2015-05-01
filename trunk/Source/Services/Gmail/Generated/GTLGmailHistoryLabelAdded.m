@@ -41,9 +41,9 @@
 @dynamic labelIds, message;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[NSString class]
-                                forKey:@"labelIds"];
+  NSDictionary *map = @{
+    @"labelIds" : [NSString class]
+  };
   return map;
 }
 

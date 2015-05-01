@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,14 +44,14 @@
 // Indicates whether or not the video has alcoholic beverage content. Only users
 // of legal purchasing age in a particular country, as identified by ICAP, can
 // view the content.
-@property (retain) NSNumber *alcoholContent;  // boolValue
+@property (nonatomic, retain) NSNumber *alcoholContent;  // boolValue
 
 // Age-restricted trailers. For redband trailers and adult-rated video-games.
 // Only users aged 18+ can view the content. The the field is true the content
 // is restricted to viewers aged 18+. Otherwise The field won't be present.
-@property (retain) NSNumber *restricted;  // boolValue
+@property (nonatomic, retain) NSNumber *restricted;  // boolValue
 
 // Video game rating, if any.
-@property (copy) NSString *videoGameRating;
+@property (nonatomic, copy) NSString *videoGameRating;
 
 @end

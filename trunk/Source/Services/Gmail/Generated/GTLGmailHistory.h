@@ -52,23 +52,23 @@
 
 // The mailbox sequence ID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSNumber *identifier;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *identifier;  // unsignedLongLongValue
 
 // Labels added to messages in this history record.
-@property (retain) NSArray *labelsAdded;  // of GTLGmailHistoryLabelAdded
+@property (nonatomic, retain) NSArray *labelsAdded;  // of GTLGmailHistoryLabelAdded
 
 // Labels removed from messages in this history record.
-@property (retain) NSArray *labelsRemoved;  // of GTLGmailHistoryLabelRemoved
+@property (nonatomic, retain) NSArray *labelsRemoved;  // of GTLGmailHistoryLabelRemoved
 
 // List of messages changed in this history record. The fields for specific
 // change types, such as messagesAdded may duplicate messages in this field. We
 // recommend using the specific change-type fields instead of this.
-@property (retain) NSArray *messages;  // of GTLGmailMessage
+@property (nonatomic, retain) NSArray *messages;  // of GTLGmailMessage
 
 // Messages added to the mailbox in this history record.
-@property (retain) NSArray *messagesAdded;  // of GTLGmailHistoryMessageAdded
+@property (nonatomic, retain) NSArray *messagesAdded;  // of GTLGmailHistoryMessageAdded
 
 // Messages deleted (not Trashed) from the mailbox in this history record.
-@property (retain) NSArray *messagesDeleted;  // of GTLGmailHistoryMessageDeleted
+@property (nonatomic, retain) NSArray *messagesDeleted;  // of GTLGmailHistoryMessageDeleted
 
 @end

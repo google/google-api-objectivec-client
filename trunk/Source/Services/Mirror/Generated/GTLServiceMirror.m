@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,34 +36,34 @@
 // Method compiled in debug builds just to check that all the needed support
 // classes are present at link time.
 + (NSArray *)checkClasses {
-  NSArray *classes = [NSArray arrayWithObjects:
-                      [GTLQueryMirror class],
-                      [GTLMirrorAccount class],
-                      [GTLMirrorAttachment class],
-                      [GTLMirrorAttachmentsListResponse class],
-                      [GTLMirrorAuthToken class],
-                      [GTLMirrorCommand class],
-                      [GTLMirrorContact class],
-                      [GTLMirrorContactsListResponse class],
-                      [GTLMirrorLocation class],
-                      [GTLMirrorLocationsListResponse class],
-                      [GTLMirrorMenuItem class],
-                      [GTLMirrorMenuValue class],
-                      [GTLMirrorNotification class],
-                      [GTLMirrorNotificationConfig class],
-                      [GTLMirrorSetting class],
-                      [GTLMirrorSubscription class],
-                      [GTLMirrorSubscriptionsListResponse class],
-                      [GTLMirrorTimelineItem class],
-                      [GTLMirrorTimelineListResponse class],
-                      [GTLMirrorUserAction class],
-                      [GTLMirrorUserData class],
-                      nil];
+  NSArray *classes = @[
+    [GTLQueryMirror class],
+    [GTLMirrorAccount class],
+    [GTLMirrorAttachment class],
+    [GTLMirrorAttachmentsListResponse class],
+    [GTLMirrorAuthToken class],
+    [GTLMirrorCommand class],
+    [GTLMirrorContact class],
+    [GTLMirrorContactsListResponse class],
+    [GTLMirrorLocation class],
+    [GTLMirrorLocationsListResponse class],
+    [GTLMirrorMenuItem class],
+    [GTLMirrorMenuValue class],
+    [GTLMirrorNotification class],
+    [GTLMirrorNotificationConfig class],
+    [GTLMirrorSetting class],
+    [GTLMirrorSubscription class],
+    [GTLMirrorSubscriptionsListResponse class],
+    [GTLMirrorTimelineItem class],
+    [GTLMirrorTimelineListResponse class],
+    [GTLMirrorUserAction class],
+    [GTLMirrorUserData class]
+  ];
   return classes;
 }
 #endif  // DEBUG
 
-- (id)init {
+- (instancetype)init {
   self = [super init];
   if (self) {
     // Version from discovery.

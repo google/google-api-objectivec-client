@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,19 +45,19 @@
 // should stop playing. (The playlist owner can specify the times when the video
 // should start and stop playing when the video is played in the context of the
 // playlist.) By default, assume that the video.endTime is the end of the video.
-@property (copy) NSString *endAt;
+@property (nonatomic, copy) NSString *endAt;
 
 // A user-generated note for this item.
-@property (copy) NSString *note;
+@property (nonatomic, copy) NSString *note;
 
 // The time, measured in seconds from the start of the video, when the video
 // should start playing. (The playlist owner can specify the times when the
 // video should start and stop playing when the video is played in the context
 // of the playlist.) The default value is 0.
-@property (copy) NSString *startAt;
+@property (nonatomic, copy) NSString *startAt;
 
 // The ID that YouTube uses to uniquely identify a video. To retrieve the video
 // resource, set the id query parameter to this value in your API request.
-@property (copy) NSString *videoId;
+@property (nonatomic, copy) NSString *videoId;
 
 @end

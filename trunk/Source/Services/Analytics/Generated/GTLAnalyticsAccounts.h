@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,32 +52,32 @@
 @interface GTLAnalyticsAccounts : GTLCollectionObject
 
 // A list of accounts.
-@property (retain) NSArray *items;  // of GTLAnalyticsAccount
+@property (nonatomic, retain) NSArray *items;  // of GTLAnalyticsAccount
 
 // The maximum number of entries the response can contain, regardless of the
 // actual number of entries returned. Its value ranges from 1 to 1000 with a
 // value of 1000 by default, or otherwise specified by the max-results query
 // parameter.
-@property (retain) NSNumber *itemsPerPage;  // intValue
+@property (nonatomic, retain) NSNumber *itemsPerPage;  // intValue
 
 // Collection type.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Next link for this account collection.
-@property (copy) NSString *nextLink;
+@property (nonatomic, copy) NSString *nextLink;
 
 // Previous link for this account collection.
-@property (copy) NSString *previousLink;
+@property (nonatomic, copy) NSString *previousLink;
 
 // The starting index of the entries, which is 1 by default or otherwise
 // specified by the start-index query parameter.
-@property (retain) NSNumber *startIndex;  // intValue
+@property (nonatomic, retain) NSNumber *startIndex;  // intValue
 
 // The total number of results for the query, regardless of the number of
 // results in the response.
-@property (retain) NSNumber *totalResults;  // intValue
+@property (nonatomic, retain) NSNumber *totalResults;  // intValue
 
 // Email ID of the authenticated user
-@property (copy) NSString *username;
+@property (nonatomic, copy) NSString *username;
 
 @end

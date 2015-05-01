@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,10 +45,10 @@
 
 // If you have set the enableMonitorStream property to true, then this property
 // determines the length of the live broadcast delay.
-@property (retain) NSNumber *broadcastStreamDelayMs;  // unsignedIntValue
+@property (nonatomic, retain) NSNumber *broadcastStreamDelayMs;  // unsignedIntValue
 
 // HTML code that embeds a player that plays the monitor stream.
-@property (copy) NSString *embedHtml;
+@property (nonatomic, copy) NSString *embedHtml;
 
 // This value determines whether the monitor stream is enabled for the
 // broadcast. If the monitor stream is enabled, then YouTube will broadcast the
@@ -59,6 +59,6 @@
 // for your event.
 // Note: This property cannot be updated once the broadcast is in the testing or
 // live state.
-@property (retain) NSNumber *enableMonitorStream;  // boolValue
+@property (nonatomic, retain) NSNumber *enableMonitorStream;  // boolValue
 
 @end

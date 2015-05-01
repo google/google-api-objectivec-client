@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,42 +49,42 @@
 // Slices with only the carriers in this alliance should be returned; do not use
 // this field with permittedCarrier. Allowed values are ONEWORLD, SKYTEAM, and
 // STAR.
-@property (copy) NSString *alliance;
+@property (nonatomic, copy) NSString *alliance;
 
 // Departure date in YYYY-MM-DD format.
-@property (copy) NSString *date;
+@property (nonatomic, copy) NSString *date;
 
 // Airport or city IATA designator of the destination.
-@property (copy) NSString *destination;
+@property (nonatomic, copy) NSString *destination;
 
 // Identifies this as a slice input object, representing the criteria a desired
 // slice must satisfy. Value: the fixed string qpxexpress#sliceInput.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The longest connection between two legs, in minutes, you are willing to
 // accept.
-@property (retain) NSNumber *maxConnectionDuration;  // intValue
+@property (nonatomic, retain) NSNumber *maxConnectionDuration;  // intValue
 
 // The maximum number of stops you are willing to accept in this slice.
-@property (retain) NSNumber *maxStops;  // intValue
+@property (nonatomic, retain) NSNumber *maxStops;  // intValue
 
 // Airport or city IATA designator of the origin.
-@property (copy) NSString *origin;
+@property (nonatomic, copy) NSString *origin;
 
 // A list of 2-letter IATA airline designators. Slices with only these carriers
 // should be returned.
-@property (retain) NSArray *permittedCarrier;  // of NSString
+@property (nonatomic, retain) NSArray *permittedCarrier;  // of NSString
 
 // Slices must depart in this time of day range, local to the point of
 // departure.
-@property (retain) GTLQPXExpressTimeOfDayRange *permittedDepartureTime;
+@property (nonatomic, retain) GTLQPXExpressTimeOfDayRange *permittedDepartureTime;
 
 // Prefer solutions that book in this cabin for this slice. Allowed values are
 // COACH, PREMIUM_COACH, BUSINESS, and FIRST.
-@property (copy) NSString *preferredCabin;
+@property (nonatomic, copy) NSString *preferredCabin;
 
 // A list of 2-letter IATA airline designators. Exclude slices that use these
 // carriers.
-@property (retain) NSArray *prohibitedCarrier;  // of NSString
+@property (nonatomic, retain) NSArray *prohibitedCarrier;  // of NSString
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,12 +47,11 @@
          segmentPricing, tax;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [GTLQPXExpressFareInfo class], @"fare",
-      [GTLQPXExpressSegmentPricing class], @"segmentPricing",
-      [GTLQPXExpressTaxInfo class], @"tax",
-      nil];
+  NSDictionary *map = @{
+    @"fare" : [GTLQPXExpressFareInfo class],
+    @"segmentPricing" : [GTLQPXExpressSegmentPricing class],
+    @"tax" : [GTLQPXExpressTaxInfo class]
+  };
   return map;
 }
 

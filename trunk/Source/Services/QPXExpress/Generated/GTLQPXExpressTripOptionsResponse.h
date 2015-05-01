@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,16 +48,16 @@
 @interface GTLQPXExpressTripOptionsResponse : GTLObject
 
 // Informational data global to list of solutions.
-@property (retain) GTLQPXExpressData *data;
+@property (nonatomic, retain) GTLQPXExpressData *data;
 
 // Identifies this as a QPX Express trip response object, which consists of zero
 // or more solutions. Value: the fixed string qpxexpress#tripOptions.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // An identifier uniquely identifying this response.
-@property (copy) NSString *requestId;
+@property (nonatomic, copy) NSString *requestId;
 
 // A list of priced itinerary solutions to the QPX Express query.
-@property (retain) NSArray *tripOption;  // of GTLQPXExpressTripOption
+@property (nonatomic, retain) NSArray *tripOption;  // of GTLQPXExpressTripOption
 
 @end

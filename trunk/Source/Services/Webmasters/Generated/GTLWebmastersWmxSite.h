@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,9 +44,9 @@
 @interface GTLWebmastersWmxSite : GTLObject
 
 // The user's permission level for the site.
-@property (copy) NSString *permissionLevel;
+@property (nonatomic, copy) NSString *permissionLevel;
 
 // The URL of the site.
-@property (copy) NSString *siteUrl;
+@property (nonatomic, copy) NSString *siteUrl;
 
 @end

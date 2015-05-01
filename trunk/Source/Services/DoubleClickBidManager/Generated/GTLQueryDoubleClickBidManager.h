@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,22 +43,22 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (copy) NSString *fields;
+@property (nonatomic, copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (copy) NSString *dataRange;
-@property (assign) BOOL dryRun;
-@property (retain) NSArray *filterIds;  // of NSNumber (longLongValue)
-@property (copy) NSString *filterType;
-@property (copy) NSString *format;
-@property (copy) NSString *lineItems;
-@property (retain) GTLDoubleClickBidManagerQuery *query;
-@property (assign) long long queryId;
-@property (assign) long long reportDataEndTimeMs;
-@property (assign) long long reportDataStartTimeMs;
-@property (copy) NSString *timezoneCode;
+@property (nonatomic, copy) NSString *dataRange;
+@property (nonatomic, assign) BOOL dryRun;
+@property (nonatomic, retain) NSArray *filterIds;  // of NSNumber (longLongValue)
+@property (nonatomic, copy) NSString *filterType;
+@property (nonatomic, copy) NSString *format;
+@property (nonatomic, copy) NSString *lineItems;
+@property (nonatomic, retain) GTLDoubleClickBidManagerQuery *query;
+@property (nonatomic, assign) long long queryId;
+@property (nonatomic, assign) long long reportDataEndTimeMs;
+@property (nonatomic, assign) long long reportDataStartTimeMs;
+@property (nonatomic, copy) NSString *timezoneCode;
 
 #pragma mark -
 #pragma mark "lineitems" methods
@@ -76,7 +76,7 @@
 //   format: Format in which the line items will be returned. Default to CSV.
 //      kGTLDoubleClickBidManagerFormatCsv: "CSV"
 // Fetches a GTLDoubleClickBidManagerDownloadLineItemsResponse.
-+ (id)queryForLineitemsDownloadlineitems;
++ (instancetype)queryForLineitemsDownloadlineitems;
 
 // Method: doubleclickbidmanager.lineitems.uploadlineitems
 // Uploads line items in CSV format.
@@ -88,7 +88,7 @@
 //   lineItems: Line items in CSV to upload. Refer to Entity Write File Format
 //     for more information on file format.
 // Fetches a GTLDoubleClickBidManagerUploadLineItemsResponse.
-+ (id)queryForLineitemsUploadlineitems;
++ (instancetype)queryForLineitemsUploadlineitems;
 
 #pragma mark -
 #pragma mark "queries" methods
@@ -99,25 +99,25 @@
 //  Optional:
 //   query: GTLDoubleClickBidManagerQuery
 // Fetches a GTLDoubleClickBidManagerQuery.
-+ (id)queryForQueriesCreatequery;
++ (instancetype)queryForQueriesCreatequery;
 
 // Method: doubleclickbidmanager.queries.deletequery
 // Deletes a stored query as well as the associated stored reports.
 //  Required:
 //   queryId: Query ID to delete.
-+ (id)queryForQueriesDeletequeryWithQueryId:(long long)queryId;
++ (instancetype)queryForQueriesDeletequeryWithQueryId:(long long)queryId;
 
 // Method: doubleclickbidmanager.queries.getquery
 // Retrieves a stored query.
 //  Required:
 //   queryId: Query ID to retrieve.
 // Fetches a GTLDoubleClickBidManagerQuery.
-+ (id)queryForQueriesGetqueryWithQueryId:(long long)queryId;
++ (instancetype)queryForQueriesGetqueryWithQueryId:(long long)queryId;
 
 // Method: doubleclickbidmanager.queries.listqueries
 // Retrieves stored queries.
 // Fetches a GTLDoubleClickBidManagerListQueriesResponse.
-+ (id)queryForQueriesListqueries;
++ (instancetype)queryForQueriesListqueries;
 
 // Method: doubleclickbidmanager.queries.runquery
 // Runs a stored query to generate a report.
@@ -151,7 +151,7 @@
 //     CUSTOM_DATES and ignored otherwise.
 //   timezoneCode: Canonical timezone code for report data time. Defaults to
 //     America/New_York.
-+ (id)queryForQueriesRunqueryWithQueryId:(long long)queryId;
++ (instancetype)queryForQueriesRunqueryWithQueryId:(long long)queryId;
 
 #pragma mark -
 #pragma mark "reports" methods
@@ -162,6 +162,6 @@
 //  Required:
 //   queryId: Query ID with which the reports are associated.
 // Fetches a GTLDoubleClickBidManagerListReportsResponse.
-+ (id)queryForReportsListreportsWithQueryId:(long long)queryId;
++ (instancetype)queryForReportsListreportsWithQueryId:(long long)queryId;
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,14 +48,14 @@
 
 // The ID that YouTube uses to uniquely identify the channel associated with the
 // activity.
-@property (copy) NSString *channelId;
+@property (nonatomic, copy) NSString *channelId;
 
 // Channel title for the channel responsible for this activity
-@property (copy) NSString *channelTitle;
+@property (nonatomic, copy) NSString *channelTitle;
 
 // The description of the resource primarily associated with the activity.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (copy) NSString *descriptionProperty;
+@property (nonatomic, copy) NSString *descriptionProperty;
 
 // The group ID associated with the activity. A group ID identifies user events
 // that are associated with the same user and resource. For example, if a user
@@ -63,22 +63,22 @@
 // events would have the same group ID in the user's activity feed. In your user
 // interface, you can avoid repetition by grouping events with the same groupId
 // value.
-@property (copy) NSString *groupId;
+@property (nonatomic, copy) NSString *groupId;
 
 // The date and time that the video was uploaded. The value is specified in ISO
 // 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-@property (retain) GTLDateTime *publishedAt;
+@property (nonatomic, retain) GTLDateTime *publishedAt;
 
 // A map of thumbnail images associated with the resource that is primarily
 // associated with the activity. For each object in the map, the key is the name
 // of the thumbnail image, and the value is an object that contains other
 // information about the thumbnail.
-@property (retain) GTLYouTubeThumbnailDetails *thumbnails;
+@property (nonatomic, retain) GTLYouTubeThumbnailDetails *thumbnails;
 
 // The title of the resource primarily associated with the activity.
-@property (copy) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 // The type of activity that the resource describes.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end

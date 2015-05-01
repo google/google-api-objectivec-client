@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,17 +48,17 @@
 
 // A list of video editing operations that might improve the video quality or
 // playback experience of the uploaded video.
-@property (retain) NSArray *editorSuggestions;  // of NSString
+@property (nonatomic, retain) NSArray *editorSuggestions;  // of NSString
 
 // A list of errors that will prevent YouTube from successfully processing the
 // uploaded video video. These errors indicate that, regardless of the video's
 // current processing status, eventually, that status will almost certainly be
 // failed.
-@property (retain) NSArray *processingErrors;  // of NSString
+@property (nonatomic, retain) NSArray *processingErrors;  // of NSString
 
 // A list of suggestions that may improve YouTube's ability to process the
 // video.
-@property (retain) NSArray *processingHints;  // of NSString
+@property (nonatomic, retain) NSArray *processingHints;  // of NSString
 
 // A list of reasons why YouTube may have difficulty transcoding the uploaded
 // video or that might result in an erroneous transcoding. These warnings are
@@ -66,11 +66,11 @@
 // addition, they identify issues that are unlikely to cause the video
 // processing to fail but that might cause problems such as sync issues, video
 // artifacts, or a missing audio track.
-@property (retain) NSArray *processingWarnings;  // of NSString
+@property (nonatomic, retain) NSArray *processingWarnings;  // of NSString
 
 // A list of keyword tags that could be added to the video's metadata to
 // increase the likelihood that users will locate your video when searching or
 // browsing on YouTube.
-@property (retain) NSArray *tagSuggestions;  // of GTLYouTubeVideoSuggestionsTagSuggestion
+@property (nonatomic, retain) NSArray *tagSuggestions;  // of GTLYouTubeVideoSuggestionsTagSuggestion
 
 @end

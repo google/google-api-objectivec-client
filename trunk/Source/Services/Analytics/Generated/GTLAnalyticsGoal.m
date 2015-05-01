@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,9 +49,9 @@
          visitTimeOnSiteDetails, webPropertyId;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+  NSDictionary *map = @{
+    @"identifier" : @"id"
+  };
   return map;
 }
 
@@ -71,9 +71,9 @@
 @dynamic eventConditions, useEventValue;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLAnalyticsGoalEventDetailsEventConditionsItem class]
-                                forKey:@"eventConditions"];
+  NSDictionary *map = @{
+    @"eventConditions" : [GTLAnalyticsGoalEventDetailsEventConditionsItem class]
+  };
   return map;
 }
 
@@ -99,9 +99,9 @@
 @dynamic caseSensitive, firstStepRequired, matchType, steps, url;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLAnalyticsGoalUrlDestinationDetailsStepsItem class]
-                                forKey:@"steps"];
+  NSDictionary *map = @{
+    @"steps" : [GTLAnalyticsGoalUrlDestinationDetailsStepsItem class]
+  };
   return map;
 }
 

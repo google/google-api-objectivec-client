@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,9 +45,9 @@
 @interface GTLMapsEngineZoomLevels : GTLObject
 
 // Maximum zoom level.
-@property (retain) NSNumber *max;  // intValue
+@property (nonatomic, retain) NSNumber *max;  // intValue
 
 // Minimum zoom level.
-@property (retain) NSNumber *min;  // intValue
+@property (nonatomic, retain) NSNumber *min;  // intValue
 
 @end

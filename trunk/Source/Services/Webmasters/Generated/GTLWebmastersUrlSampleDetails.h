@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,9 +44,9 @@
 @interface GTLWebmastersUrlSampleDetails : GTLObject
 
 // List of sitemaps pointing at this URL.
-@property (retain) NSArray *containingSitemaps;  // of NSString
+@property (nonatomic, retain) NSArray *containingSitemaps;  // of NSString
 
 // A sample set of URLs linking to this URL.
-@property (retain) NSArray *linkedFromUrls;  // of NSString
+@property (nonatomic, retain) NSArray *linkedFromUrls;  // of NSString
 
 @end

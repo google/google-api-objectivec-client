@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,15 +44,15 @@
 @interface GTLGmailProfile : GTLObject
 
 // The user's email address.
-@property (copy) NSString *emailAddress;
+@property (nonatomic, copy) NSString *emailAddress;
 
 // The ID of the mailbox's current history record.
-@property (retain) NSNumber *historyId;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *historyId;  // unsignedLongLongValue
 
 // The total number of messages in the mailbox.
-@property (retain) NSNumber *messagesTotal;  // intValue
+@property (nonatomic, retain) NSNumber *messagesTotal;  // intValue
 
 // The total number of threads in the mailbox.
-@property (retain) NSNumber *threadsTotal;  // intValue
+@property (nonatomic, retain) NSNumber *threadsTotal;  // intValue
 
 @end

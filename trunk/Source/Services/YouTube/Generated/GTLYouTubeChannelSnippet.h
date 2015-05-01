@@ -47,28 +47,28 @@
 @interface GTLYouTubeChannelSnippet : GTLObject
 
 // The country of the channel.
-@property (copy) NSString *country;
+@property (nonatomic, copy) NSString *country;
 
 // The language of the channel's default title and description.
-@property (copy) NSString *defaultLanguage;
+@property (nonatomic, copy) NSString *defaultLanguage;
 
 // The description of the channel.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (copy) NSString *descriptionProperty;
+@property (nonatomic, copy) NSString *descriptionProperty;
 
 // Localized title and description, read-only.
-@property (retain) GTLYouTubeChannelLocalization *localized;
+@property (nonatomic, retain) GTLYouTubeChannelLocalization *localized;
 
 // The date and time that the channel was created. The value is specified in ISO
 // 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-@property (retain) GTLDateTime *publishedAt;
+@property (nonatomic, retain) GTLDateTime *publishedAt;
 
 // A map of thumbnail images associated with the channel. For each object in the
 // map, the key is the name of the thumbnail image, and the value is an object
 // that contains other information about the thumbnail.
-@property (retain) GTLYouTubeThumbnailDetails *thumbnails;
+@property (nonatomic, retain) GTLYouTubeThumbnailDetails *thumbnails;
 
 // The channel's title.
-@property (copy) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 @end

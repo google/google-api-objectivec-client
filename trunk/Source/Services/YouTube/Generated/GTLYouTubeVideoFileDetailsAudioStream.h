@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,16 +44,16 @@
 @interface GTLYouTubeVideoFileDetailsAudioStream : GTLObject
 
 // The audio stream's bitrate, in bits per second.
-@property (retain) NSNumber *bitrateBps;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *bitrateBps;  // unsignedLongLongValue
 
 // The number of audio channels that the stream contains.
-@property (retain) NSNumber *channelCount;  // unsignedIntValue
+@property (nonatomic, retain) NSNumber *channelCount;  // unsignedIntValue
 
 // The audio codec that the stream uses.
-@property (copy) NSString *codec;
+@property (nonatomic, copy) NSString *codec;
 
 // A value that uniquely identifies a video vendor. Typically, the value is a
 // four-letter vendor code.
-@property (copy) NSString *vendor;
+@property (nonatomic, copy) NSString *vendor;
 
 @end

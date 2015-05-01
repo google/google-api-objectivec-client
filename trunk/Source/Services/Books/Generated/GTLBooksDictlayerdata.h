@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -75,9 +75,9 @@
 //
 
 @interface GTLBooksDictlayerdata : GTLObject
-@property (retain) GTLBooksDictlayerdataCommon *common;
-@property (retain) GTLBooksDictlayerdataDict *dict;
-@property (copy) NSString *kind;
+@property (nonatomic, retain) GTLBooksDictlayerdataCommon *common;
+@property (nonatomic, retain) GTLBooksDictlayerdataDict *dict;
+@property (nonatomic, copy) NSString *kind;
 @end
 
 
@@ -90,7 +90,7 @@
 
 // The display title and localized canonical name to use when searching for this
 // entity on Google search.
-@property (copy) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 @end
 
@@ -103,9 +103,9 @@
 @interface GTLBooksDictlayerdataDict : GTLObject
 
 // The source, url and attribution for this dictionary data.
-@property (retain) GTLBooksDictlayerdataDictSource *source;
+@property (nonatomic, retain) GTLBooksDictlayerdataDictSource *source;
 
-@property (retain) NSArray *words;  // of GTLBooksDictlayerdataDictWordsItem
+@property (nonatomic, retain) NSArray *words;  // of GTLBooksDictlayerdataDictWordsItem
 @end
 
 
@@ -115,8 +115,8 @@
 //
 
 @interface GTLBooksDictlayerdataDictSource : GTLObject
-@property (copy) NSString *attribution;
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *attribution;
+@property (nonatomic, copy) NSString *url;
 @end
 
 
@@ -126,13 +126,13 @@
 //
 
 @interface GTLBooksDictlayerdataDictWordsItem : GTLObject
-@property (retain) NSArray *derivatives;  // of GTLBooksDictlayerdataDictWordsItemDerivativesItem
-@property (retain) NSArray *examples;  // of GTLBooksDictlayerdataDictWordsItemExamplesItem
-@property (retain) NSArray *senses;  // of GTLBooksDictlayerdataDictWordsItemSensesItem
+@property (nonatomic, retain) NSArray *derivatives;  // of GTLBooksDictlayerdataDictWordsItemDerivativesItem
+@property (nonatomic, retain) NSArray *examples;  // of GTLBooksDictlayerdataDictWordsItemExamplesItem
+@property (nonatomic, retain) NSArray *senses;  // of GTLBooksDictlayerdataDictWordsItemSensesItem
 
 // The words with different meanings but not related words, e.g. "go" (game) and
 // "go" (verb).
-@property (retain) GTLBooksDictlayerdataDictWordsItemSource *source;
+@property (nonatomic, retain) GTLBooksDictlayerdataDictWordsItemSource *source;
 
 @end
 
@@ -143,8 +143,8 @@
 //
 
 @interface GTLBooksDictlayerdataDictWordsItemDerivativesItem : GTLObject
-@property (retain) GTLBooksDictlayerdataDictWordsItemDerivativesItemSource *source;
-@property (copy) NSString *text;
+@property (nonatomic, retain) GTLBooksDictlayerdataDictWordsItemDerivativesItemSource *source;
+@property (nonatomic, copy) NSString *text;
 @end
 
 
@@ -154,8 +154,8 @@
 //
 
 @interface GTLBooksDictlayerdataDictWordsItemExamplesItem : GTLObject
-@property (retain) GTLBooksDictlayerdataDictWordsItemExamplesItemSource *source;
-@property (copy) NSString *text;
+@property (nonatomic, retain) GTLBooksDictlayerdataDictWordsItemExamplesItemSource *source;
+@property (nonatomic, copy) NSString *text;
 @end
 
 
@@ -165,14 +165,14 @@
 //
 
 @interface GTLBooksDictlayerdataDictWordsItemSensesItem : GTLObject
-@property (retain) NSArray *conjugations;  // of GTLBooksDictlayerdataDictWordsItemSensesItemConjugationsItem
-@property (retain) NSArray *definitions;  // of GTLBooksDictlayerdataDictWordsItemSensesItemDefinitionsItem
-@property (copy) NSString *partOfSpeech;
-@property (copy) NSString *pronunciation;
-@property (copy) NSString *pronunciationUrl;
-@property (retain) GTLBooksDictlayerdataDictWordsItemSensesItemSource *source;
-@property (copy) NSString *syllabification;
-@property (retain) NSArray *synonyms;  // of GTLBooksDictlayerdataDictWordsItemSensesItemSynonymsItem
+@property (nonatomic, retain) NSArray *conjugations;  // of GTLBooksDictlayerdataDictWordsItemSensesItemConjugationsItem
+@property (nonatomic, retain) NSArray *definitions;  // of GTLBooksDictlayerdataDictWordsItemSensesItemDefinitionsItem
+@property (nonatomic, copy) NSString *partOfSpeech;
+@property (nonatomic, copy) NSString *pronunciation;
+@property (nonatomic, copy) NSString *pronunciationUrl;
+@property (nonatomic, retain) GTLBooksDictlayerdataDictWordsItemSensesItemSource *source;
+@property (nonatomic, copy) NSString *syllabification;
+@property (nonatomic, retain) NSArray *synonyms;  // of GTLBooksDictlayerdataDictWordsItemSensesItemSynonymsItem
 @end
 
 
@@ -182,8 +182,8 @@
 //
 
 @interface GTLBooksDictlayerdataDictWordsItemSource : GTLObject
-@property (copy) NSString *attribution;
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *attribution;
+@property (nonatomic, copy) NSString *url;
 @end
 
 
@@ -193,8 +193,8 @@
 //
 
 @interface GTLBooksDictlayerdataDictWordsItemDerivativesItemSource : GTLObject
-@property (copy) NSString *attribution;
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *attribution;
+@property (nonatomic, copy) NSString *url;
 @end
 
 
@@ -204,8 +204,8 @@
 //
 
 @interface GTLBooksDictlayerdataDictWordsItemExamplesItemSource : GTLObject
-@property (copy) NSString *attribution;
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *attribution;
+@property (nonatomic, copy) NSString *url;
 @end
 
 
@@ -215,8 +215,8 @@
 //
 
 @interface GTLBooksDictlayerdataDictWordsItemSensesItemConjugationsItem : GTLObject
-@property (copy) NSString *type;
-@property (copy) NSString *value;
+@property (nonatomic, copy) NSString *type;
+@property (nonatomic, copy) NSString *value;
 @end
 
 
@@ -226,8 +226,8 @@
 //
 
 @interface GTLBooksDictlayerdataDictWordsItemSensesItemDefinitionsItem : GTLObject
-@property (copy) NSString *definition;
-@property (retain) NSArray *examples;  // of GTLBooksDictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem
+@property (nonatomic, copy) NSString *definition;
+@property (nonatomic, retain) NSArray *examples;  // of GTLBooksDictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem
 @end
 
 
@@ -237,8 +237,8 @@
 //
 
 @interface GTLBooksDictlayerdataDictWordsItemSensesItemSource : GTLObject
-@property (copy) NSString *attribution;
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *attribution;
+@property (nonatomic, copy) NSString *url;
 @end
 
 
@@ -248,8 +248,8 @@
 //
 
 @interface GTLBooksDictlayerdataDictWordsItemSensesItemSynonymsItem : GTLObject
-@property (retain) GTLBooksDictlayerdataDictWordsItemSensesItemSynonymsItemSource *source;
-@property (copy) NSString *text;
+@property (nonatomic, retain) GTLBooksDictlayerdataDictWordsItemSensesItemSynonymsItemSource *source;
+@property (nonatomic, copy) NSString *text;
 @end
 
 
@@ -259,8 +259,8 @@
 //
 
 @interface GTLBooksDictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem : GTLObject
-@property (retain) GTLBooksDictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemSource *source;
-@property (copy) NSString *text;
+@property (nonatomic, retain) GTLBooksDictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemSource *source;
+@property (nonatomic, copy) NSString *text;
 @end
 
 
@@ -270,8 +270,8 @@
 //
 
 @interface GTLBooksDictlayerdataDictWordsItemSensesItemSynonymsItemSource : GTLObject
-@property (copy) NSString *attribution;
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *attribution;
+@property (nonatomic, copy) NSString *url;
 @end
 
 
@@ -281,6 +281,6 @@
 //
 
 @interface GTLBooksDictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemSource : GTLObject
-@property (copy) NSString *attribution;
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *attribution;
+@property (nonatomic, copy) NSString *url;
 @end

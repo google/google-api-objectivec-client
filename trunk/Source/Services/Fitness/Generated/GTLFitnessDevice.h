@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -54,21 +54,21 @@
 @interface GTLFitnessDevice : GTLObject
 
 // Manufacturer of the product/hardware.
-@property (copy) NSString *manufacturer;
+@property (nonatomic, copy) NSString *manufacturer;
 
 // End-user visible model name for the device.
-@property (copy) NSString *model;
+@property (nonatomic, copy) NSString *model;
 
 // A constant representing the type of the device.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 // The serial number or other unique ID for the hardware. This field is
 // obfuscated when read by any REST or Android client that did not create the
 // data source. Only the data source creator will see the uid field in clear and
 // normal form.
-@property (copy) NSString *uid;
+@property (nonatomic, copy) NSString *uid;
 
 // Version string for the device hardware/software.
-@property (copy) NSString *version;
+@property (nonatomic, copy) NSString *version;
 
 @end

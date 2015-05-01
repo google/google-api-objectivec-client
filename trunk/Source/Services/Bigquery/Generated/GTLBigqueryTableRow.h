@@ -44,5 +44,5 @@
 // Represents a single row in the result set, consisting of one or more fields.
 
 @interface GTLBigqueryTableRow : GTLObject
-@property (retain) NSArray *f;  // of GTLBigqueryTableCell
+@property (nonatomic, retain) NSArray *f;  // of GTLBigqueryTableCell
 @end

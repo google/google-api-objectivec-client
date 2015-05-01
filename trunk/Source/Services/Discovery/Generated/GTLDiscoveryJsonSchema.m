@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,24 +47,22 @@
          readOnly, repeated, required, type, variant;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"additionalProperties", @"additionalPropertiesProperty",
-      @"default", @"defaultProperty",
-      @"description", @"descriptionProperty",
-      @"enum", @"enumProperty",
-      @"id", @"identifier",
-      @"$ref", @"xRef",
-      nil];
+  NSDictionary *map = @{
+    @"additionalPropertiesProperty" : @"additionalProperties",
+    @"defaultProperty" : @"default",
+    @"descriptionProperty" : @"description",
+    @"enumProperty" : @"enum",
+    @"identifier" : @"id",
+    @"xRef" : @"$ref"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSString class], @"enum",
-      [NSString class], @"enumDescriptions",
-      nil];
+  NSDictionary *map = @{
+    @"enum" : [NSString class],
+    @"enumDescriptions" : [NSString class]
+  };
   return map;
 }
 
@@ -80,9 +78,9 @@
 @dynamic required;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[NSString class]
-                                forKey:@"required"];
+  NSDictionary *map = @{
+    @"required" : [NSString class]
+  };
   return map;
 }
 
@@ -112,9 +110,9 @@
 @dynamic discriminant, map;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLDiscoveryJsonSchemaVariantMapItem class]
-                                forKey:@"map"];
+  NSDictionary *map = @{
+    @"map" : [GTLDiscoveryJsonSchemaVariantMapItem class]
+  };
   return map;
 }
 
@@ -130,11 +128,10 @@
 @dynamic xRef, typeValue;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"type_value", @"typeValue",
-      @"$ref", @"xRef",
-      nil];
+  NSDictionary *map = @{
+    @"typeValue" : @"type_value",
+    @"xRef" : @"$ref"
+  };
   return map;
 }
 

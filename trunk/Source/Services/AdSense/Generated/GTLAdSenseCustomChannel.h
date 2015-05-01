@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,21 +46,21 @@
 @interface GTLAdSenseCustomChannel : GTLObject
 
 // Code of this custom channel, not necessarily unique across ad clients.
-@property (copy) NSString *code;
+@property (nonatomic, copy) NSString *code;
 
 // Unique identifier of this custom channel. This should be considered an opaque
 // identifier; it is not safe to rely on it being in any particular format.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Kind of resource this is, in this case adsense#customChannel.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Name of this custom channel.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // The targeting information of this custom channel, if activated.
-@property (retain) GTLAdSenseCustomChannelTargetingInfo *targetingInfo;
+@property (nonatomic, retain) GTLAdSenseCustomChannelTargetingInfo *targetingInfo;
 
 @end
 
@@ -73,20 +73,20 @@
 @interface GTLAdSenseCustomChannelTargetingInfo : GTLObject
 
 // The name used to describe this channel externally.
-@property (copy) NSString *adsAppearOn;
+@property (nonatomic, copy) NSString *adsAppearOn;
 
 // The external description of the channel.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (copy) NSString *descriptionProperty;
+@property (nonatomic, copy) NSString *descriptionProperty;
 
 // The locations in which ads appear. (Only valid for content and mobile content
 // ads). Acceptable values for content ads are: TOP_LEFT, TOP_CENTER, TOP_RIGHT,
 // MIDDLE_LEFT, MIDDLE_CENTER, MIDDLE_RIGHT, BOTTOM_LEFT, BOTTOM_CENTER,
 // BOTTOM_RIGHT, MULTIPLE_LOCATIONS. Acceptable values for mobile content ads
 // are: TOP, MIDDLE, BOTTOM, MULTIPLE_LOCATIONS.
-@property (copy) NSString *location;
+@property (nonatomic, copy) NSString *location;
 
 // The language of the sites ads will be displayed on.
-@property (copy) NSString *siteLanguage;
+@property (nonatomic, copy) NSString *siteLanguage;
 
 @end

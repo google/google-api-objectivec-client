@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,9 +44,9 @@
 @interface GTLWebmastersUrlCrawlErrorCount : GTLObject
 
 // The error count at the given timestamp.
-@property (retain) NSNumber *count;  // longLongValue
+@property (nonatomic, retain) NSNumber *count;  // longLongValue
 
 // The time (well, date) when errors were detected, in RFC 3339 format.
-@property (retain) GTLDateTime *timestamp;
+@property (nonatomic, retain) GTLDateTime *timestamp;
 
 @end

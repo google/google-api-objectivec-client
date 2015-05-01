@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,19 +49,19 @@
 @interface GTLCalendarFreeBusyResponse : GTLObject
 
 // List of free/busy information for calendars.
-@property (retain) GTLCalendarFreeBusyResponseCalendars *calendars;
+@property (nonatomic, retain) GTLCalendarFreeBusyResponseCalendars *calendars;
 
 // Expansion of groups.
-@property (retain) GTLCalendarFreeBusyResponseGroups *groups;
+@property (nonatomic, retain) GTLCalendarFreeBusyResponseGroups *groups;
 
 // Type of the resource ("calendar#freeBusy").
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The end of the interval.
-@property (retain) GTLDateTime *timeMax;
+@property (nonatomic, retain) GTLDateTime *timeMax;
 
 // The start of the interval.
-@property (retain) GTLDateTime *timeMin;
+@property (nonatomic, retain) GTLDateTime *timeMin;
 
 @end
 

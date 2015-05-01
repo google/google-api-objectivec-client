@@ -49,18 +49,18 @@
 // basic information. For full information about a particular dataset resource,
 // use the Datasets: get method. This property is omitted when there are no
 // datasets in the project.
-@property (retain) NSArray *datasets;  // of GTLBigqueryDatasetListDatasetsItem
+@property (nonatomic, retain) NSArray *datasets;  // of GTLBigqueryDatasetListDatasetsItem
 
 // A hash value of the results page. You can use this property to determine if
 // the page has changed since the last request.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The list type. This property always returns the value "bigquery#datasetList".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // A token that can be used to request the next results page. This property is
 // omitted on the final results page.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 @end
 
@@ -74,16 +74,16 @@
 
 // The dataset reference. Use this property to access specific parts of the
 // dataset's ID, such as project ID or dataset ID.
-@property (retain) GTLBigqueryDatasetReference *datasetReference;
+@property (nonatomic, retain) GTLBigqueryDatasetReference *datasetReference;
 
 // A descriptive name for the dataset, if one exists.
-@property (copy) NSString *friendlyName;
+@property (nonatomic, copy) NSString *friendlyName;
 
 // The fully-qualified, unique, opaque ID of the dataset.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The resource type. This property always returns the value "bigquery#dataset".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 @end

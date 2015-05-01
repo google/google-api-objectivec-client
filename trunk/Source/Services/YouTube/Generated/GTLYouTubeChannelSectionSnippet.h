@@ -47,24 +47,24 @@
 
 // The ID that YouTube uses to uniquely identify the channel that published the
 // channel section.
-@property (copy) NSString *channelId;
+@property (nonatomic, copy) NSString *channelId;
 
 // The language of the channel section's default title and description.
-@property (copy) NSString *defaultLanguage;
+@property (nonatomic, copy) NSString *defaultLanguage;
 
 // Localized title, read-only.
-@property (retain) GTLYouTubeChannelSectionLocalization *localized;
+@property (nonatomic, retain) GTLYouTubeChannelSectionLocalization *localized;
 
 // The position of the channel section in the channel.
-@property (retain) NSNumber *position;  // unsignedIntValue
+@property (nonatomic, retain) NSNumber *position;  // unsignedIntValue
 
 // The style of the channel section.
-@property (copy) NSString *style;
+@property (nonatomic, copy) NSString *style;
 
 // The channel section's title for multiple_playlists and multiple_channels.
-@property (copy) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 // The type of the channel section.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,17 +43,17 @@
 @interface GTLAdSenseHostCustomChannel : GTLObject
 
 // Code of this custom channel, not necessarily unique across ad clients.
-@property (copy) NSString *code;
+@property (nonatomic, copy) NSString *code;
 
 // Unique identifier of this custom channel. This should be considered an opaque
 // identifier; it is not safe to rely on it being in any particular format.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Kind of resource this is, in this case adsensehost#customChannel.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Name of this custom channel.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 @end

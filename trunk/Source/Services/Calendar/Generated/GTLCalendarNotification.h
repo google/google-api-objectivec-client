@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,7 +45,7 @@
 // - "email" - Reminders are sent via email.
 // - "sms" - Reminders are sent via SMS. This value is read-only and is ignored
 // on inserts and updates.
-@property (copy) NSString *method;
+@property (nonatomic, copy) NSString *method;
 
 // The type of notification. Possible values are:
 // - "eventCreation" - Notification sent when a new event is put on the
@@ -54,6 +54,6 @@
 // - "eventCancellation" - Notification sent when an event is cancelled.
 // - "eventResponse" - Notification sent when an event is changed.
 // - "agenda" - An agenda with the events of the day (sent out in the morning).
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end

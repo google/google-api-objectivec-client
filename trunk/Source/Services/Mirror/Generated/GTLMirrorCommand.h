@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,6 +48,6 @@
 // from the "Take a note" voice menu command.
 // - POST_AN_UPDATE - Shares a timeline item with the transcription of user
 // speech from the "Post an update" voice menu command.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end

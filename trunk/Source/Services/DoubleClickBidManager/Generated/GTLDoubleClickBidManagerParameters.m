@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,12 +41,11 @@
 @dynamic filters, groupBys, includeInviteData, metrics, type;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [GTLDoubleClickBidManagerFilterPair class], @"filters",
-      [NSString class], @"groupBys",
-      [NSString class], @"metrics",
-      nil];
+  NSDictionary *map = @{
+    @"filters" : [GTLDoubleClickBidManagerFilterPair class],
+    @"groupBys" : [NSString class],
+    @"metrics" : [NSString class]
+  };
   return map;
 }
 

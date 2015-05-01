@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,55 +50,55 @@
 
 // A region of the document represented as a JSON string. See anchor
 // documentation for details on how to define and interpret anchor properties.
-@property (copy) NSString *anchor;
+@property (nonatomic, copy) NSString *anchor;
 
 // The user who wrote this comment.
-@property (retain) GTLDriveUser *author;
+@property (nonatomic, retain) GTLDriveUser *author;
 
 // The ID of the comment.
-@property (copy) NSString *commentId;
+@property (nonatomic, copy) NSString *commentId;
 
 // The plain text content used to create this comment. This is not HTML safe and
 // should only be used as a starting point to make edits to a comment's content.
-@property (copy) NSString *content;
+@property (nonatomic, copy) NSString *content;
 
 // The context of the file which is being commented on.
-@property (retain) GTLDriveCommentContext *context;
+@property (nonatomic, retain) GTLDriveCommentContext *context;
 
 // The date when this comment was first created.
-@property (retain) GTLDateTime *createdDate;
+@property (nonatomic, retain) GTLDateTime *createdDate;
 
 // Whether this comment has been deleted. If a comment has been deleted the
 // content will be cleared and this will only represent a comment that once
 // existed.
-@property (retain) NSNumber *deleted;  // boolValue
+@property (nonatomic, retain) NSNumber *deleted;  // boolValue
 
 // The file which this comment is addressing.
-@property (copy) NSString *fileId;
+@property (nonatomic, copy) NSString *fileId;
 
 // The title of the file which this comment is addressing.
-@property (copy) NSString *fileTitle;
+@property (nonatomic, copy) NSString *fileTitle;
 
 // HTML formatted content for this comment.
-@property (copy) NSString *htmlContent;
+@property (nonatomic, copy) NSString *htmlContent;
 
 // This is always drive#comment.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The date when this comment or any of its replies were last modified.
-@property (retain) GTLDateTime *modifiedDate;
+@property (nonatomic, retain) GTLDateTime *modifiedDate;
 
 // Replies to this post.
-@property (retain) NSArray *replies;  // of GTLDriveCommentReply
+@property (nonatomic, retain) NSArray *replies;  // of GTLDriveCommentReply
 
 // A link back to this comment.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // The status of this comment. Status can be changed by posting a reply to a
 // comment with the desired status.
 // - "open" - The comment is still open.
 // - "resolved" - The comment has been resolved by one of its replies.
-@property (copy) NSString *status;
+@property (nonatomic, copy) NSString *status;
 
 @end
 
@@ -111,11 +111,11 @@
 @interface GTLDriveCommentContext : GTLObject
 
 // The MIME type of the context snippet.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 // Data representation of the segment of the file being commented on. In the
 // case of a text file for example, this would be the actual text that the
 // comment is about.
-@property (copy) NSString *value;
+@property (nonatomic, copy) NSString *value;
 
 @end

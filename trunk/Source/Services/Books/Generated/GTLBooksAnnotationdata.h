@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,31 +42,31 @@
 @interface GTLBooksAnnotationdata : GTLObject
 
 // The type of annotation this data is for.
-@property (copy) NSString *annotationType;
+@property (nonatomic, copy) NSString *annotationType;
 
-@property (retain) id data;
+@property (nonatomic, retain) id data;
 
 // Base64 encoded data for this annotation data.
-@property (copy) NSString *encodedData;  // GTLBase64 can encode/decode (probably web-safe format)
+@property (nonatomic, copy) NSString *encodedData;  // GTLBase64 can encode/decode (probably web-safe format)
 
 // Unique id for this annotation data.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Resource Type
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The Layer id for this data. *
-@property (copy) NSString *layerId;
+@property (nonatomic, copy) NSString *layerId;
 
 // URL for this resource. *
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // Timestamp for the last time this data was updated. (RFC 3339 UTC date-time
 // format).
-@property (retain) GTLDateTime *updated;
+@property (nonatomic, retain) GTLDateTime *updated;
 
 // The volume id for this data. *
-@property (copy) NSString *volumeId;
+@property (nonatomic, copy) NSString *volumeId;
 
 @end

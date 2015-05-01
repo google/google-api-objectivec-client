@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,13 +44,13 @@
 @interface GTLYouTubeChannelBannerResource : GTLObject
 
 // Etag of this resource.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // Identifies what kind of resource this is. Value: the fixed string
 // "youtube#channelBannerResource".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The URL of this banner image.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 @end

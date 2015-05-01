@@ -48,44 +48,44 @@
 @interface GTLYouTubeVideoSnippet : GTLObject
 
 // The YouTube video category associated with the video.
-@property (copy) NSString *categoryId;
+@property (nonatomic, copy) NSString *categoryId;
 
 // The ID that YouTube uses to uniquely identify the channel that the video was
 // uploaded to.
-@property (copy) NSString *channelId;
+@property (nonatomic, copy) NSString *channelId;
 
 // Channel title for the channel that the video belongs to.
-@property (copy) NSString *channelTitle;
+@property (nonatomic, copy) NSString *channelTitle;
 
 // The language of the videos's default snippet.
-@property (copy) NSString *defaultLanguage;
+@property (nonatomic, copy) NSString *defaultLanguage;
 
 // The video's description.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (copy) NSString *descriptionProperty;
+@property (nonatomic, copy) NSString *descriptionProperty;
 
 // Indicates if the video is an upcoming/active live broadcast. Or it's "none"
 // if the video is not an upcoming/active live broadcast.
-@property (copy) NSString *liveBroadcastContent;
+@property (nonatomic, copy) NSString *liveBroadcastContent;
 
 // Localized snippet selected with the hl parameter. If no such localization
 // exists, this field is populated with the default snippet. (Read-only)
-@property (retain) GTLYouTubeVideoLocalization *localized;
+@property (nonatomic, retain) GTLYouTubeVideoLocalization *localized;
 
 // The date and time that the video was uploaded. The value is specified in ISO
 // 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-@property (retain) GTLDateTime *publishedAt;
+@property (nonatomic, retain) GTLDateTime *publishedAt;
 
 // A list of keyword tags associated with the video. Tags may contain spaces.
 // This field is only visible to the video's uploader.
-@property (retain) NSArray *tags;  // of NSString
+@property (nonatomic, retain) NSArray *tags;  // of NSString
 
 // A map of thumbnail images associated with the video. For each object in the
 // map, the key is the name of the thumbnail image, and the value is an object
 // that contains other information about the thumbnail.
-@property (retain) GTLYouTubeThumbnailDetails *thumbnails;
+@property (nonatomic, retain) GTLYouTubeThumbnailDetails *thumbnails;
 
 // The video's title.
-@property (copy) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 @end

@@ -48,42 +48,42 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (copy) NSString *fields;
+@property (nonatomic, copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (assign) BOOL alwaysIncludeEmail;
-@property (assign) NSInteger calendarExpansionMax;
-@property (copy) NSString *calendarId;
-@property (assign) BOOL colorRgbFormat;
-@property (copy) NSString *destination;
-@property (copy) NSString *eventId;
-@property (assign) NSInteger groupExpansionMax;
-@property (copy) NSString *iCalUID;
-@property (retain) NSArray *items;  // of GTLCalendarFreeBusyRequestItem
-@property (assign) NSInteger maxAttendees;
-@property (assign) NSInteger maxResults;
-@property (copy) NSString *minAccessRole;
-@property (copy) NSString *orderBy;
-@property (copy) NSString *originalStart;
-@property (copy) NSString *pageToken;
-@property (retain) NSArray *privateExtendedProperty;  // of NSString
-@property (copy) NSString *q;
-@property (copy) NSString *ruleId;
-@property (assign) BOOL sendNotifications;
-@property (copy) NSString *setting;
-@property (retain) NSArray *sharedExtendedProperty;  // of NSString
-@property (assign) BOOL showDeleted;
-@property (assign) BOOL showHidden;
-@property (assign) BOOL showHiddenInvitations;
-@property (assign) BOOL singleEvents;
-@property (copy) NSString *syncToken;
-@property (copy) NSString *text;
-@property (retain) GTLDateTime *timeMax;
-@property (retain) GTLDateTime *timeMin;
-@property (copy) NSString *timeZone;
-@property (retain) GTLDateTime *updatedMin;
+@property (nonatomic, assign) BOOL alwaysIncludeEmail;
+@property (nonatomic, assign) NSInteger calendarExpansionMax;
+@property (nonatomic, copy) NSString *calendarId;
+@property (nonatomic, assign) BOOL colorRgbFormat;
+@property (nonatomic, copy) NSString *destination;
+@property (nonatomic, copy) NSString *eventId;
+@property (nonatomic, assign) NSInteger groupExpansionMax;
+@property (nonatomic, copy) NSString *iCalUID;
+@property (nonatomic, retain) NSArray *items;  // of GTLCalendarFreeBusyRequestItem
+@property (nonatomic, assign) NSInteger maxAttendees;
+@property (nonatomic, assign) NSInteger maxResults;
+@property (nonatomic, copy) NSString *minAccessRole;
+@property (nonatomic, copy) NSString *orderBy;
+@property (nonatomic, copy) NSString *originalStart;
+@property (nonatomic, copy) NSString *pageToken;
+@property (nonatomic, retain) NSArray *privateExtendedProperty;  // of NSString
+@property (nonatomic, copy) NSString *q;
+@property (nonatomic, copy) NSString *ruleId;
+@property (nonatomic, assign) BOOL sendNotifications;
+@property (nonatomic, copy) NSString *setting;
+@property (nonatomic, retain) NSArray *sharedExtendedProperty;  // of NSString
+@property (nonatomic, assign) BOOL showDeleted;
+@property (nonatomic, assign) BOOL showHidden;
+@property (nonatomic, assign) BOOL showHiddenInvitations;
+@property (nonatomic, assign) BOOL singleEvents;
+@property (nonatomic, copy) NSString *syncToken;
+@property (nonatomic, copy) NSString *text;
+@property (nonatomic, retain) GTLDateTime *timeMax;
+@property (nonatomic, retain) GTLDateTime *timeMin;
+@property (nonatomic, copy) NSString *timeZone;
+@property (nonatomic, retain) GTLDateTime *updatedMin;
 
 #pragma mark -
 #pragma mark "acl" methods
@@ -96,8 +96,8 @@
 //   ruleId: ACL rule identifier.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
-+ (id)queryForAclDeleteWithCalendarId:(NSString *)calendarId
-                               ruleId:(NSString *)ruleId;
++ (instancetype)queryForAclDeleteWithCalendarId:(NSString *)calendarId
+                                         ruleId:(NSString *)ruleId;
 
 // Method: calendar.acl.get
 // Returns an access control rule.
@@ -108,8 +108,8 @@
 //   kGTLAuthScopeCalendar
 //   kGTLAuthScopeCalendarReadonly
 // Fetches a GTLCalendarAclRule.
-+ (id)queryForAclGetWithCalendarId:(NSString *)calendarId
-                            ruleId:(NSString *)ruleId;
++ (instancetype)queryForAclGetWithCalendarId:(NSString *)calendarId
+                                      ruleId:(NSString *)ruleId;
 
 // Method: calendar.acl.insert
 // Creates an access control rule.
@@ -118,8 +118,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarAclRule.
-+ (id)queryForAclInsertWithObject:(GTLCalendarAclRule *)object
-                       calendarId:(NSString *)calendarId;
++ (instancetype)queryForAclInsertWithObject:(GTLCalendarAclRule *)object
+                                 calendarId:(NSString *)calendarId;
 
 // Method: calendar.acl.list
 // Returns the rules in the access control list for the calendar.
@@ -146,7 +146,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarAcl.
-+ (id)queryForAclListWithCalendarId:(NSString *)calendarId;
++ (instancetype)queryForAclListWithCalendarId:(NSString *)calendarId;
 
 // Method: calendar.acl.patch
 // Updates an access control rule. This method supports patch semantics.
@@ -156,9 +156,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarAclRule.
-+ (id)queryForAclPatchWithObject:(GTLCalendarAclRule *)object
-                      calendarId:(NSString *)calendarId
-                          ruleId:(NSString *)ruleId;
++ (instancetype)queryForAclPatchWithObject:(GTLCalendarAclRule *)object
+                                calendarId:(NSString *)calendarId
+                                    ruleId:(NSString *)ruleId;
 
 // Method: calendar.acl.update
 // Updates an access control rule.
@@ -168,9 +168,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarAclRule.
-+ (id)queryForAclUpdateWithObject:(GTLCalendarAclRule *)object
-                       calendarId:(NSString *)calendarId
-                           ruleId:(NSString *)ruleId;
++ (instancetype)queryForAclUpdateWithObject:(GTLCalendarAclRule *)object
+                                 calendarId:(NSString *)calendarId
+                                     ruleId:(NSString *)ruleId;
 
 // Method: calendar.acl.watch
 // Watch for changes to ACL resources.
@@ -197,8 +197,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarChannel.
-+ (id)queryForAclWatchWithObject:(GTLCalendarChannel *)object
-                      calendarId:(NSString *)calendarId;
++ (instancetype)queryForAclWatchWithObject:(GTLCalendarChannel *)object
+                                calendarId:(NSString *)calendarId;
 
 #pragma mark -
 #pragma mark "calendarList" methods
@@ -210,7 +210,7 @@
 //   calendarId: Calendar identifier.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
-+ (id)queryForCalendarListDeleteWithCalendarId:(NSString *)calendarId;
++ (instancetype)queryForCalendarListDeleteWithCalendarId:(NSString *)calendarId;
 
 // Method: calendar.calendarList.get
 // Returns an entry on the user's calendar list.
@@ -220,7 +220,7 @@
 //   kGTLAuthScopeCalendar
 //   kGTLAuthScopeCalendarReadonly
 // Fetches a GTLCalendarCalendarListEntry.
-+ (id)queryForCalendarListGetWithCalendarId:(NSString *)calendarId;
++ (instancetype)queryForCalendarListGetWithCalendarId:(NSString *)calendarId;
 
 // Method: calendar.calendarList.insert
 // Adds an entry to the user's calendar list.
@@ -232,7 +232,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarCalendarListEntry.
-+ (id)queryForCalendarListInsertWithObject:(GTLCalendarCalendarListEntry *)object;
++ (instancetype)queryForCalendarListInsertWithObject:(GTLCalendarCalendarListEntry *)object;
 
 // Method: calendar.calendarList.list
 // Returns entries on the user's calendar list.
@@ -271,7 +271,7 @@
 //   kGTLAuthScopeCalendar
 //   kGTLAuthScopeCalendarReadonly
 // Fetches a GTLCalendarCalendarList.
-+ (id)queryForCalendarListList;
++ (instancetype)queryForCalendarListList;
 
 // Method: calendar.calendarList.patch
 // Updates an entry on the user's calendar list. This method supports patch
@@ -286,8 +286,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarCalendarListEntry.
-+ (id)queryForCalendarListPatchWithObject:(GTLCalendarCalendarListEntry *)object
-                               calendarId:(NSString *)calendarId;
++ (instancetype)queryForCalendarListPatchWithObject:(GTLCalendarCalendarListEntry *)object
+                                         calendarId:(NSString *)calendarId;
 
 // Method: calendar.calendarList.update
 // Updates an entry on the user's calendar list.
@@ -301,8 +301,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarCalendarListEntry.
-+ (id)queryForCalendarListUpdateWithObject:(GTLCalendarCalendarListEntry *)object
-                                calendarId:(NSString *)calendarId;
++ (instancetype)queryForCalendarListUpdateWithObject:(GTLCalendarCalendarListEntry *)object
+                                          calendarId:(NSString *)calendarId;
 
 // Method: calendar.calendarList.watch
 // Watch for changes to CalendarList resources.
@@ -341,7 +341,7 @@
 //   kGTLAuthScopeCalendar
 //   kGTLAuthScopeCalendarReadonly
 // Fetches a GTLCalendarChannel.
-+ (id)queryForCalendarListWatchWithObject:(GTLCalendarChannel *)object;
++ (instancetype)queryForCalendarListWatchWithObject:(GTLCalendarChannel *)object;
 
 #pragma mark -
 #pragma mark "calendars" methods
@@ -354,7 +354,7 @@
 //   calendarId: Calendar identifier.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
-+ (id)queryForCalendarsClearWithCalendarId:(NSString *)calendarId;
++ (instancetype)queryForCalendarsClearWithCalendarId:(NSString *)calendarId;
 
 // Method: calendar.calendars.delete
 // Deletes a secondary calendar. Use calendars.clear for clearing all events on
@@ -363,7 +363,7 @@
 //   calendarId: Calendar identifier.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
-+ (id)queryForCalendarsDeleteWithCalendarId:(NSString *)calendarId;
++ (instancetype)queryForCalendarsDeleteWithCalendarId:(NSString *)calendarId;
 
 // Method: calendar.calendars.get
 // Returns metadata for a calendar.
@@ -373,14 +373,14 @@
 //   kGTLAuthScopeCalendar
 //   kGTLAuthScopeCalendarReadonly
 // Fetches a GTLCalendarCalendar.
-+ (id)queryForCalendarsGetWithCalendarId:(NSString *)calendarId;
++ (instancetype)queryForCalendarsGetWithCalendarId:(NSString *)calendarId;
 
 // Method: calendar.calendars.insert
 // Creates a secondary calendar.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarCalendar.
-+ (id)queryForCalendarsInsertWithObject:(GTLCalendarCalendar *)object;
++ (instancetype)queryForCalendarsInsertWithObject:(GTLCalendarCalendar *)object;
 
 // Method: calendar.calendars.patch
 // Updates metadata for a calendar. This method supports patch semantics.
@@ -389,8 +389,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarCalendar.
-+ (id)queryForCalendarsPatchWithObject:(GTLCalendarCalendar *)object
-                            calendarId:(NSString *)calendarId;
++ (instancetype)queryForCalendarsPatchWithObject:(GTLCalendarCalendar *)object
+                                      calendarId:(NSString *)calendarId;
 
 // Method: calendar.calendars.update
 // Updates metadata for a calendar.
@@ -399,8 +399,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarCalendar.
-+ (id)queryForCalendarsUpdateWithObject:(GTLCalendarCalendar *)object
-                             calendarId:(NSString *)calendarId;
++ (instancetype)queryForCalendarsUpdateWithObject:(GTLCalendarCalendar *)object
+                                       calendarId:(NSString *)calendarId;
 
 #pragma mark -
 #pragma mark "channels" methods
@@ -411,7 +411,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 //   kGTLAuthScopeCalendarReadonly
-+ (id)queryForChannelsStopWithObject:(GTLCalendarChannel *)object;
++ (instancetype)queryForChannelsStopWithObject:(GTLCalendarChannel *)object;
 
 #pragma mark -
 #pragma mark "colors" methods
@@ -423,7 +423,7 @@
 //   kGTLAuthScopeCalendar
 //   kGTLAuthScopeCalendarReadonly
 // Fetches a GTLCalendarColors.
-+ (id)queryForColorsGet;
++ (instancetype)queryForColorsGet;
 
 #pragma mark -
 #pragma mark "events" methods
@@ -439,8 +439,8 @@
 //     event. Optional. The default is False.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
-+ (id)queryForEventsDeleteWithCalendarId:(NSString *)calendarId
-                                 eventId:(NSString *)eventId;
++ (instancetype)queryForEventsDeleteWithCalendarId:(NSString *)calendarId
+                                           eventId:(NSString *)eventId;
 
 // Method: calendar.events.get
 // Returns an event.
@@ -463,8 +463,8 @@
 //   kGTLAuthScopeCalendar
 //   kGTLAuthScopeCalendarReadonly
 // Fetches a GTLCalendarEvent.
-+ (id)queryForEventsGetWithCalendarId:(NSString *)calendarId
-                              eventId:(NSString *)eventId;
++ (instancetype)queryForEventsGetWithCalendarId:(NSString *)calendarId
+                                        eventId:(NSString *)eventId;
 
 // Method: calendar.events.import
 // Imports an event. This operation is used to add a private copy of an existing
@@ -474,8 +474,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarEvent.
-+ (id)queryForEventsImportWithObject:(GTLCalendarEvent *)object
-                          calendarId:(NSString *)calendarId;
++ (instancetype)queryForEventsImportWithObject:(GTLCalendarEvent *)object
+                                    calendarId:(NSString *)calendarId;
 
 // Method: calendar.events.insert
 // Creates an event.
@@ -490,8 +490,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarEvent.
-+ (id)queryForEventsInsertWithObject:(GTLCalendarEvent *)object
-                          calendarId:(NSString *)calendarId;
++ (instancetype)queryForEventsInsertWithObject:(GTLCalendarEvent *)object
+                                    calendarId:(NSString *)calendarId;
 
 // Method: calendar.events.instances
 // Returns instances of the specified recurring event.
@@ -528,8 +528,8 @@
 //   kGTLAuthScopeCalendar
 //   kGTLAuthScopeCalendarReadonly
 // Fetches a GTLCalendarEvents.
-+ (id)queryForEventsInstancesWithCalendarId:(NSString *)calendarId
-                                    eventId:(NSString *)eventId;
++ (instancetype)queryForEventsInstancesWithCalendarId:(NSString *)calendarId
+                                              eventId:(NSString *)eventId;
 
 // Method: calendar.events.list
 // Returns events on the specified calendar.
@@ -613,7 +613,7 @@
 //   kGTLAuthScopeCalendar
 //   kGTLAuthScopeCalendarReadonly
 // Fetches a GTLCalendarEvents.
-+ (id)queryForEventsListWithCalendarId:(NSString *)calendarId;
++ (instancetype)queryForEventsListWithCalendarId:(NSString *)calendarId;
 
 // Method: calendar.events.move
 // Moves an event to another calendar, i.e. changes an event's organizer.
@@ -629,9 +629,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarEvent.
-+ (id)queryForEventsMoveWithCalendarId:(NSString *)calendarId
-                               eventId:(NSString *)eventId
-                           destination:(NSString *)destination;
++ (instancetype)queryForEventsMoveWithCalendarId:(NSString *)calendarId
+                                         eventId:(NSString *)eventId
+                                     destination:(NSString *)destination;
 
 // Method: calendar.events.patch
 // Updates an event. This method supports patch semantics.
@@ -654,9 +654,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarEvent.
-+ (id)queryForEventsPatchWithObject:(GTLCalendarEvent *)object
-                         calendarId:(NSString *)calendarId
-                            eventId:(NSString *)eventId;
++ (instancetype)queryForEventsPatchWithObject:(GTLCalendarEvent *)object
+                                   calendarId:(NSString *)calendarId
+                                      eventId:(NSString *)eventId;
 
 // Method: calendar.events.quickAdd
 // Creates an event based on a simple text string.
@@ -669,8 +669,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarEvent.
-+ (id)queryForEventsQuickAddWithCalendarId:(NSString *)calendarId
-                                      text:(NSString *)text;
++ (instancetype)queryForEventsQuickAddWithCalendarId:(NSString *)calendarId
+                                                text:(NSString *)text;
 
 // Method: calendar.events.update
 // Updates an event.
@@ -693,9 +693,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarEvent.
-+ (id)queryForEventsUpdateWithObject:(GTLCalendarEvent *)object
-                          calendarId:(NSString *)calendarId
-                             eventId:(NSString *)eventId;
++ (instancetype)queryForEventsUpdateWithObject:(GTLCalendarEvent *)object
+                                    calendarId:(NSString *)calendarId
+                                       eventId:(NSString *)eventId;
 
 // Method: calendar.events.watch
 // Watch for changes to Events resources.
@@ -779,8 +779,8 @@
 //   kGTLAuthScopeCalendar
 //   kGTLAuthScopeCalendarReadonly
 // Fetches a GTLCalendarChannel.
-+ (id)queryForEventsWatchWithObject:(GTLCalendarChannel *)object
-                         calendarId:(NSString *)calendarId;
++ (instancetype)queryForEventsWatchWithObject:(GTLCalendarChannel *)object
+                                   calendarId:(NSString *)calendarId;
 
 #pragma mark -
 #pragma mark "freebusy" methods
@@ -803,7 +803,7 @@
 //   kGTLAuthScopeCalendar
 //   kGTLAuthScopeCalendarReadonly
 // Fetches a GTLCalendarFreeBusyResponse.
-+ (id)queryForFreebusyQuery;
++ (instancetype)queryForFreebusyQuery;
 
 #pragma mark -
 #pragma mark "settings" methods
@@ -817,7 +817,7 @@
 //   kGTLAuthScopeCalendar
 //   kGTLAuthScopeCalendarReadonly
 // Fetches a GTLCalendarSetting.
-+ (id)queryForSettingsGetWithSetting:(NSString *)setting;
++ (instancetype)queryForSettingsGetWithSetting:(NSString *)setting;
 
 // Method: calendar.settings.list
 // Returns all user settings for the authenticated user.
@@ -838,7 +838,7 @@
 //   kGTLAuthScopeCalendar
 //   kGTLAuthScopeCalendarReadonly
 // Fetches a GTLCalendarSettings.
-+ (id)queryForSettingsList;
++ (instancetype)queryForSettingsList;
 
 // Method: calendar.settings.watch
 // Watch for changes to Settings resources.
@@ -859,6 +859,6 @@
 //   kGTLAuthScopeCalendar
 //   kGTLAuthScopeCalendarReadonly
 // Fetches a GTLCalendarChannel.
-+ (id)queryForSettingsWatchWithObject:(GTLCalendarChannel *)object;
++ (instancetype)queryForSettingsWatchWithObject:(GTLCalendarChannel *)object;
 
 @end

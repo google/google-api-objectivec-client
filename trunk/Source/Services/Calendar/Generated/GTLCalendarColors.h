@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,19 +50,19 @@
 // Palette of calendar colors, mapping from the color ID to its definition. A
 // calendarListEntry resource refers to one of these color IDs in its color
 // field. Read-only.
-@property (retain) GTLCalendarColorsCalendar *calendar;
+@property (nonatomic, retain) GTLCalendarColorsCalendar *calendar;
 
 // Palette of event colors, mapping from the color ID to its definition. An
 // event resource may refer to one of these color IDs in its color field.
 // Read-only.
-@property (retain) GTLCalendarColorsEvent *event;
+@property (nonatomic, retain) GTLCalendarColorsEvent *event;
 
 // Type of the resource ("calendar#colors").
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Last modification time of the color palette (as a RFC 3339 timestamp).
 // Read-only.
-@property (retain) GTLDateTime *updated;
+@property (nonatomic, retain) GTLDateTime *updated;
 
 @end
 

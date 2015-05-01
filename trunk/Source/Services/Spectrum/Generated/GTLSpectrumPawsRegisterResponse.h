@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,18 +51,18 @@
 // The device should use this information to update its list of pre-configured
 // databases by (only) replacing its entry for the responding database with the
 // list of alternate URIs.
-@property (retain) GTLSpectrumDbUpdateSpec *databaseChange;
+@property (nonatomic, retain) GTLSpectrumDbUpdateSpec *databaseChange;
 
 // Identifies what kind of resource this is. Value: the fixed string
 // "spectrum#pawsRegisterResponse".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The message type (e.g., INIT_REQ, AVAIL_SPECTRUM_REQ, ...).
 // Required field.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 // The PAWS version. Must be exactly 1.0.
 // Required field.
-@property (copy) NSString *version;
+@property (nonatomic, copy) NSString *version;
 
 @end

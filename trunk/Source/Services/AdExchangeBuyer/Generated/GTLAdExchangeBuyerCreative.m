@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,18 +49,17 @@
          videoURL, width;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSNumber class], @"advertiserId",
-      [NSNumber class], @"attribute",
-      [NSString class], @"clickThroughUrl",
-      [GTLAdExchangeBuyerCreativeCorrectionsItem class], @"corrections",
-      [GTLAdExchangeBuyerCreativeDisapprovalReasonsItem class], @"disapprovalReasons",
-      [NSNumber class], @"productCategories",
-      [NSNumber class], @"restrictedCategories",
-      [NSNumber class], @"sensitiveCategories",
-      [NSNumber class], @"vendorType",
-      nil];
+  NSDictionary *map = @{
+    @"advertiserId" : [NSNumber class],
+    @"attribute" : [NSNumber class],
+    @"clickThroughUrl" : [NSString class],
+    @"corrections" : [GTLAdExchangeBuyerCreativeCorrectionsItem class],
+    @"disapprovalReasons" : [GTLAdExchangeBuyerCreativeDisapprovalReasonsItem class],
+    @"productCategories" : [NSNumber class],
+    @"restrictedCategories" : [NSNumber class],
+    @"sensitiveCategories" : [NSNumber class],
+    @"vendorType" : [NSNumber class]
+  };
   return map;
 }
 
@@ -80,9 +79,9 @@
 @dynamic details, reason;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[NSString class]
-                                forKey:@"details"];
+  NSDictionary *map = @{
+    @"details" : [NSString class]
+  };
   return map;
 }
 
@@ -98,9 +97,9 @@
 @dynamic details, reason;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[NSString class]
-                                forKey:@"details"];
+  NSDictionary *map = @{
+    @"details" : [NSString class]
+  };
   return map;
 }
 
@@ -116,9 +115,9 @@
 @dynamic date, reasons;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLAdExchangeBuyerCreativeFilteringReasonsReasonsItem class]
-                                forKey:@"reasons"];
+  NSDictionary *map = @{
+    @"reasons" : [GTLAdExchangeBuyerCreativeFilteringReasonsReasonsItem class]
+  };
   return map;
 }
 

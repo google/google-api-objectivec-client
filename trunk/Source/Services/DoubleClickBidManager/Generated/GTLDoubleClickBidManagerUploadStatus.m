@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,11 +41,10 @@
 @dynamic errors, rowStatus;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSString class], @"errors",
-      [GTLDoubleClickBidManagerRowStatus class], @"rowStatus",
-      nil];
+  NSDictionary *map = @{
+    @"errors" : [NSString class],
+    @"rowStatus" : [GTLDoubleClickBidManagerRowStatus class]
+  };
   return map;
 }
 

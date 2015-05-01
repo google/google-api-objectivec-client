@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,17 +42,17 @@
 @interface GTLCalendarSetting : GTLObject
 
 // ETag of the resource.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The id of the user setting.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Type of the resource ("calendar#setting").
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Value of the user setting. The format of the value depends on the ID of the
 // setting. It must always be a UTF-8 string of length up to 1024 characters.
-@property (copy) NSString *value;
+@property (nonatomic, copy) NSString *value;
 
 @end

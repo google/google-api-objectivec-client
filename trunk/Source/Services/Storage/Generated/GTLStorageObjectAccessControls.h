@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,10 +47,10 @@
 @interface GTLStorageObjectAccessControls : GTLCollectionObject
 
 // The list of items.
-@property (retain) NSArray *items;  // of any JSON type
+@property (nonatomic, retain) NSArray *items;  // of any JSON type
 
 // The kind of item this is. For lists of object access control entries, this is
 // always storage#objectAccessControls.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 @end

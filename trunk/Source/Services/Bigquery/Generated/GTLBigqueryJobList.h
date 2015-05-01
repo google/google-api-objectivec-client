@@ -50,19 +50,19 @@
 @interface GTLBigqueryJobList : GTLObject
 
 // A hash of this page of results.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // List of jobs that were requested.
-@property (retain) NSArray *jobs;  // of GTLBigqueryJobListJobsItem
+@property (nonatomic, retain) NSArray *jobs;  // of GTLBigqueryJobListJobsItem
 
 // The resource type of the response.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // A token to request the next page of results.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 // Total number of jobs in this collection.
-@property (retain) NSNumber *totalItems;  // intValue
+@property (nonatomic, retain) NSNumber *totalItems;  // intValue
 
 @end
 
@@ -75,33 +75,33 @@
 @interface GTLBigqueryJobListJobsItem : GTLObject
 
 // [Full-projection-only] Specifies the job configuration.
-@property (retain) GTLBigqueryJobConfiguration *configuration;
+@property (nonatomic, retain) GTLBigqueryJobConfiguration *configuration;
 
 // A result object that will be present only if the job has failed.
-@property (retain) GTLBigqueryErrorProto *errorResult;
+@property (nonatomic, retain) GTLBigqueryErrorProto *errorResult;
 
 // Unique opaque ID of the job.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Job reference uniquely identifying the job.
-@property (retain) GTLBigqueryJobReference *jobReference;
+@property (nonatomic, retain) GTLBigqueryJobReference *jobReference;
 
 // The resource type.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Running state of the job. When the state is DONE, errorResult can be checked
 // to determine whether the job succeeded or failed.
-@property (copy) NSString *state;
+@property (nonatomic, copy) NSString *state;
 
 // [Output-only] Information about the job, including starting time and ending
 // time of the job.
-@property (retain) GTLBigqueryJobStatistics *statistics;
+@property (nonatomic, retain) GTLBigqueryJobStatistics *statistics;
 
 // [Full-projection-only] Describes the state of the job.
-@property (retain) GTLBigqueryJobStatus *status;
+@property (nonatomic, retain) GTLBigqueryJobStatus *status;
 
 // [Full-projection-only] Email address of the user who ran the job.
-@property (copy) NSString *userEmail;
+@property (nonatomic, copy) NSString *userEmail;
 
 @end

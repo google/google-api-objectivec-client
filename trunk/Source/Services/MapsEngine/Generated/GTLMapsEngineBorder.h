@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,12 +45,12 @@
 @interface GTLMapsEngineBorder : GTLObject
 
 // Color of the border.
-@property (copy) NSString *color;
+@property (nonatomic, copy) NSString *color;
 
 // Opacity of the border.
-@property (retain) NSNumber *opacity;  // doubleValue
+@property (nonatomic, retain) NSNumber *opacity;  // doubleValue
 
 // Width of the border, in pixels.
-@property (retain) NSNumber *width;  // doubleValue
+@property (nonatomic, retain) NSNumber *width;  // doubleValue
 
 @end

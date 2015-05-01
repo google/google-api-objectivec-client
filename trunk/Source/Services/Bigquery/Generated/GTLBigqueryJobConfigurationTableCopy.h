@@ -49,16 +49,16 @@
 // exist. If it does not, a 'notFound' error is returned in the job result. The
 // default value is CREATE_IF_NEEDED. Creation, truncation and append actions
 // occur as one atomic update upon job completion.
-@property (copy) NSString *createDisposition;
+@property (nonatomic, copy) NSString *createDisposition;
 
 // [Required] The destination table
-@property (retain) GTLBigqueryTableReference *destinationTable;
+@property (nonatomic, retain) GTLBigqueryTableReference *destinationTable;
 
 // [Pick one] Source table to copy.
-@property (retain) GTLBigqueryTableReference *sourceTable;
+@property (nonatomic, retain) GTLBigqueryTableReference *sourceTable;
 
 // [Pick one] Source tables to copy.
-@property (retain) NSArray *sourceTables;  // of GTLBigqueryTableReference
+@property (nonatomic, retain) NSArray *sourceTables;  // of GTLBigqueryTableReference
 
 // [Optional] Specifies the action that occurs if the destination table already
 // exists. The following values are supported: WRITE_TRUNCATE: If the table
@@ -69,6 +69,6 @@
 // and only occurs if BigQuery is able to complete the job successfully.
 // Creation, truncation and append actions occur as one atomic update upon job
 // completion.
-@property (copy) NSString *writeDisposition;
+@property (nonatomic, copy) NSString *writeDisposition;
 
 @end

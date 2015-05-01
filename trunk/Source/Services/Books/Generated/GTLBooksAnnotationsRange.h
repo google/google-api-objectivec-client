@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,15 +42,15 @@
 @interface GTLBooksAnnotationsRange : GTLObject
 
 // The offset from the ending position.
-@property (copy) NSString *endOffset;
+@property (nonatomic, copy) NSString *endOffset;
 
 // The ending position for the range.
-@property (copy) NSString *endPosition;
+@property (nonatomic, copy) NSString *endPosition;
 
 // The offset from the starting position.
-@property (copy) NSString *startOffset;
+@property (nonatomic, copy) NSString *startOffset;
 
 // The starting position for the range.
-@property (copy) NSString *startPosition;
+@property (nonatomic, copy) NSString *startPosition;
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,12 +50,12 @@
 
 // Fill color of the polygon. If not provided, the polygon will be transparent
 // and not visible if there is no border.
-@property (retain) GTLMapsEngineColor *fill;
+@property (nonatomic, retain) GTLMapsEngineColor *fill;
 
 // Label style for the polygon.
-@property (retain) GTLMapsEngineLabelStyle *label;
+@property (nonatomic, retain) GTLMapsEngineLabelStyle *label;
 
 // Border of the polygon. 0 < border.width <= 10.
-@property (retain) GTLMapsEngineBorder *stroke;
+@property (nonatomic, retain) GTLMapsEngineBorder *stroke;
 
 @end

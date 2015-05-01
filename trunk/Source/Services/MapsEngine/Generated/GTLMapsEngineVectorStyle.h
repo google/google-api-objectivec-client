@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,13 +46,13 @@
 // A vector style contains styling information for vector layer.
 
 @interface GTLMapsEngineVectorStyle : GTLObject
-@property (retain) NSArray *displayRules;  // of GTLMapsEngineDisplayRule
+@property (nonatomic, retain) NSArray *displayRules;  // of GTLMapsEngineDisplayRule
 
 // Individual feature info, this is called Info Window in Maps Engine UI. If not
 // provided, a default template with all attributes will be generated.
-@property (retain) GTLMapsEngineFeatureInfo *featureInfo;
+@property (nonatomic, retain) GTLMapsEngineFeatureInfo *featureInfo;
 
 // The type of the vector style. Currently, only displayRule is supported.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end

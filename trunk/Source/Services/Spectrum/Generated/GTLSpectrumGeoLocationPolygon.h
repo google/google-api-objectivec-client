@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,6 +58,6 @@
 // - All vertices are assumed to be at the same altitude.
 // - Polygon shapes should be restricted to a maximum of 15 vertices (16 points
 // that include the repeated vertex).
-@property (retain) NSArray *exterior;  // of GTLSpectrumGeoLocationPoint
+@property (nonatomic, retain) NSArray *exterior;  // of GTLSpectrumGeoLocationPoint
 
 @end

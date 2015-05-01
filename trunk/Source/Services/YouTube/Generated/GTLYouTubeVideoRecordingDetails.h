@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,13 +46,13 @@
 @interface GTLYouTubeVideoRecordingDetails : GTLObject
 
 // The geolocation information associated with the video.
-@property (retain) GTLYouTubeGeoPoint *location;
+@property (nonatomic, retain) GTLYouTubeGeoPoint *location;
 
 // The text description of the location where the video was recorded.
-@property (copy) NSString *locationDescription;
+@property (nonatomic, copy) NSString *locationDescription;
 
 // The date and time when the video was recorded. The value is specified in ISO
 // 8601 (YYYY-MM-DDThh:mm:ss.sssZ) format.
-@property (retain) GTLDateTime *recordingDate;
+@property (nonatomic, retain) GTLDateTime *recordingDate;
 
 @end

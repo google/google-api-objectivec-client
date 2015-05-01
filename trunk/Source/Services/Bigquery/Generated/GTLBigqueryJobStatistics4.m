@@ -39,9 +39,9 @@
 @dynamic destinationUriFileCounts;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[NSNumber class]
-                                forKey:@"destinationUriFileCounts"];
+  NSDictionary *map = @{
+    @"destinationUriFileCounts" : [NSNumber class]
+  };
   return map;
 }
 

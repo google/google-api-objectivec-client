@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,12 +46,12 @@
 // The time that the broadcast actually ended. The value is specified in ISO
 // 8601 (YYYY-MM-DDThh:mm:ss.sZ) format. This value will not be available until
 // the broadcast is over.
-@property (retain) GTLDateTime *actualEndTime;
+@property (nonatomic, retain) GTLDateTime *actualEndTime;
 
 // The time that the broadcast actually started. The value is specified in ISO
 // 8601 (YYYY-MM-DDThh:mm:ss.sZ) format. This value will not be available until
 // the broadcast begins.
-@property (retain) GTLDateTime *actualStartTime;
+@property (nonatomic, retain) GTLDateTime *actualStartTime;
 
 // The number of viewers currently watching the broadcast. The property and its
 // value will be present if the broadcast has current viewers and the broadcast
@@ -59,16 +59,16 @@
 // tracking the number of concurrent viewers for a broadcast when the broadcast
 // ends. So, this property would not identify the number of viewers watching an
 // archived video of a live broadcast that already ended.
-@property (retain) NSNumber *concurrentViewers;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *concurrentViewers;  // unsignedLongLongValue
 
 // The time that the broadcast is scheduled to end. The value is specified in
 // ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format. If the value is empty or the
 // property is not present, then the broadcast is scheduled to continue
 // indefinitely.
-@property (retain) GTLDateTime *scheduledEndTime;
+@property (nonatomic, retain) GTLDateTime *scheduledEndTime;
 
 // The time that the broadcast is scheduled to begin. The value is specified in
 // ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-@property (retain) GTLDateTime *scheduledStartTime;
+@property (nonatomic, retain) GTLDateTime *scheduledStartTime;
 
 @end

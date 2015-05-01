@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,54 +51,54 @@
 // A rectangular bounding box which contains all of the data in this asset. The
 // box is expressed as \"west, south, east, north\". The numbers represent
 // latitude and longitude in decimal degrees.
-@property (retain) NSArray *bbox;  // of NSNumber (doubleValue)
+@property (nonatomic, retain) NSArray *bbox;  // of NSNumber (doubleValue)
 
 // The creation time of this asset. The value is an RFC 3339-formatted date-time
 // value (for example, 1970-01-01T00:00:00Z).
-@property (retain) GTLDateTime *creationTime;
+@property (nonatomic, retain) GTLDateTime *creationTime;
 
 // The email address of the creator of this asset. This is only returned on GET
 // requests and not LIST requests.
-@property (copy) NSString *creatorEmail;
+@property (nonatomic, copy) NSString *creatorEmail;
 
 // The asset's description.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (copy) NSString *descriptionProperty;
+@property (nonatomic, copy) NSString *descriptionProperty;
 
 // The ETag, used to refer to the current version of the asset.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The asset's globally unique ID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The last modified time of this asset. The value is an RFC 3339-formatted
 // date-time value (for example, 1970-01-01T00:00:00Z).
-@property (retain) GTLDateTime *lastModifiedTime;
+@property (nonatomic, retain) GTLDateTime *lastModifiedTime;
 
 // The email address of the last modifier of this asset. This is only returned
 // on GET requests and not LIST requests.
-@property (copy) NSString *lastModifierEmail;
+@property (nonatomic, copy) NSString *lastModifierEmail;
 
 // The asset's name.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // The ID of the project to which the asset belongs.
-@property (copy) NSString *projectId;
+@property (nonatomic, copy) NSString *projectId;
 
 // The URL to query to retrieve the asset's complete object. The assets endpoint
 // only returns high-level information about a resource.
-@property (copy) NSString *resource;
+@property (nonatomic, copy) NSString *resource;
 
 // An array of text strings, with each string representing a tag. More
 // information about tags can be found in the Tagging data article of the Maps
 // Engine help center.
-@property (retain) NSArray *tags;  // of NSString
+@property (nonatomic, retain) NSArray *tags;  // of NSString
 
 // The type of asset. One of raster, rasterCollection, table, map, or layer.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 // If true, WRITERs of the asset are able to edit the asset permissions.
-@property (retain) NSNumber *writersCanEditPermissions;  // boolValue
+@property (nonatomic, retain) NSNumber *writersCanEditPermissions;  // boolValue
 
 @end

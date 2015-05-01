@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,31 +49,31 @@
 
 // Identifies what kind of resource this is. Value: the fixed string
 // "doubleclickbidmanager#query".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Query metadata.
-@property (retain) GTLDoubleClickBidManagerQueryMetadata *metadata;
+@property (nonatomic, retain) GTLDoubleClickBidManagerQueryMetadata *metadata;
 
 // Query parameters.
-@property (retain) GTLDoubleClickBidManagerParameters *params;
+@property (nonatomic, retain) GTLDoubleClickBidManagerParameters *params;
 
 // Query ID.
-@property (retain) NSNumber *queryId;  // longLongValue
+@property (nonatomic, retain) NSNumber *queryId;  // longLongValue
 
 // The ending time for the data that is shown in the report. Note,
 // reportDataEndTimeMs is required if metadata.dataRange is CUSTOM_DATES and
 // ignored otherwise.
-@property (retain) NSNumber *reportDataEndTimeMs;  // longLongValue
+@property (nonatomic, retain) NSNumber *reportDataEndTimeMs;  // longLongValue
 
 // The starting time for the data that is shown in the report. Note,
 // reportDataStartTimeMs is required if metadata.dataRange is CUSTOM_DATES and
 // ignored otherwise.
-@property (retain) NSNumber *reportDataStartTimeMs;  // longLongValue
+@property (nonatomic, retain) NSNumber *reportDataStartTimeMs;  // longLongValue
 
 // Information on how often and when to run a query.
-@property (retain) GTLDoubleClickBidManagerQuerySchedule *schedule;
+@property (nonatomic, retain) GTLDoubleClickBidManagerQuerySchedule *schedule;
 
 // Canonical timezone code for report data time. Defaults to America/New_York.
-@property (copy) NSString *timezoneCode;
+@property (nonatomic, copy) NSString *timezoneCode;
 
 @end

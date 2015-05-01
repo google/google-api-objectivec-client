@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,17 +45,17 @@
 
 // Defines the duration in milliseconds for which the promotion should be
 // displayed. If missing, the client should use the default.
-@property (retain) NSNumber *durationMs;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *durationMs;  // unsignedLongLongValue
 
 // Defines the time at which the promotion will appear. Depending on the value
 // of type the value of the offsetMs field will represent a time offset from the
 // start or from the end of the video, expressed in milliseconds.
-@property (retain) NSNumber *offsetMs;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *offsetMs;  // unsignedLongLongValue
 
 // Describes a timing type. If the value is offsetFromStart, then the offsetMs
 // field represents an offset from the start of the video. If the value is
 // offsetFromEnd, then the offsetMs field represents an offset from the end of
 // the video.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end

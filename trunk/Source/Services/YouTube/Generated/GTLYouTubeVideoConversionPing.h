@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,7 +42,7 @@
 @interface GTLYouTubeVideoConversionPing : GTLObject
 
 // Defines the context of the ping.
-@property (copy) NSString *context;
+@property (nonatomic, copy) NSString *context;
 
 // The url (without the schema) that the app shall send the ping to. It's at
 // caller's descretion to decide which schema to use (http vs https) Example of
@@ -51,6 +51,6 @@
 // like%3Butuid%3DGISQtTNGYqaYl4sKxoVvKA%3Bytvid%3DUrIaJUvIQDg&labe=default The
 // caller must append biscotti authentication (ms param in case of mobile, for
 // example) to this ping.
-@property (copy) NSString *conversionUrl;
+@property (nonatomic, copy) NSString *conversionUrl;
 
 @end

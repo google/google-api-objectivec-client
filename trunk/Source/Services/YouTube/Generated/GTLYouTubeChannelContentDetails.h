@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,9 +48,9 @@
 
 // The googlePlusUserId object identifies the Google+ profile ID associated with
 // this channel.
-@property (copy) NSString *googlePlusUserId;
+@property (nonatomic, copy) NSString *googlePlusUserId;
 
-@property (retain) GTLYouTubeChannelContentDetailsRelatedPlaylists *relatedPlaylists;
+@property (nonatomic, retain) GTLYouTubeChannelContentDetailsRelatedPlaylists *relatedPlaylists;
 @end
 
 
@@ -64,26 +64,26 @@
 // The ID of the playlist that contains the channel"s favorite videos. Use the
 // playlistItems.insert and playlistItems.delete to add or remove items from
 // that list.
-@property (copy) NSString *favorites;
+@property (nonatomic, copy) NSString *favorites;
 
 // The ID of the playlist that contains the channel"s liked videos. Use the
 // playlistItems.insert and playlistItems.delete to add or remove items from
 // that list.
-@property (copy) NSString *likes;
+@property (nonatomic, copy) NSString *likes;
 
 // The ID of the playlist that contains the channel"s uploaded videos. Use the
 // videos.insert method to upload new videos and the videos.delete method to
 // delete previously uploaded videos.
-@property (copy) NSString *uploads;
+@property (nonatomic, copy) NSString *uploads;
 
 // The ID of the playlist that contains the channel"s watch history. Use the
 // playlistItems.insert and playlistItems.delete to add or remove items from
 // that list.
-@property (copy) NSString *watchHistory;
+@property (nonatomic, copy) NSString *watchHistory;
 
 // The ID of the playlist that contains the channel"s watch later playlist. Use
 // the playlistItems.insert and playlistItems.delete to add or remove items from
 // that list.
-@property (copy) NSString *watchLater;
+@property (nonatomic, copy) NSString *watchLater;
 
 @end

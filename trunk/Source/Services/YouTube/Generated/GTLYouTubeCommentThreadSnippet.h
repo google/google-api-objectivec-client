@@ -47,25 +47,25 @@
 
 // Whether the current viewer of the thread can reply to it. This is viewer
 // specific - other viewers may see a different value for this field.
-@property (retain) NSNumber *canReply;  // boolValue
+@property (nonatomic, retain) NSNumber *canReply;  // boolValue
 
 // The YouTube channel the comments in the thread refer to or the channel with
 // the video the comments refer to. If video_id isn't set the comments refer to
 // the channel itself.
-@property (copy) NSString *channelId;
+@property (nonatomic, copy) NSString *channelId;
 
 // Whether the thread (and therefore all its comments) is visible to all YouTube
 // users.
-@property (retain) NSNumber *isPublic;  // boolValue
+@property (nonatomic, retain) NSNumber *isPublic;  // boolValue
 
 // The top level comment of this thread.
-@property (retain) GTLYouTubeComment *topLevelComment;
+@property (nonatomic, retain) GTLYouTubeComment *topLevelComment;
 
 // The total number of replies (not including the top level comment).
-@property (retain) NSNumber *totalReplyCount;  // unsignedIntValue
+@property (nonatomic, retain) NSNumber *totalReplyCount;  // unsignedIntValue
 
 // The ID of the video the comments refer to, if any. No video_id implies a
 // channel discussion comment.
-@property (copy) NSString *videoId;
+@property (nonatomic, copy) NSString *videoId;
 
 @end

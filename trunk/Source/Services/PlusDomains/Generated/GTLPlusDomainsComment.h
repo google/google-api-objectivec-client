@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,42 +53,42 @@
 @interface GTLPlusDomainsComment : GTLObject
 
 // The person who posted this comment.
-@property (retain) GTLPlusDomainsCommentActor *actor;
+@property (nonatomic, retain) GTLPlusDomainsCommentActor *actor;
 
 // ETag of this response for caching purposes.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The ID of this comment.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The activity this comment replied to.
-@property (retain) NSArray *inReplyTo;  // of GTLPlusDomainsCommentInReplyToItem
+@property (nonatomic, retain) NSArray *inReplyTo;  // of GTLPlusDomainsCommentInReplyToItem
 
 // Identifies this resource as a comment. Value: "plus#comment".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The object of this comment.
-@property (retain) GTLPlusDomainsCommentObject *object;
+@property (nonatomic, retain) GTLPlusDomainsCommentObject *object;
 
 // People who +1'd this comment.
-@property (retain) GTLPlusDomainsCommentPlusoners *plusoners;
+@property (nonatomic, retain) GTLPlusDomainsCommentPlusoners *plusoners;
 
 // The time at which this comment was initially published. Formatted as an RFC
 // 3339 timestamp.
-@property (retain) GTLDateTime *published;
+@property (nonatomic, retain) GTLDateTime *published;
 
 // Link to this comment resource.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // The time at which this comment was last updated. Formatted as an RFC 3339
 // timestamp.
-@property (retain) GTLDateTime *updated;
+@property (nonatomic, retain) GTLDateTime *updated;
 
 // This comment's verb, indicating what action was performed. Possible values
 // are:
 // - "post" - Publish content to the stream.
-@property (copy) NSString *verb;
+@property (nonatomic, copy) NSString *verb;
 
 @end
 
@@ -101,17 +101,17 @@
 @interface GTLPlusDomainsCommentActor : GTLObject
 
 // The name of this actor, suitable for display.
-@property (copy) NSString *displayName;
+@property (nonatomic, copy) NSString *displayName;
 
 // The ID of the actor.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The image representation of this actor.
-@property (retain) GTLPlusDomainsCommentActorImage *image;
+@property (nonatomic, retain) GTLPlusDomainsCommentActorImage *image;
 
 // A link to the Person resource for this actor.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 @end
 
@@ -125,10 +125,10 @@
 
 // The ID of the activity.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The URL of the activity.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 @end
 
@@ -141,16 +141,16 @@
 @interface GTLPlusDomainsCommentObject : GTLObject
 
 // The HTML-formatted content, suitable for display.
-@property (copy) NSString *content;
+@property (nonatomic, copy) NSString *content;
 
 // The object type of this comment. Possible values are:
 // - "comment" - A comment in reply to an activity.
-@property (copy) NSString *objectType;
+@property (nonatomic, copy) NSString *objectType;
 
 // The content (text) as provided by the author, stored without any HTML
 // formatting. When creating or updating a comment, this value must be supplied
 // as plain text in the request.
-@property (copy) NSString *originalContent;
+@property (nonatomic, copy) NSString *originalContent;
 
 @end
 
@@ -163,7 +163,7 @@
 @interface GTLPlusDomainsCommentPlusoners : GTLObject
 
 // Total number of people who +1'd this comment.
-@property (retain) NSNumber *totalItems;  // unsignedIntValue
+@property (nonatomic, retain) NSNumber *totalItems;  // unsignedIntValue
 
 @end
 
@@ -178,6 +178,6 @@
 // The URL of the actor's profile photo. To resize the image and crop it to a
 // square, append the query string ?sz=x, where x is the dimension in pixels of
 // each side.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 @end

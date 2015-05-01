@@ -41,9 +41,9 @@
 @dynamic label, secondaryReasons;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLYouTubeVideoAbuseReportSecondaryReason class]
-                                forKey:@"secondaryReasons"];
+  NSDictionary *map = @{
+    @"secondaryReasons" : [GTLYouTubeVideoAbuseReportSecondaryReason class]
+  };
   return map;
 }
 

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,13 +44,13 @@
 @interface GTLYouTubeWatchSettings : GTLObject
 
 // The text color for the video watch page's branded area.
-@property (copy) NSString *backgroundColor;
+@property (nonatomic, copy) NSString *backgroundColor;
 
 // An ID that uniquely identifies a playlist that displays next to the video
 // player.
-@property (copy) NSString *featuredPlaylistId;
+@property (nonatomic, copy) NSString *featuredPlaylistId;
 
 // The background color for the video watch page's branded area.
-@property (copy) NSString *textColor;
+@property (nonatomic, copy) NSString *textColor;
 
 @end

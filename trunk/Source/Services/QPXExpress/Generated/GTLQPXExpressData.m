@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,14 +46,13 @@
 @dynamic aircraft, airport, carrier, city, kind, tax;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [GTLQPXExpressAircraftData class], @"aircraft",
-      [GTLQPXExpressAirportData class], @"airport",
-      [GTLQPXExpressCarrierData class], @"carrier",
-      [GTLQPXExpressCityData class], @"city",
-      [GTLQPXExpressTaxData class], @"tax",
-      nil];
+  NSDictionary *map = @{
+    @"aircraft" : [GTLQPXExpressAircraftData class],
+    @"airport" : [GTLQPXExpressAirportData class],
+    @"carrier" : [GTLQPXExpressCarrierData class],
+    @"city" : [GTLQPXExpressCityData class],
+    @"tax" : [GTLQPXExpressTaxData class]
+  };
   return map;
 }
 

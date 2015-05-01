@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,17 +49,17 @@
 
 // Custom icon id.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Stock icon name. To use a stock icon, prefix it with 'gx_'. See Stock icon
 // names for valid icon names. For example, to specify small_red, set name to
 // 'gx_small_red'.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // A scalable shape.
-@property (retain) GTLMapsEngineScaledShape *scaledShape;
+@property (nonatomic, retain) GTLMapsEngineScaledShape *scaledShape;
 
 // The function used to scale shapes. Required when a scaledShape is specified.
-@property (retain) GTLMapsEngineScalingFunction *scalingFunction;
+@property (nonatomic, retain) GTLMapsEngineScalingFunction *scalingFunction;
 
 @end

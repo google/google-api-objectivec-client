@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,19 +49,19 @@
 @interface GTLAnalyticsColumns : GTLCollectionObject
 
 // List of attributes names returned by columns.
-@property (retain) NSArray *attributeNames;  // of NSString
+@property (nonatomic, retain) NSArray *attributeNames;  // of NSString
 
 // Etag of collection. This etag can be compared with the last response etag to
 // check if response has changed.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // List of columns for a report type.
-@property (retain) NSArray *items;  // of GTLAnalyticsColumn
+@property (nonatomic, retain) NSArray *items;  // of GTLAnalyticsColumn
 
 // Collection type.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Total number of columns returned in the response.
-@property (retain) NSNumber *totalResults;  // intValue
+@property (nonatomic, retain) NSNumber *totalResults;  // intValue
 
 @end

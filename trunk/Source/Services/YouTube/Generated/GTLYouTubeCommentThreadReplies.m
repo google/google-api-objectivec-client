@@ -41,9 +41,9 @@
 @dynamic comments;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLYouTubeComment class]
-                                forKey:@"comments"];
+  NSDictionary *map = @{
+    @"comments" : [GTLYouTubeComment class]
+  };
   return map;
 }
 

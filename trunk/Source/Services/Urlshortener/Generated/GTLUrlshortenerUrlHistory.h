@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,19 +47,19 @@
 @interface GTLUrlshortenerUrlHistory : GTLCollectionObject
 
 // A list of URL resources.
-@property (retain) NSArray *items;  // of GTLUrlshortenerUrl
+@property (nonatomic, retain) NSArray *items;  // of GTLUrlshortenerUrl
 
 // Number of items returned with each full "page" of results. Note that the last
 // page could have fewer items than the "itemsPerPage" value.
-@property (retain) NSNumber *itemsPerPage;  // intValue
+@property (nonatomic, retain) NSNumber *itemsPerPage;  // intValue
 
 // The fixed string "urlshortener#urlHistory".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // A token to provide to get the next page of results.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 // Total number of short URLs associated with this user (may be approximate).
-@property (retain) NSNumber *totalItems;  // intValue
+@property (nonatomic, retain) NSNumber *totalItems;  // intValue
 
 @end

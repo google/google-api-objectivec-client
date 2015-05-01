@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,11 +44,11 @@
 @interface GTLAnalyticsUserRef : GTLObject
 
 // Email ID of this user.
-@property (copy) NSString *email;
+@property (nonatomic, copy) NSString *email;
 
 // User ID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 @end
