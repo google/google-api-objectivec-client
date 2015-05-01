@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,17 +36,17 @@
 // Method compiled in debug builds just to check that all the needed support
 // classes are present at link time.
 + (NSArray *)checkClasses {
-  NSArray *classes = [NSArray arrayWithObjects:
-                      [GTLQueryLicensing class],
-                      [GTLLicensingLicenseAssignment class],
-                      [GTLLicensingLicenseAssignmentInsert class],
-                      [GTLLicensingLicenseAssignmentList class],
-                      nil];
+  NSArray *classes = @[
+    [GTLQueryLicensing class],
+    [GTLLicensingLicenseAssignment class],
+    [GTLLicensingLicenseAssignmentInsert class],
+    [GTLLicensingLicenseAssignmentList class]
+  ];
   return classes;
 }
 #endif  // DEBUG
 
-- (id)init {
+- (instancetype)init {
   self = [super init];
   if (self) {
     // Version from discovery.

@@ -44,16 +44,16 @@
          visitorId;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"etag"
-                                forKey:@"ETag"];
+  NSDictionary *map = @{
+    @"ETag" : @"etag"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLYouTubeCommentThread class]
-                                forKey:@"items"];
+  NSDictionary *map = @{
+    @"items" : [GTLYouTubeCommentThread class]
+  };
   return map;
 }
 

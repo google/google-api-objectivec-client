@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,16 +56,16 @@
 @dynamic dataDescription, errors, identifier, kind, modelDescription, selfLink;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+  NSDictionary *map = @{
+    @"identifier" : @"id"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLPredictionAnalyzeErrorsItem class]
-                                forKey:@"errors"];
+  NSDictionary *map = @{
+    @"errors" : [GTLPredictionAnalyzeErrorsItem class]
+  };
   return map;
 }
 
@@ -85,9 +85,9 @@
 @dynamic features, outputFeature;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLPredictionAnalyzeDataDescriptionFeaturesItem class]
-                                forKey:@"features"];
+  NSDictionary *map = @{
+    @"features" : [GTLPredictionAnalyzeDataDescriptionFeaturesItem class]
+  };
   return map;
 }
 
@@ -137,9 +137,9 @@
 @dynamic numeric, text;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLPredictionAnalyzeDataDescriptionOutputFeatureTextItem class]
-                                forKey:@"text"];
+  NSDictionary *map = @{
+    @"text" : [GTLPredictionAnalyzeDataDescriptionOutputFeatureTextItem class]
+  };
   return map;
 }
 
@@ -183,9 +183,9 @@
 @dynamic count, values;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLPredictionAnalyzeDataDescriptionFeaturesItemCategoricalValuesItem class]
-                                forKey:@"values"];
+  NSDictionary *map = @{
+    @"values" : [GTLPredictionAnalyzeDataDescriptionFeaturesItemCategoricalValuesItem class]
+  };
   return map;
 }
 

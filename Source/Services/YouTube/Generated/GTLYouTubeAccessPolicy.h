@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,10 +45,10 @@
 
 // The value of allowed indicates whether the access to the policy is allowed or
 // denied by default.
-@property (retain) NSNumber *allowed;  // boolValue
+@property (nonatomic, retain) NSNumber *allowed;  // boolValue
 
 // A list of region codes that identify countries where the default policy do
 // not apply.
-@property (retain) NSArray *exception;  // of NSString
+@property (nonatomic, retain) NSArray *exception;  // of NSString
 
 @end

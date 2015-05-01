@@ -45,26 +45,26 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (copy) NSString *fields;
+@property (nonatomic, copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (assign) long long currentTimeMillis;
-@property (retain) GTLFitnessDataSource *dataSource;
-@property (retain) GTLFitnessDataset *dataset;
-@property (copy) NSString *datasetId;
-@property (copy) NSString *dataSourceId;
-@property (retain) NSArray *dataTypeName;  // of NSString
-@property (copy) NSString *endTime;
-@property (assign) BOOL includeDeleted;
-@property (assign) NSInteger limit;
-@property (assign) long long modifiedTimeMillis;
-@property (copy) NSString *pageToken;
-@property (retain) GTLFitnessSession *session;
-@property (copy) NSString *sessionId;
-@property (copy) NSString *startTime;
-@property (copy) NSString *userId;
+@property (nonatomic, assign) long long currentTimeMillis;
+@property (nonatomic, retain) GTLFitnessDataSource *dataSource;
+@property (nonatomic, retain) GTLFitnessDataset *dataset;
+@property (nonatomic, copy) NSString *datasetId;
+@property (nonatomic, copy) NSString *dataSourceId;
+@property (nonatomic, retain) NSArray *dataTypeName;  // of NSString
+@property (nonatomic, copy) NSString *endTime;
+@property (nonatomic, assign) BOOL includeDeleted;
+@property (nonatomic, assign) NSInteger limit;
+@property (nonatomic, assign) long long modifiedTimeMillis;
+@property (nonatomic, copy) NSString *pageToken;
+@property (nonatomic, retain) GTLFitnessSession *session;
+@property (nonatomic, copy) NSString *sessionId;
+@property (nonatomic, copy) NSString *startTime;
+@property (nonatomic, copy) NSString *userId;
 
 #pragma mark -
 #pragma mark "users.dataSources" methods
@@ -89,7 +89,7 @@
 //   kGTLAuthScopeFitnessBodyWrite
 //   kGTLAuthScopeFitnessLocationWrite
 // Fetches a GTLFitnessDataSource.
-+ (id)queryForUsersDataSourcesCreateWithUserId:(NSString *)userId;
++ (instancetype)queryForUsersDataSourcesCreateWithUserId:(NSString *)userId;
 
 #pragma mark -
 #pragma mark "users.dataSources.datasets" methods
@@ -118,9 +118,9 @@
 //   kGTLAuthScopeFitnessActivityWrite
 //   kGTLAuthScopeFitnessBodyWrite
 //   kGTLAuthScopeFitnessLocationWrite
-+ (id)queryForUsersDataSourcesDatasetsDeleteWithUserId:(NSString *)userId
-                                          dataSourceId:(NSString *)dataSourceId
-                                             datasetId:(NSString *)datasetId;
++ (instancetype)queryForUsersDataSourcesDatasetsDeleteWithUserId:(NSString *)userId
+                                                    dataSourceId:(NSString *)dataSourceId
+                                                       datasetId:(NSString *)datasetId;
 
 // Method: fitness.users.dataSources.datasets.get
 // Returns a dataset containing all data points whose start and end times
@@ -154,9 +154,9 @@
 //   kGTLAuthScopeFitnessLocationRead
 //   kGTLAuthScopeFitnessLocationWrite
 // Fetches a GTLFitnessDataset.
-+ (id)queryForUsersDataSourcesDatasetsGetWithUserId:(NSString *)userId
-                                       dataSourceId:(NSString *)dataSourceId
-                                          datasetId:(NSString *)datasetId;
++ (instancetype)queryForUsersDataSourcesDatasetsGetWithUserId:(NSString *)userId
+                                                 dataSourceId:(NSString *)dataSourceId
+                                                    datasetId:(NSString *)datasetId;
 
 // Method: fitness.users.dataSources.datasets.patch
 // Adds data points to a dataset. The dataset need not be previously created.
@@ -182,9 +182,9 @@
 //   kGTLAuthScopeFitnessBodyWrite
 //   kGTLAuthScopeFitnessLocationWrite
 // Fetches a GTLFitnessDataset.
-+ (id)queryForUsersDataSourcesDatasetsPatchWithUserId:(NSString *)userId
-                                         dataSourceId:(NSString *)dataSourceId
-                                            datasetId:(NSString *)datasetId;
++ (instancetype)queryForUsersDataSourcesDatasetsPatchWithUserId:(NSString *)userId
+                                                   dataSourceId:(NSString *)dataSourceId
+                                                      datasetId:(NSString *)datasetId;
 
 #pragma mark -
 #pragma mark "users.dataSources" methods
@@ -201,8 +201,8 @@
 //   kGTLAuthScopeFitnessBodyWrite
 //   kGTLAuthScopeFitnessLocationWrite
 // Fetches a GTLFitnessDataSource.
-+ (id)queryForUsersDataSourcesDeleteWithUserId:(NSString *)userId
-                                  dataSourceId:(NSString *)dataSourceId;
++ (instancetype)queryForUsersDataSourcesDeleteWithUserId:(NSString *)userId
+                                            dataSourceId:(NSString *)dataSourceId;
 
 // Method: fitness.users.dataSources.get
 // Returns a data source identified by a data stream ID.
@@ -218,8 +218,8 @@
 //   kGTLAuthScopeFitnessLocationRead
 //   kGTLAuthScopeFitnessLocationWrite
 // Fetches a GTLFitnessDataSource.
-+ (id)queryForUsersDataSourcesGetWithUserId:(NSString *)userId
-                               dataSourceId:(NSString *)dataSourceId;
++ (instancetype)queryForUsersDataSourcesGetWithUserId:(NSString *)userId
+                                         dataSourceId:(NSString *)dataSourceId;
 
 // Method: fitness.users.dataSources.list
 // Lists all data sources that are visible to the developer, using the OAuth
@@ -240,7 +240,7 @@
 //   kGTLAuthScopeFitnessLocationRead
 //   kGTLAuthScopeFitnessLocationWrite
 // Fetches a GTLFitnessListDataSourcesResponse.
-+ (id)queryForUsersDataSourcesListWithUserId:(NSString *)userId;
++ (instancetype)queryForUsersDataSourcesListWithUserId:(NSString *)userId;
 
 // Method: fitness.users.dataSources.patch
 // Updates a given data source. It is an error to modify the data source's data
@@ -260,8 +260,8 @@
 //   kGTLAuthScopeFitnessBodyWrite
 //   kGTLAuthScopeFitnessLocationWrite
 // Fetches a GTLFitnessDataSource.
-+ (id)queryForUsersDataSourcesPatchWithUserId:(NSString *)userId
-                                 dataSourceId:(NSString *)dataSourceId;
++ (instancetype)queryForUsersDataSourcesPatchWithUserId:(NSString *)userId
+                                           dataSourceId:(NSString *)dataSourceId;
 
 // Method: fitness.users.dataSources.update
 // Updates a given data source. It is an error to modify the data source's data
@@ -280,8 +280,8 @@
 //   kGTLAuthScopeFitnessBodyWrite
 //   kGTLAuthScopeFitnessLocationWrite
 // Fetches a GTLFitnessDataSource.
-+ (id)queryForUsersDataSourcesUpdateWithUserId:(NSString *)userId
-                                  dataSourceId:(NSString *)dataSourceId;
++ (instancetype)queryForUsersDataSourcesUpdateWithUserId:(NSString *)userId
+                                            dataSourceId:(NSString *)dataSourceId;
 
 #pragma mark -
 #pragma mark "users.sessions" methods
@@ -297,8 +297,8 @@
 //   currentTimeMillis: The client's current time in milliseconds since epoch.
 //  Authorization scope(s):
 //   kGTLAuthScopeFitnessActivityWrite
-+ (id)queryForUsersSessionsDeleteWithUserId:(NSString *)userId
-                                  sessionId:(NSString *)sessionId;
++ (instancetype)queryForUsersSessionsDeleteWithUserId:(NSString *)userId
+                                            sessionId:(NSString *)sessionId;
 
 // Method: fitness.users.sessions.list
 // Lists sessions previously created.
@@ -324,7 +324,7 @@
 //   kGTLAuthScopeFitnessLocationRead
 //   kGTLAuthScopeFitnessLocationWrite
 // Fetches a GTLFitnessListSessionsResponse.
-+ (id)queryForUsersSessionsListWithUserId:(NSString *)userId;
++ (instancetype)queryForUsersSessionsListWithUserId:(NSString *)userId;
 
 // Method: fitness.users.sessions.update
 // Updates or insert a given session.
@@ -338,7 +338,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeFitnessActivityWrite
 // Fetches a GTLFitnessSession.
-+ (id)queryForUsersSessionsUpdateWithUserId:(NSString *)userId
-                                  sessionId:(NSString *)sessionId;
++ (instancetype)queryForUsersSessionsUpdateWithUserId:(NSString *)userId
+                                            sessionId:(NSString *)sessionId;
 
 @end

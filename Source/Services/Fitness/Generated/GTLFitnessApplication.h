@@ -44,22 +44,22 @@
 @interface GTLFitnessApplication : GTLObject
 
 // An optional URI that can be used to link back to the application.
-@property (copy) NSString *detailsUrl;
+@property (nonatomic, copy) NSString *detailsUrl;
 
 // The name of this application. This is required for REST clients, but we do
 // not enforce uniqueness of this name. It is provided as a matter of
 // convenience for other developers who would like to identify which REST
 // created an Application or Data Source.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // Package name for this application. This is used as a unique identifier when
 // created by Android applications, but cannot be specified by REST clients.
 // REST clients will have their developer project number reflected into the Data
 // Source data stream IDs, instead of the packageName.
-@property (copy) NSString *packageName;
+@property (nonatomic, copy) NSString *packageName;
 
 // Version of the application. You should update this field whenever the
 // application changes in a way that affects the computation of the data.
-@property (copy) NSString *version;
+@property (nonatomic, copy) NSString *version;
 
 @end

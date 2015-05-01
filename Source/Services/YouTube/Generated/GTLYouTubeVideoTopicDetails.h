@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,12 +46,12 @@
 // Similar to topic_id, except that these topics are merely relevant to the
 // video. These are topics that may be mentioned in, or appear in the video. You
 // can retrieve information about each topic using Freebase Topic API.
-@property (retain) NSArray *relevantTopicIds;  // of NSString
+@property (nonatomic, retain) NSArray *relevantTopicIds;  // of NSString
 
 // A list of Freebase topic IDs that are centrally associated with the video.
 // These are topics that are centrally featured in the video, and it can be said
 // that the video is mainly about each of these. You can retrieve information
 // about each topic using the Freebase Topic API.
-@property (retain) NSArray *topicIds;  // of NSString
+@property (nonatomic, retain) NSArray *topicIds;  // of NSString
 
 @end

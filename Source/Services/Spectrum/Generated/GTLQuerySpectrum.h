@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,24 +48,24 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (copy) NSString *fields;
+@property (nonatomic, copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (retain) GTLSpectrumAntennaCharacteristics *antenna;
-@property (retain) GTLSpectrumDeviceCapabilities *capabilities;
-@property (retain) GTLSpectrumDeviceDescriptor *deviceDesc;
-@property (retain) NSArray *deviceDescs;  // of GTLSpectrumDeviceDescriptor
-@property (retain) GTLSpectrumDeviceOwner *deviceOwner;
-@property (retain) GTLSpectrumGeoLocation *location;
-@property (retain) NSArray *locations;  // of GTLSpectrumGeoLocation
-@property (retain) GTLSpectrumDeviceDescriptor *masterDeviceDesc;
-@property (retain) GTLSpectrumDeviceOwner *owner;
-@property (copy) NSString *requestType;
-@property (retain) NSArray *spectra;  // of GTLSpectrumMessage
-@property (copy) NSString *type;
-@property (copy) NSString *version;
+@property (nonatomic, retain) GTLSpectrumAntennaCharacteristics *antenna;
+@property (nonatomic, retain) GTLSpectrumDeviceCapabilities *capabilities;
+@property (nonatomic, retain) GTLSpectrumDeviceDescriptor *deviceDesc;
+@property (nonatomic, retain) NSArray *deviceDescs;  // of GTLSpectrumDeviceDescriptor
+@property (nonatomic, retain) GTLSpectrumDeviceOwner *deviceOwner;
+@property (nonatomic, retain) GTLSpectrumGeoLocation *location;
+@property (nonatomic, retain) NSArray *locations;  // of GTLSpectrumGeoLocation
+@property (nonatomic, retain) GTLSpectrumDeviceDescriptor *masterDeviceDesc;
+@property (nonatomic, retain) GTLSpectrumDeviceOwner *owner;
+@property (nonatomic, copy) NSString *requestType;
+@property (nonatomic, retain) NSArray *spectra;  // of GTLSpectrumMessage
+@property (nonatomic, copy) NSString *type;
+@property (nonatomic, copy) NSString *version;
 
 #pragma mark -
 #pragma mark "paws" methods
@@ -120,7 +120,7 @@
 //   version: The PAWS version. Must be exactly 1.0.
 //     Required field.
 // Fetches a GTLSpectrumPawsGetSpectrumResponse.
-+ (id)queryForPawsGetSpectrum;
++ (instancetype)queryForPawsGetSpectrum;
 
 // Method: spectrum.paws.getSpectrumBatch
 // The Google Spectrum Database does not support batch requests, so this method
@@ -176,7 +176,7 @@
 //   version: The PAWS version. Must be exactly 1.0.
 //     Required field.
 // Fetches a GTLSpectrumPawsGetSpectrumBatchResponse.
-+ (id)queryForPawsGetSpectrumBatch;
++ (instancetype)queryForPawsGetSpectrumBatch;
 
 // Method: spectrum.paws.init
 // Initializes the connection between a white space device and the database.
@@ -191,7 +191,7 @@
 //   version: The PAWS version. Must be exactly 1.0.
 //     Required field.
 // Fetches a GTLSpectrumPawsInitResponse.
-+ (id)queryForPawsInit;
++ (instancetype)queryForPawsInit;
 
 // Method: spectrum.paws.notifySpectrumUse
 // Notifies the database that the device has selected certain frequency ranges
@@ -223,7 +223,7 @@
 //   version: The PAWS version. Must be exactly 1.0.
 //     Required field.
 // Fetches a GTLSpectrumPawsNotifySpectrumUseResponse.
-+ (id)queryForPawsNotifySpectrumUse;
++ (instancetype)queryForPawsNotifySpectrumUse;
 
 // Method: spectrum.paws.register
 // The Google Spectrum Database implements registration in the getSpectrum
@@ -238,7 +238,7 @@
 //   version: The PAWS version. Must be exactly 1.0.
 //     Required field.
 // Fetches a GTLSpectrumPawsRegisterResponse.
-+ (id)queryForPawsRegister;
++ (instancetype)queryForPawsRegister;
 
 // Method: spectrum.paws.verifyDevice
 // Validates a device for white space use in accordance with regulatory rules.
@@ -252,6 +252,6 @@
 //   version: The PAWS version. Must be exactly 1.0.
 //     Required field.
 // Fetches a GTLSpectrumPawsVerifyDeviceResponse.
-+ (id)queryForPawsVerifyDevice;
++ (instancetype)queryForPawsVerifyDevice;
 
 @end

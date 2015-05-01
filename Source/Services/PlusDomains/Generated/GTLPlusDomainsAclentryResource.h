@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,12 +42,12 @@
 @interface GTLPlusDomainsAclentryResource : GTLObject
 
 // A descriptive name for this entry. Suitable for display.
-@property (copy) NSString *displayName;
+@property (nonatomic, copy) NSString *displayName;
 
 // The ID of the entry. For entries of type "person" or "circle", this is the ID
 // of the resource. For other types, this property is not set.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The type of entry describing to whom access is granted. Possible values are:
 // - "person" - Access to an individual.
@@ -57,6 +57,6 @@
 // of the people in their circles.
 // - "domain" - Access to members of the person's Google Apps domain.
 // - "public" - Access to anyone on the web.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end

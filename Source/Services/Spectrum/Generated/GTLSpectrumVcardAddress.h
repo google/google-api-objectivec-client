@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,21 +44,21 @@
 @interface GTLSpectrumVcardAddress : GTLObject
 
 // The postal code associated with the address. For example: 94423.
-@property (copy) NSString *code;
+@property (nonatomic, copy) NSString *code;
 
 // The country name. For example: US.
-@property (copy) NSString *country;
+@property (nonatomic, copy) NSString *country;
 
 // The city or local equivalent portion of the address. For example: San Jose.
-@property (copy) NSString *locality;
+@property (nonatomic, copy) NSString *locality;
 
 // An optional post office box number.
-@property (copy) NSString *pobox;
+@property (nonatomic, copy) NSString *pobox;
 
 // The state or local equivalent portion of the address. For example: CA.
-@property (copy) NSString *region;
+@property (nonatomic, copy) NSString *region;
 
 // The street number and name. For example: 123 Any St.
-@property (copy) NSString *street;
+@property (nonatomic, copy) NSString *street;
 
 @end

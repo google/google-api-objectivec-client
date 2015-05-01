@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,14 +42,13 @@
 @dynamic address, channels, emails, name, party, phones, photoUrl, urls;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [GTLCivicInfoSimpleAddressType class], @"address",
-      [GTLCivicInfoChannel class], @"channels",
-      [NSString class], @"emails",
-      [NSString class], @"phones",
-      [NSString class], @"urls",
-      nil];
+  NSDictionary *map = @{
+    @"address" : [GTLCivicInfoSimpleAddressType class],
+    @"channels" : [GTLCivicInfoChannel class],
+    @"emails" : [NSString class],
+    @"phones" : [NSString class],
+    @"urls" : [NSString class]
+  };
   return map;
 }
 

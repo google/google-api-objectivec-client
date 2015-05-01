@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,28 +37,28 @@
 // Method compiled in debug builds just to check that all the needed support
 // classes are present at link time.
 + (NSArray *)checkClasses {
-  NSArray *classes = [NSArray arrayWithObjects:
-                      [GTLQueryAdSenseHost class],
-                      [GTLAdSenseHostAccount class],
-                      [GTLAdSenseHostAccounts class],
-                      [GTLAdSenseHostAdClient class],
-                      [GTLAdSenseHostAdClients class],
-                      [GTLAdSenseHostAdCode class],
-                      [GTLAdSenseHostAdStyle class],
-                      [GTLAdSenseHostAdUnit class],
-                      [GTLAdSenseHostAdUnits class],
-                      [GTLAdSenseHostAssociationSession class],
-                      [GTLAdSenseHostCustomChannel class],
-                      [GTLAdSenseHostCustomChannels class],
-                      [GTLAdSenseHostReport class],
-                      [GTLAdSenseHostUrlChannel class],
-                      [GTLAdSenseHostUrlChannels class],
-                      nil];
+  NSArray *classes = @[
+    [GTLQueryAdSenseHost class],
+    [GTLAdSenseHostAccount class],
+    [GTLAdSenseHostAccounts class],
+    [GTLAdSenseHostAdClient class],
+    [GTLAdSenseHostAdClients class],
+    [GTLAdSenseHostAdCode class],
+    [GTLAdSenseHostAdStyle class],
+    [GTLAdSenseHostAdUnit class],
+    [GTLAdSenseHostAdUnits class],
+    [GTLAdSenseHostAssociationSession class],
+    [GTLAdSenseHostCustomChannel class],
+    [GTLAdSenseHostCustomChannels class],
+    [GTLAdSenseHostReport class],
+    [GTLAdSenseHostUrlChannel class],
+    [GTLAdSenseHostUrlChannels class]
+  ];
   return classes;
 }
 #endif  // DEBUG
 
-- (id)init {
+- (instancetype)init {
   self = [super init];
   if (self) {
     // Version from discovery.

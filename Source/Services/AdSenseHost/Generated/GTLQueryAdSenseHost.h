@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,34 +46,34 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (copy) NSString *fields;
+@property (nonatomic, copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (copy) NSString *accountId;
-@property (copy) NSString *adClientId;
-@property (copy) NSString *adUnitId;
-@property (copy) NSString *customChannelId;
-@property (retain) NSArray *dimension;  // of NSString
-@property (copy) NSString *endDate;
-@property (retain) NSArray *filter;  // of NSString
-@property (retain) NSArray *filterAdClientId;  // of NSString
-@property (retain) NSArray *hostCustomChannelId;  // of NSString
-@property (assign) BOOL includeInactive;
-@property (copy) NSString *locale;
-@property (assign) NSUInteger maxResults;
-@property (retain) NSArray *metric;  // of NSString
-@property (copy) NSString *pageToken;
-@property (retain) NSArray *productCode;  // of NSString
-@property (retain) NSArray *sort;  // of NSString
-@property (copy) NSString *startDate;
-@property (assign) NSUInteger startIndex;
-@property (copy) NSString *token;
-@property (copy) NSString *urlChannelId;
-@property (copy) NSString *userLocale;
-@property (copy) NSString *websiteLocale;
-@property (copy) NSString *websiteUrl;
+@property (nonatomic, copy) NSString *accountId;
+@property (nonatomic, copy) NSString *adClientId;
+@property (nonatomic, copy) NSString *adUnitId;
+@property (nonatomic, copy) NSString *customChannelId;
+@property (nonatomic, retain) NSArray *dimension;  // of NSString
+@property (nonatomic, copy) NSString *endDate;
+@property (nonatomic, retain) NSArray *filter;  // of NSString
+@property (nonatomic, retain) NSArray *filterAdClientId;  // of NSString
+@property (nonatomic, retain) NSArray *hostCustomChannelId;  // of NSString
+@property (nonatomic, assign) BOOL includeInactive;
+@property (nonatomic, copy) NSString *locale;
+@property (nonatomic, assign) NSUInteger maxResults;
+@property (nonatomic, retain) NSArray *metric;  // of NSString
+@property (nonatomic, copy) NSString *pageToken;
+@property (nonatomic, retain) NSArray *productCode;  // of NSString
+@property (nonatomic, retain) NSArray *sort;  // of NSString
+@property (nonatomic, copy) NSString *startDate;
+@property (nonatomic, assign) NSUInteger startIndex;
+@property (nonatomic, copy) NSString *token;
+@property (nonatomic, copy) NSString *urlChannelId;
+@property (nonatomic, copy) NSString *userLocale;
+@property (nonatomic, copy) NSString *websiteLocale;
+@property (nonatomic, copy) NSString *websiteUrl;
 
 #pragma mark -
 #pragma mark "accounts.adclients" methods
@@ -88,8 +88,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSenseHost
 // Fetches a GTLAdSenseHostAdClient.
-+ (id)queryForAccountsAdclientsGetWithAccountId:(NSString *)accountId
-                                     adClientId:(NSString *)adClientId;
++ (instancetype)queryForAccountsAdclientsGetWithAccountId:(NSString *)accountId
+                                               adClientId:(NSString *)adClientId;
 
 // Method: adsensehost.accounts.adclients.list
 // List all hosted ad clients in the specified hosted account.
@@ -104,7 +104,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSenseHost
 // Fetches a GTLAdSenseHostAdClients.
-+ (id)queryForAccountsAdclientsListWithAccountId:(NSString *)accountId;
++ (instancetype)queryForAccountsAdclientsListWithAccountId:(NSString *)accountId;
 
 #pragma mark -
 #pragma mark "accounts.adunits" methods
@@ -119,9 +119,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSenseHost
 // Fetches a GTLAdSenseHostAdUnit.
-+ (id)queryForAccountsAdunitsDeleteWithAccountId:(NSString *)accountId
-                                      adClientId:(NSString *)adClientId
-                                        adUnitId:(NSString *)adUnitId;
++ (instancetype)queryForAccountsAdunitsDeleteWithAccountId:(NSString *)accountId
+                                                adClientId:(NSString *)adClientId
+                                                  adUnitId:(NSString *)adUnitId;
 
 // Method: adsensehost.accounts.adunits.get
 // Get the specified host ad unit in this AdSense account.
@@ -132,9 +132,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSenseHost
 // Fetches a GTLAdSenseHostAdUnit.
-+ (id)queryForAccountsAdunitsGetWithAccountId:(NSString *)accountId
-                                   adClientId:(NSString *)adClientId
-                                     adUnitId:(NSString *)adUnitId;
++ (instancetype)queryForAccountsAdunitsGetWithAccountId:(NSString *)accountId
+                                             adClientId:(NSString *)adClientId
+                                               adUnitId:(NSString *)adUnitId;
 
 // Method: adsensehost.accounts.adunits.getAdCode
 // Get ad code for the specified ad unit, attaching the specified host custom
@@ -148,9 +148,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSenseHost
 // Fetches a GTLAdSenseHostAdCode.
-+ (id)queryForAccountsAdunitsGetAdCodeWithAccountId:(NSString *)accountId
-                                         adClientId:(NSString *)adClientId
-                                           adUnitId:(NSString *)adUnitId;
++ (instancetype)queryForAccountsAdunitsGetAdCodeWithAccountId:(NSString *)accountId
+                                                   adClientId:(NSString *)adClientId
+                                                     adUnitId:(NSString *)adUnitId;
 
 // Method: adsensehost.accounts.adunits.insert
 // Insert the supplied ad unit into the specified publisher AdSense account.
@@ -160,9 +160,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSenseHost
 // Fetches a GTLAdSenseHostAdUnit.
-+ (id)queryForAccountsAdunitsInsertWithObject:(GTLAdSenseHostAdUnit *)object
-                                    accountId:(NSString *)accountId
-                                   adClientId:(NSString *)adClientId;
++ (instancetype)queryForAccountsAdunitsInsertWithObject:(GTLAdSenseHostAdUnit *)object
+                                              accountId:(NSString *)accountId
+                                             adClientId:(NSString *)adClientId;
 
 // Method: adsensehost.accounts.adunits.list
 // List all ad units in the specified publisher's AdSense account.
@@ -179,8 +179,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSenseHost
 // Fetches a GTLAdSenseHostAdUnits.
-+ (id)queryForAccountsAdunitsListWithAccountId:(NSString *)accountId
-                                    adClientId:(NSString *)adClientId;
++ (instancetype)queryForAccountsAdunitsListWithAccountId:(NSString *)accountId
+                                              adClientId:(NSString *)adClientId;
 
 // Method: adsensehost.accounts.adunits.patch
 // Update the supplied ad unit in the specified publisher AdSense account. This
@@ -192,10 +192,10 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSenseHost
 // Fetches a GTLAdSenseHostAdUnit.
-+ (id)queryForAccountsAdunitsPatchWithObject:(GTLAdSenseHostAdUnit *)object
-                                   accountId:(NSString *)accountId
-                                  adClientId:(NSString *)adClientId
-                                    adUnitId:(NSString *)adUnitId;
++ (instancetype)queryForAccountsAdunitsPatchWithObject:(GTLAdSenseHostAdUnit *)object
+                                             accountId:(NSString *)accountId
+                                            adClientId:(NSString *)adClientId
+                                              adUnitId:(NSString *)adUnitId;
 
 // Method: adsensehost.accounts.adunits.update
 // Update the supplied ad unit in the specified publisher AdSense account.
@@ -205,9 +205,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSenseHost
 // Fetches a GTLAdSenseHostAdUnit.
-+ (id)queryForAccountsAdunitsUpdateWithObject:(GTLAdSenseHostAdUnit *)object
-                                    accountId:(NSString *)accountId
-                                   adClientId:(NSString *)adClientId;
++ (instancetype)queryForAccountsAdunitsUpdateWithObject:(GTLAdSenseHostAdUnit *)object
+                                              accountId:(NSString *)accountId
+                                             adClientId:(NSString *)adClientId;
 
 #pragma mark -
 #pragma mark "accounts" methods
@@ -220,7 +220,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSenseHost
 // Fetches a GTLAdSenseHostAccount.
-+ (id)queryForAccountsGetWithAccountId:(NSString *)accountId;
++ (instancetype)queryForAccountsGetWithAccountId:(NSString *)accountId;
 
 // Method: adsensehost.accounts.list
 // List hosted accounts associated with this AdSense account by ad client id.
@@ -229,7 +229,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSenseHost
 // Fetches a GTLAdSenseHostAccounts.
-+ (id)queryForAccountsListWithFilterAdClientId:(NSArray *)filterAdClientId;
++ (instancetype)queryForAccountsListWithFilterAdClientId:(NSArray *)filterAdClientId;
 
 #pragma mark -
 #pragma mark "accounts.reports" methods
@@ -259,9 +259,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSenseHost
 // Fetches a GTLAdSenseHostReport.
-+ (id)queryForAccountsReportsGenerateWithAccountId:(NSString *)accountId
-                                         startDate:(NSString *)startDate
-                                           endDate:(NSString *)endDate;
++ (instancetype)queryForAccountsReportsGenerateWithAccountId:(NSString *)accountId
+                                                   startDate:(NSString *)startDate
+                                                     endDate:(NSString *)endDate;
 
 #pragma mark -
 #pragma mark "adclients" methods
@@ -274,7 +274,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSenseHost
 // Fetches a GTLAdSenseHostAdClient.
-+ (id)queryForAdclientsGetWithAdClientId:(NSString *)adClientId;
++ (instancetype)queryForAdclientsGetWithAdClientId:(NSString *)adClientId;
 
 // Method: adsensehost.adclients.list
 // List all host ad clients in this AdSense account.
@@ -287,7 +287,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSenseHost
 // Fetches a GTLAdSenseHostAdClients.
-+ (id)queryForAdclientsList;
++ (instancetype)queryForAdclientsList;
 
 #pragma mark -
 #pragma mark "associationsessions" methods
@@ -310,8 +310,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSenseHost
 // Fetches a GTLAdSenseHostAssociationSession.
-+ (id)queryForAssociationsessionsStartWithProductCode:(NSArray *)productCode
-                                           websiteUrl:(NSString *)websiteUrl;
++ (instancetype)queryForAssociationsessionsStartWithProductCode:(NSArray *)productCode
+                                                     websiteUrl:(NSString *)websiteUrl;
 
 // Method: adsensehost.associationsessions.verify
 // Verify an association session after the association callback returns from
@@ -321,7 +321,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSenseHost
 // Fetches a GTLAdSenseHostAssociationSession.
-+ (id)queryForAssociationsessionsVerifyWithToken:(NSString *)token;
++ (instancetype)queryForAssociationsessionsVerifyWithToken:(NSString *)token;
 
 #pragma mark -
 #pragma mark "customchannels" methods
@@ -335,8 +335,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSenseHost
 // Fetches a GTLAdSenseHostCustomChannel.
-+ (id)queryForCustomchannelsDeleteWithAdClientId:(NSString *)adClientId
-                                 customChannelId:(NSString *)customChannelId;
++ (instancetype)queryForCustomchannelsDeleteWithAdClientId:(NSString *)adClientId
+                                           customChannelId:(NSString *)customChannelId;
 
 // Method: adsensehost.customchannels.get
 // Get a specific custom channel from the host AdSense account.
@@ -346,8 +346,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSenseHost
 // Fetches a GTLAdSenseHostCustomChannel.
-+ (id)queryForCustomchannelsGetWithAdClientId:(NSString *)adClientId
-                              customChannelId:(NSString *)customChannelId;
++ (instancetype)queryForCustomchannelsGetWithAdClientId:(NSString *)adClientId
+                                        customChannelId:(NSString *)customChannelId;
 
 // Method: adsensehost.customchannels.insert
 // Add a new custom channel to the host AdSense account.
@@ -356,8 +356,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSenseHost
 // Fetches a GTLAdSenseHostCustomChannel.
-+ (id)queryForCustomchannelsInsertWithObject:(GTLAdSenseHostCustomChannel *)object
-                                  adClientId:(NSString *)adClientId;
++ (instancetype)queryForCustomchannelsInsertWithObject:(GTLAdSenseHostCustomChannel *)object
+                                            adClientId:(NSString *)adClientId;
 
 // Method: adsensehost.customchannels.list
 // List all host custom channels in this AdSense account.
@@ -372,7 +372,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSenseHost
 // Fetches a GTLAdSenseHostCustomChannels.
-+ (id)queryForCustomchannelsListWithAdClientId:(NSString *)adClientId;
++ (instancetype)queryForCustomchannelsListWithAdClientId:(NSString *)adClientId;
 
 // Method: adsensehost.customchannels.patch
 // Update a custom channel in the host AdSense account. This method supports
@@ -383,9 +383,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSenseHost
 // Fetches a GTLAdSenseHostCustomChannel.
-+ (id)queryForCustomchannelsPatchWithObject:(GTLAdSenseHostCustomChannel *)object
-                                 adClientId:(NSString *)adClientId
-                            customChannelId:(NSString *)customChannelId;
++ (instancetype)queryForCustomchannelsPatchWithObject:(GTLAdSenseHostCustomChannel *)object
+                                           adClientId:(NSString *)adClientId
+                                      customChannelId:(NSString *)customChannelId;
 
 // Method: adsensehost.customchannels.update
 // Update a custom channel in the host AdSense account.
@@ -394,8 +394,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSenseHost
 // Fetches a GTLAdSenseHostCustomChannel.
-+ (id)queryForCustomchannelsUpdateWithObject:(GTLAdSenseHostCustomChannel *)object
-                                  adClientId:(NSString *)adClientId;
++ (instancetype)queryForCustomchannelsUpdateWithObject:(GTLAdSenseHostCustomChannel *)object
+                                            adClientId:(NSString *)adClientId;
 
 #pragma mark -
 #pragma mark "reports" methods
@@ -424,8 +424,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSenseHost
 // Fetches a GTLAdSenseHostReport.
-+ (id)queryForReportsGenerateWithStartDate:(NSString *)startDate
-                                   endDate:(NSString *)endDate;
++ (instancetype)queryForReportsGenerateWithStartDate:(NSString *)startDate
+                                             endDate:(NSString *)endDate;
 
 #pragma mark -
 #pragma mark "urlchannels" methods
@@ -439,8 +439,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSenseHost
 // Fetches a GTLAdSenseHostUrlChannel.
-+ (id)queryForUrlchannelsDeleteWithAdClientId:(NSString *)adClientId
-                                 urlChannelId:(NSString *)urlChannelId;
++ (instancetype)queryForUrlchannelsDeleteWithAdClientId:(NSString *)adClientId
+                                           urlChannelId:(NSString *)urlChannelId;
 
 // Method: adsensehost.urlchannels.insert
 // Add a new URL channel to the host AdSense account.
@@ -449,8 +449,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSenseHost
 // Fetches a GTLAdSenseHostUrlChannel.
-+ (id)queryForUrlchannelsInsertWithObject:(GTLAdSenseHostUrlChannel *)object
-                               adClientId:(NSString *)adClientId;
++ (instancetype)queryForUrlchannelsInsertWithObject:(GTLAdSenseHostUrlChannel *)object
+                                         adClientId:(NSString *)adClientId;
 
 // Method: adsensehost.urlchannels.list
 // List all host URL channels in the host AdSense account.
@@ -465,6 +465,6 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdSenseHost
 // Fetches a GTLAdSenseHostUrlChannels.
-+ (id)queryForUrlchannelsListWithAdClientId:(NSString *)adClientId;
++ (instancetype)queryForUrlchannelsListWithAdClientId:(NSString *)adClientId;
 
 @end

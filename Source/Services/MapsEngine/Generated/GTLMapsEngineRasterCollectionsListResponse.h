@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,9 +51,9 @@
 @interface GTLMapsEngineRasterCollectionsListResponse : GTLObject
 
 // Next page token.
-@property (copy) NSString *nextPageToken;  // GTLBase64 can encode/decode (probably web-safe format)
+@property (nonatomic, copy) NSString *nextPageToken;  // GTLBase64 can encode/decode (probably web-safe format)
 
 // Resources returned.
-@property (retain) NSArray *rasterCollections;  // of GTLMapsEngineRasterCollection
+@property (nonatomic, retain) NSArray *rasterCollections;  // of GTLMapsEngineRasterCollection
 
 @end

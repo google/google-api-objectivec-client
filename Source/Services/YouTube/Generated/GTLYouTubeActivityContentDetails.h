@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,49 +58,49 @@
 
 // The bulletin object contains details about a channel bulletin post. This
 // object is only present if the snippet.type is bulletin.
-@property (retain) GTLYouTubeActivityContentDetailsBulletin *bulletin;
+@property (nonatomic, retain) GTLYouTubeActivityContentDetailsBulletin *bulletin;
 
 // The channelItem object contains details about a resource which was added to a
 // channel. This property is only present if the snippet.type is channelItem.
-@property (retain) GTLYouTubeActivityContentDetailsChannelItem *channelItem;
+@property (nonatomic, retain) GTLYouTubeActivityContentDetailsChannelItem *channelItem;
 
 // The comment object contains information about a resource that received a
 // comment. This property is only present if the snippet.type is comment.
-@property (retain) GTLYouTubeActivityContentDetailsComment *comment;
+@property (nonatomic, retain) GTLYouTubeActivityContentDetailsComment *comment;
 
 // The favorite object contains information about a video that was marked as a
 // favorite video. This property is only present if the snippet.type is
 // favorite.
-@property (retain) GTLYouTubeActivityContentDetailsFavorite *favorite;
+@property (nonatomic, retain) GTLYouTubeActivityContentDetailsFavorite *favorite;
 
 // The like object contains information about a resource that received a
 // positive (like) rating. This property is only present if the snippet.type is
 // like.
-@property (retain) GTLYouTubeActivityContentDetailsLike *like;
+@property (nonatomic, retain) GTLYouTubeActivityContentDetailsLike *like;
 
 // The playlistItem object contains information about a new playlist item. This
 // property is only present if the snippet.type is playlistItem.
-@property (retain) GTLYouTubeActivityContentDetailsPlaylistItem *playlistItem;
+@property (nonatomic, retain) GTLYouTubeActivityContentDetailsPlaylistItem *playlistItem;
 
 // The promotedItem object contains details about a resource which is being
 // promoted. This property is only present if the snippet.type is promotedItem.
-@property (retain) GTLYouTubeActivityContentDetailsPromotedItem *promotedItem;
+@property (nonatomic, retain) GTLYouTubeActivityContentDetailsPromotedItem *promotedItem;
 
 // The recommendation object contains information about a recommended resource.
 // This property is only present if the snippet.type is recommendation.
-@property (retain) GTLYouTubeActivityContentDetailsRecommendation *recommendation;
+@property (nonatomic, retain) GTLYouTubeActivityContentDetailsRecommendation *recommendation;
 
 // The social object contains details about a social network post. This property
 // is only present if the snippet.type is social.
-@property (retain) GTLYouTubeActivityContentDetailsSocial *social;
+@property (nonatomic, retain) GTLYouTubeActivityContentDetailsSocial *social;
 
 // The subscription object contains information about a channel that a user
 // subscribed to. This property is only present if the snippet.type is
 // subscription.
-@property (retain) GTLYouTubeActivityContentDetailsSubscription *subscription;
+@property (nonatomic, retain) GTLYouTubeActivityContentDetailsSubscription *subscription;
 
 // The upload object contains information about the uploaded video. This
 // property is only present if the snippet.type is upload.
-@property (retain) GTLYouTubeActivityContentDetailsUpload *upload;
+@property (nonatomic, retain) GTLYouTubeActivityContentDetailsUpload *upload;
 
 @end

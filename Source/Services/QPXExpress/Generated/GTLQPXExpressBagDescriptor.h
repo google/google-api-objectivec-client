@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,20 +45,20 @@
 @interface GTLQPXExpressBagDescriptor : GTLObject
 
 // Provides the commercial name for an optional service.
-@property (copy) NSString *commercialName;
+@property (nonatomic, copy) NSString *commercialName;
 
 // How many of this type of bag will be checked on this flight.
-@property (retain) NSNumber *count;  // intValue
+@property (nonatomic, retain) NSNumber *count;  // intValue
 
 // A description of the baggage.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (retain) NSArray *descriptionProperty;  // of NSString
+@property (nonatomic, retain) NSArray *descriptionProperty;  // of NSString
 
 // Identifies this as a baggage object. Value: the fixed string
 // qpxexpress#bagDescriptor.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The standard IATA subcode used to identify this optional service.
-@property (copy) NSString *subcode;
+@property (nonatomic, copy) NSString *subcode;
 
 @end

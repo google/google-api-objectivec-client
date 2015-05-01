@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,6 +44,6 @@
 @interface GTLYouTubePlaylistItemStatus : GTLObject
 
 // This resource's privacy status.
-@property (copy) NSString *privacyStatus;
+@property (nonatomic, copy) NSString *privacyStatus;
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,21 +41,20 @@
          requiredDimensions, requiredMetrics, supportedProducts;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+  NSDictionary *map = @{
+    @"identifier" : @"id"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSString class], @"compatibleDimensions",
-      [NSString class], @"compatibleMetrics",
-      [NSString class], @"requiredDimensions",
-      [NSString class], @"requiredMetrics",
-      [NSString class], @"supportedProducts",
-      nil];
+  NSDictionary *map = @{
+    @"compatibleDimensions" : [NSString class],
+    @"compatibleMetrics" : [NSString class],
+    @"requiredDimensions" : [NSString class],
+    @"requiredMetrics" : [NSString class],
+    @"supportedProducts" : [NSString class]
+  };
   return map;
 }
 

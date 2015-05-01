@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,12 +44,12 @@
 @interface GTLWebmastersWmxSitemapContent : GTLObject
 
 // The number of URLs from the sitemap that were indexed (of the content type).
-@property (retain) NSNumber *indexed;  // longLongValue
+@property (nonatomic, retain) NSNumber *indexed;  // longLongValue
 
 // The number of URLs in the sitemap (of the content type).
-@property (retain) NSNumber *submitted;  // longLongValue
+@property (nonatomic, retain) NSNumber *submitted;  // longLongValue
 
 // The specific type of content in this sitemap (for example "web", "images").
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end

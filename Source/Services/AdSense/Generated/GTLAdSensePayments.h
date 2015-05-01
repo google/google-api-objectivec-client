@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,9 +49,9 @@
 
 // The list of Payments for the account. One or both of a) the account's most
 // recent payment; and b) the account's upcoming payment.
-@property (retain) NSArray *items;  // of GTLAdSensePayment
+@property (nonatomic, retain) NSArray *items;  // of GTLAdSensePayment
 
 // Kind of list this is, in this case adsense#payments.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 @end

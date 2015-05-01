@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,17 +51,17 @@
 // provided, its value is assumed to be 95. Valid values range from 0 to 99,
 // since, in practice, 100-percent confidence is not achievable. The confidence
 // value is meaningful only when geolocation refers to a point with uncertainty.
-@property (retain) NSNumber *confidence;  // intValue
+@property (nonatomic, retain) NSNumber *confidence;  // intValue
 
 // If present, indicates that the geolocation represents a point. Paradoxically,
 // a point is parameterized using an ellipse, where the center represents the
 // location of the point and the distances along the major and minor axes
 // represent the uncertainty. The uncertainty values may be required, depending
 // on the regulatory domain.
-@property (retain) GTLSpectrumGeoLocationEllipse *point;
+@property (nonatomic, retain) GTLSpectrumGeoLocationEllipse *point;
 
 // If present, indicates that the geolocation represents a region. Database
 // support for regions is optional.
-@property (retain) GTLSpectrumGeoLocationPolygon *region;
+@property (nonatomic, retain) GTLSpectrumGeoLocationPolygon *region;
 
 @end

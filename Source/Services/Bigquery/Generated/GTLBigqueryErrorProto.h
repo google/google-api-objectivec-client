@@ -43,15 +43,15 @@
 
 // Debugging information. This property is internal to Google and should not be
 // used.
-@property (copy) NSString *debugInfo;
+@property (nonatomic, copy) NSString *debugInfo;
 
 // Specifies where the error occurred, if present.
-@property (copy) NSString *location;
+@property (nonatomic, copy) NSString *location;
 
 // A human-readable description of the error.
-@property (copy) NSString *message;
+@property (nonatomic, copy) NSString *message;
 
 // A short error code that summarizes the error.
-@property (copy) NSString *reason;
+@property (nonatomic, copy) NSString *reason;
 
 @end

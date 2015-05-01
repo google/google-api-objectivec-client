@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,23 +44,23 @@
 @interface GTLAnalyticsUpload : GTLObject
 
 // Account Id to which this upload belongs.
-@property (retain) NSNumber *accountId;  // longLongValue
+@property (nonatomic, retain) NSNumber *accountId;  // longLongValue
 
 // Custom data source Id to which this data import belongs.
-@property (copy) NSString *customDataSourceId;
+@property (nonatomic, copy) NSString *customDataSourceId;
 
 // Data import errors collection.
-@property (retain) NSArray *errors;  // of NSString
+@property (nonatomic, retain) NSArray *errors;  // of NSString
 
 // A unique ID for this upload.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Resource type for Analytics upload.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Upload status. Possible values: PENDING, COMPLETED, FAILED, DELETING,
 // DELETED.
-@property (copy) NSString *status;
+@property (nonatomic, copy) NSString *status;
 
 @end

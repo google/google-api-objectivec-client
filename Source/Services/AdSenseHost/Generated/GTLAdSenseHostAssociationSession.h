@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,34 +44,34 @@
 
 // Hosted account id of the associated publisher after association. Present if
 // status is ACCEPTED.
-@property (copy) NSString *accountId;
+@property (nonatomic, copy) NSString *accountId;
 
 // Unique identifier of this association session.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Kind of resource this is, in this case adsensehost#associationSession.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The products to associate with the user. Options: AFC, AFF, AFS, AFMC
-@property (retain) NSArray *productCodes;  // of NSString
+@property (nonatomic, retain) NSArray *productCodes;  // of NSString
 
 // Redirect URL of this association session. Used to redirect users into the
 // AdSense association flow.
-@property (copy) NSString *redirectUrl;
+@property (nonatomic, copy) NSString *redirectUrl;
 
 // Status of the completed association, available once the association callback
 // token has been verified. One of ACCEPTED, REJECTED, or ERROR.
-@property (copy) NSString *status;
+@property (nonatomic, copy) NSString *status;
 
 // The preferred locale of the user themselves when going through the AdSense
 // association flow.
-@property (copy) NSString *userLocale;
+@property (nonatomic, copy) NSString *userLocale;
 
 // The locale of the user's hosted website.
-@property (copy) NSString *websiteLocale;
+@property (nonatomic, copy) NSString *websiteLocale;
 
 // The URL of the user's hosted website.
-@property (copy) NSString *websiteUrl;
+@property (nonatomic, copy) NSString *websiteUrl;
 
 @end

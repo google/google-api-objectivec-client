@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,21 +37,21 @@
 // Method compiled in debug builds just to check that all the needed support
 // classes are present at link time.
 + (NSArray *)checkClasses {
-  NSArray *classes = [NSArray arrayWithObjects:
-                      [GTLQueryDiscovery class],
-                      [GTLDiscoveryDirectoryList class],
-                      [GTLDiscoveryJsonSchema class],
-                      [GTLDiscoveryRestDescription class],
-                      [GTLDiscoveryRestMethod class],
-                      [GTLDiscoveryRestResource class],
-                      [GTLDiscoveryRpcDescription class],
-                      [GTLDiscoveryRpcMethod class],
-                      nil];
+  NSArray *classes = @[
+    [GTLQueryDiscovery class],
+    [GTLDiscoveryDirectoryList class],
+    [GTLDiscoveryJsonSchema class],
+    [GTLDiscoveryRestDescription class],
+    [GTLDiscoveryRestMethod class],
+    [GTLDiscoveryRestResource class],
+    [GTLDiscoveryRpcDescription class],
+    [GTLDiscoveryRpcMethod class]
+  ];
   return classes;
 }
 #endif  // DEBUG
 
-- (id)init {
+- (instancetype)init {
   self = [super init];
   if (self) {
     // Version from discovery.

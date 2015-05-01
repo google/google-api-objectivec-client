@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,12 +47,12 @@
 @interface GTLBloggerPostUserInfosList : GTLCollectionObject
 
 // The list of Posts with User information for the post, for this Blog.
-@property (retain) NSArray *items;  // of GTLBloggerPostUserInfo
+@property (nonatomic, retain) NSArray *items;  // of GTLBloggerPostUserInfo
 
 // The kind of this entity. Always blogger#postList
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Pagination token to fetch the next page, if one exists.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 @end

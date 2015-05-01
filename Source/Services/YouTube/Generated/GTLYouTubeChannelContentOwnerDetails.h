@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,10 +45,10 @@
 @interface GTLYouTubeChannelContentOwnerDetails : GTLObject
 
 // The ID of the content owner linked to the channel.
-@property (copy) NSString *contentOwner;
+@property (nonatomic, copy) NSString *contentOwner;
 
 // The date and time of when the channel was linked to the content owner. The
 // value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-@property (retain) GTLDateTime *timeLinked;
+@property (nonatomic, retain) GTLDateTime *timeLinked;
 
 @end

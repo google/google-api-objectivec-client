@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,9 +50,9 @@
 @interface GTLMirrorLocationsListResponse : GTLCollectionObject
 
 // The list of locations.
-@property (retain) NSArray *items;  // of GTLMirrorLocation
+@property (nonatomic, retain) NSArray *items;  // of GTLMirrorLocation
 
 // The type of resource. This is always mirror#locationsList.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,52 +56,52 @@
 @interface GTLAnalyticsFilter : GTLObject
 
 // Account ID to which this filter belongs.
-@property (copy) NSString *accountId;
+@property (nonatomic, copy) NSString *accountId;
 
 // Details for the filter of the type ADVANCED.
-@property (retain) GTLAnalyticsFilterAdvancedDetails *advancedDetails;
+@property (nonatomic, retain) GTLAnalyticsFilterAdvancedDetails *advancedDetails;
 
 // Time this filter was created.
-@property (retain) GTLDateTime *created;
+@property (nonatomic, retain) GTLDateTime *created;
 
 // Details for the filter of the type EXCLUDE.
-@property (retain) GTLAnalyticsFilterExpression *excludeDetails;
+@property (nonatomic, retain) GTLAnalyticsFilterExpression *excludeDetails;
 
 // Filter ID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Details for the filter of the type INCLUDE.
-@property (retain) GTLAnalyticsFilterExpression *includeDetails;
+@property (nonatomic, retain) GTLAnalyticsFilterExpression *includeDetails;
 
 // Resource type for Analytics filter.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Details for the filter of the type LOWER.
-@property (retain) GTLAnalyticsFilterLowercaseDetails *lowercaseDetails;
+@property (nonatomic, retain) GTLAnalyticsFilterLowercaseDetails *lowercaseDetails;
 
 // Name of this filter.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // Parent link for this filter. Points to the account to which this filter
 // belongs.
-@property (retain) GTLAnalyticsFilterParentLink *parentLink;
+@property (nonatomic, retain) GTLAnalyticsFilterParentLink *parentLink;
 
 // Details for the filter of the type SEARCH_AND_REPLACE.
-@property (retain) GTLAnalyticsFilterSearchAndReplaceDetails *searchAndReplaceDetails;
+@property (nonatomic, retain) GTLAnalyticsFilterSearchAndReplaceDetails *searchAndReplaceDetails;
 
 // Link for this filter.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // Type of this filter. Possible values are INCLUDE, EXCLUDE, LOWERCASE,
 // UPPERCASE, SEARCH_AND_REPLACE and ADVANCED.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 // Time this filter was last modified.
-@property (retain) GTLDateTime *updated;
+@property (nonatomic, retain) GTLDateTime *updated;
 
 // Details for the filter of the type UPPER.
-@property (retain) GTLAnalyticsFilterUppercaseDetails *uppercaseDetails;
+@property (nonatomic, retain) GTLAnalyticsFilterUppercaseDetails *uppercaseDetails;
 
 @end
 
@@ -114,35 +114,35 @@
 @interface GTLAnalyticsFilterAdvancedDetails : GTLObject
 
 // Indicates if the filter expressions are case sensitive.
-@property (retain) NSNumber *caseSensitive;  // boolValue
+@property (nonatomic, retain) NSNumber *caseSensitive;  // boolValue
 
 // Expression to extract from field A.
-@property (copy) NSString *extractA;
+@property (nonatomic, copy) NSString *extractA;
 
 // Expression to extract from field B.
-@property (copy) NSString *extractB;
+@property (nonatomic, copy) NSString *extractB;
 
 // Field A.
-@property (copy) NSString *fieldA;
+@property (nonatomic, copy) NSString *fieldA;
 
 // Indicates if field A is required to match.
-@property (retain) NSNumber *fieldARequired;  // boolValue
+@property (nonatomic, retain) NSNumber *fieldARequired;  // boolValue
 
 // Field B.
-@property (copy) NSString *fieldB;
+@property (nonatomic, copy) NSString *fieldB;
 
 // Indicates if field B is required to match.
-@property (retain) NSNumber *fieldBRequired;  // boolValue
+@property (nonatomic, retain) NSNumber *fieldBRequired;  // boolValue
 
 // Expression used to construct the output value.
-@property (copy) NSString *outputConstructor;
+@property (nonatomic, copy) NSString *outputConstructor;
 
 // Output field.
-@property (copy) NSString *outputToField;
+@property (nonatomic, copy) NSString *outputToField;
 
 // Indicates if the existing value of the output field, if any, should be
 // overridden by the output expression.
-@property (retain) NSNumber *overrideOutputField;  // boolValue
+@property (nonatomic, retain) NSNumber *overrideOutputField;  // boolValue
 
 @end
 
@@ -155,7 +155,7 @@
 @interface GTLAnalyticsFilterLowercaseDetails : GTLObject
 
 // Field to use in the filter.
-@property (copy) NSString *field;
+@property (nonatomic, copy) NSString *field;
 
 @end
 
@@ -168,10 +168,10 @@
 @interface GTLAnalyticsFilterParentLink : GTLObject
 
 // Link to the account to which this filter belongs.
-@property (copy) NSString *href;
+@property (nonatomic, copy) NSString *href;
 
 // Value is "analytics#account".
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end
 
@@ -184,16 +184,16 @@
 @interface GTLAnalyticsFilterSearchAndReplaceDetails : GTLObject
 
 // Determines if the filter is case sensitive.
-@property (retain) NSNumber *caseSensitive;  // boolValue
+@property (nonatomic, retain) NSNumber *caseSensitive;  // boolValue
 
 // Field to use in the filter.
-@property (copy) NSString *field;
+@property (nonatomic, copy) NSString *field;
 
 // Term to replace the search term with.
-@property (copy) NSString *replaceString;
+@property (nonatomic, copy) NSString *replaceString;
 
 // Term to search.
-@property (copy) NSString *searchString;
+@property (nonatomic, copy) NSString *searchString;
 
 @end
 
@@ -206,6 +206,6 @@
 @interface GTLAnalyticsFilterUppercaseDetails : GTLObject
 
 // Field to use in the filter.
-@property (copy) NSString *field;
+@property (nonatomic, copy) NSString *field;
 
 @end

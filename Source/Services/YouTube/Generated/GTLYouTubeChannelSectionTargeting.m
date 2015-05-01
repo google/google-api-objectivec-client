@@ -39,12 +39,11 @@
 @dynamic countries, languages, regions;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSString class], @"countries",
-      [NSString class], @"languages",
-      [NSString class], @"regions",
-      nil];
+  NSDictionary *map = @{
+    @"countries" : [NSString class],
+    @"languages" : [NSString class],
+    @"regions" : [NSString class]
+  };
   return map;
 }
 

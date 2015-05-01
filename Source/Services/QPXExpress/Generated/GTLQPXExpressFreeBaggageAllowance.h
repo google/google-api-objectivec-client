@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,22 +48,22 @@
 
 // A representation of a type of bag, such as an ATPCo subcode, Commercial Name,
 // or other description.
-@property (retain) NSArray *bagDescriptor;  // of GTLQPXExpressBagDescriptor
+@property (nonatomic, retain) NSArray *bagDescriptor;  // of GTLQPXExpressBagDescriptor
 
 // The maximum number of kilos all the free baggage together may weigh.
-@property (retain) NSNumber *kilos;  // intValue
+@property (nonatomic, retain) NSNumber *kilos;  // intValue
 
 // The maximum number of kilos any one piece of baggage may weigh.
-@property (retain) NSNumber *kilosPerPiece;  // intValue
+@property (nonatomic, retain) NSNumber *kilosPerPiece;  // intValue
 
 // Identifies this as free baggage object, allowed on one segment of a trip.
 // Value: the fixed string qpxexpress#freeBaggageAllowance.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The number of free pieces of baggage allowed.
-@property (retain) NSNumber *pieces;  // intValue
+@property (nonatomic, retain) NSNumber *pieces;  // intValue
 
 // The number of pounds of free baggage allowed.
-@property (retain) NSNumber *pounds;  // intValue
+@property (nonatomic, retain) NSNumber *pounds;  // intValue
 
 @end

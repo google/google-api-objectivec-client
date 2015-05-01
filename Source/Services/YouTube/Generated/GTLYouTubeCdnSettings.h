@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,13 +46,13 @@
 @interface GTLYouTubeCdnSettings : GTLObject
 
 // The format of the video stream that you are sending to Youtube.
-@property (copy) NSString *format;
+@property (nonatomic, copy) NSString *format;
 
 // The ingestionInfo object contains information that YouTube provides that you
 // need to transmit your RTMP or HTTP stream to YouTube.
-@property (retain) GTLYouTubeIngestionInfo *ingestionInfo;
+@property (nonatomic, retain) GTLYouTubeIngestionInfo *ingestionInfo;
 
 // The method or protocol used to transmit the video stream.
-@property (copy) NSString *ingestionType;
+@property (nonatomic, copy) NSString *ingestionType;
 
 @end

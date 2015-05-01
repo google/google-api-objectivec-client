@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,56 +51,56 @@
 
 // Anchor text after excerpt. For requests, if the user bookmarked a screen that
 // has no flowing text on it, then this field should be empty.
-@property (copy) NSString *afterSelectedText;
+@property (nonatomic, copy) NSString *afterSelectedText;
 
 // Anchor text before excerpt. For requests, if the user bookmarked a screen
 // that has no flowing text on it, then this field should be empty.
-@property (copy) NSString *beforeSelectedText;
+@property (nonatomic, copy) NSString *beforeSelectedText;
 
 // Selection ranges sent from the client.
-@property (retain) GTLBooksAnnotationClientVersionRanges *clientVersionRanges;
+@property (nonatomic, retain) GTLBooksAnnotationClientVersionRanges *clientVersionRanges;
 
 // Timestamp for the created time of this annotation.
-@property (retain) GTLDateTime *created;
+@property (nonatomic, retain) GTLDateTime *created;
 
 // Selection ranges for the most recent content version.
-@property (retain) GTLBooksAnnotationCurrentVersionRanges *currentVersionRanges;
+@property (nonatomic, retain) GTLBooksAnnotationCurrentVersionRanges *currentVersionRanges;
 
 // User-created data for this annotation.
-@property (copy) NSString *data;
+@property (nonatomic, copy) NSString *data;
 
 // Indicates that this annotation is deleted.
-@property (retain) NSNumber *deleted;  // boolValue
+@property (nonatomic, retain) NSNumber *deleted;  // boolValue
 
 // The highlight style for this annotation.
-@property (copy) NSString *highlightStyle;
+@property (nonatomic, copy) NSString *highlightStyle;
 
 // Id of this annotation, in the form of a GUID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Resource type.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The layer this annotation is for.
-@property (copy) NSString *layerId;
+@property (nonatomic, copy) NSString *layerId;
 
-@property (retain) GTLBooksAnnotationLayerSummary *layerSummary;
+@property (nonatomic, retain) GTLBooksAnnotationLayerSummary *layerSummary;
 
 // Pages that this annotation spans.
-@property (retain) NSArray *pageIds;  // of NSString
+@property (nonatomic, retain) NSArray *pageIds;  // of NSString
 
 // Excerpt from the volume.
-@property (copy) NSString *selectedText;
+@property (nonatomic, copy) NSString *selectedText;
 
 // URL to this resource.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // Timestamp for the last time this annotation was modified.
-@property (retain) GTLDateTime *updated;
+@property (nonatomic, retain) GTLDateTime *updated;
 
 // The volume that this annotation belongs to.
-@property (copy) NSString *volumeId;
+@property (nonatomic, copy) NSString *volumeId;
 
 @end
 
@@ -113,19 +113,19 @@
 @interface GTLBooksAnnotationClientVersionRanges : GTLObject
 
 // Range in CFI format for this annotation sent by client.
-@property (retain) GTLBooksAnnotationsRange *cfiRange;
+@property (nonatomic, retain) GTLBooksAnnotationsRange *cfiRange;
 
 // Content version the client sent in.
-@property (copy) NSString *contentVersion;
+@property (nonatomic, copy) NSString *contentVersion;
 
 // Range in GB image format for this annotation sent by client.
-@property (retain) GTLBooksAnnotationsRange *gbImageRange;
+@property (nonatomic, retain) GTLBooksAnnotationsRange *gbImageRange;
 
 // Range in GB text format for this annotation sent by client.
-@property (retain) GTLBooksAnnotationsRange *gbTextRange;
+@property (nonatomic, retain) GTLBooksAnnotationsRange *gbTextRange;
 
 // Range in image CFI format for this annotation sent by client.
-@property (retain) GTLBooksAnnotationsRange *imageCfiRange;
+@property (nonatomic, retain) GTLBooksAnnotationsRange *imageCfiRange;
 
 @end
 
@@ -138,19 +138,19 @@
 @interface GTLBooksAnnotationCurrentVersionRanges : GTLObject
 
 // Range in CFI format for this annotation for version above.
-@property (retain) GTLBooksAnnotationsRange *cfiRange;
+@property (nonatomic, retain) GTLBooksAnnotationsRange *cfiRange;
 
 // Content version applicable to ranges below.
-@property (copy) NSString *contentVersion;
+@property (nonatomic, copy) NSString *contentVersion;
 
 // Range in GB image format for this annotation for version above.
-@property (retain) GTLBooksAnnotationsRange *gbImageRange;
+@property (nonatomic, retain) GTLBooksAnnotationsRange *gbImageRange;
 
 // Range in GB text format for this annotation for version above.
-@property (retain) GTLBooksAnnotationsRange *gbTextRange;
+@property (nonatomic, retain) GTLBooksAnnotationsRange *gbTextRange;
 
 // Range in image CFI format for this annotation for version above.
-@property (retain) GTLBooksAnnotationsRange *imageCfiRange;
+@property (nonatomic, retain) GTLBooksAnnotationsRange *imageCfiRange;
 
 @end
 
@@ -163,13 +163,13 @@
 @interface GTLBooksAnnotationLayerSummary : GTLObject
 
 // Maximum allowed characters on this layer, especially for the "copy" layer.
-@property (retain) NSNumber *allowedCharacterCount;  // intValue
+@property (nonatomic, retain) NSNumber *allowedCharacterCount;  // intValue
 
 // Type of limitation on this layer. "limited" or "unlimited" for the "copy"
 // layer.
-@property (copy) NSString *limitType;
+@property (nonatomic, copy) NSString *limitType;
 
 // Remaining allowed characters on this layer, especially for the "copy" layer.
-@property (retain) NSNumber *remainingCharacterCount;  // intValue
+@property (nonatomic, retain) NSNumber *remainingCharacterCount;  // intValue
 
 @end

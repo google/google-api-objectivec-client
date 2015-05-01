@@ -49,22 +49,22 @@
 @interface GTLYouTubeCommentThread : GTLObject
 
 // Etag of this resource.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The ID that YouTube uses to uniquely identify the comment thread.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Identifies what kind of resource this is. Value: the fixed string
 // "youtube#commentThread".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The replies object contains a limited number of replies (if any) to the top
 // level comment found in the snippet.
-@property (retain) GTLYouTubeCommentThreadReplies *replies;
+@property (nonatomic, retain) GTLYouTubeCommentThreadReplies *replies;
 
 // The snippet object contains basic details about the comment thread and also
 // the top level comment.
-@property (retain) GTLYouTubeCommentThreadSnippet *snippet;
+@property (nonatomic, retain) GTLYouTubeCommentThreadSnippet *snippet;
 
 @end

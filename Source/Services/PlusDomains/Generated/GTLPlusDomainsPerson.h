@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,85 +61,85 @@
 @interface GTLPlusDomainsPerson : GTLObject
 
 // A short biography for this person.
-@property (copy) NSString *aboutMe;
+@property (nonatomic, copy) NSString *aboutMe;
 
 // The person's date of birth, represented as YYYY-MM-DD.
-@property (copy) NSString *birthday;
+@property (nonatomic, copy) NSString *birthday;
 
 // The "bragging rights" line of this person.
-@property (copy) NSString *braggingRights;
+@property (nonatomic, copy) NSString *braggingRights;
 
 // For followers who are visible, the number of people who have added this
 // person or page to a circle.
-@property (retain) NSNumber *circledByCount;  // intValue
+@property (nonatomic, retain) NSNumber *circledByCount;  // intValue
 
 // The cover photo content.
-@property (retain) GTLPlusDomainsPersonCover *cover;
+@property (nonatomic, retain) GTLPlusDomainsPersonCover *cover;
 
 // (this field is not currently used)
-@property (copy) NSString *currentLocation;
+@property (nonatomic, copy) NSString *currentLocation;
 
 // The name of this person, which is suitable for display.
-@property (copy) NSString *displayName;
+@property (nonatomic, copy) NSString *displayName;
 
 // The hosted domain name for the user's Google Apps account. For instance,
 // example.com. The plus.profile.emails.read or email scope is needed to get
 // this domain name.
-@property (copy) NSString *domain;
+@property (nonatomic, copy) NSString *domain;
 
 // A list of email addresses that this person has, including their Google
 // account email address, and the public verified email addresses on their
 // Google+ profile. The plus.profile.emails.read scope is needed to retrieve
 // these email addresses, or the email scope can be used to retrieve just the
 // Google account email address.
-@property (retain) NSArray *emails;  // of GTLPlusDomainsPersonEmailsItem
+@property (nonatomic, retain) NSArray *emails;  // of GTLPlusDomainsPersonEmailsItem
 
 // ETag of this response for caching purposes.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The person's gender. Possible values include, but are not limited to, the
 // following values:
 // - "male" - Male gender.
 // - "female" - Female gender.
 // - "other" - Other.
-@property (copy) NSString *gender;
+@property (nonatomic, copy) NSString *gender;
 
 // The ID of this person.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The representation of the person's profile photo.
-@property (retain) GTLPlusDomainsPersonImage *image;
+@property (nonatomic, retain) GTLPlusDomainsPersonImage *image;
 
 // Whether this user has signed up for Google+.
-@property (retain) NSNumber *isPlusUser;  // boolValue
+@property (nonatomic, retain) NSNumber *isPlusUser;  // boolValue
 
 // Identifies this resource as a person. Value: "plus#person".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // An object representation of the individual components of a person's name.
-@property (retain) GTLPlusDomainsPersonName *name;
+@property (nonatomic, retain) GTLPlusDomainsPersonName *name;
 
 // The nickname of this person.
-@property (copy) NSString *nickname;
+@property (nonatomic, copy) NSString *nickname;
 
 // Type of person within Google+. Possible values include, but are not limited
 // to, the following values:
 // - "person" - represents an actual person.
 // - "page" - represents a page.
-@property (copy) NSString *objectType;
+@property (nonatomic, copy) NSString *objectType;
 
 // The occupation of this person.
-@property (copy) NSString *occupation;
+@property (nonatomic, copy) NSString *occupation;
 
 // A list of current or past organizations with which this person is associated.
-@property (retain) NSArray *organizations;  // of GTLPlusDomainsPersonOrganizationsItem
+@property (nonatomic, retain) NSArray *organizations;  // of GTLPlusDomainsPersonOrganizationsItem
 
 // A list of places where this person has lived.
-@property (retain) NSArray *placesLived;  // of GTLPlusDomainsPersonPlacesLivedItem
+@property (nonatomic, retain) NSArray *placesLived;  // of GTLPlusDomainsPersonPlacesLivedItem
 
 // If a Google+ Page, the number of people who have +1'd this page.
-@property (retain) NSNumber *plusOneCount;  // intValue
+@property (nonatomic, retain) NSNumber *plusOneCount;  // intValue
 
 // The person's relationship status. Possible values include, but are not
 // limited to, the following values:
@@ -152,22 +152,22 @@
 // - "widowed" - Person is widowed.
 // - "in_domestic_partnership" - Person is in a domestic partnership.
 // - "in_civil_union" - Person is in a civil union.
-@property (copy) NSString *relationshipStatus;
+@property (nonatomic, copy) NSString *relationshipStatus;
 
 // The person's skills.
-@property (copy) NSString *skills;
+@property (nonatomic, copy) NSString *skills;
 
 // The brief description (tagline) of this person.
-@property (copy) NSString *tagline;
+@property (nonatomic, copy) NSString *tagline;
 
 // The URL of this person's profile.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 // A list of URLs for this person.
-@property (retain) NSArray *urls;  // of GTLPlusDomainsPersonUrlsItem
+@property (nonatomic, retain) NSArray *urls;  // of GTLPlusDomainsPersonUrlsItem
 
 // Whether the person or Google+ Page has been verified.
-@property (retain) NSNumber *verified;  // boolValue
+@property (nonatomic, retain) NSNumber *verified;  // boolValue
 
 @end
 
@@ -180,15 +180,15 @@
 @interface GTLPlusDomainsPersonCover : GTLObject
 
 // Extra information about the cover photo.
-@property (retain) GTLPlusDomainsPersonCoverCoverInfo *coverInfo;
+@property (nonatomic, retain) GTLPlusDomainsPersonCoverCoverInfo *coverInfo;
 
 // The person's primary cover image.
-@property (retain) GTLPlusDomainsPersonCoverCoverPhoto *coverPhoto;
+@property (nonatomic, retain) GTLPlusDomainsPersonCoverCoverPhoto *coverPhoto;
 
 // The layout of the cover art. Possible values include, but are not limited to,
 // the following values:
 // - "banner" - One large image banner.
-@property (copy) NSString *layout;
+@property (nonatomic, copy) NSString *layout;
 
 @end
 
@@ -206,10 +206,10 @@
 // - "home" - Home email address.
 // - "work" - Work email address.
 // - "other" - Other.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 // The email address.
-@property (copy) NSString *value;
+@property (nonatomic, copy) NSString *value;
 
 @end
 
@@ -222,12 +222,12 @@
 @interface GTLPlusDomainsPersonImage : GTLObject
 
 // Whether the person's profile photo is the default one
-@property (retain) NSNumber *isDefault;  // boolValue
+@property (nonatomic, retain) NSNumber *isDefault;  // boolValue
 
 // The URL of the person's profile photo. To resize the image and crop it to a
 // square, append the query string ?sz=x, where x is the dimension in pixels of
 // each side.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 @end
 
@@ -240,22 +240,22 @@
 @interface GTLPlusDomainsPersonName : GTLObject
 
 // The family name (last name) of this person.
-@property (copy) NSString *familyName;
+@property (nonatomic, copy) NSString *familyName;
 
 // The full name of this person, including middle names, suffixes, etc.
-@property (copy) NSString *formatted;
+@property (nonatomic, copy) NSString *formatted;
 
 // The given name (first name) of this person.
-@property (copy) NSString *givenName;
+@property (nonatomic, copy) NSString *givenName;
 
 // The honorific prefixes (such as "Dr." or "Mrs.") for this person.
-@property (copy) NSString *honorificPrefix;
+@property (nonatomic, copy) NSString *honorificPrefix;
 
 // The honorific suffixes (such as "Jr.") for this person.
-@property (copy) NSString *honorificSuffix;
+@property (nonatomic, copy) NSString *honorificSuffix;
 
 // The middle name of this person.
-@property (copy) NSString *middleName;
+@property (nonatomic, copy) NSString *middleName;
 
 @end
 
@@ -268,36 +268,36 @@
 @interface GTLPlusDomainsPersonOrganizationsItem : GTLObject
 
 // The department within the organization. Deprecated.
-@property (copy) NSString *department;
+@property (nonatomic, copy) NSString *department;
 
 // A short description of the person's role in this organization. Deprecated.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (copy) NSString *descriptionProperty;
+@property (nonatomic, copy) NSString *descriptionProperty;
 
 // The date that the person left this organization.
-@property (copy) NSString *endDate;
+@property (nonatomic, copy) NSString *endDate;
 
 // The location of this organization. Deprecated.
-@property (copy) NSString *location;
+@property (nonatomic, copy) NSString *location;
 
 // The name of the organization.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // If "true", indicates this organization is the person's primary one, which is
 // typically interpreted as the current one.
-@property (retain) NSNumber *primary;  // boolValue
+@property (nonatomic, retain) NSNumber *primary;  // boolValue
 
 // The date that the person joined this organization.
-@property (copy) NSString *startDate;
+@property (nonatomic, copy) NSString *startDate;
 
 // The person's job title or role within the organization.
-@property (copy) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 // The type of organization. Possible values include, but are not limited to,
 // the following values:
 // - "work" - Work.
 // - "school" - School.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end
 
@@ -310,11 +310,11 @@
 @interface GTLPlusDomainsPersonPlacesLivedItem : GTLObject
 
 // If "true", this place of residence is this person's primary residence.
-@property (retain) NSNumber *primary;  // boolValue
+@property (nonatomic, retain) NSNumber *primary;  // boolValue
 
 // A place where this person has lived. For example: "Seattle, WA", "Near
 // Toronto".
-@property (copy) NSString *value;
+@property (nonatomic, copy) NSString *value;
 
 @end
 
@@ -327,7 +327,7 @@
 @interface GTLPlusDomainsPersonUrlsItem : GTLObject
 
 // The label of the URL.
-@property (copy) NSString *label;
+@property (nonatomic, copy) NSString *label;
 
 // The type of URL. Possible values include, but are not limited to, the
 // following values:
@@ -335,10 +335,10 @@
 // - "contributor" - URL to a site for which this person is a contributor.
 // - "website" - URL for this Google+ Page's primary website.
 // - "other" - Other URL.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 // The URL value.
-@property (copy) NSString *value;
+@property (nonatomic, copy) NSString *value;
 
 @end
 
@@ -352,11 +352,11 @@
 
 // The difference between the left position of the cover image and the actual
 // displayed cover image. Only valid for banner layout.
-@property (retain) NSNumber *leftImageOffset;  // intValue
+@property (nonatomic, retain) NSNumber *leftImageOffset;  // intValue
 
 // The difference between the top position of the cover image and the actual
 // displayed cover image. Only valid for banner layout.
-@property (retain) NSNumber *topImageOffset;  // intValue
+@property (nonatomic, retain) NSNumber *topImageOffset;  // intValue
 
 @end
 
@@ -369,12 +369,12 @@
 @interface GTLPlusDomainsPersonCoverCoverPhoto : GTLObject
 
 // The height of the image.
-@property (retain) NSNumber *height;  // intValue
+@property (nonatomic, retain) NSNumber *height;  // intValue
 
 // The URL of the image.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 // The width of the image.
-@property (retain) NSNumber *width;  // intValue
+@property (nonatomic, retain) NSNumber *width;  // intValue
 
 @end

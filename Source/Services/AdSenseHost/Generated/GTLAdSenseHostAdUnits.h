@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,16 +48,16 @@
 @interface GTLAdSenseHostAdUnits : GTLCollectionObject
 
 // ETag of this response for caching purposes.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The ad units returned in this list response.
-@property (retain) NSArray *items;  // of GTLAdSenseHostAdUnit
+@property (nonatomic, retain) NSArray *items;  // of GTLAdSenseHostAdUnit
 
 // Kind of list this is, in this case adsensehost#adUnits.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Continuation token used to page through ad units. To retrieve the next page
 // of results, set the next request's "pageToken" value to this.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 @end

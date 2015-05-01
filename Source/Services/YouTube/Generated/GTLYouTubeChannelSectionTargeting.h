@@ -44,12 +44,12 @@
 @interface GTLYouTubeChannelSectionTargeting : GTLObject
 
 // The country the channel section is targeting.
-@property (retain) NSArray *countries;  // of NSString
+@property (nonatomic, retain) NSArray *countries;  // of NSString
 
 // The language the channel section is targeting.
-@property (retain) NSArray *languages;  // of NSString
+@property (nonatomic, retain) NSArray *languages;  // of NSString
 
 // The region the channel section is targeting.
-@property (retain) NSArray *regions;  // of NSString
+@property (nonatomic, retain) NSArray *regions;  // of NSString
 
 @end

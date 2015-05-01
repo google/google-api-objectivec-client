@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,24 +44,24 @@
 @interface GTLCivicInfoSimpleAddressType : GTLObject
 
 // The city or town for the address.
-@property (copy) NSString *city;
+@property (nonatomic, copy) NSString *city;
 
 // The street name and number of this address.
-@property (copy) NSString *line1;
+@property (nonatomic, copy) NSString *line1;
 
 // The second line the address, if needed.
-@property (copy) NSString *line2;
+@property (nonatomic, copy) NSString *line2;
 
 // The third line of the address, if needed.
-@property (copy) NSString *line3;
+@property (nonatomic, copy) NSString *line3;
 
 // The name of the location.
-@property (copy) NSString *locationName;
+@property (nonatomic, copy) NSString *locationName;
 
 // The US two letter state abbreviation of the address.
-@property (copy) NSString *state;
+@property (nonatomic, copy) NSString *state;
 
 // The US Postal Zip Code of the address.
-@property (copy) NSString *zip;
+@property (nonatomic, copy) NSString *zip;
 
 @end

@@ -50,29 +50,29 @@
 
 // The contentDetails object contains details about the channel section content,
 // such as a list of playlists or channels featured in the section.
-@property (retain) GTLYouTubeChannelSectionContentDetails *contentDetails;
+@property (nonatomic, retain) GTLYouTubeChannelSectionContentDetails *contentDetails;
 
 // Etag of this resource.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The ID that YouTube uses to uniquely identify the channel section.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Identifies what kind of resource this is. Value: the fixed string
 // "youtube#channelSection".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Localizations for different languages
-@property (retain) GTLYouTubeChannelSectionLocalizations *localizations;
+@property (nonatomic, retain) GTLYouTubeChannelSectionLocalizations *localizations;
 
 // The snippet object contains basic details about the channel section, such as
 // its type, style and title.
-@property (retain) GTLYouTubeChannelSectionSnippet *snippet;
+@property (nonatomic, retain) GTLYouTubeChannelSectionSnippet *snippet;
 
 // The targeting object contains basic targeting settings about the channel
 // section.
-@property (retain) GTLYouTubeChannelSectionTargeting *targeting;
+@property (nonatomic, retain) GTLYouTubeChannelSectionTargeting *targeting;
 
 @end
 

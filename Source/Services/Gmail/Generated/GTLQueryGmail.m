@@ -51,20 +51,19 @@
          userId;
 
 + (NSDictionary *)parameterNameMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+  NSDictionary *map = @{
+    @"identifier" : @"id"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSString class], @"addLabelIds",
-      [NSString class], @"labelIds",
-      [NSString class], @"metadataHeaders",
-      [NSString class], @"removeLabelIds",
-      nil];
+  NSDictionary *map = @{
+    @"addLabelIds" : [NSString class],
+    @"labelIds" : [NSString class],
+    @"metadataHeaders" : [NSString class],
+    @"removeLabelIds" : [NSString class]
+  };
   return map;
 }
 
@@ -72,7 +71,7 @@
 #pragma mark "users.drafts" methods
 // These create a GTLQueryGmail object.
 
-+ (id)queryForUsersDraftsCreateWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil {
++ (instancetype)queryForUsersDraftsCreateWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil {
   NSString *methodName = @"gmail.users.drafts.create";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.uploadParameters = uploadParametersOrNil;
@@ -80,27 +79,27 @@
   return query;
 }
 
-+ (id)queryForUsersDraftsDelete {
++ (instancetype)queryForUsersDraftsDelete {
   NSString *methodName = @"gmail.users.drafts.delete";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   return query;
 }
 
-+ (id)queryForUsersDraftsGet {
++ (instancetype)queryForUsersDraftsGet {
   NSString *methodName = @"gmail.users.drafts.get";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLGmailDraft class];
   return query;
 }
 
-+ (id)queryForUsersDraftsList {
++ (instancetype)queryForUsersDraftsList {
   NSString *methodName = @"gmail.users.drafts.list";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLGmailListDraftsResponse class];
   return query;
 }
 
-+ (id)queryForUsersDraftsSendWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil {
++ (instancetype)queryForUsersDraftsSendWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil {
   NSString *methodName = @"gmail.users.drafts.send";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.uploadParameters = uploadParametersOrNil;
@@ -108,7 +107,7 @@
   return query;
 }
 
-+ (id)queryForUsersDraftsUpdateWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil {
++ (instancetype)queryForUsersDraftsUpdateWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil {
   NSString *methodName = @"gmail.users.drafts.update";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.uploadParameters = uploadParametersOrNil;
@@ -120,7 +119,7 @@
 #pragma mark "users" methods
 // These create a GTLQueryGmail object.
 
-+ (id)queryForUsersGetProfile {
++ (instancetype)queryForUsersGetProfile {
   NSString *methodName = @"gmail.users.getProfile";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLGmailProfile class];
@@ -131,7 +130,7 @@
 #pragma mark "users.history" methods
 // These create a GTLQueryGmail object.
 
-+ (id)queryForUsersHistoryList {
++ (instancetype)queryForUsersHistoryList {
   NSString *methodName = @"gmail.users.history.list";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLGmailListHistoryResponse class];
@@ -142,41 +141,41 @@
 #pragma mark "users.labels" methods
 // These create a GTLQueryGmail object.
 
-+ (id)queryForUsersLabelsCreate {
++ (instancetype)queryForUsersLabelsCreate {
   NSString *methodName = @"gmail.users.labels.create";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLGmailLabel class];
   return query;
 }
 
-+ (id)queryForUsersLabelsDelete {
++ (instancetype)queryForUsersLabelsDelete {
   NSString *methodName = @"gmail.users.labels.delete";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   return query;
 }
 
-+ (id)queryForUsersLabelsGet {
++ (instancetype)queryForUsersLabelsGet {
   NSString *methodName = @"gmail.users.labels.get";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLGmailLabel class];
   return query;
 }
 
-+ (id)queryForUsersLabelsList {
++ (instancetype)queryForUsersLabelsList {
   NSString *methodName = @"gmail.users.labels.list";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLGmailListLabelsResponse class];
   return query;
 }
 
-+ (id)queryForUsersLabelsPatch {
++ (instancetype)queryForUsersLabelsPatch {
   NSString *methodName = @"gmail.users.labels.patch";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLGmailLabel class];
   return query;
 }
 
-+ (id)queryForUsersLabelsUpdate {
++ (instancetype)queryForUsersLabelsUpdate {
   NSString *methodName = @"gmail.users.labels.update";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLGmailLabel class];
@@ -187,7 +186,7 @@
 #pragma mark "users.messages.attachments" methods
 // These create a GTLQueryGmail object.
 
-+ (id)queryForUsersMessagesAttachmentsGet {
++ (instancetype)queryForUsersMessagesAttachmentsGet {
   NSString *methodName = @"gmail.users.messages.attachments.get";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLGmailMessagePartBody class];
@@ -198,20 +197,20 @@
 #pragma mark "users.messages" methods
 // These create a GTLQueryGmail object.
 
-+ (id)queryForUsersMessagesDelete {
++ (instancetype)queryForUsersMessagesDelete {
   NSString *methodName = @"gmail.users.messages.delete";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   return query;
 }
 
-+ (id)queryForUsersMessagesGet {
++ (instancetype)queryForUsersMessagesGet {
   NSString *methodName = @"gmail.users.messages.get";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLGmailMessage class];
   return query;
 }
 
-+ (id)queryForUsersMessagesImportWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil {
++ (instancetype)queryForUsersMessagesImportWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil {
   NSString *methodName = @"gmail.users.messages.import";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.uploadParameters = uploadParametersOrNil;
@@ -219,7 +218,7 @@
   return query;
 }
 
-+ (id)queryForUsersMessagesInsertWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil {
++ (instancetype)queryForUsersMessagesInsertWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil {
   NSString *methodName = @"gmail.users.messages.insert";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.uploadParameters = uploadParametersOrNil;
@@ -227,21 +226,21 @@
   return query;
 }
 
-+ (id)queryForUsersMessagesList {
++ (instancetype)queryForUsersMessagesList {
   NSString *methodName = @"gmail.users.messages.list";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLGmailListMessagesResponse class];
   return query;
 }
 
-+ (id)queryForUsersMessagesModify {
++ (instancetype)queryForUsersMessagesModify {
   NSString *methodName = @"gmail.users.messages.modify";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLGmailMessage class];
   return query;
 }
 
-+ (id)queryForUsersMessagesSendWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil {
++ (instancetype)queryForUsersMessagesSendWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil {
   NSString *methodName = @"gmail.users.messages.send";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.uploadParameters = uploadParametersOrNil;
@@ -249,14 +248,14 @@
   return query;
 }
 
-+ (id)queryForUsersMessagesTrash {
++ (instancetype)queryForUsersMessagesTrash {
   NSString *methodName = @"gmail.users.messages.trash";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLGmailMessage class];
   return query;
 }
 
-+ (id)queryForUsersMessagesUntrash {
++ (instancetype)queryForUsersMessagesUntrash {
   NSString *methodName = @"gmail.users.messages.untrash";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLGmailMessage class];
@@ -267,41 +266,41 @@
 #pragma mark "users.threads" methods
 // These create a GTLQueryGmail object.
 
-+ (id)queryForUsersThreadsDelete {
++ (instancetype)queryForUsersThreadsDelete {
   NSString *methodName = @"gmail.users.threads.delete";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   return query;
 }
 
-+ (id)queryForUsersThreadsGet {
++ (instancetype)queryForUsersThreadsGet {
   NSString *methodName = @"gmail.users.threads.get";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLGmailThread class];
   return query;
 }
 
-+ (id)queryForUsersThreadsList {
++ (instancetype)queryForUsersThreadsList {
   NSString *methodName = @"gmail.users.threads.list";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLGmailListThreadsResponse class];
   return query;
 }
 
-+ (id)queryForUsersThreadsModify {
++ (instancetype)queryForUsersThreadsModify {
   NSString *methodName = @"gmail.users.threads.modify";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLGmailThread class];
   return query;
 }
 
-+ (id)queryForUsersThreadsTrash {
++ (instancetype)queryForUsersThreadsTrash {
   NSString *methodName = @"gmail.users.threads.trash";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLGmailThread class];
   return query;
 }
 
-+ (id)queryForUsersThreadsUntrash {
++ (instancetype)queryForUsersThreadsUntrash {
   NSString *methodName = @"gmail.users.threads.untrash";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLGmailThread class];

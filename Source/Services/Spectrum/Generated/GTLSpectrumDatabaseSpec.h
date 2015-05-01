@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,9 +44,9 @@
 @interface GTLSpectrumDatabaseSpec : GTLObject
 
 // The display name for a database.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // The corresponding URI of the database.
-@property (copy) NSString *uri;
+@property (nonatomic, copy) NSString *uri;
 
 @end

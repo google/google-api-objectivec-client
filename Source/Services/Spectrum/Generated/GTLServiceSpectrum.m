@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,41 +36,41 @@
 // Method compiled in debug builds just to check that all the needed support
 // classes are present at link time.
 + (NSArray *)checkClasses {
-  NSArray *classes = [NSArray arrayWithObjects:
-                      [GTLQuerySpectrum class],
-                      [GTLSpectrumAntennaCharacteristics class],
-                      [GTLSpectrumDatabaseSpec class],
-                      [GTLSpectrumDbUpdateSpec class],
-                      [GTLSpectrumDeviceCapabilities class],
-                      [GTLSpectrumDeviceDescriptor class],
-                      [GTLSpectrumDeviceOwner class],
-                      [GTLSpectrumDeviceValidity class],
-                      [GTLSpectrumEventTime class],
-                      [GTLSpectrumFrequencyRange class],
-                      [GTLSpectrumGeoLocation class],
-                      [GTLSpectrumGeoLocationEllipse class],
-                      [GTLSpectrumGeoLocationPoint class],
-                      [GTLSpectrumGeoLocationPolygon class],
-                      [GTLSpectrumGeoSpectrumSchedule class],
-                      [GTLSpectrumMessage class],
-                      [GTLSpectrumPawsGetSpectrumBatchResponse class],
-                      [GTLSpectrumPawsGetSpectrumResponse class],
-                      [GTLSpectrumPawsInitResponse class],
-                      [GTLSpectrumPawsNotifySpectrumUseResponse class],
-                      [GTLSpectrumPawsRegisterResponse class],
-                      [GTLSpectrumPawsVerifyDeviceResponse class],
-                      [GTLSpectrumRulesetInfo class],
-                      [GTLSpectrumSchedule class],
-                      [GTLSpectrumVcard class],
-                      [GTLSpectrumVcardAddress class],
-                      [GTLSpectrumVcardTelephone class],
-                      [GTLSpectrumVcardTypedText class],
-                      nil];
+  NSArray *classes = @[
+    [GTLQuerySpectrum class],
+    [GTLSpectrumAntennaCharacteristics class],
+    [GTLSpectrumDatabaseSpec class],
+    [GTLSpectrumDbUpdateSpec class],
+    [GTLSpectrumDeviceCapabilities class],
+    [GTLSpectrumDeviceDescriptor class],
+    [GTLSpectrumDeviceOwner class],
+    [GTLSpectrumDeviceValidity class],
+    [GTLSpectrumEventTime class],
+    [GTLSpectrumFrequencyRange class],
+    [GTLSpectrumGeoLocation class],
+    [GTLSpectrumGeoLocationEllipse class],
+    [GTLSpectrumGeoLocationPoint class],
+    [GTLSpectrumGeoLocationPolygon class],
+    [GTLSpectrumGeoSpectrumSchedule class],
+    [GTLSpectrumMessage class],
+    [GTLSpectrumPawsGetSpectrumBatchResponse class],
+    [GTLSpectrumPawsGetSpectrumResponse class],
+    [GTLSpectrumPawsInitResponse class],
+    [GTLSpectrumPawsNotifySpectrumUseResponse class],
+    [GTLSpectrumPawsRegisterResponse class],
+    [GTLSpectrumPawsVerifyDeviceResponse class],
+    [GTLSpectrumRulesetInfo class],
+    [GTLSpectrumSchedule class],
+    [GTLSpectrumVcard class],
+    [GTLSpectrumVcardAddress class],
+    [GTLSpectrumVcardTelephone class],
+    [GTLSpectrumVcardTypedText class]
+  ];
   return classes;
 }
 #endif  // DEBUG
 
-- (id)init {
+- (instancetype)init {
   self = [super init];
   if (self) {
     // Version from discovery.

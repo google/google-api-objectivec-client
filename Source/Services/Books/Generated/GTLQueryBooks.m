@@ -71,26 +71,24 @@
          volumeIds, volumePosition, w;
 
 + (NSDictionary *)parameterNameMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"drive_document_id", @"driveDocumentId",
-      @"mime_type", @"mimeType",
-      @"upload_client_token", @"uploadClientToken",
-      @"user_library_consistent_read", @"userLibraryConsistentRead",
-      nil];
+  NSDictionary *map = @{
+    @"driveDocumentId" : @"drive_document_id",
+    @"mimeType" : @"mime_type",
+    @"uploadClientToken" : @"upload_client_token",
+    @"userLibraryConsistentRead" : @"user_library_consistent_read"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSString class], @"acquireMethod",
-      [NSString class], @"categoryId",
-      [NSString class], @"features",
-      [NSString class], @"layerIds",
-      [NSString class], @"processingState",
-      [NSString class], @"volumeIds",
-      nil];
+  NSDictionary *map = @{
+    @"acquireMethod" : [NSString class],
+    @"categoryId" : [NSString class],
+    @"features" : [NSString class],
+    @"layerIds" : [NSString class],
+    @"processingState" : [NSString class],
+    @"volumeIds" : [NSString class]
+  };
   return map;
 }
 
@@ -98,8 +96,8 @@
 #pragma mark "bookshelves" methods
 // These create a GTLQueryBooks object.
 
-+ (id)queryForBookshelvesGetWithUserId:(NSString *)userId
-                                 shelf:(NSString *)shelf {
++ (instancetype)queryForBookshelvesGetWithUserId:(NSString *)userId
+                                           shelf:(NSString *)shelf {
   NSString *methodName = @"books.bookshelves.get";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.userId = userId;
@@ -108,7 +106,7 @@
   return query;
 }
 
-+ (id)queryForBookshelvesListWithUserId:(NSString *)userId {
++ (instancetype)queryForBookshelvesListWithUserId:(NSString *)userId {
   NSString *methodName = @"books.bookshelves.list";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.userId = userId;
@@ -120,8 +118,8 @@
 #pragma mark "bookshelves.volumes" methods
 // These create a GTLQueryBooks object.
 
-+ (id)queryForBookshelvesVolumesListWithUserId:(NSString *)userId
-                                         shelf:(NSString *)shelf {
++ (instancetype)queryForBookshelvesVolumesListWithUserId:(NSString *)userId
+                                                   shelf:(NSString *)shelf {
   NSString *methodName = @"books.bookshelves.volumes.list";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.userId = userId;
@@ -134,21 +132,21 @@
 #pragma mark "cloudloading" methods
 // These create a GTLQueryBooks object.
 
-+ (id)queryForCloudloadingAddBook {
++ (instancetype)queryForCloudloadingAddBook {
   NSString *methodName = @"books.cloudloading.addBook";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLBooksCloudloadingResource class];
   return query;
 }
 
-+ (id)queryForCloudloadingDeleteBookWithVolumeId:(NSString *)volumeId {
++ (instancetype)queryForCloudloadingDeleteBookWithVolumeId:(NSString *)volumeId {
   NSString *methodName = @"books.cloudloading.deleteBook";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.volumeId = volumeId;
   return query;
 }
 
-+ (id)queryForCloudloadingUpdateBookWithObject:(GTLBooksCloudloadingResource *)object {
++ (instancetype)queryForCloudloadingUpdateBookWithObject:(GTLBooksCloudloadingResource *)object {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -164,7 +162,7 @@
 #pragma mark "dictionary" methods
 // These create a GTLQueryBooks object.
 
-+ (id)queryForDictionaryListOfflineMetadataWithCpksver:(NSString *)cpksver {
++ (instancetype)queryForDictionaryListOfflineMetadataWithCpksver:(NSString *)cpksver {
   NSString *methodName = @"books.dictionary.listOfflineMetadata";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.cpksver = cpksver;
@@ -176,10 +174,10 @@
 #pragma mark "layers.annotationData" methods
 // These create a GTLQueryBooks object.
 
-+ (id)queryForLayersAnnotationDataGetWithVolumeId:(NSString *)volumeId
-                                          layerId:(NSString *)layerId
-                                 annotationDataId:(NSString *)annotationDataId
-                                   contentVersion:(NSString *)contentVersion {
++ (instancetype)queryForLayersAnnotationDataGetWithVolumeId:(NSString *)volumeId
+                                                    layerId:(NSString *)layerId
+                                           annotationDataId:(NSString *)annotationDataId
+                                             contentVersion:(NSString *)contentVersion {
   NSString *methodName = @"books.layers.annotationData.get";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.volumeId = volumeId;
@@ -190,9 +188,9 @@
   return query;
 }
 
-+ (id)queryForLayersAnnotationDataListWithVolumeId:(NSString *)volumeId
-                                           layerId:(NSString *)layerId
-                                    contentVersion:(NSString *)contentVersion {
++ (instancetype)queryForLayersAnnotationDataListWithVolumeId:(NSString *)volumeId
+                                                     layerId:(NSString *)layerId
+                                              contentVersion:(NSString *)contentVersion {
   NSString *methodName = @"books.layers.annotationData.list";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.volumeId = volumeId;
@@ -206,8 +204,8 @@
 #pragma mark "layers" methods
 // These create a GTLQueryBooks object.
 
-+ (id)queryForLayersGetWithVolumeId:(NSString *)volumeId
-                          summaryId:(NSString *)summaryId {
++ (instancetype)queryForLayersGetWithVolumeId:(NSString *)volumeId
+                                    summaryId:(NSString *)summaryId {
   NSString *methodName = @"books.layers.get";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.volumeId = volumeId;
@@ -216,7 +214,7 @@
   return query;
 }
 
-+ (id)queryForLayersListWithVolumeId:(NSString *)volumeId {
++ (instancetype)queryForLayersListWithVolumeId:(NSString *)volumeId {
   NSString *methodName = @"books.layers.list";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.volumeId = volumeId;
@@ -228,9 +226,9 @@
 #pragma mark "layers.volumeAnnotations" methods
 // These create a GTLQueryBooks object.
 
-+ (id)queryForLayersVolumeAnnotationsGetWithVolumeId:(NSString *)volumeId
-                                             layerId:(NSString *)layerId
-                                        annotationId:(NSString *)annotationId {
++ (instancetype)queryForLayersVolumeAnnotationsGetWithVolumeId:(NSString *)volumeId
+                                                       layerId:(NSString *)layerId
+                                                  annotationId:(NSString *)annotationId {
   NSString *methodName = @"books.layers.volumeAnnotations.get";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.volumeId = volumeId;
@@ -240,9 +238,9 @@
   return query;
 }
 
-+ (id)queryForLayersVolumeAnnotationsListWithVolumeId:(NSString *)volumeId
-                                              layerId:(NSString *)layerId
-                                       contentVersion:(NSString *)contentVersion {
++ (instancetype)queryForLayersVolumeAnnotationsListWithVolumeId:(NSString *)volumeId
+                                                        layerId:(NSString *)layerId
+                                                 contentVersion:(NSString *)contentVersion {
   NSString *methodName = @"books.layers.volumeAnnotations.list";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.volumeId = volumeId;
@@ -256,15 +254,15 @@
 #pragma mark "myconfig" methods
 // These create a GTLQueryBooks object.
 
-+ (id)queryForMyconfigGetUserSettings {
++ (instancetype)queryForMyconfigGetUserSettings {
   NSString *methodName = @"books.myconfig.getUserSettings";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLBooksUsersettings class];
   return query;
 }
 
-+ (id)queryForMyconfigReleaseDownloadAccessWithVolumeIds:(NSArray *)volumeIds
-                                                 cpksver:(NSString *)cpksver {
++ (instancetype)queryForMyconfigReleaseDownloadAccessWithVolumeIds:(NSArray *)volumeIds
+                                                           cpksver:(NSString *)cpksver {
   NSString *methodName = @"books.myconfig.releaseDownloadAccess";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.volumeIds = volumeIds;
@@ -273,10 +271,10 @@
   return query;
 }
 
-+ (id)queryForMyconfigRequestAccessWithSource:(NSString *)source
-                                     volumeId:(NSString *)volumeId
-                                        nonce:(NSString *)nonce
-                                      cpksver:(NSString *)cpksver {
++ (instancetype)queryForMyconfigRequestAccessWithSource:(NSString *)source
+                                               volumeId:(NSString *)volumeId
+                                                  nonce:(NSString *)nonce
+                                                cpksver:(NSString *)cpksver {
   NSString *methodName = @"books.myconfig.requestAccess";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.source = source;
@@ -287,9 +285,9 @@
   return query;
 }
 
-+ (id)queryForMyconfigSyncVolumeLicensesWithSource:(NSString *)source
-                                             nonce:(NSString *)nonce
-                                           cpksver:(NSString *)cpksver {
++ (instancetype)queryForMyconfigSyncVolumeLicensesWithSource:(NSString *)source
+                                                       nonce:(NSString *)nonce
+                                                     cpksver:(NSString *)cpksver {
   NSString *methodName = @"books.myconfig.syncVolumeLicenses";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.source = source;
@@ -299,7 +297,7 @@
   return query;
 }
 
-+ (id)queryForMyconfigUpdateUserSettings {
++ (instancetype)queryForMyconfigUpdateUserSettings {
   NSString *methodName = @"books.myconfig.updateUserSettings";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLBooksUsersettings class];
@@ -310,14 +308,14 @@
 #pragma mark "mylibrary.annotations" methods
 // These create a GTLQueryBooks object.
 
-+ (id)queryForMylibraryAnnotationsDeleteWithAnnotationId:(NSString *)annotationId {
++ (instancetype)queryForMylibraryAnnotationsDeleteWithAnnotationId:(NSString *)annotationId {
   NSString *methodName = @"books.mylibrary.annotations.delete";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.annotationId = annotationId;
   return query;
 }
 
-+ (id)queryForMylibraryAnnotationsInsertWithObject:(GTLBooksAnnotation *)object {
++ (instancetype)queryForMylibraryAnnotationsInsertWithObject:(GTLBooksAnnotation *)object {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -329,15 +327,15 @@
   return query;
 }
 
-+ (id)queryForMylibraryAnnotationsList {
++ (instancetype)queryForMylibraryAnnotationsList {
   NSString *methodName = @"books.mylibrary.annotations.list";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLBooksAnnotations class];
   return query;
 }
 
-+ (id)queryForMylibraryAnnotationsSummaryWithLayerIds:(NSArray *)layerIds
-                                             volumeId:(NSString *)volumeId {
++ (instancetype)queryForMylibraryAnnotationsSummaryWithLayerIds:(NSArray *)layerIds
+                                                       volumeId:(NSString *)volumeId {
   NSString *methodName = @"books.mylibrary.annotations.summary";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.layerIds = layerIds;
@@ -346,8 +344,8 @@
   return query;
 }
 
-+ (id)queryForMylibraryAnnotationsUpdateWithObject:(GTLBooksAnnotation *)object
-                                      annotationId:(NSString *)annotationId {
++ (instancetype)queryForMylibraryAnnotationsUpdateWithObject:(GTLBooksAnnotation *)object
+                                                annotationId:(NSString *)annotationId {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -364,8 +362,8 @@
 #pragma mark "mylibrary.bookshelves" methods
 // These create a GTLQueryBooks object.
 
-+ (id)queryForMylibraryBookshelvesAddVolumeWithShelf:(NSString *)shelf
-                                            volumeId:(NSString *)volumeId {
++ (instancetype)queryForMylibraryBookshelvesAddVolumeWithShelf:(NSString *)shelf
+                                                      volumeId:(NSString *)volumeId {
   NSString *methodName = @"books.mylibrary.bookshelves.addVolume";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.shelf = shelf;
@@ -373,14 +371,14 @@
   return query;
 }
 
-+ (id)queryForMylibraryBookshelvesClearVolumesWithShelf:(NSString *)shelf {
++ (instancetype)queryForMylibraryBookshelvesClearVolumesWithShelf:(NSString *)shelf {
   NSString *methodName = @"books.mylibrary.bookshelves.clearVolumes";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.shelf = shelf;
   return query;
 }
 
-+ (id)queryForMylibraryBookshelvesGetWithShelf:(NSString *)shelf {
++ (instancetype)queryForMylibraryBookshelvesGetWithShelf:(NSString *)shelf {
   NSString *methodName = @"books.mylibrary.bookshelves.get";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.shelf = shelf;
@@ -388,16 +386,16 @@
   return query;
 }
 
-+ (id)queryForMylibraryBookshelvesList {
++ (instancetype)queryForMylibraryBookshelvesList {
   NSString *methodName = @"books.mylibrary.bookshelves.list";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLBooksBookshelves class];
   return query;
 }
 
-+ (id)queryForMylibraryBookshelvesMoveVolumeWithShelf:(NSString *)shelf
-                                             volumeId:(NSString *)volumeId
-                                       volumePosition:(NSInteger)volumePosition {
++ (instancetype)queryForMylibraryBookshelvesMoveVolumeWithShelf:(NSString *)shelf
+                                                       volumeId:(NSString *)volumeId
+                                                 volumePosition:(NSInteger)volumePosition {
   NSString *methodName = @"books.mylibrary.bookshelves.moveVolume";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.shelf = shelf;
@@ -406,8 +404,8 @@
   return query;
 }
 
-+ (id)queryForMylibraryBookshelvesRemoveVolumeWithShelf:(NSString *)shelf
-                                               volumeId:(NSString *)volumeId {
++ (instancetype)queryForMylibraryBookshelvesRemoveVolumeWithShelf:(NSString *)shelf
+                                                         volumeId:(NSString *)volumeId {
   NSString *methodName = @"books.mylibrary.bookshelves.removeVolume";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.shelf = shelf;
@@ -419,7 +417,7 @@
 #pragma mark "mylibrary.bookshelves.volumes" methods
 // These create a GTLQueryBooks object.
 
-+ (id)queryForMylibraryBookshelvesVolumesListWithShelf:(NSString *)shelf {
++ (instancetype)queryForMylibraryBookshelvesVolumesListWithShelf:(NSString *)shelf {
   NSString *methodName = @"books.mylibrary.bookshelves.volumes.list";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.shelf = shelf;
@@ -431,7 +429,7 @@
 #pragma mark "mylibrary.readingpositions" methods
 // These create a GTLQueryBooks object.
 
-+ (id)queryForMylibraryReadingpositionsGetWithVolumeId:(NSString *)volumeId {
++ (instancetype)queryForMylibraryReadingpositionsGetWithVolumeId:(NSString *)volumeId {
   NSString *methodName = @"books.mylibrary.readingpositions.get";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.volumeId = volumeId;
@@ -439,9 +437,9 @@
   return query;
 }
 
-+ (id)queryForMylibraryReadingpositionsSetPositionWithVolumeId:(NSString *)volumeId
-                                                     timestamp:(NSString *)timestamp
-                                                      position:(NSString *)position {
++ (instancetype)queryForMylibraryReadingpositionsSetPositionWithVolumeId:(NSString *)volumeId
+                                                               timestamp:(NSString *)timestamp
+                                                                position:(NSString *)position {
   NSString *methodName = @"books.mylibrary.readingpositions.setPosition";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.volumeId = volumeId;
@@ -454,14 +452,14 @@
 #pragma mark "onboarding" methods
 // These create a GTLQueryBooks object.
 
-+ (id)queryForOnboardingListCategories {
++ (instancetype)queryForOnboardingListCategories {
   NSString *methodName = @"books.onboarding.listCategories";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLBooksCategory class];
   return query;
 }
 
-+ (id)queryForOnboardingListCategoryVolumes {
++ (instancetype)queryForOnboardingListCategoryVolumes {
   NSString *methodName = @"books.onboarding.listCategoryVolumes";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLBooksVolume2 class];
@@ -472,19 +470,19 @@
 #pragma mark "promooffer" methods
 // These create a GTLQueryBooks object.
 
-+ (id)queryForPromoofferAccept {
++ (instancetype)queryForPromoofferAccept {
   NSString *methodName = @"books.promooffer.accept";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   return query;
 }
 
-+ (id)queryForPromoofferDismiss {
++ (instancetype)queryForPromoofferDismiss {
   NSString *methodName = @"books.promooffer.dismiss";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   return query;
 }
 
-+ (id)queryForPromoofferGet {
++ (instancetype)queryForPromoofferGet {
   NSString *methodName = @"books.promooffer.get";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLBooksOffers class];
@@ -495,7 +493,7 @@
 #pragma mark "volumes.associated" methods
 // These create a GTLQueryBooks object.
 
-+ (id)queryForVolumesAssociatedListWithVolumeId:(NSString *)volumeId {
++ (instancetype)queryForVolumesAssociatedListWithVolumeId:(NSString *)volumeId {
   NSString *methodName = @"books.volumes.associated.list";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.volumeId = volumeId;
@@ -507,7 +505,7 @@
 #pragma mark "volumes" methods
 // These create a GTLQueryBooks object.
 
-+ (id)queryForVolumesGetWithVolumeId:(NSString *)volumeId {
++ (instancetype)queryForVolumesGetWithVolumeId:(NSString *)volumeId {
   NSString *methodName = @"books.volumes.get";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.volumeId = volumeId;
@@ -515,7 +513,7 @@
   return query;
 }
 
-+ (id)queryForVolumesListWithQ:(NSString *)q {
++ (instancetype)queryForVolumesListWithQ:(NSString *)q {
   NSString *methodName = @"books.volumes.list";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.q = q;
@@ -527,7 +525,7 @@
 #pragma mark "volumes.mybooks" methods
 // These create a GTLQueryBooks object.
 
-+ (id)queryForVolumesMybooksList {
++ (instancetype)queryForVolumesMybooksList {
   NSString *methodName = @"books.volumes.mybooks.list";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLBooksVolumes class];
@@ -538,15 +536,15 @@
 #pragma mark "volumes.recommended" methods
 // These create a GTLQueryBooks object.
 
-+ (id)queryForVolumesRecommendedList {
++ (instancetype)queryForVolumesRecommendedList {
   NSString *methodName = @"books.volumes.recommended.list";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLBooksVolumes class];
   return query;
 }
 
-+ (id)queryForVolumesRecommendedRateWithRating:(NSString *)rating
-                                      volumeId:(NSString *)volumeId {
++ (instancetype)queryForVolumesRecommendedRateWithRating:(NSString *)rating
+                                                volumeId:(NSString *)volumeId {
   NSString *methodName = @"books.volumes.recommended.rate";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.rating = rating;
@@ -559,7 +557,7 @@
 #pragma mark "volumes.useruploaded" methods
 // These create a GTLQueryBooks object.
 
-+ (id)queryForVolumesUseruploadedList {
++ (instancetype)queryForVolumesUseruploadedList {
   NSString *methodName = @"books.volumes.useruploaded.list";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLBooksVolumes class];

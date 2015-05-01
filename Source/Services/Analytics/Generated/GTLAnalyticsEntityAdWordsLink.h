@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,26 +50,26 @@
 
 // A list of AdWords client accounts. These cannot be MCC accounts. This field
 // is required when creating an AdWords link. It cannot be empty.
-@property (retain) NSArray *adWordsAccounts;  // of GTLAnalyticsAdWordsAccount
+@property (nonatomic, retain) NSArray *adWordsAccounts;  // of GTLAnalyticsAdWordsAccount
 
 // Web property being linked.
-@property (retain) GTLAnalyticsEntityAdWordsLinkEntity *entity;
+@property (nonatomic, retain) GTLAnalyticsEntityAdWordsLinkEntity *entity;
 
 // Entity AdWords link ID
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Resource type for entity AdWords link.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Name of the link. This field is required when creating an AdWords link.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // IDs of linked Views (Profiles) represented as strings.
-@property (retain) NSArray *profileIds;  // of NSString
+@property (nonatomic, retain) NSArray *profileIds;  // of NSString
 
 // URL link for this Google Analytics - Google AdWords link.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 @end
 
@@ -80,5 +80,5 @@
 //
 
 @interface GTLAnalyticsEntityAdWordsLinkEntity : GTLObject
-@property (retain) GTLAnalyticsWebPropertyRef *webPropertyRef;
+@property (nonatomic, retain) GTLAnalyticsWebPropertyRef *webPropertyRef;
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,44 +42,44 @@
 @interface GTLBooksDownloadAccessRestriction : GTLObject
 
 // If restricted, whether access is granted for this (user, device, volume).
-@property (retain) NSNumber *deviceAllowed;  // boolValue
+@property (nonatomic, retain) NSNumber *deviceAllowed;  // boolValue
 
 // If restricted, the number of content download licenses already acquired
 // (including the requesting client, if licensed).
-@property (retain) NSNumber *downloadsAcquired;  // intValue
+@property (nonatomic, retain) NSNumber *downloadsAcquired;  // intValue
 
 // If deviceAllowed, whether access was just acquired with this request.
-@property (retain) NSNumber *justAcquired;  // boolValue
+@property (nonatomic, retain) NSNumber *justAcquired;  // boolValue
 
 // Resource type.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // If restricted, the maximum number of content download licenses for this
 // volume.
-@property (retain) NSNumber *maxDownloadDevices;  // intValue
+@property (nonatomic, retain) NSNumber *maxDownloadDevices;  // intValue
 
 // Error/warning message.
-@property (copy) NSString *message;
+@property (nonatomic, copy) NSString *message;
 
 // Client nonce for verification. Download access and client-validation only.
-@property (copy) NSString *nonce;
+@property (nonatomic, copy) NSString *nonce;
 
 // Error/warning reason code. Additional codes may be added in the future. 0 OK
 // 100 ACCESS_DENIED_PUBLISHER_LIMIT 101 ACCESS_DENIED_LIMIT 200
 // WARNING_USED_LAST_ACCESS
-@property (copy) NSString *reasonCode;
+@property (nonatomic, copy) NSString *reasonCode;
 
 // Whether this volume has any download access restrictions.
-@property (retain) NSNumber *restricted;  // boolValue
+@property (nonatomic, retain) NSNumber *restricted;  // boolValue
 
 // Response signature.
-@property (copy) NSString *signature;
+@property (nonatomic, copy) NSString *signature;
 
 // Client app identifier for verification. Download access and client-validation
 // only.
-@property (copy) NSString *source;
+@property (nonatomic, copy) NSString *source;
 
 // Identifies the volume for which this entry applies.
-@property (copy) NSString *volumeId;
+@property (nonatomic, copy) NSString *volumeId;
 
 @end

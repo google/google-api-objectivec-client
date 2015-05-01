@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,34 +49,34 @@
 @interface GTLAdExchangeBuyerAccount : GTLObject
 
 // Your bidder locations that have distinct URLs.
-@property (retain) NSArray *bidderLocation;  // of GTLAdExchangeBuyerAccountBidderLocationItem
+@property (nonatomic, retain) NSArray *bidderLocation;  // of GTLAdExchangeBuyerAccountBidderLocationItem
 
 // The nid parameter value used in cookie match requests. Please contact your
 // technical account manager if you need to change this.
-@property (copy) NSString *cookieMatchingNid;
+@property (nonatomic, copy) NSString *cookieMatchingNid;
 
 // The base URL used in cookie match requests.
-@property (copy) NSString *cookieMatchingUrl;
+@property (nonatomic, copy) NSString *cookieMatchingUrl;
 
 // Account id.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSNumber *identifier;  // intValue
+@property (nonatomic, retain) NSNumber *identifier;  // intValue
 
 // Resource type.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The maximum number of active creatives that an account can have, where a
 // creative is active if it was inserted or bid with in the last 30 days. Please
 // contact your technical account manager if you need to change this.
-@property (retain) NSNumber *maximumActiveCreatives;  // intValue
+@property (nonatomic, retain) NSNumber *maximumActiveCreatives;  // intValue
 
 // The sum of all bidderLocation.maximumQps values cannot exceed this. Please
 // contact your technical account manager if you need to change this.
-@property (retain) NSNumber *maximumTotalQps;  // intValue
+@property (nonatomic, retain) NSNumber *maximumTotalQps;  // intValue
 
 // The number of creatives that this account inserted or bid with in the last 30
 // days.
-@property (retain) NSNumber *numberActiveCreatives;  // intValue
+@property (nonatomic, retain) NSNumber *numberActiveCreatives;  // intValue
 
 @end
 
@@ -89,7 +89,7 @@
 @interface GTLAdExchangeBuyerAccountBidderLocationItem : GTLObject
 
 // The maximum queries per second the Ad Exchange will send.
-@property (retain) NSNumber *maximumQps;  // intValue
+@property (nonatomic, retain) NSNumber *maximumQps;  // intValue
 
 // The geographical region the Ad Exchange should send requests from. Only used
 // by some quota systems, but always setting the value is recommended. Allowed
@@ -98,9 +98,9 @@
 // - EUROPE
 // - US_EAST
 // - US_WEST
-@property (copy) NSString *region;
+@property (nonatomic, copy) NSString *region;
 
 // The URL to which the Ad Exchange will send bid requests.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 @end

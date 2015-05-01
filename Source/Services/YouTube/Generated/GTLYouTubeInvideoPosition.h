@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,9 +45,9 @@
 @interface GTLYouTubeInvideoPosition : GTLObject
 
 // Describes in which corner of the video the visual widget will appear.
-@property (copy) NSString *cornerPosition;
+@property (nonatomic, copy) NSString *cornerPosition;
 
 // Defines the position type.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end

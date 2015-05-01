@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,13 +44,13 @@
 @interface GTLAppStateWriteResult : GTLObject
 
 // The version of the data for this key on the server.
-@property (copy) NSString *currentStateVersion;
+@property (nonatomic, copy) NSString *currentStateVersion;
 
 // Uniquely identifies the type of this resource. Value is always the fixed
 // string appstate#writeResult.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The written key.
-@property (retain) NSNumber *stateKey;  // intValue
+@property (nonatomic, retain) NSNumber *stateKey;  // intValue
 
 @end

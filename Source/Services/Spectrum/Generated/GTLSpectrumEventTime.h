@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,9 +47,9 @@
 @interface GTLSpectrumEventTime : GTLObject
 
 // The inclusive start of the event. It will be present.
-@property (copy) NSString *startTime;
+@property (nonatomic, copy) NSString *startTime;
 
 // The exclusive end of the event. It will be present.
-@property (copy) NSString *stopTime;
+@property (nonatomic, copy) NSString *stopTime;
 
 @end

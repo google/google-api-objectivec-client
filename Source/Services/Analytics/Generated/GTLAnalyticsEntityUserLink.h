@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,23 +55,23 @@
 
 // Entity for this link. It can be an account, a web property, or a view
 // (profile).
-@property (retain) GTLAnalyticsEntityUserLinkEntity *entity;
+@property (nonatomic, retain) GTLAnalyticsEntityUserLinkEntity *entity;
 
 // Entity user link ID
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Resource type for entity user link.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Permissions the user has for this entity.
-@property (retain) GTLAnalyticsEntityUserLinkPermissions *permissions;
+@property (nonatomic, retain) GTLAnalyticsEntityUserLinkPermissions *permissions;
 
 // Self link for this resource.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // User reference.
-@property (retain) GTLAnalyticsUserRef *userRef;
+@property (nonatomic, retain) GTLAnalyticsUserRef *userRef;
 
 @end
 
@@ -84,13 +84,13 @@
 @interface GTLAnalyticsEntityUserLinkEntity : GTLObject
 
 // Account for this link.
-@property (retain) GTLAnalyticsAccountRef *accountRef;
+@property (nonatomic, retain) GTLAnalyticsAccountRef *accountRef;
 
 // View (Profile) for this link.
-@property (retain) GTLAnalyticsProfileRef *profileRef;
+@property (nonatomic, retain) GTLAnalyticsProfileRef *profileRef;
 
 // Web property for this link.
-@property (retain) GTLAnalyticsWebPropertyRef *webPropertyRef;
+@property (nonatomic, retain) GTLAnalyticsWebPropertyRef *webPropertyRef;
 
 @end
 
@@ -106,11 +106,11 @@
 // entity. These include any implied permissions (e.g., EDIT implies VIEW) or
 // inherited permissions from the parent entity. Effective permissions are
 // read-only.
-@property (retain) NSArray *effective;  // of NSString
+@property (nonatomic, retain) NSArray *effective;  // of NSString
 
 // Permissions that a user has been assigned at this very level. Does not
 // include any implied or inherited permissions. Local permissions are
 // modifiable.
-@property (retain) NSArray *local;  // of NSString
+@property (nonatomic, retain) NSArray *local;  // of NSString
 
 @end

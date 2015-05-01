@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,18 +47,17 @@
          sampleSpace, selfLink, totalResults, totalsForAllResults;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+  NSDictionary *map = @{
+    @"identifier" : @"id"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [GTLAnalyticsMcfDataColumnHeadersItem class], @"columnHeaders",
-      [GTLAnalyticsMcfDataRowsItem class], @"rows",
-      nil];
+  NSDictionary *map = @{
+    @"columnHeaders" : [GTLAnalyticsMcfDataColumnHeadersItem class],
+    @"rows" : [GTLAnalyticsMcfDataRowsItem class]
+  };
   return map;
 }
 
@@ -100,22 +99,20 @@
          segment, sort, startDate, startIndex;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"end-date", @"endDate",
-      @"max-results", @"maxResults",
-      @"start-date", @"startDate",
-      @"start-index", @"startIndex",
-      nil];
+  NSDictionary *map = @{
+    @"endDate" : @"end-date",
+    @"maxResults" : @"max-results",
+    @"startDate" : @"start-date",
+    @"startIndex" : @"start-index"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSString class], @"metrics",
-      [NSString class], @"sort",
-      nil];
+  NSDictionary *map = @{
+    @"metrics" : [NSString class],
+    @"sort" : [NSString class]
+  };
   return map;
 }
 
@@ -131,9 +128,9 @@
 @dynamic conversionPathValue, primitiveValue;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLAnalyticsMcfDataRowsItemConversionPathValueItem class]
-                                forKey:@"conversionPathValue"];
+  NSDictionary *map = @{
+    @"conversionPathValue" : [GTLAnalyticsMcfDataRowsItemConversionPathValueItem class]
+  };
   return map;
 }
 

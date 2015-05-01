@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,43 +36,43 @@
 // Method compiled in debug builds just to check that all the needed support
 // classes are present at link time.
 + (NSArray *)checkClasses {
-  NSArray *classes = [NSArray arrayWithObjects:
-                      [GTLQueryBooks class],
-                      [GTLBooksAnnotation class],
-                      [GTLBooksAnnotationdata class],
-                      [GTLBooksAnnotations class],
-                      [GTLBooksAnnotationsdata class],
-                      [GTLBooksAnnotationsRange class],
-                      [GTLBooksAnnotationsSummary class],
-                      [GTLBooksBookshelf class],
-                      [GTLBooksBookshelves class],
-                      [GTLBooksCategory class],
-                      [GTLBooksCloudloadingResource class],
-                      [GTLBooksConcurrentAccessRestriction class],
-                      [GTLBooksDictlayerdata class],
-                      [GTLBooksDownloadAccesses class],
-                      [GTLBooksDownloadAccessRestriction class],
-                      [GTLBooksGeolayerdata class],
-                      [GTLBooksLayersummaries class],
-                      [GTLBooksLayersummary class],
-                      [GTLBooksMetadata class],
-                      [GTLBooksOffers class],
-                      [GTLBooksReadingPosition class],
-                      [GTLBooksRequestAccess class],
-                      [GTLBooksReview class],
-                      [GTLBooksUsersettings class],
-                      [GTLBooksVolume class],
-                      [GTLBooksVolume2 class],
-                      [GTLBooksVolumeannotation class],
-                      [GTLBooksVolumeannotations class],
-                      [GTLBooksVolumes class],
-                      [GTLBooksVolumesRecommendedRateResponse class],
-                      nil];
+  NSArray *classes = @[
+    [GTLQueryBooks class],
+    [GTLBooksAnnotation class],
+    [GTLBooksAnnotationdata class],
+    [GTLBooksAnnotations class],
+    [GTLBooksAnnotationsdata class],
+    [GTLBooksAnnotationsRange class],
+    [GTLBooksAnnotationsSummary class],
+    [GTLBooksBookshelf class],
+    [GTLBooksBookshelves class],
+    [GTLBooksCategory class],
+    [GTLBooksCloudloadingResource class],
+    [GTLBooksConcurrentAccessRestriction class],
+    [GTLBooksDictlayerdata class],
+    [GTLBooksDownloadAccesses class],
+    [GTLBooksDownloadAccessRestriction class],
+    [GTLBooksGeolayerdata class],
+    [GTLBooksLayersummaries class],
+    [GTLBooksLayersummary class],
+    [GTLBooksMetadata class],
+    [GTLBooksOffers class],
+    [GTLBooksReadingPosition class],
+    [GTLBooksRequestAccess class],
+    [GTLBooksReview class],
+    [GTLBooksUsersettings class],
+    [GTLBooksVolume class],
+    [GTLBooksVolume2 class],
+    [GTLBooksVolumeannotation class],
+    [GTLBooksVolumeannotations class],
+    [GTLBooksVolumes class],
+    [GTLBooksVolumesRecommendedRateResponse class]
+  ];
   return classes;
 }
 #endif  // DEBUG
 
-- (id)init {
+- (instancetype)init {
   self = [super init];
   if (self) {
     // Version from discovery.

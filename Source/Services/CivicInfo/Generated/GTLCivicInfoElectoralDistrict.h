@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,15 +46,15 @@
 // An identifier for this district, relative to its scope. For example, the 34th
 // State Senate district would have id "34" and a scope of stateUpper.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The name of the district.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // The geographic scope of this district. If unspecified the district's
 // geography is not known. One of: national, statewide, congressional,
 // stateUpper, stateLower, countywide, judicial, schoolBoard, cityWide,
 // township, countyCouncil, cityCouncil, ward, special
-@property (copy) NSString *scope;
+@property (nonatomic, copy) NSString *scope;
 
 @end

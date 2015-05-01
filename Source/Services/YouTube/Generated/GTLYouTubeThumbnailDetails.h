@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,18 +47,18 @@
 
 // The default image for this resource.
 // Remapped to 'defaultProperty' to avoid language reserved word 'default'.
-@property (retain) GTLYouTubeThumbnail *defaultProperty;
+@property (nonatomic, retain) GTLYouTubeThumbnail *defaultProperty;
 
 // The high quality image for this resource.
-@property (retain) GTLYouTubeThumbnail *high;
+@property (nonatomic, retain) GTLYouTubeThumbnail *high;
 
 // The maximum resolution quality image for this resource.
-@property (retain) GTLYouTubeThumbnail *maxres;
+@property (nonatomic, retain) GTLYouTubeThumbnail *maxres;
 
 // The medium quality image for this resource.
-@property (retain) GTLYouTubeThumbnail *medium;
+@property (nonatomic, retain) GTLYouTubeThumbnail *medium;
 
 // The standard quality image for this resource.
-@property (retain) GTLYouTubeThumbnail *standard;
+@property (nonatomic, retain) GTLYouTubeThumbnail *standard;
 
 @end

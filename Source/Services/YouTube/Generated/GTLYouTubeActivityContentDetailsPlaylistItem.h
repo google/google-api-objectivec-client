@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,13 +46,13 @@
 @interface GTLYouTubeActivityContentDetailsPlaylistItem : GTLObject
 
 // The value that YouTube uses to uniquely identify the playlist.
-@property (copy) NSString *playlistId;
+@property (nonatomic, copy) NSString *playlistId;
 
 // ID of the item within the playlist.
-@property (copy) NSString *playlistItemId;
+@property (nonatomic, copy) NSString *playlistItemId;
 
 // The resourceId object contains information about the resource that was added
 // to the playlist.
-@property (retain) GTLYouTubeResourceId *resourceId;
+@property (nonatomic, retain) GTLYouTubeResourceId *resourceId;
 
 @end

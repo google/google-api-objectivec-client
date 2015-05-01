@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,13 +53,13 @@
 @interface GTLAdExchangeBuyerCreativesList : GTLCollectionObject
 
 // A list of creatives.
-@property (retain) NSArray *items;  // of GTLAdExchangeBuyerCreative
+@property (nonatomic, retain) NSArray *items;  // of GTLAdExchangeBuyerCreative
 
 // Resource type.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Continuation token used to page through creatives. To retrieve the next page
 // of results, set the next request's "pageToken" value to this.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 @end

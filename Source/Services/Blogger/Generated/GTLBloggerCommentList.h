@@ -47,18 +47,18 @@
 @interface GTLBloggerCommentList : GTLCollectionObject
 
 // Etag of the response.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The List of Comments for a Post.
-@property (retain) NSArray *items;  // of GTLBloggerComment
+@property (nonatomic, retain) NSArray *items;  // of GTLBloggerComment
 
 // The kind of this entry. Always blogger#commentList
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Pagination token to fetch the next page, if one exists.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 // Pagination token to fetch the previous page, if one exists.
-@property (copy) NSString *prevPageToken;
+@property (nonatomic, copy) NSString *prevPageToken;
 
 @end

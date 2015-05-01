@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,31 +47,31 @@
 @interface GTLPlusDomainsCircleFeed : GTLCollectionObject
 
 // ETag of this response for caching purposes.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The circles in this page of results.
-@property (retain) NSArray *items;  // of GTLPlusDomainsCircle
+@property (nonatomic, retain) NSArray *items;  // of GTLPlusDomainsCircle
 
 // Identifies this resource as a collection of circles. Value:
 // "plus#circleFeed".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Link to the next page of circles.
-@property (copy) NSString *nextLink;
+@property (nonatomic, copy) NSString *nextLink;
 
 // The continuation token, which is used to page through large result sets.
 // Provide this value in a subsequent request to return the next page of
 // results.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 // Link to this page of circles.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // The title of this list of resources.
-@property (copy) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 // The total number of circles. The number of circles in this response may be
 // smaller due to paging.
-@property (retain) NSNumber *totalItems;  // intValue
+@property (nonatomic, retain) NSNumber *totalItems;  // intValue
 
 @end

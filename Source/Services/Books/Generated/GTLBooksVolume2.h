@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,10 +47,10 @@
 @interface GTLBooksVolume2 : GTLCollectionObject
 
 // A list of volumes.
-@property (retain) NSArray *items;  // of GTLBooksVolume
+@property (nonatomic, retain) NSArray *items;  // of GTLBooksVolume
 
 // Resource type.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 @end

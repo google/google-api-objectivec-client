@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,12 +44,12 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (copy) NSString *fields;
+@property (nonatomic, copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (retain) GTLQPXExpressTripOptionsRequest *request;
+@property (nonatomic, retain) GTLQPXExpressTripOptionsRequest *request;
 
 #pragma mark -
 #pragma mark "trips" methods
@@ -61,6 +61,6 @@
 //   request: A QPX Express search request. Required values are at least one
 //     adult or senior passenger, an origin, a destination, and a date.
 // Fetches a GTLQPXExpressTripsSearchResponse.
-+ (id)queryForTripsSearch;
++ (instancetype)queryForTripsSearch;
 
 @end

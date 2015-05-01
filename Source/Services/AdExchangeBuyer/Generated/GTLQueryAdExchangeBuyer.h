@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,28 +48,28 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (copy) NSString *fields;
+@property (nonatomic, copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
 // "accountId" has different types for some query methods; see the documentation
 // for the right type for each query method.
-@property (retain) id accountId;
-@property (assign) long long billingId;
+@property (nonatomic, retain) id accountId;
+@property (nonatomic, assign) long long billingId;
 // "buyerCreativeId" has different types for some query methods; see the
 // documentation for the right type for each query method.
-@property (retain) id buyerCreativeId;
-@property (assign) long long configId;
-@property (copy) NSString *endDateTime;
+@property (nonatomic, retain) id buyerCreativeId;
+@property (nonatomic, assign) long long configId;
+@property (nonatomic, copy) NSString *endDateTime;
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 // "identifier" has different types for some query methods; see the
 // documentation for the right type for each query method.
-@property (retain) id identifier;
-@property (assign) NSUInteger maxResults;
-@property (copy) NSString *pageToken;
-@property (copy) NSString *startDateTime;
-@property (copy) NSString *statusFilter;
+@property (nonatomic, retain) id identifier;
+@property (nonatomic, assign) NSUInteger maxResults;
+@property (nonatomic, copy) NSString *pageToken;
+@property (nonatomic, copy) NSString *startDateTime;
+@property (nonatomic, copy) NSString *statusFilter;
 
 #pragma mark -
 #pragma mark "accounts" methods
@@ -82,14 +82,14 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerAccount.
-+ (id)queryForAccountsGetWithIdentifier:(NSInteger)identifier;
++ (instancetype)queryForAccountsGetWithIdentifier:(NSInteger)identifier;
 
 // Method: adexchangebuyer.accounts.list
 // Retrieves the authenticated user's list of accounts.
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerAccountsList.
-+ (id)queryForAccountsList;
++ (instancetype)queryForAccountsList;
 
 // Method: adexchangebuyer.accounts.patch
 // Updates an existing account. This method supports patch semantics.
@@ -98,8 +98,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerAccount.
-+ (id)queryForAccountsPatchWithObject:(GTLAdExchangeBuyerAccount *)object
-                           identifier:(NSInteger)identifier;
++ (instancetype)queryForAccountsPatchWithObject:(GTLAdExchangeBuyerAccount *)object
+                                     identifier:(NSInteger)identifier;
 
 // Method: adexchangebuyer.accounts.update
 // Updates an existing account.
@@ -108,8 +108,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerAccount.
-+ (id)queryForAccountsUpdateWithObject:(GTLAdExchangeBuyerAccount *)object
-                            identifier:(NSInteger)identifier;
++ (instancetype)queryForAccountsUpdateWithObject:(GTLAdExchangeBuyerAccount *)object
+                                      identifier:(NSInteger)identifier;
 
 #pragma mark -
 #pragma mark "billingInfo" methods
@@ -122,7 +122,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerBillingInfo.
-+ (id)queryForBillingInfoGetWithAccountId:(NSInteger)accountId;
++ (instancetype)queryForBillingInfoGetWithAccountId:(NSInteger)accountId;
 
 // Method: adexchangebuyer.billingInfo.list
 // Retrieves a list of billing information for all accounts of the authenticated
@@ -130,7 +130,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerBillingInfoList.
-+ (id)queryForBillingInfoList;
++ (instancetype)queryForBillingInfoList;
 
 #pragma mark -
 #pragma mark "budget" methods
@@ -145,8 +145,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerBudget.
-+ (id)queryForBudgetGetWithAccountId:(long long)accountId
-                           billingId:(long long)billingId;
++ (instancetype)queryForBudgetGetWithAccountId:(long long)accountId
+                                     billingId:(long long)billingId;
 
 // Method: adexchangebuyer.budget.patch
 // Updates the budget amount for the budget of the adgroup specified by the
@@ -158,9 +158,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerBudget.
-+ (id)queryForBudgetPatchWithObject:(GTLAdExchangeBuyerBudget *)object
-                          accountId:(long long)accountId
-                          billingId:(long long)billingId;
++ (instancetype)queryForBudgetPatchWithObject:(GTLAdExchangeBuyerBudget *)object
+                                    accountId:(long long)accountId
+                                    billingId:(long long)billingId;
 
 // Method: adexchangebuyer.budget.update
 // Updates the budget amount for the budget of the adgroup specified by the
@@ -171,9 +171,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerBudget.
-+ (id)queryForBudgetUpdateWithObject:(GTLAdExchangeBuyerBudget *)object
-                           accountId:(long long)accountId
-                           billingId:(long long)billingId;
++ (instancetype)queryForBudgetUpdateWithObject:(GTLAdExchangeBuyerBudget *)object
+                                     accountId:(long long)accountId
+                                     billingId:(long long)billingId;
 
 #pragma mark -
 #pragma mark "creatives" methods
@@ -188,15 +188,15 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerCreative.
-+ (id)queryForCreativesGetWithAccountId:(NSInteger)accountId
-                        buyerCreativeId:(NSString *)buyerCreativeId;
++ (instancetype)queryForCreativesGetWithAccountId:(NSInteger)accountId
+                                  buyerCreativeId:(NSString *)buyerCreativeId;
 
 // Method: adexchangebuyer.creatives.insert
 // Submit a new creative.
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerCreative.
-+ (id)queryForCreativesInsertWithObject:(GTLAdExchangeBuyerCreative *)object;
++ (instancetype)queryForCreativesInsertWithObject:(GTLAdExchangeBuyerCreative *)object;
 
 // Method: adexchangebuyer.creatives.list
 // Retrieves a list of the authenticated user's active creatives. A creative
@@ -224,7 +224,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerCreativesList.
-+ (id)queryForCreativesList;
++ (instancetype)queryForCreativesList;
 
 #pragma mark -
 #pragma mark "directDeals" methods
@@ -237,14 +237,14 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerDirectDeal.
-+ (id)queryForDirectDealsGetWithIdentifier:(long long)identifier;
++ (instancetype)queryForDirectDealsGetWithIdentifier:(long long)identifier;
 
 // Method: adexchangebuyer.directDeals.list
 // Retrieves the authenticated user's list of direct deals.
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerDirectDealsList.
-+ (id)queryForDirectDealsList;
++ (instancetype)queryForDirectDealsList;
 
 #pragma mark -
 #pragma mark "performanceReport" methods
@@ -267,9 +267,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerPerformanceReportList.
-+ (id)queryForPerformanceReportListWithAccountId:(long long)accountId
-                                     endDateTime:(NSString *)endDateTime
-                                   startDateTime:(NSString *)startDateTime;
++ (instancetype)queryForPerformanceReportListWithAccountId:(long long)accountId
+                                               endDateTime:(NSString *)endDateTime
+                                             startDateTime:(NSString *)startDateTime;
 
 #pragma mark -
 #pragma mark "pretargetingConfig" methods
@@ -282,8 +282,8 @@
 //   configId: The specific id of the configuration to delete.
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
-+ (id)queryForPretargetingConfigDeleteWithAccountId:(long long)accountId
-                                           configId:(long long)configId;
++ (instancetype)queryForPretargetingConfigDeleteWithAccountId:(long long)accountId
+                                                     configId:(long long)configId;
 
 // Method: adexchangebuyer.pretargetingConfig.get
 // Gets a specific pretargeting configuration
@@ -293,8 +293,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerPretargetingConfig.
-+ (id)queryForPretargetingConfigGetWithAccountId:(long long)accountId
-                                        configId:(long long)configId;
++ (instancetype)queryForPretargetingConfigGetWithAccountId:(long long)accountId
+                                                  configId:(long long)configId;
 
 // Method: adexchangebuyer.pretargetingConfig.insert
 // Inserts a new pretargeting configuration.
@@ -303,8 +303,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerPretargetingConfig.
-+ (id)queryForPretargetingConfigInsertWithObject:(GTLAdExchangeBuyerPretargetingConfig *)object
-                                       accountId:(long long)accountId;
++ (instancetype)queryForPretargetingConfigInsertWithObject:(GTLAdExchangeBuyerPretargetingConfig *)object
+                                                 accountId:(long long)accountId;
 
 // Method: adexchangebuyer.pretargetingConfig.list
 // Retrieves a list of the authenticated user's pretargeting configurations.
@@ -313,7 +313,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerPretargetingConfigList.
-+ (id)queryForPretargetingConfigListWithAccountId:(long long)accountId;
++ (instancetype)queryForPretargetingConfigListWithAccountId:(long long)accountId;
 
 // Method: adexchangebuyer.pretargetingConfig.patch
 // Updates an existing pretargeting config. This method supports patch
@@ -324,9 +324,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerPretargetingConfig.
-+ (id)queryForPretargetingConfigPatchWithObject:(GTLAdExchangeBuyerPretargetingConfig *)object
-                                      accountId:(long long)accountId
-                                       configId:(long long)configId;
++ (instancetype)queryForPretargetingConfigPatchWithObject:(GTLAdExchangeBuyerPretargetingConfig *)object
+                                                accountId:(long long)accountId
+                                                 configId:(long long)configId;
 
 // Method: adexchangebuyer.pretargetingConfig.update
 // Updates an existing pretargeting config.
@@ -336,8 +336,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerPretargetingConfig.
-+ (id)queryForPretargetingConfigUpdateWithObject:(GTLAdExchangeBuyerPretargetingConfig *)object
-                                       accountId:(long long)accountId
-                                        configId:(long long)configId;
++ (instancetype)queryForPretargetingConfigUpdateWithObject:(GTLAdExchangeBuyerPretargetingConfig *)object
+                                                 accountId:(long long)accountId
+                                                  configId:(long long)configId;
 
 @end

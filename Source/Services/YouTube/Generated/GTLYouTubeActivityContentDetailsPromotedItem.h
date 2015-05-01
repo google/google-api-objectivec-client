@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,41 +44,41 @@
 @interface GTLYouTubeActivityContentDetailsPromotedItem : GTLObject
 
 // The URL the client should fetch to request a promoted item.
-@property (copy) NSString *adTag;
+@property (nonatomic, copy) NSString *adTag;
 
 // The URL the client should ping to indicate that the user clicked through on
 // this promoted item.
-@property (copy) NSString *clickTrackingUrl;
+@property (nonatomic, copy) NSString *clickTrackingUrl;
 
 // The URL the client should ping to indicate that the user was shown this
 // promoted item.
-@property (copy) NSString *creativeViewUrl;
+@property (nonatomic, copy) NSString *creativeViewUrl;
 
 // The type of call-to-action, a message to the user indicating action that can
 // be taken.
-@property (copy) NSString *ctaType;
+@property (nonatomic, copy) NSString *ctaType;
 
 // The custom call-to-action button text. If specified, it will override the
 // default button text for the cta_type.
-@property (copy) NSString *customCtaButtonText;
+@property (nonatomic, copy) NSString *customCtaButtonText;
 
 // The text description to accompany the promoted item.
-@property (copy) NSString *descriptionText;
+@property (nonatomic, copy) NSString *descriptionText;
 
 // The URL the client should direct the user to, if the user chooses to visit
 // the advertiser's website.
-@property (copy) NSString *destinationUrl;
+@property (nonatomic, copy) NSString *destinationUrl;
 
 // The list of forecasting URLs. The client should ping all of these URLs when a
 // promoted item is not available, to indicate that a promoted item could have
 // been shown.
-@property (retain) NSArray *forecastingUrl;  // of NSString
+@property (nonatomic, retain) NSArray *forecastingUrl;  // of NSString
 
 // The list of impression URLs. The client should ping all of these URLs to
 // indicate that the user was shown this promoted item.
-@property (retain) NSArray *impressionUrl;  // of NSString
+@property (nonatomic, retain) NSArray *impressionUrl;  // of NSString
 
 // The ID that YouTube uses to uniquely identify the promoted video.
-@property (copy) NSString *videoId;
+@property (nonatomic, copy) NSString *videoId;
 
 @end

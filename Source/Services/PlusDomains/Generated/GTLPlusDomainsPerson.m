@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,22 +52,20 @@
          tagline, url, urls, verified;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"etag", @"ETag",
-      @"id", @"identifier",
-      nil];
+  NSDictionary *map = @{
+    @"ETag" : @"etag",
+    @"identifier" : @"id"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [GTLPlusDomainsPersonEmailsItem class], @"emails",
-      [GTLPlusDomainsPersonOrganizationsItem class], @"organizations",
-      [GTLPlusDomainsPersonPlacesLivedItem class], @"placesLived",
-      [GTLPlusDomainsPersonUrlsItem class], @"urls",
-      nil];
+  NSDictionary *map = @{
+    @"emails" : [GTLPlusDomainsPersonEmailsItem class],
+    @"organizations" : [GTLPlusDomainsPersonOrganizationsItem class],
+    @"placesLived" : [GTLPlusDomainsPersonPlacesLivedItem class],
+    @"urls" : [GTLPlusDomainsPersonUrlsItem class]
+  };
   return map;
 }
 
@@ -129,9 +127,9 @@
          startDate, title, type;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"description"
-                                forKey:@"descriptionProperty"];
+  NSDictionary *map = @{
+    @"descriptionProperty" : @"description"
+  };
   return map;
 }
 

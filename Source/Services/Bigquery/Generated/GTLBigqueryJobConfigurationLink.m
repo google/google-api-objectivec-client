@@ -41,9 +41,9 @@
 @dynamic createDisposition, destinationTable, sourceUri, writeDisposition;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[NSString class]
-                                forKey:@"sourceUri"];
+  NSDictionary *map = @{
+    @"sourceUri" : [NSString class]
+  };
   return map;
 }
 

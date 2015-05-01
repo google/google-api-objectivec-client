@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,68 +48,68 @@
 @interface GTLCivicInfoContest : GTLObject
 
 // A number specifying the position of this contest on the voter's ballot.
-@property (retain) NSNumber *ballotPlacement;  // longLongValue
+@property (nonatomic, retain) NSNumber *ballotPlacement;  // longLongValue
 
 // The candidate choices for this contest.
-@property (retain) NSArray *candidates;  // of GTLCivicInfoCandidate
+@property (nonatomic, retain) NSArray *candidates;  // of GTLCivicInfoCandidate
 
 // Information about the electoral district that this contest is in.
-@property (retain) GTLCivicInfoElectoralDistrict *district;
+@property (nonatomic, retain) GTLCivicInfoElectoralDistrict *district;
 
 // A description of any additional eligibility requirements for voting in this
 // contest.
-@property (copy) NSString *electorateSpecifications;
+@property (nonatomic, copy) NSString *electorateSpecifications;
 
 // An ID for this object. IDs may change in future requests and should not be
 // cached. Access to this field requires special access that can be requested
 // from the Request more link on the Quotas page.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The levels of government of the office for this contest. There may be more
 // than one in cases where a jurisdiction effectively acts at two different
 // levels of government; for example, the mayor of the District of Columbia acts
 // at "locality" level, but also effectively at both "administrative-area-2" and
 // "administrative-area-1".
-@property (retain) NSArray *level;  // of NSString
+@property (nonatomic, retain) NSArray *level;  // of NSString
 
 // The number of candidates that will be elected to office in this contest.
-@property (retain) NSNumber *numberElected;  // longLongValue
+@property (nonatomic, retain) NSNumber *numberElected;  // longLongValue
 
 // The number of candidates that a voter may vote for in this contest.
-@property (retain) NSNumber *numberVotingFor;  // longLongValue
+@property (nonatomic, retain) NSNumber *numberVotingFor;  // longLongValue
 
 // The name of the office for this contest.
-@property (copy) NSString *office;
+@property (nonatomic, copy) NSString *office;
 
 // If this is a partisan election, the name of the party it is for.
-@property (copy) NSString *primaryParty;
+@property (nonatomic, copy) NSString *primaryParty;
 
 // A brief description of the referendum. This field is only populated for
 // contests of type 'Referendum'.
-@property (copy) NSString *referendumSubtitle;
+@property (nonatomic, copy) NSString *referendumSubtitle;
 
 // The title of the referendum (e.g. 'Proposition 42'). This field is only
 // populated for contests of type 'Referendum'.
-@property (copy) NSString *referendumTitle;
+@property (nonatomic, copy) NSString *referendumTitle;
 
 // A link to the referendum. This field is only populated for contests of type
 // 'Referendum'.
-@property (copy) NSString *referendumUrl;
+@property (nonatomic, copy) NSString *referendumUrl;
 
 // The roles which this office fulfills.
-@property (retain) NSArray *roles;  // of NSString
+@property (nonatomic, retain) NSArray *roles;  // of NSString
 
 // A list of sources for this contest. If multiple sources are listed, the data
 // has been aggregated from those sources.
-@property (retain) NSArray *sources;  // of GTLCivicInfoSource
+@property (nonatomic, retain) NSArray *sources;  // of GTLCivicInfoSource
 
 // "Yes" or "No" depending on whether this a contest being held outside the
 // normal election cycle.
-@property (copy) NSString *special;
+@property (nonatomic, copy) NSString *special;
 
 // The type of contest. Usually this will be 'General', 'Primary', or 'Run-off'
 // for contests with candidates. For referenda this will be 'Referendum'.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end

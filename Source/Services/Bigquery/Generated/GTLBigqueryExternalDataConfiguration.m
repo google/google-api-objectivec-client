@@ -43,9 +43,9 @@
          sourceFormat, sourceUris;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[NSString class]
-                                forKey:@"sourceUris"];
+  NSDictionary *map = @{
+    @"sourceUris" : [NSString class]
+  };
   return map;
 }
 

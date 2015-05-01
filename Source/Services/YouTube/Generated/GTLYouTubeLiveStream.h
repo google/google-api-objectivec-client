@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,28 +51,28 @@
 // The cdn object defines the live stream's content delivery network (CDN)
 // settings. These settings provide details about the manner in which you stream
 // your content to YouTube.
-@property (retain) GTLYouTubeCdnSettings *cdn;
+@property (nonatomic, retain) GTLYouTubeCdnSettings *cdn;
 
 // The content_details object contains information about the stream, including
 // the closed captions ingestion URL.
-@property (retain) GTLYouTubeLiveStreamContentDetails *contentDetails;
+@property (nonatomic, retain) GTLYouTubeLiveStreamContentDetails *contentDetails;
 
 // Etag of this resource.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The ID that YouTube assigns to uniquely identify the stream.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Identifies what kind of resource this is. Value: the fixed string
 // "youtube#liveStream".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The snippet object contains basic details about the stream, including its
 // channel, title, and description.
-@property (retain) GTLYouTubeLiveStreamSnippet *snippet;
+@property (nonatomic, retain) GTLYouTubeLiveStreamSnippet *snippet;
 
 // The status object contains information about live stream's status.
-@property (retain) GTLYouTubeLiveStreamStatus *status;
+@property (nonatomic, retain) GTLYouTubeLiveStreamStatus *status;
 
 @end

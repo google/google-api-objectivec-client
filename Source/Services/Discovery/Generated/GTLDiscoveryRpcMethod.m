@@ -48,20 +48,18 @@
          useMediaDownloadService;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"description", @"descriptionProperty",
-      @"id", @"identifier",
-      nil];
+  NSDictionary *map = @{
+    @"descriptionProperty" : @"description",
+    @"identifier" : @"id"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSString class], @"parameterOrder",
-      [NSString class], @"scopes",
-      nil];
+  NSDictionary *map = @{
+    @"parameterOrder" : [NSString class],
+    @"scopes" : [NSString class]
+  };
   return map;
 }
 
@@ -77,9 +75,9 @@
 @dynamic accept, maxSize;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[NSString class]
-                                forKey:@"accept"];
+  NSDictionary *map = @{
+    @"accept" : [NSString class]
+  };
   return map;
 }
 
@@ -109,9 +107,9 @@
 @dynamic xRef;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"$ref"
-                                forKey:@"xRef"];
+  NSDictionary *map = @{
+    @"xRef" : @"$ref"
+  };
   return map;
 }
 

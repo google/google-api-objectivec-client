@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,29 +50,29 @@
 
 // Child link for an account entry. Points to the list of web properties for
 // this account.
-@property (retain) GTLAnalyticsAccountChildLink *childLink;
+@property (nonatomic, retain) GTLAnalyticsAccountChildLink *childLink;
 
 // Time the account was created.
-@property (retain) GTLDateTime *created;
+@property (nonatomic, retain) GTLDateTime *created;
 
 // Account ID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Resource type for Analytics account.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Account name.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // Permissions the user has for this account.
-@property (retain) GTLAnalyticsAccountPermissions *permissions;
+@property (nonatomic, retain) GTLAnalyticsAccountPermissions *permissions;
 
 // Link for this account.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // Time the account was last modified.
-@property (retain) GTLDateTime *updated;
+@property (nonatomic, retain) GTLDateTime *updated;
 
 @end
 
@@ -85,10 +85,10 @@
 @interface GTLAnalyticsAccountChildLink : GTLObject
 
 // Link to the list of web properties for this account.
-@property (copy) NSString *href;
+@property (nonatomic, copy) NSString *href;
 
 // Type of the child link. Its value is "analytics#webproperties".
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end
 
@@ -102,6 +102,6 @@
 
 // All the permissions that the user has for this account. These include any
 // implied permissions (e.g., EDIT implies VIEW).
-@property (retain) NSArray *effective;  // of NSString
+@property (nonatomic, retain) NSArray *effective;  // of NSString
 
 @end

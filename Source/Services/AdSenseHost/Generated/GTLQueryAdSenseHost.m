@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,16 +53,15 @@
          startIndex, token, urlChannelId, userLocale, websiteLocale, websiteUrl;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSString class], @"dimension",
-      [NSString class], @"filter",
-      [NSString class], @"filterAdClientId",
-      [NSString class], @"hostCustomChannelId",
-      [NSString class], @"metric",
-      [NSString class], @"productCode",
-      [NSString class], @"sort",
-      nil];
+  NSDictionary *map = @{
+    @"dimension" : [NSString class],
+    @"filter" : [NSString class],
+    @"filterAdClientId" : [NSString class],
+    @"hostCustomChannelId" : [NSString class],
+    @"metric" : [NSString class],
+    @"productCode" : [NSString class],
+    @"sort" : [NSString class]
+  };
   return map;
 }
 
@@ -70,8 +69,8 @@
 #pragma mark "accounts.adclients" methods
 // These create a GTLQueryAdSenseHost object.
 
-+ (id)queryForAccountsAdclientsGetWithAccountId:(NSString *)accountId
-                                     adClientId:(NSString *)adClientId {
++ (instancetype)queryForAccountsAdclientsGetWithAccountId:(NSString *)accountId
+                                               adClientId:(NSString *)adClientId {
   NSString *methodName = @"adsensehost.accounts.adclients.get";
   GTLQueryAdSenseHost *query = [self queryWithMethodName:methodName];
   query.accountId = accountId;
@@ -80,7 +79,7 @@
   return query;
 }
 
-+ (id)queryForAccountsAdclientsListWithAccountId:(NSString *)accountId {
++ (instancetype)queryForAccountsAdclientsListWithAccountId:(NSString *)accountId {
   NSString *methodName = @"adsensehost.accounts.adclients.list";
   GTLQueryAdSenseHost *query = [self queryWithMethodName:methodName];
   query.accountId = accountId;
@@ -92,9 +91,9 @@
 #pragma mark "accounts.adunits" methods
 // These create a GTLQueryAdSenseHost object.
 
-+ (id)queryForAccountsAdunitsDeleteWithAccountId:(NSString *)accountId
-                                      adClientId:(NSString *)adClientId
-                                        adUnitId:(NSString *)adUnitId {
++ (instancetype)queryForAccountsAdunitsDeleteWithAccountId:(NSString *)accountId
+                                                adClientId:(NSString *)adClientId
+                                                  adUnitId:(NSString *)adUnitId {
   NSString *methodName = @"adsensehost.accounts.adunits.delete";
   GTLQueryAdSenseHost *query = [self queryWithMethodName:methodName];
   query.accountId = accountId;
@@ -104,9 +103,9 @@
   return query;
 }
 
-+ (id)queryForAccountsAdunitsGetWithAccountId:(NSString *)accountId
-                                   adClientId:(NSString *)adClientId
-                                     adUnitId:(NSString *)adUnitId {
++ (instancetype)queryForAccountsAdunitsGetWithAccountId:(NSString *)accountId
+                                             adClientId:(NSString *)adClientId
+                                               adUnitId:(NSString *)adUnitId {
   NSString *methodName = @"adsensehost.accounts.adunits.get";
   GTLQueryAdSenseHost *query = [self queryWithMethodName:methodName];
   query.accountId = accountId;
@@ -116,9 +115,9 @@
   return query;
 }
 
-+ (id)queryForAccountsAdunitsGetAdCodeWithAccountId:(NSString *)accountId
-                                         adClientId:(NSString *)adClientId
-                                           adUnitId:(NSString *)adUnitId {
++ (instancetype)queryForAccountsAdunitsGetAdCodeWithAccountId:(NSString *)accountId
+                                                   adClientId:(NSString *)adClientId
+                                                     adUnitId:(NSString *)adUnitId {
   NSString *methodName = @"adsensehost.accounts.adunits.getAdCode";
   GTLQueryAdSenseHost *query = [self queryWithMethodName:methodName];
   query.accountId = accountId;
@@ -128,9 +127,9 @@
   return query;
 }
 
-+ (id)queryForAccountsAdunitsInsertWithObject:(GTLAdSenseHostAdUnit *)object
-                                    accountId:(NSString *)accountId
-                                   adClientId:(NSString *)adClientId {
++ (instancetype)queryForAccountsAdunitsInsertWithObject:(GTLAdSenseHostAdUnit *)object
+                                              accountId:(NSString *)accountId
+                                             adClientId:(NSString *)adClientId {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -144,8 +143,8 @@
   return query;
 }
 
-+ (id)queryForAccountsAdunitsListWithAccountId:(NSString *)accountId
-                                    adClientId:(NSString *)adClientId {
++ (instancetype)queryForAccountsAdunitsListWithAccountId:(NSString *)accountId
+                                              adClientId:(NSString *)adClientId {
   NSString *methodName = @"adsensehost.accounts.adunits.list";
   GTLQueryAdSenseHost *query = [self queryWithMethodName:methodName];
   query.accountId = accountId;
@@ -154,10 +153,10 @@
   return query;
 }
 
-+ (id)queryForAccountsAdunitsPatchWithObject:(GTLAdSenseHostAdUnit *)object
-                                   accountId:(NSString *)accountId
-                                  adClientId:(NSString *)adClientId
-                                    adUnitId:(NSString *)adUnitId {
++ (instancetype)queryForAccountsAdunitsPatchWithObject:(GTLAdSenseHostAdUnit *)object
+                                             accountId:(NSString *)accountId
+                                            adClientId:(NSString *)adClientId
+                                              adUnitId:(NSString *)adUnitId {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -172,9 +171,9 @@
   return query;
 }
 
-+ (id)queryForAccountsAdunitsUpdateWithObject:(GTLAdSenseHostAdUnit *)object
-                                    accountId:(NSString *)accountId
-                                   adClientId:(NSString *)adClientId {
++ (instancetype)queryForAccountsAdunitsUpdateWithObject:(GTLAdSenseHostAdUnit *)object
+                                              accountId:(NSString *)accountId
+                                             adClientId:(NSString *)adClientId {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -192,7 +191,7 @@
 #pragma mark "accounts" methods
 // These create a GTLQueryAdSenseHost object.
 
-+ (id)queryForAccountsGetWithAccountId:(NSString *)accountId {
++ (instancetype)queryForAccountsGetWithAccountId:(NSString *)accountId {
   NSString *methodName = @"adsensehost.accounts.get";
   GTLQueryAdSenseHost *query = [self queryWithMethodName:methodName];
   query.accountId = accountId;
@@ -200,7 +199,7 @@
   return query;
 }
 
-+ (id)queryForAccountsListWithFilterAdClientId:(NSArray *)filterAdClientId {
++ (instancetype)queryForAccountsListWithFilterAdClientId:(NSArray *)filterAdClientId {
   NSString *methodName = @"adsensehost.accounts.list";
   GTLQueryAdSenseHost *query = [self queryWithMethodName:methodName];
   query.filterAdClientId = filterAdClientId;
@@ -212,9 +211,9 @@
 #pragma mark "accounts.reports" methods
 // These create a GTLQueryAdSenseHost object.
 
-+ (id)queryForAccountsReportsGenerateWithAccountId:(NSString *)accountId
-                                         startDate:(NSString *)startDate
-                                           endDate:(NSString *)endDate {
++ (instancetype)queryForAccountsReportsGenerateWithAccountId:(NSString *)accountId
+                                                   startDate:(NSString *)startDate
+                                                     endDate:(NSString *)endDate {
   NSString *methodName = @"adsensehost.accounts.reports.generate";
   GTLQueryAdSenseHost *query = [self queryWithMethodName:methodName];
   query.accountId = accountId;
@@ -228,7 +227,7 @@
 #pragma mark "adclients" methods
 // These create a GTLQueryAdSenseHost object.
 
-+ (id)queryForAdclientsGetWithAdClientId:(NSString *)adClientId {
++ (instancetype)queryForAdclientsGetWithAdClientId:(NSString *)adClientId {
   NSString *methodName = @"adsensehost.adclients.get";
   GTLQueryAdSenseHost *query = [self queryWithMethodName:methodName];
   query.adClientId = adClientId;
@@ -236,7 +235,7 @@
   return query;
 }
 
-+ (id)queryForAdclientsList {
++ (instancetype)queryForAdclientsList {
   NSString *methodName = @"adsensehost.adclients.list";
   GTLQueryAdSenseHost *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLAdSenseHostAdClients class];
@@ -247,8 +246,8 @@
 #pragma mark "associationsessions" methods
 // These create a GTLQueryAdSenseHost object.
 
-+ (id)queryForAssociationsessionsStartWithProductCode:(NSArray *)productCode
-                                           websiteUrl:(NSString *)websiteUrl {
++ (instancetype)queryForAssociationsessionsStartWithProductCode:(NSArray *)productCode
+                                                     websiteUrl:(NSString *)websiteUrl {
   NSString *methodName = @"adsensehost.associationsessions.start";
   GTLQueryAdSenseHost *query = [self queryWithMethodName:methodName];
   query.productCode = productCode;
@@ -257,7 +256,7 @@
   return query;
 }
 
-+ (id)queryForAssociationsessionsVerifyWithToken:(NSString *)token {
++ (instancetype)queryForAssociationsessionsVerifyWithToken:(NSString *)token {
   NSString *methodName = @"adsensehost.associationsessions.verify";
   GTLQueryAdSenseHost *query = [self queryWithMethodName:methodName];
   query.token = token;
@@ -269,8 +268,8 @@
 #pragma mark "customchannels" methods
 // These create a GTLQueryAdSenseHost object.
 
-+ (id)queryForCustomchannelsDeleteWithAdClientId:(NSString *)adClientId
-                                 customChannelId:(NSString *)customChannelId {
++ (instancetype)queryForCustomchannelsDeleteWithAdClientId:(NSString *)adClientId
+                                           customChannelId:(NSString *)customChannelId {
   NSString *methodName = @"adsensehost.customchannels.delete";
   GTLQueryAdSenseHost *query = [self queryWithMethodName:methodName];
   query.adClientId = adClientId;
@@ -279,8 +278,8 @@
   return query;
 }
 
-+ (id)queryForCustomchannelsGetWithAdClientId:(NSString *)adClientId
-                              customChannelId:(NSString *)customChannelId {
++ (instancetype)queryForCustomchannelsGetWithAdClientId:(NSString *)adClientId
+                                        customChannelId:(NSString *)customChannelId {
   NSString *methodName = @"adsensehost.customchannels.get";
   GTLQueryAdSenseHost *query = [self queryWithMethodName:methodName];
   query.adClientId = adClientId;
@@ -289,8 +288,8 @@
   return query;
 }
 
-+ (id)queryForCustomchannelsInsertWithObject:(GTLAdSenseHostCustomChannel *)object
-                                  adClientId:(NSString *)adClientId {
++ (instancetype)queryForCustomchannelsInsertWithObject:(GTLAdSenseHostCustomChannel *)object
+                                            adClientId:(NSString *)adClientId {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -303,7 +302,7 @@
   return query;
 }
 
-+ (id)queryForCustomchannelsListWithAdClientId:(NSString *)adClientId {
++ (instancetype)queryForCustomchannelsListWithAdClientId:(NSString *)adClientId {
   NSString *methodName = @"adsensehost.customchannels.list";
   GTLQueryAdSenseHost *query = [self queryWithMethodName:methodName];
   query.adClientId = adClientId;
@@ -311,9 +310,9 @@
   return query;
 }
 
-+ (id)queryForCustomchannelsPatchWithObject:(GTLAdSenseHostCustomChannel *)object
-                                 adClientId:(NSString *)adClientId
-                            customChannelId:(NSString *)customChannelId {
++ (instancetype)queryForCustomchannelsPatchWithObject:(GTLAdSenseHostCustomChannel *)object
+                                           adClientId:(NSString *)adClientId
+                                      customChannelId:(NSString *)customChannelId {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -327,8 +326,8 @@
   return query;
 }
 
-+ (id)queryForCustomchannelsUpdateWithObject:(GTLAdSenseHostCustomChannel *)object
-                                  adClientId:(NSString *)adClientId {
++ (instancetype)queryForCustomchannelsUpdateWithObject:(GTLAdSenseHostCustomChannel *)object
+                                            adClientId:(NSString *)adClientId {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -345,8 +344,8 @@
 #pragma mark "reports" methods
 // These create a GTLQueryAdSenseHost object.
 
-+ (id)queryForReportsGenerateWithStartDate:(NSString *)startDate
-                                   endDate:(NSString *)endDate {
++ (instancetype)queryForReportsGenerateWithStartDate:(NSString *)startDate
+                                             endDate:(NSString *)endDate {
   NSString *methodName = @"adsensehost.reports.generate";
   GTLQueryAdSenseHost *query = [self queryWithMethodName:methodName];
   query.startDate = startDate;
@@ -359,8 +358,8 @@
 #pragma mark "urlchannels" methods
 // These create a GTLQueryAdSenseHost object.
 
-+ (id)queryForUrlchannelsDeleteWithAdClientId:(NSString *)adClientId
-                                 urlChannelId:(NSString *)urlChannelId {
++ (instancetype)queryForUrlchannelsDeleteWithAdClientId:(NSString *)adClientId
+                                           urlChannelId:(NSString *)urlChannelId {
   NSString *methodName = @"adsensehost.urlchannels.delete";
   GTLQueryAdSenseHost *query = [self queryWithMethodName:methodName];
   query.adClientId = adClientId;
@@ -369,8 +368,8 @@
   return query;
 }
 
-+ (id)queryForUrlchannelsInsertWithObject:(GTLAdSenseHostUrlChannel *)object
-                               adClientId:(NSString *)adClientId {
++ (instancetype)queryForUrlchannelsInsertWithObject:(GTLAdSenseHostUrlChannel *)object
+                                         adClientId:(NSString *)adClientId {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -383,7 +382,7 @@
   return query;
 }
 
-+ (id)queryForUrlchannelsListWithAdClientId:(NSString *)adClientId {
++ (instancetype)queryForUrlchannelsListWithAdClientId:(NSString *)adClientId {
   NSString *methodName = @"adsensehost.urlchannels.list";
   GTLQueryAdSenseHost *query = [self queryWithMethodName:methodName];
   query.adClientId = adClientId;

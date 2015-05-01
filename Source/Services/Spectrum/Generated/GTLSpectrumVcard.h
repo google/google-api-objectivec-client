@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,18 +53,18 @@
 @interface GTLSpectrumVcard : GTLObject
 
 // The street address of the entity.
-@property (retain) GTLSpectrumVcardAddress *adr;
+@property (nonatomic, retain) GTLSpectrumVcardAddress *adr;
 
 // An email address that can be used to reach the contact.
-@property (retain) GTLSpectrumVcardTypedText *email;
+@property (nonatomic, retain) GTLSpectrumVcardTypedText *email;
 
 // The full name of the contact person. For example: John A. Smith.
-@property (copy) NSString *fn;
+@property (nonatomic, copy) NSString *fn;
 
 // The organization associated with the registering entity.
-@property (retain) GTLSpectrumVcardTypedText *org;
+@property (nonatomic, retain) GTLSpectrumVcardTypedText *org;
 
 // A telephone number that can be used to call the contact.
-@property (retain) GTLSpectrumVcardTelephone *tel;
+@property (nonatomic, retain) GTLSpectrumVcardTelephone *tel;
 
 @end

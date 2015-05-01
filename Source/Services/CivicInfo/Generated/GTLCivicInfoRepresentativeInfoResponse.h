@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,22 +51,22 @@
 @interface GTLCivicInfoRepresentativeInfoResponse : GTLObject
 
 // Political geographic divisions that contain the requested address.
-@property (retain) GTLCivicInfoRepresentativeInfoResponseDivisions *divisions;
+@property (nonatomic, retain) GTLCivicInfoRepresentativeInfoResponseDivisions *divisions;
 
 // Identifies what kind of resource this is. Value: the fixed string
 // "civicinfo#representativeInfoResponse".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The normalized version of the requested address
-@property (retain) GTLCivicInfoSimpleAddressType *normalizedInput;
+@property (nonatomic, retain) GTLCivicInfoSimpleAddressType *normalizedInput;
 
 // Elected offices referenced by the divisions listed above. Will only be
 // present if includeOffices was true in the request.
-@property (retain) NSArray *offices;  // of GTLCivicInfoOffice
+@property (nonatomic, retain) NSArray *offices;  // of GTLCivicInfoOffice
 
 // Officials holding the offices listed above. Will only be present if
 // includeOffices was true in the request.
-@property (retain) NSArray *officials;  // of GTLCivicInfoOfficial
+@property (nonatomic, retain) NSArray *officials;  // of GTLCivicInfoOfficial
 
 @end
 

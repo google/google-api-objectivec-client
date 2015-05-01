@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,6 +45,6 @@
 
 // Retrieved line items in CSV format. Refer to Entity Write File Format for
 // more information on file format.
-@property (copy) NSString *lineItems;
+@property (nonatomic, copy) NSString *lineItems;
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,7 +44,7 @@
 @interface GTLYouTubeLiveStreamContentDetails : GTLObject
 
 // The ingestion URL where the closed captions of this stream are sent.
-@property (copy) NSString *closedCaptionsIngestionUrl;
+@property (nonatomic, copy) NSString *closedCaptionsIngestionUrl;
 
 // Indicates whether the stream is reusable, which means that it can be bound to
 // multiple broadcasts. It is common for broadcasters to reuse the same stream
@@ -59,6 +59,6 @@
 // the method and set the mine parameter to true. The only way to use that
 // method to retrieve the resource for a non-reusable stream is to use the id
 // parameter to identify the stream.
-@property (retain) NSNumber *isReusable;  // boolValue
+@property (nonatomic, retain) NSNumber *isReusable;  // boolValue
 
 @end

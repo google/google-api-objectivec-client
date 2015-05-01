@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,12 +44,11 @@
          updated, webPropertyId;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"end-date", @"endDate",
-      @"id", @"identifier",
-      @"start-date", @"startDate",
-      nil];
+  NSDictionary *map = @{
+    @"endDate" : @"end-date",
+    @"identifier" : @"id",
+    @"startDate" : @"start-date"
+  };
   return map;
 }
 

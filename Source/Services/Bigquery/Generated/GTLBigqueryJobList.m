@@ -46,16 +46,16 @@
 @dynamic ETag, jobs, kind, nextPageToken, totalItems;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"etag"
-                                forKey:@"ETag"];
+  NSDictionary *map = @{
+    @"ETag" : @"etag"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLBigqueryJobListJobsItem class]
-                                forKey:@"jobs"];
+  NSDictionary *map = @{
+    @"jobs" : [GTLBigqueryJobListJobsItem class]
+  };
   return map;
 }
 
@@ -76,11 +76,10 @@
          statistics, status, userEmail;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"id", @"identifier",
-      @"user_email", @"userEmail",
-      nil];
+  NSDictionary *map = @{
+    @"identifier" : @"id",
+    @"userEmail" : @"user_email"
+  };
   return map;
 }
 

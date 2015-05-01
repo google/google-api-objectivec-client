@@ -42,11 +42,10 @@
          endTimeMillis, identifier, modifiedTimeMillis, name, startTimeMillis;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"description", @"descriptionProperty",
-      @"id", @"identifier",
-      nil];
+  NSDictionary *map = @{
+    @"descriptionProperty" : @"description",
+    @"identifier" : @"id"
+  };
   return map;
 }
 

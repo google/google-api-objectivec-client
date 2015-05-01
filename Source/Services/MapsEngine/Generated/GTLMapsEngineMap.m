@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,24 +46,22 @@
          writersCanEditPermissions;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"description", @"descriptionProperty",
-      @"etag", @"ETag",
-      @"id", @"identifier",
-      nil];
+  NSDictionary *map = @{
+    @"descriptionProperty" : @"description",
+    @"ETag" : @"etag",
+    @"identifier" : @"id"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSNumber class], @"bbox",
-      [GTLMapsEngineMapItem class], @"contents",
-      [NSNumber class], @"defaultViewport",
-      [NSString class], @"tags",
-      [NSString class], @"versions",
-      nil];
+  NSDictionary *map = @{
+    @"bbox" : [NSNumber class],
+    @"contents" : [GTLMapsEngineMapItem class],
+    @"defaultViewport" : [NSNumber class],
+    @"tags" : [NSString class],
+    @"versions" : [NSString class]
+  };
   return map;
 }
 

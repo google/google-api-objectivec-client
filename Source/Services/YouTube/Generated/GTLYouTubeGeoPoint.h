@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,12 +44,12 @@
 @interface GTLYouTubeGeoPoint : GTLObject
 
 // Altitude above the reference ellipsoid, in meters.
-@property (retain) NSNumber *altitude;  // doubleValue
+@property (nonatomic, retain) NSNumber *altitude;  // doubleValue
 
 // Latitude in degrees.
-@property (retain) NSNumber *latitude;  // doubleValue
+@property (nonatomic, retain) NSNumber *latitude;  // doubleValue
 
 // Longitude in degrees.
-@property (retain) NSNumber *longitude;  // doubleValue
+@property (nonatomic, retain) NSNumber *longitude;  // doubleValue
 
 @end

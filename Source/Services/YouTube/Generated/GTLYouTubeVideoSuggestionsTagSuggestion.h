@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,9 +48,9 @@
 // category that the video uploader associates with the video. By default, tag
 // suggestions are relevant for all categories if there are no restricts defined
 // for the keyword.
-@property (retain) NSArray *categoryRestricts;  // of NSString
+@property (nonatomic, retain) NSArray *categoryRestricts;  // of NSString
 
 // The keyword tag suggested for the video.
-@property (copy) NSString *tag;
+@property (nonatomic, copy) NSString *tag;
 
 @end

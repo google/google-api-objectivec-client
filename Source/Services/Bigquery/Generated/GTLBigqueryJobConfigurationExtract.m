@@ -42,9 +42,9 @@
          fieldDelimiter, printHeader, sourceTable;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[NSString class]
-                                forKey:@"destinationUris"];
+  NSDictionary *map = @{
+    @"destinationUris" : [NSString class]
+  };
   return map;
 }
 

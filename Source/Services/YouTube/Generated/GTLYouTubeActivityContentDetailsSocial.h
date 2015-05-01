@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,19 +46,19 @@
 @interface GTLYouTubeActivityContentDetailsSocial : GTLObject
 
 // The author of the social network post.
-@property (copy) NSString *author;
+@property (nonatomic, copy) NSString *author;
 
 // An image of the post's author.
-@property (copy) NSString *imageUrl;
+@property (nonatomic, copy) NSString *imageUrl;
 
 // The URL of the social network post.
-@property (copy) NSString *referenceUrl;
+@property (nonatomic, copy) NSString *referenceUrl;
 
 // The resourceId object encapsulates information that identifies the resource
 // associated with a social network post.
-@property (retain) GTLYouTubeResourceId *resourceId;
+@property (nonatomic, retain) GTLYouTubeResourceId *resourceId;
 
 // The name of the social network.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end

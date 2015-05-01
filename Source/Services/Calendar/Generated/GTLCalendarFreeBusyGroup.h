@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,9 +44,9 @@
 @interface GTLCalendarFreeBusyGroup : GTLObject
 
 // List of calendars' identifiers within a group.
-@property (retain) NSArray *calendars;  // of NSString
+@property (nonatomic, retain) NSArray *calendars;  // of NSString
 
 // Optional error(s) (if computation for the group failed).
-@property (retain) NSArray *errors;  // of GTLCalendarError
+@property (nonatomic, retain) NSArray *errors;  // of GTLCalendarError
 
 @end

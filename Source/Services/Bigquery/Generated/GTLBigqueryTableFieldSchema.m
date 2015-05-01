@@ -39,16 +39,16 @@
 @dynamic descriptionProperty, fields, mode, name, type;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"description"
-                                forKey:@"descriptionProperty"];
+  NSDictionary *map = @{
+    @"descriptionProperty" : @"description"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLBigqueryTableFieldSchema class]
-                                forKey:@"fields"];
+  NSDictionary *map = @{
+    @"fields" : [GTLBigqueryTableFieldSchema class]
+  };
   return map;
 }
 

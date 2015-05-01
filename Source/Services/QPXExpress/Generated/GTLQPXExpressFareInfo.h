@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,28 +47,28 @@
 // character alphanumeric code used to identify a fare.)
 
 @interface GTLQPXExpressFareInfo : GTLObject
-@property (copy) NSString *basisCode;
+@property (nonatomic, copy) NSString *basisCode;
 
 // The carrier of the aircraft or other vehicle commuting between two points.
-@property (copy) NSString *carrier;
+@property (nonatomic, copy) NSString *carrier;
 
 // The city code of the city the trip ends at.
-@property (copy) NSString *destination;
+@property (nonatomic, copy) NSString *destination;
 
 // A unique identifier of the fare.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Identifies this as a fare object. Value: the fixed string
 // qpxexpress#fareInfo.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The city code of the city the trip begins at.
-@property (copy) NSString *origin;
+@property (nonatomic, copy) NSString *origin;
 
 // Whether this is a private fare, for example one offered only to select
 // customers rather than the general public.
 // Remapped to 'privateProperty' to avoid language reserved word 'private'.
-@property (retain) NSNumber *privateProperty;  // boolValue
+@property (nonatomic, retain) NSNumber *privateProperty;  // boolValue
 
 @end

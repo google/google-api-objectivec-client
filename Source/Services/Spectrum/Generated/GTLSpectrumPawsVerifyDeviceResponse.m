@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,9 +42,9 @@
 @dynamic databaseChange, deviceValidities, kind, type, version;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLSpectrumDeviceValidity class]
-                                forKey:@"deviceValidities"];
+  NSDictionary *map = @{
+    @"deviceValidities" : [GTLSpectrumDeviceValidity class]
+  };
   return map;
 }
 

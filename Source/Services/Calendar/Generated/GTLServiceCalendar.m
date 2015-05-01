@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,37 +36,37 @@
 // Method compiled in debug builds just to check that all the needed support
 // classes are present at link time.
 + (NSArray *)checkClasses {
-  NSArray *classes = [NSArray arrayWithObjects:
-                      [GTLQueryCalendar class],
-                      [GTLCalendarAcl class],
-                      [GTLCalendarAclRule class],
-                      [GTLCalendarCalendar class],
-                      [GTLCalendarCalendarList class],
-                      [GTLCalendarCalendarListEntry class],
-                      [GTLCalendarChannel class],
-                      [GTLCalendarColorDefinition class],
-                      [GTLCalendarColors class],
-                      [GTLCalendarError class],
-                      [GTLCalendarEvent class],
-                      [GTLCalendarEventAttachment class],
-                      [GTLCalendarEventAttendee class],
-                      [GTLCalendarEventDateTime class],
-                      [GTLCalendarEventReminder class],
-                      [GTLCalendarEvents class],
-                      [GTLCalendarFreeBusyCalendar class],
-                      [GTLCalendarFreeBusyGroup class],
-                      [GTLCalendarFreeBusyRequestItem class],
-                      [GTLCalendarFreeBusyResponse class],
-                      [GTLCalendarNotification class],
-                      [GTLCalendarSetting class],
-                      [GTLCalendarSettings class],
-                      [GTLCalendarTimePeriod class],
-                      nil];
+  NSArray *classes = @[
+    [GTLQueryCalendar class],
+    [GTLCalendarAcl class],
+    [GTLCalendarAclRule class],
+    [GTLCalendarCalendar class],
+    [GTLCalendarCalendarList class],
+    [GTLCalendarCalendarListEntry class],
+    [GTLCalendarChannel class],
+    [GTLCalendarColorDefinition class],
+    [GTLCalendarColors class],
+    [GTLCalendarError class],
+    [GTLCalendarEvent class],
+    [GTLCalendarEventAttachment class],
+    [GTLCalendarEventAttendee class],
+    [GTLCalendarEventDateTime class],
+    [GTLCalendarEventReminder class],
+    [GTLCalendarEvents class],
+    [GTLCalendarFreeBusyCalendar class],
+    [GTLCalendarFreeBusyGroup class],
+    [GTLCalendarFreeBusyRequestItem class],
+    [GTLCalendarFreeBusyResponse class],
+    [GTLCalendarNotification class],
+    [GTLCalendarSetting class],
+    [GTLCalendarSettings class],
+    [GTLCalendarTimePeriod class]
+  ];
   return classes;
 }
 #endif  // DEBUG
 
-- (id)init {
+- (instancetype)init {
   self = [super init];
   if (self) {
     // Version from discovery.

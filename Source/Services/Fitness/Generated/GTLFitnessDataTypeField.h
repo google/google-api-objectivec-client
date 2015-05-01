@@ -49,11 +49,11 @@
 @interface GTLFitnessDataTypeField : GTLObject
 
 // The different supported formats for each field in a data type.
-@property (copy) NSString *format;
+@property (nonatomic, copy) NSString *format;
 
 // Defines the name and format of data. Unlike data type names, field names are
 // not namespaced, and only need to be unique within the data type.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
-@property (retain) NSNumber *optional;  // boolValue
+@property (nonatomic, retain) NSNumber *optional;  // boolValue
 @end

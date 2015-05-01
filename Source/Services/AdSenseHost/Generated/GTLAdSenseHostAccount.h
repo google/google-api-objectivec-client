@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,15 +44,15 @@
 
 // Unique identifier of this account.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Kind of resource this is, in this case adsensehost#account.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Name of this account.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // Approval status of this account. One of: PENDING, APPROVED, DISABLED.
-@property (copy) NSString *status;
+@property (nonatomic, copy) NSString *status;
 
 @end

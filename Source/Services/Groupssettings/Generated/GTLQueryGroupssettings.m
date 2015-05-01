@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,7 +40,7 @@
 #pragma mark "groups" methods
 // These create a GTLQueryGroupssettings object.
 
-+ (id)queryForGroupsGetWithGroupUniqueId:(NSString *)groupUniqueId {
++ (instancetype)queryForGroupsGetWithGroupUniqueId:(NSString *)groupUniqueId {
   NSString *methodName = @"groupsSettings.groups.get";
   GTLQueryGroupssettings *query = [self queryWithMethodName:methodName];
   query.groupUniqueId = groupUniqueId;
@@ -48,8 +48,8 @@
   return query;
 }
 
-+ (id)queryForGroupsPatchWithObject:(GTLGroupssettingsGroups *)object
-                      groupUniqueId:(NSString *)groupUniqueId {
++ (instancetype)queryForGroupsPatchWithObject:(GTLGroupssettingsGroups *)object
+                                groupUniqueId:(NSString *)groupUniqueId {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -62,8 +62,8 @@
   return query;
 }
 
-+ (id)queryForGroupsUpdateWithObject:(GTLGroupssettingsGroups *)object
-                       groupUniqueId:(NSString *)groupUniqueId {
++ (instancetype)queryForGroupsUpdateWithObject:(GTLGroupssettingsGroups *)object
+                                 groupUniqueId:(NSString *)groupUniqueId {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;

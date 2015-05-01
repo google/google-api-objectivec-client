@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,19 +44,19 @@
 @interface GTLAnalyticsFilterRef : GTLObject
 
 // Account ID to which this filter belongs.
-@property (copy) NSString *accountId;
+@property (nonatomic, copy) NSString *accountId;
 
 // Link for this filter.
-@property (copy) NSString *href;
+@property (nonatomic, copy) NSString *href;
 
 // Filter ID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Kind value for filter reference.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Name of this filter.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 @end

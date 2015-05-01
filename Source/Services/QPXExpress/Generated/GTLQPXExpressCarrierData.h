@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,13 +47,13 @@
 
 // The IATA designator of a carrier (airline, etc). For example, for American
 // Airlines, the code is AA.
-@property (copy) NSString *code;
+@property (nonatomic, copy) NSString *code;
 
 // Identifies this as a kind of carrier (ie. an airline, bus line, railroad,
 // etc). Value: the fixed string qpxexpress#carrierData.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The long, full name of a carrier. For example: American Airlines.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,16 +43,16 @@
          maximumActiveCreatives, maximumTotalQps, numberActiveCreatives;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+  NSDictionary *map = @{
+    @"identifier" : @"id"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLAdExchangeBuyerAccountBidderLocationItem class]
-                                forKey:@"bidderLocation"];
+  NSDictionary *map = @{
+    @"bidderLocation" : [GTLAdExchangeBuyerAccountBidderLocationItem class]
+  };
   return map;
 }
 

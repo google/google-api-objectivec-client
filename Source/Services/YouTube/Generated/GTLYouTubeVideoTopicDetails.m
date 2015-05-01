@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,11 +39,10 @@
 @dynamic relevantTopicIds, topicIds;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSString class], @"relevantTopicIds",
-      [NSString class], @"topicIds",
-      nil];
+  NSDictionary *map = @{
+    @"relevantTopicIds" : [NSString class],
+    @"topicIds" : [NSString class]
+  };
   return map;
 }
 

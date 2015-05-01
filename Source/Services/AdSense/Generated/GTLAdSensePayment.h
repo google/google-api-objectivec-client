@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,19 +44,19 @@
 
 // Unique identifier of this Payment.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Kind of resource this is, in this case adsense#payment.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The amount to be paid.
-@property (copy) NSString *paymentAmount;
+@property (nonatomic, copy) NSString *paymentAmount;
 
 // The currency code for the amount to be paid.
-@property (copy) NSString *paymentAmountCurrencyCode;
+@property (nonatomic, copy) NSString *paymentAmountCurrencyCode;
 
 // The date this payment was/will be credited to the user, or none if the
 // payment threshold has not been met.
-@property (copy) NSString *paymentDate;
+@property (nonatomic, copy) NSString *paymentDate;
 
 @end

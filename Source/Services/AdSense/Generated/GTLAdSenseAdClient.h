@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,24 +43,24 @@
 @interface GTLAdSenseAdClient : GTLObject
 
 // Whether this ad client is opted in to ARC.
-@property (retain) NSNumber *arcOptIn;  // boolValue
+@property (nonatomic, retain) NSNumber *arcOptIn;  // boolValue
 
 // ARC review mode this ad client is in. Empty if the client is not opted in to
 // ARC. Possible values: POST_REVIEW, AUTOMATIC_PRE_REVIEW.
-@property (copy) NSString *arcReviewMode;
+@property (nonatomic, copy) NSString *arcReviewMode;
 
 // Unique identifier of this ad client.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Kind of resource this is, in this case adsense#adClient.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // This ad client's product code, which corresponds to the PRODUCT_CODE report
 // dimension.
-@property (copy) NSString *productCode;
+@property (nonatomic, copy) NSString *productCode;
 
 // Whether this ad client supports being reported on.
-@property (retain) NSNumber *supportsReporting;  // boolValue
+@property (nonatomic, retain) NSNumber *supportsReporting;  // boolValue
 
 @end

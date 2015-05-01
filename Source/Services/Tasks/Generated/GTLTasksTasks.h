@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,15 +47,15 @@
 @interface GTLTasksTasks : GTLCollectionObject
 
 // ETag of the resource.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // Collection of tasks.
-@property (retain) NSArray *items;  // of GTLTasksTask
+@property (nonatomic, retain) NSArray *items;  // of GTLTasksTask
 
 // Type of the resource. This is always "tasks#tasks".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Token used to access the next page of this result.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 @end

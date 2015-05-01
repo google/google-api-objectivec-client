@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,22 +47,22 @@
 @interface GTLBooksVolumeannotations : GTLCollectionObject
 
 // A list of volume annotations.
-@property (retain) NSArray *items;  // of GTLBooksVolumeannotation
+@property (nonatomic, retain) NSArray *items;  // of GTLBooksVolumeannotation
 
 // Resource type
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Token to pass in for pagination for the next page. This will not be present
 // if this request does not have more results.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 // The total number of volume annotations found.
-@property (retain) NSNumber *totalItems;  // intValue
+@property (nonatomic, retain) NSNumber *totalItems;  // intValue
 
 // The version string for all of the volume annotations in this layer (not just
 // the ones in this response). Note: the version string doesn't apply to the
 // annotation data, just the information in this response (e.g. the location of
 // annotations in the book).
-@property (copy) NSString *version;
+@property (nonatomic, copy) NSString *version;
 
 @end

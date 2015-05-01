@@ -53,11 +53,10 @@
          startIndex, stateFilter, tableId, timeoutMs, useQueryCache;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [GTLBigqueryTabledataInsertAllRowsItem class], @"rows",
-      [NSString class], @"stateFilter",
-      nil];
+  NSDictionary *map = @{
+    @"rows" : [GTLBigqueryTabledataInsertAllRowsItem class],
+    @"stateFilter" : [NSString class]
+  };
   return map;
 }
 
@@ -65,8 +64,8 @@
 #pragma mark "datasets" methods
 // These create a GTLQueryBigquery object.
 
-+ (id)queryForDatasetsDeleteWithProjectId:(NSString *)projectId
-                                datasetId:(NSString *)datasetId {
++ (instancetype)queryForDatasetsDeleteWithProjectId:(NSString *)projectId
+                                          datasetId:(NSString *)datasetId {
   NSString *methodName = @"bigquery.datasets.delete";
   GTLQueryBigquery *query = [self queryWithMethodName:methodName];
   query.projectId = projectId;
@@ -74,8 +73,8 @@
   return query;
 }
 
-+ (id)queryForDatasetsGetWithProjectId:(NSString *)projectId
-                             datasetId:(NSString *)datasetId {
++ (instancetype)queryForDatasetsGetWithProjectId:(NSString *)projectId
+                                       datasetId:(NSString *)datasetId {
   NSString *methodName = @"bigquery.datasets.get";
   GTLQueryBigquery *query = [self queryWithMethodName:methodName];
   query.projectId = projectId;
@@ -84,7 +83,7 @@
   return query;
 }
 
-+ (id)queryForDatasetsInsertWithObject:(GTLBigqueryDataset *)object {
++ (instancetype)queryForDatasetsInsertWithObject:(GTLBigqueryDataset *)object {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -96,7 +95,7 @@
   return query;
 }
 
-+ (id)queryForDatasetsListWithProjectId:(NSString *)projectId {
++ (instancetype)queryForDatasetsListWithProjectId:(NSString *)projectId {
   NSString *methodName = @"bigquery.datasets.list";
   GTLQueryBigquery *query = [self queryWithMethodName:methodName];
   query.projectId = projectId;
@@ -104,9 +103,9 @@
   return query;
 }
 
-+ (id)queryForDatasetsPatchWithObject:(GTLBigqueryDataset *)object
-                            projectId:(NSString *)projectId
-                            datasetId:(NSString *)datasetId {
++ (instancetype)queryForDatasetsPatchWithObject:(GTLBigqueryDataset *)object
+                                      projectId:(NSString *)projectId
+                                      datasetId:(NSString *)datasetId {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -120,7 +119,7 @@
   return query;
 }
 
-+ (id)queryForDatasetsUpdateWithObject:(GTLBigqueryDataset *)object {
++ (instancetype)queryForDatasetsUpdateWithObject:(GTLBigqueryDataset *)object {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -136,8 +135,8 @@
 #pragma mark "jobs" methods
 // These create a GTLQueryBigquery object.
 
-+ (id)queryForJobsGetWithProjectId:(NSString *)projectId
-                             jobId:(NSString *)jobId {
++ (instancetype)queryForJobsGetWithProjectId:(NSString *)projectId
+                                       jobId:(NSString *)jobId {
   NSString *methodName = @"bigquery.jobs.get";
   GTLQueryBigquery *query = [self queryWithMethodName:methodName];
   query.projectId = projectId;
@@ -146,8 +145,8 @@
   return query;
 }
 
-+ (id)queryForJobsGetQueryResultsWithProjectId:(NSString *)projectId
-                                         jobId:(NSString *)jobId {
++ (instancetype)queryForJobsGetQueryResultsWithProjectId:(NSString *)projectId
+                                                   jobId:(NSString *)jobId {
   NSString *methodName = @"bigquery.jobs.getQueryResults";
   GTLQueryBigquery *query = [self queryWithMethodName:methodName];
   query.projectId = projectId;
@@ -156,8 +155,8 @@
   return query;
 }
 
-+ (id)queryForJobsInsertWithObject:(GTLBigqueryJob *)object
-                  uploadParameters:(GTLUploadParameters *)uploadParametersOrNil {
++ (instancetype)queryForJobsInsertWithObject:(GTLBigqueryJob *)object
+                            uploadParameters:(GTLUploadParameters *)uploadParametersOrNil {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -170,7 +169,7 @@
   return query;
 }
 
-+ (id)queryForJobsListWithProjectId:(NSString *)projectId {
++ (instancetype)queryForJobsListWithProjectId:(NSString *)projectId {
   NSString *methodName = @"bigquery.jobs.list";
   GTLQueryBigquery *query = [self queryWithMethodName:methodName];
   query.projectId = projectId;
@@ -178,8 +177,8 @@
   return query;
 }
 
-+ (id)queryForJobsQueryWithProjectId:(NSString *)projectId
-                               query:(NSString *)query_param {
++ (instancetype)queryForJobsQueryWithProjectId:(NSString *)projectId
+                                         query:(NSString *)query_param {
   NSString *methodName = @"bigquery.jobs.query";
   GTLQueryBigquery *query = [self queryWithMethodName:methodName];
   query.projectId = projectId;
@@ -192,7 +191,7 @@
 #pragma mark "projects" methods
 // These create a GTLQueryBigquery object.
 
-+ (id)queryForProjectsList {
++ (instancetype)queryForProjectsList {
   NSString *methodName = @"bigquery.projects.list";
   GTLQueryBigquery *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLBigqueryProjectList class];
@@ -203,9 +202,9 @@
 #pragma mark "tabledata" methods
 // These create a GTLQueryBigquery object.
 
-+ (id)queryForTabledataInsertAllWithProjectId:(NSString *)projectId
-                                    datasetId:(NSString *)datasetId
-                                      tableId:(NSString *)tableId {
++ (instancetype)queryForTabledataInsertAllWithProjectId:(NSString *)projectId
+                                              datasetId:(NSString *)datasetId
+                                                tableId:(NSString *)tableId {
   NSString *methodName = @"bigquery.tabledata.insertAll";
   GTLQueryBigquery *query = [self queryWithMethodName:methodName];
   query.projectId = projectId;
@@ -215,9 +214,9 @@
   return query;
 }
 
-+ (id)queryForTabledataListWithProjectId:(NSString *)projectId
-                               datasetId:(NSString *)datasetId
-                                 tableId:(NSString *)tableId {
++ (instancetype)queryForTabledataListWithProjectId:(NSString *)projectId
+                                         datasetId:(NSString *)datasetId
+                                           tableId:(NSString *)tableId {
   NSString *methodName = @"bigquery.tabledata.list";
   GTLQueryBigquery *query = [self queryWithMethodName:methodName];
   query.projectId = projectId;
@@ -231,9 +230,9 @@
 #pragma mark "tables" methods
 // These create a GTLQueryBigquery object.
 
-+ (id)queryForTablesDeleteWithProjectId:(NSString *)projectId
-                              datasetId:(NSString *)datasetId
-                                tableId:(NSString *)tableId {
++ (instancetype)queryForTablesDeleteWithProjectId:(NSString *)projectId
+                                        datasetId:(NSString *)datasetId
+                                          tableId:(NSString *)tableId {
   NSString *methodName = @"bigquery.tables.delete";
   GTLQueryBigquery *query = [self queryWithMethodName:methodName];
   query.projectId = projectId;
@@ -242,9 +241,9 @@
   return query;
 }
 
-+ (id)queryForTablesGetWithProjectId:(NSString *)projectId
-                           datasetId:(NSString *)datasetId
-                             tableId:(NSString *)tableId {
++ (instancetype)queryForTablesGetWithProjectId:(NSString *)projectId
+                                     datasetId:(NSString *)datasetId
+                                       tableId:(NSString *)tableId {
   NSString *methodName = @"bigquery.tables.get";
   GTLQueryBigquery *query = [self queryWithMethodName:methodName];
   query.projectId = projectId;
@@ -254,7 +253,7 @@
   return query;
 }
 
-+ (id)queryForTablesInsertWithObject:(GTLBigqueryTable *)object {
++ (instancetype)queryForTablesInsertWithObject:(GTLBigqueryTable *)object {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -266,8 +265,8 @@
   return query;
 }
 
-+ (id)queryForTablesListWithProjectId:(NSString *)projectId
-                            datasetId:(NSString *)datasetId {
++ (instancetype)queryForTablesListWithProjectId:(NSString *)projectId
+                                      datasetId:(NSString *)datasetId {
   NSString *methodName = @"bigquery.tables.list";
   GTLQueryBigquery *query = [self queryWithMethodName:methodName];
   query.projectId = projectId;
@@ -276,10 +275,10 @@
   return query;
 }
 
-+ (id)queryForTablesPatchWithObject:(GTLBigqueryTable *)object
-                          projectId:(NSString *)projectId
-                          datasetId:(NSString *)datasetId
-                            tableId:(NSString *)tableId {
++ (instancetype)queryForTablesPatchWithObject:(GTLBigqueryTable *)object
+                                    projectId:(NSString *)projectId
+                                    datasetId:(NSString *)datasetId
+                                      tableId:(NSString *)tableId {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;
@@ -294,7 +293,7 @@
   return query;
 }
 
-+ (id)queryForTablesUpdateWithObject:(GTLBigqueryTable *)object {
++ (instancetype)queryForTablesUpdateWithObject:(GTLBigqueryTable *)object {
   if (object == nil) {
     GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
     return nil;

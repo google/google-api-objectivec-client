@@ -46,10 +46,10 @@
 @interface GTLYouTubeVideoAbuseReportReasonSnippet : GTLObject
 
 // The localized label belonging to this abuse report reason.
-@property (copy) NSString *label;
+@property (nonatomic, copy) NSString *label;
 
 // The secondary reasons associated with this reason, if any are available.
 // (There might be 0 or more.)
-@property (retain) NSArray *secondaryReasons;  // of GTLYouTubeVideoAbuseReportSecondaryReason
+@property (nonatomic, retain) NSArray *secondaryReasons;  // of GTLYouTubeVideoAbuseReportSecondaryReason
 
 @end

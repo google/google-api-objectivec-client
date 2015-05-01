@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,16 +48,16 @@
 @interface GTLAdExchangeSellerSavedReports : GTLCollectionObject
 
 // ETag of this response for caching purposes.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The saved reports returned in this list response.
-@property (retain) NSArray *items;  // of GTLAdExchangeSellerSavedReport
+@property (nonatomic, retain) NSArray *items;  // of GTLAdExchangeSellerSavedReport
 
 // Kind of list this is, in this case adexchangeseller#savedReports.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Continuation token used to page through saved reports. To retrieve the next
 // page of results, set the next request's "pageToken" value to this.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,18 +49,18 @@
 @interface GTLStorageObjects : GTLCollectionObject
 
 // The list of items.
-@property (retain) NSArray *items;  // of GTLStorageObject
+@property (nonatomic, retain) NSArray *items;  // of GTLStorageObject
 
 // The kind of item this is. For lists of objects, this is always
 // storage#objects.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The continuation token, used to page through large result sets. Provide this
 // value in a subsequent request to return the next page of results.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 // The list of prefixes of objects matching-but-not-listed up to and including
 // the requested delimiter.
-@property (retain) NSArray *prefixes;  // of NSString
+@property (nonatomic, retain) NSArray *prefixes;  // of NSString
 
 @end

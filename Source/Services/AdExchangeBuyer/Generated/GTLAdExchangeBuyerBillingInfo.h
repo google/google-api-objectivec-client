@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,17 +46,17 @@
 @interface GTLAdExchangeBuyerBillingInfo : GTLObject
 
 // Account id.
-@property (retain) NSNumber *accountId;  // intValue
+@property (nonatomic, retain) NSNumber *accountId;  // intValue
 
 // Account name.
-@property (copy) NSString *accountName;
+@property (nonatomic, copy) NSString *accountName;
 
 // A list of adgroup IDs associated with this particular account. These IDs may
 // show up as part of a realtime bidding BidRequest, which indicates a bid
 // request for this account.
-@property (retain) NSArray *billingId;  // of NSString
+@property (nonatomic, retain) NSArray *billingId;  // of NSString
 
 // Resource type.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 @end

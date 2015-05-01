@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,24 +46,24 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (copy) NSString *fields;
+@property (nonatomic, copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (copy) NSString *activityId;
-@property (copy) NSString *circleId;
-@property (copy) NSString *collection;
-@property (copy) NSString *commentId;
-@property (retain) NSArray *email;  // of NSString
-@property (assign) NSUInteger maxResults;
-@property (copy) NSString *orderBy;
-@property (copy) NSString *pageToken;
-@property (assign) BOOL preview;
-@property (copy) NSString *sortOrder;
+@property (nonatomic, copy) NSString *activityId;
+@property (nonatomic, copy) NSString *circleId;
+@property (nonatomic, copy) NSString *collection;
+@property (nonatomic, copy) NSString *commentId;
+@property (nonatomic, retain) NSArray *email;  // of NSString
+@property (nonatomic, assign) NSUInteger maxResults;
+@property (nonatomic, copy) NSString *orderBy;
+@property (nonatomic, copy) NSString *pageToken;
+@property (nonatomic, assign) BOOL preview;
+@property (nonatomic, copy) NSString *sortOrder;
 // "userId" has different types for some query methods; see the documentation
 // for the right type for each query method.
-@property (retain) id userId;
+@property (nonatomic, retain) id userId;
 
 #pragma mark -
 #pragma mark "activities" methods
@@ -78,7 +78,7 @@
 //   kGTLAuthScopePlusDomainsPlusMe
 //   kGTLAuthScopePlusDomainsPlusStreamRead
 // Fetches a GTLPlusDomainsActivity.
-+ (id)queryForActivitiesGetWithActivityId:(NSString *)activityId;
++ (instancetype)queryForActivitiesGetWithActivityId:(NSString *)activityId;
 
 // Method: plusDomains.activities.insert
 // Create a new activity for the authenticated user.
@@ -94,8 +94,8 @@
 //   kGTLAuthScopePlusDomainsPlusMe
 //   kGTLAuthScopePlusDomainsPlusStreamWrite
 // Fetches a GTLPlusDomainsActivity.
-+ (id)queryForActivitiesInsertWithObject:(GTLPlusDomainsActivity *)object
-                                  userId:(NSString *)userId;
++ (instancetype)queryForActivitiesInsertWithObject:(GTLPlusDomainsActivity *)object
+                                            userId:(NSString *)userId;
 
 // Method: plusDomains.activities.list
 // List all of the activities in the specified collection for a particular user.
@@ -117,8 +117,8 @@
 //   kGTLAuthScopePlusDomainsPlusMe
 //   kGTLAuthScopePlusDomainsPlusStreamRead
 // Fetches a GTLPlusDomainsActivityFeed.
-+ (id)queryForActivitiesListWithUserId:(NSString *)userId
-                            collection:(NSString *)collection;
++ (instancetype)queryForActivitiesListWithUserId:(NSString *)userId
+                                      collection:(NSString *)collection;
 
 #pragma mark -
 #pragma mark "audiences" methods
@@ -141,7 +141,7 @@
 //   kGTLAuthScopePlusDomainsPlusLogin
 //   kGTLAuthScopePlusDomainsPlusMe
 // Fetches a GTLPlusDomainsAudiencesFeed.
-+ (id)queryForAudiencesListWithUserId:(NSString *)userId;
++ (instancetype)queryForAudiencesListWithUserId:(NSString *)userId;
 
 #pragma mark -
 #pragma mark "circles" methods
@@ -160,7 +160,7 @@
 //   kGTLAuthScopePlusDomainsPlusCirclesWrite
 //   kGTLAuthScopePlusDomainsPlusLogin
 // Fetches a GTLPlusDomainsCircle.
-+ (id)queryForCirclesAddPeopleWithCircleId:(NSString *)circleId;
++ (instancetype)queryForCirclesAddPeopleWithCircleId:(NSString *)circleId;
 
 // Method: plusDomains.circles.get
 // Get a circle.
@@ -170,7 +170,7 @@
 //   kGTLAuthScopePlusDomainsPlusCirclesRead
 //   kGTLAuthScopePlusDomainsPlusLogin
 // Fetches a GTLPlusDomainsCircle.
-+ (id)queryForCirclesGetWithCircleId:(NSString *)circleId;
++ (instancetype)queryForCirclesGetWithCircleId:(NSString *)circleId;
 
 // Method: plusDomains.circles.insert
 // Create a new circle for the authenticated user.
@@ -182,8 +182,8 @@
 //   kGTLAuthScopePlusDomainsPlusLogin
 //   kGTLAuthScopePlusDomainsPlusMe
 // Fetches a GTLPlusDomainsCircle.
-+ (id)queryForCirclesInsertWithObject:(GTLPlusDomainsCircle *)object
-                               userId:(NSString *)userId;
++ (instancetype)queryForCirclesInsertWithObject:(GTLPlusDomainsCircle *)object
+                                         userId:(NSString *)userId;
 
 // Method: plusDomains.circles.list
 // List all of the circles for a user.
@@ -202,7 +202,7 @@
 //   kGTLAuthScopePlusDomainsPlusLogin
 //   kGTLAuthScopePlusDomainsPlusMe
 // Fetches a GTLPlusDomainsCircleFeed.
-+ (id)queryForCirclesListWithUserId:(NSString *)userId;
++ (instancetype)queryForCirclesListWithUserId:(NSString *)userId;
 
 // Method: plusDomains.circles.patch
 // Update a circle's description. This method supports patch semantics.
@@ -212,8 +212,8 @@
 //   kGTLAuthScopePlusDomainsPlusCirclesWrite
 //   kGTLAuthScopePlusDomainsPlusLogin
 // Fetches a GTLPlusDomainsCircle.
-+ (id)queryForCirclesPatchWithObject:(GTLPlusDomainsCircle *)object
-                            circleId:(NSString *)circleId;
++ (instancetype)queryForCirclesPatchWithObject:(GTLPlusDomainsCircle *)object
+                                      circleId:(NSString *)circleId;
 
 // Method: plusDomains.circles.remove
 // Delete a circle.
@@ -222,7 +222,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopePlusDomainsPlusCirclesWrite
 //   kGTLAuthScopePlusDomainsPlusLogin
-+ (id)queryForCirclesRemoveWithCircleId:(NSString *)circleId;
++ (instancetype)queryForCirclesRemoveWithCircleId:(NSString *)circleId;
 
 // Method: plusDomains.circles.removePeople
 // Remove a person from a circle.
@@ -236,7 +236,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopePlusDomainsPlusCirclesWrite
 //   kGTLAuthScopePlusDomainsPlusLogin
-+ (id)queryForCirclesRemovePeopleWithCircleId:(NSString *)circleId;
++ (instancetype)queryForCirclesRemovePeopleWithCircleId:(NSString *)circleId;
 
 // Method: plusDomains.circles.update
 // Update a circle's description.
@@ -246,8 +246,8 @@
 //   kGTLAuthScopePlusDomainsPlusCirclesWrite
 //   kGTLAuthScopePlusDomainsPlusLogin
 // Fetches a GTLPlusDomainsCircle.
-+ (id)queryForCirclesUpdateWithObject:(GTLPlusDomainsCircle *)object
-                             circleId:(NSString *)circleId;
++ (instancetype)queryForCirclesUpdateWithObject:(GTLPlusDomainsCircle *)object
+                                       circleId:(NSString *)circleId;
 
 #pragma mark -
 #pragma mark "comments" methods
@@ -261,7 +261,7 @@
 //   kGTLAuthScopePlusDomainsPlusLogin
 //   kGTLAuthScopePlusDomainsPlusStreamRead
 // Fetches a GTLPlusDomainsComment.
-+ (id)queryForCommentsGetWithCommentId:(NSString *)commentId;
++ (instancetype)queryForCommentsGetWithCommentId:(NSString *)commentId;
 
 // Method: plusDomains.comments.insert
 // Create a new comment in reply to an activity.
@@ -271,8 +271,8 @@
 //   kGTLAuthScopePlusDomainsPlusLogin
 //   kGTLAuthScopePlusDomainsPlusStreamWrite
 // Fetches a GTLPlusDomainsComment.
-+ (id)queryForCommentsInsertWithObject:(GTLPlusDomainsComment *)object
-                            activityId:(NSString *)activityId;
++ (instancetype)queryForCommentsInsertWithObject:(GTLPlusDomainsComment *)object
+                                      activityId:(NSString *)activityId;
 
 // Method: plusDomains.comments.list
 // List all of the comments for an activity.
@@ -293,7 +293,7 @@
 //   kGTLAuthScopePlusDomainsPlusLogin
 //   kGTLAuthScopePlusDomainsPlusStreamRead
 // Fetches a GTLPlusDomainsCommentFeed.
-+ (id)queryForCommentsListWithActivityId:(NSString *)activityId;
++ (instancetype)queryForCommentsListWithActivityId:(NSString *)activityId;
 
 #pragma mark -
 #pragma mark "media" methods
@@ -315,10 +315,10 @@
 //   kGTLAuthScopePlusDomainsPlusMe
 //   kGTLAuthScopePlusDomainsPlusMediaUpload
 // Fetches a GTLPlusDomainsMedia.
-+ (id)queryForMediaInsertWithObject:(GTLPlusDomainsMedia *)object
-                             userId:(NSString *)userId
-                         collection:(NSString *)collection
-                   uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
++ (instancetype)queryForMediaInsertWithObject:(GTLPlusDomainsMedia *)object
+                                       userId:(NSString *)userId
+                                   collection:(NSString *)collection
+                             uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
 #pragma mark -
 #pragma mark "people" methods
@@ -336,7 +336,7 @@
 //   kGTLAuthScopePlusDomainsUserinfoEmail
 //   kGTLAuthScopePlusDomainsUserinfoProfile
 // Fetches a GTLPlusDomainsPerson.
-+ (id)queryForPeopleGetWithUserId:(NSString *)userId;
++ (instancetype)queryForPeopleGetWithUserId:(NSString *)userId;
 
 // Method: plusDomains.people.list
 // List all of the people in the specified collection.
@@ -363,8 +363,8 @@
 //   kGTLAuthScopePlusDomainsPlusLogin
 //   kGTLAuthScopePlusDomainsPlusMe
 // Fetches a GTLPlusDomainsPeopleFeed.
-+ (id)queryForPeopleListWithUserId:(NSString *)userId
-                        collection:(NSString *)collection;
++ (instancetype)queryForPeopleListWithUserId:(NSString *)userId
+                                  collection:(NSString *)collection;
 
 // Method: plusDomains.people.listByActivity
 // List all of the people in the specified collection for a particular activity.
@@ -388,8 +388,8 @@
 //   kGTLAuthScopePlusDomainsPlusLogin
 //   kGTLAuthScopePlusDomainsPlusStreamRead
 // Fetches a GTLPlusDomainsPeopleFeed.
-+ (id)queryForPeopleListByActivityWithActivityId:(NSString *)activityId
-                                      collection:(NSString *)collection;
++ (instancetype)queryForPeopleListByActivityWithActivityId:(NSString *)activityId
+                                                collection:(NSString *)collection;
 
 // Method: plusDomains.people.listByCircle
 // List all of the people who are members of a circle.
@@ -406,6 +406,6 @@
 //   kGTLAuthScopePlusDomainsPlusCirclesRead
 //   kGTLAuthScopePlusDomainsPlusLogin
 // Fetches a GTLPlusDomainsPeopleFeed.
-+ (id)queryForPeopleListByCircleWithCircleId:(NSString *)circleId;
++ (instancetype)queryForPeopleListByCircleWithCircleId:(NSString *)circleId;
 
 @end

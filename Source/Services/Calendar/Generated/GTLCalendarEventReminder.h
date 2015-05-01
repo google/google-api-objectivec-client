@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,10 +45,10 @@
 // - "email" - Reminders are sent via email.
 // - "sms" - Reminders are sent via SMS.
 // - "popup" - Reminders are sent via a UI popup.
-@property (copy) NSString *method;
+@property (nonatomic, copy) NSString *method;
 
 // Number of minutes before the start of the event when the reminder should
 // trigger.
-@property (retain) NSNumber *minutes;  // intValue
+@property (nonatomic, retain) NSNumber *minutes;  // intValue
 
 @end

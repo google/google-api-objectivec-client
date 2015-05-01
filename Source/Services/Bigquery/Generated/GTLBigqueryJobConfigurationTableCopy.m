@@ -42,9 +42,9 @@
          writeDisposition;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLBigqueryTableReference class]
-                                forKey:@"sourceTables"];
+  NSDictionary *map = @{
+    @"sourceTables" : [GTLBigqueryTableReference class]
+  };
   return map;
 }
 

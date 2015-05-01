@@ -45,12 +45,11 @@
          statistics, status, userEmail;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"etag", @"ETag",
-      @"id", @"identifier",
-      @"user_email", @"userEmail",
-      nil];
+  NSDictionary *map = @{
+    @"ETag" : @"etag",
+    @"identifier" : @"id",
+    @"userEmail" : @"user_email"
+  };
   return map;
 }
 

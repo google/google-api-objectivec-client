@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,20 +42,19 @@
          phoneNumber, priority, sharingFeatures, source, speakableName, type;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+  NSDictionary *map = @{
+    @"identifier" : @"id"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [GTLMirrorCommand class], @"acceptCommands",
-      [NSString class], @"acceptTypes",
-      [NSString class], @"imageUrls",
-      [NSString class], @"sharingFeatures",
-      nil];
+  NSDictionary *map = @{
+    @"acceptCommands" : [GTLMirrorCommand class],
+    @"acceptTypes" : [NSString class],
+    @"imageUrls" : [NSString class],
+    @"sharingFeatures" : [NSString class]
+  };
   return map;
 }
 

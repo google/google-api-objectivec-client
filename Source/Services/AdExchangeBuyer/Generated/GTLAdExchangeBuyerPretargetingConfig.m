@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,27 +49,26 @@
          supportedCreativeAttributes, userLists, vendorTypes, verticals;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSString class], @"creativeType",
-      [GTLAdExchangeBuyerPretargetingConfigDimensionsItem class], @"dimensions",
-      [NSNumber class], @"excludedContentLabels",
-      [NSNumber class], @"excludedGeoCriteriaIds",
-      [GTLAdExchangeBuyerPretargetingConfigExcludedPlacementsItem class], @"excludedPlacements",
-      [NSNumber class], @"excludedUserLists",
-      [NSNumber class], @"excludedVerticals",
-      [NSNumber class], @"geoCriteriaIds",
-      [NSString class], @"languages",
-      [NSNumber class], @"mobileCarriers",
-      [NSNumber class], @"mobileDevices",
-      [NSNumber class], @"mobileOperatingSystemVersions",
-      [GTLAdExchangeBuyerPretargetingConfigPlacementsItem class], @"placements",
-      [NSString class], @"platforms",
-      [NSNumber class], @"supportedCreativeAttributes",
-      [NSNumber class], @"userLists",
-      [NSNumber class], @"vendorTypes",
-      [NSNumber class], @"verticals",
-      nil];
+  NSDictionary *map = @{
+    @"creativeType" : [NSString class],
+    @"dimensions" : [GTLAdExchangeBuyerPretargetingConfigDimensionsItem class],
+    @"excludedContentLabels" : [NSNumber class],
+    @"excludedGeoCriteriaIds" : [NSNumber class],
+    @"excludedPlacements" : [GTLAdExchangeBuyerPretargetingConfigExcludedPlacementsItem class],
+    @"excludedUserLists" : [NSNumber class],
+    @"excludedVerticals" : [NSNumber class],
+    @"geoCriteriaIds" : [NSNumber class],
+    @"languages" : [NSString class],
+    @"mobileCarriers" : [NSNumber class],
+    @"mobileDevices" : [NSNumber class],
+    @"mobileOperatingSystemVersions" : [NSNumber class],
+    @"placements" : [GTLAdExchangeBuyerPretargetingConfigPlacementsItem class],
+    @"platforms" : [NSString class],
+    @"supportedCreativeAttributes" : [NSNumber class],
+    @"userLists" : [NSNumber class],
+    @"vendorTypes" : [NSNumber class],
+    @"verticals" : [NSNumber class]
+  };
   return map;
 }
 

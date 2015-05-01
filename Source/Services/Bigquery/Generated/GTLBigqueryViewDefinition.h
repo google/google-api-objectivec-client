@@ -42,6 +42,6 @@
 @interface GTLBigqueryViewDefinition : GTLObject
 
 // [Required] A query that BigQuery executes when the view is referenced.
-@property (copy) NSString *query;
+@property (nonatomic, copy) NSString *query;
 
 @end

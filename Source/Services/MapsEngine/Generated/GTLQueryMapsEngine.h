@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -54,45 +54,45 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (copy) NSString *fields;
+@property (nonatomic, copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (copy) NSString *bbox;
-@property (retain) GTLDateTime *createdAfter;
-@property (retain) GTLDateTime *createdBefore;
-@property (copy) NSString *creatorEmail;
-@property (retain) NSArray *features;  // of GTLMapsEngineFeature
-@property (copy) NSString *filename;
-@property (assign) BOOL force;
-@property (retain) NSArray *gxIds;  // of NSString
+@property (nonatomic, copy) NSString *bbox;
+@property (nonatomic, retain) GTLDateTime *createdAfter;
+@property (nonatomic, retain) GTLDateTime *createdBefore;
+@property (nonatomic, copy) NSString *creatorEmail;
+@property (nonatomic, retain) NSArray *features;  // of GTLMapsEngineFeature
+@property (nonatomic, copy) NSString *filename;
+@property (nonatomic, assign) BOOL force;
+@property (nonatomic, retain) NSArray *gxIds;  // of NSString
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
-@property (copy) NSString *include;
-@property (copy) NSString *intersects;
-@property (assign) NSUInteger limit;
-@property (assign) NSUInteger maxResults;
-@property (retain) GTLDateTime *modifiedAfter;
-@property (retain) GTLDateTime *modifiedBefore;
-@property (assign) BOOL normalizeGeometries;
-@property (copy) NSString *orderBy;
-@property (copy) NSString *pageToken;
-@property (retain) NSArray *primaryKeys;  // of NSString
-@property (assign) BOOL process;
-@property (copy) NSString *processingStatus;
-@property (copy) NSString *projectId;
+@property (nonatomic, copy) NSString *identifier;
+@property (nonatomic, copy) NSString *include;
+@property (nonatomic, copy) NSString *intersects;
+@property (nonatomic, assign) NSUInteger limit;
+@property (nonatomic, assign) NSUInteger maxResults;
+@property (nonatomic, retain) GTLDateTime *modifiedAfter;
+@property (nonatomic, retain) GTLDateTime *modifiedBefore;
+@property (nonatomic, assign) BOOL normalizeGeometries;
+@property (nonatomic, copy) NSString *orderBy;
+@property (nonatomic, copy) NSString *pageToken;
+@property (nonatomic, retain) NSArray *primaryKeys;  // of NSString
+@property (nonatomic, assign) BOOL process;
+@property (nonatomic, copy) NSString *processingStatus;
+@property (nonatomic, copy) NSString *projectId;
 // "request" has different types for some query methods; see the documentation
 // for the right type for each query method.
-@property (retain) id request;
-@property (copy) NSString *role;
-@property (copy) NSString *search;
-@property (copy) NSString *select;
-@property (copy) NSString *tableId;
-@property (copy) NSString *tags;
-@property (copy) NSString *type;
-@property (copy) NSString *version;
-@property (copy) NSString *where;
+@property (nonatomic, retain) id request;
+@property (nonatomic, copy) NSString *role;
+@property (nonatomic, copy) NSString *search;
+@property (nonatomic, copy) NSString *select;
+@property (nonatomic, copy) NSString *tableId;
+@property (nonatomic, copy) NSString *tags;
+@property (nonatomic, copy) NSString *type;
+@property (nonatomic, copy) NSString *version;
+@property (nonatomic, copy) NSString *where;
 
 #pragma mark -
 #pragma mark "assets" methods
@@ -106,7 +106,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineAsset.
-+ (id)queryForAssetsGetWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForAssetsGetWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.assets.list
 // Return all assets readable by the current user.
@@ -153,7 +153,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineAssetsListResponse.
-+ (id)queryForAssetsList;
++ (instancetype)queryForAssetsList;
 
 #pragma mark -
 #pragma mark "assets.parents" methods
@@ -173,7 +173,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineParentsListResponse.
-+ (id)queryForAssetsParentsListWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForAssetsParentsListWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "assets.permissions" methods
@@ -187,7 +187,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEnginePermissionsListResponse.
-+ (id)queryForAssetsPermissionsListWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForAssetsPermissionsListWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "layers" methods
@@ -200,7 +200,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEngineProcessResponse.
-+ (id)queryForLayersCancelProcessingWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForLayersCancelProcessingWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.layers.create
 // Create a layer asset.
@@ -210,7 +210,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEngineLayer.
-+ (id)queryForLayersCreate;
++ (instancetype)queryForLayersCreate;
 
 // Method: mapsengine.layers.delete
 // Delete a layer.
@@ -221,7 +221,7 @@
 //     prior to deleting.
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
-+ (id)queryForLayersDeleteWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForLayersDeleteWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.layers.get
 // Return metadata for a particular layer.
@@ -238,7 +238,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineLayer.
-+ (id)queryForLayersGetWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForLayersGetWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.layers.getPublished
 // Return the published metadata for a particular layer.
@@ -248,7 +248,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEnginePublishedLayer.
-+ (id)queryForLayersGetPublishedWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForLayersGetPublishedWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.layers.list
 // Return all layers readable by the current user.
@@ -300,7 +300,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineLayersListResponse.
-+ (id)queryForLayersList;
++ (instancetype)queryForLayersList;
 
 // Method: mapsengine.layers.listPublished
 // Return all published layers readable by the current user.
@@ -318,7 +318,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEnginePublishedLayersListResponse.
-+ (id)queryForLayersListPublished;
++ (instancetype)queryForLayersListPublished;
 
 #pragma mark -
 #pragma mark "layers.parents" methods
@@ -338,7 +338,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineParentsListResponse.
-+ (id)queryForLayersParentsListWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForLayersParentsListWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "layers" methods
@@ -352,7 +352,7 @@
 //   request: For this method, "request" should be of type GTLMapsEngineLayer.
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
-+ (id)queryForLayersPatchWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForLayersPatchWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "layers.permissions" methods
@@ -368,7 +368,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEnginePermissionsBatchDeleteResponse.
-+ (id)queryForLayersPermissionsBatchDeleteWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForLayersPermissionsBatchDeleteWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.layers.permissions.batchUpdate
 // Add or update permission entries to an already existing asset.
@@ -382,7 +382,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEnginePermissionsBatchUpdateResponse.
-+ (id)queryForLayersPermissionsBatchUpdateWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForLayersPermissionsBatchUpdateWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.layers.permissions.list
 // Return all of the permissions for the specified asset.
@@ -392,7 +392,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEnginePermissionsListResponse.
-+ (id)queryForLayersPermissionsListWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForLayersPermissionsListWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "layers" methods
@@ -405,7 +405,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEngineProcessResponse.
-+ (id)queryForLayersProcessWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForLayersProcessWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.layers.publish
 // Publish a layer asset.
@@ -418,7 +418,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEnginePublishResponse.
-+ (id)queryForLayersPublishWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForLayersPublishWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.layers.unpublish
 // Unpublish a layer asset.
@@ -427,7 +427,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEnginePublishResponse.
-+ (id)queryForLayersUnpublishWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForLayersUnpublishWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "maps" methods
@@ -440,7 +440,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEngineMap.
-+ (id)queryForMapsCreate;
++ (instancetype)queryForMapsCreate;
 
 // Method: mapsengine.maps.delete
 // Delete a map.
@@ -450,7 +450,7 @@
 //     Unpublish the map prior to deleting.
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
-+ (id)queryForMapsDeleteWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForMapsDeleteWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.maps.get
 // Return metadata for a particular map.
@@ -467,7 +467,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineMap.
-+ (id)queryForMapsGetWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForMapsGetWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.maps.getPublished
 // Return the published metadata for a particular map.
@@ -477,7 +477,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEnginePublishedMap.
-+ (id)queryForMapsGetPublishedWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForMapsGetPublishedWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.maps.list
 // Return all maps readable by the current user.
@@ -528,7 +528,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineMapsListResponse.
-+ (id)queryForMapsList;
++ (instancetype)queryForMapsList;
 
 // Method: mapsengine.maps.listPublished
 // Return all published maps readable by the current user.
@@ -546,7 +546,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEnginePublishedMapsListResponse.
-+ (id)queryForMapsListPublished;
++ (instancetype)queryForMapsListPublished;
 
 // Method: mapsengine.maps.patch
 // Mutate a map asset.
@@ -556,7 +556,7 @@
 //   request: For this method, "request" should be of type GTLMapsEngineMap.
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
-+ (id)queryForMapsPatchWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForMapsPatchWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "maps.permissions" methods
@@ -572,7 +572,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEnginePermissionsBatchDeleteResponse.
-+ (id)queryForMapsPermissionsBatchDeleteWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForMapsPermissionsBatchDeleteWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.maps.permissions.batchUpdate
 // Add or update permission entries to an already existing asset.
@@ -586,7 +586,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEnginePermissionsBatchUpdateResponse.
-+ (id)queryForMapsPermissionsBatchUpdateWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForMapsPermissionsBatchUpdateWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.maps.permissions.list
 // Return all of the permissions for the specified asset.
@@ -596,7 +596,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEnginePermissionsListResponse.
-+ (id)queryForMapsPermissionsListWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForMapsPermissionsListWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "maps" methods
@@ -613,7 +613,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEnginePublishResponse.
-+ (id)queryForMapsPublishWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForMapsPublishWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.maps.unpublish
 // Unpublish a map asset.
@@ -622,7 +622,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEnginePublishResponse.
-+ (id)queryForMapsUnpublishWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForMapsUnpublishWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "projects.icons" methods
@@ -640,8 +640,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEngineIcon.
-+ (id)queryForProjectsIconsCreateWithProjectId:(NSString *)projectId
-                              uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
++ (instancetype)queryForProjectsIconsCreateWithProjectId:(NSString *)projectId
+                                        uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
 // Method: mapsengine.projects.icons.get
 // Return an icon or its associated metadata
@@ -652,8 +652,8 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineIcon.
-+ (id)queryForProjectsIconsGetWithProjectId:(NSString *)projectId
-                                 identifier:(NSString *)identifier;
++ (instancetype)queryForProjectsIconsGetWithProjectId:(NSString *)projectId
+                                           identifier:(NSString *)identifier;
 
 // Method: mapsengine.projects.icons.list
 // Return all icons in the current project
@@ -669,7 +669,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineIconsListResponse.
-+ (id)queryForProjectsIconsListWithProjectId:(NSString *)projectId;
++ (instancetype)queryForProjectsIconsListWithProjectId:(NSString *)projectId;
 
 #pragma mark -
 #pragma mark "projects" methods
@@ -681,7 +681,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineProjectsListResponse.
-+ (id)queryForProjectsList;
++ (instancetype)queryForProjectsList;
 
 #pragma mark -
 #pragma mark "rasterCollections" methods
@@ -694,7 +694,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEngineProcessResponse.
-+ (id)queryForRasterCollectionsCancelProcessingWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForRasterCollectionsCancelProcessingWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.rasterCollections.create
 // Create a raster collection asset.
@@ -704,7 +704,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEngineRasterCollection.
-+ (id)queryForRasterCollectionsCreate;
++ (instancetype)queryForRasterCollectionsCreate;
 
 // Method: mapsengine.rasterCollections.delete
 // Delete a raster collection.
@@ -715,7 +715,7 @@
 //     raster collection from all layers prior to deleting.
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
-+ (id)queryForRasterCollectionsDeleteWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForRasterCollectionsDeleteWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.rasterCollections.get
 // Return metadata for a particular raster collection.
@@ -725,7 +725,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineRasterCollection.
-+ (id)queryForRasterCollectionsGetWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForRasterCollectionsGetWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.rasterCollections.list
 // Return all raster collections readable by the current user.
@@ -780,7 +780,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineRasterCollectionsListResponse.
-+ (id)queryForRasterCollectionsList;
++ (instancetype)queryForRasterCollectionsList;
 
 #pragma mark -
 #pragma mark "rasterCollections.parents" methods
@@ -800,7 +800,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineParentsListResponse.
-+ (id)queryForRasterCollectionsParentsListWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForRasterCollectionsParentsListWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "rasterCollections" methods
@@ -815,7 +815,7 @@
 //     GTLMapsEngineRasterCollection.
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
-+ (id)queryForRasterCollectionsPatchWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForRasterCollectionsPatchWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "rasterCollections.permissions" methods
@@ -831,7 +831,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEnginePermissionsBatchDeleteResponse.
-+ (id)queryForRasterCollectionsPermissionsBatchDeleteWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForRasterCollectionsPermissionsBatchDeleteWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.rasterCollections.permissions.batchUpdate
 // Add or update permission entries to an already existing asset.
@@ -845,7 +845,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEnginePermissionsBatchUpdateResponse.
-+ (id)queryForRasterCollectionsPermissionsBatchUpdateWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForRasterCollectionsPermissionsBatchUpdateWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.rasterCollections.permissions.list
 // Return all of the permissions for the specified asset.
@@ -855,7 +855,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEnginePermissionsListResponse.
-+ (id)queryForRasterCollectionsPermissionsListWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForRasterCollectionsPermissionsListWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "rasterCollections" methods
@@ -868,7 +868,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEngineProcessResponse.
-+ (id)queryForRasterCollectionsProcessWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForRasterCollectionsProcessWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "rasterCollections.rasters" methods
@@ -886,7 +886,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEngineRasterCollectionsRastersBatchDeleteResponse.
-+ (id)queryForRasterCollectionsRastersBatchDeleteWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForRasterCollectionsRastersBatchDeleteWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.rasterCollections.rasters.batchInsert
 // Add rasters to an existing raster collection. Rasters must be successfully
@@ -901,7 +901,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEngineRasterCollectionsRastersBatchInsertResponse.
-+ (id)queryForRasterCollectionsRastersBatchInsertWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForRasterCollectionsRastersBatchInsertWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.rasterCollections.rasters.list
 // Return all rasters within a raster collection.
@@ -943,7 +943,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineRasterCollectionsRastersListResponse.
-+ (id)queryForRasterCollectionsRastersListWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForRasterCollectionsRastersListWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "rasters" methods
@@ -957,7 +957,7 @@
 //     the request will fail. Remove it from all parents prior to deleting.
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
-+ (id)queryForRastersDeleteWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForRastersDeleteWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "rasters.files" methods
@@ -973,9 +973,9 @@
 //   Accepted MIME type(s): */*
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
-+ (id)queryForRastersFilesInsertWithIdentifier:(NSString *)identifier
-                                      filename:(NSString *)filename
-                              uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
++ (instancetype)queryForRastersFilesInsertWithIdentifier:(NSString *)identifier
+                                                filename:(NSString *)filename
+                                        uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
 #pragma mark -
 #pragma mark "rasters" methods
@@ -989,7 +989,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineRaster.
-+ (id)queryForRastersGetWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForRastersGetWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.rasters.list
 // Return all rasters readable by the current user.
@@ -1042,7 +1042,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineRastersListResponse.
-+ (id)queryForRastersListWithProjectId:(NSString *)projectId;
++ (instancetype)queryForRastersListWithProjectId:(NSString *)projectId;
 
 #pragma mark -
 #pragma mark "rasters.parents" methods
@@ -1062,7 +1062,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineParentsListResponse.
-+ (id)queryForRastersParentsListWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForRastersParentsListWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "rasters" methods
@@ -1076,7 +1076,7 @@
 //   request: For this method, "request" should be of type GTLMapsEngineRaster.
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
-+ (id)queryForRastersPatchWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForRastersPatchWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "rasters.permissions" methods
@@ -1092,7 +1092,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEnginePermissionsBatchDeleteResponse.
-+ (id)queryForRastersPermissionsBatchDeleteWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForRastersPermissionsBatchDeleteWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.rasters.permissions.batchUpdate
 // Add or update permission entries to an already existing asset.
@@ -1106,7 +1106,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEnginePermissionsBatchUpdateResponse.
-+ (id)queryForRastersPermissionsBatchUpdateWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForRastersPermissionsBatchUpdateWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.rasters.permissions.list
 // Return all of the permissions for the specified asset.
@@ -1116,7 +1116,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEnginePermissionsListResponse.
-+ (id)queryForRastersPermissionsListWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForRastersPermissionsListWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "rasters" methods
@@ -1129,7 +1129,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEngineProcessResponse.
-+ (id)queryForRastersProcessWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForRastersProcessWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.rasters.upload
 // Create a skeleton raster asset for upload.
@@ -1138,7 +1138,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEngineRaster.
-+ (id)queryForRastersUpload;
++ (instancetype)queryForRastersUpload;
 
 #pragma mark -
 #pragma mark "tables" methods
@@ -1151,7 +1151,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEngineTable.
-+ (id)queryForTablesCreate;
++ (instancetype)queryForTablesCreate;
 
 // Method: mapsengine.tables.delete
 // Delete a table.
@@ -1161,7 +1161,7 @@
 //     will fail. Remove it from all layers prior to deleting.
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
-+ (id)queryForTablesDeleteWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForTablesDeleteWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "tables.features" methods
@@ -1176,7 +1176,7 @@
 //   primaryKeys: NSArray
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
-+ (id)queryForTablesFeaturesBatchDeleteWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForTablesFeaturesBatchDeleteWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.tables.features.batchInsert
 // Append features to an existing table.
@@ -1200,7 +1200,7 @@
 //     true)
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
-+ (id)queryForTablesFeaturesBatchInsertWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForTablesFeaturesBatchInsertWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.tables.features.batchPatch
 // Update the supplied features.
@@ -1231,7 +1231,7 @@
 //     true)
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
-+ (id)queryForTablesFeaturesBatchPatchWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForTablesFeaturesBatchPatchWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.tables.features.get
 // Return a single feature, given its ID.
@@ -1249,7 +1249,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineFeature.
-+ (id)queryForTablesFeaturesGetWithTableId:(NSString *)tableId;
++ (instancetype)queryForTablesFeaturesGetWithTableId:(NSString *)tableId;
 
 // Method: mapsengine.tables.features.list
 // Return all features readable by the current user.
@@ -1280,7 +1280,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineFeaturesListResponse.
-+ (id)queryForTablesFeaturesListWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForTablesFeaturesListWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "tables.files" methods
@@ -1299,9 +1299,9 @@
 //   Accepted MIME type(s): */*
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
-+ (id)queryForTablesFilesInsertWithIdentifier:(NSString *)identifier
-                                     filename:(NSString *)filename
-                             uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
++ (instancetype)queryForTablesFilesInsertWithIdentifier:(NSString *)identifier
+                                               filename:(NSString *)filename
+                                       uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
 #pragma mark -
 #pragma mark "tables" methods
@@ -1319,7 +1319,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineTable.
-+ (id)queryForTablesGetWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForTablesGetWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.tables.list
 // Return all tables readable by the current user.
@@ -1371,7 +1371,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineTablesListResponse.
-+ (id)queryForTablesList;
++ (instancetype)queryForTablesList;
 
 #pragma mark -
 #pragma mark "tables.parents" methods
@@ -1391,7 +1391,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEngineParentsListResponse.
-+ (id)queryForTablesParentsListWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForTablesParentsListWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "tables" methods
@@ -1405,7 +1405,7 @@
 //   request: For this method, "request" should be of type GTLMapsEngineTable.
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
-+ (id)queryForTablesPatchWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForTablesPatchWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "tables.permissions" methods
@@ -1421,7 +1421,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEnginePermissionsBatchDeleteResponse.
-+ (id)queryForTablesPermissionsBatchDeleteWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForTablesPermissionsBatchDeleteWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.tables.permissions.batchUpdate
 // Add or update permission entries to an already existing asset.
@@ -1435,7 +1435,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEnginePermissionsBatchUpdateResponse.
-+ (id)queryForTablesPermissionsBatchUpdateWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForTablesPermissionsBatchUpdateWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.tables.permissions.list
 // Return all of the permissions for the specified asset.
@@ -1445,7 +1445,7 @@
 //   kGTLAuthScopeMapsEngine
 //   kGTLAuthScopeMapsEngineReadonly
 // Fetches a GTLMapsEnginePermissionsListResponse.
-+ (id)queryForTablesPermissionsListWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForTablesPermissionsListWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "tables" methods
@@ -1458,7 +1458,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEngineProcessResponse.
-+ (id)queryForTablesProcessWithIdentifier:(NSString *)identifier;
++ (instancetype)queryForTablesProcessWithIdentifier:(NSString *)identifier;
 
 // Method: mapsengine.tables.upload
 // Create a placeholder table asset to which table files can be uploaded.
@@ -1472,6 +1472,6 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 // Fetches a GTLMapsEngineTable.
-+ (id)queryForTablesUpload;
++ (instancetype)queryForTablesUpload;
 
 @end

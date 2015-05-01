@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,12 +45,12 @@
 @interface GTLBloggerPostUserInfo : GTLObject
 
 // The kind of this entity. Always blogger#postUserInfo
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The Post resource.
-@property (retain) GTLBloggerPost *post;
+@property (nonatomic, retain) GTLBloggerPost *post;
 
 // Information about a User for the Post.
-@property (retain) GTLBloggerPostPerUserInfo *postUserInfo;
+@property (nonatomic, retain) GTLBloggerPostPerUserInfo *postUserInfo;
 
 @end

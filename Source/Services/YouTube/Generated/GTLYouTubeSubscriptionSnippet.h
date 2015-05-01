@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,29 +48,29 @@
 @interface GTLYouTubeSubscriptionSnippet : GTLObject
 
 // The ID that YouTube uses to uniquely identify the subscriber's channel.
-@property (copy) NSString *channelId;
+@property (nonatomic, copy) NSString *channelId;
 
 // Channel title for the channel that the subscription belongs to.
-@property (copy) NSString *channelTitle;
+@property (nonatomic, copy) NSString *channelTitle;
 
 // The subscription's details.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (copy) NSString *descriptionProperty;
+@property (nonatomic, copy) NSString *descriptionProperty;
 
 // The date and time that the subscription was created. The value is specified
 // in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-@property (retain) GTLDateTime *publishedAt;
+@property (nonatomic, retain) GTLDateTime *publishedAt;
 
 // The id object contains information about the channel that the user subscribed
 // to.
-@property (retain) GTLYouTubeResourceId *resourceId;
+@property (nonatomic, retain) GTLYouTubeResourceId *resourceId;
 
 // A map of thumbnail images associated with the video. For each object in the
 // map, the key is the name of the thumbnail image, and the value is an object
 // that contains other information about the thumbnail.
-@property (retain) GTLYouTubeThumbnailDetails *thumbnails;
+@property (nonatomic, retain) GTLYouTubeThumbnailDetails *thumbnails;
 
 // The subscription's title.
-@property (copy) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 @end

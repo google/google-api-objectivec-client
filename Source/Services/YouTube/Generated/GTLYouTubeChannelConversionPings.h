@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,6 +49,6 @@
 // Pings that the app shall fire (authenticated by biscotti cookie). Each ping
 // has a context, in which the app must fire the ping, and a url identifying the
 // ping.
-@property (retain) NSArray *pings;  // of GTLYouTubeChannelConversionPing
+@property (nonatomic, retain) NSArray *pings;  // of GTLYouTubeChannelConversionPing
 
 @end

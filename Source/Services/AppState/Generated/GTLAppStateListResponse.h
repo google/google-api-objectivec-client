@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,13 +49,13 @@
 @interface GTLAppStateListResponse : GTLCollectionObject
 
 // The app state data.
-@property (retain) NSArray *items;  // of GTLAppStateGetResponse
+@property (nonatomic, retain) NSArray *items;  // of GTLAppStateGetResponse
 
 // Uniquely identifies the type of this resource. Value is always the fixed
 // string appstate#listResponse.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The maximum number of keys allowed for this user.
-@property (retain) NSNumber *maximumKeyCount;  // intValue
+@property (nonatomic, retain) NSNumber *maximumKeyCount;  // intValue
 
 @end

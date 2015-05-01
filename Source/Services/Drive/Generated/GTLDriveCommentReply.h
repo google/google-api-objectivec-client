@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,37 +46,37 @@
 @interface GTLDriveCommentReply : GTLObject
 
 // The user who wrote this reply.
-@property (retain) GTLDriveUser *author;
+@property (nonatomic, retain) GTLDriveUser *author;
 
 // The plain text content used to create this reply. This is not HTML safe and
 // should only be used as a starting point to make edits to a reply's content.
 // This field is required on inserts if no verb is specified (resolve/reopen).
-@property (copy) NSString *content;
+@property (nonatomic, copy) NSString *content;
 
 // The date when this reply was first created.
-@property (retain) GTLDateTime *createdDate;
+@property (nonatomic, retain) GTLDateTime *createdDate;
 
 // Whether this reply has been deleted. If a reply has been deleted the content
 // will be cleared and this will only represent a reply that once existed.
-@property (retain) NSNumber *deleted;  // boolValue
+@property (nonatomic, retain) NSNumber *deleted;  // boolValue
 
 // HTML formatted content for this reply.
-@property (copy) NSString *htmlContent;
+@property (nonatomic, copy) NSString *htmlContent;
 
 // This is always drive#commentReply.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The date when this reply was last modified.
-@property (retain) GTLDateTime *modifiedDate;
+@property (nonatomic, retain) GTLDateTime *modifiedDate;
 
 // The ID of the reply.
-@property (copy) NSString *replyId;
+@property (nonatomic, copy) NSString *replyId;
 
 // The action this reply performed to the parent comment. When creating a new
 // reply this is the action to be perform to the parent comment. Possible values
 // are:
 // - "resolve" - To resolve a comment.
 // - "reopen" - To reopen (un-resolve) a comment.
-@property (copy) NSString *verb;
+@property (nonatomic, copy) NSString *verb;
 
 @end

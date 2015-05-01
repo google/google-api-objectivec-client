@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,38 +48,38 @@
 @interface GTLCivicInfoPollingLocation : GTLObject
 
 // The address of the location.
-@property (retain) GTLCivicInfoSimpleAddressType *address;
+@property (nonatomic, retain) GTLCivicInfoSimpleAddressType *address;
 
 // The last date that this early vote site or drop off location may be used.
 // This field is not populated for polling locations.
-@property (copy) NSString *endDate;
+@property (nonatomic, copy) NSString *endDate;
 
 // An ID for this object. IDs may change in future requests and should not be
 // cached. Access to this field requires special access that can be requested
 // from the Request more link on the Quotas page.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The name of the early vote site or drop off location. This field is not
 // populated for polling locations.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // Notes about this location (e.g. accessibility ramp or entrance to use).
-@property (copy) NSString *notes;
+@property (nonatomic, copy) NSString *notes;
 
 // A description of when this location is open.
-@property (copy) NSString *pollingHours;
+@property (nonatomic, copy) NSString *pollingHours;
 
 // A list of sources for this location. If multiple sources are listed the data
 // has been aggregated from those sources.
-@property (retain) NSArray *sources;  // of GTLCivicInfoSource
+@property (nonatomic, retain) NSArray *sources;  // of GTLCivicInfoSource
 
 // The first date that this early vote site or drop off location may be used.
 // This field is not populated for polling locations.
-@property (copy) NSString *startDate;
+@property (nonatomic, copy) NSString *startDate;
 
 // The services provided by this early vote site or drop off location. This
 // field is not populated for polling locations.
-@property (copy) NSString *voterServices;
+@property (nonatomic, copy) NSString *voterServices;
 
 @end

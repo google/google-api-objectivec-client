@@ -47,15 +47,15 @@
 @interface GTLBloggerPostList : GTLCollectionObject
 
 // Etag of the response.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The list of Posts for this Blog.
-@property (retain) NSArray *items;  // of GTLBloggerPost
+@property (nonatomic, retain) NSArray *items;  // of GTLBloggerPost
 
 // The kind of this entity. Always blogger#postList
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Pagination token to fetch the next page, if one exists.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 @end

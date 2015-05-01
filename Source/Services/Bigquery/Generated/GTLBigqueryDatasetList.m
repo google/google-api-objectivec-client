@@ -42,16 +42,16 @@
 @dynamic datasets, ETag, kind, nextPageToken;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"etag"
-                                forKey:@"ETag"];
+  NSDictionary *map = @{
+    @"ETag" : @"etag"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLBigqueryDatasetListDatasetsItem class]
-                                forKey:@"datasets"];
+  NSDictionary *map = @{
+    @"datasets" : [GTLBigqueryDatasetListDatasetsItem class]
+  };
   return map;
 }
 
@@ -71,9 +71,9 @@
 @dynamic datasetReference, friendlyName, identifier, kind;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+  NSDictionary *map = @{
+    @"identifier" : @"id"
+  };
   return map;
 }
 

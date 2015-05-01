@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,19 +46,19 @@
 // The ID that YouTube uses to uniquely identify the referred resource, if that
 // resource is a channel. This property is only present if the resourceId.kind
 // value is youtube#channel.
-@property (copy) NSString *channelId;
+@property (nonatomic, copy) NSString *channelId;
 
 // The type of the API resource.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The ID that YouTube uses to uniquely identify the referred resource, if that
 // resource is a playlist. This property is only present if the resourceId.kind
 // value is youtube#playlist.
-@property (copy) NSString *playlistId;
+@property (nonatomic, copy) NSString *playlistId;
 
 // The ID that YouTube uses to uniquely identify the referred resource, if that
 // resource is a video. This property is only present if the resourceId.kind
 // value is youtube#video.
-@property (copy) NSString *videoId;
+@property (nonatomic, copy) NSString *videoId;
 
 @end

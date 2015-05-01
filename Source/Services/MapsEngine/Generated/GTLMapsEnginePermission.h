@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,18 +48,18 @@
 // Indicates whether a public asset is listed and can be found via a web search
 // (value true), or is visible only to people who have a link to the asset
 // (value false).
-@property (retain) NSNumber *discoverable;  // boolValue
+@property (nonatomic, retain) NSNumber *discoverable;  // boolValue
 
 // The unique identifier of the permission. This could be the email address of
 // the user or group this permission refers to, or the string "anyone" for
 // public permissions.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The type of access granted to this user or group.
-@property (copy) NSString *role;
+@property (nonatomic, copy) NSString *role;
 
 // The account type.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end

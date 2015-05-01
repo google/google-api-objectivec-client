@@ -47,33 +47,33 @@
 @interface GTLBigqueryJob : GTLObject
 
 // [Required] Describes the job configuration.
-@property (retain) GTLBigqueryJobConfiguration *configuration;
+@property (nonatomic, retain) GTLBigqueryJobConfiguration *configuration;
 
 // [Output-only] A hash of this resource.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // [Output-only] Opaque ID field of the job
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // [Optional] Reference describing the unique-per-user name of the job.
-@property (retain) GTLBigqueryJobReference *jobReference;
+@property (nonatomic, retain) GTLBigqueryJobReference *jobReference;
 
 // [Output-only] The type of the resource.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // [Output-only] A URL that can be used to access this resource again.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // [Output-only] Information about the job, including starting time and ending
 // time of the job.
-@property (retain) GTLBigqueryJobStatistics *statistics;
+@property (nonatomic, retain) GTLBigqueryJobStatistics *statistics;
 
 // [Output-only] The status of this job. Examine this value when polling an
 // asynchronous job to see if the job is complete.
-@property (retain) GTLBigqueryJobStatus *status;
+@property (nonatomic, retain) GTLBigqueryJobStatus *status;
 
 // [Output-only] Email address of the user who ran the job.
-@property (copy) NSString *userEmail;
+@property (nonatomic, copy) NSString *userEmail;
 
 @end

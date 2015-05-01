@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,11 +41,10 @@
 @dynamic items, kind, nextPageToken, prefixes;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [GTLStorageObject class], @"items",
-      [NSString class], @"prefixes",
-      nil];
+  NSDictionary *map = @{
+    @"items" : [GTLStorageObject class],
+    @"prefixes" : [NSString class]
+  };
   return map;
 }
 

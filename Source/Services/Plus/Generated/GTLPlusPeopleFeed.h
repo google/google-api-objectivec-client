@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,30 +47,30 @@
 @interface GTLPlusPeopleFeed : GTLCollectionObject
 
 // ETag of this response for caching purposes.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The people in this page of results. Each item includes the id, displayName,
 // image, and url for the person. To retrieve additional profile data, see the
 // people.get method.
-@property (retain) NSArray *items;  // of GTLPlusPerson
+@property (nonatomic, retain) NSArray *items;  // of GTLPlusPerson
 
 // Identifies this resource as a collection of people. Value: "plus#peopleFeed".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The continuation token, which is used to page through large result sets.
 // Provide this value in a subsequent request to return the next page of
 // results.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 // Link to this resource.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // The title of this collection of people.
-@property (copy) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 // The total number of people available in this list. The number of people in a
 // response might be smaller due to paging. This might not be set for all
 // collections.
-@property (retain) NSNumber *totalItems;  // intValue
+@property (nonatomic, retain) NSNumber *totalItems;  // intValue
 
 @end

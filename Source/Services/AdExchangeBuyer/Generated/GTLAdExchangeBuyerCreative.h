@@ -55,74 +55,74 @@
 @interface GTLAdExchangeBuyerCreative : GTLObject
 
 // Account id.
-@property (retain) NSNumber *accountId;  // intValue
+@property (nonatomic, retain) NSNumber *accountId;  // intValue
 
 // Detected advertiser id, if any. Read-only. This field should not be set in
 // requests.
-@property (retain) NSArray *advertiserId;  // of NSNumber (longLongValue)
+@property (nonatomic, retain) NSArray *advertiserId;  // of NSNumber (longLongValue)
 
 // The name of the company being advertised in the creative.
-@property (copy) NSString *advertiserName;
+@property (nonatomic, copy) NSString *advertiserName;
 
 // The agency id for this creative.
-@property (retain) NSNumber *agencyId;  // longLongValue
+@property (nonatomic, retain) NSNumber *agencyId;  // longLongValue
 
 // All attributes for the ads that may be shown from this snippet.
-@property (retain) NSArray *attribute;  // of NSNumber (intValue)
+@property (nonatomic, retain) NSArray *attribute;  // of NSNumber (intValue)
 
 // A buyer-specific id identifying the creative in this ad.
-@property (copy) NSString *buyerCreativeId;
+@property (nonatomic, copy) NSString *buyerCreativeId;
 
 // The set of destination urls for the snippet.
-@property (retain) NSArray *clickThroughUrl;  // of NSString
+@property (nonatomic, retain) NSArray *clickThroughUrl;  // of NSString
 
 // Shows any corrections that were applied to this creative. Read-only. This
 // field should not be set in requests.
-@property (retain) NSArray *corrections;  // of GTLAdExchangeBuyerCreativeCorrectionsItem
+@property (nonatomic, retain) NSArray *corrections;  // of GTLAdExchangeBuyerCreativeCorrectionsItem
 
 // The reasons for disapproval, if any. Note that not all disapproval reasons
 // may be categorized, so it is possible for the creative to have a status of
 // DISAPPROVED with an empty list for disapproval_reasons. In this case, please
 // reach out to your TAM to help debug the issue. Read-only. This field should
 // not be set in requests.
-@property (retain) NSArray *disapprovalReasons;  // of GTLAdExchangeBuyerCreativeDisapprovalReasonsItem
+@property (nonatomic, retain) NSArray *disapprovalReasons;  // of GTLAdExchangeBuyerCreativeDisapprovalReasonsItem
 
 // The filtering reasons for the creative. Read-only. This field should not be
 // set in requests.
-@property (retain) GTLAdExchangeBuyerCreativeFilteringReasons *filteringReasons;
+@property (nonatomic, retain) GTLAdExchangeBuyerCreativeFilteringReasons *filteringReasons;
 
 // Ad height.
-@property (retain) NSNumber *height;  // intValue
+@property (nonatomic, retain) NSNumber *height;  // intValue
 
 // The HTML snippet that displays the ad when inserted in the web page. If set,
 // videoURL should not be set.
-@property (copy) NSString *HTMLSnippet;
+@property (nonatomic, copy) NSString *HTMLSnippet;
 
 // Resource type.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Detected product categories, if any. Read-only. This field should not be set
 // in requests.
-@property (retain) NSArray *productCategories;  // of NSNumber (intValue)
+@property (nonatomic, retain) NSArray *productCategories;  // of NSNumber (intValue)
 
 // All restricted categories for the ads that may be shown from this snippet.
-@property (retain) NSArray *restrictedCategories;  // of NSNumber (intValue)
+@property (nonatomic, retain) NSArray *restrictedCategories;  // of NSNumber (intValue)
 
 // Detected sensitive categories, if any. Read-only. This field should not be
 // set in requests.
-@property (retain) NSArray *sensitiveCategories;  // of NSNumber (intValue)
+@property (nonatomic, retain) NSArray *sensitiveCategories;  // of NSNumber (intValue)
 
 // Creative serving status. Read-only. This field should not be set in requests.
-@property (copy) NSString *status;
+@property (nonatomic, copy) NSString *status;
 
 // All vendor types for the ads that may be shown from this snippet.
-@property (retain) NSArray *vendorType;  // of NSNumber (intValue)
+@property (nonatomic, retain) NSArray *vendorType;  // of NSNumber (intValue)
 
 // The url to fetch a video ad. If set, HTMLSnippet should not be set.
-@property (copy) NSString *videoURL;
+@property (nonatomic, copy) NSString *videoURL;
 
 // Ad width.
-@property (retain) NSNumber *width;  // intValue
+@property (nonatomic, retain) NSNumber *width;  // intValue
 
 @end
 
@@ -135,10 +135,10 @@
 @interface GTLAdExchangeBuyerCreativeCorrectionsItem : GTLObject
 
 // Additional details about the correction.
-@property (retain) NSArray *details;  // of NSString
+@property (nonatomic, retain) NSArray *details;  // of NSString
 
 // The type of correction that was applied to the creative.
-@property (copy) NSString *reason;
+@property (nonatomic, copy) NSString *reason;
 
 @end
 
@@ -151,10 +151,10 @@
 @interface GTLAdExchangeBuyerCreativeDisapprovalReasonsItem : GTLObject
 
 // Additional details about the reason for disapproval.
-@property (retain) NSArray *details;  // of NSString
+@property (nonatomic, retain) NSArray *details;  // of NSString
 
 // The categorized reason for disapproval.
-@property (copy) NSString *reason;
+@property (nonatomic, copy) NSString *reason;
 
 @end
 
@@ -168,10 +168,10 @@
 
 // The date in ISO 8601 format for the data. The data is collected from 00:00:00
 // to 23:59:59 in PST.
-@property (copy) NSString *date;
+@property (nonatomic, copy) NSString *date;
 
 // The filtering reasons.
-@property (retain) NSArray *reasons;  // of GTLAdExchangeBuyerCreativeFilteringReasonsReasonsItem
+@property (nonatomic, retain) NSArray *reasons;  // of GTLAdExchangeBuyerCreativeFilteringReasonsReasonsItem
 
 @end
 
@@ -185,10 +185,10 @@
 
 // The number of times the creative was filtered for the status. The count is
 // aggregated across all publishers on the exchange.
-@property (retain) NSNumber *filteringCount;  // longLongValue
+@property (nonatomic, retain) NSNumber *filteringCount;  // longLongValue
 
 // The filtering status code. Please refer to the creative-status-codes.txt file
 // for different statuses.
-@property (retain) NSNumber *filteringStatus;  // intValue
+@property (nonatomic, retain) NSNumber *filteringStatus;  // intValue
 
 @end

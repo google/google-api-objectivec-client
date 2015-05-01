@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,9 +52,9 @@
 @interface GTLAdExchangeBuyerAccountsList : GTLCollectionObject
 
 // A list of accounts.
-@property (retain) NSArray *items;  // of GTLAdExchangeBuyerAccount
+@property (nonatomic, retain) NSArray *items;  // of GTLAdExchangeBuyerAccount
 
 // Resource type.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 @end

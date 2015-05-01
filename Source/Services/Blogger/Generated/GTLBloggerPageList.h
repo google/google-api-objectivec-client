@@ -47,15 +47,15 @@
 @interface GTLBloggerPageList : GTLCollectionObject
 
 // Etag of the response.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The list of Pages for a Blog.
-@property (retain) NSArray *items;  // of GTLBloggerPage
+@property (nonatomic, retain) NSArray *items;  // of GTLBloggerPage
 
 // The kind of this entity. Always blogger#pageList
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Pagination token to fetch the next page, if one exists.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,25 +44,25 @@
 @interface GTLAnalyticsProfileRef : GTLObject
 
 // Account ID to which this view (profile) belongs.
-@property (copy) NSString *accountId;
+@property (nonatomic, copy) NSString *accountId;
 
 // Link for this view (profile).
-@property (copy) NSString *href;
+@property (nonatomic, copy) NSString *href;
 
 // View (Profile) ID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Internal ID for the web property to which this view (profile) belongs.
-@property (copy) NSString *internalWebPropertyId;
+@property (nonatomic, copy) NSString *internalWebPropertyId;
 
 // Analytics view (profile) reference.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Name of this view (profile).
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // Web property ID of the form UA-XXXXX-YY to which this view (profile) belongs.
-@property (copy) NSString *webPropertyId;
+@property (nonatomic, copy) NSString *webPropertyId;
 
 @end

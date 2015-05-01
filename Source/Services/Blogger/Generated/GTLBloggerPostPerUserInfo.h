@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,18 +42,18 @@
 @interface GTLBloggerPostPerUserInfo : GTLObject
 
 // ID of the Blog that the post resource belongs to.
-@property (copy) NSString *blogId;
+@property (nonatomic, copy) NSString *blogId;
 
 // True if the user has Author level access to the post.
-@property (retain) NSNumber *hasEditAccess;  // boolValue
+@property (nonatomic, retain) NSNumber *hasEditAccess;  // boolValue
 
 // The kind of this entity. Always blogger#postPerUserInfo
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // ID of the Post resource.
-@property (copy) NSString *postId;
+@property (nonatomic, copy) NSString *postId;
 
 // ID of the User.
-@property (copy) NSString *userId;
+@property (nonatomic, copy) NSString *userId;
 
 @end

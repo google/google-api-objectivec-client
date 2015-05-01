@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,13 +47,13 @@
 @interface GTLStorageObjectAccessControl : GTLObject
 
 // The name of the bucket.
-@property (copy) NSString *bucket;
+@property (nonatomic, copy) NSString *bucket;
 
 // The domain associated with the entity, if any.
-@property (copy) NSString *domain;
+@property (nonatomic, copy) NSString *domain;
 
 // The email address associated with the entity, if any.
-@property (copy) NSString *email;
+@property (nonatomic, copy) NSString *email;
 
 // The entity holding the permission, in one of the following forms:
 // - user-userId
@@ -68,36 +68,36 @@
 // - The group example@googlegroups.com would be group-example@googlegroups.com.
 // - To refer to all members of the Google Apps for Business domain example.com,
 // the entity would be domain-example.com.
-@property (copy) NSString *entity;
+@property (nonatomic, copy) NSString *entity;
 
 // The ID for the entity, if any.
-@property (copy) NSString *entityId;
+@property (nonatomic, copy) NSString *entityId;
 
 // HTTP 1.1 Entity tag for the access-control entry.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The content generation of the object.
-@property (retain) NSNumber *generation;  // longLongValue
+@property (nonatomic, retain) NSNumber *generation;  // longLongValue
 
 // The ID of the access-control entry.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The kind of item this is. For object access control entries, this is always
 // storage#objectAccessControl.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The name of the object.
-@property (copy) NSString *object;
+@property (nonatomic, copy) NSString *object;
 
 // The project team associated with the entity, if any.
-@property (retain) GTLStorageObjectAccessControlProjectTeam *projectTeam;
+@property (nonatomic, retain) GTLStorageObjectAccessControlProjectTeam *projectTeam;
 
 // The access permission for the entity. Can be READER or OWNER.
-@property (copy) NSString *role;
+@property (nonatomic, copy) NSString *role;
 
 // The link to this access-control entry.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 @end
 
@@ -110,9 +110,9 @@
 @interface GTLStorageObjectAccessControlProjectTeam : GTLObject
 
 // The project number.
-@property (copy) NSString *projectNumber;
+@property (nonatomic, copy) NSString *projectNumber;
 
 // The team. Can be owners, editors, or viewers.
-@property (copy) NSString *team;
+@property (nonatomic, copy) NSString *team;
 
 @end

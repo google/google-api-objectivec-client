@@ -49,11 +49,11 @@
 // columns are treated as bad records, and if there are too many bad records, an
 // invalid error is returned in the job result. The default value is false. Only
 // applicable to CSV, ignored for other formats.
-@property (retain) NSNumber *allowJaggedRows;  // boolValue
+@property (nonatomic, retain) NSNumber *allowJaggedRows;  // boolValue
 
 // Indicates if BigQuery should allow quoted data sections that contain newline
 // characters in a CSV file. The default value is false.
-@property (retain) NSNumber *allowQuotedNewlines;  // boolValue
+@property (nonatomic, retain) NSNumber *allowQuotedNewlines;  // boolValue
 
 // [Optional] Specifies whether the job is allowed to create new tables. The
 // following values are supported: CREATE_IF_NEEDED: If the table does not
@@ -61,23 +61,23 @@
 // exist. If it does not, a 'notFound' error is returned in the job result. The
 // default value is CREATE_IF_NEEDED. Creation, truncation and append actions
 // occur as one atomic update upon job completion.
-@property (copy) NSString *createDisposition;
+@property (nonatomic, copy) NSString *createDisposition;
 
 // [Required] The destination table to load the data into.
-@property (retain) GTLBigqueryTableReference *destinationTable;
+@property (nonatomic, retain) GTLBigqueryTableReference *destinationTable;
 
 // [Optional] The character encoding of the data. The supported values are UTF-8
 // or ISO-8859-1. The default value is UTF-8. BigQuery decodes the data after
 // the raw, binary data has been split using the values of the quote and
 // fieldDelimiter properties.
-@property (copy) NSString *encoding;
+@property (nonatomic, copy) NSString *encoding;
 
 // [Optional] The separator for fields in a CSV file. BigQuery converts the
 // string to ISO-8859-1 encoding, and then uses the first byte of the encoded
 // string to split the data in its raw, binary state. BigQuery also supports the
 // escape sequence "\t" to specify a tab separator. The default value is a comma
 // (',').
-@property (copy) NSString *fieldDelimiter;
+@property (nonatomic, copy) NSString *fieldDelimiter;
 
 // [Optional] Indicates if BigQuery should allow extra values that are not
 // represented in the table schema. If true, the extra values are ignored. If
@@ -86,13 +86,13 @@
 // default value is false. The sourceFormat property determines what BigQuery
 // treats as an extra value: CSV: Trailing columns JSON: Named values that don't
 // match any column names
-@property (retain) NSNumber *ignoreUnknownValues;  // boolValue
+@property (nonatomic, retain) NSNumber *ignoreUnknownValues;  // boolValue
 
 // [Optional] The maximum number of bad records that BigQuery can ignore when
 // running the job. If the number of bad records exceeds this value, an invalid
 // error is returned in the job result. The default value is 0, which requires
 // that all records are valid.
-@property (retain) NSNumber *maxBadRecords;  // intValue
+@property (nonatomic, retain) NSNumber *maxBadRecords;  // intValue
 
 // [Experimental] If sourceFormat is set to "DATASTORE_BACKUP", indicates which
 // entity properties to load into BigQuery from a Cloud Datastore backup.
@@ -100,7 +100,7 @@
 // properties are specified, BigQuery loads all properties. If any named
 // property isn't found in the Cloud Datastore backup, an invalid error is
 // returned in the job result.
-@property (retain) NSArray *projectionFields;  // of NSString
+@property (nonatomic, retain) NSArray *projectionFields;  // of NSString
 
 // [Optional] The value that is used to quote data sections in a CSV file.
 // BigQuery converts the string to ISO-8859-1 encoding, and then uses the first
@@ -109,35 +109,35 @@
 // sections, set the property value to an empty string. If your data contains
 // quoted newline characters, you must also set the allowQuotedNewlines property
 // to true.
-@property (copy) NSString *quote;
+@property (nonatomic, copy) NSString *quote;
 
 // [Optional] The schema for the destination table. The schema can be omitted if
 // the destination table already exists or if the schema can be inferred from
 // the loaded data.
-@property (retain) GTLBigqueryTableSchema *schema;
+@property (nonatomic, retain) GTLBigqueryTableSchema *schema;
 
 // [Deprecated] The inline schema. For CSV schemas, specify as
 // "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER,
 // baz:FLOAT".
-@property (copy) NSString *schemaInline;
+@property (nonatomic, copy) NSString *schemaInline;
 
 // [Deprecated] The format of the schemaInline property.
-@property (copy) NSString *schemaInlineFormat;
+@property (nonatomic, copy) NSString *schemaInlineFormat;
 
 // [Optional] The number of rows at the top of a CSV file that BigQuery will
 // skip when loading the data. The default value is 0. This property is useful
 // if you have header rows in the file that should be skipped.
-@property (retain) NSNumber *skipLeadingRows;  // intValue
+@property (nonatomic, retain) NSNumber *skipLeadingRows;  // intValue
 
 // [Optional] The format of the data files. For CSV files, specify "CSV". For
 // datastore backups, specify "DATASTORE_BACKUP". For newline-delimited JSON,
 // specify "NEWLINE_DELIMITED_JSON". The default value is CSV.
-@property (copy) NSString *sourceFormat;
+@property (nonatomic, copy) NSString *sourceFormat;
 
 // [Required] The fully-qualified URIs that point to your data in Google Cloud
 // Storage. Each URI can contain one '*' wildcard character and it must come
 // after the 'bucket' name.
-@property (retain) NSArray *sourceUris;  // of NSString
+@property (nonatomic, retain) NSArray *sourceUris;  // of NSString
 
 // [Optional] Specifies the action that occurs if the destination table already
 // exists. The following values are supported: WRITE_TRUNCATE: If the table
@@ -148,6 +148,6 @@
 // and only occurs if BigQuery is able to complete the job successfully.
 // Creation, truncation and append actions occur as one atomic update upon job
 // completion.
-@property (copy) NSString *writeDisposition;
+@property (nonatomic, copy) NSString *writeDisposition;
 
 @end

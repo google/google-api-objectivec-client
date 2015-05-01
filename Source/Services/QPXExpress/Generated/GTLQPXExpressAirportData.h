@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,17 +46,17 @@
 
 // The city code an airport is located in. For example, for JFK airport, this is
 // NYC.
-@property (copy) NSString *city;
+@property (nonatomic, copy) NSString *city;
 
 // An airport's code. For example, for Boston Logan airport, this is BOS.
-@property (copy) NSString *code;
+@property (nonatomic, copy) NSString *code;
 
 // Identifies this as an airport object. Value: the fixed string
 // qpxexpress#airportData.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The name of an airport. For example, for airport BOS the name is "Boston
 // Logan International".
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 @end

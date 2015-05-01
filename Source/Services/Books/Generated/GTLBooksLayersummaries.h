@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,12 +47,12 @@
 @interface GTLBooksLayersummaries : GTLCollectionObject
 
 // A list of layer summary items.
-@property (retain) NSArray *items;  // of GTLBooksLayersummary
+@property (nonatomic, retain) NSArray *items;  // of GTLBooksLayersummary
 
 // Resource type.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The total number of layer summaries found.
-@property (retain) NSNumber *totalItems;  // intValue
+@property (nonatomic, retain) NSNumber *totalItems;  // intValue
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,15 +46,14 @@
          normalizedInput, otherElections, pollingLocations, precinctId, state;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [GTLCivicInfoContest class], @"contests",
-      [GTLCivicInfoPollingLocation class], @"dropOffLocations",
-      [GTLCivicInfoPollingLocation class], @"earlyVoteSites",
-      [GTLCivicInfoElection class], @"otherElections",
-      [GTLCivicInfoPollingLocation class], @"pollingLocations",
-      [GTLCivicInfoAdministrationRegion class], @"state",
-      nil];
+  NSDictionary *map = @{
+    @"contests" : [GTLCivicInfoContest class],
+    @"dropOffLocations" : [GTLCivicInfoPollingLocation class],
+    @"earlyVoteSites" : [GTLCivicInfoPollingLocation class],
+    @"otherElections" : [GTLCivicInfoElection class],
+    @"pollingLocations" : [GTLCivicInfoPollingLocation class],
+    @"state" : [GTLCivicInfoAdministrationRegion class]
+  };
   return map;
 }
 

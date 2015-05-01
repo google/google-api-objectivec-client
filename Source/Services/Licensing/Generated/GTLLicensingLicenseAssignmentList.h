@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,16 +49,16 @@
 @interface GTLLicensingLicenseAssignmentList : GTLCollectionObject
 
 // ETag of the resource.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The LicenseAssignments in this page of results.
-@property (retain) NSArray *items;  // of GTLLicensingLicenseAssignment
+@property (nonatomic, retain) NSArray *items;  // of GTLLicensingLicenseAssignment
 
 // Identifies the resource as a collection of LicenseAssignments.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The continuation token, used to page through large result sets. Provide this
 // value in a subsequent request to return the next page of results.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 @end

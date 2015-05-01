@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,20 +47,20 @@
 @interface GTLYouTubeI18nRegionListResponse : GTLCollectionObject
 
 // Etag of this resource.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // Serialized EventId of the request which produced this response.
-@property (copy) NSString *eventId;
+@property (nonatomic, copy) NSString *eventId;
 
 // A list of regions where YouTube is available. In this map, the i18n region ID
 // is the map key, and its value is the corresponding i18nRegion resource.
-@property (retain) NSArray *items;  // of GTLYouTubeI18nRegion
+@property (nonatomic, retain) NSArray *items;  // of GTLYouTubeI18nRegion
 
 // Identifies what kind of resource this is. Value: the fixed string
 // "youtube#i18nRegionListResponse".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The visitorId identifies the visitor.
-@property (copy) NSString *visitorId;
+@property (nonatomic, copy) NSString *visitorId;
 
 @end

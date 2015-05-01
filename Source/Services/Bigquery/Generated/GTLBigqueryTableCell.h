@@ -44,5 +44,5 @@
 // 'com.google.api.client.util.Data.isNull(cell.getV())'.
 
 @interface GTLBigqueryTableCell : GTLObject
-@property (retain) id v;
+@property (nonatomic, retain) id v;
 @end

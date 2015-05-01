@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,35 +51,35 @@
 @interface GTLQPXExpressSegmentInfo : GTLObject
 
 // The booking code or class for this segment.
-@property (copy) NSString *bookingCode;
+@property (nonatomic, copy) NSString *bookingCode;
 
 // The number of seats available in this booking code on this segment.
-@property (retain) NSNumber *bookingCodeCount;  // intValue
+@property (nonatomic, retain) NSNumber *bookingCodeCount;  // intValue
 
 // The cabin booked for this segment.
-@property (copy) NSString *cabin;
+@property (nonatomic, copy) NSString *cabin;
 
 // In minutes, the duration of the connection following this segment.
-@property (retain) NSNumber *connectionDuration;  // intValue
+@property (nonatomic, retain) NSNumber *connectionDuration;  // intValue
 
 // The duration of the flight segment in minutes.
-@property (retain) NSNumber *duration;  // intValue
+@property (nonatomic, retain) NSNumber *duration;  // intValue
 
 // The flight this is a segment of.
-@property (retain) GTLQPXExpressFlightInfo *flight;
+@property (nonatomic, retain) GTLQPXExpressFlightInfo *flight;
 
 // An id uniquely identifying the segment in the solution.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Identifies this as a segment object. A segment is one or more consecutive
 // legs on the same flight. For example a hypothetical flight ZZ001, from DFW to
 // OGG, could have one segment with two legs: DFW to HNL (leg 1), HNL to OGG
 // (leg 2). Value: the fixed string qpxexpress#segmentInfo.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The legs composing this segment.
-@property (retain) NSArray *leg;  // of GTLQPXExpressLegInfo
+@property (nonatomic, retain) NSArray *leg;  // of GTLQPXExpressLegInfo
 
 // The solution-based index of a segment in a married segment group. Married
 // segments can only be booked together. For example, an airline might report a
@@ -90,9 +90,9 @@
 // outbound ones (ZZ1 ZZ2) married. In this case, the two outbound segments
 // belong to married segment group 0, and the return segment belongs to married
 // segment group 1.
-@property (copy) NSString *marriedSegmentGroup;
+@property (nonatomic, copy) NSString *marriedSegmentGroup;
 
 // Whether the operation of this segment remains subject to government approval.
-@property (retain) NSNumber *subjectToGovernmentApproval;  // boolValue
+@property (nonatomic, retain) NSNumber *subjectToGovernmentApproval;  // boolValue
 
 @end

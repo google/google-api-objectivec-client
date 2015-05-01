@@ -65,66 +65,66 @@
 @interface GTLStorageBucket : GTLObject
 
 // Access controls on the bucket.
-@property (retain) NSArray *acl;  // of GTLStorageBucketAccessControl
+@property (nonatomic, retain) NSArray *acl;  // of GTLStorageBucketAccessControl
 
 // The bucket's Cross-Origin Resource Sharing (CORS) configuration.
-@property (retain) NSArray *cors;  // of GTLStorageBucketCorsItem
+@property (nonatomic, retain) NSArray *cors;  // of GTLStorageBucketCorsItem
 
 // Default access controls to apply to new objects when no ACL is provided.
-@property (retain) NSArray *defaultObjectAcl;  // of GTLStorageObjectAccessControl
+@property (nonatomic, retain) NSArray *defaultObjectAcl;  // of GTLStorageObjectAccessControl
 
 // HTTP 1.1 Entity tag for the bucket.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The ID of the bucket.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The kind of item this is. For buckets, this is always storage#bucket.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The bucket's lifecycle configuration. See lifecycle management for more
 // information.
-@property (retain) GTLStorageBucketLifecycle *lifecycle;
+@property (nonatomic, retain) GTLStorageBucketLifecycle *lifecycle;
 
 // The location of the bucket. Object data for objects in the bucket resides in
 // physical storage within this region. Defaults to US. See the developer's
 // guide for the authoritative list.
-@property (copy) NSString *location;
+@property (nonatomic, copy) NSString *location;
 
 // The bucket's logging configuration, which defines the destination bucket and
 // optional name prefix for the current bucket's logs.
-@property (retain) GTLStorageBucketLogging *logging;
+@property (nonatomic, retain) GTLStorageBucketLogging *logging;
 
 // The metadata generation of this bucket.
-@property (retain) NSNumber *metageneration;  // longLongValue
+@property (nonatomic, retain) NSNumber *metageneration;  // longLongValue
 
 // The name of the bucket.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // The owner of the bucket. This is always the project team's owner group.
-@property (retain) GTLStorageBucketOwner *owner;
+@property (nonatomic, retain) GTLStorageBucketOwner *owner;
 
 // The project number of the project the bucket belongs to.
-@property (retain) NSNumber *projectNumber;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *projectNumber;  // unsignedLongLongValue
 
 // The URI of this bucket.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // The bucket's storage class. This defines how objects in the bucket are stored
 // and determines the SLA and the cost of storage. Values include STANDARD,
 // NEARLINE and DURABLE_REDUCED_AVAILABILITY. Defaults to STANDARD. For more
 // information, see storage classes.
-@property (copy) NSString *storageClass;
+@property (nonatomic, copy) NSString *storageClass;
 
 // Creation time of the bucket in RFC 3339 format.
-@property (retain) GTLDateTime *timeCreated;
+@property (nonatomic, retain) GTLDateTime *timeCreated;
 
 // The bucket's versioning configuration.
-@property (retain) GTLStorageBucketVersioning *versioning;
+@property (nonatomic, retain) GTLStorageBucketVersioning *versioning;
 
 // The bucket's website configuration.
-@property (retain) GTLStorageBucketWebsite *website;
+@property (nonatomic, retain) GTLStorageBucketWebsite *website;
 
 @end
 
@@ -138,20 +138,20 @@
 
 // The value, in seconds, to return in the Access-Control-Max-Age header used in
 // preflight responses.
-@property (retain) NSNumber *maxAgeSeconds;  // intValue
+@property (nonatomic, retain) NSNumber *maxAgeSeconds;  // intValue
 
 // The list of HTTP methods on which to include CORS response headers, (GET,
 // OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means
 // "any method".
-@property (retain) NSArray *method;  // of NSString
+@property (nonatomic, retain) NSArray *method;  // of NSString
 
 // The list of Origins eligible to receive CORS response headers. Note: "*" is
 // permitted in the list of origins, and means "any Origin".
-@property (retain) NSArray *origin;  // of NSString
+@property (nonatomic, retain) NSArray *origin;  // of NSString
 
 // The list of HTTP headers other than the simple response headers to give
 // permission for the user-agent to share across domains.
-@property (retain) NSArray *responseHeader;  // of NSString
+@property (nonatomic, retain) NSArray *responseHeader;  // of NSString
 
 @end
 
@@ -165,7 +165,7 @@
 
 // A lifecycle management rule, which is made of an action to take and the
 // condition(s) under which the action will be taken.
-@property (retain) NSArray *rule;  // of GTLStorageBucketLifecycleRuleItem
+@property (nonatomic, retain) NSArray *rule;  // of GTLStorageBucketLifecycleRuleItem
 
 @end
 
@@ -178,10 +178,10 @@
 @interface GTLStorageBucketLogging : GTLObject
 
 // The destination bucket where the current bucket's logs should be placed.
-@property (copy) NSString *logBucket;
+@property (nonatomic, copy) NSString *logBucket;
 
 // A prefix for log object names.
-@property (copy) NSString *logObjectPrefix;
+@property (nonatomic, copy) NSString *logObjectPrefix;
 
 @end
 
@@ -194,10 +194,10 @@
 @interface GTLStorageBucketOwner : GTLObject
 
 // The entity, in the form project-owner-projectId.
-@property (copy) NSString *entity;
+@property (nonatomic, copy) NSString *entity;
 
 // The ID for the entity.
-@property (copy) NSString *entityId;
+@property (nonatomic, copy) NSString *entityId;
 
 @end
 
@@ -210,7 +210,7 @@
 @interface GTLStorageBucketVersioning : GTLObject
 
 // While set to true, versioning is fully enabled for this bucket.
-@property (retain) NSNumber *enabled;  // boolValue
+@property (nonatomic, retain) NSNumber *enabled;  // boolValue
 
 @end
 
@@ -224,10 +224,10 @@
 
 // Behaves as the bucket's directory index where missing objects are treated as
 // potential directories.
-@property (copy) NSString *mainPageSuffix;
+@property (nonatomic, copy) NSString *mainPageSuffix;
 
 // The custom object to return when a requested resource is not found.
-@property (copy) NSString *notFoundPage;
+@property (nonatomic, copy) NSString *notFoundPage;
 
 @end
 
@@ -240,10 +240,10 @@
 @interface GTLStorageBucketLifecycleRuleItem : GTLObject
 
 // The action to take.
-@property (retain) GTLStorageBucketLifecycleRuleItemAction *action;
+@property (nonatomic, retain) GTLStorageBucketLifecycleRuleItemAction *action;
 
 // The condition(s) under which the action will be taken.
-@property (retain) GTLStorageBucketLifecycleRuleItemCondition *condition;
+@property (nonatomic, retain) GTLStorageBucketLifecycleRuleItemCondition *condition;
 
 @end
 
@@ -256,7 +256,7 @@
 @interface GTLStorageBucketLifecycleRuleItemAction : GTLObject
 
 // Type of the action. Currently, only Delete is supported.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end
 
@@ -270,20 +270,20 @@
 
 // Age of an object (in days). This condition is satisfied when an object
 // reaches the specified age.
-@property (retain) NSNumber *age;  // intValue
+@property (nonatomic, retain) NSNumber *age;  // intValue
 
 // A date in RFC 3339 format with only the date part (for instance,
 // "2013-01-15"). This condition is satisfied when an object is created before
 // midnight of the specified date in UTC.
-@property (retain) GTLDateTime *createdBefore;  // Date only (yyyy-mm-dd)
+@property (nonatomic, retain) GTLDateTime *createdBefore;  // Date only (yyyy-mm-dd)
 
 // Relevant only for versioned objects. If the value is true, this condition
 // matches live objects; if the value is false, it matches archived objects.
-@property (retain) NSNumber *isLive;  // boolValue
+@property (nonatomic, retain) NSNumber *isLive;  // boolValue
 
 // Relevant only for versioned objects. If the value is N, this condition is
 // satisfied when there are at least N versions (including the live version)
 // newer than this version of the object.
-@property (retain) NSNumber *numNewerVersions;  // intValue
+@property (nonatomic, retain) NSNumber *numNewerVersions;  // intValue
 
 @end

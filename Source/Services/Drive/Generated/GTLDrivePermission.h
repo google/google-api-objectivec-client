@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,61 +44,61 @@
 @interface GTLDrivePermission : GTLObject
 
 // Additional roles for this user. Only commenter is currently allowed.
-@property (retain) NSArray *additionalRoles;  // of NSString
+@property (nonatomic, retain) NSArray *additionalRoles;  // of NSString
 
 // The authkey parameter required for this permission.
-@property (copy) NSString *authKey;
+@property (nonatomic, copy) NSString *authKey;
 
 // The domain name of the entity this permission refers to. This is an
 // output-only field which is present when the permission type is user, group or
 // domain.
-@property (copy) NSString *domain;
+@property (nonatomic, copy) NSString *domain;
 
 // The email address of the user or group this permission refers to. This is an
 // output-only field which is present when the permission type is user or group.
-@property (copy) NSString *emailAddress;
+@property (nonatomic, copy) NSString *emailAddress;
 
 // The ETag of the permission.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The ID of the user this permission refers to, and identical to the
 // permissionId in the About and Files resources. When making a
 // drive.permissions.insert request, exactly one of the id or value fields must
 // be specified.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // This is always drive#permission.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The name for this permission.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // A link to the profile photo, if available.
-@property (copy) NSString *photoLink;
+@property (nonatomic, copy) NSString *photoLink;
 
 // The primary role for this user. Allowed values are:
 // - owner
 // - reader
 // - writer
-@property (copy) NSString *role;
+@property (nonatomic, copy) NSString *role;
 
 // A link back to this permission.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // The account type. Allowed values are:
 // - user
 // - group
 // - domain
 // - anyone
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 // The email address or domain name for the entity. This is used during inserts
 // and is not populated in responses. When making a drive.permissions.insert
 // request, exactly one of the id or value fields must be specified.
-@property (copy) NSString *value;
+@property (nonatomic, copy) NSString *value;
 
 // Whether the link is required for this permission.
-@property (retain) NSNumber *withLink;  // boolValue
+@property (nonatomic, retain) NSNumber *withLink;  // boolValue
 
 @end

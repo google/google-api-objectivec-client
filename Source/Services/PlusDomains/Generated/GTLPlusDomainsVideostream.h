@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,15 +42,15 @@
 @interface GTLPlusDomainsVideostream : GTLObject
 
 // The height, in pixels, of the video resource.
-@property (retain) NSNumber *height;  // intValue
+@property (nonatomic, retain) NSNumber *height;  // intValue
 
 // MIME type of the video stream.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 // URL of the video stream.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 // The width, in pixels, of the video resource.
-@property (retain) NSNumber *width;  // intValue
+@property (nonatomic, retain) NSNumber *width;  // intValue
 
 @end

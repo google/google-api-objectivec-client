@@ -44,11 +44,11 @@
 @interface GTLYouTubeCaptionSnippet : GTLObject
 
 // The type of audio track associated with the caption track.
-@property (copy) NSString *audioTrackType;
+@property (nonatomic, copy) NSString *audioTrackType;
 
 // The reason that YouTube failed to process the caption track. This property is
 // only present if the state property's value is failed.
-@property (copy) NSString *failureReason;
+@property (nonatomic, copy) NSString *failureReason;
 
 // Indicates whether YouTube synchronized the caption track to the audio track
 // in the video. The value will be true if a sync was explicitly requested when
@@ -57,44 +57,44 @@
 // instruct YouTube to sync the uploaded track to the video. If the value is
 // false, YouTube uses the time codes in the uploaded caption track to determine
 // when to display captions.
-@property (retain) NSNumber *isAutoSynced;  // boolValue
+@property (nonatomic, retain) NSNumber *isAutoSynced;  // boolValue
 
 // Indicates whether the track contains closed captions for the deaf and hard of
 // hearing. The default value is false.
-@property (retain) NSNumber *isCC;  // boolValue
+@property (nonatomic, retain) NSNumber *isCC;  // boolValue
 
 // Indicates whether the caption track is a draft. If the value is true, then
 // the track is not publicly visible. The default value is false.
-@property (retain) NSNumber *isDraft;  // boolValue
+@property (nonatomic, retain) NSNumber *isDraft;  // boolValue
 
 // Indicates whether caption track is formatted for "easy reader," meaning it is
 // at a third-grade level for language learners. The default value is false.
-@property (retain) NSNumber *isEasyReader;  // boolValue
+@property (nonatomic, retain) NSNumber *isEasyReader;  // boolValue
 
 // Indicates whether the caption track uses large text for the vision-impaired.
 // The default value is false.
-@property (retain) NSNumber *isLarge;  // boolValue
+@property (nonatomic, retain) NSNumber *isLarge;  // boolValue
 
 // The language of the caption track. The property value is a BCP-47 language
 // tag.
-@property (copy) NSString *language;
+@property (nonatomic, copy) NSString *language;
 
 // The date and time when the caption track was last updated. The value is
 // specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-@property (retain) GTLDateTime *lastUpdated;
+@property (nonatomic, retain) GTLDateTime *lastUpdated;
 
 // The name of the caption track. The name is intended to be visible to the user
 // as an option during playback.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // The caption track's status.
-@property (copy) NSString *status;
+@property (nonatomic, copy) NSString *status;
 
 // The caption track's type.
-@property (copy) NSString *trackKind;
+@property (nonatomic, copy) NSString *trackKind;
 
 // The ID that YouTube uses to uniquely identify the video associated with the
 // caption track.
-@property (copy) NSString *videoId;
+@property (nonatomic, copy) NSString *videoId;
 
 @end

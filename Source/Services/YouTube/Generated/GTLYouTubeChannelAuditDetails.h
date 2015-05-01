@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,19 +45,19 @@
 @interface GTLYouTubeChannelAuditDetails : GTLObject
 
 // Whether or not the channel respects the community guidelines.
-@property (retain) NSNumber *communityGuidelinesGoodStanding;  // boolValue
+@property (nonatomic, retain) NSNumber *communityGuidelinesGoodStanding;  // boolValue
 
 // Whether or not the channel has any unresolved claims.
-@property (retain) NSNumber *contentIdClaimsGoodStanding;  // boolValue
+@property (nonatomic, retain) NSNumber *contentIdClaimsGoodStanding;  // boolValue
 
 // Whether or not the channel has any copyright strikes.
-@property (retain) NSNumber *copyrightStrikesGoodStanding;  // boolValue
+@property (nonatomic, retain) NSNumber *copyrightStrikesGoodStanding;  // boolValue
 
 // Describes the general state of the channel. This field will always show if
 // there are any issues whatsoever with the channel. Currently this field
 // represents the result of the logical and operation over the community
 // guidelines good standing, the copyright strikes good standing and the content
 // ID claims good standing, but this may change in the future.
-@property (retain) NSNumber *overallGoodStanding;  // boolValue
+@property (nonatomic, retain) NSNumber *overallGoodStanding;  // boolValue
 
 @end

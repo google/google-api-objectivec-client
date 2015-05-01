@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,15 +50,15 @@
 @interface GTLDrivePropertyList : GTLCollectionObject
 
 // The ETag of the list.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The list of properties.
-@property (retain) NSArray *items;  // of GTLDriveProperty
+@property (nonatomic, retain) NSArray *items;  // of GTLDriveProperty
 
 // This is always drive#propertyList.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The link back to this list.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 @end

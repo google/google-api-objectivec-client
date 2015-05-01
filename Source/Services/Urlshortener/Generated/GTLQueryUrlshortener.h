@@ -43,14 +43,14 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (copy) NSString *fields;
+@property (nonatomic, copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (copy) NSString *projection;
-@property (copy) NSString *shortUrl;
-@property (copy) NSString *startToken;
+@property (nonatomic, copy) NSString *projection;
+@property (nonatomic, copy) NSString *shortUrl;
+@property (nonatomic, copy) NSString *startToken;
 
 #pragma mark -
 #pragma mark "url" methods
@@ -70,14 +70,14 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeUrlshortener
 // Fetches a GTLUrlshortenerUrl.
-+ (id)queryForUrlGetWithShortUrl:(NSString *)shortUrl;
++ (instancetype)queryForUrlGetWithShortUrl:(NSString *)shortUrl;
 
 // Method: urlshortener.url.insert
 // Creates a new short URL.
 //  Authorization scope(s):
 //   kGTLAuthScopeUrlshortener
 // Fetches a GTLUrlshortenerUrl.
-+ (id)queryForUrlInsertWithObject:(GTLUrlshortenerUrl *)object;
++ (instancetype)queryForUrlInsertWithObject:(GTLUrlshortenerUrl *)object;
 
 // Method: urlshortener.url.list
 // Retrieves a list of URLs shortened by a user.
@@ -90,6 +90,6 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeUrlshortener
 // Fetches a GTLUrlshortenerUrlHistory.
-+ (id)queryForUrlList;
++ (instancetype)queryForUrlList;
 
 @end

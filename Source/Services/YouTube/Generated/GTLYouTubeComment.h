@@ -46,17 +46,17 @@
 @interface GTLYouTubeComment : GTLObject
 
 // Etag of this resource.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The ID that YouTube uses to uniquely identify the comment.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Identifies what kind of resource this is. Value: the fixed string
 // "youtube#comment".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The snippet object contains basic details about the comment.
-@property (retain) GTLYouTubeCommentSnippet *snippet;
+@property (nonatomic, retain) GTLYouTubeCommentSnippet *snippet;
 
 @end

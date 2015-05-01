@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,9 +46,9 @@
 @interface GTLMapsEngineValueRange : GTLObject
 
 // Maximum value.
-@property (retain) NSNumber *max;  // doubleValue
+@property (nonatomic, retain) NSNumber *max;  // doubleValue
 
 // Minimum value.
-@property (retain) NSNumber *min;  // doubleValue
+@property (nonatomic, retain) NSNumber *min;  // doubleValue
 
 @end

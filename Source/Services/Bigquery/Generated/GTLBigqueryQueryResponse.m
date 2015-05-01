@@ -44,9 +44,9 @@
          totalBytesProcessed, totalRows;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLBigqueryTableRow class]
-                                forKey:@"rows"];
+  NSDictionary *map = @{
+    @"rows" : [GTLBigqueryTableRow class]
+  };
   return map;
 }
 

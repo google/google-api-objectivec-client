@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,10 +49,10 @@
 @interface GTLStorageBucketAccessControls : GTLCollectionObject
 
 // The list of items.
-@property (retain) NSArray *items;  // of GTLStorageBucketAccessControl
+@property (nonatomic, retain) NSArray *items;  // of GTLStorageBucketAccessControl
 
 // The kind of item this is. For lists of bucket access control entries, this is
 // always storage#bucketAccessControls.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 @end

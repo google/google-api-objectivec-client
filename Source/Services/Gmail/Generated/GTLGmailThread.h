@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,16 +46,16 @@
 @interface GTLGmailThread : GTLObject
 
 // The ID of the last history record that modified this thread.
-@property (retain) NSNumber *historyId;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *historyId;  // unsignedLongLongValue
 
 // The unique ID of the thread.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The list of messages in the thread.
-@property (retain) NSArray *messages;  // of GTLGmailMessage
+@property (nonatomic, retain) NSArray *messages;  // of GTLGmailMessage
 
 // A short part of the message text.
-@property (copy) NSString *snippet;
+@property (nonatomic, copy) NSString *snippet;
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,6 +46,6 @@
 @interface GTLYouTubeVideoMonetizationDetails : GTLObject
 
 // The value of access indicates whether the video can be monetized or not.
-@property (retain) GTLYouTubeAccessPolicy *access;
+@property (nonatomic, retain) GTLYouTubeAccessPolicy *access;
 
 @end

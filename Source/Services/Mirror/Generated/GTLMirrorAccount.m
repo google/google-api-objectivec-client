@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,19 +42,18 @@
 @dynamic authTokens, features, password, userDataProperty;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"userData"
-                                forKey:@"userDataProperty"];
+  NSDictionary *map = @{
+    @"userDataProperty" : @"userData"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [GTLMirrorAuthToken class], @"authTokens",
-      [NSString class], @"features",
-      [GTLMirrorUserData class], @"userData",
-      nil];
+  NSDictionary *map = @{
+    @"authTokens" : [GTLMirrorAuthToken class],
+    @"features" : [NSString class],
+    @"userData" : [GTLMirrorUserData class]
+  };
   return map;
 }
 

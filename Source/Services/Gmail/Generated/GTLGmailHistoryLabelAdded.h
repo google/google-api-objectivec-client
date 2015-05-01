@@ -44,7 +44,7 @@
 @interface GTLGmailHistoryLabelAdded : GTLObject
 
 // Label IDs added to the message.
-@property (retain) NSArray *labelIds;  // of NSString
+@property (nonatomic, retain) NSArray *labelIds;  // of NSString
 
-@property (retain) GTLGmailMessage *message;
+@property (nonatomic, retain) GTLGmailMessage *message;
 @end

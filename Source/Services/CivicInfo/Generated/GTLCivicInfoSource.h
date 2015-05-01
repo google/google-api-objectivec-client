@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,9 +44,9 @@
 @interface GTLCivicInfoSource : GTLObject
 
 // The name of the data source.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // Whether this data comes from an official government source.
-@property (retain) NSNumber *official;  // boolValue
+@property (nonatomic, retain) NSNumber *official;  // boolValue
 
 @end

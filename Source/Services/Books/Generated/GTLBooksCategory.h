@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,10 +48,10 @@
 @interface GTLBooksCategory : GTLCollectionObject
 
 // A list of onboarding categories.
-@property (retain) NSArray *items;  // of GTLBooksCategoryItemsItem
+@property (nonatomic, retain) NSArray *items;  // of GTLBooksCategoryItemsItem
 
 // Resource type.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 @end
 
@@ -62,7 +62,7 @@
 //
 
 @interface GTLBooksCategoryItemsItem : GTLObject
-@property (copy) NSString *badgeUrl;
-@property (copy) NSString *categoryId;
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *badgeUrl;
+@property (nonatomic, copy) NSString *categoryId;
+@property (nonatomic, copy) NSString *name;
 @end

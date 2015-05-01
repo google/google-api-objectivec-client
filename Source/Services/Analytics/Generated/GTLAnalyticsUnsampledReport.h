@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,64 +49,64 @@
 @interface GTLAnalyticsUnsampledReport : GTLObject
 
 // Account ID to which this unsampled report belongs.
-@property (copy) NSString *accountId;
+@property (nonatomic, copy) NSString *accountId;
 
 // Download details for a file stored in Google Cloud Storage.
-@property (retain) GTLAnalyticsUnsampledReportCloudStorageDownloadDetails *cloudStorageDownloadDetails;
+@property (nonatomic, retain) GTLAnalyticsUnsampledReportCloudStorageDownloadDetails *cloudStorageDownloadDetails;
 
 // Time this unsampled report was created.
-@property (retain) GTLDateTime *created;
+@property (nonatomic, retain) GTLDateTime *created;
 
 // The dimensions for the unsampled report.
-@property (copy) NSString *dimensions;
+@property (nonatomic, copy) NSString *dimensions;
 
 // The type of download you need to use for the report data file.
-@property (copy) NSString *downloadType;
+@property (nonatomic, copy) NSString *downloadType;
 
 // Download details for a file stored in Google Drive.
-@property (retain) GTLAnalyticsUnsampledReportDriveDownloadDetails *driveDownloadDetails;
+@property (nonatomic, retain) GTLAnalyticsUnsampledReportDriveDownloadDetails *driveDownloadDetails;
 
 // The end date for the unsampled report.
-@property (copy) NSString *endDate;
+@property (nonatomic, copy) NSString *endDate;
 
 // The filters for the unsampled report.
-@property (copy) NSString *filters;
+@property (nonatomic, copy) NSString *filters;
 
 // Unsampled report ID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Resource type for an Analytics unsampled report.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The metrics for the unsampled report.
-@property (copy) NSString *metrics;
+@property (nonatomic, copy) NSString *metrics;
 
 // View (Profile) ID to which this unsampled report belongs.
-@property (copy) NSString *profileId;
+@property (nonatomic, copy) NSString *profileId;
 
 // The segment for the unsampled report.
-@property (copy) NSString *segment;
+@property (nonatomic, copy) NSString *segment;
 
 // Link for this unsampled report.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // The start date for the unsampled report.
-@property (copy) NSString *startDate;
+@property (nonatomic, copy) NSString *startDate;
 
 // Status of this unsampled report. Possible values are PENDING, COMPLETED, or
 // FAILED.
-@property (copy) NSString *status;
+@property (nonatomic, copy) NSString *status;
 
 // Title of the unsampled report.
-@property (copy) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 // Time this unsampled report was last modified.
-@property (retain) GTLDateTime *updated;
+@property (nonatomic, retain) GTLDateTime *updated;
 
 // Web property ID to which this unsampled report belongs. The web property ID
 // is of the form UA-XXXXX-YY.
-@property (copy) NSString *webPropertyId;
+@property (nonatomic, copy) NSString *webPropertyId;
 
 @end
 
@@ -119,10 +119,10 @@
 @interface GTLAnalyticsUnsampledReportCloudStorageDownloadDetails : GTLObject
 
 // Id of the bucket the file object is stored in.
-@property (copy) NSString *bucketId;
+@property (nonatomic, copy) NSString *bucketId;
 
 // Id of the file object containing the report data.
-@property (copy) NSString *objectId;
+@property (nonatomic, copy) NSString *objectId;
 
 @end
 
@@ -135,6 +135,6 @@
 @interface GTLAnalyticsUnsampledReportDriveDownloadDetails : GTLObject
 
 // Id of the document/file containing the report data.
-@property (copy) NSString *documentId;
+@property (nonatomic, copy) NSString *documentId;
 
 @end

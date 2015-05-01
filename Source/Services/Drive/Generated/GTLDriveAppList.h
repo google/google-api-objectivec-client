@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,18 +51,18 @@
 
 // List of app IDs that the user has specified to use by default. The list is in
 // reverse-priority order (lowest to highest).
-@property (retain) NSArray *defaultAppIds;  // of NSString
+@property (nonatomic, retain) NSArray *defaultAppIds;  // of NSString
 
 // The ETag of the list.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The actual list of apps.
-@property (retain) NSArray *items;  // of GTLDriveApp
+@property (nonatomic, retain) NSArray *items;  // of GTLDriveApp
 
 // This is always drive#appList.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // A link back to this list.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,16 +44,16 @@
 @interface GTLDriveChildReference : GTLObject
 
 // A link to the child.
-@property (copy) NSString *childLink;
+@property (nonatomic, copy) NSString *childLink;
 
 // The ID of the child.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // This is always drive#childReference.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // A link back to this reference.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 @end

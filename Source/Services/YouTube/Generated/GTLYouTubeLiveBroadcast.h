@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,24 +52,24 @@
 // content, such as whether the content can be shown in an embedded video player
 // or if it will be archived and therefore available for viewing after the event
 // has concluded.
-@property (retain) GTLYouTubeLiveBroadcastContentDetails *contentDetails;
+@property (nonatomic, retain) GTLYouTubeLiveBroadcastContentDetails *contentDetails;
 
 // Etag of this resource.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The ID that YouTube assigns to uniquely identify the broadcast.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Identifies what kind of resource this is. Value: the fixed string
 // "youtube#liveBroadcast".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The snippet object contains basic details about the event, including its
 // title, description, start time, and end time.
-@property (retain) GTLYouTubeLiveBroadcastSnippet *snippet;
+@property (nonatomic, retain) GTLYouTubeLiveBroadcastSnippet *snippet;
 
 // The status object contains information about the event's status.
-@property (retain) GTLYouTubeLiveBroadcastStatus *status;
+@property (nonatomic, retain) GTLYouTubeLiveBroadcastStatus *status;
 
 @end

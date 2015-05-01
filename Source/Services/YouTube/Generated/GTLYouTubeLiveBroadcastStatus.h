@@ -42,23 +42,23 @@
 @interface GTLYouTubeLiveBroadcastStatus : GTLObject
 
 // Whether or not this broadcast is the default broadcast
-@property (retain) NSNumber *isDefaultBroadcast;  // boolValue
+@property (nonatomic, retain) NSNumber *isDefaultBroadcast;  // boolValue
 
 // The broadcast's status. The status can be updated using the API's
 // liveBroadcasts.transition method.
-@property (copy) NSString *lifeCycleStatus;
+@property (nonatomic, copy) NSString *lifeCycleStatus;
 
 // Priority of the live broadcast event (internal state).
-@property (copy) NSString *liveBroadcastPriority;
+@property (nonatomic, copy) NSString *liveBroadcastPriority;
 
 // The broadcast's privacy status. Note that the broadcast represents exactly
 // one YouTube video, so the privacy settings are identical to those supported
 // for videos. In addition, you can set this field by modifying the broadcast
 // resource or by setting the privacyStatus field of the corresponding video
 // resource.
-@property (copy) NSString *privacyStatus;
+@property (nonatomic, copy) NSString *privacyStatus;
 
 // The broadcast's recording status.
-@property (copy) NSString *recordingStatus;
+@property (nonatomic, copy) NSString *recordingStatus;
 
 @end

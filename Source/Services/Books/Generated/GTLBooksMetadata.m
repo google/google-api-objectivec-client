@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,9 +40,9 @@
 @dynamic items, kind;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLBooksMetadataItemsItem class]
-                                forKey:@"items"];
+  NSDictionary *map = @{
+    @"items" : [GTLBooksMetadataItemsItem class]
+  };
   return map;
 }
 
@@ -62,11 +62,10 @@
 @dynamic downloadUrl, encryptedKey, language, size, version;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"download_url", @"downloadUrl",
-      @"encrypted_key", @"encryptedKey",
-      nil];
+  NSDictionary *map = @{
+    @"downloadUrl" : @"download_url",
+    @"encryptedKey" : @"encrypted_key"
+  };
   return map;
 }
 

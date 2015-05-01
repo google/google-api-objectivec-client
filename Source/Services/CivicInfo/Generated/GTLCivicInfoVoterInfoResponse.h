@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,40 +50,40 @@
 @interface GTLCivicInfoVoterInfoResponse : GTLObject
 
 // Contests that will appear on the voter's ballot.
-@property (retain) NSArray *contests;  // of GTLCivicInfoContest
+@property (nonatomic, retain) NSArray *contests;  // of GTLCivicInfoContest
 
 // Locations where a voter is eligible to drop off a completed ballot. The voter
 // must have received and completed a ballot prior to arriving at the location.
 // The location may not have ballots available on the premises. These locations
 // could be open on or before election day as indicated in the pollingHours
 // field.
-@property (retain) NSArray *dropOffLocations;  // of GTLCivicInfoPollingLocation
+@property (nonatomic, retain) NSArray *dropOffLocations;  // of GTLCivicInfoPollingLocation
 
 // Locations where the voter is eligible to vote early, prior to election day.
-@property (retain) NSArray *earlyVoteSites;  // of GTLCivicInfoPollingLocation
+@property (nonatomic, retain) NSArray *earlyVoteSites;  // of GTLCivicInfoPollingLocation
 
 // The election that was queried.
-@property (retain) GTLCivicInfoElection *election;
+@property (nonatomic, retain) GTLCivicInfoElection *election;
 
 // Identifies what kind of resource this is. Value: the fixed string
 // "civicinfo#voterInfoResponse".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The normalized version of the requested address
-@property (retain) GTLCivicInfoSimpleAddressType *normalizedInput;
+@property (nonatomic, retain) GTLCivicInfoSimpleAddressType *normalizedInput;
 
 // If no election ID was specified in the query, and there was more than one
 // election with data for the given voter, this will contain information about
 // the other elections that could apply.
-@property (retain) NSArray *otherElections;  // of GTLCivicInfoElection
+@property (nonatomic, retain) NSArray *otherElections;  // of GTLCivicInfoElection
 
 // Locations where the voter is eligible to vote on election day.
-@property (retain) NSArray *pollingLocations;  // of GTLCivicInfoPollingLocation
+@property (nonatomic, retain) NSArray *pollingLocations;  // of GTLCivicInfoPollingLocation
 
-@property (copy) NSString *precinctId;
+@property (nonatomic, copy) NSString *precinctId;
 
 // Local Election Information for the state that the voter votes in. For the US,
 // there will only be one element in this array.
-@property (retain) NSArray *state;  // of GTLCivicInfoAdministrationRegion
+@property (nonatomic, retain) NSArray *state;  // of GTLCivicInfoAdministrationRegion
 
 @end

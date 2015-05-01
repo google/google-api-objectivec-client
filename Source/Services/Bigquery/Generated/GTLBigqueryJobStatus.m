@@ -41,9 +41,9 @@
 @dynamic errorResult, errors, state;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLBigqueryErrorProto class]
-                                forKey:@"errors"];
+  NSDictionary *map = @{
+    @"errors" : [GTLBigqueryErrorProto class]
+  };
   return map;
 }
 

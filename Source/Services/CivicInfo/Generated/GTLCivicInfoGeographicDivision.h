@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,14 +53,14 @@
 // For example, if this division's OCD ID is
 // ocd-division/country:us/district:dc, this will contain
 // ocd-division/country:us/state:dc.
-@property (retain) NSArray *alsoKnownAs;  // of NSString
+@property (nonatomic, retain) NSArray *alsoKnownAs;  // of NSString
 
 // The name of the division.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // List of indices in the offices array, one for each office elected from this
 // division. Will only be present if includeOffices was true (or absent) in the
 // request.
-@property (retain) NSArray *officeIndices;  // of NSNumber (unsignedIntValue)
+@property (nonatomic, retain) NSArray *officeIndices;  // of NSNumber (unsignedIntValue)
 
 @end

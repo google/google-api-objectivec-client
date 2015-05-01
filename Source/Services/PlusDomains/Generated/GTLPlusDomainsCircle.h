@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,26 +46,26 @@
 
 // The description of this circle.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (copy) NSString *descriptionProperty;
+@property (nonatomic, copy) NSString *descriptionProperty;
 
 // The circle name.
-@property (copy) NSString *displayName;
+@property (nonatomic, copy) NSString *displayName;
 
 // ETag of this response for caching purposes.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The ID of the circle.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Identifies this resource as a circle. Value: "plus#circle".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The people in this circle.
-@property (retain) GTLPlusDomainsCirclePeople *people;
+@property (nonatomic, retain) GTLPlusDomainsCirclePeople *people;
 
 // Link to this circle resource
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 @end
 
@@ -78,6 +78,6 @@
 @interface GTLPlusDomainsCirclePeople : GTLObject
 
 // The total number of people in this circle.
-@property (retain) NSNumber *totalItems;  // unsignedIntValue
+@property (nonatomic, retain) NSNumber *totalItems;  // unsignedIntValue
 
 @end

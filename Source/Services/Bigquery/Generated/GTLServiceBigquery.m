@@ -36,49 +36,49 @@
 // Method compiled in debug builds just to check that all the needed support
 // classes are present at link time.
 + (NSArray *)checkClasses {
-  NSArray *classes = [NSArray arrayWithObjects:
-                      [GTLQueryBigquery class],
-                      [GTLBigqueryCsvOptions class],
-                      [GTLBigqueryDataset class],
-                      [GTLBigqueryDatasetList class],
-                      [GTLBigqueryDatasetReference class],
-                      [GTLBigqueryErrorProto class],
-                      [GTLBigqueryExternalDataConfiguration class],
-                      [GTLBigqueryGetQueryResultsResponse class],
-                      [GTLBigqueryJob class],
-                      [GTLBigqueryJobConfiguration class],
-                      [GTLBigqueryJobConfigurationExtract class],
-                      [GTLBigqueryJobConfigurationLink class],
-                      [GTLBigqueryJobConfigurationLoad class],
-                      [GTLBigqueryJobConfigurationQuery class],
-                      [GTLBigqueryJobConfigurationTableCopy class],
-                      [GTLBigqueryJobList class],
-                      [GTLBigqueryJobReference class],
-                      [GTLBigqueryJobStatistics class],
-                      [GTLBigqueryJobStatistics2 class],
-                      [GTLBigqueryJobStatistics3 class],
-                      [GTLBigqueryJobStatistics4 class],
-                      [GTLBigqueryJobStatus class],
-                      [GTLBigqueryJsonObject class],
-                      [GTLBigqueryProjectList class],
-                      [GTLBigqueryProjectReference class],
-                      [GTLBigqueryQueryResponse class],
-                      [GTLBigqueryTable class],
-                      [GTLBigqueryTableCell class],
-                      [GTLBigqueryTableDataInsertAllResponse class],
-                      [GTLBigqueryTableDataList class],
-                      [GTLBigqueryTableFieldSchema class],
-                      [GTLBigqueryTableList class],
-                      [GTLBigqueryTableReference class],
-                      [GTLBigqueryTableRow class],
-                      [GTLBigqueryTableSchema class],
-                      [GTLBigqueryViewDefinition class],
-                      nil];
+  NSArray *classes = @[
+    [GTLQueryBigquery class],
+    [GTLBigqueryCsvOptions class],
+    [GTLBigqueryDataset class],
+    [GTLBigqueryDatasetList class],
+    [GTLBigqueryDatasetReference class],
+    [GTLBigqueryErrorProto class],
+    [GTLBigqueryExternalDataConfiguration class],
+    [GTLBigqueryGetQueryResultsResponse class],
+    [GTLBigqueryJob class],
+    [GTLBigqueryJobConfiguration class],
+    [GTLBigqueryJobConfigurationExtract class],
+    [GTLBigqueryJobConfigurationLink class],
+    [GTLBigqueryJobConfigurationLoad class],
+    [GTLBigqueryJobConfigurationQuery class],
+    [GTLBigqueryJobConfigurationTableCopy class],
+    [GTLBigqueryJobList class],
+    [GTLBigqueryJobReference class],
+    [GTLBigqueryJobStatistics class],
+    [GTLBigqueryJobStatistics2 class],
+    [GTLBigqueryJobStatistics3 class],
+    [GTLBigqueryJobStatistics4 class],
+    [GTLBigqueryJobStatus class],
+    [GTLBigqueryJsonObject class],
+    [GTLBigqueryProjectList class],
+    [GTLBigqueryProjectReference class],
+    [GTLBigqueryQueryResponse class],
+    [GTLBigqueryTable class],
+    [GTLBigqueryTableCell class],
+    [GTLBigqueryTableDataInsertAllResponse class],
+    [GTLBigqueryTableDataList class],
+    [GTLBigqueryTableFieldSchema class],
+    [GTLBigqueryTableList class],
+    [GTLBigqueryTableReference class],
+    [GTLBigqueryTableRow class],
+    [GTLBigqueryTableSchema class],
+    [GTLBigqueryViewDefinition class]
+  ];
   return classes;
 }
 #endif  // DEBUG
 
-- (id)init {
+- (instancetype)init {
   self = [super init];
   if (self) {
     // Version from discovery.

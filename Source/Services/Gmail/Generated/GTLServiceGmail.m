@@ -36,32 +36,32 @@
 // Method compiled in debug builds just to check that all the needed support
 // classes are present at link time.
 + (NSArray *)checkClasses {
-  NSArray *classes = [NSArray arrayWithObjects:
-                      [GTLQueryGmail class],
-                      [GTLGmailDraft class],
-                      [GTLGmailHistory class],
-                      [GTLGmailHistoryLabelAdded class],
-                      [GTLGmailHistoryLabelRemoved class],
-                      [GTLGmailHistoryMessageAdded class],
-                      [GTLGmailHistoryMessageDeleted class],
-                      [GTLGmailLabel class],
-                      [GTLGmailListDraftsResponse class],
-                      [GTLGmailListHistoryResponse class],
-                      [GTLGmailListLabelsResponse class],
-                      [GTLGmailListMessagesResponse class],
-                      [GTLGmailListThreadsResponse class],
-                      [GTLGmailMessage class],
-                      [GTLGmailMessagePart class],
-                      [GTLGmailMessagePartBody class],
-                      [GTLGmailMessagePartHeader class],
-                      [GTLGmailProfile class],
-                      [GTLGmailThread class],
-                      nil];
+  NSArray *classes = @[
+    [GTLQueryGmail class],
+    [GTLGmailDraft class],
+    [GTLGmailHistory class],
+    [GTLGmailHistoryLabelAdded class],
+    [GTLGmailHistoryLabelRemoved class],
+    [GTLGmailHistoryMessageAdded class],
+    [GTLGmailHistoryMessageDeleted class],
+    [GTLGmailLabel class],
+    [GTLGmailListDraftsResponse class],
+    [GTLGmailListHistoryResponse class],
+    [GTLGmailListLabelsResponse class],
+    [GTLGmailListMessagesResponse class],
+    [GTLGmailListThreadsResponse class],
+    [GTLGmailMessage class],
+    [GTLGmailMessagePart class],
+    [GTLGmailMessagePartBody class],
+    [GTLGmailMessagePartHeader class],
+    [GTLGmailProfile class],
+    [GTLGmailThread class]
+  ];
   return classes;
 }
 #endif  // DEBUG
 
-- (id)init {
+- (instancetype)init {
   self = [super init];
   if (self) {
     // Version from discovery.

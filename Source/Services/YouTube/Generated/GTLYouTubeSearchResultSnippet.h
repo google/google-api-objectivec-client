@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,31 +48,31 @@
 
 // The value that YouTube uses to uniquely identify the channel that published
 // the resource that the search result identifies.
-@property (copy) NSString *channelId;
+@property (nonatomic, copy) NSString *channelId;
 
 // The title of the channel that published the resource that the search result
 // identifies.
-@property (copy) NSString *channelTitle;
+@property (nonatomic, copy) NSString *channelTitle;
 
 // A description of the search result.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (copy) NSString *descriptionProperty;
+@property (nonatomic, copy) NSString *descriptionProperty;
 
 // It indicates if the resource (video or channel) has upcoming/active live
 // broadcast content. Or it's "none" if there is not any upcoming/active live
 // broadcasts.
-@property (copy) NSString *liveBroadcastContent;
+@property (nonatomic, copy) NSString *liveBroadcastContent;
 
 // The creation date and time of the resource that the search result identifies.
 // The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-@property (retain) GTLDateTime *publishedAt;
+@property (nonatomic, retain) GTLDateTime *publishedAt;
 
 // A map of thumbnail images associated with the search result. For each object
 // in the map, the key is the name of the thumbnail image, and the value is an
 // object that contains other information about the thumbnail.
-@property (retain) GTLYouTubeThumbnailDetails *thumbnails;
+@property (nonatomic, retain) GTLYouTubeThumbnailDetails *thumbnails;
 
 // The title of the search result.
-@property (copy) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 @end

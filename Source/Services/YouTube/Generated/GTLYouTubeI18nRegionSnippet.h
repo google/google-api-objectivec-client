@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,9 +45,9 @@
 @interface GTLYouTubeI18nRegionSnippet : GTLObject
 
 // The region code as a 2-letter ISO country code.
-@property (copy) NSString *gl;
+@property (nonatomic, copy) NSString *gl;
 
 // The human-readable name of the region.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 @end

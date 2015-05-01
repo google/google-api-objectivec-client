@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,9 +50,9 @@
 @interface GTLAdExchangeBuyerDirectDealsList : GTLObject
 
 // A list of direct deals relevant for your account.
-@property (retain) NSArray *directDeals;  // of GTLAdExchangeBuyerDirectDeal
+@property (nonatomic, retain) NSArray *directDeals;  // of GTLAdExchangeBuyerDirectDeal
 
 // Resource type.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 @end

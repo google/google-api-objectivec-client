@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,28 +45,28 @@
 
 // The immutable ID of the label.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The visibility of the label in the label list in the Gmail web interface.
-@property (copy) NSString *labelListVisibility;
+@property (nonatomic, copy) NSString *labelListVisibility;
 
 // The visibility of the label in the message list in the Gmail web interface.
-@property (copy) NSString *messageListVisibility;
+@property (nonatomic, copy) NSString *messageListVisibility;
 
 // The total number of messages with the label.
-@property (retain) NSNumber *messagesTotal;  // intValue
+@property (nonatomic, retain) NSNumber *messagesTotal;  // intValue
 
 // The number of unread messages with the label.
-@property (retain) NSNumber *messagesUnread;  // intValue
+@property (nonatomic, retain) NSNumber *messagesUnread;  // intValue
 
 // The display name of the label.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // The total number of threads with the label.
-@property (retain) NSNumber *threadsTotal;  // intValue
+@property (nonatomic, retain) NSNumber *threadsTotal;  // intValue
 
 // The number of unread threads with the label.
-@property (retain) NSNumber *threadsUnread;  // intValue
+@property (nonatomic, retain) NSNumber *threadsUnread;  // intValue
 
 // The owner type for the label. User labels are created by the user and can be
 // modified and deleted by the user and can be applied to any message or thread.
@@ -76,6 +76,6 @@
 // users can apply and remove the INBOX and UNREAD labels from messages and
 // threads, but cannot apply or remove the DRAFTS or SENT labels from messages
 // or threads.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end

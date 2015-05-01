@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,18 +43,17 @@
 @dynamic identifier, kind, pricing, saleTotal, slice;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+  NSDictionary *map = @{
+    @"identifier" : @"id"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [GTLQPXExpressPricingInfo class], @"pricing",
-      [GTLQPXExpressSliceInfo class], @"slice",
-      nil];
+  NSDictionary *map = @{
+    @"pricing" : [GTLQPXExpressPricingInfo class],
+    @"slice" : [GTLQPXExpressSliceInfo class]
+  };
   return map;
 }
 

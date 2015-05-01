@@ -45,30 +45,30 @@
 
 // [Optional] The compression type to use for exported files. Possible values
 // include GZIP and NONE. The default value is NONE.
-@property (copy) NSString *compression;
+@property (nonatomic, copy) NSString *compression;
 
 // [Optional] The exported file format. Possible values include CSV,
 // NEWLINE_DELIMITED_JSON and AVRO. The default value is CSV. Tables with nested
 // or repeated fields cannot be exported as CSV.
-@property (copy) NSString *destinationFormat;
+@property (nonatomic, copy) NSString *destinationFormat;
 
 // [Pick one] DEPRECATED: Use destinationUris instead, passing only one URI as
 // necessary. The fully-qualified Google Cloud Storage URI where the extracted
 // table should be written.
-@property (copy) NSString *destinationUri;
+@property (nonatomic, copy) NSString *destinationUri;
 
 // [Pick one] A list of fully-qualified Google Cloud Storage URIs where the
 // extracted table should be written.
-@property (retain) NSArray *destinationUris;  // of NSString
+@property (nonatomic, retain) NSArray *destinationUris;  // of NSString
 
 // [Optional] Delimiter to use between fields in the exported data. Default is
 // ','
-@property (copy) NSString *fieldDelimiter;
+@property (nonatomic, copy) NSString *fieldDelimiter;
 
 // [Optional] Whether to print out a header row in the results. Default is true.
-@property (retain) NSNumber *printHeader;  // boolValue
+@property (nonatomic, retain) NSNumber *printHeader;  // boolValue
 
 // [Required] A reference to the table being exported.
-@property (retain) GTLBigqueryTableReference *sourceTable;
+@property (nonatomic, retain) GTLBigqueryTableReference *sourceTable;
 
 @end

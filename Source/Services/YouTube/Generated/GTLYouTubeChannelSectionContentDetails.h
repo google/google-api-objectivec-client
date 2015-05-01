@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,10 +44,10 @@
 @interface GTLYouTubeChannelSectionContentDetails : GTLObject
 
 // The channel ids for type multiple_channels.
-@property (retain) NSArray *channels;  // of NSString
+@property (nonatomic, retain) NSArray *channels;  // of NSString
 
 // The playlist ids for type single_playlist and multiple_playlists. For
 // singlePlaylist, only one playlistId is allowed.
-@property (retain) NSArray *playlists;  // of NSString
+@property (nonatomic, retain) NSArray *playlists;  // of NSString
 
 @end

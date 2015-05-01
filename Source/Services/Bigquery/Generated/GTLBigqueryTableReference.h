@@ -42,13 +42,13 @@
 @interface GTLBigqueryTableReference : GTLObject
 
 // [Required] The ID of the dataset containing this table.
-@property (copy) NSString *datasetId;
+@property (nonatomic, copy) NSString *datasetId;
 
 // [Required] The ID of the project containing this table.
-@property (copy) NSString *projectId;
+@property (nonatomic, copy) NSString *projectId;
 
 // [Required] The ID of the table. The ID must contain only letters (a-z, A-Z),
 // numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
-@property (copy) NSString *tableId;
+@property (nonatomic, copy) NSString *tableId;
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,11 +45,11 @@
 // Represents an account passed into the Account Manager on Glass.
 
 @interface GTLMirrorAccount : GTLObject
-@property (retain) NSArray *authTokens;  // of GTLMirrorAuthToken
-@property (retain) NSArray *features;  // of NSString
-@property (copy) NSString *password;
+@property (nonatomic, retain) NSArray *authTokens;  // of GTLMirrorAuthToken
+@property (nonatomic, retain) NSArray *features;  // of NSString
+@property (nonatomic, copy) NSString *password;
 
 // Remapped to 'userDataProperty' to avoid GTLObject's 'userData'.
-@property (retain) NSArray *userDataProperty;  // of GTLMirrorUserData
+@property (nonatomic, retain) NSArray *userDataProperty;  // of GTLMirrorUserData
 
 @end

@@ -44,16 +44,16 @@
          schema, totalBytesProcessed, totalRows;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"etag"
-                                forKey:@"ETag"];
+  NSDictionary *map = @{
+    @"ETag" : @"etag"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLBigqueryTableRow class]
-                                forKey:@"rows"];
+  NSDictionary *map = @{
+    @"rows" : [GTLBigqueryTableRow class]
+  };
   return map;
 }
 

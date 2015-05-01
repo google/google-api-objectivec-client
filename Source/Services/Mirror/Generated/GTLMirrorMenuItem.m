@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,18 +42,17 @@
          values;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"contextual_command", @"contextualCommand",
-      @"id", @"identifier",
-      nil];
+  NSDictionary *map = @{
+    @"contextualCommand" : @"contextual_command",
+    @"identifier" : @"id"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLMirrorMenuValue class]
-                                forKey:@"values"];
+  NSDictionary *map = @{
+    @"values" : [GTLMirrorMenuValue class]
+  };
   return map;
 }
 

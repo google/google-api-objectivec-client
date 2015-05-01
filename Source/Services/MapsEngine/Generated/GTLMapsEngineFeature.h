@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,12 +48,12 @@
 @interface GTLMapsEngineFeature : GTLObject
 
 // The geometry member of this Feature.
-@property (retain) GTLMapsEngineGeoJsonGeometry *geometry;
+@property (nonatomic, retain) GTLMapsEngineGeoJsonGeometry *geometry;
 
 // Key/value pairs of this Feature.
-@property (retain) GTLMapsEngineGeoJsonProperties *properties;
+@property (nonatomic, retain) GTLMapsEngineGeoJsonProperties *properties;
 
 // Identifies this object as a feature.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end

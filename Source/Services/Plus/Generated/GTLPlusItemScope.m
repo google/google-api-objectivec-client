@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,25 +48,23 @@
          width, worstRating;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"associated_media", @"associatedMedia",
-      @"description", @"descriptionProperty",
-      @"id", @"identifier",
-      nil];
+  NSDictionary *map = @{
+    @"associatedMedia" : @"associated_media",
+    @"descriptionProperty" : @"description",
+    @"identifier" : @"id"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSString class], @"additionalName",
-      [GTLPlusItemScope class], @"associated_media",
-      [GTLPlusItemScope class], @"attendees",
-      [GTLPlusItemScope class], @"author",
-      [GTLPlusItemScope class], @"contributor",
-      [GTLPlusItemScope class], @"performers",
-      nil];
+  NSDictionary *map = @{
+    @"additionalName" : [NSString class],
+    @"associated_media" : [GTLPlusItemScope class],
+    @"attendees" : [GTLPlusItemScope class],
+    @"author" : [GTLPlusItemScope class],
+    @"contributor" : [GTLPlusItemScope class],
+    @"performers" : [GTLPlusItemScope class]
+  };
   return map;
 }
 

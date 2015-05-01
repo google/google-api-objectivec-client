@@ -44,17 +44,17 @@
 @interface GTLDoubleClickBidManagerQuerySchedule : GTLObject
 
 // Datetime to periodically run the query until.
-@property (retain) NSNumber *endTimeMs;  // longLongValue
+@property (nonatomic, retain) NSNumber *endTimeMs;  // longLongValue
 
 // How often the query is run.
-@property (copy) NSString *frequency;
+@property (nonatomic, copy) NSString *frequency;
 
 // Time of day at which a new report will be generated, represented as minutes
 // past midnight. Range is 0 to 1439. Only applies to scheduled reports.
-@property (retain) NSNumber *nextRunMinuteOfDay;  // intValue
+@property (nonatomic, retain) NSNumber *nextRunMinuteOfDay;  // intValue
 
 // Canonical timezone code for report generation time. Defaults to
 // America/New_York.
-@property (copy) NSString *nextRunTimezoneCode;
+@property (nonatomic, copy) NSString *nextRunTimezoneCode;
 
 @end

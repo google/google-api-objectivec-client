@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,14 +45,14 @@
 @interface GTLCalendarAclRule : GTLObject
 
 // ETag of the resource.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // Identifier of the ACL rule.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Type of the resource ("calendar#aclRule").
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The role assigned to the scope. Possible values are:
 // - "none" - Provides no access.
@@ -64,10 +64,10 @@
 // - "owner" - Provides ownership of the calendar. This role has all of the
 // permissions of the writer role with the additional ability to see and
 // manipulate ACLs.
-@property (copy) NSString *role;
+@property (nonatomic, copy) NSString *role;
 
 // The scope of the rule.
-@property (retain) GTLCalendarAclRuleScope *scope;
+@property (nonatomic, retain) GTLCalendarAclRuleScope *scope;
 
 @end
 
@@ -85,10 +85,10 @@
 // - "group" - Limits the scope to a group.
 // - "domain" - Limits the scope to a domain. Note: The permissions granted to
 // the "default", or public, scope apply to any user, authenticated or not.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 // The email address of a user or group, or the name of a domain, depending on
 // the scope type. Omitted for type "default".
-@property (copy) NSString *value;
+@property (nonatomic, copy) NSString *value;
 
 @end

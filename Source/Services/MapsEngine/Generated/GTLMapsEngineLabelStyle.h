@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,25 +47,25 @@
 @interface GTLMapsEngineLabelStyle : GTLObject
 
 // Color of the text. If not provided, default to black.
-@property (copy) NSString *color;
+@property (nonatomic, copy) NSString *color;
 
 // The column value of the feature to be displayed.
-@property (copy) NSString *column;
+@property (nonatomic, copy) NSString *column;
 
 // Font style of the label, defaults to 'normal'.
-@property (copy) NSString *fontStyle;
+@property (nonatomic, copy) NSString *fontStyle;
 
 // Font weight of the label, defaults to 'normal'.
-@property (copy) NSString *fontWeight;
+@property (nonatomic, copy) NSString *fontWeight;
 
 // Opacity of the text.
-@property (retain) NSNumber *opacity;  // doubleValue
+@property (nonatomic, retain) NSNumber *opacity;  // doubleValue
 
 // Outline color of the text.
-@property (retain) GTLMapsEngineColor *outline;
+@property (nonatomic, retain) GTLMapsEngineColor *outline;
 
 // Font size of the label, in pixels. 8 <= size <= 15. If not provided, a
 // default size will be provided.
-@property (retain) NSNumber *size;  // doubleValue
+@property (nonatomic, retain) NSNumber *size;  // doubleValue
 
 @end

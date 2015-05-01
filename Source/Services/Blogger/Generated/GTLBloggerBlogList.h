@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,12 +48,12 @@
 @interface GTLBloggerBlogList : GTLCollectionObject
 
 // Admin level list of blog per-user information
-@property (retain) NSArray *blogUserInfos;  // of GTLBloggerBlogUserInfo
+@property (nonatomic, retain) NSArray *blogUserInfos;  // of GTLBloggerBlogUserInfo
 
 // The list of Blogs this user has Authorship or Admin rights over.
-@property (retain) NSArray *items;  // of GTLBloggerBlog
+@property (nonatomic, retain) NSArray *items;  // of GTLBloggerBlog
 
 // The kind of this entity. Always blogger#blogList
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 @end

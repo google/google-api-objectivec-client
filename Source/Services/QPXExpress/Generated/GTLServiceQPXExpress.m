@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,37 +37,37 @@
 // Method compiled in debug builds just to check that all the needed support
 // classes are present at link time.
 + (NSArray *)checkClasses {
-  NSArray *classes = [NSArray arrayWithObjects:
-                      [GTLQueryQPXExpress class],
-                      [GTLQPXExpressAircraftData class],
-                      [GTLQPXExpressAirportData class],
-                      [GTLQPXExpressBagDescriptor class],
-                      [GTLQPXExpressCarrierData class],
-                      [GTLQPXExpressCityData class],
-                      [GTLQPXExpressData class],
-                      [GTLQPXExpressFareInfo class],
-                      [GTLQPXExpressFlightInfo class],
-                      [GTLQPXExpressFreeBaggageAllowance class],
-                      [GTLQPXExpressLegInfo class],
-                      [GTLQPXExpressPassengerCounts class],
-                      [GTLQPXExpressPricingInfo class],
-                      [GTLQPXExpressSegmentInfo class],
-                      [GTLQPXExpressSegmentPricing class],
-                      [GTLQPXExpressSliceInfo class],
-                      [GTLQPXExpressSliceInput class],
-                      [GTLQPXExpressTaxData class],
-                      [GTLQPXExpressTaxInfo class],
-                      [GTLQPXExpressTimeOfDayRange class],
-                      [GTLQPXExpressTripOption class],
-                      [GTLQPXExpressTripOptionsRequest class],
-                      [GTLQPXExpressTripOptionsResponse class],
-                      [GTLQPXExpressTripsSearchResponse class],
-                      nil];
+  NSArray *classes = @[
+    [GTLQueryQPXExpress class],
+    [GTLQPXExpressAircraftData class],
+    [GTLQPXExpressAirportData class],
+    [GTLQPXExpressBagDescriptor class],
+    [GTLQPXExpressCarrierData class],
+    [GTLQPXExpressCityData class],
+    [GTLQPXExpressData class],
+    [GTLQPXExpressFareInfo class],
+    [GTLQPXExpressFlightInfo class],
+    [GTLQPXExpressFreeBaggageAllowance class],
+    [GTLQPXExpressLegInfo class],
+    [GTLQPXExpressPassengerCounts class],
+    [GTLQPXExpressPricingInfo class],
+    [GTLQPXExpressSegmentInfo class],
+    [GTLQPXExpressSegmentPricing class],
+    [GTLQPXExpressSliceInfo class],
+    [GTLQPXExpressSliceInput class],
+    [GTLQPXExpressTaxData class],
+    [GTLQPXExpressTaxInfo class],
+    [GTLQPXExpressTimeOfDayRange class],
+    [GTLQPXExpressTripOption class],
+    [GTLQPXExpressTripOptionsRequest class],
+    [GTLQPXExpressTripOptionsResponse class],
+    [GTLQPXExpressTripsSearchResponse class]
+  ];
   return classes;
 }
 #endif  // DEBUG
 
-- (id)init {
+- (instancetype)init {
   self = [super init];
   if (self) {
     // Version from discovery.

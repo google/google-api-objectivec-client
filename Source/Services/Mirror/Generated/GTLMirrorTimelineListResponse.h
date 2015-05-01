@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,13 +50,13 @@
 @interface GTLMirrorTimelineListResponse : GTLCollectionObject
 
 // Items in the timeline.
-@property (retain) NSArray *items;  // of GTLMirrorTimelineItem
+@property (nonatomic, retain) NSArray *items;  // of GTLMirrorTimelineItem
 
 // The type of resource. This is always mirror#timeline.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The next page token. Provide this as the pageToken parameter in the request
 // to retrieve the next page of results.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 @end

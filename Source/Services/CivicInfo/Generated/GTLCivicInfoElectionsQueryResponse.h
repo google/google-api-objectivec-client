@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,10 +46,10 @@
 @interface GTLCivicInfoElectionsQueryResponse : GTLObject
 
 // A list of available elections
-@property (retain) NSArray *elections;  // of GTLCivicInfoElection
+@property (nonatomic, retain) NSArray *elections;  // of GTLCivicInfoElection
 
 // Identifies what kind of resource this is. Value: the fixed string
 // "civicinfo#electionsQueryResponse".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 @end

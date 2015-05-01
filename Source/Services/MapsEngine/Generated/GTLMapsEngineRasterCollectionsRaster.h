@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,34 +47,34 @@
 // A rectangular bounding box which contains all of the data in this Raster. The
 // box is expressed as \"west, south, east, north\". The numbers represent
 // latitudes and longitudes in decimal degrees.
-@property (retain) NSArray *bbox;  // of NSNumber (doubleValue)
+@property (nonatomic, retain) NSArray *bbox;  // of NSNumber (doubleValue)
 
 // The creation time of this raster. The value is an RFC 3339 formatted
 // date-time value (e.g. 1970-01-01T00:00:00Z).
-@property (retain) GTLDateTime *creationTime;
+@property (nonatomic, retain) GTLDateTime *creationTime;
 
 // The description of this Raster, supplied by the author.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (copy) NSString *descriptionProperty;
+@property (nonatomic, copy) NSString *descriptionProperty;
 
 // A globally unique ID, used to refer to this Raster.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The last modified time of this raster. The value is an RFC 3339 formatted
 // date-time value (e.g. 1970-01-01T00:00:00Z).
-@property (retain) GTLDateTime *lastModifiedTime;
+@property (nonatomic, retain) GTLDateTime *lastModifiedTime;
 
 // The name of this Raster, supplied by the author.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // The ID of the project that this Raster is in.
-@property (copy) NSString *projectId;
+@property (nonatomic, copy) NSString *projectId;
 
 // The type of this Raster. Always "image" today.
-@property (copy) NSString *rasterType;
+@property (nonatomic, copy) NSString *rasterType;
 
 // Tags of this Raster.
-@property (retain) NSArray *tags;  // of NSString
+@property (nonatomic, retain) NSArray *tags;  // of NSString
 
 @end

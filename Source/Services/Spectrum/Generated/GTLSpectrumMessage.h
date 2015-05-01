@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,10 +51,10 @@
 // 6MHz bandwidth, but Ofcom regulation would require two specifications, at
 // 0.1MHz and 8MHz. This parameter may be empty if there is no available
 // spectrum. It will be present otherwise.
-@property (retain) NSNumber *bandwidth;  // doubleValue
+@property (nonatomic, retain) NSNumber *bandwidth;  // doubleValue
 
 // The list of frequency ranges and permissible power levels. The list may be
 // empty if there is no available spectrum, otherwise it will be present.
-@property (retain) NSArray *frequencyRanges;  // of GTLSpectrumFrequencyRange
+@property (nonatomic, retain) NSArray *frequencyRanges;  // of GTLSpectrumFrequencyRange
 
 @end

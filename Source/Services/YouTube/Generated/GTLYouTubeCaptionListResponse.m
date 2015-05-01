@@ -41,16 +41,16 @@
 @dynamic ETag, eventId, items, kind, visitorId;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"etag"
-                                forKey:@"ETag"];
+  NSDictionary *map = @{
+    @"ETag" : @"etag"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLYouTubeCaption class]
-                                forKey:@"items"];
+  NSDictionary *map = @{
+    @"items" : [GTLYouTubeCaption class]
+  };
   return map;
 }
 

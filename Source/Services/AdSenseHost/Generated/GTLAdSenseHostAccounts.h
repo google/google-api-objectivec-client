@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,12 +48,12 @@
 @interface GTLAdSenseHostAccounts : GTLCollectionObject
 
 // ETag of this response for caching purposes.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The accounts returned in this list response.
-@property (retain) NSArray *items;  // of GTLAdSenseHostAccount
+@property (nonatomic, retain) NSArray *items;  // of GTLAdSenseHostAccount
 
 // Kind of list this is, in this case adsensehost#accounts.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,68 +56,68 @@
 // - "owner" - Provides ownership of the calendar. This role has all of the
 // permissions of the writer role with the additional ability to see and
 // manipulate ACLs.
-@property (copy) NSString *accessRole;
+@property (nonatomic, copy) NSString *accessRole;
 
 // The main color of the calendar in the hexadecimal format "#0088aa". This
 // property supersedes the index-based colorId property. Optional.
-@property (copy) NSString *backgroundColor;
+@property (nonatomic, copy) NSString *backgroundColor;
 
 // The color of the calendar. This is an ID referring to an entry in the
 // calendar section of the colors definition (see the colors endpoint).
 // Optional.
-@property (copy) NSString *colorId;
+@property (nonatomic, copy) NSString *colorId;
 
 // The default reminders that the authenticated user has for this calendar.
-@property (retain) NSArray *defaultReminders;  // of GTLCalendarEventReminder
+@property (nonatomic, retain) NSArray *defaultReminders;  // of GTLCalendarEventReminder
 
 // Whether this calendar list entry has been deleted from the calendar list.
 // Read-only. Optional. The default is False.
-@property (retain) NSNumber *deleted;  // boolValue
+@property (nonatomic, retain) NSNumber *deleted;  // boolValue
 
 // Description of the calendar. Optional. Read-only.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (copy) NSString *descriptionProperty;
+@property (nonatomic, copy) NSString *descriptionProperty;
 
 // ETag of the resource.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The foreground color of the calendar in the hexadecimal format "#ffffff".
 // This property supersedes the index-based colorId property. Optional.
-@property (copy) NSString *foregroundColor;
+@property (nonatomic, copy) NSString *foregroundColor;
 
 // Whether the calendar has been hidden from the list. Optional. The default is
 // False.
-@property (retain) NSNumber *hidden;  // boolValue
+@property (nonatomic, retain) NSNumber *hidden;  // boolValue
 
 // Identifier of the calendar.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Type of the resource ("calendar#calendarListEntry").
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Geographic location of the calendar as free-form text. Optional. Read-only.
-@property (copy) NSString *location;
+@property (nonatomic, copy) NSString *location;
 
 // The notifications that the authenticated user is receiving for this calendar.
-@property (retain) GTLCalendarCalendarListEntryNotificationSettings *notificationSettings;
+@property (nonatomic, retain) GTLCalendarCalendarListEntryNotificationSettings *notificationSettings;
 
 // Whether the calendar is the primary calendar of the authenticated user.
 // Read-only. Optional. The default is False.
-@property (retain) NSNumber *primary;  // boolValue
+@property (nonatomic, retain) NSNumber *primary;  // boolValue
 
 // Whether the calendar content shows up in the calendar UI. Optional. The
 // default is False.
-@property (retain) NSNumber *selected;  // boolValue
+@property (nonatomic, retain) NSNumber *selected;  // boolValue
 
 // Title of the calendar. Read-only.
-@property (copy) NSString *summary;
+@property (nonatomic, copy) NSString *summary;
 
 // The summary that the authenticated user has set for this calendar. Optional.
-@property (copy) NSString *summaryOverride;
+@property (nonatomic, copy) NSString *summaryOverride;
 
 // The time zone of the calendar. Optional. Read-only.
-@property (copy) NSString *timeZone;
+@property (nonatomic, copy) NSString *timeZone;
 
 @end
 
@@ -130,6 +130,6 @@
 @interface GTLCalendarCalendarListEntryNotificationSettings : GTLObject
 
 // The list of notifications set for this calendar.
-@property (retain) NSArray *notifications;  // of GTLCalendarNotification
+@property (nonatomic, retain) NSArray *notifications;  // of GTLCalendarNotification
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,24 +51,24 @@
 @interface GTLYouTubeSubscription : GTLObject
 
 // The contentDetails object contains basic statistics about the subscription.
-@property (retain) GTLYouTubeSubscriptionContentDetails *contentDetails;
+@property (nonatomic, retain) GTLYouTubeSubscriptionContentDetails *contentDetails;
 
 // Etag of this resource.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The ID that YouTube uses to uniquely identify the subscription.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Identifies what kind of resource this is. Value: the fixed string
 // "youtube#subscription".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The snippet object contains basic details about the subscription, including
 // its title and the channel that the user subscribed to.
-@property (retain) GTLYouTubeSubscriptionSnippet *snippet;
+@property (nonatomic, retain) GTLYouTubeSubscriptionSnippet *snippet;
 
 // The subscriberSnippet object contains basic details about the sbuscriber.
-@property (retain) GTLYouTubeSubscriptionSubscriberSnippet *subscriberSnippet;
+@property (nonatomic, retain) GTLYouTubeSubscriptionSubscriberSnippet *subscriberSnippet;
 
 @end

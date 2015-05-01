@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,15 +46,15 @@
 // If includeDeleted is set to true in the request, this list will contain
 // sessions deleted with original end times that are within the startTime and
 // endTime frame.
-@property (retain) NSArray *deletedSession;  // of GTLFitnessSession
+@property (nonatomic, retain) NSArray *deletedSession;  // of GTLFitnessSession
 
 // The continuation token, which is used to page through large result sets.
 // Provide this value in a subsequent request to return the next page of
 // results.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 // Sessions with an end time that is between startTime and endTime of the
 // request.
-@property (retain) NSArray *session;  // of GTLFitnessSession
+@property (nonatomic, retain) NSArray *session;  // of GTLFitnessSession
 
 @end

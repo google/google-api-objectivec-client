@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,30 +47,30 @@
 @interface GTLPlusMomentsFeed : GTLCollectionObject
 
 // ETag of this response for caching purposes.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // The moments in this page of results.
-@property (retain) NSArray *items;  // of GTLPlusMoment
+@property (nonatomic, retain) NSArray *items;  // of GTLPlusMoment
 
 // Identifies this resource as a collection of moments. Value:
 // "plus#momentsFeed".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Link to the next page of moments.
-@property (copy) NSString *nextLink;
+@property (nonatomic, copy) NSString *nextLink;
 
 // The continuation token, which is used to page through large result sets.
 // Provide this value in a subsequent request to return the next page of
 // results.
-@property (copy) NSString *nextPageToken;
+@property (nonatomic, copy) NSString *nextPageToken;
 
 // Link to this page of moments.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // The title of this collection of moments.
-@property (copy) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 // The RFC 339 timestamp for when this collection of moments was last updated.
-@property (retain) GTLDateTime *updated;
+@property (nonatomic, retain) GTLDateTime *updated;
 
 @end

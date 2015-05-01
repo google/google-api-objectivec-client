@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,16 +50,16 @@
 // The colors which are included in the style. These are represented as six
 // hexadecimal characters, similar to HTML color codes, but without the leading
 // hash.
-@property (retain) GTLAdSenseAdStyleColors *colors;
+@property (nonatomic, retain) GTLAdSenseAdStyleColors *colors;
 
 // The style of the corners in the ad.
-@property (copy) NSString *corners;
+@property (nonatomic, copy) NSString *corners;
 
 // The font which is included in the style.
-@property (retain) GTLAdSenseAdStyleFont *font;
+@property (nonatomic, retain) GTLAdSenseAdStyleFont *font;
 
 // Kind this is, in this case adsense#adStyle.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 @end
 
@@ -72,19 +72,19 @@
 @interface GTLAdSenseAdStyleColors : GTLObject
 
 // The color of the ad background.
-@property (copy) NSString *background;
+@property (nonatomic, copy) NSString *background;
 
 // The color of the ad border.
-@property (copy) NSString *border;
+@property (nonatomic, copy) NSString *border;
 
 // The color of the ad text.
-@property (copy) NSString *text;
+@property (nonatomic, copy) NSString *text;
 
 // The color of the ad title.
-@property (copy) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 // The color of the ad url.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 @end
 
@@ -97,9 +97,9 @@
 @interface GTLAdSenseAdStyleFont : GTLObject
 
 // The family of the font.
-@property (copy) NSString *family;
+@property (nonatomic, copy) NSString *family;
 
 // The size of the font.
-@property (copy) NSString *size;
+@property (nonatomic, copy) NSString *size;
 
 @end

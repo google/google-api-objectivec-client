@@ -45,33 +45,33 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (copy) NSString *fields;
+@property (nonatomic, copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (retain) NSArray *addLabelIds;  // of NSString
-@property (assign) BOOL deleted;
-@property (retain) GTLGmailDraft *draft;
-@property (copy) NSString *format;
+@property (nonatomic, retain) NSArray *addLabelIds;  // of NSString
+@property (nonatomic, assign) BOOL deleted;
+@property (nonatomic, retain) GTLGmailDraft *draft;
+@property (nonatomic, copy) NSString *format;
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
-@property (assign) BOOL includeSpamTrash;
-@property (copy) NSString *internalDateSource;
-@property (retain) GTLGmailLabel *label;
-@property (copy) NSString *labelId;
-@property (retain) NSArray *labelIds;  // of NSString
-@property (assign) NSUInteger maxResults;
-@property (retain) GTLGmailMessage *message;
-@property (copy) NSString *messageId;
-@property (retain) NSArray *metadataHeaders;  // of NSString
-@property (assign) BOOL neverMarkSpam;
-@property (copy) NSString *pageToken;
-@property (assign) BOOL processForCalendar;
-@property (copy) NSString *q;
-@property (retain) NSArray *removeLabelIds;  // of NSString
-@property (assign) unsigned long long startHistoryId;
-@property (copy) NSString *userId;
+@property (nonatomic, copy) NSString *identifier;
+@property (nonatomic, assign) BOOL includeSpamTrash;
+@property (nonatomic, copy) NSString *internalDateSource;
+@property (nonatomic, retain) GTLGmailLabel *label;
+@property (nonatomic, copy) NSString *labelId;
+@property (nonatomic, retain) NSArray *labelIds;  // of NSString
+@property (nonatomic, assign) NSUInteger maxResults;
+@property (nonatomic, retain) GTLGmailMessage *message;
+@property (nonatomic, copy) NSString *messageId;
+@property (nonatomic, retain) NSArray *metadataHeaders;  // of NSString
+@property (nonatomic, assign) BOOL neverMarkSpam;
+@property (nonatomic, copy) NSString *pageToken;
+@property (nonatomic, assign) BOOL processForCalendar;
+@property (nonatomic, copy) NSString *q;
+@property (nonatomic, retain) NSArray *removeLabelIds;  // of NSString
+@property (nonatomic, assign) unsigned long long startHistoryId;
+@property (nonatomic, copy) NSString *userId;
 
 #pragma mark -
 #pragma mark "users.drafts" methods
@@ -91,7 +91,7 @@
 //   kGTLAuthScopeGmailCompose
 //   kGTLAuthScopeGmailModify
 // Fetches a GTLGmailDraft.
-+ (id)queryForUsersDraftsCreateWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
++ (instancetype)queryForUsersDraftsCreateWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
 // Method: gmail.users.drafts.delete
 // Immediately and permanently deletes the specified draft. Does not simply
@@ -104,7 +104,7 @@
 //   kGTLAuthScopeGmail
 //   kGTLAuthScopeGmailCompose
 //   kGTLAuthScopeGmailModify
-+ (id)queryForUsersDraftsDelete;
++ (instancetype)queryForUsersDraftsDelete;
 
 // Method: gmail.users.drafts.get
 // Gets the specified draft.
@@ -123,7 +123,7 @@
 //   kGTLAuthScopeGmailModify
 //   kGTLAuthScopeGmailReadonly
 // Fetches a GTLGmailDraft.
-+ (id)queryForUsersDraftsGet;
++ (instancetype)queryForUsersDraftsGet;
 
 // Method: gmail.users.drafts.list
 // Lists the drafts in the user's mailbox.
@@ -138,7 +138,7 @@
 //   kGTLAuthScopeGmailModify
 //   kGTLAuthScopeGmailReadonly
 // Fetches a GTLGmailListDraftsResponse.
-+ (id)queryForUsersDraftsList;
++ (instancetype)queryForUsersDraftsList;
 
 // Method: gmail.users.drafts.send
 // Sends the specified, existing draft to the recipients in the To, Cc, and Bcc
@@ -155,7 +155,7 @@
 //   kGTLAuthScopeGmailCompose
 //   kGTLAuthScopeGmailModify
 // Fetches a GTLGmailMessage.
-+ (id)queryForUsersDraftsSendWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
++ (instancetype)queryForUsersDraftsSendWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
 // Method: gmail.users.drafts.update
 // Replaces a draft's content.
@@ -172,7 +172,7 @@
 //   kGTLAuthScopeGmailCompose
 //   kGTLAuthScopeGmailModify
 // Fetches a GTLGmailDraft.
-+ (id)queryForUsersDraftsUpdateWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
++ (instancetype)queryForUsersDraftsUpdateWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
 #pragma mark -
 #pragma mark "users" methods
@@ -189,7 +189,7 @@
 //   kGTLAuthScopeGmailModify
 //   kGTLAuthScopeGmailReadonly
 // Fetches a GTLGmailProfile.
-+ (id)queryForUsersGetProfile;
++ (instancetype)queryForUsersGetProfile;
 
 #pragma mark -
 #pragma mark "users.history" methods
@@ -220,7 +220,7 @@
 //   kGTLAuthScopeGmailModify
 //   kGTLAuthScopeGmailReadonly
 // Fetches a GTLGmailListHistoryResponse.
-+ (id)queryForUsersHistoryList;
++ (instancetype)queryForUsersHistoryList;
 
 #pragma mark -
 #pragma mark "users.labels" methods
@@ -237,7 +237,7 @@
 //   kGTLAuthScopeGmailLabels
 //   kGTLAuthScopeGmailModify
 // Fetches a GTLGmailLabel.
-+ (id)queryForUsersLabelsCreate;
++ (instancetype)queryForUsersLabelsCreate;
 
 // Method: gmail.users.labels.delete
 // Immediately and permanently deletes the specified label and removes it from
@@ -250,7 +250,7 @@
 //   kGTLAuthScopeGmail
 //   kGTLAuthScopeGmailLabels
 //   kGTLAuthScopeGmailModify
-+ (id)queryForUsersLabelsDelete;
++ (instancetype)queryForUsersLabelsDelete;
 
 // Method: gmail.users.labels.get
 // Gets the specified label.
@@ -264,7 +264,7 @@
 //   kGTLAuthScopeGmailModify
 //   kGTLAuthScopeGmailReadonly
 // Fetches a GTLGmailLabel.
-+ (id)queryForUsersLabelsGet;
++ (instancetype)queryForUsersLabelsGet;
 
 // Method: gmail.users.labels.list
 // Lists all labels in the user's mailbox.
@@ -277,7 +277,7 @@
 //   kGTLAuthScopeGmailModify
 //   kGTLAuthScopeGmailReadonly
 // Fetches a GTLGmailListLabelsResponse.
-+ (id)queryForUsersLabelsList;
++ (instancetype)queryForUsersLabelsList;
 
 // Method: gmail.users.labels.patch
 // Updates the specified label. This method supports patch semantics.
@@ -291,7 +291,7 @@
 //   kGTLAuthScopeGmailLabels
 //   kGTLAuthScopeGmailModify
 // Fetches a GTLGmailLabel.
-+ (id)queryForUsersLabelsPatch;
++ (instancetype)queryForUsersLabelsPatch;
 
 // Method: gmail.users.labels.update
 // Updates the specified label.
@@ -305,7 +305,7 @@
 //   kGTLAuthScopeGmailLabels
 //   kGTLAuthScopeGmailModify
 // Fetches a GTLGmailLabel.
-+ (id)queryForUsersLabelsUpdate;
++ (instancetype)queryForUsersLabelsUpdate;
 
 #pragma mark -
 #pragma mark "users.messages.attachments" methods
@@ -323,7 +323,7 @@
 //   kGTLAuthScopeGmailModify
 //   kGTLAuthScopeGmailReadonly
 // Fetches a GTLGmailMessagePartBody.
-+ (id)queryForUsersMessagesAttachmentsGet;
++ (instancetype)queryForUsersMessagesAttachmentsGet;
 
 #pragma mark -
 #pragma mark "users.messages" methods
@@ -338,7 +338,7 @@
 //     indicate the authenticated user. (Default me)
 //  Authorization scope(s):
 //   kGTLAuthScopeGmail
-+ (id)queryForUsersMessagesDelete;
++ (instancetype)queryForUsersMessagesDelete;
 
 // Method: gmail.users.messages.get
 // Gets the specified message.
@@ -358,7 +358,7 @@
 //   kGTLAuthScopeGmailModify
 //   kGTLAuthScopeGmailReadonly
 // Fetches a GTLGmailMessage.
-+ (id)queryForUsersMessagesGet;
++ (instancetype)queryForUsersMessagesGet;
 
 // Method: gmail.users.messages.import
 // Imports a message into only this user's mailbox, with standard email delivery
@@ -387,7 +387,7 @@
 //   kGTLAuthScopeGmailInsert
 //   kGTLAuthScopeGmailModify
 // Fetches a GTLGmailMessage.
-+ (id)queryForUsersMessagesImportWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
++ (instancetype)queryForUsersMessagesImportWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
 // Method: gmail.users.messages.insert
 // Directly inserts a message into only this user's mailbox similar to IMAP
@@ -411,7 +411,7 @@
 //   kGTLAuthScopeGmailInsert
 //   kGTLAuthScopeGmailModify
 // Fetches a GTLGmailMessage.
-+ (id)queryForUsersMessagesInsertWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
++ (instancetype)queryForUsersMessagesInsertWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
 // Method: gmail.users.messages.list
 // Lists the messages in the user's mailbox.
@@ -432,7 +432,7 @@
 //   kGTLAuthScopeGmailModify
 //   kGTLAuthScopeGmailReadonly
 // Fetches a GTLGmailListMessagesResponse.
-+ (id)queryForUsersMessagesList;
++ (instancetype)queryForUsersMessagesList;
 
 // Method: gmail.users.messages.modify
 // Modifies the labels on the specified message.
@@ -446,7 +446,7 @@
 //   kGTLAuthScopeGmail
 //   kGTLAuthScopeGmailModify
 // Fetches a GTLGmailMessage.
-+ (id)queryForUsersMessagesModify;
++ (instancetype)queryForUsersMessagesModify;
 
 // Method: gmail.users.messages.send
 // Sends the specified message to the recipients in the To, Cc, and Bcc headers.
@@ -462,7 +462,7 @@
 //   kGTLAuthScopeGmailCompose
 //   kGTLAuthScopeGmailModify
 // Fetches a GTLGmailMessage.
-+ (id)queryForUsersMessagesSendWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
++ (instancetype)queryForUsersMessagesSendWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
 // Method: gmail.users.messages.trash
 // Moves the specified message to the trash.
@@ -474,7 +474,7 @@
 //   kGTLAuthScopeGmail
 //   kGTLAuthScopeGmailModify
 // Fetches a GTLGmailMessage.
-+ (id)queryForUsersMessagesTrash;
++ (instancetype)queryForUsersMessagesTrash;
 
 // Method: gmail.users.messages.untrash
 // Removes the specified message from the trash.
@@ -486,7 +486,7 @@
 //   kGTLAuthScopeGmail
 //   kGTLAuthScopeGmailModify
 // Fetches a GTLGmailMessage.
-+ (id)queryForUsersMessagesUntrash;
++ (instancetype)queryForUsersMessagesUntrash;
 
 #pragma mark -
 #pragma mark "users.threads" methods
@@ -501,7 +501,7 @@
 //     indicate the authenticated user. (Default me)
 //  Authorization scope(s):
 //   kGTLAuthScopeGmail
-+ (id)queryForUsersThreadsDelete;
++ (instancetype)queryForUsersThreadsDelete;
 
 // Method: gmail.users.threads.get
 // Gets the specified thread.
@@ -520,7 +520,7 @@
 //   kGTLAuthScopeGmailModify
 //   kGTLAuthScopeGmailReadonly
 // Fetches a GTLGmailThread.
-+ (id)queryForUsersThreadsGet;
++ (instancetype)queryForUsersThreadsGet;
 
 // Method: gmail.users.threads.list
 // Lists the threads in the user's mailbox.
@@ -541,7 +541,7 @@
 //   kGTLAuthScopeGmailModify
 //   kGTLAuthScopeGmailReadonly
 // Fetches a GTLGmailListThreadsResponse.
-+ (id)queryForUsersThreadsList;
++ (instancetype)queryForUsersThreadsList;
 
 // Method: gmail.users.threads.modify
 // Modifies the labels applied to the thread. This applies to all messages in
@@ -556,7 +556,7 @@
 //   kGTLAuthScopeGmail
 //   kGTLAuthScopeGmailModify
 // Fetches a GTLGmailThread.
-+ (id)queryForUsersThreadsModify;
++ (instancetype)queryForUsersThreadsModify;
 
 // Method: gmail.users.threads.trash
 // Moves the specified thread to the trash.
@@ -568,7 +568,7 @@
 //   kGTLAuthScopeGmail
 //   kGTLAuthScopeGmailModify
 // Fetches a GTLGmailThread.
-+ (id)queryForUsersThreadsTrash;
++ (instancetype)queryForUsersThreadsTrash;
 
 // Method: gmail.users.threads.untrash
 // Removes the specified thread from the trash.
@@ -580,6 +580,6 @@
 //   kGTLAuthScopeGmail
 //   kGTLAuthScopeGmailModify
 // Fetches a GTLGmailThread.
-+ (id)queryForUsersThreadsUntrash;
++ (instancetype)queryForUsersThreadsUntrash;
 
 @end

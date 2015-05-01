@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,38 +53,38 @@
 @interface GTLBloggerComment : GTLObject
 
 // The author of this Comment.
-@property (retain) GTLBloggerCommentAuthor *author;
+@property (nonatomic, retain) GTLBloggerCommentAuthor *author;
 
 // Data about the blog containing this comment.
-@property (retain) GTLBloggerCommentBlog *blog;
+@property (nonatomic, retain) GTLBloggerCommentBlog *blog;
 
 // The actual content of the comment. May include HTML markup.
-@property (copy) NSString *content;
+@property (nonatomic, copy) NSString *content;
 
 // The identifier for this resource.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Data about the comment this is in reply to.
-@property (retain) GTLBloggerCommentInReplyTo *inReplyTo;
+@property (nonatomic, retain) GTLBloggerCommentInReplyTo *inReplyTo;
 
 // The kind of this entry. Always blogger#comment
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Data about the post containing this comment.
-@property (retain) GTLBloggerCommentPost *post;
+@property (nonatomic, retain) GTLBloggerCommentPost *post;
 
 // RFC 3339 date-time when this comment was published.
-@property (retain) GTLDateTime *published;
+@property (nonatomic, retain) GTLDateTime *published;
 
 // The API REST URL to fetch this resource from.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // The status of the comment (only populated for admin users)
-@property (copy) NSString *status;
+@property (nonatomic, copy) NSString *status;
 
 // RFC 3339 date-time when this comment was last updated.
-@property (retain) GTLDateTime *updated;
+@property (nonatomic, retain) GTLDateTime *updated;
 
 @end
 
@@ -97,17 +97,17 @@
 @interface GTLBloggerCommentAuthor : GTLObject
 
 // The display name.
-@property (copy) NSString *displayName;
+@property (nonatomic, copy) NSString *displayName;
 
 // The identifier of the Comment creator.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The comment creator's avatar.
-@property (retain) GTLBloggerCommentAuthorImage *image;
+@property (nonatomic, retain) GTLBloggerCommentAuthorImage *image;
 
 // The URL of the Comment creator's Profile page.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 @end
 
@@ -121,7 +121,7 @@
 
 // The identifier of the blog containing this comment.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 @end
 
@@ -135,7 +135,7 @@
 
 // The identified of the parent of this comment.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 @end
 
@@ -149,7 +149,7 @@
 
 // The identifier of the post containing this comment.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 @end
 
@@ -162,6 +162,6 @@
 @interface GTLBloggerCommentAuthorImage : GTLObject
 
 // The comment creator's avatar URL.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 @end

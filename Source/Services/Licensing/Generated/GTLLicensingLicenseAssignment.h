@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,21 +44,21 @@
 @interface GTLLicensingLicenseAssignment : GTLObject
 
 // ETag of the resource.
-@property (copy) NSString *etags;
+@property (nonatomic, copy) NSString *etags;
 
 // Identifies the resource as a LicenseAssignment.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Name of the product.
-@property (copy) NSString *productId;
+@property (nonatomic, copy) NSString *productId;
 
 // Link to this page.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // Name of the sku of the product.
-@property (copy) NSString *skuId;
+@property (nonatomic, copy) NSString *skuId;
 
 // Email id of the user.
-@property (copy) NSString *userId;
+@property (nonatomic, copy) NSString *userId;
 
 @end

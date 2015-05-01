@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,9 +42,9 @@
 @dynamic location, spectrumSchedules;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLSpectrumSchedule class]
-                                forKey:@"spectrumSchedules"];
+  NSDictionary *map = @{
+    @"spectrumSchedules" : [GTLSpectrumSchedule class]
+  };
   return map;
 }
 

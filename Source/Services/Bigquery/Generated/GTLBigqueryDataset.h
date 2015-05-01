@@ -54,14 +54,14 @@
 // access.specialGroup: projectWriters; access.role: WRITER;
 // access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail:
 // [dataset creator email]; access.role: OWNER;
-@property (retain) NSArray *access;  // of GTLBigqueryDatasetAccessItem
+@property (nonatomic, retain) NSArray *access;  // of GTLBigqueryDatasetAccessItem
 
 // [Output-only] The time when this dataset was created, in milliseconds since
 // the epoch.
-@property (retain) NSNumber *creationTime;  // longLongValue
+@property (nonatomic, retain) NSNumber *creationTime;  // longLongValue
 
 // [Required] A reference that identifies the dataset.
-@property (retain) GTLBigqueryDatasetReference *datasetReference;
+@property (nonatomic, retain) GTLBigqueryDatasetReference *datasetReference;
 
 // [Experimental] The default lifetime of all tables in the dataset, in
 // milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this
@@ -73,35 +73,35 @@
 // before the table expires, or if you provide an explicit expirationTime when
 // creating a table, that value takes precedence over the default expiration
 // time indicated by this property.
-@property (retain) NSNumber *defaultTableExpirationMs;  // longLongValue
+@property (nonatomic, retain) NSNumber *defaultTableExpirationMs;  // longLongValue
 
 // [Optional] A user-friendly description of the dataset.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (copy) NSString *descriptionProperty;
+@property (nonatomic, copy) NSString *descriptionProperty;
 
 // [Output-only] A hash of the resource.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // [Optional] A descriptive name for the dataset.
-@property (copy) NSString *friendlyName;
+@property (nonatomic, copy) NSString *friendlyName;
 
 // [Output-only] The fully-qualified unique name of the dataset in the format
 // projectId:datasetId. The dataset name without the project name is given in
 // the datasetId field. When creating a new dataset, leave this field blank, and
 // instead specify the datasetId field.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // [Output-only] The resource type.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // [Output-only] The date when this dataset or any of its tables was last
 // modified, in milliseconds since the epoch.
-@property (retain) NSNumber *lastModifiedTime;  // longLongValue
+@property (nonatomic, retain) NSNumber *lastModifiedTime;  // longLongValue
 
 // [Output-only] A URL that can be used to access the resource again. You can
 // use this URL in Get or Update requests to the resource.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 @end
 
@@ -115,31 +115,31 @@
 
 // [Pick one] A domain to grant access to. Any users signed in with the domain
 // specified will be granted the specified access. Example: "example.com".
-@property (copy) NSString *domain;
+@property (nonatomic, copy) NSString *domain;
 
 // [Pick one] An email address of a Google Group to grant access to.
-@property (copy) NSString *groupByEmail;
+@property (nonatomic, copy) NSString *groupByEmail;
 
 // [Required] Describes the rights granted to the user specified by the other
 // member of the access object. The following string values are supported:
 // READER, WRITER, OWNER.
-@property (copy) NSString *role;
+@property (nonatomic, copy) NSString *role;
 
 // [Pick one] A special group to grant access to. Possible values include:
 // projectOwners: Owners of the enclosing project. projectReaders: Readers of
 // the enclosing project. projectWriters: Writers of the enclosing project.
 // allAuthenticatedUsers: All authenticated BigQuery users.
-@property (copy) NSString *specialGroup;
+@property (nonatomic, copy) NSString *specialGroup;
 
 // [Pick one] An email address of a user to grant access to. For example:
 // fred@example.com.
-@property (copy) NSString *userByEmail;
+@property (nonatomic, copy) NSString *userByEmail;
 
 // [Pick one] A view from a different dataset to grant access to. Queries
 // executed against that view will have read access to tables in this dataset.
 // The role field is not required when this field is set. If that view is
 // updated by any user, access to the view needs to be granted again via an
 // update operation.
-@property (retain) GTLBigqueryTableReference *view;
+@property (nonatomic, retain) GTLBigqueryTableReference *view;
 
 @end

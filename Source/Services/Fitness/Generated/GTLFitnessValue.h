@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,9 +46,9 @@
 @interface GTLFitnessValue : GTLObject
 
 // Floating point value. When this is set, intVal must not be set.
-@property (retain) NSNumber *fpVal;  // doubleValue
+@property (nonatomic, retain) NSNumber *fpVal;  // doubleValue
 
 // Integer value. When this is set, fpVal must not be set.
-@property (retain) NSNumber *intVal;  // intValue
+@property (nonatomic, retain) NSNumber *intVal;  // intValue
 
 @end

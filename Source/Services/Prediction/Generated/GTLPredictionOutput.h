@@ -47,23 +47,23 @@
 
 // The unique name for the predictive model.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // What kind of resource this is.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The most likely class label (Categorical models only).
-@property (copy) NSString *outputLabel;
+@property (nonatomic, copy) NSString *outputLabel;
 
 // A list of class labels with their estimated probabilities (Categorical models
 // only).
-@property (retain) NSArray *outputMulti;  // of GTLPredictionOutputOutputMultiItem
+@property (nonatomic, retain) NSArray *outputMulti;  // of GTLPredictionOutputOutputMultiItem
 
 // The estimated regression value (Regression models only).
-@property (retain) NSNumber *outputValue;  // doubleValue
+@property (nonatomic, retain) NSNumber *outputValue;  // doubleValue
 
 // A URL to re-request this resource.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 @end
 
@@ -76,9 +76,9 @@
 @interface GTLPredictionOutputOutputMultiItem : GTLObject
 
 // The class label.
-@property (copy) NSString *label;
+@property (nonatomic, copy) NSString *label;
 
 // The probability of the class label.
-@property (copy) NSString *score;
+@property (nonatomic, copy) NSString *score;
 
 @end

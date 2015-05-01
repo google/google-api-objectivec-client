@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,15 +51,15 @@
 // corresponding increase in the number of parts that have already been
 // processed, it is possible that the calculated progress could periodically
 // decrease while YouTube processes a video.
-@property (retain) NSNumber *partsProcessed;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *partsProcessed;  // unsignedLongLongValue
 
 // An estimate of the total number of parts that need to be processed for the
 // video. The number may be updated with more precise estimates while YouTube
 // processes the video.
-@property (retain) NSNumber *partsTotal;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *partsTotal;  // unsignedLongLongValue
 
 // An estimate of the amount of time, in millseconds, that YouTube needs to
 // finish processing the video.
-@property (retain) NSNumber *timeLeftMs;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *timeLeftMs;  // unsignedLongLongValue
 
 @end

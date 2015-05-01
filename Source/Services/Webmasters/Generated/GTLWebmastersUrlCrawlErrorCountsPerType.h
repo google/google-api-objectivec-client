@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,12 +47,12 @@
 @interface GTLWebmastersUrlCrawlErrorCountsPerType : GTLObject
 
 // The crawl error type.
-@property (copy) NSString *category;
+@property (nonatomic, copy) NSString *category;
 
 // The error count entries time series.
-@property (retain) NSArray *entries;  // of GTLWebmastersUrlCrawlErrorCount
+@property (nonatomic, retain) NSArray *entries;  // of GTLWebmastersUrlCrawlErrorCount
 
 // Corresponding to the user agent that made the request.
-@property (copy) NSString *platform;
+@property (nonatomic, copy) NSString *platform;
 
 @end

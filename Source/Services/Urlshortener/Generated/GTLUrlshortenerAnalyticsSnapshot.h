@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,24 +45,24 @@
 
 // Top browsers, e.g. "Chrome"; sorted by (descending) click counts. Only
 // present if this data is available.
-@property (retain) NSArray *browsers;  // of GTLUrlshortenerStringCount
+@property (nonatomic, retain) NSArray *browsers;  // of GTLUrlshortenerStringCount
 
 // Top countries (expressed as country codes), e.g. "US" or "DE"; sorted by
 // (descending) click counts. Only present if this data is available.
-@property (retain) NSArray *countries;  // of GTLUrlshortenerStringCount
+@property (nonatomic, retain) NSArray *countries;  // of GTLUrlshortenerStringCount
 
 // Number of clicks on all goo.gl short URLs pointing to this long URL.
-@property (retain) NSNumber *longUrlClicks;  // longLongValue
+@property (nonatomic, retain) NSNumber *longUrlClicks;  // longLongValue
 
 // Top platforms or OSes, e.g. "Windows"; sorted by (descending) click counts.
 // Only present if this data is available.
-@property (retain) NSArray *platforms;  // of GTLUrlshortenerStringCount
+@property (nonatomic, retain) NSArray *platforms;  // of GTLUrlshortenerStringCount
 
 // Top referring hosts, e.g. "www.google.com"; sorted by (descending) click
 // counts. Only present if this data is available.
-@property (retain) NSArray *referrers;  // of GTLUrlshortenerStringCount
+@property (nonatomic, retain) NSArray *referrers;  // of GTLUrlshortenerStringCount
 
 // Number of clicks on this short URL.
-@property (retain) NSNumber *shortUrlClicks;  // longLongValue
+@property (nonatomic, retain) NSNumber *shortUrlClicks;  // longLongValue
 
 @end

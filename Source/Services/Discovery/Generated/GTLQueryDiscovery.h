@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,15 +42,15 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (copy) NSString *fields;
+@property (nonatomic, copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (copy) NSString *api;
-@property (copy) NSString *name;
-@property (assign) BOOL preferred;
-@property (copy) NSString *version;
+@property (nonatomic, copy) NSString *api;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, assign) BOOL preferred;
+@property (nonatomic, copy) NSString *version;
 
 #pragma mark -
 #pragma mark "apis" methods
@@ -62,8 +62,8 @@
 //   api: The name of the API.
 //   version: The version of the API.
 // Fetches a GTLDiscoveryRestDescription.
-+ (id)queryForApisGetRestWithApi:(NSString *)api
-                         version:(NSString *)version;
++ (instancetype)queryForApisGetRestWithApi:(NSString *)api
+                                   version:(NSString *)version;
 
 // Method: discovery.apis.getRpc
 // Retrieve the description of a particular version of an api.
@@ -71,8 +71,8 @@
 //   api: The name of the API.
 //   version: The version of the API.
 // Fetches a GTLDiscoveryRpcDescription.
-+ (id)queryForApisGetRpcWithApi:(NSString *)api
-                        version:(NSString *)version;
++ (instancetype)queryForApisGetRpcWithApi:(NSString *)api
+                                  version:(NSString *)version;
 
 // Method: discovery.apis.list
 // Retrieve the list of APIs supported at this endpoint.
@@ -80,6 +80,6 @@
 //   name: Only include APIs with the given name.
 //   preferred: Return only the preferred version of an API. (Default false)
 // Fetches a GTLDiscoveryDirectoryList.
-+ (id)queryForApisList;
++ (instancetype)queryForApisList;
 
 @end

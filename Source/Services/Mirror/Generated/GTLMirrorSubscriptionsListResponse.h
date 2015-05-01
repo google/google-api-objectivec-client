@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,9 +50,9 @@
 @interface GTLMirrorSubscriptionsListResponse : GTLCollectionObject
 
 // The list of subscriptions.
-@property (retain) NSArray *items;  // of GTLMirrorSubscription
+@property (nonatomic, retain) NSArray *items;  // of GTLMirrorSubscription
 
 // The type of resource. This is always mirror#subscriptionsList.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 @end

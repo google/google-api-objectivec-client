@@ -44,13 +44,13 @@
 // A Rewrite response.
 
 @interface GTLStorageRewriteResponse : GTLObject
-@property (retain) NSNumber *done;  // boolValue
+@property (nonatomic, retain) NSNumber *done;  // boolValue
 
 // The kind of item this is.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
-@property (retain) NSNumber *objectSize;  // unsignedLongLongValue
-@property (retain) GTLStorageObject *resource;
-@property (copy) NSString *rewriteToken;
-@property (retain) NSNumber *totalBytesRewritten;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *objectSize;  // unsignedLongLongValue
+@property (nonatomic, retain) GTLStorageObject *resource;
+@property (nonatomic, copy) NSString *rewriteToken;
+@property (nonatomic, retain) NSNumber *totalBytesRewritten;  // unsignedLongLongValue
 @end

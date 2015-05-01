@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,13 +45,13 @@
 @interface GTLQPXExpressAircraftData : GTLObject
 
 // The aircraft code. For example, for a Boeing 777 the code would be 777.
-@property (copy) NSString *code;
+@property (nonatomic, copy) NSString *code;
 
 // Identifies this as an aircraftData object. Value: the fixed string
 // qpxexpress#aircraftData
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // The name of an aircraft, for example Boeing 777.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 @end

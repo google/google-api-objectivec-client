@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,12 +45,12 @@
 
 // True if auto-tagging is enabled on the AdWords account. Read-only after the
 // insert operation.
-@property (retain) NSNumber *autoTaggingEnabled;  // boolValue
+@property (nonatomic, retain) NSNumber *autoTaggingEnabled;  // boolValue
 
 // Customer ID. This field is required when creating an AdWords link.
-@property (copy) NSString *customerId;
+@property (nonatomic, copy) NSString *customerId;
 
 // Resource type for AdWords account.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 @end

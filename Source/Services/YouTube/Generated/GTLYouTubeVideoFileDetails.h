@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,14 +51,14 @@
 
 // A list of audio streams contained in the uploaded video file. Each item in
 // the list contains detailed metadata about an audio stream.
-@property (retain) NSArray *audioStreams;  // of GTLYouTubeVideoFileDetailsAudioStream
+@property (nonatomic, retain) NSArray *audioStreams;  // of GTLYouTubeVideoFileDetailsAudioStream
 
 // The uploaded video file's combined (video and audio) bitrate in bits per
 // second.
-@property (retain) NSNumber *bitrateBps;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *bitrateBps;  // unsignedLongLongValue
 
 // The uploaded video file's container format.
-@property (copy) NSString *container;
+@property (nonatomic, copy) NSString *container;
 
 // The date and time when the uploaded video file was created. The value is
 // specified in ISO 8601 format. Currently, the following ISO 8601 formats are
@@ -66,30 +66,30 @@
 // - Date only: YYYY-MM-DD
 // - Naive time: YYYY-MM-DDTHH:MM:SS
 // - Time with timezone: YYYY-MM-DDTHH:MM:SS+HH:MM
-@property (copy) NSString *creationTime;
+@property (nonatomic, copy) NSString *creationTime;
 
 // The length of the uploaded video in milliseconds.
-@property (retain) NSNumber *durationMs;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *durationMs;  // unsignedLongLongValue
 
 // The uploaded file's name. This field is present whether a video file or
 // another type of file was uploaded.
-@property (copy) NSString *fileName;
+@property (nonatomic, copy) NSString *fileName;
 
 // The uploaded file's size in bytes. This field is present whether a video file
 // or another type of file was uploaded.
-@property (retain) NSNumber *fileSize;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *fileSize;  // unsignedLongLongValue
 
 // The uploaded file's type as detected by YouTube's video processing engine.
 // Currently, YouTube only processes video files, but this field is present
 // whether a video file or another type of file was uploaded.
-@property (copy) NSString *fileType;
+@property (nonatomic, copy) NSString *fileType;
 
 // Geographic coordinates that identify the place where the uploaded video was
 // recorded. Coordinates are defined using WGS 84.
-@property (retain) GTLYouTubeGeoPoint *recordingLocation;
+@property (nonatomic, retain) GTLYouTubeGeoPoint *recordingLocation;
 
 // A list of video streams contained in the uploaded video file. Each item in
 // the list contains detailed metadata about a video stream.
-@property (retain) NSArray *videoStreams;  // of GTLYouTubeVideoFileDetailsVideoStream
+@property (nonatomic, retain) NSArray *videoStreams;  // of GTLYouTubeVideoFileDetailsVideoStream
 
 @end

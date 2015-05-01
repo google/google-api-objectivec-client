@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,9 +45,9 @@
 @interface GTLYouTubePageInfo : GTLObject
 
 // The number of results included in the API response.
-@property (retain) NSNumber *resultsPerPage;  // intValue
+@property (nonatomic, retain) NSNumber *resultsPerPage;  // intValue
 
 // The total number of results in the result set.
-@property (retain) NSNumber *totalResults;  // intValue
+@property (nonatomic, retain) NSNumber *totalResults;  // intValue
 
 @end

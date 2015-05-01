@@ -44,6 +44,6 @@
 // [Experimental] Number of files per destination URI or URI pattern specified
 // in the extract configuration. These values will be in the same order as the
 // URIs specified in the 'destinationUris' field.
-@property (retain) NSArray *destinationUriFileCounts;  // of NSNumber (longLongValue)
+@property (nonatomic, retain) NSArray *destinationUriFileCounts;  // of NSNumber (longLongValue)
 
 @end

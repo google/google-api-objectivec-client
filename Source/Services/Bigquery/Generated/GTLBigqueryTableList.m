@@ -42,16 +42,16 @@
 @dynamic ETag, kind, nextPageToken, tables, totalItems;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"etag"
-                                forKey:@"ETag"];
+  NSDictionary *map = @{
+    @"ETag" : @"etag"
+  };
   return map;
 }
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLBigqueryTableListTablesItem class]
-                                forKey:@"tables"];
+  NSDictionary *map = @{
+    @"tables" : [GTLBigqueryTableListTablesItem class]
+  };
   return map;
 }
 
@@ -71,9 +71,9 @@
 @dynamic friendlyName, identifier, kind, tableReference, type;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:@"id"
-                                forKey:@"identifier"];
+  NSDictionary *map = @{
+    @"identifier" : @"id"
+  };
   return map;
 }
 

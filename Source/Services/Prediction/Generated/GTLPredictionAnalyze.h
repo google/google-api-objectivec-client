@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -73,23 +73,23 @@
 @interface GTLPredictionAnalyze : GTLObject
 
 // Description of the data the model was trained on.
-@property (retain) GTLPredictionAnalyzeDataDescription *dataDescription;
+@property (nonatomic, retain) GTLPredictionAnalyzeDataDescription *dataDescription;
 
 // List of errors with the data.
-@property (retain) NSArray *errors;  // of GTLPredictionAnalyzeErrorsItem
+@property (nonatomic, retain) NSArray *errors;  // of GTLPredictionAnalyzeErrorsItem
 
 // The unique name for the predictive model.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // What kind of resource this is.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Description of the model.
-@property (retain) GTLPredictionAnalyzeModelDescription *modelDescription;
+@property (nonatomic, retain) GTLPredictionAnalyzeModelDescription *modelDescription;
 
 // A URL to re-request this resource.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 @end
 
@@ -102,10 +102,10 @@
 @interface GTLPredictionAnalyzeDataDescription : GTLObject
 
 // Description of the input features in the data set.
-@property (retain) NSArray *features;  // of GTLPredictionAnalyzeDataDescriptionFeaturesItem
+@property (nonatomic, retain) NSArray *features;  // of GTLPredictionAnalyzeDataDescriptionFeaturesItem
 
 // Description of the output value or label.
-@property (retain) GTLPredictionAnalyzeDataDescriptionOutputFeature *outputFeature;
+@property (nonatomic, retain) GTLPredictionAnalyzeDataDescriptionOutputFeature *outputFeature;
 
 @end
 
@@ -136,13 +136,13 @@
 // the estimated number of times the model will predict the predicted label
 // given the true label. Will not output if more then 100 classes (Categorical
 // models only).
-@property (retain) GTLPredictionAnalyzeModelDescriptionConfusionMatrix *confusionMatrix;
+@property (nonatomic, retain) GTLPredictionAnalyzeModelDescriptionConfusionMatrix *confusionMatrix;
 
 // A list of the confusion matrix row totals.
-@property (retain) GTLPredictionAnalyzeModelDescriptionConfusionMatrixRowTotals *confusionMatrixRowTotals;
+@property (nonatomic, retain) GTLPredictionAnalyzeModelDescriptionConfusionMatrixRowTotals *confusionMatrixRowTotals;
 
 // Basic information about the model.
-@property (retain) GTLPredictionInsert2 *modelinfo;
+@property (nonatomic, retain) GTLPredictionInsert2 *modelinfo;
 
 @end
 
@@ -155,16 +155,16 @@
 @interface GTLPredictionAnalyzeDataDescriptionFeaturesItem : GTLObject
 
 // Description of the categorical values of this feature.
-@property (retain) GTLPredictionAnalyzeDataDescriptionFeaturesItemCategorical *categorical;
+@property (nonatomic, retain) GTLPredictionAnalyzeDataDescriptionFeaturesItemCategorical *categorical;
 
 // The feature index.
-@property (retain) NSNumber *index;  // longLongValue
+@property (nonatomic, retain) NSNumber *index;  // longLongValue
 
 // Description of the numeric values of this feature.
-@property (retain) GTLPredictionAnalyzeDataDescriptionFeaturesItemNumeric *numeric;
+@property (nonatomic, retain) GTLPredictionAnalyzeDataDescriptionFeaturesItemNumeric *numeric;
 
 // Description of multiple-word text values of this feature.
-@property (retain) GTLPredictionAnalyzeDataDescriptionFeaturesItemText *text;
+@property (nonatomic, retain) GTLPredictionAnalyzeDataDescriptionFeaturesItemText *text;
 
 @end
 
@@ -177,10 +177,10 @@
 @interface GTLPredictionAnalyzeDataDescriptionOutputFeature : GTLObject
 
 // Description of the output values in the data set.
-@property (retain) GTLPredictionAnalyzeDataDescriptionOutputFeatureNumeric *numeric;
+@property (nonatomic, retain) GTLPredictionAnalyzeDataDescriptionOutputFeatureNumeric *numeric;
 
 // Description of the output labels in the data set.
-@property (retain) NSArray *text;  // of GTLPredictionAnalyzeDataDescriptionOutputFeatureTextItem
+@property (nonatomic, retain) NSArray *text;  // of GTLPredictionAnalyzeDataDescriptionOutputFeatureTextItem
 
 @end
 
@@ -220,10 +220,10 @@
 @interface GTLPredictionAnalyzeDataDescriptionFeaturesItemCategorical : GTLObject
 
 // Number of categorical values for this feature in the data.
-@property (retain) NSNumber *count;  // longLongValue
+@property (nonatomic, retain) NSNumber *count;  // longLongValue
 
 // List of all the categories for this feature in the data set.
-@property (retain) NSArray *values;  // of GTLPredictionAnalyzeDataDescriptionFeaturesItemCategoricalValuesItem
+@property (nonatomic, retain) NSArray *values;  // of GTLPredictionAnalyzeDataDescriptionFeaturesItemCategoricalValuesItem
 
 @end
 
@@ -236,13 +236,13 @@
 @interface GTLPredictionAnalyzeDataDescriptionFeaturesItemNumeric : GTLObject
 
 // Number of numeric values for this feature in the data set.
-@property (retain) NSNumber *count;  // longLongValue
+@property (nonatomic, retain) NSNumber *count;  // longLongValue
 
 // Mean of the numeric values of this feature in the data set.
-@property (copy) NSString *mean;
+@property (nonatomic, copy) NSString *mean;
 
 // Variance of the numeric values of this feature in the data set.
-@property (copy) NSString *variance;
+@property (nonatomic, copy) NSString *variance;
 
 @end
 
@@ -255,7 +255,7 @@
 @interface GTLPredictionAnalyzeDataDescriptionFeaturesItemText : GTLObject
 
 // Number of multiple-word text values for this feature.
-@property (retain) NSNumber *count;  // longLongValue
+@property (nonatomic, retain) NSNumber *count;  // longLongValue
 
 @end
 
@@ -268,13 +268,13 @@
 @interface GTLPredictionAnalyzeDataDescriptionOutputFeatureNumeric : GTLObject
 
 // Number of numeric output values in the data set.
-@property (retain) NSNumber *count;  // longLongValue
+@property (nonatomic, retain) NSNumber *count;  // longLongValue
 
 // Mean of the output values in the data set.
-@property (copy) NSString *mean;
+@property (nonatomic, copy) NSString *mean;
 
 // Variance of the output values in the data set.
-@property (copy) NSString *variance;
+@property (nonatomic, copy) NSString *variance;
 
 @end
 
@@ -287,10 +287,10 @@
 @interface GTLPredictionAnalyzeDataDescriptionOutputFeatureTextItem : GTLObject
 
 // Number of times the output label occurred in the data set.
-@property (retain) NSNumber *count;  // longLongValue
+@property (nonatomic, retain) NSNumber *count;  // longLongValue
 
 // The output label.
-@property (copy) NSString *value;
+@property (nonatomic, copy) NSString *value;
 
 @end
 
@@ -316,9 +316,9 @@
 @interface GTLPredictionAnalyzeDataDescriptionFeaturesItemCategoricalValuesItem : GTLObject
 
 // Number of times this feature had this value.
-@property (retain) NSNumber *count;  // longLongValue
+@property (nonatomic, retain) NSNumber *count;  // longLongValue
 
 // The category name.
-@property (copy) NSString *value;
+@property (nonatomic, copy) NSString *value;
 
 @end

@@ -44,39 +44,39 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (copy) NSString *fields;
+@property (nonatomic, copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (copy) NSString *blogId;
-@property (copy) NSString *commentId;
-@property (retain) GTLDateTime *endDate;
-@property (assign) BOOL fetchBodies;
-@property (assign) BOOL fetchBody;
-@property (assign) BOOL fetchImages;
-@property (assign) BOOL fetchUserInfo;
-@property (assign) BOOL isDraft;
-@property (copy) NSString *labels;
-@property (assign) NSUInteger maxComments;
-@property (assign) NSUInteger maxPosts;
-@property (assign) NSUInteger maxResults;
-@property (copy) NSString *orderBy;
-@property (copy) NSString *pageId;
-@property (copy) NSString *pageToken;
-@property (copy) NSString *path;
-@property (copy) NSString *postId;
-@property (assign) BOOL publish;
-@property (retain) GTLDateTime *publishDate;
-@property (copy) NSString *q;
-@property (retain) NSArray *range;  // of NSString
-@property (assign) BOOL revert;
-@property (retain) NSArray *role;  // of NSString
-@property (retain) GTLDateTime *startDate;
-@property (retain) NSArray *status;  // of NSString
-@property (copy) NSString *url;
-@property (copy) NSString *userId;
-@property (copy) NSString *view;
+@property (nonatomic, copy) NSString *blogId;
+@property (nonatomic, copy) NSString *commentId;
+@property (nonatomic, retain) GTLDateTime *endDate;
+@property (nonatomic, assign) BOOL fetchBodies;
+@property (nonatomic, assign) BOOL fetchBody;
+@property (nonatomic, assign) BOOL fetchImages;
+@property (nonatomic, assign) BOOL fetchUserInfo;
+@property (nonatomic, assign) BOOL isDraft;
+@property (nonatomic, copy) NSString *labels;
+@property (nonatomic, assign) NSUInteger maxComments;
+@property (nonatomic, assign) NSUInteger maxPosts;
+@property (nonatomic, assign) NSUInteger maxResults;
+@property (nonatomic, copy) NSString *orderBy;
+@property (nonatomic, copy) NSString *pageId;
+@property (nonatomic, copy) NSString *pageToken;
+@property (nonatomic, copy) NSString *path;
+@property (nonatomic, copy) NSString *postId;
+@property (nonatomic, assign) BOOL publish;
+@property (nonatomic, retain) GTLDateTime *publishDate;
+@property (nonatomic, copy) NSString *q;
+@property (nonatomic, retain) NSArray *range;  // of NSString
+@property (nonatomic, assign) BOOL revert;
+@property (nonatomic, retain) NSArray *role;  // of NSString
+@property (nonatomic, retain) GTLDateTime *startDate;
+@property (nonatomic, retain) NSArray *status;  // of NSString
+@property (nonatomic, copy) NSString *url;
+@property (nonatomic, copy) NSString *userId;
+@property (nonatomic, copy) NSString *view;
 
 #pragma mark -
 #pragma mark "blogs" methods
@@ -97,7 +97,7 @@
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerBlog.
-+ (id)queryForBlogsGetWithBlogId:(NSString *)blogId;
++ (instancetype)queryForBlogsGetWithBlogId:(NSString *)blogId;
 
 // Method: blogger.blogs.getByUrl
 // Retrieve a Blog by URL.
@@ -113,7 +113,7 @@
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerBlog.
-+ (id)queryForBlogsGetByUrlWithUrl:(NSString *)url;
++ (instancetype)queryForBlogsGetByUrlWithUrl:(NSString *)url;
 
 // Method: blogger.blogs.listByUser
 // Retrieves a list of blogs, possibly filtered.
@@ -146,7 +146,7 @@
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerBlogList.
-+ (id)queryForBlogsListByUserWithUserId:(NSString *)userId;
++ (instancetype)queryForBlogsListByUserWithUserId:(NSString *)userId;
 
 #pragma mark -
 #pragma mark "blogUserInfos" methods
@@ -164,8 +164,8 @@
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerBlogUserInfo.
-+ (id)queryForBlogUserInfosGetWithUserId:(NSString *)userId
-                                  blogId:(NSString *)blogId;
++ (instancetype)queryForBlogUserInfosGetWithUserId:(NSString *)userId
+                                            blogId:(NSString *)blogId;
 
 #pragma mark -
 #pragma mark "comments" methods
@@ -180,9 +180,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 // Fetches a GTLBloggerComment.
-+ (id)queryForCommentsApproveWithBlogId:(NSString *)blogId
-                                 postId:(NSString *)postId
-                              commentId:(NSString *)commentId;
++ (instancetype)queryForCommentsApproveWithBlogId:(NSString *)blogId
+                                           postId:(NSString *)postId
+                                        commentId:(NSString *)commentId;
 
 // Method: blogger.comments.delete
 // Delete a comment by ID.
@@ -192,9 +192,9 @@
 //   commentId: The ID of the comment to delete.
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
-+ (id)queryForCommentsDeleteWithBlogId:(NSString *)blogId
-                                postId:(NSString *)postId
-                             commentId:(NSString *)commentId;
++ (instancetype)queryForCommentsDeleteWithBlogId:(NSString *)blogId
+                                          postId:(NSString *)postId
+                                       commentId:(NSString *)commentId;
 
 // Method: blogger.comments.get
 // Gets one comment by ID.
@@ -214,9 +214,9 @@
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerComment.
-+ (id)queryForCommentsGetWithBlogId:(NSString *)blogId
-                             postId:(NSString *)postId
-                          commentId:(NSString *)commentId;
++ (instancetype)queryForCommentsGetWithBlogId:(NSString *)blogId
+                                       postId:(NSString *)postId
+                                    commentId:(NSString *)commentId;
 
 // Method: blogger.comments.list
 // Retrieves the comments for a post, possibly filtered.
@@ -246,8 +246,8 @@
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerCommentList.
-+ (id)queryForCommentsListWithBlogId:(NSString *)blogId
-                              postId:(NSString *)postId;
++ (instancetype)queryForCommentsListWithBlogId:(NSString *)blogId
+                                        postId:(NSString *)postId;
 
 // Method: blogger.comments.listByBlog
 // Retrieves the comments for a blog, across all posts, possibly filtered.
@@ -271,7 +271,7 @@
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerCommentList.
-+ (id)queryForCommentsListByBlogWithBlogId:(NSString *)blogId;
++ (instancetype)queryForCommentsListByBlogWithBlogId:(NSString *)blogId;
 
 // Method: blogger.comments.markAsSpam
 // Marks a comment as spam.
@@ -282,9 +282,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 // Fetches a GTLBloggerComment.
-+ (id)queryForCommentsMarkAsSpamWithBlogId:(NSString *)blogId
-                                    postId:(NSString *)postId
-                                 commentId:(NSString *)commentId;
++ (instancetype)queryForCommentsMarkAsSpamWithBlogId:(NSString *)blogId
+                                              postId:(NSString *)postId
+                                           commentId:(NSString *)commentId;
 
 // Method: blogger.comments.removeContent
 // Removes the content of a comment.
@@ -295,9 +295,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 // Fetches a GTLBloggerComment.
-+ (id)queryForCommentsRemoveContentWithBlogId:(NSString *)blogId
-                                       postId:(NSString *)postId
-                                    commentId:(NSString *)commentId;
++ (instancetype)queryForCommentsRemoveContentWithBlogId:(NSString *)blogId
+                                                 postId:(NSString *)postId
+                                              commentId:(NSString *)commentId;
 
 #pragma mark -
 #pragma mark "pages" methods
@@ -310,8 +310,8 @@
 //   pageId: The ID of the Page.
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
-+ (id)queryForPagesDeleteWithBlogId:(NSString *)blogId
-                             pageId:(NSString *)pageId;
++ (instancetype)queryForPagesDeleteWithBlogId:(NSString *)blogId
+                                       pageId:(NSString *)pageId;
 
 // Method: blogger.pages.get
 // Gets one blog page by ID.
@@ -327,8 +327,8 @@
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerPage.
-+ (id)queryForPagesGetWithBlogId:(NSString *)blogId
-                          pageId:(NSString *)pageId;
++ (instancetype)queryForPagesGetWithBlogId:(NSString *)blogId
+                                    pageId:(NSString *)pageId;
 
 // Method: blogger.pages.insert
 // Add a page.
@@ -339,8 +339,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 // Fetches a GTLBloggerPage.
-+ (id)queryForPagesInsertWithObject:(GTLBloggerPage *)object
-                             blogId:(NSString *)blogId;
++ (instancetype)queryForPagesInsertWithObject:(GTLBloggerPage *)object
+                                       blogId:(NSString *)blogId;
 
 // Method: blogger.pages.list
 // Retrieves the pages for a blog, optionally including non-LIVE statuses.
@@ -362,7 +362,7 @@
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerPageList.
-+ (id)queryForPagesListWithBlogId:(NSString *)blogId;
++ (instancetype)queryForPagesListWithBlogId:(NSString *)blogId;
 
 // Method: blogger.pages.patch
 // Update a page. This method supports patch semantics.
@@ -377,9 +377,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 // Fetches a GTLBloggerPage.
-+ (id)queryForPagesPatchWithObject:(GTLBloggerPage *)object
-                            blogId:(NSString *)blogId
-                            pageId:(NSString *)pageId;
++ (instancetype)queryForPagesPatchWithObject:(GTLBloggerPage *)object
+                                      blogId:(NSString *)blogId
+                                      pageId:(NSString *)pageId;
 
 // Method: blogger.pages.publish
 // Publishes a draft page.
@@ -389,8 +389,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 // Fetches a GTLBloggerPage.
-+ (id)queryForPagesPublishWithBlogId:(NSString *)blogId
-                              pageId:(NSString *)pageId;
++ (instancetype)queryForPagesPublishWithBlogId:(NSString *)blogId
+                                        pageId:(NSString *)pageId;
 
 // Method: blogger.pages.revert
 // Revert a published or scheduled page to draft state.
@@ -400,8 +400,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 // Fetches a GTLBloggerPage.
-+ (id)queryForPagesRevertWithBlogId:(NSString *)blogId
-                             pageId:(NSString *)pageId;
++ (instancetype)queryForPagesRevertWithBlogId:(NSString *)blogId
+                                       pageId:(NSString *)pageId;
 
 // Method: blogger.pages.update
 // Update a page.
@@ -416,9 +416,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 // Fetches a GTLBloggerPage.
-+ (id)queryForPagesUpdateWithObject:(GTLBloggerPage *)object
-                             blogId:(NSString *)blogId
-                             pageId:(NSString *)pageId;
++ (instancetype)queryForPagesUpdateWithObject:(GTLBloggerPage *)object
+                                       blogId:(NSString *)blogId
+                                       pageId:(NSString *)pageId;
 
 #pragma mark -
 #pragma mark "pageViews" methods
@@ -436,7 +436,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 // Fetches a GTLBloggerPageviews.
-+ (id)queryForPageViewsGetWithBlogId:(NSString *)blogId;
++ (instancetype)queryForPageViewsGetWithBlogId:(NSString *)blogId;
 
 #pragma mark -
 #pragma mark "posts" methods
@@ -449,8 +449,8 @@
 //   postId: The ID of the Post.
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
-+ (id)queryForPostsDeleteWithBlogId:(NSString *)blogId
-                             postId:(NSString *)postId;
++ (instancetype)queryForPostsDeleteWithBlogId:(NSString *)blogId
+                                       postId:(NSString *)postId;
 
 // Method: blogger.posts.get
 // Get a post by ID.
@@ -473,8 +473,8 @@
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerPost.
-+ (id)queryForPostsGetWithBlogId:(NSString *)blogId
-                          postId:(NSString *)postId;
++ (instancetype)queryForPostsGetWithBlogId:(NSString *)blogId
+                                    postId:(NSString *)postId;
 
 // Method: blogger.posts.getByPath
 // Retrieve a Post by Path.
@@ -492,8 +492,8 @@
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerPost.
-+ (id)queryForPostsGetByPathWithBlogId:(NSString *)blogId
-                                  path:(NSString *)path;
++ (instancetype)queryForPostsGetByPathWithBlogId:(NSString *)blogId
+                                            path:(NSString *)path;
 
 // Method: blogger.posts.insert
 // Add a post.
@@ -508,8 +508,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 // Fetches a GTLBloggerPost.
-+ (id)queryForPostsInsertWithObject:(GTLBloggerPost *)object
-                             blogId:(NSString *)blogId;
++ (instancetype)queryForPostsInsertWithObject:(GTLBloggerPost *)object
+                                       blogId:(NSString *)blogId;
 
 // Method: blogger.posts.list
 // Retrieves a list of posts, possibly filtered.
@@ -543,7 +543,7 @@
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerPostList.
-+ (id)queryForPostsListWithBlogId:(NSString *)blogId;
++ (instancetype)queryForPostsListWithBlogId:(NSString *)blogId;
 
 // Method: blogger.posts.patch
 // Update a post. This method supports patch semantics.
@@ -563,9 +563,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 // Fetches a GTLBloggerPost.
-+ (id)queryForPostsPatchWithObject:(GTLBloggerPost *)object
-                            blogId:(NSString *)blogId
-                            postId:(NSString *)postId;
++ (instancetype)queryForPostsPatchWithObject:(GTLBloggerPost *)object
+                                      blogId:(NSString *)blogId
+                                      postId:(NSString *)postId;
 
 // Method: blogger.posts.publish
 // Publishes a draft post, optionally at the specific time of the given
@@ -581,8 +581,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 // Fetches a GTLBloggerPost.
-+ (id)queryForPostsPublishWithBlogId:(NSString *)blogId
-                              postId:(NSString *)postId;
++ (instancetype)queryForPostsPublishWithBlogId:(NSString *)blogId
+                                        postId:(NSString *)postId;
 
 // Method: blogger.posts.revert
 // Revert a published or scheduled post to draft state.
@@ -592,8 +592,8 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 // Fetches a GTLBloggerPost.
-+ (id)queryForPostsRevertWithBlogId:(NSString *)blogId
-                             postId:(NSString *)postId;
++ (instancetype)queryForPostsRevertWithBlogId:(NSString *)blogId
+                                       postId:(NSString *)postId;
 
 // Method: blogger.posts.search
 // Search for a post.
@@ -611,8 +611,8 @@
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerPostList.
-+ (id)queryForPostsSearchWithBlogId:(NSString *)blogId
-                                  q:(NSString *)q;
++ (instancetype)queryForPostsSearchWithBlogId:(NSString *)blogId
+                                            q:(NSString *)q;
 
 // Method: blogger.posts.update
 // Update a post.
@@ -632,9 +632,9 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeBlogger
 // Fetches a GTLBloggerPost.
-+ (id)queryForPostsUpdateWithObject:(GTLBloggerPost *)object
-                             blogId:(NSString *)blogId
-                             postId:(NSString *)postId;
++ (instancetype)queryForPostsUpdateWithObject:(GTLBloggerPost *)object
+                                       blogId:(NSString *)blogId
+                                       postId:(NSString *)postId;
 
 #pragma mark -
 #pragma mark "postUserInfos" methods
@@ -655,9 +655,9 @@
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerPostUserInfo.
-+ (id)queryForPostUserInfosGetWithUserId:(NSString *)userId
-                                  blogId:(NSString *)blogId
-                                  postId:(NSString *)postId;
++ (instancetype)queryForPostUserInfosGetWithUserId:(NSString *)userId
+                                            blogId:(NSString *)blogId
+                                            postId:(NSString *)postId;
 
 // Method: blogger.postUserInfos.list
 // Retrieves a list of post and post user info pairs, possibly filtered. The
@@ -694,8 +694,8 @@
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerPostUserInfosList.
-+ (id)queryForPostUserInfosListWithUserId:(NSString *)userId
-                                   blogId:(NSString *)blogId;
++ (instancetype)queryForPostUserInfosListWithUserId:(NSString *)userId
+                                             blogId:(NSString *)blogId;
 
 #pragma mark -
 #pragma mark "users" methods
@@ -709,6 +709,6 @@
 //   kGTLAuthScopeBlogger
 //   kGTLAuthScopeBloggerReadonly
 // Fetches a GTLBloggerUser.
-+ (id)queryForUsersGetWithUserId:(NSString *)userId;
++ (instancetype)queryForUsersGetWithUserId:(NSString *)userId;
 
 @end

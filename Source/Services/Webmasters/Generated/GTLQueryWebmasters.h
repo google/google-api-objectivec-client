@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,18 +41,18 @@
 //
 
 // Selector specifying which fields to include in a partial response.
-@property (copy) NSString *fields;
+@property (nonatomic, copy) NSString *fields;
 
 //
 // Method-specific parameters; see the comments below for more information.
 //
-@property (copy) NSString *category;
-@property (copy) NSString *feedpath;
-@property (assign) BOOL latestCountsOnly;
-@property (copy) NSString *platform;
-@property (copy) NSString *sitemapIndex;
-@property (copy) NSString *siteUrl;
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *category;
+@property (nonatomic, copy) NSString *feedpath;
+@property (nonatomic, assign) BOOL latestCountsOnly;
+@property (nonatomic, copy) NSString *platform;
+@property (nonatomic, copy) NSString *sitemapIndex;
+@property (nonatomic, copy) NSString *siteUrl;
+@property (nonatomic, copy) NSString *url;
 
 #pragma mark -
 #pragma mark "sitemaps" methods
@@ -67,8 +67,8 @@
 //     http://www.example.com/sitemap.xml).
 //  Authorization scope(s):
 //   kGTLAuthScopeWebmasters
-+ (id)queryForSitemapsDeleteWithSiteUrl:(NSString *)siteUrl
-                               feedpath:(NSString *)feedpath;
++ (instancetype)queryForSitemapsDeleteWithSiteUrl:(NSString *)siteUrl
+                                         feedpath:(NSString *)feedpath;
 
 // Method: webmasters.sitemaps.get
 // Retrieves information about a specific sitemap.
@@ -81,8 +81,8 @@
 //   kGTLAuthScopeWebmasters
 //   kGTLAuthScopeWebmastersReadonly
 // Fetches a GTLWebmastersWmxSitemap.
-+ (id)queryForSitemapsGetWithSiteUrl:(NSString *)siteUrl
-                            feedpath:(NSString *)feedpath;
++ (instancetype)queryForSitemapsGetWithSiteUrl:(NSString *)siteUrl
+                                      feedpath:(NSString *)feedpath;
 
 // Method: webmasters.sitemaps.list
 // Lists sitemaps uploaded to the site.
@@ -95,7 +95,7 @@
 //   kGTLAuthScopeWebmasters
 //   kGTLAuthScopeWebmastersReadonly
 // Fetches a GTLWebmastersSitemapsListResponse.
-+ (id)queryForSitemapsListWithSiteUrl:(NSString *)siteUrl;
++ (instancetype)queryForSitemapsListWithSiteUrl:(NSString *)siteUrl;
 
 // Method: webmasters.sitemaps.submit
 // Submits a sitemap for a site.
@@ -105,8 +105,8 @@
 //   feedpath: The URL of the sitemap to add.
 //  Authorization scope(s):
 //   kGTLAuthScopeWebmasters
-+ (id)queryForSitemapsSubmitWithSiteUrl:(NSString *)siteUrl
-                               feedpath:(NSString *)feedpath;
++ (instancetype)queryForSitemapsSubmitWithSiteUrl:(NSString *)siteUrl
+                                         feedpath:(NSString *)feedpath;
 
 #pragma mark -
 #pragma mark "sites" methods
@@ -118,7 +118,7 @@
 //   siteUrl: The URL of the site to add.
 //  Authorization scope(s):
 //   kGTLAuthScopeWebmasters
-+ (id)queryForSitesAddWithSiteUrl:(NSString *)siteUrl;
++ (instancetype)queryForSitesAddWithSiteUrl:(NSString *)siteUrl;
 
 // Method: webmasters.sites.delete
 // Removes a site from the set of the user's Webmaster Tools sites.
@@ -127,7 +127,7 @@
 //     'http://www.example.com/'
 //  Authorization scope(s):
 //   kGTLAuthScopeWebmasters
-+ (id)queryForSitesDeleteWithSiteUrl:(NSString *)siteUrl;
++ (instancetype)queryForSitesDeleteWithSiteUrl:(NSString *)siteUrl;
 
 // Method: webmasters.sites.get
 // Retrieves information about specific site.
@@ -138,7 +138,7 @@
 //   kGTLAuthScopeWebmasters
 //   kGTLAuthScopeWebmastersReadonly
 // Fetches a GTLWebmastersWmxSite.
-+ (id)queryForSitesGetWithSiteUrl:(NSString *)siteUrl;
++ (instancetype)queryForSitesGetWithSiteUrl:(NSString *)siteUrl;
 
 // Method: webmasters.sites.list
 // Lists your Webmaster Tools sites.
@@ -146,7 +146,7 @@
 //   kGTLAuthScopeWebmasters
 //   kGTLAuthScopeWebmastersReadonly
 // Fetches a GTLWebmastersSitesListResponse.
-+ (id)queryForSitesList;
++ (instancetype)queryForSitesList;
 
 #pragma mark -
 #pragma mark "urlcrawlerrorscounts" methods
@@ -180,7 +180,7 @@
 //   kGTLAuthScopeWebmasters
 //   kGTLAuthScopeWebmastersReadonly
 // Fetches a GTLWebmastersUrlCrawlErrorsCountsQueryResponse.
-+ (id)queryForUrlcrawlerrorscountsQueryWithSiteUrl:(NSString *)siteUrl;
++ (instancetype)queryForUrlcrawlerrorscountsQueryWithSiteUrl:(NSString *)siteUrl;
 
 #pragma mark -
 #pragma mark "urlcrawlerrorssamples" methods
@@ -211,10 +211,10 @@
 //   kGTLAuthScopeWebmasters
 //   kGTLAuthScopeWebmastersReadonly
 // Fetches a GTLWebmastersUrlCrawlErrorsSample.
-+ (id)queryForUrlcrawlerrorssamplesGetWithSiteUrl:(NSString *)siteUrl
-                                              url:(NSString *)url
-                                         category:(NSString *)category
-                                         platform:(NSString *)platform;
++ (instancetype)queryForUrlcrawlerrorssamplesGetWithSiteUrl:(NSString *)siteUrl
+                                                        url:(NSString *)url
+                                                   category:(NSString *)category
+                                                   platform:(NSString *)platform;
 
 // Method: webmasters.urlcrawlerrorssamples.list
 // Lists a site's sample URLs for the specified crawl error category and
@@ -240,9 +240,9 @@
 //   kGTLAuthScopeWebmasters
 //   kGTLAuthScopeWebmastersReadonly
 // Fetches a GTLWebmastersUrlCrawlErrorsSamplesListResponse.
-+ (id)queryForUrlcrawlerrorssamplesListWithSiteUrl:(NSString *)siteUrl
-                                          category:(NSString *)category
-                                          platform:(NSString *)platform;
++ (instancetype)queryForUrlcrawlerrorssamplesListWithSiteUrl:(NSString *)siteUrl
+                                                    category:(NSString *)category
+                                                    platform:(NSString *)platform;
 
 // Method: webmasters.urlcrawlerrorssamples.markAsFixed
 // Marks the provided site's sample URL as fixed, and removes it from the
@@ -268,9 +268,9 @@
 //      kGTLWebmastersPlatformWeb: "web"
 //  Authorization scope(s):
 //   kGTLAuthScopeWebmasters
-+ (id)queryForUrlcrawlerrorssamplesMarkAsFixedWithSiteUrl:(NSString *)siteUrl
-                                                      url:(NSString *)url
-                                                 category:(NSString *)category
-                                                 platform:(NSString *)platform;
++ (instancetype)queryForUrlcrawlerrorssamplesMarkAsFixedWithSiteUrl:(NSString *)siteUrl
+                                                                url:(NSString *)url
+                                                           category:(NSString *)category
+                                                           platform:(NSString *)platform;
 
 @end

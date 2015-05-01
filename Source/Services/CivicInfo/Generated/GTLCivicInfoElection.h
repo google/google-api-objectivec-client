@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,13 +44,13 @@
 @interface GTLCivicInfoElection : GTLObject
 
 // Day of the election in YYYY-MM-DD format.
-@property (copy) NSString *electionDay;
+@property (nonatomic, copy) NSString *electionDay;
 
 // The unique ID of this election.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (retain) NSNumber *identifier;  // longLongValue
+@property (nonatomic, retain) NSNumber *identifier;  // longLongValue
 
 // A displayable name for the election.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,62 +59,62 @@
 @interface GTLAnalyticsGoal : GTLObject
 
 // Account ID to which this goal belongs.
-@property (copy) NSString *accountId;
+@property (nonatomic, copy) NSString *accountId;
 
 // Determines whether this goal is active.
-@property (retain) NSNumber *active;  // boolValue
+@property (nonatomic, retain) NSNumber *active;  // boolValue
 
 // Time this goal was created.
-@property (retain) GTLDateTime *created;
+@property (nonatomic, retain) GTLDateTime *created;
 
 // Details for the goal of the type EVENT.
-@property (retain) GTLAnalyticsGoalEventDetails *eventDetails;
+@property (nonatomic, retain) GTLAnalyticsGoalEventDetails *eventDetails;
 
 // Goal ID.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // Internal ID for the web property to which this goal belongs.
-@property (copy) NSString *internalWebPropertyId;
+@property (nonatomic, copy) NSString *internalWebPropertyId;
 
 // Resource type for an Analytics goal.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Goal name.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // Parent link for a goal. Points to the view (profile) to which this goal
 // belongs.
-@property (retain) GTLAnalyticsGoalParentLink *parentLink;
+@property (nonatomic, retain) GTLAnalyticsGoalParentLink *parentLink;
 
 // View (Profile) ID to which this goal belongs.
-@property (copy) NSString *profileId;
+@property (nonatomic, copy) NSString *profileId;
 
 // Link for this goal.
-@property (copy) NSString *selfLink;
+@property (nonatomic, copy) NSString *selfLink;
 
 // Goal type. Possible values are URL_DESTINATION, VISIT_TIME_ON_SITE,
 // VISIT_NUM_PAGES, AND EVENT.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 // Time this goal was last modified.
-@property (retain) GTLDateTime *updated;
+@property (nonatomic, retain) GTLDateTime *updated;
 
 // Details for the goal of the type URL_DESTINATION.
-@property (retain) GTLAnalyticsGoalUrlDestinationDetails *urlDestinationDetails;
+@property (nonatomic, retain) GTLAnalyticsGoalUrlDestinationDetails *urlDestinationDetails;
 
 // Goal value.
-@property (retain) NSNumber *value;  // floatValue
+@property (nonatomic, retain) NSNumber *value;  // floatValue
 
 // Details for the goal of the type VISIT_NUM_PAGES.
-@property (retain) GTLAnalyticsGoalVisitNumPagesDetails *visitNumPagesDetails;
+@property (nonatomic, retain) GTLAnalyticsGoalVisitNumPagesDetails *visitNumPagesDetails;
 
 // Details for the goal of the type VISIT_TIME_ON_SITE.
-@property (retain) GTLAnalyticsGoalVisitTimeOnSiteDetails *visitTimeOnSiteDetails;
+@property (nonatomic, retain) GTLAnalyticsGoalVisitTimeOnSiteDetails *visitTimeOnSiteDetails;
 
 // Web property ID to which this goal belongs. The web property ID is of the
 // form UA-XXXXX-YY.
-@property (copy) NSString *webPropertyId;
+@property (nonatomic, copy) NSString *webPropertyId;
 
 @end
 
@@ -127,10 +127,10 @@
 @interface GTLAnalyticsGoalEventDetails : GTLObject
 
 // List of event conditions.
-@property (retain) NSArray *eventConditions;  // of GTLAnalyticsGoalEventDetailsEventConditionsItem
+@property (nonatomic, retain) NSArray *eventConditions;  // of GTLAnalyticsGoalEventDetailsEventConditionsItem
 
 // Determines if the event value should be used as the value for this goal.
-@property (retain) NSNumber *useEventValue;  // boolValue
+@property (nonatomic, retain) NSNumber *useEventValue;  // boolValue
 
 @end
 
@@ -143,10 +143,10 @@
 @interface GTLAnalyticsGoalParentLink : GTLObject
 
 // Link to the view (profile) to which this goal belongs.
-@property (copy) NSString *href;
+@property (nonatomic, copy) NSString *href;
 
 // Value is "analytics#profile".
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end
 
@@ -160,19 +160,19 @@
 
 // Determines if the goal URL must exactly match the capitalization of visited
 // URLs.
-@property (retain) NSNumber *caseSensitive;  // boolValue
+@property (nonatomic, retain) NSNumber *caseSensitive;  // boolValue
 
 // Determines if the first step in this goal is required.
-@property (retain) NSNumber *firstStepRequired;  // boolValue
+@property (nonatomic, retain) NSNumber *firstStepRequired;  // boolValue
 
 // Match type for the goal URL. Possible values are HEAD, EXACT, or REGEX.
-@property (copy) NSString *matchType;
+@property (nonatomic, copy) NSString *matchType;
 
 // List of steps configured for this goal funnel.
-@property (retain) NSArray *steps;  // of GTLAnalyticsGoalUrlDestinationDetailsStepsItem
+@property (nonatomic, retain) NSArray *steps;  // of GTLAnalyticsGoalUrlDestinationDetailsStepsItem
 
 // URL for this goal.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 @end
 
@@ -185,10 +185,10 @@
 @interface GTLAnalyticsGoalVisitNumPagesDetails : GTLObject
 
 // Type of comparison. Possible values are LESS_THAN, GREATER_THAN, or EQUAL.
-@property (copy) NSString *comparisonType;
+@property (nonatomic, copy) NSString *comparisonType;
 
 // Value used for this comparison.
-@property (retain) NSNumber *comparisonValue;  // longLongValue
+@property (nonatomic, retain) NSNumber *comparisonValue;  // longLongValue
 
 @end
 
@@ -201,10 +201,10 @@
 @interface GTLAnalyticsGoalVisitTimeOnSiteDetails : GTLObject
 
 // Type of comparison. Possible values are LESS_THAN or GREATER_THAN.
-@property (copy) NSString *comparisonType;
+@property (nonatomic, copy) NSString *comparisonType;
 
 // Value used for this comparison.
-@property (retain) NSNumber *comparisonValue;  // longLongValue
+@property (nonatomic, retain) NSNumber *comparisonValue;  // longLongValue
 
 @end
 
@@ -217,21 +217,21 @@
 @interface GTLAnalyticsGoalEventDetailsEventConditionsItem : GTLObject
 
 // Type of comparison. Possible values are LESS_THAN, GREATER_THAN or EQUAL.
-@property (copy) NSString *comparisonType;
+@property (nonatomic, copy) NSString *comparisonType;
 
 // Value used for this comparison.
-@property (retain) NSNumber *comparisonValue;  // longLongValue
+@property (nonatomic, retain) NSNumber *comparisonValue;  // longLongValue
 
 // Expression used for this match.
-@property (copy) NSString *expression;
+@property (nonatomic, copy) NSString *expression;
 
 // Type of the match to be performed. Possible values are REGEXP, BEGINS_WITH,
 // or EXACT.
-@property (copy) NSString *matchType;
+@property (nonatomic, copy) NSString *matchType;
 
 // Type of this event condition. Possible values are CATEGORY, ACTION, LABEL, or
 // VALUE.
-@property (copy) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end
 
@@ -244,12 +244,12 @@
 @interface GTLAnalyticsGoalUrlDestinationDetailsStepsItem : GTLObject
 
 // Step name.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // Step number.
-@property (retain) NSNumber *number;  // intValue
+@property (nonatomic, retain) NSNumber *number;  // intValue
 
 // URL for this step.
-@property (copy) NSString *url;
+@property (nonatomic, copy) NSString *url;
 
 @end

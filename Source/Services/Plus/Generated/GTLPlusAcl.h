@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,13 +48,13 @@
 
 // Description of the access granted, suitable for display.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (copy) NSString *descriptionProperty;
+@property (nonatomic, copy) NSString *descriptionProperty;
 
 // The list of access entries.
-@property (retain) NSArray *items;  // of GTLPlusAclentryResource
+@property (nonatomic, retain) NSArray *items;  // of GTLPlusAclentryResource
 
 // Identifies this resource as a collection of access controls. Value:
 // "plus#acl".
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,13 +41,12 @@
 @dynamic divisionId, levels, name, officialIndices, roles, sources;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSString class], @"levels",
-      [NSNumber class], @"officialIndices",
-      [NSString class], @"roles",
-      [GTLCivicInfoSource class], @"sources",
-      nil];
+  NSDictionary *map = @{
+    @"levels" : [NSString class],
+    @"officialIndices" : [NSNumber class],
+    @"roles" : [NSString class],
+    @"sources" : [GTLCivicInfoSource class]
+  };
   return map;
 }
 

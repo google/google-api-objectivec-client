@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,12 +45,12 @@
 @interface GTLBooksRequestAccess : GTLObject
 
 // A concurrent access response.
-@property (retain) GTLBooksConcurrentAccessRestriction *concurrentAccess;
+@property (nonatomic, retain) GTLBooksConcurrentAccessRestriction *concurrentAccess;
 
 // A download access response.
-@property (retain) GTLBooksDownloadAccessRestriction *downloadAccess;
+@property (nonatomic, retain) GTLBooksDownloadAccessRestriction *downloadAccess;
 
 // Resource type.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 @end

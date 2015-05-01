@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,18 +44,18 @@
 @interface GTLCivicInfoElectionOfficial : GTLObject
 
 // The email address of the election official.
-@property (copy) NSString *emailAddress;
+@property (nonatomic, copy) NSString *emailAddress;
 
 // The fax number of the election official.
-@property (copy) NSString *faxNumber;
+@property (nonatomic, copy) NSString *faxNumber;
 
 // The full name of the election official.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // The office phone number of the election official.
-@property (copy) NSString *officePhoneNumber;
+@property (nonatomic, copy) NSString *officePhoneNumber;
 
 // The title of the election official.
-@property (copy) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 @end

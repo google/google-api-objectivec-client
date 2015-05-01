@@ -42,5 +42,5 @@
 //
 
 @interface GTLGmailHistoryMessageAdded : GTLObject
-@property (retain) GTLGmailMessage *message;
+@property (nonatomic, retain) GTLGmailMessage *message;
 @end

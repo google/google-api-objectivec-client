@@ -46,63 +46,63 @@
 @interface GTLYouTubeCommentSnippet : GTLObject
 
 // The id of the author's YouTube channel, if any.
-@property (retain) GTLYouTubeChannelId *authorChannelId;
+@property (nonatomic, retain) GTLYouTubeChannelId *authorChannelId;
 
 // Link to the author's YouTube channel, if any.
-@property (copy) NSString *authorChannelUrl;
+@property (nonatomic, copy) NSString *authorChannelUrl;
 
 // The name of the user who posted the comment.
-@property (copy) NSString *authorDisplayName;
+@property (nonatomic, copy) NSString *authorDisplayName;
 
 // Link to the author's Google+ profile, if any.
-@property (copy) NSString *authorGoogleplusProfileUrl;
+@property (nonatomic, copy) NSString *authorGoogleplusProfileUrl;
 
 // The URL for the avatar of the user who posted the comment.
-@property (copy) NSString *authorProfileImageUrl;
+@property (nonatomic, copy) NSString *authorProfileImageUrl;
 
 // Whether the current viewer can rate this comment.
-@property (retain) NSNumber *canRate;  // boolValue
+@property (nonatomic, retain) NSNumber *canRate;  // boolValue
 
 // The id of the corresponding YouTube channel. In case of a channel comment
 // this is the channel the comment refers to. In case of a video comment it's
 // the video's channel.
-@property (copy) NSString *channelId;
+@property (nonatomic, copy) NSString *channelId;
 
 // The total number of likes this comment has received.
-@property (retain) NSNumber *likeCount;  // unsignedIntValue
+@property (nonatomic, retain) NSNumber *likeCount;  // unsignedIntValue
 
 // The comment's moderation status. Will not be set if the comments were
 // requested through the id filter.
-@property (copy) NSString *moderationStatus;
+@property (nonatomic, copy) NSString *moderationStatus;
 
 // The unique id of the parent comment, only set for replies.
-@property (copy) NSString *parentId;
+@property (nonatomic, copy) NSString *parentId;
 
 // The date and time when the comment was orignally published. The value is
 // specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-@property (retain) GTLDateTime *publishedAt;
+@property (nonatomic, retain) GTLDateTime *publishedAt;
 
 // The comment's text. The format is either plain text or HTML dependent on what
 // has been requested. Even the plain text representation may differ from the
 // text originally posted in that it may replace video links with video titles
 // etc.
-@property (copy) NSString *textDisplay;
+@property (nonatomic, copy) NSString *textDisplay;
 
 // The comment's original raw text as initially posted or last updated. The
 // original text will only be returned if it is accessible to the viewer, which
 // is only guaranteed if the viewer is the comment's author.
-@property (copy) NSString *textOriginal;
+@property (nonatomic, copy) NSString *textOriginal;
 
 // The date and time when was last updated . The value is specified in ISO 8601
 // (YYYY-MM-DDThh:mm:ss.sZ) format.
-@property (retain) GTLDateTime *updatedAt;
+@property (nonatomic, retain) GTLDateTime *updatedAt;
 
 // The ID of the video the comment refers to, if any.
-@property (copy) NSString *videoId;
+@property (nonatomic, copy) NSString *videoId;
 
 // The rating the viewer has given to this comment. For the time being this will
 // never return RATE_TYPE_DISLIKE and instead return RATE_TYPE_NONE. This may
 // change in the future.
-@property (copy) NSString *viewerRating;
+@property (nonatomic, copy) NSString *viewerRating;
 
 @end

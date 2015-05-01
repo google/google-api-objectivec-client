@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,10 +57,10 @@
 // The vCard contact information for the device operator is optional, but may be
 // required by specific regulatory domains.
 // Remapped to 'operatorProperty' to avoid language reserved word 'operator'.
-@property (retain) GTLSpectrumVcard *operatorProperty;
+@property (nonatomic, retain) GTLSpectrumVcard *operatorProperty;
 
 // The vCard contact information for the individual or business that owns the
 // device is required.
-@property (retain) GTLSpectrumVcard *owner;
+@property (nonatomic, retain) GTLSpectrumVcard *owner;
 
 @end

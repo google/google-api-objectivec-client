@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,29 +36,29 @@
 // Method compiled in debug builds just to check that all the needed support
 // classes are present at link time.
 + (NSArray *)checkClasses {
-  NSArray *classes = [NSArray arrayWithObjects:
-                      [GTLQueryPlusDomains class],
-                      [GTLPlusDomainsAcl class],
-                      [GTLPlusDomainsAclentryResource class],
-                      [GTLPlusDomainsActivity class],
-                      [GTLPlusDomainsActivityFeed class],
-                      [GTLPlusDomainsAudience class],
-                      [GTLPlusDomainsAudiencesFeed class],
-                      [GTLPlusDomainsCircle class],
-                      [GTLPlusDomainsCircleFeed class],
-                      [GTLPlusDomainsComment class],
-                      [GTLPlusDomainsCommentFeed class],
-                      [GTLPlusDomainsMedia class],
-                      [GTLPlusDomainsPeopleFeed class],
-                      [GTLPlusDomainsPerson class],
-                      [GTLPlusDomainsPlace class],
-                      [GTLPlusDomainsVideostream class],
-                      nil];
+  NSArray *classes = @[
+    [GTLQueryPlusDomains class],
+    [GTLPlusDomainsAcl class],
+    [GTLPlusDomainsAclentryResource class],
+    [GTLPlusDomainsActivity class],
+    [GTLPlusDomainsActivityFeed class],
+    [GTLPlusDomainsAudience class],
+    [GTLPlusDomainsAudiencesFeed class],
+    [GTLPlusDomainsCircle class],
+    [GTLPlusDomainsCircleFeed class],
+    [GTLPlusDomainsComment class],
+    [GTLPlusDomainsCommentFeed class],
+    [GTLPlusDomainsMedia class],
+    [GTLPlusDomainsPeopleFeed class],
+    [GTLPlusDomainsPerson class],
+    [GTLPlusDomainsPlace class],
+    [GTLPlusDomainsVideostream class]
+  ];
   return classes;
 }
 #endif  // DEBUG
 
-- (id)init {
+- (instancetype)init {
   self = [super init];
   if (self) {
     // Version from discovery.

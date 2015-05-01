@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,10 +46,10 @@
 @interface GTLFitnessDataType : GTLObject
 
 // A field represents one dimension of a data type.
-@property (retain) NSArray *field;  // of GTLFitnessDataTypeField
+@property (nonatomic, retain) NSArray *field;  // of GTLFitnessDataTypeField
 
 // Each data type has a unique, namespaced, name. All data types in the
 // com.google namespace are shared as part of the platform.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -65,93 +65,93 @@
 @interface GTLDiscoveryRestDescription : GTLObject
 
 // Authentication information.
-@property (retain) GTLDiscoveryRestDescriptionAuth *auth;
+@property (nonatomic, retain) GTLDiscoveryRestDescriptionAuth *auth;
 
 // [DEPRECATED] The base path for REST requests.
-@property (copy) NSString *basePath;
+@property (nonatomic, copy) NSString *basePath;
 
 // [DEPRECATED] The base URL for REST requests.
-@property (copy) NSString *baseUrl;
+@property (nonatomic, copy) NSString *baseUrl;
 
 // The path for REST batch requests.
-@property (copy) NSString *batchPath;
+@property (nonatomic, copy) NSString *batchPath;
 
 // Indicates how the API name should be capitalized and split into various
 // parts. Useful for generating pretty class names.
-@property (copy) NSString *canonicalName;
+@property (nonatomic, copy) NSString *canonicalName;
 
 // The description of this API.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (copy) NSString *descriptionProperty;
+@property (nonatomic, copy) NSString *descriptionProperty;
 
 // Indicate the version of the Discovery API used to generate this doc.
-@property (copy) NSString *discoveryVersion;
+@property (nonatomic, copy) NSString *discoveryVersion;
 
 // A link to human readable documentation for the API.
-@property (copy) NSString *documentationLink;
+@property (nonatomic, copy) NSString *documentationLink;
 
 // The ETag for this response.
-@property (copy) NSString *ETag;
+@property (nonatomic, copy) NSString *ETag;
 
 // A list of supported features for this API.
-@property (retain) NSArray *features;  // of NSString
+@property (nonatomic, retain) NSArray *features;  // of NSString
 
 // Links to 16x16 and 32x32 icons representing the API.
-@property (retain) GTLDiscoveryRestDescriptionIcons *icons;
+@property (nonatomic, retain) GTLDiscoveryRestDescriptionIcons *icons;
 
 // The ID of this API.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (copy) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
 // The kind for this response.
-@property (copy) NSString *kind;
+@property (nonatomic, copy) NSString *kind;
 
 // Labels for the status of this API, such as labs or deprecated.
-@property (retain) NSArray *labels;  // of NSString
+@property (nonatomic, retain) NSArray *labels;  // of NSString
 
 // API-level methods for this API.
-@property (retain) GTLDiscoveryRestDescriptionMethods *methods;
+@property (nonatomic, retain) GTLDiscoveryRestDescriptionMethods *methods;
 
 // The name of this API.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 // The domain of the owner of this API. Together with the ownerName and a
 // packagePath values, this can be used to generate a library for this API which
 // would have a unique fully qualified name.
-@property (copy) NSString *ownerDomain;
+@property (nonatomic, copy) NSString *ownerDomain;
 
 // The name of the owner of this API. See ownerDomain.
-@property (copy) NSString *ownerName;
+@property (nonatomic, copy) NSString *ownerName;
 
 // The package of the owner of this API. See ownerDomain.
-@property (copy) NSString *packagePath;
+@property (nonatomic, copy) NSString *packagePath;
 
 // Common parameters that apply across all apis.
-@property (retain) GTLDiscoveryRestDescriptionParameters *parameters;
+@property (nonatomic, retain) GTLDiscoveryRestDescriptionParameters *parameters;
 
 // The protocol described by this document.
-@property (copy) NSString *protocol;
+@property (nonatomic, copy) NSString *protocol;
 
 // The resources in this API.
-@property (retain) GTLDiscoveryRestDescriptionResources *resources;
+@property (nonatomic, retain) GTLDiscoveryRestDescriptionResources *resources;
 
 // The version of this API.
-@property (copy) NSString *revision;
+@property (nonatomic, copy) NSString *revision;
 
 // The root URL under which all API services live.
-@property (copy) NSString *rootUrl;
+@property (nonatomic, copy) NSString *rootUrl;
 
 // The schemas for this API.
-@property (retain) GTLDiscoveryRestDescriptionSchemas *schemas;
+@property (nonatomic, retain) GTLDiscoveryRestDescriptionSchemas *schemas;
 
 // The base path for all REST requests.
-@property (copy) NSString *servicePath;
+@property (nonatomic, copy) NSString *servicePath;
 
 // The title of this API.
-@property (copy) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 // The version of this API.
-@property (copy) NSString *version;
+@property (nonatomic, copy) NSString *version;
 
 @end
 
@@ -164,7 +164,7 @@
 @interface GTLDiscoveryRestDescriptionAuth : GTLObject
 
 // OAuth 2.0 authentication information.
-@property (retain) GTLDiscoveryRestDescriptionAuthOauth2 *oauth2;
+@property (nonatomic, retain) GTLDiscoveryRestDescriptionAuthOauth2 *oauth2;
 
 @end
 
@@ -177,10 +177,10 @@
 @interface GTLDiscoveryRestDescriptionIcons : GTLObject
 
 // The URL of the 16x16 icon.
-@property (copy) NSString *x16;
+@property (nonatomic, copy) NSString *x16;
 
 // The URL of the 32x32 icon.
-@property (copy) NSString *x32;
+@property (nonatomic, copy) NSString *x32;
 
 @end
 
@@ -245,7 +245,7 @@
 @interface GTLDiscoveryRestDescriptionAuthOauth2 : GTLObject
 
 // Available OAuth 2.0 scopes.
-@property (retain) GTLDiscoveryRestDescriptionAuthOauth2Scopes *scopes;
+@property (nonatomic, retain) GTLDiscoveryRestDescriptionAuthOauth2Scopes *scopes;
 
 @end
 
@@ -272,6 +272,6 @@
 
 // Description of scope.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
-@property (copy) NSString *descriptionProperty;
+@property (nonatomic, copy) NSString *descriptionProperty;
 
 @end

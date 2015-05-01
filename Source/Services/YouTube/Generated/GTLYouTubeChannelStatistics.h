@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,18 +45,18 @@
 @interface GTLYouTubeChannelStatistics : GTLObject
 
 // The number of comments for the channel.
-@property (retain) NSNumber *commentCount;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *commentCount;  // unsignedLongLongValue
 
 // Whether or not the number of subscribers is shown for this user.
-@property (retain) NSNumber *hiddenSubscriberCount;  // boolValue
+@property (nonatomic, retain) NSNumber *hiddenSubscriberCount;  // boolValue
 
 // The number of subscribers that the channel has.
-@property (retain) NSNumber *subscriberCount;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *subscriberCount;  // unsignedLongLongValue
 
 // The number of videos uploaded to the channel.
-@property (retain) NSNumber *videoCount;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *videoCount;  // unsignedLongLongValue
 
 // The number of times the channel has been viewed.
-@property (retain) NSNumber *viewCount;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *viewCount;  // unsignedLongLongValue
 
 @end

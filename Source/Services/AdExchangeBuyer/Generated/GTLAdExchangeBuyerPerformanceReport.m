@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,13 +45,12 @@
          quotaConfiguredLimit, quotaThrottledLimit, region, timestamp;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSObject class], @"calloutStatusRate",
-      [NSObject class], @"cookieMatcherStatusRate",
-      [NSObject class], @"creativeStatusRate",
-      [NSObject class], @"hostedMatchStatusRate",
-      nil];
+  NSDictionary *map = @{
+    @"calloutStatusRate" : [NSObject class],
+    @"cookieMatcherStatusRate" : [NSObject class],
+    @"creativeStatusRate" : [NSObject class],
+    @"hostedMatchStatusRate" : [NSObject class]
+  };
   return map;
 }
 

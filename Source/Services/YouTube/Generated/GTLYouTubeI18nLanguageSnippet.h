@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,9 +45,9 @@
 @interface GTLYouTubeI18nLanguageSnippet : GTLObject
 
 // A short BCP-47 code that uniquely identifies a language.
-@property (copy) NSString *hl;
+@property (nonatomic, copy) NSString *hl;
 
 // The human-readable name of the language in the language itself.
-@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,11 +40,10 @@
          organizer, resource, responseStatus, selfProperty;
 
 + (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-      @"id", @"identifier",
-      @"self", @"selfProperty",
-      nil];
+  NSDictionary *map = @{
+    @"identifier" : @"id",
+    @"selfProperty" : @"self"
+  };
   return map;
 }
 

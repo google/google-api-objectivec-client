@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,9 +41,9 @@
 @dynamic items, kind, totalItems;
 
 + (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObject:[GTLBooksVolume class]
-                                forKey:@"items"];
+  NSDictionary *map = @{
+    @"items" : [GTLBooksVolume class]
+  };
   return map;
 }
 
