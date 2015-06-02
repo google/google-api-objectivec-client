@@ -2207,7 +2207,6 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 }
 
 - (void)setExactUserAgent:(NSString *)userAgent {
-  // internal use only
   [userAgent_ release];
   userAgent_ = [userAgent copy];
 }

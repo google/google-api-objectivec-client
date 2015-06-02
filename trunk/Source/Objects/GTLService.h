@@ -395,12 +395,16 @@ typedef BOOL (^GTLServiceRetryBlock)(GTLServiceTicket *ticket,
 
 // Applications have a default user-agent based on the application signature
 // in the Info.plist settings.  Most applications should not explicitly set
-// this property.
+// this property.  Any string provided will be cleaned of inappropriate characters.
 @property (nonatomic, copy) NSString *userAgent;
 
 // The request user agent includes the library and OS version appended to the
 // base userAgent, along with the optional addition string.
 @property (nonatomic, readonly) NSString *requestUserAgent;
+
+// Applications can provide a precise userAgent string identifying the application.
+// No cleaning of characters is done.  Library-specific details will be appended.
+- (void)setExactUserAgent:(NSString *)userAgent;
 
 // Applications may call requestForURL:httpMethod to get a request with the
 // proper user-agent and ETag headers

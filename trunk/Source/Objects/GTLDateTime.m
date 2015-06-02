@@ -307,7 +307,7 @@ static const NSInteger kGTLUndefinedDateComponent = NSUndefinedDateComponent;
     [noonDateComponents setMinute:0];
     [noonDateComponents setSecond:0];
     dateComponents = noonDateComponents;
-    
+
     NSTimeZone *gmt = [NSTimeZone timeZoneWithName:@"Universal"];
     cal = [self calendarForTimeZone:gmt];
   } else {
@@ -411,7 +411,7 @@ static const NSInteger kGTLUndefinedDateComponent = NSUndefinedDateComponent;
   NSTimeInterval asTimeInterval = [date timeIntervalSince1970];
   NSTimeInterval worker = asTimeInterval - trunc(asTimeInterval);
   self.milliseconds = (NSInteger)round(worker * 1000.0);
-  
+
   self.universalTime = NO;
 
   NSInteger offset = kGTLUndefinedDateComponent;
@@ -502,7 +502,7 @@ static const NSInteger kGTLUndefinedDateComponent = NSUndefinedDateComponent;
 
   self.dateComponents = dateComponents;
   self.milliseconds = milliseconds;
-  
+
   // determine the offset, like from Z, or -08:00:00.0
 
   self.timeZone = nil;
@@ -510,7 +510,7 @@ static const NSInteger kGTLUndefinedDateComponent = NSUndefinedDateComponent;
   NSInteger totalOffset = kGTLUndefinedDateComponent;
   self.universalTime = NO;
 
-  if ([sign caseInsensitiveCompare:@"Z"] == NSOrderedSame) {
+  if (sign != nil && [sign caseInsensitiveCompare:@"Z"] == NSOrderedSame) {
 
     self.universalTime = YES;
     totalOffset = 0;
