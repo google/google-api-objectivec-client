@@ -27,11 +27,11 @@
 //   https://developers.google.com/analytics/
 // Classes:
 //   GTLAnalyticsFilter (0 custom class methods, 15 custom properties)
-//   GTLAnalyticsFilterAdvancedDetails (0 custom class methods, 10 custom properties)
-//   GTLAnalyticsFilterLowercaseDetails (0 custom class methods, 1 custom properties)
+//   GTLAnalyticsFilterAdvancedDetails (0 custom class methods, 13 custom properties)
+//   GTLAnalyticsFilterLowercaseDetails (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsFilterParentLink (0 custom class methods, 2 custom properties)
-//   GTLAnalyticsFilterSearchAndReplaceDetails (0 custom class methods, 4 custom properties)
-//   GTLAnalyticsFilterUppercaseDetails (0 custom class methods, 1 custom properties)
+//   GTLAnalyticsFilterSearchAndReplaceDetails (0 custom class methods, 5 custom properties)
+//   GTLAnalyticsFilterUppercaseDetails (0 custom class methods, 2 custom properties)
 
 #import "GTLAnalyticsFilter.h"
 
@@ -67,8 +67,9 @@
 //
 
 @implementation GTLAnalyticsFilterAdvancedDetails
-@dynamic caseSensitive, extractA, extractB, fieldA, fieldARequired, fieldB,
-         fieldBRequired, outputConstructor, outputToField, overrideOutputField;
+@dynamic caseSensitive, extractA, extractB, fieldA, fieldAIndex, fieldARequired,
+         fieldB, fieldBIndex, fieldBRequired, outputConstructor, outputToField,
+         outputToFieldIndex, overrideOutputField;
 @end
 
 
@@ -78,7 +79,7 @@
 //
 
 @implementation GTLAnalyticsFilterLowercaseDetails
-@dynamic field;
+@dynamic field, fieldIndex;
 @end
 
 
@@ -98,7 +99,7 @@
 //
 
 @implementation GTLAnalyticsFilterSearchAndReplaceDetails
-@dynamic caseSensitive, field, replaceString, searchString;
+@dynamic caseSensitive, field, fieldIndex, replaceString, searchString;
 @end
 
 
@@ -108,5 +109,5 @@
 //
 
 @implementation GTLAnalyticsFilterUppercaseDetails
-@dynamic field;
+@dynamic field, fieldIndex;
 @end

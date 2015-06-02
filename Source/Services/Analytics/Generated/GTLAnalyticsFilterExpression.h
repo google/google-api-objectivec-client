@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsFilterExpression (0 custom class methods, 5 custom properties)
+//   GTLAnalyticsFilterExpression (0 custom class methods, 6 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -134,7 +134,13 @@
 // - SOCIAL_NETWORK,
 // - SOCIAL_ACTION,
 // - SOCIAL_ACTION_TARGET,
+// - Custom dimension
+// - CUSTOM_DIMENSION (See accompanying field index),
 @property (nonatomic, copy) NSString *field;
+
+// The Index of the custom dimension. Set only if the field is a is
+// CUSTOM_DIMENSION.
+@property (nonatomic, retain) NSNumber *fieldIndex;  // intValue
 
 // Kind value for filter expression
 @property (nonatomic, copy) NSString *kind;
