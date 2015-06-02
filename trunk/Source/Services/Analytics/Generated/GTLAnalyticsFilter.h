@@ -27,11 +27,11 @@
 //   https://developers.google.com/analytics/
 // Classes:
 //   GTLAnalyticsFilter (0 custom class methods, 15 custom properties)
-//   GTLAnalyticsFilterAdvancedDetails (0 custom class methods, 10 custom properties)
-//   GTLAnalyticsFilterLowercaseDetails (0 custom class methods, 1 custom properties)
+//   GTLAnalyticsFilterAdvancedDetails (0 custom class methods, 13 custom properties)
+//   GTLAnalyticsFilterLowercaseDetails (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsFilterParentLink (0 custom class methods, 2 custom properties)
-//   GTLAnalyticsFilterSearchAndReplaceDetails (0 custom class methods, 4 custom properties)
-//   GTLAnalyticsFilterUppercaseDetails (0 custom class methods, 1 custom properties)
+//   GTLAnalyticsFilterSearchAndReplaceDetails (0 custom class methods, 5 custom properties)
+//   GTLAnalyticsFilterUppercaseDetails (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -125,11 +125,17 @@
 // Field A.
 @property (nonatomic, copy) NSString *fieldA;
 
+// The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+@property (nonatomic, retain) NSNumber *fieldAIndex;  // intValue
+
 // Indicates if field A is required to match.
 @property (nonatomic, retain) NSNumber *fieldARequired;  // boolValue
 
 // Field B.
 @property (nonatomic, copy) NSString *fieldB;
+
+// The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+@property (nonatomic, retain) NSNumber *fieldBIndex;  // intValue
 
 // Indicates if field B is required to match.
 @property (nonatomic, retain) NSNumber *fieldBRequired;  // boolValue
@@ -139,6 +145,9 @@
 
 // Output field.
 @property (nonatomic, copy) NSString *outputToField;
+
+// The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+@property (nonatomic, retain) NSNumber *outputToFieldIndex;  // intValue
 
 // Indicates if the existing value of the output field, if any, should be
 // overridden by the output expression.
@@ -156,6 +165,9 @@
 
 // Field to use in the filter.
 @property (nonatomic, copy) NSString *field;
+
+// The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+@property (nonatomic, retain) NSNumber *fieldIndex;  // intValue
 
 @end
 
@@ -189,6 +201,9 @@
 // Field to use in the filter.
 @property (nonatomic, copy) NSString *field;
 
+// The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+@property (nonatomic, retain) NSNumber *fieldIndex;  // intValue
+
 // Term to replace the search term with.
 @property (nonatomic, copy) NSString *replaceString;
 
@@ -207,5 +222,8 @@
 
 // Field to use in the filter.
 @property (nonatomic, copy) NSString *field;
+
+// The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+@property (nonatomic, retain) NSNumber *fieldIndex;  // intValue
 
 @end

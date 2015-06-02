@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsFilterExpression (0 custom class methods, 5 custom properties)
+//   GTLAnalyticsFilterExpression (0 custom class methods, 6 custom properties)
 
 #import "GTLAnalyticsFilterExpression.h"
 
@@ -36,7 +36,7 @@
 //
 
 @implementation GTLAnalyticsFilterExpression
-@dynamic caseSensitive, expressionValue, field, kind, matchType;
+@dynamic caseSensitive, expressionValue, field, fieldIndex, kind, matchType;
 
 + (void)load {
   [self registerObjectClassForKind:@"analytics#filterExpression"];
