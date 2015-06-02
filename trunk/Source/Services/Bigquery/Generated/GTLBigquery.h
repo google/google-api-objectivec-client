@@ -49,6 +49,7 @@
 #import "GTLBigqueryJobStatistics3.h"
 #import "GTLBigqueryJobStatistics4.h"
 #import "GTLBigqueryJobStatus.h"
+#import "GTLBigqueryJobStopResponse.h"
 #import "GTLBigqueryJsonObject.h"
 #import "GTLBigqueryProjectList.h"
 #import "GTLBigqueryProjectReference.h"

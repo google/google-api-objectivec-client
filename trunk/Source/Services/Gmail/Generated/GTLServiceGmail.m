@@ -55,7 +55,8 @@
     [GTLGmailMessagePartBody class],
     [GTLGmailMessagePartHeader class],
     [GTLGmailProfile class],
-    [GTLGmailThread class]
+    [GTLGmailThread class],
+    [GTLGmailWatchResponse class]
   ];
   return classes;
 }

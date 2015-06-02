@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,13 @@
 
 #import "GTLFitnessConstants.h"
 
+#import "GTLFitnessAggregateBucket.h"
+#import "GTLFitnessAggregateBy.h"
+#import "GTLFitnessAggregateResponse.h"
 #import "GTLFitnessApplication.h"
+#import "GTLFitnessBucketByActivity.h"
+#import "GTLFitnessBucketBySession.h"
+#import "GTLFitnessBucketByTime.h"
 #import "GTLFitnessDataPoint.h"
 #import "GTLFitnessDataset.h"
 #import "GTLFitnessDataSource.h"

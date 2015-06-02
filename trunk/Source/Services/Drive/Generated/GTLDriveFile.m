@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 51 custom properties)
+//   GTLDriveFile (0 custom class methods, 52 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
 //   GTLDriveFileImageMediaMetadata (0 custom class methods, 21 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
@@ -58,7 +58,7 @@
          md5Checksum, mimeType, modifiedByMeDate, modifiedDate, openWithLinks,
          originalFilename, ownerNames, owners, parents, permissions, properties,
          quotaBytesUsed, selfLink, shared, sharedWithMeDate, sharingUser,
-         thumbnail, thumbnailLink, title, userPermission, version,
+         spaces, thumbnail, thumbnailLink, title, userPermission, version,
          videoMediaMetadata, webContentLink, webViewLink, writersCanShare;
 
 + (NSDictionary *)propertyToJSONKeyMap {
@@ -76,7 +76,8 @@
     @"owners" : [GTLDriveUser class],
     @"parents" : [GTLDriveParentReference class],
     @"permissions" : [GTLDrivePermission class],
-    @"properties" : [GTLDriveProperty class]
+    @"properties" : [GTLDriveProperty class],
+    @"spaces" : [NSString class]
   };
   return map;
 }

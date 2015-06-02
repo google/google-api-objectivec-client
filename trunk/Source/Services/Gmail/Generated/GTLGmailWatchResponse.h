@@ -14,19 +14,19 @@
  */
 
 //
-//  GTLBigqueryTableRow.h
+//  GTLGmailWatchResponse.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   BigQuery API (bigquery/v2)
+//   Gmail API (gmail/v1)
 // Description:
-//   A data platform for customers to create, manage, share and query data.
+//   The Gmail REST API.
 // Documentation:
-//   https://cloud.google.com/bigquery/
+//   https://developers.google.com/gmail/api/
 // Classes:
-//   GTLBigqueryTableRow (0 custom class methods, 1 custom properties)
+//   GTLGmailWatchResponse (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,16 +34,20 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLBigqueryTableCell;
-
 // ----------------------------------------------------------------------------
 //
-//   GTLBigqueryTableRow
+//   GTLGmailWatchResponse
 //
 
-@interface GTLBigqueryTableRow : GTLObject
+// Push notification watch response.
 
-// Represents a single row in the result set, consisting of one or more fields.
-@property (nonatomic, retain) NSArray *f;  // of GTLBigqueryTableCell
+@interface GTLGmailWatchResponse : GTLObject
+
+// When Gmail will stop sending notifications for mailbox updates. Call watch
+// again before this time to renew the subscription.
+@property (nonatomic, retain) NSNumber *expiration;  // longLongValue
+
+// The ID of the mailbox's current history record.
+@property (nonatomic, retain) NSNumber *historyId;  // unsignedLongLongValue
 
 @end

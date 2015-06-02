@@ -41,16 +41,31 @@
 //   GTLStorageRewriteResponse
 //
 
-// A Rewrite response.
+// A rewrite response.
 
 @interface GTLStorageRewriteResponse : GTLObject
+
+// true if the copy is finished; otherwise, false if the copy is in progress.
+// This property is always present in the response.
 @property (nonatomic, retain) NSNumber *done;  // boolValue
 
 // The kind of item this is.
 @property (nonatomic, copy) NSString *kind;
 
+// The total size of the object being copied in bytes. This property is always
+// present in the response.
 @property (nonatomic, retain) NSNumber *objectSize;  // unsignedLongLongValue
+
+// A resource containing the metadata for the copied-to object. This property is
+// present in the response only when copying completes.
 @property (nonatomic, retain) GTLStorageObject *resource;
+
+// A token to use in subsequent requests to continue copying data. This token is
+// present in the response only when there is more data to copy.
 @property (nonatomic, copy) NSString *rewriteToken;
+
+// The total bytes written so far, which can be used to provide a waiting user
+// with a progress indicator. This property is always present in the response.
 @property (nonatomic, retain) NSNumber *totalBytesRewritten;  // unsignedLongLongValue
+
 @end

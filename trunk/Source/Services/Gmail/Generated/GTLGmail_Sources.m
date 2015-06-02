@@ -49,6 +49,7 @@
 #import "GTLGmailMessagePartHeader.m"
 #import "GTLGmailProfile.m"
 #import "GTLGmailThread.m"
+#import "GTLGmailWatchResponse.m"
 
 #import "GTLQueryGmail.m"
 #import "GTLServiceGmail.m"

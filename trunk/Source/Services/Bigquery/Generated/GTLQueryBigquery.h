@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLQueryBigquery (20 custom class methods, 23 custom properties)
+//   GTLQueryBigquery (21 custom class methods, 23 custom properties)
 //   GTLBigqueryTabledataInsertAllRowsItem (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -279,12 +279,27 @@
 //   useQueryCache: [Optional] Whether to look for the result in the query
 //     cache. The query cache is a best-effort cache that will be flushed
 //     whenever tables in the query are modified. The default value is true.
+//     (Default true)
 //  Authorization scope(s):
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
 // Fetches a GTLBigqueryQueryResponse.
 + (instancetype)queryForJobsQueryWithProjectId:(NSString *)projectId
                                          query:(NSString *)query;
+
+// Method: bigquery.jobs.stop
+// Requests that a job be stopped. This call will return immediately, and the
+// client will need to poll for the job status to see if the stop completed
+// successfully.
+//  Required:
+//   projectId: Project ID of the job to stop
+//   jobId: Job ID of the job to stop
+//  Authorization scope(s):
+//   kGTLAuthScopeBigquery
+//   kGTLAuthScopeBigqueryCloudPlatform
+// Fetches a GTLBigqueryJobStopResponse.
++ (instancetype)queryForJobsStopWithProjectId:(NSString *)projectId
+                                        jobId:(NSString *)jobId;
 
 #pragma mark -
 #pragma mark "projects" methods

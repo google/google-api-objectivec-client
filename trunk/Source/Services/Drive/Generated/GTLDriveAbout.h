@@ -63,7 +63,11 @@
 // type takes precedence.
 @property (nonatomic, retain) NSArray *additionalRoleInfo;  // of GTLDriveAboutAdditionalRoleInfoItem
 
-// The domain sharing policy for the current user.
+// The domain sharing policy for the current user. Possible values are:
+// - ALLOWED
+// - ALLOWED_WITH_WARNING
+// - INCOMING_ONLY
+// - DISALLOWED
 @property (nonatomic, copy) NSString *domainSharingPolicy;
 
 // The ETag of the item.

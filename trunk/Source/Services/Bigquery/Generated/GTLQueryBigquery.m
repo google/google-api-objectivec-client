@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLQueryBigquery (20 custom class methods, 23 custom properties)
+//   GTLQueryBigquery (21 custom class methods, 23 custom properties)
 //   GTLBigqueryTabledataInsertAllRowsItem (0 custom class methods, 2 custom properties)
 
 #import "GTLQueryBigquery.h"
@@ -37,6 +37,7 @@
 #import "GTLBigqueryGetQueryResultsResponse.h"
 #import "GTLBigqueryJob.h"
 #import "GTLBigqueryJobList.h"
+#import "GTLBigqueryJobStopResponse.h"
 #import "GTLBigqueryJsonObject.h"
 #import "GTLBigqueryProjectList.h"
 #import "GTLBigqueryQueryResponse.h"
@@ -184,6 +185,16 @@
   query.projectId = projectId;
   query.query = query_param;
   query.expectedObjectClass = [GTLBigqueryQueryResponse class];
+  return query;
+}
+
++ (instancetype)queryForJobsStopWithProjectId:(NSString *)projectId
+                                        jobId:(NSString *)jobId {
+  NSString *methodName = @"bigquery.jobs.stop";
+  GTLQueryBigquery *query = [self queryWithMethodName:methodName];
+  query.projectId = projectId;
+  query.jobId = jobId;
+  query.expectedObjectClass = [GTLBigqueryJobStopResponse class];
   return query;
 }
 

@@ -70,3 +70,7 @@ GTL_EXTERN NSString * const kGTLGmailFormatRaw;       // "raw"
 // GTLQueryGmail - InternalDateSource
 GTL_EXTERN NSString * const kGTLGmailInternalDateSourceDateHeader;  // "dateHeader"
 GTL_EXTERN NSString * const kGTLGmailInternalDateSourceReceivedTime;  // "receivedTime"
+
+// GTLQueryGmail - LabelFilterAction
+GTL_EXTERN NSString * const kGTLGmailLabelFilterActionExclude;  // "exclude"
+GTL_EXTERN NSString * const kGTLGmailLabelFilterActionInclude;  // "include"

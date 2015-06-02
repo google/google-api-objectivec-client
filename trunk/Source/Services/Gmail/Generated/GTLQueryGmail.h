@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/gmail/api/
 // Classes:
-//   GTLQueryGmail (30 custom class methods, 22 custom properties)
+//   GTLQueryGmail (32 custom class methods, 24 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -59,6 +59,7 @@
 @property (nonatomic, assign) BOOL includeSpamTrash;
 @property (nonatomic, copy) NSString *internalDateSource;
 @property (nonatomic, retain) GTLGmailLabel *label;
+@property (nonatomic, copy) NSString *labelFilterAction;
 @property (nonatomic, copy) NSString *labelId;
 @property (nonatomic, retain) NSArray *labelIds;  // of NSString
 @property (nonatomic, assign) NSUInteger maxResults;
@@ -71,6 +72,7 @@
 @property (nonatomic, copy) NSString *q;
 @property (nonatomic, retain) NSArray *removeLabelIds;  // of NSString
 @property (nonatomic, assign) unsigned long long startHistoryId;
+@property (nonatomic, copy) NSString *topicName;
 @property (nonatomic, copy) NSString *userId;
 
 #pragma mark -
@@ -489,6 +491,21 @@
 + (instancetype)queryForUsersMessagesUntrash;
 
 #pragma mark -
+#pragma mark "users" methods
+// These create a GTLQueryGmail object.
+
+// Method: gmail.users.stop
+// Stop receiving push notifications for the given user mailbox.
+//  Optional:
+//   userId: The user's email address. The special value me can be used to
+//     indicate the authenticated user. (Default me)
+//  Authorization scope(s):
+//   kGTLAuthScopeGmail
+//   kGTLAuthScopeGmailModify
+//   kGTLAuthScopeGmailReadonly
++ (instancetype)queryForUsersStop;
+
+#pragma mark -
 #pragma mark "users.threads" methods
 // These create a GTLQueryGmail object.
 
@@ -581,5 +598,34 @@
 //   kGTLAuthScopeGmailModify
 // Fetches a GTLGmailThread.
 + (instancetype)queryForUsersThreadsUntrash;
+
+#pragma mark -
+#pragma mark "users" methods
+// These create a GTLQueryGmail object.
+
+// Method: gmail.users.watch
+// Set up or update a push notification watch on the given user mailbox.
+//  Optional:
+//   labelFilterAction: Filtering behavior of labelIds list specified.
+//      kGTLGmailLabelFilterActionExclude: "exclude"
+//      kGTLGmailLabelFilterActionInclude: "include"
+//   labelIds: List of label_ids to restrict notifications about. By default, if
+//     unspecified, all changes are pushed out. If specified then dictates which
+//     labels are required for a push notification to be generated.
+//   topicName: Fully qualified Cloud PubSub API topic name to publish events
+//     to. This topic name should already exist in Cloud PubSub and you should
+//     have already granted gmail "publish" privileges on it. For example,
+//     "projects/my-project-identifier/topics/my-topic-name" (using the new
+//     Cloud PubSub "v1beta2" topic naming format).
+//     Note that the "my-project-identifier" portion must exactly match your
+//     developer console project id (the one executing this watch request).
+//   userId: The user's email address. The special value me can be used to
+//     indicate the authenticated user. (Default me)
+//  Authorization scope(s):
+//   kGTLAuthScopeGmail
+//   kGTLAuthScopeGmailModify
+//   kGTLAuthScopeGmailReadonly
+// Fetches a GTLGmailWatchResponse.
++ (instancetype)queryForUsersWatch;
 
 @end

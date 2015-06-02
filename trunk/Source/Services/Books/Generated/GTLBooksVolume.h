@@ -33,7 +33,7 @@
 //   GTLBooksVolumeSaleInfo (0 custom class methods, 8 custom properties)
 //   GTLBooksVolumeSearchInfo (0 custom class methods, 1 custom properties)
 //   GTLBooksVolumeUserInfo (0 custom class methods, 11 custom properties)
-//   GTLBooksVolumeVolumeInfo (0 custom class methods, 24 custom properties)
+//   GTLBooksVolumeVolumeInfo (0 custom class methods, 25 custom properties)
 //   GTLBooksVolumeAccessInfoEpub (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeAccessInfoPdf (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeLayerInfoLayersItem (0 custom class methods, 2 custom properties)
@@ -329,6 +329,9 @@
 //
 
 @interface GTLBooksVolumeVolumeInfo : GTLObject
+
+// Whether anonymous logging should be allowed.
+@property (nonatomic, retain) NSNumber *allowAnonLogging;  // boolValue
 
 // The names of the authors and/or editors for this volume. (In LITE projection)
 @property (nonatomic, retain) NSArray *authors;  // of NSString

@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/gmail/api/
 // Classes:
-//   GTLQueryGmail (30 custom class methods, 22 custom properties)
+//   GTLQueryGmail (32 custom class methods, 24 custom properties)
 
 #import "GTLQueryGmail.h"
 
@@ -41,14 +41,15 @@
 #import "GTLGmailMessagePartBody.h"
 #import "GTLGmailProfile.h"
 #import "GTLGmailThread.h"
+#import "GTLGmailWatchResponse.h"
 
 @implementation GTLQueryGmail
 
 @dynamic addLabelIds, deleted, draft, fields, format, identifier,
-         includeSpamTrash, internalDateSource, label, labelId, labelIds,
-         maxResults, message, messageId, metadataHeaders, neverMarkSpam,
-         pageToken, processForCalendar, q, removeLabelIds, startHistoryId,
-         userId;
+         includeSpamTrash, internalDateSource, label, labelFilterAction,
+         labelId, labelIds, maxResults, message, messageId, metadataHeaders,
+         neverMarkSpam, pageToken, processForCalendar, q, removeLabelIds,
+         startHistoryId, topicName, userId;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map = @{
@@ -263,6 +264,16 @@
 }
 
 #pragma mark -
+#pragma mark "users" methods
+// These create a GTLQueryGmail object.
+
++ (instancetype)queryForUsersStop {
+  NSString *methodName = @"gmail.users.stop";
+  GTLQueryGmail *query = [self queryWithMethodName:methodName];
+  return query;
+}
+
+#pragma mark -
 #pragma mark "users.threads" methods
 // These create a GTLQueryGmail object.
 
@@ -304,6 +315,17 @@
   NSString *methodName = @"gmail.users.threads.untrash";
   GTLQueryGmail *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLGmailThread class];
+  return query;
+}
+
+#pragma mark -
+#pragma mark "users" methods
+// These create a GTLQueryGmail object.
+
++ (instancetype)queryForUsersWatch {
+  NSString *methodName = @"gmail.users.watch";
+  GTLQueryGmail *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLGmailWatchResponse class];
   return query;
 }
 

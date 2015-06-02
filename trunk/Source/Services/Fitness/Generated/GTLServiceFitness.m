@@ -38,7 +38,13 @@
 + (NSArray *)checkClasses {
   NSArray *classes = @[
     [GTLQueryFitness class],
+    [GTLFitnessAggregateBucket class],
+    [GTLFitnessAggregateBy class],
+    [GTLFitnessAggregateResponse class],
     [GTLFitnessApplication class],
+    [GTLFitnessBucketByActivity class],
+    [GTLFitnessBucketBySession class],
+    [GTLFitnessBucketByTime class],
     [GTLFitnessDataPoint class],
     [GTLFitnessDataset class],
     [GTLFitnessDataSource class],

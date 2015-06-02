@@ -14,36 +14,37 @@
  */
 
 //
-//  GTLBigqueryTableRow.h
+//  GTLFitnessAggregateResponse.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   BigQuery API (bigquery/v2)
+//   Fitness (fitness/v1)
 // Description:
-//   A data platform for customers to create, manage, share and query data.
+//   Google Fit API
 // Documentation:
-//   https://cloud.google.com/bigquery/
+//   https://developers.google.com/fit/rest/
 // Classes:
-//   GTLBigqueryTableRow (0 custom class methods, 1 custom properties)
+//   GTLFitnessAggregateResponse (0 custom class methods, 1 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLFitnessAggregateResponse.h"
 
-@class GTLBigqueryTableCell;
+#import "GTLFitnessAggregateBucket.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBigqueryTableRow
+//   GTLFitnessAggregateResponse
 //
 
-@interface GTLBigqueryTableRow : GTLObject
+@implementation GTLFitnessAggregateResponse
+@dynamic bucket;
 
-// Represents a single row in the result set, consisting of one or more fields.
-@property (nonatomic, retain) NSArray *f;  // of GTLBigqueryTableCell
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map = @{
+    @"bucket" : [GTLFitnessAggregateBucket class]
+  };
+  return map;
+}
 
 @end
