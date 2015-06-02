@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLQueryDrive (59 custom class methods, 45 custom properties)
+//   GTLQueryDrive (59 custom class methods, 46 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -92,6 +92,7 @@
 @property (nonatomic, copy) NSString *revisionId;
 @property (nonatomic, assign) BOOL sendNotificationEmails;
 @property (nonatomic, assign) BOOL setModifiedDate;
+@property (nonatomic, copy) NSString *spaces;
 @property (nonatomic, assign) long long startChangeId;
 @property (nonatomic, copy) NSString *timedTextLanguage;
 @property (nonatomic, copy) NSString *timedTextTrackName;
@@ -196,6 +197,8 @@
 //     own. (Default true)
 //   maxResults: Maximum number of changes to return. (Default 100)
 //   pageToken: Page token for changes.
+//   spaces: A comma-separated list of spaces to query. Supported values are
+//     'drive' and 'appDataFolder'.
 //   startChangeId: Change ID to start listing changes from.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
@@ -218,6 +221,8 @@
 //     own. (Default true)
 //   maxResults: Maximum number of changes to return. (Default 100)
 //   pageToken: Page token for changes.
+//   spaces: A comma-separated list of spaces to query. Supported values are
+//     'drive' and 'appDataFolder'.
 //   startChangeId: Change ID to start listing changes from.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
@@ -412,7 +417,7 @@
 //   ocr: Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads. (Default
 //     false)
 //   ocrLanguage: If ocr is true, hints at the language to use. Valid values are
-//     ISO 639-1 codes.
+//     BCP 47 codes.
 //   pinned: Whether to pin the head revision of the new copy. A file can have a
 //     maximum of 200 pinned revisions. (Default false)
 //   timedTextLanguage: The language of the timed text.
@@ -483,7 +488,7 @@
 //   ocr: Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads. (Default
 //     false)
 //   ocrLanguage: If ocr is true, hints at the language to use. Valid values are
-//     ISO 639-1 codes.
+//     BCP 47 codes.
 //   pinned: Whether to pin the head revision of the uploaded file. A file can
 //     have a maximum of 200 pinned revisions. (Default false)
 //   timedTextLanguage: The language of the timed text.
@@ -520,6 +525,8 @@
 //      kGTLDriveProjectionBasic: Deprecated
 //      kGTLDriveProjectionFull: Deprecated
 //   q: Query string for searching files.
+//   spaces: A comma-separated list of spaces to query. Supported values are
+//     'drive' and 'appDataFolder'.
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
 //   kGTLAuthScopeDriveAppdata
@@ -547,7 +554,7 @@
 //   ocr: Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads. (Default
 //     false)
 //   ocrLanguage: If ocr is true, hints at the language to use. Valid values are
-//     ISO 639-1 codes.
+//     BCP 47 codes.
 //   pinned: Whether to pin the new revision. A file can have a maximum of 200
 //     pinned revisions. (Default false)
 //   removeParents: Comma-separated list of parent IDs to remove.
@@ -623,7 +630,7 @@
 //   ocr: Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads. (Default
 //     false)
 //   ocrLanguage: If ocr is true, hints at the language to use. Valid values are
-//     ISO 639-1 codes.
+//     BCP 47 codes.
 //   pinned: Whether to pin the new revision. A file can have a maximum of 200
 //     pinned revisions. (Default false)
 //   removeParents: Comma-separated list of parent IDs to remove.

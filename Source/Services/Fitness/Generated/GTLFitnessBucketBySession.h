@@ -14,19 +14,19 @@
  */
 
 //
-//  GTLBigqueryTableRow.h
+//  GTLFitnessBucketBySession.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   BigQuery API (bigquery/v2)
+//   Fitness (fitness/v1)
 // Description:
-//   A data platform for customers to create, manage, share and query data.
+//   Google Fit API
 // Documentation:
-//   https://cloud.google.com/bigquery/
+//   https://developers.google.com/fit/rest/
 // Classes:
-//   GTLBigqueryTableRow (0 custom class methods, 1 custom properties)
+//   GTLFitnessBucketBySession (0 custom class methods, 1 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,16 +34,14 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLBigqueryTableCell;
-
 // ----------------------------------------------------------------------------
 //
-//   GTLBigqueryTableRow
+//   GTLFitnessBucketBySession
 //
 
-@interface GTLBigqueryTableRow : GTLObject
+@interface GTLFitnessBucketBySession : GTLObject
 
-// Represents a single row in the result set, consisting of one or more fields.
-@property (nonatomic, retain) NSArray *f;  // of GTLBigqueryTableCell
+// Only sessions of duration longer than this is used
+@property (nonatomic, retain) NSNumber *minDurationMillis;  // longLongValue
 
 @end

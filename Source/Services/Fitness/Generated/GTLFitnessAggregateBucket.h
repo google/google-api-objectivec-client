@@ -14,19 +14,19 @@
  */
 
 //
-//  GTLBigqueryTableRow.h
+//  GTLFitnessAggregateBucket.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   BigQuery API (bigquery/v2)
+//   Fitness (fitness/v1)
 // Description:
-//   A data platform for customers to create, manage, share and query data.
+//   Google Fit API
 // Documentation:
-//   https://cloud.google.com/bigquery/
+//   https://developers.google.com/fit/rest/
 // Classes:
-//   GTLBigqueryTableRow (0 custom class methods, 1 custom properties)
+//   GTLFitnessAggregateBucket (0 custom class methods, 6 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,16 +34,31 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLBigqueryTableCell;
+@class GTLFitnessDataset;
+@class GTLFitnessSession;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBigqueryTableRow
+//   GTLFitnessAggregateBucket
 //
 
-@interface GTLBigqueryTableRow : GTLObject
+@interface GTLFitnessAggregateBucket : GTLObject
 
-// Represents a single row in the result set, consisting of one or more fields.
-@property (nonatomic, retain) NSArray *f;  // of GTLBigqueryTableCell
+// available for Bucket.Type.ACTIVITY_TYPE, Bucket.Type.ACTIVITY_SEGMENT
+@property (nonatomic, retain) NSNumber *activity;  // intValue
+
+// There will be one dataset per datatype/datasource
+@property (nonatomic, retain) NSArray *dataset;  // of GTLFitnessDataset
+
+@property (nonatomic, retain) NSNumber *endTimeMillis;  // longLongValue
+
+// available for Bucket.Type.SESSION
+@property (nonatomic, retain) GTLFitnessSession *session;
+
+@property (nonatomic, retain) NSNumber *startTimeMillis;  // longLongValue
+
+// The type of a bucket signifies how the data aggregation is performed in the
+// bucket.
+@property (nonatomic, copy) NSString *type;
 
 @end

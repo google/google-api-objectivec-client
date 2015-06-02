@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/fit/rest/
 // Classes:
-//   GTLQueryFitness (12 custom class methods, 16 custom properties)
+//   GTLQueryFitness (13 custom class methods, 23 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -34,6 +34,10 @@
   #import "GTLQuery.h"
 #endif
 
+@class GTLFitnessAggregateBy;
+@class GTLFitnessBucketByActivity;
+@class GTLFitnessBucketBySession;
+@class GTLFitnessBucketByTime;
 @class GTLFitnessDataset;
 @class GTLFitnessDataSource;
 @class GTLFitnessSession;
@@ -50,6 +54,11 @@
 //
 // Method-specific parameters; see the comments below for more information.
 //
+@property (nonatomic, retain) NSArray *aggregateBy;  // of GTLFitnessAggregateBy
+@property (nonatomic, retain) GTLFitnessBucketByActivity *bucketByActivitySegment;
+@property (nonatomic, retain) GTLFitnessBucketByActivity *bucketByActivityType;
+@property (nonatomic, retain) GTLFitnessBucketBySession *bucketBySession;
+@property (nonatomic, retain) GTLFitnessBucketByTime *bucketByTime;
 @property (nonatomic, assign) long long currentTimeMillis;
 @property (nonatomic, retain) GTLFitnessDataSource *dataSource;
 @property (nonatomic, retain) GTLFitnessDataset *dataset;
@@ -57,6 +66,7 @@
 @property (nonatomic, copy) NSString *dataSourceId;
 @property (nonatomic, retain) NSArray *dataTypeName;  // of NSString
 @property (nonatomic, copy) NSString *endTime;
+@property (nonatomic, assign) long long endTimeMillis;
 @property (nonatomic, assign) BOOL includeDeleted;
 @property (nonatomic, assign) NSInteger limit;
 @property (nonatomic, assign) long long modifiedTimeMillis;
@@ -64,7 +74,24 @@
 @property (nonatomic, retain) GTLFitnessSession *session;
 @property (nonatomic, copy) NSString *sessionId;
 @property (nonatomic, copy) NSString *startTime;
+@property (nonatomic, assign) long long startTimeMillis;
 @property (nonatomic, copy) NSString *userId;
+
+#pragma mark -
+#pragma mark "users.dataset" methods
+// These create a GTLQueryFitness object.
+
+// Method: fitness.users.dataset.aggregate
+//  Optional:
+//   aggregateBy: NSArray
+//   bucketByActivitySegment: GTLFitnessBucketByActivity
+//   bucketByActivityType: GTLFitnessBucketByActivity
+//   bucketBySession: GTLFitnessBucketBySession
+//   bucketByTime: apparently oneof is not supported by reduced_nano_proto
+//   endTimeMillis: long long
+//   startTimeMillis: required time range
+// Fetches a GTLFitnessAggregateResponse.
++ (instancetype)queryForUsersDatasetAggregateWithUserId:(NSString *)userId;
 
 #pragma mark -
 #pragma mark "users.dataSources" methods

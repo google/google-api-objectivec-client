@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLBigqueryTableRow.h
+//  GTLBigqueryJobStopResponse.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,24 +26,22 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryTableRow (0 custom class methods, 1 custom properties)
+//   GTLBigqueryJobStopResponse (0 custom class methods, 2 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLBigqueryJobStopResponse.h"
 
-@class GTLBigqueryTableCell;
+#import "GTLBigqueryJob.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBigqueryTableRow
+//   GTLBigqueryJobStopResponse
 //
 
-@interface GTLBigqueryTableRow : GTLObject
+@implementation GTLBigqueryJobStopResponse
+@dynamic job, kind;
 
-// Represents a single row in the result set, consisting of one or more fields.
-@property (nonatomic, retain) NSArray *f;  // of GTLBigqueryTableCell
++ (void)load {
+  [self registerObjectClassForKind:@"bigquery#jobStopResponse"];
+}
 
 @end

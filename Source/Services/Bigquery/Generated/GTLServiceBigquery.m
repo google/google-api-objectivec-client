@@ -59,6 +59,7 @@
     [GTLBigqueryJobStatistics3 class],
     [GTLBigqueryJobStatistics4 class],
     [GTLBigqueryJobStatus class],
+    [GTLBigqueryJobStopResponse class],
     [GTLBigqueryJsonObject class],
     [GTLBigqueryProjectList class],
     [GTLBigqueryProjectReference class],

@@ -58,3 +58,7 @@ NSString * const kGTLGmailFormatRaw      = @"raw";
 // GTLQueryGmail - InternalDateSource
 NSString * const kGTLGmailInternalDateSourceDateHeader   = @"dateHeader";
 NSString * const kGTLGmailInternalDateSourceReceivedTime = @"receivedTime";
+
+// GTLQueryGmail - LabelFilterAction
+NSString * const kGTLGmailLabelFilterActionExclude = @"exclude";
+NSString * const kGTLGmailLabelFilterActionInclude = @"include";

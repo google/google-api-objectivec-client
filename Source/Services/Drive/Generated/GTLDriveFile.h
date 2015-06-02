@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 51 custom properties)
+//   GTLDriveFile (0 custom class methods, 52 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
 //   GTLDriveFileImageMediaMetadata (0 custom class methods, 21 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
@@ -217,6 +217,10 @@
 
 // User that shared the item with the current user, if available.
 @property (nonatomic, retain) GTLDriveUser *sharingUser;
+
+// The list of spaces which contain the file. Supported values are 'drive' and
+// 'appDataFolder'.
+@property (nonatomic, retain) NSArray *spaces;  // of NSString
 
 // Thumbnail for the file. Only accepted on upload and for files that are not
 // already thumbnailed by Google.

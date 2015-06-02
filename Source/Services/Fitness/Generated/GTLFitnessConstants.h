@@ -48,6 +48,13 @@ GTL_EXTERN NSString * const kGTLAuthScopeFitnessLocationRead;   // "https://www.
 // View and store your location data in Google Fit
 GTL_EXTERN NSString * const kGTLAuthScopeFitnessLocationWrite;  // "https://www.googleapis.com/auth/fitness.location.write"
 
+// GTLFitnessAggregateBucket - Type
+GTL_EXTERN NSString * const kGTLFitnessAggregateBucket_Type_ActivitySegment;  // "activitySegment"
+GTL_EXTERN NSString * const kGTLFitnessAggregateBucket_Type_ActivityType;  // "activityType"
+GTL_EXTERN NSString * const kGTLFitnessAggregateBucket_Type_Session;  // "session"
+GTL_EXTERN NSString * const kGTLFitnessAggregateBucket_Type_Time;  // "time"
+GTL_EXTERN NSString * const kGTLFitnessAggregateBucket_Type_Unknown;  // "unknown"
+
 // GTLFitnessDataSource - Type
 GTL_EXTERN NSString * const kGTLFitnessDataSource_Type_Derived;  // "derived"
 GTL_EXTERN NSString * const kGTLFitnessDataSource_Type_Raw;     // "raw"

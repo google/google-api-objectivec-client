@@ -39,10 +39,6 @@
 //   GTLBigqueryTableCell
 //
 
-// Represents a single cell in the result set. Users of the java client can
-// detect whether their value result is null by calling
-// 'com.google.api.client.util.Data.isNull(cell.getV())'.
-
 @interface GTLBigqueryTableCell : GTLObject
 @property (nonatomic, retain) id v;
 @end

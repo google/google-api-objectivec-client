@@ -52,6 +52,7 @@
 #import "GTLBigqueryJobStatistics3.m"
 #import "GTLBigqueryJobStatistics4.m"
 #import "GTLBigqueryJobStatus.m"
+#import "GTLBigqueryJobStopResponse.m"
 #import "GTLBigqueryJsonObject.m"
 #import "GTLBigqueryProjectList.m"
 #import "GTLBigqueryProjectReference.m"

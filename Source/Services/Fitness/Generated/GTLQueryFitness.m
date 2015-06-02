@@ -26,10 +26,15 @@
 // Documentation:
 //   https://developers.google.com/fit/rest/
 // Classes:
-//   GTLQueryFitness (12 custom class methods, 16 custom properties)
+//   GTLQueryFitness (13 custom class methods, 23 custom properties)
 
 #import "GTLQueryFitness.h"
 
+#import "GTLFitnessAggregateBy.h"
+#import "GTLFitnessAggregateResponse.h"
+#import "GTLFitnessBucketByActivity.h"
+#import "GTLFitnessBucketBySession.h"
+#import "GTLFitnessBucketByTime.h"
 #import "GTLFitnessDataset.h"
 #import "GTLFitnessDataSource.h"
 #import "GTLFitnessListDataSourcesResponse.h"
@@ -38,9 +43,11 @@
 
 @implementation GTLQueryFitness
 
-@dynamic currentTimeMillis, dataSource, dataset, datasetId, dataSourceId,
-         dataTypeName, endTime, fields, includeDeleted, limit,
-         modifiedTimeMillis, pageToken, session, sessionId, startTime, userId;
+@dynamic aggregateBy, bucketByActivitySegment, bucketByActivityType,
+         bucketBySession, bucketByTime, currentTimeMillis, dataSource, dataset,
+         datasetId, dataSourceId, dataTypeName, endTime, endTimeMillis, fields,
+         includeDeleted, limit, modifiedTimeMillis, pageToken, session,
+         sessionId, startTime, startTimeMillis, userId;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map = @{
@@ -51,9 +58,22 @@
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{
+    @"aggregateBy" : [GTLFitnessAggregateBy class],
     @"dataTypeName" : [NSString class]
   };
   return map;
+}
+
+#pragma mark -
+#pragma mark "users.dataset" methods
+// These create a GTLQueryFitness object.
+
++ (instancetype)queryForUsersDatasetAggregateWithUserId:(NSString *)userId {
+  NSString *methodName = @"fitness.users.dataset.aggregate";
+  GTLQueryFitness *query = [self queryWithMethodName:methodName];
+  query.userId = userId;
+  query.expectedObjectClass = [GTLFitnessAggregateResponse class];
+  return query;
 }
 
 #pragma mark -

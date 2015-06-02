@@ -33,7 +33,7 @@
 //   GTLBooksVolumeSaleInfo (0 custom class methods, 8 custom properties)
 //   GTLBooksVolumeSearchInfo (0 custom class methods, 1 custom properties)
 //   GTLBooksVolumeUserInfo (0 custom class methods, 11 custom properties)
-//   GTLBooksVolumeVolumeInfo (0 custom class methods, 24 custom properties)
+//   GTLBooksVolumeVolumeInfo (0 custom class methods, 25 custom properties)
 //   GTLBooksVolumeAccessInfoEpub (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeAccessInfoPdf (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeLayerInfoLayersItem (0 custom class methods, 2 custom properties)
@@ -176,12 +176,12 @@
 //
 
 @implementation GTLBooksVolumeVolumeInfo
-@dynamic authors, averageRating, canonicalVolumeLink, categories,
-         contentVersion, descriptionProperty, dimensions, imageLinks,
-         industryIdentifiers, infoLink, language, mainCategory, maturityRating,
-         pageCount, previewLink, printedPageCount, printType, publishedDate,
-         publisher, ratingsCount, readingModes, samplePageCount, subtitle,
-         title;
+@dynamic allowAnonLogging, authors, averageRating, canonicalVolumeLink,
+         categories, contentVersion, descriptionProperty, dimensions,
+         imageLinks, industryIdentifiers, infoLink, language, mainCategory,
+         maturityRating, pageCount, previewLink, printedPageCount, printType,
+         publishedDate, publisher, ratingsCount, readingModes, samplePageCount,
+         subtitle, title;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{

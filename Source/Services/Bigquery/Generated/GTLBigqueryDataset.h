@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryDataset (0 custom class methods, 11 custom properties)
+//   GTLBigqueryDataset (0 custom class methods, 12 custom properties)
 //   GTLBigqueryDatasetAccessItem (0 custom class methods, 6 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -98,6 +98,10 @@
 // [Output-only] The date when this dataset or any of its tables was last
 // modified, in milliseconds since the epoch.
 @property (nonatomic, retain) NSNumber *lastModifiedTime;  // longLongValue
+
+// [Experimental] The location where the data resides. If not present, the data
+// will be stored in the US.
+@property (nonatomic, copy) NSString *location;
 
 // [Output-only] A URL that can be used to access the resource again. You can
 // use this URL in Get or Update requests to the resource.

@@ -91,7 +91,7 @@
 // [Optional] Whether to look for the result in the query cache. The query cache
 // is a best-effort cache that will be flushed whenever tables in the query are
 // modified. Moreover, the query cache is only available when a query does not
-// have a destination table specified.
+// have a destination table specified. The default value is true.
 @property (nonatomic, retain) NSNumber *useQueryCache;  // boolValue
 
 // [Optional] Specifies the action that occurs if the destination table already

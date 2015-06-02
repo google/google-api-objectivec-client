@@ -36,6 +36,13 @@ NSString * const kGTLAuthScopeFitnessBodyWrite     = @"https://www.googleapis.co
 NSString * const kGTLAuthScopeFitnessLocationRead  = @"https://www.googleapis.com/auth/fitness.location.read";
 NSString * const kGTLAuthScopeFitnessLocationWrite = @"https://www.googleapis.com/auth/fitness.location.write";
 
+// GTLFitnessAggregateBucket - Type
+NSString * const kGTLFitnessAggregateBucket_Type_ActivitySegment = @"activitySegment";
+NSString * const kGTLFitnessAggregateBucket_Type_ActivityType  = @"activityType";
+NSString * const kGTLFitnessAggregateBucket_Type_Session       = @"session";
+NSString * const kGTLFitnessAggregateBucket_Type_Time          = @"time";
+NSString * const kGTLFitnessAggregateBucket_Type_Unknown       = @"unknown";
+
 // GTLFitnessDataSource - Type
 NSString * const kGTLFitnessDataSource_Type_Derived = @"derived";
 NSString * const kGTLFitnessDataSource_Type_Raw     = @"raw";

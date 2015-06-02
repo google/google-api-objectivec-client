@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,13 @@
 
 #import "GTLFitnessConstants.m"
 
+#import "GTLFitnessAggregateBucket.m"
+#import "GTLFitnessAggregateBy.m"
+#import "GTLFitnessAggregateResponse.m"
 #import "GTLFitnessApplication.m"
+#import "GTLFitnessBucketByActivity.m"
+#import "GTLFitnessBucketBySession.m"
+#import "GTLFitnessBucketByTime.m"
 #import "GTLFitnessDataPoint.m"
 #import "GTLFitnessDataset.m"
 #import "GTLFitnessDataSource.m"
