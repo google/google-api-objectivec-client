@@ -224,8 +224,20 @@
 //     for mimicking a request for a certain project ID
 //   onBehalfOf: ID of the Google+ Page for the channel that the request is be
 //     on behalf of
+//   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
+//     YouTube content partners.
+//     The onBehalfOfContentOwner parameter indicates that the request's
+//     authorization credentials identify a YouTube CMS user who is acting on
+//     behalf of the content owner specified in the parameter value. This
+//     parameter is intended for YouTube content partners that own and manage
+//     many different YouTube channels. It allows content owners to authenticate
+//     once and get access to all their video and channel data, without having
+//     to provide authentication credentials for each individual channel. The
+//     actual CMS account that the user authenticates with must be linked to the
+//     specified YouTube content owner.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTubeForceSsl
+//   kGTLAuthScopeYouTubeYoutubepartner
 + (instancetype)queryForCaptionsDeleteWithIdentifier:(NSString *)identifier;
 
 // Method: youtube.captions.download
@@ -242,6 +254,17 @@
 //     for mimicking a request for a certain project ID
 //   onBehalfOf: ID of the Google+ Page for the channel that the request is be
 //     on behalf of
+//   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
+//     YouTube content partners.
+//     The onBehalfOfContentOwner parameter indicates that the request's
+//     authorization credentials identify a YouTube CMS user who is acting on
+//     behalf of the content owner specified in the parameter value. This
+//     parameter is intended for YouTube content partners that own and manage
+//     many different YouTube channels. It allows content owners to authenticate
+//     once and get access to all their video and channel data, without having
+//     to provide authentication credentials for each individual channel. The
+//     actual CMS account that the user authenticates with must be linked to the
+//     specified YouTube content owner.
 //   tfmt: The tfmt parameter specifies that the caption track should be
 //     returned in a specific format. If the parameter is not included in the
 //     request, the track is returned in its original format.
@@ -257,6 +280,7 @@
 //     as Google Translate.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTubeForceSsl
+//   kGTLAuthScopeYouTubeYoutubepartner
 + (instancetype)queryForCaptionsDownloadWithIdentifier:(NSString *)identifier;
 
 // Method: youtube.captions.insert
@@ -269,6 +293,17 @@
 //     for mimicking a request for a certain project ID.
 //   onBehalfOf: ID of the Google+ Page for the channel that the request is be
 //     on behalf of
+//   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
+//     YouTube content partners.
+//     The onBehalfOfContentOwner parameter indicates that the request's
+//     authorization credentials identify a YouTube CMS user who is acting on
+//     behalf of the content owner specified in the parameter value. This
+//     parameter is intended for YouTube content partners that own and manage
+//     many different YouTube channels. It allows content owners to authenticate
+//     once and get access to all their video and channel data, without having
+//     to provide authentication credentials for each individual channel. The
+//     actual CMS account that the user authenticates with must be linked to the
+//     specified YouTube content owner.
 //   sync: The sync parameter indicates whether YouTube should automatically
 //     synchronize the caption file with the audio track of the video. If you
 //     set the value to true, YouTube will disregard any time codes that are in
@@ -281,6 +316,7 @@
 //   Accepted MIME type(s): */*, application/octet-stream, text/xml
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTubeForceSsl
+//   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubeCaption.
 + (instancetype)queryForCaptionsInsertWithObject:(GTLYouTubeCaption *)object
                                             part:(NSString *)part
@@ -304,8 +340,20 @@
 //     identify a caption track associated with the specified video.
 //   onBehalfOf: ID of the Google+ Page for the channel that the request is on
 //     behalf of.
+//   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
+//     YouTube content partners.
+//     The onBehalfOfContentOwner parameter indicates that the request's
+//     authorization credentials identify a YouTube CMS user who is acting on
+//     behalf of the content owner specified in the parameter value. This
+//     parameter is intended for YouTube content partners that own and manage
+//     many different YouTube channels. It allows content owners to authenticate
+//     once and get access to all their video and channel data, without having
+//     to provide authentication credentials for each individual channel. The
+//     actual CMS account that the user authenticates with must be linked to the
+//     specified YouTube content owner.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTubeForceSsl
+//   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubeCaptionListResponse.
 + (instancetype)queryForCaptionsListWithPart:(NSString *)part
                                      videoId:(NSString *)videoId;
@@ -324,6 +372,17 @@
 //     for mimicking a request for a certain project ID.
 //   onBehalfOf: ID of the Google+ Page for the channel that the request is be
 //     on behalf of
+//   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
+//     YouTube content partners.
+//     The onBehalfOfContentOwner parameter indicates that the request's
+//     authorization credentials identify a YouTube CMS user who is acting on
+//     behalf of the content owner specified in the parameter value. This
+//     parameter is intended for YouTube content partners that own and manage
+//     many different YouTube channels. It allows content owners to authenticate
+//     once and get access to all their video and channel data, without having
+//     to provide authentication credentials for each individual channel. The
+//     actual CMS account that the user authenticates with must be linked to the
+//     specified YouTube content owner.
 //   sync: Note: The API server only processes the parameter value if the
 //     request contains an updated caption file.
 //     The sync parameter indicates whether YouTube should automatically
@@ -335,6 +394,7 @@
 //   Accepted MIME type(s): */*, application/octet-stream, text/xml
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTubeForceSsl
+//   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubeCaption.
 + (instancetype)queryForCaptionsUpdateWithObject:(GTLYouTubeCaption *)object
                                             part:(NSString *)part
@@ -781,6 +841,15 @@
 //        classified as likely being spam.
 //      kGTLYouTubeModerationStatusPublished: Returns only published comment
 //        threads.
+//   order: The order parameter specifies the order in which the API response
+//     should list comment threads. Valid values are:
+//     - time - Comment threads are ordered by time. This is the default
+//     behavior.
+//     - relevance - Comment threads are ordered by relevance.Note: This
+//     parameter is not supported for use in conjunction with the id parameter.
+//     (Default "true")
+//      kGTLYouTubeOrderRelevance: Order by relevance.
+//      kGTLYouTubeOrderTime: Order by time.
 //   pageToken: The pageToken parameter identifies a specific page in the result
 //     set that should be returned. In an API response, the nextPageToken
 //     property identifies the next page of the result that can be retrieved.
@@ -2282,6 +2351,8 @@
 //   chart: The chart parameter identifies the chart that you want to retrieve.
 //      kGTLYouTubeChartMostPopular: Return the most popular videos for the
 //        specified content region and video category.
+//   debugProjectIdOverride: The debugProjectIdOverride parameter should be used
+//     for mimicking a request for a certain project ID
 //   hl: The hl parameter instructs the API to return a localized version of the
 //     video details. If localized text is nor available for the requested
 //     language, the localizations object in the API response will contain the

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveBroadcastStatus.h
+//  GTLYouTubeLiveStreamHealthStatus.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveBroadcastStatus (0 custom class methods, 4 custom properties)
+//   GTLYouTubeLiveStreamHealthStatus (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,28 +34,22 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLYouTubeLiveStreamConfigurationIssue;
+
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveBroadcastStatus
+//   GTLYouTubeLiveStreamHealthStatus
 //
 
-@interface GTLYouTubeLiveBroadcastStatus : GTLObject
+@interface GTLYouTubeLiveStreamHealthStatus : GTLObject
 
-// The broadcast's status. The status can be updated using the API's
-// liveBroadcasts.transition method.
-@property (nonatomic, copy) NSString *lifeCycleStatus;
+// The configurations issues on this stream
+@property (nonatomic, retain) NSArray *configurationIssues;  // of GTLYouTubeLiveStreamConfigurationIssue
 
-// Priority of the live broadcast event (internal state).
-@property (nonatomic, copy) NSString *liveBroadcastPriority;
+// The last time this status was updated (in seconds)
+@property (nonatomic, retain) NSNumber *lastUpdateTimeS;  // unsignedLongLongValue
 
-// The broadcast's privacy status. Note that the broadcast represents exactly
-// one YouTube video, so the privacy settings are identical to those supported
-// for videos. In addition, you can set this field by modifying the broadcast
-// resource or by setting the privacyStatus field of the corresponding video
-// resource.
-@property (nonatomic, copy) NSString *privacyStatus;
-
-// The broadcast's recording status.
-@property (nonatomic, copy) NSString *recordingStatus;
+// The status code of this stream
+@property (nonatomic, copy) NSString *status;
 
 @end

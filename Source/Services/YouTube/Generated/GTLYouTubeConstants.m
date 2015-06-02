@@ -72,6 +72,7 @@ NSString * const kGTLYouTubeOrderAlphabetical = @"alphabetical";
 NSString * const kGTLYouTubeOrderDate         = @"date";
 NSString * const kGTLYouTubeOrderRating       = @"rating";
 NSString * const kGTLYouTubeOrderRelevance    = @"relevance";
+NSString * const kGTLYouTubeOrderTime         = @"time";
 NSString * const kGTLYouTubeOrderTitle        = @"title";
 NSString * const kGTLYouTubeOrderUnread       = @"unread";
 NSString * const kGTLYouTubeOrderVideoCount   = @"videoCount";
@@ -824,6 +825,53 @@ NSString * const kGTLYouTubeLiveBroadcastStatus_PrivacyStatus_Unlisted = @"unlis
 NSString * const kGTLYouTubeLiveBroadcastStatus_RecordingStatus_NotRecording = @"notRecording";
 NSString * const kGTLYouTubeLiveBroadcastStatus_RecordingStatus_Recorded = @"recorded";
 NSString * const kGTLYouTubeLiveBroadcastStatus_RecordingStatus_Recording = @"recording";
+
+// GTLYouTubeLiveStreamConfigurationIssue - Severity
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Severity_Error = @"error";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Severity_Info = @"info";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Severity_Warning = @"warning";
+
+// GTLYouTubeLiveStreamConfigurationIssue - Type
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_AudioBitrate = @"audioBitrate";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_AudioBitrateHigh = @"audioBitrateHigh";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_AudioBitrateLow = @"audioBitrateLow";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_AudioCodec = @"audioCodec";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_AudioCodecMismatch = @"audioCodecMismatch";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_AudioSampleRate = @"audioSampleRate";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_AudioSampleRateMismatch = @"audioSampleRateMismatch";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_AudioStereoMismatch = @"audioStereoMismatch";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_AudioTooManyChannel = @"audioTooManyChannel";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_BadContainer = @"badContainer";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_BitrateHigh = @"bitrateHigh";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_BitrateLow = @"bitrateLow";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_FramerateHigh = @"framerateHigh";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_FramerateMismatch = @"framerateMismatch";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_GopMismatch = @"gopMismatch";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_GopSizeLong = @"gopSizeLong";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_GopSizeOver = @"gopSizeOver";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_GopSizeShort = @"gopSizeShort";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_InterlaceVideo = @"interlaceVideo";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_MultipleAudioStreams = @"multipleAudioStreams";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_MultipleVideoStreams = @"multipleVideoStreams";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_NoAudioStream = @"noAudioStream";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_NoVideoStream = @"noVideoStream";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_OpenGop = @"openGop";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_ResolutionMismatch = @"resolutionMismatch";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_VideoBitrateMismatch = @"videoBitrateMismatch";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_VideoCodec = @"videoCodec";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_VideoCodecMismatch = @"videoCodecMismatch";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_VideoIngestionStarved = @"videoIngestionStarved";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_VideoInterlaceMismatch = @"videoInterlaceMismatch";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_VideoProfileMismatch = @"videoProfileMismatch";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_VideoResolutionSuboptimal = @"videoResolutionSuboptimal";
+NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Type_VideoResolutionUnsupported = @"videoResolutionUnsupported";
+
+// GTLYouTubeLiveStreamHealthStatus - Status
+NSString * const kGTLYouTubeLiveStreamHealthStatus_Status_Bad  = @"bad";
+NSString * const kGTLYouTubeLiveStreamHealthStatus_Status_Good = @"good";
+NSString * const kGTLYouTubeLiveStreamHealthStatus_Status_NoData = @"noData";
+NSString * const kGTLYouTubeLiveStreamHealthStatus_Status_Ok   = @"ok";
+NSString * const kGTLYouTubeLiveStreamHealthStatus_Status_Revoked = @"revoked";
 
 // GTLYouTubeLiveStreamStatus - StreamStatus
 NSString * const kGTLYouTubeLiveStreamStatus_StreamStatus_Active = @"active";
