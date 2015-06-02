@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveStreamSnippet (0 custom class methods, 4 custom properties)
+//   GTLYouTubeLiveStreamSnippet (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -48,6 +48,8 @@
 // The stream's description. The value cannot be longer than 10000 characters.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (nonatomic, copy) NSString *descriptionProperty;
+
+@property (nonatomic, retain) NSNumber *isDefaultStream;  // boolValue
 
 // The date and time that the stream was created. The value is specified in ISO
 // 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.

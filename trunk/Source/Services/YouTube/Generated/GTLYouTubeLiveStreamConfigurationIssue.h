@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveBroadcastStatus.h
+//  GTLYouTubeLiveStreamConfigurationIssue.h
 //
 
 // ----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveBroadcastStatus (0 custom class methods, 4 custom properties)
+//   GTLYouTubeLiveStreamConfigurationIssue (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,26 +36,22 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveBroadcastStatus
+//   GTLYouTubeLiveStreamConfigurationIssue
 //
 
-@interface GTLYouTubeLiveBroadcastStatus : GTLObject
+@interface GTLYouTubeLiveStreamConfigurationIssue : GTLObject
 
-// The broadcast's status. The status can be updated using the API's
-// liveBroadcasts.transition method.
-@property (nonatomic, copy) NSString *lifeCycleStatus;
+// The long-form description of the issue and how to resolve it.
+// Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
+@property (nonatomic, copy) NSString *descriptionProperty;
 
-// Priority of the live broadcast event (internal state).
-@property (nonatomic, copy) NSString *liveBroadcastPriority;
+// The short-form reason for this issue.
+@property (nonatomic, copy) NSString *reason;
 
-// The broadcast's privacy status. Note that the broadcast represents exactly
-// one YouTube video, so the privacy settings are identical to those supported
-// for videos. In addition, you can set this field by modifying the broadcast
-// resource or by setting the privacyStatus field of the corresponding video
-// resource.
-@property (nonatomic, copy) NSString *privacyStatus;
+// How severe this issue is to the stream.
+@property (nonatomic, copy) NSString *severity;
 
-// The broadcast's recording status.
-@property (nonatomic, copy) NSString *recordingStatus;
+// The kind of error happening.
+@property (nonatomic, copy) NSString *type;
 
 @end

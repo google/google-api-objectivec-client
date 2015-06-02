@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveStreamSnippet (0 custom class methods, 4 custom properties)
+//   GTLYouTubeLiveStreamSnippet (0 custom class methods, 5 custom properties)
 
 #import "GTLYouTubeLiveStreamSnippet.h"
 
@@ -36,7 +36,7 @@
 //
 
 @implementation GTLYouTubeLiveStreamSnippet
-@dynamic channelId, descriptionProperty, publishedAt, title;
+@dynamic channelId, descriptionProperty, isDefaultStream, publishedAt, title;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{

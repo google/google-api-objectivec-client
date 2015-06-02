@@ -34,6 +34,8 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLYouTubeLiveStreamHealthStatus;
+
 // ----------------------------------------------------------------------------
 //
 //   GTLYouTubeLiveStreamStatus
@@ -42,6 +44,9 @@
 // Brief description of the live stream status.
 
 @interface GTLYouTubeLiveStreamStatus : GTLObject
-@property (nonatomic, retain) NSNumber *isDefaultStream;  // boolValue
+
+// The health status of the stream.
+@property (nonatomic, retain) GTLYouTubeLiveStreamHealthStatus *healthStatus;
+
 @property (nonatomic, copy) NSString *streamStatus;
 @end

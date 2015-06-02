@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLYouTubeLiveBroadcastStatus.m
+//  GTLYouTubeLiveStreamConfigurationIssue.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,15 +26,23 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveBroadcastStatus (0 custom class methods, 4 custom properties)
+//   GTLYouTubeLiveStreamConfigurationIssue (0 custom class methods, 4 custom properties)
 
-#import "GTLYouTubeLiveBroadcastStatus.h"
+#import "GTLYouTubeLiveStreamConfigurationIssue.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeLiveBroadcastStatus
+//   GTLYouTubeLiveStreamConfigurationIssue
 //
 
-@implementation GTLYouTubeLiveBroadcastStatus
-@dynamic lifeCycleStatus, liveBroadcastPriority, privacyStatus, recordingStatus;
+@implementation GTLYouTubeLiveStreamConfigurationIssue
+@dynamic descriptionProperty, reason, severity, type;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map = @{
+    @"descriptionProperty" : @"description"
+  };
+  return map;
+}
+
 @end

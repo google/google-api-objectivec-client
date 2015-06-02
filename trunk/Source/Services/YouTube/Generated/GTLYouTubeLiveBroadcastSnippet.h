@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveBroadcastSnippet (0 custom class methods, 9 custom properties)
+//   GTLYouTubeLiveBroadcastSnippet (0 custom class methods, 10 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -62,6 +62,8 @@
 // corresponding video resource.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (nonatomic, copy) NSString *descriptionProperty;
+
+@property (nonatomic, retain) NSNumber *isDefaultBroadcast;  // boolValue
 
 // The date and time that the broadcast was added to YouTube's live broadcast
 // schedule. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.

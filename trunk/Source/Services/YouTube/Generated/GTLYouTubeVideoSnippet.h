@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoSnippet (0 custom class methods, 11 custom properties)
+//   GTLYouTubeVideoSnippet (0 custom class methods, 12 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -56,6 +56,10 @@
 
 // Channel title for the channel that the video belongs to.
 @property (nonatomic, copy) NSString *channelTitle;
+
+// The default_audio_language property specifies the language spoken in the
+// video's default audio track.
+@property (nonatomic, copy) NSString *defaultAudioLanguage;
 
 // The language of the videos's default snippet.
 @property (nonatomic, copy) NSString *defaultLanguage;

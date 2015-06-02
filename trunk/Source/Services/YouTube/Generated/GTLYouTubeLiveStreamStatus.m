@@ -30,11 +30,13 @@
 
 #import "GTLYouTubeLiveStreamStatus.h"
 
+#import "GTLYouTubeLiveStreamHealthStatus.h"
+
 // ----------------------------------------------------------------------------
 //
 //   GTLYouTubeLiveStreamStatus
 //
 
 @implementation GTLYouTubeLiveStreamStatus
-@dynamic isDefaultStream, streamStatus;
+@dynamic healthStatus, streamStatus;
 @end
