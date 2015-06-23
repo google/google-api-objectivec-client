@@ -1,0 +1,431 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4F22A2151186315400FFBAB6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F22A2141186315400FFBAB6 /* WebKit.framework */; };
+		4F43229517726611002A5E2C /* GTLCommon_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F43229317726611002A5E2C /* GTLCommon_Sources.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4F43229617726611002A5E2C /* GTLNetworking_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F43229417726611002A5E2C /* GTLNetworking_Sources.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4F43229917726CFD002A5E2C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F43229817726CFD002A5E2C /* Security.framework */; };
+		4F43229B17726D10002A5E2C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F43229A17726D10002A5E2C /* SystemConfiguration.framework */; };
+		4F47EC2F1947E1C7007C13FA /* GTMOAuth2Window.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F47EC2E1947E1C7007C13FA /* GTMOAuth2Window.xib */; };
+		4F9B545B15816762005E917A /* StorageSampleAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9B545815816762005E917A /* StorageSampleAppController.m */; };
+		4F9B545C15816762005E917A /* StorageSampleWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9B545A15816762005E917A /* StorageSampleWindowController.m */; };
+		4FA6F3D41034AEC400C5DFA5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FA6F3D11034AEC400C5DFA5 /* MainMenu.xib */; };
+		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
+		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		938EA733186C2B6E0093CF68 /* StorageSampleWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 938EA731186C2B6E0093CF68 /* StorageSampleWindow.xib */; };
+		938EA73E186C2DFE0093CF68 /* GTLStorage_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 938EA73D186C2DFE0093CF68 /* GTLStorage_Sources.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4F38F8970B66FAB700B24B81 /* Copy GTL Framework */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Copy GTL Framework";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		4F22A2141186315400FFBAB6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
+		4F43229317726611002A5E2C /* GTLCommon_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLCommon_Sources.m; path = ../../Source/GTLCommon_Sources.m; sourceTree = "<group>"; };
+		4F43229417726611002A5E2C /* GTLNetworking_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLNetworking_Sources.m; path = ../../Source/GTLNetworking_Sources.m; sourceTree = "<group>"; };
+		4F43229817726CFD002A5E2C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
+		4F43229A17726D10002A5E2C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = /System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<group>"; };
+		4F47EC2E1947E1C7007C13FA /* GTMOAuth2Window.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GTMOAuth2Window.xib; path = ../../Source/OAuth2/Mac/GTMOAuth2Window.xib; sourceTree = "<group>"; };
+		4F9B545715816762005E917A /* StorageSampleAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = StorageSampleAppController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		4F9B545815816762005E917A /* StorageSampleAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = StorageSampleAppController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		4F9B545915816762005E917A /* StorageSampleWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = StorageSampleWindowController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		4F9B545A15816762005E917A /* StorageSampleWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = StorageSampleWindowController.m; sourceTree = "<group>"; tabWidth = 2; };
+		4FA6F3D21034AEC400C5DFA5 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		4FD0F1DA0CBC68F300059DC1 /* buildStripHeaders */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.script.sh; path = buildStripHeaders; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8D1107320486CEB800E47090 /* StorageSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StorageSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		938EA732186C2B6E0093CF68 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/StorageSampleWindow.xib; sourceTree = "<group>"; };
+		938EA73D186C2DFE0093CF68 /* GTLStorage_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLStorage_Sources.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D11072E0486CEB800E47090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				4F22A2151186315400FFBAB6 /* WebKit.framework in Frameworks */,
+				4F43229917726CFD002A5E2C /* Security.framework in Frameworks */,
+				4F43229B17726D10002A5E2C /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Sample App Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4F9B545715816762005E917A /* StorageSampleAppController.h */,
+				4F9B545815816762005E917A /* StorageSampleAppController.m */,
+				4F9B545915816762005E917A /* StorageSampleWindowController.h */,
+				4F9B545A15816762005E917A /* StorageSampleWindowController.m */,
+			);
+			name = "Sample App Classes";
+			sourceTree = "<group>";
+		};
+		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4F43229A17726D10002A5E2C /* SystemConfiguration.framework */,
+				4F43229817726CFD002A5E2C /* Security.framework */,
+				4F22A2141186315400FFBAB6 /* WebKit.framework */,
+				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
+				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107320486CEB800E47090 /* StorageSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CalendarSample */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Sample App Classes */,
+				4F43229317726611002A5E2C /* GTLCommon_Sources.m */,
+				4F43229417726611002A5E2C /* GTLNetworking_Sources.m */,
+				4FB25385138C3F9E00B5C1AE /* API Services */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				4FD0F1D80CBC68E100059DC1 /* Build Scripts */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CalendarSample;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				938EA731186C2B6E0093CF68 /* StorageSampleWindow.xib */,
+				4FA6F3D11034AEC400C5DFA5 /* MainMenu.xib */,
+				4F47EC2E1947E1C7007C13FA /* GTMOAuth2Window.xib */,
+				8D1107310486CEB800E47090 /* Info.plist */,
+				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4FB25385138C3F9E00B5C1AE /* API Services */ = {
+			isa = PBXGroup;
+			children = (
+				938EA737186C2D440093CF68 /* Storage */,
+			);
+			name = "API Services";
+			sourceTree = "<group>";
+		};
+		4FD0F1D80CBC68E100059DC1 /* Build Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				4FD0F1DA0CBC68F300059DC1 /* buildStripHeaders */,
+			);
+			name = "Build Scripts";
+			sourceTree = "<group>";
+		};
+		938EA737186C2D440093CF68 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				938EA739186C2DD30093CF68 /* Generated */,
+			);
+			name = Storage;
+			path = ../../Source/Services/Storage;
+			sourceTree = "<group>";
+		};
+		938EA739186C2DD30093CF68 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				938EA73D186C2DFE0093CF68 /* GTLStorage_Sources.m */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D1107260486CEB800E47090 /* StorageSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "StorageSample" */;
+			buildPhases = (
+				8D1107290486CEB800E47090 /* Resources */,
+				8D11072C0486CEB800E47090 /* Sources */,
+				8D11072E0486CEB800E47090 /* Frameworks */,
+				4F38F8970B66FAB700B24B81 /* Copy GTL Framework */,
+				4FD0F1DB0CBC690400059DC1 /* Strip Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StorageSample;
+			productInstallPath = "$(HOME)/Applications";
+			productName = CalendarSample;
+			productReference = 8D1107320486CEB800E47090 /* StorageSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+			};
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "StorageSample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CalendarSample */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D1107260486CEB800E47090 /* StorageSample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D1107290486CEB800E47090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				4FA6F3D41034AEC400C5DFA5 /* MainMenu.xib in Resources */,
+				938EA733186C2B6E0093CF68 /* StorageSampleWindow.xib in Resources */,
+				4F47EC2F1947E1C7007C13FA /* GTMOAuth2Window.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4FD0F1DB0CBC690400059DC1 /* Strip Headers */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Strip Headers";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = ./buildStripHeaders;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D11072C0486CEB800E47090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				938EA73E186C2DFE0093CF68 /* GTLStorage_Sources.m in Sources */,
+				8D11072D0486CEB800E47090 /* main.m in Sources */,
+				4F9B545B15816762005E917A /* StorageSampleAppController.m in Sources */,
+				4F9B545C15816762005E917A /* StorageSampleWindowController.m in Sources */,
+				4F43229517726611002A5E2C /* GTLCommon_Sources.m in Sources */,
+				4F43229617726611002A5E2C /* GTLNetworking_Sources.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C165DFE840E0CC02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4FA6F3D11034AEC400C5DFA5 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4FA6F3D21034AEC400C5DFA5 /* English */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		938EA731186C2B6E0093CF68 /* StorageSampleWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				938EA732186C2B6E0093CF68 /* English */,
+			);
+			name = StorageSampleWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C01FCF4B08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../../Source/build/$(CONFIGURATION)/";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = StorageSample;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C01FCF4C08A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../../Source/build/$(CONFIGURATION)/";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = StorageSample;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					../../Source,
+					../../Source/HTTPFetcher,
+					../../Source/Utilities,
+					../../Source/OAuth2,
+					../../Source/OAuth2/Mac,
+					../../Source/Objects,
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-DGTL_BUILT_AS_FRAMEWORK=0",
+					"-DDEBUG=1",
+				);
+				SDKROOT = macosx;
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-Werror",
+				);
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					../../Source,
+					../../Source/HTTPFetcher,
+					../../Source/Utilities,
+					../../Source/OAuth2,
+					../../Source/OAuth2/Mac,
+					../../Source/Objects,
+				);
+				OTHER_CFLAGS = "-DGTL_BUILT_AS_FRAMEWORK=0";
+				SDKROOT = macosx;
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-Werror",
+				);
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "StorageSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4B08A954540054247B /* Debug */,
+				C01FCF4C08A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "StorageSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
