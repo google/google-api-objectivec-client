@@ -2586,7 +2586,7 @@ static NSString *MappedParamName(NSString *name) {
         NSPointerArray *sameNamed =
           [previousParam propertyForKey:kSameNamedParametersKey];
         if (!sameNamed) {
-          sameNamed = [NSPointerArray pointerArrayWithWeakObjects];
+          sameNamed = [NSPointerArray weakObjectsPointerArray];
           [previousParam setProperty:sameNamed forKey:kSameNamedParametersKey];
           [sameNamed addPointer:previousParam];
         }

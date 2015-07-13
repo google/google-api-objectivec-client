@@ -24,7 +24,7 @@
 
 #import "GTLDiscovery.h"
 #import "GTLUtilities.h"
-#import "GTMHTTPFetcherLogging.h"
+#import "GTMSessionFetcherLogging.h"
 
 #import "FHGenerator.h"
 #import "FHUtils.h"
@@ -180,17 +180,6 @@ typedef enum {
 @property (assign) FHMainState state;
 @property (assign) FHMainState postWaitState;
 @property (assign) int status;
-
-- (void)printUsage:(FILE *)outputFile;
-
-- (BOOL)collectAPIFromURL:(NSURL *)url reportingName:(NSString *)reportingName;
-
-- (void)stateParseArgs;
-- (void)stateDirectory;
-- (void)stateDescribe;
-- (void)stateWait;
-- (void)stateGenerate;
-- (void)stateWriteFiles;
 
 @end
 
@@ -387,14 +376,16 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
   self.state = FHMain_Done;
 }
 
-- (BOOL)collectAPIFromURL:(NSURL *)url reportingName:(NSString *)reportingName {
+- (void)collectAPIFromURL:(NSURL *)url reportingName:(NSString *)reportingName {
   printf(" + Fetching %s\n", [reportingName UTF8String]);
 
-  GTMHTTPFetcherService *fetcherService = self.discoveryService.fetcherService;
-  GTMHTTPFetcher *fetcher = [fetcherService fetcherWithURL:url];
+  GTMSessionFetcherService *fetcherService = self.discoveryService.fetcherService;
+  GTMSessionFetcher *fetcher = [fetcherService fetcherWithURL:url];
   fetcher.comment = [@"Fetching: " stringByAppendingString:reportingName];
   fetcher.allowLocalhostRequest = YES;
-  BOOL started = [fetcher beginFetchWithCompletionHandler:^(NSData *data, NSError *error) {
+  fetcher.allowedInsecureSchemes = @[ @"file", @"http" ];
+  self.numberOfActiveNetworkActions += 1;
+  [fetcher beginFetchWithCompletionHandler:^(NSData *data, NSError *error) {
     self.numberOfActiveNetworkActions -= 1;
 
     if (error) {
@@ -438,16 +429,6 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
     [self.collectedApis addObject:api];
     printf(" +-- Loaded: %s:%s\n", [api.name UTF8String], [api.version UTF8String]);
   }];
-  if (started) {
-    self.numberOfActiveNetworkActions += 1;
-  } else {
-    fprintf(stderr, "%s Failed to fetch the api description\n", kERROR);
-    self.status = 6;
-    self.state = FHMain_Done;
-    return NO;
-  }
-
-  return YES;
 }
 
 - (void)stateParseArgs {
@@ -640,8 +621,8 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
     NSString *shortHTTPLogDir = [self.httpLogDir stringByAbbreviatingWithTildeInPath];
     NSError *err = nil;
     if ([FHUtils createDir:self.httpLogDir error:&err]) {
-      [GTMHTTPFetcher setLoggingEnabled:YES];
-      [GTMHTTPFetcher setLoggingDirectory:self.httpLogDir];
+      [GTMSessionFetcher setLoggingEnabled:YES];
+      [GTMSessionFetcher setLoggingDirectory:self.httpLogDir];
       printf("  HTTPFetcher Log Dir: %s\n", [shortHTTPLogDir UTF8String]);
     } else {
       fprintf(stderr,
@@ -719,13 +700,10 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
         self.state = FHMain_Done;
         return;
       }
-      if ([self collectAPIFromURL:asURL reportingName:urlString]) {
-        if (self.state != FHMain_Wait) {
-          self.postWaitState = self.state;
-          self.state = FHMain_Wait;
-        }
-      } else {
-        return;
+      [self collectAPIFromURL:asURL reportingName:urlString];
+      if (self.state != FHMain_Wait) {
+        self.postWaitState = self.state;
+        self.state = FHMain_Wait;
       }
     }
   }
@@ -735,13 +713,10 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
     for (NSString *fullPath in filesToLoad) {
       NSString *shortPath = [fullPath stringByAbbreviatingWithTildeInPath];
       NSURL *asURL = [NSURL fileURLWithPath:fullPath];
-      if ([self collectAPIFromURL:asURL reportingName:shortPath]) {
-        if (self.state != FHMain_Wait) {
-          self.postWaitState = self.state;
-          self.state = FHMain_Wait;
-        }
-      } else {
-        return;
+      [self collectAPIFromURL:asURL reportingName:shortPath];
+      if (self.state != FHMain_Wait) {
+        self.postWaitState = self.state;
+        self.state = FHMain_Wait;
       }
     }
   }
