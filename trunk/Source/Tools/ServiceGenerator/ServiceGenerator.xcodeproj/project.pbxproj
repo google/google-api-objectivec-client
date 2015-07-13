@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		4F4B41241728C4AA00A58B39 /* GTLDiscovery_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4B41231728C4A900A58B39 /* GTLDiscovery_Sources.m */; };
+		4F59912B1B03F69000FBCF22 /* GTMSessionFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5991261B03F69000FBCF22 /* GTMSessionFetcher.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		4F59912C1B03F69000FBCF22 /* GTMSessionFetcherLogging.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5991281B03F69000FBCF22 /* GTMSessionFetcherLogging.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		4F59912D1B03F69000FBCF22 /* GTMSessionFetcherService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F59912A1B03F69000FBCF22 /* GTMSessionFetcherService.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		4F59912F1B03F87D00FBCF22 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F59912E1B03F87D00FBCF22 /* Security.framework */; };
 		8DD76F9A0486AA7600D96B5E /* FHMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* FHMain.m */; settings = {ATTRIBUTES = (); }; };
 		8DD76F9C0486AA7600D96B5E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB779EFE84155DC02AAC07 /* Foundation.framework */; };
 		D0F2815413D0BF6600B4F659 /* GTLUploadParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F2815313D0BF6600B4F659 /* GTLUploadParameters.m */; };
@@ -22,10 +26,6 @@
 		F40E714B1384B41200EE3F02 /* GTLFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = F40E713D1384B41200EE3F02 /* GTLFramework.m */; };
 		F40E714C1384B41200EE3F02 /* GTLJSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F40E713F1384B41200EE3F02 /* GTLJSONParser.m */; };
 		F40E714D1384B41200EE3F02 /* GTLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F40E71421384B41200EE3F02 /* GTLUtilities.m */; };
-		F4BB4A5E12B7BF02008B2FB4 /* GTMHTTPFetcherService.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BB4A5112B7BF02008B2FB4 /* GTMHTTPFetcherService.m */; };
-		F4BB4A5F12B7BF02008B2FB4 /* GTMHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BB4A5312B7BF02008B2FB4 /* GTMHTTPFetcher.m */; };
-		F4BB4A6012B7BF02008B2FB4 /* GTMHTTPFetchHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BB4A5512B7BF02008B2FB4 /* GTMHTTPFetchHistory.m */; };
-		F4BB4A6112B7BF02008B2FB4 /* GTMHTTPFetcherLogging.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BB4A5712B7BF02008B2FB4 /* GTMHTTPFetcherLogging.m */; };
 		F4CC66DF1237D33800522D45 /* FHGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CC66DE1237D33800522D45 /* FHGenerator.m */; };
 		F4F9D45F1313E9C0002E77E6 /* FHUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F9D45E1313E9C0002E77E6 /* FHUtils.m */; };
 		F4F9D80F13146402002E77E6 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4F9D80E13146402002E77E6 /* CoreServices.framework */; };
@@ -47,6 +47,13 @@
 		08FB7796FE84155DC02AAC07 /* FHMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHMain.m; sourceTree = "<group>"; };
 		08FB779EFE84155DC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		4F4B41231728C4A900A58B39 /* GTLDiscovery_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLDiscovery_Sources.m; path = ../../Services/Discovery/Generated/GTLDiscovery_Sources.m; sourceTree = "<group>"; };
+		4F5991251B03F69000FBCF22 /* GTMSessionFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMSessionFetcher.h; path = ../../../../gtm_session_fetcher/Source/GTMSessionFetcher.h; sourceTree = "<group>"; };
+		4F5991261B03F69000FBCF22 /* GTMSessionFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMSessionFetcher.m; path = ../../../../gtm_session_fetcher/Source/GTMSessionFetcher.m; sourceTree = "<group>"; };
+		4F5991271B03F69000FBCF22 /* GTMSessionFetcherLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMSessionFetcherLogging.h; path = ../../../../gtm_session_fetcher/Source/GTMSessionFetcherLogging.h; sourceTree = "<group>"; };
+		4F5991281B03F69000FBCF22 /* GTMSessionFetcherLogging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMSessionFetcherLogging.m; path = ../../../../gtm_session_fetcher/Source/GTMSessionFetcherLogging.m; sourceTree = "<group>"; };
+		4F5991291B03F69000FBCF22 /* GTMSessionFetcherService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMSessionFetcherService.h; path = ../../../../gtm_session_fetcher/Source/GTMSessionFetcherService.h; sourceTree = "<group>"; };
+		4F59912A1B03F69000FBCF22 /* GTMSessionFetcherService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMSessionFetcherService.m; path = ../../../../gtm_session_fetcher/Source/GTMSessionFetcherService.m; sourceTree = "<group>"; };
+		4F59912E1B03F87D00FBCF22 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8DD76FA10486AA7600D96B5E /* ServiceGenerator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ServiceGenerator; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0F2815213D0BF6600B4F659 /* GTLUploadParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTLUploadParameters.h; path = ../../Objects/GTLUploadParameters.h; sourceTree = SOURCE_ROOT; };
 		D0F2815313D0BF6600B4F659 /* GTLUploadParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLUploadParameters.m; path = ../../Objects/GTLUploadParameters.m; sourceTree = SOURCE_ROOT; };
@@ -74,14 +81,6 @@
 		F40E71411384B41200EE3F02 /* GTLUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTLUtilities.h; path = ../../Utilities/GTLUtilities.h; sourceTree = SOURCE_ROOT; };
 		F40E71421384B41200EE3F02 /* GTLUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLUtilities.m; path = ../../Utilities/GTLUtilities.m; sourceTree = SOURCE_ROOT; };
 		F483B88B13A7ACEB001F030B /* GTLDiscovery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTLDiscovery.h; path = ../../Services/Discovery/Generated/GTLDiscovery.h; sourceTree = SOURCE_ROOT; };
-		F4BB4A5012B7BF02008B2FB4 /* GTMHTTPFetcherService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMHTTPFetcherService.h; path = ../../HTTPFetcher/GTMHTTPFetcherService.h; sourceTree = SOURCE_ROOT; };
-		F4BB4A5112B7BF02008B2FB4 /* GTMHTTPFetcherService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMHTTPFetcherService.m; path = ../../HTTPFetcher/GTMHTTPFetcherService.m; sourceTree = SOURCE_ROOT; };
-		F4BB4A5212B7BF02008B2FB4 /* GTMHTTPFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMHTTPFetcher.h; path = ../../HTTPFetcher/GTMHTTPFetcher.h; sourceTree = SOURCE_ROOT; };
-		F4BB4A5312B7BF02008B2FB4 /* GTMHTTPFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMHTTPFetcher.m; path = ../../HTTPFetcher/GTMHTTPFetcher.m; sourceTree = SOURCE_ROOT; };
-		F4BB4A5412B7BF02008B2FB4 /* GTMHTTPFetchHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMHTTPFetchHistory.h; path = ../../HTTPFetcher/GTMHTTPFetchHistory.h; sourceTree = SOURCE_ROOT; };
-		F4BB4A5512B7BF02008B2FB4 /* GTMHTTPFetchHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMHTTPFetchHistory.m; path = ../../HTTPFetcher/GTMHTTPFetchHistory.m; sourceTree = SOURCE_ROOT; };
-		F4BB4A5612B7BF02008B2FB4 /* GTMHTTPFetcherLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMHTTPFetcherLogging.h; path = ../../HTTPFetcher/GTMHTTPFetcherLogging.h; sourceTree = SOURCE_ROOT; };
-		F4BB4A5712B7BF02008B2FB4 /* GTMHTTPFetcherLogging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMHTTPFetcherLogging.m; path = ../../HTTPFetcher/GTMHTTPFetcherLogging.m; sourceTree = SOURCE_ROOT; };
 		F4BB4A7F12B7BF4F008B2FB4 /* GTLDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTLDefines.h; path = ../../GTLDefines.h; sourceTree = SOURCE_ROOT; };
 		F4CC66DD1237D33800522D45 /* FHGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHGenerator.h; sourceTree = "<group>"; };
 		F4CC66DE1237D33800522D45 /* FHGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHGenerator.m; sourceTree = "<group>"; };
@@ -96,6 +95,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DD76F9C0486AA7600D96B5E /* Foundation.framework in Frameworks */,
+				4F59912F1B03F87D00FBCF22 /* Security.framework in Frameworks */,
 				F4F9D80F13146402002E77E6 /* CoreServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -129,6 +129,7 @@
 		08FB779DFE84155DC02AAC07 /* External Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				4F59912E1B03F87D00FBCF22 /* Security.framework */,
 				F4F9D80E13146402002E77E6 /* CoreServices.framework */,
 				08FB779EFE84155DC02AAC07 /* Foundation.framework */,
 			);
@@ -194,14 +195,12 @@
 		F4BB4A4F12B7BF02008B2FB4 /* HTTPFetcher */ = {
 			isa = PBXGroup;
 			children = (
-				F4BB4A5012B7BF02008B2FB4 /* GTMHTTPFetcherService.h */,
-				F4BB4A5112B7BF02008B2FB4 /* GTMHTTPFetcherService.m */,
-				F4BB4A5212B7BF02008B2FB4 /* GTMHTTPFetcher.h */,
-				F4BB4A5312B7BF02008B2FB4 /* GTMHTTPFetcher.m */,
-				F4BB4A5412B7BF02008B2FB4 /* GTMHTTPFetchHistory.h */,
-				F4BB4A5512B7BF02008B2FB4 /* GTMHTTPFetchHistory.m */,
-				F4BB4A5612B7BF02008B2FB4 /* GTMHTTPFetcherLogging.h */,
-				F4BB4A5712B7BF02008B2FB4 /* GTMHTTPFetcherLogging.m */,
+				4F5991251B03F69000FBCF22 /* GTMSessionFetcher.h */,
+				4F5991261B03F69000FBCF22 /* GTMSessionFetcher.m */,
+				4F5991271B03F69000FBCF22 /* GTMSessionFetcherLogging.h */,
+				4F5991281B03F69000FBCF22 /* GTMSessionFetcherLogging.m */,
+				4F5991291B03F69000FBCF22 /* GTMSessionFetcherService.h */,
+				4F59912A1B03F69000FBCF22 /* GTMSessionFetcherService.m */,
 			);
 			name = HTTPFetcher;
 			sourceTree = "<group>";
@@ -281,11 +280,9 @@
 			files = (
 				8DD76F9A0486AA7600D96B5E /* FHMain.m in Sources */,
 				F4CC66DF1237D33800522D45 /* FHGenerator.m in Sources */,
-				F4BB4A5E12B7BF02008B2FB4 /* GTMHTTPFetcherService.m in Sources */,
-				F4BB4A5F12B7BF02008B2FB4 /* GTMHTTPFetcher.m in Sources */,
-				F4BB4A6012B7BF02008B2FB4 /* GTMHTTPFetchHistory.m in Sources */,
-				F4BB4A6112B7BF02008B2FB4 /* GTMHTTPFetcherLogging.m in Sources */,
 				F4F9D45F1313E9C0002E77E6 /* FHUtils.m in Sources */,
+				4F59912D1B03F69000FBCF22 /* GTMSessionFetcherService.m in Sources */,
+				4F59912C1B03F69000FBCF22 /* GTMSessionFetcherLogging.m in Sources */,
 				F40E71431384B41200EE3F02 /* GTLObject.m in Sources */,
 				F40E71441384B41200EE3F02 /* GTLQuery.m in Sources */,
 				F40E71451384B41200EE3F02 /* GTLBatchQuery.m in Sources */,
@@ -299,6 +296,7 @@
 				F40E714D1384B41200EE3F02 /* GTLUtilities.m in Sources */,
 				D0F2815413D0BF6600B4F659 /* GTLUploadParameters.m in Sources */,
 				4F4B41241728C4AA00A58B39 /* GTLDiscovery_Sources.m in Sources */,
+				4F59912B1B03F69000FBCF22 /* GTMSessionFetcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,11 +342,11 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-Wformat",
 					"-Wall",
+					"-DGTM_USE_SESSION_FETCHER=1",
 				);
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
@@ -376,10 +374,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_CFLAGS = (
 					"-Wformat",
 					"-Wall",
+					"-DGTM_USE_SESSION_FETCHER=1",
 				);
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
