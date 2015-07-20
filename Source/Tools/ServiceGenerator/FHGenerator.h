@@ -33,7 +33,8 @@ typedef enum {
 + (instancetype)generatorForApi:(GTLDiscoveryRpcDescription *)api
                    verboseLevel:(NSUInteger)verboseLevel
           allowRootURLOverrides:(BOOL)allowRootURLOverrides
-          formattedNameOverride:(NSString *)formattedNameOverride;
+          formattedNameOverride:(NSString *)formattedNameOverride
+               skipIfLikelyREST:(BOOL)skipIfLikelyREST;
 
 // Keys are the file names; values are the contents of the files.
 - (NSDictionary *)generateFilesWithHandler:(void (^)(FHGeneratorHandlerMessageType msgType,
@@ -41,5 +42,8 @@ typedef enum {
 
 // The API name formatted for use as a directory name.
 - (NSString *)formattedApiName;
+
+// If this is likely REST only (and hence can't be generated).
+- (BOOL)likelyRESTOnlyAPI;
 
 @end

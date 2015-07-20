@@ -172,6 +172,7 @@ typedef enum {
 
 @property (retain) GTLServiceDiscovery *discoveryService;
 @property (retain) NSMutableArray *apisToFetch;
+@property (retain) NSMutableArray *apisFromDiscovery;
 @property (retain) NSMutableSet *apisToSkip;
 @property (retain) NSMutableArray *collectedApis;
 @property (retain) NSMutableDictionary *generatedData;
@@ -239,6 +240,7 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
             discoveryService = discoveryService_,
             numberOfActiveNetworkActions = numberOfActiveNetworkActions_,
             apisToFetch = apisToFetch_,
+            apisFromDiscovery = apisFromDiscovery_,
             apisToSkip = apisToSkip_,
             collectedApis = collectedApis_,
             generatedData = generatedData_,
@@ -255,6 +257,7 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
     additionalHTTPHeaders_ = [[NSMutableDictionary alloc] init];
     formattedNames_ = [[NSMutableDictionary alloc] init];
     apisToFetch_ = [[NSMutableArray alloc] init];
+    apisFromDiscovery_ = [[NSMutableArray alloc] init];
     apisToSkip_ = [[NSMutableSet alloc] init];
     collectedApis_ = [[NSMutableArray alloc] init];
     generatedData_ = [[NSMutableDictionary alloc] init];
@@ -281,6 +284,7 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
 
   [discoveryService_ release];
   [apisToFetch_ release];
+  [apisFromDiscovery_ release];
   [apisToSkip_ release];
   [collectedApis_ release];
   [generatedData_ release];
@@ -763,14 +767,25 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
           }
         }
         // Collect the server version pairs to describe.
+        NSMutableSet *apisLeftToSkip = [[self.apisToSkip mutableCopy] autorelease];
         for (GTLDiscoveryDirectoryListItemsItem *listItem in apiList) {
           NSString *apiName = listItem.name;
           if ([self.apisToSkip containsObject:apiName]) {
-            fprintf(stderr, " - %s Will skip '%s'.\n", kINFO, [apiName UTF8String]);
+            fprintf(stderr, " - %s Discovery included '%s', but skipping as requested.\n",
+                    kINFO, [apiName UTF8String]);
+            [apisLeftToSkip removeObject:apiName];
           } else {
             NSArray *pair = @[ apiName, listItem.version ];
             [self.apisToFetch addObject:pair];
+            [self.apisFromDiscovery addObject:pair];
           }
+        }
+        // Report anything that was supposed to be skipped but was missing.
+        NSArray *skipsNotFound =
+          [[apisLeftToSkip allObjects] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+        for (NSString *apiName in skipsNotFound) {
+          fprintf(stderr, " - %s Discovery did NOT include '%s', but you indicated it should be skipped.\n",
+                  kWARNING, [apiName UTF8String]);
         }
       }
     }];
@@ -927,54 +942,62 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
       if (formattedNameOverride == nil) {
         formattedNameOverride = [formattedNames_ objectForKey:api.name];
       }
+      // If we get REST only apis from discover, we skip them without failing.
+      NSArray *pair = @[ api.name, api.version ];
+      BOOL fromDiscovery = [self.apisFromDiscovery containsObject:pair];
 
       FHGenerator *aGenerator = [FHGenerator generatorForApi:api
                                                 verboseLevel:self.verboseLevel
                                        allowRootURLOverrides:self.rootURLOverrides
-                                       formattedNameOverride:formattedNameOverride];
-
-      NSDictionary *generatedFiles =
-        [aGenerator generateFilesWithHandler:^(FHGeneratorHandlerMessageType msgType,
-                                               NSString *message) {
-          NSString *wrappedMessage;
-          switch (msgType) {
-            case kFHGeneratorHandlerMessageError:
-              wrappedMessage = [message stringByReplacingOccurrencesOfString:@"\n" withString:@"\n  "];
-              fprintf(stderr,"%s %s\n", kERROR, [wrappedMessage UTF8String]);
-              self.status = 21;
-              self.state = FHMain_Done;
-              break;
-            case kFHGeneratorHandlerMessageWarning:
-              wrappedMessage = [message stringByReplacingOccurrencesOfString:@"\n" withString:@"\n      "];
-              fprintf(stderr,"    %s %s\n", kWARNING, [wrappedMessage UTF8String]);
-              break;
-            case kFHGeneratorHandlerMessageInfo:
-              wrappedMessage = [message stringByReplacingOccurrencesOfString:@"\n" withString:@"\n      "];
-              fprintf(stderr,"    %s %s\n", kINFO, [wrappedMessage UTF8String]);
-              break;
+                                       formattedNameOverride:formattedNameOverride
+                                            skipIfLikelyREST:fromDiscovery];
+      if (fromDiscovery && [aGenerator likelyRESTOnlyAPI]) {
+        fprintf(stderr,
+                "    %s Skipping this api. It appears to be a REST only and can't be supported via JSON-RPC\n", kWARNING);
+      } else {
+        NSDictionary *generatedFiles =
+          [aGenerator generateFilesWithHandler:^(FHGeneratorHandlerMessageType msgType,
+                                                 NSString *message) {
+            NSString *wrappedMessage;
+            switch (msgType) {
+              case kFHGeneratorHandlerMessageError:
+                wrappedMessage = [message stringByReplacingOccurrencesOfString:@"\n" withString:@"\n  "];
+                fprintf(stderr,"%s %s\n", kERROR, [wrappedMessage UTF8String]);
+                self.status = 21;
+                self.state = FHMain_Done;
+                break;
+              case kFHGeneratorHandlerMessageWarning:
+                wrappedMessage = [message stringByReplacingOccurrencesOfString:@"\n" withString:@"\n      "];
+                fprintf(stderr,"    %s %s\n", kWARNING, [wrappedMessage UTF8String]);
+                break;
+              case kFHGeneratorHandlerMessageInfo:
+                wrappedMessage = [message stringByReplacingOccurrencesOfString:@"\n" withString:@"\n      "];
+                fprintf(stderr,"    %s %s\n", kINFO, [wrappedMessage UTF8String]);
+                break;
+            }
+          }];
+        if (generatedFiles) {
+          if ([self.generatedData objectForKey:aGenerator.formattedApiName] != nil) {
+            NSString *err =
+              [NSString stringWithFormat:@"Two APIs trying to use the same formatted name of %@, nothing will be written out.",
+               aGenerator.formattedApiName];
+            fprintf(stderr,"%s %s\n", kERROR, [err UTF8String]);
+            if (self.status == 0) {
+              self.status = 24;
+            }
+            self.state = FHMain_Done;
+          } else {
+            [self.generatedData setObject:generatedFiles
+                                   forKey:aGenerator.formattedApiName];
           }
-        }];
-      if (generatedFiles) {
-        if ([self.generatedData objectForKey:aGenerator.formattedApiName] != nil) {
-          NSString *err =
-            [NSString stringWithFormat:@"Two APIs trying to use the same formatted name of %@, nothing will be written out.",
-             aGenerator.formattedApiName];
-          fprintf(stderr,"%s %s\n", kERROR, [err UTF8String]);
+        } else {
+          // If we didn't get any generated files, we should have gotten an error
+          // callback also. But just to be safe, force out state.
           if (self.status == 0) {
-            self.status = 24;
+            self.status = 23;
           }
           self.state = FHMain_Done;
-        } else {
-          [self.generatedData setObject:generatedFiles
-                                 forKey:aGenerator.formattedApiName];
         }
-      } else {
-        // If we didn't get any generated files, we should have gotten an error
-        // callback also. But just to be safe, force out state.
-        if (self.status == 0) {
-          self.status = 23;
-        }
-        self.state = FHMain_Done;
       }
     }
     @catch (NSException * e) {
@@ -1153,7 +1176,7 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
 
 @end
 
-int main (int argc, char * const *argv) {
+int main(int argc, char * const *argv) {
   NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 
   // If stdout/stderr are ttys and "color" is in the terminal, assume color
@@ -1179,6 +1202,11 @@ int main (int argc, char * const *argv) {
 
   FHMain *fh = [[[FHMain alloc] initWithArgc:argc argv:argv] autorelease];
   int status = [fh run];
+  if (status) {
+    fprintf(stderr,
+            "%s There was one or more errors; check the full output for details.\n",
+            kERROR);
+  }
 
   [pool drain];
   return status;
