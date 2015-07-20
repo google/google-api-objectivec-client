@@ -30,12 +30,15 @@
 // GTMSessionFetcher rather than the older GTMHTTPFetcher.  The session
 // fetcher requires iOS 7/OS X 10.9 and supports out-of-process uploads.
 
-#ifndef GTL_USE_SESSION_FETCHER
-  #if GTM_USE_SESSION_FETCHER
-    #define GTL_USE_SESSION_FETCHER 1
-  #else
-    #define GTL_USE_SESSION_FETCHER 0
-  #endif  // GTM_USE_SESSION_FETCHER
+#if (!TARGET_OS_IPHONE && defined(MAC_OS_X_VERSION_10_11) && MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_11) \
+  || (TARGET_OS_IPHONE && defined(__IPHONE_9_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_9_0)
+  #ifndef GTM_USE_SESSION_FETCHER
+    #define GTM_USE_SESSION_FETCHER 1
+  #endif
+#endif
+
+#if !defined(GTL_USE_SESSION_FETCHER) && defined(GTM_USE_SESSION_FETCHER)
+  #define GTL_USE_SESSION_FETCHER GTM_USE_SESSION_FETCHER
 #endif  // GTL_USE_SESSION_FETCHER
 
 #if GTL_USE_SESSION_FETCHER
@@ -380,7 +383,7 @@ typedef BOOL (^GTLServiceRetryBlock)(GTLServiceTicket *ticket,
 // The default value, nil, schedules connections using the current run
 // loop mode.  To use the service during a modal dialog, be sure to specify
 // NSModalPanelRunLoopMode as one of the modes.
-@property (nonatomic, retain) NSArray *runLoopModes;
+@property (nonatomic, retain) GTL_NSArrayOf(NSString *) *runLoopModes;
 
 // Normally, API requests must be made only via SSL to protect the user's
 // data and the authentication token.  This property allows the application
@@ -449,10 +452,10 @@ typedef BOOL (^GTLServiceRetryBlock)(GTLServiceTicket *ticket,
 
 // Any url query parameters to add to urls (useful for debugging with some
 // services).
-@property (copy) NSDictionary *urlQueryParameters;
+@property (copy) GTL_NSDictionaryOf(NSString *, NSString *) *urlQueryParameters;
 
 // Any extra http headers to set on requests for GTLObjects.
-@property (copy) NSDictionary *additionalHTTPHeaders;
+@property (copy) GTL_NSDictionaryOf(NSString *, NSString *) *additionalHTTPHeaders;
 
 // The service API version.
 @property (nonatomic, copy) NSString *apiVersion;
@@ -591,7 +594,7 @@ typedef BOOL (^GTLServiceRetryBlock)(GTLServiceTicket *ticket,
 - (void)setProperty:(id)obj forKey:(NSString *)key GTL_NONNULL((1)); // pass nil obj to remove property
 - (id)propertyForKey:(NSString *)key;
 
-@property (nonatomic, copy) NSDictionary *properties;
+@property (nonatomic, copy) GTL_NSDictionaryOf(NSString *, id) *properties;
 @property (nonatomic, retain) id userData;
 
 #pragma mark Payload
@@ -602,7 +605,7 @@ typedef BOOL (^GTLServiceRetryBlock)(GTLServiceTicket *ticket,
 @property (nonatomic, retain) id<GTLQueryProtocol> originalQuery;  // Query used to create this ticket
 - (GTLQuery *)queryForRequestID:(NSString *)requestID GTL_NONNULL((1)); // Returns the query from within the batch with the given id.
 
-@property (nonatomic, retain) NSDictionary *surrogates;
+@property (nonatomic, retain) GTL_NSDictionaryOf(Class, Class) *surrogates;
 
 #pragma mark Retry
 

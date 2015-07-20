@@ -53,35 +53,6 @@
   XCTAssertEqualObjects(output, @"photo%E5%8F%83.jpg", @"cjk failure");
 }
 
-- (void)testURLEncodingForURI {
-  NSString *input;
-  NSString *output;
-  NSString *expected;
-
-  input = nil;
-  output = [GTLUtilities stringByURLEncodingForURI:input];
-  XCTAssertNil(output, @"nil test");
-
-  input = @"";
-  output = [GTLUtilities stringByURLEncodingForURI:input];
-  XCTAssertEqualObjects(output, input, @"empty string");
-
-  input = @"abcdef";
-  output = [GTLUtilities stringByURLEncodingForURI:input];
-  expected = @"abcdef";
-  XCTAssertEqualObjects(output, expected, @"plain string");
-
-  input = @"abc def";
-  output = [GTLUtilities stringByURLEncodingForURI:input];
-  expected = @"abc%20def";
-  XCTAssertEqualObjects(output, expected, @"plain string with space");
-
-  input = @"abc!*'();:@&=+$,/?%#[]def";
-  output = [GTLUtilities stringByURLEncodingForURI:input];
-  expected = @"abc%21%2A%27%28%29%3B%3A%40%26%3D%2B%24%2C%2F%3F%25%23%5B%5Ddef";
-  XCTAssertEqualObjects(output, expected, @"all chars to escape");
-}
-
 - (void)testURLEncodingForStringParameter {
   NSString *input;
   NSString *output;

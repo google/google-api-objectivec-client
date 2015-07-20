@@ -510,12 +510,12 @@ static const NSInteger kGTLUndefinedDateComponent = NSUndefinedDateComponent;
   NSInteger totalOffset = kGTLUndefinedDateComponent;
   self.universalTime = NO;
 
-  if (sign != nil && [sign caseInsensitiveCompare:@"Z"] == NSOrderedSame) {
+  if (sign == nil || [sign caseInsensitiveCompare:@"Z"] == NSOrderedSame) {
 
     self.universalTime = YES;
     totalOffset = 0;
 
-  } else if (sign != nil) {
+  } else {
 
     totalOffset = (60 * offsetMinute) + (60 * 60 * offsetHour);
 

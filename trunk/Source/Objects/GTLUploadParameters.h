@@ -56,18 +56,18 @@
 @property (assign) BOOL shouldSendUploadOnly;
 
 // Uploads will use a background session when uploading via GTMSessionUploadFetcher.
-// Default is YES.  Since background session fetches are substantially slower than
-// foreground fetches, it's reasonable for an application to set this to NO
-// when uploading small data or files.
+// Default is YES.  Since background session fetches are slower than foreground fetches,
+// it's reasonable for an application to set this to NO when uploading small data or files.
 @property (assign) BOOL useBackgroundSession;
 
 + (instancetype)uploadParametersWithData:(NSData *)data
                                 MIMEType:(NSString *)mimeType GTL_NONNULL((1,2));
 
++ (instancetype)uploadParametersWithFileURL:(NSURL *)fileURL
+                                   MIMEType:(NSString *)mimeType GTL_NONNULL((1,2));
+
+// Provided for compatibility only.  For files, upload using a file URL, not a file handle.
 + (instancetype)uploadParametersWithFileHandle:(NSFileHandle *)fileHandle
                                       MIMEType:(NSString *)mimeType GTL_NONNULL((1,2));
-
-+ (instancetype)uploadParametersWithFileURL:(NSURL *)fileHandle
-                                   MIMEType:(NSString *)mimeType GTL_NONNULL((1,2));
 
 @end
