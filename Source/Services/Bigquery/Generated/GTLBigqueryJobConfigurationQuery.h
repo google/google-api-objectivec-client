@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryJobConfigurationQuery (0 custom class methods, 11 custom properties)
+//   GTLBigqueryJobConfigurationQuery (0 custom class methods, 12 custom properties)
 //   GTLBigqueryJobConfigurationQueryTableDefinitions (0 custom class methods, 0 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -39,6 +39,7 @@
 @class GTLBigqueryExternalDataConfiguration;
 @class GTLBigqueryJobConfigurationQueryTableDefinitions;
 @class GTLBigqueryTableReference;
+@class GTLBigqueryUserDefinedFunctionResource;
 
 // ----------------------------------------------------------------------------
 //
@@ -93,6 +94,9 @@
 // modified. Moreover, the query cache is only available when a query does not
 // have a destination table specified. The default value is true.
 @property (nonatomic, retain) NSNumber *useQueryCache;  // boolValue
+
+// [Experimental] Describes user-defined function resources used in the query.
+@property (nonatomic, retain) NSArray *userDefinedFunctionResources;  // of GTLBigqueryUserDefinedFunctionResource
 
 // [Optional] Specifies the action that occurs if the destination table already
 // exists. The following values are supported: WRITE_TRUNCATE: If the table

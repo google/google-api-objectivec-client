@@ -75,7 +75,8 @@
 @property (nonatomic, copy) NSString *contentType;
 
 // CRC32c checksum, as described in RFC 4960, Appendix B; encoded using base64
-// in big-endian byte order.
+// in big-endian byte order. For more information about using the CRC32c
+// checksum, see Hashes and ETags: Best Practices.
 @property (nonatomic, copy) NSString *crc32c;
 
 // HTTP 1.1 Entity tag for the object.
@@ -91,7 +92,8 @@
 // The kind of item this is. For objects, this is always storage#object.
 @property (nonatomic, copy) NSString *kind;
 
-// MD5 hash of the data; encoded using base64.
+// MD5 hash of the data; encoded using base64. For more information about using
+// the MD5 hash, see Hashes and ETags: Best Practices.
 @property (nonatomic, copy) NSString *md5Hash;
 
 // Media download link.

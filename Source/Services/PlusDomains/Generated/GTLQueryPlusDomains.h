@@ -155,7 +155,7 @@
 //  Optional:
 //   email: Email of the people to add to the circle. Optional, can be repeated.
 //   userId: IDs of the people to add to the circle. Optional, can be repeated.
-//     Note: For this method, "userId" should be of type NSArray.
+//     Note: For this method, "userId" should be of type NSArray<NSString>.
 //  Authorization scope(s):
 //   kGTLAuthScopePlusDomainsPlusCirclesWrite
 //   kGTLAuthScopePlusDomainsPlusLogin
@@ -232,7 +232,7 @@
 //   email: Email of the people to add to the circle. Optional, can be repeated.
 //   userId: IDs of the people to remove from the circle. Optional, can be
 //     repeated.
-//     Note: For this method, "userId" should be of type NSArray.
+//     Note: For this method, "userId" should be of type NSArray<NSString>.
 //  Authorization scope(s):
 //   kGTLAuthScopePlusDomainsPlusCirclesWrite
 //   kGTLAuthScopePlusDomainsPlusLogin

@@ -41,8 +41,8 @@ GTL_EXTERN NSString * const kGTLAuthScopeDrive;                 // "https://www.
 GTL_EXTERN NSString * const kGTLAuthScopeDriveAppdata;          // "https://www.googleapis.com/auth/drive.appdata"
 // View your Google Drive apps
 GTL_EXTERN NSString * const kGTLAuthScopeDriveAppsReadonly;     // "https://www.googleapis.com/auth/drive.apps.readonly"
-// View and manage Google Drive files that you have opened or created with this
-// app
+// View and manage Google Drive files and folders that you have opened or
+// created with this app
 GTL_EXTERN NSString * const kGTLAuthScopeDriveFile;             // "https://www.googleapis.com/auth/drive.file"
 // View and manage metadata of files in your Google Drive
 GTL_EXTERN NSString * const kGTLAuthScopeDriveMetadata;         // "https://www.googleapis.com/auth/drive.metadata"

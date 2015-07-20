@@ -53,8 +53,10 @@
     [GTLFitnessDevice class],
     [GTLFitnessListDataSourcesResponse class],
     [GTLFitnessListSessionsResponse class],
+    [GTLFitnessMapValue class],
     [GTLFitnessSession class],
-    [GTLFitnessValue class]
+    [GTLFitnessValue class],
+    [GTLFitnessValueMapValEntry class]
   ];
   return classes;
 }

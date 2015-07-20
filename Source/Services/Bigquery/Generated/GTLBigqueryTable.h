@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryTable (0 custom class methods, 15 custom properties)
+//   GTLBigqueryTable (0 custom class methods, 16 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -74,6 +74,9 @@
 // [Output-only] The time when this table was last modified, in milliseconds
 // since the epoch.
 @property (nonatomic, retain) NSNumber *lastModifiedTime;  // unsignedLongLongValue
+
+// [Optional] The backing storage location.
+@property (nonatomic, copy) NSString *location;
 
 // [Output-only] The size of the table in bytes. This property is unavailable
 // for tables that are actively receiving streaming inserts.

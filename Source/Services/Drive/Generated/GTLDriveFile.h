@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 52 custom properties)
+//   GTLDriveFile (0 custom class methods, 55 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
 //   GTLDriveFileImageMediaMetadata (0 custom class methods, 21 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
@@ -70,6 +70,9 @@
 // Whether this file is in the Application Data folder.
 @property (nonatomic, retain) NSNumber *appDataContents;  // boolValue
 
+// Whether the current user can comment on the file.
+@property (nonatomic, retain) NSNumber *canComment;  // boolValue
+
 // Whether the file can be copied by the current user.
 @property (nonatomic, retain) NSNumber *copyable;  // boolValue
 
@@ -84,8 +87,6 @@
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (nonatomic, copy) NSString *descriptionProperty;
 
-// Short lived download URL for the file. This is only populated for files with
-// content stored in Drive.
 @property (nonatomic, copy) NSString *downloadUrl;
 
 // Whether the file can be edited by the current user.
@@ -98,7 +99,7 @@
 @property (nonatomic, copy) NSString *ETag;
 
 // Whether this file has been explicitly trashed, as opposed to recursively
-// trashed. This will only be populated if the file is trashed.
+// trashed.
 @property (nonatomic, retain) NSNumber *explicitlyTrashed;  // boolValue
 
 // Links for exporting Google Docs to specific formats.
@@ -184,6 +185,9 @@
 // files with content stored in Drive.
 @property (nonatomic, copy) NSString *originalFilename;
 
+// Whether the file is owned by the current user.
+@property (nonatomic, retain) NSNumber *ownedByMe;  // boolValue
+
 // Name(s) of the owner(s) of this file.
 @property (nonatomic, retain) NSArray *ownerNames;  // of NSString
 
@@ -207,6 +211,9 @@
 
 // A link back to this file.
 @property (nonatomic, copy) NSString *selfLink;
+
+// Whether the file's sharing settings can be modified by the current user.
+@property (nonatomic, retain) NSNumber *shareable;  // boolValue
 
 // Whether the file has been shared.
 @property (nonatomic, retain) NSNumber *shared;  // boolValue

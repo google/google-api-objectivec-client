@@ -24,7 +24,7 @@
 // Description:
 //   Lets you view Google Webmaster Tools data for your verified sites.
 // Documentation:
-//   https://developers.google.com/webmaster-tools/v3/welcome
+//   https://developers.google.com/webmaster-tools/
 // Classes:
 //   GTLWebmastersWmxSitemap (0 custom class methods, 9 custom properties)
 
@@ -41,13 +41,15 @@
 //   GTLWebmastersWmxSitemap
 //
 
+// Contains detailed information about a specific URL submitted as a sitemap.
+
 @interface GTLWebmastersWmxSitemap : GTLObject
 
 // The various content types in the sitemap.
 @property (nonatomic, retain) NSArray *contents;  // of GTLWebmastersWmxSitemapContent
 
-// Number of errors in the sitemap - issues with the sitemap itself, that needs
-// to be fixed before it can be processed correctly.
+// Number of errors in the sitemap. These are issues with the sitemap itself
+// that need to be fixed before it can be processed correctly.
 @property (nonatomic, retain) NSNumber *errors;  // longLongValue
 
 // If true, the sitemap has not been processed.
@@ -67,10 +69,11 @@
 // The url of the sitemap.
 @property (nonatomic, copy) NSString *path;
 
-// The type of the sitemap (for example "sitemap").
+// The type of the sitemap. For example: rssFeed.
 @property (nonatomic, copy) NSString *type;
 
-// Number of warnings for the sitemap - issues with URLs in the sitemaps.
+// Number of warnings for the sitemap. These are generally non-critical issues
+// with URLs in the sitemaps.
 @property (nonatomic, retain) NSNumber *warnings;  // longLongValue
 
 @end

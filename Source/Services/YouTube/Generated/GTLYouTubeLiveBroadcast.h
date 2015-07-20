@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveBroadcast (0 custom class methods, 6 custom properties)
+//   GTLYouTubeLiveBroadcast (0 custom class methods, 8 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,7 +36,9 @@
 
 @class GTLYouTubeLiveBroadcastContentDetails;
 @class GTLYouTubeLiveBroadcastSnippet;
+@class GTLYouTubeLiveBroadcastStatistics;
 @class GTLYouTubeLiveBroadcastStatus;
+@class GTLYouTubeLiveBroadcastTopicDetails;
 
 // ----------------------------------------------------------------------------
 //
@@ -69,7 +71,14 @@
 // title, description, start time, and end time.
 @property (nonatomic, retain) GTLYouTubeLiveBroadcastSnippet *snippet;
 
+// The statistics object contains info about the event's current stats. These
+// include concurrent viewers and total chat count. Statistics can change (in
+// either direction) during the lifetime of an event. Statistics are only
+// returned while the event is live.
+@property (nonatomic, retain) GTLYouTubeLiveBroadcastStatistics *statistics;
+
 // The status object contains information about the event's status.
 @property (nonatomic, retain) GTLYouTubeLiveBroadcastStatus *status;
 
+@property (nonatomic, retain) GTLYouTubeLiveBroadcastTopicDetails *topicDetails;
 @end

@@ -324,7 +324,6 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
 //   kGTLAuthScopeDriveFile
-//   kGTLAuthScopeDriveReadonly
 + (instancetype)queryForCommentsDeleteWithFileId:(NSString *)fileId
                                        commentId:(NSString *)commentId;
 
@@ -548,9 +547,10 @@
 //     format. (Default false)
 //   newRevision: Whether a blob upload should create a new revision. If false,
 //     the blob data in the current head revision is replaced. If true or not
-//     set, a new blob is created as head revision, and previous revisions are
-//     preserved (causing increased use of the user's data storage quota).
-//     (Default true)
+//     set, a new blob is created as head revision, and previous unpinned
+//     revisions are preserved for a short period of time. Pinned revisions are
+//     stored indefinitely, using additional storage quota, up to a maximum of
+//     200 revisions. (Default true)
 //   ocr: Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads. (Default
 //     false)
 //   ocrLanguage: If ocr is true, hints at the language to use. Valid values are
@@ -624,9 +624,10 @@
 //     format. (Default false)
 //   newRevision: Whether a blob upload should create a new revision. If false,
 //     the blob data in the current head revision is replaced. If true or not
-//     set, a new blob is created as head revision, and previous revisions are
-//     preserved (causing increased use of the user's data storage quota).
-//     (Default true)
+//     set, a new blob is created as head revision, and previous unpinned
+//     revisions are preserved for a short period of time. Pinned revisions are
+//     stored indefinitely, using additional storage quota, up to a maximum of
+//     200 revisions. (Default true)
 //   ocr: Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads. (Default
 //     false)
 //   ocrLanguage: If ocr is true, hints at the language to use. Valid values are

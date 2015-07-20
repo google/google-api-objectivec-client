@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoVoterInfoResponse (0 custom class methods, 10 custom properties)
+//   GTLCivicInfoVoterInfoResponse (0 custom class methods, 11 custom properties)
 
 #import "GTLCivicInfoVoterInfoResponse.h"
 
@@ -42,7 +42,7 @@
 //
 
 @implementation GTLCivicInfoVoterInfoResponse
-@dynamic contests, dropOffLocations, earlyVoteSites, election, kind,
+@dynamic contests, dropOffLocations, earlyVoteSites, election, kind, mailOnly,
          normalizedInput, otherElections, pollingLocations, precinctId, state;
 
 + (NSDictionary *)arrayPropertyToClassMap {

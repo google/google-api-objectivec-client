@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/discovery/
 // Classes:
-//   GTLDiscoveryRpcDescription (0 custom class methods, 25 custom properties)
+//   GTLDiscoveryRpcDescription (0 custom class methods, 26 custom properties)
 //   GTLDiscoveryRpcDescriptionAuth (0 custom class methods, 1 custom properties)
 //   GTLDiscoveryRpcDescriptionIcons (0 custom class methods, 2 custom properties)
 //   GTLDiscoveryRpcDescriptionMethods (0 custom class methods, 0 custom properties)
@@ -49,9 +49,10 @@
 
 @implementation GTLDiscoveryRpcDescription
 @dynamic auth, canonicalName, descriptionProperty, discoveryVersion,
-         documentationLink, ETag, features, icons, identifier, kind, labels,
-         methods, name, ownerDomain, ownerName, packagePath, parameters,
-         protocol, revision, rootUrl, rpcPath, rpcUrl, schemas, title, version;
+         documentationLink, ETag, exponentialBackoffDefault, features, icons,
+         identifier, kind, labels, methods, name, ownerDomain, ownerName,
+         packagePath, parameters, protocol, revision, rootUrl, rpcPath, rpcUrl,
+         schemas, title, version;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{

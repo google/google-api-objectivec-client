@@ -24,7 +24,7 @@
 // Description:
 //   Lets you view Google Webmaster Tools data for your verified sites.
 // Documentation:
-//   https://developers.google.com/webmaster-tools/v3/welcome
+//   https://developers.google.com/webmaster-tools/
 // Classes:
 //   GTLWebmastersUrlCrawlErrorsCountsQueryResponse (0 custom class methods, 1 custom properties)
 
@@ -46,7 +46,7 @@
 
 @interface GTLWebmastersUrlCrawlErrorsCountsQueryResponse : GTLObject
 
-// The time series of the number of URL crawl errors for per error category and
+// The time series of the number of URL crawl errors per error category and
 // platform.
 @property (nonatomic, retain) NSArray *countPerTypes;  // of GTLWebmastersUrlCrawlErrorCountsPerType
 

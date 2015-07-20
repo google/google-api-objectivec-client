@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/gmail/api/
 // Classes:
-//   GTLGmailMessage (0 custom class methods, 8 custom properties)
+//   GTLGmailMessage (0 custom class methods, 9 custom properties)
 
 #import "GTLGmailMessage.h"
 
@@ -38,8 +38,8 @@
 //
 
 @implementation GTLGmailMessage
-@dynamic historyId, identifier, labelIds, payload, raw, sizeEstimate, snippet,
-         threadId;
+@dynamic historyId, identifier, internalDate, labelIds, payload, raw,
+         sizeEstimate, snippet, threadId;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{

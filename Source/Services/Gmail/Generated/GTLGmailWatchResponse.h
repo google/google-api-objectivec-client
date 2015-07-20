@@ -43,8 +43,8 @@
 
 @interface GTLGmailWatchResponse : GTLObject
 
-// When Gmail will stop sending notifications for mailbox updates. Call watch
-// again before this time to renew the subscription.
+// When Gmail will stop sending notifications for mailbox updates (epoch
+// millis). Call watch again before this time to renew the watch.
 @property (nonatomic, retain) NSNumber *expiration;  // longLongValue
 
 // The ID of the mailbox's current history record.

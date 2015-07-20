@@ -59,8 +59,8 @@
 // Rating system for Thailand - Board of Filmand Video Censors
 @property (nonatomic, copy) NSString *bfvcRating;
 
-// Rating system for Austria - Bundesministeriums f�r Unterricht, Kunst und
-// Kultur!
+// Rating system for Austria - Bundesministerium f�r Unterricht, Kunst und
+// Kultur
 @property (nonatomic, copy) NSString *bmukkRating;
 
 // Rating system for French Canadian TV - Regie du cinema

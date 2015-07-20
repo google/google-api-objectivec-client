@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/google-apps/calendar/firstapp
 // Classes:
-//   GTLCalendarEvent (0 custom class methods, 36 custom properties)
+//   GTLCalendarEvent (0 custom class methods, 37 custom properties)
 //   GTLCalendarEventCreator (0 custom class methods, 4 custom properties)
 //   GTLCalendarEventExtendedProperties (0 custom class methods, 2 custom properties)
 //   GTLCalendarEventGadget (0 custom class methods, 8 custom properties)
@@ -43,6 +43,7 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLCalendarEventAttachment;
 @class GTLCalendarEventAttendee;
 @class GTLCalendarEventCreator;
 @class GTLCalendarEventDateTime;
@@ -66,6 +67,13 @@
 // Whether anyone can invite themselves to the event. Optional. The default is
 // False.
 @property (nonatomic, retain) NSNumber *anyoneCanAddSelf;  // boolValue
+
+// File attachments for the event. Currently only Google Drive attachments are
+// supported.
+// In order to modify attachments the supportsAttachments request parameter
+// should be set to true.
+// There can be at most 25 attachments per event,
+@property (nonatomic, retain) NSArray *attachments;  // of GTLCalendarEventAttachment
 
 // The attendees of the event.
 @property (nonatomic, retain) NSArray *attendees;  // of GTLCalendarEventAttendee

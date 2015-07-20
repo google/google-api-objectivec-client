@@ -647,7 +647,7 @@
 //     inclusive.
 //  Optional:
 //   accountId: Accounts upon which to report.
-//     Note: For this method, "accountId" should be of type NSArray.
+//     Note: For this method, "accountId" should be of type NSArray<NSString>.
 //   currency: Optional currency to use when reporting on monetary metrics.
 //     Defaults to the account's currency if not set.
 //   dimension: Dimensions to base the report on.

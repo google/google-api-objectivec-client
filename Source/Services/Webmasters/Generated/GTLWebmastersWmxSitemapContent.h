@@ -24,7 +24,7 @@
 // Description:
 //   Lets you view Google Webmaster Tools data for your verified sites.
 // Documentation:
-//   https://developers.google.com/webmaster-tools/v3/welcome
+//   https://developers.google.com/webmaster-tools/
 // Classes:
 //   GTLWebmastersWmxSitemapContent (0 custom class methods, 3 custom properties)
 
@@ -49,7 +49,7 @@
 // The number of URLs in the sitemap (of the content type).
 @property (nonatomic, retain) NSNumber *submitted;  // longLongValue
 
-// The specific type of content in this sitemap (for example "web", "images").
+// The specific type of content in this sitemap. For example: web.
 @property (nonatomic, copy) NSString *type;
 
 @end

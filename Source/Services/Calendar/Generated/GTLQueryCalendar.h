@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/google-apps/calendar/firstapp
 // Classes:
-//   GTLQueryCalendar (37 custom class methods, 32 custom properties)
+//   GTLQueryCalendar (37 custom class methods, 33 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -78,6 +78,7 @@
 @property (nonatomic, assign) BOOL showHidden;
 @property (nonatomic, assign) BOOL showHiddenInvitations;
 @property (nonatomic, assign) BOOL singleEvents;
+@property (nonatomic, assign) BOOL supportsAttachments;
 @property (nonatomic, copy) NSString *syncToken;
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic, retain) GTLDateTime *timeMax;
@@ -471,6 +472,9 @@
 // event to a calendar.
 //  Required:
 //   calendarId: Calendar identifier.
+//  Optional:
+//   supportsAttachments: Whether API client performing operation supports event
+//     attachments. Optional. The default is False.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarEvent.
@@ -487,6 +491,8 @@
 //     participant is returned. Optional.
 //   sendNotifications: Whether to send notifications about the creation of the
 //     new event. Optional. The default is False.
+//   supportsAttachments: Whether API client performing operation supports event
+//     attachments. Optional. The default is False.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarEvent.
@@ -651,6 +657,8 @@
 //   sendNotifications: Whether to send notifications about the event update
 //     (e.g. attendee's responses, title changes, etc.). Optional. The default
 //     is False.
+//   supportsAttachments: Whether API client performing operation supports event
+//     attachments. Optional. The default is False.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarEvent.
@@ -690,6 +698,8 @@
 //   sendNotifications: Whether to send notifications about the event update
 //     (e.g. attendee's responses, title changes, etc.). Optional. The default
 //     is False.
+//   supportsAttachments: Whether API client performing operation supports event
+//     attachments. Optional. The default is False.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarEvent.

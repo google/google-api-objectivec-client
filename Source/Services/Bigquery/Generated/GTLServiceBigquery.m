@@ -46,6 +46,7 @@
     [GTLBigqueryExternalDataConfiguration class],
     [GTLBigqueryGetQueryResultsResponse class],
     [GTLBigqueryJob class],
+    [GTLBigqueryJobCancelResponse class],
     [GTLBigqueryJobConfiguration class],
     [GTLBigqueryJobConfigurationExtract class],
     [GTLBigqueryJobConfigurationLink class],
@@ -59,7 +60,6 @@
     [GTLBigqueryJobStatistics3 class],
     [GTLBigqueryJobStatistics4 class],
     [GTLBigqueryJobStatus class],
-    [GTLBigqueryJobStopResponse class],
     [GTLBigqueryJsonObject class],
     [GTLBigqueryProjectList class],
     [GTLBigqueryProjectReference class],
@@ -73,6 +73,7 @@
     [GTLBigqueryTableReference class],
     [GTLBigqueryTableRow class],
     [GTLBigqueryTableSchema class],
+    [GTLBigqueryUserDefinedFunctionResource class],
     [GTLBigqueryViewDefinition class]
   ];
   return classes;

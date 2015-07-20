@@ -210,8 +210,8 @@
 //     increase chronologically but are not contiguous with random gaps in
 //     between valid IDs. Supplying an invalid or out of date startHistoryId
 //     typically returns an HTTP 404 error code. A historyId is typically valid
-//     for at least a week, but in some circumstances may be valid for only a
-//     few hours. If you receive an HTTP 404 error response, your application
+//     for at least a week, but in some rare circumstances may be valid for only
+//     a few hours. If you receive an HTTP 404 error response, your application
 //     should perform a full sync. If you receive no nextPageToken in the
 //     response, there are no updates to retrieve and you can store the returned
 //     historyId for a future request.
@@ -612,13 +612,13 @@
 //   labelIds: List of label_ids to restrict notifications about. By default, if
 //     unspecified, all changes are pushed out. If specified then dictates which
 //     labels are required for a push notification to be generated.
-//   topicName: Fully qualified Cloud PubSub API topic name to publish events
-//     to. This topic name should already exist in Cloud PubSub and you should
-//     have already granted gmail "publish" privileges on it. For example,
-//     "projects/my-project-identifier/topics/my-topic-name" (using the new
-//     Cloud PubSub "v1beta2" topic naming format).
+//   topicName: A fully qualified Google Cloud Pub/Sub API topic name to publish
+//     the events to. This topic name **must** already exist in Cloud Pub/Sub
+//     and you **must** have already granted gmail "publish" permission on it.
+//     For example, "projects/my-project-identifier/topics/my-topic-name" (using
+//     the new Cloud Pub/Sub "v1beta2" topic naming format).
 //     Note that the "my-project-identifier" portion must exactly match your
-//     developer console project id (the one executing this watch request).
+//     Google developer project id (the one executing this watch request).
 //   userId: The user's email address. The special value me can be used to
 //     indicate the authenticated user. (Default me)
 //  Authorization scope(s):

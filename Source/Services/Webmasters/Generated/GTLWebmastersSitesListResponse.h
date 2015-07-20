@@ -24,7 +24,7 @@
 // Description:
 //   Lets you view Google Webmaster Tools data for your verified sites.
 // Documentation:
-//   https://developers.google.com/webmaster-tools/v3/welcome
+//   https://developers.google.com/webmaster-tools/
 // Classes:
 //   GTLWebmastersSitesListResponse (0 custom class methods, 1 custom properties)
 
@@ -45,7 +45,8 @@
 
 @interface GTLWebmastersSitesListResponse : GTLObject
 
-// Access level information for a Webmaster Tools site.
+// Contains permission level information about a Webmaster Tools site. For more
+// information, see Permissions in Webmaster Tools.
 @property (nonatomic, retain) NSArray *siteEntry;  // of GTLWebmastersWmxSite
 
 @end

@@ -46,8 +46,10 @@
 #import "GTLFitnessDevice.m"
 #import "GTLFitnessListDataSourcesResponse.m"
 #import "GTLFitnessListSessionsResponse.m"
+#import "GTLFitnessMapValue.m"
 #import "GTLFitnessSession.m"
 #import "GTLFitnessValue.m"
+#import "GTLFitnessValueMapValEntry.m"
 
 #import "GTLQueryFitness.m"
 #import "GTLServiceFitness.m"
