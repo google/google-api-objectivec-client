@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerPerformanceReport (0 custom class methods, 16 custom properties)
+//   GTLAdExchangeBuyerPerformanceReport (0 custom class methods, 22 custom properties)
 
 #import "GTLAdExchangeBuyerPerformanceReport.h"
 
@@ -38,11 +38,12 @@
 //
 
 @implementation GTLAdExchangeBuyerPerformanceReport
-@dynamic calloutStatusRate, cookieMatcherStatusRate, creativeStatusRate,
-         hostedMatchStatusRate, kind, latency50thPercentile,
-         latency85thPercentile, latency95thPercentile, noQuotaInRegion,
-         outOfQuota, pixelMatchRequests, pixelMatchResponses,
-         quotaConfiguredLimit, quotaThrottledLimit, region, timestamp;
+@dynamic bidRate, bidRequestRate, calloutStatusRate, cookieMatcherStatusRate,
+         creativeStatusRate, filteredBidRate, hostedMatchStatusRate,
+         inventoryMatchRate, kind, latency50thPercentile, latency85thPercentile,
+         latency95thPercentile, noQuotaInRegion, outOfQuota, pixelMatchRequests,
+         pixelMatchResponses, quotaConfiguredLimit, quotaThrottledLimit, region,
+         successfulRequestRate, timestamp, unsuccessfulRequestRate;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{

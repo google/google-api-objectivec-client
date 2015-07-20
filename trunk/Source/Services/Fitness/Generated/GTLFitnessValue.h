@@ -26,13 +26,15 @@
 // Documentation:
 //   https://developers.google.com/fit/rest/
 // Classes:
-//   GTLFitnessValue (0 custom class methods, 2 custom properties)
+//   GTLFitnessValue (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
 #else
   #import "GTLObject.h"
 #endif
+
+@class GTLFitnessValueMapValEntry;
 
 // ----------------------------------------------------------------------------
 //
@@ -45,10 +47,21 @@
 
 @interface GTLFitnessValue : GTLObject
 
-// Floating point value. When this is set, intVal must not be set.
+// Floating point value. When this is set, other values must not be set.
 @property (nonatomic, retain) NSNumber *fpVal;  // doubleValue
 
-// Integer value. When this is set, fpVal must not be set.
+// Integer value. When this is set, other values must not be set.
 @property (nonatomic, retain) NSNumber *intVal;  // intValue
+
+// Map value. The valid key space and units for the corresponding value of each
+// entry should be documented as part of the data type definition. Keys should
+// be kept small whenever possible. Data streams with large keys and high data
+// frequency may be down sampled.
+@property (nonatomic, retain) NSArray *mapVal;  // of GTLFitnessValueMapValEntry
+
+// String value. When this is set, other values must not be set. Strings should
+// be kept small whenever possible. Data streams with large string values and
+// high data frequency may be down sampled.
+@property (nonatomic, copy) NSString *stringVal;
 
 @end

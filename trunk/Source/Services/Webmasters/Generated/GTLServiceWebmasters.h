@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@
 // Description:
 //   Lets you view Google Webmaster Tools data for your verified sites.
 // Documentation:
-//   https://developers.google.com/webmaster-tools/v3/welcome
+//   https://developers.google.com/webmaster-tools/
 // Classes:
 //   GTLServiceWebmasters (0 custom class methods, 0 custom properties)
 

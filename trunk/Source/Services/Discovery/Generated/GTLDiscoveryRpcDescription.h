@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/discovery/
 // Classes:
-//   GTLDiscoveryRpcDescription (0 custom class methods, 25 custom properties)
+//   GTLDiscoveryRpcDescription (0 custom class methods, 26 custom properties)
 //   GTLDiscoveryRpcDescriptionAuth (0 custom class methods, 1 custom properties)
 //   GTLDiscoveryRpcDescriptionIcons (0 custom class methods, 2 custom properties)
 //   GTLDiscoveryRpcDescriptionMethods (0 custom class methods, 0 custom properties)
@@ -80,6 +80,9 @@
 
 // The ETag for this response.
 @property (nonatomic, copy) NSString *ETag;
+
+// Enable exponential backoff for suitable methods in the generated clients.
+@property (nonatomic, retain) NSNumber *exponentialBackoffDefault;  // boolValue
 
 // A list of supported features for this API.
 @property (nonatomic, retain) NSArray *features;  // of NSString

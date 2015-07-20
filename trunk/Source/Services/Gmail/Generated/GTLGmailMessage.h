@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/gmail/api/
 // Classes:
-//   GTLGmailMessage (0 custom class methods, 8 custom properties)
+//   GTLGmailMessage (0 custom class methods, 9 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -51,6 +51,13 @@
 // The immutable ID of the message.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (nonatomic, copy) NSString *identifier;
+
+// The internal message creation timestamp (epoch ms), which determines ordering
+// in the inbox. For normal SMTP-received email, this represents the time the
+// message was originally accepted by Google, which is more reliable than the
+// Date header. However, for API-migrated mail, it can be configured by client
+// to be based on the Date header.
+@property (nonatomic, retain) NSNumber *internalDate;  // longLongValue
 
 // List of IDs of labels applied to this message.
 @property (nonatomic, retain) NSArray *labelIds;  // of NSString

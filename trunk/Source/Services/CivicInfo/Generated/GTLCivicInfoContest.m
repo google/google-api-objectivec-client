@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoContest (0 custom class methods, 17 custom properties)
+//   GTLCivicInfoContest (0 custom class methods, 24 custom properties)
 
 #import "GTLCivicInfoContest.h"
 
@@ -42,8 +42,11 @@
 @implementation GTLCivicInfoContest
 @dynamic ballotPlacement, candidates, district, electorateSpecifications,
          identifier, level, numberElected, numberVotingFor, office,
-         primaryParty, referendumSubtitle, referendumTitle, referendumUrl,
-         roles, sources, special, type;
+         primaryParty, referendumBallotResponses, referendumBrief,
+         referendumConStatement, referendumEffectOfAbstain,
+         referendumPassageThreshold, referendumProStatement, referendumSubtitle,
+         referendumText, referendumTitle, referendumUrl, roles, sources,
+         special, type;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{
@@ -56,6 +59,7 @@
   NSDictionary *map = @{
     @"candidates" : [GTLCivicInfoCandidate class],
     @"level" : [NSString class],
+    @"referendumBallotResponses" : [NSString class],
     @"roles" : [NSString class],
     @"sources" : [GTLCivicInfoSource class]
   };

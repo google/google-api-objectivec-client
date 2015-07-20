@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryTable (0 custom class methods, 15 custom properties)
+//   GTLBigqueryTable (0 custom class methods, 16 custom properties)
 
 #import "GTLBigqueryTable.h"
 
@@ -41,8 +41,8 @@
 
 @implementation GTLBigqueryTable
 @dynamic creationTime, descriptionProperty, ETag, expirationTime, friendlyName,
-         identifier, kind, lastModifiedTime, numBytes, numRows, schema,
-         selfLink, tableReference, type, view;
+         identifier, kind, lastModifiedTime, location, numBytes, numRows,
+         schema, selfLink, tableReference, type, view;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{

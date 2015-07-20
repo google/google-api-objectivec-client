@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoContest (0 custom class methods, 17 custom properties)
+//   GTLCivicInfoContest (0 custom class methods, 24 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -85,9 +85,42 @@
 // If this is a partisan election, the name of the party it is for.
 @property (nonatomic, copy) NSString *primaryParty;
 
+// The set of ballot responses for the referendum. A ballot response represents
+// a line on the ballot. Common examples might include "yes" or "no" for
+// referenda, or a judge's name for a retention contest. This field is only
+// populated for contests of type 'Referendum'.
+@property (nonatomic, retain) NSArray *referendumBallotResponses;  // of NSString
+
+// Specifies a short summary of the referendum that is on the ballot below the
+// title but above the text. This field is only populated for contests of type
+// 'Referendum'.
+@property (nonatomic, copy) NSString *referendumBrief;
+
+// A statement in opposition to the referendum. It does not necessarily appear
+// on the ballot. This field is only populated for contests of type
+// 'Referendum'.
+@property (nonatomic, copy) NSString *referendumConStatement;
+
+// Specifies what effect abstaining (not voting) on the proposition will have
+// (i.e. whether abstaining is considered a vote against it). This field is only
+// populated for contests of type 'Referendum'.
+@property (nonatomic, copy) NSString *referendumEffectOfAbstain;
+
+// The threshold of votes that the referendum needs in order to pass, e.g.
+// "two-thirds". This field is only populated for contests of type 'Referendum'.
+@property (nonatomic, copy) NSString *referendumPassageThreshold;
+
+// A statement in favor of the referendum. It does not necessarily appear on the
+// ballot. This field is only populated for contests of type 'Referendum'.
+@property (nonatomic, copy) NSString *referendumProStatement;
+
 // A brief description of the referendum. This field is only populated for
 // contests of type 'Referendum'.
 @property (nonatomic, copy) NSString *referendumSubtitle;
+
+// The full text of the referendum. This field is only populated for contests of
+// type 'Referendum'.
+@property (nonatomic, copy) NSString *referendumText;
 
 // The title of the referendum (e.g. 'Proposition 42'). This field is only
 // populated for contests of type 'Referendum'.

@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/google-apps/calendar/firstapp
 // Classes:
-//   GTLQueryCalendar (37 custom class methods, 32 custom properties)
+//   GTLQueryCalendar (37 custom class methods, 33 custom properties)
 
 #import "GTLQueryCalendar.h"
 
@@ -51,8 +51,8 @@
          maxAttendees, maxResults, minAccessRole, orderBy, originalStart,
          pageToken, privateExtendedProperty, q, ruleId, sendNotifications,
          setting, sharedExtendedProperty, showDeleted, showHidden,
-         showHiddenInvitations, singleEvents, syncToken, text, timeMax, timeMin,
-         timeZone, updatedMin;
+         showHiddenInvitations, singleEvents, supportsAttachments, syncToken,
+         text, timeMax, timeMin, timeZone, updatedMin;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{

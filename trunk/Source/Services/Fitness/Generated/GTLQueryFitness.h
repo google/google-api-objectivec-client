@@ -83,7 +83,7 @@
 
 // Method: fitness.users.dataset.aggregate
 //  Optional:
-//   aggregateBy: NSArray
+//   aggregateBy: NSArray<GTLFitnessAggregateBy>
 //   bucketByActivitySegment: GTLFitnessBucketByActivity
 //   bucketByActivityType: GTLFitnessBucketByActivity
 //   bucketBySession: GTLFitnessBucketBySession

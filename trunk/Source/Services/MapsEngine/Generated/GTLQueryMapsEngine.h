@@ -1172,8 +1172,8 @@
 //  Required:
 //   identifier: The ID of the table that contains the features to be deleted.
 //  Optional:
-//   gxIds: NSArray
-//   primaryKeys: NSArray
+//   gxIds: NSArray<NSString>
+//   primaryKeys: NSArray<NSString>
 //  Authorization scope(s):
 //   kGTLAuthScopeMapsEngine
 + (instancetype)queryForTablesFeaturesBatchDeleteWithIdentifier:(NSString *)identifier;
@@ -1191,7 +1191,7 @@
 //  Required:
 //   identifier: The ID of the table to append the features to.
 //  Optional:
-//   features: NSArray
+//   features: NSArray<GTLMapsEngineFeature>
 //   normalizeGeometries: If true, the server will normalize feature geometries.
 //     It is assumed that the South Pole is exterior to any polygons given. See
 //     here for a list of normalizations. If false, all feature geometries must
@@ -1222,7 +1222,7 @@
 //  Required:
 //   identifier: The ID of the table containing the features to be patched.
 //  Optional:
-//   features: NSArray
+//   features: NSArray<GTLMapsEngineFeature>
 //   normalizeGeometries: If true, the server will normalize feature geometries.
 //     It is assumed that the South Pole is exterior to any polygons given. See
 //     here for a list of normalizations. If false, all feature geometries must

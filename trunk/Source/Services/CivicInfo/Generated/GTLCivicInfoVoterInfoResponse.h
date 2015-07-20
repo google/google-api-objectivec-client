@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoVoterInfoResponse (0 custom class methods, 10 custom properties)
+//   GTLCivicInfoVoterInfoResponse (0 custom class methods, 11 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -68,6 +68,10 @@
 // Identifies what kind of resource this is. Value: the fixed string
 // "civicinfo#voterInfoResponse".
 @property (nonatomic, copy) NSString *kind;
+
+// Specifies whether voters in the precinct vote only by mailing their ballots
+// (with the possible option of dropping off their ballots as well).
+@property (nonatomic, retain) NSNumber *mailOnly;  // boolValue
 
 // The normalized version of the requested address
 @property (nonatomic, retain) GTLCivicInfoSimpleAddressType *normalizedInput;

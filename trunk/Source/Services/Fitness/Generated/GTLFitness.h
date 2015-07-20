@@ -43,8 +43,10 @@
 #import "GTLFitnessDevice.h"
 #import "GTLFitnessListDataSourcesResponse.h"
 #import "GTLFitnessListSessionsResponse.h"
+#import "GTLFitnessMapValue.h"
 #import "GTLFitnessSession.h"
 #import "GTLFitnessValue.h"
+#import "GTLFitnessValueMapValEntry.h"
 
 #import "GTLQueryFitness.h"
 #import "GTLServiceFitness.h"

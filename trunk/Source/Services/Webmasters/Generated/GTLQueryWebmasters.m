@@ -24,12 +24,14 @@
 // Description:
 //   Lets you view Google Webmaster Tools data for your verified sites.
 // Documentation:
-//   https://developers.google.com/webmaster-tools/v3/welcome
+//   https://developers.google.com/webmaster-tools/
 // Classes:
-//   GTLQueryWebmasters (12 custom class methods, 8 custom properties)
+//   GTLQueryWebmasters (13 custom class methods, 15 custom properties)
 
 #import "GTLQueryWebmasters.h"
 
+#import "GTLWebmastersApiDimensionFilterGroup.h"
+#import "GTLWebmastersSearchAnalyticsQueryResponse.h"
 #import "GTLWebmastersSitemapsListResponse.h"
 #import "GTLWebmastersSitesListResponse.h"
 #import "GTLWebmastersUrlCrawlErrorsCountsQueryResponse.h"
@@ -40,8 +42,29 @@
 
 @implementation GTLQueryWebmasters
 
-@dynamic category, feedpath, fields, latestCountsOnly, platform, sitemapIndex,
-         siteUrl, url;
+@dynamic aggregationType, category, dimensionFilterGroups, dimensions, endDate,
+         feedpath, fields, latestCountsOnly, platform, rowLimit, searchType,
+         sitemapIndex, siteUrl, startDate, url;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map = @{
+    @"dimensionFilterGroups" : [GTLWebmastersApiDimensionFilterGroup class],
+    @"dimensions" : [NSString class]
+  };
+  return map;
+}
+
+#pragma mark -
+#pragma mark "searchanalytics" methods
+// These create a GTLQueryWebmasters object.
+
++ (instancetype)queryForSearchanalyticsQueryWithSiteUrl:(NSString *)siteUrl {
+  NSString *methodName = @"webmasters.searchanalytics.query";
+  GTLQueryWebmasters *query = [self queryWithMethodName:methodName];
+  query.siteUrl = siteUrl;
+  query.expectedObjectClass = [GTLWebmastersSearchAnalyticsQueryResponse class];
+  return query;
+}
 
 #pragma mark -
 #pragma mark "sitemaps" methods

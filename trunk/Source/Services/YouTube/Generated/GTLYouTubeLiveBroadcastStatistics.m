@@ -14,34 +14,27 @@
  */
 
 //
-//  GTLBigqueryJobStopResponse.m
+//  GTLYouTubeLiveBroadcastStatistics.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   BigQuery API (bigquery/v2)
+//   YouTube Data API (youtube/v3)
 // Description:
-//   A data platform for customers to create, manage, share and query data.
+//   Programmatic access to YouTube features.
 // Documentation:
-//   https://cloud.google.com/bigquery/
+//   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLBigqueryJobStopResponse (0 custom class methods, 2 custom properties)
+//   GTLYouTubeLiveBroadcastStatistics (0 custom class methods, 2 custom properties)
 
-#import "GTLBigqueryJobStopResponse.h"
-
-#import "GTLBigqueryJob.h"
+#import "GTLYouTubeLiveBroadcastStatistics.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBigqueryJobStopResponse
+//   GTLYouTubeLiveBroadcastStatistics
 //
 
-@implementation GTLBigqueryJobStopResponse
-@dynamic job, kind;
-
-+ (void)load {
-  [self registerObjectClassForKind:@"bigquery#jobStopResponse"];
-}
-
+@implementation GTLYouTubeLiveBroadcastStatistics
+@dynamic concurrentViewers, totalChatCount;
 @end

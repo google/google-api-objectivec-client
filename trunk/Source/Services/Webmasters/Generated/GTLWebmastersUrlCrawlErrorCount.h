@@ -24,7 +24,7 @@
 // Description:
 //   Lets you view Google Webmaster Tools data for your verified sites.
 // Documentation:
-//   https://developers.google.com/webmaster-tools/v3/welcome
+//   https://developers.google.com/webmaster-tools/
 // Classes:
 //   GTLWebmastersUrlCrawlErrorCount (0 custom class methods, 2 custom properties)
 
@@ -46,7 +46,7 @@
 // The error count at the given timestamp.
 @property (nonatomic, retain) NSNumber *count;  // longLongValue
 
-// The time (well, date) when errors were detected, in RFC 3339 format.
+// The date and time when the crawl attempt took place, in RFC 3339 format.
 @property (nonatomic, retain) GTLDateTime *timestamp;
 
 @end

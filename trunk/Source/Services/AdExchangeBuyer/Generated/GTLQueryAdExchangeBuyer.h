@@ -204,10 +204,11 @@
 //  Optional:
 //   accountId: When specified, only creatives for the given account ids are
 //     returned.
-//     Note: For this method, "accountId" should be of type NSArray.
+//     Note: For this method, "accountId" should be of type NSArray<NSNumber>.
 //   buyerCreativeId: When specified, only creatives for the given buyer
 //     creative ids are returned.
-//     Note: For this method, "buyerCreativeId" should be of type NSArray.
+//     Note: For this method, "buyerCreativeId" should be of type
+//     NSArray<NSString>.
 //   maxResults: Maximum number of entries returned on one result page. If not
 //     set, the default is 100. Optional. (1..1000)
 //   pageToken: A continuation token, used to page through ad clients. To

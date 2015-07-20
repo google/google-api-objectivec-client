@@ -231,7 +231,7 @@
 //   pageToken: Continuation token if request is paged.
 //   startDate: Earliest date of comment to fetch, a date-time with RFC 3339
 //     formatting.
-//   status: NSArray
+//   status: NSArray<NSString>
 //      kGTLBloggerStatusEmptied: Comments that have had their content removed
 //      kGTLBloggerStatusLive: Comments that are publicly visible
 //      kGTLBloggerStatusPending: Comments that are awaiting administrator
@@ -261,7 +261,7 @@
 //   pageToken: Continuation token if request is paged.
 //   startDate: Earliest date of comment to fetch, a date-time with RFC 3339
 //     formatting.
-//   status: NSArray
+//   status: NSArray<NSString>
 //      kGTLBloggerStatusEmptied: Comments that have had their content removed
 //      kGTLBloggerStatusLive: Comments that are publicly visible
 //      kGTLBloggerStatusPending: Comments that are awaiting administrator
@@ -350,7 +350,7 @@
 //   fetchBodies: Whether to retrieve the Page bodies.
 //   maxResults: Maximum number of Pages to fetch.
 //   pageToken: Continuation token if the request is paged.
-//   status: NSArray
+//   status: NSArray<NSString>
 //      kGTLBloggerStatusDraft: Draft (unpublished) Pages
 //      kGTLBloggerStatusLive: Pages that are publicly visible
 //   view: Access level with which to view the returned result. Note that some
@@ -429,7 +429,7 @@
 //  Required:
 //   blogId: The ID of the blog to get.
 //  Optional:
-//   range: NSArray
+//   range: NSArray<NSString>
 //      kGTLBloggerRangeX30days: Page view counts from the last thirty days.
 //      kGTLBloggerRangeX7days: Page view counts from the last seven days.
 //      kGTLBloggerRangeAll: Total page view counts from all time.
@@ -680,7 +680,7 @@
 //   pageToken: Continuation token if the request is paged.
 //   startDate: Earliest post date to fetch, a date-time with RFC 3339
 //     formatting.
-//   status: NSArray
+//   status: NSArray<NSString>
 //      kGTLBloggerStatusDraft: Draft posts
 //      kGTLBloggerStatusLive: Published posts
 //      kGTLBloggerStatusScheduled: Posts that are scheduled to publish in

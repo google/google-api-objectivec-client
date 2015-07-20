@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryJobConfigurationQuery (0 custom class methods, 11 custom properties)
+//   GTLBigqueryJobConfigurationQuery (0 custom class methods, 12 custom properties)
 //   GTLBigqueryJobConfigurationQueryTableDefinitions (0 custom class methods, 0 custom properties)
 
 #import "GTLBigqueryJobConfigurationQuery.h"
@@ -34,6 +34,7 @@
 #import "GTLBigqueryDatasetReference.h"
 #import "GTLBigqueryExternalDataConfiguration.h"
 #import "GTLBigqueryTableReference.h"
+#import "GTLBigqueryUserDefinedFunctionResource.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -43,7 +44,15 @@
 @implementation GTLBigqueryJobConfigurationQuery
 @dynamic allowLargeResults, createDisposition, defaultDataset, destinationTable,
          flattenResults, preserveNulls, priority, query, tableDefinitions,
-         useQueryCache, writeDisposition;
+         useQueryCache, userDefinedFunctionResources, writeDisposition;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map = @{
+    @"userDefinedFunctionResources" : [GTLBigqueryUserDefinedFunctionResource class]
+  };
+  return map;
+}
+
 @end
 
 

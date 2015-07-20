@@ -36,6 +36,7 @@
 #import "GTLBigqueryExternalDataConfiguration.h"
 #import "GTLBigqueryGetQueryResultsResponse.h"
 #import "GTLBigqueryJob.h"
+#import "GTLBigqueryJobCancelResponse.h"
 #import "GTLBigqueryJobConfiguration.h"
 #import "GTLBigqueryJobConfigurationExtract.h"
 #import "GTLBigqueryJobConfigurationLink.h"
@@ -49,7 +50,6 @@
 #import "GTLBigqueryJobStatistics3.h"
 #import "GTLBigqueryJobStatistics4.h"
 #import "GTLBigqueryJobStatus.h"
-#import "GTLBigqueryJobStopResponse.h"
 #import "GTLBigqueryJsonObject.h"
 #import "GTLBigqueryProjectList.h"
 #import "GTLBigqueryProjectReference.h"
@@ -63,6 +63,7 @@
 #import "GTLBigqueryTableReference.h"
 #import "GTLBigqueryTableRow.h"
 #import "GTLBigqueryTableSchema.h"
+#import "GTLBigqueryUserDefinedFunctionResource.h"
 #import "GTLBigqueryViewDefinition.h"
 
 #import "GTLQueryBigquery.h"

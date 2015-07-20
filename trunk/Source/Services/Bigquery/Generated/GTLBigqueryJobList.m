@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryJobList (0 custom class methods, 5 custom properties)
+//   GTLBigqueryJobList (0 custom class methods, 4 custom properties)
 //   GTLBigqueryJobListJobsItem (0 custom class methods, 9 custom properties)
 
 #import "GTLBigqueryJobList.h"
@@ -43,7 +43,7 @@
 //
 
 @implementation GTLBigqueryJobList
-@dynamic ETag, jobs, kind, nextPageToken, totalItems;
+@dynamic ETag, jobs, kind, nextPageToken;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{

@@ -47,7 +47,7 @@
 @property (nonatomic, retain) NSArray *configurationIssues;  // of GTLYouTubeLiveStreamConfigurationIssue
 
 // The last time this status was updated (in seconds)
-@property (nonatomic, retain) NSNumber *lastUpdateTimeS;  // unsignedLongLongValue
+@property (nonatomic, retain) NSNumber *lastUpdateTimeSeconds;  // unsignedLongLongValue
 
 // The status code of this stream
 @property (nonatomic, copy) NSString *status;

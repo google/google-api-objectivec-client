@@ -24,7 +24,7 @@
 // Description:
 //   Lets you view Google Webmaster Tools data for your verified sites.
 // Documentation:
-//   https://developers.google.com/webmaster-tools/v3/welcome
+//   https://developers.google.com/webmaster-tools/
 // Classes:
 //   GTLWebmastersSitemapsListResponse (0 custom class methods, 1 custom properties)
 
@@ -45,7 +45,7 @@
 
 @interface GTLWebmastersSitemapsListResponse : GTLObject
 
-// Information about a sitemap entry.
+// Contains detailed information about a specific URL submitted as a sitemap.
 @property (nonatomic, retain) NSArray *sitemap;  // of GTLWebmastersWmxSitemap
 
 @end

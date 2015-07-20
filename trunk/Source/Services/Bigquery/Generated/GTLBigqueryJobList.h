@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryJobList (0 custom class methods, 5 custom properties)
+//   GTLBigqueryJobList (0 custom class methods, 4 custom properties)
 //   GTLBigqueryJobListJobsItem (0 custom class methods, 9 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -60,9 +60,6 @@
 
 // A token to request the next page of results.
 @property (nonatomic, copy) NSString *nextPageToken;
-
-// Total number of jobs in this collection.
-@property (nonatomic, retain) NSNumber *totalItems;  // intValue
 
 @end
 

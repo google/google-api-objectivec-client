@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (61 custom class methods, 69 custom properties)
+//   GTLQueryYouTube (62 custom class methods, 69 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -148,8 +148,6 @@
 //   part: The part parameter serves two purposes in this operation. It
 //     identifies the properties that the write operation will set as well as
 //     the properties that the API response will include.
-//     The part names that you can include in the parameter value are snippet
-//     and contentDetails.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 //   kGTLAuthScopeYouTubeForceSsl
@@ -164,11 +162,9 @@
 // YouTube home page feed, which is customized for each user.
 //  Required:
 //   part: The part parameter specifies a comma-separated list of one or more
-//     activity resource properties that the API response will include. The part
-//     names that you can include in the parameter value are id, snippet, and
-//     contentDetails.
+//     activity resource properties that the API response will include.
 //     If the parameter identifies a property that contains child properties,
-//     the child properties will be included in the response. For example, in a
+//     the child properties will be included in the response. For example, in an
 //     activity resource, the snippet property contains other properties that
 //     identify the type of activity, a display title for the activity, and so
 //     forth. If you set part=snippet, the API response will also contain all of
@@ -596,9 +592,7 @@
 // criteria.
 //  Required:
 //   part: The part parameter specifies a comma-separated list of one or more
-//     channel resource properties that the API response will include. The part
-//     names that you can include in the parameter value are id, snippet,
-//     contentDetails, statistics, topicDetails, and invideoPromotion.
+//     channel resource properties that the API response will include.
 //     If the parameter identifies a property that contains child properties,
 //     the child properties will be included in the response. For example, in a
 //     channel resource, the contentDetails property contains other properties,
@@ -615,26 +609,31 @@
 //     YouTube channel ID(s) for the resource(s) that are being retrieved. In a
 //     channel resource, the id property specifies the channel's YouTube channel
 //     ID.
-//   managedByMe: Set this parameter's value to true to instruct the API to only
-//     return channels managed by the content owner that the
-//     onBehalfOfContentOwner parameter specifies. The user must be
-//     authenticated as a CMS account linked to the specified content owner and
-//     onBehalfOfContentOwner must be provided.
+//   managedByMe: Note: This parameter is intended exclusively for YouTube
+//     content partners.
+//     Set this parameter's value to true to instruct the API to only return
+//     channels managed by the content owner that the onBehalfOfContentOwner
+//     parameter specifies. The user must be authenticated as a CMS account
+//     linked to the specified content owner and onBehalfOfContentOwner must be
+//     provided.
 //   maxResults: The maxResults parameter specifies the maximum number of items
 //     that should be returned in the result set. (0..50, default 5)
 //   mine: Set this parameter's value to true to instruct the API to only return
 //     channels owned by the authenticated user.
-//   mySubscribers: Set this parameter's value to true to retrieve a list of
-//     channels that subscribed to the authenticated user's channel.
-//   onBehalfOfContentOwner: The onBehalfOfContentOwner parameter indicates that
-//     the authenticated user is acting on behalf of the content owner specified
-//     in the parameter value. This parameter is intended for YouTube content
-//     partners that own and manage many different YouTube channels. It allows
-//     content owners to authenticate once and get access to all their video and
-//     channel data, without having to provide authentication credentials for
-//     each individual channel. The actual CMS account that the user
-//     authenticates with needs to be linked to the specified YouTube content
-//     owner.
+//   mySubscribers: Use the subscriptions.list method and its mySubscribers
+//     parameter to retrieve a list of subscribers to the authenticated user's
+//     channel.
+//   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
+//     YouTube content partners.
+//     The onBehalfOfContentOwner parameter indicates that the request's
+//     authorization credentials identify a YouTube CMS user who is acting on
+//     behalf of the content owner specified in the parameter value. This
+//     parameter is intended for YouTube content partners that own and manage
+//     many different YouTube channels. It allows content owners to authenticate
+//     once and get access to all their video and channel data, without having
+//     to provide authentication credentials for each individual channel. The
+//     CMS account that the user authenticates with must be linked to the
+//     specified YouTube content owner.
 //   pageToken: The pageToken parameter identifies a specific page in the result
 //     set that should be returned. In an API response, the nextPageToken and
 //     prevPageToken properties identify other pages that could be retrieved.
@@ -648,14 +647,17 @@
 + (instancetype)queryForChannelsListWithPart:(NSString *)part;
 
 // Method: youtube.channels.update
-// Updates a channel's metadata.
+// Updates a channel's metadata. Note that this method currently only supports
+// updates to the channel resource's brandingSettings and invideoPromotion
+// objects and their child properties.
 //  Required:
 //   part: The part parameter serves two purposes in this operation. It
 //     identifies the properties that the write operation will set as well as
 //     the properties that the API response will include.
-//     The part names that you can include in the parameter value are id and
-//     invideoPromotion.
-//     Note that this method will override the existing values for all of the
+//     The API currently only allows the parameter value to be set to either
+//     brandingSettings or invideoPromotion. (You cannot update both of those
+//     parts with a single request.)
+//     Note that this method overrides the existing values for all of the
 //     mutable properties that are contained in any parts that the parameter
 //     value specifies.
 //  Optional:
@@ -684,21 +686,18 @@
 // Deletes a comment.
 //  Required:
 //   identifier: The id parameter specifies the comment ID for the resource that
-//     should be deleted.
+//     is being deleted.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTubeForceSsl
 + (instancetype)queryForCommentsDeleteWithIdentifier:(NSString *)identifier;
 
 // Method: youtube.comments.insert
-// Creates a new comment.
-// Note: to create a top level comment it is also necessary to create a comment
-// thread. Both are accomplished through the commentThreads resource.
+// Creates a reply to an existing comment. Note: To create a top-level comment,
+// use the commentThreads.insert method.
 //  Required:
-//   part: The part parameter serves two purposes in this operation. It
-//     identifies the properties that the write operation will set as well as
-//     the properties that the API response will include.
-//     The part names that you can include in the parameter value are id and
-//     snippet. However only snippet contains properties that can be set.
+//   part: The part parameter identifies the properties that the API response
+//     will include. Set the parameter value to snippet. The snippet part has a
+//     quota cost of 2 units.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTubeForceSsl
 // Fetches a GTLYouTubeComment.
@@ -708,11 +707,12 @@
 // Method: youtube.comments.list
 // Returns a list of comments that match the API request parameters.
 //  Required:
-//   part: The part parameter specifies the comment resource parts that the API
-//     response will include. Supported values are id and snippet.
+//   part: The part parameter specifies a comma-separated list of one or more
+//     comment resource properties that the API response will include.
 //  Optional:
 //   identifier: The id parameter specifies a comma-separated list of comment
-//     IDs for the resources that should be retrieved.
+//     IDs for the resources that are being retrieved. In a comment resource,
+//     the id property specifies the comment's ID.
 //   maxResults: The maxResults parameter specifies the maximum number of items
 //     that should be returned in the result set.
 //     Note: This parameter is not supported for use in conjunction with the id
@@ -724,13 +724,12 @@
 //     parameter.
 //   parentId: The parentId parameter specifies the ID of the comment for which
 //     replies should be retrieved.
-//     Note: Currently YouTube features only one level of replies (ie replies to
-//     top level comments). However replies to replies may be supported in the
-//     future.
-//   textFormat: Set this parameter's value to html or plainText to instruct the
-//     API to return the comments left by users formatted as HTML or as plain
-//     text. (Default "FORMAT_HTML")
-//      kGTLYouTubeTextFormatHtml: Returns the comments in HTML format.
+//     Note: YouTube currently supports replies only for top-level comments.
+//     However, replies to replies may be supported in the future.
+//   textFormat: This parameter indicates whether the API should return comments
+//     formatted as HTML or as plain text. (Default "FORMAT_HTML")
+//      kGTLYouTubeTextFormatHtml: Returns the comments in HTML format. This is
+//        the default value.
 //      kGTLYouTubeTextFormatPlainText: Returns the comments in plain text
 //        format.
 //  Authorization scope(s):
@@ -739,52 +738,53 @@
 + (instancetype)queryForCommentsListWithPart:(NSString *)part;
 
 // Method: youtube.comments.markAsSpam
-// Expresses the caller's opinion that a comment is spam.
+// Expresses the caller's opinion that one or more comments should be flagged as
+// spam.
 //  Required:
 //   identifier: The id parameter specifies a comma-separated list of IDs of
-//     comments which should get flagged as spam.
+//     comments that the caller believes should be classified as spam.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTubeForceSsl
 + (instancetype)queryForCommentsMarkAsSpamWithIdentifier:(NSString *)identifier;
 
 // Method: youtube.comments.setModerationStatus
-// Sets the moderation status of one or more comments.
+// Sets the moderation status of one or more comments. The API request must be
+// authorized by the owner of the channel or video associated with the comments.
 //  Required:
-//   identifier: The id parameter specifies a comma-separated list of IDs of
-//     comments whose moderation status should be updated.
-//   moderationStatus: Determines the new moderation status of the specified
+//   identifier: The id parameter specifies a comma-separated list of IDs that
+//     identify the comments for which you are updating the moderation status.
+//   moderationStatus: Identifies the new moderation status of the specified
 //     comments.
 //      kGTLYouTubeModerationStatusHeldForReview: Marks a comment as awaiting
 //        review by a moderator.
 //      kGTLYouTubeModerationStatusPublished: Clears a comment for public
 //        display.
-//      kGTLYouTubeModerationStatusRejected: Rejects a comment as not fit for
-//        display.
-//        Note: currently there is no way to list or otherwise discover a
-//        rejected comment. However it is possible to change its moderation
-//        status as long as its ID is still known.
-//        Note: Currently, if you reject a comment you effectively also hide all
-//        its replies as there is no longer any way to discover them. This may
-//        change in the future.
+//      kGTLYouTubeModerationStatusRejected: Rejects a comment as being unfit
+//        for display. This action also effectively hides all replies to the
+//        rejected comment.
+//        Note: The API does not currently provide a way to list or otherwise
+//        discover rejected comments. However, you can change the moderation
+//        status of a rejected comment if you still know its ID. If you were to
+//        change the moderation status of a rejected comment, the comment
+//        replies would subsequently be discoverable again as well.
 //  Optional:
-//   banAuthor: The banAuthor paramter, if set to true, adds the author of the
-//     comment to the ban list. This means all future comments of the author
-//     will autmomatically be rejected.
-//     Note: This parameter is only valid in combination with moderationStatus
-//     'rejected'. (Default false)
+//   banAuthor: The banAuthor parameter lets you indicate that you want to
+//     automatically reject any additional comments written by the comment's
+//     author. Set the parameter value to true to ban the author.
+//     Note: This parameter is only valid if the moderationStatus parameter is
+//     also set to rejected. (Default false)
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTubeForceSsl
 + (instancetype)queryForCommentsSetModerationStatusWithIdentifier:(NSString *)identifier
                                                  moderationStatus:(NSString *)moderationStatus;
 
 // Method: youtube.comments.update
-// Modifies an existing comment.
+// Modifies a comment.
 //  Required:
-//   part: The part parameter serves two purposes in this operation. It
-//     identifies the properties that the write operation will set as well as
-//     the properties that the API response will include.
-//     The part names that you can include in the parameter value are id and
-//     snippet. However only snippet contains properties that can be updated.
+//   part: The part parameter identifies the properties that the API response
+//     will include. You must at least include the snippet part in the parameter
+//     value since that part contains all of the properties that the API request
+//     can update.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTubeForceSsl
 // Fetches a GTLYouTubeComment.
@@ -796,16 +796,16 @@
 // These create a GTLQueryYouTube object.
 
 // Method: youtube.commentThreads.insert
-// Creates a new comment thread and top level comment.
+// Creates a new top-level comment. To add a reply to an existing comment, use
+// the comments.insert method instead.
 //  Required:
-//   part: The part parameter serves two purposes in this operation. It
-//     identifies the properties that the write operation will set as well as
-//     the properties that the API response will include.
-//     The part names that you can include in the parameter value are id and
-//     snippet. However only snippet contains properties that can be set.
+//   part: The part parameter identifies the properties that the API response
+//     will include. Set the parameter value to snippet. The snippet part has a
+//     quota cost of 2 units.
 //  Optional:
-//   shareOnGooglePlus: The shareOnGooglePlus determines whether this thread
-//     should also be posted on Google+. (Default false)
+//   shareOnGooglePlus: The shareOnGooglePlus parameter indicates whether the
+//     top-level comment and any replies that are made to that comment should
+//     also be posted to the author's Google+ profile. (Default false)
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTubeForceSsl
 // Fetches a GTLYouTubeCommentThread.
@@ -815,16 +815,16 @@
 // Method: youtube.commentThreads.list
 // Returns a list of comment threads that match the API request parameters.
 //  Required:
-//   part: The part parameter specifies the commentThread resource parts that
-//     the API response will include. Supported values are id, snippet and
-//     replies.
+//   part: The part parameter specifies a comma-separated list of one or more
+//     commentThread resource properties that the API response will include.
 //  Optional:
 //   allThreadsRelatedToChannelId: The allThreadsRelatedToChannelId parameter
-//     instructs the API to return the comment threads of all videos of the
-//     channel and the channel comments as well.
-//   channelId: The channelId parameter instructs the API to return the comment
-//     threads for all the channel comments (not including comments left on
-//     videos).
+//     instructs the API to return all comment threads associated with the
+//     specified channel. The response can include comments about the channel or
+//     about the channel's videos.
+//   channelId: The channelId parameter instructs the API to return comment
+//     threads containing comments about the specified channel. (The response
+//     will not include comments left on videos that the channel uploaded.)
 //   identifier: The id parameter specifies a comma-separated list of comment
 //     thread IDs for the resources that should be retrieved.
 //   maxResults: The maxResults parameter specifies the maximum number of items
@@ -834,13 +834,18 @@
 //   moderationStatus: Set this parameter to limit the returned comment threads
 //     to a particular moderation state.
 //     Note: This parameter is not supported for use in conjunction with the id
-//     parameter. (Default kGTLYouTubeModerationStatusPublished)
-//      kGTLYouTubeModerationStatusHeldForReview: Returns only comment threads
-//        awaiting review by a moderator.
-//      kGTLYouTubeModerationStatusLikelySpam: Returns only comment threads
-//        classified as likely being spam.
-//      kGTLYouTubeModerationStatusPublished: Returns only published comment
-//        threads.
+//     parameter. (Default "MODERATION_STATUS_PUBLISHED")
+//      kGTLYouTubeModerationStatusHeldForReview: Retrieve comment threads that
+//        are awaiting review by a moderator. A comment thread can be included
+//        in the response if the top-level comment or at least one of the
+//        replies to that comment are awaiting review.
+//      kGTLYouTubeModerationStatusLikelySpam: Retrieve comment threads
+//        classified as likely to be spam. A comment thread can be included in
+//        the response if the top-level comment or at least one of the replies
+//        to that comment is considered likely to be spam.
+//      kGTLYouTubeModerationStatusPublished: Retrieve threads of published
+//        comments. This is the default value. A comment thread can be included
+//        in the response if its top-level comment has been published.
 //   order: The order parameter specifies the order in which the API response
 //     should list comment threads. Valid values are:
 //     - time - Comment threads are ordered by time. This is the default
@@ -855,32 +860,32 @@
 //     property identifies the next page of the result that can be retrieved.
 //     Note: This parameter is not supported for use in conjunction with the id
 //     parameter.
-//   searchTerms: The searchTerms parameter instructs the API to limit the
-//     returned comments to those which contain the specified search terms.
+//   searchTerms: The searchTerms parameter instructs the API to limit the API
+//     response to only contain comments that contain the specified search
+//     terms.
 //     Note: This parameter is not supported for use in conjunction with the id
 //     parameter.
 //   textFormat: Set this parameter's value to html or plainText to instruct the
 //     API to return the comments left by users in html formatted or in plain
 //     text. (Default "FORMAT_HTML")
-//      kGTLYouTubeTextFormatHtml: Returns the comments in HTML format.
+//      kGTLYouTubeTextFormatHtml: Returns the comments in HTML format. This is
+//        the default value.
 //      kGTLYouTubeTextFormatPlainText: Returns the comments in plain text
 //        format.
-//   videoId: The videoId parameter instructs the API to return the comment
-//     threads for the video specified by the video id.
+//   videoId: The videoId parameter instructs the API to return comment threads
+//     associated with the specified video ID.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTubeForceSsl
 // Fetches a GTLYouTubeCommentThreadListResponse.
 + (instancetype)queryForCommentThreadsListWithPart:(NSString *)part;
 
 // Method: youtube.commentThreads.update
-// Modifies an existing comment.
+// Modifies the top-level comment in a comment thread.
 //  Required:
-//   part: The part parameter serves two purposes in this operation. It
-//     identifies the properties that the write operation will set as well as
-//     the properties that the API response will include.
-//     The part names that you can include in the parameter value are id,
-//     snippet and replies. However only snippet contains properties that can be
-//     updated.
+//   part: The part parameter specifies a comma-separated list of commentThread
+//     resource properties that the API response will include. You must at least
+//     include the snippet part in the parameter value since that part contains
+//     all of the properties that the API request can update.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTubeForceSsl
 // Fetches a GTLYouTubeCommentThread.
@@ -894,15 +899,8 @@
 // Method: youtube.guideCategories.list
 // Returns a list of categories that can be associated with YouTube channels.
 //  Required:
-//   part: The part parameter specifies a comma-separated list of one or more
-//     guideCategory resource properties that the API response will include. The
-//     part names that you can include in the parameter value are id and
-//     snippet.
-//     If the parameter identifies a property that contains child properties,
-//     the child properties will be included in the response. For example, in a
-//     guideCategory resource, the snippet property contains other properties,
-//     such as the category's title. If you set part=snippet, the API response
-//     will also contain all of those nested properties.
+//   part: The part parameter specifies the guideCategory resource properties
+//     that the API response will include. Set the parameter value to snippet.
 //  Optional:
 //   hl: The hl parameter specifies the language that will be used for text
 //     values in the API response. (Default en-US)
@@ -926,12 +924,10 @@
 // These create a GTLQueryYouTube object.
 
 // Method: youtube.i18nLanguages.list
-// Returns a list of supported languages.
+// Returns a list of application languages that the YouTube website supports.
 //  Required:
-//   part: The part parameter specifies a comma-separated list of one or more
-//     i18nLanguage resource properties that the API response will include. The
-//     part names that you can include in the parameter value are id and
-//     snippet.
+//   part: The part parameter specifies the i18nLanguage resource properties
+//     that the API response will include. Set the parameter value to snippet.
 //  Optional:
 //   hl: The hl parameter specifies the language that should be used for text
 //     values in the API response. (Default en_US)
@@ -948,12 +944,10 @@
 // These create a GTLQueryYouTube object.
 
 // Method: youtube.i18nRegions.list
-// Returns a list of supported regions.
+// Returns a list of content regions that the YouTube website supports.
 //  Required:
-//   part: The part parameter specifies a comma-separated list of one or more
-//     i18nRegion resource properties that the API response will include. The
-//     part names that you can include in the parameter value are id and
-//     snippet.
+//   part: The part parameter specifies the i18nRegion resource properties that
+//     the API response will include. Set the parameter value to snippet.
 //  Optional:
 //   hl: The hl parameter specifies the language that should be used for text
 //     values in the API response. (Default en_US)
@@ -971,7 +965,8 @@
 
 // Method: youtube.liveBroadcasts.bind
 // Binds a YouTube broadcast to a stream or removes an existing binding between
-// a broadcast and a stream. A broadcast can only be bound to one video stream.
+// a broadcast and a stream. A broadcast can only be bound to one video stream,
+// though a video stream may be bound to more than one broadcast.
 //  Required:
 //   identifier: The id parameter specifies the unique ID of the broadcast that
 //     is being bound to a video stream.
@@ -1018,6 +1013,57 @@
 // Fetches a GTLYouTubeLiveBroadcast.
 + (instancetype)queryForLiveBroadcastsBindWithIdentifier:(NSString *)identifier
                                                     part:(NSString *)part;
+
+// Method: youtube.liveBroadcasts.bind_direct
+// Binds a YouTube broadcast to a stream or removes an existing binding between
+// a broadcast and a stream. A broadcast can only be bound to one video stream,
+// though a video stream may be bound to more than one broadcast.
+//  Required:
+//   identifier: The id parameter specifies the unique ID of the broadcast that
+//     is being bound to a video stream.
+//   part: The part parameter specifies a comma-separated list of one or more
+//     liveBroadcast resource properties that the API response will include. The
+//     part names that you can include in the parameter value are id, snippet,
+//     contentDetails, and status.
+//  Optional:
+//   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
+//     YouTube content partners.
+//     The onBehalfOfContentOwner parameter indicates that the request's
+//     authorization credentials identify a YouTube CMS user who is acting on
+//     behalf of the content owner specified in the parameter value. This
+//     parameter is intended for YouTube content partners that own and manage
+//     many different YouTube channels. It allows content owners to authenticate
+//     once and get access to all their video and channel data, without having
+//     to provide authentication credentials for each individual channel. The
+//     CMS account that the user authenticates with must be linked to the
+//     specified YouTube content owner.
+//   onBehalfOfContentOwnerChannel: This parameter can only be used in a
+//     properly authorized request. Note: This parameter is intended exclusively
+//     for YouTube content partners.
+//     The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel
+//     ID of the channel to which a video is being added. This parameter is
+//     required when a request specifies a value for the onBehalfOfContentOwner
+//     parameter, and it can only be used in conjunction with that parameter. In
+//     addition, the request must be authorized using a CMS account that is
+//     linked to the content owner that the onBehalfOfContentOwner parameter
+//     specifies. Finally, the channel that the onBehalfOfContentOwnerChannel
+//     parameter value specifies must be linked to the content owner that the
+//     onBehalfOfContentOwner parameter specifies.
+//     This parameter is intended for YouTube content partners that own and
+//     manage many different YouTube channels. It allows content owners to
+//     authenticate once and perform actions on behalf of the channel specified
+//     in the parameter value, without having to provide authentication
+//     credentials for each separate channel.
+//   streamId: The streamId parameter specifies the unique ID of the video
+//     stream that is being bound to a broadcast. If this parameter is omitted,
+//     the API will remove any existing binding between the broadcast and a
+//     video stream.
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
+// Fetches a GTLYouTubeLiveBroadcast.
++ (instancetype)queryForLiveBroadcastsBindDirectWithIdentifier:(NSString *)identifier
+                                                          part:(NSString *)part;
 
 // Method: youtube.liveBroadcasts.control
 // Controls the settings for a slate that can be displayed in the broadcast
@@ -1446,8 +1492,7 @@
 //     stream IDs that identify the streams being retrieved. In a liveStream
 //     resource, the id property specifies the stream's ID.
 //   maxResults: The maxResults parameter specifies the maximum number of items
-//     that should be returned in the result set. Acceptable values are 0 to 50,
-//     inclusive. The default value is 5. (0..50, default 5)
+//     that should be returned in the result set. (0..50, default 5)
 //   mine: The mine parameter can be used to instruct the API to only return
 //     streams owned by the authenticated user. Set the parameter value to true
 //     to only retrieve your own streams.
@@ -1560,8 +1605,6 @@
 //   part: The part parameter serves two purposes in this operation. It
 //     identifies the properties that the write operation will set as well as
 //     the properties that the API response will include.
-//     The part names that you can include in the parameter value are snippet,
-//     contentDetails, and status.
 //  Optional:
 //   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
 //     YouTube content partners.
@@ -1588,9 +1631,7 @@
 // retrieve one or more playlist items by their unique IDs.
 //  Required:
 //   part: The part parameter specifies a comma-separated list of one or more
-//     playlistItem resource properties that the API response will include. The
-//     part names that you can include in the parameter value are id, snippet,
-//     contentDetails, and status.
+//     playlistItem resource properties that the API response will include.
 //     If the parameter identifies a property that contains child properties,
 //     the child properties will be included in the response. For example, in a
 //     playlistItem resource, the snippet property contains numerous fields,
@@ -1638,8 +1679,6 @@
 //   part: The part parameter serves two purposes in this operation. It
 //     identifies the properties that the write operation will set as well as
 //     the properties that the API response will include.
-//     The part names that you can include in the parameter value are snippet,
-//     contentDetails, and status.
 //     Note that this method will override the existing values for all of the
 //     mutable properties that are contained in any parts that the parameter
 //     value specifies. For example, a playlist item can specify a start time
@@ -1693,8 +1732,6 @@
 //   part: The part parameter serves two purposes in this operation. It
 //     identifies the properties that the write operation will set as well as
 //     the properties that the API response will include.
-//     The part names that you can include in the parameter value are snippet
-//     and status.
 //  Optional:
 //   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
 //     YouTube content partners.
@@ -1738,9 +1775,7 @@
 // you can retrieve one or more playlists by their unique IDs.
 //  Required:
 //   part: The part parameter specifies a comma-separated list of one or more
-//     playlist resource properties that the API response will include. The part
-//     names that you can include in the parameter value are id, snippet,
-//     status, and contentDetails.
+//     playlist resource properties that the API response will include.
 //     If the parameter identifies a property that contains child properties,
 //     the child properties will be included in the response. For example, in a
 //     playlist resource, the snippet property contains properties like author,
@@ -1805,17 +1840,12 @@
 //   part: The part parameter serves two purposes in this operation. It
 //     identifies the properties that the write operation will set as well as
 //     the properties that the API response will include.
-//     The part names that you can include in the parameter value are snippet
-//     and status.
-//     Note that this method will override the existing values for all of the
-//     mutable properties that are contained in any parts that the parameter
-//     value specifies. For example, a playlist's privacy setting is contained
-//     in the status part. As such, if your request is updating a private
-//     playlist, and the request's part parameter value includes the status
-//     part, the playlist's privacy setting will be updated to whatever value
-//     the request body specifies. If the request body does not specify a value,
-//     the existing privacy setting will be removed and the playlist will revert
-//     to the default privacy setting.
+//     Note that this method will override the existing values for mutable
+//     properties that are contained in any parts that the request body
+//     specifies. For example, a playlist's description is contained in the
+//     snippet part, which must be included in the request body. If the request
+//     does not specify a value for the snippet.description property, the
+//     playlist's existing description will be deleted.
 //  Optional:
 //   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
 //     YouTube content partners.
@@ -1847,14 +1877,8 @@
 // queries to only retrieve a specific type of resource.
 //  Required:
 //   part: The part parameter specifies a comma-separated list of one or more
-//     search resource properties that the API response will include. The part
-//     names that you can include in the parameter value are id and snippet.
-//     If the parameter identifies a property that contains child properties,
-//     the child properties will be included in the response. For example, in a
-//     search result, the snippet property contains other properties that
-//     identify the result's title, description, and so forth. If you set
-//     part=snippet, the API response will also contain all of those nested
-//     properties.
+//     search resource properties that the API response will include. Set the
+//     parameter value to snippet.
 //  Optional:
 //   channelId: The channelId parameter indicates that the API response should
 //     only contain resources created by the channel
@@ -1863,6 +1887,8 @@
 //      kGTLYouTubeChannelTypeAny: Return all channels.
 //      kGTLYouTubeChannelTypeShow: Only retrieve shows.
 //   eventType: The eventType parameter restricts a search to broadcast events.
+//     If you specify a value for this parameter, you must also set the type
+//     parameter's value to video.
 //      kGTLYouTubeEventTypeCompleted: Only include completed broadcasts.
 //      kGTLYouTubeEventTypeLive: Only include active broadcasts.
 //      kGTLYouTubeEventTypeUpcoming: Only include upcoming broadcasts.
@@ -1882,18 +1908,26 @@
 //   forMine: The forMine parameter restricts the search to only retrieve videos
 //     owned by the authenticated user. If you set this parameter to true, then
 //     the type parameter's value must also be set to video.
-//   location: The location parameter restricts a search to videos that have a
-//     geographical location specified in their metadata. The value is a string
-//     that specifies geographic latitude/longitude coordinates e.g.
-//     (37.42307,-122.08427)
-//   locationRadius: The locationRadius, in conjunction with the location
-//     parameter, defines a geographic area. If the geographic coordinates
-//     associated with a video fall within that area, then the video may be
-//     included in search results. This parameter value must be a floating point
-//     number followed by a measurement unit. Valid measurement units are m, km,
-//     ft, and mi. For example, valid parameter values include 1500m, 5km,
-//     10000ft, and 0.75mi. The API does not support locationRadius parameter
-//     values larger than 1000 kilometers.
+//   location: The location parameter, in conjunction with the locationRadius
+//     parameter, defines a circular geographic area and also restricts a search
+//     to videos that specify, in their metadata, a geographic location that
+//     falls within that area. The parameter value is a string that specifies
+//     latitude/longitude coordinates e.g. (37.42307,-122.08427).
+//     - The location parameter value identifies the point at the center of the
+//     area.
+//     - The locationRadius parameter specifies the maximum distance that the
+//     location associated with a video can be from that point for the video to
+//     still be included in the search results.The API returns an error if your
+//     request specifies a value for the location parameter but does not also
+//     specify a value for the locationRadius parameter.
+//   locationRadius: The locationRadius parameter, in conjunction with the
+//     location parameter, defines a circular geographic area.
+//     The parameter value must be a floating point number followed by a
+//     measurement unit. Valid measurement units are m, km, ft, and mi. For
+//     example, valid parameter values include 1500m, 5km, 10000ft, and 0.75mi.
+//     The API does not support locationRadius parameter values larger than 1000
+//     kilometers.
+//     Note: See the definition of the location parameter for more information.
 //   maxResults: The maxResults parameter specifies the maximum number of items
 //     that should be returned in the result set. (0..50, default 5)
 //   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
@@ -1932,6 +1966,14 @@
 //     The value is an RFC 3339 formatted date-time value
 //     (1970-01-01T00:00:00Z).
 //   q: The q parameter specifies the query term to search for.
+//     Your request can also use the Boolean NOT (-) and OR (|) operators to
+//     exclude videos or to find videos that are associated with one of several
+//     search terms. For example, to search for videos matching either "boating"
+//     or "sailing", set the q parameter value to boating|sailing. Similarly, to
+//     search for videos matching either "boating" or "sailing" but not
+//     "fishing", set the q parameter value to boating|sailing -fishing. Note
+//     that the pipe character must be URL-escaped when it is sent in your API
+//     request. The URL-escaped value for the pipe character is %7C.
 //   regionCode: The regionCode parameter instructs the API to return search
 //     results for the specified country. The parameter value is an ISO 3166-1
 //     alpha-2 country code.
@@ -1966,7 +2008,9 @@
 //     particular type of resource. The value is a comma-separated list of
 //     resource types. (Default video,channel,playlist)
 //   videoCaption: The videoCaption parameter indicates whether the API should
-//     filter video search results based on whether they have captions.
+//     filter video search results based on whether they have captions. If you
+//     specify a value for this parameter, you must also set the type
+//     parameter's value to video.
 //      kGTLYouTubeVideoCaptionAny: Do not filter results based on caption
 //        availability.
 //      kGTLYouTubeVideoCaptionClosedCaption: Only include videos that have
@@ -1974,18 +2018,22 @@
 //      kGTLYouTubeVideoCaptionNone: Only include videos that do not have
 //        captions.
 //   videoCategoryId: The videoCategoryId parameter filters video search results
-//     based on their category.
+//     based on their category. If you specify a value for this parameter, you
+//     must also set the type parameter's value to video.
 //   videoDefinition: The videoDefinition parameter lets you restrict a search
 //     to only include either high definition (HD) or standard definition (SD)
 //     videos. HD videos are available for playback in at least 720p, though
-//     higher resolutions, like 1080p, might also be available.
+//     higher resolutions, like 1080p, might also be available. If you specify a
+//     value for this parameter, you must also set the type parameter's value to
+//     video.
 //      kGTLYouTubeVideoDefinitionAny: Return all videos, regardless of their
 //        resolution.
 //      kGTLYouTubeVideoDefinitionHigh: Only retrieve HD videos.
 //      kGTLYouTubeVideoDefinitionStandard: Only retrieve videos in standard
 //        definition.
 //   videoDimension: The videoDimension parameter lets you restrict a search to
-//     only retrieve 2D or 3D videos.
+//     only retrieve 2D or 3D videos. If you specify a value for this parameter,
+//     you must also set the type parameter's value to video.
 //      kGTLYouTubeVideoDimensionX2d: Restrict search results to exclude 3D
 //        videos.
 //      kGTLYouTubeVideoDimensionX3d: Restrict search results to only include 3D
@@ -1993,7 +2041,8 @@
 //      kGTLYouTubeVideoDimensionAny: Include both 3D and non-3D videos in
 //        returned results. This is the default value.
 //   videoDuration: The videoDuration parameter filters video search results
-//     based on their duration.
+//     based on their duration. If you specify a value for this parameter, you
+//     must also set the type parameter's value to video.
 //      kGTLYouTubeVideoDurationAny: Do not filter video search results based on
 //        their duration. This is the default value.
 //      kGTLYouTubeVideoDurationLong: Only include videos longer than 20
@@ -2003,13 +2052,16 @@
 //      kGTLYouTubeVideoDurationShort: Only include videos that are less than
 //        four minutes long.
 //   videoEmbeddable: The videoEmbeddable parameter lets you to restrict a
-//     search to only videos that can be embedded into a webpage.
+//     search to only videos that can be embedded into a webpage. If you specify
+//     a value for this parameter, you must also set the type parameter's value
+//     to video.
 //      kGTLYouTubeVideoEmbeddableAny: Return all videos, embeddable or not.
 //      kGTLYouTubeVideoEmbeddableTrue: Only retrieve embeddable videos.
 //   videoLicense: The videoLicense parameter filters search results to only
 //     include videos with a particular license. YouTube lets video uploaders
 //     choose to attach either the Creative Commons license or the standard
-//     YouTube license to each of their videos.
+//     YouTube license to each of their videos. If you specify a value for this
+//     parameter, you must also set the type parameter's value to video.
 //      kGTLYouTubeVideoLicenseAny: Return all videos, regardless of which
 //        license they have, that match the query parameters.
 //      kGTLYouTubeVideoLicenseCreativeCommon: Only return videos that have a
@@ -2018,11 +2070,14 @@
 //      kGTLYouTubeVideoLicenseYoutube: Only return videos that have the
 //        standard YouTube license.
 //   videoSyndicated: The videoSyndicated parameter lets you to restrict a
-//     search to only videos that can be played outside youtube.com.
+//     search to only videos that can be played outside youtube.com. If you
+//     specify a value for this parameter, you must also set the type
+//     parameter's value to video.
 //      kGTLYouTubeVideoSyndicatedAny: Return all videos, syndicated or not.
 //      kGTLYouTubeVideoSyndicatedTrue: Only retrieve syndicated videos.
 //   videoType: The videoType parameter lets you restrict a search to a
-//     particular type of videos.
+//     particular type of videos. If you specify a value for this parameter, you
+//     must also set the type parameter's value to video.
 //      kGTLYouTubeVideoTypeAny: Return all videos.
 //      kGTLYouTubeVideoTypeEpisode: Only retrieve episodes of shows.
 //      kGTLYouTubeVideoTypeMovie: Only retrieve movies.
@@ -2056,8 +2111,6 @@
 //   part: The part parameter serves two purposes in this operation. It
 //     identifies the properties that the write operation will set as well as
 //     the properties that the API response will include.
-//     The part names that you can include in the parameter value are snippet
-//     and contentDetails.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 //   kGTLAuthScopeYouTubeForceSsl
@@ -2070,9 +2123,7 @@
 // Returns subscription resources that match the API request criteria.
 //  Required:
 //   part: The part parameter specifies a comma-separated list of one or more
-//     subscription resource properties that the API response will include. The
-//     part names that you can include in the parameter value are id, snippet,
-//     and contentDetails.
+//     subscription resource properties that the API response will include.
 //     If the parameter identifies a property that contains child properties,
 //     the child properties will be included in the response. For example, in a
 //     subscription resource, the snippet property contains other properties,
@@ -2148,15 +2199,17 @@
 //   videoId: The videoId parameter specifies a YouTube video ID for which the
 //     custom video thumbnail is being provided.
 //  Optional:
-//   onBehalfOfContentOwner: The onBehalfOfContentOwner parameter indicates that
-//     the authenticated user is acting on behalf of the content owner specified
-//     in the parameter value. This parameter is intended for YouTube content
-//     partners that own and manage many different YouTube channels. It allows
-//     content owners to authenticate once and get access to all their video and
-//     channel data, without having to provide authentication credentials for
-//     each individual channel. The actual CMS account that the user
-//     authenticates with needs to be linked to the specified YouTube content
-//     owner.
+//   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
+//     YouTube content partners.
+//     The onBehalfOfContentOwner parameter indicates that the request's
+//     authorization credentials identify a YouTube CMS user who is acting on
+//     behalf of the content owner specified in the parameter value. This
+//     parameter is intended for YouTube content partners that own and manage
+//     many different YouTube channels. It allows content owners to authenticate
+//     once and get access to all their video and channel data, without having
+//     to provide authentication credentials for each individual channel. The
+//     actual CMS account that the user authenticates with must be linked to the
+//     specified YouTube content owner.
 //  Upload Parameters:
 //   Maximum size: 2MB
 //   Accepted MIME type(s): application/octet-stream, image/jpeg, image/png
@@ -2196,8 +2249,8 @@
 // Method: youtube.videoCategories.list
 // Returns a list of categories that can be associated with YouTube videos.
 //  Required:
-//   part: The part parameter specifies the videoCategory resource parts that
-//     the API response will include. Supported values are id and snippet.
+//   part: The part parameter specifies the videoCategory resource properties
+//     that the API response will include. Set the parameter value to snippet.
 //  Optional:
 //   hl: The hl parameter specifies the language that should be used for text
 //     values in the API response. (Default en_US)
@@ -2275,21 +2328,22 @@
 //   part: The part parameter serves two purposes in this operation. It
 //     identifies the properties that the write operation will set as well as
 //     the properties that the API response will include.
-//     The part names that you can include in the parameter value are snippet,
-//     contentDetails, fileDetails, liveStreamingDetails, localizations, player,
-//     processingDetails, recordingDetails, statistics, status, suggestions, and
-//     topicDetails. However, not all of those parts contain properties that can
-//     be set when setting or updating a video's metadata. For example, the
-//     statistics object encapsulates statistics that YouTube calculates for a
-//     video and does not contain values that you can set or modify. If the
-//     parameter value specifies a part that does not contain mutable values,
-//     that part will still be included in the API response.
+//     Note that not all parts contain properties that can be set when inserting
+//     or updating a video. For example, the statistics object encapsulates
+//     statistics that YouTube calculates for a video and does not contain
+//     values that you can set or modify. If the parameter value specifies a
+//     part that does not contain mutable values, that part will still be
+//     included in the API response.
 //  Optional:
 //   autoLevels: The autoLevels parameter indicates whether YouTube should
 //     automatically enhance the video's lighting and color.
 //   notifySubscribers: The notifySubscribers parameter indicates whether
-//     YouTube should send notification to subscribers about the inserted video.
-//     (Default true)
+//     YouTube should send a notification about the new video to users who
+//     subscribe to the video's channel. A parameter value of True indicates
+//     that subscribers will be notified of newly uploaded videos. However, a
+//     channel owner who is uploading many videos might prefer to set the value
+//     to False to avoid sending a notification about each new video to the
+//     channel's subscribers. (Default true)
 //   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
 //     YouTube content partners.
 //     The onBehalfOfContentOwner parameter indicates that the request's
@@ -2337,11 +2391,7 @@
 // Returns a list of videos that match the API request parameters.
 //  Required:
 //   part: The part parameter specifies a comma-separated list of one or more
-//     video resource properties that the API response will include. The part
-//     names that you can include in the parameter value are id, snippet,
-//     contentDetails, fileDetails, liveStreamingDetails, localizations, player,
-//     processingDetails, recordingDetails, statistics, status, suggestions, and
-//     topicDetails.
+//     video resource properties that the API response will include.
 //     If the parameter identifies a property that contains child properties,
 //     the child properties will be included in the response. For example, in a
 //     video resource, the snippet property contains the channelId, title,
@@ -2353,13 +2403,14 @@
 //        specified content region and video category.
 //   debugProjectIdOverride: The debugProjectIdOverride parameter should be used
 //     for mimicking a request for a certain project ID
-//   hl: The hl parameter instructs the API to return a localized version of the
-//     video details. If localized text is nor available for the requested
-//     language, the localizations object in the API response will contain the
-//     requested information in the default language instead. The parameter
-//     value is a BCP-47 language code. Your application can determine whether
-//     the requested localization was returned by checking the value of the
-//     snippet.localized.language property in the API response.
+//   hl: The hl parameter instructs the API to retrieve localized resource
+//     metadata for a specific application language that the YouTube website
+//     supports. The parameter value must be a language code included in the
+//     list returned by the i18nLanguages.list method.
+//     If localized resource details are available in that language, the
+//     resource's snippet.localized object will contain the localized values.
+//     However, if localized details are not available, the snippet.localized
+//     object will contain resource details in the resource's default language.
 //   identifier: The id parameter specifies a comma-separated list of the
 //     YouTube video ID(s) for the resource(s) that are being retrieved. In a
 //     video resource, the id property specifies the video's ID.
@@ -2420,18 +2471,6 @@
 //        video.
 //      kGTLYouTubeRatingNone: Removes any rating that the authenticated user
 //        had previously set for the video.
-//  Optional:
-//   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
-//     YouTube content partners.
-//     The onBehalfOfContentOwner parameter indicates that the request's
-//     authorization credentials identify a YouTube CMS user who is acting on
-//     behalf of the content owner specified in the parameter value. This
-//     parameter is intended for YouTube content partners that own and manage
-//     many different YouTube channels. It allows content owners to authenticate
-//     once and get access to all their video and channel data, without having
-//     to provide authentication credentials for each individual channel. The
-//     CMS account that the user authenticates with must be linked to the
-//     specified YouTube content owner.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 //   kGTLAuthScopeYouTubeForceSsl
@@ -2466,10 +2505,6 @@
 //   part: The part parameter serves two purposes in this operation. It
 //     identifies the properties that the write operation will set as well as
 //     the properties that the API response will include.
-//     The part names that you can include in the parameter value are snippet,
-//     contentDetails, fileDetails, liveStreamingDetails, localizations, player,
-//     processingDetails, recordingDetails, statistics, status, suggestions, and
-//     topicDetails.
 //     Note that this method will override the existing values for all of the
 //     mutable properties that are contained in any parts that the parameter
 //     value specifies. For example, a video's privacy setting is contained in
@@ -2479,12 +2514,12 @@
 //     body specifies. If the request body does not specify a value, the
 //     existing privacy setting will be removed and the video will revert to the
 //     default privacy setting.
-//     In addition, not all of those parts contain properties that can be set
-//     when setting or updating a video's metadata. For example, the statistics
-//     object encapsulates statistics that YouTube calculates for a video and
-//     does not contain values that you can set or modify. If the parameter
-//     value specifies a part that does not contain mutable values, that part
-//     will still be included in the API response.
+//     In addition, not all parts contain properties that can be set when
+//     inserting or updating a video. For example, the statistics object
+//     encapsulates statistics that YouTube calculates for a video and does not
+//     contain values that you can set or modify. If the parameter value
+//     specifies a part that does not contain mutable values, that part will
+//     still be included in the API response.
 //  Optional:
 //   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
 //     YouTube content partners.
@@ -2512,18 +2547,20 @@
 // Method: youtube.watermarks.set
 // Uploads a watermark image to YouTube and sets it for a channel.
 //  Required:
-//   channelId: The channelId parameter specifies a YouTube channel ID for which
-//     the watermark is being provided.
+//   channelId: The channelId parameter specifies the YouTube channel ID for
+//     which the watermark is being provided.
 //  Optional:
-//   onBehalfOfContentOwner: The onBehalfOfContentOwner parameter indicates that
-//     the authenticated user is acting on behalf of the content owner specified
-//     in the parameter value. This parameter is intended for YouTube content
-//     partners that own and manage many different YouTube channels. It allows
-//     content owners to authenticate once and get access to all their video and
-//     channel data, without having to provide authentication credentials for
-//     each individual channel. The actual CMS account that the user
-//     authenticates with needs to be linked to the specified YouTube content
-//     owner.
+//   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
+//     YouTube content partners.
+//     The onBehalfOfContentOwner parameter indicates that the request's
+//     authorization credentials identify a YouTube CMS user who is acting on
+//     behalf of the content owner specified in the parameter value. This
+//     parameter is intended for YouTube content partners that own and manage
+//     many different YouTube channels. It allows content owners to authenticate
+//     once and get access to all their video and channel data, without having
+//     to provide authentication credentials for each individual channel. The
+//     CMS account that the user authenticates with must be linked to the
+//     specified YouTube content owner.
 //  Upload Parameters:
 //   Maximum size: 10MB
 //   Accepted MIME type(s): application/octet-stream, image/jpeg, image/png
@@ -2537,20 +2574,22 @@
                                uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
 // Method: youtube.watermarks.unset
-// Deletes a watermark.
+// Deletes a channel's watermark image.
 //  Required:
-//   channelId: The channelId parameter specifies a YouTube channel ID for which
-//     the watermark is being unset.
+//   channelId: The channelId parameter specifies the YouTube channel ID for
+//     which the watermark is being unset.
 //  Optional:
-//   onBehalfOfContentOwner: The onBehalfOfContentOwner parameter indicates that
-//     the authenticated user is acting on behalf of the content owner specified
-//     in the parameter value. This parameter is intended for YouTube content
-//     partners that own and manage many different YouTube channels. It allows
-//     content owners to authenticate once and get access to all their video and
-//     channel data, without having to provide authentication credentials for
-//     each individual channel. The actual CMS account that the user
-//     authenticates with needs to be linked to the specified YouTube content
-//     owner.
+//   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
+//     YouTube content partners.
+//     The onBehalfOfContentOwner parameter indicates that the request's
+//     authorization credentials identify a YouTube CMS user who is acting on
+//     behalf of the content owner specified in the parameter value. This
+//     parameter is intended for YouTube content partners that own and manage
+//     many different YouTube channels. It allows content owners to authenticate
+//     once and get access to all their video and channel data, without having
+//     to provide authentication credentials for each individual channel. The
+//     CMS account that the user authenticates with must be linked to the
+//     specified YouTube content owner.
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTube
 //   kGTLAuthScopeYouTubeForceSsl

@@ -169,6 +169,20 @@
 #pragma mark "jobs" methods
 // These create a GTLQueryBigquery object.
 
+// Method: bigquery.jobs.cancel
+// Requests that a job be cancelled. This call will return immediately, and the
+// client will need to poll for the job status to see if the cancel completed
+// successfully.
+//  Required:
+//   projectId: Project ID of the job to cancel
+//   jobId: Job ID of the job to cancel
+//  Authorization scope(s):
+//   kGTLAuthScopeBigquery
+//   kGTLAuthScopeBigqueryCloudPlatform
+// Fetches a GTLBigqueryJobCancelResponse.
++ (instancetype)queryForJobsCancelWithProjectId:(NSString *)projectId
+                                          jobId:(NSString *)jobId;
+
 // Method: bigquery.jobs.get
 // Returns information about a specific job. Job information is available for a
 // six month period after creation. Requires that you're the person who ran the
@@ -194,8 +208,8 @@
 //     page of results
 //   startIndex: Zero-based index of the starting row
 //   timeoutMs: How long to wait for the query to complete, in milliseconds,
-//     before returning. Default is to return immediately. If the timeout passes
-//     before the job completes, the request will fail with a TIMEOUT error
+//     before returning. Default is 10 seconds. If the timeout passes before the
+//     job completes, the 'jobComplete' field in the response will be false
 //  Authorization scope(s):
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
@@ -286,20 +300,6 @@
 // Fetches a GTLBigqueryQueryResponse.
 + (instancetype)queryForJobsQueryWithProjectId:(NSString *)projectId
                                          query:(NSString *)query;
-
-// Method: bigquery.jobs.stop
-// Requests that a job be stopped. This call will return immediately, and the
-// client will need to poll for the job status to see if the stop completed
-// successfully.
-//  Required:
-//   projectId: Project ID of the job to stop
-//   jobId: Job ID of the job to stop
-//  Authorization scope(s):
-//   kGTLAuthScopeBigquery
-//   kGTLAuthScopeBigqueryCloudPlatform
-// Fetches a GTLBigqueryJobStopResponse.
-+ (instancetype)queryForJobsStopWithProjectId:(NSString *)projectId
-                                        jobId:(NSString *)jobId;
 
 #pragma mark -
 #pragma mark "projects" methods

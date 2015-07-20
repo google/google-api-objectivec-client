@@ -24,7 +24,7 @@
 // Description:
 //   Lets you view Google Webmaster Tools data for your verified sites.
 // Documentation:
-//   https://developers.google.com/webmaster-tools/v3/welcome
+//   https://developers.google.com/webmaster-tools/
 // Classes:
 //   GTLWebmastersUrlCrawlErrorCountsPerType (0 custom class methods, 3 custom properties)
 
@@ -52,7 +52,8 @@
 // The error count entries time series.
 @property (nonatomic, retain) NSArray *entries;  // of GTLWebmastersUrlCrawlErrorCount
 
-// Corresponding to the user agent that made the request.
+// The general type of Googlebot that made the request (see list of Googlebot
+// user-agents for the user-agents used).
 @property (nonatomic, copy) NSString *platform;
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/google-apps/calendar/firstapp
 // Classes:
-//   GTLCalendarEventAttachment (0 custom class methods, 0 custom properties)
+//   GTLCalendarEventAttachment (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -40,4 +40,24 @@
 //
 
 @interface GTLCalendarEventAttachment : GTLObject
+
+// ID of the attached file. Read-only.
+// E.g. for Google Drive files this is the ID of the corresponding Files
+// resource entry in the Drive API.
+@property (nonatomic, copy) NSString *fileId;
+
+// URL link to the attachment.
+// For adding Google Drive file attachments use the same format as in
+// alternateLink property of the Files resource in the Drive API.
+@property (nonatomic, copy) NSString *fileUrl;
+
+// URL link to the attachment's icon. Read-only.
+@property (nonatomic, copy) NSString *iconLink;
+
+// Internet media type (MIME type) of the attachment.
+@property (nonatomic, copy) NSString *mimeType;
+
+// Attachment title.
+@property (nonatomic, copy) NSString *title;
+
 @end

@@ -39,6 +39,7 @@
 #import "GTLBigqueryExternalDataConfiguration.m"
 #import "GTLBigqueryGetQueryResultsResponse.m"
 #import "GTLBigqueryJob.m"
+#import "GTLBigqueryJobCancelResponse.m"
 #import "GTLBigqueryJobConfiguration.m"
 #import "GTLBigqueryJobConfigurationExtract.m"
 #import "GTLBigqueryJobConfigurationLink.m"
@@ -52,7 +53,6 @@
 #import "GTLBigqueryJobStatistics3.m"
 #import "GTLBigqueryJobStatistics4.m"
 #import "GTLBigqueryJobStatus.m"
-#import "GTLBigqueryJobStopResponse.m"
 #import "GTLBigqueryJsonObject.m"
 #import "GTLBigqueryProjectList.m"
 #import "GTLBigqueryProjectReference.m"
@@ -66,6 +66,7 @@
 #import "GTLBigqueryTableReference.m"
 #import "GTLBigqueryTableRow.m"
 #import "GTLBigqueryTableSchema.m"
+#import "GTLBigqueryUserDefinedFunctionResource.m"
 #import "GTLBigqueryViewDefinition.m"
 
 #import "GTLQueryBigquery.m"

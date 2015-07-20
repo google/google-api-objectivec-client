@@ -14,19 +14,19 @@
  */
 
 //
-//  GTLBigqueryJobStopResponse.h
+//  GTLYouTubeLiveBroadcastTopicSnippet.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   BigQuery API (bigquery/v2)
+//   YouTube Data API (youtube/v3)
 // Description:
-//   A data platform for customers to create, manage, share and query data.
+//   Programmatic access to YouTube features.
 // Documentation:
-//   https://cloud.google.com/bigquery/
+//   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLBigqueryJobStopResponse (0 custom class methods, 2 custom properties)
+//   GTLYouTubeLiveBroadcastTopicSnippet (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,19 +34,17 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLBigqueryJob;
-
 // ----------------------------------------------------------------------------
 //
-//   GTLBigqueryJobStopResponse
+//   GTLYouTubeLiveBroadcastTopicSnippet
 //
 
-@interface GTLBigqueryJobStopResponse : GTLObject
+@interface GTLYouTubeLiveBroadcastTopicSnippet : GTLObject
 
-// The final state of the job.
-@property (nonatomic, retain) GTLBigqueryJob *job;
+// The name of the topic.
+@property (nonatomic, copy) NSString *name;
 
-// The resource type of the response.
-@property (nonatomic, copy) NSString *kind;
+// The date at which the topic was released. Filled for types: videoGame
+@property (nonatomic, copy) NSString *releaseDate;
 
 @end

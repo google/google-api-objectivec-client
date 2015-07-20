@@ -259,7 +259,8 @@
 //  Optional:
 //   annotationDataId: The list of Annotation Data Ids to retrieve. Pagination
 //     is ignored if this is set.
-//     Note: For this method, "annotationDataId" should be of type NSArray.
+//     Note: For this method, "annotationDataId" should be of type
+//     NSArray<NSString>.
 //   h: The requested pixel height for any images. If height is provided width
 //     must also be provided.
 //   locale: The locale information for the data. ISO-639-1 language and
@@ -930,7 +931,7 @@
 //   startIndex: Index of the first result to return (starts at 0)
 //   volumeId: The ids of the volumes to be returned. If not specified all that
 //     match the processingState are returned.
-//     Note: For this method, "volumeId" should be of type NSArray.
+//     Note: For this method, "volumeId" should be of type NSArray<NSString>.
 //  Authorization scope(s):
 //   kGTLAuthScopeBooks
 // Fetches a GTLBooksVolumes.

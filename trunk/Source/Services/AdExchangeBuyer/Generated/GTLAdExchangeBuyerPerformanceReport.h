@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerPerformanceReport (0 custom class methods, 16 custom properties)
+//   GTLAdExchangeBuyerPerformanceReport (0 custom class methods, 22 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -45,6 +45,12 @@
 
 @interface GTLAdExchangeBuyerPerformanceReport : GTLObject
 
+// The number of bid responses with an ad.
+@property (nonatomic, retain) NSNumber *bidRate;  // doubleValue
+
+// The number of bid requests sent to your bidder.
+@property (nonatomic, retain) NSNumber *bidRequestRate;  // doubleValue
+
 // Rate of various prefiltering statuses per match. Please refer to the
 // callout-status-codes.txt file for different statuses.
 @property (nonatomic, retain) NSArray *calloutStatusRate;  // of any JSON type
@@ -56,8 +62,15 @@
 // creative-status-codes.txt file for different statuses.
 @property (nonatomic, retain) NSArray *creativeStatusRate;  // of any JSON type
 
+// The number of bid responses that were filtered due to a policy violation or
+// other errors.
+@property (nonatomic, retain) NSNumber *filteredBidRate;  // doubleValue
+
 // Average QPS for hosted match operations.
 @property (nonatomic, retain) NSArray *hostedMatchStatusRate;  // of any JSON type
+
+// The number of potential queries based on your pretargeting settings.
+@property (nonatomic, retain) NSNumber *inventoryMatchRate;  // doubleValue
 
 // Resource type.
 @property (nonatomic, copy) NSString *kind;
@@ -95,7 +108,15 @@
 // The trading location of this data.
 @property (nonatomic, copy) NSString *region;
 
+// The number of properly formed bid responses received by our servers within
+// the deadline.
+@property (nonatomic, retain) NSNumber *successfulRequestRate;  // doubleValue
+
 // The unix timestamp of the starting time of this performance data.
 @property (nonatomic, retain) NSNumber *timestamp;  // longLongValue
+
+// The number of bid responses that were unsuccessful due to timeouts, incorrect
+// formatting, etc.
+@property (nonatomic, retain) NSNumber *unsuccessfulRequestRate;  // doubleValue
 
 @end

@@ -36,8 +36,8 @@
 #import "GTLBigqueryDatasetReference.h"
 #import "GTLBigqueryGetQueryResultsResponse.h"
 #import "GTLBigqueryJob.h"
+#import "GTLBigqueryJobCancelResponse.h"
 #import "GTLBigqueryJobList.h"
-#import "GTLBigqueryJobStopResponse.h"
 #import "GTLBigqueryJsonObject.h"
 #import "GTLBigqueryProjectList.h"
 #import "GTLBigqueryQueryResponse.h"
@@ -136,6 +136,16 @@
 #pragma mark "jobs" methods
 // These create a GTLQueryBigquery object.
 
++ (instancetype)queryForJobsCancelWithProjectId:(NSString *)projectId
+                                          jobId:(NSString *)jobId {
+  NSString *methodName = @"bigquery.jobs.cancel";
+  GTLQueryBigquery *query = [self queryWithMethodName:methodName];
+  query.projectId = projectId;
+  query.jobId = jobId;
+  query.expectedObjectClass = [GTLBigqueryJobCancelResponse class];
+  return query;
+}
+
 + (instancetype)queryForJobsGetWithProjectId:(NSString *)projectId
                                        jobId:(NSString *)jobId {
   NSString *methodName = @"bigquery.jobs.get";
@@ -185,16 +195,6 @@
   query.projectId = projectId;
   query.query = query_param;
   query.expectedObjectClass = [GTLBigqueryQueryResponse class];
-  return query;
-}
-
-+ (instancetype)queryForJobsStopWithProjectId:(NSString *)projectId
-                                        jobId:(NSString *)jobId {
-  NSString *methodName = @"bigquery.jobs.stop";
-  GTLQueryBigquery *query = [self queryWithMethodName:methodName];
-  query.projectId = projectId;
-  query.jobId = jobId;
-  query.expectedObjectClass = [GTLBigqueryJobStopResponse class];
   return query;
 }
 

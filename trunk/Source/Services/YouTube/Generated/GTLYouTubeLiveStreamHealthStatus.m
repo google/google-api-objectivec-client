@@ -38,7 +38,7 @@
 //
 
 @implementation GTLYouTubeLiveStreamHealthStatus
-@dynamic configurationIssues, lastUpdateTimeS, status;
+@dynamic configurationIssues, lastUpdateTimeSeconds, status;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{

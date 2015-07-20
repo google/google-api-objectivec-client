@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveBroadcastContentDetails (0 custom class methods, 8 custom properties)
+//   GTLYouTubeLiveBroadcastContentDetails (0 custom class methods, 9 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -70,6 +70,8 @@
 // embedded player. If you choose to archive the video (using the enableArchive
 // property), this setting will also apply to the archived video.
 @property (nonatomic, retain) NSNumber *enableEmbed;  // boolValue
+
+@property (nonatomic, retain) NSNumber *enableLowLatency;  // boolValue
 
 // The monitorStream object contains information about the monitor stream, which
 // the broadcaster can use to review the event content before the broadcast
