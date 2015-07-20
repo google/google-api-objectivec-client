@@ -26,10 +26,6 @@
 #import "GTLObject.h"
 #import "GTLUtilities.h"
 
-static NSString *const kReturnClassKey = @"returnClass";
-static NSString *const kContainedClassKey = @"containedClass";
-static NSString *const kJSONKey = @"jsonKey";
-
 // Note: NSObject's class is used as a marker for the expected/default class
 // when Discovery says it can be any type of object.
 
@@ -157,645 +153,6 @@ static NSString *const kJSONKey = @"jsonKey";
   return result;
 }
 
-#pragma mark JSON/Object Utilities
-
-static NSMutableDictionary *gDispatchCache = nil;
-
-static CFStringRef SelectorKeyCopyDescriptionCallBack(const void *key) {
-  // Make a CFString from the key
-  NSString *name = NSStringFromSelector((SEL) key);
-  CFStringRef str = CFStringCreateCopy(kCFAllocatorDefault, (CFStringRef) name);
-  return str;
-}
-
-// Save the dispatch details for the specified class and selector
-+ (void)setStoredDispatchForClass:(Class<GTLRuntimeCommon>)dispatchClass
-                         selector:(SEL)sel
-                      returnClass:(Class)returnClass
-                   containedClass:(Class)containedClass
-                          jsonKey:(NSString *)jsonKey {
-  // cache structure:
-  //   class ->
-  //     selector ->
-  //       returnClass
-  //       containedClass
-  //       jsonKey
-  @synchronized([GTLRuntimeCommon class]) {
-    if (gDispatchCache == nil) {
-      gDispatchCache = [[NSMutableDictionary alloc] init];
-    }
-
-    CFMutableDictionaryRef classDict =
-      (CFMutableDictionaryRef) [gDispatchCache objectForKey:dispatchClass];
-    if (classDict == nil) {
-      // We create a CFDictionary since the keys are raw selectors rather than
-      // NSStrings
-      const CFDictionaryKeyCallBacks keyCallBacks = {
-        .version = 0,
-        .retain = NULL,
-        .release = NULL,
-        .copyDescription = SelectorKeyCopyDescriptionCallBack,
-        .equal = NULL,  // defaults to pointer comparison
-        .hash = NULL    // defaults to the pointer value
-      };
-      const CFIndex capacity = 0; // no limit
-      classDict = CFDictionaryCreateMutable(kCFAllocatorDefault, capacity,
-                                            &keyCallBacks,
-                                            &kCFTypeDictionaryValueCallBacks);
-      [gDispatchCache setObject:(id)classDict
-                         forKey:(id<NSCopying>)dispatchClass];
-      CFRelease(classDict);
-    }
-
-    NSDictionary *selDict = (NSDictionary *)CFDictionaryGetValue(classDict, sel);
-    if (selDict == nil) {
-      selDict = [NSDictionary dictionaryWithObjectsAndKeys:
-                 jsonKey, kJSONKey,
-                 returnClass, kReturnClassKey, // can be nil (primitive types)
-                 containedClass, kContainedClassKey, // may be nil
-                 nil];
-      CFDictionarySetValue(classDict, sel, selDict);
-    } else {
-      // we already have a dictionary for this selector on this class, which is
-      // surprising
-      GTL_DEBUG_LOG(@"Storing duplicate dispatch for %@ selector %@",
-            dispatchClass, NSStringFromSelector(sel));
-    }
-  }
-}
-
-+ (BOOL)getStoredDispatchForClass:(Class<GTLRuntimeCommon>)dispatchClass
-                         selector:(SEL)sel
-                      returnClass:(Class *)outReturnClass
-                   containedClass:(Class *)outContainedClass
-                          jsonKey:(NSString **)outJsonKey {
-  @synchronized([GTLRuntimeCommon class]) {
-    // walk from this class up the hierarchy to the ancestor class
-    Class<GTLRuntimeCommon> topClass = class_getSuperclass([dispatchClass ancestorClass]);
-    for (Class currClass = dispatchClass;
-         currClass != topClass;
-         currClass = class_getSuperclass(currClass)) {
-
-      CFMutableDictionaryRef classDict =
-        (CFMutableDictionaryRef) [gDispatchCache objectForKey:currClass];
-      if (classDict) {
-        NSMutableDictionary *selDict =
-          (NSMutableDictionary *) CFDictionaryGetValue(classDict, sel);
-        if (selDict) {
-          if (outReturnClass) {
-            *outReturnClass = [selDict objectForKey:kReturnClassKey];
-          }
-          if (outContainedClass) {
-            *outContainedClass = [selDict objectForKey:kContainedClassKey];
-          }
-          if (outJsonKey) {
-            *outJsonKey = [selDict objectForKey:kJSONKey];
-          }
-          return YES;
-        }
-      }
-    }
-  }
-  GTL_DEBUG_LOG(@"Failed to find stored dispatch info for %@ %s",
-        dispatchClass, sel_getName(sel));
-  return NO;
-}
-
-#pragma mark IMPs - getters and setters for specific object types
-
-#if !defined(__LP64__) || !__LP64__
-
-// NSInteger on 32bit
-static NSInteger DynamicInteger32Getter(id self, SEL sel) {
-  // get an NSInteger (NSNumber) from the JSON dictionary
-  NSString *jsonKey = nil;
-  Class<GTLRuntimeCommon> selfClass = [self class];
-  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
-                                         selector:sel
-                                      returnClass:NULL
-                                   containedClass:NULL
-                                          jsonKey:&jsonKey]) {
-    NSNumber *num = [self JSONValueForKey:jsonKey];
-    num = GTL_EnsureNSNumber(num);
-    NSInteger result = [num integerValue];
-    return result;
-  }
-  return 0;
-}
-
-static void DynamicInteger32Setter(id self, SEL sel, NSInteger val) {
-  // save an NSInteger (NSNumber) into the JSON dictionary
-  NSString *jsonKey = nil;
-  Class<GTLRuntimeCommon> selfClass = [self class];
-  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
-                                         selector:sel
-                                      returnClass:NULL
-                                   containedClass:NULL
-                                          jsonKey:&jsonKey]) {
-    [self setJSONValue:@(val) forKey:jsonKey];
-  }
-}
-
-// NSUInteger on 32bit
-static NSUInteger DynamicUInteger32Getter(id self, SEL sel) {
-  // get an NSUInteger (NSNumber) from the JSON dictionary
-  NSString *jsonKey = nil;
-  Class<GTLRuntimeCommon> selfClass = [self class];
-  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
-                                         selector:sel
-                                      returnClass:NULL
-                                   containedClass:NULL
-                                          jsonKey:&jsonKey]) {
-    NSNumber *num = [self JSONValueForKey:jsonKey];
-    num = GTL_EnsureNSNumber(num);
-    NSUInteger result = [num unsignedIntegerValue];
-    return result;
-  }
-  return 0;
-}
-
-static void DynamicUInteger32Setter(id self, SEL sel, NSUInteger val) {
-  // save an NSUInteger (NSNumber) into the JSON dictionary
-  NSString *jsonKey = nil;
-  Class<GTLRuntimeCommon> selfClass = [self class];
-  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
-                                         selector:sel
-                                      returnClass:NULL
-                                   containedClass:NULL
-                                          jsonKey:&jsonKey]) {
-    [self setJSONValue:@(val) forKey:jsonKey];
-  }
-}
-
-#endif  // !__LP64__
-
-// NSInteger on 64bit, long long on 32bit and 64bit
-static long long DynamicLongLongGetter(id self, SEL sel) {
-  // get a long long (NSNumber) from the JSON dictionary
-  NSString *jsonKey = nil;
-  Class<GTLRuntimeCommon> selfClass = [self class];
-  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
-                                         selector:sel
-                                      returnClass:NULL
-                                   containedClass:NULL
-                                          jsonKey:&jsonKey]) {
-    NSNumber *num = [self JSONValueForKey:jsonKey];
-    num = GTL_EnsureNSNumber(num);
-    long long result = [num longLongValue];
-    return result;
-  }
-  return 0;
-}
-
-static void DynamicLongLongSetter(id self, SEL sel, long long val) {
-  // save a long long (NSNumber) into the JSON dictionary
-  NSString *jsonKey = nil;
-  Class<GTLRuntimeCommon> selfClass = [self class];
-  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
-                                         selector:sel
-                                      returnClass:NULL
-                                   containedClass:NULL
-                                          jsonKey:&jsonKey]) {
-    [self setJSONValue:@(val) forKey:jsonKey];
-  }
-}
-
-// NSUInteger on 64bit, unsiged long long on 32bit and 64bit
-static unsigned long long DynamicULongLongGetter(id self, SEL sel) {
-  // get an unsigned long long (NSNumber) from the JSON dictionary
-  NSString *jsonKey = nil;
-  Class<GTLRuntimeCommon> selfClass = [self class];
-  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
-                                         selector:sel
-                                      returnClass:NULL
-                                   containedClass:NULL
-                                          jsonKey:&jsonKey]) {
-    NSNumber *num = [self JSONValueForKey:jsonKey];
-    num = GTL_EnsureNSNumber(num);
-    unsigned long long result = [num unsignedLongLongValue];
-    return result;
-  }
-  return 0;
-}
-
-static void DynamicULongLongSetter(id self, SEL sel, unsigned long long val) {
-  // save an unsigned long long (NSNumber) into the JSON dictionary
-  NSString *jsonKey = nil;
-  Class<GTLRuntimeCommon> selfClass = [self class];
-  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
-                                         selector:sel
-                                      returnClass:NULL
-                                   containedClass:NULL
-                                          jsonKey:&jsonKey]) {
-    [self setJSONValue:@(val) forKey:jsonKey];
-  }
-}
-
-// float
-static float DynamicFloatGetter(id self, SEL sel) {
-  // get a float (NSNumber) from the JSON dictionary
-  NSString *jsonKey = nil;
-  Class<GTLRuntimeCommon> selfClass = [self class];
-  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
-                                         selector:sel
-                                      returnClass:NULL
-                                   containedClass:NULL
-                                          jsonKey:&jsonKey]) {
-    NSNumber *num = [self JSONValueForKey:jsonKey];
-    num = GTL_EnsureNSNumber(num);
-    float result = [num floatValue];
-    return result;
-  }
-  return 0.0f;
-}
-
-static void DynamicFloatSetter(id self, SEL sel, float val) {
-  // save a float (NSNumber) into the JSON dictionary
-  NSString *jsonKey = nil;
-  Class<GTLRuntimeCommon> selfClass = [self class];
-  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
-                                         selector:sel
-                                      returnClass:NULL
-                                   containedClass:NULL
-                                          jsonKey:&jsonKey]) {
-    [self setJSONValue:@(val) forKey:jsonKey];
-  }
-}
-
-// double
-static double DynamicDoubleGetter(id self, SEL sel) {
-  // get a double (NSNumber) from the JSON dictionary
-  NSString *jsonKey = nil;
-  Class<GTLRuntimeCommon> selfClass = [self class];
-  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
-                                         selector:sel
-                                      returnClass:NULL
-                                   containedClass:NULL
-                                          jsonKey:&jsonKey]) {
-    NSNumber *num = [self JSONValueForKey:jsonKey];
-    num = GTL_EnsureNSNumber(num);
-    double result = [num doubleValue];
-    return result;
-  }
-  return 0.0;
-}
-
-static void DynamicDoubleSetter(id self, SEL sel, double val) {
-  // save a double (NSNumber) into the JSON dictionary
-  NSString *jsonKey = nil;
-  Class<GTLRuntimeCommon> selfClass = [self class];
-  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
-                                         selector:sel
-                                      returnClass:NULL
-                                   containedClass:NULL
-                                          jsonKey:&jsonKey]) {
-    [self setJSONValue:@(val) forKey:jsonKey];
-  }
-}
-
-// BOOL
-static BOOL DynamicBooleanGetter(id self, SEL sel) {
-  // get a BOOL (NSNumber) from the JSON dictionary
-  NSString *jsonKey = nil;
-  Class<GTLRuntimeCommon> selfClass = [self class];
-  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
-                                         selector:sel
-                                      returnClass:NULL
-                                   containedClass:NULL
-                                          jsonKey:&jsonKey]) {
-    NSNumber *num = [self JSONValueForKey:jsonKey];
-    BOOL flag = [num boolValue];
-    return flag;
-  }
-  return NO;
-}
-
-static void DynamicBooleanSetter(id self, SEL sel, BOOL val) {
-  // save a BOOL (NSNumber) into the JSON dictionary
-  NSString *jsonKey = nil;
-  Class<GTLRuntimeCommon> selfClass = [self class];
-  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
-                                         selector:sel
-                                      returnClass:NULL
-                                   containedClass:NULL
-                                          jsonKey:&jsonKey]) {
-    [self setJSONValue:@(val) forKey:jsonKey];
-  }
-}
-
-// NSString
-static NSString *DynamicStringGetter(id<GTLRuntimeCommon> self, SEL sel) {
-  // get an NSString from the JSON dictionary
-  NSString *jsonKey = nil;
-  Class<GTLRuntimeCommon> selfClass = [self class];
-  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
-                                         selector:sel
-                                      returnClass:NULL
-                                   containedClass:NULL
-                                          jsonKey:&jsonKey]) {
-
-    NSString *str = [self JSONValueForKey:jsonKey];
-    return str;
-  }
-  return nil;
-}
-
-static void DynamicStringSetter(id<GTLRuntimeCommon> self, SEL sel,
-                                NSString *str) {
-  // save an NSString into the JSON dictionary
-  NSString *jsonKey = nil;
-  Class<GTLRuntimeCommon> selfClass = [self class];
-  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
-                                         selector:sel
-                                      returnClass:NULL
-                                   containedClass:NULL
-                                          jsonKey:&jsonKey]) {
-    NSString *copiedStr = [str copy];
-    [self setJSONValue:copiedStr forKey:jsonKey];
-    [copiedStr release];
-  }
-}
-
-// GTLDateTime
-static GTLDateTime *DynamicDateTimeGetter(id<GTLRuntimeCommon> self, SEL sel) {
-  // get a GTLDateTime from the JSON dictionary
-  NSString *jsonKey = nil;
-  Class<GTLRuntimeCommon> selfClass = [self class];
-  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
-                                         selector:sel
-                                      returnClass:NULL
-                                   containedClass:NULL
-                                          jsonKey:&jsonKey]) {
-
-    // Return the cached object before creating on demand.
-    GTLDateTime *cachedDateTime = [self cacheChildForKey:jsonKey];
-    if (cachedDateTime != nil) {
-      return cachedDateTime;
-    }
-    NSString *str = [self JSONValueForKey:jsonKey];
-    id cacheValue, resultValue;
-    if (![str isKindOfClass:[NSNull class]]) {
-      GTLDateTime *dateTime = [GTLDateTime dateTimeWithRFC3339String:str];
-
-      cacheValue = dateTime;
-      resultValue = dateTime;
-    } else {
-      cacheValue = nil;
-      resultValue = [NSNull null];
-    }
-    [self setCacheChild:cacheValue forKey:jsonKey];
-    return resultValue;
-  }
-  return nil;
-}
-
-static void DynamicDateTimeSetter(id<GTLRuntimeCommon> self, SEL sel,
-                                  GTLDateTime *dateTime) {
-  // save an GTLDateTime into the JSON dictionary
-  NSString *jsonKey = nil;
-  Class<GTLRuntimeCommon> selfClass = [self class];
-  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
-                                         selector:sel
-                                      returnClass:NULL
-                                   containedClass:NULL
-                                          jsonKey:&jsonKey]) {
-    id cacheValue, jsonValue;
-    if (![dateTime isKindOfClass:[NSNull class]]) {
-      jsonValue = [dateTime stringValue];
-      cacheValue = dateTime;
-    } else {
-      jsonValue = [NSNull null];
-      cacheValue = nil;
-    }
-
-    [self setJSONValue:jsonValue forKey:jsonKey];
-    [self setCacheChild:cacheValue forKey:jsonKey];
-  }
-}
-
-// NSNumber
-static NSNumber *DynamicNumberGetter(id<GTLRuntimeCommon> self, SEL sel) {
-  // get an NSNumber from the JSON dictionary
-  NSString *jsonKey = nil;
-  Class<GTLRuntimeCommon> selfClass = [self class];
-  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
-                                         selector:sel
-                                      returnClass:NULL
-                                   containedClass:NULL
-                                          jsonKey:&jsonKey]) {
-
-    NSNumber *num = [self JSONValueForKey:jsonKey];
-    num = GTL_EnsureNSNumber(num);
-    return num;
-  }
-  return nil;
-}
-
-static void DynamicNumberSetter(id<GTLRuntimeCommon> self, SEL sel,
-                                NSNumber *num) {
-  // save an NSNumber into the JSON dictionary
-  NSString *jsonKey = nil;
-  Class<GTLRuntimeCommon> selfClass = [self class];
-  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
-                                         selector:sel
-                                      returnClass:NULL
-                                   containedClass:NULL
-                                          jsonKey:&jsonKey]) {
-    [self setJSONValue:num forKey:jsonKey];
-  }
-}
-
-// GTLObject
-static GTLObject *DynamicObjectGetter(id<GTLRuntimeCommon> self, SEL sel) {
-  // get a GTLObject from the JSON dictionary
-  NSString *jsonKey = nil;
-  Class returnClass = nil;
-  Class<GTLRuntimeCommon> selfClass = [self class];
-  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
-                                         selector:sel
-                                      returnClass:&returnClass
-                                   containedClass:NULL
-                                          jsonKey:&jsonKey]) {
-
-    // Return the cached object before creating on demand.
-    GTLObject *cachedObj = [self cacheChildForKey:jsonKey];
-    if (cachedObj != nil) {
-      return cachedObj;
-    }
-    NSMutableDictionary *dict = [self JSONValueForKey:jsonKey];
-    if ([dict isKindOfClass:[NSMutableDictionary class]]) {
-      // get the class of the object being returned, and instantiate it
-      if (returnClass == Nil) {
-        returnClass = [GTLObject class];
-      }
-
-      NSDictionary *surrogates = self.surrogates;
-      GTLObject *obj = [GTLObject objectForJSON:dict
-                                   defaultClass:returnClass
-                                     surrogates:surrogates
-                                  batchClassMap:nil];
-      [self setCacheChild:obj forKey:jsonKey];
-      return obj;
-    } else if ([dict isKindOfClass:[NSNull class]]) {
-      [self setCacheChild:nil forKey:jsonKey];
-      return (id) [NSNull null];
-    } else if (dict != nil) {
-      // unexpected; probably got a string -- let the caller figure it out
-      GTL_DEBUG_LOG(@"GTLObject: unexpected JSON: %@.%@ should be a dictionary, actually is a %@:\n%@",
-                    NSStringFromClass(selfClass), NSStringFromSelector(sel),
-                    NSStringFromClass([dict class]), dict);
-      return (GTLObject *)dict;
-    }
-  }
-  return nil;
-}
-
-static void DynamicObjectSetter(id<GTLRuntimeCommon> self, SEL sel,
-                                GTLObject *obj) {
-  // save a GTLObject into the JSON dictionary
-  NSString *jsonKey = nil;
-  Class<GTLRuntimeCommon> selfClass = [self class];
-  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
-                                         selector:sel
-                                      returnClass:NULL
-                                   containedClass:NULL
-                                          jsonKey:&jsonKey]) {
-    id cacheValue, jsonValue;
-    if (![obj isKindOfClass:[NSNull class]]) {
-      NSMutableDictionary *dict = [obj JSON];
-      if (dict == nil && obj != nil) {
-        // adding an empty object; it should have a JSON dictionary so it can
-        // hold future assignments
-        obj.JSON = [NSMutableDictionary dictionary];
-        jsonValue = obj.JSON;
-      } else {
-        jsonValue = dict;
-      }
-      cacheValue = obj;
-    } else {
-      jsonValue = [NSNull null];
-      cacheValue = nil;
-    }
-    [self setJSONValue:jsonValue forKey:jsonKey];
-    [self setCacheChild:cacheValue forKey:jsonKey];
-  }
-}
-
-// get an NSArray of GTLObjects, NSStrings, or NSNumbers from the
-// JSON dictionary for this object
-static NSMutableArray *DynamicArrayGetter(id<GTLRuntimeCommon> self, SEL sel) {
-  NSString *jsonKey = nil;
-  Class containedClass = nil;
-  Class selfClass = [self class];
-  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
-                                         selector:sel
-                                      returnClass:NULL
-                                   containedClass:&containedClass
-                                          jsonKey:&jsonKey]) {
-
-    // Return the cached array before creating on demand.
-    NSMutableArray *cachedArray = [self cacheChildForKey:jsonKey];
-    if (cachedArray != nil) {
-      return cachedArray;
-    }
-    NSMutableArray *result = nil;
-    NSArray *array = [self JSONValueForKey:jsonKey];
-    if (array != nil) {
-      if ([array isKindOfClass:[NSArray class]]) {
-        NSDictionary *surrogates = self.surrogates;
-        result = [GTLRuntimeCommon objectFromJSON:array
-                                     defaultClass:containedClass
-                                       surrogates:surrogates
-                                      isCacheable:NULL];
-      } else {
-#if DEBUG
-        if (![array isKindOfClass:[NSNull class]]) {
-          GTL_DEBUG_LOG(@"GTLObject: unexpected JSON: %@.%@ should be an array, actually is a %@:\n%@",
-                        NSStringFromClass(selfClass), NSStringFromSelector(sel),
-                        NSStringFromClass([array class]), array);
-        }
-#endif
-        result = (NSMutableArray *)array;
-      }
-    }
-
-    [self setCacheChild:result forKey:jsonKey];
-    return result;
-  }
-  return nil;
-}
-
-static void DynamicArraySetter(id<GTLRuntimeCommon> self, SEL sel,
-                               NSMutableArray *array) {
-  // save an array of GTLObjects objects into the JSON dictionary
-  NSString *jsonKey = nil;
-  Class selfClass = [self class];
-  Class containedClass = nil;
-  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
-                                         selector:sel
-                                      returnClass:NULL
-                                   containedClass:&containedClass
-                                          jsonKey:&jsonKey]) {
-    id json = [GTLRuntimeCommon jsonFromAPIObject:array
-                                    expectedClass:containedClass
-                                      isCacheable:NULL];
-    [self setJSONValue:json forKey:jsonKey];
-    [self setCacheChild:array forKey:jsonKey];
-  }
-}
-
-// type 'id'
-static id DynamicNSObjectGetter(id<GTLRuntimeCommon> self, SEL sel) {
-  NSString *jsonKey = nil;
-  Class returnClass = nil;
-  Class selfClass = [self class];
-  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
-                                         selector:sel
-                                      returnClass:&returnClass
-                                   containedClass:NULL
-                                          jsonKey:&jsonKey]) {
-
-    // Return the cached object before creating on demand.
-    id cachedObj = [self cacheChildForKey:jsonKey];
-    if (cachedObj != nil) {
-      return cachedObj;
-    }
-
-    id jsonObj = [self JSONValueForKey:jsonKey];
-    if (jsonObj != nil) {
-      BOOL shouldCache = NO;
-      NSDictionary *surrogates = self.surrogates;
-      id result = [GTLRuntimeCommon objectFromJSON:jsonObj
-                                      defaultClass:nil
-                                        surrogates:surrogates
-                                       isCacheable:&shouldCache];
-
-      [self setCacheChild:(shouldCache ? result : nil)
-                   forKey:jsonKey];
-      return result;
-    }
-  }
-  return nil;
-}
-
-static void DynamicNSObjectSetter(id<GTLRuntimeCommon> self, SEL sel, id obj) {
-  NSString *jsonKey = nil;
-  Class selfClass = [self class];
-  if ([GTLRuntimeCommon getStoredDispatchForClass:selfClass
-                                         selector:sel
-                                      returnClass:NULL
-                                   containedClass:NULL
-                                          jsonKey:&jsonKey]) {
-    BOOL shouldCache = NO;
-    id json = [GTLRuntimeCommon jsonFromAPIObject:obj
-                                    expectedClass:Nil
-                                      isCacheable:&shouldCache];
-    [self setJSONValue:json forKey:jsonKey];
-    [self setCacheChild:(shouldCache ? obj : nil)
-                 forKey:jsonKey];
-  }
-}
-
 #pragma mark Runtime lookup support
 
 static objc_property_t PropertyForSel(Class<GTLRuntimeCommon> startClass,
@@ -875,13 +232,31 @@ static objc_property_t PropertyForSel(Class<GTLRuntimeCommon> startClass,
   return NULL;
 }
 
+typedef NS_ENUM(NSUInteger, GTLPropertyType) {
+#if !defined(__LP64__) || !__LP64__
+  // These two only needed in 32bit builds since NSInteger in 64bit ends up in the LongLong paths.
+  GTLPropertyTypeInt32 = 1,
+  GTLPropertyTypeUInt32,
+#endif
+  GTLPropertyTypeLongLong = 3,
+  GTLPropertyTypeULongLong,
+  GTLPropertyTypeFloat,
+  GTLPropertyTypeDouble,
+  GTLPropertyTypeBool,
+  GTLPropertyTypeNSString,
+  GTLPropertyTypeNSNumber,
+  GTLPropertyTypeGTLDateTime,
+  GTLPropertyTypeNSArray,
+  GTLPropertyTypeNSObject,
+  GTLPropertyTypeGTLObject,
+};
+
 typedef struct {
   const char *attributePrefix;
 
+  GTLPropertyType propertyType;
   const char *setterEncoding;
-  IMP         setterFunction;
   const char *getterEncoding;
-  IMP         getterFunction;
 
   // These are the "fixed" return classes, but some properties will require
   // looking up the return class instead (because it is a subclass of
@@ -918,44 +293,50 @@ static const GTLDynamicImpInfo *DynamicImpInfoForProperty(objc_property_t prop,
 #if !defined(__LP64__) || !__LP64__
     { // NSInteger on 32bit
       "Ti",
-      "v@:i", (IMP)DynamicInteger32Setter,
-      "i@:", (IMP)DynamicInteger32Getter,
+      GTLPropertyTypeInt32,
+      "v@:i",
+      "i@:",
       nil, nil,
       NO
     },
     { // NSUInteger on 32bit
       "TI",
-      "v@:I", (IMP)DynamicUInteger32Setter,
-      "I@:", (IMP)DynamicUInteger32Getter,
+      GTLPropertyTypeUInt32,
+      "v@:I",
+      "I@:",
       nil, nil,
       NO
     },
 #endif
     { // NSInteger on 64bit, long long on 32bit and 64bit.
       "Tq",
-      "v@:q", (IMP)DynamicLongLongSetter,
-      "q@:", (IMP)DynamicLongLongGetter,
+      GTLPropertyTypeLongLong,
+      "v@:q",
+      "q@:",
       nil, nil,
       NO
     },
     { // NSUInteger on 64bit, long long on 32bit and 64bit.
       "TQ",
-      "v@:Q", (IMP)DynamicULongLongSetter,
-      "Q@:", (IMP)DynamicULongLongGetter,
+      GTLPropertyTypeULongLong,
+      "v@:Q",
+      "Q@:",
       nil, nil,
       NO
     },
     { // float
       "Tf",
-      "v@:f", (IMP)DynamicFloatSetter,
-      "f@:", (IMP)DynamicFloatGetter,
+      GTLPropertyTypeFloat,
+      "v@:f",
+      "f@:",
       nil, nil,
       NO
     },
     { // double
       "Td",
-      "v@:d", (IMP)DynamicDoubleSetter,
-      "d@:", (IMP)DynamicDoubleGetter,
+      GTLPropertyTypeDouble,
+      "v@:d",
+      "d@:",
       nil, nil,
       NO
     },
@@ -964,67 +345,76 @@ static const GTLDynamicImpInfo *DynamicImpInfoForProperty(objc_property_t prop,
 #if !defined(OBJC_HIDE_64) && TARGET_OS_IPHONE && (defined(__LP64__) && __LP64__)
     { // BOOL as bool
       "TB",
-      "v@:B", (IMP)DynamicBooleanSetter,
-      "B@:", (IMP)DynamicBooleanGetter,
+      GTLPropertyTypeBool,
+      "v@:B",
+      "B@:",
       nil, nil,
       NO
     },
 #else
     { // BOOL as char
       "Tc",
-      "v@:c", (IMP)DynamicBooleanSetter,
-      "c@:", (IMP)DynamicBooleanGetter,
+      GTLPropertyTypeBool,
+      "v@:c",
+      "c@:",
       nil, nil,
       NO
     },
 #endif
     { // NSString
       "T@\"NSString\"",
-      "v@:@", (IMP)DynamicStringSetter,
-      "@@:", (IMP)DynamicStringGetter,
+      GTLPropertyTypeNSString,
+      "v@:@",
+      "@@:",
       "NSString", nil,
       NO
     },
     { // NSNumber
       "T@\"NSNumber\"",
-      "v@:@", (IMP)DynamicNumberSetter,
-      "@@:", (IMP)DynamicNumberGetter,
+      GTLPropertyTypeNSNumber,
+      "v@:@",
+      "@@:",
       "NSNumber", nil,
       NO
     },
     { // GTLDateTime
 #if !defined(GTL_TARGET_NAMESPACE)
       "T@\"GTLDateTime\"",
-      "v@:@", (IMP)DynamicDateTimeSetter,
-      "@@:", (IMP)DynamicDateTimeGetter,
+      GTLPropertyTypeGTLDateTime,
+      "v@:@",
+      "@@:",
       "GTLDateTime", nil,
       NO
 #else
       "T@\"" GTL_TARGET_NAMESPACE_STRING "_" "GTLDateTime\"",
-      "v@:@", (IMP)DynamicDateTimeSetter,
-      "@@:", (IMP)DynamicDateTimeGetter,
+      GTLPropertyTypeGTLDateTime,
+      "v@:@",
+      "@@:",
       GTL_TARGET_NAMESPACE_STRING "_" "GTLDateTime", nil,
       NO
 #endif
     },
     { // NSArray with type
       "T@\"NSArray\"",
-      "v@:@", (IMP)DynamicArraySetter,
-      "@@:", (IMP)DynamicArrayGetter,
+      GTLPropertyTypeNSArray,
+      "v@:@",
+      "@@:",
       "NSArray", nil,
       NO
     },
     { // id (any of the objects above)
       "T@,",
-      "v@:@", (IMP)DynamicNSObjectSetter,
-      "@@:", (IMP)DynamicNSObjectGetter,
+      GTLPropertyTypeNSObject,
+      "v@:@",
+      "@@:",
       "NSObject", nil,
       NO
     },
     { // GTLObject - Last, cause it's a special case and prefix is general
       "T@\"",
-      "v@:@", (IMP)DynamicObjectSetter,
-      "@@:", (IMP)DynamicObjectGetter,
+      GTLPropertyTypeGTLObject,
+      "v@:@",
+      "@@:",
       nil, nil,
       YES
     },
@@ -1100,6 +490,365 @@ static const GTLDynamicImpInfo *DynamicImpInfoForProperty(objc_property_t prop,
   return result;
 }
 
+// Helper to get the IMP for wiring up the getters.
+// NOTE: Every argument passed in should be safe to capture in a block. Avoid
+// passing something like selName instead of sel, because nothing says that
+// pointer will be valid when it is finally used when the method IMP is invoked
+// some time later.
+static IMP GTLRuntimeGetterIMP(SEL sel,
+                               GTLPropertyType propertyType,
+                               NSString *jsonKey,
+                               Class containedClass,
+                               Class returnClass) {
+  // Only used in DEBUG logging.
+#pragma unused(sel)
+
+  IMP resultIMP;
+  switch (propertyType) {
+
+#if !defined(__LP64__) || !__LP64__
+    case GTLPropertyTypeInt32:
+      resultIMP = imp_implementationWithBlock(^(id obj) {
+        NSNumber *num = [obj JSONValueForKey:jsonKey];
+        num = GTL_EnsureNSNumber(num);
+        NSInteger result = [num integerValue];
+        return result;
+      });
+      break;
+
+    case GTLPropertyTypeUInt32:
+      resultIMP = imp_implementationWithBlock(^(id obj) {
+        NSNumber *num = [obj JSONValueForKey:jsonKey];
+        num = GTL_EnsureNSNumber(num);
+        NSUInteger result = [num unsignedIntegerValue];
+        return result;
+      });
+      break;
+#endif  // __LP64__
+
+    case GTLPropertyTypeLongLong:
+      resultIMP = imp_implementationWithBlock(^(id obj) {
+        NSNumber *num = [obj JSONValueForKey:jsonKey];
+        num = GTL_EnsureNSNumber(num);
+        long long result = [num longLongValue];
+        return result;
+      });
+      break;
+
+    case GTLPropertyTypeULongLong:
+      resultIMP = imp_implementationWithBlock(^(id obj) {
+        NSNumber *num = [obj JSONValueForKey:jsonKey];
+        num = GTL_EnsureNSNumber(num);
+        unsigned long long result = [num unsignedLongLongValue];
+        return result;
+      });
+      break;
+
+
+    case GTLPropertyTypeFloat:
+      resultIMP = imp_implementationWithBlock(^(id obj) {
+        NSNumber *num = [obj JSONValueForKey:jsonKey];
+        num = GTL_EnsureNSNumber(num);
+        float result = [num floatValue];
+        return result;
+      });
+      break;
+
+    case GTLPropertyTypeDouble:
+      resultIMP = imp_implementationWithBlock(^(id obj) {
+        NSNumber *num = [obj JSONValueForKey:jsonKey];
+        num = GTL_EnsureNSNumber(num);
+        double result = [num doubleValue];
+        return result;
+      });
+      break;
+
+    case GTLPropertyTypeBool:
+      resultIMP = imp_implementationWithBlock(^(id obj) {
+        NSNumber *num = [obj JSONValueForKey:jsonKey];
+        BOOL flag = [num boolValue];
+        return flag;
+      });
+      break;
+
+    case GTLPropertyTypeNSString:
+      resultIMP = imp_implementationWithBlock(^(id obj) {
+        NSString *str = [obj JSONValueForKey:jsonKey];
+        return str;
+      });
+      break;
+
+    case GTLPropertyTypeGTLDateTime:
+      resultIMP = imp_implementationWithBlock(^GTLDateTime *(GTLObject<GTLRuntimeCommon> *obj) {
+        // Return the cached object before creating on demand.
+        GTLDateTime *cachedDateTime = [obj cacheChildForKey:jsonKey];
+        if (cachedDateTime != nil) {
+          return cachedDateTime;
+        }
+        NSString *str = [obj JSONValueForKey:jsonKey];
+        id cacheValue, resultValue;
+        if (![str isKindOfClass:[NSNull class]]) {
+          GTLDateTime *dateTime = [GTLDateTime dateTimeWithRFC3339String:str];
+
+          cacheValue = dateTime;
+          resultValue = dateTime;
+        } else {
+          cacheValue = nil;
+          resultValue = [NSNull null];
+        }
+        [obj setCacheChild:cacheValue forKey:jsonKey];
+        return resultValue;
+      });
+      break;
+
+    case GTLPropertyTypeNSNumber:
+      resultIMP = imp_implementationWithBlock(^(id obj) {
+        NSNumber *num = [obj JSONValueForKey:jsonKey];
+        num = GTL_EnsureNSNumber(num);
+        return num;
+      });
+      break;
+
+    case GTLPropertyTypeGTLObject:
+      // Default return calss to GTLObject if it wasn't found.
+      if (returnClass == Nil) {
+        returnClass = [GTLObject class];
+      }
+      resultIMP = imp_implementationWithBlock(^GTLObject *(GTLObject<GTLRuntimeCommon> *obj) {
+        // Return the cached object before creating on demand.
+        GTLObject *cachedObj = [obj cacheChildForKey:jsonKey];
+        if (cachedObj != nil) {
+          return cachedObj;
+        }
+        NSMutableDictionary *dict = [obj JSONValueForKey:jsonKey];
+        if ([dict isKindOfClass:[NSMutableDictionary class]]) {
+          NSDictionary *surrogates = obj.surrogates;
+          GTLObject *subObj = [GTLObject objectForJSON:dict
+                                          defaultClass:returnClass
+                                            surrogates:surrogates
+                                         batchClassMap:nil];
+          [obj setCacheChild:subObj forKey:jsonKey];
+          return subObj;
+        } else if ([dict isKindOfClass:[NSNull class]]) {
+          [obj setCacheChild:nil forKey:jsonKey];
+          return (GTLObject*)[NSNull null];
+        } else if (dict != nil) {
+          // unexpected; probably got a string -- let the caller figure it out
+          GTL_DEBUG_LOG(@"GTLObject: unexpected JSON: %@.%@ should be a dictionary, actually is a %@:\n%@",
+                        NSStringFromClass([obj class]),
+                        NSStringFromSelector(sel),
+                        NSStringFromClass([dict class]), dict);
+          return (GTLObject *)dict;
+        }
+        return nil;
+      });
+      break;
+
+    case GTLPropertyTypeNSArray:
+      resultIMP = imp_implementationWithBlock(^(GTLObject<GTLRuntimeCommon> *obj) {
+        // Return the cached array before creating on demand.
+        NSMutableArray *cachedArray = [obj cacheChildForKey:jsonKey];
+        if (cachedArray != nil) {
+          return cachedArray;
+        }
+        NSMutableArray *result = nil;
+        NSArray *array = [obj JSONValueForKey:jsonKey];
+        if (array != nil) {
+          if ([array isKindOfClass:[NSArray class]]) {
+            NSDictionary *surrogates = obj.surrogates;
+            result = [GTLRuntimeCommon objectFromJSON:array
+                                         defaultClass:containedClass
+                                           surrogates:surrogates
+                                          isCacheable:NULL];
+          } else {
+#if DEBUG
+            if (![array isKindOfClass:[NSNull class]]) {
+              GTL_DEBUG_LOG(@"GTLObject: unexpected JSON: %@.%@ should be an array, actually is a %@:\n%@",
+                            NSStringFromClass([obj class]),
+                            NSStringFromSelector(sel),
+                            NSStringFromClass([array class]), array);
+            }
+#endif
+            result = (NSMutableArray *)array;
+          }
+        }
+        [obj setCacheChild:result forKey:jsonKey];
+        return result;
+      });
+      break;
+
+    case GTLPropertyTypeNSObject:
+      resultIMP = imp_implementationWithBlock(^id(GTLObject<GTLRuntimeCommon> *obj) {
+        // Return the cached object before creating on demand.
+        id cachedObj = [obj cacheChildForKey:jsonKey];
+        if (cachedObj != nil) {
+          return cachedObj;
+        }
+        id jsonObj = [obj JSONValueForKey:jsonKey];
+        if (jsonObj != nil) {
+          BOOL shouldCache = NO;
+          NSDictionary *surrogates = obj.surrogates;
+          id result = [GTLRuntimeCommon objectFromJSON:jsonObj
+                                          defaultClass:nil
+                                            surrogates:surrogates
+                                           isCacheable:&shouldCache];
+
+          [obj setCacheChild:(shouldCache ? result : nil)
+                      forKey:jsonKey];
+          return result;
+        }
+        return nil;
+      });
+      break;
+
+  }  // switch(propertyType)
+
+  return resultIMP;
+}
+
+// Helper to get the IMP for wiring up the setters.
+// NOTE: Every argument passed in should be safe to capture in a block. Avoid
+// passing something like selName instead of sel, because nothing says that
+// pointer will be valid when it is finally used when the method IMP is invoked
+// some time later.
+static IMP GTLRuntimeSetterIMP(SEL sel,
+                               GTLPropertyType propertyType,
+                               NSString *jsonKey,
+                               Class containedClass,
+                               Class returnClass) {
+#pragma unused(sel, returnClass)
+  IMP resultIMP;
+  switch (propertyType) {
+
+#if !defined(__LP64__) || !__LP64__
+    case GTLPropertyTypeInt32:
+      resultIMP = imp_implementationWithBlock(^(id obj, NSInteger val) {
+        [obj setJSONValue:@(val) forKey:jsonKey];
+      });
+      break;
+
+    case GTLPropertyTypeUInt32:
+      resultIMP = imp_implementationWithBlock(^(id obj, NSUInteger val) {
+        [obj setJSONValue:@(val) forKey:jsonKey];
+      });
+      break;
+#endif  // __LP64__
+
+    case GTLPropertyTypeLongLong:
+      resultIMP = imp_implementationWithBlock(^(id obj, long long val) {
+        [obj setJSONValue:@(val) forKey:jsonKey];
+      });
+      break;
+
+    case GTLPropertyTypeULongLong:
+      resultIMP = imp_implementationWithBlock(^(id obj,
+                                                unsigned long long val) {
+        [obj setJSONValue:@(val) forKey:jsonKey];
+      });
+      break;
+
+    case GTLPropertyTypeFloat:
+      resultIMP = imp_implementationWithBlock(^(id obj, float val) {
+        [obj setJSONValue:@(val) forKey:jsonKey];
+      });
+      break;
+
+    case GTLPropertyTypeDouble:
+      resultIMP = imp_implementationWithBlock(^(id obj, double val) {
+        [obj setJSONValue:@(val) forKey:jsonKey];
+      });
+      break;
+
+    case GTLPropertyTypeBool:
+      resultIMP = imp_implementationWithBlock(^(id obj, BOOL val) {
+        [obj setJSONValue:@(val) forKey:jsonKey];
+      });
+      break;
+
+    case GTLPropertyTypeNSString:
+      resultIMP = imp_implementationWithBlock(^(id obj, NSString *val) {
+        NSString *copiedStr = [val copy];
+        [obj setJSONValue:copiedStr forKey:jsonKey];
+        [copiedStr release];
+      });
+      break;
+
+    case GTLPropertyTypeGTLDateTime:
+      resultIMP = imp_implementationWithBlock(^(GTLObject<GTLRuntimeCommon> *obj,
+                                                GTLDateTime *val) {
+        id cacheValue, jsonValue;
+        if (![val isKindOfClass:[NSNull class]]) {
+          jsonValue = [val stringValue];
+          cacheValue = val;
+        } else {
+          jsonValue = [NSNull null];
+          cacheValue = nil;
+        }
+
+        [obj setJSONValue:jsonValue forKey:jsonKey];
+        [obj setCacheChild:cacheValue forKey:jsonKey];
+      });
+      break;
+
+    case GTLPropertyTypeNSNumber:
+      resultIMP = imp_implementationWithBlock(^(id obj, NSNumber *val) {
+        [obj setJSONValue:val forKey:jsonKey];
+      });
+      break;
+
+    case GTLPropertyTypeGTLObject:
+      resultIMP = imp_implementationWithBlock(^(GTLObject<GTLRuntimeCommon> *obj,
+                                                GTLObject *val) {
+        id cacheValue, jsonValue;
+        if (![val isKindOfClass:[NSNull class]]) {
+          NSMutableDictionary *dict = [val JSON];
+          if (dict == nil && val != nil) {
+            // adding an empty object; it should have a JSON dictionary so it
+            // can hold future assignments
+            val.JSON = [NSMutableDictionary dictionary];
+            jsonValue = val.JSON;
+          } else {
+            jsonValue = dict;
+          }
+          cacheValue = val;
+        } else {
+          jsonValue = [NSNull null];
+          cacheValue = nil;
+        }
+        [obj setJSONValue:jsonValue forKey:jsonKey];
+        [obj setCacheChild:cacheValue forKey:jsonKey];
+      });
+      break;
+
+    case GTLPropertyTypeNSArray:
+      resultIMP = imp_implementationWithBlock(^(GTLObject<GTLRuntimeCommon> *obj,
+                                                NSMutableArray *val) {
+        id json = [GTLRuntimeCommon jsonFromAPIObject:val
+                                        expectedClass:containedClass
+                                          isCacheable:NULL];
+        [obj setJSONValue:json forKey:jsonKey];
+        [obj setCacheChild:val forKey:jsonKey];
+      });
+      break;
+
+    case GTLPropertyTypeNSObject:
+      resultIMP = imp_implementationWithBlock(^(GTLObject<GTLRuntimeCommon> *obj,
+                                                id val) {
+        BOOL shouldCache = NO;
+        id json = [GTLRuntimeCommon jsonFromAPIObject:val
+                                        expectedClass:Nil
+                                          isCacheable:&shouldCache];
+        [obj setJSONValue:json forKey:jsonKey];
+        [obj setCacheChild:(shouldCache ? val : nil)
+                     forKey:jsonKey];
+      });
+      break;
+
+  }  // switch(propertyType)
+
+  return resultIMP;
+}
+
 #pragma mark Runtime - wiring point
 
 + (BOOL)resolveInstanceMethod:(SEL)sel onClass:(Class<GTLRuntimeCommon>)onClass {
@@ -1118,62 +867,71 @@ static const GTLDynamicImpInfo *DynamicImpInfoForProperty(objc_property_t prop,
   Class<GTLRuntimeCommon> foundClass = nil;
 
   objc_property_t prop = PropertyForSel(onClass, sel, isSetter, &foundClass);
-  if (prop != NULL && foundClass != nil) {
+  if (prop == NULL || foundClass == nil) {
+    return NO;  // No luck, out of here.
+  }
 
-    Class returnClass = nil;
-    const GTLDynamicImpInfo *implInfo = DynamicImpInfoForProperty(prop,
-                                                                  &returnClass);
-    if (implInfo == NULL) {
-      GTL_DEBUG_LOG(@"GTLRuntimeCommon: unexpected return type class %s for "
-                      "property \"%s\" of class \"%s\"",
-                      returnClass ? class_getName(returnClass) : "<nil>",
-                      property_getName(prop),
-                      class_getName(onClass));
-    }
+  Class returnClass = nil;
+  const GTLDynamicImpInfo *implInfo = DynamicImpInfoForProperty(prop,
+                                                                &returnClass);
+  if (implInfo == NULL) {
+    GTL_DEBUG_LOG(@"GTLRuntimeCommon: unexpected return type class %s for "
+                    "property \"%s\" of class \"%s\"",
+                    returnClass ? class_getName(returnClass) : "<nil>",
+                    property_getName(prop),
+                    class_getName(onClass));
+    return NO;  // Failed to find our impl info, out of here.
+  }
 
-    if (implInfo != NULL) {
-      IMP imp = ( isSetter ? implInfo->setterFunction : implInfo->getterFunction );
-      const char *encoding = ( isSetter ? implInfo->setterEncoding : implInfo->getterEncoding );
+  const char *propName = property_getName(prop);
+  NSString *propStr = [NSString stringWithUTF8String:propName];
 
-      class_addMethod(foundClass, sel, imp, encoding);
+  // replace the property name with the proper JSON key if it's
+  // special-cased with a map in the found class; otherwise, the property
+  // name is the JSON key
+  // NOTE: These caches that are built up could likely be dropped and do this
+  // lookup on demand from the class tree. Most are checked once when a method
+  // is first resolved, so eventually become wasted memory.
+  NSDictionary *keyMap =
+    [[foundClass ancestorClass] propertyToJSONKeyMapForClass:foundClass];
+  NSString *jsonKey = [keyMap objectForKey:propStr];
+  if (jsonKey == nil) {
+    jsonKey = propStr;
+  }
 
-      const char *propName = property_getName(prop);
-      NSString *propStr = [NSString stringWithUTF8String:propName];
-
-      // replace the property name with the proper JSON key if it's
-      // special-cased with a map in the found class; otherwise, the property
-      // name is the JSON key
-      NSDictionary *keyMap =
-        [[foundClass ancestorClass] propertyToJSONKeyMapForClass:foundClass];
-      NSString *jsonKey = [keyMap objectForKey:propStr];
-      if (jsonKey == nil) {
-        jsonKey = propStr;
-      }
-
-      Class containedClass = nil;
-
-      // For arrays we need to look up what the contained class is.
-      if (imp == (IMP)DynamicArraySetter || imp == (IMP)DynamicArrayGetter) {
-        NSDictionary *classMap =
-          [[foundClass ancestorClass] arrayPropertyToClassMapForClass:foundClass];
-        containedClass = [classMap objectForKey:jsonKey];
-        if (containedClass == Nil) {
-          GTL_DEBUG_LOG(@"GTLRuntimeCommon: expected array item class for "
-                        "property \"%s\" of class \"%s\"",
-                        property_getName(prop), class_getName(foundClass));
-        }
-      }
-
-      // save the dispatch info to the cache
-      [GTLRuntimeCommon setStoredDispatchForClass:foundClass
-                                         selector:sel
-                                      returnClass:returnClass
-                                   containedClass:containedClass
-                                          jsonKey:jsonKey];
-      return YES;
+  // For arrays we need to look up what the contained class is.
+  Class containedClass = nil;
+  if (implInfo->propertyType == GTLPropertyTypeNSArray) {
+    NSDictionary *classMap =
+      [[foundClass ancestorClass] arrayPropertyToClassMapForClass:foundClass];
+    containedClass = [classMap objectForKey:jsonKey];
+    if (containedClass == Nil) {
+      GTL_DEBUG_LOG(@"GTLRuntimeCommon: expected array item class for "
+                    "property \"%s\" of class \"%s\"",
+                    property_getName(prop), class_getName(foundClass));
     }
   }
 
+  // Wire in the method.
+  IMP imp;
+  const char *encoding;
+  if (isSetter) {
+    imp = GTLRuntimeSetterIMP(sel, implInfo->propertyType,
+                              jsonKey, containedClass, returnClass);
+    encoding = implInfo->setterEncoding;
+  } else {
+    imp = GTLRuntimeGetterIMP(sel, implInfo->propertyType,
+                              jsonKey, containedClass, returnClass);
+    encoding = implInfo->getterEncoding;
+  }
+  if (class_addMethod(foundClass, sel, imp, encoding)) {
+    return YES;
+  }
+  // Not much we can do if this fails, but leave a breadcumb in the log.
+  GTL_DEBUG_LOG(@"GTLRuntimeCommon: Failed to wire %@ on %@ (encoding: %s).",
+                NSStringFromSelector(sel),
+                NSStringFromClass(foundClass),
+                encoding);
   return NO;
 }
 

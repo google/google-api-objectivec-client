@@ -27,8 +27,8 @@
 - (BOOL)isBatchQuery;
 - (BOOL)shouldSkipAuthorization;
 - (void)executionDidStop;
-- (NSDictionary *)additionalHTTPHeaders;
-- (NSDictionary *)urlQueryParameters;
+- (GTL_NSDictionaryOf(NSString *, NSString *) *)additionalHTTPHeaders;
+- (GTL_NSDictionaryOf(NSString *, NSString *) *)urlQueryParameters;
 - (GTLUploadParameters *)uploadParameters;
 @end
 
@@ -92,14 +92,14 @@ typedef void (^GTLQueryTestBlock)(GTLServiceTicket *testTicket, GTLQueryTestResp
 
 // Any URL query parameters to add to the query (useful for debugging with some
 // services).
-@property (copy) NSDictionary *urlQueryParameters;
+@property (copy) GTL_NSDictionaryOf(NSString *, NSString *) *urlQueryParameters;
 
 // Any additional HTTP headers for this query.  Not valid when this query
 // is added to a batch.
 //
 // These headers override the same keys from the service object's
 // additionalHTTPHeaders.
-@property (copy) NSDictionary *additionalHTTPHeaders;
+@property (copy) GTL_NSDictionaryOf(NSString *, NSString *) *additionalHTTPHeaders;
 
 // The GTLObject subclass expected for results (used if the result doesn't
 // include a kind attribute).

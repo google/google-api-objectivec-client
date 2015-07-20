@@ -21,12 +21,6 @@
 
 #pragma mark String encoding
 
-// URL Encoding
-
-+ (NSString *)stringByURLEncodingString:(NSString *)str {
-  NSString *result = [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-  return result;
-}
 
 // NSURL's stringByAddingPercentEscapesUsingEncoding: does not escape
 // some characters that should be escaped in URL parameters, like / and ?;
@@ -34,52 +28,40 @@
 //
 // Reference: http://www.ietf.org/rfc/rfc3986.txt
 
-const CFStringRef kCharsToForceEscape = CFSTR("!*'();:@&=+$,/?%#[]");
-
-+ (NSString *)stringByURLEncodingForURI:(NSString *)str {
-
-  NSString *resultStr = str;
-
-  CFStringRef originalString = (CFStringRef) str;
-  CFStringRef leaveUnescaped = NULL;
-
-  CFStringRef escapedStr;
-  escapedStr = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-                                                       originalString,
-                                                       leaveUnescaped,
-                                                       kCharsToForceEscape,
-                                                       kCFStringEncodingUTF8);
-  if (escapedStr) {
-    resultStr = [(id)CFMakeCollectable(escapedStr) autorelease];
-  }
-  return resultStr;
-}
-
-+ (NSString *)stringByURLEncodingStringParameter:(NSString *)str {
++ (NSString *)stringByURLEncodingStringParameter:(NSString *)originalString {
   // For parameters, we'll explicitly leave spaces unescaped now, and replace
   // them with +'s
-  NSString *resultStr = str;
+  NSString *const kForceEscape = @"!*'();:@&=+$,/?%#[]";
+  NSString *const kLeaveUnescaped = @" ";
 
-  CFStringRef originalString = (CFStringRef) str;
-  CFStringRef leaveUnescaped = CFSTR(" ");
+#if (!TARGET_OS_IPHONE && defined(MAC_OS_X_VERSION_10_9) && MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_9) \
+    || (TARGET_OS_IPHONE && defined(__IPHONE_7_0) && __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_7_0)
+  // Builds targeting iOS 7/OS X 10.9 and higher only.
+  NSMutableCharacterSet *cs =
+      [[[NSCharacterSet URLQueryAllowedCharacterSet] mutableCopy] autorelease];
+  [cs removeCharactersInString:kForceEscape];
+  [cs addCharactersInString:kLeaveUnescaped];
 
-  CFStringRef escapedStr;
-  escapedStr = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-                                                       originalString,
-                                                       leaveUnescaped,
-                                                       kCharsToForceEscape,
-                                                       kCFStringEncodingUTF8);
-
+  NSString *escapedStr = [originalString stringByAddingPercentEncodingWithAllowedCharacters:cs];
+#else
+  // Builds targeting iOS 6/OS X 10.8.
+  NSString *escapedStr = nil;
+  CFStringRef escapedStrCF =
+      CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                              (CFStringRef)originalString,
+                                              (CFStringRef)kLeaveUnescaped,
+                                              (CFStringRef)kForceEscape,
+                                              kCFStringEncodingUTF8);
+  if (escapedStrCF) {
+    escapedStr = [NSString stringWithString:(NSString *)escapedStrCF];
+    CFRelease(escapedStrCF);
+  }
+#endif
+  NSString *resultStr = originalString;
   if (escapedStr) {
-    NSMutableString *mutableStr = [NSMutableString stringWithString:(NSString *)escapedStr];
-    CFRelease(escapedStr);
-
     // replace spaces with plusses
-    [mutableStr replaceOccurrencesOfString:@" "
-                                withString:@"+"
-                                   options:0
-                                     range:NSMakeRange(0, [mutableStr length])];
-    resultStr = mutableStr;
+    resultStr = [escapedStr stringByReplacingOccurrencesOfString:@" "
+                                                      withString:@"+"];
   }
   return resultStr;
 }

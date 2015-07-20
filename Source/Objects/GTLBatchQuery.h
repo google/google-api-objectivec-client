@@ -33,7 +33,7 @@
 }
 
 // Queries included in this batch.  Each query should have a unique requestID.
-@property (retain) NSArray *queries;
+@property (retain) GTL_NSArrayOf(GTLQuery *) *queries;
 
 // Clients may set this to YES to disallow authorization. Defaults to NO.
 @property (assign) BOOL shouldSkipAuthorization;
@@ -42,11 +42,11 @@
 //
 // These headers override the same keys from the service object's
 // additionalHTTPHeaders.
-@property (copy) NSDictionary *additionalHTTPHeaders;
+@property (copy) GTL_NSDictionaryOf(NSString *, NSString *) *additionalHTTPHeaders;
 
 // Any URL query parameters to add to the query (useful for debugging with some
 // services).
-@property (copy) NSDictionary *urlQueryParameters;
+@property (copy) GTL_NSDictionaryOf(NSString *, NSString *) *urlQueryParameters;
 
 // Apps may provide a test block on the query or service to avoid network activity
 // during testing.
@@ -55,7 +55,7 @@
 @property (copy) GTLQueryTestBlock testBlock;
 
 + (instancetype)batchQuery;
-+ (instancetype)batchQueryWithQueries:(NSArray *)array;
++ (instancetype)batchQueryWithQueries:(GTL_NSArrayOf(GTLQuery *) *)array;
 
 - (void)addQuery:(GTLQuery *)query GTL_NONNULL((1));
 

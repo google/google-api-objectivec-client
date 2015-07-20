@@ -36,19 +36,12 @@ NSNumber *GTL_EnsureNSNumber(NSNumber *num);
 // String encoding
 //
 
-// URL encoding, different for parts of URLs and parts of URL parameters
+// URL encoding for query parameters.
 //
-// +stringByURLEncodingString just makes a string legal for a URL
+// +stringByURLEncodingStringParameter encodes anything inappropriate for a
+// query parameter, and replaces space characters with + characters rather than
+// percent-escaping them
 //
-// +stringByURLEncodingForURI also encodes some characters that are legal in
-// URLs but should not be used in URIs,
-// per http://bitworking.org/projects/atom/rfc5023.html#rfc.section.9.7
-//
-// +stringByURLEncodingStringParameter is like +stringByURLEncodingForURI but
-// replaces space characters with + characters rather than percent-escaping them
-//
-+ (NSString *)stringByURLEncodingString:(NSString *)str;
-+ (NSString *)stringByURLEncodingForURI:(NSString *)str;
 + (NSString *)stringByURLEncodingStringParameter:(NSString *)str;
 
 // Percent-encoded UTF-8

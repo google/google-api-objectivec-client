@@ -467,7 +467,7 @@ static NSString *const kGTLObjectJSONCoderKey = @"json";
     if ([rawValue isKindOfClass:[NSDictionary class]]) {
       // for dictionaries, show the list of keys:
       //   {key1,key2,key3}
-      NSString *subkeyList = [[rawValue allKeys] componentsJoinedByString:@","];
+      NSString *subkeyList = [[(NSDictionary *)rawValue allKeys] componentsJoinedByString:@","];
       value = [NSString stringWithFormat:@"{%@}", subkeyList];
     } else if ([rawValue isKindOfClass:[NSArray class]]) {
       // for arrays, show the number of items in the array:
