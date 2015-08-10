@@ -41,7 +41,8 @@
 
 @interface GTLFitnessBucketBySession : GTLObject
 
-// Only sessions of duration longer than this is used
+// Specifies that only sessions of duration longer than minDurationMillis are
+// considered and used as a container for aggregated data.
 @property (nonatomic, retain) NSNumber *minDurationMillis;  // longLongValue
 
 @end

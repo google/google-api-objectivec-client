@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryQueryResponse (0 custom class methods, 9 custom properties)
+//   GTLBigqueryQueryResponse (0 custom class methods, 10 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,6 +34,7 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLBigqueryErrorProto;
 @class GTLBigqueryJobReference;
 @class GTLBigqueryTableRow;
 @class GTLBigqueryTableSchema;
@@ -47,6 +48,11 @@
 
 // Whether the query result was fetched from the query cache.
 @property (nonatomic, retain) NSNumber *cacheHit;  // boolValue
+
+// [Output-only] All errors and warnings encountered during the running of the
+// job. Errors here do not necessarily mean that the job has completed or was
+// unsuccessful.
+@property (nonatomic, retain) NSArray *errors;  // of GTLBigqueryErrorProto
 
 // Whether the query has completed or not. If rows or totalRows are present,
 // this will always be true. If this is false, totalRows will not be available.

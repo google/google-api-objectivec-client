@@ -82,16 +82,47 @@
 // These create a GTLQueryFitness object.
 
 // Method: fitness.users.dataset.aggregate
+// Aggregates data of a certain type or stream into buckets divided by a given
+// type of boundary. Multiple data sets of multiple types and from multiple
+// sources can be aggreated into exactly one bucket type per request.
+//  Required:
+//   userId: Aggregate data for the person identified. Use me to indicate the
+//     authenticated user. Only me is supported at this time.
+//   startTimeMillis: The start of a window of time. Data that intersects with
+//     this time window will be aggregated. The time is in milliseconds since
+//     epoch, inclusive.
+//   endTimeMillis: The end of a window of time. Data that intersects with this
+//     time window will be aggregated. The time is in milliseconds since epoch,
+//     inclusive.
 //  Optional:
-//   aggregateBy: NSArray<GTLFitnessAggregateBy>
-//   bucketByActivitySegment: GTLFitnessBucketByActivity
-//   bucketByActivityType: GTLFitnessBucketByActivity
-//   bucketBySession: GTLFitnessBucketBySession
-//   bucketByTime: apparently oneof is not supported by reduced_nano_proto
-//   endTimeMillis: long long
-//   startTimeMillis: required time range
+//   aggregateBy: The specification of data to be aggregated. At least one
+//     aggregateBy spec must be provided. All data that is specified will be
+//     aggregated using the same bucketing criteria. There will be one dataset
+//     in the response for every aggregateBy spec.
+//   bucketByActivitySegment: Specifies that data be aggregated each activity
+//     segment recored for a user. Similar to bucketByActivitySegment, but
+//     bucketing is done for each activity segment rather than all segments of
+//     the same type. Mutually exclusive of other bucketing specifications.
+//   bucketByActivityType: Specifies that data be aggregated by the type of
+//     activity being performed when the data was recorded. All data that was
+//     recorded during a certain activity type (for the given time range) will
+//     be aggregated into the same bucket. Data that was recorded while the user
+//     was not active will not be included in the response. Mutually exclusive
+//     of other bucketing specifications.
+//   bucketBySession: Specifies that data be aggregated by user sessions. Data
+//     that does not fall within the time range of a session will not be
+//     included in the response. Mutually exclusive of other bucketing
+//     specifications.
+//   bucketByTime: Specifies that data be aggregated by a single time interval.
+//     Mutually exclusive of other bucketing specifications.
+//  Authorization scope(s):
+//   kGTLAuthScopeFitnessActivityWrite
+//   kGTLAuthScopeFitnessBodyWrite
+//   kGTLAuthScopeFitnessLocationWrite
 // Fetches a GTLFitnessAggregateResponse.
-+ (instancetype)queryForUsersDatasetAggregateWithUserId:(NSString *)userId;
++ (instancetype)queryForUsersDatasetAggregateWithUserId:(NSString *)userId
+                                        startTimeMillis:(long long)startTimeMillis
+                                          endTimeMillis:(long long)endTimeMillis;
 
 #pragma mark -
 #pragma mark "users.dataSources" methods

@@ -27,11 +27,12 @@
 //   https://developers.google.com/+/api/
 // Classes:
 //   GTLPlusComment (0 custom class methods, 11 custom properties)
-//   GTLPlusCommentActor (0 custom class methods, 4 custom properties)
+//   GTLPlusCommentActor (0 custom class methods, 5 custom properties)
 //   GTLPlusCommentInReplyToItem (0 custom class methods, 2 custom properties)
 //   GTLPlusCommentObject (0 custom class methods, 3 custom properties)
 //   GTLPlusCommentPlusoners (0 custom class methods, 1 custom properties)
 //   GTLPlusCommentActorImage (0 custom class methods, 1 custom properties)
+//   GTLPlusCommentActorVerification (0 custom class methods, 1 custom properties)
 
 #import "GTLPlusComment.h"
 
@@ -72,7 +73,7 @@
 //
 
 @implementation GTLPlusCommentActor
-@dynamic displayName, identifier, image, url;
+@dynamic displayName, identifier, image, url, verification;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{
@@ -129,4 +130,14 @@
 
 @implementation GTLPlusCommentActorImage
 @dynamic url;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusCommentActorVerification
+//
+
+@implementation GTLPlusCommentActorVerification
+@dynamic adHocVerified;
 @end

@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/+/api/
 // Classes:
-//   GTLQueryPlus (12 custom class methods, 15 custom properties)
+//   GTLQueryPlus (11 custom class methods, 14 custom properties)
 
 #import "GTLQueryPlus.h"
 
@@ -41,16 +41,8 @@
 
 @implementation GTLQueryPlus
 
-@dynamic activityId, collection, commentId, debug, fields, identifier, language,
-         maxResults, orderBy, pageToken, query, sortOrder, targetUrl, type,
-         userId;
-
-+ (NSDictionary *)parameterNameMap {
-  NSDictionary *map = @{
-    @"identifier" : @"id"
-  };
-  return map;
-}
+@dynamic activityId, collection, commentId, debug, fields, language, maxResults,
+         orderBy, pageToken, query, sortOrder, targetUrl, type, userId;
 
 #pragma mark -
 #pragma mark "activities" methods
@@ -129,13 +121,6 @@
   query.userId = userId;
   query.collection = collection;
   query.expectedObjectClass = [GTLPlusMomentsFeed class];
-  return query;
-}
-
-+ (instancetype)queryForMomentsRemoveWithIdentifier:(NSString *)identifier {
-  NSString *methodName = @"plus.moments.remove";
-  GTLQueryPlus *query = [self queryWithMethodName:methodName];
-  query.identifier = identifier;
   return query;
 }
 

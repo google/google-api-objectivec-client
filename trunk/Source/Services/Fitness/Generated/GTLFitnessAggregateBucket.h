@@ -44,17 +44,20 @@
 
 @interface GTLFitnessAggregateBucket : GTLObject
 
-// available for Bucket.Type.ACTIVITY_TYPE, Bucket.Type.ACTIVITY_SEGMENT
+// Available for Bucket.Type.ACTIVITY_TYPE, Bucket.Type.ACTIVITY_SEGMENT
 @property (nonatomic, retain) NSNumber *activity;  // intValue
 
-// There will be one dataset per datatype/datasource
+// There will be one dataset per AggregateBy in the request.
 @property (nonatomic, retain) NSArray *dataset;  // of GTLFitnessDataset
 
+// The end time for the aggregated data, in milliseconds since epoch, inclusive.
 @property (nonatomic, retain) NSNumber *endTimeMillis;  // longLongValue
 
-// available for Bucket.Type.SESSION
+// Available for Bucket.Type.SESSION
 @property (nonatomic, retain) GTLFitnessSession *session;
 
+// The start time for the aggregated data, in milliseconds since epoch,
+// inclusive.
 @property (nonatomic, retain) NSNumber *startTimeMillis;  // longLongValue
 
 // The type of a bucket signifies how the data aggregation is performed in the

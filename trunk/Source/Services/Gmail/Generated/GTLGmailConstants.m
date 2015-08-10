@@ -35,6 +35,7 @@ NSString * const kGTLAuthScopeGmailInsert   = @"https://www.googleapis.com/auth/
 NSString * const kGTLAuthScopeGmailLabels   = @"https://www.googleapis.com/auth/gmail.labels";
 NSString * const kGTLAuthScopeGmailModify   = @"https://www.googleapis.com/auth/gmail.modify";
 NSString * const kGTLAuthScopeGmailReadonly = @"https://www.googleapis.com/auth/gmail.readonly";
+NSString * const kGTLAuthScopeGmailSend     = @"https://www.googleapis.com/auth/gmail.send";
 
 // GTLGmailLabel - LabelListVisibility
 NSString * const kGTLGmailLabel_LabelListVisibility_LabelHide  = @"labelHide";

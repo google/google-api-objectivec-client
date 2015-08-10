@@ -44,7 +44,7 @@
 // The date, in the format "yyyy-mm-dd", if this is an all-day event.
 @property (nonatomic, retain) GTLDateTime *date;  // Date only (yyyy-mm-dd)
 
-// The time, as a combined date-time value (formatted according to RFC 3339). A
+// The time, as a combined date-time value (formatted according to RFC3339). A
 // time zone offset is required unless a time zone is explicitly specified in
 // timeZone.
 @property (nonatomic, retain) GTLDateTime *dateTime;

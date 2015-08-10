@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Ad Exchange Buyer API (adexchangebuyer/v1.3)
+//   Ad Exchange Buyer API (adexchangebuyer/v1.4)
 // Description:
 //   Accesses your bidding-account information, submits creatives for
 //   validation, finds available direct deals, and retrieves performance

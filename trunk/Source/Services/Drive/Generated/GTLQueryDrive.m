@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLQueryDrive (59 custom class methods, 46 custom properties)
+//   GTLQueryDrive (60 custom class methods, 48 custom properties)
 
 #import "GTLQueryDrive.h"
 
@@ -44,6 +44,7 @@
 #import "GTLDriveCommentReplyList.h"
 #import "GTLDriveFile.h"
 #import "GTLDriveFileList.h"
+#import "GTLDriveGeneratedIds.h"
 #import "GTLDriveParentList.h"
 #import "GTLDriveParentReference.h"
 #import "GTLDrivePermission.h"
@@ -60,11 +61,11 @@
          appId, baseRevision, changeId, childId, commentId, convert, corpus,
          email, emailMessage, fields, fileId, folderId, includeDeleted,
          includeSubscribed, languageCode, maxChangeIdCount, maxResults,
-         newRevision, ocr, ocrLanguage, pageToken, parentId, permissionId,
-         pinned, projection, propertyKey, q, removeParents, replyId, revision,
-         revisionId, sendNotificationEmails, setModifiedDate, spaces,
-         startChangeId, timedTextLanguage, timedTextTrackName,
-         transferOwnership, updatedMin, updateViewedDate,
+         modifiedDateBehavior, newRevision, ocr, ocrLanguage, pageToken,
+         parentId, permissionId, pinned, projection, propertyKey, q,
+         removeParents, replyId, revision, revisionId, sendNotificationEmails,
+         setModifiedDate, space, spaces, startChangeId, timedTextLanguage,
+         timedTextTrackName, transferOwnership, updatedMin, updateViewedDate,
          useContentAsIndexableText, visibility;
 
 #pragma mark -
@@ -293,6 +294,13 @@
 + (instancetype)queryForFilesEmptyTrash {
   NSString *methodName = @"drive.files.emptyTrash";
   GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  return query;
+}
+
++ (instancetype)queryForFilesGenerateIds {
+  NSString *methodName = @"drive.files.generateIds";
+  GTLQueryDrive *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLDriveGeneratedIds class];
   return query;
 }
 

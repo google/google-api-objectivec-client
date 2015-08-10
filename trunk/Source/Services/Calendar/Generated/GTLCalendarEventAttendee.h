@@ -51,10 +51,11 @@
 @property (nonatomic, copy) NSString *displayName;
 
 // The attendee's email address, if available. This field must be present when
-// adding an attendee.
+// adding an attendee. It must be a valid email address as per RFC5322.
 @property (nonatomic, copy) NSString *email;
 
-// The attendee's Profile ID, if available.
+// The attendee's Profile ID, if available. It corresponds to theid field in the
+// People collection of the Google+ API
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (nonatomic, copy) NSString *identifier;
 

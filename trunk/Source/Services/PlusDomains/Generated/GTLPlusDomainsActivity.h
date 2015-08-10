@@ -27,18 +27,20 @@
 //   https://developers.google.com/+/domains/
 // Classes:
 //   GTLPlusDomainsActivity (0 custom class methods, 20 custom properties)
-//   GTLPlusDomainsActivityActor (0 custom class methods, 5 custom properties)
+//   GTLPlusDomainsActivityActor (0 custom class methods, 6 custom properties)
 //   GTLPlusDomainsActivityObject (0 custom class methods, 11 custom properties)
 //   GTLPlusDomainsActivityProvider (0 custom class methods, 1 custom properties)
 //   GTLPlusDomainsActivityActorImage (0 custom class methods, 1 custom properties)
 //   GTLPlusDomainsActivityActorName (0 custom class methods, 2 custom properties)
-//   GTLPlusDomainsActivityObjectActor (0 custom class methods, 4 custom properties)
+//   GTLPlusDomainsActivityActorVerification (0 custom class methods, 1 custom properties)
+//   GTLPlusDomainsActivityObjectActor (0 custom class methods, 5 custom properties)
 //   GTLPlusDomainsActivityObjectAttachmentsItem (0 custom class methods, 10 custom properties)
 //   GTLPlusDomainsActivityObjectPlusoners (0 custom class methods, 2 custom properties)
 //   GTLPlusDomainsActivityObjectReplies (0 custom class methods, 2 custom properties)
 //   GTLPlusDomainsActivityObjectResharers (0 custom class methods, 2 custom properties)
 //   GTLPlusDomainsActivityObjectStatusForViewer (0 custom class methods, 5 custom properties)
 //   GTLPlusDomainsActivityObjectActorImage (0 custom class methods, 1 custom properties)
+//   GTLPlusDomainsActivityObjectActorVerification (0 custom class methods, 1 custom properties)
 //   GTLPlusDomainsActivityObjectAttachmentsItemEmbed (0 custom class methods, 2 custom properties)
 //   GTLPlusDomainsActivityObjectAttachmentsItemFullImage (0 custom class methods, 4 custom properties)
 //   GTLPlusDomainsActivityObjectAttachmentsItemImage (0 custom class methods, 4 custom properties)
@@ -56,9 +58,11 @@
 @class GTLPlusDomainsActivityActor;
 @class GTLPlusDomainsActivityActorImage;
 @class GTLPlusDomainsActivityActorName;
+@class GTLPlusDomainsActivityActorVerification;
 @class GTLPlusDomainsActivityObject;
 @class GTLPlusDomainsActivityObjectActor;
 @class GTLPlusDomainsActivityObjectActorImage;
+@class GTLPlusDomainsActivityObjectActorVerification;
 @class GTLPlusDomainsActivityObjectAttachmentsItem;
 @class GTLPlusDomainsActivityObjectAttachmentsItemEmbed;
 @class GTLPlusDomainsActivityObjectAttachmentsItemFullImage;
@@ -176,6 +180,9 @@
 // The link to the actor's Google profile.
 @property (nonatomic, copy) NSString *url;
 
+// Verification status of actor.
+@property (nonatomic, retain) GTLPlusDomainsActivityActorVerification *verification;
+
 @end
 
 
@@ -276,6 +283,19 @@
 
 // ----------------------------------------------------------------------------
 //
+//   GTLPlusDomainsActivityActorVerification
+//
+
+@interface GTLPlusDomainsActivityActorVerification : GTLObject
+
+// Verification for one-time or manual processes.
+@property (nonatomic, copy) NSString *adHocVerified;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
 //   GTLPlusDomainsActivityObjectActor
 //
 
@@ -293,6 +313,9 @@
 
 // A link to the original actor's Google profile.
 @property (nonatomic, copy) NSString *url;
+
+// Verification status of actor.
+@property (nonatomic, retain) GTLPlusDomainsActivityObjectActorVerification *verification;
 
 @end
 
@@ -429,6 +452,19 @@
 
 // A URL that points to a thumbnail photo of the original actor.
 @property (nonatomic, copy) NSString *url;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusDomainsActivityObjectActorVerification
+//
+
+@interface GTLPlusDomainsActivityObjectActorVerification : GTLObject
+
+// Verification for one-time or manual processes.
+@property (nonatomic, copy) NSString *adHocVerified;
 
 @end
 

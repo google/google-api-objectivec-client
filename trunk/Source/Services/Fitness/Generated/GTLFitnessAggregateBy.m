@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/fit/rest/
 // Classes:
-//   GTLFitnessAggregateBy (0 custom class methods, 4 custom properties)
+//   GTLFitnessAggregateBy (0 custom class methods, 2 custom properties)
 
 #import "GTLFitnessAggregateBy.h"
 
@@ -36,5 +36,5 @@
 //
 
 @implementation GTLFitnessAggregateBy
-@dynamic dataSourceId, dataTypeName, outputDataSourceId, outputDataTypeName;
+@dynamic dataSourceId, dataTypeName;
 @end

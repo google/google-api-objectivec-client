@@ -27,11 +27,12 @@
 //   https://developers.google.com/+/api/
 // Classes:
 //   GTLPlusComment (0 custom class methods, 11 custom properties)
-//   GTLPlusCommentActor (0 custom class methods, 4 custom properties)
+//   GTLPlusCommentActor (0 custom class methods, 5 custom properties)
 //   GTLPlusCommentInReplyToItem (0 custom class methods, 2 custom properties)
 //   GTLPlusCommentObject (0 custom class methods, 3 custom properties)
 //   GTLPlusCommentPlusoners (0 custom class methods, 1 custom properties)
 //   GTLPlusCommentActorImage (0 custom class methods, 1 custom properties)
+//   GTLPlusCommentActorVerification (0 custom class methods, 1 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -41,6 +42,7 @@
 
 @class GTLPlusCommentActor;
 @class GTLPlusCommentActorImage;
+@class GTLPlusCommentActorVerification;
 @class GTLPlusCommentInReplyToItem;
 @class GTLPlusCommentObject;
 @class GTLPlusCommentPlusoners;
@@ -113,6 +115,9 @@
 // A link to the Person resource for this actor.
 @property (nonatomic, copy) NSString *url;
 
+// Verification status of actor.
+@property (nonatomic, retain) GTLPlusCommentActorVerification *verification;
+
 @end
 
 
@@ -179,5 +184,18 @@
 // square, append the query string ?sz=x, where x is the dimension in pixels of
 // each side.
 @property (nonatomic, copy) NSString *url;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusCommentActorVerification
+//
+
+@interface GTLPlusCommentActorVerification : GTLObject
+
+// Verification for one-time or manual processes.
+@property (nonatomic, copy) NSString *adHocVerified;
 
 @end

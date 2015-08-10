@@ -14,41 +14,42 @@
  */
 
 //
-//  GTLAdExchangeBuyerBudget.m
+//  GTLDriveGeneratedIds.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Ad Exchange Buyer API (adexchangebuyer/v1.4)
+//   Drive API (drive/v2)
 // Description:
-//   Accesses your bidding-account information, submits creatives for
-//   validation, finds available direct deals, and retrieves performance
-//   reports.
+//   The API to interact with Drive.
 // Documentation:
-//   https://developers.google.com/ad-exchange/buyer-rest
+//   https://developers.google.com/drive/
 // Classes:
-//   GTLAdExchangeBuyerBudget (0 custom class methods, 6 custom properties)
+//   GTLDriveGeneratedIds (0 custom class methods, 3 custom properties)
 
-#import "GTLAdExchangeBuyerBudget.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAdExchangeBuyerBudget
+//   GTLDriveGeneratedIds
 //
 
-@implementation GTLAdExchangeBuyerBudget
-@dynamic accountId, billingId, budgetAmount, currencyCode, identifier, kind;
+// A list of generated IDs which can be provided in insert requests
 
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map = @{
-    @"identifier" : @"id"
-  };
-  return map;
-}
+@interface GTLDriveGeneratedIds : GTLObject
 
-+ (void)load {
-  [self registerObjectClassForKind:@"adexchangebuyer#budget"];
-}
+// The IDs generated for the requesting user in the specified space.
+@property (nonatomic, retain) NSArray *ids;  // of NSString
+
+// This is always drive#generatedIds
+@property (nonatomic, copy) NSString *kind;
+
+// The type of file that can be created with these IDs.
+@property (nonatomic, copy) NSString *space;
 
 @end

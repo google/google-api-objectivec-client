@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryTable (0 custom class methods, 16 custom properties)
+//   GTLBigqueryTable (0 custom class methods, 17 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,6 +34,7 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLBigqueryExternalDataConfiguration;
 @class GTLBigqueryTableReference;
 @class GTLBigqueryTableSchema;
 @class GTLBigqueryViewDefinition;
@@ -61,6 +62,11 @@
 // deleted and their storage reclaimed.
 @property (nonatomic, retain) NSNumber *expirationTime;  // longLongValue
 
+// [Experimental] Describes the data format, location, and other properties of a
+// table stored outside of BigQuery. By defining these properties, the data
+// source can then be queried as if it were a standard BigQuery table.
+@property (nonatomic, retain) GTLBigqueryExternalDataConfiguration *externalDataConfiguration;
+
 // [Optional] A descriptive name for this table.
 @property (nonatomic, copy) NSString *friendlyName;
 
@@ -75,7 +81,8 @@
 // since the epoch.
 @property (nonatomic, retain) NSNumber *lastModifiedTime;  // unsignedLongLongValue
 
-// [Optional] The backing storage location.
+// [Output-only] The geographic location where the table resides. This value is
+// inherited from the dataset.
 @property (nonatomic, copy) NSString *location;
 
 // [Output-only] The size of the table in bytes. This property is unavailable

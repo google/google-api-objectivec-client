@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Ad Exchange Buyer API (adexchangebuyer/v1.3)
+//   Ad Exchange Buyer API (adexchangebuyer/v1.4)
 // Description:
 //   Accesses your bidding-account information, submits creatives for
 //   validation, finds available direct deals, and retrieves performance
@@ -47,8 +47,6 @@
     [GTLAdExchangeBuyerBudget class],
     [GTLAdExchangeBuyerCreative class],
     [GTLAdExchangeBuyerCreativesList class],
-    [GTLAdExchangeBuyerDirectDeal class],
-    [GTLAdExchangeBuyerDirectDealsList class],
     [GTLAdExchangeBuyerPerformanceReport class],
     [GTLAdExchangeBuyerPerformanceReportList class],
     [GTLAdExchangeBuyerPretargetingConfig class],
@@ -62,7 +60,7 @@
   self = [super init];
   if (self) {
     // Version from discovery.
-    self.apiVersion = @"v1.3";
+    self.apiVersion = @"v1.4";
 
     // From discovery.  Where to send JSON-RPC.
     // Turn off prettyPrint for this service to save bandwidth (especially on

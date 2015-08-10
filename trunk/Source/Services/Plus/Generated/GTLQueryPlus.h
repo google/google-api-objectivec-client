@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/+/api/
 // Classes:
-//   GTLQueryPlus (12 custom class methods, 15 custom properties)
+//   GTLQueryPlus (11 custom class methods, 14 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -52,8 +52,6 @@
 @property (nonatomic, copy) NSString *collection;
 @property (nonatomic, copy) NSString *commentId;
 @property (nonatomic, assign) BOOL debug;
-// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (nonatomic, copy) NSString *identifier;
 @property (nonatomic, copy) NSString *language;
 @property (nonatomic, assign) NSUInteger maxResults;
 @property (nonatomic, copy) NSString *orderBy;
@@ -206,14 +204,6 @@
 // Fetches a GTLPlusMomentsFeed.
 + (instancetype)queryForMomentsListWithUserId:(NSString *)userId
                                    collection:(NSString *)collection;
-
-// Method: plus.moments.remove
-// Delete a moment.
-//  Required:
-//   identifier: The ID of the moment to delete.
-//  Authorization scope(s):
-//   kGTLAuthScopePlusLogin
-+ (instancetype)queryForMomentsRemoveWithIdentifier:(NSString *)identifier;
 
 #pragma mark -
 #pragma mark "people" methods

@@ -203,6 +203,7 @@
 //      kGTLStorageProjectionNoAcl: Omit acl and defaultObjectAcl properties.
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageCloudPlatform
+//   kGTLAuthScopeStorageCloudPlatformReadOnly
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadOnly
 //   kGTLAuthScopeStorageDevstorageReadWrite
@@ -266,6 +267,7 @@
 //      kGTLStorageProjectionNoAcl: Omit acl and defaultObjectAcl properties.
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageCloudPlatform
+//   kGTLAuthScopeStorageCloudPlatformReadOnly
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadOnly
 //   kGTLAuthScopeStorageDevstorageReadWrite
@@ -372,6 +374,7 @@
 // Stop watching resources through this channel
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageCloudPlatform
+//   kGTLAuthScopeStorageCloudPlatformReadOnly
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadOnly
 //   kGTLAuthScopeStorageDevstorageReadWrite
@@ -717,6 +720,7 @@
 //      kGTLStorageProjectionNoAcl: Omit the acl property.
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageCloudPlatform
+//   kGTLAuthScopeStorageCloudPlatformReadOnly
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadOnly
 //   kGTLAuthScopeStorageDevstorageReadWrite
@@ -795,6 +799,7 @@
 //     default is false. For more information, see Object Versioning.
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageCloudPlatform
+//   kGTLAuthScopeStorageCloudPlatformReadOnly
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadOnly
 //   kGTLAuthScopeStorageDevstorageReadWrite
@@ -979,6 +984,7 @@
 //     default is false. For more information, see Object Versioning.
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageCloudPlatform
+//   kGTLAuthScopeStorageCloudPlatformReadOnly
 //   kGTLAuthScopeStorageDevstorageFullControl
 //   kGTLAuthScopeStorageDevstorageReadOnly
 //   kGTLAuthScopeStorageDevstorageReadWrite

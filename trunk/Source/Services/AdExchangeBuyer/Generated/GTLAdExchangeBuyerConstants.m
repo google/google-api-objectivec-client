@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Ad Exchange Buyer API (adexchangebuyer/v1.3)
+//   Ad Exchange Buyer API (adexchangebuyer/v1.4)
 // Description:
 //   Accesses your bidding-account information, submits creatives for
 //   validation, finds available direct deals, and retrieves performance
@@ -33,7 +33,14 @@
 // Authorization scope
 NSString * const kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer = @"https://www.googleapis.com/auth/adexchange.buyer";
 
-// GTLQueryAdExchangeBuyer - StatusFilter
-NSString * const kGTLAdExchangeBuyerStatusFilterApproved    = @"approved";
-NSString * const kGTLAdExchangeBuyerStatusFilterDisapproved = @"disapproved";
-NSString * const kGTLAdExchangeBuyerStatusFilterNotChecked  = @"not_checked";
+// GTLQueryAdExchangeBuyer - DealsStatusFilter
+NSString * const kGTLAdExchangeBuyerDealsStatusFilterApproved  = @"approved";
+NSString * const kGTLAdExchangeBuyerDealsStatusFilterConditionallyApproved = @"conditionally_approved";
+NSString * const kGTLAdExchangeBuyerDealsStatusFilterDisapproved = @"disapproved";
+NSString * const kGTLAdExchangeBuyerDealsStatusFilterNotChecked = @"not_checked";
+
+// GTLQueryAdExchangeBuyer - OpenAuctionStatusFilter
+NSString * const kGTLAdExchangeBuyerOpenAuctionStatusFilterApproved = @"approved";
+NSString * const kGTLAdExchangeBuyerOpenAuctionStatusFilterConditionallyApproved = @"conditionally_approved";
+NSString * const kGTLAdExchangeBuyerOpenAuctionStatusFilterDisapproved = @"disapproved";
+NSString * const kGTLAdExchangeBuyerOpenAuctionStatusFilterNotChecked = @"not_checked";

@@ -35,12 +35,21 @@ NSString * const kGTLAuthScopeDriveAppsReadonly     = @"https://www.googleapis.c
 NSString * const kGTLAuthScopeDriveFile             = @"https://www.googleapis.com/auth/drive.file";
 NSString * const kGTLAuthScopeDriveMetadata         = @"https://www.googleapis.com/auth/drive.metadata";
 NSString * const kGTLAuthScopeDriveMetadataReadonly = @"https://www.googleapis.com/auth/drive.metadata.readonly";
+NSString * const kGTLAuthScopeDrivePhotosReadonly   = @"https://www.googleapis.com/auth/drive.photos.readonly";
 NSString * const kGTLAuthScopeDriveReadonly         = @"https://www.googleapis.com/auth/drive.readonly";
 NSString * const kGTLAuthScopeDriveScripts          = @"https://www.googleapis.com/auth/drive.scripts";
 
 // GTLQueryDrive - Corpus
 NSString * const kGTLDriveCorpusDefault = @"DEFAULT";
 NSString * const kGTLDriveCorpusDomain  = @"DOMAIN";
+
+// GTLQueryDrive - ModifiedDateBehavior
+NSString * const kGTLDriveModifiedDateBehaviorFromBody         = @"fromBody";
+NSString * const kGTLDriveModifiedDateBehaviorFromBodyIfNeeded = @"fromBodyIfNeeded";
+NSString * const kGTLDriveModifiedDateBehaviorFromBodyOrNow    = @"fromBodyOrNow";
+NSString * const kGTLDriveModifiedDateBehaviorNoChange         = @"noChange";
+NSString * const kGTLDriveModifiedDateBehaviorNow              = @"now";
+NSString * const kGTLDriveModifiedDateBehaviorNowIfNeeded      = @"nowIfNeeded";
 
 // GTLQueryDrive - Projection
 NSString * const kGTLDriveProjectionBasic = @"BASIC";

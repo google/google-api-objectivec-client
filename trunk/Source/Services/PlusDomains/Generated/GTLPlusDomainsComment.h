@@ -27,11 +27,12 @@
 //   https://developers.google.com/+/domains/
 // Classes:
 //   GTLPlusDomainsComment (0 custom class methods, 11 custom properties)
-//   GTLPlusDomainsCommentActor (0 custom class methods, 4 custom properties)
+//   GTLPlusDomainsCommentActor (0 custom class methods, 5 custom properties)
 //   GTLPlusDomainsCommentInReplyToItem (0 custom class methods, 2 custom properties)
 //   GTLPlusDomainsCommentObject (0 custom class methods, 3 custom properties)
 //   GTLPlusDomainsCommentPlusoners (0 custom class methods, 1 custom properties)
 //   GTLPlusDomainsCommentActorImage (0 custom class methods, 1 custom properties)
+//   GTLPlusDomainsCommentActorVerification (0 custom class methods, 1 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -41,6 +42,7 @@
 
 @class GTLPlusDomainsCommentActor;
 @class GTLPlusDomainsCommentActorImage;
+@class GTLPlusDomainsCommentActorVerification;
 @class GTLPlusDomainsCommentInReplyToItem;
 @class GTLPlusDomainsCommentObject;
 @class GTLPlusDomainsCommentPlusoners;
@@ -113,6 +115,9 @@
 // A link to the Person resource for this actor.
 @property (nonatomic, copy) NSString *url;
 
+// Verification status of actor.
+@property (nonatomic, retain) GTLPlusDomainsCommentActorVerification *verification;
+
 @end
 
 
@@ -179,5 +184,18 @@
 // square, append the query string ?sz=x, where x is the dimension in pixels of
 // each side.
 @property (nonatomic, copy) NSString *url;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusDomainsCommentActorVerification
+//
+
+@interface GTLPlusDomainsCommentActorVerification : GTLObject
+
+// Verification for one-time or manual processes.
+@property (nonatomic, copy) NSString *adHocVerified;
 
 @end

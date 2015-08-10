@@ -225,8 +225,8 @@
 // User that shared the item with the current user, if available.
 @property (nonatomic, retain) GTLDriveUser *sharingUser;
 
-// The list of spaces which contain the file. Supported values are 'drive' and
-// 'appDataFolder'.
+// The list of spaces which contain the file. Supported values are 'drive',
+// 'appDataFolder' and 'photos'.
 @property (nonatomic, retain) NSArray *spaces;  // of NSString
 
 // Thumbnail for the file. Only accepted on upload and for files that are not

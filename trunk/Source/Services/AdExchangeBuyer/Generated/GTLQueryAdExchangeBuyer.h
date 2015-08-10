@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Ad Exchange Buyer API (adexchangebuyer/v1.3)
+//   Ad Exchange Buyer API (adexchangebuyer/v1.4)
 // Description:
 //   Accesses your bidding-account information, submits creatives for
 //   validation, finds available direct deals, and retrieves performance
@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLQueryAdExchangeBuyer (21 custom class methods, 11 custom properties)
+//   GTLQueryAdExchangeBuyer (19 custom class methods, 12 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -61,15 +61,14 @@
 // documentation for the right type for each query method.
 @property (nonatomic, retain) id buyerCreativeId;
 @property (nonatomic, assign) long long configId;
+@property (nonatomic, copy) NSString *dealsStatusFilter;
 @property (nonatomic, copy) NSString *endDateTime;
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-// "identifier" has different types for some query methods; see the
-// documentation for the right type for each query method.
-@property (nonatomic, retain) id identifier;
+@property (nonatomic, assign) NSInteger identifier;
 @property (nonatomic, assign) NSUInteger maxResults;
+@property (nonatomic, copy) NSString *openAuctionStatusFilter;
 @property (nonatomic, copy) NSString *pageToken;
 @property (nonatomic, copy) NSString *startDateTime;
-@property (nonatomic, copy) NSString *statusFilter;
 
 #pragma mark -
 #pragma mark "accounts" methods
@@ -209,43 +208,36 @@
 //     creative ids are returned.
 //     Note: For this method, "buyerCreativeId" should be of type
 //     NSArray<NSString>.
+//   dealsStatusFilter: When specified, only creatives having the given direct
+//     deals status are returned.
+//      kGTLAdExchangeBuyerDealsStatusFilterApproved: Creatives which have been
+//        approved for serving on direct deals.
+//      kGTLAdExchangeBuyerDealsStatusFilterConditionallyApproved: Creatives
+//        which have been conditionally approved for serving on direct deals.
+//      kGTLAdExchangeBuyerDealsStatusFilterDisapproved: Creatives which have
+//        been disapproved for serving on direct deals.
+//      kGTLAdExchangeBuyerDealsStatusFilterNotChecked: Creatives whose direct
+//        deals status is not yet checked.
 //   maxResults: Maximum number of entries returned on one result page. If not
 //     set, the default is 100. Optional. (1..1000)
+//   openAuctionStatusFilter: When specified, only creatives having the given
+//     open auction status are returned.
+//      kGTLAdExchangeBuyerOpenAuctionStatusFilterApproved: Creatives which have
+//        been approved for serving on the open auction.
+//      kGTLAdExchangeBuyerOpenAuctionStatusFilterConditionallyApproved: Creatives
+//        which have been conditionally approved for serving on the open
+//        auction.
+//      kGTLAdExchangeBuyerOpenAuctionStatusFilterDisapproved: Creatives which
+//        have been disapproved for serving on the open auction.
+//      kGTLAdExchangeBuyerOpenAuctionStatusFilterNotChecked: Creatives whose
+//        open auction status is not yet checked.
 //   pageToken: A continuation token, used to page through ad clients. To
 //     retrieve the next page, set this parameter to the value of
 //     "nextPageToken" from the previous response. Optional.
-//   statusFilter: When specified, only creatives having the given status are
-//     returned.
-//      kGTLAdExchangeBuyerStatusFilterApproved: Creatives which have been
-//        approved.
-//      kGTLAdExchangeBuyerStatusFilterDisapproved: Creatives which have been
-//        disapproved.
-//      kGTLAdExchangeBuyerStatusFilterNotChecked: Creatives whose status is not
-//        yet checked.
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerCreativesList.
 + (instancetype)queryForCreativesList;
-
-#pragma mark -
-#pragma mark "directDeals" methods
-// These create a GTLQueryAdExchangeBuyer object.
-
-// Method: adexchangebuyer.directDeals.get
-// Gets one direct deal by ID.
-//  Required:
-//   identifier: The direct deal id
-//  Authorization scope(s):
-//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
-// Fetches a GTLAdExchangeBuyerDirectDeal.
-+ (instancetype)queryForDirectDealsGetWithIdentifier:(long long)identifier;
-
-// Method: adexchangebuyer.directDeals.list
-// Retrieves the authenticated user's list of direct deals.
-//  Authorization scope(s):
-//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
-// Fetches a GTLAdExchangeBuyerDirectDealsList.
-+ (instancetype)queryForDirectDealsList;
 
 #pragma mark -
 #pragma mark "performanceReport" methods

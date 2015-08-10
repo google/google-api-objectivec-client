@@ -68,7 +68,6 @@
 // These create a GTLQueryWebmasters object.
 
 // Method: webmasters.searchanalytics.query
-// [LIMITED ACCESS]
 // Query your data with filters and parameters that you define. Returns zero or
 // more rows grouped by the row keys that you define. You must define a date
 // range of one or more days.
@@ -80,7 +79,7 @@
 //   siteUrl: The site's URL, including protocol. For example:
 //     http://www.example.com/
 //  Optional:
-//   aggregationType: [Optional; Default is AUTO] How data is aggregated. If
+//   aggregationType: [Optional; Default is "auto"] How data is aggregated. If
 //     aggregated by property, all data for the same property is aggregated; if
 //     aggregated by page, all data is aggregated by canonical URI. If you
 //     filter or group by page, choose AUTO; otherwise you can aggregate either
@@ -93,9 +92,9 @@
 //     you will get an error. The API will never change your aggregation type if
 //     the requested type is invalid.
 //   dimensionFilterGroups: [Optional] Zero or more filters to apply to the
-//     dimension grouping values; for example, 'Country CONTAINS "Guinea"' to
-//     see only data where the country contains the substring "Guinea". You can
-//     filter by a dimension without grouping by it.
+//     dimension grouping values; for example, 'query contains "buy"' to see
+//     only data where the query string contains the substring "buy" (not
+//     case-sensitive). You can filter by a dimension without grouping by it.
 //   dimensions: [Optional] Zero or more dimensions to group results by.
 //     Dimensions are the group-by values in the Search Analytics page.
 //     Dimensions are combined to create a unique row key for each row. Results
@@ -104,8 +103,8 @@
 //     format, in PST (UTC - 8:00). Must be greater than or equal to the start
 //     date. This value is included in the range.
 //   rowLimit: [Optional; Default is 1000] The maximum number of rows to return.
-//     Must be a number from 1 to 1,000 (inclusive).
-//   searchType: [Optional; Default is WEB] The search type to filter for.
+//     Must be a number from 1 to 5,000 (inclusive).
+//   searchType: [Optional; Default is "web"] The search type to filter for.
 //   startDate: [Required] Start date of the requested date range, in YYYY-MM-DD
 //     format, in PST time (UTC - 8:00). Must be less than or equal to the end
 //     date. This value is included in the range.
