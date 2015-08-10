@@ -106,6 +106,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
+//   kGTLAuthScopeBigqueryCloudPlatformReadOnly
 // Fetches a GTLBigqueryDataset.
 + (instancetype)queryForDatasetsGetWithProjectId:(NSString *)projectId
                                        datasetId:(NSString *)datasetId;
@@ -133,6 +134,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
+//   kGTLAuthScopeBigqueryCloudPlatformReadOnly
 // Fetches a GTLBigqueryDatasetList.
 + (instancetype)queryForDatasetsListWithProjectId:(NSString *)projectId;
 
@@ -193,6 +195,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
+//   kGTLAuthScopeBigqueryCloudPlatformReadOnly
 // Fetches a GTLBigqueryJob.
 + (instancetype)queryForJobsGetWithProjectId:(NSString *)projectId
                                        jobId:(NSString *)jobId;
@@ -213,6 +216,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
+//   kGTLAuthScopeBigqueryCloudPlatformReadOnly
 // Fetches a GTLBigqueryGetQueryResultsResponse.
 + (instancetype)queryForJobsGetQueryResultsWithProjectId:(NSString *)projectId
                                                    jobId:(NSString *)jobId;
@@ -234,10 +238,10 @@
                             uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
 // Method: bigquery.jobs.list
-// Lists all jobs that you started in the specified project. The job list
-// returns in reverse chronological order of when the jobs were created,
-// starting with the most recent job created. Requires the Can View project
-// role, or the Is Owner project role if you set the allUsers property.
+// Lists all jobs that you started in the specified project. Job information is
+// available for a six month period after creation. The job list is sorted in
+// reverse chronological order, by job creation time. Requires the Can View
+// project role, or the Is Owner project role if you set the allUsers property.
 //  Required:
 //   projectId: Project ID of the jobs to list
 //  Optional:
@@ -256,6 +260,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
+//   kGTLAuthScopeBigqueryCloudPlatformReadOnly
 // Fetches a GTLBigqueryJobList.
 + (instancetype)queryForJobsListWithProjectId:(NSString *)projectId;
 
@@ -272,9 +277,10 @@
 //     assume for any unqualified table names in the query. If not set, all
 //     table names in the query string must be qualified in the format
 //     'datasetId.tableId'.
-//   dryRun: [Optional] If set, don't actually run this job. A valid query will
-//     return a mostly empty response with some processing statistics, while an
-//     invalid query will return the same error it would if it wasn't a dry run.
+//   dryRun: [Optional] If set to true, BigQuery doesn't run the job. Instead,
+//     if the query is valid, BigQuery returns statistics about the job such as
+//     how many bytes would be processed. If the query is invalid, an error
+//     returns. The default value is false.
 //   kind: The resource type of the request. (Default bigquery#queryRequest)
 //   maxResults: [Optional] The maximum number of rows of data to return per
 //     page of results. Setting this flag to a small value such as 1000 and then
@@ -297,6 +303,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
+//   kGTLAuthScopeBigqueryCloudPlatformReadOnly
 // Fetches a GTLBigqueryQueryResponse.
 + (instancetype)queryForJobsQueryWithProjectId:(NSString *)projectId
                                          query:(NSString *)query;
@@ -314,6 +321,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
+//   kGTLAuthScopeBigqueryCloudPlatformReadOnly
 // Fetches a GTLBigqueryProjectList.
 + (instancetype)queryForProjectsList;
 
@@ -362,6 +370,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
+//   kGTLAuthScopeBigqueryCloudPlatformReadOnly
 // Fetches a GTLBigqueryTableDataList.
 + (instancetype)queryForTabledataListWithProjectId:(NSString *)projectId
                                          datasetId:(NSString *)datasetId
@@ -396,6 +405,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
+//   kGTLAuthScopeBigqueryCloudPlatformReadOnly
 // Fetches a GTLBigqueryTable.
 + (instancetype)queryForTablesGetWithProjectId:(NSString *)projectId
                                      datasetId:(NSString *)datasetId
@@ -424,6 +434,7 @@
 //  Authorization scope(s):
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
+//   kGTLAuthScopeBigqueryCloudPlatformReadOnly
 // Fetches a GTLBigqueryTableList.
 + (instancetype)queryForTablesListWithProjectId:(NSString *)projectId
                                       datasetId:(NSString *)datasetId;

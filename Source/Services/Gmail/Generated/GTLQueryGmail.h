@@ -463,6 +463,7 @@
 //   kGTLAuthScopeGmail
 //   kGTLAuthScopeGmailCompose
 //   kGTLAuthScopeGmailModify
+//   kGTLAuthScopeGmailSend
 // Fetches a GTLGmailMessage.
 + (instancetype)queryForUsersMessagesSendWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 

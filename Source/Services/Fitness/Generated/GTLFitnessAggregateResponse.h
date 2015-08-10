@@ -42,5 +42,8 @@
 //
 
 @interface GTLFitnessAggregateResponse : GTLObject
+
+// A list of buckets containing the aggregated data.
 @property (nonatomic, retain) NSArray *bucket;  // of GTLFitnessAggregateBucket
+
 @end

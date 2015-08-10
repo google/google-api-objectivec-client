@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Ad Exchange Buyer API (adexchangebuyer/v1.3)
+//   Ad Exchange Buyer API (adexchangebuyer/v1.4)
 // Description:
 //   Accesses your bidding-account information, submits creatives for
 //   validation, finds available direct deals, and retrieves performance
@@ -40,7 +40,14 @@
 // Manage your Ad Exchange buyer account configuration
 GTL_EXTERN NSString * const kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer;  // "https://www.googleapis.com/auth/adexchange.buyer"
 
-// GTLQueryAdExchangeBuyer - StatusFilter
-GTL_EXTERN NSString * const kGTLAdExchangeBuyerStatusFilterApproved;  // "approved"
-GTL_EXTERN NSString * const kGTLAdExchangeBuyerStatusFilterDisapproved;  // "disapproved"
-GTL_EXTERN NSString * const kGTLAdExchangeBuyerStatusFilterNotChecked;  // "not_checked"
+// GTLQueryAdExchangeBuyer - DealsStatusFilter
+GTL_EXTERN NSString * const kGTLAdExchangeBuyerDealsStatusFilterApproved;  // "approved"
+GTL_EXTERN NSString * const kGTLAdExchangeBuyerDealsStatusFilterConditionallyApproved;  // "conditionally_approved"
+GTL_EXTERN NSString * const kGTLAdExchangeBuyerDealsStatusFilterDisapproved;  // "disapproved"
+GTL_EXTERN NSString * const kGTLAdExchangeBuyerDealsStatusFilterNotChecked;  // "not_checked"
+
+// GTLQueryAdExchangeBuyer - OpenAuctionStatusFilter
+GTL_EXTERN NSString * const kGTLAdExchangeBuyerOpenAuctionStatusFilterApproved;  // "approved"
+GTL_EXTERN NSString * const kGTLAdExchangeBuyerOpenAuctionStatusFilterConditionallyApproved;  // "conditionally_approved"
+GTL_EXTERN NSString * const kGTLAdExchangeBuyerOpenAuctionStatusFilterDisapproved;  // "disapproved"
+GTL_EXTERN NSString * const kGTLAdExchangeBuyerOpenAuctionStatusFilterNotChecked;  // "not_checked"

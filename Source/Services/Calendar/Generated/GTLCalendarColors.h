@@ -47,20 +47,20 @@
 
 @interface GTLCalendarColors : GTLObject
 
-// Palette of calendar colors, mapping from the color ID to its definition. A
-// calendarListEntry resource refers to one of these color IDs in its color
-// field. Read-only.
+// A global palette of calendar colors, mapping from the color ID to its
+// definition. A calendarListEntry resource refers to one of these color IDs in
+// its color field. Read-only.
 @property (nonatomic, retain) GTLCalendarColorsCalendar *calendar;
 
-// Palette of event colors, mapping from the color ID to its definition. An
-// event resource may refer to one of these color IDs in its color field.
-// Read-only.
+// A global palette of event colors, mapping from the color ID to its
+// definition. An event resource may refer to one of these color IDs in its
+// color field. Read-only.
 @property (nonatomic, retain) GTLCalendarColorsEvent *event;
 
 // Type of the resource ("calendar#colors").
 @property (nonatomic, copy) NSString *kind;
 
-// Last modification time of the color palette (as a RFC 3339 timestamp).
+// Last modification time of the color palette (as a RFC3339 timestamp).
 // Read-only.
 @property (nonatomic, retain) GTLDateTime *updated;
 

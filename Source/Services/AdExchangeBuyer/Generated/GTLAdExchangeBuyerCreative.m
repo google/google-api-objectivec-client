@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Ad Exchange Buyer API (adexchangebuyer/v1.3)
+//   Ad Exchange Buyer API (adexchangebuyer/v1.4)
 // Description:
 //   Accesses your bidding-account information, submits creatives for
 //   validation, finds available direct deals, and retrieves performance
@@ -28,11 +28,13 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerCreative (0 custom class methods, 20 custom properties)
+//   GTLAdExchangeBuyerCreative (0 custom class methods, 21 custom properties)
 //   GTLAdExchangeBuyerCreativeCorrectionsItem (0 custom class methods, 2 custom properties)
-//   GTLAdExchangeBuyerCreativeDisapprovalReasonsItem (0 custom class methods, 2 custom properties)
 //   GTLAdExchangeBuyerCreativeFilteringReasons (0 custom class methods, 2 custom properties)
+//   GTLAdExchangeBuyerCreativeServingRestrictionsItem (0 custom class methods, 3 custom properties)
 //   GTLAdExchangeBuyerCreativeFilteringReasonsReasonsItem (0 custom class methods, 2 custom properties)
+//   GTLAdExchangeBuyerCreativeServingRestrictionsItemContextsItem (0 custom class methods, 4 custom properties)
+//   GTLAdExchangeBuyerCreativeServingRestrictionsItemDisapprovalReasonsItem (0 custom class methods, 2 custom properties)
 
 #import "GTLAdExchangeBuyerCreative.h"
 
@@ -43,10 +45,10 @@
 
 @implementation GTLAdExchangeBuyerCreative
 @dynamic accountId, advertiserId, advertiserName, agencyId, attribute,
-         buyerCreativeId, clickThroughUrl, corrections, disapprovalReasons,
-         filteringReasons, height, HTMLSnippet, kind, productCategories,
-         restrictedCategories, sensitiveCategories, status, vendorType,
-         videoURL, width;
+         buyerCreativeId, clickThroughUrl, corrections, dealsStatus,
+         filteringReasons, height, HTMLSnippet, kind, openAuctionStatus,
+         productCategories, restrictedCategories, sensitiveCategories,
+         servingRestrictions, vendorType, videoURL, width;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{
@@ -54,10 +56,10 @@
     @"attribute" : [NSNumber class],
     @"clickThroughUrl" : [NSString class],
     @"corrections" : [GTLAdExchangeBuyerCreativeCorrectionsItem class],
-    @"disapprovalReasons" : [GTLAdExchangeBuyerCreativeDisapprovalReasonsItem class],
     @"productCategories" : [NSNumber class],
     @"restrictedCategories" : [NSNumber class],
     @"sensitiveCategories" : [NSNumber class],
+    @"servingRestrictions" : [GTLAdExchangeBuyerCreativeServingRestrictionsItem class],
     @"vendorType" : [NSNumber class]
   };
   return map;
@@ -90,24 +92,6 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAdExchangeBuyerCreativeDisapprovalReasonsItem
-//
-
-@implementation GTLAdExchangeBuyerCreativeDisapprovalReasonsItem
-@dynamic details, reason;
-
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map = @{
-    @"details" : [NSString class]
-  };
-  return map;
-}
-
-@end
-
-
-// ----------------------------------------------------------------------------
-//
 //   GTLAdExchangeBuyerCreativeFilteringReasons
 //
 
@@ -126,9 +110,66 @@
 
 // ----------------------------------------------------------------------------
 //
+//   GTLAdExchangeBuyerCreativeServingRestrictionsItem
+//
+
+@implementation GTLAdExchangeBuyerCreativeServingRestrictionsItem
+@dynamic contexts, disapprovalReasons, reason;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map = @{
+    @"contexts" : [GTLAdExchangeBuyerCreativeServingRestrictionsItemContextsItem class],
+    @"disapprovalReasons" : [GTLAdExchangeBuyerCreativeServingRestrictionsItemDisapprovalReasonsItem class]
+  };
+  return map;
+}
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
 //   GTLAdExchangeBuyerCreativeFilteringReasonsReasonsItem
 //
 
 @implementation GTLAdExchangeBuyerCreativeFilteringReasonsReasonsItem
 @dynamic filteringCount, filteringStatus;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAdExchangeBuyerCreativeServingRestrictionsItemContextsItem
+//
+
+@implementation GTLAdExchangeBuyerCreativeServingRestrictionsItemContextsItem
+@dynamic auctionType, contextType, geoCriteriaId, platform;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map = @{
+    @"auctionType" : [NSString class],
+    @"geoCriteriaId" : [NSNumber class],
+    @"platform" : [NSString class]
+  };
+  return map;
+}
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAdExchangeBuyerCreativeServingRestrictionsItemDisapprovalReasonsItem
+//
+
+@implementation GTLAdExchangeBuyerCreativeServingRestrictionsItemDisapprovalReasonsItem
+@dynamic details, reason;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map = @{
+    @"details" : [NSString class]
+  };
+  return map;
+}
+
 @end

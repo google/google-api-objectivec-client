@@ -68,10 +68,14 @@
 #pragma mark "users.dataset" methods
 // These create a GTLQueryFitness object.
 
-+ (instancetype)queryForUsersDatasetAggregateWithUserId:(NSString *)userId {
++ (instancetype)queryForUsersDatasetAggregateWithUserId:(NSString *)userId
+                                        startTimeMillis:(long long)startTimeMillis
+                                          endTimeMillis:(long long)endTimeMillis {
   NSString *methodName = @"fitness.users.dataset.aggregate";
   GTLQueryFitness *query = [self queryWithMethodName:methodName];
   query.userId = userId;
+  query.startTimeMillis = startTimeMillis;
+  query.endTimeMillis = endTimeMillis;
   query.expectedObjectClass = [GTLFitnessAggregateResponse class];
   return query;
 }

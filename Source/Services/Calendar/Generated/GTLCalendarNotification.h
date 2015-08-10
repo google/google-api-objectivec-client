@@ -44,7 +44,8 @@
 // The method used to deliver the notification. Possible values are:
 // - "email" - Reminders are sent via email.
 // - "sms" - Reminders are sent via SMS. This value is read-only and is ignored
-// on inserts and updates.
+// on inserts and updates. SMS reminders are only available for Google Apps for
+// Work, Education, and Government customers.
 @property (nonatomic, copy) NSString *method;
 
 // The type of notification. Possible values are:

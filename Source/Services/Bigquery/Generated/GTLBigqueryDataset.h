@@ -99,8 +99,8 @@
 // modified, in milliseconds since the epoch.
 @property (nonatomic, retain) NSNumber *lastModifiedTime;  // longLongValue
 
-// [Experimental] The location where the data resides. If not present, the data
-// will be stored in the US.
+// [Experimental] The geographic location where the dataset should reside.
+// Possible values include EU and US. The default value is US.
 @property (nonatomic, copy) NSString *location;
 
 // [Output-only] A URL that can be used to access the resource again. You can

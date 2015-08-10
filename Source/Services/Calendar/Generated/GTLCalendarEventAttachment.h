@@ -42,8 +42,8 @@
 @interface GTLCalendarEventAttachment : GTLObject
 
 // ID of the attached file. Read-only.
-// E.g. for Google Drive files this is the ID of the corresponding Files
-// resource entry in the Drive API.
+// For Google Drive files, this is the ID of the corresponding Files resource
+// entry in the Drive API.
 @property (nonatomic, copy) NSString *fileId;
 
 // URL link to the attachment.

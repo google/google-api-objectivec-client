@@ -26,10 +26,11 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryQueryResponse (0 custom class methods, 9 custom properties)
+//   GTLBigqueryQueryResponse (0 custom class methods, 10 custom properties)
 
 #import "GTLBigqueryQueryResponse.h"
 
+#import "GTLBigqueryErrorProto.h"
 #import "GTLBigqueryJobReference.h"
 #import "GTLBigqueryTableRow.h"
 #import "GTLBigqueryTableSchema.h"
@@ -40,11 +41,12 @@
 //
 
 @implementation GTLBigqueryQueryResponse
-@dynamic cacheHit, jobComplete, jobReference, kind, pageToken, rows, schema,
-         totalBytesProcessed, totalRows;
+@dynamic cacheHit, errors, jobComplete, jobReference, kind, pageToken, rows,
+         schema, totalBytesProcessed, totalRows;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{
+    @"errors" : [GTLBigqueryErrorProto class],
     @"rows" : [GTLBigqueryTableRow class]
   };
   return map;

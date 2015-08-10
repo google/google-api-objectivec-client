@@ -31,6 +31,7 @@
 // Authorization scope
 NSString * const kGTLAuthScopeBigquery                      = @"https://www.googleapis.com/auth/bigquery";
 NSString * const kGTLAuthScopeBigqueryCloudPlatform         = @"https://www.googleapis.com/auth/cloud-platform";
+NSString * const kGTLAuthScopeBigqueryCloudPlatformReadOnly = @"https://www.googleapis.com/auth/cloud-platform.read-only";
 NSString * const kGTLAuthScopeBigqueryDevstorageFullControl = @"https://www.googleapis.com/auth/devstorage.full_control";
 NSString * const kGTLAuthScopeBigqueryDevstorageReadOnly    = @"https://www.googleapis.com/auth/devstorage.read_only";
 NSString * const kGTLAuthScopeBigqueryDevstorageReadWrite   = @"https://www.googleapis.com/auth/devstorage.read_write";

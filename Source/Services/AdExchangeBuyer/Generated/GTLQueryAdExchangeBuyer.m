@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Ad Exchange Buyer API (adexchangebuyer/v1.3)
+//   Ad Exchange Buyer API (adexchangebuyer/v1.4)
 // Description:
 //   Accesses your bidding-account information, submits creatives for
 //   validation, finds available direct deals, and retrieves performance
@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLQueryAdExchangeBuyer (21 custom class methods, 11 custom properties)
+//   GTLQueryAdExchangeBuyer (19 custom class methods, 12 custom properties)
 
 #import "GTLQueryAdExchangeBuyer.h"
 
@@ -39,16 +39,15 @@
 #import "GTLAdExchangeBuyerBudget.h"
 #import "GTLAdExchangeBuyerCreative.h"
 #import "GTLAdExchangeBuyerCreativesList.h"
-#import "GTLAdExchangeBuyerDirectDeal.h"
-#import "GTLAdExchangeBuyerDirectDealsList.h"
 #import "GTLAdExchangeBuyerPerformanceReportList.h"
 #import "GTLAdExchangeBuyerPretargetingConfig.h"
 #import "GTLAdExchangeBuyerPretargetingConfigList.h"
 
 @implementation GTLQueryAdExchangeBuyer
 
-@dynamic accountId, billingId, buyerCreativeId, configId, endDateTime, fields,
-         identifier, maxResults, pageToken, startDateTime, statusFilter;
+@dynamic accountId, billingId, buyerCreativeId, configId, dealsStatusFilter,
+         endDateTime, fields, identifier, maxResults, openAuctionStatusFilter,
+         pageToken, startDateTime;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map = @{
@@ -64,7 +63,7 @@
 + (instancetype)queryForAccountsGetWithIdentifier:(NSInteger)identifier {
   NSString *methodName = @"adexchangebuyer.accounts.get";
   GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.identifier = [NSNumber numberWithInteger:identifier];
+  query.identifier = identifier;
   query.expectedObjectClass = [GTLAdExchangeBuyerAccount class];
   return query;
 }
@@ -85,7 +84,7 @@
   NSString *methodName = @"adexchangebuyer.accounts.patch";
   GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
   query.bodyObject = object;
-  query.identifier = [NSNumber numberWithInteger:identifier];
+  query.identifier = identifier;
   query.expectedObjectClass = [GTLAdExchangeBuyerAccount class];
   return query;
 }
@@ -99,7 +98,7 @@
   NSString *methodName = @"adexchangebuyer.accounts.update";
   GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
   query.bodyObject = object;
-  query.identifier = [NSNumber numberWithInteger:identifier];
+  query.identifier = identifier;
   query.expectedObjectClass = [GTLAdExchangeBuyerAccount class];
   return query;
 }
@@ -199,25 +198,6 @@
   NSString *methodName = @"adexchangebuyer.creatives.list";
   GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLAdExchangeBuyerCreativesList class];
-  return query;
-}
-
-#pragma mark -
-#pragma mark "directDeals" methods
-// These create a GTLQueryAdExchangeBuyer object.
-
-+ (instancetype)queryForDirectDealsGetWithIdentifier:(long long)identifier {
-  NSString *methodName = @"adexchangebuyer.directDeals.get";
-  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.identifier = [NSNumber numberWithLongLong:identifier];
-  query.expectedObjectClass = [GTLAdExchangeBuyerDirectDeal class];
-  return query;
-}
-
-+ (instancetype)queryForDirectDealsList {
-  NSString *methodName = @"adexchangebuyer.directDeals.list";
-  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.expectedObjectClass = [GTLAdExchangeBuyerDirectDealsList class];
   return query;
 }
 

@@ -93,7 +93,7 @@
 // The time zone of the calendar. Read-only.
 @property (nonatomic, copy) NSString *timeZone;
 
-// Last modification time of the calendar (as a RFC 3339 timestamp). Read-only.
+// Last modification time of the calendar (as a RFC3339 timestamp). Read-only.
 @property (nonatomic, retain) GTLDateTime *updated;
 
 @end

@@ -93,7 +93,9 @@
 // Method: calendar.acl.delete
 // Deletes an access control rule.
 //  Required:
-//   calendarId: Calendar identifier.
+//   calendarId: Calendar identifier. To retrieve calendar IDs call the
+//     calendarList.list method. If you want to access the primary calendar of
+//     the currently logged in user, use the "primary" keyword.
 //   ruleId: ACL rule identifier.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
@@ -103,7 +105,9 @@
 // Method: calendar.acl.get
 // Returns an access control rule.
 //  Required:
-//   calendarId: Calendar identifier.
+//   calendarId: Calendar identifier. To retrieve calendar IDs call the
+//     calendarList.list method. If you want to access the primary calendar of
+//     the currently logged in user, use the "primary" keyword.
 //   ruleId: ACL rule identifier.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
@@ -115,7 +119,9 @@
 // Method: calendar.acl.insert
 // Creates an access control rule.
 //  Required:
-//   calendarId: Calendar identifier.
+//   calendarId: Calendar identifier. To retrieve calendar IDs call the
+//     calendarList.list method. If you want to access the primary calendar of
+//     the currently logged in user, use the "primary" keyword.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarAclRule.
@@ -125,7 +131,9 @@
 // Method: calendar.acl.list
 // Returns the rules in the access control list for the calendar.
 //  Required:
-//   calendarId: Calendar identifier.
+//   calendarId: Calendar identifier. To retrieve calendar IDs call the
+//     calendarList.list method. If you want to access the primary calendar of
+//     the currently logged in user, use the "primary" keyword.
 //  Optional:
 //   maxResults: Maximum number of entries returned on one result page. By
 //     default the value is 100 entries. The page size can never be larger than
@@ -152,7 +160,9 @@
 // Method: calendar.acl.patch
 // Updates an access control rule. This method supports patch semantics.
 //  Required:
-//   calendarId: Calendar identifier.
+//   calendarId: Calendar identifier. To retrieve calendar IDs call the
+//     calendarList.list method. If you want to access the primary calendar of
+//     the currently logged in user, use the "primary" keyword.
 //   ruleId: ACL rule identifier.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
@@ -164,7 +174,9 @@
 // Method: calendar.acl.update
 // Updates an access control rule.
 //  Required:
-//   calendarId: Calendar identifier.
+//   calendarId: Calendar identifier. To retrieve calendar IDs call the
+//     calendarList.list method. If you want to access the primary calendar of
+//     the currently logged in user, use the "primary" keyword.
 //   ruleId: ACL rule identifier.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
@@ -176,7 +188,9 @@
 // Method: calendar.acl.watch
 // Watch for changes to ACL resources.
 //  Required:
-//   calendarId: Calendar identifier.
+//   calendarId: Calendar identifier. To retrieve calendar IDs call the
+//     calendarList.list method. If you want to access the primary calendar of
+//     the currently logged in user, use the "primary" keyword.
 //  Optional:
 //   maxResults: Maximum number of entries returned on one result page. By
 //     default the value is 100 entries. The page size can never be larger than
@@ -208,7 +222,9 @@
 // Method: calendar.calendarList.delete
 // Deletes an entry on the user's calendar list.
 //  Required:
-//   calendarId: Calendar identifier.
+//   calendarId: Calendar identifier. To retrieve calendar IDs call the
+//     calendarList.list method. If you want to access the primary calendar of
+//     the currently logged in user, use the "primary" keyword.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 + (instancetype)queryForCalendarListDeleteWithCalendarId:(NSString *)calendarId;
@@ -216,7 +232,9 @@
 // Method: calendar.calendarList.get
 // Returns an entry on the user's calendar list.
 //  Required:
-//   calendarId: Calendar identifier.
+//   calendarId: Calendar identifier. To retrieve calendar IDs call the
+//     calendarList.list method. If you want to access the primary calendar of
+//     the currently logged in user, use the "primary" keyword.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 //   kGTLAuthScopeCalendarReadonly
@@ -278,7 +296,9 @@
 // Updates an entry on the user's calendar list. This method supports patch
 // semantics.
 //  Required:
-//   calendarId: Calendar identifier.
+//   calendarId: Calendar identifier. To retrieve calendar IDs call the
+//     calendarList.list method. If you want to access the primary calendar of
+//     the currently logged in user, use the "primary" keyword.
 //  Optional:
 //   colorRgbFormat: Whether to use the foregroundColor and backgroundColor
 //     fields to write the calendar colors (RGB). If this feature is used, the
@@ -293,7 +313,9 @@
 // Method: calendar.calendarList.update
 // Updates an entry on the user's calendar list.
 //  Required:
-//   calendarId: Calendar identifier.
+//   calendarId: Calendar identifier. To retrieve calendar IDs call the
+//     calendarList.list method. If you want to access the primary calendar of
+//     the currently logged in user, use the "primary" keyword.
 //  Optional:
 //   colorRgbFormat: Whether to use the foregroundColor and backgroundColor
 //     fields to write the calendar colors (RGB). If this feature is used, the
@@ -352,7 +374,9 @@
 // Clears a primary calendar. This operation deletes all events associated with
 // the primary calendar of an account.
 //  Required:
-//   calendarId: Calendar identifier.
+//   calendarId: Calendar identifier. To retrieve calendar IDs call the
+//     calendarList.list method. If you want to access the primary calendar of
+//     the currently logged in user, use the "primary" keyword.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 + (instancetype)queryForCalendarsClearWithCalendarId:(NSString *)calendarId;
@@ -361,7 +385,9 @@
 // Deletes a secondary calendar. Use calendars.clear for clearing all events on
 // primary calendars.
 //  Required:
-//   calendarId: Calendar identifier.
+//   calendarId: Calendar identifier. To retrieve calendar IDs call the
+//     calendarList.list method. If you want to access the primary calendar of
+//     the currently logged in user, use the "primary" keyword.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 + (instancetype)queryForCalendarsDeleteWithCalendarId:(NSString *)calendarId;
@@ -369,7 +395,9 @@
 // Method: calendar.calendars.get
 // Returns metadata for a calendar.
 //  Required:
-//   calendarId: Calendar identifier.
+//   calendarId: Calendar identifier. To retrieve calendar IDs call the
+//     calendarList.list method. If you want to access the primary calendar of
+//     the currently logged in user, use the "primary" keyword.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 //   kGTLAuthScopeCalendarReadonly
@@ -386,7 +414,9 @@
 // Method: calendar.calendars.patch
 // Updates metadata for a calendar. This method supports patch semantics.
 //  Required:
-//   calendarId: Calendar identifier.
+//   calendarId: Calendar identifier. To retrieve calendar IDs call the
+//     calendarList.list method. If you want to access the primary calendar of
+//     the currently logged in user, use the "primary" keyword.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarCalendar.
@@ -396,7 +426,9 @@
 // Method: calendar.calendars.update
 // Updates metadata for a calendar.
 //  Required:
-//   calendarId: Calendar identifier.
+//   calendarId: Calendar identifier. To retrieve calendar IDs call the
+//     calendarList.list method. If you want to access the primary calendar of
+//     the currently logged in user, use the "primary" keyword.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 // Fetches a GTLCalendarCalendar.
@@ -433,7 +465,9 @@
 // Method: calendar.events.delete
 // Deletes an event.
 //  Required:
-//   calendarId: Calendar identifier.
+//   calendarId: Calendar identifier. To retrieve calendar IDs call the
+//     calendarList.list method. If you want to access the primary calendar of
+//     the currently logged in user, use the "primary" keyword.
 //   eventId: Event identifier.
 //  Optional:
 //   sendNotifications: Whether to send notifications about the deletion of the
@@ -446,7 +480,9 @@
 // Method: calendar.events.get
 // Returns an event.
 //  Required:
-//   calendarId: Calendar identifier.
+//   calendarId: Calendar identifier. To retrieve calendar IDs call the
+//     calendarList.list method. If you want to access the primary calendar of
+//     the currently logged in user, use the "primary" keyword.
 //   eventId: Event identifier.
 //  Optional:
 //   alwaysIncludeEmail: Whether to always include a value in the email field
@@ -471,7 +507,9 @@
 // Imports an event. This operation is used to add a private copy of an existing
 // event to a calendar.
 //  Required:
-//   calendarId: Calendar identifier.
+//   calendarId: Calendar identifier. To retrieve calendar IDs call the
+//     calendarList.list method. If you want to access the primary calendar of
+//     the currently logged in user, use the "primary" keyword.
 //  Optional:
 //   supportsAttachments: Whether API client performing operation supports event
 //     attachments. Optional. The default is False.
@@ -484,7 +522,9 @@
 // Method: calendar.events.insert
 // Creates an event.
 //  Required:
-//   calendarId: Calendar identifier.
+//   calendarId: Calendar identifier. To retrieve calendar IDs call the
+//     calendarList.list method. If you want to access the primary calendar of
+//     the currently logged in user, use the "primary" keyword.
 //  Optional:
 //   maxAttendees: The maximum number of attendees to include in the response.
 //     If there are more than the specified number of attendees, only the
@@ -502,7 +542,9 @@
 // Method: calendar.events.instances
 // Returns instances of the specified recurring event.
 //  Required:
-//   calendarId: Calendar identifier.
+//   calendarId: Calendar identifier. To retrieve calendar IDs call the
+//     calendarList.list method. If you want to access the primary calendar of
+//     the currently logged in user, use the "primary" keyword.
 //   eventId: Recurring event identifier.
 //  Optional:
 //   alwaysIncludeEmail: Whether to always include a value in the email field
@@ -525,9 +567,11 @@
 //     still be included if singleEvents is False. Optional. The default is
 //     False.
 //   timeMax: Upper bound (exclusive) for an event's start time to filter by.
-//     Optional. The default is not to filter by start time.
+//     Optional. The default is not to filter by start time. Must be an RFC3339
+//     timestamp with mandatory time zone offset.
 //   timeMin: Lower bound (inclusive) for an event's end time to filter by.
-//     Optional. The default is not to filter by end time.
+//     Optional. The default is not to filter by end time. Must be an RFC3339
+//     timestamp with mandatory time zone offset.
 //   timeZone: Time zone used in the response. Optional. The default is the time
 //     zone of the calendar.
 //  Authorization scope(s):
@@ -540,7 +584,9 @@
 // Method: calendar.events.list
 // Returns events on the specified calendar.
 //  Required:
-//   calendarId: Calendar identifier.
+//   calendarId: Calendar identifier. To retrieve calendar IDs call the
+//     calendarList.list method. If you want to access the primary calendar of
+//     the currently logged in user, use the "primary" keyword.
 //  Optional:
 //   alwaysIncludeEmail: Whether to always include a value in the email field
 //     for the organizer, creator and attendees, even if no real email is
@@ -606,15 +652,21 @@
 //     Learn more about incremental synchronization.
 //     Optional. The default is to return all entries.
 //   timeMax: Upper bound (exclusive) for an event's start time to filter by.
-//     Optional. The default is not to filter by start time.
+//     Optional. The default is not to filter by start time. Must be an RFC3339
+//     timestamp with mandatory time zone offset, e.g.,
+//     2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be
+//     provided but will be ignored.
 //   timeMin: Lower bound (inclusive) for an event's end time to filter by.
-//     Optional. The default is not to filter by end time.
+//     Optional. The default is not to filter by end time. Must be an RFC3339
+//     timestamp with mandatory time zone offset, e.g.,
+//     2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be
+//     provided but will be ignored.
 //   timeZone: Time zone used in the response. Optional. The default is the time
 //     zone of the calendar.
-//   updatedMin: Lower bound for an event's last modification time (as a RFC
-//     3339 timestamp) to filter by. When specified, entries deleted since this
-//     time will always be included regardless of showDeleted. Optional. The
-//     default is not to filter by last modification time.
+//   updatedMin: Lower bound for an event's last modification time (as a RFC3339
+//     timestamp) to filter by. When specified, entries deleted since this time
+//     will always be included regardless of showDeleted. Optional. The default
+//     is not to filter by last modification time.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 //   kGTLAuthScopeCalendarReadonly
@@ -642,7 +694,9 @@
 // Method: calendar.events.patch
 // Updates an event. This method supports patch semantics.
 //  Required:
-//   calendarId: Calendar identifier.
+//   calendarId: Calendar identifier. To retrieve calendar IDs call the
+//     calendarList.list method. If you want to access the primary calendar of
+//     the currently logged in user, use the "primary" keyword.
 //   eventId: Event identifier.
 //  Optional:
 //   alwaysIncludeEmail: Whether to always include a value in the email field
@@ -669,7 +723,9 @@
 // Method: calendar.events.quickAdd
 // Creates an event based on a simple text string.
 //  Required:
-//   calendarId: Calendar identifier.
+//   calendarId: Calendar identifier. To retrieve calendar IDs call the
+//     calendarList.list method. If you want to access the primary calendar of
+//     the currently logged in user, use the "primary" keyword.
 //   text: The text describing the event to be created.
 //  Optional:
 //   sendNotifications: Whether to send notifications about the creation of the
@@ -683,7 +739,9 @@
 // Method: calendar.events.update
 // Updates an event.
 //  Required:
-//   calendarId: Calendar identifier.
+//   calendarId: Calendar identifier. To retrieve calendar IDs call the
+//     calendarList.list method. If you want to access the primary calendar of
+//     the currently logged in user, use the "primary" keyword.
 //   eventId: Event identifier.
 //  Optional:
 //   alwaysIncludeEmail: Whether to always include a value in the email field
@@ -710,7 +768,9 @@
 // Method: calendar.events.watch
 // Watch for changes to Events resources.
 //  Required:
-//   calendarId: Calendar identifier.
+//   calendarId: Calendar identifier. To retrieve calendar IDs call the
+//     calendarList.list method. If you want to access the primary calendar of
+//     the currently logged in user, use the "primary" keyword.
 //  Optional:
 //   alwaysIncludeEmail: Whether to always include a value in the email field
 //     for the organizer, creator and attendees, even if no real email is
@@ -776,15 +836,21 @@
 //     Learn more about incremental synchronization.
 //     Optional. The default is to return all entries.
 //   timeMax: Upper bound (exclusive) for an event's start time to filter by.
-//     Optional. The default is not to filter by start time.
+//     Optional. The default is not to filter by start time. Must be an RFC3339
+//     timestamp with mandatory time zone offset, e.g.,
+//     2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be
+//     provided but will be ignored.
 //   timeMin: Lower bound (inclusive) for an event's end time to filter by.
-//     Optional. The default is not to filter by end time.
+//     Optional. The default is not to filter by end time. Must be an RFC3339
+//     timestamp with mandatory time zone offset, e.g.,
+//     2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be
+//     provided but will be ignored.
 //   timeZone: Time zone used in the response. Optional. The default is the time
 //     zone of the calendar.
-//   updatedMin: Lower bound for an event's last modification time (as a RFC
-//     3339 timestamp) to filter by. When specified, entries deleted since this
-//     time will always be included regardless of showDeleted. Optional. The
-//     default is not to filter by last modification time.
+//   updatedMin: Lower bound for an event's last modification time (as a RFC3339
+//     timestamp) to filter by. When specified, entries deleted since this time
+//     will always be included regardless of showDeleted. Optional. The default
+//     is not to filter by last modification time.
 //  Authorization scope(s):
 //   kGTLAuthScopeCalendar
 //   kGTLAuthScopeCalendarReadonly

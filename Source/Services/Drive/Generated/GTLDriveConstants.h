@@ -48,6 +48,8 @@ GTL_EXTERN NSString * const kGTLAuthScopeDriveFile;             // "https://www.
 GTL_EXTERN NSString * const kGTLAuthScopeDriveMetadata;         // "https://www.googleapis.com/auth/drive.metadata"
 // View metadata for files in your Google Drive
 GTL_EXTERN NSString * const kGTLAuthScopeDriveMetadataReadonly;  // "https://www.googleapis.com/auth/drive.metadata.readonly"
+// View the photos, videos and albums in your Google Photos
+GTL_EXTERN NSString * const kGTLAuthScopeDrivePhotosReadonly;   // "https://www.googleapis.com/auth/drive.photos.readonly"
 // View the files in your Google Drive
 GTL_EXTERN NSString * const kGTLAuthScopeDriveReadonly;         // "https://www.googleapis.com/auth/drive.readonly"
 // Modify your Google Apps Script scripts' behavior
@@ -56,6 +58,14 @@ GTL_EXTERN NSString * const kGTLAuthScopeDriveScripts;          // "https://www.
 // GTLQueryDrive - Corpus
 GTL_EXTERN NSString * const kGTLDriveCorpusDefault;  // "DEFAULT"
 GTL_EXTERN NSString * const kGTLDriveCorpusDomain;   // "DOMAIN"
+
+// GTLQueryDrive - ModifiedDateBehavior
+GTL_EXTERN NSString * const kGTLDriveModifiedDateBehaviorFromBody;  // "fromBody"
+GTL_EXTERN NSString * const kGTLDriveModifiedDateBehaviorFromBodyIfNeeded;  // "fromBodyIfNeeded"
+GTL_EXTERN NSString * const kGTLDriveModifiedDateBehaviorFromBodyOrNow;  // "fromBodyOrNow"
+GTL_EXTERN NSString * const kGTLDriveModifiedDateBehaviorNoChange;  // "noChange"
+GTL_EXTERN NSString * const kGTLDriveModifiedDateBehaviorNow;   // "now"
+GTL_EXTERN NSString * const kGTLDriveModifiedDateBehaviorNowIfNeeded;  // "nowIfNeeded"
 
 // GTLQueryDrive - Projection
 GTL_EXTERN NSString * const kGTLDriveProjectionBasic;  // "BASIC"

@@ -47,6 +47,8 @@ GTL_EXTERN NSString * const kGTLAuthScopeGmailLabels;    // "https://www.googlea
 GTL_EXTERN NSString * const kGTLAuthScopeGmailModify;    // "https://www.googleapis.com/auth/gmail.modify"
 // View your emails messages and settings
 GTL_EXTERN NSString * const kGTLAuthScopeGmailReadonly;  // "https://www.googleapis.com/auth/gmail.readonly"
+// Send email on your behalf
+GTL_EXTERN NSString * const kGTLAuthScopeGmailSend;      // "https://www.googleapis.com/auth/gmail.send"
 
 // GTLGmailLabel - LabelListVisibility
 GTL_EXTERN NSString * const kGTLGmailLabel_LabelListVisibility_LabelHide;  // "labelHide"

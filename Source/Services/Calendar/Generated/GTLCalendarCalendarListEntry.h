@@ -59,12 +59,15 @@
 @property (nonatomic, copy) NSString *accessRole;
 
 // The main color of the calendar in the hexadecimal format "#0088aa". This
-// property supersedes the index-based colorId property. Optional.
+// property supersedes the index-based colorId property. To set or change this
+// property, you need to specify colorRgbFormat=true in the parameters of the
+// insert, update and patch methods. Optional.
 @property (nonatomic, copy) NSString *backgroundColor;
 
 // The color of the calendar. This is an ID referring to an entry in the
-// calendar section of the colors definition (see the colors endpoint).
-// Optional.
+// calendar section of the colors definition (see the colors endpoint). This
+// property is superseded by the backgroundColor and foregroundColor properties
+// and can be ignored when using these properties. Optional.
 @property (nonatomic, copy) NSString *colorId;
 
 // The default reminders that the authenticated user has for this calendar.
@@ -82,7 +85,9 @@
 @property (nonatomic, copy) NSString *ETag;
 
 // The foreground color of the calendar in the hexadecimal format "#ffffff".
-// This property supersedes the index-based colorId property. Optional.
+// This property supersedes the index-based colorId property. To set or change
+// this property, you need to specify colorRgbFormat=true in the parameters of
+// the insert, update and patch methods. Optional.
 @property (nonatomic, copy) NSString *foregroundColor;
 
 // Whether the calendar has been hidden from the list. Optional. The default is

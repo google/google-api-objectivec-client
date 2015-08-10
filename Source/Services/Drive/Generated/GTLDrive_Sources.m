@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,6 +45,7 @@
 #import "GTLDriveCommentReplyList.m"
 #import "GTLDriveFile.m"
 #import "GTLDriveFileList.m"
+#import "GTLDriveGeneratedIds.m"
 #import "GTLDriveParentList.m"
 #import "GTLDriveParentReference.m"
 #import "GTLDrivePermission.m"

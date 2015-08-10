@@ -52,6 +52,7 @@
     [GTLDriveCommentReplyList class],
     [GTLDriveFile class],
     [GTLDriveFileList class],
+    [GTLDriveGeneratedIds class],
     [GTLDriveParentList class],
     [GTLDriveParentReference class],
     [GTLDrivePermission class],

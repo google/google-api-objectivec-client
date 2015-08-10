@@ -14,41 +14,39 @@
  */
 
 //
-//  GTLAdExchangeBuyerBudget.m
+//  GTLDriveGeneratedIds.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Ad Exchange Buyer API (adexchangebuyer/v1.4)
+//   Drive API (drive/v2)
 // Description:
-//   Accesses your bidding-account information, submits creatives for
-//   validation, finds available direct deals, and retrieves performance
-//   reports.
+//   The API to interact with Drive.
 // Documentation:
-//   https://developers.google.com/ad-exchange/buyer-rest
+//   https://developers.google.com/drive/
 // Classes:
-//   GTLAdExchangeBuyerBudget (0 custom class methods, 6 custom properties)
+//   GTLDriveGeneratedIds (0 custom class methods, 3 custom properties)
 
-#import "GTLAdExchangeBuyerBudget.h"
+#import "GTLDriveGeneratedIds.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAdExchangeBuyerBudget
+//   GTLDriveGeneratedIds
 //
 
-@implementation GTLAdExchangeBuyerBudget
-@dynamic accountId, billingId, budgetAmount, currencyCode, identifier, kind;
+@implementation GTLDriveGeneratedIds
+@dynamic ids, kind, space;
 
-+ (NSDictionary *)propertyToJSONKeyMap {
++ (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{
-    @"identifier" : @"id"
+    @"ids" : [NSString class]
   };
   return map;
 }
 
 + (void)load {
-  [self registerObjectClassForKind:@"adexchangebuyer#budget"];
+  [self registerObjectClassForKind:@"drive#generatedIds"];
 }
 
 @end

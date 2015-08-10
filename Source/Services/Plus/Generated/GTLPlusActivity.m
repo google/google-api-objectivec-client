@@ -27,17 +27,19 @@
 //   https://developers.google.com/+/api/
 // Classes:
 //   GTLPlusActivity (0 custom class methods, 20 custom properties)
-//   GTLPlusActivityActor (0 custom class methods, 5 custom properties)
+//   GTLPlusActivityActor (0 custom class methods, 6 custom properties)
 //   GTLPlusActivityObject (0 custom class methods, 10 custom properties)
 //   GTLPlusActivityProvider (0 custom class methods, 1 custom properties)
 //   GTLPlusActivityActorImage (0 custom class methods, 1 custom properties)
 //   GTLPlusActivityActorName (0 custom class methods, 2 custom properties)
-//   GTLPlusActivityObjectActor (0 custom class methods, 4 custom properties)
+//   GTLPlusActivityActorVerification (0 custom class methods, 1 custom properties)
+//   GTLPlusActivityObjectActor (0 custom class methods, 5 custom properties)
 //   GTLPlusActivityObjectAttachmentsItem (0 custom class methods, 9 custom properties)
 //   GTLPlusActivityObjectPlusoners (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectReplies (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectResharers (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectActorImage (0 custom class methods, 1 custom properties)
+//   GTLPlusActivityObjectActorVerification (0 custom class methods, 1 custom properties)
 //   GTLPlusActivityObjectAttachmentsItemEmbed (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectAttachmentsItemFullImage (0 custom class methods, 4 custom properties)
 //   GTLPlusActivityObjectAttachmentsItemImage (0 custom class methods, 4 custom properties)
@@ -80,7 +82,7 @@
 //
 
 @implementation GTLPlusActivityActor
-@dynamic displayName, identifier, image, name, url;
+@dynamic displayName, identifier, image, name, url, verification;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{
@@ -150,11 +152,21 @@
 
 // ----------------------------------------------------------------------------
 //
+//   GTLPlusActivityActorVerification
+//
+
+@implementation GTLPlusActivityActorVerification
+@dynamic adHocVerified;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
 //   GTLPlusActivityObjectActor
 //
 
 @implementation GTLPlusActivityObjectActor
-@dynamic displayName, identifier, image, url;
+@dynamic displayName, identifier, image, url, verification;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{
@@ -229,6 +241,16 @@
 
 @implementation GTLPlusActivityObjectActorImage
 @dynamic url;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusActivityObjectActorVerification
+//
+
+@implementation GTLPlusActivityObjectActorVerification
+@dynamic adHocVerified;
 @end
 
 

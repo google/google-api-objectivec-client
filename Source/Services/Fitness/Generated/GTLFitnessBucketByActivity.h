@@ -41,10 +41,12 @@
 
 @interface GTLFitnessBucketByActivity : GTLObject
 
-// default activity stream will be used if not specified
+// The default activity stream will be used if a specific activityDataSourceId
+// is not specified.
 @property (nonatomic, copy) NSString *activityDataSourceId;
 
-// Only activity segments of duration longer than this is used
+// Specifies that only activity segments of duration longer than
+// minDurationMillis are considered and used as a container for aggregated data.
 @property (nonatomic, retain) NSNumber *minDurationMillis;  // longLongValue
 
 @end
