@@ -56,8 +56,7 @@
 @property (nonatomic, assign) BOOL recursive;
 @property (nonatomic, retain) NSArray *roles;  // of NSString
 
-#pragma mark -
-#pragma mark "divisions" methods
+#pragma mark - "divisions" methods
 // These create a GTLQueryCivicInfo object.
 
 // Method: civicinfo.divisions.search
@@ -71,8 +70,7 @@
 // Fetches a GTLCivicInfoDivisionSearchResponse.
 + (instancetype)queryForDivisionsSearch;
 
-#pragma mark -
-#pragma mark "elections" methods
+#pragma mark - "elections" methods
 // These create a GTLQueryCivicInfo object.
 
 // Method: civicinfo.elections.electionQuery
@@ -94,8 +92,7 @@
 // Fetches a GTLCivicInfoVoterInfoResponse.
 + (instancetype)queryForElectionsVoterInfoQueryWithAddress:(NSString *)address;
 
-#pragma mark -
-#pragma mark "representatives" methods
+#pragma mark - "representatives" methods
 // These create a GTLQueryCivicInfo object.
 
 // Method: civicinfo.representatives.representativeInfoByAddress

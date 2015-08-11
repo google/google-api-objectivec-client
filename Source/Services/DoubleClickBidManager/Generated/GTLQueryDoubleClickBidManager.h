@@ -60,8 +60,7 @@
 @property (nonatomic, assign) long long reportDataStartTimeMs;
 @property (nonatomic, copy) NSString *timezoneCode;
 
-#pragma mark -
-#pragma mark "lineitems" methods
+#pragma mark - "lineitems" methods
 // These create a GTLQueryDoubleClickBidManager object.
 
 // Method: doubleclickbidmanager.lineitems.downloadlineitems
@@ -90,8 +89,7 @@
 // Fetches a GTLDoubleClickBidManagerUploadLineItemsResponse.
 + (instancetype)queryForLineitemsUploadlineitems;
 
-#pragma mark -
-#pragma mark "queries" methods
+#pragma mark - "queries" methods
 // These create a GTLQueryDoubleClickBidManager object.
 
 // Method: doubleclickbidmanager.queries.createquery
@@ -153,8 +151,7 @@
 //     America/New_York.
 + (instancetype)queryForQueriesRunqueryWithQueryId:(long long)queryId;
 
-#pragma mark -
-#pragma mark "reports" methods
+#pragma mark - "reports" methods
 // These create a GTLQueryDoubleClickBidManager object.
 
 // Method: doubleclickbidmanager.reports.listreports

@@ -78,8 +78,7 @@
 @property (nonatomic, copy) NSString *userId;
 @property (nonatomic, copy) NSString *view;
 
-#pragma mark -
-#pragma mark "blogs" methods
+#pragma mark - "blogs" methods
 // These create a GTLQueryBlogger object.
 
 // Method: blogger.blogs.get
@@ -148,8 +147,7 @@
 // Fetches a GTLBloggerBlogList.
 + (instancetype)queryForBlogsListByUserWithUserId:(NSString *)userId;
 
-#pragma mark -
-#pragma mark "blogUserInfos" methods
+#pragma mark - "blogUserInfos" methods
 // These create a GTLQueryBlogger object.
 
 // Method: blogger.blogUserInfos.get
@@ -167,8 +165,7 @@
 + (instancetype)queryForBlogUserInfosGetWithUserId:(NSString *)userId
                                             blogId:(NSString *)blogId;
 
-#pragma mark -
-#pragma mark "comments" methods
+#pragma mark - "comments" methods
 // These create a GTLQueryBlogger object.
 
 // Method: blogger.comments.approve
@@ -299,8 +296,7 @@
                                                  postId:(NSString *)postId
                                               commentId:(NSString *)commentId;
 
-#pragma mark -
-#pragma mark "pages" methods
+#pragma mark - "pages" methods
 // These create a GTLQueryBlogger object.
 
 // Method: blogger.pages.delete
@@ -420,8 +416,7 @@
                                        blogId:(NSString *)blogId
                                        pageId:(NSString *)pageId;
 
-#pragma mark -
-#pragma mark "pageViews" methods
+#pragma mark - "pageViews" methods
 // These create a GTLQueryBlogger object.
 
 // Method: blogger.pageViews.get
@@ -438,8 +433,7 @@
 // Fetches a GTLBloggerPageviews.
 + (instancetype)queryForPageViewsGetWithBlogId:(NSString *)blogId;
 
-#pragma mark -
-#pragma mark "posts" methods
+#pragma mark - "posts" methods
 // These create a GTLQueryBlogger object.
 
 // Method: blogger.posts.delete
@@ -636,8 +630,7 @@
                                        blogId:(NSString *)blogId
                                        postId:(NSString *)postId;
 
-#pragma mark -
-#pragma mark "postUserInfos" methods
+#pragma mark - "postUserInfos" methods
 // These create a GTLQueryBlogger object.
 
 // Method: blogger.postUserInfos.get
@@ -697,8 +690,7 @@
 + (instancetype)queryForPostUserInfosListWithUserId:(NSString *)userId
                                              blogId:(NSString *)blogId;
 
-#pragma mark -
-#pragma mark "users" methods
+#pragma mark - "users" methods
 // These create a GTLQueryBlogger object.
 
 // Method: blogger.users.get

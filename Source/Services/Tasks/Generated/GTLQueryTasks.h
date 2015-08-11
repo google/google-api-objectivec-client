@@ -64,8 +64,7 @@
 @property (nonatomic, copy) NSString *tasklist;
 @property (nonatomic, copy) NSString *updatedMin;
 
-#pragma mark -
-#pragma mark "tasklists" methods
+#pragma mark - "tasklists" methods
 // These create a GTLQueryTasks object.
 
 // Method: tasks.tasklists.delete
@@ -126,8 +125,7 @@
 + (instancetype)queryForTasklistsUpdateWithObject:(GTLTasksTaskList *)object
                                          tasklist:(NSString *)tasklist;
 
-#pragma mark -
-#pragma mark "tasks" methods
+#pragma mark - "tasks" methods
 // These create a GTLQueryTasks object.
 
 // Method: tasks.tasks.clear

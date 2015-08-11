@@ -65,8 +65,7 @@
   return map;
 }
 
-#pragma mark -
-#pragma mark "accounts.adclients" methods
+#pragma mark - "accounts.adclients" methods
 // These create a GTLQueryAdSenseHost object.
 
 + (instancetype)queryForAccountsAdclientsGetWithAccountId:(NSString *)accountId
@@ -87,8 +86,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "accounts.adunits" methods
+#pragma mark - "accounts.adunits" methods
 // These create a GTLQueryAdSenseHost object.
 
 + (instancetype)queryForAccountsAdunitsDeleteWithAccountId:(NSString *)accountId
@@ -187,8 +185,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "accounts" methods
+#pragma mark - "accounts" methods
 // These create a GTLQueryAdSenseHost object.
 
 + (instancetype)queryForAccountsGetWithAccountId:(NSString *)accountId {
@@ -207,8 +204,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "accounts.reports" methods
+#pragma mark - "accounts.reports" methods
 // These create a GTLQueryAdSenseHost object.
 
 + (instancetype)queryForAccountsReportsGenerateWithAccountId:(NSString *)accountId
@@ -223,8 +219,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "adclients" methods
+#pragma mark - "adclients" methods
 // These create a GTLQueryAdSenseHost object.
 
 + (instancetype)queryForAdclientsGetWithAdClientId:(NSString *)adClientId {
@@ -242,8 +237,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "associationsessions" methods
+#pragma mark - "associationsessions" methods
 // These create a GTLQueryAdSenseHost object.
 
 + (instancetype)queryForAssociationsessionsStartWithProductCode:(NSArray *)productCode
@@ -264,8 +258,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "customchannels" methods
+#pragma mark - "customchannels" methods
 // These create a GTLQueryAdSenseHost object.
 
 + (instancetype)queryForCustomchannelsDeleteWithAdClientId:(NSString *)adClientId
@@ -340,8 +333,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "reports" methods
+#pragma mark - "reports" methods
 // These create a GTLQueryAdSenseHost object.
 
 + (instancetype)queryForReportsGenerateWithStartDate:(NSString *)startDate
@@ -354,8 +346,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "urlchannels" methods
+#pragma mark - "urlchannels" methods
 // These create a GTLQueryAdSenseHost object.
 
 + (instancetype)queryForUrlchannelsDeleteWithAdClientId:(NSString *)adClientId

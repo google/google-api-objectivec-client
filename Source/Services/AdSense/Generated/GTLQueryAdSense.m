@@ -65,8 +65,7 @@
   return map;
 }
 
-#pragma mark -
-#pragma mark "accounts.adclients" methods
+#pragma mark - "accounts.adclients" methods
 // These create a GTLQueryAdSense object.
 
 + (instancetype)queryForAccountsAdclientsListWithAccountId:(NSString *)accountId {
@@ -77,8 +76,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "accounts.adunits.customchannels" methods
+#pragma mark - "accounts.adunits.customchannels" methods
 // These create a GTLQueryAdSense object.
 
 + (instancetype)queryForAccountsAdunitsCustomchannelsListWithAccountId:(NSString *)accountId
@@ -93,8 +91,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "accounts.adunits" methods
+#pragma mark - "accounts.adunits" methods
 // These create a GTLQueryAdSense object.
 
 + (instancetype)queryForAccountsAdunitsGetWithAccountId:(NSString *)accountId
@@ -131,8 +128,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "accounts.alerts" methods
+#pragma mark - "accounts.alerts" methods
 // These create a GTLQueryAdSense object.
 
 + (instancetype)queryForAccountsAlertsDeleteWithAccountId:(NSString *)accountId
@@ -152,8 +148,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "accounts.customchannels.adunits" methods
+#pragma mark - "accounts.customchannels.adunits" methods
 // These create a GTLQueryAdSense object.
 
 + (instancetype)queryForAccountsCustomchannelsAdunitsListWithAccountId:(NSString *)accountId
@@ -168,8 +163,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "accounts.customchannels" methods
+#pragma mark - "accounts.customchannels" methods
 // These create a GTLQueryAdSense object.
 
 + (instancetype)queryForAccountsCustomchannelsGetWithAccountId:(NSString *)accountId
@@ -194,8 +188,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "accounts" methods
+#pragma mark - "accounts" methods
 // These create a GTLQueryAdSense object.
 
 + (instancetype)queryForAccountsGetWithAccountId:(NSString *)accountId {
@@ -213,8 +206,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "accounts.payments" methods
+#pragma mark - "accounts.payments" methods
 // These create a GTLQueryAdSense object.
 
 + (instancetype)queryForAccountsPaymentsListWithAccountId:(NSString *)accountId {
@@ -225,8 +217,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "accounts.reports" methods
+#pragma mark - "accounts.reports" methods
 // These create a GTLQueryAdSense object.
 
 + (instancetype)queryForAccountsReportsGenerateWithAccountId:(NSString *)accountId
@@ -241,8 +232,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "accounts.reports.saved" methods
+#pragma mark - "accounts.reports.saved" methods
 // These create a GTLQueryAdSense object.
 
 + (instancetype)queryForAccountsReportsSavedGenerateWithAccountId:(NSString *)accountId
@@ -263,8 +253,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "accounts.savedadstyles" methods
+#pragma mark - "accounts.savedadstyles" methods
 // These create a GTLQueryAdSense object.
 
 + (instancetype)queryForAccountsSavedadstylesGetWithAccountId:(NSString *)accountId
@@ -285,8 +274,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "accounts.urlchannels" methods
+#pragma mark - "accounts.urlchannels" methods
 // These create a GTLQueryAdSense object.
 
 + (instancetype)queryForAccountsUrlchannelsListWithAccountId:(NSString *)accountId
@@ -299,8 +287,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "adclients" methods
+#pragma mark - "adclients" methods
 // These create a GTLQueryAdSense object.
 
 + (instancetype)queryForAdclientsList {
@@ -310,8 +297,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "adunits.customchannels" methods
+#pragma mark - "adunits.customchannels" methods
 // These create a GTLQueryAdSense object.
 
 + (instancetype)queryForAdunitsCustomchannelsListWithAdClientId:(NSString *)adClientId
@@ -324,8 +310,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "adunits" methods
+#pragma mark - "adunits" methods
 // These create a GTLQueryAdSense object.
 
 + (instancetype)queryForAdunitsGetWithAdClientId:(NSString *)adClientId
@@ -356,8 +341,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "alerts" methods
+#pragma mark - "alerts" methods
 // These create a GTLQueryAdSense object.
 
 + (instancetype)queryForAlertsDeleteWithAlertId:(NSString *)alertId {
@@ -374,8 +358,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "customchannels.adunits" methods
+#pragma mark - "customchannels.adunits" methods
 // These create a GTLQueryAdSense object.
 
 + (instancetype)queryForCustomchannelsAdunitsListWithAdClientId:(NSString *)adClientId
@@ -388,8 +371,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "customchannels" methods
+#pragma mark - "customchannels" methods
 // These create a GTLQueryAdSense object.
 
 + (instancetype)queryForCustomchannelsGetWithAdClientId:(NSString *)adClientId
@@ -410,8 +392,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "metadata.dimensions" methods
+#pragma mark - "metadata.dimensions" methods
 // These create a GTLQueryAdSense object.
 
 + (instancetype)queryForMetadataDimensionsList {
@@ -421,8 +402,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "metadata.metrics" methods
+#pragma mark - "metadata.metrics" methods
 // These create a GTLQueryAdSense object.
 
 + (instancetype)queryForMetadataMetricsList {
@@ -432,8 +412,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "payments" methods
+#pragma mark - "payments" methods
 // These create a GTLQueryAdSense object.
 
 + (instancetype)queryForPaymentsList {
@@ -443,8 +422,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "reports" methods
+#pragma mark - "reports" methods
 // These create a GTLQueryAdSense object.
 
 + (instancetype)queryForReportsGenerateWithStartDate:(NSString *)startDate
@@ -457,8 +435,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "reports.saved" methods
+#pragma mark - "reports.saved" methods
 // These create a GTLQueryAdSense object.
 
 + (instancetype)queryForReportsSavedGenerateWithSavedReportId:(NSString *)savedReportId {
@@ -476,8 +453,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "savedadstyles" methods
+#pragma mark - "savedadstyles" methods
 // These create a GTLQueryAdSense object.
 
 + (instancetype)queryForSavedadstylesGetWithSavedAdStyleId:(NSString *)savedAdStyleId {
@@ -495,8 +471,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "urlchannels" methods
+#pragma mark - "urlchannels" methods
 // These create a GTLQueryAdSense object.
 
 + (instancetype)queryForUrlchannelsListWithAdClientId:(NSString *)adClientId {

@@ -36,8 +36,7 @@
 
 @dynamic fields, groupUniqueId;
 
-#pragma mark -
-#pragma mark "groups" methods
+#pragma mark - "groups" methods
 // These create a GTLQueryGroupssettings object.
 
 + (instancetype)queryForGroupsGetWithGroupUniqueId:(NSString *)groupUniqueId {

@@ -77,8 +77,7 @@
 @property (nonatomic, assign) long long startTimeMillis;
 @property (nonatomic, copy) NSString *userId;
 
-#pragma mark -
-#pragma mark "users.dataset" methods
+#pragma mark - "users.dataset" methods
 // These create a GTLQueryFitness object.
 
 // Method: fitness.users.dataset.aggregate
@@ -124,8 +123,7 @@
                                         startTimeMillis:(long long)startTimeMillis
                                           endTimeMillis:(long long)endTimeMillis;
 
-#pragma mark -
-#pragma mark "users.dataSources" methods
+#pragma mark - "users.dataSources" methods
 // These create a GTLQueryFitness object.
 
 // Method: fitness.users.dataSources.create
@@ -149,8 +147,7 @@
 // Fetches a GTLFitnessDataSource.
 + (instancetype)queryForUsersDataSourcesCreateWithUserId:(NSString *)userId;
 
-#pragma mark -
-#pragma mark "users.dataSources.datasets" methods
+#pragma mark - "users.dataSources.datasets" methods
 // These create a GTLQueryFitness object.
 
 // Method: fitness.users.dataSources.datasets.delete
@@ -244,8 +241,7 @@
                                                    dataSourceId:(NSString *)dataSourceId
                                                       datasetId:(NSString *)datasetId;
 
-#pragma mark -
-#pragma mark "users.dataSources" methods
+#pragma mark - "users.dataSources" methods
 // These create a GTLQueryFitness object.
 
 // Method: fitness.users.dataSources.delete
@@ -341,8 +337,7 @@
 + (instancetype)queryForUsersDataSourcesUpdateWithUserId:(NSString *)userId
                                             dataSourceId:(NSString *)dataSourceId;
 
-#pragma mark -
-#pragma mark "users.sessions" methods
+#pragma mark - "users.sessions" methods
 // These create a GTLQueryFitness object.
 
 // Method: fitness.users.sessions.delete

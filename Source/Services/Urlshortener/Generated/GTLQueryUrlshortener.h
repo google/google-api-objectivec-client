@@ -52,8 +52,7 @@
 @property (nonatomic, copy) NSString *shortUrl;
 @property (nonatomic, copy) NSString *startToken;
 
-#pragma mark -
-#pragma mark "url" methods
+#pragma mark - "url" methods
 // These create a GTLQueryUrlshortener object.
 
 // Method: urlshortener.url.get

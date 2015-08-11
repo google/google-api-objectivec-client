@@ -1330,8 +1330,7 @@ static NSString *ConstantName(NSString *grouping, NSString *name) {
     NSMutableArray *classesBlock = [NSMutableArray array];
 
     NSMutableString *sectionBlock = [NSMutableString string];
-    [sectionBlock appendString:@"#pragma mark -\n"];
-    [sectionBlock appendString:@"#pragma mark method parameter objects\n"];
+    [sectionBlock appendString:@"#pragma mark - method parameter objects\n"];
     [sectionBlock appendString:@"// These object are used only to pass a collection of parameters to a\n"];
     [sectionBlock appendString:@"// method as a single item.\n"];
     [classesBlock addObject:sectionBlock];
@@ -1582,12 +1581,11 @@ static NSString *MappedParamName(NSString *name) {
       lastGrouping = [method groupingParts];
 
       NSMutableString *sectionBlock = [NSMutableString string];
-      [sectionBlock appendString:@"#pragma mark -\n"];
 
       if ([lastGrouping count] == 0) {
-        [sectionBlock appendString:@"#pragma mark Service level methods\n"];
+        [sectionBlock appendString:@"#pragma mark - Service level methods\n"];
       } else {
-        [sectionBlock appendFormat:@"#pragma mark \"%@\" methods\n",
+        [sectionBlock appendFormat:@"#pragma mark - \"%@\" methods\n",
          method.groupingName];
       }
 

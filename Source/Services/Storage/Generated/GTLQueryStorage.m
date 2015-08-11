@@ -70,8 +70,7 @@
   return map;
 }
 
-#pragma mark -
-#pragma mark "bucketAccessControls" methods
+#pragma mark - "bucketAccessControls" methods
 // These create a GTLQueryStorage object.
 
 + (instancetype)queryForBucketAccessControlsDeleteWithBucket:(NSString *)bucket
@@ -147,8 +146,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "buckets" methods
+#pragma mark - "buckets" methods
 // These create a GTLQueryStorage object.
 
 + (instancetype)queryForBucketsDeleteWithBucket:(NSString *)bucket {
@@ -216,8 +214,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "channels" methods
+#pragma mark - "channels" methods
 // These create a GTLQueryStorage object.
 
 + (instancetype)queryForChannelsStopWithObject:(GTLStorageChannel *)object {
@@ -231,8 +228,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "defaultObjectAccessControls" methods
+#pragma mark - "defaultObjectAccessControls" methods
 // These create a GTLQueryStorage object.
 
 + (instancetype)queryForDefaultObjectAccessControlsDeleteWithBucket:(NSString *)bucket
@@ -308,8 +304,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "objectAccessControls" methods
+#pragma mark - "objectAccessControls" methods
 // These create a GTLQueryStorage object.
 
 + (instancetype)queryForObjectAccessControlsDeleteWithBucket:(NSString *)bucket
@@ -397,8 +392,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "objects" methods
+#pragma mark - "objects" methods
 // These create a GTLQueryStorage object.
 
 + (instancetype)queryForObjectsComposeWithDestinationBucket:(NSString *)destinationBucket
@@ -530,8 +524,7 @@
 
 @end
 
-#pragma mark -
-#pragma mark method parameter objects
+#pragma mark - method parameter objects
 // These object are used only to pass a collection of parameters to a
 // method as a single item.
 

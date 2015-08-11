@@ -54,8 +54,7 @@
   return map;
 }
 
-#pragma mark -
-#pragma mark "searchanalytics" methods
+#pragma mark - "searchanalytics" methods
 // These create a GTLQueryWebmasters object.
 
 + (instancetype)queryForSearchanalyticsQueryWithSiteUrl:(NSString *)siteUrl {
@@ -66,8 +65,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "sitemaps" methods
+#pragma mark - "sitemaps" methods
 // These create a GTLQueryWebmasters object.
 
 + (instancetype)queryForSitemapsDeleteWithSiteUrl:(NSString *)siteUrl
@@ -106,8 +104,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "sites" methods
+#pragma mark - "sites" methods
 // These create a GTLQueryWebmasters object.
 
 + (instancetype)queryForSitesAddWithSiteUrl:(NSString *)siteUrl {
@@ -139,8 +136,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "urlcrawlerrorscounts" methods
+#pragma mark - "urlcrawlerrorscounts" methods
 // These create a GTLQueryWebmasters object.
 
 + (instancetype)queryForUrlcrawlerrorscountsQueryWithSiteUrl:(NSString *)siteUrl {
@@ -151,8 +147,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "urlcrawlerrorssamples" methods
+#pragma mark - "urlcrawlerrorssamples" methods
 // These create a GTLQueryWebmasters object.
 
 + (instancetype)queryForUrlcrawlerrorssamplesGetWithSiteUrl:(NSString *)siteUrl

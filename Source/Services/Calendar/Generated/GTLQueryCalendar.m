@@ -63,8 +63,7 @@
   return map;
 }
 
-#pragma mark -
-#pragma mark "acl" methods
+#pragma mark - "acl" methods
 // These create a GTLQueryCalendar object.
 
 + (instancetype)queryForAclDeleteWithCalendarId:(NSString *)calendarId
@@ -154,8 +153,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "calendarList" methods
+#pragma mark - "calendarList" methods
 // These create a GTLQueryCalendar object.
 
 + (instancetype)queryForCalendarListDeleteWithCalendarId:(NSString *)calendarId {
@@ -232,8 +230,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "calendars" methods
+#pragma mark - "calendars" methods
 // These create a GTLQueryCalendar object.
 
 + (instancetype)queryForCalendarsClearWithCalendarId:(NSString *)calendarId {
@@ -298,8 +295,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "channels" methods
+#pragma mark - "channels" methods
 // These create a GTLQueryCalendar object.
 
 + (instancetype)queryForChannelsStopWithObject:(GTLCalendarChannel *)object {
@@ -313,8 +309,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "colors" methods
+#pragma mark - "colors" methods
 // These create a GTLQueryCalendar object.
 
 + (instancetype)queryForColorsGet {
@@ -324,8 +319,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "events" methods
+#pragma mark - "events" methods
 // These create a GTLQueryCalendar object.
 
 + (instancetype)queryForEventsDeleteWithCalendarId:(NSString *)calendarId
@@ -461,8 +455,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "freebusy" methods
+#pragma mark - "freebusy" methods
 // These create a GTLQueryCalendar object.
 
 + (instancetype)queryForFreebusyQuery {
@@ -472,8 +465,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "settings" methods
+#pragma mark - "settings" methods
 // These create a GTLQueryCalendar object.
 
 + (instancetype)queryForSettingsGetWithSetting:(NSString *)setting {

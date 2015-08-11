@@ -41,8 +41,7 @@
          pageToken, parent, previous, showCompleted, showDeleted, showHidden,
          task, tasklist, updatedMin;
 
-#pragma mark -
-#pragma mark "tasklists" methods
+#pragma mark - "tasklists" methods
 // These create a GTLQueryTasks object.
 
 + (instancetype)queryForTasklistsDeleteWithTasklist:(NSString *)tasklist {
@@ -107,8 +106,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "tasks" methods
+#pragma mark - "tasks" methods
 // These create a GTLQueryTasks object.
 
 + (instancetype)queryForTasksClearWithTasklist:(NSString *)tasklist {

@@ -92,8 +92,7 @@
   return map;
 }
 
-#pragma mark -
-#pragma mark "bookshelves" methods
+#pragma mark - "bookshelves" methods
 // These create a GTLQueryBooks object.
 
 + (instancetype)queryForBookshelvesGetWithUserId:(NSString *)userId
@@ -114,8 +113,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "bookshelves.volumes" methods
+#pragma mark - "bookshelves.volumes" methods
 // These create a GTLQueryBooks object.
 
 + (instancetype)queryForBookshelvesVolumesListWithUserId:(NSString *)userId
@@ -128,8 +126,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "cloudloading" methods
+#pragma mark - "cloudloading" methods
 // These create a GTLQueryBooks object.
 
 + (instancetype)queryForCloudloadingAddBook {
@@ -158,8 +155,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "dictionary" methods
+#pragma mark - "dictionary" methods
 // These create a GTLQueryBooks object.
 
 + (instancetype)queryForDictionaryListOfflineMetadataWithCpksver:(NSString *)cpksver {
@@ -170,8 +166,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "layers.annotationData" methods
+#pragma mark - "layers.annotationData" methods
 // These create a GTLQueryBooks object.
 
 + (instancetype)queryForLayersAnnotationDataGetWithVolumeId:(NSString *)volumeId
@@ -200,8 +195,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "layers" methods
+#pragma mark - "layers" methods
 // These create a GTLQueryBooks object.
 
 + (instancetype)queryForLayersGetWithVolumeId:(NSString *)volumeId
@@ -222,8 +216,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "layers.volumeAnnotations" methods
+#pragma mark - "layers.volumeAnnotations" methods
 // These create a GTLQueryBooks object.
 
 + (instancetype)queryForLayersVolumeAnnotationsGetWithVolumeId:(NSString *)volumeId
@@ -250,8 +243,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "myconfig" methods
+#pragma mark - "myconfig" methods
 // These create a GTLQueryBooks object.
 
 + (instancetype)queryForMyconfigGetUserSettings {
@@ -304,8 +296,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "mylibrary.annotations" methods
+#pragma mark - "mylibrary.annotations" methods
 // These create a GTLQueryBooks object.
 
 + (instancetype)queryForMylibraryAnnotationsDeleteWithAnnotationId:(NSString *)annotationId {
@@ -358,8 +349,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "mylibrary.bookshelves" methods
+#pragma mark - "mylibrary.bookshelves" methods
 // These create a GTLQueryBooks object.
 
 + (instancetype)queryForMylibraryBookshelvesAddVolumeWithShelf:(NSString *)shelf
@@ -413,8 +403,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "mylibrary.bookshelves.volumes" methods
+#pragma mark - "mylibrary.bookshelves.volumes" methods
 // These create a GTLQueryBooks object.
 
 + (instancetype)queryForMylibraryBookshelvesVolumesListWithShelf:(NSString *)shelf {
@@ -425,8 +414,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "mylibrary.readingpositions" methods
+#pragma mark - "mylibrary.readingpositions" methods
 // These create a GTLQueryBooks object.
 
 + (instancetype)queryForMylibraryReadingpositionsGetWithVolumeId:(NSString *)volumeId {
@@ -448,8 +436,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "onboarding" methods
+#pragma mark - "onboarding" methods
 // These create a GTLQueryBooks object.
 
 + (instancetype)queryForOnboardingListCategories {
@@ -466,8 +453,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "promooffer" methods
+#pragma mark - "promooffer" methods
 // These create a GTLQueryBooks object.
 
 + (instancetype)queryForPromoofferAccept {
@@ -489,8 +475,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "volumes.associated" methods
+#pragma mark - "volumes.associated" methods
 // These create a GTLQueryBooks object.
 
 + (instancetype)queryForVolumesAssociatedListWithVolumeId:(NSString *)volumeId {
@@ -501,8 +486,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "volumes" methods
+#pragma mark - "volumes" methods
 // These create a GTLQueryBooks object.
 
 + (instancetype)queryForVolumesGetWithVolumeId:(NSString *)volumeId {
@@ -521,8 +505,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "volumes.mybooks" methods
+#pragma mark - "volumes.mybooks" methods
 // These create a GTLQueryBooks object.
 
 + (instancetype)queryForVolumesMybooksList {
@@ -532,8 +515,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "volumes.recommended" methods
+#pragma mark - "volumes.recommended" methods
 // These create a GTLQueryBooks object.
 
 + (instancetype)queryForVolumesRecommendedList {
@@ -553,8 +535,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "volumes.useruploaded" methods
+#pragma mark - "volumes.useruploaded" methods
 // These create a GTLQueryBooks object.
 
 + (instancetype)queryForVolumesUseruploadedList {

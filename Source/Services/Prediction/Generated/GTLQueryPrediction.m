@@ -63,8 +63,7 @@
   return map;
 }
 
-#pragma mark -
-#pragma mark "hostedmodels" methods
+#pragma mark - "hostedmodels" methods
 // These create a GTLQueryPrediction object.
 
 + (instancetype)queryForHostedmodelsPredictWithProject:(NSString *)project
@@ -77,8 +76,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "trainedmodels" methods
+#pragma mark - "trainedmodels" methods
 // These create a GTLQueryPrediction object.
 
 + (instancetype)queryForTrainedmodelsAnalyzeWithProject:(NSString *)project
@@ -148,8 +146,7 @@
 
 @end
 
-#pragma mark -
-#pragma mark method parameter objects
+#pragma mark - method parameter objects
 // These object are used only to pass a collection of parameters to a
 // method as a single item.
 

@@ -75,8 +75,7 @@
 @property (nonatomic, copy) NSString *websiteLocale;
 @property (nonatomic, copy) NSString *websiteUrl;
 
-#pragma mark -
-#pragma mark "accounts.adclients" methods
+#pragma mark - "accounts.adclients" methods
 // These create a GTLQueryAdSenseHost object.
 
 // Method: adsensehost.accounts.adclients.get
@@ -106,8 +105,7 @@
 // Fetches a GTLAdSenseHostAdClients.
 + (instancetype)queryForAccountsAdclientsListWithAccountId:(NSString *)accountId;
 
-#pragma mark -
-#pragma mark "accounts.adunits" methods
+#pragma mark - "accounts.adunits" methods
 // These create a GTLQueryAdSenseHost object.
 
 // Method: adsensehost.accounts.adunits.delete
@@ -209,8 +207,7 @@
                                               accountId:(NSString *)accountId
                                              adClientId:(NSString *)adClientId;
 
-#pragma mark -
-#pragma mark "accounts" methods
+#pragma mark - "accounts" methods
 // These create a GTLQueryAdSenseHost object.
 
 // Method: adsensehost.accounts.get
@@ -231,8 +228,7 @@
 // Fetches a GTLAdSenseHostAccounts.
 + (instancetype)queryForAccountsListWithFilterAdClientId:(NSArray *)filterAdClientId;
 
-#pragma mark -
-#pragma mark "accounts.reports" methods
+#pragma mark - "accounts.reports" methods
 // These create a GTLQueryAdSenseHost object.
 
 // Method: adsensehost.accounts.reports.generate
@@ -263,8 +259,7 @@
                                                    startDate:(NSString *)startDate
                                                      endDate:(NSString *)endDate;
 
-#pragma mark -
-#pragma mark "adclients" methods
+#pragma mark - "adclients" methods
 // These create a GTLQueryAdSenseHost object.
 
 // Method: adsensehost.adclients.get
@@ -289,8 +284,7 @@
 // Fetches a GTLAdSenseHostAdClients.
 + (instancetype)queryForAdclientsList;
 
-#pragma mark -
-#pragma mark "associationsessions" methods
+#pragma mark - "associationsessions" methods
 // These create a GTLQueryAdSenseHost object.
 
 // Method: adsensehost.associationsessions.start
@@ -323,8 +317,7 @@
 // Fetches a GTLAdSenseHostAssociationSession.
 + (instancetype)queryForAssociationsessionsVerifyWithToken:(NSString *)token;
 
-#pragma mark -
-#pragma mark "customchannels" methods
+#pragma mark - "customchannels" methods
 // These create a GTLQueryAdSenseHost object.
 
 // Method: adsensehost.customchannels.delete
@@ -397,8 +390,7 @@
 + (instancetype)queryForCustomchannelsUpdateWithObject:(GTLAdSenseHostCustomChannel *)object
                                             adClientId:(NSString *)adClientId;
 
-#pragma mark -
-#pragma mark "reports" methods
+#pragma mark - "reports" methods
 // These create a GTLQueryAdSenseHost object.
 
 // Method: adsensehost.reports.generate
@@ -427,8 +419,7 @@
 + (instancetype)queryForReportsGenerateWithStartDate:(NSString *)startDate
                                              endDate:(NSString *)endDate;
 
-#pragma mark -
-#pragma mark "urlchannels" methods
+#pragma mark - "urlchannels" methods
 // These create a GTLQueryAdSenseHost object.
 
 // Method: adsensehost.urlchannels.delete

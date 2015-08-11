@@ -62,8 +62,7 @@
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, copy) NSString *userId;
 
-#pragma mark -
-#pragma mark "activities" methods
+#pragma mark - "activities" methods
 // These create a GTLQueryPlus object.
 
 // Method: plus.activities.get
@@ -124,8 +123,7 @@
 // Fetches a GTLPlusActivityFeed.
 + (instancetype)queryForActivitiesSearchWithQuery:(NSString *)query;
 
-#pragma mark -
-#pragma mark "comments" methods
+#pragma mark - "comments" methods
 // These create a GTLQueryPlus object.
 
 // Method: plus.comments.get
@@ -159,8 +157,7 @@
 // Fetches a GTLPlusCommentFeed.
 + (instancetype)queryForCommentsListWithActivityId:(NSString *)activityId;
 
-#pragma mark -
-#pragma mark "moments" methods
+#pragma mark - "moments" methods
 // These create a GTLQueryPlus object.
 
 // Method: plus.moments.insert
@@ -205,8 +202,7 @@
 + (instancetype)queryForMomentsListWithUserId:(NSString *)userId
                                    collection:(NSString *)collection;
 
-#pragma mark -
-#pragma mark "people" methods
+#pragma mark - "people" methods
 // These create a GTLQueryPlus object.
 
 // Method: plus.people.get

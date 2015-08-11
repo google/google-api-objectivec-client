@@ -44,8 +44,7 @@
 @dynamic activityId, collection, commentId, debug, fields, language, maxResults,
          orderBy, pageToken, query, sortOrder, targetUrl, type, userId;
 
-#pragma mark -
-#pragma mark "activities" methods
+#pragma mark - "activities" methods
 // These create a GTLQueryPlus object.
 
 + (instancetype)queryForActivitiesGetWithActivityId:(NSString *)activityId {
@@ -74,8 +73,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "comments" methods
+#pragma mark - "comments" methods
 // These create a GTLQueryPlus object.
 
 + (instancetype)queryForCommentsGetWithCommentId:(NSString *)commentId {
@@ -94,8 +92,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "moments" methods
+#pragma mark - "moments" methods
 // These create a GTLQueryPlus object.
 
 + (instancetype)queryForMomentsInsertWithObject:(GTLPlusMoment *)object
@@ -124,8 +121,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "people" methods
+#pragma mark - "people" methods
 // These create a GTLQueryPlus object.
 
 + (instancetype)queryForPeopleGetWithUserId:(NSString *)userId {

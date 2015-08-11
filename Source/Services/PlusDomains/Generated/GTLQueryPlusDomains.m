@@ -53,8 +53,7 @@
   return map;
 }
 
-#pragma mark -
-#pragma mark "activities" methods
+#pragma mark - "activities" methods
 // These create a GTLQueryPlusDomains object.
 
 + (instancetype)queryForActivitiesGetWithActivityId:(NSString *)activityId {
@@ -89,8 +88,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "audiences" methods
+#pragma mark - "audiences" methods
 // These create a GTLQueryPlusDomains object.
 
 + (instancetype)queryForAudiencesListWithUserId:(NSString *)userId {
@@ -101,8 +99,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "circles" methods
+#pragma mark - "circles" methods
 // These create a GTLQueryPlusDomains object.
 
 + (instancetype)queryForCirclesAddPeopleWithCircleId:(NSString *)circleId {
@@ -185,8 +182,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "comments" methods
+#pragma mark - "comments" methods
 // These create a GTLQueryPlusDomains object.
 
 + (instancetype)queryForCommentsGetWithCommentId:(NSString *)commentId {
@@ -219,8 +215,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "media" methods
+#pragma mark - "media" methods
 // These create a GTLQueryPlusDomains object.
 
 + (instancetype)queryForMediaInsertWithObject:(GTLPlusDomainsMedia *)object
@@ -241,8 +236,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "people" methods
+#pragma mark - "people" methods
 // These create a GTLQueryPlusDomains object.
 
 + (instancetype)queryForPeopleGetWithUserId:(NSString *)userId {

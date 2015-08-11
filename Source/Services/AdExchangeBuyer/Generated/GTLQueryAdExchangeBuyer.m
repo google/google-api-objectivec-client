@@ -56,8 +56,7 @@
   return map;
 }
 
-#pragma mark -
-#pragma mark "accounts" methods
+#pragma mark - "accounts" methods
 // These create a GTLQueryAdExchangeBuyer object.
 
 + (instancetype)queryForAccountsGetWithIdentifier:(NSInteger)identifier {
@@ -103,8 +102,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "billingInfo" methods
+#pragma mark - "billingInfo" methods
 // These create a GTLQueryAdExchangeBuyer object.
 
 + (instancetype)queryForBillingInfoGetWithAccountId:(NSInteger)accountId {
@@ -122,8 +120,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "budget" methods
+#pragma mark - "budget" methods
 // These create a GTLQueryAdExchangeBuyer object.
 
 + (instancetype)queryForBudgetGetWithAccountId:(long long)accountId
@@ -168,8 +165,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "creatives" methods
+#pragma mark - "creatives" methods
 // These create a GTLQueryAdExchangeBuyer object.
 
 + (instancetype)queryForCreativesGetWithAccountId:(NSInteger)accountId
@@ -201,8 +197,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "performanceReport" methods
+#pragma mark - "performanceReport" methods
 // These create a GTLQueryAdExchangeBuyer object.
 
 + (instancetype)queryForPerformanceReportListWithAccountId:(long long)accountId
@@ -217,8 +212,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "pretargetingConfig" methods
+#pragma mark - "pretargetingConfig" methods
 // These create a GTLQueryAdExchangeBuyer object.
 
 + (instancetype)queryForPretargetingConfigDeleteWithAccountId:(long long)accountId

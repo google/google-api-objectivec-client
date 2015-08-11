@@ -75,8 +75,7 @@
 @property (nonatomic, retain) NSArray *trainingInstances;  // of GTLPredictionTrainedmodelsInsertTrainingInstancesItem
 @property (nonatomic, retain) NSArray *utility;  // of GTLPredictionTrainedmodelsInsertUtilityItem
 
-#pragma mark -
-#pragma mark "hostedmodels" methods
+#pragma mark - "hostedmodels" methods
 // These create a GTLQueryPrediction object.
 
 // Method: prediction.hostedmodels.predict
@@ -94,8 +93,7 @@
 + (instancetype)queryForHostedmodelsPredictWithProject:(NSString *)project
                                        hostedModelName:(NSString *)hostedModelName;
 
-#pragma mark -
-#pragma mark "trainedmodels" methods
+#pragma mark - "trainedmodels" methods
 // These create a GTLQueryPrediction object.
 
 // Method: prediction.trainedmodels.analyze
@@ -196,8 +194,7 @@
 
 @end
 
-#pragma mark -
-#pragma mark method parameter objects
+#pragma mark - method parameter objects
 // These object are used only to pass a collection of parameters to a
 // method as a single item.
 

@@ -77,8 +77,7 @@
 @property (nonatomic, assign) NSUInteger timeoutMs;
 @property (nonatomic, assign) BOOL useQueryCache;
 
-#pragma mark -
-#pragma mark "datasets" methods
+#pragma mark - "datasets" methods
 // These create a GTLQueryBigquery object.
 
 // Method: bigquery.datasets.delete
@@ -167,8 +166,7 @@
 // Fetches a GTLBigqueryDataset.
 + (instancetype)queryForDatasetsUpdateWithObject:(GTLBigqueryDataset *)object;
 
-#pragma mark -
-#pragma mark "jobs" methods
+#pragma mark - "jobs" methods
 // These create a GTLQueryBigquery object.
 
 // Method: bigquery.jobs.cancel
@@ -308,8 +306,7 @@
 + (instancetype)queryForJobsQueryWithProjectId:(NSString *)projectId
                                          query:(NSString *)query;
 
-#pragma mark -
-#pragma mark "projects" methods
+#pragma mark - "projects" methods
 // These create a GTLQueryBigquery object.
 
 // Method: bigquery.projects.list
@@ -325,8 +322,7 @@
 // Fetches a GTLBigqueryProjectList.
 + (instancetype)queryForProjectsList;
 
-#pragma mark -
-#pragma mark "tabledata" methods
+#pragma mark - "tabledata" methods
 // These create a GTLQueryBigquery object.
 
 // Method: bigquery.tabledata.insertAll
@@ -376,8 +372,7 @@
                                          datasetId:(NSString *)datasetId
                                            tableId:(NSString *)tableId;
 
-#pragma mark -
-#pragma mark "tables" methods
+#pragma mark - "tables" methods
 // These create a GTLQueryBigquery object.
 
 // Method: bigquery.tables.delete
@@ -473,8 +468,7 @@
 
 @end
 
-#pragma mark -
-#pragma mark method parameter objects
+#pragma mark - method parameter objects
 // These object are used only to pass a collection of parameters to a
 // method as a single item.
 

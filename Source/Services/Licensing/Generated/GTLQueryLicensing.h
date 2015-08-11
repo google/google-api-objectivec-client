@@ -56,8 +56,7 @@
 @property (nonatomic, copy) NSString *skuId;
 @property (nonatomic, copy) NSString *userId;
 
-#pragma mark -
-#pragma mark "licenseAssignments" methods
+#pragma mark - "licenseAssignments" methods
 // These create a GTLQueryLicensing object.
 
 // Method: licensing.licenseAssignments.delete

@@ -38,8 +38,7 @@
 
 @dynamic customerId, fields, maxResults, pageToken, productId, skuId, userId;
 
-#pragma mark -
-#pragma mark "licenseAssignments" methods
+#pragma mark - "licenseAssignments" methods
 // These create a GTLQueryLicensing object.
 
 + (instancetype)queryForLicenseAssignmentsDeleteWithProductId:(NSString *)productId

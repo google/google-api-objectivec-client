@@ -90,8 +90,7 @@
   return map;
 }
 
-#pragma mark -
-#pragma mark "data.ga" methods
+#pragma mark - "data.ga" methods
 // These create a GTLQueryAnalytics object.
 
 + (instancetype)queryForDataGaGetWithIds:(NSString *)ids
@@ -108,8 +107,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "data.mcf" methods
+#pragma mark - "data.mcf" methods
 // These create a GTLQueryAnalytics object.
 
 + (instancetype)queryForDataMcfGetWithIds:(NSString *)ids
@@ -126,8 +124,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "data.realtime" methods
+#pragma mark - "data.realtime" methods
 // These create a GTLQueryAnalytics object.
 
 + (instancetype)queryForDataRealtimeGetWithIds:(NSString *)ids
@@ -140,8 +137,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "management.accounts" methods
+#pragma mark - "management.accounts" methods
 // These create a GTLQueryAnalytics object.
 
 + (instancetype)queryForManagementAccountsList {
@@ -151,8 +147,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "management.accountSummaries" methods
+#pragma mark - "management.accountSummaries" methods
 // These create a GTLQueryAnalytics object.
 
 + (instancetype)queryForManagementAccountSummariesList {
@@ -162,8 +157,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "management.accountUserLinks" methods
+#pragma mark - "management.accountUserLinks" methods
 // These create a GTLQueryAnalytics object.
 
 + (instancetype)queryForManagementAccountUserLinksDeleteWithAccountId:(NSString *)accountId
@@ -213,8 +207,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "management.customDataSources" methods
+#pragma mark - "management.customDataSources" methods
 // These create a GTLQueryAnalytics object.
 
 + (instancetype)queryForManagementCustomDataSourcesListWithAccountId:(NSString *)accountId
@@ -227,8 +220,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "management.customDimensions" methods
+#pragma mark - "management.customDimensions" methods
 // These create a GTLQueryAnalytics object.
 
 + (instancetype)queryForManagementCustomDimensionsGetWithAccountId:(NSString *)accountId
@@ -305,8 +297,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "management.customMetrics" methods
+#pragma mark - "management.customMetrics" methods
 // These create a GTLQueryAnalytics object.
 
 + (instancetype)queryForManagementCustomMetricsGetWithAccountId:(NSString *)accountId
@@ -383,8 +374,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "management.experiments" methods
+#pragma mark - "management.experiments" methods
 // These create a GTLQueryAnalytics object.
 
 + (instancetype)queryForManagementExperimentsDeleteWithAccountId:(NSString *)accountId
@@ -484,8 +474,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "management.filters" methods
+#pragma mark - "management.filters" methods
 // These create a GTLQueryAnalytics object.
 
 + (instancetype)queryForManagementFiltersDeleteWithAccountId:(NSString *)accountId
@@ -562,8 +551,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "management.goals" methods
+#pragma mark - "management.goals" methods
 // These create a GTLQueryAnalytics object.
 
 + (instancetype)queryForManagementGoalsGetWithAccountId:(NSString *)accountId
@@ -650,8 +638,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "management.profileFilterLinks" methods
+#pragma mark - "management.profileFilterLinks" methods
 // These create a GTLQueryAnalytics object.
 
 + (instancetype)queryForManagementProfileFilterLinksDeleteWithAccountId:(NSString *)accountId
@@ -751,8 +738,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "management.profiles" methods
+#pragma mark - "management.profiles" methods
 // These create a GTLQueryAnalytics object.
 
 + (instancetype)queryForManagementProfilesDeleteWithAccountId:(NSString *)accountId
@@ -840,8 +826,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "management.profileUserLinks" methods
+#pragma mark - "management.profileUserLinks" methods
 // These create a GTLQueryAnalytics object.
 
 + (instancetype)queryForManagementProfileUserLinksDeleteWithAccountId:(NSString *)accountId
@@ -907,8 +892,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "management.segments" methods
+#pragma mark - "management.segments" methods
 // These create a GTLQueryAnalytics object.
 
 + (instancetype)queryForManagementSegmentsList {
@@ -918,8 +902,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "management.unsampledReports" methods
+#pragma mark - "management.unsampledReports" methods
 // These create a GTLQueryAnalytics object.
 
 + (instancetype)queryForManagementUnsampledReportsGetWithAccountId:(NSString *)accountId
@@ -966,8 +949,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "management.uploads" methods
+#pragma mark - "management.uploads" methods
 // These create a GTLQueryAnalytics object.
 
 + (instancetype)queryForManagementUploadsDeleteUploadDataWithAccountId:(NSString *)accountId
@@ -1021,8 +1003,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "management.webproperties" methods
+#pragma mark - "management.webproperties" methods
 // These create a GTLQueryAnalytics object.
 
 + (instancetype)queryForManagementWebpropertiesGetWithAccountId:(NSString *)accountId
@@ -1089,8 +1070,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "management.webPropertyAdWordsLinks" methods
+#pragma mark - "management.webPropertyAdWordsLinks" methods
 // These create a GTLQueryAnalytics object.
 
 + (instancetype)queryForManagementWebPropertyAdWordsLinksDeleteWithAccountId:(NSString *)accountId
@@ -1178,8 +1158,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "management.webpropertyUserLinks" methods
+#pragma mark - "management.webpropertyUserLinks" methods
 // These create a GTLQueryAnalytics object.
 
 + (instancetype)queryForManagementWebpropertyUserLinksDeleteWithAccountId:(NSString *)accountId
@@ -1237,8 +1216,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "metadata.columns" methods
+#pragma mark - "metadata.columns" methods
 // These create a GTLQueryAnalytics object.
 
 + (instancetype)queryForMetadataColumnsListWithReportType:(NSString *)reportType {
@@ -1249,8 +1227,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "provisioning" methods
+#pragma mark - "provisioning" methods
 // These create a GTLQueryAnalytics object.
 
 + (instancetype)queryForProvisioningCreateAccountTicketWithObject:(GTLAnalyticsAccountTicket *)object {

@@ -60,8 +60,7 @@
   return map;
 }
 
-#pragma mark -
-#pragma mark "accounts.adclients" methods
+#pragma mark - "accounts.adclients" methods
 // These create a GTLQueryAdExchangeSeller object.
 
 + (instancetype)queryForAccountsAdclientsListWithAccountId:(NSString *)accountId {
@@ -72,8 +71,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "accounts.alerts" methods
+#pragma mark - "accounts.alerts" methods
 // These create a GTLQueryAdExchangeSeller object.
 
 + (instancetype)queryForAccountsAlertsListWithAccountId:(NSString *)accountId {
@@ -84,8 +82,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "accounts.customchannels" methods
+#pragma mark - "accounts.customchannels" methods
 // These create a GTLQueryAdExchangeSeller object.
 
 + (instancetype)queryForAccountsCustomchannelsGetWithAccountId:(NSString *)accountId
@@ -110,8 +107,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "accounts" methods
+#pragma mark - "accounts" methods
 // These create a GTLQueryAdExchangeSeller object.
 
 + (instancetype)queryForAccountsGetWithAccountId:(NSString *)accountId {
@@ -129,8 +125,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "accounts.metadata.dimensions" methods
+#pragma mark - "accounts.metadata.dimensions" methods
 // These create a GTLQueryAdExchangeSeller object.
 
 + (instancetype)queryForAccountsMetadataDimensionsListWithAccountId:(NSString *)accountId {
@@ -141,8 +136,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "accounts.metadata.metrics" methods
+#pragma mark - "accounts.metadata.metrics" methods
 // These create a GTLQueryAdExchangeSeller object.
 
 + (instancetype)queryForAccountsMetadataMetricsListWithAccountId:(NSString *)accountId {
@@ -153,8 +147,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "accounts.preferreddeals" methods
+#pragma mark - "accounts.preferreddeals" methods
 // These create a GTLQueryAdExchangeSeller object.
 
 + (instancetype)queryForAccountsPreferreddealsGetWithAccountId:(NSString *)accountId
@@ -175,8 +168,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "accounts.reports" methods
+#pragma mark - "accounts.reports" methods
 // These create a GTLQueryAdExchangeSeller object.
 
 + (instancetype)queryForAccountsReportsGenerateWithAccountId:(NSString *)accountId
@@ -191,8 +183,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "accounts.reports.saved" methods
+#pragma mark - "accounts.reports.saved" methods
 // These create a GTLQueryAdExchangeSeller object.
 
 + (instancetype)queryForAccountsReportsSavedGenerateWithAccountId:(NSString *)accountId
@@ -213,8 +204,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "accounts.urlchannels" methods
+#pragma mark - "accounts.urlchannels" methods
 // These create a GTLQueryAdExchangeSeller object.
 
 + (instancetype)queryForAccountsUrlchannelsListWithAccountId:(NSString *)accountId

@@ -51,8 +51,7 @@
 //
 @property (nonatomic, retain) GTLQPXExpressTripOptionsRequest *request;
 
-#pragma mark -
-#pragma mark "trips" methods
+#pragma mark - "trips" methods
 // These create a GTLQueryQPXExpress object.
 
 // Method: qpxExpress.trips.search

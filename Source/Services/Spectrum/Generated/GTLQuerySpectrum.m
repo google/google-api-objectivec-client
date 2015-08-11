@@ -58,8 +58,7 @@
   return map;
 }
 
-#pragma mark -
-#pragma mark "paws" methods
+#pragma mark - "paws" methods
 // These create a GTLQuerySpectrum object.
 
 + (instancetype)queryForPawsGetSpectrum {

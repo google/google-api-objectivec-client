@@ -61,8 +61,7 @@
   return map;
 }
 
-#pragma mark -
-#pragma mark "blogs" methods
+#pragma mark - "blogs" methods
 // These create a GTLQueryBlogger object.
 
 + (instancetype)queryForBlogsGetWithBlogId:(NSString *)blogId {
@@ -89,8 +88,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "blogUserInfos" methods
+#pragma mark - "blogUserInfos" methods
 // These create a GTLQueryBlogger object.
 
 + (instancetype)queryForBlogUserInfosGetWithUserId:(NSString *)userId
@@ -103,8 +101,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "comments" methods
+#pragma mark - "comments" methods
 // These create a GTLQueryBlogger object.
 
 + (instancetype)queryForCommentsApproveWithBlogId:(NSString *)blogId
@@ -184,8 +181,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "pages" methods
+#pragma mark - "pages" methods
 // These create a GTLQueryBlogger object.
 
 + (instancetype)queryForPagesDeleteWithBlogId:(NSString *)blogId
@@ -281,8 +277,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "pageViews" methods
+#pragma mark - "pageViews" methods
 // These create a GTLQueryBlogger object.
 
 + (instancetype)queryForPageViewsGetWithBlogId:(NSString *)blogId {
@@ -293,8 +288,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "posts" methods
+#pragma mark - "posts" methods
 // These create a GTLQueryBlogger object.
 
 + (instancetype)queryForPostsDeleteWithBlogId:(NSString *)blogId
@@ -410,8 +404,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "postUserInfos" methods
+#pragma mark - "postUserInfos" methods
 // These create a GTLQueryBlogger object.
 
 + (instancetype)queryForPostUserInfosGetWithUserId:(NSString *)userId
@@ -436,8 +429,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "users" methods
+#pragma mark - "users" methods
 // These create a GTLQueryBlogger object.
 
 + (instancetype)queryForUsersGetWithUserId:(NSString *)userId {

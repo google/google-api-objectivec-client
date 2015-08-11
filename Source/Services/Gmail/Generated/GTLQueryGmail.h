@@ -75,8 +75,7 @@
 @property (nonatomic, copy) NSString *topicName;
 @property (nonatomic, copy) NSString *userId;
 
-#pragma mark -
-#pragma mark "users.drafts" methods
+#pragma mark - "users.drafts" methods
 // These create a GTLQueryGmail object.
 
 // Method: gmail.users.drafts.create
@@ -176,8 +175,7 @@
 // Fetches a GTLGmailDraft.
 + (instancetype)queryForUsersDraftsUpdateWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
-#pragma mark -
-#pragma mark "users" methods
+#pragma mark - "users" methods
 // These create a GTLQueryGmail object.
 
 // Method: gmail.users.getProfile
@@ -193,8 +191,7 @@
 // Fetches a GTLGmailProfile.
 + (instancetype)queryForUsersGetProfile;
 
-#pragma mark -
-#pragma mark "users.history" methods
+#pragma mark - "users.history" methods
 // These create a GTLQueryGmail object.
 
 // Method: gmail.users.history.list
@@ -224,8 +221,7 @@
 // Fetches a GTLGmailListHistoryResponse.
 + (instancetype)queryForUsersHistoryList;
 
-#pragma mark -
-#pragma mark "users.labels" methods
+#pragma mark - "users.labels" methods
 // These create a GTLQueryGmail object.
 
 // Method: gmail.users.labels.create
@@ -309,8 +305,7 @@
 // Fetches a GTLGmailLabel.
 + (instancetype)queryForUsersLabelsUpdate;
 
-#pragma mark -
-#pragma mark "users.messages.attachments" methods
+#pragma mark - "users.messages.attachments" methods
 // These create a GTLQueryGmail object.
 
 // Method: gmail.users.messages.attachments.get
@@ -327,8 +322,7 @@
 // Fetches a GTLGmailMessagePartBody.
 + (instancetype)queryForUsersMessagesAttachmentsGet;
 
-#pragma mark -
-#pragma mark "users.messages" methods
+#pragma mark - "users.messages" methods
 // These create a GTLQueryGmail object.
 
 // Method: gmail.users.messages.delete
@@ -491,8 +485,7 @@
 // Fetches a GTLGmailMessage.
 + (instancetype)queryForUsersMessagesUntrash;
 
-#pragma mark -
-#pragma mark "users" methods
+#pragma mark - "users" methods
 // These create a GTLQueryGmail object.
 
 // Method: gmail.users.stop
@@ -506,8 +499,7 @@
 //   kGTLAuthScopeGmailReadonly
 + (instancetype)queryForUsersStop;
 
-#pragma mark -
-#pragma mark "users.threads" methods
+#pragma mark - "users.threads" methods
 // These create a GTLQueryGmail object.
 
 // Method: gmail.users.threads.delete
@@ -600,8 +592,7 @@
 // Fetches a GTLGmailThread.
 + (instancetype)queryForUsersThreadsUntrash;
 
-#pragma mark -
-#pragma mark "users" methods
+#pragma mark - "users" methods
 // These create a GTLQueryGmail object.
 
 // Method: gmail.users.watch

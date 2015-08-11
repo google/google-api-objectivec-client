@@ -66,8 +66,7 @@
 @property (nonatomic, copy) NSString *sourceItemId;
 @property (nonatomic, copy) NSString *userToken;
 
-#pragma mark -
-#pragma mark "accounts" methods
+#pragma mark - "accounts" methods
 // These create a GTLQueryMirror object.
 
 // Method: mirror.accounts.insert
@@ -83,8 +82,7 @@
                                      accountType:(NSString *)accountType
                                      accountName:(NSString *)accountName;
 
-#pragma mark -
-#pragma mark "contacts" methods
+#pragma mark - "contacts" methods
 // These create a GTLQueryMirror object.
 
 // Method: mirror.contacts.delete
@@ -138,8 +136,7 @@
 + (instancetype)queryForContactsUpdateWithObject:(GTLMirrorContact *)object
                                       identifier:(NSString *)identifier;
 
-#pragma mark -
-#pragma mark "locations" methods
+#pragma mark - "locations" methods
 // These create a GTLQueryMirror object.
 
 // Method: mirror.locations.get
@@ -160,8 +157,7 @@
 // Fetches a GTLMirrorLocationsListResponse.
 + (instancetype)queryForLocationsList;
 
-#pragma mark -
-#pragma mark "settings" methods
+#pragma mark - "settings" methods
 // These create a GTLQueryMirror object.
 
 // Method: mirror.settings.get
@@ -177,8 +173,7 @@
 // Fetches a GTLMirrorSetting.
 + (instancetype)queryForSettingsGetWithIdentifier:(NSString *)identifier;
 
-#pragma mark -
-#pragma mark "subscriptions" methods
+#pragma mark - "subscriptions" methods
 // These create a GTLQueryMirror object.
 
 // Method: mirror.subscriptions.delete
@@ -213,8 +208,7 @@
 + (instancetype)queryForSubscriptionsUpdateWithObject:(GTLMirrorSubscription *)object
                                            identifier:(NSString *)identifier;
 
-#pragma mark -
-#pragma mark "timeline.attachments" methods
+#pragma mark - "timeline.attachments" methods
 // These create a GTLQueryMirror object.
 
 // Method: mirror.timeline.attachments.delete
@@ -260,8 +254,7 @@
 // Fetches a GTLMirrorAttachmentsListResponse.
 + (instancetype)queryForTimelineAttachmentsListWithItemId:(NSString *)itemId;
 
-#pragma mark -
-#pragma mark "timeline" methods
+#pragma mark - "timeline" methods
 // These create a GTLQueryMirror object.
 
 // Method: mirror.timeline.delete

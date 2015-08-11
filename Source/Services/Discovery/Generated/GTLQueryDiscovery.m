@@ -39,8 +39,7 @@
 
 @dynamic api, fields, name, preferred, version;
 
-#pragma mark -
-#pragma mark "apis" methods
+#pragma mark - "apis" methods
 // These create a GTLQueryDiscovery object.
 
 + (instancetype)queryForApisGetRestWithApi:(NSString *)api

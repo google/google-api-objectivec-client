@@ -64,8 +64,7 @@
   return map;
 }
 
-#pragma mark -
-#pragma mark "users.dataset" methods
+#pragma mark - "users.dataset" methods
 // These create a GTLQueryFitness object.
 
 + (instancetype)queryForUsersDatasetAggregateWithUserId:(NSString *)userId
@@ -80,8 +79,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "users.dataSources" methods
+#pragma mark - "users.dataSources" methods
 // These create a GTLQueryFitness object.
 
 + (instancetype)queryForUsersDataSourcesCreateWithUserId:(NSString *)userId {
@@ -92,8 +90,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "users.dataSources.datasets" methods
+#pragma mark - "users.dataSources.datasets" methods
 // These create a GTLQueryFitness object.
 
 + (instancetype)queryForUsersDataSourcesDatasetsDeleteWithUserId:(NSString *)userId
@@ -131,8 +128,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "users.dataSources" methods
+#pragma mark - "users.dataSources" methods
 // These create a GTLQueryFitness object.
 
 + (instancetype)queryForUsersDataSourcesDeleteWithUserId:(NSString *)userId
@@ -183,8 +179,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "users.sessions" methods
+#pragma mark - "users.sessions" methods
 // These create a GTLQueryFitness object.
 
 + (instancetype)queryForUsersSessionsDeleteWithUserId:(NSString *)userId

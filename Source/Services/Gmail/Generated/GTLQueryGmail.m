@@ -68,8 +68,7 @@
   return map;
 }
 
-#pragma mark -
-#pragma mark "users.drafts" methods
+#pragma mark - "users.drafts" methods
 // These create a GTLQueryGmail object.
 
 + (instancetype)queryForUsersDraftsCreateWithUploadParameters:(GTLUploadParameters *)uploadParametersOrNil {
@@ -116,8 +115,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "users" methods
+#pragma mark - "users" methods
 // These create a GTLQueryGmail object.
 
 + (instancetype)queryForUsersGetProfile {
@@ -127,8 +125,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "users.history" methods
+#pragma mark - "users.history" methods
 // These create a GTLQueryGmail object.
 
 + (instancetype)queryForUsersHistoryList {
@@ -138,8 +135,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "users.labels" methods
+#pragma mark - "users.labels" methods
 // These create a GTLQueryGmail object.
 
 + (instancetype)queryForUsersLabelsCreate {
@@ -183,8 +179,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "users.messages.attachments" methods
+#pragma mark - "users.messages.attachments" methods
 // These create a GTLQueryGmail object.
 
 + (instancetype)queryForUsersMessagesAttachmentsGet {
@@ -194,8 +189,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "users.messages" methods
+#pragma mark - "users.messages" methods
 // These create a GTLQueryGmail object.
 
 + (instancetype)queryForUsersMessagesDelete {
@@ -263,8 +257,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "users" methods
+#pragma mark - "users" methods
 // These create a GTLQueryGmail object.
 
 + (instancetype)queryForUsersStop {
@@ -273,8 +266,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "users.threads" methods
+#pragma mark - "users.threads" methods
 // These create a GTLQueryGmail object.
 
 + (instancetype)queryForUsersThreadsDelete {
@@ -318,8 +310,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "users" methods
+#pragma mark - "users" methods
 // These create a GTLQueryGmail object.
 
 + (instancetype)queryForUsersWatch {
