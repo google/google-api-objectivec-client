@@ -38,8 +38,7 @@
 
 @dynamic fields, request;
 
-#pragma mark -
-#pragma mark "trips" methods
+#pragma mark - "trips" methods
 // These create a GTLQueryQPXExpress object.
 
 + (instancetype)queryForTripsSearch {

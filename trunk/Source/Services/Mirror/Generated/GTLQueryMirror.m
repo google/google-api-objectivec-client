@@ -56,8 +56,7 @@
   return map;
 }
 
-#pragma mark -
-#pragma mark "accounts" methods
+#pragma mark - "accounts" methods
 // These create a GTLQueryMirror object.
 
 + (instancetype)queryForAccountsInsertWithObject:(GTLMirrorAccount *)object
@@ -78,8 +77,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "contacts" methods
+#pragma mark - "contacts" methods
 // These create a GTLQueryMirror object.
 
 + (instancetype)queryForContactsDeleteWithIdentifier:(NSString *)identifier {
@@ -144,8 +142,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "locations" methods
+#pragma mark - "locations" methods
 // These create a GTLQueryMirror object.
 
 + (instancetype)queryForLocationsGetWithIdentifier:(NSString *)identifier {
@@ -163,8 +160,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "settings" methods
+#pragma mark - "settings" methods
 // These create a GTLQueryMirror object.
 
 + (instancetype)queryForSettingsGetWithIdentifier:(NSString *)identifier {
@@ -175,8 +171,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "subscriptions" methods
+#pragma mark - "subscriptions" methods
 // These create a GTLQueryMirror object.
 
 + (instancetype)queryForSubscriptionsDeleteWithIdentifier:(NSString *)identifier {
@@ -219,8 +214,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "timeline.attachments" methods
+#pragma mark - "timeline.attachments" methods
 // These create a GTLQueryMirror object.
 
 + (instancetype)queryForTimelineAttachmentsDeleteWithItemId:(NSString *)itemId
@@ -260,8 +254,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "timeline" methods
+#pragma mark - "timeline" methods
 // These create a GTLQueryMirror object.
 
 + (instancetype)queryForTimelineDeleteWithIdentifier:(NSString *)identifier {

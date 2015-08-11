@@ -91,8 +91,7 @@
   return map;
 }
 
-#pragma mark -
-#pragma mark "assets" methods
+#pragma mark - "assets" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForAssetsGetWithIdentifier:(NSString *)identifier {
@@ -110,8 +109,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "assets.parents" methods
+#pragma mark - "assets.parents" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForAssetsParentsListWithIdentifier:(NSString *)identifier {
@@ -122,8 +120,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "assets.permissions" methods
+#pragma mark - "assets.permissions" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForAssetsPermissionsListWithIdentifier:(NSString *)identifier {
@@ -134,8 +131,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "layers" methods
+#pragma mark - "layers" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForLayersCancelProcessingWithIdentifier:(NSString *)identifier {
@@ -190,8 +186,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "layers.parents" methods
+#pragma mark - "layers.parents" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForLayersParentsListWithIdentifier:(NSString *)identifier {
@@ -202,8 +197,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "layers" methods
+#pragma mark - "layers" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForLayersPatchWithIdentifier:(NSString *)identifier {
@@ -213,8 +207,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "layers.permissions" methods
+#pragma mark - "layers.permissions" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForLayersPermissionsBatchDeleteWithIdentifier:(NSString *)identifier {
@@ -241,8 +234,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "layers" methods
+#pragma mark - "layers" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForLayersProcessWithIdentifier:(NSString *)identifier {
@@ -269,8 +261,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "maps" methods
+#pragma mark - "maps" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForMapsCreate {
@@ -324,8 +315,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "maps.permissions" methods
+#pragma mark - "maps.permissions" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForMapsPermissionsBatchDeleteWithIdentifier:(NSString *)identifier {
@@ -352,8 +342,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "maps" methods
+#pragma mark - "maps" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForMapsPublishWithIdentifier:(NSString *)identifier {
@@ -372,8 +361,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "projects.icons" methods
+#pragma mark - "projects.icons" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForProjectsIconsCreateWithProjectId:(NSString *)projectId
@@ -404,8 +392,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "projects" methods
+#pragma mark - "projects" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForProjectsList {
@@ -415,8 +402,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "rasterCollections" methods
+#pragma mark - "rasterCollections" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForRasterCollectionsCancelProcessingWithIdentifier:(NSString *)identifier {
@@ -456,8 +442,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "rasterCollections.parents" methods
+#pragma mark - "rasterCollections.parents" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForRasterCollectionsParentsListWithIdentifier:(NSString *)identifier {
@@ -468,8 +453,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "rasterCollections" methods
+#pragma mark - "rasterCollections" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForRasterCollectionsPatchWithIdentifier:(NSString *)identifier {
@@ -479,8 +463,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "rasterCollections.permissions" methods
+#pragma mark - "rasterCollections.permissions" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForRasterCollectionsPermissionsBatchDeleteWithIdentifier:(NSString *)identifier {
@@ -507,8 +490,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "rasterCollections" methods
+#pragma mark - "rasterCollections" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForRasterCollectionsProcessWithIdentifier:(NSString *)identifier {
@@ -519,8 +501,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "rasterCollections.rasters" methods
+#pragma mark - "rasterCollections.rasters" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForRasterCollectionsRastersBatchDeleteWithIdentifier:(NSString *)identifier {
@@ -547,8 +528,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "rasters" methods
+#pragma mark - "rasters" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForRastersDeleteWithIdentifier:(NSString *)identifier {
@@ -558,8 +538,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "rasters.files" methods
+#pragma mark - "rasters.files" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForRastersFilesInsertWithIdentifier:(NSString *)identifier
@@ -573,8 +552,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "rasters" methods
+#pragma mark - "rasters" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForRastersGetWithIdentifier:(NSString *)identifier {
@@ -593,8 +571,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "rasters.parents" methods
+#pragma mark - "rasters.parents" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForRastersParentsListWithIdentifier:(NSString *)identifier {
@@ -605,8 +582,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "rasters" methods
+#pragma mark - "rasters" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForRastersPatchWithIdentifier:(NSString *)identifier {
@@ -616,8 +592,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "rasters.permissions" methods
+#pragma mark - "rasters.permissions" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForRastersPermissionsBatchDeleteWithIdentifier:(NSString *)identifier {
@@ -644,8 +619,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "rasters" methods
+#pragma mark - "rasters" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForRastersProcessWithIdentifier:(NSString *)identifier {
@@ -663,8 +637,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "tables" methods
+#pragma mark - "tables" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForTablesCreate {
@@ -681,8 +654,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "tables.features" methods
+#pragma mark - "tables.features" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForTablesFeaturesBatchDeleteWithIdentifier:(NSString *)identifier {
@@ -722,8 +694,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "tables.files" methods
+#pragma mark - "tables.files" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForTablesFilesInsertWithIdentifier:(NSString *)identifier
@@ -737,8 +708,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "tables" methods
+#pragma mark - "tables" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForTablesGetWithIdentifier:(NSString *)identifier {
@@ -756,8 +726,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "tables.parents" methods
+#pragma mark - "tables.parents" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForTablesParentsListWithIdentifier:(NSString *)identifier {
@@ -768,8 +737,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "tables" methods
+#pragma mark - "tables" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForTablesPatchWithIdentifier:(NSString *)identifier {
@@ -779,8 +747,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "tables.permissions" methods
+#pragma mark - "tables.permissions" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForTablesPermissionsBatchDeleteWithIdentifier:(NSString *)identifier {
@@ -807,8 +774,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "tables" methods
+#pragma mark - "tables" methods
 // These create a GTLQueryMapsEngine object.
 
 + (instancetype)queryForTablesProcessWithIdentifier:(NSString *)identifier {

@@ -50,8 +50,7 @@
 //
 @property (nonatomic, copy) NSString *groupUniqueId;
 
-#pragma mark -
-#pragma mark "groups" methods
+#pragma mark - "groups" methods
 // These create a GTLQueryGroupssettings object.
 
 // Method: groupsSettings.groups.get

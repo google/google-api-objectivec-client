@@ -49,8 +49,7 @@
   return map;
 }
 
-#pragma mark -
-#pragma mark "lineitems" methods
+#pragma mark - "lineitems" methods
 // These create a GTLQueryDoubleClickBidManager object.
 
 + (instancetype)queryForLineitemsDownloadlineitems {
@@ -67,8 +66,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "queries" methods
+#pragma mark - "queries" methods
 // These create a GTLQueryDoubleClickBidManager object.
 
 + (instancetype)queryForQueriesCreatequery {
@@ -107,8 +105,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "reports" methods
+#pragma mark - "reports" methods
 // These create a GTLQueryDoubleClickBidManager object.
 
 + (instancetype)queryForReportsListreportsWithQueryId:(long long)queryId {

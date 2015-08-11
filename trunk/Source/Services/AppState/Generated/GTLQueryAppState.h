@@ -53,8 +53,7 @@
 @property (nonatomic, assign) BOOL includeData;
 @property (nonatomic, assign) NSInteger stateKey;
 
-#pragma mark -
-#pragma mark "states" methods
+#pragma mark - "states" methods
 // These create a GTLQueryAppState object.
 
 // Method: appstate.states.clear

@@ -39,8 +39,7 @@
 
 @dynamic currentDataVersion, currentStateVersion, fields, includeData, stateKey;
 
-#pragma mark -
-#pragma mark "states" methods
+#pragma mark - "states" methods
 // These create a GTLQueryAppState object.
 
 + (instancetype)queryForStatesClearWithStateKey:(NSInteger)stateKey {

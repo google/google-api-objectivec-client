@@ -52,8 +52,7 @@
 @property (nonatomic, assign) BOOL preferred;
 @property (nonatomic, copy) NSString *version;
 
-#pragma mark -
-#pragma mark "apis" methods
+#pragma mark - "apis" methods
 // These create a GTLQueryDiscovery object.
 
 // Method: discovery.apis.getRest

@@ -49,8 +49,7 @@
   return map;
 }
 
-#pragma mark -
-#pragma mark "divisions" methods
+#pragma mark - "divisions" methods
 // These create a GTLQueryCivicInfo object.
 
 + (instancetype)queryForDivisionsSearch {
@@ -60,8 +59,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "elections" methods
+#pragma mark - "elections" methods
 // These create a GTLQueryCivicInfo object.
 
 + (instancetype)queryForElectionsElectionQuery {
@@ -79,8 +77,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "representatives" methods
+#pragma mark - "representatives" methods
 // These create a GTLQueryCivicInfo object.
 
 + (instancetype)queryForRepresentativesRepresentativeInfoByAddress {

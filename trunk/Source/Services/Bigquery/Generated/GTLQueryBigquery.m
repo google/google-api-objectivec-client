@@ -61,8 +61,7 @@
   return map;
 }
 
-#pragma mark -
-#pragma mark "datasets" methods
+#pragma mark - "datasets" methods
 // These create a GTLQueryBigquery object.
 
 + (instancetype)queryForDatasetsDeleteWithProjectId:(NSString *)projectId
@@ -132,8 +131,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "jobs" methods
+#pragma mark - "jobs" methods
 // These create a GTLQueryBigquery object.
 
 + (instancetype)queryForJobsCancelWithProjectId:(NSString *)projectId
@@ -198,8 +196,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "projects" methods
+#pragma mark - "projects" methods
 // These create a GTLQueryBigquery object.
 
 + (instancetype)queryForProjectsList {
@@ -209,8 +206,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "tabledata" methods
+#pragma mark - "tabledata" methods
 // These create a GTLQueryBigquery object.
 
 + (instancetype)queryForTabledataInsertAllWithProjectId:(NSString *)projectId
@@ -237,8 +233,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "tables" methods
+#pragma mark - "tables" methods
 // These create a GTLQueryBigquery object.
 
 + (instancetype)queryForTablesDeleteWithProjectId:(NSString *)projectId
@@ -318,8 +313,7 @@
 
 @end
 
-#pragma mark -
-#pragma mark method parameter objects
+#pragma mark - method parameter objects
 // These object are used only to pass a collection of parameters to a
 // method as a single item.
 

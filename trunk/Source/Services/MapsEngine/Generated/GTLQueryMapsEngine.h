@@ -94,8 +94,7 @@
 @property (nonatomic, copy) NSString *version;
 @property (nonatomic, copy) NSString *where;
 
-#pragma mark -
-#pragma mark "assets" methods
+#pragma mark - "assets" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.assets.get
@@ -155,8 +154,7 @@
 // Fetches a GTLMapsEngineAssetsListResponse.
 + (instancetype)queryForAssetsList;
 
-#pragma mark -
-#pragma mark "assets.parents" methods
+#pragma mark - "assets.parents" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.assets.parents.list
@@ -175,8 +173,7 @@
 // Fetches a GTLMapsEngineParentsListResponse.
 + (instancetype)queryForAssetsParentsListWithIdentifier:(NSString *)identifier;
 
-#pragma mark -
-#pragma mark "assets.permissions" methods
+#pragma mark - "assets.permissions" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.assets.permissions.list
@@ -189,8 +186,7 @@
 // Fetches a GTLMapsEnginePermissionsListResponse.
 + (instancetype)queryForAssetsPermissionsListWithIdentifier:(NSString *)identifier;
 
-#pragma mark -
-#pragma mark "layers" methods
+#pragma mark - "layers" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.layers.cancelProcessing
@@ -320,8 +316,7 @@
 // Fetches a GTLMapsEnginePublishedLayersListResponse.
 + (instancetype)queryForLayersListPublished;
 
-#pragma mark -
-#pragma mark "layers.parents" methods
+#pragma mark - "layers.parents" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.layers.parents.list
@@ -340,8 +335,7 @@
 // Fetches a GTLMapsEngineParentsListResponse.
 + (instancetype)queryForLayersParentsListWithIdentifier:(NSString *)identifier;
 
-#pragma mark -
-#pragma mark "layers" methods
+#pragma mark - "layers" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.layers.patch
@@ -354,8 +348,7 @@
 //   kGTLAuthScopeMapsEngine
 + (instancetype)queryForLayersPatchWithIdentifier:(NSString *)identifier;
 
-#pragma mark -
-#pragma mark "layers.permissions" methods
+#pragma mark - "layers.permissions" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.layers.permissions.batchDelete
@@ -394,8 +387,7 @@
 // Fetches a GTLMapsEnginePermissionsListResponse.
 + (instancetype)queryForLayersPermissionsListWithIdentifier:(NSString *)identifier;
 
-#pragma mark -
-#pragma mark "layers" methods
+#pragma mark - "layers" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.layers.process
@@ -429,8 +421,7 @@
 // Fetches a GTLMapsEnginePublishResponse.
 + (instancetype)queryForLayersUnpublishWithIdentifier:(NSString *)identifier;
 
-#pragma mark -
-#pragma mark "maps" methods
+#pragma mark - "maps" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.maps.create
@@ -558,8 +549,7 @@
 //   kGTLAuthScopeMapsEngine
 + (instancetype)queryForMapsPatchWithIdentifier:(NSString *)identifier;
 
-#pragma mark -
-#pragma mark "maps.permissions" methods
+#pragma mark - "maps.permissions" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.maps.permissions.batchDelete
@@ -598,8 +588,7 @@
 // Fetches a GTLMapsEnginePermissionsListResponse.
 + (instancetype)queryForMapsPermissionsListWithIdentifier:(NSString *)identifier;
 
-#pragma mark -
-#pragma mark "maps" methods
+#pragma mark - "maps" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.maps.publish
@@ -624,8 +613,7 @@
 // Fetches a GTLMapsEnginePublishResponse.
 + (instancetype)queryForMapsUnpublishWithIdentifier:(NSString *)identifier;
 
-#pragma mark -
-#pragma mark "projects.icons" methods
+#pragma mark - "projects.icons" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.projects.icons.create
@@ -671,8 +659,7 @@
 // Fetches a GTLMapsEngineIconsListResponse.
 + (instancetype)queryForProjectsIconsListWithProjectId:(NSString *)projectId;
 
-#pragma mark -
-#pragma mark "projects" methods
+#pragma mark - "projects" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.projects.list
@@ -683,8 +670,7 @@
 // Fetches a GTLMapsEngineProjectsListResponse.
 + (instancetype)queryForProjectsList;
 
-#pragma mark -
-#pragma mark "rasterCollections" methods
+#pragma mark - "rasterCollections" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.rasterCollections.cancelProcessing
@@ -782,8 +768,7 @@
 // Fetches a GTLMapsEngineRasterCollectionsListResponse.
 + (instancetype)queryForRasterCollectionsList;
 
-#pragma mark -
-#pragma mark "rasterCollections.parents" methods
+#pragma mark - "rasterCollections.parents" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.rasterCollections.parents.list
@@ -802,8 +787,7 @@
 // Fetches a GTLMapsEngineParentsListResponse.
 + (instancetype)queryForRasterCollectionsParentsListWithIdentifier:(NSString *)identifier;
 
-#pragma mark -
-#pragma mark "rasterCollections" methods
+#pragma mark - "rasterCollections" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.rasterCollections.patch
@@ -817,8 +801,7 @@
 //   kGTLAuthScopeMapsEngine
 + (instancetype)queryForRasterCollectionsPatchWithIdentifier:(NSString *)identifier;
 
-#pragma mark -
-#pragma mark "rasterCollections.permissions" methods
+#pragma mark - "rasterCollections.permissions" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.rasterCollections.permissions.batchDelete
@@ -857,8 +840,7 @@
 // Fetches a GTLMapsEnginePermissionsListResponse.
 + (instancetype)queryForRasterCollectionsPermissionsListWithIdentifier:(NSString *)identifier;
 
-#pragma mark -
-#pragma mark "rasterCollections" methods
+#pragma mark - "rasterCollections" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.rasterCollections.process
@@ -870,8 +852,7 @@
 // Fetches a GTLMapsEngineProcessResponse.
 + (instancetype)queryForRasterCollectionsProcessWithIdentifier:(NSString *)identifier;
 
-#pragma mark -
-#pragma mark "rasterCollections.rasters" methods
+#pragma mark - "rasterCollections.rasters" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.rasterCollections.rasters.batchDelete
@@ -945,8 +926,7 @@
 // Fetches a GTLMapsEngineRasterCollectionsRastersListResponse.
 + (instancetype)queryForRasterCollectionsRastersListWithIdentifier:(NSString *)identifier;
 
-#pragma mark -
-#pragma mark "rasters" methods
+#pragma mark - "rasters" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.rasters.delete
@@ -959,8 +939,7 @@
 //   kGTLAuthScopeMapsEngine
 + (instancetype)queryForRastersDeleteWithIdentifier:(NSString *)identifier;
 
-#pragma mark -
-#pragma mark "rasters.files" methods
+#pragma mark - "rasters.files" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.rasters.files.insert
@@ -977,8 +956,7 @@
                                                 filename:(NSString *)filename
                                         uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
-#pragma mark -
-#pragma mark "rasters" methods
+#pragma mark - "rasters" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.rasters.get
@@ -1044,8 +1022,7 @@
 // Fetches a GTLMapsEngineRastersListResponse.
 + (instancetype)queryForRastersListWithProjectId:(NSString *)projectId;
 
-#pragma mark -
-#pragma mark "rasters.parents" methods
+#pragma mark - "rasters.parents" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.rasters.parents.list
@@ -1064,8 +1041,7 @@
 // Fetches a GTLMapsEngineParentsListResponse.
 + (instancetype)queryForRastersParentsListWithIdentifier:(NSString *)identifier;
 
-#pragma mark -
-#pragma mark "rasters" methods
+#pragma mark - "rasters" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.rasters.patch
@@ -1078,8 +1054,7 @@
 //   kGTLAuthScopeMapsEngine
 + (instancetype)queryForRastersPatchWithIdentifier:(NSString *)identifier;
 
-#pragma mark -
-#pragma mark "rasters.permissions" methods
+#pragma mark - "rasters.permissions" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.rasters.permissions.batchDelete
@@ -1118,8 +1093,7 @@
 // Fetches a GTLMapsEnginePermissionsListResponse.
 + (instancetype)queryForRastersPermissionsListWithIdentifier:(NSString *)identifier;
 
-#pragma mark -
-#pragma mark "rasters" methods
+#pragma mark - "rasters" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.rasters.process
@@ -1140,8 +1114,7 @@
 // Fetches a GTLMapsEngineRaster.
 + (instancetype)queryForRastersUpload;
 
-#pragma mark -
-#pragma mark "tables" methods
+#pragma mark - "tables" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.tables.create
@@ -1163,8 +1136,7 @@
 //   kGTLAuthScopeMapsEngine
 + (instancetype)queryForTablesDeleteWithIdentifier:(NSString *)identifier;
 
-#pragma mark -
-#pragma mark "tables.features" methods
+#pragma mark - "tables.features" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.tables.features.batchDelete
@@ -1282,8 +1254,7 @@
 // Fetches a GTLMapsEngineFeaturesListResponse.
 + (instancetype)queryForTablesFeaturesListWithIdentifier:(NSString *)identifier;
 
-#pragma mark -
-#pragma mark "tables.files" methods
+#pragma mark - "tables.files" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.tables.files.insert
@@ -1303,8 +1274,7 @@
                                                filename:(NSString *)filename
                                        uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
-#pragma mark -
-#pragma mark "tables" methods
+#pragma mark - "tables" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.tables.get
@@ -1373,8 +1343,7 @@
 // Fetches a GTLMapsEngineTablesListResponse.
 + (instancetype)queryForTablesList;
 
-#pragma mark -
-#pragma mark "tables.parents" methods
+#pragma mark - "tables.parents" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.tables.parents.list
@@ -1393,8 +1362,7 @@
 // Fetches a GTLMapsEngineParentsListResponse.
 + (instancetype)queryForTablesParentsListWithIdentifier:(NSString *)identifier;
 
-#pragma mark -
-#pragma mark "tables" methods
+#pragma mark - "tables" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.tables.patch
@@ -1407,8 +1375,7 @@
 //   kGTLAuthScopeMapsEngine
 + (instancetype)queryForTablesPatchWithIdentifier:(NSString *)identifier;
 
-#pragma mark -
-#pragma mark "tables.permissions" methods
+#pragma mark - "tables.permissions" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.tables.permissions.batchDelete
@@ -1447,8 +1414,7 @@
 // Fetches a GTLMapsEnginePermissionsListResponse.
 + (instancetype)queryForTablesPermissionsListWithIdentifier:(NSString *)identifier;
 
-#pragma mark -
-#pragma mark "tables" methods
+#pragma mark - "tables" methods
 // These create a GTLQueryMapsEngine object.
 
 // Method: mapsengine.tables.process

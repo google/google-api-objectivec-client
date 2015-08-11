@@ -90,8 +90,7 @@
   return map;
 }
 
-#pragma mark -
-#pragma mark "activities" methods
+#pragma mark - "activities" methods
 // These create a GTLQueryYouTube object.
 
 + (instancetype)queryForActivitiesInsertWithObject:(GTLYouTubeActivity *)object
@@ -116,8 +115,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "captions" methods
+#pragma mark - "captions" methods
 // These create a GTLQueryYouTube object.
 
 + (instancetype)queryForCaptionsDeleteWithIdentifier:(NSString *)identifier {
@@ -176,8 +174,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "channelBanners" methods
+#pragma mark - "channelBanners" methods
 // These create a GTLQueryYouTube object.
 
 + (instancetype)queryForChannelBannersInsertWithObject:(GTLYouTubeChannelBannerResource *)object
@@ -194,8 +191,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "channelSections" methods
+#pragma mark - "channelSections" methods
 // These create a GTLQueryYouTube object.
 
 + (instancetype)queryForChannelSectionsDeleteWithIdentifier:(NSString *)identifier {
@@ -241,8 +237,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "channels" methods
+#pragma mark - "channels" methods
 // These create a GTLQueryYouTube object.
 
 + (instancetype)queryForChannelsListWithPart:(NSString *)part {
@@ -267,8 +262,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "comments" methods
+#pragma mark - "comments" methods
 // These create a GTLQueryYouTube object.
 
 + (instancetype)queryForCommentsDeleteWithIdentifier:(NSString *)identifier {
@@ -330,8 +324,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "commentThreads" methods
+#pragma mark - "commentThreads" methods
 // These create a GTLQueryYouTube object.
 
 + (instancetype)queryForCommentThreadsInsertWithObject:(GTLYouTubeCommentThread *)object
@@ -370,8 +363,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "guideCategories" methods
+#pragma mark - "guideCategories" methods
 // These create a GTLQueryYouTube object.
 
 + (instancetype)queryForGuideCategoriesListWithPart:(NSString *)part {
@@ -382,8 +374,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "i18nLanguages" methods
+#pragma mark - "i18nLanguages" methods
 // These create a GTLQueryYouTube object.
 
 + (instancetype)queryForI18nLanguagesListWithPart:(NSString *)part {
@@ -394,8 +385,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "i18nRegions" methods
+#pragma mark - "i18nRegions" methods
 // These create a GTLQueryYouTube object.
 
 + (instancetype)queryForI18nRegionsListWithPart:(NSString *)part {
@@ -406,8 +396,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "liveBroadcasts" methods
+#pragma mark - "liveBroadcasts" methods
 // These create a GTLQueryYouTube object.
 
 + (instancetype)queryForLiveBroadcastsBindWithIdentifier:(NSString *)identifier
@@ -495,8 +484,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "liveStreams" methods
+#pragma mark - "liveStreams" methods
 // These create a GTLQueryYouTube object.
 
 + (instancetype)queryForLiveStreamsDeleteWithIdentifier:(NSString *)identifier {
@@ -542,8 +530,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "playlistItems" methods
+#pragma mark - "playlistItems" methods
 // These create a GTLQueryYouTube object.
 
 + (instancetype)queryForPlaylistItemsDeleteWithIdentifier:(NSString *)identifier {
@@ -589,8 +576,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "playlists" methods
+#pragma mark - "playlists" methods
 // These create a GTLQueryYouTube object.
 
 + (instancetype)queryForPlaylistsDeleteWithIdentifier:(NSString *)identifier {
@@ -636,8 +622,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "search" methods
+#pragma mark - "search" methods
 // These create a GTLQueryYouTube object.
 
 + (instancetype)queryForSearchListWithPart:(NSString *)part {
@@ -648,8 +633,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "subscriptions" methods
+#pragma mark - "subscriptions" methods
 // These create a GTLQueryYouTube object.
 
 + (instancetype)queryForSubscriptionsDeleteWithIdentifier:(NSString *)identifier {
@@ -681,8 +665,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "thumbnails" methods
+#pragma mark - "thumbnails" methods
 // These create a GTLQueryYouTube object.
 
 + (instancetype)queryForThumbnailsSetWithVideoId:(NSString *)videoId
@@ -695,8 +678,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "videoAbuseReportReasons" methods
+#pragma mark - "videoAbuseReportReasons" methods
 // These create a GTLQueryYouTube object.
 
 + (instancetype)queryForVideoAbuseReportReasonsListWithPart:(NSString *)part {
@@ -707,8 +689,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "videoCategories" methods
+#pragma mark - "videoCategories" methods
 // These create a GTLQueryYouTube object.
 
 + (instancetype)queryForVideoCategoriesListWithPart:(NSString *)part {
@@ -719,8 +700,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "videos" methods
+#pragma mark - "videos" methods
 // These create a GTLQueryYouTube object.
 
 + (instancetype)queryForVideosDeleteWithIdentifier:(NSString *)identifier {
@@ -791,8 +771,7 @@
   return query;
 }
 
-#pragma mark -
-#pragma mark "watermarks" methods
+#pragma mark - "watermarks" methods
 // These create a GTLQueryYouTube object.
 
 + (instancetype)queryForWatermarksSetWithObject:(GTLYouTubeInvideoBranding *)object

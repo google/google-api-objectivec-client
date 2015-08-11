@@ -88,8 +88,7 @@
 @property (nonatomic, copy) NSString *webPropertyAdWordsLinkId;
 @property (nonatomic, copy) NSString *webPropertyId;
 
-#pragma mark -
-#pragma mark "data.ga" methods
+#pragma mark - "data.ga" methods
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.data.ga.get
@@ -138,8 +137,7 @@
                                  endDate:(NSString *)endDate
                                  metrics:(NSString *)metrics;
 
-#pragma mark -
-#pragma mark "data.mcf" methods
+#pragma mark - "data.mcf" methods
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.data.mcf.get
@@ -183,8 +181,7 @@
                                   endDate:(NSString *)endDate
                                   metrics:(NSString *)metrics;
 
-#pragma mark -
-#pragma mark "data.realtime" methods
+#pragma mark - "data.realtime" methods
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.data.realtime.get
@@ -209,8 +206,7 @@
 + (instancetype)queryForDataRealtimeGetWithIds:(NSString *)ids
                                        metrics:(NSString *)metrics;
 
-#pragma mark -
-#pragma mark "management.accounts" methods
+#pragma mark - "management.accounts" methods
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.management.accounts.list
@@ -226,8 +222,7 @@
 // Fetches a GTLAnalyticsAccounts.
 + (instancetype)queryForManagementAccountsList;
 
-#pragma mark -
-#pragma mark "management.accountSummaries" methods
+#pragma mark - "management.accountSummaries" methods
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.management.accountSummaries.list
@@ -244,8 +239,7 @@
 // Fetches a GTLAnalyticsAccountSummaries.
 + (instancetype)queryForManagementAccountSummariesList;
 
-#pragma mark -
-#pragma mark "management.accountUserLinks" methods
+#pragma mark - "management.accountUserLinks" methods
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.management.accountUserLinks.delete
@@ -295,8 +289,7 @@
                                                          accountId:(NSString *)accountId
                                                             linkId:(NSString *)linkId;
 
-#pragma mark -
-#pragma mark "management.customDataSources" methods
+#pragma mark - "management.customDataSources" methods
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.management.customDataSources.list
@@ -318,8 +311,7 @@
 + (instancetype)queryForManagementCustomDataSourcesListWithAccountId:(NSString *)accountId
                                                        webPropertyId:(NSString *)webPropertyId;
 
-#pragma mark -
-#pragma mark "management.customDimensions" methods
+#pragma mark - "management.customDimensions" methods
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.management.customDimensions.get
@@ -401,8 +393,7 @@
                                                      webPropertyId:(NSString *)webPropertyId
                                                  customDimensionId:(NSString *)customDimensionId;
 
-#pragma mark -
-#pragma mark "management.customMetrics" methods
+#pragma mark - "management.customMetrics" methods
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.management.customMetrics.get
@@ -484,8 +475,7 @@
                                                   webPropertyId:(NSString *)webPropertyId
                                                  customMetricId:(NSString *)customMetricId;
 
-#pragma mark -
-#pragma mark "management.experiments" methods
+#pragma mark - "management.experiments" methods
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.management.experiments.delete
@@ -588,8 +578,7 @@
                                                     profileId:(NSString *)profileId
                                                  experimentId:(NSString *)experimentId;
 
-#pragma mark -
-#pragma mark "management.filters" methods
+#pragma mark - "management.filters" methods
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.management.filters.delete
@@ -663,8 +652,7 @@
                                                 accountId:(NSString *)accountId
                                                  filterId:(NSString *)filterId;
 
-#pragma mark -
-#pragma mark "management.goals" methods
+#pragma mark - "management.goals" methods
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.management.goals.get
@@ -754,8 +742,7 @@
                                               profileId:(NSString *)profileId
                                                  goalId:(NSString *)goalId;
 
-#pragma mark -
-#pragma mark "management.profileFilterLinks" methods
+#pragma mark - "management.profileFilterLinks" methods
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.management.profileFilterLinks.delete
@@ -857,8 +844,7 @@
                                                            profileId:(NSString *)profileId
                                                               linkId:(NSString *)linkId;
 
-#pragma mark -
-#pragma mark "management.profiles" methods
+#pragma mark - "management.profiles" methods
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.management.profiles.delete
@@ -949,8 +935,7 @@
                                              webPropertyId:(NSString *)webPropertyId
                                                  profileId:(NSString *)profileId;
 
-#pragma mark -
-#pragma mark "management.profileUserLinks" methods
+#pragma mark - "management.profileUserLinks" methods
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.management.profileUserLinks.delete
@@ -1020,8 +1005,7 @@
                                                          profileId:(NSString *)profileId
                                                             linkId:(NSString *)linkId;
 
-#pragma mark -
-#pragma mark "management.segments" methods
+#pragma mark - "management.segments" methods
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.management.segments.list
@@ -1037,8 +1021,7 @@
 // Fetches a GTLAnalyticsSegments.
 + (instancetype)queryForManagementSegmentsList;
 
-#pragma mark -
-#pragma mark "management.unsampledReports" methods
+#pragma mark - "management.unsampledReports" methods
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.management.unsampledReports.get
@@ -1096,8 +1079,7 @@
                                                       webPropertyId:(NSString *)webPropertyId
                                                           profileId:(NSString *)profileId;
 
-#pragma mark -
-#pragma mark "management.uploads" methods
+#pragma mark - "management.uploads" methods
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.management.uploads.deleteUploadData
@@ -1170,8 +1152,7 @@
                                               customDataSourceId:(NSString *)customDataSourceId
                                                 uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
-#pragma mark -
-#pragma mark "management.webproperties" methods
+#pragma mark - "management.webproperties" methods
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.management.webproperties.get
@@ -1240,8 +1221,7 @@
                                                       accountId:(NSString *)accountId
                                                   webPropertyId:(NSString *)webPropertyId;
 
-#pragma mark -
-#pragma mark "management.webPropertyAdWordsLinks" methods
+#pragma mark - "management.webPropertyAdWordsLinks" methods
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.management.webPropertyAdWordsLinks.delete
@@ -1329,8 +1309,7 @@
                                                             webPropertyId:(NSString *)webPropertyId
                                                  webPropertyAdWordsLinkId:(NSString *)webPropertyAdWordsLinkId;
 
-#pragma mark -
-#pragma mark "management.webpropertyUserLinks" methods
+#pragma mark - "management.webpropertyUserLinks" methods
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.management.webpropertyUserLinks.delete
@@ -1391,8 +1370,7 @@
                                                          webPropertyId:(NSString *)webPropertyId
                                                                 linkId:(NSString *)linkId;
 
-#pragma mark -
-#pragma mark "metadata.columns" methods
+#pragma mark - "metadata.columns" methods
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.metadata.columns.list
@@ -1407,8 +1385,7 @@
 // Fetches a GTLAnalyticsColumns.
 + (instancetype)queryForMetadataColumnsListWithReportType:(NSString *)reportType;
 
-#pragma mark -
-#pragma mark "provisioning" methods
+#pragma mark - "provisioning" methods
 // These create a GTLQueryAnalytics object.
 
 // Method: analytics.provisioning.createAccountTicket

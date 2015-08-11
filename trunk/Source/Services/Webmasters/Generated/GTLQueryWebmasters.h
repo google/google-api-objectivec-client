@@ -63,8 +63,7 @@
 @property (nonatomic, copy) NSString *startDate;
 @property (nonatomic, copy) NSString *url;
 
-#pragma mark -
-#pragma mark "searchanalytics" methods
+#pragma mark - "searchanalytics" methods
 // These create a GTLQueryWebmasters object.
 
 // Method: webmasters.searchanalytics.query
@@ -114,8 +113,7 @@
 // Fetches a GTLWebmastersSearchAnalyticsQueryResponse.
 + (instancetype)queryForSearchanalyticsQueryWithSiteUrl:(NSString *)siteUrl;
 
-#pragma mark -
-#pragma mark "sitemaps" methods
+#pragma mark - "sitemaps" methods
 // These create a GTLQueryWebmasters object.
 
 // Method: webmasters.sitemaps.delete
@@ -171,8 +169,7 @@
 + (instancetype)queryForSitemapsSubmitWithSiteUrl:(NSString *)siteUrl
                                          feedpath:(NSString *)feedpath;
 
-#pragma mark -
-#pragma mark "sites" methods
+#pragma mark - "sites" methods
 // These create a GTLQueryWebmasters object.
 
 // Method: webmasters.sites.add
@@ -211,8 +208,7 @@
 // Fetches a GTLWebmastersSitesListResponse.
 + (instancetype)queryForSitesList;
 
-#pragma mark -
-#pragma mark "urlcrawlerrorscounts" methods
+#pragma mark - "urlcrawlerrorscounts" methods
 // These create a GTLQueryWebmasters object.
 
 // Method: webmasters.urlcrawlerrorscounts.query
@@ -245,8 +241,7 @@
 // Fetches a GTLWebmastersUrlCrawlErrorsCountsQueryResponse.
 + (instancetype)queryForUrlcrawlerrorscountsQueryWithSiteUrl:(NSString *)siteUrl;
 
-#pragma mark -
-#pragma mark "urlcrawlerrorssamples" methods
+#pragma mark - "urlcrawlerrorssamples" methods
 // These create a GTLQueryWebmasters object.
 
 // Method: webmasters.urlcrawlerrorssamples.get

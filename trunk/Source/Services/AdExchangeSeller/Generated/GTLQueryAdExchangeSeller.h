@@ -67,8 +67,7 @@
 // documentation for the right type for each query method.
 @property (nonatomic, retain) id startIndex;
 
-#pragma mark -
-#pragma mark "accounts.adclients" methods
+#pragma mark - "accounts.adclients" methods
 // These create a GTLQueryAdExchangeSeller object.
 
 // Method: adexchangeseller.accounts.adclients.list
@@ -88,8 +87,7 @@
 // Fetches a GTLAdExchangeSellerAdClients.
 + (instancetype)queryForAccountsAdclientsListWithAccountId:(NSString *)accountId;
 
-#pragma mark -
-#pragma mark "accounts.alerts" methods
+#pragma mark - "accounts.alerts" methods
 // These create a GTLQueryAdExchangeSeller object.
 
 // Method: adexchangeseller.accounts.alerts.list
@@ -106,8 +104,7 @@
 // Fetches a GTLAdExchangeSellerAlerts.
 + (instancetype)queryForAccountsAlertsListWithAccountId:(NSString *)accountId;
 
-#pragma mark -
-#pragma mark "accounts.customchannels" methods
+#pragma mark - "accounts.customchannels" methods
 // These create a GTLQueryAdExchangeSeller object.
 
 // Method: adexchangeseller.accounts.customchannels.get
@@ -144,8 +141,7 @@
 + (instancetype)queryForAccountsCustomchannelsListWithAccountId:(NSString *)accountId
                                                      adClientId:(NSString *)adClientId;
 
-#pragma mark -
-#pragma mark "accounts" methods
+#pragma mark - "accounts" methods
 // These create a GTLQueryAdExchangeSeller object.
 
 // Method: adexchangeseller.accounts.get
@@ -174,8 +170,7 @@
 // Fetches a GTLAdExchangeSellerAccounts.
 + (instancetype)queryForAccountsList;
 
-#pragma mark -
-#pragma mark "accounts.metadata.dimensions" methods
+#pragma mark - "accounts.metadata.dimensions" methods
 // These create a GTLQueryAdExchangeSeller object.
 
 // Method: adexchangeseller.accounts.metadata.dimensions.list
@@ -188,8 +183,7 @@
 // Fetches a GTLAdExchangeSellerMetadata.
 + (instancetype)queryForAccountsMetadataDimensionsListWithAccountId:(NSString *)accountId;
 
-#pragma mark -
-#pragma mark "accounts.metadata.metrics" methods
+#pragma mark - "accounts.metadata.metrics" methods
 // These create a GTLQueryAdExchangeSeller object.
 
 // Method: adexchangeseller.accounts.metadata.metrics.list
@@ -202,8 +196,7 @@
 // Fetches a GTLAdExchangeSellerMetadata.
 + (instancetype)queryForAccountsMetadataMetricsListWithAccountId:(NSString *)accountId;
 
-#pragma mark -
-#pragma mark "accounts.preferreddeals" methods
+#pragma mark - "accounts.preferreddeals" methods
 // These create a GTLQueryAdExchangeSeller object.
 
 // Method: adexchangeseller.accounts.preferreddeals.get
@@ -228,8 +221,7 @@
 // Fetches a GTLAdExchangeSellerPreferredDeals.
 + (instancetype)queryForAccountsPreferreddealsListWithAccountId:(NSString *)accountId;
 
-#pragma mark -
-#pragma mark "accounts.reports" methods
+#pragma mark - "accounts.reports" methods
 // These create a GTLQueryAdExchangeSeller object.
 
 // Method: adexchangeseller.accounts.reports.generate
@@ -263,8 +255,7 @@
                                                    startDate:(NSString *)startDate
                                                      endDate:(NSString *)endDate;
 
-#pragma mark -
-#pragma mark "accounts.reports.saved" methods
+#pragma mark - "accounts.reports.saved" methods
 // These create a GTLQueryAdExchangeSeller object.
 
 // Method: adexchangeseller.accounts.reports.saved.generate
@@ -304,8 +295,7 @@
 // Fetches a GTLAdExchangeSellerSavedReports.
 + (instancetype)queryForAccountsReportsSavedListWithAccountId:(NSString *)accountId;
 
-#pragma mark -
-#pragma mark "accounts.urlchannels" methods
+#pragma mark - "accounts.urlchannels" methods
 // These create a GTLQueryAdExchangeSeller object.
 
 // Method: adexchangeseller.accounts.urlchannels.list

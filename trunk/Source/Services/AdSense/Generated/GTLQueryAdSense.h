@@ -71,8 +71,7 @@
 @property (nonatomic, assign) BOOL tree;
 @property (nonatomic, assign) BOOL useTimezoneReporting;
 
-#pragma mark -
-#pragma mark "accounts.adclients" methods
+#pragma mark - "accounts.adclients" methods
 // These create a GTLQueryAdSense object.
 
 // Method: adsense.accounts.adclients.list
@@ -91,8 +90,7 @@
 // Fetches a GTLAdSenseAdClients.
 + (instancetype)queryForAccountsAdclientsListWithAccountId:(NSString *)accountId;
 
-#pragma mark -
-#pragma mark "accounts.adunits.customchannels" methods
+#pragma mark - "accounts.adunits.customchannels" methods
 // These create a GTLQueryAdSense object.
 
 // Method: adsense.accounts.adunits.customchannels.list
@@ -115,8 +113,7 @@
                                                             adClientId:(NSString *)adClientId
                                                               adUnitId:(NSString *)adUnitId;
 
-#pragma mark -
-#pragma mark "accounts.adunits" methods
+#pragma mark - "accounts.adunits" methods
 // These create a GTLQueryAdSense object.
 
 // Method: adsense.accounts.adunits.get
@@ -167,8 +164,7 @@
 + (instancetype)queryForAccountsAdunitsListWithAccountId:(NSString *)accountId
                                               adClientId:(NSString *)adClientId;
 
-#pragma mark -
-#pragma mark "accounts.alerts" methods
+#pragma mark - "accounts.alerts" methods
 // These create a GTLQueryAdSense object.
 
 // Method: adsense.accounts.alerts.delete
@@ -196,8 +192,7 @@
 // Fetches a GTLAdSenseAlerts.
 + (instancetype)queryForAccountsAlertsListWithAccountId:(NSString *)accountId;
 
-#pragma mark -
-#pragma mark "accounts.customchannels.adunits" methods
+#pragma mark - "accounts.customchannels.adunits" methods
 // These create a GTLQueryAdSense object.
 
 // Method: adsense.accounts.customchannels.adunits.list
@@ -221,8 +216,7 @@
                                                             adClientId:(NSString *)adClientId
                                                        customChannelId:(NSString *)customChannelId;
 
-#pragma mark -
-#pragma mark "accounts.customchannels" methods
+#pragma mark - "accounts.customchannels" methods
 // These create a GTLQueryAdSense object.
 
 // Method: adsense.accounts.customchannels.get
@@ -259,8 +253,7 @@
 + (instancetype)queryForAccountsCustomchannelsListWithAccountId:(NSString *)accountId
                                                      adClientId:(NSString *)adClientId;
 
-#pragma mark -
-#pragma mark "accounts" methods
+#pragma mark - "accounts" methods
 // These create a GTLQueryAdSense object.
 
 // Method: adsense.accounts.get
@@ -289,8 +282,7 @@
 // Fetches a GTLAdSenseAccounts.
 + (instancetype)queryForAccountsList;
 
-#pragma mark -
-#pragma mark "accounts.payments" methods
+#pragma mark - "accounts.payments" methods
 // These create a GTLQueryAdSense object.
 
 // Method: adsense.accounts.payments.list
@@ -303,8 +295,7 @@
 // Fetches a GTLAdSensePayments.
 + (instancetype)queryForAccountsPaymentsListWithAccountId:(NSString *)accountId;
 
-#pragma mark -
-#pragma mark "accounts.reports" methods
+#pragma mark - "accounts.reports" methods
 // These create a GTLQueryAdSense object.
 
 // Method: adsense.accounts.reports.generate
@@ -340,8 +331,7 @@
                                                    startDate:(NSString *)startDate
                                                      endDate:(NSString *)endDate;
 
-#pragma mark -
-#pragma mark "accounts.reports.saved" methods
+#pragma mark - "accounts.reports.saved" methods
 // These create a GTLQueryAdSense object.
 
 // Method: adsense.accounts.reports.saved.generate
@@ -378,8 +368,7 @@
 // Fetches a GTLAdSenseSavedReports.
 + (instancetype)queryForAccountsReportsSavedListWithAccountId:(NSString *)accountId;
 
-#pragma mark -
-#pragma mark "accounts.savedadstyles" methods
+#pragma mark - "accounts.savedadstyles" methods
 // These create a GTLQueryAdSense object.
 
 // Method: adsense.accounts.savedadstyles.get
@@ -410,8 +399,7 @@
 // Fetches a GTLAdSenseSavedAdStyles.
 + (instancetype)queryForAccountsSavedadstylesListWithAccountId:(NSString *)accountId;
 
-#pragma mark -
-#pragma mark "accounts.urlchannels" methods
+#pragma mark - "accounts.urlchannels" methods
 // These create a GTLQueryAdSense object.
 
 // Method: adsense.accounts.urlchannels.list
@@ -432,8 +420,7 @@
 + (instancetype)queryForAccountsUrlchannelsListWithAccountId:(NSString *)accountId
                                                   adClientId:(NSString *)adClientId;
 
-#pragma mark -
-#pragma mark "adclients" methods
+#pragma mark - "adclients" methods
 // These create a GTLQueryAdSense object.
 
 // Method: adsense.adclients.list
@@ -450,8 +437,7 @@
 // Fetches a GTLAdSenseAdClients.
 + (instancetype)queryForAdclientsList;
 
-#pragma mark -
-#pragma mark "adunits.customchannels" methods
+#pragma mark - "adunits.customchannels" methods
 // These create a GTLQueryAdSense object.
 
 // Method: adsense.adunits.customchannels.list
@@ -472,8 +458,7 @@
 + (instancetype)queryForAdunitsCustomchannelsListWithAdClientId:(NSString *)adClientId
                                                        adUnitId:(NSString *)adUnitId;
 
-#pragma mark -
-#pragma mark "adunits" methods
+#pragma mark - "adunits" methods
 // These create a GTLQueryAdSense object.
 
 // Method: adsense.adunits.get
@@ -517,8 +502,7 @@
 // Fetches a GTLAdSenseAdUnits.
 + (instancetype)queryForAdunitsListWithAdClientId:(NSString *)adClientId;
 
-#pragma mark -
-#pragma mark "alerts" methods
+#pragma mark - "alerts" methods
 // These create a GTLQueryAdSense object.
 
 // Method: adsense.alerts.delete
@@ -541,8 +525,7 @@
 // Fetches a GTLAdSenseAlerts.
 + (instancetype)queryForAlertsList;
 
-#pragma mark -
-#pragma mark "customchannels.adunits" methods
+#pragma mark - "customchannels.adunits" methods
 // These create a GTLQueryAdSense object.
 
 // Method: adsense.customchannels.adunits.list
@@ -564,8 +547,7 @@
 + (instancetype)queryForCustomchannelsAdunitsListWithAdClientId:(NSString *)adClientId
                                                 customChannelId:(NSString *)customChannelId;
 
-#pragma mark -
-#pragma mark "customchannels" methods
+#pragma mark - "customchannels" methods
 // These create a GTLQueryAdSense object.
 
 // Method: adsense.customchannels.get
@@ -596,8 +578,7 @@
 // Fetches a GTLAdSenseCustomChannels.
 + (instancetype)queryForCustomchannelsListWithAdClientId:(NSString *)adClientId;
 
-#pragma mark -
-#pragma mark "metadata.dimensions" methods
+#pragma mark - "metadata.dimensions" methods
 // These create a GTLQueryAdSense object.
 
 // Method: adsense.metadata.dimensions.list
@@ -608,8 +589,7 @@
 // Fetches a GTLAdSenseMetadata.
 + (instancetype)queryForMetadataDimensionsList;
 
-#pragma mark -
-#pragma mark "metadata.metrics" methods
+#pragma mark - "metadata.metrics" methods
 // These create a GTLQueryAdSense object.
 
 // Method: adsense.metadata.metrics.list
@@ -620,8 +600,7 @@
 // Fetches a GTLAdSenseMetadata.
 + (instancetype)queryForMetadataMetricsList;
 
-#pragma mark -
-#pragma mark "payments" methods
+#pragma mark - "payments" methods
 // These create a GTLQueryAdSense object.
 
 // Method: adsense.payments.list
@@ -632,8 +611,7 @@
 // Fetches a GTLAdSensePayments.
 + (instancetype)queryForPaymentsList;
 
-#pragma mark -
-#pragma mark "reports" methods
+#pragma mark - "reports" methods
 // These create a GTLQueryAdSense object.
 
 // Method: adsense.reports.generate
@@ -669,8 +647,7 @@
 + (instancetype)queryForReportsGenerateWithStartDate:(NSString *)startDate
                                              endDate:(NSString *)endDate;
 
-#pragma mark -
-#pragma mark "reports.saved" methods
+#pragma mark - "reports.saved" methods
 // These create a GTLQueryAdSense object.
 
 // Method: adsense.reports.saved.generate
@@ -703,8 +680,7 @@
 // Fetches a GTLAdSenseSavedReports.
 + (instancetype)queryForReportsSavedList;
 
-#pragma mark -
-#pragma mark "savedadstyles" methods
+#pragma mark - "savedadstyles" methods
 // These create a GTLQueryAdSense object.
 
 // Method: adsense.savedadstyles.get
@@ -731,8 +707,7 @@
 // Fetches a GTLAdSenseSavedAdStyles.
 + (instancetype)queryForSavedadstylesList;
 
-#pragma mark -
-#pragma mark "urlchannels" methods
+#pragma mark - "urlchannels" methods
 // These create a GTLQueryAdSense object.
 
 // Method: adsense.urlchannels.list

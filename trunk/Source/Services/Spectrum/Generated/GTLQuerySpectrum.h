@@ -67,8 +67,7 @@
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, copy) NSString *version;
 
-#pragma mark -
-#pragma mark "paws" methods
+#pragma mark - "paws" methods
 // These create a GTLQuerySpectrum object.
 
 // Method: spectrum.paws.getSpectrum

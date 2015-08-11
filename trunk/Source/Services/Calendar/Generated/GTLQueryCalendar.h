@@ -86,8 +86,7 @@
 @property (nonatomic, copy) NSString *timeZone;
 @property (nonatomic, retain) GTLDateTime *updatedMin;
 
-#pragma mark -
-#pragma mark "acl" methods
+#pragma mark - "acl" methods
 // These create a GTLQueryCalendar object.
 
 // Method: calendar.acl.delete
@@ -215,8 +214,7 @@
 + (instancetype)queryForAclWatchWithObject:(GTLCalendarChannel *)object
                                 calendarId:(NSString *)calendarId;
 
-#pragma mark -
-#pragma mark "calendarList" methods
+#pragma mark - "calendarList" methods
 // These create a GTLQueryCalendar object.
 
 // Method: calendar.calendarList.delete
@@ -366,8 +364,7 @@
 // Fetches a GTLCalendarChannel.
 + (instancetype)queryForCalendarListWatchWithObject:(GTLCalendarChannel *)object;
 
-#pragma mark -
-#pragma mark "calendars" methods
+#pragma mark - "calendars" methods
 // These create a GTLQueryCalendar object.
 
 // Method: calendar.calendars.clear
@@ -435,8 +432,7 @@
 + (instancetype)queryForCalendarsUpdateWithObject:(GTLCalendarCalendar *)object
                                        calendarId:(NSString *)calendarId;
 
-#pragma mark -
-#pragma mark "channels" methods
+#pragma mark - "channels" methods
 // These create a GTLQueryCalendar object.
 
 // Method: calendar.channels.stop
@@ -446,8 +442,7 @@
 //   kGTLAuthScopeCalendarReadonly
 + (instancetype)queryForChannelsStopWithObject:(GTLCalendarChannel *)object;
 
-#pragma mark -
-#pragma mark "colors" methods
+#pragma mark - "colors" methods
 // These create a GTLQueryCalendar object.
 
 // Method: calendar.colors.get
@@ -458,8 +453,7 @@
 // Fetches a GTLCalendarColors.
 + (instancetype)queryForColorsGet;
 
-#pragma mark -
-#pragma mark "events" methods
+#pragma mark - "events" methods
 // These create a GTLQueryCalendar object.
 
 // Method: calendar.events.delete
@@ -858,8 +852,7 @@
 + (instancetype)queryForEventsWatchWithObject:(GTLCalendarChannel *)object
                                    calendarId:(NSString *)calendarId;
 
-#pragma mark -
-#pragma mark "freebusy" methods
+#pragma mark - "freebusy" methods
 // These create a GTLQueryCalendar object.
 
 // Method: calendar.freebusy.query
@@ -881,8 +874,7 @@
 // Fetches a GTLCalendarFreeBusyResponse.
 + (instancetype)queryForFreebusyQuery;
 
-#pragma mark -
-#pragma mark "settings" methods
+#pragma mark - "settings" methods
 // These create a GTLQueryCalendar object.
 
 // Method: calendar.settings.get

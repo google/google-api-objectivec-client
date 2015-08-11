@@ -104,8 +104,7 @@
 @property (nonatomic, assign) BOOL useContentAsIndexableText;
 @property (nonatomic, copy) NSString *visibility;
 
-#pragma mark -
-#pragma mark "about" methods
+#pragma mark - "about" methods
 // These create a GTLQueryDrive object.
 
 // Method: drive.about.get
@@ -131,8 +130,7 @@
 // Fetches a GTLDriveAbout.
 + (instancetype)queryForAboutGet;
 
-#pragma mark -
-#pragma mark "apps" methods
+#pragma mark - "apps" methods
 // These create a GTLQueryDrive object.
 
 // Method: drive.apps.get
@@ -171,8 +169,7 @@
 // Fetches a GTLDriveAppList.
 + (instancetype)queryForAppsList;
 
-#pragma mark -
-#pragma mark "changes" methods
+#pragma mark - "changes" methods
 // These create a GTLQueryDrive object.
 
 // Method: drive.changes.get
@@ -241,8 +238,7 @@
 // Fetches a GTLDriveChannel.
 + (instancetype)queryForChangesWatchWithObject:(GTLDriveChannel *)object;
 
-#pragma mark -
-#pragma mark "channels" methods
+#pragma mark - "channels" methods
 // These create a GTLQueryDrive object.
 
 // Method: drive.channels.stop
@@ -258,8 +254,7 @@
 //   kGTLAuthScopeDriveReadonly
 + (instancetype)queryForChannelsStopWithObject:(GTLDriveChannel *)object;
 
-#pragma mark -
-#pragma mark "children" methods
+#pragma mark - "children" methods
 // These create a GTLQueryDrive object.
 
 // Method: drive.children.delete
@@ -321,8 +316,7 @@
 // Fetches a GTLDriveChildList.
 + (instancetype)queryForChildrenListWithFolderId:(NSString *)folderId;
 
-#pragma mark -
-#pragma mark "comments" methods
+#pragma mark - "comments" methods
 // These create a GTLQueryDrive object.
 
 // Method: drive.comments.delete
@@ -411,8 +405,7 @@
                                           fileId:(NSString *)fileId
                                        commentId:(NSString *)commentId;
 
-#pragma mark -
-#pragma mark "files" methods
+#pragma mark - "files" methods
 // These create a GTLQueryDrive object.
 
 // Method: drive.files.copy
@@ -743,8 +736,7 @@
 + (instancetype)queryForFilesWatchWithObject:(GTLDriveChannel *)object
                                       fileId:(NSString *)fileId;
 
-#pragma mark -
-#pragma mark "parents" methods
+#pragma mark - "parents" methods
 // These create a GTLQueryDrive object.
 
 // Method: drive.parents.delete
@@ -802,8 +794,7 @@
 // Fetches a GTLDriveParentList.
 + (instancetype)queryForParentsListWithFileId:(NSString *)fileId;
 
-#pragma mark -
-#pragma mark "permissions" methods
+#pragma mark - "permissions" methods
 // These create a GTLQueryDrive object.
 
 // Method: drive.permissions.delete
@@ -913,8 +904,7 @@
                                              fileId:(NSString *)fileId
                                        permissionId:(NSString *)permissionId;
 
-#pragma mark -
-#pragma mark "properties" methods
+#pragma mark - "properties" methods
 // These create a GTLQueryDrive object.
 
 // Method: drive.properties.delete
@@ -1013,8 +1003,7 @@
                                             fileId:(NSString *)fileId
                                        propertyKey:(NSString *)propertyKey;
 
-#pragma mark -
-#pragma mark "realtime" methods
+#pragma mark - "realtime" methods
 // These create a GTLQueryDrive object.
 
 // Method: drive.realtime.get
@@ -1055,8 +1044,7 @@
 + (instancetype)queryForRealtimeUpdateWithFileId:(NSString *)fileId
                                 uploadParameters:(GTLUploadParameters *)uploadParametersOrNil;
 
-#pragma mark -
-#pragma mark "replies" methods
+#pragma mark - "replies" methods
 // These create a GTLQueryDrive object.
 
 // Method: drive.replies.delete
@@ -1154,8 +1142,7 @@
                                       commentId:(NSString *)commentId
                                         replyId:(NSString *)replyId;
 
-#pragma mark -
-#pragma mark "revisions" methods
+#pragma mark - "revisions" methods
 // These create a GTLQueryDrive object.
 
 // Method: drive.revisions.delete

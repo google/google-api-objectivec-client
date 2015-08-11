@@ -70,8 +70,7 @@
 @property (nonatomic, copy) NSString *pageToken;
 @property (nonatomic, copy) NSString *startDateTime;
 
-#pragma mark -
-#pragma mark "accounts" methods
+#pragma mark - "accounts" methods
 // These create a GTLQueryAdExchangeBuyer object.
 
 // Method: adexchangebuyer.accounts.get
@@ -110,8 +109,7 @@
 + (instancetype)queryForAccountsUpdateWithObject:(GTLAdExchangeBuyerAccount *)object
                                       identifier:(NSInteger)identifier;
 
-#pragma mark -
-#pragma mark "billingInfo" methods
+#pragma mark - "billingInfo" methods
 // These create a GTLQueryAdExchangeBuyer object.
 
 // Method: adexchangebuyer.billingInfo.get
@@ -131,8 +129,7 @@
 // Fetches a GTLAdExchangeBuyerBillingInfoList.
 + (instancetype)queryForBillingInfoList;
 
-#pragma mark -
-#pragma mark "budget" methods
+#pragma mark - "budget" methods
 // These create a GTLQueryAdExchangeBuyer object.
 
 // Method: adexchangebuyer.budget.get
@@ -174,8 +171,7 @@
                                      accountId:(long long)accountId
                                      billingId:(long long)billingId;
 
-#pragma mark -
-#pragma mark "creatives" methods
+#pragma mark - "creatives" methods
 // These create a GTLQueryAdExchangeBuyer object.
 
 // Method: adexchangebuyer.creatives.get
@@ -239,8 +235,7 @@
 // Fetches a GTLAdExchangeBuyerCreativesList.
 + (instancetype)queryForCreativesList;
 
-#pragma mark -
-#pragma mark "performanceReport" methods
+#pragma mark - "performanceReport" methods
 // These create a GTLQueryAdExchangeBuyer object.
 
 // Method: adexchangebuyer.performanceReport.list
@@ -264,8 +259,7 @@
                                                endDateTime:(NSString *)endDateTime
                                              startDateTime:(NSString *)startDateTime;
 
-#pragma mark -
-#pragma mark "pretargetingConfig" methods
+#pragma mark - "pretargetingConfig" methods
 // These create a GTLQueryAdExchangeBuyer object.
 
 // Method: adexchangebuyer.pretargetingConfig.delete

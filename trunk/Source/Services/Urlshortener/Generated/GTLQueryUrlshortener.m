@@ -44,8 +44,7 @@
   return map;
 }
 
-#pragma mark -
-#pragma mark "url" methods
+#pragma mark - "url" methods
 // These create a GTLQueryUrlshortener object.
 
 + (instancetype)queryForUrlGetWithShortUrl:(NSString *)shortUrl {
