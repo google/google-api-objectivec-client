@@ -1,8 +1,10 @@
-Google APIs Client Library for Objective-C
-Release Notes
+# Google APIs Client Library for Objective-C #
 
-Project site:     http://code.google.com/p/google-api-objectivec-client/
-Discussion group: http://groups.google.com/group/google-api-objectivec-client
+**Project site** <https://github.com/google/google-api-objectivec-client><br>
+**Discussion group** <http://groups.google.com/group/google-api-objectivec-client>
+
+
+## Release History ##
 
 6-Dec-2012
 
