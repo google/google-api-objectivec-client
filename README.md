@@ -3,92 +3,74 @@
 **Project site** <https://github.com/google/google-api-objectivec-client><br>
 **Discussion group** <http://groups.google.com/group/google-api-objectivec-client>
 
+Written by Google, this library is a flexible and efficient Objective-C
+framework for accessing JSON APIs.
 
-## Release History ##
+This is the recommended library for accessing JSON-based Google APIs for iOS and
+Mac OS X applications.  The library is compatible with applications built for
+iOS 3 and later, and Mac OS X 10.5 and later.
 
-6-Dec-2012
+**To get started** with Google  APIs and the Objective-C client library,  read
+the [wiki](https://github.com/google/google-api-objectivec-client/wiki)
+and study the
+[example applications](https://github.com/google/google-api-objectivec-client/tree/master/Examples).
 
-Added support for additional compiler warnings (thanks noloader).
+Generated interfaces for Google APIs are in the
+[services folder](https://github.com/google/google-api-objectivec-client/tree/master/Source/Services).
+Library changes are documented in the
+[release notes](https://github.com/google/google-api-objectivec-client/blob/master/ReleaseNotes.md).
 
-Worked around limitations in NSDecimalNumber's handling of 64-bit integers.
+Google APIs with generated interfaces include
+- [AdExchange Buyer](https://developers.google.com/ad-exchange/buyer-rest/)
+- [AdExchange Seller](https://developers.google.com/ad-exchange/seller-rest/)
+- [AdSense](https://developers.google.com/adsense/)
+- [AdSense Host](https://developers.google.com/adsense/host/)
+- [Analytics](https://developers.google.com/analytics/)
+- [Blogger](https://developers.google.com/blogger/)
+- [Books](https://developers.google.com/books/)
+- [Calendar](https://developers.google.com/google-apps/calendar/)
+- [Civic Info](https://developers.google.com/civic-information/)
+- [Cloud Save (AppState)](https://developers.google.com/games/services/common/concepts/cloudsave)
+- [Cloud Storage](https://developers.google.com/storage/)
+- [Compute Engine](https://developers.google.com/compute/)
+- [DoubleClick Bid Manager](https://developers.google.com/bid-manager/)
+- [Drive](https://developers.google.com/drive/)
+- [Fitness](https://developers.google.com/fit/)
+- [Gmail](https://developers.google.com/gmail/)
+- [Maps Engine](https://developers.google.com/maps-engine/)
+- [Mirror](https://developers.google.com/glass/about/) for Google Glass
+- [Groups Settings](https://developers.google.com/google-apps/groups-settings/)
+- Latitude ([deprecated](https://support.google.com/gmm/answer/3001634?p=maps_android_latitude&rd=1))
+- Orkut ([deprecated](http://en.blog.orkut.com/2014/06/tchau-orkut.html))
+- [Plus](https://developers.google.com/+/api/)
+- [Plus Domains](https://developers.google.com/+/domains/)
+- Shopping ([deprecated](http://googleblog.blogspot.jp/2013/03/a-second-spring-of-cleaning.html))
+- [Spectrum Database](https://developers.google.com/spectrum/)
+- [QPX Express](https://developers.google.com/qpx-express/)
+- [Tasks](https://developers.google.com/google-apps/tasks/)
+- [URL Shortener](https://developers.google.com/url-shortener/)
+- [Webmaster Tools](https://developers.google.com/webmaster-tools/)
+- [YouTube](https://developers.google.com/youtube/v3/)
 
-Removed SBJSON from the GTL project. Individual apps my choose to include the
-SBJSON files for compatibility with older operating systems that do not have
-NSJSONSerialization.
+The library may also be used
+[without generated interfaces](https://github.com/google/google-api-objectivec-client/wiki#using-apis-without-generated-classes)
+with JSON REST and JSON-RPC APIs.
 
+**If you have a problem** or want a new feature to be included in the library,
+please join the
+[discussion group](http://groups.google.com/group/google-api-objectivec-client).
+Be sure to include
+[http logs](https://github.com/google/google-api-objectivec-client/wiki#logging-http-server-traffic)
+for requests and responses when posting questions. Bugs may also be submitted
+on the [issues list](https://github.com/google/google-api-objectivec-client/issues).
 
-6-Aug-2012
+**Externally-included projects**: The library includes code from the separate
+projects [GTM HTTP Fetcher](https://github.com/google/gtm-http-fetcher),
+[GTM OAuth 2](https://github.com/google/gtm-oauth2), and
+[json-framework](http://code.google.com/p/json-framework/).
 
-GTLObject now supports indexed subscript access to items as a synonym for itemAtIndex:
+**Google Data APIs**: The library for older, XML-based APIs is
+[still available](https://github.com/google/gdata-objectivec-client).
 
-GTLDateTime is now an immutable class, to avoid accidental changes to instances
-that have been added to an object tree.
-
-
-30-May-2012
-
-Calendar API now properly exposes GTLDateTimes for max/min times.
-
-
-15-March-2012
-
-Moved base64 encoding and decoding support to GTLBase64 file.
-
-
-22-December-2011
-
-Fixed waitForTicket's return value on delete fetches.
-
-
-12-December-2011
-
-String properties in objects are now copied rather than retained.
-
-
-1-December-2011
-
-Fixed handling of nil date-time fields in server responses.
-
-
-17-November-2011
-
-Added interfaces for Calendar.
-
-
-17-October-2011
-
-Added chunked (resumable) upload support and additional http headers to
-query class.
-
-
-20-September-2011
-
-Added per-query callback blocks, especially useful for queries executes in
-a batch.
-
-Added shouldFetchNextPages support for collections fetched in batch queries
-
-Added interfaces for orkut
-
-
-15-September-2011
-
-Added interfaces for Google Plus.
-
-
-13-September-2011
-
-Added interfaces for Blogger.
-
-
-7-September-2011
-
-Added generated interfaces for Google Analytics.
-
-
-Release 2.0.0
-29-August-2011
-
-Initial public release of the JSON-based API library.  Includes standard object,
-service, and query classes, and unit tests.  Includes classes for Books,
-Latitude, Shopping, Tasks and URL Shortener.
+Other useful classes for Mac and iOS developers are available in the
+[Google Toolbox for Mac](https://github.com/google/google-toolbox-for-mac).

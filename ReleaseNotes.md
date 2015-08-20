@@ -1,0 +1,89 @@
+# Google APIs Client Library for Objective-C #
+
+## Release History ##
+
+### 6-Dec-2012 ###
+
+Added support for additional compiler warnings (thanks noloader).
+
+Worked around limitations in NSDecimalNumber's handling of 64-bit integers.
+
+Removed SBJSON from the GTL project. Individual apps my choose to include the
+SBJSON files for compatibility with older operating systems that do not have
+NSJSONSerialization.
+
+
+### 6-Aug-2012 ###
+
+GTLObject now supports indexed subscript access to items as a synonym for itemAtIndex:
+
+GTLDateTime is now an immutable class, to avoid accidental changes to instances
+that have been added to an object tree.
+
+
+### 30-May-2012 ###
+
+Calendar API now properly exposes GTLDateTimes for max/min times.
+
+
+### 15-March-2012 ###
+
+Moved base64 encoding and decoding support to GTLBase64 file.
+
+
+### 22-December-2011 ###
+
+Fixed waitForTicket's return value on delete fetches.
+
+
+### 12-December-2011 ###
+
+String properties in objects are now copied rather than retained.
+
+
+### 1-December-2011 ###
+
+Fixed handling of nil date-time fields in server responses.
+
+
+### 17-November-2011 ###
+
+Added interfaces for Calendar.
+
+
+### 17-October-2011 ###
+
+Added chunked (resumable) upload support and additional http headers to
+query class.
+
+
+### 20-September-2011 ###
+
+Added per-query callback blocks, especially useful for queries executes in
+a batch.
+
+Added shouldFetchNextPages support for collections fetched in batch queries
+
+Added interfaces for orkut
+
+
+### 15-September-2011 ###
+
+Added interfaces for Google Plus.
+
+
+### 13-September-2011 ###
+
+Added interfaces for Blogger.
+
+
+### 7-September-2011 ###
+
+Added generated interfaces for Google Analytics.
+
+
+### Release 2.0.0 - 29-August-2011 ###
+
+Initial public release of the JSON-based API library.  Includes standard object,
+service, and query classes, and unit tests.  Includes classes for Books,
+Latitude, Shopping, Tasks and URL Shortener.
