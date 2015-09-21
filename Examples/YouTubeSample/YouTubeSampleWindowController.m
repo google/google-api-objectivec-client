@@ -175,6 +175,10 @@ NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
       NSString *path = [[openPanel URL] path];
       [_uploadPathField setStringValue:path];
 
+      if ([_uploadTitleField.stringValue length] == 0) {
+        [_uploadTitleField setStringValue:[path lastPathComponent]];
+      }
+
       [self updateUI]; // Update UI in case we need to enable the upload button.
     }
   }];
@@ -277,9 +281,9 @@ NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
   // query.fields = @"kind,etag,items(id,etag,kind,contentDetails)";
 
   _channelListTicket = [service executeQuery:query
-                        completionHandler:^(GTLServiceTicket *ticket,
-                                            GTLYouTubeChannelListResponse *channelList,
-                                            NSError *error) {
+                           completionHandler:^(GTLServiceTicket *ticket,
+                                               GTLYouTubeChannelListResponse *channelList,
+                                               NSError *error) {
     // Callback
 
     // The contentDetails of the response has the playlists available for
@@ -366,6 +370,7 @@ NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
         [_uploadCategoryPopup setMenu:categoryMenu];
         [_uploadCategoryPopup setEnabled:YES];
       }
+      [self updateUI];
    }];
 }
 

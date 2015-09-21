@@ -1466,7 +1466,7 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
             GTL_DEBUG_LOG(@"GTLService: Batch result missing for request %@",
                           requestID);
             oneError = [NSError errorWithDomain:kGTLServiceErrorDomain
-                                           code:kGTLErrorQueryResultMissing
+                                           code:GTLServiceErrorQueryResultMissing
                                        userInfo:nil];
           }
         }
@@ -2408,7 +2408,7 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 
   if (![ticket hasCalledCallback] && fetchError == nil) {
     fetchError = [NSError errorWithDomain:kGTLServiceErrorDomain
-                                     code:kGTLErrorWaitTimedOut
+                                     code:GTLServiceErrorWaitTimedOut
                                  userInfo:nil];
   }
 

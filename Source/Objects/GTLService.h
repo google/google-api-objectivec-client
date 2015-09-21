@@ -35,6 +35,8 @@
   #ifndef GTM_USE_SESSION_FETCHER
     #define GTM_USE_SESSION_FETCHER 1
   #endif
+
+  #define GTLSERVICE_DEPRECATE_OLD_ENUMS 1
 #endif
 
 #if !defined(GTL_USE_SESSION_FETCHER) && defined(GTM_USE_SESSION_FETCHER)
@@ -68,10 +70,16 @@
 
 // Error domains
 extern NSString *const kGTLServiceErrorDomain;
-enum {
-  kGTLErrorQueryResultMissing = -3000,
-  kGTLErrorWaitTimedOut       = -3001
+
+typedef NS_ENUM(NSInteger, GTLServiceError) {
+  GTLServiceErrorQueryResultMissing = -3000,
+  GTLServiceErrorWaitTimedOut       = -3001
 };
+
+#if !GTLSERVICE_DEPRECATE_OLD_ENUMS
+#define kGTLErrorQueryResultMissing GTLServiceErrorQueryResultMissing
+#define kGTLErrorWaitTimedOut       GTLServiceErrorWaitTimedOut
+#endif
 
 extern NSString *const kGTLJSONRPCErrorDomain;
 

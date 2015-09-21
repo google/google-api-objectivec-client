@@ -156,6 +156,9 @@
   }
 }
 
+#if !GTL_IPHONE
+// TODO(grobbins): b/23278397 NSCalendarDate doesn't exist on iOS
+
 - (void)testTimeZonePreservation {
   NSTimeZone *denverTZ = [NSTimeZone timeZoneWithName:@"America/Denver"];
   NSCalendarDate *date = [NSCalendarDate dateWithYear:2007 month:01 day:01
@@ -201,5 +204,7 @@
                  (dateTime.calendar.timeZone.secondsFromGMT -
                   (NSInteger)[dateTime.timeZone daylightSavingTimeOffset]));
 }
+
+#endif  // !GTL_IPHONE
 
 @end
