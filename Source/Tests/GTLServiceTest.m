@@ -246,7 +246,6 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   service.allowInsecureQueries = YES;
 
   GTLServiceCompletionHandler completionBlock;
-  GTLServiceTicket *ticket;
   NSURL *feedURL;
 
   //
@@ -277,10 +276,10 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
     XCTAssertEqualObjects(className, expectedName,);
   };
 
-  ticket = [service fetchObjectWithURL:feedURL
-                     completionHandler:completionBlock];
-  [self service:service waitForTicket:ticket];
-  XCTAssertTrue(ticket.hasCalledCallback);
+  GTLServiceTicket *fetchTicket = [service fetchObjectWithURL:feedURL
+                                            completionHandler:completionBlock];
+  [self service:service waitForTicket:fetchTicket];
+  XCTAssertTrue(fetchTicket.hasCalledCallback);
 
   //
   // test fetch error
@@ -296,10 +295,10 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
     XCTAssertEqual([errObj.code intValue], 499);
   };
 
-  ticket = [service fetchObjectWithURL:feedURL
-                     completionHandler:completionBlock];
-  [self service:service waitForTicket:ticket];
-  XCTAssertTrue(ticket.hasCalledCallback);
+  fetchTicket = [service fetchObjectWithURL:feedURL
+                          completionHandler:completionBlock];
+  [self service:service waitForTicket:fetchTicket];
+  XCTAssertTrue(fetchTicket.hasCalledCallback);
 
   //
   // test parse notifications
@@ -355,20 +354,21 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   // tell the test server to look for an oauth authorization header
   query.urlQueryParameters = @{ @"oauth2": @"catpaws" };
 
-  GTLServiceTicket *ticket = [service executeQuery:query
-                                 completionHandler:completionBlock];
+  GTLServiceTicket *queryTicket = [service executeQuery:query
+                                      completionHandler:completionBlock];
 
   __block unsigned long long maxUploadProgress = 0;
-  ticket.uploadProgressBlock = ^(GTLServiceTicket *ticket, unsigned long long numberOfBytesRead,
-                                 unsigned long long dataLength) {
+  queryTicket.uploadProgressBlock = ^(GTLServiceTicket *ticket,
+                                      unsigned long long numberOfBytesRead,
+                                      unsigned long long dataLength) {
     maxUploadProgress = numberOfBytesRead;
   };
   
-  NSString *headerValue = [ticket.objectFetcher.mutableRequest valueForHTTPHeaderField:@"X-Feline"];
+  NSString *headerValue = [queryTicket.objectFetcher.mutableRequest valueForHTTPHeaderField:@"X-Feline"];
   XCTAssertEqualObjects(headerValue, @"Fluffy");
 
-  [self service:service waitForTicket:ticket];
-  XCTAssert(ticket.hasCalledCallback);
+  [self service:service waitForTicket:queryTicket];
+  XCTAssert(queryTicket.hasCalledCallback);
   XCTAssertGreaterThan(maxUploadProgress, 0ULL);
 
   //
@@ -399,10 +399,10 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   query = [GTLQueryTasksTest queryForTasksListWithTasklist:@"abcd"];
   query.requestID = @"gtl_4";
 
-  ticket = [service executeQuery:query
-               completionHandler:completionBlock];
-  [self service:service waitForTicket:ticket];
-  XCTAssertTrue(ticket.hasCalledCallback, @"callback skipped");
+  queryTicket = [service executeQuery:query
+                    completionHandler:completionBlock];
+  [self service:service waitForTicket:queryTicket];
+  XCTAssertTrue(queryTicket.hasCalledCallback, @"callback skipped");
 
   //
   // test: fetch single valid query with invalid auth
@@ -421,10 +421,10 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   // tell the test server to look for an oauth authorization header
   query.urlQueryParameters = @{ @"oauth2": @"dogpaws" };
 
-  ticket = [service executeQuery:query
-               completionHandler:completionBlock];
-  [self service:service waitForTicket:ticket];
-  XCTAssertTrue(ticket.hasCalledCallback, @"callback skipped");
+  queryTicket = [service executeQuery:query
+                    completionHandler:completionBlock];
+  [self service:service waitForTicket:queryTicket];
+  XCTAssertTrue(queryTicket.hasCalledCallback, @"callback skipped");
 
   //
   // test: delete an item, expect an empty response as nil
@@ -437,10 +437,10 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   query = [GTLQueryTasksTest queryForTasksDeleteWithTasklist:@"MTQwNzM4MjM0NzE2NDExMDgxOTM6MDow"
                                                         task:@"MTQwNzM4MjM0NzE2NDExMDgxOTM6MDoz"];
   query.requestID = @"gtl_5";
-  ticket = [service executeQuery:query
-               completionHandler:completionBlock];
-  [self service:service waitForTicket:ticket];
-  XCTAssertTrue(ticket.hasCalledCallback, @"callback skipped");
+  queryTicket = [service executeQuery:query
+                    completionHandler:completionBlock];
+  [self service:service waitForTicket:queryTicket];
+  XCTAssertTrue(queryTicket.hasCalledCallback, @"callback skipped");
 
   //
   // test: fetch with fields that should lead to an empty item, expect an empty
@@ -455,10 +455,10 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   query = [GTLQueryTasksTest queryForTasksListWithTasklist:@"MTQwNzM4MjM0NzE2NDExMDgxOTM6MDow"];
   query.requestID = @"gtl_7";
   query.fields = @"";
-  ticket = [service executeQuery:query
-               completionHandler:completionBlock];
-  [self service:service waitForTicket:ticket];
-  XCTAssertTrue(ticket.hasCalledCallback);
+  queryTicket = [service executeQuery:query
+                    completionHandler:completionBlock];
+  [self service:service waitForTicket:queryTicket];
+  XCTAssertTrue(queryTicket.hasCalledCallback);
 }
 
 - (void)testServiceRPCSurrogates {
@@ -821,10 +821,10 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   };
 
 
-  GTLServiceTicket *ticket = [service executeQuery:query
-                                 completionHandler:^(GTLServiceTicket *ticket,
-                                                     id object,
-                                                     NSError *error) {
+  GTLServiceTicket *queryTicket = [service executeQuery:query
+                                      completionHandler:^(GTLServiceTicket *ticket,
+                                                          id object,
+                                                          NSError *error) {
     XCTAssertNotNil(ticket);
     XCTAssertNil(error);
 
@@ -843,16 +843,16 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
     [expectExecuteCompletion fulfill];
   }];
 
-  ticket.uploadProgressBlock = ^(GTLServiceTicket *ticket,
-                                 unsigned long long totalBytesUploaded,
-                                 unsigned long long totalBytesExpectedToUpload) {
+  queryTicket.uploadProgressBlock = ^(GTLServiceTicket *ticket,
+                                      unsigned long long totalBytesUploaded,
+                                      unsigned long long totalBytesExpectedToUpload) {
     if (totalBytesUploaded == totalBytesExpectedToUpload) {
       [expectProgress fulfill];
     }
   };
 
   [self waitForExpectationsWithTimeout:5 handler:^(NSError *error) {
-    XCTAssertTrue(ticket.hasCalledCallback);
+    XCTAssertTrue(queryTicket.hasCalledCallback);
   }];
 }
 
@@ -968,17 +968,17 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
     [expectQueryCompletion fulfill];
   };
 
-  GTLServiceTicket *ticket = [service executeQuery:query
-                                 completionHandler:^(GTLServiceTicket *ticket,
-                                                     id object,
-                                                     NSError *error) {
+  GTLServiceTicket *queryTicket = [service executeQuery:query
+                                      completionHandler:^(GTLServiceTicket *ticket,
+                                                          id object,
+                                                          NSError *error) {
     [expectExecuteCompletion fulfill];
   }];
 
   __block int progressCallbackCounter = 0;
-  ticket.uploadProgressBlock = ^(GTLServiceTicket *ticket,
-                                 unsigned long long totalBytesUploaded,
-                                 unsigned long long totalBytesExpectedToUpload) {
+  queryTicket.uploadProgressBlock = ^(GTLServiceTicket *ticket,
+                                      unsigned long long totalBytesUploaded,
+                                      unsigned long long totalBytesExpectedToUpload) {
     ++progressCallbackCounter;
     if (totalBytesUploaded == totalBytesExpectedToUpload) {
       [expectProgress fulfill];
@@ -1032,10 +1032,10 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
     [expectQueryCompletion fulfill];
   };
 
-  GTLServiceTicket *ticket = [service executeQuery:query
-                                 completionHandler:^(GTLServiceTicket *ticket,
-                                                     id object,
-                                                     NSError *error) {
+  GTLServiceTicket *queryTicket = [service executeQuery:query
+                                      completionHandler:^(GTLServiceTicket *ticket,
+                                                          id object,
+                                                          NSError *error) {
      XCTAssertNotNil(ticket);
      XCTAssertNil(object);
      XCTAssertEqualObjects(error, fakeError);
@@ -1044,7 +1044,7 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
    }];
 
   [self waitForExpectationsWithTimeout:5 handler:^(NSError *error) {
-    XCTAssertTrue(ticket.hasCalledCallback);
+    XCTAssertTrue(queryTicket.hasCalledCallback);
   }];
 }
 
@@ -1125,10 +1125,10 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   };
 
 
-  GTLServiceTicket *ticket = [service executeQuery:batchQuery
-                                 completionHandler:^(GTLServiceTicket *ticket,
-                                                     id object,
-                                                     NSError *error) {
+  GTLServiceTicket *queryTicket = [service executeQuery:batchQuery
+                                      completionHandler:^(GTLServiceTicket *ticket,
+                                                          id object,
+                                                          NSError *error) {
     XCTAssertNotNil(ticket);
     XCTAssertNil(error);
 
@@ -1145,7 +1145,7 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   }];
 
   [self waitForExpectationsWithTimeout:5 handler:^(NSError *error) {
-    XCTAssertTrue(ticket.hasCalledCallback);
+    XCTAssertTrue(queryTicket.hasCalledCallback);
   }];
 }
 
@@ -1191,10 +1191,10 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
     [expectQuery2Completion fulfill];
   };
 
-  GTLServiceTicket *ticket = [service executeQuery:batchQuery
-                                 completionHandler:^(GTLServiceTicket *ticket,
-                                                     id object,
-                                                     NSError *error) {
+  GTLServiceTicket *queryTicket = [service executeQuery:batchQuery
+                                      completionHandler:^(GTLServiceTicket *ticket,
+                                                          id object,
+                                                          NSError *error) {
     XCTAssertNotNil(ticket);
     XCTAssertNil(object);
     XCTAssertEqualObjects(error, fakeError);
@@ -1203,7 +1203,7 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   }];
 
   [self waitForExpectationsWithTimeout:5 handler:^(NSError *error) {
-    XCTAssertTrue(ticket.hasCalledCallback);
+    XCTAssertTrue(queryTicket.hasCalledCallback);
   }];
 }
 
