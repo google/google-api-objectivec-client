@@ -305,7 +305,7 @@
 		4F2445C2121F0CF600FEE1DA /* GTLUnitTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = GTLUnitTests.octest;
+			path = GTLUnitTests.xctest;
 			remoteRef = 4F2445C1121F0CF600FEE1DA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -411,7 +411,6 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = YouTubeSample;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = app;
@@ -429,7 +428,6 @@
 				GCC_MODEL_TUNING = G5;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = YouTubeSample;
 				WRAPPER_EXTENSION = app;
 			};
