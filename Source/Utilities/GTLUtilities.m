@@ -281,7 +281,7 @@ BOOL GTL_AreEqualOrBothNil(id obj1, id obj2) {
     return YES;
   }
   if (obj1 && obj2) {
-    BOOL areEqual = [obj1 isEqual:obj2];
+    BOOL areEqual = [(NSObject *)obj1 isEqual:obj2];
     return areEqual;
   }
   return NO;

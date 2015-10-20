@@ -104,12 +104,12 @@
       result = obj;
       canBeCached = NO;
   } else if ([obj isKindOfClass:[GTLObject class]]) {
-    result = [obj JSON];
+    result = [(GTLObject *)obj JSON];
     if (result == nil) {
       // adding an empty object; it should have a JSON dictionary so it can
       // hold future assignments
-      [obj setJSON:[NSMutableDictionary dictionary]];
-      result = [obj JSON];
+      [(GTLObject *)obj setJSON:[NSMutableDictionary dictionary]];
+      result = [(GTLObject *)obj JSON];
     }
   } else if ([obj isKindOfClass:[NSArray class]]) {
     checkExpected = NO;
