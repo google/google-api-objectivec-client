@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLAdSenseAccount (0 custom class methods, 6 custom properties)
+//   GTLAdSenseAccount (0 custom class methods, 7 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -43,6 +43,7 @@
 //
 
 @interface GTLAdSenseAccount : GTLObject
+@property (nonatomic, retain) NSNumber *creationTime;  // longLongValue
 
 // Unique identifier of this account.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').

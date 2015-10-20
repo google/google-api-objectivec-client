@@ -54,6 +54,7 @@
 #import "GTLBigqueryProjectList.h"
 #import "GTLBigqueryProjectReference.h"
 #import "GTLBigqueryQueryResponse.h"
+#import "GTLBigqueryStreamingbuffer.h"
 #import "GTLBigqueryTable.h"
 #import "GTLBigqueryTableCell.h"
 #import "GTLBigqueryTableDataInsertAllResponse.h"

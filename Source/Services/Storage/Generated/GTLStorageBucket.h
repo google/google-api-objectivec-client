@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud Storage API (storage/v1)
+//   Cloud Storage JSON API (storage/v1)
 // Description:
 //   Lets you store and retrieve potentially-large, immutable data objects.
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 // Classes:
-//   GTLStorageBucket (0 custom class methods, 18 custom properties)
+//   GTLStorageBucket (0 custom class methods, 19 custom properties)
 //   GTLStorageBucketCorsItem (0 custom class methods, 4 custom properties)
 //   GTLStorageBucketLifecycle (0 custom class methods, 1 custom properties)
 //   GTLStorageBucketLogging (0 custom class methods, 2 custom properties)
@@ -117,8 +117,11 @@
 // information, see storage classes.
 @property (nonatomic, copy) NSString *storageClass;
 
-// Creation time of the bucket in RFC 3339 format.
+// The creation time of the bucket in RFC 3339 format.
 @property (nonatomic, retain) GTLDateTime *timeCreated;
+
+// The modification time of the bucket in RFC 3339 format.
+@property (nonatomic, retain) GTLDateTime *updated;
 
 // The bucket's versioning configuration.
 @property (nonatomic, retain) GTLStorageBucketVersioning *versioning;

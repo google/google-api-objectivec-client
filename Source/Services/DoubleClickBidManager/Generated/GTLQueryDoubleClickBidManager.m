@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/bid-manager/
 // Classes:
-//   GTLQueryDoubleClickBidManager (8 custom class methods, 12 custom properties)
+//   GTLQueryDoubleClickBidManager (8 custom class methods, 13 custom properties)
 
 #import "GTLQueryDoubleClickBidManager.h"
 
@@ -38,8 +38,8 @@
 
 @implementation GTLQueryDoubleClickBidManager
 
-@dynamic dataRange, dryRun, fields, filterIds, filterType, format, lineItems,
-         query, queryId, reportDataEndTimeMs, reportDataStartTimeMs,
+@dynamic dataRange, dryRun, fields, fileSpec, filterIds, filterType, format,
+         lineItems, query, queryId, reportDataEndTimeMs, reportDataStartTimeMs,
          timezoneCode;
 
 + (NSDictionary *)arrayPropertyToClassMap {

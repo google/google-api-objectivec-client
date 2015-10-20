@@ -51,3 +51,10 @@ GTL_EXTERN NSString * const kGTLAdExchangeBuyerOpenAuctionStatusFilterApproved; 
 GTL_EXTERN NSString * const kGTLAdExchangeBuyerOpenAuctionStatusFilterConditionallyApproved;  // "conditionally_approved"
 GTL_EXTERN NSString * const kGTLAdExchangeBuyerOpenAuctionStatusFilterDisapproved;  // "disapproved"
 GTL_EXTERN NSString * const kGTLAdExchangeBuyerOpenAuctionStatusFilterNotChecked;  // "not_checked"
+
+// GTLQueryAdExchangeBuyer - UpdateAction
+GTL_EXTERN NSString * const kGTLAdExchangeBuyerUpdateActionAccept;  // "accept"
+GTL_EXTERN NSString * const kGTLAdExchangeBuyerUpdateActionCancel;  // "cancel"
+GTL_EXTERN NSString * const kGTLAdExchangeBuyerUpdateActionPropose;  // "propose"
+GTL_EXTERN NSString * const kGTLAdExchangeBuyerUpdateActionUnknownAction;  // "unknownAction"
+GTL_EXTERN NSString * const kGTLAdExchangeBuyerUpdateActionUpdateFinalized;  // "updateFinalized"

@@ -64,6 +64,7 @@
     [GTLBigqueryProjectList class],
     [GTLBigqueryProjectReference class],
     [GTLBigqueryQueryResponse class],
+    [GTLBigqueryStreamingbuffer class],
     [GTLBigqueryTable class],
     [GTLBigqueryTableCell class],
     [GTLBigqueryTableDataInsertAllResponse class],

@@ -62,7 +62,8 @@
 
 @interface GTLYouTubeVideo : GTLObject
 
-// Age restriction details related to a video.
+// Age restriction details related to a video. This data can only be retrieved
+// by the video owner.
 @property (nonatomic, retain) GTLYouTubeVideoAgeGating *ageGating;
 
 // The contentDetails object contains information about the video content,

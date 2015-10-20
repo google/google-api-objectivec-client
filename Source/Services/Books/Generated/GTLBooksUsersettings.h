@@ -26,8 +26,10 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLBooksUsersettings (0 custom class methods, 2 custom properties)
+//   GTLBooksUsersettings (0 custom class methods, 3 custom properties)
 //   GTLBooksUsersettingsNotesExport (0 custom class methods, 2 custom properties)
+//   GTLBooksUsersettingsNotification (0 custom class methods, 1 custom properties)
+//   GTLBooksUsersettingsNotificationMoreFromAuthors (0 custom class methods, 1 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,6 +38,8 @@
 #endif
 
 @class GTLBooksUsersettingsNotesExport;
+@class GTLBooksUsersettingsNotification;
+@class GTLBooksUsersettingsNotificationMoreFromAuthors;
 
 // ----------------------------------------------------------------------------
 //
@@ -50,6 +54,7 @@
 // User settings in sub-objects, each for different purposes.
 @property (nonatomic, retain) GTLBooksUsersettingsNotesExport *notesExport;
 
+@property (nonatomic, retain) GTLBooksUsersettingsNotification *notification;
 @end
 
 
@@ -61,4 +66,24 @@
 @interface GTLBooksUsersettingsNotesExport : GTLObject
 @property (nonatomic, copy) NSString *folderName;
 @property (nonatomic, retain) NSNumber *isEnabled;  // boolValue
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksUsersettingsNotification
+//
+
+@interface GTLBooksUsersettingsNotification : GTLObject
+@property (nonatomic, retain) GTLBooksUsersettingsNotificationMoreFromAuthors *moreFromAuthors;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksUsersettingsNotificationMoreFromAuthors
+//
+
+@interface GTLBooksUsersettingsNotificationMoreFromAuthors : GTLObject
+@property (nonatomic, copy) NSString *optedState;
 @end

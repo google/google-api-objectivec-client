@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLQueryBooks (44 custom class methods, 70 custom properties)
+//   GTLQueryBooks (46 custom class methods, 71 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -85,6 +85,7 @@
 @property (nonatomic, copy) NSString *model;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *nonce;
+@property (nonatomic, copy) NSString *notificationId;
 @property (nonatomic, copy) NSString *offerId;
 @property (nonatomic, copy) NSString *orderBy;
 @property (nonatomic, assign) NSUInteger pageSize;
@@ -207,7 +208,7 @@
 // These create a GTLQueryBooks object.
 
 // Method: books.dictionary.listOfflineMetadata
-// Returns a list of offline dictionary meatadata available
+// Returns a list of offline dictionary metadata available
 //  Required:
 //   cpksver: The device/version ID from which to request the data.
 //  Authorization scope(s):
@@ -650,6 +651,22 @@
                                                                timestamp:(NSString *)timestamp
                                                                 position:(NSString *)position;
 
+#pragma mark - "notification" methods
+// These create a GTLQueryBooks object.
+
+// Method: books.notification.get
+// Returns notification details for a given notification id.
+//  Required:
+//   notificationId: String to identify the notification.
+//  Optional:
+//   locale: ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used
+//     for generating notification title and body.
+//   source: String to identify the originator of this request.
+//  Authorization scope(s):
+//   kGTLAuthScopeBooks
+// Fetches a GTLBooksNotification.
++ (instancetype)queryForNotificationGetWithNotificationId:(NSString *)notificationId;
+
 #pragma mark - "onboarding" methods
 // These create a GTLQueryBooks object.
 
@@ -682,6 +699,26 @@
 //   kGTLAuthScopeBooks
 // Fetches a GTLBooksVolume2.
 + (instancetype)queryForOnboardingListCategoryVolumes;
+
+#pragma mark - "personalizedstream" methods
+// These create a GTLQueryBooks object.
+
+// Method: books.personalizedstream.get
+// Returns a stream of personalized book clusters
+//  Optional:
+//   locale: ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used
+//     for generating recommendations.
+//   maxAllowedMaturityRating: The maximum allowed maturity rating of returned
+//     recommendations. Books with a higher maturity rating are filtered out.
+//      kGTLBooksMaxAllowedMaturityRatingMature: Show books which are rated
+//        mature or lower.
+//      kGTLBooksMaxAllowedMaturityRatingNotMature: Show books which are rated
+//        not mature.
+//   source: String to identify the originator of this request.
+//  Authorization scope(s):
+//   kGTLAuthScopeBooks
+// Fetches a GTLBooksDiscoveryclusters.
++ (instancetype)queryForPersonalizedstreamGet;
 
 #pragma mark - "promooffer" methods
 // These create a GTLQueryBooks object.

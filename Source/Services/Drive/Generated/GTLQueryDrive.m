@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLQueryDrive (60 custom class methods, 48 custom properties)
+//   GTLQueryDrive (60 custom class methods, 49 custom properties)
 
 #import "GTLQueryDrive.h"
 
@@ -61,8 +61,8 @@
          appId, baseRevision, changeId, childId, commentId, convert, corpus,
          email, emailMessage, fields, fileId, folderId, includeDeleted,
          includeSubscribed, languageCode, maxChangeIdCount, maxResults,
-         modifiedDateBehavior, newRevision, ocr, ocrLanguage, pageToken,
-         parentId, permissionId, pinned, projection, propertyKey, q,
+         modifiedDateBehavior, newRevision, ocr, ocrLanguage, orderBy,
+         pageToken, parentId, permissionId, pinned, projection, propertyKey, q,
          removeParents, replyId, revision, revisionId, sendNotificationEmails,
          setModifiedDate, space, spaces, startChangeId, timedTextLanguage,
          timedTextTrackName, transferOwnership, updatedMin, updateViewedDate,

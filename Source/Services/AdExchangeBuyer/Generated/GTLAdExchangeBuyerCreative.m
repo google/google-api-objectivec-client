@@ -28,11 +28,15 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerCreative (0 custom class methods, 21 custom properties)
+//   GTLAdExchangeBuyerCreative (0 custom class methods, 25 custom properties)
 //   GTLAdExchangeBuyerCreativeCorrectionsItem (0 custom class methods, 2 custom properties)
 //   GTLAdExchangeBuyerCreativeFilteringReasons (0 custom class methods, 2 custom properties)
+//   GTLAdExchangeBuyerCreativeNativeAd (0 custom class methods, 12 custom properties)
 //   GTLAdExchangeBuyerCreativeServingRestrictionsItem (0 custom class methods, 3 custom properties)
 //   GTLAdExchangeBuyerCreativeFilteringReasonsReasonsItem (0 custom class methods, 2 custom properties)
+//   GTLAdExchangeBuyerCreativeNativeAdAppIcon (0 custom class methods, 3 custom properties)
+//   GTLAdExchangeBuyerCreativeNativeAdImage (0 custom class methods, 3 custom properties)
+//   GTLAdExchangeBuyerCreativeNativeAdLogo (0 custom class methods, 3 custom properties)
 //   GTLAdExchangeBuyerCreativeServingRestrictionsItemContextsItem (0 custom class methods, 4 custom properties)
 //   GTLAdExchangeBuyerCreativeServingRestrictionsItemDisapprovalReasonsItem (0 custom class methods, 2 custom properties)
 
@@ -44,11 +48,19 @@
 //
 
 @implementation GTLAdExchangeBuyerCreative
-@dynamic accountId, advertiserId, advertiserName, agencyId, attribute,
-         buyerCreativeId, clickThroughUrl, corrections, dealsStatus,
-         filteringReasons, height, HTMLSnippet, kind, openAuctionStatus,
-         productCategories, restrictedCategories, sensitiveCategories,
-         servingRestrictions, vendorType, videoURL, width;
+@dynamic accountId, advertiserId, advertiserName, agencyId, apiUploadTimestamp,
+         attribute, buyerCreativeId, clickThroughUrl, corrections, dealsStatus,
+         filteringReasons, height, HTMLSnippet, impressionTrackingUrl, kind,
+         nativeAd, openAuctionStatus, productCategories, restrictedCategories,
+         sensitiveCategories, servingRestrictions, vendorType, version,
+         videoURL, width;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map = @{
+    @"apiUploadTimestamp" : @"api_upload_timestamp"
+  };
+  return map;
+}
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{
@@ -56,6 +68,7 @@
     @"attribute" : [NSNumber class],
     @"clickThroughUrl" : [NSString class],
     @"corrections" : [GTLAdExchangeBuyerCreativeCorrectionsItem class],
+    @"impressionTrackingUrl" : [NSString class],
     @"productCategories" : [NSNumber class],
     @"restrictedCategories" : [NSNumber class],
     @"sensitiveCategories" : [NSNumber class],
@@ -110,6 +123,25 @@
 
 // ----------------------------------------------------------------------------
 //
+//   GTLAdExchangeBuyerCreativeNativeAd
+//
+
+@implementation GTLAdExchangeBuyerCreativeNativeAd
+@dynamic advertiser, appIcon, body, callToAction, clickTrackingUrl, headline,
+         image, impressionTrackingUrl, logo, price, starRating, store;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map = @{
+    @"impressionTrackingUrl" : [NSString class]
+  };
+  return map;
+}
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
 //   GTLAdExchangeBuyerCreativeServingRestrictionsItem
 //
 
@@ -134,6 +166,36 @@
 
 @implementation GTLAdExchangeBuyerCreativeFilteringReasonsReasonsItem
 @dynamic filteringCount, filteringStatus;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAdExchangeBuyerCreativeNativeAdAppIcon
+//
+
+@implementation GTLAdExchangeBuyerCreativeNativeAdAppIcon
+@dynamic height, url, width;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAdExchangeBuyerCreativeNativeAdImage
+//
+
+@implementation GTLAdExchangeBuyerCreativeNativeAdImage
+@dynamic height, url, width;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAdExchangeBuyerCreativeNativeAdLogo
+//
+
+@implementation GTLAdExchangeBuyerCreativeNativeAdLogo
+@dynamic height, url, width;
 @end
 
 

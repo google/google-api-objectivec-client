@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryJobStatistics2 (0 custom class methods, 2 custom properties)
+//   GTLBigqueryJobStatistics2 (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -41,10 +41,16 @@
 
 @interface GTLBigqueryJobStatistics2 : GTLObject
 
+// [Output-only] Billing tier for the job.
+@property (nonatomic, retain) NSNumber *billingTier;  // intValue
+
 // [Output-only] Whether the query result was fetched from the query cache.
 @property (nonatomic, retain) NSNumber *cacheHit;  // boolValue
 
-// [Output-only] Total bytes processed for this job.
+// [Output-only] Total bytes billed for the job.
+@property (nonatomic, retain) NSNumber *totalBytesBilled;  // longLongValue
+
+// [Output-only] Total bytes processed for the job.
 @property (nonatomic, retain) NSNumber *totalBytesProcessed;  // longLongValue
 
 @end

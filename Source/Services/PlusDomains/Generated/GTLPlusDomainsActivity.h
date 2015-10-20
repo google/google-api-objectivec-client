@@ -27,18 +27,21 @@
 //   https://developers.google.com/+/domains/
 // Classes:
 //   GTLPlusDomainsActivity (0 custom class methods, 20 custom properties)
-//   GTLPlusDomainsActivityActor (0 custom class methods, 6 custom properties)
+//   GTLPlusDomainsActivityActor (0 custom class methods, 7 custom properties)
 //   GTLPlusDomainsActivityObject (0 custom class methods, 11 custom properties)
 //   GTLPlusDomainsActivityProvider (0 custom class methods, 1 custom properties)
+//   GTLPlusDomainsActivityActorClientSpecificActorInfo (0 custom class methods, 1 custom properties)
 //   GTLPlusDomainsActivityActorImage (0 custom class methods, 1 custom properties)
 //   GTLPlusDomainsActivityActorName (0 custom class methods, 2 custom properties)
 //   GTLPlusDomainsActivityActorVerification (0 custom class methods, 1 custom properties)
-//   GTLPlusDomainsActivityObjectActor (0 custom class methods, 5 custom properties)
+//   GTLPlusDomainsActivityObjectActor (0 custom class methods, 6 custom properties)
 //   GTLPlusDomainsActivityObjectAttachmentsItem (0 custom class methods, 10 custom properties)
 //   GTLPlusDomainsActivityObjectPlusoners (0 custom class methods, 2 custom properties)
 //   GTLPlusDomainsActivityObjectReplies (0 custom class methods, 2 custom properties)
 //   GTLPlusDomainsActivityObjectResharers (0 custom class methods, 2 custom properties)
 //   GTLPlusDomainsActivityObjectStatusForViewer (0 custom class methods, 5 custom properties)
+//   GTLPlusDomainsActivityActorClientSpecificActorInfoYoutubeActorInfo (0 custom class methods, 1 custom properties)
+//   GTLPlusDomainsActivityObjectActorClientSpecificActorInfo (0 custom class methods, 1 custom properties)
 //   GTLPlusDomainsActivityObjectActorImage (0 custom class methods, 1 custom properties)
 //   GTLPlusDomainsActivityObjectActorVerification (0 custom class methods, 1 custom properties)
 //   GTLPlusDomainsActivityObjectAttachmentsItemEmbed (0 custom class methods, 2 custom properties)
@@ -46,6 +49,7 @@
 //   GTLPlusDomainsActivityObjectAttachmentsItemImage (0 custom class methods, 4 custom properties)
 //   GTLPlusDomainsActivityObjectAttachmentsItemPreviewThumbnailsItem (0 custom class methods, 1 custom properties)
 //   GTLPlusDomainsActivityObjectAttachmentsItemThumbnailsItem (0 custom class methods, 3 custom properties)
+//   GTLPlusDomainsActivityObjectActorClientSpecificActorInfoYoutubeActorInfo (0 custom class methods, 1 custom properties)
 //   GTLPlusDomainsActivityObjectAttachmentsItemThumbnailsItemImage (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -56,11 +60,15 @@
 
 @class GTLPlusDomainsAcl;
 @class GTLPlusDomainsActivityActor;
+@class GTLPlusDomainsActivityActorClientSpecificActorInfo;
+@class GTLPlusDomainsActivityActorClientSpecificActorInfoYoutubeActorInfo;
 @class GTLPlusDomainsActivityActorImage;
 @class GTLPlusDomainsActivityActorName;
 @class GTLPlusDomainsActivityActorVerification;
 @class GTLPlusDomainsActivityObject;
 @class GTLPlusDomainsActivityObjectActor;
+@class GTLPlusDomainsActivityObjectActorClientSpecificActorInfo;
+@class GTLPlusDomainsActivityObjectActorClientSpecificActorInfoYoutubeActorInfo;
 @class GTLPlusDomainsActivityObjectActorImage;
 @class GTLPlusDomainsActivityObjectActorVerification;
 @class GTLPlusDomainsActivityObjectAttachmentsItem;
@@ -164,6 +172,9 @@
 
 @interface GTLPlusDomainsActivityActor : GTLObject
 
+// Actor info specific to particular clients.
+@property (nonatomic, retain) GTLPlusDomainsActivityActorClientSpecificActorInfo *clientSpecificActorInfo;
+
 // The name of the actor, suitable for display.
 @property (nonatomic, copy) NSString *displayName;
 
@@ -252,6 +263,19 @@
 
 // ----------------------------------------------------------------------------
 //
+//   GTLPlusDomainsActivityActorClientSpecificActorInfo
+//
+
+@interface GTLPlusDomainsActivityActorClientSpecificActorInfo : GTLObject
+
+// Actor info specific to YouTube clients.
+@property (nonatomic, retain) GTLPlusDomainsActivityActorClientSpecificActorInfoYoutubeActorInfo *youtubeActorInfo;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
 //   GTLPlusDomainsActivityActorImage
 //
 
@@ -300,6 +324,9 @@
 //
 
 @interface GTLPlusDomainsActivityObjectActor : GTLObject
+
+// Actor info specific to particular clients.
+@property (nonatomic, retain) GTLPlusDomainsActivityObjectActorClientSpecificActorInfo *clientSpecificActorInfo;
 
 // The original actor's name, which is suitable for display.
 @property (nonatomic, copy) NSString *displayName;
@@ -445,6 +472,32 @@
 
 // ----------------------------------------------------------------------------
 //
+//   GTLPlusDomainsActivityActorClientSpecificActorInfoYoutubeActorInfo
+//
+
+@interface GTLPlusDomainsActivityActorClientSpecificActorInfoYoutubeActorInfo : GTLObject
+
+// ID of the YouTube channel owned by the Actor.
+@property (nonatomic, copy) NSString *channelId;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusDomainsActivityObjectActorClientSpecificActorInfo
+//
+
+@interface GTLPlusDomainsActivityObjectActorClientSpecificActorInfo : GTLObject
+
+// Actor info specific to YouTube clients.
+@property (nonatomic, retain) GTLPlusDomainsActivityObjectActorClientSpecificActorInfoYoutubeActorInfo *youtubeActorInfo;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
 //   GTLPlusDomainsActivityObjectActorImage
 //
 
@@ -558,6 +611,19 @@
 
 // URL of the webpage containing the image.
 @property (nonatomic, copy) NSString *url;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusDomainsActivityObjectActorClientSpecificActorInfoYoutubeActorInfo
+//
+
+@interface GTLPlusDomainsActivityObjectActorClientSpecificActorInfoYoutubeActorInfo : GTLObject
+
+// ID of the YouTube channel owned by the Actor.
+@property (nonatomic, copy) NSString *channelId;
 
 @end
 

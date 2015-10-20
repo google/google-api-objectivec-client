@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud Storage API (storage/v1)
+//   Cloud Storage JSON API (storage/v1)
 // Description:
 //   Lets you store and retrieve potentially-large, immutable data objects.
 // Documentation:
@@ -37,8 +37,7 @@
 // Authorization scope
 // View and manage your data across Google Cloud Platform services
 GTL_EXTERN NSString * const kGTLAuthScopeStorageCloudPlatform;  // "https://www.googleapis.com/auth/cloud-platform"
-// MESSAGE UNDER CONSTRUCTION View your data across Google Cloud Platform
-// services
+// View your data across Google Cloud Platform services
 GTL_EXTERN NSString * const kGTLAuthScopeStorageCloudPlatformReadOnly;  // "https://www.googleapis.com/auth/cloud-platform.read-only"
 // Manage your data and permissions in Google Cloud Storage
 GTL_EXTERN NSString * const kGTLAuthScopeStorageDevstorageFullControl;  // "https://www.googleapis.com/auth/devstorage.full_control"

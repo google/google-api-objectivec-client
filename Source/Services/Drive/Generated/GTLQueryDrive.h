@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLQueryDrive (60 custom class methods, 48 custom properties)
+//   GTLQueryDrive (60 custom class methods, 49 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -80,6 +80,7 @@
 @property (nonatomic, assign) BOOL newRevision;
 @property (nonatomic, assign) BOOL ocr;
 @property (nonatomic, copy) NSString *ocrLanguage;
+@property (nonatomic, copy) NSString *orderBy;
 @property (nonatomic, copy) NSString *pageToken;
 @property (nonatomic, copy) NSString *parentId;
 @property (nonatomic, copy) NSString *permissionId;
@@ -303,6 +304,13 @@
 //   folderId: The ID of the folder.
 //  Optional:
 //   maxResults: Maximum number of children to return. (Default 100)
+//   orderBy: A comma-separated list of sort keys. Valid keys are 'createdDate',
+//     'folder', 'lastViewedByMeDate', 'modifiedByMeDate', 'modifiedDate',
+//     'quotaBytesUsed', 'recency', 'sharedWithMeDate', 'starred', and 'title'.
+//     Each key sorts ascending by default, but may be reversed with the 'desc'
+//     modifier. Example usage: ?orderBy=folder,modifiedDate desc,title. Please
+//     note that there is a current limitation for users with approximately one
+//     million files in which the requested sort order is ignored.
 //   pageToken: Page token for children.
 //   q: Query string for searching children.
 //  Authorization scope(s):
@@ -482,8 +490,9 @@
 //      kGTLDriveProjectionFull: Deprecated
 //   revisionId: Specifies the Revision ID that should be downloaded. Ignored
 //     unless alt=media is specified.
-//   updateViewedDate: Whether to update the view date after successfully
-//     retrieving the file. (Default false)
+//   updateViewedDate: Deprecated: Use files.update with
+//     modifiedDateBehavior=noChange, updateViewedDate=true and an empty request
+//     body. (Default false)
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
 //   kGTLAuthScopeDriveAppdata
@@ -536,6 +545,13 @@
 //      kGTLDriveCorpusDefault: The items that the user has accessed.
 //      kGTLDriveCorpusDomain: Items shared to the user's domain.
 //   maxResults: Maximum number of files to return. (Default 100)
+//   orderBy: A comma-separated list of sort keys. Valid keys are 'createdDate',
+//     'folder', 'lastViewedByMeDate', 'modifiedByMeDate', 'modifiedDate',
+//     'quotaBytesUsed', 'recency', 'sharedWithMeDate', 'starred', and 'title'.
+//     Each key sorts ascending by default, but may be reversed with the 'desc'
+//     modifier. Example usage: ?orderBy=folder,modifiedDate desc,title. Please
+//     note that there is a current limitation for users with approximately one
+//     million files in which the requested sort order is ignored.
 //   pageToken: Page token for files.
 //   projection: This parameter is deprecated and has no function.
 //      kGTLDriveProjectionBasic: Deprecated
@@ -561,10 +577,9 @@
 //   fileId: The ID of the file to update.
 //  Optional:
 //   addParents: Comma-separated list of parent IDs to add.
-//   convert: Whether to convert this file to the corresponding Google Docs
-//     format. (Default false)
-//   modifiedDateBehavior: How the modifiedDate field should be updated. This
-//     overrides setModifiedDate.
+//   convert: This parameter is deprecated and has no function. (Default false)
+//   modifiedDateBehavior: Determines the behavior in which modifiedDate is
+//     updated. This overrides setModifiedDate.
 //      kGTLDriveModifiedDateBehaviorFromBody: Set modifiedDate to the value
 //        provided in the body of the request. No change if no value was
 //        provided.
@@ -584,7 +599,8 @@
 //     set, a new blob is created as head revision, and previous unpinned
 //     revisions are preserved for a short period of time. Pinned revisions are
 //     stored indefinitely, using additional storage quota, up to a maximum of
-//     200 revisions. (Default true)
+//     200 revisions. For details on how revisions are retained, see the Drive
+//     Help Center. (Default true)
 //   ocr: Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads. (Default
 //     false)
 //   ocrLanguage: If ocr is true, hints at the language to use. Valid values are
@@ -655,10 +671,9 @@
 //   fileId: The ID of the file to update.
 //  Optional:
 //   addParents: Comma-separated list of parent IDs to add.
-//   convert: Whether to convert this file to the corresponding Google Docs
-//     format. (Default false)
-//   modifiedDateBehavior: How the modifiedDate field should be updated. This
-//     overrides setModifiedDate.
+//   convert: This parameter is deprecated and has no function. (Default false)
+//   modifiedDateBehavior: Determines the behavior in which modifiedDate is
+//     updated. This overrides setModifiedDate.
 //      kGTLDriveModifiedDateBehaviorFromBody: Set modifiedDate to the value
 //        provided in the body of the request. No change if no value was
 //        provided.
@@ -678,7 +693,8 @@
 //     set, a new blob is created as head revision, and previous unpinned
 //     revisions are preserved for a short period of time. Pinned revisions are
 //     stored indefinitely, using additional storage quota, up to a maximum of
-//     200 revisions. (Default true)
+//     200 revisions. For details on how revisions are retained, see the Drive
+//     Help Center. (Default true)
 //   ocr: Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads. (Default
 //     false)
 //   ocrLanguage: If ocr is true, hints at the language to use. Valid values are
@@ -721,8 +737,9 @@
 //      kGTLDriveProjectionFull: Deprecated
 //   revisionId: Specifies the Revision ID that should be downloaded. Ignored
 //     unless alt=media is specified.
-//   updateViewedDate: Whether to update the view date after successfully
-//     retrieving the file. (Default false)
+//   updateViewedDate: Deprecated: Use files.update with
+//     modifiedDateBehavior=noChange, updateViewedDate=true and an empty request
+//     body. (Default false)
 //  Authorization scope(s):
 //   kGTLAuthScopeDrive
 //   kGTLAuthScopeDriveAppdata
@@ -871,7 +888,7 @@
 + (instancetype)queryForPermissionsListWithFileId:(NSString *)fileId;
 
 // Method: drive.permissions.patch
-// Updates a permission. This method supports patch semantics.
+// Updates a permission using patch semantics.
 //  Required:
 //   fileId: The ID for the file.
 //   permissionId: The ID for the permission.

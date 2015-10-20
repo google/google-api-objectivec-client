@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,8 +26,10 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLBooksUsersettings (0 custom class methods, 2 custom properties)
+//   GTLBooksUsersettings (0 custom class methods, 3 custom properties)
 //   GTLBooksUsersettingsNotesExport (0 custom class methods, 2 custom properties)
+//   GTLBooksUsersettingsNotification (0 custom class methods, 1 custom properties)
+//   GTLBooksUsersettingsNotificationMoreFromAuthors (0 custom class methods, 1 custom properties)
 
 #import "GTLBooksUsersettings.h"
 
@@ -37,7 +39,7 @@
 //
 
 @implementation GTLBooksUsersettings
-@dynamic kind, notesExport;
+@dynamic kind, notesExport, notification;
 
 + (void)load {
   [self registerObjectClassForKind:@"books#usersettings"];
@@ -53,4 +55,32 @@
 
 @implementation GTLBooksUsersettingsNotesExport
 @dynamic folderName, isEnabled;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksUsersettingsNotification
+//
+
+@implementation GTLBooksUsersettingsNotification
+@dynamic moreFromAuthors;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLBooksUsersettingsNotificationMoreFromAuthors
+//
+
+@implementation GTLBooksUsersettingsNotificationMoreFromAuthors
+@dynamic optedState;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map = @{
+    @"optedState" : @"opted_state"
+  };
+  return map;
+}
+
 @end

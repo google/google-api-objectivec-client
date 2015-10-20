@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud Storage API (storage/v1)
+//   Cloud Storage JSON API (storage/v1)
 // Description:
 //   Lets you store and retrieve potentially-large, immutable data objects.
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 // Classes:
-//   GTLStorageObject (0 custom class methods, 24 custom properties)
+//   GTLStorageObject (0 custom class methods, 25 custom properties)
 //   GTLStorageObjectMetadata (0 custom class methods, 0 custom properties)
 //   GTLStorageObjectOwner (0 custom class methods, 2 custom properties)
 
@@ -43,8 +43,8 @@
 @dynamic acl, bucket, cacheControl, componentCount, contentDisposition,
          contentEncoding, contentLanguage, contentType, crc32c, ETag,
          generation, identifier, kind, md5Hash, mediaLink, metadata,
-         metageneration, name, owner, selfLink, size, storageClass, timeDeleted,
-         updated;
+         metageneration, name, owner, selfLink, size, storageClass, timeCreated,
+         timeDeleted, updated;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{

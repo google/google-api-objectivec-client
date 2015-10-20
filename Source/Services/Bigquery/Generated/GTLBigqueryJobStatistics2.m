@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryJobStatistics2 (0 custom class methods, 2 custom properties)
+//   GTLBigqueryJobStatistics2 (0 custom class methods, 4 custom properties)
 
 #import "GTLBigqueryJobStatistics2.h"
 
@@ -36,5 +36,5 @@
 //
 
 @implementation GTLBigqueryJobStatistics2
-@dynamic cacheHit, totalBytesProcessed;
+@dynamic billingTier, cacheHit, totalBytesBilled, totalBytesProcessed;
 @end

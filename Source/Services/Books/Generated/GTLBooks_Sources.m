@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,12 +43,14 @@
 #import "GTLBooksCloudloadingResource.m"
 #import "GTLBooksConcurrentAccessRestriction.m"
 #import "GTLBooksDictlayerdata.m"
+#import "GTLBooksDiscoveryclusters.m"
 #import "GTLBooksDownloadAccesses.m"
 #import "GTLBooksDownloadAccessRestriction.m"
 #import "GTLBooksGeolayerdata.m"
 #import "GTLBooksLayersummaries.m"
 #import "GTLBooksLayersummary.m"
 #import "GTLBooksMetadata.m"
+#import "GTLBooksNotification.m"
 #import "GTLBooksOffers.m"
 #import "GTLBooksReadingPosition.m"
 #import "GTLBooksRequestAccess.m"

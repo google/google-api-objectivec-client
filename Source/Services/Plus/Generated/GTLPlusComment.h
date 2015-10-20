@@ -27,12 +27,14 @@
 //   https://developers.google.com/+/api/
 // Classes:
 //   GTLPlusComment (0 custom class methods, 11 custom properties)
-//   GTLPlusCommentActor (0 custom class methods, 5 custom properties)
+//   GTLPlusCommentActor (0 custom class methods, 6 custom properties)
 //   GTLPlusCommentInReplyToItem (0 custom class methods, 2 custom properties)
 //   GTLPlusCommentObject (0 custom class methods, 3 custom properties)
 //   GTLPlusCommentPlusoners (0 custom class methods, 1 custom properties)
+//   GTLPlusCommentActorClientSpecificActorInfo (0 custom class methods, 1 custom properties)
 //   GTLPlusCommentActorImage (0 custom class methods, 1 custom properties)
 //   GTLPlusCommentActorVerification (0 custom class methods, 1 custom properties)
+//   GTLPlusCommentActorClientSpecificActorInfoYoutubeActorInfo (0 custom class methods, 1 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -41,6 +43,8 @@
 #endif
 
 @class GTLPlusCommentActor;
+@class GTLPlusCommentActorClientSpecificActorInfo;
+@class GTLPlusCommentActorClientSpecificActorInfoYoutubeActorInfo;
 @class GTLPlusCommentActorImage;
 @class GTLPlusCommentActorVerification;
 @class GTLPlusCommentInReplyToItem;
@@ -101,6 +105,9 @@
 //
 
 @interface GTLPlusCommentActor : GTLObject
+
+// Actor info specific to particular clients.
+@property (nonatomic, retain) GTLPlusCommentActorClientSpecificActorInfo *clientSpecificActorInfo;
 
 // The name of this actor, suitable for display.
 @property (nonatomic, copy) NSString *displayName;
@@ -175,6 +182,19 @@
 
 // ----------------------------------------------------------------------------
 //
+//   GTLPlusCommentActorClientSpecificActorInfo
+//
+
+@interface GTLPlusCommentActorClientSpecificActorInfo : GTLObject
+
+// Actor info specific to YouTube clients.
+@property (nonatomic, retain) GTLPlusCommentActorClientSpecificActorInfoYoutubeActorInfo *youtubeActorInfo;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
 //   GTLPlusCommentActorImage
 //
 
@@ -197,5 +217,18 @@
 
 // Verification for one-time or manual processes.
 @property (nonatomic, copy) NSString *adHocVerified;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusCommentActorClientSpecificActorInfoYoutubeActorInfo
+//
+
+@interface GTLPlusCommentActorClientSpecificActorInfoYoutubeActorInfo : GTLObject
+
+// ID of the YouTube channel owned by the Actor.
+@property (nonatomic, copy) NSString *channelId;
 
 @end

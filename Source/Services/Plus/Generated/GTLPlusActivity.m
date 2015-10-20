@@ -27,23 +27,27 @@
 //   https://developers.google.com/+/api/
 // Classes:
 //   GTLPlusActivity (0 custom class methods, 20 custom properties)
-//   GTLPlusActivityActor (0 custom class methods, 6 custom properties)
+//   GTLPlusActivityActor (0 custom class methods, 7 custom properties)
 //   GTLPlusActivityObject (0 custom class methods, 10 custom properties)
 //   GTLPlusActivityProvider (0 custom class methods, 1 custom properties)
+//   GTLPlusActivityActorClientSpecificActorInfo (0 custom class methods, 1 custom properties)
 //   GTLPlusActivityActorImage (0 custom class methods, 1 custom properties)
 //   GTLPlusActivityActorName (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityActorVerification (0 custom class methods, 1 custom properties)
-//   GTLPlusActivityObjectActor (0 custom class methods, 5 custom properties)
+//   GTLPlusActivityObjectActor (0 custom class methods, 6 custom properties)
 //   GTLPlusActivityObjectAttachmentsItem (0 custom class methods, 9 custom properties)
 //   GTLPlusActivityObjectPlusoners (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectReplies (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectResharers (0 custom class methods, 2 custom properties)
+//   GTLPlusActivityActorClientSpecificActorInfoYoutubeActorInfo (0 custom class methods, 1 custom properties)
+//   GTLPlusActivityObjectActorClientSpecificActorInfo (0 custom class methods, 1 custom properties)
 //   GTLPlusActivityObjectActorImage (0 custom class methods, 1 custom properties)
 //   GTLPlusActivityObjectActorVerification (0 custom class methods, 1 custom properties)
 //   GTLPlusActivityObjectAttachmentsItemEmbed (0 custom class methods, 2 custom properties)
 //   GTLPlusActivityObjectAttachmentsItemFullImage (0 custom class methods, 4 custom properties)
 //   GTLPlusActivityObjectAttachmentsItemImage (0 custom class methods, 4 custom properties)
 //   GTLPlusActivityObjectAttachmentsItemThumbnailsItem (0 custom class methods, 3 custom properties)
+//   GTLPlusActivityObjectActorClientSpecificActorInfoYoutubeActorInfo (0 custom class methods, 1 custom properties)
 //   GTLPlusActivityObjectAttachmentsItemThumbnailsItemImage (0 custom class methods, 4 custom properties)
 
 #import "GTLPlusActivity.h"
@@ -82,7 +86,8 @@
 //
 
 @implementation GTLPlusActivityActor
-@dynamic displayName, identifier, image, name, url, verification;
+@dynamic clientSpecificActorInfo, displayName, identifier, image, name, url,
+         verification;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{
@@ -132,6 +137,16 @@
 
 // ----------------------------------------------------------------------------
 //
+//   GTLPlusActivityActorClientSpecificActorInfo
+//
+
+@implementation GTLPlusActivityActorClientSpecificActorInfo
+@dynamic youtubeActorInfo;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
 //   GTLPlusActivityActorImage
 //
 
@@ -166,7 +181,8 @@
 //
 
 @implementation GTLPlusActivityObjectActor
-@dynamic displayName, identifier, image, url, verification;
+@dynamic clientSpecificActorInfo, displayName, identifier, image, url,
+         verification;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{
@@ -236,6 +252,26 @@
 
 // ----------------------------------------------------------------------------
 //
+//   GTLPlusActivityActorClientSpecificActorInfoYoutubeActorInfo
+//
+
+@implementation GTLPlusActivityActorClientSpecificActorInfoYoutubeActorInfo
+@dynamic channelId;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusActivityObjectActorClientSpecificActorInfo
+//
+
+@implementation GTLPlusActivityObjectActorClientSpecificActorInfo
+@dynamic youtubeActorInfo;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
 //   GTLPlusActivityObjectActorImage
 //
 
@@ -299,6 +335,16 @@
   return map;
 }
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusActivityObjectActorClientSpecificActorInfoYoutubeActorInfo
+//
+
+@implementation GTLPlusActivityObjectActorClientSpecificActorInfoYoutubeActorInfo
+@dynamic channelId;
 @end
 
 

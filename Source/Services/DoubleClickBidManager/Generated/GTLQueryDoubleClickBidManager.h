@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/bid-manager/
 // Classes:
-//   GTLQueryDoubleClickBidManager (8 custom class methods, 12 custom properties)
+//   GTLQueryDoubleClickBidManager (8 custom class methods, 13 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -50,6 +50,7 @@
 //
 @property (nonatomic, copy) NSString *dataRange;
 @property (nonatomic, assign) BOOL dryRun;
+@property (nonatomic, copy) NSString *fileSpec;
 @property (nonatomic, retain) NSArray *filterIds;  // of NSNumber (longLongValue)
 @property (nonatomic, copy) NSString *filterType;
 @property (nonatomic, copy) NSString *format;
@@ -66,6 +67,10 @@
 // Method: doubleclickbidmanager.lineitems.downloadlineitems
 // Retrieves line items in CSV format.
 //  Optional:
+//   fileSpec: File specification (column names, types, order) in which the line
+//     items will be returned. Default to EWF.
+//      kGTLDoubleClickBidManagerFileSpecEwf: "EWF"
+//      kGTLDoubleClickBidManagerFileSpecSdf: "SDF"
 //   filterIds: Ids of the specified filter type used to filter line items to
 //     fetch. If omitted, all the line items will be returned.
 //   filterType: Filter type used to filter line items to fetch.

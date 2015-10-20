@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (62 custom class methods, 69 custom properties)
+//   GTLQueryYouTube (62 custom class methods, 67 custom properties)
 
 #import "GTLQueryYouTube.h"
 
@@ -69,17 +69,16 @@
 @implementation GTLQueryYouTube
 
 @dynamic allThreadsRelatedToChannelId, autoLevels, banAuthor, broadcastStatus,
-         categoryId, channelId, channelType, chart, debugProjectIdOverride,
-         displaySlate, eventType, fields, forChannelId, forContentOwner,
-         forDeveloper, forMine, forUsername, hl, home, identifier, locale,
-         location, locationRadius, managedByMe, maxResults, mine,
-         moderationStatus, myRating, mySubscribers, notifySubscribers,
-         offsetTimeMs, onBehalfOf, onBehalfOfContentOwner,
-         onBehalfOfContentOwnerChannel, order, pageToken, parentId, part,
-         playlistId, publishedAfter, publishedBefore, q, rating, regionCode,
-         relatedToVideoId, relevanceLanguage, report, safeSearch, searchTerms,
-         shareOnGooglePlus, stabilize, streamId, sync, textFormat, tfmt, tlang,
-         topicId, type, videoCaption, videoCategoryId, videoDefinition,
+         categoryId, channelId, channelType, chart, displaySlate, eventType,
+         fields, forChannelId, forContentOwner, forDeveloper, forMine,
+         forUsername, hl, home, identifier, locale, location, locationRadius,
+         managedByMe, maxResults, mine, moderationStatus, myRating,
+         mySubscribers, notifySubscribers, offsetTimeMs, onBehalfOf,
+         onBehalfOfContentOwner, onBehalfOfContentOwnerChannel, order,
+         pageToken, parentId, part, playlistId, publishedAfter, publishedBefore,
+         q, rating, regionCode, relatedToVideoId, relevanceLanguage, report,
+         safeSearch, searchTerms, stabilize, streamId, sync, textFormat, tfmt,
+         tlang, topicId, type, videoCaption, videoCategoryId, videoDefinition,
          videoDimension, videoDuration, videoEmbeddable, videoId, videoLicense,
          videoSyndicated, videoType, walltime;
 

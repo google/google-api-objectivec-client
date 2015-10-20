@@ -28,11 +28,15 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerCreative (0 custom class methods, 21 custom properties)
+//   GTLAdExchangeBuyerCreative (0 custom class methods, 25 custom properties)
 //   GTLAdExchangeBuyerCreativeCorrectionsItem (0 custom class methods, 2 custom properties)
 //   GTLAdExchangeBuyerCreativeFilteringReasons (0 custom class methods, 2 custom properties)
+//   GTLAdExchangeBuyerCreativeNativeAd (0 custom class methods, 12 custom properties)
 //   GTLAdExchangeBuyerCreativeServingRestrictionsItem (0 custom class methods, 3 custom properties)
 //   GTLAdExchangeBuyerCreativeFilteringReasonsReasonsItem (0 custom class methods, 2 custom properties)
+//   GTLAdExchangeBuyerCreativeNativeAdAppIcon (0 custom class methods, 3 custom properties)
+//   GTLAdExchangeBuyerCreativeNativeAdImage (0 custom class methods, 3 custom properties)
+//   GTLAdExchangeBuyerCreativeNativeAdLogo (0 custom class methods, 3 custom properties)
 //   GTLAdExchangeBuyerCreativeServingRestrictionsItemContextsItem (0 custom class methods, 4 custom properties)
 //   GTLAdExchangeBuyerCreativeServingRestrictionsItemDisapprovalReasonsItem (0 custom class methods, 2 custom properties)
 
@@ -45,6 +49,10 @@
 @class GTLAdExchangeBuyerCreativeCorrectionsItem;
 @class GTLAdExchangeBuyerCreativeFilteringReasons;
 @class GTLAdExchangeBuyerCreativeFilteringReasonsReasonsItem;
+@class GTLAdExchangeBuyerCreativeNativeAd;
+@class GTLAdExchangeBuyerCreativeNativeAdAppIcon;
+@class GTLAdExchangeBuyerCreativeNativeAdImage;
+@class GTLAdExchangeBuyerCreativeNativeAdLogo;
 @class GTLAdExchangeBuyerCreativeServingRestrictionsItem;
 @class GTLAdExchangeBuyerCreativeServingRestrictionsItemContextsItem;
 @class GTLAdExchangeBuyerCreativeServingRestrictionsItemDisapprovalReasonsItem;
@@ -70,6 +78,11 @@
 
 // The agency id for this creative.
 @property (nonatomic, retain) NSNumber *agencyId;  // longLongValue
+
+// The last upload timestamp of this creative if it was uploaded via API.
+// Read-only. The value of this field is generated, and will be ignored for
+// uploads. (formatted RFC 3339 timestamp).
+@property (nonatomic, retain) GTLDateTime *apiUploadTimestamp;
 
 // All attributes for the ads that may be shown from this snippet.
 @property (nonatomic, retain) NSArray *attribute;  // of NSNumber (intValue)
@@ -102,8 +115,14 @@
 // videoURL should not be set.
 @property (nonatomic, copy) NSString *HTMLSnippet;
 
+// The set of urls to be called to record an impression.
+@property (nonatomic, retain) NSArray *impressionTrackingUrl;  // of NSString
+
 // Resource type.
 @property (nonatomic, copy) NSString *kind;
+
+// If nativeAd is set, HTMLSnippet and videoURL should not be set.
+@property (nonatomic, retain) GTLAdExchangeBuyerCreativeNativeAd *nativeAd;
 
 // Top-level open auction status. Read-only. This field should not be set in
 // requests. If disapproved, an entry for auctionType=OPEN_AUCTION (or ALL) in
@@ -131,6 +150,10 @@
 
 // All vendor types for the ads that may be shown from this snippet.
 @property (nonatomic, retain) NSArray *vendorType;  // of NSNumber (intValue)
+
+// The version for this creative. Read-only. This field should not be set in
+// requests.
+@property (nonatomic, retain) NSNumber *version;  // intValue
 
 // The url to fetch a video ad. If set, HTMLSnippet should not be set.
 @property (nonatomic, copy) NSString *videoURL;
@@ -176,6 +199,50 @@
 
 // ----------------------------------------------------------------------------
 //
+//   GTLAdExchangeBuyerCreativeNativeAd
+//
+
+@interface GTLAdExchangeBuyerCreativeNativeAd : GTLObject
+@property (nonatomic, copy) NSString *advertiser;
+
+// The app icon, for app download ads.
+@property (nonatomic, retain) GTLAdExchangeBuyerCreativeNativeAdAppIcon *appIcon;
+
+// A long description of the ad.
+@property (nonatomic, copy) NSString *body;
+
+// A label for the button that the user is supposed to click.
+@property (nonatomic, copy) NSString *callToAction;
+
+// The URL to use for click tracking.
+@property (nonatomic, copy) NSString *clickTrackingUrl;
+
+// A short title for the ad.
+@property (nonatomic, copy) NSString *headline;
+
+// A large image.
+@property (nonatomic, retain) GTLAdExchangeBuyerCreativeNativeAdImage *image;
+
+// The URLs are called when the impression is rendered.
+@property (nonatomic, retain) NSArray *impressionTrackingUrl;  // of NSString
+
+// A smaller image, for the advertiser logo.
+@property (nonatomic, retain) GTLAdExchangeBuyerCreativeNativeAdLogo *logo;
+
+// The price of the promoted app including the currency info.
+@property (nonatomic, copy) NSString *price;
+
+// The app rating in the app store. Must be in the range [0-5].
+@property (nonatomic, retain) NSNumber *starRating;  // doubleValue
+
+// The URL to the app store to purchase/download the promoted app.
+@property (nonatomic, copy) NSString *store;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
 //   GTLAdExchangeBuyerCreativeServingRestrictionsItem
 //
 
@@ -213,6 +280,42 @@
 // for different statuses.
 @property (nonatomic, retain) NSNumber *filteringStatus;  // intValue
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAdExchangeBuyerCreativeNativeAdAppIcon
+//
+
+@interface GTLAdExchangeBuyerCreativeNativeAdAppIcon : GTLObject
+@property (nonatomic, retain) NSNumber *height;  // intValue
+@property (nonatomic, copy) NSString *url;
+@property (nonatomic, retain) NSNumber *width;  // intValue
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAdExchangeBuyerCreativeNativeAdImage
+//
+
+@interface GTLAdExchangeBuyerCreativeNativeAdImage : GTLObject
+@property (nonatomic, retain) NSNumber *height;  // intValue
+@property (nonatomic, copy) NSString *url;
+@property (nonatomic, retain) NSNumber *width;  // intValue
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAdExchangeBuyerCreativeNativeAdLogo
+//
+
+@interface GTLAdExchangeBuyerCreativeNativeAdLogo : GTLObject
+@property (nonatomic, retain) NSNumber *height;  // intValue
+@property (nonatomic, copy) NSString *url;
+@property (nonatomic, retain) NSNumber *width;  // intValue
 @end
 
 

@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeContentRating (0 custom class methods, 64 custom properties)
+//   GTLYouTubeContentRating (0 custom class methods, 65 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -40,210 +40,234 @@
 //
 
 // Ratings schemes. The country-specific ratings are mostly for movies and
-// shows. NEXT_ID: 65
+// shows. NEXT_ID: 66
 
 @interface GTLYouTubeContentRating : GTLObject
 
-// Rating system in Australia - Australian Classification Board
+// The video's Australian Classification Board (ACB) or Australian
+// Communications and Media Authority (ACMA) rating. ACMA ratings are used to
+// classify children's television programming.
 @property (nonatomic, copy) NSString *acbRating;
 
-// Rating system for Italy - Autorit� per le Garanzie nelle Comunicazioni
+// The video's rating from Italy's Autorità per le Garanzie nelle Comunicazioni
+// (AGCOM).
 @property (nonatomic, copy) NSString *agcomRating;
 
-// Rating system for Chile - Asociaci�n Nacional de Televisi�n
+// The video's Anatel (Asociación Nacional de Televisión) rating for Chilean
+// television.
 @property (nonatomic, copy) NSString *anatelRating;
 
-// British Board of Film Classification
+// The video's British Board of Film Classification (BBFC) rating.
 @property (nonatomic, copy) NSString *bbfcRating;
 
-// Rating system for Thailand - Board of Filmand Video Censors
+// The video's rating from Thailand's Board of Film and Video Censors.
 @property (nonatomic, copy) NSString *bfvcRating;
 
-// Rating system for Austria - Bundesministerium f�r Unterricht, Kunst und
-// Kultur
+// The video's rating from the Austrian Board of Media Classification
+// (Bundesministerium für Unterricht, Kunst und Kultur).
 @property (nonatomic, copy) NSString *bmukkRating;
 
-// Rating system for French Canadian TV - Regie du cinema
+// The video's rating from the Canadian Radio-Television and Telecommunications
+// Commission (CRTC) for Canadian French-language broadcasts. For more
+// information, see the Canadian Broadcast Standards Council website.
 @property (nonatomic, copy) NSString *catvfrRating;
 
-// Rating system for Canadian TV - Canadian TV Classification System
+// Rating system for Canadian TV - Canadian TV Classification System The video's
+// rating from the Canadian Radio-Television and Telecommunications Commission
+// (CRTC) for Canadian English-language broadcasts. For more information, see
+// the Canadian Broadcast Standards Council website.
 @property (nonatomic, copy) NSString *catvRating;
 
-// Rating system in India - Central Board of Film Certification
+// The video's Central Board of Film Certification (CBFC - India) rating.
 @property (nonatomic, copy) NSString *cbfcRating;
 
-// Rating system for Chile - Consejo de Calificaci�n Cinematogr�fica
+// The video's Consejo de Calificación Cinematográfica (Chile) rating.
 @property (nonatomic, copy) NSString *cccRating;
 
-// Rating system for Portugal - Comiss�o de Classifica��o de Espect�culos
+// The video's rating from Portugal's Comissão de Classificação de Espect´culos.
 @property (nonatomic, copy) NSString *cceRating;
 
-// Rating system for Switzerland - Switzerland Rating System
+// The video's rating in Switzerland.
 @property (nonatomic, copy) NSString *chfilmRating;
 
-// Canadian Home Video Rating System
+// The video's Canadian Home Video Rating System (CHVRS) rating.
 @property (nonatomic, copy) NSString *chvrsRating;
 
-// Rating system for Belgium - Belgium Rating System
+// The video's rating from the Commission de Contrôle des Films (Belgium).
 @property (nonatomic, copy) NSString *cicfRating;
 
-// Rating system for Romania - CONSILIUL NATIONAL AL AUDIOVIZUALULUI - CNA
+// The video's rating from Romania's CONSILIUL NATIONAL AL AUDIOVIZUALULUI
+// (CNA).
 @property (nonatomic, copy) NSString *cnaRating;
 
-// Rating system for France - Conseil sup�rieur de l?audiovisuel
+// Rating system in France - Commission de classification cinematographique
+@property (nonatomic, copy) NSString *cncRating;
+
+// The video's rating from France's Conseil supérieur de l?audiovisuel, which
+// rates broadcast content.
 @property (nonatomic, copy) NSString *csaRating;
 
-// Rating system for Luxembourg - Commission de surveillance de la
-// classification des films
+// The video's rating from Luxembourg's Commission de surveillance de la
+// classification des films (CSCF).
 @property (nonatomic, copy) NSString *cscfRating;
 
-// Rating system for Czech republic - Czech republic Rating System
+// The video's rating in the Czech Republic.
 @property (nonatomic, copy) NSString *czfilmRating;
 
-// Rating system in Brazil - Department of Justice, Rating, Titles and
-// Qualification
+// The video's Departamento de Justiça, Classificação, Qualificação e Títulos
+// (DJCQT - Brazil) rating.
 @property (nonatomic, copy) NSString *djctqRating;
 
+// Reasons that explain why the video received its DJCQT (Brazil) rating.
 @property (nonatomic, retain) NSArray *djctqRatingReasons;  // of NSString
 
-// Rating system for Estonia - Estonia Rating System
+// The video's rating in Estonia.
 @property (nonatomic, copy) NSString *eefilmRating;
 
-// Rating system for Egypt - Egypt Rating System
+// The video's rating in Egypt.
 @property (nonatomic, copy) NSString *egfilmRating;
 
-// Rating system in Japan - Eiga Rinri Kanri Iinkai
+// The video's Eirin (映倫) rating. Eirin is the Japanese rating system.
 @property (nonatomic, copy) NSString *eirinRating;
 
-// Rating system for Malaysia - Film Censorship Board of Malaysia
+// The video's rating from Malaysia's Film Censorship Board.
 @property (nonatomic, copy) NSString *fcbmRating;
 
-// Rating system for Hong kong - Office for Film, Newspaper and Article
-// Administration
+// The video's rating from Hong Kong's Office for Film, Newspaper and Article
+// Administration.
 @property (nonatomic, copy) NSString *fcoRating;
 
-// Rating system in France - French Minister of Culture
+// This property has been deprecated. Use the
+// contentDetails.contentRating.cncRating instead.
 @property (nonatomic, copy) NSString *fmocRating;
 
-// Rating system for South africa - Film & Publication Board
+// The video's rating from South Africa's Film and Publication Board.
 @property (nonatomic, copy) NSString *fpbRating;
 
-// Rating system in Germany - Voluntary Self Regulation of the Movie Industry
+// The video's Freiwillige Selbstkontrolle der Filmwirtschaft (FSK - Germany)
+// rating.
 @property (nonatomic, copy) NSString *fskRating;
 
-// Rating system for Greece - Greece Rating System
+// The video's rating in Greece.
 @property (nonatomic, copy) NSString *grfilmRating;
 
-// Rating system in Spain - Instituto de Cinematografia y de las Artes
-// Audiovisuales
+// The video's Instituto de la Cinematografía y de las Artes Audiovisuales (ICAA
+// - Spain) rating.
 @property (nonatomic, copy) NSString *icaaRating;
 
-// Rating system in Ireland - Irish Film Classification Office
+// The video's Irish Film Classification Office (IFCO - Ireland) rating. See the
+// IFCO website for more information.
 @property (nonatomic, copy) NSString *ifcoRating;
 
-// Rating system for Israel - Israel Rating System
+// The video's rating in Israel.
 @property (nonatomic, copy) NSString *ilfilmRating;
 
-// Rating system for Argentina - Instituto Nacional de Cine y Artes
-// Audiovisuales
+// The video's INCAA (Instituto Nacional de Cine y Artes Audiovisuales -
+// Argentina) rating.
 @property (nonatomic, copy) NSString *incaaRating;
 
-// Rating system for Kenya - Kenya Film Classification Board
+// The video's rating from the Kenya Film Classification Board.
 @property (nonatomic, copy) NSString *kfcbRating;
 
-// Rating system for Netherlands - Nederlands Instituut voor de Classificatie
-// van Audiovisuele Media
+// voor de Classificatie van Audiovisuele Media (Netherlands).
 @property (nonatomic, copy) NSString *kijkwijzerRating;
 
-// Rating system in South Korea - Korea Media Rating Board
+// The video's Korea Media Rating Board (영상물등급위원회) rating. The KMRB rates videos
+// in South Korea.
 @property (nonatomic, copy) NSString *kmrbRating;
 
-// Rating system for Indonesia - Lembaga Sensor Film
+// The video's rating from Indonesia's Lembaga Sensor Film.
 @property (nonatomic, copy) NSString *lsfRating;
 
-// Rating system for Malta - Film Age-Classification Board
+// The video's rating from Malta's Film Age-Classification Board.
 @property (nonatomic, copy) NSString *mccaaRating;
 
-// Rating system for Denmark - The Media Council for Children and Young People
+// The video's rating from the Danish Film Institute's (Det Danske Filminstitut)
+// Media Council for Children and Young People.
 @property (nonatomic, copy) NSString *mccypRating;
 
-// Rating system for Singapore - Media Development Authority
+// The video's rating from Singapore's Media Development Authority (MDA) and,
+// specifically, it's Board of Film Censors (BFC).
 @property (nonatomic, copy) NSString *mdaRating;
 
-// Rating system for Norway - Medietilsynet
+// The video's rating from Medietilsynet, the Norwegian Media Authority.
 @property (nonatomic, copy) NSString *medietilsynetRating;
 
-// Rating system for Finland - Finnish Centre for Media Education and
-// Audiovisual Media
+// The video's rating from Finland's Kansallinen Audiovisuaalinen Instituutti
+// (National Audiovisual Institute).
 @property (nonatomic, copy) NSString *mekuRating;
 
-// Rating system in Italy - Ministero dei Beni e delle Attivita Culturali e del
-// Turismo
+// The video's rating from the Ministero dei Beni e delle Attività Culturali e
+// del Turismo (Italy).
 @property (nonatomic, copy) NSString *mibacRating;
 
-// Rating system for Colombia - MoC
+// The video's Ministerio de Cultura (Colombia) rating.
 @property (nonatomic, copy) NSString *mocRating;
 
-// Rating system for Taiwan - Ministry of Culture - Tawan
+// The video's rating from Taiwan's Ministry of Culture (文化部).
 @property (nonatomic, copy) NSString *moctwRating;
 
-// Motion Picture Association of America rating for the content.
+// The video's Motion Picture Association of America (MPAA) rating.
 @property (nonatomic, copy) NSString *mpaaRating;
 
-// Rating system for Philippines - MOVIE AND TELEVISION REVIEW AND
-// CLASSIFICATION BOARD
+// The video's rating from the Movie and Television Review and Classification
+// Board (Philippines).
 @property (nonatomic, copy) NSString *mtrcbRating;
 
-// Rating system for Poland - National Broadcasting Council
+// The video's rating in Poland.
 @property (nonatomic, copy) NSString *nbcplRating;
 
-// Rating system for Maldives - National Bureau of Classification
+// The video's rating from the Maldives National Bureau of Classification.
 @property (nonatomic, copy) NSString *nbcRating;
 
-// Rating system for Bulgaria - National Film Centre
+// The video's rating from the Bulgarian National Film Center.
 @property (nonatomic, copy) NSString *nfrcRating;
 
-// Rating system for Nigeria - National Film and Video Censors Board
+// The video's rating from Nigeria's National Film and Video Censors Board.
 @property (nonatomic, copy) NSString *nfvcbRating;
 
-// Rating system for Latvia - National Film Center of Latvia
+// The video's rating from the Nacionãlais Kino centrs (National Film Centre of
+// Latvia).
 @property (nonatomic, copy) NSString *nkclvRating;
 
-// Rating system in New Zealand - Office of Film and Literature Classification
+// The video's Office of Film and Literature Classification (OFLC - New Zealand)
+// rating.
 @property (nonatomic, copy) NSString *oflcRating;
 
-// Rating system for Peru - Peru Rating System
+// The video's rating in Peru.
 @property (nonatomic, copy) NSString *pefilmRating;
 
-// Rating system for Hungary - Rating Committee of the National Office of Film
+// The video's rating from the Hungarian Nemzeti Filmiroda, the Rating Committee
+// of the National Office of Film.
 @property (nonatomic, copy) NSString *rcnofRating;
 
-// Rating system for Venezuela - SiBCI
+// The video's rating in Venezuela.
 @property (nonatomic, copy) NSString *resorteviolenciaRating;
 
-// Rating system in Mexico - General Directorate of Radio, Television and
-// Cinematography
+// The video's General Directorate of Radio, Television and Cinematography
+// (Mexico) rating.
 @property (nonatomic, copy) NSString *rtcRating;
 
-// Rating system for Ireland - Raidi� Teilif�s �ireann
+// The video's rating from Ireland's Raidió Teilifís Éireann.
 @property (nonatomic, copy) NSString *rteRating;
 
-// Rating system in Russia
+// The video's National Film Registry of the Russian Federation (MKRF - Russia)
+// rating.
 @property (nonatomic, copy) NSString *russiaRating;
 
-// Rating system for Slovakia - Slovakia Rating System
+// The video's rating in Slovakia.
 @property (nonatomic, copy) NSString *skfilmRating;
 
-// Rating system for Iceland - SMAIS
+// The video's rating in Iceland.
 @property (nonatomic, copy) NSString *smaisRating;
 
-// Rating system for Sweden - Statens medier�d (National Media Council)
+// The video's rating from Statens medieråd (Sweden's National Media Council).
 @property (nonatomic, copy) NSString *smsaRating;
 
-// TV Parental Guidelines rating of the content.
+// The video's TV Parental Guidelines (TVPG) rating.
 @property (nonatomic, copy) NSString *tvpgRating;
 
-// Internal YouTube rating.
+// A rating that YouTube uses to identify age-restricted content.
 @property (nonatomic, copy) NSString *ytRating;
 
 @end

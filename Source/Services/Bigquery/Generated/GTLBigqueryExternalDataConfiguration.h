@@ -56,7 +56,8 @@
 // false, records with extra columns are treated as bad records, and if there
 // are too many bad records, an invalid error is returned in the job result. The
 // default value is false. The sourceFormat property determines what BigQuery
-// treats as an extra value: CSV: Trailing columns
+// treats as an extra value: CSV: Trailing columns JSON: Named values that don't
+// match any column names
 @property (nonatomic, retain) NSNumber *ignoreUnknownValues;  // boolValue
 
 // [Optional] The maximum number of bad records that BigQuery can ignore when
@@ -68,13 +69,13 @@
 // [Required] The schema for the data.
 @property (nonatomic, retain) GTLBigqueryTableSchema *schema;
 
-// [Optional] The data format. External data sources must be in CSV format. The
-// default value is CSV.
+// [Required] The data format. For CSV files, specify "CSV". For
+// newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON".
 @property (nonatomic, copy) NSString *sourceFormat;
 
 // [Required] The fully-qualified URIs that point to your data in Google Cloud
 // Storage. Each URI can contain one '*' wildcard character and it must come
-// after the 'bucket' name. CSV limits related to load jobs apply to external
+// after the 'bucket' name. Size limits related to load jobs apply to external
 // data sources, plus an additional limit of 10 GB maximum size across all URIs.
 @property (nonatomic, retain) NSArray *sourceUris;  // of NSString
 

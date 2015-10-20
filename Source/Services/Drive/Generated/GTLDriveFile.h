@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 55 custom properties)
+//   GTLDriveFile (0 custom class methods, 56 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
 //   GTLDriveFileImageMediaMetadata (0 custom class methods, 21 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
@@ -105,13 +105,15 @@
 // Links for exporting Google Docs to specific formats.
 @property (nonatomic, retain) GTLDriveFileExportLinks *exportLinks;
 
-// The file extension used when downloading this file. This field is read only.
-// To set the extension, include it in the title when creating the file. This is
-// only populated for files with content stored in Drive.
+// The final component of fullFileExtension with trailing text that does not
+// appear to be part of the extension removed. This field is only populated for
+// files with content stored in Drive; it is not populated for Google Docs or
+// shortcut files.
 @property (nonatomic, copy) NSString *fileExtension;
 
-// The size of the file in bytes. This is only populated for files with content
-// stored in Drive.
+// The size of the file in bytes. This field is only populated for files with
+// content stored in Drive; it is not populated for Google Docs or shortcut
+// files.
 @property (nonatomic, retain) NSNumber *fileSize;  // longLongValue
 
 // Folder color as an RGB hex string if the file is a folder. The list of
@@ -120,8 +122,16 @@
 // closest color in the palette.
 @property (nonatomic, copy) NSString *folderColorRgb;
 
-// The ID of the file's head revision. This will only be populated for files
-// with content stored in Drive.
+// The full file extension; extracted from the title. May contain multiple
+// concatenated extensions, such as "tar.gz". Removing an extension from the
+// title does not clear this field; however, changing the extension on the title
+// does update this field. This field is only populated for files with content
+// stored in Drive; it is not populated for Google Docs or shortcut files.
+@property (nonatomic, copy) NSString *fullFileExtension;
+
+// The ID of the file's head revision. This field is only populated for files
+// with content stored in Drive; it is not populated for Google Docs or shortcut
+// files.
 @property (nonatomic, copy) NSString *headRevisionId;
 
 // A link to the file's icon.
@@ -153,12 +163,12 @@
 // Last time this file was viewed by the user (formatted RFC 3339 timestamp).
 @property (nonatomic, retain) GTLDateTime *lastViewedByMeDate;
 
-// Time this file was explicitly marked viewed by the user (formatted RFC 3339
-// timestamp).
+// Deprecated.
 @property (nonatomic, retain) GTLDateTime *markedViewedByMeDate;
 
-// An MD5 checksum for the content of this file. This is populated only for
-// files with content stored in Drive.
+// An MD5 checksum for the content of this file. This field is only populated
+// for files with content stored in Drive; it is not populated for Google Docs
+// or shortcut files.
 @property (nonatomic, copy) NSString *md5Checksum;
 
 // The MIME type of the file. This is only mutable on update when uploading new
@@ -181,8 +191,9 @@
 
 // The original filename if the file was uploaded manually, or the original
 // title if the file was inserted through the API. Note that renames of the
-// title will not change the original filename. This will only be populated on
-// files with content stored in Drive.
+// title will not change the original filename. This field is only populated for
+// files with content stored in Drive; it is not populated for Google Docs or
+// shortcut files.
 @property (nonatomic, copy) NSString *originalFilename;
 
 // Whether the file is owned by the current user.
@@ -376,7 +387,8 @@
 // Deprecated.
 @property (nonatomic, retain) NSNumber *hidden;  // boolValue
 
-// Whether viewers are prevented from downloading this file.
+// Whether viewers and commenters are prevented from downloading, printing, and
+// copying this file.
 @property (nonatomic, retain) NSNumber *restricted;  // boolValue
 
 // Whether this file is starred by the user.

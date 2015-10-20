@@ -27,12 +27,14 @@
 //   https://developers.google.com/+/domains/
 // Classes:
 //   GTLPlusDomainsComment (0 custom class methods, 11 custom properties)
-//   GTLPlusDomainsCommentActor (0 custom class methods, 5 custom properties)
+//   GTLPlusDomainsCommentActor (0 custom class methods, 6 custom properties)
 //   GTLPlusDomainsCommentInReplyToItem (0 custom class methods, 2 custom properties)
 //   GTLPlusDomainsCommentObject (0 custom class methods, 3 custom properties)
 //   GTLPlusDomainsCommentPlusoners (0 custom class methods, 1 custom properties)
+//   GTLPlusDomainsCommentActorClientSpecificActorInfo (0 custom class methods, 1 custom properties)
 //   GTLPlusDomainsCommentActorImage (0 custom class methods, 1 custom properties)
 //   GTLPlusDomainsCommentActorVerification (0 custom class methods, 1 custom properties)
+//   GTLPlusDomainsCommentActorClientSpecificActorInfoYoutubeActorInfo (0 custom class methods, 1 custom properties)
 
 #import "GTLPlusDomainsComment.h"
 
@@ -73,7 +75,8 @@
 //
 
 @implementation GTLPlusDomainsCommentActor
-@dynamic displayName, identifier, image, url, verification;
+@dynamic clientSpecificActorInfo, displayName, identifier, image, url,
+         verification;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{
@@ -125,6 +128,16 @@
 
 // ----------------------------------------------------------------------------
 //
+//   GTLPlusDomainsCommentActorClientSpecificActorInfo
+//
+
+@implementation GTLPlusDomainsCommentActorClientSpecificActorInfo
+@dynamic youtubeActorInfo;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
 //   GTLPlusDomainsCommentActorImage
 //
 
@@ -140,4 +153,14 @@
 
 @implementation GTLPlusDomainsCommentActorVerification
 @dynamic adHocVerified;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLPlusDomainsCommentActorClientSpecificActorInfoYoutubeActorInfo
+//
+
+@implementation GTLPlusDomainsCommentActorClientSpecificActorInfoYoutubeActorInfo
+@dynamic channelId;
 @end

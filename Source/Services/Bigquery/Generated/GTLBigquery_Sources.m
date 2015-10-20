@@ -57,6 +57,7 @@
 #import "GTLBigqueryProjectList.m"
 #import "GTLBigqueryProjectReference.m"
 #import "GTLBigqueryQueryResponse.m"
+#import "GTLBigqueryStreamingbuffer.m"
 #import "GTLBigqueryTable.m"
 #import "GTLBigqueryTableCell.m"
 #import "GTLBigqueryTableDataInsertAllResponse.m"
