@@ -146,11 +146,9 @@
 @property (nonatomic, copy) NSString *kind;
 
 // Match type for this filter. Possible values are BEGINS_WITH, EQUAL,
-// ENDS_WITH, CONTAINS, MATCHES. Include and Exclude filters can use any match
-// type. Match type is not applicable to Upper case and Lower case filters.
-// Search and Replace expressions in the Search and Replace filter and all
-// filter expressions in the Advanced filter default to MATCHES. User should not
-// set match type for those filters.
+// ENDS_WITH, CONTAINS, or MATCHES. GEO_DOMAIN, GEO_IP_ADDRESS,
+// PAGE_REQUEST_URI, or PAGE_HOSTNAME filters can use any match type; all other
+// filters must use MATCHES.
 @property (nonatomic, copy) NSString *matchType;
 
 @end

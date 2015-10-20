@@ -155,10 +155,9 @@
 // "RUNNING" state. This field is required when creating an experiment.
 @property (nonatomic, copy) NSString *status;
 
-// A floating-point number between 0 and 1. Specifies the fraction of the
-// traffic that participates in the experiment. Can be changed for a running
-// experiment. This field may not be changed for an experiments whose status is
-// ENDED.
+// A floating-point number in (0, 1]. Specifies the fraction of the traffic that
+// participates in the experiment. Can be changed for a running experiment. This
+// field may not be changed for an experiments whose status is ENDED.
 @property (nonatomic, retain) NSNumber *trafficCoverage;  // doubleValue
 
 // Time the experiment was last modified. This field is read-only.
@@ -174,9 +173,9 @@
 // the form UA-XXXXX-YY. This field is read-only.
 @property (nonatomic, copy) NSString *webPropertyId;
 
-// A floating-point number between 0 and 1. Specifies the necessary confidence
-// level to choose a winner. This field may not be changed for an experiments
-// whose status is ENDED.
+// A floating-point number in (0, 1). Specifies the necessary confidence level
+// to choose a winner. This field may not be changed for an experiments whose
+// status is ENDED.
 @property (nonatomic, retain) NSNumber *winnerConfidenceLevel;  // doubleValue
 
 // Boolean specifying whether a winner has been found for this experiment. This

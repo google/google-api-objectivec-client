@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,12 +40,14 @@
 #import "GTLBooksCloudloadingResource.h"
 #import "GTLBooksConcurrentAccessRestriction.h"
 #import "GTLBooksDictlayerdata.h"
+#import "GTLBooksDiscoveryclusters.h"
 #import "GTLBooksDownloadAccesses.h"
 #import "GTLBooksDownloadAccessRestriction.h"
 #import "GTLBooksGeolayerdata.h"
 #import "GTLBooksLayersummaries.h"
 #import "GTLBooksLayersummary.h"
 #import "GTLBooksMetadata.h"
+#import "GTLBooksNotification.h"
 #import "GTLBooksOffers.h"
 #import "GTLBooksReadingPosition.h"
 #import "GTLBooksRequestAccess.h"

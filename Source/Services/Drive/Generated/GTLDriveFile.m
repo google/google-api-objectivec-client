@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 55 custom properties)
+//   GTLDriveFile (0 custom class methods, 56 custom properties)
 //   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
 //   GTLDriveFileImageMediaMetadata (0 custom class methods, 21 custom properties)
 //   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
@@ -52,15 +52,15 @@
 @dynamic alternateLink, appDataContents, canComment, copyable, createdDate,
          defaultOpenWithLink, descriptionProperty, downloadUrl, editable,
          embedLink, ETag, explicitlyTrashed, exportLinks, fileExtension,
-         fileSize, folderColorRgb, headRevisionId, iconLink, identifier,
-         imageMediaMetadata, indexableText, kind, labels, lastModifyingUser,
-         lastModifyingUserName, lastViewedByMeDate, markedViewedByMeDate,
-         md5Checksum, mimeType, modifiedByMeDate, modifiedDate, openWithLinks,
-         originalFilename, ownedByMe, ownerNames, owners, parents, permissions,
-         properties, quotaBytesUsed, selfLink, shareable, shared,
-         sharedWithMeDate, sharingUser, spaces, thumbnail, thumbnailLink, title,
-         userPermission, version, videoMediaMetadata, webContentLink,
-         webViewLink, writersCanShare;
+         fileSize, folderColorRgb, fullFileExtension, headRevisionId, iconLink,
+         identifier, imageMediaMetadata, indexableText, kind, labels,
+         lastModifyingUser, lastModifyingUserName, lastViewedByMeDate,
+         markedViewedByMeDate, md5Checksum, mimeType, modifiedByMeDate,
+         modifiedDate, openWithLinks, originalFilename, ownedByMe, ownerNames,
+         owners, parents, permissions, properties, quotaBytesUsed, selfLink,
+         shareable, shared, sharedWithMeDate, sharingUser, spaces, thumbnail,
+         thumbnailLink, title, userPermission, version, videoMediaMetadata,
+         webContentLink, webViewLink, writersCanShare;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{

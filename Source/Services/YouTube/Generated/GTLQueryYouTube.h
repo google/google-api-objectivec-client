@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (62 custom class methods, 69 custom properties)
+//   GTLQueryYouTube (62 custom class methods, 67 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -70,7 +70,6 @@
 @property (nonatomic, copy) NSString *channelId;
 @property (nonatomic, copy) NSString *channelType;
 @property (nonatomic, copy) NSString *chart;
-@property (nonatomic, assign) long long debugProjectIdOverride;
 @property (nonatomic, assign) BOOL displaySlate;
 @property (nonatomic, copy) NSString *eventType;
 @property (nonatomic, copy) NSString *forChannelId;
@@ -111,7 +110,6 @@
 @property (nonatomic, retain) GTLYouTubeVideoAbuseReport *report;
 @property (nonatomic, copy) NSString *safeSearch;
 @property (nonatomic, copy) NSString *searchTerms;
-@property (nonatomic, assign) BOOL shareOnGooglePlus;
 @property (nonatomic, assign) BOOL stabilize;
 @property (nonatomic, copy) NSString *streamId;
 @property (nonatomic, assign) BOOL sync;
@@ -214,8 +212,6 @@
 //     deleted. The value is a caption track ID as identified by the id property
 //     in a caption resource.
 //  Optional:
-//   debugProjectIdOverride: The debugProjectIdOverride parameter should be used
-//     for mimicking a request for a certain project ID
 //   onBehalfOf: ID of the Google+ Page for the channel that the request is be
 //     on behalf of
 //   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
@@ -244,8 +240,6 @@
 //     retrieved. The value is a caption track ID as identified by the id
 //     property in a caption resource.
 //  Optional:
-//   debugProjectIdOverride: The debugProjectIdOverride parameter should be used
-//     for mimicking a request for a certain project ID
 //   onBehalfOf: ID of the Google+ Page for the channel that the request is be
 //     on behalf of
 //   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
@@ -283,8 +277,6 @@
 //   part: The part parameter specifies the caption resource parts that the API
 //     response will include. Set the parameter value to snippet.
 //  Optional:
-//   debugProjectIdOverride: The debugProjectIdOverride parameter should be used
-//     for mimicking a request for a certain project ID.
 //   onBehalfOf: ID of the Google+ Page for the channel that the request is be
 //     on behalf of
 //   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
@@ -327,8 +319,6 @@
 //   videoId: The videoId parameter specifies the YouTube video ID of the video
 //     for which the API should return caption tracks.
 //  Optional:
-//   debugProjectIdOverride: The debugProjectIdOverride parameter should be used
-//     for mimicking a request for a certain project ID.
 //   identifier: The id parameter specifies a comma-separated list of IDs that
 //     identify the caption resources that should be retrieved. Each ID must
 //     identify a caption track associated with the specified video.
@@ -362,8 +352,6 @@
 //     to snippet if you are updating the track's draft status. Otherwise, set
 //     the property value to id.
 //  Optional:
-//   debugProjectIdOverride: The debugProjectIdOverride parameter should be used
-//     for mimicking a request for a certain project ID.
 //   onBehalfOf: ID of the Google+ Page for the channel that the request is be
 //     on behalf of
 //   onBehalfOfContentOwner: Note: This parameter is intended exclusively for
@@ -795,10 +783,6 @@
 //   part: The part parameter identifies the properties that the API response
 //     will include. Set the parameter value to snippet. The snippet part has a
 //     quota cost of 2 units.
-//  Optional:
-//   shareOnGooglePlus: The shareOnGooglePlus parameter indicates whether the
-//     top-level comment and any replies that are made to that comment should
-//     also be posted to the author's Google+ profile. (Default false)
 //  Authorization scope(s):
 //   kGTLAuthScopeYouTubeForceSsl
 // Fetches a GTLYouTubeCommentThread.
@@ -2381,8 +2365,6 @@
 //   chart: The chart parameter identifies the chart that you want to retrieve.
 //      kGTLYouTubeChartMostPopular: Return the most popular videos for the
 //        specified content region and video category.
-//   debugProjectIdOverride: The debugProjectIdOverride parameter should be used
-//     for mimicking a request for a certain project ID
 //   hl: The hl parameter instructs the API to retrieve localized resource
 //     metadata for a specific application language that the YouTube website
 //     supports. The parameter value must be a language code included in the

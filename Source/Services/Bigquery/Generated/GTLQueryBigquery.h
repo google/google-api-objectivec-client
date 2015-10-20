@@ -172,7 +172,7 @@
 // Method: bigquery.jobs.cancel
 // Requests that a job be cancelled. This call will return immediately, and the
 // client will need to poll for the job status to see if the cancel completed
-// successfully.
+// successfully. Cancelled jobs may still incur costs.
 //  Required:
 //   projectId: Project ID of the job to cancel
 //   jobId: Job ID of the job to cancel

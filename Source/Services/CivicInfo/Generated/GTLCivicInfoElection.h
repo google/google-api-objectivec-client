@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoElection (0 custom class methods, 3 custom properties)
+//   GTLCivicInfoElection (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -52,5 +52,11 @@
 
 // A displayable name for the election.
 @property (nonatomic, copy) NSString *name;
+
+// The political division of the election. Represented as an OCD Division ID.
+// Voters within these political jurisdictions are covered by this election.
+// This is typically a state such as ocd-division/country:us/state:ca or for the
+// midterms or general election the entire US (i.e. ocd-division/country:us).
+@property (nonatomic, copy) NSString *ocdDivisionId;
 
 @end

@@ -32,7 +32,7 @@
 //   GTLBooksVolumeRecommendedInfo (0 custom class methods, 1 custom properties)
 //   GTLBooksVolumeSaleInfo (0 custom class methods, 8 custom properties)
 //   GTLBooksVolumeSearchInfo (0 custom class methods, 1 custom properties)
-//   GTLBooksVolumeUserInfo (0 custom class methods, 11 custom properties)
+//   GTLBooksVolumeUserInfo (0 custom class methods, 13 custom properties)
 //   GTLBooksVolumeVolumeInfo (0 custom class methods, 25 custom properties)
 //   GTLBooksVolumeAccessInfoEpub (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeAccessInfoPdf (0 custom class methods, 3 custom properties)
@@ -156,9 +156,9 @@
 //
 
 @implementation GTLBooksVolumeUserInfo
-@dynamic copyProperty, isInMyBooks, isPreordered, isPurchased, isUploaded,
-         readingPosition, rentalPeriod, rentalState, review, updated,
-         userUploadedVolumeInfo;
+@dynamic acquisitionType, copyProperty, entitlementType, isInMyBooks,
+         isPreordered, isPurchased, isUploaded, readingPosition, rentalPeriod,
+         rentalState, review, updated, userUploadedVolumeInfo;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{

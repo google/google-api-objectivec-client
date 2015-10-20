@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Cloud Storage API (storage/v1)
+//   Cloud Storage JSON API (storage/v1)
 // Description:
 //   Lets you store and retrieve potentially-large, immutable data objects.
 // Documentation:
@@ -468,7 +468,8 @@
 // object.
 //  Required:
 //   bucket: Name of a bucket.
-//   object: Name of the object.
+//   object: Name of the object. For information about how to URL encode object
+//     names to be path safe, see Encoding URI Path Parts.
 //   entity: The entity holding the permission. Can be user-userId,
 //     user-emailAddress, group-groupId, group-emailAddress, allUsers, or
 //     allAuthenticatedUsers.
@@ -485,7 +486,8 @@
 // Returns the ACL entry for the specified entity on the specified object.
 //  Required:
 //   bucket: Name of a bucket.
-//   object: Name of the object.
+//   object: Name of the object. For information about how to URL encode object
+//     names to be path safe, see Encoding URI Path Parts.
 //   entity: The entity holding the permission. Can be user-userId,
 //     user-emailAddress, group-groupId, group-emailAddress, allUsers, or
 //     allAuthenticatedUsers.
@@ -503,7 +505,8 @@
 // Creates a new ACL entry on the specified object.
 //  Required:
 //   bucket: Name of a bucket.
-//   object: Name of the object.
+//   object: Name of the object. For information about how to URL encode object
+//     names to be path safe, see Encoding URI Path Parts.
 //  Optional:
 //   generation: If present, selects a specific revision of this object (as
 //     opposed to the latest version, the default).
@@ -518,7 +521,8 @@
 // Retrieves ACL entries on the specified object.
 //  Required:
 //   bucket: Name of a bucket.
-//   object: Name of the object.
+//   object: Name of the object. For information about how to URL encode object
+//     names to be path safe, see Encoding URI Path Parts.
 //  Optional:
 //   generation: If present, selects a specific revision of this object (as
 //     opposed to the latest version, the default).
@@ -533,7 +537,8 @@
 // semantics.
 //  Required:
 //   bucket: Name of a bucket.
-//   object: Name of the object.
+//   object: Name of the object. For information about how to URL encode object
+//     names to be path safe, see Encoding URI Path Parts.
 //   entity: The entity holding the permission. Can be user-userId,
 //     user-emailAddress, group-groupId, group-emailAddress, allUsers, or
 //     allAuthenticatedUsers.
@@ -552,7 +557,8 @@
 // Updates an ACL entry on the specified object.
 //  Required:
 //   bucket: Name of a bucket.
-//   object: Name of the object.
+//   object: Name of the object. For information about how to URL encode object
+//     names to be path safe, see Encoding URI Path Parts.
 //   entity: The entity holding the permission. Can be user-userId,
 //     user-emailAddress, group-groupId, group-emailAddress, allUsers, or
 //     allAuthenticatedUsers.
@@ -574,7 +580,8 @@
 // Concatenates a list of existing objects into a new object in the same bucket.
 //  Required:
 //   destinationBucket: Name of the bucket in which to store the new object.
-//   destinationObject: Name of the new object.
+//   destinationObject: Name of the new object. For information about how to URL
+//     encode object names to be path safe, see Encoding URI Path Parts.
 //  Optional:
 //   sourceObjects: The list of source objects that will be concatenated into a
 //     single object.
@@ -612,9 +619,12 @@
 // metadata.
 //  Required:
 //   sourceBucket: Name of the bucket in which to find the source object.
-//   sourceObject: Name of the source object.
+//   sourceObject: Name of the source object. For information about how to URL
+//     encode object names to be path safe, see Encoding URI Path Parts.
 //   destinationBucket: Name of the bucket in which to store the new object.
-//     Overrides the provided object metadata's bucket value, if any.
+//     Overrides the provided object metadata's bucket value, if any.For
+//     information about how to URL encode object names to be path safe, see
+//     Encoding URI Path Parts.
 //   destinationObject: Name of the new object. Required when the object
 //     metadata is not otherwise provided. Overrides the object metadata's name
 //     value, if any.
@@ -674,7 +684,8 @@
 // not enabled for the bucket, or if the generation parameter is used.
 //  Required:
 //   bucket: Name of the bucket in which the object resides.
-//   object: Name of the object.
+//   object: Name of the object. For information about how to URL encode object
+//     names to be path safe, see Encoding URI Path Parts.
 //  Optional:
 //   generation: If present, permanently deletes a specific revision of this
 //     object (as opposed to the latest version, the default).
@@ -697,7 +708,8 @@
 // Retrieves an object or its metadata.
 //  Required:
 //   bucket: Name of the bucket in which the object resides.
-//   object: Name of the object.
+//   object: Name of the object. For information about how to URL encode object
+//     names to be path safe, see Encoding URI Path Parts.
 //  Optional:
 //   generation: If present, selects a specific revision of this object (as
 //     opposed to the latest version, the default).
@@ -743,6 +755,8 @@
 //     object's current metageneration does not match the given value.
 //   name: Name of the object. Required when the object metadata is not
 //     otherwise provided. Overrides the object metadata's name value, if any.
+//     For information about how to URL encode object names to be path safe, see
+//     Encoding URI Path Parts.
 //   predefinedAcl: Apply a predefined set of access controls to this object.
 //      kGTLStoragePredefinedAclAuthenticatedRead: Object owner gets OWNER
 //        access, and allAuthenticatedUsers get READER access.
@@ -804,7 +818,8 @@
 // Updates an object's metadata. This method supports patch semantics.
 //  Required:
 //   bucket: Name of the bucket in which the object resides.
-//   object: Name of the object.
+//   object: Name of the object. For information about how to URL encode object
+//     names to be path safe, see Encoding URI Path Parts.
 //  Optional:
 //   generation: If present, selects a specific revision of this object (as
 //     opposed to the latest version, the default).
@@ -845,12 +860,14 @@
 // metadata.
 //  Required:
 //   sourceBucket: Name of the bucket in which to find the source object.
-//   sourceObject: Name of the source object.
+//   sourceObject: Name of the source object. For information about how to URL
+//     encode object names to be path safe, see Encoding URI Path Parts.
 //   destinationBucket: Name of the bucket in which to store the new object.
 //     Overrides the provided object metadata's bucket value, if any.
 //   destinationObject: Name of the new object. Required when the object
 //     metadata is not otherwise provided. Overrides the object metadata's name
-//     value, if any.
+//     value, if any. For information about how to URL encode object names to be
+//     path safe, see Encoding URI Path Parts.
 //  Optional:
 //   destinationResource: GTLStorageObject
 //   destinationPredefinedAcl: Apply a predefined set of access controls to the
@@ -919,7 +936,8 @@
 // Updates an object's metadata.
 //  Required:
 //   bucket: Name of the bucket in which the object resides.
-//   object: Name of the object.
+//   object: Name of the object. For information about how to URL encode object
+//     names to be path safe, see Encoding URI Path Parts.
 //  Optional:
 //   generation: If present, selects a specific revision of this object (as
 //     opposed to the latest version, the default).

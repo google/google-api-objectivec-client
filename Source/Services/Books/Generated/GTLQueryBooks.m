@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/books/docs/v1/getting_started
 // Classes:
-//   GTLQueryBooks (44 custom class methods, 70 custom properties)
+//   GTLQueryBooks (46 custom class methods, 71 custom properties)
 
 #import "GTLQueryBooks.h"
 
@@ -39,10 +39,12 @@
 #import "GTLBooksBookshelves.h"
 #import "GTLBooksCategory.h"
 #import "GTLBooksCloudloadingResource.h"
+#import "GTLBooksDiscoveryclusters.h"
 #import "GTLBooksDownloadAccesses.h"
 #import "GTLBooksLayersummaries.h"
 #import "GTLBooksLayersummary.h"
 #import "GTLBooksMetadata.h"
+#import "GTLBooksNotification.h"
 #import "GTLBooksOffers.h"
 #import "GTLBooksReadingPosition.h"
 #import "GTLBooksRequestAccess.h"
@@ -62,18 +64,19 @@
          driveDocumentId, endOffset, endPosition, features, fields, filter, h,
          langRestrict, layerId, layerIds, libraryRestrict, licenseTypes, locale,
          manufacturer, maxAllowedMaturityRating, maxResults, mimeType, model,
-         name, nonce, offerId, orderBy, pageSize, pageToken, partner, position,
-         printType, processingState, product, projection, q, rating, reason,
-         scale, serial, settings, shelf, showDeleted, showOnlySummaryInResponse,
-         showPreorders, source, startIndex, startOffset, startPosition,
-         summaryId, timestamp, updatedMax, updatedMin, uploadClientToken,
-         userLibraryConsistentRead, userId, volumeAnnotationsVersion, volumeId,
-         volumeIds, volumePosition, w;
+         name, nonce, notificationId, offerId, orderBy, pageSize, pageToken,
+         partner, position, printType, processingState, product, projection, q,
+         rating, reason, scale, serial, settings, shelf, showDeleted,
+         showOnlySummaryInResponse, showPreorders, source, startIndex,
+         startOffset, startPosition, summaryId, timestamp, updatedMax,
+         updatedMin, uploadClientToken, userLibraryConsistentRead, userId,
+         volumeAnnotationsVersion, volumeId, volumeIds, volumePosition, w;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map = @{
     @"driveDocumentId" : @"drive_document_id",
     @"mimeType" : @"mime_type",
+    @"notificationId" : @"notification_id",
     @"uploadClientToken" : @"upload_client_token",
     @"userLibraryConsistentRead" : @"user_library_consistent_read"
   };
@@ -436,6 +439,17 @@
   return query;
 }
 
+#pragma mark - "notification" methods
+// These create a GTLQueryBooks object.
+
++ (instancetype)queryForNotificationGetWithNotificationId:(NSString *)notificationId {
+  NSString *methodName = @"books.notification.get";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.notificationId = notificationId;
+  query.expectedObjectClass = [GTLBooksNotification class];
+  return query;
+}
+
 #pragma mark - "onboarding" methods
 // These create a GTLQueryBooks object.
 
@@ -450,6 +464,16 @@
   NSString *methodName = @"books.onboarding.listCategoryVolumes";
   GTLQueryBooks *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLBooksVolume2 class];
+  return query;
+}
+
+#pragma mark - "personalizedstream" methods
+// These create a GTLQueryBooks object.
+
++ (instancetype)queryForPersonalizedstreamGet {
+  NSString *methodName = @"books.personalizedstream.get";
+  GTLQueryBooks *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLBooksDiscoveryclusters class];
   return query;
 }
 

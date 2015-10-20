@@ -48,7 +48,7 @@
 // ETag of the resource.
 @property (nonatomic, copy) NSString *ETag;
 
-// Identifier of the calendar. To retrieve IDs you call the calendarList.list()
+// Identifier of the calendar. To retrieve IDs call the calendarList.list()
 // method.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (nonatomic, copy) NSString *identifier;

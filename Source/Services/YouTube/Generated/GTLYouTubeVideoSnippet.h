@@ -81,7 +81,6 @@
 @property (nonatomic, retain) GTLDateTime *publishedAt;
 
 // A list of keyword tags associated with the video. Tags may contain spaces.
-// This field is only visible to the video's uploader.
 @property (nonatomic, retain) NSArray *tags;  // of NSString
 
 // A map of thumbnail images associated with the video. For each object in the

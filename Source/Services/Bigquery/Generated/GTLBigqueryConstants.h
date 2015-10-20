@@ -39,8 +39,7 @@
 GTL_EXTERN NSString * const kGTLAuthScopeBigquery;              // "https://www.googleapis.com/auth/bigquery"
 // View and manage your data across Google Cloud Platform services
 GTL_EXTERN NSString * const kGTLAuthScopeBigqueryCloudPlatform;  // "https://www.googleapis.com/auth/cloud-platform"
-// MESSAGE UNDER CONSTRUCTION View your data across Google Cloud Platform
-// services
+// View your data across Google Cloud Platform services
 GTL_EXTERN NSString * const kGTLAuthScopeBigqueryCloudPlatformReadOnly;  // "https://www.googleapis.com/auth/cloud-platform.read-only"
 // Manage your data and permissions in Google Cloud Storage
 GTL_EXTERN NSString * const kGTLAuthScopeBigqueryDevstorageFullControl;  // "https://www.googleapis.com/auth/devstorage.full_control"

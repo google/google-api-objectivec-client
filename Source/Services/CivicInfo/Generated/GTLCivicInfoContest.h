@@ -91,9 +91,9 @@
 // populated for contests of type 'Referendum'.
 @property (nonatomic, retain) NSArray *referendumBallotResponses;  // of NSString
 
-// Specifies a short summary of the referendum that is on the ballot below the
-// title but above the text. This field is only populated for contests of type
-// 'Referendum'.
+// Specifies a short summary of the referendum that is typically on the ballot
+// below the title but above the text. This field is only populated for contests
+// of type 'Referendum'.
 @property (nonatomic, copy) NSString *referendumBrief;
 
 // A statement in opposition to the referendum. It does not necessarily appear

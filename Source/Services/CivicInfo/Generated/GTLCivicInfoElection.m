@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/civic-information
 // Classes:
-//   GTLCivicInfoElection (0 custom class methods, 3 custom properties)
+//   GTLCivicInfoElection (0 custom class methods, 4 custom properties)
 
 #import "GTLCivicInfoElection.h"
 
@@ -36,7 +36,7 @@
 //
 
 @implementation GTLCivicInfoElection
-@dynamic electionDay, identifier, name;
+@dynamic electionDay, identifier, name, ocdDivisionId;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{

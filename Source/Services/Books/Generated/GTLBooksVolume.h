@@ -32,7 +32,7 @@
 //   GTLBooksVolumeRecommendedInfo (0 custom class methods, 1 custom properties)
 //   GTLBooksVolumeSaleInfo (0 custom class methods, 8 custom properties)
 //   GTLBooksVolumeSearchInfo (0 custom class methods, 1 custom properties)
-//   GTLBooksVolumeUserInfo (0 custom class methods, 11 custom properties)
+//   GTLBooksVolumeUserInfo (0 custom class methods, 13 custom properties)
 //   GTLBooksVolumeVolumeInfo (0 custom class methods, 25 custom properties)
 //   GTLBooksVolumeAccessInfoEpub (0 custom class methods, 3 custom properties)
 //   GTLBooksVolumeAccessInfoPdf (0 custom class methods, 3 custom properties)
@@ -283,9 +283,15 @@
 
 @interface GTLBooksVolumeUserInfo : GTLObject
 
+// How this volume was acquired.
+@property (nonatomic, retain) NSNumber *acquisitionType;  // intValue
+
 // Copy/Paste accounting information.
 // Remapped to 'copyProperty' to avoid NSObject's 'copy'.
 @property (nonatomic, retain) GTLBooksVolumeUserInfoCopy *copyProperty NS_RETURNS_NOT_RETAINED;
+
+// Whether this volume is purchased, sample, pd download etc.
+@property (nonatomic, retain) NSNumber *entitlementType;  // intValue
 
 // Whether or not this volume is currently in "my books."
 @property (nonatomic, retain) NSNumber *isInMyBooks;  // boolValue

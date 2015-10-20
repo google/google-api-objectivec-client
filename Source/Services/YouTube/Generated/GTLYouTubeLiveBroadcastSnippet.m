@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveBroadcastSnippet (0 custom class methods, 10 custom properties)
+//   GTLYouTubeLiveBroadcastSnippet (0 custom class methods, 11 custom properties)
 
 #import "GTLYouTubeLiveBroadcastSnippet.h"
 
@@ -39,8 +39,8 @@
 
 @implementation GTLYouTubeLiveBroadcastSnippet
 @dynamic actualEndTime, actualStartTime, channelId, descriptionProperty,
-         isDefaultBroadcast, publishedAt, scheduledEndTime, scheduledStartTime,
-         thumbnails, title;
+         isDefaultBroadcast, liveChatId, publishedAt, scheduledEndTime,
+         scheduledStartTime, thumbnails, title;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{

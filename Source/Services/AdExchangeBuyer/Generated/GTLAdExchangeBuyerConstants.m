@@ -44,3 +44,10 @@ NSString * const kGTLAdExchangeBuyerOpenAuctionStatusFilterApproved = @"approved
 NSString * const kGTLAdExchangeBuyerOpenAuctionStatusFilterConditionallyApproved = @"conditionally_approved";
 NSString * const kGTLAdExchangeBuyerOpenAuctionStatusFilterDisapproved = @"disapproved";
 NSString * const kGTLAdExchangeBuyerOpenAuctionStatusFilterNotChecked = @"not_checked";
+
+// GTLQueryAdExchangeBuyer - UpdateAction
+NSString * const kGTLAdExchangeBuyerUpdateActionAccept         = @"accept";
+NSString * const kGTLAdExchangeBuyerUpdateActionCancel         = @"cancel";
+NSString * const kGTLAdExchangeBuyerUpdateActionPropose        = @"propose";
+NSString * const kGTLAdExchangeBuyerUpdateActionUnknownAction  = @"unknownAction";
+NSString * const kGTLAdExchangeBuyerUpdateActionUpdateFinalized = @"updateFinalized";

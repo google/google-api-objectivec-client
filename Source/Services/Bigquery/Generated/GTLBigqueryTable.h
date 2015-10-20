@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryTable (0 custom class methods, 17 custom properties)
+//   GTLBigqueryTable (0 custom class methods, 18 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -35,6 +35,7 @@
 #endif
 
 @class GTLBigqueryExternalDataConfiguration;
+@class GTLBigqueryStreamingbuffer;
 @class GTLBigqueryTableReference;
 @class GTLBigqueryTableSchema;
 @class GTLBigqueryViewDefinition;
@@ -85,12 +86,12 @@
 // inherited from the dataset.
 @property (nonatomic, copy) NSString *location;
 
-// [Output-only] The size of the table in bytes. This property is unavailable
-// for tables that are actively receiving streaming inserts.
+// [Output-only] The size of this table in bytes, excluding any data in the
+// streaming buffer.
 @property (nonatomic, retain) NSNumber *numBytes;  // longLongValue
 
-// [Output-only] The number of rows of data in this table. This property is
-// unavailable for tables that are actively receiving streaming inserts.
+// [Output-only] The number of rows of data in this table, excluding any data in
+// the streaming buffer.
 @property (nonatomic, retain) NSNumber *numRows;  // unsignedLongLongValue
 
 // [Optional] Describes the schema of this table.
@@ -98,6 +99,11 @@
 
 // [Output-only] A URL that can be used to access this resource again.
 @property (nonatomic, copy) NSString *selfLink;
+
+// [Output-only] Contains information regarding this table's streaming buffer,
+// if one is present. This field will be absent if the table is not being
+// streamed to or if there is no data in the streaming buffer.
+@property (nonatomic, retain) GTLBigqueryStreamingbuffer *streamingBuffer;
 
 // [Required] Reference describing the ID of this table.
 @property (nonatomic, retain) GTLBigqueryTableReference *tableReference;

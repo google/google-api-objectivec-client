@@ -60,8 +60,8 @@
 // Time this view (profile) was created.
 @property (nonatomic, retain) GTLDateTime *created;
 
-// The currency type associated with this view (profile). The supported values
-// are:
+// The currency type associated with this view (profile), defaults to USD. The
+// supported values are:
 // ARS, AUD, BGN, BRL, CAD, CHF, CNY, CZK, DKK, EUR, GBP, HKD, HUF, IDR, INR,
 // JPY, KRW, LTL, MXN, NOK, NZD, PHP, PLN, RUB, SEK, THB, TRY, TWD, USD, VND,
 // ZAR
