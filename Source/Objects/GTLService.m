@@ -795,9 +795,9 @@ static NSString *ETagIfPresent(GTLObject *obj) {
                                                     requestID:requestID];
 
     NSError *error = nil;
-    dataToPost = [GTLJSONParser dataWithObject:rpcPayload
-                                 humanReadable:NO
-                                         error:&error];
+    dataToPost = [NSJSONSerialization dataWithJSONObject:rpcPayload
+                                                 options:0
+                                                   error:&error];
     if (dataToPost == nil) {
       // There is the chance something went into parameters that wasn't valid.
       GTL_DEBUG_LOG(@"JSON generation error: %@", error);
@@ -894,10 +894,9 @@ static NSString *ETagIfPresent(GTLObject *obj) {
   }
 
   NSError *error = nil;
-  NSData *dataToPost = nil;
-  dataToPost = [GTLJSONParser dataWithObject:rpcPayloads
-                               humanReadable:NO
-                                       error:&error];
+  NSData *dataToPost = [NSJSONSerialization dataWithJSONObject:rpcPayloads
+                                                       options:0
+                                                         error:&error];
   if (dataToPost == nil) {
     // There is the chance something went into parameters that wasn't valid.
     GTL_DEBUG_LOG(@"JSON generation error: %@", error);
@@ -987,9 +986,9 @@ static NSString *ETagIfPresent(GTLObject *obj) {
     } else {
       whatToSend = json;
     }
-    dataToPost = [GTLJSONParser dataWithObject:whatToSend
-                                 humanReadable:NO
-                                         error:&error];
+    dataToPost = [NSJSONSerialization dataWithJSONObject:whatToSend
+                                                 options:0
+                                                   error:&error];
     if (dataToPost == nil) {
       GTL_DEBUG_LOG(@"JSON generation error: %@", error);
     }
@@ -1073,8 +1072,10 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
         if ([data length] > 0) {
           if ([contentType hasPrefix:@"application/json"]) {
             NSError *parseError = nil;
-            NSMutableDictionary *jsonWrapper = [GTLJSONParser objectWithData:data
-                                                                       error:&parseError];
+            NSMutableDictionary *jsonWrapper =
+                [NSJSONSerialization JSONObjectWithData:data
+                                                options:NSJSONReadingMutableContainers
+                                                  error:&parseError];
             if (parseError) {
               // We could not parse the JSON payload
               error = parseError;
@@ -1209,8 +1210,10 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 #endif
 
     NSError *parseError = nil;
-    NSMutableDictionary *jsonWrapper = [GTLJSONParser objectWithData:data
-                                                               error:&parseError];
+    NSMutableDictionary *jsonWrapper =
+        [NSJSONSerialization JSONObjectWithData:data
+                                        options:NSJSONReadingMutableContainers
+                                          error:&parseError];
     if ([parseOperation isCancelled]) return;
 
     if (parseError != nil) {
