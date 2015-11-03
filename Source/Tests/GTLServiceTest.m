@@ -446,7 +446,7 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
   // test: fetch with fields that should lead to an empty item, expect an empty
   // response as a bare object instance
   //
-  completionBlock = ^(GTLServiceTicket *ticket, id object, NSError *error) {
+  completionBlock = ^(GTLServiceTicket *ticket, GTLObject *object, NSError *error) {
     XCTAssertTrue([object isKindOfClass:[GTLTasksTasks class]], @"%@", [object class]);
     XCTAssertNil([object JSON]);
   };

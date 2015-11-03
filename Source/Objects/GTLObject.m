@@ -21,7 +21,6 @@
 
 #import "GTLObject.h"
 #import "GTLRuntimeCommon.h"
-#import "GTLJSONParser.h"
 
 static NSString *const kUserDataPropertyKey = @"_userData";
 
@@ -150,13 +149,15 @@ static NSString *const kGTLObjectJSONCoderKey = @"json";
 
 - (NSString *)JSONString {
   NSError *error = nil;
-  NSString *str = [GTLJSONParser stringWithObject:[self JSON]
-                                    humanReadable:YES
-                                            error:&error];
-  if (error) {
-    return [error description];
+  NSData *data = [NSJSONSerialization dataWithJSONObject:[self JSON]
+                                                 options:NSJSONWritingPrettyPrinted
+                                                   error:&error];
+  if (data) {
+    NSString *jsonStr = [[[NSString alloc] initWithData:data
+                                               encoding:NSUTF8StringEncoding] autorelease];
+    return jsonStr;
   }
-  return str;
+  return [error description];
 }
 
 - (NSArray *)additionalJSONKeys {
