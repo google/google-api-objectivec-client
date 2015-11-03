@@ -290,7 +290,6 @@
 		4F4DEB6D1372170300F5C554 /* TaskPage1b.request.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TaskPage1b.request.txt; path = Tests/Data/TaskPage1b.request.txt; sourceTree = "<group>"; };
 		4F4DEB6E1372170300F5C554 /* TaskPage1b.response.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TaskPage1b.response.txt; path = Tests/Data/TaskPage1b.response.txt; sourceTree = "<group>"; };
 		4F599405194108DF00AC95B2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		4F5A6FA914081D6200019FCD /* ReleaseNotes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReleaseNotes.txt; sourceTree = "<group>"; };
 		4F697FA3131C1A4100A5AB6A /* GTMOAuth2Authentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMOAuth2Authentication.h; path = OAuth2/GTMOAuth2Authentication.h; sourceTree = "<group>"; };
 		4F697FA4131C1A4100A5AB6A /* GTMOAuth2Authentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMOAuth2Authentication.m; path = OAuth2/GTMOAuth2Authentication.m; sourceTree = "<group>"; };
 		4F697FA5131C1A4100A5AB6A /* GTMOAuth2SignIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMOAuth2SignIn.h; path = OAuth2/GTMOAuth2SignIn.h; sourceTree = "<group>"; };
@@ -423,7 +422,6 @@
 				089C167CFE841241C02AAC07 /* Resources */,
 				089C1671FE841209C02AAC07 /* Frameworks and Libraries */,
 				19C28FB8FE9D52D311CA2CBB /* Products */,
-				4F5A6FA914081D6200019FCD /* ReleaseNotes.txt */,
 			);
 			name = GoogleBundle;
 			sourceTree = "<group>";
