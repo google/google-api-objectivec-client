@@ -528,10 +528,16 @@ static NSMutableDictionary *gKindMap = nil;
 
 + (BOOL)useDynamicMappingForClass:(Class)class
 {
-  static NSSet *excludedClasses;
+  static NSMutableSet *excludedClasses;
   static dispatch_once_t once;
   dispatch_once(&once, ^{
-    excludedClasses = [[NSSet alloc] initWithObjects:NSClassFromString(@"GTLYouTubeResourceId"), nil];
+    excludedClasses = [[NSMutableSet alloc] init];
+    for (NSString *excludedClassName in @[ @"GTLYouTubeResourceId" ]) {
+      Class excludedClass = NSClassFromString(excludedClassName);
+      if (excludedClass) {
+        [excludedClasses addObject:excludedClass];
+      }
+    }
   });
   return ![excludedClasses containsObject:class];
 }
