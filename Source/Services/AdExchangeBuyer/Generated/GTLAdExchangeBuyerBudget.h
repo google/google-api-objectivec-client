@@ -52,8 +52,8 @@
 // This is required for get and update requests.
 @property (nonatomic, retain) NSNumber *billingId;  // longLongValue
 
-// The budget amount to apply for the billingId provided. This is required for
-// update requests.
+// The daily budget amount in unit amount of the account currency to apply for
+// the billingId provided. This is required for update requests.
 @property (nonatomic, retain) NSNumber *budgetAmount;  // longLongValue
 
 // The currency code for the buyer. This cannot be altered here.

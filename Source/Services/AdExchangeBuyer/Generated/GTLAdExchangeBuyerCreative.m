@@ -55,13 +55,6 @@
          sensitiveCategories, servingRestrictions, vendorType, version,
          videoURL, width;
 
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map = @{
-    @"apiUploadTimestamp" : @"api_upload_timestamp"
-  };
-  return map;
-}
-
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{
     @"advertiserId" : [NSNumber class],

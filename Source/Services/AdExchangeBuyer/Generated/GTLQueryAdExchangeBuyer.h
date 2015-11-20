@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLQueryAdExchangeBuyer (46 custom class methods, 35 custom properties)
+//   GTLQueryAdExchangeBuyer (32 custom class methods, 24 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -38,14 +38,10 @@
 
 @class GTLAdExchangeBuyerAccount;
 @class GTLAdExchangeBuyerBudget;
-@class GTLAdExchangeBuyerClientAccessCapabilities;
 @class GTLAdExchangeBuyerCreative;
 @class GTLAdExchangeBuyerMarketplaceDeal;
 @class GTLAdExchangeBuyerMarketplaceNote;
 @class GTLAdExchangeBuyerMarketplaceOrder;
-@class GTLAdExchangeBuyerNegotiationDto;
-@class GTLAdExchangeBuyerNegotiationRoundDto;
-@class GTLAdExchangeBuyerOfferDto;
 @class GTLAdExchangeBuyerPretargetingConfig;
 
 @interface GTLQueryAdExchangeBuyer : GTLQuery
@@ -67,27 +63,16 @@
 // "buyerCreativeId" has different types for some query methods; see the
 // documentation for the right type for each query method.
 @property (nonatomic, retain) id buyerCreativeId;
-@property (nonatomic, retain) GTLAdExchangeBuyerClientAccessCapabilities *clientAccessPermissions;
-@property (nonatomic, assign) long long clientAccountId;
 @property (nonatomic, assign) long long configId;
-@property (nonatomic, assign) long long dealId;
 @property (nonatomic, retain) NSArray *dealIds;  // of NSString
 @property (nonatomic, retain) NSArray *deals;  // of GTLAdExchangeBuyerMarketplaceDeal
 @property (nonatomic, copy) NSString *dealsStatusFilter;
 @property (nonatomic, copy) NSString *endDateTime;
-@property (nonatomic, assign) BOOL finalized;
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (nonatomic, assign) NSInteger identifier;
-@property (nonatomic, assign) BOOL includePrivateAuctions;
 @property (nonatomic, assign) NSUInteger maxResults;
-@property (nonatomic, retain) GTLAdExchangeBuyerNegotiationDto *negotiation;
-@property (nonatomic, retain) GTLAdExchangeBuyerNegotiationRoundDto *negotiationRound;
-@property (nonatomic, assign) long long negotiationId;
 @property (nonatomic, retain) NSArray *notes;  // of GTLAdExchangeBuyerMarketplaceNote
-@property (nonatomic, retain) GTLAdExchangeBuyerOfferDto *offer;
-// "offerId" has different types for some query methods; see the documentation
-// for the right type for each query method.
-@property (nonatomic, retain) id offerId;
+@property (nonatomic, copy) NSString *offerId;
 @property (nonatomic, copy) NSString *openAuctionStatusFilter;
 @property (nonatomic, retain) GTLAdExchangeBuyerMarketplaceOrder *order;
 @property (nonatomic, copy) NSString *orderId;
@@ -96,10 +81,6 @@
 @property (nonatomic, copy) NSString *pageToken;
 @property (nonatomic, copy) NSString *pqlQuery;
 @property (nonatomic, assign) long long revisionNumber;
-@property (nonatomic, assign) long long sinceTimestampMillis;
-// "sponsorAccountId" has different types for some query methods; see the
-// documentation for the right type for each query method.
-@property (nonatomic, retain) id sponsorAccountId;
 @property (nonatomic, copy) NSString *startDateTime;
 @property (nonatomic, copy) NSString *updateAction;
 @property (nonatomic, copy) NSString *webPropertyCode;
@@ -205,60 +186,6 @@
                                      accountId:(long long)accountId
                                      billingId:(long long)billingId;
 
-#pragma mark - "clientaccess" methods
-// These create a GTLQueryAdExchangeBuyer object.
-
-// Method: adexchangebuyer.clientaccess.delete
-//  Authorization scope(s):
-//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
-+ (instancetype)queryForClientaccessDeleteWithClientAccountId:(long long)clientAccountId
-                                             sponsorAccountId:(NSInteger)sponsorAccountId;
-
-// Method: adexchangebuyer.clientaccess.get
-//  Authorization scope(s):
-//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
-// Fetches a GTLAdExchangeBuyerClientAccessCapabilities.
-+ (instancetype)queryForClientaccessGetWithClientAccountId:(long long)clientAccountId
-                                          sponsorAccountId:(NSInteger)sponsorAccountId;
-
-// Method: adexchangebuyer.clientaccess.insert
-//  Optional:
-//   clientAccessPermissions: GTLAdExchangeBuyerClientAccessCapabilities
-//   clientAccountId: long long
-//   sponsorAccountId: For this method, "sponsorAccountId" should be of type
-//     NSInteger.
-//  Authorization scope(s):
-//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
-// Fetches a GTLAdExchangeBuyerClientAccessCapabilities.
-+ (instancetype)queryForClientaccessInsert;
-
-// Method: adexchangebuyer.clientaccess.list
-//  Optional:
-//   sponsorAccountId: For this method, "sponsorAccountId" should be of type
-//     long long.
-//  Authorization scope(s):
-//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
-// Fetches a GTLAdExchangeBuyerListClientAccessCapabilitiesResponse.
-+ (instancetype)queryForClientaccessList;
-
-// Method: adexchangebuyer.clientaccess.patch
-//  Optional:
-//   clientAccessPermissions: GTLAdExchangeBuyerClientAccessCapabilities
-//  Authorization scope(s):
-//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
-// Fetches a GTLAdExchangeBuyerClientAccessCapabilities.
-+ (instancetype)queryForClientaccessPatchWithClientAccountId:(long long)clientAccountId
-                                            sponsorAccountId:(NSInteger)sponsorAccountId;
-
-// Method: adexchangebuyer.clientaccess.update
-//  Optional:
-//   clientAccessPermissions: GTLAdExchangeBuyerClientAccessCapabilities
-//  Authorization scope(s):
-//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
-// Fetches a GTLAdExchangeBuyerClientAccessCapabilities.
-+ (instancetype)queryForClientaccessUpdateWithClientAccountId:(long long)clientAccountId
-                                             sponsorAccountId:(NSInteger)sponsorAccountId;
-
 #pragma mark - "creatives" methods
 // These create a GTLQueryAdExchangeBuyer object.
 
@@ -322,18 +249,6 @@
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerCreativesList.
 + (instancetype)queryForCreativesList;
-
-#pragma mark - "deals" methods
-// These create a GTLQueryAdExchangeBuyer object.
-
-// Method: adexchangebuyer.deals.get
-// Gets the requested deal.
-//  Optional:
-//   includePrivateAuctions: BOOL
-//  Authorization scope(s):
-//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
-// Fetches a GTLAdExchangeBuyerNegotiationDto.
-+ (instancetype)queryForDealsGetWithDealId:(long long)dealId;
 
 #pragma mark - "marketplacedeals" methods
 // These create a GTLQueryAdExchangeBuyer object.
@@ -519,78 +434,6 @@
 + (instancetype)queryForMarketplaceordersUpdateWithOrderId:(NSString *)orderId
                                             revisionNumber:(long long)revisionNumber
                                               updateAction:(NSString *)updateAction;
-
-#pragma mark - "negotiationrounds" methods
-// These create a GTLQueryAdExchangeBuyer object.
-
-// Method: adexchangebuyer.negotiationrounds.insert
-// Adds the requested negotiationRound to the requested negotiation.
-//  Optional:
-//   negotiationRound: GTLAdExchangeBuyerNegotiationRoundDto
-//  Authorization scope(s):
-//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
-// Fetches a GTLAdExchangeBuyerNegotiationRoundDto.
-+ (instancetype)queryForNegotiationroundsInsertWithNegotiationId:(long long)negotiationId;
-
-#pragma mark - "negotiations" methods
-// These create a GTLQueryAdExchangeBuyer object.
-
-// Method: adexchangebuyer.negotiations.get
-// Gets the requested negotiation.
-//  Optional:
-//   includePrivateAuctions: BOOL
-//  Authorization scope(s):
-//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
-// Fetches a GTLAdExchangeBuyerNegotiationDto.
-+ (instancetype)queryForNegotiationsGetWithNegotiationId:(long long)negotiationId;
-
-// Method: adexchangebuyer.negotiations.insert
-// Creates or updates the requested negotiation.
-//  Optional:
-//   negotiation: GTLAdExchangeBuyerNegotiationDto
-//  Authorization scope(s):
-//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
-// Fetches a GTLAdExchangeBuyerNegotiationDto.
-+ (instancetype)queryForNegotiationsInsert;
-
-// Method: adexchangebuyer.negotiations.list
-// Lists all negotiations the authenticated user has access to.
-//  Optional:
-//   finalized: BOOL
-//   includePrivateAuctions: BOOL
-//   sinceTimestampMillis: long long
-//  Authorization scope(s):
-//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
-// Fetches a GTLAdExchangeBuyerGetNegotiationsResponse.
-+ (instancetype)queryForNegotiationsList;
-
-#pragma mark - "offers" methods
-// These create a GTLQueryAdExchangeBuyer object.
-
-// Method: adexchangebuyer.offers.get
-// Gets the requested offer.
-//  Authorization scope(s):
-//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
-// Fetches a GTLAdExchangeBuyerOfferDto.
-+ (instancetype)queryForOffersGetWithOfferId:(long long)offerId;
-
-// Method: adexchangebuyer.offers.insert
-// Creates or updates the requested offer.
-//  Optional:
-//   offer: GTLAdExchangeBuyerOfferDto
-//  Authorization scope(s):
-//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
-// Fetches a GTLAdExchangeBuyerOfferDto.
-+ (instancetype)queryForOffersInsert;
-
-// Method: adexchangebuyer.offers.list
-// Lists all offers the authenticated user has access to.
-//  Optional:
-//   sinceTimestampMillis: long long
-//  Authorization scope(s):
-//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
-// Fetches a GTLAdExchangeBuyerListOffersResponse.
-+ (instancetype)queryForOffersList;
 
 #pragma mark - "performanceReport" methods
 // These create a GTLQueryAdExchangeBuyer object.

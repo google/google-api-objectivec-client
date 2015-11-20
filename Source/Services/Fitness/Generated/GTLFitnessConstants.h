@@ -60,6 +60,7 @@ GTL_EXTERN NSString * const kGTLFitnessDataSource_Type_Derived;  // "derived"
 GTL_EXTERN NSString * const kGTLFitnessDataSource_Type_Raw;     // "raw"
 
 // GTLFitnessDataTypeField - Format
+GTL_EXTERN NSString * const kGTLFitnessDataTypeField_Format_Blob;  // "blob"
 GTL_EXTERN NSString * const kGTLFitnessDataTypeField_Format_FloatList;  // "floatList"
 GTL_EXTERN NSString * const kGTLFitnessDataTypeField_Format_FloatPoint;  // "floatPoint"
 GTL_EXTERN NSString * const kGTLFitnessDataTypeField_Format_Integer;  // "integer"

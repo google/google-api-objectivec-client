@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerPrice (0 custom class methods, 2 custom properties)
+//   GTLAdExchangeBuyerPrice (0 custom class methods, 3 custom properties)
 
 #import "GTLAdExchangeBuyerPrice.h"
 
@@ -38,5 +38,5 @@
 //
 
 @implementation GTLAdExchangeBuyerPrice
-@dynamic amountMicros, currencyCode;
+@dynamic amountMicros, currencyCode, pricingType;
 @end

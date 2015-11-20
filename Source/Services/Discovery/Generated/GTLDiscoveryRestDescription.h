@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/discovery/
 // Classes:
-//   GTLDiscoveryRestDescription (0 custom class methods, 29 custom properties)
+//   GTLDiscoveryRestDescription (0 custom class methods, 30 custom properties)
 //   GTLDiscoveryRestDescriptionAuth (0 custom class methods, 1 custom properties)
 //   GTLDiscoveryRestDescriptionIcons (0 custom class methods, 2 custom properties)
 //   GTLDiscoveryRestDescriptionMethods (0 custom class methods, 0 custom properties)
@@ -156,6 +156,7 @@
 // The version of this API.
 @property (nonatomic, copy) NSString *version;
 
+@property (nonatomic, retain) NSNumber *versionModule;  // boolValue
 @end
 
 

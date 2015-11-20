@@ -48,6 +48,7 @@ NSString * const kGTLFitnessDataSource_Type_Derived = @"derived";
 NSString * const kGTLFitnessDataSource_Type_Raw     = @"raw";
 
 // GTLFitnessDataTypeField - Format
+NSString * const kGTLFitnessDataTypeField_Format_Blob        = @"blob";
 NSString * const kGTLFitnessDataTypeField_Format_FloatList   = @"floatList";
 NSString * const kGTLFitnessDataTypeField_Format_FloatPoint  = @"floatPoint";
 NSString * const kGTLFitnessDataTypeField_Format_Integer     = @"integer";

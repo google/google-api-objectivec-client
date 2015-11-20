@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLQueryAdExchangeBuyer (46 custom class methods, 35 custom properties)
+//   GTLQueryAdExchangeBuyer (32 custom class methods, 24 custom properties)
 
 #import "GTLQueryAdExchangeBuyer.h"
 
@@ -39,45 +39,34 @@
 #import "GTLAdExchangeBuyerBillingInfo.h"
 #import "GTLAdExchangeBuyerBillingInfoList.h"
 #import "GTLAdExchangeBuyerBudget.h"
-#import "GTLAdExchangeBuyerClientAccessCapabilities.h"
 #import "GTLAdExchangeBuyerCreateOrdersResponse.h"
 #import "GTLAdExchangeBuyerCreative.h"
 #import "GTLAdExchangeBuyerCreativesList.h"
 #import "GTLAdExchangeBuyerDeleteOrderDealsResponse.h"
 #import "GTLAdExchangeBuyerEditAllOrderDealsResponse.h"
-#import "GTLAdExchangeBuyerGetNegotiationsResponse.h"
 #import "GTLAdExchangeBuyerGetOffersResponse.h"
 #import "GTLAdExchangeBuyerGetOrderDealsResponse.h"
 #import "GTLAdExchangeBuyerGetOrderNotesResponse.h"
 #import "GTLAdExchangeBuyerGetOrdersResponse.h"
-#import "GTLAdExchangeBuyerListClientAccessCapabilitiesResponse.h"
-#import "GTLAdExchangeBuyerListOffersResponse.h"
 #import "GTLAdExchangeBuyerMarketplaceDeal.h"
 #import "GTLAdExchangeBuyerMarketplaceNote.h"
 #import "GTLAdExchangeBuyerMarketplaceOffer.h"
 #import "GTLAdExchangeBuyerMarketplaceOrder.h"
-#import "GTLAdExchangeBuyerNegotiationDto.h"
-#import "GTLAdExchangeBuyerNegotiationRoundDto.h"
-#import "GTLAdExchangeBuyerOfferDto.h"
 #import "GTLAdExchangeBuyerPerformanceReportList.h"
 #import "GTLAdExchangeBuyerPretargetingConfig.h"
 #import "GTLAdExchangeBuyerPretargetingConfigList.h"
 
 @implementation GTLQueryAdExchangeBuyer
 
-@dynamic accountId, billingId, buyerCreativeId, clientAccessPermissions,
-         clientAccountId, configId, dealId, dealIds, deals, dealsStatusFilter,
-         endDateTime, fields, finalized, identifier, includePrivateAuctions,
-         maxResults, negotiation, negotiationRound, negotiationId, notes, offer,
+@dynamic accountId, billingId, buyerCreativeId, configId, dealIds, deals,
+         dealsStatusFilter, endDateTime, fields, identifier, maxResults, notes,
          offerId, openAuctionStatusFilter, order, orderId, orderRevisionNumber,
-         orders, pageToken, pqlQuery, revisionNumber, sinceTimestampMillis,
-         sponsorAccountId, startDateTime, updateAction, webPropertyCode;
+         orders, pageToken, pqlQuery, revisionNumber, startDateTime,
+         updateAction, webPropertyCode;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map = @{
-    @"clientAccessPermissions" : @"client_access_permissions",
-    @"identifier" : @"id",
-    @"negotiationRound" : @"negotiation_round"
+    @"identifier" : @"id"
   };
   return map;
 }
@@ -201,62 +190,6 @@
   return query;
 }
 
-#pragma mark - "clientaccess" methods
-// These create a GTLQueryAdExchangeBuyer object.
-
-+ (instancetype)queryForClientaccessDeleteWithClientAccountId:(long long)clientAccountId
-                                             sponsorAccountId:(NSInteger)sponsorAccountId {
-  NSString *methodName = @"adexchangebuyer.clientaccess.delete";
-  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.clientAccountId = clientAccountId;
-  query.sponsorAccountId = [NSNumber numberWithInteger:sponsorAccountId];
-  return query;
-}
-
-+ (instancetype)queryForClientaccessGetWithClientAccountId:(long long)clientAccountId
-                                          sponsorAccountId:(NSInteger)sponsorAccountId {
-  NSString *methodName = @"adexchangebuyer.clientaccess.get";
-  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.clientAccountId = clientAccountId;
-  query.sponsorAccountId = [NSNumber numberWithInteger:sponsorAccountId];
-  query.expectedObjectClass = [GTLAdExchangeBuyerClientAccessCapabilities class];
-  return query;
-}
-
-+ (instancetype)queryForClientaccessInsert {
-  NSString *methodName = @"adexchangebuyer.clientaccess.insert";
-  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.expectedObjectClass = [GTLAdExchangeBuyerClientAccessCapabilities class];
-  return query;
-}
-
-+ (instancetype)queryForClientaccessList {
-  NSString *methodName = @"adexchangebuyer.clientaccess.list";
-  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.expectedObjectClass = [GTLAdExchangeBuyerListClientAccessCapabilitiesResponse class];
-  return query;
-}
-
-+ (instancetype)queryForClientaccessPatchWithClientAccountId:(long long)clientAccountId
-                                            sponsorAccountId:(NSInteger)sponsorAccountId {
-  NSString *methodName = @"adexchangebuyer.clientaccess.patch";
-  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.clientAccountId = clientAccountId;
-  query.sponsorAccountId = [NSNumber numberWithInteger:sponsorAccountId];
-  query.expectedObjectClass = [GTLAdExchangeBuyerClientAccessCapabilities class];
-  return query;
-}
-
-+ (instancetype)queryForClientaccessUpdateWithClientAccountId:(long long)clientAccountId
-                                             sponsorAccountId:(NSInteger)sponsorAccountId {
-  NSString *methodName = @"adexchangebuyer.clientaccess.update";
-  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.clientAccountId = clientAccountId;
-  query.sponsorAccountId = [NSNumber numberWithInteger:sponsorAccountId];
-  query.expectedObjectClass = [GTLAdExchangeBuyerClientAccessCapabilities class];
-  return query;
-}
-
 #pragma mark - "creatives" methods
 // These create a GTLQueryAdExchangeBuyer object.
 
@@ -286,17 +219,6 @@
   NSString *methodName = @"adexchangebuyer.creatives.list";
   GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLAdExchangeBuyerCreativesList class];
-  return query;
-}
-
-#pragma mark - "deals" methods
-// These create a GTLQueryAdExchangeBuyer object.
-
-+ (instancetype)queryForDealsGetWithDealId:(long long)dealId {
-  NSString *methodName = @"adexchangebuyer.deals.get";
-  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.dealId = dealId;
-  query.expectedObjectClass = [GTLAdExchangeBuyerNegotiationDto class];
   return query;
 }
 
@@ -418,67 +340,6 @@
   query.revisionNumber = revisionNumber;
   query.updateAction = updateAction;
   query.expectedObjectClass = [GTLAdExchangeBuyerMarketplaceOrder class];
-  return query;
-}
-
-#pragma mark - "negotiationrounds" methods
-// These create a GTLQueryAdExchangeBuyer object.
-
-+ (instancetype)queryForNegotiationroundsInsertWithNegotiationId:(long long)negotiationId {
-  NSString *methodName = @"adexchangebuyer.negotiationrounds.insert";
-  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.negotiationId = negotiationId;
-  query.expectedObjectClass = [GTLAdExchangeBuyerNegotiationRoundDto class];
-  return query;
-}
-
-#pragma mark - "negotiations" methods
-// These create a GTLQueryAdExchangeBuyer object.
-
-+ (instancetype)queryForNegotiationsGetWithNegotiationId:(long long)negotiationId {
-  NSString *methodName = @"adexchangebuyer.negotiations.get";
-  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.negotiationId = negotiationId;
-  query.expectedObjectClass = [GTLAdExchangeBuyerNegotiationDto class];
-  return query;
-}
-
-+ (instancetype)queryForNegotiationsInsert {
-  NSString *methodName = @"adexchangebuyer.negotiations.insert";
-  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.expectedObjectClass = [GTLAdExchangeBuyerNegotiationDto class];
-  return query;
-}
-
-+ (instancetype)queryForNegotiationsList {
-  NSString *methodName = @"adexchangebuyer.negotiations.list";
-  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.expectedObjectClass = [GTLAdExchangeBuyerGetNegotiationsResponse class];
-  return query;
-}
-
-#pragma mark - "offers" methods
-// These create a GTLQueryAdExchangeBuyer object.
-
-+ (instancetype)queryForOffersGetWithOfferId:(long long)offerId {
-  NSString *methodName = @"adexchangebuyer.offers.get";
-  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.offerId = [NSNumber numberWithLongLong:offerId];
-  query.expectedObjectClass = [GTLAdExchangeBuyerOfferDto class];
-  return query;
-}
-
-+ (instancetype)queryForOffersInsert {
-  NSString *methodName = @"adexchangebuyer.offers.insert";
-  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.expectedObjectClass = [GTLAdExchangeBuyerOfferDto class];
-  return query;
-}
-
-+ (instancetype)queryForOffersList {
-  NSString *methodName = @"adexchangebuyer.offers.list";
-  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.expectedObjectClass = [GTLAdExchangeBuyerListOffersResponse class];
   return query;
 }
 

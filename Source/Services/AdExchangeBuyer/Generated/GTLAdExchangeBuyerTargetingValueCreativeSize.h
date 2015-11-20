@@ -51,7 +51,7 @@
 // The Creative size type.
 @property (nonatomic, copy) NSString *creativeSizeType;
 
-// For regular creative size type, specifies the size of the creative.
+// For regular or video creative size type, specifies the size of the creative.
 @property (nonatomic, retain) GTLAdExchangeBuyerTargetingValueSize *size;
 
 @end
