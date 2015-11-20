@@ -25,16 +25,15 @@
 @end
 
 @implementation GTLDateTimeTest
-- (void)testGTLDateTime {
-  const NSCalendarUnit kComponents =
-    NSEraCalendarUnit
-    | NSYearCalendarUnit
-    | NSMonthCalendarUnit
-    | NSDayCalendarUnit
-    | NSHourCalendarUnit
-    | NSMinuteCalendarUnit
-    | NSSecondCalendarUnit;
 
+- (void)testGTLDateTime {
+  const NSCalendarUnit kComponents = (NSCalendarUnitEra
+                                      | NSCalendarUnitYear
+                                      | NSCalendarUnitMonth
+                                      | NSCalendarUnitDay
+                                      | NSCalendarUnitHour
+                                      | NSCalendarUnitMinute
+                                      | NSCalendarUnitSecond);
   struct DateTimeTestRecord {
     NSString *dateTimeStr;
     NSInteger year;
@@ -69,10 +68,8 @@
     // Copy the date to make sure that works and then validate everything on
     // the copy.
     GTLDateTime *dateTime = [[dateTimeOriginal copy] autorelease];
-    XCTAssertEqualObjects(dateTimeOriginal, dateTime,
-                         @"failed to copy date, original %@ copy %@",
-                         dateTimeOriginal, dateTime);
-    
+    XCTAssertEqualObjects(dateTimeOriginal, dateTime);
+
     NSString *outputString = dateTime.RFC3339String;
 
     XCTAssertEqualObjects(outputString, testString1,
@@ -84,22 +81,22 @@
     NSCalendar *cal = dateTime.calendar;
     NSDateComponents *outputComponents = [cal components:kComponents
                                                 fromDate:outputDate];
-    XCTAssertEqual([outputComponents year], tests[idx].year, @"bad year");
-    XCTAssertEqual([outputComponents month], tests[idx].month, @"bad month");
-    XCTAssertEqual([outputComponents day], tests[idx].day, @"bad day");
-    XCTAssertEqual([outputComponents hour], tests[idx].hour, @"bad hour");
-    XCTAssertEqual([outputComponents minute], tests[idx].minute, @"bad minute");
-    XCTAssertEqual([outputComponents second], tests[idx].second, @"bad second");
+    XCTAssertEqual([outputComponents year], tests[idx].year);
+    XCTAssertEqual([outputComponents month], tests[idx].month);
+    XCTAssertEqual([outputComponents day], tests[idx].day);
+    XCTAssertEqual([outputComponents hour], tests[idx].hour);
+    XCTAssertEqual([outputComponents minute], tests[idx].minute);
+    XCTAssertEqual([outputComponents second], tests[idx].second);
 
-    XCTAssertEqual([dateTime.timeZone secondsFromGMT], tests[idx].timeZoneOffsetSeconds, @"bad timezone");
-    XCTAssertEqual(dateTime.isUniversalTime, tests[idx].isUniversalTime, @"bad Zulu value");
-    XCTAssertEqual(dateTime.hasTime, tests[idx].hasTime, @"bad hasTime value");
+    XCTAssertEqual([dateTime.timeZone secondsFromGMT], tests[idx].timeZoneOffsetSeconds);
+    XCTAssertEqual(dateTime.isUniversalTime, tests[idx].isUniversalTime);
+    XCTAssertEqual(dateTime.hasTime, tests[idx].hasTime);
   }
 }
 
 - (void)testFractionalSeconds {
   // See the note at the top of GTLDateTime for the expected behaviors.
-  
+
   struct FractionalSecondsTestRecord {
     NSString *input;
     NSString *expected;
@@ -107,7 +104,7 @@
 
   struct FractionalSecondsTestRecord tests[] = {
     // This was a trouble case and called for the round() usage, without round
-    // and using a cast, it trucates the double to 734 even though %f prints it
+    // and using a cast, it truncates the double to 734 even though %f prints it
     // as .735.
     { @"2011-05-03T23:14:20.735Z", @"2011-05-03T23:14:20.735Z" }, // Same in/out
     // Extra digits
@@ -127,55 +124,51 @@
     // Done
     { nil, nil }
   };
-  
-  int idx;
-  for (idx = 0; tests[idx].input != nil; idx++) {
+
+  for (int idx = 0; tests[idx].input != nil; idx++) {
     NSString *testString = tests[idx].input;
     NSString *expectedString = tests[idx].expected;
-    
+
     GTLDateTime *dateTimeOriginal = [GTLDateTime dateTimeWithRFC3339String:testString];
 
     // Bounce through a -copy and an NSDate to make sure the fractions of a
     // second make it all the way.
     GTLDateTime *dateTimeCopied = [[dateTimeOriginal copy] autorelease];
-    XCTAssertEqualObjects(dateTimeOriginal, dateTimeCopied,
-                         @"failed to copy date, original %@ copy %@",
-                         dateTimeOriginal, dateTimeCopied);
+    XCTAssertEqualObjects(dateTimeCopied, dateTimeOriginal);
     NSDate *outputDate = dateTimeCopied.date;
     GTLDateTime *dateTimeFromDate = [GTLDateTime dateTimeWithDate:outputDate
                                                          timeZone:dateTimeCopied.timeZone];
-    XCTAssertEqualObjects(dateTimeOriginal, dateTimeFromDate,
-                         @"failed to get same date back, original %@ fromDate %@",
-                         dateTimeOriginal, dateTimeFromDate);
-    
-    NSString *outputString = dateTimeFromDate.RFC3339String;
+    XCTAssertEqualObjects(dateTimeFromDate, dateTimeOriginal);
 
-    XCTAssertEqualObjects(outputString, expectedString,
-                         @"failed to recreate string %@ as %@",
-                         outputString, expectedString);
+    XCTAssertEqualObjects(dateTimeFromDate.RFC3339String, expectedString);
   }
 }
 
-#if !GTL_IPHONE
-// TODO(grobbins): b/23278397 NSCalendarDate doesn't exist on iOS
-
 - (void)testTimeZonePreservation {
   NSTimeZone *denverTZ = [NSTimeZone timeZoneWithName:@"America/Denver"];
-  NSCalendarDate *date = [NSCalendarDate dateWithYear:2007 month:01 day:01
-                                                 hour:01 minute:01 second:01
-                                             timeZone:denverTZ];
+  NSDate *date = [self dateWithYear:2007
+                              month:01
+                                day:01
+                               hour:01
+                             minute:01
+                             second:01
+                           timeZone:denverTZ];
 
   GTLDateTime *dateTime = [GTLDateTime dateTimeWithDate:date
                                                timeZone:denverTZ];
   NSTimeZone *testTZ = dateTime.timeZone;
-  XCTAssertEqualObjects(testTZ, denverTZ, @"Time zone changed");
+  XCTAssertEqualObjects(testTZ, denverTZ);
 }
 
 - (void)testCalendarCaching {
   NSTimeZone *denverTZ = [NSTimeZone timeZoneWithName:@"America/Denver"];
-  NSCalendarDate *date = [NSCalendarDate dateWithYear:2007 month:01 day:01
-                                                 hour:01 minute:01 second:01
-                                             timeZone:denverTZ];
+  NSDate *date = [self dateWithYear:2007
+                              month:01
+                                day:01
+                               hour:01
+                             minute:01
+                             second:01
+                           timeZone:denverTZ];
 
   GTLDateTime *dateTime = [GTLDateTime dateTimeWithDate:date
                                                timeZone:denverTZ];
@@ -185,26 +178,41 @@
   NSTimeZone *denverTZ2 = [NSTimeZone timeZoneWithName:@"America/Denver"];
   GTLDateTime *dateTime2 = [GTLDateTime dateTimeWithDate:date
                                                timeZone:denverTZ2];
-  XCTAssertEqual(dateTime2.calendar, dateTime.calendar,
-                 @"%@ ≠ %@", dateTime2.calendar, dateTime.calendar);
+  XCTAssertEqual(dateTime2.calendar, dateTime.calendar);
 
   // RFC3339 strings have offsets but not named time zones.
   NSString *str = [dateTime RFC3339String];
   GTLDateTime *dateTime3 = [GTLDateTime dateTimeWithRFC3339String:str];
   GTLDateTime *dateTime4 = [GTLDateTime dateTimeWithRFC3339String:str];
 
-  XCTAssertEqual(dateTime3.calendar, dateTime4.calendar,
-                 @"%@ ≠ %@", dateTime3.calendar, dateTime4.calendar);
+  XCTAssertEqual(dateTime3.calendar, dateTime4.calendar);
 
   // The timezones don't match, so the calendars should be unique, but the
   // time zone offsets from GMT are the same.
-  XCTAssertTrue(dateTime3.calendar != dateTime.calendar,
-               @"%@ = %@", dateTime3.calendar, dateTime.calendar);
+  XCTAssertNotEqual(dateTime3.calendar, dateTime.calendar);
   XCTAssertEqual(dateTime3.calendar.timeZone.secondsFromGMT,
                  (dateTime.calendar.timeZone.secondsFromGMT -
                   (NSInteger)[dateTime.timeZone daylightSavingTimeOffset]));
 }
 
-#endif  // !GTL_IPHONE
+- (NSDate *)dateWithYear:(NSInteger)year
+                   month:(NSInteger)month
+                     day:(NSInteger)day
+                    hour:(NSInteger)hour
+                  minute:(NSInteger)minute
+                  second:(NSInteger)second
+                timeZone:(NSTimeZone *)tz {
+  NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+  NSDateComponents *components = [[[NSDateComponents alloc] init] autorelease];
+  components.year = year;
+  components.month = month;
+  components.day = day;
+  components.hour = hour;
+  components.minute = minute;
+  components.second = second;
+  components.timeZone = tz;
+  NSDate *result = [calendar dateFromComponents:components];
+  return result;
+}
 
 @end
