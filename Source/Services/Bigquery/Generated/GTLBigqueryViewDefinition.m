@@ -26,9 +26,11 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryViewDefinition (0 custom class methods, 1 custom properties)
+//   GTLBigqueryViewDefinition (0 custom class methods, 2 custom properties)
 
 #import "GTLBigqueryViewDefinition.h"
+
+#import "GTLBigqueryUserDefinedFunctionResource.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -36,5 +38,13 @@
 //
 
 @implementation GTLBigqueryViewDefinition
-@dynamic query;
+@dynamic query, userDefinedFunctionResources;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map = @{
+    @"userDefinedFunctionResources" : [GTLBigqueryUserDefinedFunctionResource class]
+  };
+  return map;
+}
+
 @end

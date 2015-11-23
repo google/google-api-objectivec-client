@@ -71,6 +71,7 @@
 // property), this setting will also apply to the archived video.
 @property (nonatomic, retain) NSNumber *enableEmbed;  // boolValue
 
+// Indicates whether this broadcast has low latency enabled.
 @property (nonatomic, retain) NSNumber *enableLowLatency;  // boolValue
 
 // The monitorStream object contains information about the monitor stream, which

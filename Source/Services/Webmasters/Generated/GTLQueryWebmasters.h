@@ -173,7 +173,7 @@
 // These create a GTLQueryWebmasters object.
 
 // Method: webmasters.sites.add
-// Adds a site to the set of the user's sites in Webmaster Tools.
+// Adds a site to the set of the user's sites in Search Console.
 //  Required:
 //   siteUrl: The URL of the site to add.
 //  Authorization scope(s):
@@ -181,7 +181,7 @@
 + (instancetype)queryForSitesAddWithSiteUrl:(NSString *)siteUrl;
 
 // Method: webmasters.sites.delete
-// Removes a site from the set of the user's Webmaster Tools sites.
+// Removes a site from the set of the user's Search Console sites.
 //  Required:
 //   siteUrl: The URI of the property as defined in Search Console. Examples:
 //     http://www.example.com/ or android-app://com.example/
@@ -201,7 +201,7 @@
 + (instancetype)queryForSitesGetWithSiteUrl:(NSString *)siteUrl;
 
 // Method: webmasters.sites.list
-// Lists the user's Webmaster Tools sites.
+// Lists the user's Search Console sites.
 //  Authorization scope(s):
 //   kGTLAuthScopeWebmasters
 //   kGTLAuthScopeWebmastersReadonly

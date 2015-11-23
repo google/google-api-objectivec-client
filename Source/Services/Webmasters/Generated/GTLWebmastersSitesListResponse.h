@@ -45,8 +45,8 @@
 
 @interface GTLWebmastersSitesListResponse : GTLObject
 
-// Contains permission level information about a Webmaster Tools site. For more
-// information, see Permissions in Webmaster Tools.
+// Contains permission level information about a Search Console site. For more
+// information, see Permissions in Search Console.
 @property (nonatomic, retain) NSArray *siteEntry;  // of GTLWebmastersWmxSite
 
 @end

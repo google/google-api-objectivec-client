@@ -28,13 +28,14 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerDealTerms (0 custom class methods, 4 custom properties)
+//   GTLAdExchangeBuyerDealTerms (0 custom class methods, 7 custom properties)
 
 #import "GTLAdExchangeBuyerDealTerms.h"
 
 #import "GTLAdExchangeBuyerDealTermsGuaranteedFixedPriceTerms.h"
 #import "GTLAdExchangeBuyerDealTermsNonGuaranteedAuctionTerms.h"
 #import "GTLAdExchangeBuyerDealTermsNonGuaranteedFixedPriceTerms.h"
+#import "GTLAdExchangeBuyerPrice.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -42,7 +43,8 @@
 //
 
 @implementation GTLAdExchangeBuyerDealTerms
-@dynamic descriptionProperty, guaranteedFixedPriceTerms,
+@dynamic brandingType, descriptionProperty, estimatedGrossSpend,
+         estimatedImpressionsPerDay, guaranteedFixedPriceTerms,
          nonGuaranteedAuctionTerms, nonGuaranteedFixedPriceTerms;
 
 + (NSDictionary *)propertyToJSONKeyMap {

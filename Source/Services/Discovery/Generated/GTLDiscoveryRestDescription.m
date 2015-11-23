@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/discovery/
 // Classes:
-//   GTLDiscoveryRestDescription (0 custom class methods, 29 custom properties)
+//   GTLDiscoveryRestDescription (0 custom class methods, 30 custom properties)
 //   GTLDiscoveryRestDescriptionAuth (0 custom class methods, 1 custom properties)
 //   GTLDiscoveryRestDescriptionIcons (0 custom class methods, 2 custom properties)
 //   GTLDiscoveryRestDescriptionMethods (0 custom class methods, 0 custom properties)
@@ -54,13 +54,14 @@
          discoveryVersion, documentationLink, ETag, exponentialBackoffDefault,
          features, icons, identifier, kind, labels, methods, name, ownerDomain,
          ownerName, packagePath, parameters, protocol, resources, revision,
-         rootUrl, schemas, servicePath, title, version;
+         rootUrl, schemas, servicePath, title, version, versionModule;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{
     @"descriptionProperty" : @"description",
     @"ETag" : @"etag",
-    @"identifier" : @"id"
+    @"identifier" : @"id",
+    @"versionModule" : @"version_module"
   };
   return map;
 }

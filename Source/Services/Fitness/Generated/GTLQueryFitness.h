@@ -115,8 +115,11 @@
 //   bucketByTime: Specifies that data be aggregated by a single time interval.
 //     Mutually exclusive of other bucketing specifications.
 //  Authorization scope(s):
+//   kGTLAuthScopeFitnessActivityRead
 //   kGTLAuthScopeFitnessActivityWrite
+//   kGTLAuthScopeFitnessBodyRead
 //   kGTLAuthScopeFitnessBodyWrite
+//   kGTLAuthScopeFitnessLocationRead
 //   kGTLAuthScopeFitnessLocationWrite
 // Fetches a GTLFitnessAggregateResponse.
 + (instancetype)queryForUsersDatasetAggregateWithUserId:(NSString *)userId

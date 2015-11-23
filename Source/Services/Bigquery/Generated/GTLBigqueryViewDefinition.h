@@ -26,13 +26,15 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryViewDefinition (0 custom class methods, 1 custom properties)
+//   GTLBigqueryViewDefinition (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
 #else
   #import "GTLObject.h"
 #endif
+
+@class GTLBigqueryUserDefinedFunctionResource;
 
 // ----------------------------------------------------------------------------
 //
@@ -43,5 +45,8 @@
 
 // [Required] A query that BigQuery executes when the view is referenced.
 @property (nonatomic, copy) NSString *query;
+
+// [Experimental] Describes user-defined function resources used in the query.
+@property (nonatomic, retain) NSArray *userDefinedFunctionResources;  // of GTLBigqueryUserDefinedFunctionResource
 
 @end

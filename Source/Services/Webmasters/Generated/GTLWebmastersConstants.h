@@ -35,9 +35,9 @@
 #endif
 
 // Authorization scope
-// View and modify Webmaster Tools data for your verified sites
+// View and manage Search Console data for your verified sites
 GTL_EXTERN NSString * const kGTLAuthScopeWebmasters;          // "https://www.googleapis.com/auth/webmasters"
-// View Webmaster Tools data for your verified sites
+// View Search Console data for your verified sites
 GTL_EXTERN NSString * const kGTLAuthScopeWebmastersReadonly;  // "https://www.googleapis.com/auth/webmasters.readonly"
 
 // GTLQueryWebmasters - Category

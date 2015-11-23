@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerPrice (0 custom class methods, 2 custom properties)
+//   GTLAdExchangeBuyerPrice (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -43,10 +43,13 @@
 
 @interface GTLAdExchangeBuyerPrice : GTLObject
 
-// The CPM value in micros.
+// The price value in micros.
 @property (nonatomic, retain) NSNumber *amountMicros;  // doubleValue
 
 // The currency code for the price.
 @property (nonatomic, copy) NSString *currencyCode;
+
+// The pricing type for the deal/offer.
+@property (nonatomic, copy) NSString *pricingType;
 
 @end
