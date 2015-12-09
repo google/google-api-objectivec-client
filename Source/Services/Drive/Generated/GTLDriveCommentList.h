@@ -41,7 +41,7 @@
 //   GTLDriveCommentList
 //
 
-// A JSON representation of a list of comments on a file in Google Drive.
+// A list of comments on a file in Google Drive.
 
 // This class supports NSFastEnumeration over its "items" property. It also
 // supports -itemAtIndex: to retrieve individual objects from "items".

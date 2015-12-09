@@ -64,8 +64,8 @@
 
 @interface GTLCalendarEvent : GTLObject
 
-// Whether anyone can invite themselves to the event. Optional. The default is
-// False.
+// Whether anyone can invite themselves to the event (currently works for
+// Google+ events only). Optional. The default is False.
 @property (nonatomic, retain) NSNumber *anyoneCanAddSelf;  // boolValue
 
 // File attachments for the event. Currently only Google Drive attachments are

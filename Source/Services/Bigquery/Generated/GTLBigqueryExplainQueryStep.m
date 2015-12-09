@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLBigqueryJobStatistics2.m
+//  GTLBigqueryExplainQueryStep.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,24 +26,21 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryJobStatistics2 (0 custom class methods, 5 custom properties)
+//   GTLBigqueryExplainQueryStep (0 custom class methods, 2 custom properties)
 
-#import "GTLBigqueryJobStatistics2.h"
-
-#import "GTLBigqueryExplainQueryStage.h"
+#import "GTLBigqueryExplainQueryStep.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBigqueryJobStatistics2
+//   GTLBigqueryExplainQueryStep
 //
 
-@implementation GTLBigqueryJobStatistics2
-@dynamic billingTier, cacheHit, queryPlan, totalBytesBilled,
-         totalBytesProcessed;
+@implementation GTLBigqueryExplainQueryStep
+@dynamic kind, substeps;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{
-    @"queryPlan" : [GTLBigqueryExplainQueryStage class]
+    @"substeps" : [NSString class]
   };
   return map;
 }

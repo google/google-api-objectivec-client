@@ -14,19 +14,19 @@
  */
 
 //
-//  GTLDriveCommentReplyList.h
+//  GTLBigqueryExplainQueryStep.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   BigQuery API (bigquery/v2)
 // Description:
-//   The API to interact with Drive.
+//   A data platform for customers to create, manage, share and query data.
 // Documentation:
-//   https://developers.google.com/drive/
+//   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLDriveCommentReplyList (0 custom class methods, 5 custom properties)
+//   GTLBigqueryExplainQueryStep (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,33 +34,17 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLDriveCommentReply;
-
 // ----------------------------------------------------------------------------
 //
-//   GTLDriveCommentReplyList
+//   GTLBigqueryExplainQueryStep
 //
 
-// A list of replies to a comment on a file in Google Drive.
+@interface GTLBigqueryExplainQueryStep : GTLObject
 
-// This class supports NSFastEnumeration over its "items" property. It also
-// supports -itemAtIndex: to retrieve individual objects from "items".
-
-@interface GTLDriveCommentReplyList : GTLCollectionObject
-
-// List of reply.
-@property (nonatomic, retain) NSArray *items;  // of GTLDriveCommentReply
-
-// This is always drive#commentReplyList.
+// Machine-readable operation type.
 @property (nonatomic, copy) NSString *kind;
 
-// A link to the next page of replies.
-@property (nonatomic, copy) NSString *nextLink;
-
-// The token to use to request the next page of results.
-@property (nonatomic, copy) NSString *nextPageToken;
-
-// A link back to this list.
-@property (nonatomic, copy) NSString *selfLink;
+// Human-readable stage descriptions.
+@property (nonatomic, retain) NSArray *substeps;  // of NSString
 
 @end

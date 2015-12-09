@@ -26,13 +26,15 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryJobStatistics2 (0 custom class methods, 4 custom properties)
+//   GTLBigqueryJobStatistics2 (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
 #else
   #import "GTLObject.h"
 #endif
+
+@class GTLBigqueryExplainQueryStage;
 
 // ----------------------------------------------------------------------------
 //
@@ -46,6 +48,10 @@
 
 // [Output-only] Whether the query result was fetched from the query cache.
 @property (nonatomic, retain) NSNumber *cacheHit;  // boolValue
+
+// [Output-only, Experimental] Describes execution plan for the query as a list
+// of stages.
+@property (nonatomic, retain) NSArray *queryPlan;  // of GTLBigqueryExplainQueryStage
 
 // [Output-only] Total bytes billed for the job.
 @property (nonatomic, retain) NSNumber *totalBytesBilled;  // longLongValue

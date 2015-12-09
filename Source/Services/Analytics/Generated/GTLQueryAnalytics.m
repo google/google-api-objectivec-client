@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLQueryAnalytics (78 custom class methods, 29 custom properties)
+//   GTLQueryAnalytics (78 custom class methods, 30 custom properties)
 
 #import "GTLQueryAnalytics.h"
 
@@ -68,14 +68,15 @@
 
 @dynamic accountId, customDataImportUids, customDataSourceId, customDimensionId,
          customMetricId, dimensions, endDate, experimentId, fields, filterId,
-         filters, goalId, ids, ignoreCustomDataSourceLinks, linkId, maxResults,
-         metrics, output, profileId, reportType, samplingLevel, segment, sort,
-         startDate, startIndex, unsampledReportId, uploadId,
-         webPropertyAdWordsLinkId, webPropertyId;
+         filters, goalId, ids, ignoreCustomDataSourceLinks, includeEmptyRows,
+         linkId, maxResults, metrics, output, profileId, reportType,
+         samplingLevel, segment, sort, startDate, startIndex, unsampledReportId,
+         uploadId, webPropertyAdWordsLinkId, webPropertyId;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map = @{
     @"endDate" : @"end-date",
+    @"includeEmptyRows" : @"include-empty-rows",
     @"maxResults" : @"max-results",
     @"startDate" : @"start-date",
     @"startIndex" : @"start-index"

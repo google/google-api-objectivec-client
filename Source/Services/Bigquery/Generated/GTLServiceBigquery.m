@@ -43,6 +43,8 @@
     [GTLBigqueryDatasetList class],
     [GTLBigqueryDatasetReference class],
     [GTLBigqueryErrorProto class],
+    [GTLBigqueryExplainQueryStage class],
+    [GTLBigqueryExplainQueryStep class],
     [GTLBigqueryExternalDataConfiguration class],
     [GTLBigqueryGetQueryResultsResponse class],
     [GTLBigqueryJob class],

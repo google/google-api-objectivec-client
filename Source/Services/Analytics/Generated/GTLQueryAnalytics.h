@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLQueryAnalytics (78 custom class methods, 29 custom properties)
+//   GTLQueryAnalytics (78 custom class methods, 30 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -72,6 +72,7 @@
 @property (nonatomic, copy) NSString *goalId;
 @property (nonatomic, copy) NSString *ids;
 @property (nonatomic, assign) BOOL ignoreCustomDataSourceLinks;
+@property (nonatomic, assign) BOOL includeEmptyRows;
 @property (nonatomic, copy) NSString *linkId;
 @property (nonatomic, assign) NSInteger maxResults;
 @property (nonatomic, copy) NSString *metrics;
@@ -109,6 +110,8 @@
 //     'ga:browser,ga:city'.
 //   filters: A comma-separated list of dimension or metric filters to be
 //     applied to Analytics data.
+//   includeEmptyRows: The response will include empty rows if this parameter is
+//     set to true, the default is true
 //   maxResults: The maximum number of entries to include in this feed.
 //   output: The selected format for the response. Default format is JSON.
 //      kGTLAnalyticsOutputDataTable: Returns the response in Google Charts Data

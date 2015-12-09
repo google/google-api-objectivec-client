@@ -36,6 +36,8 @@
 #import "GTLBigqueryDatasetList.m"
 #import "GTLBigqueryDatasetReference.m"
 #import "GTLBigqueryErrorProto.m"
+#import "GTLBigqueryExplainQueryStage.m"
+#import "GTLBigqueryExplainQueryStep.m"
 #import "GTLBigqueryExternalDataConfiguration.m"
 #import "GTLBigqueryGetQueryResultsResponse.m"
 #import "GTLBigqueryJob.m"

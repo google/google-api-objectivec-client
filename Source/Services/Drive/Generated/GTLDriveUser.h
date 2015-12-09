@@ -42,7 +42,7 @@
 //   GTLDriveUser
 //
 
-// The JSON template for a user.
+// Information about a Drive user.
 
 @interface GTLDriveUser : GTLObject
 
