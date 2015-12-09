@@ -16,7 +16,7 @@
 #import <XCTest/XCTest.h>
 
 #import "GTLService.h"
-#import "GTMHTTPFetcherTestServer.h"
+#import "GTMSessionFetcherTestServer.h"
 
 #import "GTLTasksTasks.h"
 #import "GTLTasksTask.h"
@@ -124,7 +124,7 @@
 
 @interface GTLServiceTest : XCTestCase {
   // setup/teardown ivars
-  GTMHTTPFetcherTestServer *testServer_;
+  GTMSessionFetcherTestServer *testServer_;
   BOOL isServerRunning_;
 
   // notification counters
@@ -184,7 +184,8 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
 - (void)setUp {
   NSString *docRoot = [self docRootPath];
 
-  testServer_ = [[GTMHTTPFetcherTestServer alloc] initWithDocRoot:docRoot];
+  testServer_ = [[GTMSessionFetcherTestServer alloc] initWithDocRoot:docRoot];
+  testServer_.defaultContentType = @"application/json";
   isServerRunning_ = (testServer_ != nil);
 
   XCTAssertTrue(isServerRunning_,
@@ -201,11 +202,12 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
 }
 
 - (void)tearDown {
-  [testServer_ stopServer];
   [testServer_ release];
   testServer_ = nil;
 
   isServerRunning_ = NO;
+
+  [[GTMSessionFetcher staticCookieStorage] removeAllCookies];
 
   if (fileToRemove_) {
     NSError *fileError = nil;
@@ -363,7 +365,7 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
                                       unsigned long long dataLength) {
     maxUploadProgress = numberOfBytesRead;
   };
-  
+
   NSString *headerValue = [queryTicket.objectFetcher.mutableRequest valueForHTTPHeaderField:@"X-Feline"];
   XCTAssertEqualObjects(headerValue, @"Fluffy");
 
@@ -592,51 +594,51 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
 }
 
 - (void)testServiceRPCBatchFetch {
-  
+
   // test:  fetch query batch
   //
   // tests for files "TaskBatch1.request.txt" and "TaskBatch1.response.txt"
-  
+
   if (!isServerRunning_) return;
-  
+
   GTLService *service = [[[GTLService alloc] init] autorelease];
   service.rpcURL = [testServer_ localURLForFile:kBatchRPCName];
   service.apiVersion = @"v1";
   service.allowInsecureQueries = YES;
 
   GTLServiceCompletionHandler completionBlock;
-  
+
   completionBlock = ^(GTLServiceTicket *ticket, id object, NSError *error) {
     GTLBatchResult *batchResult = object;
-    
+
     // we expect the first batch item to succeed, the second to fail,
     // the third to succeed but return an empty object, which shows up
     // as an NSNull
     NSDictionary *successes = batchResult.successes;
     XCTAssertEqual(successes.count, (NSUInteger) 2);
-    
+
     NSDictionary *failures = batchResult.failures;
     XCTAssertEqual(failures.count, (NSUInteger) 1);
-    
+
     // successful item
     GTLTasksTask *item = successes[@"gtl_19"];
     NSString *className = NSStringFromClass([item class]);
     NSString *expectedName = PREFIXED_CLASSNAME(@"GTLTasksTask");
     XCTAssertEqualObjects(className, expectedName);
-    
+
     XCTAssertEqualObjects(item.kind, @"tasks#task");
     XCTAssertEqualObjects(item.identifier, @"MDg0NTg2OTA1ODg4OTI3MzgyMzQ6NDox");
     XCTAssertEqualObjects(item.updated.RFC3339String, @"2011-05-03T23:14:20.735Z");
-    
+
     // failed item
     GTLErrorObject *errorObj = failures[@"gtl_18"];
     className = NSStringFromClass([errorObj class]);
     expectedName = PREFIXED_CLASSNAME(@"GTLErrorObject");
     XCTAssertEqualObjects(className, expectedName);
-    
+
     XCTAssertEqual(errorObj.code.intValue, 400);
     XCTAssertEqualObjects(errorObj.message, @"Invalid Value");
-    
+
     GTLErrorObjectData *errData = errorObj.data.lastObject;
     XCTAssertEqualObjects(errData.reason, @"invalid");
   };
