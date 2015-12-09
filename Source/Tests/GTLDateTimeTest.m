@@ -58,8 +58,7 @@
   XCTAssertNil(dateTimeFromNil);
 
   GTLDateTime *dateTimeFromEmpty = [GTLDateTime dateTimeWithRFC3339String:@""];
-  XCTAssertEqual([dateTimeFromEmpty.dateComponents year],
-                 (NSInteger) NSUndefinedDateComponent);
+  XCTAssertEqual([dateTimeFromEmpty.dateComponents year], NSDateComponentUndefined);
 
   int idx;
   for (idx = 0; tests[idx].dateTimeStr != nil; idx++) {
