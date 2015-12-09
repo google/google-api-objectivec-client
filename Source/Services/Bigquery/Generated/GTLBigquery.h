@@ -33,6 +33,8 @@
 #import "GTLBigqueryDatasetList.h"
 #import "GTLBigqueryDatasetReference.h"
 #import "GTLBigqueryErrorProto.h"
+#import "GTLBigqueryExplainQueryStage.h"
+#import "GTLBigqueryExplainQueryStep.h"
 #import "GTLBigqueryExternalDataConfiguration.h"
 #import "GTLBigqueryGetQueryResultsResponse.h"
 #import "GTLBigqueryJob.h"

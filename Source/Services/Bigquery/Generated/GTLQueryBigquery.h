@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLQueryBigquery (21 custom class methods, 23 custom properties)
+//   GTLQueryBigquery (21 custom class methods, 24 custom properties)
 //   GTLBigqueryTabledataInsertAllRowsItem (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -74,6 +74,7 @@
 @property (nonatomic, assign) unsigned long long startIndex;
 @property (nonatomic, retain) NSArray *stateFilter;  // of NSString
 @property (nonatomic, copy) NSString *tableId;
+@property (nonatomic, copy) NSString *templateSuffix;
 @property (nonatomic, assign) NSUInteger timeoutMs;
 @property (nonatomic, assign) BOOL useQueryCache;
 
@@ -342,6 +343,10 @@
 //   skipInvalidRows: [Optional] Insert all valid rows of a request, even if
 //     invalid rows exist. The default value is false, which causes the entire
 //     request to fail if any invalid rows exist.
+//   templateSuffix: [Experimental] If specified, treats the destination table
+//     as a base template, and inserts the rows into an instance table named "".
+//     BigQuery will manage creation of the instance table, using the schema of
+//     the base template table.
 //  Authorization scope(s):
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform

@@ -44,7 +44,7 @@
 //   GTLDriveComment
 //
 
-// A JSON representation of a comment on a file in Google Drive.
+// A comment on a file in Google Drive.
 
 @interface GTLDriveComment : GTLObject
 

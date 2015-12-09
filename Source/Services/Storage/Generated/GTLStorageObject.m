@@ -26,7 +26,8 @@
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 // Classes:
-//   GTLStorageObject (0 custom class methods, 25 custom properties)
+//   GTLStorageObject (0 custom class methods, 26 custom properties)
+//   GTLStorageObjectCustomerEncryption (0 custom class methods, 2 custom properties)
 //   GTLStorageObjectMetadata (0 custom class methods, 0 custom properties)
 //   GTLStorageObjectOwner (0 custom class methods, 2 custom properties)
 
@@ -41,10 +42,10 @@
 
 @implementation GTLStorageObject
 @dynamic acl, bucket, cacheControl, componentCount, contentDisposition,
-         contentEncoding, contentLanguage, contentType, crc32c, ETag,
-         generation, identifier, kind, md5Hash, mediaLink, metadata,
-         metageneration, name, owner, selfLink, size, storageClass, timeCreated,
-         timeDeleted, updated;
+         contentEncoding, contentLanguage, contentType, crc32c,
+         customerEncryption, ETag, generation, identifier, kind, md5Hash,
+         mediaLink, metadata, metageneration, name, owner, selfLink, size,
+         storageClass, timeCreated, timeDeleted, updated;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{
@@ -65,6 +66,16 @@
   [self registerObjectClassForKind:@"storage#object"];
 }
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLStorageObjectCustomerEncryption
+//
+
+@implementation GTLStorageObjectCustomerEncryption
+@dynamic encryptionAlgorithm, keySha256;
 @end
 
 

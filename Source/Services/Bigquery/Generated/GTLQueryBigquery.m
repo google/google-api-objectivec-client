@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLQueryBigquery (21 custom class methods, 23 custom properties)
+//   GTLQueryBigquery (21 custom class methods, 24 custom properties)
 //   GTLBigqueryTabledataInsertAllRowsItem (0 custom class methods, 2 custom properties)
 
 #import "GTLQueryBigquery.h"
@@ -51,7 +51,8 @@
 @dynamic all, allUsers, datasetId, defaultDataset, deleteContents, dryRun,
          fields, ignoreUnknownValues, jobId, kind, maxResults, pageToken,
          preserveNulls, projectId, projection, query, rows, skipInvalidRows,
-         startIndex, stateFilter, tableId, timeoutMs, useQueryCache;
+         startIndex, stateFilter, tableId, templateSuffix, timeoutMs,
+         useQueryCache;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{

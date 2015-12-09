@@ -26,7 +26,8 @@
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 // Classes:
-//   GTLStorageObject (0 custom class methods, 25 custom properties)
+//   GTLStorageObject (0 custom class methods, 26 custom properties)
+//   GTLStorageObjectCustomerEncryption (0 custom class methods, 2 custom properties)
 //   GTLStorageObjectMetadata (0 custom class methods, 0 custom properties)
 //   GTLStorageObjectOwner (0 custom class methods, 2 custom properties)
 
@@ -37,6 +38,7 @@
 #endif
 
 @class GTLStorageObjectAccessControl;
+@class GTLStorageObjectCustomerEncryption;
 @class GTLStorageObjectMetadata;
 @class GTLStorageObjectOwner;
 
@@ -78,6 +80,10 @@
 // in big-endian byte order. For more information about using the CRC32c
 // checksum, see Hashes and ETags: Best Practices.
 @property (nonatomic, copy) NSString *crc32c;
+
+// Metadata of customer-supplied encryption key, if the object is encrypted by
+// such a key.
+@property (nonatomic, retain) GTLStorageObjectCustomerEncryption *customerEncryption;
 
 // HTTP 1.1 Entity tag for the object.
 @property (nonatomic, copy) NSString *ETag;
@@ -132,6 +138,22 @@
 
 // The modification time of the object metadata in RFC 3339 format.
 @property (nonatomic, retain) GTLDateTime *updated;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLStorageObjectCustomerEncryption
+//
+
+@interface GTLStorageObjectCustomerEncryption : GTLObject
+
+// The encryption algorithm.
+@property (nonatomic, copy) NSString *encryptionAlgorithm;
+
+// SHA256 hash value of the encryption key.
+@property (nonatomic, copy) NSString *keySha256;
 
 @end
 

@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (62 custom class methods, 67 custom properties)
+//   GTLQueryYouTube (61 custom class methods, 67 custom properties)
 
 #import "GTLQueryYouTube.h"
 
@@ -401,16 +401,6 @@
 + (instancetype)queryForLiveBroadcastsBindWithIdentifier:(NSString *)identifier
                                                     part:(NSString *)part {
   NSString *methodName = @"youtube.liveBroadcasts.bind";
-  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
-  query.identifier = identifier;
-  query.part = part;
-  query.expectedObjectClass = [GTLYouTubeLiveBroadcast class];
-  return query;
-}
-
-+ (instancetype)queryForLiveBroadcastsBindDirectWithIdentifier:(NSString *)identifier
-                                                          part:(NSString *)part {
-  NSString *methodName = @"youtube.liveBroadcasts.bind_direct";
   GTLQueryYouTube *query = [self queryWithMethodName:methodName];
   query.identifier = identifier;
   query.part = part;
