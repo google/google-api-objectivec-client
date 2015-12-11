@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLQueryAdExchangeBuyer (32 custom class methods, 24 custom properties)
+//   GTLQueryAdExchangeBuyer (34 custom class methods, 25 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -64,6 +64,7 @@
 // documentation for the right type for each query method.
 @property (nonatomic, retain) id buyerCreativeId;
 @property (nonatomic, assign) long long configId;
+@property (nonatomic, assign) long long dealId;
 @property (nonatomic, retain) NSArray *dealIds;  // of NSString
 @property (nonatomic, retain) NSArray *deals;  // of GTLAdExchangeBuyerMarketplaceDeal
 @property (nonatomic, copy) NSString *dealsStatusFilter;
@@ -189,6 +190,18 @@
 #pragma mark - "creatives" methods
 // These create a GTLQueryAdExchangeBuyer object.
 
+// Method: adexchangebuyer.creatives.addDeal
+// Add a deal id association for the creative.
+//  Required:
+//   accountId: The id for the account that will serve this creative.
+//   buyerCreativeId: The buyer-specific id for this creative.
+//   dealId: The id of the deal id to associate with this creative.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
++ (instancetype)queryForCreativesAddDealWithAccountId:(NSInteger)accountId
+                                      buyerCreativeId:(NSString *)buyerCreativeId
+                                               dealId:(long long)dealId;
+
 // Method: adexchangebuyer.creatives.get
 // Gets the status for a single creative. A creative will be available 30-40
 // minutes after submission.
@@ -219,16 +232,16 @@
 //     creative ids are returned.
 //     Note: For this method, "buyerCreativeId" should be of type
 //     NSArray<NSString>.
-//   dealsStatusFilter: When specified, only creatives having the given direct
-//     deals status are returned.
+//   dealsStatusFilter: When specified, only creatives having the given deals
+//     status are returned.
 //      kGTLAdExchangeBuyerDealsStatusFilterApproved: Creatives which have been
-//        approved for serving on direct deals.
+//        approved for serving on deals.
 //      kGTLAdExchangeBuyerDealsStatusFilterConditionallyApproved: Creatives
-//        which have been conditionally approved for serving on direct deals.
+//        which have been conditionally approved for serving on deals.
 //      kGTLAdExchangeBuyerDealsStatusFilterDisapproved: Creatives which have
-//        been disapproved for serving on direct deals.
-//      kGTLAdExchangeBuyerDealsStatusFilterNotChecked: Creatives whose direct
-//        deals status is not yet checked.
+//        been disapproved for serving on deals.
+//      kGTLAdExchangeBuyerDealsStatusFilterNotChecked: Creatives whose deals
+//        status is not yet checked.
 //   maxResults: Maximum number of entries returned on one result page. If not
 //     set, the default is 100. Optional. (1..1000)
 //   openAuctionStatusFilter: When specified, only creatives having the given
@@ -249,6 +262,18 @@
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerCreativesList.
 + (instancetype)queryForCreativesList;
+
+// Method: adexchangebuyer.creatives.removeDeal
+// Remove a deal id associated with the creative.
+//  Required:
+//   accountId: The id for the account that will serve this creative.
+//   buyerCreativeId: The buyer-specific id for this creative.
+//   dealId: The id of the deal id to disassociate with this creative.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
++ (instancetype)queryForCreativesRemoveDealWithAccountId:(NSInteger)accountId
+                                         buyerCreativeId:(NSString *)buyerCreativeId
+                                                  dealId:(long long)dealId;
 
 #pragma mark - "marketplacedeals" methods
 // These create a GTLQueryAdExchangeBuyer object.

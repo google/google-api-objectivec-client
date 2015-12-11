@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
@@ -31,7 +31,6 @@
 // Authorization scope
 NSString * const kGTLAuthScopeDrive                 = @"https://www.googleapis.com/auth/drive";
 NSString * const kGTLAuthScopeDriveAppdata          = @"https://www.googleapis.com/auth/drive.appdata";
-NSString * const kGTLAuthScopeDriveAppsReadonly     = @"https://www.googleapis.com/auth/drive.apps.readonly";
 NSString * const kGTLAuthScopeDriveFile             = @"https://www.googleapis.com/auth/drive.file";
 NSString * const kGTLAuthScopeDriveMetadata         = @"https://www.googleapis.com/auth/drive.metadata";
 NSString * const kGTLAuthScopeDriveMetadataReadonly = @"https://www.googleapis.com/auth/drive.metadata.readonly";
@@ -40,21 +39,5 @@ NSString * const kGTLAuthScopeDriveReadonly         = @"https://www.googleapis.c
 NSString * const kGTLAuthScopeDriveScripts          = @"https://www.googleapis.com/auth/drive.scripts";
 
 // GTLQueryDrive - Corpus
-NSString * const kGTLDriveCorpusDefault = @"DEFAULT";
-NSString * const kGTLDriveCorpusDomain  = @"DOMAIN";
-
-// GTLQueryDrive - ModifiedDateBehavior
-NSString * const kGTLDriveModifiedDateBehaviorFromBody         = @"fromBody";
-NSString * const kGTLDriveModifiedDateBehaviorFromBodyIfNeeded = @"fromBodyIfNeeded";
-NSString * const kGTLDriveModifiedDateBehaviorFromBodyOrNow    = @"fromBodyOrNow";
-NSString * const kGTLDriveModifiedDateBehaviorNoChange         = @"noChange";
-NSString * const kGTLDriveModifiedDateBehaviorNow              = @"now";
-NSString * const kGTLDriveModifiedDateBehaviorNowIfNeeded      = @"nowIfNeeded";
-
-// GTLQueryDrive - Projection
-NSString * const kGTLDriveProjectionBasic = @"BASIC";
-NSString * const kGTLDriveProjectionFull  = @"FULL";
-
-// GTLQueryDrive - Visibility
-NSString * const kGTLDriveVisibilityDefault = @"DEFAULT";
-NSString * const kGTLDriveVisibilityPrivate = @"PRIVATE";
+NSString * const kGTLDriveCorpusDomain = @"domain";
+NSString * const kGTLDriveCorpusUser   = @"user";

@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerMarketplaceDeal (0 custom class methods, 19 custom properties)
+//   GTLAdExchangeBuyerMarketplaceDeal (0 custom class methods, 20 custom properties)
 
 #import "GTLAdExchangeBuyerMarketplaceDeal.h"
 
@@ -44,8 +44,8 @@
 //
 
 @implementation GTLAdExchangeBuyerMarketplaceDeal
-@dynamic buyerPrivateData, creationTimeMs, dealId, deliveryControl,
-         externalDealId, flightEndTimeMs, flightStartTimeMs,
+@dynamic buyerPrivateData, creationTimeMs, creativePreApprovalPolicy, dealId,
+         deliveryControl, externalDealId, flightEndTimeMs, flightStartTimeMs,
          inventoryDescription, kind, lastUpdateTimeMs, name, offerId,
          offerRevisionNumber, orderId, sellerContacts, sharedTargetings,
          syndicationProduct, terms, webPropertyCode;

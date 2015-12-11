@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLQueryAdExchangeBuyer (32 custom class methods, 24 custom properties)
+//   GTLQueryAdExchangeBuyer (34 custom class methods, 25 custom properties)
 
 #import "GTLQueryAdExchangeBuyer.h"
 
@@ -58,11 +58,11 @@
 
 @implementation GTLQueryAdExchangeBuyer
 
-@dynamic accountId, billingId, buyerCreativeId, configId, dealIds, deals,
-         dealsStatusFilter, endDateTime, fields, identifier, maxResults, notes,
-         offerId, openAuctionStatusFilter, order, orderId, orderRevisionNumber,
-         orders, pageToken, pqlQuery, revisionNumber, startDateTime,
-         updateAction, webPropertyCode;
+@dynamic accountId, billingId, buyerCreativeId, configId, dealId, dealIds,
+         deals, dealsStatusFilter, endDateTime, fields, identifier, maxResults,
+         notes, offerId, openAuctionStatusFilter, order, orderId,
+         orderRevisionNumber, orders, pageToken, pqlQuery, revisionNumber,
+         startDateTime, updateAction, webPropertyCode;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map = @{
@@ -193,6 +193,17 @@
 #pragma mark - "creatives" methods
 // These create a GTLQueryAdExchangeBuyer object.
 
++ (instancetype)queryForCreativesAddDealWithAccountId:(NSInteger)accountId
+                                      buyerCreativeId:(NSString *)buyerCreativeId
+                                               dealId:(long long)dealId {
+  NSString *methodName = @"adexchangebuyer.creatives.addDeal";
+  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
+  query.accountId = [NSNumber numberWithInteger:accountId];
+  query.buyerCreativeId = buyerCreativeId;
+  query.dealId = dealId;
+  return query;
+}
+
 + (instancetype)queryForCreativesGetWithAccountId:(NSInteger)accountId
                                   buyerCreativeId:(NSString *)buyerCreativeId {
   NSString *methodName = @"adexchangebuyer.creatives.get";
@@ -219,6 +230,17 @@
   NSString *methodName = @"adexchangebuyer.creatives.list";
   GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
   query.expectedObjectClass = [GTLAdExchangeBuyerCreativesList class];
+  return query;
+}
+
++ (instancetype)queryForCreativesRemoveDealWithAccountId:(NSInteger)accountId
+                                         buyerCreativeId:(NSString *)buyerCreativeId
+                                                  dealId:(long long)dealId {
+  NSString *methodName = @"adexchangebuyer.creatives.removeDeal";
+  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
+  query.accountId = [NSNumber numberWithInteger:accountId];
+  query.buyerCreativeId = buyerCreativeId;
+  query.dealId = dealId;
   return query;
 }
 

@@ -28,10 +28,11 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerPretargetingConfig (0 custom class methods, 23 custom properties)
+//   GTLAdExchangeBuyerPretargetingConfig (0 custom class methods, 24 custom properties)
 //   GTLAdExchangeBuyerPretargetingConfigDimensionsItem (0 custom class methods, 2 custom properties)
 //   GTLAdExchangeBuyerPretargetingConfigExcludedPlacementsItem (0 custom class methods, 2 custom properties)
 //   GTLAdExchangeBuyerPretargetingConfigPlacementsItem (0 custom class methods, 2 custom properties)
+//   GTLAdExchangeBuyerPretargetingConfigVideoPlayerSizesItem (0 custom class methods, 3 custom properties)
 
 #import "GTLAdExchangeBuyerPretargetingConfig.h"
 
@@ -46,7 +47,8 @@
          excludedUserLists, excludedVerticals, geoCriteriaIds, isActive, kind,
          languages, mobileCarriers, mobileDevices,
          mobileOperatingSystemVersions, placements, platforms,
-         supportedCreativeAttributes, userLists, vendorTypes, verticals;
+         supportedCreativeAttributes, userLists, vendorTypes, verticals,
+         videoPlayerSizes;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{
@@ -67,7 +69,8 @@
     @"supportedCreativeAttributes" : [NSNumber class],
     @"userLists" : [NSNumber class],
     @"vendorTypes" : [NSNumber class],
-    @"verticals" : [NSNumber class]
+    @"verticals" : [NSNumber class],
+    @"videoPlayerSizes" : [GTLAdExchangeBuyerPretargetingConfigVideoPlayerSizesItem class]
   };
   return map;
 }
@@ -106,4 +109,14 @@
 
 @implementation GTLAdExchangeBuyerPretargetingConfigPlacementsItem
 @dynamic token, type;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAdExchangeBuyerPretargetingConfigVideoPlayerSizesItem
+//
+
+@implementation GTLAdExchangeBuyerPretargetingConfigVideoPlayerSizesItem
+@dynamic aspectRatio, minHeight, minWidth;
 @end

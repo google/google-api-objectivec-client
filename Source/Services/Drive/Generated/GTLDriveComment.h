@@ -20,14 +20,14 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveComment (0 custom class methods, 15 custom properties)
-//   GTLDriveCommentContext (0 custom class methods, 2 custom properties)
+//   GTLDriveComment (0 custom class methods, 12 custom properties)
+//   GTLDriveCommentQuotedFileContent (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -35,8 +35,8 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLDriveCommentContext;
-@class GTLDriveCommentReply;
+@class GTLDriveCommentQuotedFileContent;
+@class GTLDriveReply;
 @class GTLDriveUser;
 
 // ----------------------------------------------------------------------------
@@ -44,7 +44,7 @@
 //   GTLDriveComment
 //
 
-// A comment on a file in Google Drive.
+// A comment on a file.
 
 @interface GTLDriveComment : GTLObject
 
@@ -52,70 +52,59 @@
 // documentation for details on how to define and interpret anchor properties.
 @property (nonatomic, copy) NSString *anchor;
 
-// The user who wrote this comment.
+// The user who created the comment.
 @property (nonatomic, retain) GTLDriveUser *author;
 
-// The ID of the comment.
-@property (nonatomic, copy) NSString *commentId;
-
-// The plain text content used to create this comment. This is not HTML safe and
-// should only be used as a starting point to make edits to a comment's content.
+// The plain text content of the comment. This field is used for setting the
+// content, while htmlContent should be displayed.
 @property (nonatomic, copy) NSString *content;
 
-// The context of the file which is being commented on.
-@property (nonatomic, retain) GTLDriveCommentContext *context;
+// The time at which the comment was created (RFC 3339 date-time).
+@property (nonatomic, retain) GTLDateTime *createdTime;
 
-// The date when this comment was first created.
-@property (nonatomic, retain) GTLDateTime *createdDate;
-
-// Whether this comment has been deleted. If a comment has been deleted the
-// content will be cleared and this will only represent a comment that once
-// existed.
+// Whether the comment has been deleted. A deleted comment has no content.
 @property (nonatomic, retain) NSNumber *deleted;  // boolValue
 
-// The file which this comment is addressing.
-@property (nonatomic, copy) NSString *fileId;
-
-// The title of the file which this comment is addressing.
-@property (nonatomic, copy) NSString *fileTitle;
-
-// HTML formatted content for this comment.
+// The content of the comment with HTML formatting.
 @property (nonatomic, copy) NSString *htmlContent;
+
+// The ID of the comment.
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+@property (nonatomic, copy) NSString *identifier;
 
 // This is always drive#comment.
 @property (nonatomic, copy) NSString *kind;
 
-// The date when this comment or any of its replies were last modified.
-@property (nonatomic, retain) GTLDateTime *modifiedDate;
+// The last time the comment or any of its replies was modified (RFC 3339
+// date-time).
+@property (nonatomic, retain) GTLDateTime *modifiedTime;
 
-// Replies to this post.
-@property (nonatomic, retain) NSArray *replies;  // of GTLDriveCommentReply
+// The file content to which the comment refers, typically within the anchor
+// region. For a text file, for example, this would be the text at the location
+// of the comment.
+@property (nonatomic, retain) GTLDriveCommentQuotedFileContent *quotedFileContent;
 
-// A link back to this comment.
-@property (nonatomic, copy) NSString *selfLink;
+// The full list of replies to the comment in chronological order.
+@property (nonatomic, retain) NSArray *replies;  // of GTLDriveReply
 
-// The status of this comment. Status can be changed by posting a reply to a
-// comment with the desired status.
-// - "open" - The comment is still open.
-// - "resolved" - The comment has been resolved by one of its replies.
-@property (nonatomic, copy) NSString *status;
+// Whether the comment has been resolved by one of its replies.
+@property (nonatomic, retain) NSNumber *resolved;  // boolValue
 
 @end
 
 
 // ----------------------------------------------------------------------------
 //
-//   GTLDriveCommentContext
+//   GTLDriveCommentQuotedFileContent
 //
 
-@interface GTLDriveCommentContext : GTLObject
+@interface GTLDriveCommentQuotedFileContent : GTLObject
 
-// The MIME type of the context snippet.
-@property (nonatomic, copy) NSString *type;
+// The MIME type of the quoted content.
+@property (nonatomic, copy) NSString *mimeType;
 
-// Data representation of the segment of the file being commented on. In the
-// case of a text file for example, this would be the actual text that the
-// comment is about.
+// The quoted content itself. This is interpreted as plain text if set through
+// the API.
 @property (nonatomic, copy) NSString *value;
 
 @end

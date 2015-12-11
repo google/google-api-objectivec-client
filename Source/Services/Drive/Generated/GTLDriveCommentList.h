@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveCommentList (0 custom class methods, 5 custom properties)
+//   GTLDriveCommentList (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -41,26 +41,18 @@
 //   GTLDriveCommentList
 //
 
-// A list of comments on a file in Google Drive.
+// A list of comments on a file.
 
-// This class supports NSFastEnumeration over its "items" property. It also
-// supports -itemAtIndex: to retrieve individual objects from "items".
+@interface GTLDriveCommentList : GTLObject
 
-@interface GTLDriveCommentList : GTLCollectionObject
-
-// List of comments.
-@property (nonatomic, retain) NSArray *items;  // of GTLDriveComment
+// The page of comments.
+@property (nonatomic, retain) NSArray *comments;  // of GTLDriveComment
 
 // This is always drive#commentList.
 @property (nonatomic, copy) NSString *kind;
 
-// A link to the next page of comments.
-@property (nonatomic, copy) NSString *nextLink;
-
-// The token to use to request the next page of results.
+// The page token for the next page of comments. This will be absent if the end
+// of the comments list has been reached.
 @property (nonatomic, copy) NSString *nextPageToken;
-
-// A link back to this list.
-@property (nonatomic, copy) NSString *selfLink;
 
 @end

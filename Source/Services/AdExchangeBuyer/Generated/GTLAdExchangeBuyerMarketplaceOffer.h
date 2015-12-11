@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerMarketplaceOffer (0 custom class methods, 17 custom properties)
+//   GTLAdExchangeBuyerMarketplaceOffer (0 custom class methods, 18 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -76,6 +76,9 @@
 // any of the terms are changed, then auto_finalize is automatically set to
 // false.
 @property (nonatomic, retain) NSNumber *hasCreatorSignedOff;  // boolValue
+
+// What exchange will provide this inventory (readonly, except on create).
+@property (nonatomic, copy) NSString *inventorySource;
 
 // Identifies what kind of resource this is. Value: the fixed string
 // "adexchangebuyer#marketplaceOffer".

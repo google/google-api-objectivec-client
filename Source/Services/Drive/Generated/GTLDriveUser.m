@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,14 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
 //   GTLDriveUser (0 custom class methods, 6 custom properties)
-//   GTLDriveUserPicture (0 custom class methods, 1 custom properties)
 
 #import "GTLDriveUser.h"
 
@@ -37,21 +36,10 @@
 //
 
 @implementation GTLDriveUser
-@dynamic displayName, emailAddress, isAuthenticatedUser, kind, permissionId,
-         picture;
+@dynamic displayName, emailAddress, kind, me, permissionId, photoLink;
 
 + (void)load {
   [self registerObjectClassForKind:@"drive#user"];
 }
 
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLDriveUserPicture
-//
-
-@implementation GTLDriveUserPicture
-@dynamic url;
 @end

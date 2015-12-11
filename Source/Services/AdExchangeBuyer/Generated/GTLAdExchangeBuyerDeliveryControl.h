@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerDeliveryControl (0 custom class methods, 2 custom properties)
+//   GTLAdExchangeBuyerDeliveryControl (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -44,6 +44,7 @@
 //
 
 @interface GTLAdExchangeBuyerDeliveryControl : GTLObject
+@property (nonatomic, copy) NSString *creativeBlockingLevel;
 @property (nonatomic, copy) NSString *deliveryRateType;
 @property (nonatomic, retain) NSArray *frequencyCaps;  // of GTLAdExchangeBuyerDeliveryControlFrequencyCap
 @end

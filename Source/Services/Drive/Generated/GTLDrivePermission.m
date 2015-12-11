@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDrivePermission (0 custom class methods, 14 custom properties)
+//   GTLDrivePermission (0 custom class methods, 9 custom properties)
 
 #import "GTLDrivePermission.h"
 
@@ -36,20 +36,12 @@
 //
 
 @implementation GTLDrivePermission
-@dynamic additionalRoles, authKey, domain, emailAddress, ETag, identifier, kind,
-         name, photoLink, role, selfLink, type, value, withLink;
+@dynamic allowFileDiscovery, displayName, domain, emailAddress, identifier,
+         kind, photoLink, role, type;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{
-    @"ETag" : @"etag",
     @"identifier" : @"id"
-  };
-  return map;
-}
-
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map = @{
-    @"additionalRoles" : [NSString class]
   };
   return map;
 }

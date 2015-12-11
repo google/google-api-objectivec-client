@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerDeliveryControl (0 custom class methods, 2 custom properties)
+//   GTLAdExchangeBuyerDeliveryControl (0 custom class methods, 3 custom properties)
 
 #import "GTLAdExchangeBuyerDeliveryControl.h"
 
@@ -40,7 +40,7 @@
 //
 
 @implementation GTLAdExchangeBuyerDeliveryControl
-@dynamic deliveryRateType, frequencyCaps;
+@dynamic creativeBlockingLevel, deliveryRateType, frequencyCaps;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{

@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDrivePermissionList (0 custom class methods, 4 custom properties)
+//   GTLDrivePermissionList (0 custom class methods, 2 custom properties)
 
 #import "GTLDrivePermissionList.h"
 
@@ -38,18 +38,11 @@
 //
 
 @implementation GTLDrivePermissionList
-@dynamic ETag, items, kind, selfLink;
-
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map = @{
-    @"ETag" : @"etag"
-  };
-  return map;
-}
+@dynamic kind, permissions;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{
-    @"items" : [GTLDrivePermission class]
+    @"permissions" : [GTLDrivePermission class]
   };
   return map;
 }

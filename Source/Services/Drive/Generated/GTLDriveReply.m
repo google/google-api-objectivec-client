@@ -14,48 +14,42 @@
  */
 
 //
-//  GTLDrivePropertyList.m
+//  GTLDriveReply.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDrivePropertyList (0 custom class methods, 4 custom properties)
+//   GTLDriveReply (0 custom class methods, 9 custom properties)
 
-#import "GTLDrivePropertyList.h"
+#import "GTLDriveReply.h"
 
-#import "GTLDriveProperty.h"
+#import "GTLDriveUser.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLDrivePropertyList
+//   GTLDriveReply
 //
 
-@implementation GTLDrivePropertyList
-@dynamic ETag, items, kind, selfLink;
+@implementation GTLDriveReply
+@dynamic action, author, content, createdTime, deleted, htmlContent, identifier,
+         kind, modifiedTime;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{
-    @"ETag" : @"etag"
-  };
-  return map;
-}
-
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map = @{
-    @"items" : [GTLDriveProperty class]
+    @"identifier" : @"id"
   };
   return map;
 }
 
 + (void)load {
-  [self registerObjectClassForKind:@"drive#propertyList"];
+  [self registerObjectClassForKind:@"drive#reply"];
 }
 
 @end

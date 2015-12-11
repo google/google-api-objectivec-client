@@ -28,10 +28,11 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerPretargetingConfig (0 custom class methods, 23 custom properties)
+//   GTLAdExchangeBuyerPretargetingConfig (0 custom class methods, 24 custom properties)
 //   GTLAdExchangeBuyerPretargetingConfigDimensionsItem (0 custom class methods, 2 custom properties)
 //   GTLAdExchangeBuyerPretargetingConfigExcludedPlacementsItem (0 custom class methods, 2 custom properties)
 //   GTLAdExchangeBuyerPretargetingConfigPlacementsItem (0 custom class methods, 2 custom properties)
+//   GTLAdExchangeBuyerPretargetingConfigVideoPlayerSizesItem (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -42,6 +43,7 @@
 @class GTLAdExchangeBuyerPretargetingConfigDimensionsItem;
 @class GTLAdExchangeBuyerPretargetingConfigExcludedPlacementsItem;
 @class GTLAdExchangeBuyerPretargetingConfigPlacementsItem;
+@class GTLAdExchangeBuyerPretargetingConfigVideoPlayerSizesItem;
 
 // ----------------------------------------------------------------------------
 //
@@ -133,6 +135,9 @@
 // Requests containing any of these vertical ids will match.
 @property (nonatomic, retain) NSArray *verticals;  // of NSNumber (longLongValue)
 
+// Video requests satisfying any of these player size constraints will match.
+@property (nonatomic, retain) NSArray *videoPlayerSizes;  // of GTLAdExchangeBuyerPretargetingConfigVideoPlayerSizesItem
+
 @end
 
 
@@ -184,5 +189,26 @@
 
 // The type of the placement.
 @property (nonatomic, copy) NSString *type;
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLAdExchangeBuyerPretargetingConfigVideoPlayerSizesItem
+//
+
+@interface GTLAdExchangeBuyerPretargetingConfigVideoPlayerSizesItem : GTLObject
+
+// The type of aspect ratio. Leave this field blank to match all aspect ratios.
+@property (nonatomic, copy) NSString *aspectRatio;
+
+// The minimum player height in pixels. Leave this field blank to match any
+// player height.
+@property (nonatomic, retain) NSNumber *minHeight;  // longLongValue
+
+// The minimum player width in pixels. Leave this field blank to match any
+// player width.
+@property (nonatomic, retain) NSNumber *minWidth;  // longLongValue
 
 @end

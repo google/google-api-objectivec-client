@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 Google Inc.
+/* Copyright (c) 2015 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,35 +14,32 @@
  */
 
 //
-//  GTLDriveCommentReply.m
+//  GTLDriveStartPageToken.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveCommentReply (0 custom class methods, 9 custom properties)
+//   GTLDriveStartPageToken (0 custom class methods, 2 custom properties)
 
-#import "GTLDriveCommentReply.h"
-
-#import "GTLDriveUser.h"
+#import "GTLDriveStartPageToken.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLDriveCommentReply
+//   GTLDriveStartPageToken
 //
 
-@implementation GTLDriveCommentReply
-@dynamic author, content, createdDate, deleted, htmlContent, kind, modifiedDate,
-         replyId, verb;
+@implementation GTLDriveStartPageToken
+@dynamic kind, startPageToken;
 
 + (void)load {
-  [self registerObjectClassForKind:@"drive#commentReply"];
+  [self registerObjectClassForKind:@"drive#startPageToken"];
 }
 
 @end

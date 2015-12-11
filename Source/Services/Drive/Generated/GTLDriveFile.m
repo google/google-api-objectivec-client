@@ -20,27 +20,25 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 56 custom properties)
-//   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
+//   GTLDriveFile (0 custom class methods, 43 custom properties)
+//   GTLDriveFileAppProperties (0 custom class methods, 0 custom properties)
+//   GTLDriveFileCapabilities (0 custom class methods, 4 custom properties)
+//   GTLDriveFileContentHints (0 custom class methods, 2 custom properties)
 //   GTLDriveFileImageMediaMetadata (0 custom class methods, 21 custom properties)
-//   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
-//   GTLDriveFileLabels (0 custom class methods, 5 custom properties)
-//   GTLDriveFileOpenWithLinks (0 custom class methods, 0 custom properties)
-//   GTLDriveFileThumbnail (0 custom class methods, 2 custom properties)
+//   GTLDriveFileProperties (0 custom class methods, 0 custom properties)
 //   GTLDriveFileVideoMediaMetadata (0 custom class methods, 3 custom properties)
+//   GTLDriveFileContentHintsThumbnail (0 custom class methods, 2 custom properties)
 //   GTLDriveFileImageMediaMetadataLocation (0 custom class methods, 3 custom properties)
 
 #import "GTLDriveFile.h"
 
-#import "GTLDriveParentReference.h"
 #import "GTLDrivePermission.h"
-#import "GTLDriveProperty.h"
 #import "GTLDriveUser.h"
 
 // ----------------------------------------------------------------------------
@@ -49,23 +47,19 @@
 //
 
 @implementation GTLDriveFile
-@dynamic alternateLink, appDataContents, canComment, copyable, createdDate,
-         defaultOpenWithLink, descriptionProperty, downloadUrl, editable,
-         embedLink, ETag, explicitlyTrashed, exportLinks, fileExtension,
-         fileSize, folderColorRgb, fullFileExtension, headRevisionId, iconLink,
-         identifier, imageMediaMetadata, indexableText, kind, labels,
-         lastModifyingUser, lastModifyingUserName, lastViewedByMeDate,
-         markedViewedByMeDate, md5Checksum, mimeType, modifiedByMeDate,
-         modifiedDate, openWithLinks, originalFilename, ownedByMe, ownerNames,
-         owners, parents, permissions, properties, quotaBytesUsed, selfLink,
-         shareable, shared, sharedWithMeDate, sharingUser, spaces, thumbnail,
-         thumbnailLink, title, userPermission, version, videoMediaMetadata,
-         webContentLink, webViewLink, writersCanShare;
+@dynamic appProperties, capabilities, contentHints, createdTime,
+         descriptionProperty, explicitlyTrashed, fileExtension, folderColorRgb,
+         fullFileExtension, headRevisionId, iconLink, identifier,
+         imageMediaMetadata, kind, lastModifyingUser, md5Checksum, mimeType,
+         modifiedByMeTime, modifiedTime, name, originalFilename, ownedByMe,
+         owners, parents, permissions, properties, quotaBytesUsed, shared,
+         sharedWithMeTime, sharingUser, size, spaces, starred, thumbnailLink,
+         trashed, version, videoMediaMetadata, viewedByMe, viewedByMeTime,
+         viewersCanCopyContent, webContentLink, webViewLink, writersCanShare;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{
     @"descriptionProperty" : @"description",
-    @"ETag" : @"etag",
     @"identifier" : @"id"
   };
   return map;
@@ -73,11 +67,9 @@
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{
-    @"ownerNames" : [NSString class],
     @"owners" : [GTLDriveUser class],
-    @"parents" : [GTLDriveParentReference class],
+    @"parents" : [NSString class],
     @"permissions" : [GTLDrivePermission class],
-    @"properties" : [GTLDriveProperty class],
     @"spaces" : [NSString class]
   };
   return map;
@@ -92,15 +84,35 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLDriveFileExportLinks
+//   GTLDriveFileAppProperties
 //
 
-@implementation GTLDriveFileExportLinks
+@implementation GTLDriveFileAppProperties
 
 + (Class)classForAdditionalProperties {
   return [NSString class];
 }
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveFileCapabilities
+//
+
+@implementation GTLDriveFileCapabilities
+@dynamic canComment, canCopy, canEdit, canShare;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveFileContentHints
+//
+
+@implementation GTLDriveFileContentHints
+@dynamic indexableText, thumbnail;
 @end
 
 
@@ -110,54 +122,24 @@
 //
 
 @implementation GTLDriveFileImageMediaMetadata
-@dynamic aperture, cameraMake, cameraModel, colorSpace, date, exposureBias,
+@dynamic aperture, cameraMake, cameraModel, colorSpace, exposureBias,
          exposureMode, exposureTime, flashUsed, focalLength, height, isoSpeed,
          lens, location, maxApertureValue, meteringMode, rotation, sensor,
-         subjectDistance, whiteBalance, width;
+         subjectDistance, time, whiteBalance, width;
 @end
 
 
 // ----------------------------------------------------------------------------
 //
-//   GTLDriveFileIndexableText
+//   GTLDriveFileProperties
 //
 
-@implementation GTLDriveFileIndexableText
-@dynamic text;
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLDriveFileLabels
-//
-
-@implementation GTLDriveFileLabels
-@dynamic hidden, restricted, starred, trashed, viewed;
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLDriveFileOpenWithLinks
-//
-
-@implementation GTLDriveFileOpenWithLinks
+@implementation GTLDriveFileProperties
 
 + (Class)classForAdditionalProperties {
   return [NSString class];
 }
 
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLDriveFileThumbnail
-//
-
-@implementation GTLDriveFileThumbnail
-@dynamic image, mimeType;
 @end
 
 
@@ -168,6 +150,16 @@
 
 @implementation GTLDriveFileVideoMediaMetadata
 @dynamic durationMillis, height, width;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveFileContentHintsThumbnail
+//
+
+@implementation GTLDriveFileContentHintsThumbnail
+@dynamic image, mimeType;
 @end
 
 

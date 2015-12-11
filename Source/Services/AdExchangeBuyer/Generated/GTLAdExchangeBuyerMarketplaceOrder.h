@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerMarketplaceOrder (0 custom class methods, 20 custom properties)
+//   GTLAdExchangeBuyerMarketplaceOrder (0 custom class methods, 21 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -78,6 +78,9 @@
 // off Once both sides have signed off on a deal, the order can be finalized by
 // the seller. (buyer-readonly)
 @property (nonatomic, retain) NSNumber *hasSellerSignedOff;  // boolValue
+
+// What exchange will provide this inventory (readonly, except on create).
+@property (nonatomic, copy) NSString *inventorySource;
 
 // True if the order is being renegotiated (readonly).
 @property (nonatomic, retain) NSNumber *isRenegotiating;  // boolValue

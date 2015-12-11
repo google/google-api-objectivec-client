@@ -20,20 +20,20 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 56 custom properties)
-//   GTLDriveFileExportLinks (0 custom class methods, 0 custom properties)
+//   GTLDriveFile (0 custom class methods, 43 custom properties)
+//   GTLDriveFileAppProperties (0 custom class methods, 0 custom properties)
+//   GTLDriveFileCapabilities (0 custom class methods, 4 custom properties)
+//   GTLDriveFileContentHints (0 custom class methods, 2 custom properties)
 //   GTLDriveFileImageMediaMetadata (0 custom class methods, 21 custom properties)
-//   GTLDriveFileIndexableText (0 custom class methods, 1 custom properties)
-//   GTLDriveFileLabels (0 custom class methods, 5 custom properties)
-//   GTLDriveFileOpenWithLinks (0 custom class methods, 0 custom properties)
-//   GTLDriveFileThumbnail (0 custom class methods, 2 custom properties)
+//   GTLDriveFileProperties (0 custom class methods, 0 custom properties)
 //   GTLDriveFileVideoMediaMetadata (0 custom class methods, 3 custom properties)
+//   GTLDriveFileContentHintsThumbnail (0 custom class methods, 2 custom properties)
 //   GTLDriveFileImageMediaMetadataLocation (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -42,17 +42,15 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLDriveFileExportLinks;
+@class GTLDriveFileAppProperties;
+@class GTLDriveFileCapabilities;
+@class GTLDriveFileContentHints;
+@class GTLDriveFileContentHintsThumbnail;
 @class GTLDriveFileImageMediaMetadata;
 @class GTLDriveFileImageMediaMetadataLocation;
-@class GTLDriveFileIndexableText;
-@class GTLDriveFileLabels;
-@class GTLDriveFileOpenWithLinks;
-@class GTLDriveFileThumbnail;
+@class GTLDriveFileProperties;
 @class GTLDriveFileVideoMediaMetadata;
-@class GTLDriveParentReference;
 @class GTLDrivePermission;
-@class GTLDriveProperty;
 @class GTLDriveUser;
 
 // ----------------------------------------------------------------------------
@@ -64,214 +62,177 @@
 
 @interface GTLDriveFile : GTLObject
 
-// A link for opening the file in a relevant Google editor or viewer.
-@property (nonatomic, copy) NSString *alternateLink;
+// A collection of arbitrary key-value pairs which are private to the requesting
+// app.
+// Entries with null values are cleared in update and copy requests.
+@property (nonatomic, retain) GTLDriveFileAppProperties *appProperties;
 
-// Whether this file is in the Application Data folder.
-@property (nonatomic, retain) NSNumber *appDataContents;  // boolValue
+// Capabilities the current user has on the file.
+@property (nonatomic, retain) GTLDriveFileCapabilities *capabilities;
 
-// Whether the current user can comment on the file.
-@property (nonatomic, retain) NSNumber *canComment;  // boolValue
+// Additional information about the content of the file. These fields are never
+// populated in responses.
+@property (nonatomic, retain) GTLDriveFileContentHints *contentHints;
 
-// Whether the file can be copied by the current user.
-@property (nonatomic, retain) NSNumber *copyable;  // boolValue
-
-// Create time for this file (formatted RFC 3339 timestamp).
-@property (nonatomic, retain) GTLDateTime *createdDate;
-
-// A link to open this file with the user's default app for this file. Only
-// populated when the drive.apps.readonly scope is used.
-@property (nonatomic, copy) NSString *defaultOpenWithLink;
+// The time at which the file was created (RFC 3339 date-time).
+@property (nonatomic, retain) GTLDateTime *createdTime;
 
 // A short description of the file.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (nonatomic, copy) NSString *descriptionProperty;
 
-@property (nonatomic, copy) NSString *downloadUrl;
-
-// Whether the file can be edited by the current user.
-@property (nonatomic, retain) NSNumber *editable;  // boolValue
-
-// A link for embedding the file.
-@property (nonatomic, copy) NSString *embedLink;
-
-// ETag of the file.
-@property (nonatomic, copy) NSString *ETag;
-
-// Whether this file has been explicitly trashed, as opposed to recursively
-// trashed.
+// Whether the file has been explicitly trashed, as opposed to recursively
+// trashed from a parent folder.
 @property (nonatomic, retain) NSNumber *explicitlyTrashed;  // boolValue
 
-// Links for exporting Google Docs to specific formats.
-@property (nonatomic, retain) GTLDriveFileExportLinks *exportLinks;
-
-// The final component of fullFileExtension with trailing text that does not
-// appear to be part of the extension removed. This field is only populated for
-// files with content stored in Drive; it is not populated for Google Docs or
-// shortcut files.
+// The final component of fullFileExtension. This is only available for files
+// with binary content in Drive.
 @property (nonatomic, copy) NSString *fileExtension;
 
-// The size of the file in bytes. This field is only populated for files with
-// content stored in Drive; it is not populated for Google Docs or shortcut
-// files.
-@property (nonatomic, retain) NSNumber *fileSize;  // longLongValue
-
-// Folder color as an RGB hex string if the file is a folder. The list of
-// supported colors is available in the folderColorPalette field of the About
-// resource. If an unsupported color is specified, it will be changed to the
-// closest color in the palette.
+// The color for a folder as an RGB hex string. The supported colors are
+// published in the folderColorPalette field of the About resource.
+// If an unsupported color is specified, the closest color in the palette will
+// be used instead.
 @property (nonatomic, copy) NSString *folderColorRgb;
 
-// The full file extension; extracted from the title. May contain multiple
-// concatenated extensions, such as "tar.gz". Removing an extension from the
-// title does not clear this field; however, changing the extension on the title
-// does update this field. This field is only populated for files with content
-// stored in Drive; it is not populated for Google Docs or shortcut files.
+// The full file extension extracted from the name field. May contain multiple
+// concatenated extensions, such as "tar.gz". This is only available for files
+// with binary content in Drive.
+// This is automatically updated when the name field changes, however it is not
+// cleared if the new name does not contain a valid extension.
 @property (nonatomic, copy) NSString *fullFileExtension;
 
-// The ID of the file's head revision. This field is only populated for files
-// with content stored in Drive; it is not populated for Google Docs or shortcut
-// files.
+// The ID of the file's head revision. This is currently only available for
+// files with binary content in Drive.
 @property (nonatomic, copy) NSString *headRevisionId;
 
-// A link to the file's icon.
+// A static, unauthenticated link to the file's icon.
 @property (nonatomic, copy) NSString *iconLink;
 
 // The ID of the file.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (nonatomic, copy) NSString *identifier;
 
-// Metadata about image media. This will only be present for image types, and
-// its contents will depend on what can be parsed from the image content.
+// Additional metadata about image media, if available.
 @property (nonatomic, retain) GTLDriveFileImageMediaMetadata *imageMediaMetadata;
 
-// Indexable text attributes for the file (can only be written)
-@property (nonatomic, retain) GTLDriveFileIndexableText *indexableText;
-
-// The type of file. This is always drive#file.
+// This is always drive#file.
 @property (nonatomic, copy) NSString *kind;
 
-// A group of labels for the file.
-@property (nonatomic, retain) GTLDriveFileLabels *labels;
-
-// The last user to modify this file.
+// The last user to modify the file.
 @property (nonatomic, retain) GTLDriveUser *lastModifyingUser;
 
-// Name of the last user to modify this file.
-@property (nonatomic, copy) NSString *lastModifyingUserName;
-
-// Last time this file was viewed by the user (formatted RFC 3339 timestamp).
-@property (nonatomic, retain) GTLDateTime *lastViewedByMeDate;
-
-// Deprecated.
-@property (nonatomic, retain) GTLDateTime *markedViewedByMeDate;
-
-// An MD5 checksum for the content of this file. This field is only populated
-// for files with content stored in Drive; it is not populated for Google Docs
-// or shortcut files.
+// The MD5 checksum for the content of the file. This is only applicable to
+// files with binary content in Drive.
 @property (nonatomic, copy) NSString *md5Checksum;
 
-// The MIME type of the file. This is only mutable on update when uploading new
-// content. This field can be left blank, and the mimetype will be determined
-// from the uploaded content's MIME type.
+// The MIME type of the file.
+// Drive will attempt to automatically detect an appropriate value from uploaded
+// content if no value is provided. The value cannot be changed unless a new
+// revision is uploaded.
+// If a file is created with a Google Doc MIME type, the uploaded content will
+// be imported if possible. The supported import formats are published in the
+// About resource.
 @property (nonatomic, copy) NSString *mimeType;
 
-// Last time this file was modified by the user (formatted RFC 3339 timestamp).
-// Note that setting modifiedDate will also update the modifiedByMe date for the
-// user which set the date.
-@property (nonatomic, retain) GTLDateTime *modifiedByMeDate;
+// The last time the file was modified by the user (RFC 3339 date-time).
+@property (nonatomic, retain) GTLDateTime *modifiedByMeTime;
 
-// Last time this file was modified by anyone (formatted RFC 3339 timestamp).
-// This is only mutable on update when the setModifiedDate parameter is set.
-@property (nonatomic, retain) GTLDateTime *modifiedDate;
+// The last time the file was modified by anyone (RFC 3339 date-time).
+// Note that setting modifiedTime will also update modifiedByMeTime for the
+// user.
+@property (nonatomic, retain) GTLDateTime *modifiedTime;
 
-// A map of the id of each of the user's apps to a link to open this file with
-// that app. Only populated when the drive.apps.readonly scope is used.
-@property (nonatomic, retain) GTLDriveFileOpenWithLinks *openWithLinks;
+// The name of the file. This is not necessarily unique within a folder.
+@property (nonatomic, copy) NSString *name;
 
-// The original filename if the file was uploaded manually, or the original
-// title if the file was inserted through the API. Note that renames of the
-// title will not change the original filename. This field is only populated for
-// files with content stored in Drive; it is not populated for Google Docs or
-// shortcut files.
+// The original filename of the uploaded content if available, or else the
+// original value of the name field. This is only available for files with
+// binary content in Drive.
 @property (nonatomic, copy) NSString *originalFilename;
 
-// Whether the file is owned by the current user.
+// Whether the user owns the file.
 @property (nonatomic, retain) NSNumber *ownedByMe;  // boolValue
 
-// Name(s) of the owner(s) of this file.
-@property (nonatomic, retain) NSArray *ownerNames;  // of NSString
-
-// The owner(s) of this file.
+// The owners of the file. Currently, only certain legacy files may have more
+// than one owner.
 @property (nonatomic, retain) NSArray *owners;  // of GTLDriveUser
 
-// Collection of parent folders which contain this file.
-// Setting this field will put the file in all of the provided folders. On
-// insert, if no folders are provided, the file will be placed in the default
-// root folder.
-@property (nonatomic, retain) NSArray *parents;  // of GTLDriveParentReference
+// The IDs of the parent folders which contain the file.
+// If not specified as part of a create request, the file will be placed
+// directly in the My Drive folder. Update requests must use the addParents and
+// removeParents parameters to modify the values.
+@property (nonatomic, retain) NSArray *parents;  // of NSString
 
-// The list of permissions for users with access to this file.
+// The full list of permissions for the file. This is only available if the
+// requesting user can share the file.
 @property (nonatomic, retain) NSArray *permissions;  // of GTLDrivePermission
 
-// The list of properties.
-@property (nonatomic, retain) NSArray *properties;  // of GTLDriveProperty
+// A collection of arbitrary key-value pairs which are visible to all apps.
+// Entries with null values are cleared in update and copy requests.
+@property (nonatomic, retain) GTLDriveFileProperties *properties;
 
-// The number of quota bytes used by this file.
+// The number of storage quota bytes used by the file. This includes the head
+// revision as well as previous revisions with keepForever enabled.
 @property (nonatomic, retain) NSNumber *quotaBytesUsed;  // longLongValue
-
-// A link back to this file.
-@property (nonatomic, copy) NSString *selfLink;
-
-// Whether the file's sharing settings can be modified by the current user.
-@property (nonatomic, retain) NSNumber *shareable;  // boolValue
 
 // Whether the file has been shared.
 @property (nonatomic, retain) NSNumber *shared;  // boolValue
 
-// Time at which this file was shared with the user (formatted RFC 3339
-// timestamp).
-@property (nonatomic, retain) GTLDateTime *sharedWithMeDate;
+// The time at which the file was shared with the user, if applicable (RFC 3339
+// date-time).
+@property (nonatomic, retain) GTLDateTime *sharedWithMeTime;
 
-// User that shared the item with the current user, if available.
+// The user who shared the file with the requesting user, if applicable.
 @property (nonatomic, retain) GTLDriveUser *sharingUser;
 
-// The list of spaces which contain the file. Supported values are 'drive',
-// 'appDataFolder' and 'photos'.
+// The size of the file's content in bytes. This is only applicable to files
+// with binary content in Drive.
+@property (nonatomic, retain) NSNumber *size;  // longLongValue
+
+// The list of spaces which contain the file. The currently supported values are
+// 'drive', 'appDataFolder' and 'photos'.
 @property (nonatomic, retain) NSArray *spaces;  // of NSString
 
-// Thumbnail for the file. Only accepted on upload and for files that are not
-// already thumbnailed by Google.
-@property (nonatomic, retain) GTLDriveFileThumbnail *thumbnail;
+// Whether the user has starred the file.
+@property (nonatomic, retain) NSNumber *starred;  // boolValue
 
-// A short-lived link to the file's thumbnail. Typically lasts on the order of
-// hours.
+// A short-lived link to the file's thumbnail, if available. Typically lasts on
+// the order of hours.
 @property (nonatomic, copy) NSString *thumbnailLink;
 
-// The title of this file.
-@property (nonatomic, copy) NSString *title;
-
-// The permissions for the authenticated user on this file.
-@property (nonatomic, retain) GTLDrivePermission *userPermission;
+// Whether the file has been trashed, either explicitly or from a trashed parent
+// folder. Only the owner may trash a file, and other users cannot see files in
+// the owner's trash.
+@property (nonatomic, retain) NSNumber *trashed;  // boolValue
 
 // A monotonically increasing version number for the file. This reflects every
-// change made to the file on the server, even those not visible to the
-// requesting user.
+// change made to the file on the server, even those not visible to the user.
 @property (nonatomic, retain) NSNumber *version;  // longLongValue
 
-// Metadata about video media. This will only be present for video types.
+// Additional metadata about video media. This may not be available immediately
+// upon upload.
 @property (nonatomic, retain) GTLDriveFileVideoMediaMetadata *videoMediaMetadata;
 
-// A link for downloading the content of the file in a browser using cookie
-// based authentication. In cases where the content is shared publicly, the
-// content can be downloaded without any credentials.
+// Whether the file has been viewed by this user.
+@property (nonatomic, retain) NSNumber *viewedByMe;  // boolValue
+
+// The last time the file was viewed by the user (RFC 3339 date-time).
+@property (nonatomic, retain) GTLDateTime *viewedByMeTime;
+
+// Whether users with only reader or commenter permission can copy the file's
+// content. This affects copy, download, and print operations.
+@property (nonatomic, retain) NSNumber *viewersCanCopyContent;  // boolValue
+
+// A link for downloading the content of the file in a browser. This is only
+// available for files with binary content in Drive.
 @property (nonatomic, copy) NSString *webContentLink;
 
-// A link only available on public folders for viewing their static web assets
-// (HTML, CSS, JS, etc) via Google Drive's Website Hosting.
+// A link for opening the file in a relevant Google editor or viewer in a
+// browser.
 @property (nonatomic, copy) NSString *webViewLink;
 
-// Whether writers can share the document with other users.
+// Whether users with only writer permission can modify the file's permissions.
 @property (nonatomic, retain) NSNumber *writersCanShare;  // boolValue
 
 @end
@@ -279,14 +240,54 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLDriveFileExportLinks
+//   GTLDriveFileAppProperties
 //
 
-@interface GTLDriveFileExportLinks : GTLObject
+@interface GTLDriveFileAppProperties : GTLObject
 // This object is documented as having more properties that are NSString. Use
 // -additionalJSONKeys and -additionalPropertyForName: to get the list of
 // properties and then fetch them; or -additionalProperties to fetch them all at
 // once.
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveFileCapabilities
+//
+
+@interface GTLDriveFileCapabilities : GTLObject
+
+// Whether the user can comment on the file.
+@property (nonatomic, retain) NSNumber *canComment;  // boolValue
+
+// Whether the user can copy the file.
+@property (nonatomic, retain) NSNumber *canCopy;  // boolValue
+
+// Whether the user can edit the file's content.
+@property (nonatomic, retain) NSNumber *canEdit;  // boolValue
+
+// Whether the user can modify the file's permissions and sharing settings.
+@property (nonatomic, retain) NSNumber *canShare;  // boolValue
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveFileContentHints
+//
+
+@interface GTLDriveFileContentHints : GTLObject
+
+// Text to be indexed for the file to improve fullText queries. This is limited
+// to 128KB in length and may contain HTML elements.
+@property (nonatomic, copy) NSString *indexableText;
+
+// A thumbnail for the file. This will only be used if Drive cannot generate a
+// standard thumbnail.
+@property (nonatomic, retain) GTLDriveFileContentHintsThumbnail *thumbnail;
+
 @end
 
 
@@ -308,9 +309,6 @@
 
 // The color space of the photo.
 @property (nonatomic, copy) NSString *colorSpace;
-
-// The date and time the photo was taken (EXIF format timestamp).
-@property (nonatomic, copy) NSString *date;
 
 // The exposure bias of the photo (APEX value).
 @property (nonatomic, retain) NSNumber *exposureBias;  // floatValue
@@ -355,6 +353,9 @@
 // The distance to the subject of the photo, in meters.
 @property (nonatomic, retain) NSNumber *subjectDistance;  // intValue
 
+// The date and time the photo was taken (EXIF DateTime).
+@property (nonatomic, copy) NSString *time;
+
 // The white balance mode used to create the photo.
 @property (nonatomic, copy) NSString *whiteBalance;
 
@@ -366,71 +367,14 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLDriveFileIndexableText
+//   GTLDriveFileProperties
 //
 
-@interface GTLDriveFileIndexableText : GTLObject
-
-// The text to be indexed for this file.
-@property (nonatomic, copy) NSString *text;
-
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLDriveFileLabels
-//
-
-@interface GTLDriveFileLabels : GTLObject
-
-// Deprecated.
-@property (nonatomic, retain) NSNumber *hidden;  // boolValue
-
-// Whether viewers and commenters are prevented from downloading, printing, and
-// copying this file.
-@property (nonatomic, retain) NSNumber *restricted;  // boolValue
-
-// Whether this file is starred by the user.
-@property (nonatomic, retain) NSNumber *starred;  // boolValue
-
-// Whether this file has been trashed. This label applies to all users accessing
-// the file; however, only owners are allowed to see and untrash files.
-@property (nonatomic, retain) NSNumber *trashed;  // boolValue
-
-// Whether this file has been viewed by this user.
-@property (nonatomic, retain) NSNumber *viewed;  // boolValue
-
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLDriveFileOpenWithLinks
-//
-
-@interface GTLDriveFileOpenWithLinks : GTLObject
+@interface GTLDriveFileProperties : GTLObject
 // This object is documented as having more properties that are NSString. Use
 // -additionalJSONKeys and -additionalPropertyForName: to get the list of
 // properties and then fetch them; or -additionalProperties to fetch them all at
 // once.
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLDriveFileThumbnail
-//
-
-@interface GTLDriveFileThumbnail : GTLObject
-
-// The URL-safe Base64 encoded bytes of the thumbnail image. It should conform
-// to RFC 4648 section 5.
-@property (nonatomic, copy) NSString *image;  // GTLBase64 can encode/decode (probably web-safe format)
-
-// The MIME type of the thumbnail.
-@property (nonatomic, copy) NSString *mimeType;
-
 @end
 
 
@@ -449,6 +393,22 @@
 
 // The width of the video in pixels.
 @property (nonatomic, retain) NSNumber *width;  // intValue
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLDriveFileContentHintsThumbnail
+//
+
+@interface GTLDriveFileContentHintsThumbnail : GTLObject
+
+// The thumbnail data encoded with URL-safe Base64 (RFC 4648 section 5).
+@property (nonatomic, copy) NSString *image;  // GTLBase64 can encode/decode (probably web-safe format)
+
+// The MIME type of the thumbnail.
+@property (nonatomic, copy) NSString *mimeType;
 
 @end
 

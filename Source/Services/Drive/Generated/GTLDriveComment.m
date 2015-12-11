@@ -20,18 +20,18 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveComment (0 custom class methods, 15 custom properties)
-//   GTLDriveCommentContext (0 custom class methods, 2 custom properties)
+//   GTLDriveComment (0 custom class methods, 12 custom properties)
+//   GTLDriveCommentQuotedFileContent (0 custom class methods, 2 custom properties)
 
 #import "GTLDriveComment.h"
 
-#import "GTLDriveCommentReply.h"
+#import "GTLDriveReply.h"
 #import "GTLDriveUser.h"
 
 // ----------------------------------------------------------------------------
@@ -40,13 +40,19 @@
 //
 
 @implementation GTLDriveComment
-@dynamic anchor, author, commentId, content, context, createdDate, deleted,
-         fileId, fileTitle, htmlContent, kind, modifiedDate, replies, selfLink,
-         status;
+@dynamic anchor, author, content, createdTime, deleted, htmlContent, identifier,
+         kind, modifiedTime, quotedFileContent, replies, resolved;
+
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map = @{
+    @"identifier" : @"id"
+  };
+  return map;
+}
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{
-    @"replies" : [GTLDriveCommentReply class]
+    @"replies" : [GTLDriveReply class]
   };
   return map;
 }
@@ -60,9 +66,9 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLDriveCommentContext
+//   GTLDriveCommentQuotedFileContent
 //
 
-@implementation GTLDriveCommentContext
-@dynamic type, value;
+@implementation GTLDriveCommentQuotedFileContent
+@dynamic mimeType, value;
 @end

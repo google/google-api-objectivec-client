@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFileList (0 custom class methods, 6 custom properties)
+//   GTLDriveFileList (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -43,27 +43,16 @@
 
 // A list of files.
 
-// This class supports NSFastEnumeration over its "items" property. It also
-// supports -itemAtIndex: to retrieve individual objects from "items".
+@interface GTLDriveFileList : GTLObject
 
-@interface GTLDriveFileList : GTLCollectionObject
-
-// The ETag of the list.
-@property (nonatomic, copy) NSString *ETag;
-
-// The actual list of files.
-@property (nonatomic, retain) NSArray *items;  // of GTLDriveFile
+// The page of files.
+@property (nonatomic, retain) NSArray *files;  // of GTLDriveFile
 
 // This is always drive#fileList.
 @property (nonatomic, copy) NSString *kind;
 
-// A link to the next page of files.
-@property (nonatomic, copy) NSString *nextLink;
-
-// The page token for the next page of files.
+// The page token for the next page of files. This will be absent if the end of
+// the files list has been reached.
 @property (nonatomic, copy) NSString *nextPageToken;
-
-// A link back to this list.
-@property (nonatomic, copy) NSString *selfLink;
 
 @end
