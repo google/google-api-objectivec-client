@@ -14,19 +14,19 @@
  */
 
 //
-//  GTLDrivePermissionId.h
+//  GTLDriveStartPageToken.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDrivePermissionId (0 custom class methods, 2 custom properties)
+//   GTLDriveStartPageToken (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,18 +36,15 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLDrivePermissionId
+//   GTLDriveStartPageToken
 //
 
-// An ID for a user or group as seen in Permission items.
+@interface GTLDriveStartPageToken : GTLObject
 
-@interface GTLDrivePermissionId : GTLObject
-
-// The permission ID.
-// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (nonatomic, copy) NSString *identifier;
-
-// This is always drive#permissionId.
+// This is always drive#startPageToken.
 @property (nonatomic, copy) NSString *kind;
+
+// The starting page token for listing changes.
+@property (nonatomic, copy) NSString *startPageToken;
 
 @end

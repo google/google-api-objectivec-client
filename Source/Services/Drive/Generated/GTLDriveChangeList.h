@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveChangeList (0 custom class methods, 7 custom properties)
+//   GTLDriveChangeList (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -43,30 +43,20 @@
 
 // A list of changes for a user.
 
-// This class supports NSFastEnumeration over its "items" property. It also
-// supports -itemAtIndex: to retrieve individual objects from "items".
+@interface GTLDriveChangeList : GTLObject
 
-@interface GTLDriveChangeList : GTLCollectionObject
-
-// The ETag of the list.
-@property (nonatomic, copy) NSString *ETag;
-
-// The actual list of changes.
-@property (nonatomic, retain) NSArray *items;  // of GTLDriveChange
+// The page of changes.
+@property (nonatomic, retain) NSArray *changes;  // of GTLDriveChange
 
 // This is always drive#changeList.
 @property (nonatomic, copy) NSString *kind;
 
-// The current largest change ID.
-@property (nonatomic, retain) NSNumber *largestChangeId;  // longLongValue
+// The starting page token for future changes. This will be present only if the
+// end of the current changes list has been reached.
+@property (nonatomic, copy) NSString *newStartPageToken NS_RETURNS_NOT_RETAINED;
 
-// A link to the next page of changes.
-@property (nonatomic, copy) NSString *nextLink;
-
-// The page token for the next page of changes.
+// The page token for the next page of changes. This will be absent if the end
+// of the current changes list has been reached.
 @property (nonatomic, copy) NSString *nextPageToken;
-
-// A link back to this list.
-@property (nonatomic, copy) NSString *selfLink;
 
 @end

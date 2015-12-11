@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDrivePermission (0 custom class methods, 14 custom properties)
+//   GTLDrivePermission (0 custom class methods, 9 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -39,66 +39,47 @@
 //   GTLDrivePermission
 //
 
-// A permission for a file.
+// A permission for a file. A permission grants a user, group, domain or the
+// world access to a file or a folder hierarchy.
 
 @interface GTLDrivePermission : GTLObject
 
-// Additional roles for this user. Only commenter is currently allowed.
-@property (nonatomic, retain) NSArray *additionalRoles;  // of NSString
+// Whether the permission allows the file to be discovered through search. This
+// is only applicable for permissions of type domain or anyone.
+@property (nonatomic, retain) NSNumber *allowFileDiscovery;  // boolValue
 
-// The authkey parameter required for this permission.
-@property (nonatomic, copy) NSString *authKey;
+// A displayable name for users, groups or domains.
+@property (nonatomic, copy) NSString *displayName;
 
-// The domain name of the entity this permission refers to. This is an
-// output-only field which is present when the permission type is user, group or
-// domain.
+// The domain to which this permission refers.
 @property (nonatomic, copy) NSString *domain;
 
-// The email address of the user or group this permission refers to. This is an
-// output-only field which is present when the permission type is user or group.
+// The email address of the user or group to which this permission refers.
 @property (nonatomic, copy) NSString *emailAddress;
 
-// The ETag of the permission.
-@property (nonatomic, copy) NSString *ETag;
-
-// The ID of the user this permission refers to, and identical to the
-// permissionId in the About and Files resources. When making a
-// drive.permissions.insert request, exactly one of the id or value fields must
-// be specified.
+// The ID of this permission. This is a unique identifier for the grantee, and
+// is published in User resources as permissionId.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (nonatomic, copy) NSString *identifier;
 
 // This is always drive#permission.
 @property (nonatomic, copy) NSString *kind;
 
-// The name for this permission.
-@property (nonatomic, copy) NSString *name;
-
-// A link to the profile photo, if available.
+// A link to the user's profile photo, if available.
 @property (nonatomic, copy) NSString *photoLink;
 
-// The primary role for this user. Allowed values are:
+// The role granted by this permission. Valid values are:
 // - owner
-// - reader
 // - writer
+// - commenter
+// - reader
 @property (nonatomic, copy) NSString *role;
 
-// A link back to this permission.
-@property (nonatomic, copy) NSString *selfLink;
-
-// The account type. Allowed values are:
+// The type of the grantee. Valid values are:
 // - user
 // - group
 // - domain
 // - anyone
 @property (nonatomic, copy) NSString *type;
-
-// The email address or domain name for the entity. This is used during inserts
-// and is not populated in responses. When making a drive.permissions.insert
-// request, exactly one of the id or value fields must be specified.
-@property (nonatomic, copy) NSString *value;
-
-// Whether the link is required for this permission.
-@property (nonatomic, retain) NSNumber *withLink;  // boolValue
 
 @end

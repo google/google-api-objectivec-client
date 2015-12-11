@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerMarketplaceDeal (0 custom class methods, 19 custom properties)
+//   GTLAdExchangeBuyerMarketplaceDeal (0 custom class methods, 20 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -57,6 +57,9 @@
 
 // The time (ms since epoch) of the deal creation. (readonly)
 @property (nonatomic, retain) NSNumber *creationTimeMs;  // longLongValue
+
+// Specifies the creative pre-approval policy (buyer-readonly)
+@property (nonatomic, copy) NSString *creativePreApprovalPolicy;
 
 // A unique deal=id for the deal (readonly).
 @property (nonatomic, copy) NSString *dealId;

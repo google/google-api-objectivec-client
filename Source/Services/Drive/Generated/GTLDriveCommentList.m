@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveCommentList (0 custom class methods, 5 custom properties)
+//   GTLDriveCommentList (0 custom class methods, 3 custom properties)
 
 #import "GTLDriveCommentList.h"
 
@@ -38,11 +38,11 @@
 //
 
 @implementation GTLDriveCommentList
-@dynamic items, kind, nextLink, nextPageToken, selfLink;
+@dynamic comments, kind, nextPageToken;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{
-    @"items" : [GTLDriveComment class]
+    @"comments" : [GTLDriveComment class]
   };
   return map;
 }

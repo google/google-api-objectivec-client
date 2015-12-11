@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
@@ -39,7 +39,7 @@
 //   GTLDriveGeneratedIds
 //
 
-// A list of generated IDs which can be provided in insert requests
+// A list of generated file IDs which can be provided in create requests.
 
 @interface GTLDriveGeneratedIds : GTLObject
 

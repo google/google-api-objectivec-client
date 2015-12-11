@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerMarketplaceOffer (0 custom class methods, 17 custom properties)
+//   GTLAdExchangeBuyerMarketplaceOffer (0 custom class methods, 18 custom properties)
 
 #import "GTLAdExchangeBuyerMarketplaceOffer.h"
 
@@ -45,9 +45,9 @@
 
 @implementation GTLAdExchangeBuyerMarketplaceOffer
 @dynamic creationTimeMs, creatorContacts, flightEndTimeMs, flightStartTimeMs,
-         hasCreatorSignedOff, kind, labels, lastUpdateTimeMs, name, offerId,
-         revisionNumber, seller, sharedTargetings, state, syndicationProduct,
-         terms, webPropertyCode;
+         hasCreatorSignedOff, inventorySource, kind, labels, lastUpdateTimeMs,
+         name, offerId, revisionNumber, seller, sharedTargetings, state,
+         syndicationProduct, terms, webPropertyCode;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{

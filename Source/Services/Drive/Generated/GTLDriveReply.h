@@ -14,19 +14,19 @@
  */
 
 //
-//  GTLDriveParentReference.h
+//  GTLDriveReply.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveParentReference (0 custom class methods, 5 custom properties)
+//   GTLDriveReply (0 custom class methods, 9 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,29 +34,47 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLDriveUser;
+
 // ----------------------------------------------------------------------------
 //
-//   GTLDriveParentReference
+//   GTLDriveReply
 //
 
-// A reference to a file's parent.
+// A reply to a comment on a file.
 
-@interface GTLDriveParentReference : GTLObject
+@interface GTLDriveReply : GTLObject
 
-// The ID of the parent.
+// The action the reply performed to the parent comment. Valid values are:
+// - resolve
+// - reopen
+@property (nonatomic, copy) NSString *action;
+
+// The user who created the reply.
+@property (nonatomic, retain) GTLDriveUser *author;
+
+// The plain text content of the reply. This field is used for setting the
+// content, while htmlContent should be displayed. This is required on creates
+// if no action is specified.
+@property (nonatomic, copy) NSString *content;
+
+// The time at which the reply was created (RFC 3339 date-time).
+@property (nonatomic, retain) GTLDateTime *createdTime;
+
+// Whether the reply has been deleted. A deleted reply has no content.
+@property (nonatomic, retain) NSNumber *deleted;  // boolValue
+
+// The content of the reply with HTML formatting.
+@property (nonatomic, copy) NSString *htmlContent;
+
+// The ID of the reply.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (nonatomic, copy) NSString *identifier;
 
-// Whether or not the parent is the root folder.
-@property (nonatomic, retain) NSNumber *isRoot;  // boolValue
-
-// This is always drive#parentReference.
+// This is always drive#reply.
 @property (nonatomic, copy) NSString *kind;
 
-// A link to the parent.
-@property (nonatomic, copy) NSString *parentLink;
-
-// A link back to this reference.
-@property (nonatomic, copy) NSString *selfLink;
+// The last time the reply was modified (RFC 3339 date-time).
+@property (nonatomic, retain) GTLDateTime *modifiedTime;
 
 @end

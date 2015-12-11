@@ -20,14 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveRevision (0 custom class methods, 18 custom properties)
-//   GTLDriveRevisionExportLinks (0 custom class methods, 0 custom properties)
+//   GTLDriveRevision (0 custom class methods, 12 custom properties)
 
 #import "GTLDriveRevision.h"
 
@@ -39,14 +38,12 @@
 //
 
 @implementation GTLDriveRevision
-@dynamic downloadUrl, ETag, exportLinks, fileSize, identifier, kind,
-         lastModifyingUser, lastModifyingUserName, md5Checksum, mimeType,
-         modifiedDate, originalFilename, pinned, publishAuto, published,
-         publishedLink, publishedOutsideDomain, selfLink;
+@dynamic identifier, keepForever, kind, lastModifyingUser, md5Checksum,
+         mimeType, modifiedTime, originalFilename, publishAuto, published,
+         publishedOutsideDomain, size;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{
-    @"ETag" : @"etag",
     @"identifier" : @"id"
   };
   return map;
@@ -54,20 +51,6 @@
 
 + (void)load {
   [self registerObjectClassForKind:@"drive#revision"];
-}
-
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLDriveRevisionExportLinks
-//
-
-@implementation GTLDriveRevisionExportLinks
-
-+ (Class)classForAdditionalProperties {
-  return [NSString class];
 }
 
 @end

@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
@@ -29,29 +29,21 @@
 #import "GTLDriveConstants.h"
 
 #import "GTLDriveAbout.h"
-#import "GTLDriveApp.h"
-#import "GTLDriveAppList.h"
 #import "GTLDriveChange.h"
 #import "GTLDriveChangeList.h"
 #import "GTLDriveChannel.h"
-#import "GTLDriveChildList.h"
-#import "GTLDriveChildReference.h"
 #import "GTLDriveComment.h"
 #import "GTLDriveCommentList.h"
-#import "GTLDriveCommentReply.h"
-#import "GTLDriveCommentReplyList.h"
 #import "GTLDriveFile.h"
 #import "GTLDriveFileList.h"
 #import "GTLDriveGeneratedIds.h"
-#import "GTLDriveParentList.h"
-#import "GTLDriveParentReference.h"
 #import "GTLDrivePermission.h"
-#import "GTLDrivePermissionId.h"
 #import "GTLDrivePermissionList.h"
-#import "GTLDriveProperty.h"
-#import "GTLDrivePropertyList.h"
+#import "GTLDriveReply.h"
+#import "GTLDriveReplyList.h"
 #import "GTLDriveRevision.h"
 #import "GTLDriveRevisionList.h"
+#import "GTLDriveStartPageToken.h"
 #import "GTLDriveUser.h"
 
 #import "GTLQueryDrive.h"

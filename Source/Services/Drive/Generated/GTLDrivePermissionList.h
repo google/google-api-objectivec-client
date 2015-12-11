@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDrivePermissionList (0 custom class methods, 4 custom properties)
+//   GTLDrivePermissionList (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -41,23 +41,14 @@
 //   GTLDrivePermissionList
 //
 
-// A list of permissions associated with a file.
+// A list of permissions for a file.
 
-// This class supports NSFastEnumeration over its "items" property. It also
-// supports -itemAtIndex: to retrieve individual objects from "items".
-
-@interface GTLDrivePermissionList : GTLCollectionObject
-
-// The ETag of the list.
-@property (nonatomic, copy) NSString *ETag;
-
-// The actual list of permissions.
-@property (nonatomic, retain) NSArray *items;  // of GTLDrivePermission
+@interface GTLDrivePermissionList : GTLObject
 
 // This is always drive#permissionList.
 @property (nonatomic, copy) NSString *kind;
 
-// A link back to this list.
-@property (nonatomic, copy) NSString *selfLink;
+// The full list of permissions.
+@property (nonatomic, retain) NSArray *permissions;  // of GTLDrivePermission
 
 @end

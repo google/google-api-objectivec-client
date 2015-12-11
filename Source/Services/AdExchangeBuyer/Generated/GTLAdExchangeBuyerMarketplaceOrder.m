@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerMarketplaceOrder (0 custom class methods, 20 custom properties)
+//   GTLAdExchangeBuyerMarketplaceOrder (0 custom class methods, 21 custom properties)
 
 #import "GTLAdExchangeBuyerMarketplaceOrder.h"
 
@@ -45,9 +45,10 @@
 
 @implementation GTLAdExchangeBuyerMarketplaceOrder
 @dynamic billedBuyer, buyer, buyerContacts, buyerPrivateData, hasBuyerSignedOff,
-         hasSellerSignedOff, isRenegotiating, isSetupComplete, kind, labels,
-         lastUpdaterOrCommentorRole, lastUpdaterRole, name, orderId, orderState,
-         originatorRole, revisionNumber, revisionTimeMs, seller, sellerContacts;
+         hasSellerSignedOff, inventorySource, isRenegotiating, isSetupComplete,
+         kind, labels, lastUpdaterOrCommentorRole, lastUpdaterRole, name,
+         orderId, orderState, originatorRole, revisionNumber, revisionTimeMs,
+         seller, sellerContacts;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{

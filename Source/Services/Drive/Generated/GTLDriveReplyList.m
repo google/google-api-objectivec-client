@@ -14,51 +14,41 @@
  */
 
 //
-//  GTLDrivePropertyList.h
+//  GTLDriveReplyList.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDrivePropertyList (0 custom class methods, 4 custom properties)
+//   GTLDriveReplyList (0 custom class methods, 3 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLDriveReplyList.h"
 
-@class GTLDriveProperty;
+#import "GTLDriveReply.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLDrivePropertyList
+//   GTLDriveReplyList
 //
 
-// A collection of properties, key-value pairs that are either public or private
-// to an application.
+@implementation GTLDriveReplyList
+@dynamic kind, nextPageToken, replies;
 
-// This class supports NSFastEnumeration over its "items" property. It also
-// supports -itemAtIndex: to retrieve individual objects from "items".
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map = @{
+    @"replies" : [GTLDriveReply class]
+  };
+  return map;
+}
 
-@interface GTLDrivePropertyList : GTLCollectionObject
-
-// The ETag of the list.
-@property (nonatomic, copy) NSString *ETag;
-
-// The list of properties.
-@property (nonatomic, retain) NSArray *items;  // of GTLDriveProperty
-
-// This is always drive#propertyList.
-@property (nonatomic, copy) NSString *kind;
-
-// The link back to this list.
-@property (nonatomic, copy) NSString *selfLink;
++ (void)load {
+  [self registerObjectClassForKind:@"drive#replyList"];
+}
 
 @end

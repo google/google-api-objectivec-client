@@ -23,7 +23,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
@@ -32,29 +32,21 @@
 #import "GTLDriveConstants.m"
 
 #import "GTLDriveAbout.m"
-#import "GTLDriveApp.m"
-#import "GTLDriveAppList.m"
 #import "GTLDriveChange.m"
 #import "GTLDriveChangeList.m"
 #import "GTLDriveChannel.m"
-#import "GTLDriveChildList.m"
-#import "GTLDriveChildReference.m"
 #import "GTLDriveComment.m"
 #import "GTLDriveCommentList.m"
-#import "GTLDriveCommentReply.m"
-#import "GTLDriveCommentReplyList.m"
 #import "GTLDriveFile.m"
 #import "GTLDriveFileList.m"
 #import "GTLDriveGeneratedIds.m"
-#import "GTLDriveParentList.m"
-#import "GTLDriveParentReference.m"
 #import "GTLDrivePermission.m"
-#import "GTLDrivePermissionId.m"
 #import "GTLDrivePermissionList.m"
-#import "GTLDriveProperty.m"
-#import "GTLDrivePropertyList.m"
+#import "GTLDriveReply.m"
+#import "GTLDriveReplyList.m"
 #import "GTLDriveRevision.m"
 #import "GTLDriveRevisionList.m"
+#import "GTLDriveStartPageToken.m"
 #import "GTLDriveUser.m"
 
 #import "GTLQueryDrive.m"

@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveChange (0 custom class methods, 7 custom properties)
+//   GTLDriveChange (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -41,30 +41,24 @@
 //   GTLDriveChange
 //
 
-// Representation of a change to a file.
+// A change to a file.
 
 @interface GTLDriveChange : GTLObject
 
-// Whether the file has been deleted.
-@property (nonatomic, retain) NSNumber *deleted;  // boolValue
-
-// The updated state of the file. Present if the file has not been deleted.
+// The updated state of the file. Present if the file has not been removed.
 @property (nonatomic, retain) GTLDriveFile *file;
 
-// The ID of the file associated with this change.
+// The ID of the file which has changed.
 @property (nonatomic, copy) NSString *fileId;
-
-// The ID of the change.
-// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
-@property (nonatomic, retain) NSNumber *identifier;  // longLongValue
 
 // This is always drive#change.
 @property (nonatomic, copy) NSString *kind;
 
-// The time of this modification.
-@property (nonatomic, retain) GTLDateTime *modificationDate;
+// Whether the file has been removed from the view of the changes list, for
+// example by deletion or lost access.
+@property (nonatomic, retain) NSNumber *removed;  // boolValue
 
-// A link back to this change.
-@property (nonatomic, copy) NSString *selfLink;
+// The time of this change (RFC 3339 date-time).
+@property (nonatomic, retain) GTLDateTime *time;
 
 @end

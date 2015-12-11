@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveChange (0 custom class methods, 7 custom properties)
+//   GTLDriveChange (0 custom class methods, 5 custom properties)
 
 #import "GTLDriveChange.h"
 
@@ -38,14 +38,7 @@
 //
 
 @implementation GTLDriveChange
-@dynamic deleted, file, fileId, identifier, kind, modificationDate, selfLink;
-
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map = @{
-    @"identifier" : @"id"
-  };
-  return map;
-}
+@dynamic file, fileId, kind, removed, time;
 
 + (void)load {
   [self registerObjectClassForKind:@"drive#change"];

@@ -20,22 +20,19 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
 //   GTLDriveUser (0 custom class methods, 6 custom properties)
-//   GTLDriveUserPicture (0 custom class methods, 1 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
 #else
   #import "GTLObject.h"
 #endif
-
-@class GTLDriveUserPicture;
 
 // ----------------------------------------------------------------------------
 //
@@ -49,33 +46,20 @@
 // A plain text displayable name for this user.
 @property (nonatomic, copy) NSString *displayName;
 
-// The email address of the user.
+// The email address of the user. This may not be present in certain contexts if
+// the user has not made their email address visible to the requester.
 @property (nonatomic, copy) NSString *emailAddress;
-
-// Whether this user is the same as the authenticated user for whom the request
-// was made.
-@property (nonatomic, retain) NSNumber *isAuthenticatedUser;  // boolValue
 
 // This is always drive#user.
 @property (nonatomic, copy) NSString *kind;
 
-// The user's ID as visible in the permissions collection.
+// Whether this user is the requesting user.
+@property (nonatomic, retain) NSNumber *me;  // boolValue
+
+// The user's ID as visible in Permission resources.
 @property (nonatomic, copy) NSString *permissionId;
 
-// The user's profile picture.
-@property (nonatomic, retain) GTLDriveUserPicture *picture;
-
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLDriveUserPicture
-//
-
-@interface GTLDriveUserPicture : GTLObject
-
-// A URL that points to a profile picture of this user.
-@property (nonatomic, copy) NSString *url;
+// A link to the user's profile photo, if available.
+@property (nonatomic, copy) NSString *photoLink;
 
 @end

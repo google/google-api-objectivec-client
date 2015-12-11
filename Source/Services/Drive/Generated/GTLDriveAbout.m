@@ -20,20 +20,17 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveAbout (0 custom class methods, 24 custom properties)
-//   GTLDriveAboutAdditionalRoleInfoItem (0 custom class methods, 2 custom properties)
-//   GTLDriveAboutExportFormatsItem (0 custom class methods, 2 custom properties)
-//   GTLDriveAboutFeaturesItem (0 custom class methods, 2 custom properties)
-//   GTLDriveAboutImportFormatsItem (0 custom class methods, 2 custom properties)
-//   GTLDriveAboutMaxUploadSizesItem (0 custom class methods, 2 custom properties)
-//   GTLDriveAboutQuotaBytesByServiceItem (0 custom class methods, 2 custom properties)
-//   GTLDriveAboutAdditionalRoleInfoItemRoleSetsItem (0 custom class methods, 2 custom properties)
+//   GTLDriveAbout (0 custom class methods, 9 custom properties)
+//   GTLDriveAboutExportFormats (0 custom class methods, 0 custom properties)
+//   GTLDriveAboutImportFormats (0 custom class methods, 0 custom properties)
+//   GTLDriveAboutMaxImportSizes (0 custom class methods, 0 custom properties)
+//   GTLDriveAboutStorageQuota (0 custom class methods, 4 custom properties)
 
 #import "GTLDriveAbout.h"
 
@@ -45,29 +42,12 @@
 //
 
 @implementation GTLDriveAbout
-@dynamic additionalRoleInfo, domainSharingPolicy, ETag, exportFormats, features,
-         folderColorPalette, importFormats, isCurrentAppInstalled, kind,
-         languageCode, largestChangeId, maxUploadSizes, name, permissionId,
-         quotaBytesByService, quotaBytesTotal, quotaBytesUsed,
-         quotaBytesUsedAggregate, quotaBytesUsedInTrash, quotaType,
-         remainingChangeIds, rootFolderId, selfLink, user;
-
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map = @{
-    @"ETag" : @"etag"
-  };
-  return map;
-}
+@dynamic appInstalled, exportFormats, folderColorPalette, importFormats, kind,
+         maxImportSizes, maxUploadSize, storageQuota, user;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{
-    @"additionalRoleInfo" : [GTLDriveAboutAdditionalRoleInfoItem class],
-    @"exportFormats" : [GTLDriveAboutExportFormatsItem class],
-    @"features" : [GTLDriveAboutFeaturesItem class],
-    @"folderColorPalette" : [NSString class],
-    @"importFormats" : [GTLDriveAboutImportFormatsItem class],
-    @"maxUploadSizes" : [GTLDriveAboutMaxUploadSizesItem class],
-    @"quotaBytesByService" : [GTLDriveAboutQuotaBytesByServiceItem class]
+    @"folderColorPalette" : [NSString class]
   };
   return map;
 }
@@ -81,17 +61,13 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLDriveAboutAdditionalRoleInfoItem
+//   GTLDriveAboutExportFormats
 //
 
-@implementation GTLDriveAboutAdditionalRoleInfoItem
-@dynamic roleSets, type;
+@implementation GTLDriveAboutExportFormats
 
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map = @{
-    @"roleSets" : [GTLDriveAboutAdditionalRoleInfoItemRoleSetsItem class]
-  };
-  return map;
++ (Class)classForAdditionalProperties {
+  return [NSString class];
 }
 
 @end
@@ -99,17 +75,13 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLDriveAboutExportFormatsItem
+//   GTLDriveAboutImportFormats
 //
 
-@implementation GTLDriveAboutExportFormatsItem
-@dynamic source, targets;
+@implementation GTLDriveAboutImportFormats
 
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map = @{
-    @"targets" : [NSString class]
-  };
-  return map;
++ (Class)classForAdditionalProperties {
+  return [NSString class];
 }
 
 @end
@@ -117,27 +89,13 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLDriveAboutFeaturesItem
+//   GTLDriveAboutMaxImportSizes
 //
 
-@implementation GTLDriveAboutFeaturesItem
-@dynamic featureName, featureRate;
-@end
+@implementation GTLDriveAboutMaxImportSizes
 
-
-// ----------------------------------------------------------------------------
-//
-//   GTLDriveAboutImportFormatsItem
-//
-
-@implementation GTLDriveAboutImportFormatsItem
-@dynamic source, targets;
-
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map = @{
-    @"targets" : [NSString class]
-  };
-  return map;
++ (Class)classForAdditionalProperties {
+  return [NSNumber class];
 }
 
 @end
@@ -145,37 +103,9 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLDriveAboutMaxUploadSizesItem
+//   GTLDriveAboutStorageQuota
 //
 
-@implementation GTLDriveAboutMaxUploadSizesItem
-@dynamic size, type;
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLDriveAboutQuotaBytesByServiceItem
-//
-
-@implementation GTLDriveAboutQuotaBytesByServiceItem
-@dynamic bytesUsed, serviceName;
-@end
-
-
-// ----------------------------------------------------------------------------
-//
-//   GTLDriveAboutAdditionalRoleInfoItemRoleSetsItem
-//
-
-@implementation GTLDriveAboutAdditionalRoleInfoItemRoleSetsItem
-@dynamic additionalRoles, primaryRole;
-
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map = @{
-    @"additionalRoles" : [NSString class]
-  };
-  return map;
-}
-
+@implementation GTLDriveAboutStorageQuota
+@dynamic limit, usage, usageInDrive, usageInDriveTrash;
 @end

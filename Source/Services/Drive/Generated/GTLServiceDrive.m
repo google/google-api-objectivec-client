@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
@@ -39,29 +39,21 @@
   NSArray *classes = @[
     [GTLQueryDrive class],
     [GTLDriveAbout class],
-    [GTLDriveApp class],
-    [GTLDriveAppList class],
     [GTLDriveChange class],
     [GTLDriveChangeList class],
     [GTLDriveChannel class],
-    [GTLDriveChildList class],
-    [GTLDriveChildReference class],
     [GTLDriveComment class],
     [GTLDriveCommentList class],
-    [GTLDriveCommentReply class],
-    [GTLDriveCommentReplyList class],
     [GTLDriveFile class],
     [GTLDriveFileList class],
     [GTLDriveGeneratedIds class],
-    [GTLDriveParentList class],
-    [GTLDriveParentReference class],
     [GTLDrivePermission class],
-    [GTLDrivePermissionId class],
     [GTLDrivePermissionList class],
-    [GTLDriveProperty class],
-    [GTLDrivePropertyList class],
+    [GTLDriveReply class],
+    [GTLDriveReplyList class],
     [GTLDriveRevision class],
     [GTLDriveRevisionList class],
+    [GTLDriveStartPageToken class],
     [GTLDriveUser class]
   ];
   return classes;
@@ -72,7 +64,7 @@
   self = [super init];
   if (self) {
     // Version from discovery.
-    self.apiVersion = @"v2";
+    self.apiVersion = @"v3";
 
     // From discovery.  Where to send JSON-RPC.
     // Turn off prettyPrint for this service to save bandwidth (especially on

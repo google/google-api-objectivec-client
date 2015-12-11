@@ -20,13 +20,13 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Drive API (drive/v2)
+//   Drive API (drive/v3)
 // Description:
 //   The API to interact with Drive.
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveChangeList (0 custom class methods, 7 custom properties)
+//   GTLDriveChangeList (0 custom class methods, 4 custom properties)
 
 #import "GTLDriveChangeList.h"
 
@@ -38,18 +38,11 @@
 //
 
 @implementation GTLDriveChangeList
-@dynamic ETag, items, kind, largestChangeId, nextLink, nextPageToken, selfLink;
-
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map = @{
-    @"ETag" : @"etag"
-  };
-  return map;
-}
+@dynamic changes, kind, newStartPageToken, nextPageToken;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{
-    @"items" : [GTLDriveChange class]
+    @"changes" : [GTLDriveChange class]
   };
   return map;
 }
