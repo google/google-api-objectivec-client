@@ -24,7 +24,6 @@
 		F40E71491384B41200EE3F02 /* GTLErrorObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F40E71381384B41200EE3F02 /* GTLErrorObject.m */; };
 		F40E714A1384B41200EE3F02 /* GTLRuntimeCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = F40E713A1384B41200EE3F02 /* GTLRuntimeCommon.m */; };
 		F40E714B1384B41200EE3F02 /* GTLFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = F40E713D1384B41200EE3F02 /* GTLFramework.m */; };
-		F40E714C1384B41200EE3F02 /* GTLJSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F40E713F1384B41200EE3F02 /* GTLJSONParser.m */; };
 		F40E714D1384B41200EE3F02 /* GTLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F40E71421384B41200EE3F02 /* GTLUtilities.m */; };
 		F4CC66DF1237D33800522D45 /* FHGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CC66DE1237D33800522D45 /* FHGenerator.m */; };
 		F4F9D45F1313E9C0002E77E6 /* FHUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F9D45E1313E9C0002E77E6 /* FHUtils.m */; };
@@ -76,7 +75,6 @@
 		F40E713C1384B41200EE3F02 /* GTLFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTLFramework.h; path = ../../Utilities/GTLFramework.h; sourceTree = SOURCE_ROOT; };
 		F40E713D1384B41200EE3F02 /* GTLFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLFramework.m; path = ../../Utilities/GTLFramework.m; sourceTree = SOURCE_ROOT; };
 		F40E713E1384B41200EE3F02 /* GTLJSONParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTLJSONParser.h; path = ../../Utilities/GTLJSONParser.h; sourceTree = SOURCE_ROOT; };
-		F40E713F1384B41200EE3F02 /* GTLJSONParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLJSONParser.m; path = ../../Utilities/GTLJSONParser.m; sourceTree = SOURCE_ROOT; };
 		F40E71401384B41200EE3F02 /* GTLTargetNamespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTLTargetNamespace.h; path = ../../Utilities/GTLTargetNamespace.h; sourceTree = SOURCE_ROOT; };
 		F40E71411384B41200EE3F02 /* GTLUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTLUtilities.h; path = ../../Utilities/GTLUtilities.h; sourceTree = SOURCE_ROOT; };
 		F40E71421384B41200EE3F02 /* GTLUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLUtilities.m; path = ../../Utilities/GTLUtilities.m; sourceTree = SOURCE_ROOT; };
@@ -175,7 +173,6 @@
 				F40E713C1384B41200EE3F02 /* GTLFramework.h */,
 				F40E713D1384B41200EE3F02 /* GTLFramework.m */,
 				F40E713E1384B41200EE3F02 /* GTLJSONParser.h */,
-				F40E713F1384B41200EE3F02 /* GTLJSONParser.m */,
 				F40E71401384B41200EE3F02 /* GTLTargetNamespace.h */,
 				F40E71411384B41200EE3F02 /* GTLUtilities.h */,
 				F40E71421384B41200EE3F02 /* GTLUtilities.m */,
@@ -292,7 +289,6 @@
 				F40E71491384B41200EE3F02 /* GTLErrorObject.m in Sources */,
 				F40E714A1384B41200EE3F02 /* GTLRuntimeCommon.m in Sources */,
 				F40E714B1384B41200EE3F02 /* GTLFramework.m in Sources */,
-				F40E714C1384B41200EE3F02 /* GTLJSONParser.m in Sources */,
 				F40E714D1384B41200EE3F02 /* GTLUtilities.m in Sources */,
 				D0F2815413D0BF6600B4F659 /* GTLUploadParameters.m in Sources */,
 				4F4B41241728C4AA00A58B39 /* GTLDiscovery_Sources.m in Sources */,

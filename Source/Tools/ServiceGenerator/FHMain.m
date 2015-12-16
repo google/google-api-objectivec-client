@@ -402,8 +402,10 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
     }
 
     NSError *err = nil;
-    NSMutableDictionary *json = [GTLJSONParser objectWithData:data
-                                                        error:&err];
+    NSMutableDictionary *json =
+      [NSJSONSerialization JSONObjectWithData:data
+                                      options:NSJSONReadingMutableContainers
+                                        error:&err];
     if (err != nil) {
       fprintf(stderr,
               "%s Failed to parse the api description %s, error: %s\n",
