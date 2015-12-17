@@ -9,9 +9,23 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6BBD28F41C222E2F009E3757"
+               BuildableName = "GTLiOSCore.framework"
+               BlueprintName = "GTLiOSCore"
+               ReferencedContainer = "container:GTLCore.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
             buildForProfiling = "NO"
             buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
+            buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F4368F711B8233BF00E17643"
@@ -26,26 +40,15 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      enableAddressSanitizer = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F4368F711B8233BF00E17643"
-               BuildableName = "GTLiOSUnitTests.xctest"
-               BlueprintName = "GTLiOSUnitTests"
-               ReferencedContainer = "container:GTLCore.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F4368F711B8233BF00E17643"
-            BuildableName = "GTLiOSUnitTests.xctest"
-            BlueprintName = "GTLiOSUnitTests"
+            BlueprintIdentifier = "6BBD28F41C222E2F009E3757"
+            BuildableName = "GTLiOSCore.framework"
+            BlueprintName = "GTLiOSCore"
             ReferencedContainer = "container:GTLCore.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,9 +68,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F4368F711B8233BF00E17643"
-            BuildableName = "GTLiOSUnitTests.xctest"
-            BlueprintName = "GTLiOSUnitTests"
+            BlueprintIdentifier = "6BBD28F41C222E2F009E3757"
+            BuildableName = "GTLiOSCore.framework"
+            BlueprintName = "GTLiOSCore"
             ReferencedContainer = "container:GTLCore.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -83,9 +86,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F4368F711B8233BF00E17643"
-            BuildableName = "GTLiOSUnitTests.xctest"
-            BlueprintName = "GTLiOSUnitTests"
+            BlueprintIdentifier = "6BBD28F41C222E2F009E3757"
+            BuildableName = "GTLiOSCore.framework"
+            BlueprintName = "GTLiOSCore"
             ReferencedContainer = "container:GTLCore.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
