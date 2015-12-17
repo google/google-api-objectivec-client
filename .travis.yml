@@ -1,0 +1,15 @@
+language: objective-c
+osx_image: xcode7.1
+env:
+  - MODE=OSX CFG=Debug
+  - MODE=OSX CFG=Release
+  - MODE=iOS CFG=Debug
+  - MODE=iOS CFG=Release
+script:
+  - ./.travis.sh "${MODE}" "${CFG}"
+before_install:
+  # Ensure xctool is up to date.
+  - brew update
+  - brew outdated xctool || brew upgrade xctool
+notifications:
+  email: false
