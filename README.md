@@ -3,6 +3,8 @@
 **Project site** <https://github.com/google/google-api-objectivec-client><br>
 **Discussion group** <http://groups.google.com/group/google-api-objectivec-client>
 
+[![Build Status](https://travis-ci.org/google/google-api-objectivec-client.svg?branch=master)](https://travis-ci.org/google/google-api-objectivec-client)
+
 Written by Google, this library is a flexible and efficient Objective-C
 framework for accessing JSON APIs.
 
