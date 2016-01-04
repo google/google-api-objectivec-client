@@ -75,16 +75,18 @@
 #ifndef GTL_ASSERT
   // we directly invoke the NSAssert handler so we can pass on the varargs
   #if !defined(NS_BLOCK_ASSERTIONS)
-    #define GTL_ASSERT(condition, ...)                                       \
-      do {                                                                     \
-        if (!(condition)) {                                                    \
-          [[NSAssertionHandler currentHandler]                                 \
-              handleFailureInFunction:[NSString stringWithUTF8String:__PRETTY_FUNCTION__] \
-                                 file:[NSString stringWithUTF8String:__FILE__] \
-                           lineNumber:__LINE__                                 \
-                          description:__VA_ARGS__];                            \
-        }                                                                      \
-      } while(0)
+#define GTL_ASSERT(condition, ...)                                             \
+  do {                                                                         \
+    if (!(condition)) {                                                        \
+      [[NSAssertionHandler currentHandler]                                     \
+          handleFailureInFunction:                                             \
+              (NSString *)[NSString stringWithUTF8String:__PRETTY_FUNCTION__]  \
+                             file:(NSString *)[NSString                        \
+                                      stringWithUTF8String:__FILE__]           \
+                       lineNumber:__LINE__                                     \
+                      description:__VA_ARGS__];                                \
+    }                                                                          \
+  } while (0)
   #else
     #define GTL_ASSERT(condition, ...) do { } while (0)
   #endif // !defined(NS_BLOCK_ASSERTIONS)
