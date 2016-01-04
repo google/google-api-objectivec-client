@@ -105,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				08FB7795FE84155DC02AAC07 /* Source */,
+				F4CAA7BA1C3AFC4D00671BB2 /* Deps */,
 				08FB779DFE84155DC02AAC07 /* External Frameworks and Libraries */,
 				1AB674ADFE9D54B511CA2CBB /* Products */,
 			);
@@ -189,7 +190,7 @@
 			name = "GTL Sources";
 			sourceTree = "<group>";
 		};
-		F4BB4A4F12B7BF02008B2FB4 /* HTTPFetcher */ = {
+		F4BB4A4F12B7BF02008B2FB4 /* SessionFetcher */ = {
 			isa = PBXGroup;
 			children = (
 				4F5991251B03F69000FBCF22 /* GTMSessionFetcher.h */,
@@ -199,8 +200,8 @@
 				4F5991291B03F69000FBCF22 /* GTMSessionFetcherService.h */,
 				4F59912A1B03F69000FBCF22 /* GTMSessionFetcherService.m */,
 			);
-			name = HTTPFetcher;
-			path = "../../../Deps/gtm-session-fetcher/Source";
+			name = SessionFetcher;
+			path = "gtm-session-fetcher/Source";
 			sourceTree = "<group>";
 		};
 		F4BB4A7D12B7BF3E008B2FB4 /* Common */ = {
@@ -209,7 +210,6 @@
 				F4BB4A7F12B7BF4F008B2FB4 /* GTLDefines.h */,
 				F40E713B1384B41200EE3F02 /* Utilities */,
 				F40E712A1384B41200EE3F02 /* Objects */,
-				F4BB4A4F12B7BF02008B2FB4 /* HTTPFetcher */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -221,6 +221,15 @@
 				4F4B41231728C4A900A58B39 /* GTLDiscovery_Sources.m */,
 			);
 			name = Discovery;
+			sourceTree = "<group>";
+		};
+		F4CAA7BA1C3AFC4D00671BB2 /* Deps */ = {
+			isa = PBXGroup;
+			children = (
+				F4BB4A4F12B7BF02008B2FB4 /* SessionFetcher */,
+			);
+			name = Deps;
+			path = ../../../Deps;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,7 +259,7 @@
 		08FB7793FE84155DC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0720;
 			};
 			buildConfigurationList = 1DEB927808733DD40010E9CD /* Build configuration list for PBXProject "ServiceGenerator" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -322,6 +331,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_STATIC_ANALYZER_MODE = deep;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
