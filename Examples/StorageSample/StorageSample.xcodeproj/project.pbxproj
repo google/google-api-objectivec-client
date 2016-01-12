@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		4F22A2151186315400FFBAB6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F22A2141186315400FFBAB6 /* WebKit.framework */; };
 		4F43229517726611002A5E2C /* GTLCommon_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F43229317726611002A5E2C /* GTLCommon_Sources.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		4F43229617726611002A5E2C /* GTLNetworking_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F43229417726611002A5E2C /* GTLNetworking_Sources.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4F43229617726611002A5E2C /* GTLNetworking_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F43229417726611002A5E2C /* GTLNetworking_Sources.m */; };
 		4F43229917726CFD002A5E2C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F43229817726CFD002A5E2C /* Security.framework */; };
 		4F43229B17726D10002A5E2C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F43229A17726D10002A5E2C /* SystemConfiguration.framework */; };
 		4F47EC2F1947E1C7007C13FA /* GTMOAuth2Window.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F47EC2E1947E1C7007C13FA /* GTMOAuth2Window.xib */; };
@@ -44,7 +44,7 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		4F22A2141186315400FFBAB6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
 		4F43229317726611002A5E2C /* GTLCommon_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLCommon_Sources.m; path = ../../Source/GTLCommon_Sources.m; sourceTree = "<group>"; };
-		4F43229417726611002A5E2C /* GTLNetworking_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLNetworking_Sources.m; path = ../../Source/GTLNetworking_Sources.m; sourceTree = "<group>"; };
+		4F43229417726611002A5E2C /* GTLNetworking_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLNetworking_Sources.m; path = ../../Deps/GTLNetworking_Sources.m; sourceTree = "<group>"; };
 		4F43229817726CFD002A5E2C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		4F43229A17726D10002A5E2C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = /System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<group>"; };
 		4F47EC2E1947E1C7007C13FA /* GTMOAuth2Window.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GTMOAuth2Window.xib; path = ../../Source/OAuth2/Mac/GTMOAuth2Window.xib; sourceTree = "<group>"; };
