@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoLiveStreamingDetails (0 custom class methods, 5 custom properties)
+//   GTLYouTubeVideoLiveStreamingDetails (0 custom class methods, 6 custom properties)
 
 #import "GTLYouTubeVideoLiveStreamingDetails.h"
 
@@ -36,6 +36,6 @@
 //
 
 @implementation GTLYouTubeVideoLiveStreamingDetails
-@dynamic actualEndTime, actualStartTime, concurrentViewers, scheduledEndTime,
-         scheduledStartTime;
+@dynamic activeLiveChatId, actualEndTime, actualStartTime, concurrentViewers,
+         scheduledEndTime, scheduledStartTime;
 @end

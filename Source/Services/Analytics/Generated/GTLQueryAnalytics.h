@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLQueryAnalytics (78 custom class methods, 30 custom properties)
+//   GTLQueryAnalytics (79 custom class methods, 30 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -1026,6 +1026,20 @@
 
 #pragma mark - "management.unsampledReports" methods
 // These create a GTLQueryAnalytics object.
+
+// Method: analytics.management.unsampledReports.delete
+// Deletes an unsampled report.
+//  Required:
+//   accountId: Account ID to delete the unsampled report for.
+//   webPropertyId: Web property ID to delete the unsampled reports for.
+//   profileId: View (Profile) ID to delete the unsampled report for.
+//   unsampledReportId: ID of the unsampled report to be deleted.
+//  Authorization scope(s):
+//   kGTLAuthScopeAnalyticsEdit
++ (instancetype)queryForManagementUnsampledReportsDeleteWithAccountId:(NSString *)accountId
+                                                        webPropertyId:(NSString *)webPropertyId
+                                                            profileId:(NSString *)profileId
+                                                    unsampledReportId:(NSString *)unsampledReportId;
 
 // Method: analytics.management.unsampledReports.get
 // Returns a single unsampled report.

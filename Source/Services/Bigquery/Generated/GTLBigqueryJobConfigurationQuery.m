@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryJobConfigurationQuery (0 custom class methods, 12 custom properties)
+//   GTLBigqueryJobConfigurationQuery (0 custom class methods, 13 custom properties)
 //   GTLBigqueryJobConfigurationQueryTableDefinitions (0 custom class methods, 0 custom properties)
 
 #import "GTLBigqueryJobConfigurationQuery.h"
@@ -43,8 +43,9 @@
 
 @implementation GTLBigqueryJobConfigurationQuery
 @dynamic allowLargeResults, createDisposition, defaultDataset, destinationTable,
-         flattenResults, preserveNulls, priority, query, tableDefinitions,
-         useQueryCache, userDefinedFunctionResources, writeDisposition;
+         flattenResults, maximumBillingTier, preserveNulls, priority, query,
+         tableDefinitions, useQueryCache, userDefinedFunctionResources,
+         writeDisposition;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{

@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,9 +20,9 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Webmaster Tools API (webmasters/v3)
+//   Search Console API (webmasters/v3)
 // Description:
-//   Lets you view Google Webmaster Tools data for your verified sites.
+//   Lets you view Google Search Console data for your verified sites.
 // Documentation:
 //   https://developers.google.com/webmaster-tools/
 // Classes:

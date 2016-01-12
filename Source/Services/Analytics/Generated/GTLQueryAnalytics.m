@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLQueryAnalytics (78 custom class methods, 30 custom properties)
+//   GTLQueryAnalytics (79 custom class methods, 30 custom properties)
 
 #import "GTLQueryAnalytics.h"
 
@@ -905,6 +905,19 @@
 
 #pragma mark - "management.unsampledReports" methods
 // These create a GTLQueryAnalytics object.
+
++ (instancetype)queryForManagementUnsampledReportsDeleteWithAccountId:(NSString *)accountId
+                                                        webPropertyId:(NSString *)webPropertyId
+                                                            profileId:(NSString *)profileId
+                                                    unsampledReportId:(NSString *)unsampledReportId {
+  NSString *methodName = @"analytics.management.unsampledReports.delete";
+  GTLQueryAnalytics *query = [self queryWithMethodName:methodName];
+  query.accountId = accountId;
+  query.webPropertyId = webPropertyId;
+  query.profileId = profileId;
+  query.unsampledReportId = unsampledReportId;
+  return query;
+}
 
 + (instancetype)queryForManagementUnsampledReportsGetWithAccountId:(NSString *)accountId
                                                      webPropertyId:(NSString *)webPropertyId

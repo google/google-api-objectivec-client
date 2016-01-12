@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,48 +14,29 @@
  */
 
 //
-//  GTLPlusMomentsFeed.m
+//  GTLYouTubeLiveChatModeratorSnippet.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google+ API (plus/v1)
+//   YouTube Data API (youtube/v3)
 // Description:
-//   The Google+ API enables developers to build on top of the Google+ platform.
+//   Programmatic access to YouTube features.
 // Documentation:
-//   https://developers.google.com/+/api/
+//   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLPlusMomentsFeed (0 custom class methods, 8 custom properties)
+//   GTLYouTubeLiveChatModeratorSnippet (0 custom class methods, 2 custom properties)
 
-#import "GTLPlusMomentsFeed.h"
+#import "GTLYouTubeLiveChatModeratorSnippet.h"
 
-#import "GTLPlusMoment.h"
+#import "GTLYouTubeChannelProfileDetails.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLPlusMomentsFeed
+//   GTLYouTubeLiveChatModeratorSnippet
 //
 
-@implementation GTLPlusMomentsFeed
-@dynamic ETag, items, kind, nextLink, nextPageToken, selfLink, title, updated;
-
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map = @{
-    @"ETag" : @"etag"
-  };
-  return map;
-}
-
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map = @{
-    @"items" : [GTLPlusMoment class]
-  };
-  return map;
-}
-
-+ (void)load {
-  [self registerObjectClassForKind:@"plus#momentsFeed"];
-}
-
+@implementation GTLYouTubeLiveChatModeratorSnippet
+@dynamic liveChatId, moderatorDetails;
 @end

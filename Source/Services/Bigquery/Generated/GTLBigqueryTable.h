@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -110,7 +110,8 @@
 
 // [Output-only] Describes the table type. The following values are supported:
 // TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query.
-// The default value is TABLE.
+// EXTERNAL: A table that references data stored in an external storage system,
+// such as Google Cloud Storage. The default value is TABLE.
 @property (nonatomic, copy) NSString *type;
 
 // [Optional] The view definition.

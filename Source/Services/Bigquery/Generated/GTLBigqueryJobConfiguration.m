@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,12 +26,11 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryJobConfiguration (0 custom class methods, 6 custom properties)
+//   GTLBigqueryJobConfiguration (0 custom class methods, 5 custom properties)
 
 #import "GTLBigqueryJobConfiguration.h"
 
 #import "GTLBigqueryJobConfigurationExtract.h"
-#import "GTLBigqueryJobConfigurationLink.h"
 #import "GTLBigqueryJobConfigurationLoad.h"
 #import "GTLBigqueryJobConfigurationQuery.h"
 #import "GTLBigqueryJobConfigurationTableCopy.h"
@@ -42,7 +41,7 @@
 //
 
 @implementation GTLBigqueryJobConfiguration
-@dynamic copyProperty, dryRun, extract, link, load, query;
+@dynamic copyProperty, dryRun, extract, load, query;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{

@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (61 custom class methods, 67 custom properties)
+//   GTLQueryYouTube (71 custom class methods, 71 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -43,6 +43,9 @@
 @class GTLYouTubeCommentThread;
 @class GTLYouTubeInvideoBranding;
 @class GTLYouTubeLiveBroadcast;
+@class GTLYouTubeLiveChatBan;
+@class GTLYouTubeLiveChatMessage;
+@class GTLYouTubeLiveChatModerator;
 @class GTLYouTubeLiveStream;
 @class GTLYouTubePlaylist;
 @class GTLYouTubePlaylistItem;
@@ -66,12 +69,14 @@
 @property (nonatomic, assign) BOOL autoLevels;
 @property (nonatomic, assign) BOOL banAuthor;
 @property (nonatomic, copy) NSString *broadcastStatus;
+@property (nonatomic, copy) NSString *broadcastType;
 @property (nonatomic, copy) NSString *categoryId;
 @property (nonatomic, copy) NSString *channelId;
 @property (nonatomic, copy) NSString *channelType;
 @property (nonatomic, copy) NSString *chart;
 @property (nonatomic, assign) BOOL displaySlate;
 @property (nonatomic, copy) NSString *eventType;
+@property (nonatomic, copy) NSString *filter;
 @property (nonatomic, copy) NSString *forChannelId;
 @property (nonatomic, assign) BOOL forContentOwner;
 @property (nonatomic, assign) BOOL forDeveloper;
@@ -81,6 +86,7 @@
 @property (nonatomic, assign) BOOL home;
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (nonatomic, copy) NSString *identifier;
+@property (nonatomic, copy) NSString *liveChatId;
 @property (nonatomic, copy) NSString *locale;
 @property (nonatomic, copy) NSString *location;
 @property (nonatomic, copy) NSString *locationRadius;
@@ -100,6 +106,7 @@
 @property (nonatomic, copy) NSString *parentId;
 @property (nonatomic, copy) NSString *part;
 @property (nonatomic, copy) NSString *playlistId;
+@property (nonatomic, assign) NSUInteger profileImageSize;
 @property (nonatomic, retain) GTLDateTime *publishedAfter;
 @property (nonatomic, retain) GTLDateTime *publishedBefore;
 @property (nonatomic, copy) NSString *q;
@@ -869,6 +876,35 @@
 + (instancetype)queryForCommentThreadsUpdateWithObject:(GTLYouTubeCommentThread *)object
                                                   part:(NSString *)part;
 
+#pragma mark - "fanFundingEvents" methods
+// These create a GTLQueryYouTube object.
+
+// Method: youtube.fanFundingEvents.list
+// Lists fan funding events for a channel.
+//  Required:
+//   part: The part parameter specifies the fanFundingEvent resource parts that
+//     the API response will include. Supported values are id and snippet.
+//  Optional:
+//   hl: The hl parameter instructs the API to retrieve localized resource
+//     metadata for a specific application language that the YouTube website
+//     supports. The parameter value must be a language code included in the
+//     list returned by the i18nLanguages.list method.
+//     If localized resource details are available in that language, the
+//     resource's snippet.localized object will contain the localized values.
+//     However, if localized details are not available, the snippet.localized
+//     object will contain resource details in the resource's default language.
+//   maxResults: The maxResults parameter specifies the maximum number of items
+//     that should be returned in the result set. (0..50, default 5)
+//   pageToken: The pageToken parameter identifies a specific page in the result
+//     set that should be returned. In an API response, the nextPageToken and
+//     prevPageToken properties identify other pages that could be retrieved.
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
+//   kGTLAuthScopeYouTubeReadonly
+// Fetches a GTLYouTubeFanFundingEventListResponse.
++ (instancetype)queryForFanFundingEventsListWithPart:(NSString *)part;
+
 #pragma mark - "guideCategories" methods
 // These create a GTLQueryYouTube object.
 
@@ -1149,6 +1185,12 @@
 //        ended.
 //      kGTLYouTubeBroadcastStatusUpcoming: Return broadcasts that have not yet
 //        started.
+//   broadcastType: The broadcastType parameter filters the API response to only
+//     include broadcasts with the specified type. This is only compatible with
+//     the mine filter for now. (Default "BROADCAST_TYPE_FILTER_EVENT")
+//      kGTLYouTubeBroadcastTypeAll: Return all broadcasts.
+//      kGTLYouTubeBroadcastTypeEvent: Return only scheduled event broadcasts.
+//      kGTLYouTubeBroadcastTypePersistent: Return only persistent broadcasts.
 //   identifier: The id parameter specifies a comma-separated list of YouTube
 //     broadcast IDs that identify the broadcasts being retrieved. In a
 //     liveBroadcast resource, the id property specifies the broadcast's ID.
@@ -1313,6 +1355,140 @@
 // Fetches a GTLYouTubeLiveBroadcast.
 + (instancetype)queryForLiveBroadcastsUpdateWithObject:(GTLYouTubeLiveBroadcast *)object
                                                   part:(NSString *)part;
+
+#pragma mark - "liveChatBans" methods
+// These create a GTLQueryYouTube object.
+
+// Method: youtube.liveChatBans.delete
+// Removes a chat ban.
+//  Required:
+//   identifier: The id parameter identifies the chat ban to remove. The value
+//     uniquely identifies both the ban and the chat.
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
++ (instancetype)queryForLiveChatBansDeleteWithIdentifier:(NSString *)identifier;
+
+// Method: youtube.liveChatBans.insert
+// Adds a new ban to the chat.
+//  Required:
+//   part: The part parameter serves two purposes in this operation. It
+//     identifies the properties that the write operation will set as well as
+//     the properties that the API response returns. Set the parameter value to
+//     snippet.
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
+// Fetches a GTLYouTubeLiveChatBan.
++ (instancetype)queryForLiveChatBansInsertWithObject:(GTLYouTubeLiveChatBan *)object
+                                                part:(NSString *)part;
+
+#pragma mark - "liveChatMessages" methods
+// These create a GTLQueryYouTube object.
+
+// Method: youtube.liveChatMessages.delete
+// Deletes a chat message.
+//  Required:
+//   identifier: The id parameter specifies the YouTube chat message ID of the
+//     resource that is being deleted.
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
++ (instancetype)queryForLiveChatMessagesDeleteWithIdentifier:(NSString *)identifier;
+
+// Method: youtube.liveChatMessages.insert
+// Adds a message to a live chat.
+//  Required:
+//   part: The part parameter serves two purposes. It identifies the properties
+//     that the write operation will set as well as the properties that the API
+//     response will include. Set the parameter value to snippet.
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
+// Fetches a GTLYouTubeLiveChatMessage.
++ (instancetype)queryForLiveChatMessagesInsertWithObject:(GTLYouTubeLiveChatMessage *)object
+                                                    part:(NSString *)part;
+
+// Method: youtube.liveChatMessages.list
+// Lists live chat messages for a specific chat.
+//  Required:
+//   liveChatId: The liveChatId parameter specifies the ID of the chat whose
+//     messages will be returned.
+//   part: The part parameter specifies the liveChatComment resource parts that
+//     the API response will include. Supported values are id and snippet.
+//  Optional:
+//   hl: The hl parameter instructs the API to retrieve localized resource
+//     metadata for a specific application language that the YouTube website
+//     supports. The parameter value must be a language code included in the
+//     list returned by the i18nLanguages.list method.
+//     If localized resource details are available in that language, the
+//     resource's snippet.localized object will contain the localized values.
+//     However, if localized details are not available, the snippet.localized
+//     object will contain resource details in the resource's default language.
+//   maxResults: The maxResults parameter specifies the maximum number of
+//     messages that should be returned in the result set. (200..2000, default
+//     200)
+//   pageToken: The pageToken parameter identifies a specific page in the result
+//     set that should be returned. In an API response, the nextPageToken
+//     property identify other pages that could be retrieved.
+//   profileImageSize: The profileImageSize parameter specifies the size of the
+//     user profile pictures that should be returned in the result set. Default:
+//     88. (16..720)
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
+//   kGTLAuthScopeYouTubeReadonly
+// Fetches a GTLYouTubeLiveChatMessageListResponse.
++ (instancetype)queryForLiveChatMessagesListWithLiveChatId:(NSString *)liveChatId
+                                                      part:(NSString *)part;
+
+#pragma mark - "liveChatModerators" methods
+// These create a GTLQueryYouTube object.
+
+// Method: youtube.liveChatModerators.delete
+// Removes a chat moderator.
+//  Required:
+//   identifier: The id parameter identifies the chat moderator to remove. The
+//     value uniquely identifies both the moderator and the chat.
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
++ (instancetype)queryForLiveChatModeratorsDeleteWithIdentifier:(NSString *)identifier;
+
+// Method: youtube.liveChatModerators.insert
+// Adds a new moderator for the chat.
+//  Required:
+//   part: The part parameter serves two purposes in this operation. It
+//     identifies the properties that the write operation will set as well as
+//     the properties that the API response returns. Set the parameter value to
+//     snippet.
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
+// Fetches a GTLYouTubeLiveChatModerator.
++ (instancetype)queryForLiveChatModeratorsInsertWithObject:(GTLYouTubeLiveChatModerator *)object
+                                                      part:(NSString *)part;
+
+// Method: youtube.liveChatModerators.list
+// Lists moderators for a live chat.
+//  Required:
+//   liveChatId: The liveChatId parameter specifies the YouTube live chat for
+//     which the API should return moderators.
+//   part: The part parameter specifies the liveChatModerator resource parts
+//     that the API response will include. Supported values are id and snippet.
+//  Optional:
+//   maxResults: The maxResults parameter specifies the maximum number of items
+//     that should be returned in the result set. (0..50, default 5)
+//   pageToken: The pageToken parameter identifies a specific page in the result
+//     set that should be returned. In an API response, the nextPageToken and
+//     prevPageToken properties identify other pages that could be retrieved.
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
+//   kGTLAuthScopeYouTubeReadonly
+// Fetches a GTLYouTubeLiveChatModeratorListResponse.
++ (instancetype)queryForLiveChatModeratorsListWithLiveChatId:(NSString *)liveChatId
+                                                        part:(NSString *)part;
 
 #pragma mark - "liveStreams" methods
 // These create a GTLQueryYouTube object.
@@ -2006,6 +2182,32 @@
 //   kGTLAuthScopeYouTubeYoutubepartner
 // Fetches a GTLYouTubeSearchListResponse.
 + (instancetype)queryForSearchListWithPart:(NSString *)part;
+
+#pragma mark - "sponsors" methods
+// These create a GTLQueryYouTube object.
+
+// Method: youtube.sponsors.list
+// Lists sponsors for a channel.
+//  Required:
+//   part: The part parameter specifies the sponsor resource parts that the API
+//     response will include. Supported values are id and snippet.
+//  Optional:
+//   filter: The filter parameter specifies which channel sponsors to return.
+//     (Default "POLL_NEWEST")
+//      kGTLYouTubeFilterAll: Return all sponsors, from newest to oldest.
+//      kGTLYouTubeFilterNewest: Return the most recent sponsors, from newest to
+//        oldest.
+//   maxResults: The maxResults parameter specifies the maximum number of items
+//     that should be returned in the result set. (0..50, default 5)
+//   pageToken: The pageToken parameter identifies a specific page in the result
+//     set that should be returned. In an API response, the nextPageToken and
+//     prevPageToken properties identify other pages that could be retrieved.
+//  Authorization scope(s):
+//   kGTLAuthScopeYouTube
+//   kGTLAuthScopeYouTubeForceSsl
+//   kGTLAuthScopeYouTubeReadonly
+// Fetches a GTLYouTubeSponsorListResponse.
++ (instancetype)queryForSponsorsListWithPart:(NSString *)part;
 
 #pragma mark - "subscriptions" methods
 // These create a GTLQueryYouTube object.

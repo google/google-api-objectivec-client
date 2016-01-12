@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,15 +26,13 @@
 // Documentation:
 //   https://developers.google.com/+/api/
 // Classes:
-//   GTLQueryPlus (11 custom class methods, 14 custom properties)
+//   GTLQueryPlus (9 custom class methods, 11 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
 #else
   #import "GTLQuery.h"
 #endif
-
-@class GTLPlusMoment;
 
 @interface GTLQueryPlus : GTLQuery
 
@@ -51,15 +49,12 @@
 @property (nonatomic, copy) NSString *activityId;
 @property (nonatomic, copy) NSString *collection;
 @property (nonatomic, copy) NSString *commentId;
-@property (nonatomic, assign) BOOL debug;
 @property (nonatomic, copy) NSString *language;
 @property (nonatomic, assign) NSUInteger maxResults;
 @property (nonatomic, copy) NSString *orderBy;
 @property (nonatomic, copy) NSString *pageToken;
 @property (nonatomic, copy) NSString *query;
 @property (nonatomic, copy) NSString *sortOrder;
-@property (nonatomic, copy) NSString *targetUrl;
-@property (nonatomic, copy) NSString *type;
 @property (nonatomic, copy) NSString *userId;
 
 #pragma mark - "activities" methods
@@ -156,51 +151,6 @@
 //   kGTLAuthScopePlusMe
 // Fetches a GTLPlusCommentFeed.
 + (instancetype)queryForCommentsListWithActivityId:(NSString *)activityId;
-
-#pragma mark - "moments" methods
-// These create a GTLQueryPlus object.
-
-// Method: plus.moments.insert
-// Record a moment representing a user's action such as making a purchase or
-// commenting on a blog.
-//  Required:
-//   userId: The ID of the user to record actions for. The only valid values are
-//     "me" and the ID of the authenticated user.
-//   collection: The collection to which to write moments.
-//      kGTLPlusCollectionVault: The default collection for writing new moments.
-//  Optional:
-//   debug: Return the moment as written. Should be used only for debugging.
-//  Authorization scope(s):
-//   kGTLAuthScopePlusLogin
-//   kGTLAuthScopePlusMe
-// Fetches a GTLPlusMoment.
-+ (instancetype)queryForMomentsInsertWithObject:(GTLPlusMoment *)object
-                                         userId:(NSString *)userId
-                                     collection:(NSString *)collection;
-
-// Method: plus.moments.list
-// List all of the moments for a particular user.
-//  Required:
-//   userId: The ID of the user to get moments for. The special value "me" can
-//     be used to indicate the authenticated user.
-//   collection: The collection of moments to list.
-//      kGTLPlusCollectionVault: All moments created by the requesting
-//        application for the authenticated user.
-//  Optional:
-//   maxResults: The maximum number of moments to include in the response, which
-//     is used for paging. For any response, the actual number returned might be
-//     less than the specified maxResults. (1..100, default 20)
-//   pageToken: The continuation token, which is used to page through large
-//     result sets. To get the next page of results, set this parameter to the
-//     value of "nextPageToken" from the previous response.
-//   targetUrl: Only moments containing this targetUrl will be returned.
-//   type: Only moments of this type will be returned.
-//  Authorization scope(s):
-//   kGTLAuthScopePlusLogin
-//   kGTLAuthScopePlusMe
-// Fetches a GTLPlusMomentsFeed.
-+ (instancetype)queryForMomentsListWithUserId:(NSString *)userId
-                                   collection:(NSString *)collection;
 
 #pragma mark - "people" methods
 // These create a GTLQueryPlus object.

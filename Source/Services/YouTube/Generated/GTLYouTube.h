@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,6 +59,7 @@
 #import "GTLYouTubeChannelId.h"
 #import "GTLYouTubeChannelListResponse.h"
 #import "GTLYouTubeChannelLocalization.h"
+#import "GTLYouTubeChannelProfileDetails.h"
 #import "GTLYouTubeChannelSection.h"
 #import "GTLYouTubeChannelSectionContentDetails.h"
 #import "GTLYouTubeChannelSectionListResponse.h"
@@ -78,6 +79,9 @@
 #import "GTLYouTubeCommentThreadReplies.h"
 #import "GTLYouTubeCommentThreadSnippet.h"
 #import "GTLYouTubeContentRating.h"
+#import "GTLYouTubeFanFundingEvent.h"
+#import "GTLYouTubeFanFundingEventListResponse.h"
+#import "GTLYouTubeFanFundingEventSnippet.h"
 #import "GTLYouTubeGeoPoint.h"
 #import "GTLYouTubeGuideCategory.h"
 #import "GTLYouTubeGuideCategoryListResponse.h"
@@ -104,6 +108,17 @@
 #import "GTLYouTubeLiveBroadcastTopic.h"
 #import "GTLYouTubeLiveBroadcastTopicDetails.h"
 #import "GTLYouTubeLiveBroadcastTopicSnippet.h"
+#import "GTLYouTubeLiveChatBan.h"
+#import "GTLYouTubeLiveChatBanSnippet.h"
+#import "GTLYouTubeLiveChatFanFundingEventDetails.h"
+#import "GTLYouTubeLiveChatMessage.h"
+#import "GTLYouTubeLiveChatMessageAuthorDetails.h"
+#import "GTLYouTubeLiveChatMessageListResponse.h"
+#import "GTLYouTubeLiveChatMessageSnippet.h"
+#import "GTLYouTubeLiveChatModerator.h"
+#import "GTLYouTubeLiveChatModeratorListResponse.h"
+#import "GTLYouTubeLiveChatModeratorSnippet.h"
+#import "GTLYouTubeLiveChatTextMessageDetails.h"
 #import "GTLYouTubeLiveStream.h"
 #import "GTLYouTubeLiveStreamConfigurationIssue.h"
 #import "GTLYouTubeLiveStreamContentDetails.h"
@@ -134,6 +149,9 @@
 #import "GTLYouTubeSearchListResponse.h"
 #import "GTLYouTubeSearchResult.h"
 #import "GTLYouTubeSearchResultSnippet.h"
+#import "GTLYouTubeSponsor.h"
+#import "GTLYouTubeSponsorListResponse.h"
+#import "GTLYouTubeSponsorSnippet.h"
 #import "GTLYouTubeSubscription.h"
 #import "GTLYouTubeSubscriptionContentDetails.h"
 #import "GTLYouTubeSubscriptionListResponse.h"

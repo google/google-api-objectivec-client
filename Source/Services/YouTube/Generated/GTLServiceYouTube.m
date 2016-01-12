@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,6 +69,7 @@
     [GTLYouTubeChannelId class],
     [GTLYouTubeChannelListResponse class],
     [GTLYouTubeChannelLocalization class],
+    [GTLYouTubeChannelProfileDetails class],
     [GTLYouTubeChannelSection class],
     [GTLYouTubeChannelSectionContentDetails class],
     [GTLYouTubeChannelSectionListResponse class],
@@ -88,6 +89,9 @@
     [GTLYouTubeCommentThreadReplies class],
     [GTLYouTubeCommentThreadSnippet class],
     [GTLYouTubeContentRating class],
+    [GTLYouTubeFanFundingEvent class],
+    [GTLYouTubeFanFundingEventListResponse class],
+    [GTLYouTubeFanFundingEventSnippet class],
     [GTLYouTubeGeoPoint class],
     [GTLYouTubeGuideCategory class],
     [GTLYouTubeGuideCategoryListResponse class],
@@ -114,6 +118,17 @@
     [GTLYouTubeLiveBroadcastTopic class],
     [GTLYouTubeLiveBroadcastTopicDetails class],
     [GTLYouTubeLiveBroadcastTopicSnippet class],
+    [GTLYouTubeLiveChatBan class],
+    [GTLYouTubeLiveChatBanSnippet class],
+    [GTLYouTubeLiveChatFanFundingEventDetails class],
+    [GTLYouTubeLiveChatMessage class],
+    [GTLYouTubeLiveChatMessageAuthorDetails class],
+    [GTLYouTubeLiveChatMessageListResponse class],
+    [GTLYouTubeLiveChatMessageSnippet class],
+    [GTLYouTubeLiveChatModerator class],
+    [GTLYouTubeLiveChatModeratorListResponse class],
+    [GTLYouTubeLiveChatModeratorSnippet class],
+    [GTLYouTubeLiveChatTextMessageDetails class],
     [GTLYouTubeLiveStream class],
     [GTLYouTubeLiveStreamConfigurationIssue class],
     [GTLYouTubeLiveStreamContentDetails class],
@@ -144,6 +159,9 @@
     [GTLYouTubeSearchListResponse class],
     [GTLYouTubeSearchResult class],
     [GTLYouTubeSearchResultSnippet class],
+    [GTLYouTubeSponsor class],
+    [GTLYouTubeSponsorListResponse class],
+    [GTLYouTubeSponsorSnippet class],
     [GTLYouTubeSubscription class],
     [GTLYouTubeSubscriptionContentDetails class],
     [GTLYouTubeSubscriptionListResponse class],

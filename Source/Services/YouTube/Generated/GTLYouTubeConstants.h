@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,6 +58,11 @@ GTL_EXTERN NSString * const kGTLYouTubeBroadcastStatusLive;     // "live"
 GTL_EXTERN NSString * const kGTLYouTubeBroadcastStatusTesting;  // "testing"
 GTL_EXTERN NSString * const kGTLYouTubeBroadcastStatusUpcoming;  // "upcoming"
 
+// GTLQueryYouTube - BroadcastType
+GTL_EXTERN NSString * const kGTLYouTubeBroadcastTypeAll;        // "all"
+GTL_EXTERN NSString * const kGTLYouTubeBroadcastTypeEvent;      // "event"
+GTL_EXTERN NSString * const kGTLYouTubeBroadcastTypePersistent;  // "persistent"
+
 // GTLQueryYouTube - ChannelType
 GTL_EXTERN NSString * const kGTLYouTubeChannelTypeAny;   // "any"
 GTL_EXTERN NSString * const kGTLYouTubeChannelTypeShow;  // "show"
@@ -69,6 +74,10 @@ GTL_EXTERN NSString * const kGTLYouTubeChartMostPopular;  // "mostPopular"
 GTL_EXTERN NSString * const kGTLYouTubeEventTypeCompleted;  // "completed"
 GTL_EXTERN NSString * const kGTLYouTubeEventTypeLive;       // "live"
 GTL_EXTERN NSString * const kGTLYouTubeEventTypeUpcoming;   // "upcoming"
+
+// GTLQueryYouTube - Filter
+GTL_EXTERN NSString * const kGTLYouTubeFilterAll;     // "all"
+GTL_EXTERN NSString * const kGTLYouTubeFilterNewest;  // "newest"
 
 // GTLQueryYouTube - ModerationStatus
 GTL_EXTERN NSString * const kGTLYouTubeModerationStatusHeldForReview;  // "heldForReview"
@@ -835,6 +844,11 @@ GTL_EXTERN NSString * const kGTLYouTubeInvideoPosition_Type_Corner;  // "corner"
 GTL_EXTERN NSString * const kGTLYouTubeInvideoTiming_Type_OffsetFromEnd;  // "offsetFromEnd"
 GTL_EXTERN NSString * const kGTLYouTubeInvideoTiming_Type_OffsetFromStart;  // "offsetFromStart"
 
+// GTLYouTubeLiveBroadcastContentDetails - ClosedCaptionsType
+GTL_EXTERN NSString * const kGTLYouTubeLiveBroadcastContentDetails_ClosedCaptionsType_ClosedCaptionsDisabled;  // "closedCaptionsDisabled"
+GTL_EXTERN NSString * const kGTLYouTubeLiveBroadcastContentDetails_ClosedCaptionsType_ClosedCaptionsEmbedded;  // "closedCaptionsEmbedded"
+GTL_EXTERN NSString * const kGTLYouTubeLiveBroadcastContentDetails_ClosedCaptionsType_ClosedCaptionsHttpPost;  // "closedCaptionsHttpPost"
+
 // GTLYouTubeLiveBroadcastStatus - LifeCycleStatus
 GTL_EXTERN NSString * const kGTLYouTubeLiveBroadcastStatus_LifeCycleStatus_Abandoned;  // "abandoned"
 GTL_EXTERN NSString * const kGTLYouTubeLiveBroadcastStatus_LifeCycleStatus_Complete;  // "complete"
@@ -865,6 +879,19 @@ GTL_EXTERN NSString * const kGTLYouTubeLiveBroadcastStatus_RecordingStatus_Recor
 
 // GTLYouTubeLiveBroadcastTopic - Type
 GTL_EXTERN NSString * const kGTLYouTubeLiveBroadcastTopic_Type_VideoGame;  // "videoGame"
+
+// GTLYouTubeLiveChatBanSnippet - Type
+GTL_EXTERN NSString * const kGTLYouTubeLiveChatBanSnippet_Type_Permanent;  // "permanent"
+GTL_EXTERN NSString * const kGTLYouTubeLiveChatBanSnippet_Type_Temporary;  // "temporary"
+
+// GTLYouTubeLiveChatMessageSnippet - Type
+GTL_EXTERN NSString * const kGTLYouTubeLiveChatMessageSnippet_Type_ChatEndedEvent;  // "chatEndedEvent"
+GTL_EXTERN NSString * const kGTLYouTubeLiveChatMessageSnippet_Type_FanFundingEvent;  // "fanFundingEvent"
+GTL_EXTERN NSString * const kGTLYouTubeLiveChatMessageSnippet_Type_NewSponsorEvent;  // "newSponsorEvent"
+GTL_EXTERN NSString * const kGTLYouTubeLiveChatMessageSnippet_Type_SponsorOnlyModeEndedEvent;  // "sponsorOnlyModeEndedEvent"
+GTL_EXTERN NSString * const kGTLYouTubeLiveChatMessageSnippet_Type_SponsorOnlyModeStartedEvent;  // "sponsorOnlyModeStartedEvent"
+GTL_EXTERN NSString * const kGTLYouTubeLiveChatMessageSnippet_Type_TextMessageEvent;  // "textMessageEvent"
+GTL_EXTERN NSString * const kGTLYouTubeLiveChatMessageSnippet_Type_Tombstone;  // "tombstone"
 
 // GTLYouTubeLiveStreamConfigurationIssue - Severity
 GTL_EXTERN NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Severity_Error;  // "error"

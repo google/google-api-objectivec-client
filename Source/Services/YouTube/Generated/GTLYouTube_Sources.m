@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -62,6 +62,7 @@
 #import "GTLYouTubeChannelId.m"
 #import "GTLYouTubeChannelListResponse.m"
 #import "GTLYouTubeChannelLocalization.m"
+#import "GTLYouTubeChannelProfileDetails.m"
 #import "GTLYouTubeChannelSection.m"
 #import "GTLYouTubeChannelSectionContentDetails.m"
 #import "GTLYouTubeChannelSectionListResponse.m"
@@ -81,6 +82,9 @@
 #import "GTLYouTubeCommentThreadReplies.m"
 #import "GTLYouTubeCommentThreadSnippet.m"
 #import "GTLYouTubeContentRating.m"
+#import "GTLYouTubeFanFundingEvent.m"
+#import "GTLYouTubeFanFundingEventListResponse.m"
+#import "GTLYouTubeFanFundingEventSnippet.m"
 #import "GTLYouTubeGeoPoint.m"
 #import "GTLYouTubeGuideCategory.m"
 #import "GTLYouTubeGuideCategoryListResponse.m"
@@ -107,6 +111,17 @@
 #import "GTLYouTubeLiveBroadcastTopic.m"
 #import "GTLYouTubeLiveBroadcastTopicDetails.m"
 #import "GTLYouTubeLiveBroadcastTopicSnippet.m"
+#import "GTLYouTubeLiveChatBan.m"
+#import "GTLYouTubeLiveChatBanSnippet.m"
+#import "GTLYouTubeLiveChatFanFundingEventDetails.m"
+#import "GTLYouTubeLiveChatMessage.m"
+#import "GTLYouTubeLiveChatMessageAuthorDetails.m"
+#import "GTLYouTubeLiveChatMessageListResponse.m"
+#import "GTLYouTubeLiveChatMessageSnippet.m"
+#import "GTLYouTubeLiveChatModerator.m"
+#import "GTLYouTubeLiveChatModeratorListResponse.m"
+#import "GTLYouTubeLiveChatModeratorSnippet.m"
+#import "GTLYouTubeLiveChatTextMessageDetails.m"
 #import "GTLYouTubeLiveStream.m"
 #import "GTLYouTubeLiveStreamConfigurationIssue.m"
 #import "GTLYouTubeLiveStreamContentDetails.m"
@@ -137,6 +152,9 @@
 #import "GTLYouTubeSearchListResponse.m"
 #import "GTLYouTubeSearchResult.m"
 #import "GTLYouTubeSearchResultSnippet.m"
+#import "GTLYouTubeSponsor.m"
+#import "GTLYouTubeSponsorListResponse.m"
+#import "GTLYouTubeSponsorSnippet.m"
 #import "GTLYouTubeSubscription.m"
 #import "GTLYouTubeSubscriptionContentDetails.m"
 #import "GTLYouTubeSubscriptionListResponse.m"
