@@ -1867,12 +1867,18 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
                           delegate:(id)delegate
                  didFinishSelector:(SEL)finishedSelector {
   if ([queryObj isBatchQuery]) {
+    GTL_DEBUG_ASSERT([queryObj isKindOfClass:[GTLBatchQuery class]],
+                     @"GTLBatchQuery required for batches (passed %@)",
+                     [queryObj class]);
    return [self executeBatchQuery:(GTLBatchQuery *)queryObj
                          delegate:delegate
                 didFinishSelector:finishedSelector
                 completionHandler:NULL
                            ticket:nil];
   }
+  GTL_DEBUG_ASSERT([queryObj isKindOfClass:[GTLQuery class]],
+                   @"GTLQuery required for single queries (passed %@)",
+                   [queryObj class]);
 
   GTLQuery *query = [[(GTLQuery *)queryObj copy] autorelease];
   NSString *methodName = query.methodName;
@@ -1895,12 +1901,18 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 - (GTLServiceTicket *)executeQuery:(id<GTLQueryProtocol>)queryObj
                  completionHandler:(void (^)(GTLServiceTicket *ticket, id object, NSError *error))handler {
   if ([queryObj isBatchQuery]) {
+    GTL_DEBUG_ASSERT([queryObj isKindOfClass:[GTLBatchQuery class]],
+                     @"GTLBatchQuery required for batches (passed %@)",
+                     [queryObj class]);
     return [self executeBatchQuery:(GTLBatchQuery *)queryObj
                           delegate:nil
                  didFinishSelector:NULL
                  completionHandler:handler
                             ticket:nil];
   }
+  GTL_DEBUG_ASSERT([queryObj isKindOfClass:[GTLQuery class]],
+                   @"GTLQuery required for single queries (passed %@)",
+                   [queryObj class]);
 
   GTLQuery *query = [[(GTLQuery *)queryObj copy] autorelease];
   NSString *methodName = query.methodName;
