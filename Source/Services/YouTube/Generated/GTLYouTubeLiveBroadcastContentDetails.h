@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveBroadcastContentDetails (0 custom class methods, 9 custom properties)
+//   GTLYouTubeLiveBroadcastContentDetails (0 custom class methods, 10 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -48,9 +48,13 @@
 // This value uniquely identifies the live stream bound to the broadcast.
 @property (nonatomic, copy) NSString *boundStreamId;
 
-// This setting indicates whether closed captioning is enabled for this
-// broadcast. The ingestion URL of the closed captions is returned through the
-// liveStreams API.
+@property (nonatomic, copy) NSString *closedCaptionsType;
+
+// This setting indicates whether HTTP POST closed captioning is enabled for
+// this broadcast. The ingestion URL of the closed captions is returned through
+// the liveStreams API. This is mutually exclusive with using the
+// closed_captions_type property, and is equivalent to setting
+// closed_captions_type to CLOSED_CAPTIONS_HTTP_POST.
 @property (nonatomic, retain) NSNumber *enableClosedCaptions;  // boolValue
 
 // This setting indicates whether YouTube should enable content encryption for

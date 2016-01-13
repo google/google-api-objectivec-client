@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4F2445C8121F0D2900FEE1DA /* GTL.framework in Copy GTL Framework */ = {isa = PBXBuildFile; fileRef = 4F2445BE121F0CF600FEE1DA /* GTL.framework */; };
-		4F2445C9121F0D2C00FEE1DA /* GTL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2445BE121F0CF600FEE1DA /* GTL.framework */; };
 		4F3D9914162B33B900E1959E /* YouTubeSampleAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3D9911162B33B900E1959E /* YouTubeSampleAppController.m */; };
 		4F3D9915162B33B900E1959E /* YouTubeSampleWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3D9913162B33B900E1959E /* YouTubeSampleWindowController.m */; };
 		4F3D9918162B33DA00E1959E /* YouTubeSampleWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F3D9916162B33DA00E1959E /* YouTubeSampleWindow.xib */; };
+		4F4BC7011C24C56E000C67AE /* GTL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F4BC6FA1C24C559000C67AE /* GTL.framework */; };
 		4FA6F3D41034AEC400C5DFA5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FA6F3D11034AEC400C5DFA5 /* MainMenu.xib */; };
 		4FCD41821682AFD200CE1176 /* GTLYouTube_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD41211682AFD200CE1176 /* GTLYouTube_Sources.m */; };
 		4FD4714316E15505005DDD5D /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F22A2141186315400FFBAB6 /* WebKit.framework */; };
@@ -21,40 +20,33 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4F2445BD121F0CF600FEE1DA /* PBXContainerItemProxy */ = {
+		4F4BC6F91C24C559000C67AE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4F2445B6121F0CF600FEE1DA /* GTL.xcodeproj */;
+			containerPortal = 4F4BC6F21C24C558000C67AE /* GTLCore.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4F38F6A60B66E91D00B24B81;
-			remoteInfo = GTLFramework;
+			remoteInfo = GTLOSXCore;
 		};
-		4F2445BF121F0CF600FEE1DA /* PBXContainerItemProxy */ = {
+		4F4BC6FB1C24C559000C67AE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4F2445B6121F0CF600FEE1DA /* GTL.xcodeproj */;
+			containerPortal = 4F4BC6F21C24C558000C67AE /* GTLCore.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 4F12027C11A4CA2F00BEB470;
-			remoteInfo = GTLTouchStaticLib;
+			remoteGlobalIDString = F4368F721B8233BF00E17643;
+			remoteInfo = GTLiOSUnitTests;
 		};
-		4F2445C1121F0CF600FEE1DA /* PBXContainerItemProxy */ = {
+		4F4BC6FD1C24C559000C67AE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4F2445B6121F0CF600FEE1DA /* GTL.xcodeproj */;
+			containerPortal = 4F4BC6F21C24C558000C67AE /* GTLCore.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4F12027D11A4CA2F00BEB470;
-			remoteInfo = GTLUnitTests;
+			remoteInfo = GTLOSXUnitTests;
 		};
-		4F2445C3121F0CF600FEE1DA /* PBXContainerItemProxy */ = {
+		4F4BC6FF1C24C559000C67AE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4F2445B6121F0CF600FEE1DA /* GTL.xcodeproj */;
+			containerPortal = 4F4BC6F21C24C558000C67AE /* GTLCore.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4F1AD9020B71603F00DC0485;
-			remoteInfo = DevelopmentTestTool;
-		};
-		4F72439E12233FAF001A4AD0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4F2445B6121F0CF600FEE1DA /* GTL.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 4F38F6A50B66E91D00B24B81;
-			remoteInfo = GTLFramework;
+			remoteInfo = OSXDevTool;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -65,7 +57,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4F2445C8121F0D2900FEE1DA /* GTL.framework in Copy GTL Framework */,
 			);
 			name = "Copy GTL Framework";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,12 +70,12 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		4F22A2141186315400FFBAB6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
-		4F2445B6121F0CF600FEE1DA /* GTL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GTL.xcodeproj; path = ../../Source/GTL.xcodeproj; sourceTree = SOURCE_ROOT; };
 		4F3D9910162B33B900E1959E /* YouTubeSampleAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeSampleAppController.h; sourceTree = "<group>"; };
 		4F3D9911162B33B900E1959E /* YouTubeSampleAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouTubeSampleAppController.m; sourceTree = "<group>"; };
 		4F3D9912162B33B900E1959E /* YouTubeSampleWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeSampleWindowController.h; sourceTree = "<group>"; };
 		4F3D9913162B33B900E1959E /* YouTubeSampleWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouTubeSampleWindowController.m; sourceTree = "<group>"; };
 		4F3D9917162B33DA00E1959E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/YouTubeSampleWindow.xib; sourceTree = "<group>"; };
+		4F4BC6F21C24C558000C67AE /* GTLCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GTLCore.xcodeproj; path = ../../Source/GTLCore.xcodeproj; sourceTree = "<group>"; };
 		4FA6F3D21034AEC400C5DFA5 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		4FCD41211682AFD200CE1176 /* GTLYouTube_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLYouTube_Sources.m; sourceTree = "<group>"; };
 		4FD0F1DA0CBC68F300059DC1 /* buildStripHeaders */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.script.sh; path = buildStripHeaders; sourceTree = "<group>"; };
@@ -97,7 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F2445C9121F0D2C00FEE1DA /* GTL.framework in Frameworks */,
+				4F4BC7011C24C56E000C67AE /* GTL.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				4FD4714316E15505005DDD5D /* WebKit.framework in Frameworks */,
 			);
@@ -146,7 +137,7 @@
 		29B97314FDCFA39411CA2CEA /* CalendarSample */ = {
 			isa = PBXGroup;
 			children = (
-				4F2445B6121F0CF600FEE1DA /* GTL.xcodeproj */,
+				4F4BC6F21C24C558000C67AE /* GTLCore.xcodeproj */,
 				080E96DDFE201D6D7F000001 /* Sample App Classes */,
 				4FB25385138C3F9E00B5C1AE /* API Services */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -186,13 +177,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4F2445B7121F0CF600FEE1DA /* Products */ = {
+		4F4BC6F31C24C558000C67AE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4F2445BE121F0CF600FEE1DA /* GTL.framework */,
-				4F2445C0121F0CF600FEE1DA /* libGTLTouchStaticLib.a */,
-				4F2445C2121F0CF600FEE1DA /* GTLUnitTests.octest */,
-				4F2445C4121F0CF600FEE1DA /* DevelopmentTestTool */,
+				4F4BC6FA1C24C559000C67AE /* GTL.framework */,
+				4F4BC6FC1C24C559000C67AE /* GTLiOSUnitTests.xctest */,
+				4F4BC6FE1C24C559000C67AE /* GTLUnitTests.xctest */,
+				4F4BC7001C24C559000C67AE /* OSXDevTool */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -246,7 +237,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				4F72439F12233FAF001A4AD0 /* PBXTargetDependency */,
 			);
 			name = YouTubeSample;
 			productInstallPath = "$(HOME)/Applications";
@@ -260,7 +250,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0720;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "YouTubeSample" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -276,8 +266,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 4F2445B7121F0CF600FEE1DA /* Products */;
-					ProjectRef = 4F2445B6121F0CF600FEE1DA /* GTL.xcodeproj */;
+					ProductGroup = 4F4BC6F31C24C558000C67AE /* Products */;
+					ProjectRef = 4F4BC6F21C24C558000C67AE /* GTLCore.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -288,32 +278,32 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		4F2445BE121F0CF600FEE1DA /* GTL.framework */ = {
+		4F4BC6FA1C24C559000C67AE /* GTL.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = GTL.framework;
-			remoteRef = 4F2445BD121F0CF600FEE1DA /* PBXContainerItemProxy */;
+			remoteRef = 4F4BC6F91C24C559000C67AE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4F2445C0121F0CF600FEE1DA /* libGTLTouchStaticLib.a */ = {
+		4F4BC6FC1C24C559000C67AE /* GTLiOSUnitTests.xctest */ = {
 			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libGTLTouchStaticLib.a;
-			remoteRef = 4F2445BF121F0CF600FEE1DA /* PBXContainerItemProxy */;
+			fileType = wrapper.cfbundle;
+			path = GTLiOSUnitTests.xctest;
+			remoteRef = 4F4BC6FB1C24C559000C67AE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4F2445C2121F0CF600FEE1DA /* GTLUnitTests.octest */ = {
+		4F4BC6FE1C24C559000C67AE /* GTLUnitTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = GTLUnitTests.xctest;
-			remoteRef = 4F2445C1121F0CF600FEE1DA /* PBXContainerItemProxy */;
+			remoteRef = 4F4BC6FD1C24C559000C67AE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4F2445C4121F0CF600FEE1DA /* DevelopmentTestTool */ = {
+		4F4BC7001C24C559000C67AE /* OSXDevTool */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
-			path = DevelopmentTestTool;
-			remoteRef = 4F2445C3121F0CF600FEE1DA /* PBXContainerItemProxy */;
+			path = OSXDevTool;
+			remoteRef = 4F4BC6FF1C24C559000C67AE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -362,14 +352,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		4F72439F12233FAF001A4AD0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = GTLFramework;
-			targetProxy = 4F72439E12233FAF001A4AD0 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
 		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -401,7 +383,6 @@
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
@@ -420,7 +401,6 @@
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../../Source/build/$(CONFIGURATION)/";
@@ -436,11 +416,13 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-DGTL_BUILT_AS_FRAMEWORK=1",
 					"-DDEBUG=1",

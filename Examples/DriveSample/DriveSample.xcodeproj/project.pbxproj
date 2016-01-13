@@ -9,11 +9,10 @@
 /* Begin PBXBuildFile section */
 		4F16F59513DF673000811114 /* DriveSampleWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F16F59313DF673000811114 /* DriveSampleWindow.xib */; };
 		4F22A2151186315400FFBAB6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F22A2141186315400FFBAB6 /* WebKit.framework */; };
-		4F43229517726611002A5E2C /* GTLCommon_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F43229317726611002A5E2C /* GTLCommon_Sources.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		4F43229617726611002A5E2C /* GTLNetworking_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F43229417726611002A5E2C /* GTLNetworking_Sources.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4F43229917726CFD002A5E2C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F43229817726CFD002A5E2C /* Security.framework */; };
 		4F43229B17726D10002A5E2C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F43229A17726D10002A5E2C /* SystemConfiguration.framework */; };
 		4F47EC2F1947E1C7007C13FA /* GTMOAuth2Window.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F47EC2E1947E1C7007C13FA /* GTMOAuth2Window.xib */; };
+		4F4BC7181C24D326000C67AE /* GTL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F4BC70C1C24D2D6000C67AE /* GTL.framework */; };
 		4F9B545B15816762005E917A /* DriveSampleAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9B545815816762005E917A /* DriveSampleAppController.m */; };
 		4F9B545C15816762005E917A /* DriveSampleWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9B545A15816762005E917A /* DriveSampleWindowController.m */; };
 		4FA6F3D41034AEC400C5DFA5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FA6F3D11034AEC400C5DFA5 /* MainMenu.xib */; };
@@ -22,6 +21,37 @@
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4F4BC70B1C24D2D6000C67AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4F4BC7041C24D2D6000C67AE /* GTLCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F38F6A60B66E91D00B24B81;
+			remoteInfo = GTLOSXCore;
+		};
+		4F4BC70D1C24D2D6000C67AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4F4BC7041C24D2D6000C67AE /* GTLCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F4368F721B8233BF00E17643;
+			remoteInfo = GTLiOSUnitTests;
+		};
+		4F4BC70F1C24D2D6000C67AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4F4BC7041C24D2D6000C67AE /* GTLCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F12027D11A4CA2F00BEB470;
+			remoteInfo = GTLOSXUnitTests;
+		};
+		4F4BC7111C24D2D6000C67AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4F4BC7041C24D2D6000C67AE /* GTLCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F1AD9020B71603F00DC0485;
+			remoteInfo = OSXDevTool;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		4F38F8970B66FAB700B24B81 /* Copy GTL Framework */ = {
@@ -44,11 +74,10 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		4F16F59413DF673000811114 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/DriveSampleWindow.xib; sourceTree = "<group>"; };
 		4F22A2141186315400FFBAB6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
-		4F43229317726611002A5E2C /* GTLCommon_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLCommon_Sources.m; path = ../../Source/GTLCommon_Sources.m; sourceTree = "<group>"; };
-		4F43229417726611002A5E2C /* GTLNetworking_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLNetworking_Sources.m; path = ../../Source/GTLNetworking_Sources.m; sourceTree = "<group>"; };
 		4F43229817726CFD002A5E2C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		4F43229A17726D10002A5E2C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = /System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<group>"; };
-		4F47EC2E1947E1C7007C13FA /* GTMOAuth2Window.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GTMOAuth2Window.xib; path = "../../Source/OAuth2/Mac/GTMOAuth2Window.xib"; sourceTree = "<group>"; };
+		4F47EC2E1947E1C7007C13FA /* GTMOAuth2Window.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GTMOAuth2Window.xib; path = ../../Source/OAuth2/Mac/GTMOAuth2Window.xib; sourceTree = "<group>"; };
+		4F4BC7041C24D2D6000C67AE /* GTLCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GTLCore.xcodeproj; path = ../../Source/GTLCore.xcodeproj; sourceTree = "<group>"; };
 		4F9B545715816762005E917A /* DriveSampleAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DriveSampleAppController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		4F9B545815816762005E917A /* DriveSampleAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DriveSampleAppController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4F9B545915816762005E917A /* DriveSampleWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DriveSampleWindowController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -65,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F4BC7181C24D326000C67AE /* GTL.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				4F22A2151186315400FFBAB6 /* WebKit.framework in Frameworks */,
 				4F43229917726CFD002A5E2C /* Security.framework in Frameworks */,
@@ -117,9 +147,8 @@
 		29B97314FDCFA39411CA2CEA /* CalendarSample */ = {
 			isa = PBXGroup;
 			children = (
+				4F4BC7041C24D2D6000C67AE /* GTLCore.xcodeproj */,
 				080E96DDFE201D6D7F000001 /* Sample App Classes */,
-				4F43229317726611002A5E2C /* GTLCommon_Sources.m */,
-				4F43229417726611002A5E2C /* GTLNetworking_Sources.m */,
 				4FB25385138C3F9E00B5C1AE /* API Services */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -157,6 +186,17 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4F4BC7051C24D2D6000C67AE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4F4BC70C1C24D2D6000C67AE /* GTL.framework */,
+				4F4BC70E1C24D2D6000C67AE /* GTLiOSUnitTests.xctest */,
+				4F4BC7101C24D2D6000C67AE /* GTLUnitTests.xctest */,
+				4F4BC7121C24D2D6000C67AE /* OSXDevTool */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		4F96C2221581680B00A0D1D2 /* Drive */ = {
@@ -221,7 +261,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0720;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "DriveSample" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -235,12 +275,49 @@
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CalendarSample */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 4F4BC7051C24D2D6000C67AE /* Products */;
+					ProjectRef = 4F4BC7041C24D2D6000C67AE /* GTLCore.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* DriveSample */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		4F4BC70C1C24D2D6000C67AE /* GTL.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GTL.framework;
+			remoteRef = 4F4BC70B1C24D2D6000C67AE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4F4BC70E1C24D2D6000C67AE /* GTLiOSUnitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GTLiOSUnitTests.xctest;
+			remoteRef = 4F4BC70D1C24D2D6000C67AE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4F4BC7101C24D2D6000C67AE /* GTLUnitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GTLUnitTests.xctest;
+			remoteRef = 4F4BC70F1C24D2D6000C67AE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4F4BC7121C24D2D6000C67AE /* OSXDevTool */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = OSXDevTool;
+			remoteRef = 4F4BC7111C24D2D6000C67AE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8D1107290486CEB800E47090 /* Resources */ = {
@@ -282,8 +359,6 @@
 				4F9B545B15816762005E917A /* DriveSampleAppController.m in Sources */,
 				4F9B545C15816762005E917A /* DriveSampleWindowController.m in Sources */,
 				4FF21BEB1626428F00805586 /* GTLDrive_Sources.m in Sources */,
-				4F43229517726611002A5E2C /* GTLCommon_Sources.m in Sources */,
-				4F43229617726611002A5E2C /* GTLNetworking_Sources.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +404,11 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_CFLAGS = (
+					"-DGTL_BUILT_AS_FRAMEWORK=1",
+					"-DDEBUG=1",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.DriveSample;
 				PRODUCT_NAME = DriveSample;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = app;
@@ -345,6 +425,8 @@
 				GCC_MODEL_TUNING = G5;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_CFLAGS = "-DGTL_BUILT_AS_FRAMEWORK=1";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.DriveSample;
 				PRODUCT_NAME = DriveSample;
 				WRAPPER_EXTENSION = app;
 			};
@@ -353,6 +435,7 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;

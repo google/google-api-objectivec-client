@@ -12,12 +12,12 @@
   #endif
 #endif
 
-#import "OAuth2/GTMOAuth2Authentication.m"
-#import "OAuth2/GTMOAuth2SignIn.m"
+#import "gtm-oauth2/Source/GTMOAuth2Authentication.m"
+#import "gtm-oauth2/Source/GTMOAuth2SignIn.m"
 #if TARGET_OS_IPHONE
-  #import "OAuth2/Touch/GTMOAuth2ViewControllerTouch.m"
+  #import "gtm-oauth2/Source/Touch/GTMOAuth2ViewControllerTouch.m"
 #elif TARGET_OS_MAC
-  #import "OAuth2/Mac/GTMOAuth2WindowController.m"
+  #import "gtm-oauth2/Source/Mac/GTMOAuth2WindowController.m"
 #else
   #error Need Target Conditionals
 #endif

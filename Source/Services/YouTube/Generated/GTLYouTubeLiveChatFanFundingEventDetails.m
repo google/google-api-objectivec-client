@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,37 +14,27 @@
  */
 
 //
-//  GTLBigqueryJobConfigurationLink.m
+//  GTLYouTubeLiveChatFanFundingEventDetails.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   BigQuery API (bigquery/v2)
+//   YouTube Data API (youtube/v3)
 // Description:
-//   A data platform for customers to create, manage, share and query data.
+//   Programmatic access to YouTube features.
 // Documentation:
-//   https://cloud.google.com/bigquery/
+//   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLBigqueryJobConfigurationLink (0 custom class methods, 4 custom properties)
+//   GTLYouTubeLiveChatFanFundingEventDetails (0 custom class methods, 4 custom properties)
 
-#import "GTLBigqueryJobConfigurationLink.h"
-
-#import "GTLBigqueryTableReference.h"
+#import "GTLYouTubeLiveChatFanFundingEventDetails.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBigqueryJobConfigurationLink
+//   GTLYouTubeLiveChatFanFundingEventDetails
 //
 
-@implementation GTLBigqueryJobConfigurationLink
-@dynamic createDisposition, destinationTable, sourceUri, writeDisposition;
-
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map = @{
-    @"sourceUri" : [NSString class]
-  };
-  return map;
-}
-
+@implementation GTLYouTubeLiveChatFanFundingEventDetails
+@dynamic amountDisplayString, amountMicros, currency, userComment;
 @end

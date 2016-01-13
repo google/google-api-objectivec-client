@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -72,11 +72,12 @@
 // fieldDelimiter properties.
 @property (nonatomic, copy) NSString *encoding;
 
-// [Optional] The separator for fields in a CSV file. BigQuery converts the
-// string to ISO-8859-1 encoding, and then uses the first byte of the encoded
-// string to split the data in its raw, binary state. BigQuery also supports the
-// escape sequence "\t" to specify a tab separator. The default value is a comma
-// (',').
+// [Optional] The separator for fields in a CSV file. The separator can be any
+// ISO-8859-1 single-byte character. To use a character in the range 128-255,
+// you must encode the character as UTF8. BigQuery converts the string to
+// ISO-8859-1 encoding, and then uses the first byte of the encoded string to
+// split the data in its raw, binary state. BigQuery also supports the escape
+// sequence "\t" to specify a tab separator. The default value is a comma (',').
 @property (nonatomic, copy) NSString *fieldDelimiter;
 
 // [Optional] Indicates if BigQuery should allow extra values that are not
@@ -112,8 +113,8 @@
 @property (nonatomic, copy) NSString *quote;
 
 // [Optional] The schema for the destination table. The schema can be omitted if
-// the destination table already exists or if the schema can be inferred from
-// the loaded data.
+// the destination table already exists, or if you're loading data from Google
+// Cloud Datastore.
 @property (nonatomic, retain) GTLBigqueryTableSchema *schema;
 
 // [Deprecated] The inline schema. For CSV schemas, specify as

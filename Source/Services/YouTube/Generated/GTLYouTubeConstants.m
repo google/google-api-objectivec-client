@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,6 +45,11 @@ NSString * const kGTLYouTubeBroadcastStatusLive      = @"live";
 NSString * const kGTLYouTubeBroadcastStatusTesting   = @"testing";
 NSString * const kGTLYouTubeBroadcastStatusUpcoming  = @"upcoming";
 
+// GTLQueryYouTube - BroadcastType
+NSString * const kGTLYouTubeBroadcastTypeAll        = @"all";
+NSString * const kGTLYouTubeBroadcastTypeEvent      = @"event";
+NSString * const kGTLYouTubeBroadcastTypePersistent = @"persistent";
+
 // GTLQueryYouTube - ChannelType
 NSString * const kGTLYouTubeChannelTypeAny  = @"any";
 NSString * const kGTLYouTubeChannelTypeShow = @"show";
@@ -56,6 +61,10 @@ NSString * const kGTLYouTubeChartMostPopular = @"mostPopular";
 NSString * const kGTLYouTubeEventTypeCompleted = @"completed";
 NSString * const kGTLYouTubeEventTypeLive      = @"live";
 NSString * const kGTLYouTubeEventTypeUpcoming  = @"upcoming";
+
+// GTLQueryYouTube - Filter
+NSString * const kGTLYouTubeFilterAll    = @"all";
+NSString * const kGTLYouTubeFilterNewest = @"newest";
 
 // GTLQueryYouTube - ModerationStatus
 NSString * const kGTLYouTubeModerationStatusHeldForReview = @"heldForReview";
@@ -822,6 +831,11 @@ NSString * const kGTLYouTubeInvideoPosition_Type_Corner = @"corner";
 NSString * const kGTLYouTubeInvideoTiming_Type_OffsetFromEnd   = @"offsetFromEnd";
 NSString * const kGTLYouTubeInvideoTiming_Type_OffsetFromStart = @"offsetFromStart";
 
+// GTLYouTubeLiveBroadcastContentDetails - ClosedCaptionsType
+NSString * const kGTLYouTubeLiveBroadcastContentDetails_ClosedCaptionsType_ClosedCaptionsDisabled = @"closedCaptionsDisabled";
+NSString * const kGTLYouTubeLiveBroadcastContentDetails_ClosedCaptionsType_ClosedCaptionsEmbedded = @"closedCaptionsEmbedded";
+NSString * const kGTLYouTubeLiveBroadcastContentDetails_ClosedCaptionsType_ClosedCaptionsHttpPost = @"closedCaptionsHttpPost";
+
 // GTLYouTubeLiveBroadcastStatus - LifeCycleStatus
 NSString * const kGTLYouTubeLiveBroadcastStatus_LifeCycleStatus_Abandoned = @"abandoned";
 NSString * const kGTLYouTubeLiveBroadcastStatus_LifeCycleStatus_Complete = @"complete";
@@ -852,6 +866,19 @@ NSString * const kGTLYouTubeLiveBroadcastStatus_RecordingStatus_Recording = @"re
 
 // GTLYouTubeLiveBroadcastTopic - Type
 NSString * const kGTLYouTubeLiveBroadcastTopic_Type_VideoGame = @"videoGame";
+
+// GTLYouTubeLiveChatBanSnippet - Type
+NSString * const kGTLYouTubeLiveChatBanSnippet_Type_Permanent = @"permanent";
+NSString * const kGTLYouTubeLiveChatBanSnippet_Type_Temporary = @"temporary";
+
+// GTLYouTubeLiveChatMessageSnippet - Type
+NSString * const kGTLYouTubeLiveChatMessageSnippet_Type_ChatEndedEvent = @"chatEndedEvent";
+NSString * const kGTLYouTubeLiveChatMessageSnippet_Type_FanFundingEvent = @"fanFundingEvent";
+NSString * const kGTLYouTubeLiveChatMessageSnippet_Type_NewSponsorEvent = @"newSponsorEvent";
+NSString * const kGTLYouTubeLiveChatMessageSnippet_Type_SponsorOnlyModeEndedEvent = @"sponsorOnlyModeEndedEvent";
+NSString * const kGTLYouTubeLiveChatMessageSnippet_Type_SponsorOnlyModeStartedEvent = @"sponsorOnlyModeStartedEvent";
+NSString * const kGTLYouTubeLiveChatMessageSnippet_Type_TextMessageEvent = @"textMessageEvent";
+NSString * const kGTLYouTubeLiveChatMessageSnippet_Type_Tombstone = @"tombstone";
 
 // GTLYouTubeLiveStreamConfigurationIssue - Severity
 NSString * const kGTLYouTubeLiveStreamConfigurationIssue_Severity_Error = @"error";

@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryJobConfiguration (0 custom class methods, 6 custom properties)
+//   GTLBigqueryJobConfiguration (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -35,7 +35,6 @@
 #endif
 
 @class GTLBigqueryJobConfigurationExtract;
-@class GTLBigqueryJobConfigurationLink;
 @class GTLBigqueryJobConfigurationLoad;
 @class GTLBigqueryJobConfigurationQuery;
 @class GTLBigqueryJobConfigurationTableCopy;
@@ -59,9 +58,6 @@
 
 // [Pick one] Configures an extract job.
 @property (nonatomic, retain) GTLBigqueryJobConfigurationExtract *extract;
-
-// [Pick one] Configures a link job.
-@property (nonatomic, retain) GTLBigqueryJobConfigurationLink *link;
 
 // [Pick one] Configures a load job.
 @property (nonatomic, retain) GTLBigqueryJobConfigurationLoad *load;

@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -608,7 +608,7 @@
 //     the events to. This topic name **must** already exist in Cloud Pub/Sub
 //     and you **must** have already granted gmail "publish" permission on it.
 //     For example, "projects/my-project-identifier/topics/my-topic-name" (using
-//     the new Cloud Pub/Sub "v1beta2" topic naming format).
+//     the Cloud Pub/Sub "v1" topic naming format).
 //     Note that the "my-project-identifier" portion must exactly match your
 //     Google developer project id (the one executing this watch request).
 //   userId: The user's email address. The special value me can be used to

@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLQueryYouTube (61 custom class methods, 67 custom properties)
+//   GTLQueryYouTube (71 custom class methods, 71 custom properties)
 
 #import "GTLQueryYouTube.h"
 
@@ -43,12 +43,18 @@
 #import "GTLYouTubeCommentListResponse.h"
 #import "GTLYouTubeCommentThread.h"
 #import "GTLYouTubeCommentThreadListResponse.h"
+#import "GTLYouTubeFanFundingEventListResponse.h"
 #import "GTLYouTubeGuideCategoryListResponse.h"
 #import "GTLYouTubeI18nLanguageListResponse.h"
 #import "GTLYouTubeI18nRegionListResponse.h"
 #import "GTLYouTubeInvideoBranding.h"
 #import "GTLYouTubeLiveBroadcast.h"
 #import "GTLYouTubeLiveBroadcastListResponse.h"
+#import "GTLYouTubeLiveChatBan.h"
+#import "GTLYouTubeLiveChatMessage.h"
+#import "GTLYouTubeLiveChatMessageListResponse.h"
+#import "GTLYouTubeLiveChatModerator.h"
+#import "GTLYouTubeLiveChatModeratorListResponse.h"
 #import "GTLYouTubeLiveStream.h"
 #import "GTLYouTubeLiveStreamListResponse.h"
 #import "GTLYouTubePlaylist.h"
@@ -56,6 +62,7 @@
 #import "GTLYouTubePlaylistItemListResponse.h"
 #import "GTLYouTubePlaylistListResponse.h"
 #import "GTLYouTubeSearchListResponse.h"
+#import "GTLYouTubeSponsorListResponse.h"
 #import "GTLYouTubeSubscription.h"
 #import "GTLYouTubeSubscriptionListResponse.h"
 #import "GTLYouTubeThumbnailSetResponse.h"
@@ -69,14 +76,15 @@
 @implementation GTLQueryYouTube
 
 @dynamic allThreadsRelatedToChannelId, autoLevels, banAuthor, broadcastStatus,
-         categoryId, channelId, channelType, chart, displaySlate, eventType,
-         fields, forChannelId, forContentOwner, forDeveloper, forMine,
-         forUsername, hl, home, identifier, locale, location, locationRadius,
-         managedByMe, maxResults, mine, moderationStatus, myRating,
-         mySubscribers, notifySubscribers, offsetTimeMs, onBehalfOf,
-         onBehalfOfContentOwner, onBehalfOfContentOwnerChannel, order,
-         pageToken, parentId, part, playlistId, publishedAfter, publishedBefore,
-         q, rating, regionCode, relatedToVideoId, relevanceLanguage, report,
+         broadcastType, categoryId, channelId, channelType, chart, displaySlate,
+         eventType, fields, filter, forChannelId, forContentOwner, forDeveloper,
+         forMine, forUsername, hl, home, identifier, liveChatId, locale,
+         location, locationRadius, managedByMe, maxResults, mine,
+         moderationStatus, myRating, mySubscribers, notifySubscribers,
+         offsetTimeMs, onBehalfOf, onBehalfOfContentOwner,
+         onBehalfOfContentOwnerChannel, order, pageToken, parentId, part,
+         playlistId, profileImageSize, publishedAfter, publishedBefore, q,
+         rating, regionCode, relatedToVideoId, relevanceLanguage, report,
          safeSearch, searchTerms, stabilize, streamId, sync, textFormat, tfmt,
          tlang, topicId, type, videoCaption, videoCategoryId, videoDefinition,
          videoDimension, videoDuration, videoEmbeddable, videoId, videoLicense,
@@ -362,6 +370,17 @@
   return query;
 }
 
+#pragma mark - "fanFundingEvents" methods
+// These create a GTLQueryYouTube object.
+
++ (instancetype)queryForFanFundingEventsListWithPart:(NSString *)part {
+  NSString *methodName = @"youtube.fanFundingEvents.list";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.part = part;
+  query.expectedObjectClass = [GTLYouTubeFanFundingEventListResponse class];
+  return query;
+}
+
 #pragma mark - "guideCategories" methods
 // These create a GTLQueryYouTube object.
 
@@ -470,6 +489,98 @@
   query.bodyObject = object;
   query.part = part;
   query.expectedObjectClass = [GTLYouTubeLiveBroadcast class];
+  return query;
+}
+
+#pragma mark - "liveChatBans" methods
+// These create a GTLQueryYouTube object.
+
++ (instancetype)queryForLiveChatBansDeleteWithIdentifier:(NSString *)identifier {
+  NSString *methodName = @"youtube.liveChatBans.delete";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.identifier = identifier;
+  return query;
+}
+
++ (instancetype)queryForLiveChatBansInsertWithObject:(GTLYouTubeLiveChatBan *)object
+                                                part:(NSString *)part {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"youtube.liveChatBans.insert";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.part = part;
+  query.expectedObjectClass = [GTLYouTubeLiveChatBan class];
+  return query;
+}
+
+#pragma mark - "liveChatMessages" methods
+// These create a GTLQueryYouTube object.
+
++ (instancetype)queryForLiveChatMessagesDeleteWithIdentifier:(NSString *)identifier {
+  NSString *methodName = @"youtube.liveChatMessages.delete";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.identifier = identifier;
+  return query;
+}
+
++ (instancetype)queryForLiveChatMessagesInsertWithObject:(GTLYouTubeLiveChatMessage *)object
+                                                    part:(NSString *)part {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"youtube.liveChatMessages.insert";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.part = part;
+  query.expectedObjectClass = [GTLYouTubeLiveChatMessage class];
+  return query;
+}
+
++ (instancetype)queryForLiveChatMessagesListWithLiveChatId:(NSString *)liveChatId
+                                                      part:(NSString *)part {
+  NSString *methodName = @"youtube.liveChatMessages.list";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.liveChatId = liveChatId;
+  query.part = part;
+  query.expectedObjectClass = [GTLYouTubeLiveChatMessageListResponse class];
+  return query;
+}
+
+#pragma mark - "liveChatModerators" methods
+// These create a GTLQueryYouTube object.
+
++ (instancetype)queryForLiveChatModeratorsDeleteWithIdentifier:(NSString *)identifier {
+  NSString *methodName = @"youtube.liveChatModerators.delete";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.identifier = identifier;
+  return query;
+}
+
++ (instancetype)queryForLiveChatModeratorsInsertWithObject:(GTLYouTubeLiveChatModerator *)object
+                                                      part:(NSString *)part {
+  if (object == nil) {
+    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
+    return nil;
+  }
+  NSString *methodName = @"youtube.liveChatModerators.insert";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.bodyObject = object;
+  query.part = part;
+  query.expectedObjectClass = [GTLYouTubeLiveChatModerator class];
+  return query;
+}
+
++ (instancetype)queryForLiveChatModeratorsListWithLiveChatId:(NSString *)liveChatId
+                                                        part:(NSString *)part {
+  NSString *methodName = @"youtube.liveChatModerators.list";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.liveChatId = liveChatId;
+  query.part = part;
+  query.expectedObjectClass = [GTLYouTubeLiveChatModeratorListResponse class];
   return query;
 }
 
@@ -619,6 +730,17 @@
   GTLQueryYouTube *query = [self queryWithMethodName:methodName];
   query.part = part;
   query.expectedObjectClass = [GTLYouTubeSearchListResponse class];
+  return query;
+}
+
+#pragma mark - "sponsors" methods
+// These create a GTLQueryYouTube object.
+
++ (instancetype)queryForSponsorsListWithPart:(NSString *)part {
+  NSString *methodName = @"youtube.sponsors.list";
+  GTLQueryYouTube *query = [self queryWithMethodName:methodName];
+  query.part = part;
+  query.expectedObjectClass = [GTLYouTubeSponsorListResponse class];
   return query;
 }
 

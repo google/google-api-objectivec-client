@@ -9,9 +9,23 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F4469D791C40229D00BCFAA1"
+               BuildableName = "GTL.framework"
+               BlueprintName = "GTLiOSCore"
+               ReferencedContainer = "container:GTLCore.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
             buildForProfiling = "NO"
             buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
+            buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F4368F711B8233BF00E17643"
@@ -65,9 +79,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F4368F711B8233BF00E17643"
-            BuildableName = "GTLiOSUnitTests.xctest"
-            BlueprintName = "GTLiOSUnitTests"
+            BlueprintIdentifier = "F4469D791C40229D00BCFAA1"
+            BuildableName = "GTL.framework"
+            BlueprintName = "GTLiOSCore"
             ReferencedContainer = "container:GTLCore.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -83,9 +97,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F4368F711B8233BF00E17643"
-            BuildableName = "GTLiOSUnitTests.xctest"
-            BlueprintName = "GTLiOSUnitTests"
+            BlueprintIdentifier = "F4469D791C40229D00BCFAA1"
+            BuildableName = "GTL.framework"
+            BlueprintName = "GTLiOSCore"
             ReferencedContainer = "container:GTLCore.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

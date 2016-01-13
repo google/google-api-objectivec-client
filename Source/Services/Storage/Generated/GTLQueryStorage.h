@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -103,6 +103,7 @@
 //     user-emailAddress, group-groupId, group-emailAddress, allUsers, or
 //     allAuthenticatedUsers.
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 + (instancetype)queryForBucketAccessControlsDeleteWithBucket:(NSString *)bucket
                                                       entity:(NSString *)entity;
@@ -115,6 +116,7 @@
 //     user-emailAddress, group-groupId, group-emailAddress, allUsers, or
 //     allAuthenticatedUsers.
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageBucketAccessControl.
 + (instancetype)queryForBucketAccessControlsGetWithBucket:(NSString *)bucket
@@ -125,6 +127,7 @@
 //  Required:
 //   bucket: Name of a bucket.
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageBucketAccessControl.
 + (instancetype)queryForBucketAccessControlsInsertWithObject:(GTLStorageBucketAccessControl *)object
@@ -135,6 +138,7 @@
 //  Required:
 //   bucket: Name of a bucket.
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageBucketAccessControls.
 + (instancetype)queryForBucketAccessControlsListWithBucket:(NSString *)bucket;
@@ -148,6 +152,7 @@
 //     user-emailAddress, group-groupId, group-emailAddress, allUsers, or
 //     allAuthenticatedUsers.
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageBucketAccessControl.
 + (instancetype)queryForBucketAccessControlsPatchWithObject:(GTLStorageBucketAccessControl *)object
@@ -162,6 +167,7 @@
 //     user-emailAddress, group-groupId, group-emailAddress, allUsers, or
 //     allAuthenticatedUsers.
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageBucketAccessControl.
 + (instancetype)queryForBucketAccessControlsUpdateWithObject:(GTLStorageBucketAccessControl *)object
@@ -389,6 +395,7 @@
 //     user-emailAddress, group-groupId, group-emailAddress, allUsers, or
 //     allAuthenticatedUsers.
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 + (instancetype)queryForDefaultObjectAccessControlsDeleteWithBucket:(NSString *)bucket
                                                              entity:(NSString *)entity;
@@ -402,6 +409,7 @@
 //     user-emailAddress, group-groupId, group-emailAddress, allUsers, or
 //     allAuthenticatedUsers.
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControl.
 + (instancetype)queryForDefaultObjectAccessControlsGetWithBucket:(NSString *)bucket
@@ -412,6 +420,7 @@
 //  Required:
 //   bucket: Name of a bucket.
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControl.
 + (instancetype)queryForDefaultObjectAccessControlsInsertWithObject:(GTLStorageObjectAccessControl *)object
@@ -427,6 +436,7 @@
 //   ifMetagenerationNotMatch: If present, only return default ACL listing if
 //     the bucket's current metageneration does not match the given value.
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControls.
 + (instancetype)queryForDefaultObjectAccessControlsListWithBucket:(NSString *)bucket;
@@ -440,6 +450,7 @@
 //     user-emailAddress, group-groupId, group-emailAddress, allUsers, or
 //     allAuthenticatedUsers.
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControl.
 + (instancetype)queryForDefaultObjectAccessControlsPatchWithObject:(GTLStorageObjectAccessControl *)object
@@ -454,6 +465,7 @@
 //     user-emailAddress, group-groupId, group-emailAddress, allUsers, or
 //     allAuthenticatedUsers.
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControl.
 + (instancetype)queryForDefaultObjectAccessControlsUpdateWithObject:(GTLStorageObjectAccessControl *)object
@@ -477,6 +489,7 @@
 //   generation: If present, selects a specific revision of this object (as
 //     opposed to the latest version, the default).
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 + (instancetype)queryForObjectAccessControlsDeleteWithBucket:(NSString *)bucket
                                                       object:(NSString *)object
@@ -495,6 +508,7 @@
 //   generation: If present, selects a specific revision of this object (as
 //     opposed to the latest version, the default).
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControl.
 + (instancetype)queryForObjectAccessControlsGetWithBucket:(NSString *)bucket
@@ -511,6 +525,7 @@
 //   generation: If present, selects a specific revision of this object (as
 //     opposed to the latest version, the default).
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControl.
 + (instancetype)queryForObjectAccessControlsInsertWithObject:(GTLStorageObjectAccessControl *)object
@@ -527,6 +542,7 @@
 //   generation: If present, selects a specific revision of this object (as
 //     opposed to the latest version, the default).
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControls.
 + (instancetype)queryForObjectAccessControlsListWithBucket:(NSString *)bucket
@@ -546,6 +562,7 @@
 //   generation: If present, selects a specific revision of this object (as
 //     opposed to the latest version, the default).
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControl.
 + (instancetype)queryForObjectAccessControlsPatchWithObject:(GTLStorageObjectAccessControl *)object
@@ -566,6 +583,7 @@
 //   generation: If present, selects a specific revision of this object (as
 //     opposed to the latest version, the default).
 //  Authorization scope(s):
+//   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
 // Fetches a GTLStorageObjectAccessControl.
 + (instancetype)queryForObjectAccessControlsUpdateWithObject:(GTLStorageObjectAccessControl *)object

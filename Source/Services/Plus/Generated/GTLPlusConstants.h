@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,7 +49,6 @@ GTL_EXTERN NSString * const kGTLPlusCollectionConnected;  // "connected"
 GTL_EXTERN NSString * const kGTLPlusCollectionPlusoners;  // "plusoners"
 GTL_EXTERN NSString * const kGTLPlusCollectionPublic;     // "public"
 GTL_EXTERN NSString * const kGTLPlusCollectionResharers;  // "resharers"
-GTL_EXTERN NSString * const kGTLPlusCollectionVault;      // "vault"
 GTL_EXTERN NSString * const kGTLPlusCollectionVisible;    // "visible"
 
 // GTLQueryPlus - OrderBy

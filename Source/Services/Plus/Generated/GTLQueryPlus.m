@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/+/api/
 // Classes:
-//   GTLQueryPlus (11 custom class methods, 14 custom properties)
+//   GTLQueryPlus (9 custom class methods, 11 custom properties)
 
 #import "GTLQueryPlus.h"
 
@@ -34,15 +34,13 @@
 #import "GTLPlusActivityFeed.h"
 #import "GTLPlusComment.h"
 #import "GTLPlusCommentFeed.h"
-#import "GTLPlusMoment.h"
-#import "GTLPlusMomentsFeed.h"
 #import "GTLPlusPeopleFeed.h"
 #import "GTLPlusPerson.h"
 
 @implementation GTLQueryPlus
 
-@dynamic activityId, collection, commentId, debug, fields, language, maxResults,
-         orderBy, pageToken, query, sortOrder, targetUrl, type, userId;
+@dynamic activityId, collection, commentId, fields, language, maxResults,
+         orderBy, pageToken, query, sortOrder, userId;
 
 #pragma mark - "activities" methods
 // These create a GTLQueryPlus object.
@@ -89,35 +87,6 @@
   GTLQueryPlus *query = [self queryWithMethodName:methodName];
   query.activityId = activityId;
   query.expectedObjectClass = [GTLPlusCommentFeed class];
-  return query;
-}
-
-#pragma mark - "moments" methods
-// These create a GTLQueryPlus object.
-
-+ (instancetype)queryForMomentsInsertWithObject:(GTLPlusMoment *)object
-                                         userId:(NSString *)userId
-                                     collection:(NSString *)collection {
-  if (object == nil) {
-    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
-    return nil;
-  }
-  NSString *methodName = @"plus.moments.insert";
-  GTLQueryPlus *query = [self queryWithMethodName:methodName];
-  query.bodyObject = object;
-  query.userId = userId;
-  query.collection = collection;
-  query.expectedObjectClass = [GTLPlusMoment class];
-  return query;
-}
-
-+ (instancetype)queryForMomentsListWithUserId:(NSString *)userId
-                                   collection:(NSString *)collection {
-  NSString *methodName = @"plus.moments.list";
-  GTLQueryPlus *query = [self queryWithMethodName:methodName];
-  query.userId = userId;
-  query.collection = collection;
-  query.expectedObjectClass = [GTLPlusMomentsFeed class];
   return query;
 }
 

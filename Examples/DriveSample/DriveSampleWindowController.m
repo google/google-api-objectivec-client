@@ -19,8 +19,8 @@
 
 #import "DriveSampleWindowController.h"
 
-#import "GTLUtilities.h"
-#import "GTMHTTPFetcherLogging.h"
+#import "GTL/GTLUtilities.h"
+#import "GTL/GTMSessionFetcherLogging.h"
 
 // Segmented control indices.
 enum {
@@ -29,9 +29,6 @@ enum {
   kChildrenSegment,
   kParentsSegment
 };
-
-// Menu item title for downloading the original file.
-static NSString *const kOriginalFile = @"Original File";
 
 // Keychain item name for saving the user's authentication information.
 NSString *const kKeychainItemName = @"DriveSample: Google Drive";
@@ -54,10 +51,10 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
   GTLDrivePermissionList *_permissionList;
   NSError *_permissionListFetchError;
   
-  GTLDriveChildList *_childList;
+  GTLDriveFileList *_childList;
   NSError *_childListFetchError;
   
-  GTLDriveParentList *_parentsList;
+  NSArray *_parentsList;
   NSError *_parentsListFetchError;
   
   GTLServiceTicket *_detailsTicket;
@@ -160,7 +157,7 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 
 - (IBAction)viewClicked:(id)sender {
   GTLDriveFile *selectedFile = [self selectedFileListEntry];
-  NSString *viewURLString = selectedFile.alternateLink;
+  NSString *viewURLString = selectedFile.webViewLink;
   if ([viewURLString length] > 0) {
     NSURL *url = [NSURL URLWithString:viewURLString];
     [[NSWorkspace sharedWorkspace] openURL:url];
@@ -177,7 +174,7 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 
 - (IBAction)deleteClicked:(id)sender {
   GTLDriveFile *file = [self selectedFileListEntry];
-  NSString *title = file.title;
+  NSString *title = file.name;
 
   NSAlert *alert = [[NSAlert alloc] init];
   alert.messageText = [NSString stringWithFormat:@"Delete \"%@\"?", title];
@@ -238,7 +235,7 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 }
 
 - (IBAction)loggingCheckboxClicked:(id)sender {
-  [GTMHTTPFetcher setLoggingEnabled:[sender state]];
+  [GTMSessionFetcher setLoggingEnabled:[sender state]];
 }
 
 #pragma mark -
@@ -257,9 +254,10 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
   dispatch_once(&onceToken, ^{
     service = [[GTLServiceDrive alloc] init];
 
-    // Have the service object set tickets to fetch consecutive pages
-    // of the feed so we do not need to manually fetch them
-    service.shouldFetchNextPages = YES;
+    // The Drive API does not support the "items" property on response objects,
+    // which is necessary for the server to support the GTL library's
+    // shouldFetchNextPages feature.
+    // service.shouldFetchNextPages = YES;
 
     // Have the service object set tickets to retry temporary error conditions
     // automatically
@@ -271,23 +269,21 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 - (GTLDriveFile *)selectedFileListEntry {
   int rowIndex = [_fileListTable selectedRow];
   if (rowIndex > -1) {
-    // GTLCollectionObjects like GTLDriveFileList support indexed
-    // access to the collection items
-    GTLDriveFile *item = _fileList[rowIndex];
+    GTLDriveFile *item = _fileList.files[rowIndex];
     return item;
   }
   return nil;
 }
 
-- (id)detailCollection {
+- (id)detailCollectionArray {
   NSInteger segment = [_segmentedControl selectedSegment];
   switch (segment) {
     case kRevisionsSegment:
-      return _revisionList;
+      return _revisionList.revisions;
     case kPermissionsSegment:
-      return _permissionList;
+      return _permissionList.permissions;
     case kChildrenSegment:
-      return _childList;
+      return _childList.files;
     case kParentsSegment:
       return _parentsList;
     default:
@@ -298,8 +294,8 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 - (id)selectedDetailItem {
   int rowIndex = [_detailTable selectedRow];
   if (rowIndex > -1) {
-    GTLCollectionObject *collection = [self detailCollection];
-    GTLObject *item = collection[rowIndex];
+    NSArray *array = [self detailCollectionArray];
+    GTLObject *item = array[rowIndex];
     return item;
   }
   return nil;
@@ -328,12 +324,12 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 }
 
 - (NSString *)descriptionForFileID:(NSString *)fileID {
-  NSArray *files = _fileList.items;
+  NSArray *files = _fileList.files;
   GTLDriveFile *file = [GTLUtilities firstObjectFromArray:files
                                                 withValue:fileID
                                                forKeyPath:@"identifier"];
   if (file) {
-    return file.title;
+    return file.name;
   } else {
     // Can't find the file by its identifier.
     return [NSString stringWithFormat:@"<%@>", fileID];
@@ -342,20 +338,15 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 
 - (NSString *)descriptionForDetailItem:(id)item {
   if ([item isKindOfClass:[GTLDriveRevision class]]) {
-    return ((GTLDriveRevision *)item).modifiedDate.stringValue;
+    return ((GTLDriveRevision *)item).modifiedTime.stringValue;
   } else if ([item isKindOfClass:[GTLDrivePermission class]]) {
-    return ((GTLDrivePermission *)item).name;
-  } else if ([item isKindOfClass:[GTLDriveChildReference class]]) {
-    NSString *childID = ((GTLDriveChildReference *)item).identifier;
-    return [self descriptionForFileID:childID];
-  } else if ([item isKindOfClass:[GTLDriveParentReference class]]) {
-    GTLDriveParentReference *parentRef = ((GTLDriveParentReference *)item);
-    if ([[parentRef isRoot] boolValue]) {
-      return @"<root folder>";
-    } else {
-      NSString *parentID = parentRef.identifier;
-      return [self descriptionForFileID:parentID];
-    }
+    return ((GTLDrivePermission *)item).displayName;
+  } else if ([item isKindOfClass:[GTLDriveFile class]]) {
+    NSString *fileID = ((GTLDriveFile *)item).identifier;
+    return [self descriptionForFileID:fileID];
+  } else if ([item isKindOfClass:[NSString class]]) {
+    // item is probably a file ID
+    return [self descriptionForFileID:item];
   }
   return nil;
 }
@@ -371,21 +362,18 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 
   GTLQueryDrive *query = [GTLQueryDrive queryForFilesList];
 
-  // maxResults specifies the number of results per page.  Since we earlier
-  // specified shouldFetchNextPages=YES, all results should be fetched,
-  // though specifying a larger maxResults will reduce the number of fetches
-  // needed to retrieve all pages.
-  query.maxResults = 150;
+  // Drive API v3 uses pageSize to specify the results per page (though the standard
+  // for Google APIs for that is the property maxResults.)
+  //
+  // Because the Drive API does not return items using the standard "items" property,
+  // the GTL library's shouldFetchNextPages setting cannot work.  We'll set a large pageSize
+  // instead.
+  query.pageSize = 150;
 
-  // The Drive API's file entries are chock full of data that the app may not
-  // care about. Specifying the fields we want here reduces the network
-  // bandwidth and memory needed for the collection.
-  //
-  // For example, leave query.fields as nil during development.
-  // When ready to test and optimize your app, specify just the fields needed.
-  // For example, this sample app might use
-  //
-  // query.fields = @"kind,etag,items(id,downloadUrl,editable,etag,exportLinks,kind,labels,originalFilename,title)";
+  // Google APIs typically allow the fields returned to be limited by the "fields" property.
+  // The Drive API uses the "fields" property differently by not sending most of the requested
+  // resource's fields unless they are explicitly specified.
+  query.fields = @"kind,nextPageToken,files(mimeType,id,kind,name,webViewLink,thumbnailLink,trashed)";
 
   _fileListTicket = [service executeQuery:query
                         completionHandler:^(GTLServiceTicket *ticket,
@@ -439,19 +427,22 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
       _permissionListFetchError = error;
     };
 
-    GTLQueryDrive *childQuery = [GTLQueryDrive queryForChildrenListWithFolderId:fileID];
-    childQuery.completionBlock = ^(GTLServiceTicket *ticket, GTLDriveChildList *obj,
-                                      NSError *error) {
+    GTLQueryDrive *childQuery = [GTLQueryDrive queryForFilesList];
+    childQuery.q = [NSString stringWithFormat:@"'%@' in parents", fileID];
+    childQuery.completionBlock = ^(GTLServiceTicket *ticket, GTLDriveFileList *obj,
+                                   NSError *error) {
       _childList = obj;
       _childListFetchError = error;
     };
 
-    GTLQueryDrive *parentsQuery = [GTLQueryDrive queryForParentsListWithFileId:fileID];
-    parentsQuery.completionBlock = ^(GTLServiceTicket *ticket, GTLDriveParentList *obj,
-                                      NSError *error) {
-      // Note that we could obtain the parents list for a file item from the
-      // main file list feed, too.
-      _parentsList = obj;
+    // Note: The fields property in Google APIs is supposed to restrict
+    // the fields returned for a partial query, though in the v3 Drive API
+    // it is required here to return the parents field.
+    GTLQueryDrive *parentsQuery = [GTLQueryDrive queryForFilesGetWithFileId:fileID];
+    parentsQuery.fields = @"parents";
+    parentsQuery.completionBlock = ^(GTLServiceTicket *ticket, GTLDriveFile *obj,
+                                     NSError *error) {
+      _parentsList = obj.parents;
       _parentsListFetchError = error;
     };
 
@@ -496,7 +487,7 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
       if (error == nil) {
         [self displayAlert:@"Deleted"
                     format:@"Deleted \"%@\"",
-         selectedFile.title];
+         selectedFile.name];
         [self updateUI];
         [self fetchFileList];
       } else {
@@ -516,22 +507,24 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
   NSString *fileID = selectedFile.identifier;
   if (fileID) {
     GTLQueryDrive *query;
-    BOOL isInTrash = [selectedFile.labels.trashed boolValue];
-    if (isInTrash) {
-      query = [GTLQueryDrive queryForFilesUntrashWithFileId:fileID];
-    } else {
-      query = [GTLQueryDrive queryForFilesTrashWithFileId:fileID];
-    }
+    BOOL isInTrash = selectedFile.trashed.boolValue;
+
+    GTLDriveFile *updateFile = [GTLDriveFile object];
+    updateFile.trashed = isInTrash ? @NO : @YES;
+
+    query = [GTLQueryDrive queryForFilesUpdateWithObject:updateFile
+                                                  fileId:fileID
+                                        uploadParameters:nil];
     _editFileListTicket = [service executeQuery:query
                               completionHandler:^(GTLServiceTicket *ticket,
-                                                  id nilObject,
+                                                  id updatedObject,
                                                   NSError *error) {
                                 // Callback
       _editFileListTicket = nil;
       if (error == nil) {
         NSString *fmt = (isInTrash ? @"Moved \"%@\" out of trash" : @"Moved \"%@\" to trash");
         [self displayAlert:@"Updated"
-                    format:fmt, selectedFile.title];
+                    format:fmt, selectedFile.name];
         [self updateUI];
         [self fetchFileList];
       } else {
@@ -552,7 +545,7 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
   if (fileID) {
     // Make a file object with the title to use for the duplicate.
     GTLDriveFile *fileObj = [GTLDriveFile object];
-    fileObj.title = [NSString stringWithFormat:@"%@ copy", selectedFile.title];
+    fileObj.name = [NSString stringWithFormat:@"%@ copy", selectedFile.name];
 
     GTLQueryDrive *query = [GTLQueryDrive queryForFilesCopyWithObject:fileObj
                                                                fileId:fileID];
@@ -565,7 +558,7 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
       if (error == nil) {
         [self displayAlert:@"Copied"
                     format:@"Created copy \"%@\"",
-         copiedFile.title];
+         copiedFile.name];
         [self updateUI];
         [self fetchFileList];
       } else {
@@ -582,17 +575,13 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
   GTLServiceDrive *service = self.driveService;
 
   GTLDriveFile *folderObj = [GTLDriveFile object];
-  folderObj.title = [NSString stringWithFormat:@"New Folder %@", [NSDate date]];
+  folderObj.name = [NSString stringWithFormat:@"New Folder %@", [NSDate date]];
   folderObj.mimeType = @"application/vnd.google-apps.folder";
 
-  // To create a folder in a specific parent folder, specify the identifier
-  // of the parent:
-  //
-  //  GTLDriveParentReference *parentRef = [GTLDriveParentReference object];
-  //  parentRef.identifier = parentID;
-  //  folderObj.parents = [NSArray arrayWithObject:parentRef];
+  // To create a folder in a specific parent folder, specify the addParents property
+  // for the query.
 
-  GTLQueryDrive *query = [GTLQueryDrive queryForFilesInsertWithObject:folderObj
+  GTLQueryDrive *query = [GTLQueryDrive queryForFilesCreateWithObject:folderObj
                                                      uploadParameters:nil];
   _editFileListTicket = [service executeQuery:query
                             completionHandler:^(GTLServiceTicket *ticket,
@@ -603,7 +592,7 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
     if (error == nil) {
       [self displayAlert:@"Created"
                   format:@"Created folder \"%@\"",
-       folderItem.title];
+       folderItem.name];
       [self updateUI];
       [self fetchFileList];
     } else {
@@ -616,56 +605,59 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 #pragma mark Uploading
 
 - (void)uploadFileAtPath:(NSString *)path {
+  NSURL *fileToUploadURL = [NSURL fileURLWithPath:path];
+  NSError *fileError;
+  if (![fileToUploadURL checkPromisedItemIsReachableAndReturnError:&fileError]) {
+    // Could not read file data.
+    [self displayAlert:@"No Upload File Found"
+                format:@"Path: %@", path];
+    return;
+  }
+
   // Queries that support file uploads take an uploadParameters object.
   // The uploadParameters include the MIME type of the file being uploaded,
-  // and either an NSData with the file contents, or an NSFileHandler for
+  // and either an NSData with the file contents, or a URL for
   // the file path.
-  NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:path];
-  if (fileHandle) {
-    GTLServiceDrive *service = self.driveService;
+  GTLServiceDrive *service = self.driveService;
 
-    NSString *filename = [path lastPathComponent];
-    NSString *mimeType = [self MIMETypeFileName:filename
-                                defaultMIMEType:@"binary/octet-stream"];
-    GTLUploadParameters *uploadParameters =
-      [GTLUploadParameters uploadParametersWithFileHandle:fileHandle
-                                                 MIMEType:mimeType];
-    GTLDriveFile *newFile = [GTLDriveFile object];
-    newFile.title = filename;
+  NSString *filename = [path lastPathComponent];
+  NSString *mimeType = [self MIMETypeFileName:filename
+                              defaultMIMEType:@"binary/octet-stream"];
+  GTLUploadParameters *uploadParameters =
+    [GTLUploadParameters uploadParametersWithFileURL:fileToUploadURL
+                                            MIMEType:mimeType];
+  GTLDriveFile *newFile = [GTLDriveFile object];
+  newFile.name = filename;
 
-    GTLQueryDrive *query = [GTLQueryDrive queryForFilesInsertWithObject:newFile
-                                                       uploadParameters:uploadParameters];
-    _uploadFileTicket = [service executeQuery:query
-                            completionHandler:^(GTLServiceTicket *ticket,
-                                                GTLDriveFile *uploadedFile,
-                                                NSError *error) {
-      // Callback
-      _uploadFileTicket = nil;
-      if (error == nil) {
-        [self displayAlert:@"Created"
-                    format:@"Uploaded file \"%@\"",
-         uploadedFile.title];
-        [self fetchFileList];
-      } else {
-        [self displayAlert:@"Upload Failed"
-                    format:@"%@", error];
-      }
-      [_uploadProgressIndicator setDoubleValue:0.0];
-      [self updateUI];
-    }];
-
-    NSProgressIndicator *uploadProgressIndicator = _uploadProgressIndicator;
-    _uploadFileTicket.uploadProgressBlock = ^(GTLServiceTicket *ticket,
-                                              unsigned long long numberOfBytesRead,
-                                              unsigned long long dataLength) {
-      [uploadProgressIndicator setMaxValue:(double)dataLength];
-      [uploadProgressIndicator setDoubleValue:(double)numberOfBytesRead];
-    };
+  GTLQueryDrive *query = [GTLQueryDrive queryForFilesCreateWithObject:newFile
+                                                     uploadParameters:uploadParameters];
+  _uploadFileTicket = [service executeQuery:query
+                          completionHandler:^(GTLServiceTicket *ticket,
+                                              GTLDriveFile *uploadedFile,
+                                              NSError *error) {
+    // Callback
+    _uploadFileTicket = nil;
+    if (error == nil) {
+      [self displayAlert:@"Created"
+                  format:@"Uploaded file \"%@\"",
+       uploadedFile.name];
+      [self fetchFileList];
+    } else {
+      [self displayAlert:@"Upload Failed"
+                  format:@"%@", error];
+    }
+    [_uploadProgressIndicator setDoubleValue:0.0];
     [self updateUI];
-  } else {
-    // Could not read file data.
-    [self displayAlert:@"No Upload File Found" format:@"Path: %@", path];
-  }
+  }];
+
+  NSProgressIndicator *uploadProgressIndicator = _uploadProgressIndicator;
+  _uploadFileTicket.uploadProgressBlock = ^(GTLServiceTicket *ticket,
+                                            unsigned long long numberOfBytesRead,
+                                            unsigned long long dataLength) {
+    [uploadProgressIndicator setMaxValue:(double)dataLength];
+    [uploadProgressIndicator setDoubleValue:(double)numberOfBytesRead];
+  };
+  [self updateUI];
 }
 
 - (NSString *)MIMETypeFileName:(NSString *)path
@@ -678,91 +670,6 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
     CFStringRef cfMIMEType = UTTypeCopyPreferredTagWithClass(uti, kUTTagClassMIMEType);
     if (cfMIMEType) {
       result = CFBridgingRelease(cfMIMEType);
-    }
-    CFRelease(uti);
-  }
-  return result;
-}
-
-#pragma mark Downloading
-
-- (void)downloadFormatSelected:(NSMenuItem *)menuItem {
-  // The user chose a format for downloading the selected file.
-  NSString *exportFormat = [menuItem title];
-  GTLDriveFile *file = [menuItem representedObject];
-  NSString *exportURLStr;
-  NSString *extn = nil;
-  if ([exportFormat isEqual:kOriginalFile]) {
-    exportURLStr = file.downloadUrl;
-  } else {
-    exportURLStr = [file.exportLinks JSONValueForKey:exportFormat];
-    extn = [self extensionForMIMEType:exportFormat];
-  }
-  if ([exportURLStr length] > 0) {
-    // Show a save panel so the user can pick a download location.
-    NSString *suggestedName = file.originalFilename;
-    if ([suggestedName length] == 0) {
-      suggestedName = file.title;
-    }
-    if ([extn length] > 0) {
-      NSString *withoutExt = [suggestedName stringByDeletingPathExtension];
-      suggestedName = [withoutExt stringByAppendingPathExtension:extn];
-    }
-    NSSavePanel *savePanel = [NSSavePanel savePanel];
-    [savePanel setNameFieldStringValue:suggestedName];
-    [savePanel beginSheetModalForWindow:[self window]
-                      completionHandler:^(NSInteger result) {
-      // Callback
-      if (result == NSFileHandlingPanelOKButton) {
-        NSString *savePath = [[savePanel URL] path];
-
-        // Use a GTMHTTPFetcher object to download the file with authorization.
-        NSURL *url = [NSURL URLWithString:exportURLStr];
-        NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        GTMHTTPFetcher *fetcher = [GTMHTTPFetcher fetcherWithRequest:request];
-
-        // Requests of user data from Google services must be authorized.
-        fetcher.authorizer = self.driveService.authorizer;
-
-        // The fetcher can save data directly to a file.
-        fetcher.downloadPath = savePath;
-
-        // Fetcher logging can include comments.
-        [fetcher setCommentWithFormat:@"Downloading \"%@\"", file.title];
-
-        fetcher.receivedDataBlock = ^(NSData *receivedData) {
-          // The fetcher will call the received data block periodically.
-          // When a download path has been specified, the received data
-          // parameter will be nil.
-        };
-
-        [fetcher beginFetchWithCompletionHandler:^(NSData *data, NSError *error) {
-          // Callback
-          if (error == nil) {
-            // Successfully saved the file.
-            //
-            // Since a downloadPath property was specified, the data argument is
-            // nil, and the file data has been written to disk.
-            [self displayAlert:@"Downloaded"
-                        format:@"%@", savePath];
-          } else {
-            [self displayAlert:@"Error Downloading File"
-                        format:@"%@", error];
-          }
-        }];
-      }
-    }];
-  }
-}
-
-- (NSString *)extensionForMIMEType:(NSString *)mimeType {
-  NSString *result = nil;
-  CFStringRef uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType,
-      (__bridge CFStringRef)mimeType, NULL);
-  if (uti) {
-    CFStringRef cfExtn = UTTypeCopyPreferredTagWithClass(uti, kUTTagClassFilenameExtension);
-    if (cfExtn) {
-      result = CFBridgingRelease(cfExtn);
     }
     CFRelease(uti);
   }
@@ -842,7 +749,7 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 
     // Also display any server data present
     NSDictionary *errorInfo = [_fileListFetchError userInfo];
-    NSData *errData = errorInfo[kGTMHTTPFetcherStatusDataKey];
+    NSData *errData = errorInfo[kGTMSessionFetcherStatusDataKey];
     if (errData) {
       NSString *dataStr = [[NSString alloc] initWithData:errData
                                                 encoding:NSUTF8StringEncoding];
@@ -887,10 +794,10 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
   [_detailResultTextField setString:resultStr];
 
   // Update the counts in the segmented control
-  NSUInteger numberOfRevisions = [_revisionList.items count];
-  NSUInteger numberOfPermissions = [_permissionList.items count];
-  NSUInteger numberOfChildren = [_childList.items count];
-  NSUInteger numberOfParents = [_parentsList.items count];
+  NSUInteger numberOfRevisions = _revisionList.revisions.count;
+  NSUInteger numberOfPermissions = _permissionList.permissions.count;
+  NSUInteger numberOfChildren = _childList.files.count;
+  NSUInteger numberOfParents = _parentsList.count;
 
   NSString *revisionsStr = [NSString stringWithFormat:@"Revisions %lu", numberOfRevisions];
   NSString *permissionsStr = [NSString stringWithFormat:@"Permissions %lu", numberOfPermissions];
@@ -911,15 +818,15 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
   [_detailCancelButton setEnabled:isFetchingDetails];
 
   GTLDriveFile *selectedFile = [self selectedFileListEntry];
-  BOOL isFileSelected = (selectedFile != nil);
-  BOOL isFileViewable = (selectedFile.alternateLink != nil);
+  NSString *webViewLink = selectedFile.webViewLink;
+  BOOL isFileViewable = (webViewLink != nil);
   [_viewButton setEnabled:isFileViewable];
 
-  BOOL isEditable = [selectedFile.editable boolValue];
-  [_deleteButton setEnabled:isEditable];
-  [_trashButton setEnabled:isEditable];
+  BOOL isFileSelected = (selectedFile != nil);
+  [_deleteButton setEnabled:isFileSelected];
+  [_trashButton setEnabled:isFileSelected];
 
-  BOOL isInTrash = [selectedFile.labels.trashed boolValue];
+  BOOL isInTrash = selectedFile.trashed.boolValue;
   NSString *trashTitle = (isInTrash ? @"Untrash" : @"Trash");
   [_trashButton setTitle:trashTitle];
 
@@ -937,35 +844,6 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
   NSString *pauseTitle = (isUploadPaused ? @"Resume" : @"Pause");
   [_pauseUploadButton setTitle:pauseTitle];
 
-  // Fill in the download menu with the available download formats.
-  BOOL hasDownloadURL = ([selectedFile.downloadUrl length] > 0);
-  GTLDriveFileExportLinks *exportLinks = selectedFile.exportLinks;
-  NSArray *exportLinkKeys = [exportLinks additionalJSONKeys];
-  BOOL hasExportLinks = ([exportLinkKeys count] > 0);
-  [_downloadButton setEnabled:(hasDownloadURL || hasExportLinks)];
-
-  NSMenu *menu = [[NSMenu alloc] init];
-  [menu addItemWithTitle:@"Download" action:NULL keyEquivalent:@""];
-
-  // Add an "Original File" menu item only if there's a download URL.
-  if ([selectedFile.downloadUrl length] > 0) {
-    NSMenuItem *menuItem = [menu addItemWithTitle:kOriginalFile
-                                           action:@selector(downloadFormatSelected:)
-                                    keyEquivalent:@""];
-    [menuItem setTarget:self];
-    [menuItem setRepresentedObject:selectedFile];
-  }
-
-  for (NSString *key in exportLinkKeys) {
-    NSMenuItem *menuItem = [menu addItemWithTitle:key
-                                           action:@selector(downloadFormatSelected:)
-                                    keyEquivalent:@""];
-    [menuItem setTarget:self];
-
-    [menuItem setRepresentedObject:selectedFile];
-  }
-  [_downloadButton setMenu:menu];
-
   // Show or hide the text indicating that the client ID or client secret are
   // needed
   BOOL hasClientIDStrings = [[_clientIDField stringValue] length] > 0
@@ -978,6 +856,7 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
   // currently displayed.
   static NSString *gDisplayedURLStr = nil;
   GTLDriveFile *selectedFile = [self selectedFileListEntry];
+
   NSString *thumbnailURLStr = selectedFile.thumbnailLink;
 
   if (!GTL_AreEqualOrBothNil(gDisplayedURLStr, thumbnailURLStr)) {
@@ -986,9 +865,10 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
     gDisplayedURLStr = [thumbnailURLStr copy];
 
     if (thumbnailURLStr) {
-      GTMHTTPFetcher *fetcher = [GTMHTTPFetcher fetcherWithURLString:thumbnailURLStr];
+      GTMSessionFetcher *fetcher =
+          [self.driveService.fetcherService fetcherWithURLString:thumbnailURLStr];
       fetcher.authorizer = self.driveService.authorizer;
-      [fetcher setCommentWithFormat:@"Thumbnail for \"%@\"", selectedFile.title];
+      [fetcher setCommentWithFormat:@"Thumbnail for \"%@\"", selectedFile.name];
       [fetcher beginFetchWithCompletionHandler:^(NSData *data, NSError *error) {
         if (data) {
           NSImage *image = [[NSImage alloc] initWithData:data];
@@ -996,11 +876,11 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
             [_thumbnailView setImage:image];
           } else {
             NSLog(@"Failed to make image from %lu bytes for \"%@\"",
-                  (unsigned long) [data length], selectedFile.title);
+                  (unsigned long) [data length], selectedFile.name);
           }
         } else {
           NSLog(@"Failed to fetch thumbnail for \"%@\", %@",
-                selectedFile.title, error);
+                selectedFile.name, error);
         }
       }];
     }
@@ -1062,44 +942,39 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 
 // Table view data source methods
 - (int)numberOfRowsInTableView:(NSTableView *)tableView {
-  GTLCollectionObject *collection;
+  NSArray *array;
   if (tableView == _fileListTable) {
-    collection = _fileList;
+    array = _fileList.files;
   } else {
-    collection = [self detailCollection];
+    array = [self detailCollectionArray];
   }
-  return [collection.items count];
+  return array.count;
 }
 
 - (id)tableView:(NSTableView *)tableView
 objectValueForTableColumn:(NSTableColumn *)tableColumn
             row:(NSInteger)row {
   if (tableView == _fileListTable) {
-    // GTLCollectionObjects support indexed access to the collection items
-    GTLDriveFile *file = _fileList[row];
+    GTLDriveFile *file = _fileList.files[row];
     return [self fileTitleWithLabelsForFile:file];
   } else {
-    GTLCollectionObject *collection = [self detailCollection];
-    GTLObject *item = collection[row];
+    NSArray *array = [self detailCollectionArray];
+    id item = array[row];
     return [self descriptionForDetailItem:item];
   }
 }
 
 - (NSString *)fileTitleWithLabelsForFile:(GTLDriveFile *)file {
 
-  NSMutableString *title = [NSMutableString stringWithString:file.title];
-  GTLDriveFileLabels *labels = file.labels;
+  NSMutableString *title = [NSMutableString stringWithString:file.name];
 
-  if ([labels.starred boolValue]) {
+  if (file.starred.boolValue) {
     [title appendString:@" \u2605"]; // star character
   }
-  if ([labels.trashed boolValue]) {
+  if (file.trashed.boolValue) {
     [title insertString:@"\u2717 " atIndex:0]; // X character
   }
-  if ([labels.hidden boolValue]) {
-    [title appendString:@" \u263D"]; // quarter moon character
-  }
-  if ([labels.restricted boolValue]) {
+  if (file.viewersCanCopyContent.boolValue) {
     [title appendString:@" \u21DF"]; // crossed down arrow character
   }
   return title;

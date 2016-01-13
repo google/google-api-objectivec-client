@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -175,8 +175,8 @@
 // client will need to poll for the job status to see if the cancel completed
 // successfully. Cancelled jobs may still incur costs.
 //  Required:
-//   projectId: Project ID of the job to cancel
-//   jobId: Job ID of the job to cancel
+//   projectId: [Required] Project ID of the job to cancel
+//   jobId: [Required] Job ID of the job to cancel
 //  Authorization scope(s):
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
@@ -189,8 +189,8 @@
 // six month period after creation. Requires that you're the person who ran the
 // job, or have the Is Owner project role.
 //  Required:
-//   projectId: Project ID of the requested job
-//   jobId: Job ID of the requested job
+//   projectId: [Required] Project ID of the requested job
+//   jobId: [Required] Job ID of the requested job
 //  Authorization scope(s):
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform
@@ -202,8 +202,8 @@
 // Method: bigquery.jobs.getQueryResults
 // Retrieves the results of a query job.
 //  Required:
-//   projectId: Project ID of the query job
-//   jobId: Job ID of the query job
+//   projectId: [Required] Project ID of the query job
+//   jobId: [Required] Job ID of the query job
 //  Optional:
 //   maxResults: Maximum number of results to read
 //   pageToken: Page token, returned by a previous call, to request the next
@@ -343,10 +343,12 @@
 //   skipInvalidRows: [Optional] Insert all valid rows of a request, even if
 //     invalid rows exist. The default value is false, which causes the entire
 //     request to fail if any invalid rows exist.
-//   templateSuffix: [Experimental] If specified, treats the destination table
-//     as a base template, and inserts the rows into an instance table named "".
-//     BigQuery will manage creation of the instance table, using the schema of
-//     the base template table.
+//   templateSuffix: [Optional] If specified, treats the destination table as a
+//     base template, and inserts the rows into an instance table named
+//     "{destination}{templateSuffix}". BigQuery will manage creation of the
+//     instance table, using the schema of the base template table. See
+//     https://cloud.google.com/bigquery/streaming-data-into-bigquery#template-tables
+//     for considerations when working with templates tables.
 //  Authorization scope(s):
 //   kGTLAuthScopeBigquery
 //   kGTLAuthScopeBigqueryCloudPlatform

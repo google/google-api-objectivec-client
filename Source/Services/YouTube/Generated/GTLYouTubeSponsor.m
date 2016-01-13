@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,41 +14,42 @@
  */
 
 //
-//  GTLPlusMoment.m
+//  GTLYouTubeSponsor.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google+ API (plus/v1)
+//   YouTube Data API (youtube/v3)
 // Description:
-//   The Google+ API enables developers to build on top of the Google+ platform.
+//   Programmatic access to YouTube features.
 // Documentation:
-//   https://developers.google.com/+/api/
+//   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLPlusMoment (0 custom class methods, 7 custom properties)
+//   GTLYouTubeSponsor (0 custom class methods, 4 custom properties)
 
-#import "GTLPlusMoment.h"
+#import "GTLYouTubeSponsor.h"
 
-#import "GTLPlusItemScope.h"
+#import "GTLYouTubeSponsorSnippet.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLPlusMoment
+//   GTLYouTubeSponsor
 //
 
-@implementation GTLPlusMoment
-@dynamic identifier, kind, object, result, startDate, target, type;
+@implementation GTLYouTubeSponsor
+@dynamic ETag, identifier, kind, snippet;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{
+    @"ETag" : @"etag",
     @"identifier" : @"id"
   };
   return map;
 }
 
 + (void)load {
-  [self registerObjectClassForKind:@"plus#moment"];
+  [self registerObjectClassForKind:@"youtube#sponsor"];
 }
 
 @end

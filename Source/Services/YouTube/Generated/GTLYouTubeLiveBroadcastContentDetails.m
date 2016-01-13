@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeLiveBroadcastContentDetails (0 custom class methods, 9 custom properties)
+//   GTLYouTubeLiveBroadcastContentDetails (0 custom class methods, 10 custom properties)
 
 #import "GTLYouTubeLiveBroadcastContentDetails.h"
 
@@ -38,7 +38,7 @@
 //
 
 @implementation GTLYouTubeLiveBroadcastContentDetails
-@dynamic boundStreamId, enableClosedCaptions, enableContentEncryption,
-         enableDvr, enableEmbed, enableLowLatency, monitorStream,
-         recordFromStart, startWithSlate;
+@dynamic boundStreamId, closedCaptionsType, enableClosedCaptions,
+         enableContentEncryption, enableDvr, enableEmbed, enableLowLatency,
+         monitorStream, recordFromStart, startWithSlate;
 @end

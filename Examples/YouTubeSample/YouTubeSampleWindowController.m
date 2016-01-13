@@ -24,8 +24,8 @@
 #import "YouTubeSampleWindowController.h"
 
 #import "GTL/GTLUtilities.h"
-#import "GTL/GTMHTTPUploadFetcher.h"
-#import "GTL/GTMHTTPFetcherLogging.h"
+#import "GTL/GTMSessionUploadFetcher.h"
+#import "GTL/GTMSessionFetcherLogging.h"
 #import "GTL/GTMOAuth2WindowController.h"
 
 enum {
@@ -218,7 +218,7 @@ NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
 }
 
 - (IBAction)loggingCheckboxClicked:(id)sender {
-  [GTMHTTPFetcher setLoggingEnabled:[sender state]];
+  [GTMSessionFetcher setLoggingEnabled:[sender state]];
 }
 
 #pragma mark -
@@ -422,74 +422,62 @@ NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
 
 - (void)uploadVideoWithVideoObject:(GTLYouTubeVideo *)video
            resumeUploadLocationURL:(NSURL *)locationURL {
-  // Get a file handle for the upload data.
-  NSString *path = [_uploadPathField stringValue];
-  NSString *filename = [path lastPathComponent];
-  NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:path];
-  if (fileHandle) {
-    NSString *mimeType = [self MIMETypeForFilename:filename
-                                   defaultMIMEType:@"video/mp4"];
-    GTLUploadParameters *uploadParameters =
-        [GTLUploadParameters uploadParametersWithFileHandle:fileHandle
-                                                   MIMEType:mimeType];
-    uploadParameters.uploadLocationURL = locationURL;
-
-    GTLQueryYouTube *query = [GTLQueryYouTube queryForVideosInsertWithObject:video
-                                                                        part:@"snippet,status"
-                                                            uploadParameters:uploadParameters];
-
-    GTLServiceYouTube *service = self.youTubeService;
-    _uploadFileTicket = [service executeQuery:query
-                            completionHandler:^(GTLServiceTicket *ticket,
-                                                GTLYouTubeVideo *uploadedVideo,
-                                                NSError *error) {
-        // Callback
-        _uploadFileTicket = nil;
-        if (error == nil) {
-          [self displayAlert:@"Uploaded"
-                      format:@"Uploaded file \"%@\"",
-           uploadedVideo.snippet.title];
-
-          if ([_playlistPopup selectedTag] == kUploadsTag) {
-            // Refresh the displayed uploads playlist.
-            [self fetchSelectedPlaylist];
-          }
-        } else {
-          [self displayAlert:@"Upload Failed"
-                      format:@"%@", error];
-        }
-
-        [_uploadProgressIndicator setDoubleValue:0.0];
-        _uploadLocationURL = nil;
-        [self updateUI];
-      }];
-
-    NSProgressIndicator *progressIndicator = _uploadProgressIndicator;
-    _uploadFileTicket.uploadProgressBlock = ^(GTLServiceTicket *ticket,
-                                              unsigned long long numberOfBytesRead,
-                                              unsigned long long dataLength) {
-      [progressIndicator setMaxValue:(double)dataLength];
-      [progressIndicator setDoubleValue:(double)numberOfBytesRead];
-    };
-
-    // To allow restarting after stopping, we need to track the upload location
-    // URL.
-    //
-    // For compatibility with systems that do not support Objective-C blocks
-    // (iOS 3 and Mac OS X 10.5), the location URL may also be obtained in the
-    // progress callback as ((GTMHTTPUploadFetcher *)[ticket objectFetcher]).locationURL
-
-    GTMHTTPUploadFetcher *uploadFetcher = (GTMHTTPUploadFetcher *)[_uploadFileTicket objectFetcher];
-    uploadFetcher.locationChangeBlock = ^(NSURL *url) {
-      _uploadLocationURL = url;
-      [self updateUI];
-    };
-
-    [self updateUI];
-  } else {
-    // Could not read file data.
-    [self displayAlert:@"File Not Found" format:@"Path: %@", path];
+  NSURL *fileToUploadURL = [NSURL fileURLWithPath:[_uploadPathField stringValue]];
+  NSError *fileError;
+  if (![fileToUploadURL checkPromisedItemIsReachableAndReturnError:&fileError]) {
+    [self displayAlert:@"No Upload File Found"
+                format:@"Path: %@", fileToUploadURL.path];
+    return;
   }
+
+  // Get a file handle for the upload data.
+  NSString *filename = [fileToUploadURL lastPathComponent];
+  NSString *mimeType = [self MIMETypeForFilename:filename
+                                 defaultMIMEType:@"video/mp4"];
+  GTLUploadParameters *uploadParameters =
+      [GTLUploadParameters uploadParametersWithFileURL:fileToUploadURL
+                                              MIMEType:mimeType];
+  uploadParameters.uploadLocationURL = locationURL;
+
+  GTLQueryYouTube *query = [GTLQueryYouTube queryForVideosInsertWithObject:video
+                                                                      part:@"snippet,status"
+                                                          uploadParameters:uploadParameters];
+
+  GTLServiceYouTube *service = self.youTubeService;
+  _uploadFileTicket = [service executeQuery:query
+                          completionHandler:^(GTLServiceTicket *ticket,
+                                              GTLYouTubeVideo *uploadedVideo,
+                                              NSError *error) {
+      // Callback
+      _uploadFileTicket = nil;
+      if (error == nil) {
+        [self displayAlert:@"Uploaded"
+                    format:@"Uploaded file \"%@\"",
+         uploadedVideo.snippet.title];
+
+        if ([_playlistPopup selectedTag] == kUploadsTag) {
+          // Refresh the displayed uploads playlist.
+          [self fetchSelectedPlaylist];
+        }
+      } else {
+        [self displayAlert:@"Upload Failed"
+                    format:@"%@", error];
+      }
+
+      [_uploadProgressIndicator setDoubleValue:0.0];
+      _uploadLocationURL = nil;
+      [self updateUI];
+    }];
+
+  NSProgressIndicator *progressIndicator = _uploadProgressIndicator;
+  _uploadFileTicket.uploadProgressBlock = ^(GTLServiceTicket *ticket,
+                                            unsigned long long numberOfBytesRead,
+                                            unsigned long long dataLength) {
+    [progressIndicator setMaxValue:(double)dataLength];
+    [progressIndicator setDoubleValue:(double)numberOfBytesRead];
+  };
+
+  [self updateUI];
 }
 
 - (NSString *)MIMETypeForFilename:(NSString *)filename
@@ -584,7 +572,7 @@ NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
 
     // Also display any server data present
     NSDictionary *errorInfo = [error userInfo];
-    NSData *errData = errorInfo[kGTMHTTPFetcherStatusDataKey];
+    NSData *errData = errorInfo[kGTMSessionFetcherStatusDataKey];
     if (errData) {
       NSString *dataStr = [[NSString alloc] initWithData:errData
                                                 encoding:NSUTF8StringEncoding];
@@ -643,7 +631,8 @@ NSString *const kKeychainItemName = @"YouTubeSample: YouTube";
     gDisplayedURLStr = [thumbnailURLStr copy];
 
     if (thumbnailURLStr) {
-      GTMHTTPFetcher *fetcher = [GTMHTTPFetcher fetcherWithURLString:thumbnailURLStr];
+      GTMSessionFetcher *fetcher =
+          [self.youTubeService.fetcherService fetcherWithURLString:thumbnailURLStr];
       fetcher.authorizer = self.youTubeService.authorizer;
 
       NSString *title = playlistItem.snippet.title;

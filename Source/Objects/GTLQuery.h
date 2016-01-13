@@ -23,6 +23,9 @@
 #import "GTLObject.h"
 #import "GTLUploadParameters.h"
 
+// This protocol is just to support passing of either a batch or a single query
+// to a GTLService instance. The library does not expect or support other
+// implementations of the protocol.
 @protocol GTLQueryProtocol <NSObject, NSCopying>
 - (BOOL)isBatchQuery;
 - (BOOL)shouldSkipAuthorization;

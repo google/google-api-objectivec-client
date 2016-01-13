@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoLiveStreamingDetails (0 custom class methods, 5 custom properties)
+//   GTLYouTubeVideoLiveStreamingDetails (0 custom class methods, 6 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -42,6 +42,14 @@
 // Details about the live streaming metadata.
 
 @interface GTLYouTubeVideoLiveStreamingDetails : GTLObject
+
+// The ID of the currently active live chat attached to this video. This field
+// is filled only if the video is a currently live broadcast that has live chat.
+// Once the broadcast transitions to complete this field will be removed and the
+// live chat closed down. For persistent broadcasts that live chat id will no
+// longer be tied to this video but rather to the new video being displayed at
+// the persistent page.
+@property (nonatomic, copy) NSString *activeLiveChatId;
 
 // The time that the broadcast actually ended. The value is specified in ISO
 // 8601 (YYYY-MM-DDThh:mm:ss.sZ) format. This value will not be available until

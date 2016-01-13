@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsProfile (0 custom class methods, 24 custom properties)
+//   GTLAnalyticsProfile (0 custom class methods, 25 custom properties)
 //   GTLAnalyticsProfileChildLink (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsProfileParentLink (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsProfilePermissions (0 custom class methods, 1 custom properties)
@@ -52,6 +52,9 @@
 
 // Account ID to which this view (profile) belongs.
 @property (nonatomic, copy) NSString *accountId;
+
+// Indicates whether bot filtering is enabled for this view (profile).
+@property (nonatomic, retain) NSNumber *botFilteringEnabled;  // boolValue
 
 // Child link for this view (profile). Points to the list of goals for this view
 // (profile).
