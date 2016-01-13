@@ -20,7 +20,7 @@ CMD_BUILDER=(
 
 case "${BUILD_MODE}" in
   iOS)
-    CMD_BUILDER+=(-scheme "iOS UnitTests" -sdk iphonesimulator)
+    CMD_BUILDER+=(-scheme "iOS Framework and Tests" -sdk iphonesimulator)
     ;;
   OSX)
     CMD_BUILDER+=(-scheme "OS X Framework and Tests")
