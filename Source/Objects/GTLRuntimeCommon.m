@@ -68,6 +68,9 @@
     // DateTimes live in JSON as strings, so convert
     if ([defaultClass isEqual:[GTLDateTime class]]) {
       result = [GTLDateTime dateTimeWithRFC3339String:json];
+    } else if ([defaultClass isEqual:[NSNumber class]]) {
+      result = GTL_EnsureNSNumber(json);
+      canBeCached = NO;
     } else {
       result = json;
       canBeCached = NO;
