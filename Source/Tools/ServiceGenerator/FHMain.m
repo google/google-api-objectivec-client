@@ -267,7 +267,7 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
     discoveryService_.allowInsecureQueries = YES;
 
     // We aren't bundled, so add a good UA.
-    discoveryService_.userAgent = @"com.google.ServiceGenerator";
+    discoveryService_.userAgent = @"com.google.ServiceGeneratorRPC";
   }
   return self;
 }
@@ -776,6 +776,12 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
             fprintf(stderr, " - %s Discovery included '%s', but skipping as requested.\n",
                     kINFO, [apiName UTF8String]);
             [apisLeftToSkip removeObject:apiName];
+          } else if ([listItem.discoveryRestUrl containsString:@"/$discovery/"]) {
+            // Discovery has started returning some ESF apis that don't actually
+            // work with the api fetching calls. Try to pick them off via a
+            // magic value in discoveryRestUrl.
+            fprintf(stderr, " - %s Skipping '%s:%s', it appears to be REST only.\n",
+                    kWARNING, apiName.UTF8String, listItem.version.UTF8String);
           } else {
             NSArray *pair = @[ apiName, listItem.version ];
             [self.apisToFetch addObject:pair];

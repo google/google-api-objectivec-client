@@ -2016,7 +2016,7 @@ static NSString *MappedParamName(NSString *name) {
     // on the property declaration where they are fetched since that better
     // leads developers through the object tree.
     NSString *schemaDescription = schema.descriptionProperty;
-    if (schemaDescription) {
+    if (schemaDescription.length > 0) {
       NSString *wrappedDescription =
         [FHUtils stringOfLinesFromString:schemaDescription linePrefix:@"// "];
       [classHeader appendString:wrappedDescription];
