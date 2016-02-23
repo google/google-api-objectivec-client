@@ -63,7 +63,7 @@
 // deleted and their storage reclaimed.
 @property (nonatomic, retain) NSNumber *expirationTime;  // longLongValue
 
-// [Experimental] Describes the data format, location, and other properties of a
+// [Optional] Describes the data format, location, and other properties of a
 // table stored outside of BigQuery. By defining these properties, the data
 // source can then be queried as if it were a standard BigQuery table.
 @property (nonatomic, retain) GTLBigqueryExternalDataConfiguration *externalDataConfiguration;

@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLQueryAdExchangeBuyer (34 custom class methods, 25 custom properties)
+//   GTLQueryAdExchangeBuyer (34 custom class methods, 26 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -41,8 +41,8 @@
 @class GTLAdExchangeBuyerCreative;
 @class GTLAdExchangeBuyerMarketplaceDeal;
 @class GTLAdExchangeBuyerMarketplaceNote;
-@class GTLAdExchangeBuyerMarketplaceOrder;
 @class GTLAdExchangeBuyerPretargetingConfig;
+@class GTLAdExchangeBuyerProposal;
 
 @interface GTLQueryAdExchangeBuyer : GTLQuery
 
@@ -73,14 +73,15 @@
 @property (nonatomic, assign) NSInteger identifier;
 @property (nonatomic, assign) NSUInteger maxResults;
 @property (nonatomic, retain) NSArray *notes;  // of GTLAdExchangeBuyerMarketplaceNote
-@property (nonatomic, copy) NSString *offerId;
 @property (nonatomic, copy) NSString *openAuctionStatusFilter;
-@property (nonatomic, retain) GTLAdExchangeBuyerMarketplaceOrder *order;
-@property (nonatomic, copy) NSString *orderId;
-@property (nonatomic, assign) long long orderRevisionNumber;
-@property (nonatomic, retain) NSArray *orders;  // of GTLAdExchangeBuyerMarketplaceOrder
+@property (nonatomic, retain) GTLAdExchangeBuyerProposal *order;
 @property (nonatomic, copy) NSString *pageToken;
 @property (nonatomic, copy) NSString *pqlQuery;
+@property (nonatomic, copy) NSString *productId;
+@property (nonatomic, retain) GTLAdExchangeBuyerProposal *proposal;
+@property (nonatomic, copy) NSString *proposalId;
+@property (nonatomic, assign) long long proposalRevisionNumber;
+@property (nonatomic, retain) NSArray *proposals;  // of GTLAdExchangeBuyerProposal
 @property (nonatomic, assign) long long revisionNumber;
 @property (nonatomic, copy) NSString *startDateTime;
 @property (nonatomic, copy) NSString *updateAction;
@@ -279,186 +280,88 @@
 // These create a GTLQueryAdExchangeBuyer object.
 
 // Method: adexchangebuyer.marketplacedeals.delete
-// Delete the specified deals from the order
+// Delete the specified deals from the proposal
 //  Required:
-//   orderId: The orderId to delete deals from.
+//   proposalId: The proposalId to delete deals from.
 //  Optional:
-//   dealIds: List of deals to delete for a given order
-//   orderRevisionNumber: The last known order revision number.
+//   dealIds: List of deals to delete for a given proposal
+//   proposalRevisionNumber: The last known proposal revision number.
 //   updateAction: NSString
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerDeleteOrderDealsResponse.
-+ (instancetype)queryForMarketplacedealsDeleteWithOrderId:(NSString *)orderId;
++ (instancetype)queryForMarketplacedealsDeleteWithProposalId:(NSString *)proposalId;
 
 // Method: adexchangebuyer.marketplacedeals.insert
-// Add new deals for the specified order
+// Add new deals for the specified proposal
 //  Required:
-//   orderId: OrderId for which deals need to be added.
+//   proposalId: proposalId for which deals need to be added.
 //  Optional:
 //   deals: The list of deals to add
-//   orderRevisionNumber: The last known order revision number.
-//   updateAction: Indicates an optional action to take on the order
+//   proposalRevisionNumber: The last known proposal revision number.
+//   updateAction: Indicates an optional action to take on the proposal
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerAddOrderDealsResponse.
-+ (instancetype)queryForMarketplacedealsInsertWithOrderId:(NSString *)orderId;
++ (instancetype)queryForMarketplacedealsInsertWithProposalId:(NSString *)proposalId;
 
 // Method: adexchangebuyer.marketplacedeals.list
-// List all the deals for a given order
+// List all the deals for a given proposal
 //  Required:
-//   orderId: The orderId to get deals for.
+//   proposalId: The proposalId to get deals for.
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerGetOrderDealsResponse.
-+ (instancetype)queryForMarketplacedealsListWithOrderId:(NSString *)orderId;
++ (instancetype)queryForMarketplacedealsListWithProposalId:(NSString *)proposalId;
 
 // Method: adexchangebuyer.marketplacedeals.update
-// Replaces all the deals in the order with the passed in deals
+// Replaces all the deals in the proposal with the passed in deals
 //  Required:
-//   orderId: The orderId to edit deals on.
+//   proposalId: The proposalId to edit deals on.
 //  Optional:
 //   deals: List of deals to edit. Service may perform 3 different operations
 //     based on comparison of deals in this list vs deals already persisted in
-//     database: 1. Add new deal to order If a deal in this list does not exist
-//     in the order, the service will create a new deal and add it to the order.
-//     Validation will follow AddOrderDealsRequest. 2. Update existing deal in
-//     the order If a deal in this list already exist in the order, the service
-//     will update that existing deal to this new deal in the request.
-//     Validation will follow UpdateOrderDealsRequest. 3. Delete deals from the
-//     order (just need the id) If a existing deal in the order is not present
-//     in this list, the service will delete that deal from the order.
-//     Validation will follow DeleteOrderDealsRequest.
-//   order: If specified, also updates the order in the batch transaction. This
-//     is useful when the order and the deals need to be updated in one
+//     database: 1. Add new deal to proposal If a deal in this list does not
+//     exist in the proposal, the service will create a new deal and add it to
+//     the proposal. Validation will follow AddOrderDealsRequest. 2. Update
+//     existing deal in the proposal If a deal in this list already exist in the
+//     proposal, the service will update that existing deal to this new deal in
+//     the request. Validation will follow UpdateOrderDealsRequest. 3. Delete
+//     deals from the proposal (just need the id) If a existing deal in the
+//     proposal is not present in this list, the service will delete that deal
+//     from the proposal. Validation will follow DeleteOrderDealsRequest.
+//   proposal: If specified, also updates the proposal in the batch transaction.
+//     This is useful when the proposal and the deals need to be updated in one
 //     transaction.
-//   orderRevisionNumber: The last known revision number for the order.
-//   updateAction: Indicates an optional action to take on the order
+//   proposalRevisionNumber: The last known revision number for the proposal.
+//   updateAction: Indicates an optional action to take on the proposal
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerEditAllOrderDealsResponse.
-+ (instancetype)queryForMarketplacedealsUpdateWithOrderId:(NSString *)orderId;
++ (instancetype)queryForMarketplacedealsUpdateWithProposalId:(NSString *)proposalId;
 
 #pragma mark - "marketplacenotes" methods
 // These create a GTLQueryAdExchangeBuyer object.
 
 // Method: adexchangebuyer.marketplacenotes.insert
-// Add notes to the order
+// Add notes to the proposal
 //  Required:
-//   orderId: The orderId to add notes for.
+//   proposalId: The proposalId to add notes for.
 //  Optional:
 //   notes: The list of notes to add.
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerAddOrderNotesResponse.
-+ (instancetype)queryForMarketplacenotesInsertWithOrderId:(NSString *)orderId;
++ (instancetype)queryForMarketplacenotesInsertWithProposalId:(NSString *)proposalId;
 
 // Method: adexchangebuyer.marketplacenotes.list
-// Get all the notes associated with an order
+// Get all the notes associated with a proposal
 //  Required:
-//   orderId: The orderId to get notes for.
+//   proposalId: The proposalId to get notes for.
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerGetOrderNotesResponse.
-+ (instancetype)queryForMarketplacenotesListWithOrderId:(NSString *)orderId;
-
-#pragma mark - "marketplaceoffers" methods
-// These create a GTLQueryAdExchangeBuyer object.
-
-// Method: adexchangebuyer.marketplaceoffers.get
-// Gets the requested negotiation.
-//  Required:
-//   offerId: The offerId for the offer to get the head revision for.
-//  Authorization scope(s):
-//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
-// Fetches a GTLAdExchangeBuyerMarketplaceOffer.
-+ (instancetype)queryForMarketplaceoffersGetWithOfferId:(NSString *)offerId;
-
-// Method: adexchangebuyer.marketplaceoffers.search
-// Gets the requested negotiation.
-//  Optional:
-//   pqlQuery: The pql query used to query for offers.
-//  Authorization scope(s):
-//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
-// Fetches a GTLAdExchangeBuyerGetOffersResponse.
-+ (instancetype)queryForMarketplaceoffersSearch;
-
-#pragma mark - "marketplaceorders" methods
-// These create a GTLQueryAdExchangeBuyer object.
-
-// Method: adexchangebuyer.marketplaceorders.get
-// Get an order given its id
-//  Required:
-//   orderId: Id of the order to retrieve.
-//  Authorization scope(s):
-//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
-// Fetches a GTLAdExchangeBuyerMarketplaceOrder.
-+ (instancetype)queryForMarketplaceordersGetWithOrderId:(NSString *)orderId;
-
-// Method: adexchangebuyer.marketplaceorders.insert
-// Create the given list of orders
-//  Optional:
-//   orders: The list of orders to create.
-//   webPropertyCode: NSString
-//  Authorization scope(s):
-//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
-// Fetches a GTLAdExchangeBuyerCreateOrdersResponse.
-+ (instancetype)queryForMarketplaceordersInsert;
-
-// Method: adexchangebuyer.marketplaceorders.patch
-// Update the given order. This method supports patch semantics.
-//  Required:
-//   orderId: The order id to update.
-//   revisionNumber: The last known revision number to update. If the head
-//     revision in the marketplace database has since changed, an error will be
-//     thrown. The caller should then fetch the lastest order at head revision
-//     and retry the update at that revision.
-//   updateAction: The proposed action to take on the order.
-//      kGTLAdExchangeBuyerUpdateActionAccept: "accept"
-//      kGTLAdExchangeBuyerUpdateActionCancel: "cancel"
-//      kGTLAdExchangeBuyerUpdateActionPropose: "propose"
-//      kGTLAdExchangeBuyerUpdateActionUnknownAction: "unknownAction"
-//      kGTLAdExchangeBuyerUpdateActionUpdateFinalized: "updateFinalized"
-//  Optional:
-//   order: GTLAdExchangeBuyerMarketplaceOrder
-//  Authorization scope(s):
-//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
-// Fetches a GTLAdExchangeBuyerMarketplaceOrder.
-+ (instancetype)queryForMarketplaceordersPatchWithOrderId:(NSString *)orderId
-                                           revisionNumber:(long long)revisionNumber
-                                             updateAction:(NSString *)updateAction;
-
-// Method: adexchangebuyer.marketplaceorders.search
-// Search for orders using pql query
-//  Optional:
-//   pqlQuery: Query string to retrieve specific orders.
-//  Authorization scope(s):
-//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
-// Fetches a GTLAdExchangeBuyerGetOrdersResponse.
-+ (instancetype)queryForMarketplaceordersSearch;
-
-// Method: adexchangebuyer.marketplaceorders.update
-// Update the given order
-//  Required:
-//   orderId: The order id to update.
-//   revisionNumber: The last known revision number to update. If the head
-//     revision in the marketplace database has since changed, an error will be
-//     thrown. The caller should then fetch the lastest order at head revision
-//     and retry the update at that revision.
-//   updateAction: The proposed action to take on the order.
-//      kGTLAdExchangeBuyerUpdateActionAccept: "accept"
-//      kGTLAdExchangeBuyerUpdateActionCancel: "cancel"
-//      kGTLAdExchangeBuyerUpdateActionPropose: "propose"
-//      kGTLAdExchangeBuyerUpdateActionUnknownAction: "unknownAction"
-//      kGTLAdExchangeBuyerUpdateActionUpdateFinalized: "updateFinalized"
-//  Optional:
-//   order: GTLAdExchangeBuyerMarketplaceOrder
-//  Authorization scope(s):
-//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
-// Fetches a GTLAdExchangeBuyerMarketplaceOrder.
-+ (instancetype)queryForMarketplaceordersUpdateWithOrderId:(NSString *)orderId
-                                            revisionNumber:(long long)revisionNumber
-                                              updateAction:(NSString *)updateAction;
++ (instancetype)queryForMarketplacenotesListWithProposalId:(NSString *)proposalId;
 
 #pragma mark - "performanceReport" methods
 // These create a GTLQueryAdExchangeBuyer object.
@@ -551,5 +454,103 @@
 + (instancetype)queryForPretargetingConfigUpdateWithObject:(GTLAdExchangeBuyerPretargetingConfig *)object
                                                  accountId:(long long)accountId
                                                   configId:(long long)configId;
+
+#pragma mark - "products" methods
+// These create a GTLQueryAdExchangeBuyer object.
+
+// Method: adexchangebuyer.products.get
+// Gets the requested product by id.
+//  Required:
+//   productId: The id for the product to get the head revision for.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerProduct.
++ (instancetype)queryForProductsGetWithProductId:(NSString *)productId;
+
+// Method: adexchangebuyer.products.search
+// Gets the requested product.
+//  Optional:
+//   pqlQuery: The pql query used to query for products.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerGetOffersResponse.
++ (instancetype)queryForProductsSearch;
+
+#pragma mark - "proposals" methods
+// These create a GTLQueryAdExchangeBuyer object.
+
+// Method: adexchangebuyer.proposals.get
+// Get a proposal given its id
+//  Required:
+//   proposalId: Id of the proposal to retrieve.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerProposal.
++ (instancetype)queryForProposalsGetWithProposalId:(NSString *)proposalId;
+
+// Method: adexchangebuyer.proposals.insert
+// Create the given list of proposals
+//  Optional:
+//   proposals: The list of proposals to create.
+//   webPropertyCode: NSString
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerCreateOrdersResponse.
++ (instancetype)queryForProposalsInsert;
+
+// Method: adexchangebuyer.proposals.patch
+// Update the given proposal. This method supports patch semantics.
+//  Required:
+//   proposalId: The proposal id to update.
+//   revisionNumber: The last known revision number to update. If the head
+//     revision in the marketplace database has since changed, an error will be
+//     thrown. The caller should then fetch the latest proposal at head revision
+//     and retry the update at that revision.
+//   updateAction: The proposed action to take on the proposal.
+//      kGTLAdExchangeBuyerUpdateActionAccept: "accept"
+//      kGTLAdExchangeBuyerUpdateActionCancel: "cancel"
+//      kGTLAdExchangeBuyerUpdateActionPropose: "propose"
+//      kGTLAdExchangeBuyerUpdateActionUnknownAction: "unknownAction"
+//      kGTLAdExchangeBuyerUpdateActionUpdateFinalized: "updateFinalized"
+//  Optional:
+//   order: GTLAdExchangeBuyerProposal
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerProposal.
++ (instancetype)queryForProposalsPatchWithProposalId:(NSString *)proposalId
+                                      revisionNumber:(long long)revisionNumber
+                                        updateAction:(NSString *)updateAction;
+
+// Method: adexchangebuyer.proposals.search
+// Search for proposals using pql query
+//  Optional:
+//   pqlQuery: Query string to retrieve specific proposals.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerGetOrdersResponse.
++ (instancetype)queryForProposalsSearch;
+
+// Method: adexchangebuyer.proposals.update
+// Update the given proposal
+//  Required:
+//   proposalId: The proposal id to update.
+//   revisionNumber: The last known revision number to update. If the head
+//     revision in the marketplace database has since changed, an error will be
+//     thrown. The caller should then fetch the latest proposal at head revision
+//     and retry the update at that revision.
+//   updateAction: The proposed action to take on the proposal.
+//      kGTLAdExchangeBuyerUpdateActionAccept: "accept"
+//      kGTLAdExchangeBuyerUpdateActionCancel: "cancel"
+//      kGTLAdExchangeBuyerUpdateActionPropose: "propose"
+//      kGTLAdExchangeBuyerUpdateActionUnknownAction: "unknownAction"
+//      kGTLAdExchangeBuyerUpdateActionUpdateFinalized: "updateFinalized"
+//  Optional:
+//   order: GTLAdExchangeBuyerProposal
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerProposal.
++ (instancetype)queryForProposalsUpdateWithProposalId:(NSString *)proposalId
+                                       revisionNumber:(long long)revisionNumber
+                                         updateAction:(NSString *)updateAction;
 
 @end

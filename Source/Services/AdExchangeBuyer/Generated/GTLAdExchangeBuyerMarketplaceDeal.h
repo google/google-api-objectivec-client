@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,8 +47,8 @@
 //   GTLAdExchangeBuyerMarketplaceDeal
 //
 
-// An order can contain multiple deals. A deal contains the terms and targeting
-// information that is used for serving.
+// A proposal can contain multiple deals. A deal contains the terms and
+// targeting information that is used for serving.
 
 @interface GTLAdExchangeBuyerMarketplaceDeal : GTLObject
 
@@ -95,14 +95,14 @@
 // The name of the deal. (updatable)
 @property (nonatomic, copy) NSString *name;
 
-// The offer-id from which this deal was created. (readonly, except on create)
-@property (nonatomic, copy) NSString *offerId;
+// The product-id from which this deal was created. (readonly, except on create)
+@property (nonatomic, copy) NSString *productId;
 
-// The revision number of the offer that the deal was created from (readonly,
+// The revision number of the product that the deal was created from (readonly,
 // except on create)
-@property (nonatomic, retain) NSNumber *offerRevisionNumber;  // longLongValue
+@property (nonatomic, retain) NSNumber *productRevisionNumber;  // longLongValue
 
-@property (nonatomic, copy) NSString *orderId;
+@property (nonatomic, copy) NSString *proposalId;
 
 // Optional Seller contact information for the deal (buyer-readonly)
 @property (nonatomic, retain) NSArray *sellerContacts;  // of GTLAdExchangeBuyerContactInformation

@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAdExchangeBuyerMarketplaceOffer.m
+//  GTLAdExchangeBuyerProduct.m
 //
 
 // ----------------------------------------------------------------------------
@@ -28,9 +28,9 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerMarketplaceOffer (0 custom class methods, 18 custom properties)
+//   GTLAdExchangeBuyerProduct (0 custom class methods, 18 custom properties)
 
-#import "GTLAdExchangeBuyerMarketplaceOffer.h"
+#import "GTLAdExchangeBuyerProduct.h"
 
 #import "GTLAdExchangeBuyerContactInformation.h"
 #import "GTLAdExchangeBuyerDealTerms.h"
@@ -40,13 +40,13 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAdExchangeBuyerMarketplaceOffer
+//   GTLAdExchangeBuyerProduct
 //
 
-@implementation GTLAdExchangeBuyerMarketplaceOffer
+@implementation GTLAdExchangeBuyerProduct
 @dynamic creationTimeMs, creatorContacts, flightEndTimeMs, flightStartTimeMs,
          hasCreatorSignedOff, inventorySource, kind, labels, lastUpdateTimeMs,
-         name, offerId, revisionNumber, seller, sharedTargetings, state,
+         name, productId, revisionNumber, seller, sharedTargetings, state,
          syndicationProduct, terms, webPropertyCode;
 
 + (NSDictionary *)arrayPropertyToClassMap {
@@ -59,7 +59,7 @@
 }
 
 + (void)load {
-  [self registerObjectClassForKind:@"adexchangebuyer#marketplaceOffer"];
+  [self registerObjectClassForKind:@"adexchangebuyer#product"];
 }
 
 @end

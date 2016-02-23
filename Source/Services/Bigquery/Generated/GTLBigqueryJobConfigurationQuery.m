@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryJobConfigurationQuery (0 custom class methods, 13 custom properties)
+//   GTLBigqueryJobConfigurationQuery (0 custom class methods, 14 custom properties)
 //   GTLBigqueryJobConfigurationQueryTableDefinitions (0 custom class methods, 0 custom properties)
 
 #import "GTLBigqueryJobConfigurationQuery.h"
@@ -44,8 +44,8 @@
 @implementation GTLBigqueryJobConfigurationQuery
 @dynamic allowLargeResults, createDisposition, defaultDataset, destinationTable,
          flattenResults, maximumBillingTier, preserveNulls, priority, query,
-         tableDefinitions, useQueryCache, userDefinedFunctionResources,
-         writeDisposition;
+         tableDefinitions, useLegacySql, useQueryCache,
+         userDefinedFunctionResources, writeDisposition;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{

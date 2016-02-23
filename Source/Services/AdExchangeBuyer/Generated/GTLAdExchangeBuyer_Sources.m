@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,8 +61,6 @@
 #import "GTLAdExchangeBuyerMarketplaceDealParty.m"
 #import "GTLAdExchangeBuyerMarketplaceLabel.m"
 #import "GTLAdExchangeBuyerMarketplaceNote.m"
-#import "GTLAdExchangeBuyerMarketplaceOffer.m"
-#import "GTLAdExchangeBuyerMarketplaceOrder.m"
 #import "GTLAdExchangeBuyerPerformanceReport.m"
 #import "GTLAdExchangeBuyerPerformanceReportList.m"
 #import "GTLAdExchangeBuyerPretargetingConfig.m"
@@ -70,6 +68,8 @@
 #import "GTLAdExchangeBuyerPrice.m"
 #import "GTLAdExchangeBuyerPricePerBuyer.m"
 #import "GTLAdExchangeBuyerPrivateData.m"
+#import "GTLAdExchangeBuyerProduct.m"
+#import "GTLAdExchangeBuyerProposal.m"
 #import "GTLAdExchangeBuyerSeller.m"
 #import "GTLAdExchangeBuyerSharedTargeting.m"
 #import "GTLAdExchangeBuyerTargetingValue.m"

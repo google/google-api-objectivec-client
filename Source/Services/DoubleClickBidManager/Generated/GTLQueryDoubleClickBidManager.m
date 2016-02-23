@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,25 +26,34 @@
 // Documentation:
 //   https://developers.google.com/bid-manager/
 // Classes:
-//   GTLQueryDoubleClickBidManager (8 custom class methods, 13 custom properties)
+//   GTLQueryDoubleClickBidManager (9 custom class methods, 18 custom properties)
 
 #import "GTLQueryDoubleClickBidManager.h"
 
 #import "GTLDoubleClickBidManagerDownloadLineItemsResponse.h"
 #import "GTLDoubleClickBidManagerListQueriesResponse.h"
 #import "GTLDoubleClickBidManagerListReportsResponse.h"
+#import "GTLDoubleClickBidManagerNote.h"
 #import "GTLDoubleClickBidManagerQuery.h"
 #import "GTLDoubleClickBidManagerUploadLineItemsResponse.h"
 
 @implementation GTLQueryDoubleClickBidManager
 
-@dynamic dataRange, dryRun, fields, fileSpec, filterIds, filterType, format,
-         lineItems, query, queryId, reportDataEndTimeMs, reportDataStartTimeMs,
-         timezoneCode;
+@dynamic action, dataRange, dryRun, fields, fileSpec, filterIds, filterType,
+         format, href, identifier, lineItems, notes, query, queryId,
+         reportDataEndTimeMs, reportDataStartTimeMs, timezoneCode, token;
+
++ (NSDictionary *)parameterNameMap {
+  NSDictionary *map = @{
+    @"identifier" : @"id"
+  };
+  return map;
+}
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{
-    @"filterIds" : [NSNumber class]
+    @"filterIds" : [NSNumber class],
+    @"notes" : [GTLDoubleClickBidManagerNote class]
   };
   return map;
 }
@@ -113,6 +122,15 @@
   GTLQueryDoubleClickBidManager *query = [self queryWithMethodName:methodName];
   query.queryId = queryId;
   query.expectedObjectClass = [GTLDoubleClickBidManagerListReportsResponse class];
+  return query;
+}
+
+#pragma mark - "rubicon" methods
+// These create a GTLQueryDoubleClickBidManager object.
+
++ (instancetype)queryForRubiconNotifyproposalchange {
+  NSString *methodName = @"doubleclickbidmanager.rubicon.notifyproposalchange";
+  GTLQueryDoubleClickBidManager *query = [self queryWithMethodName:methodName];
   return query;
 }
 

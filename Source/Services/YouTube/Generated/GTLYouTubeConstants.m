@@ -440,6 +440,17 @@ NSString * const kGTLYouTubeContentRating_DjctqRatingReasons_DjctqSex = @"djctqS
 NSString * const kGTLYouTubeContentRating_DjctqRatingReasons_DjctqSexualContent = @"djctqSexualContent";
 NSString * const kGTLYouTubeContentRating_DjctqRatingReasons_DjctqViolence = @"djctqViolence";
 
+// GTLYouTubeContentRating - EcbmctRating
+NSString * const kGTLYouTubeContentRating_EcbmctRating_Ecbmct13a = @"ecbmct13a";
+NSString * const kGTLYouTubeContentRating_EcbmctRating_Ecbmct13plus = @"ecbmct13plus";
+NSString * const kGTLYouTubeContentRating_EcbmctRating_Ecbmct15a = @"ecbmct15a";
+NSString * const kGTLYouTubeContentRating_EcbmctRating_Ecbmct15plus = @"ecbmct15plus";
+NSString * const kGTLYouTubeContentRating_EcbmctRating_Ecbmct18plus = @"ecbmct18plus";
+NSString * const kGTLYouTubeContentRating_EcbmctRating_Ecbmct7a = @"ecbmct7a";
+NSString * const kGTLYouTubeContentRating_EcbmctRating_Ecbmct7plus = @"ecbmct7plus";
+NSString * const kGTLYouTubeContentRating_EcbmctRating_EcbmctG = @"ecbmctG";
+NSString * const kGTLYouTubeContentRating_EcbmctRating_EcbmctUnrated = @"ecbmctUnrated";
+
 // GTLYouTubeContentRating - EefilmRating
 NSString * const kGTLYouTubeContentRating_EefilmRating_EefilmK12 = @"eefilmK12";
 NSString * const kGTLYouTubeContentRating_EefilmRating_EefilmK14 = @"eefilmK14";
@@ -493,6 +504,7 @@ NSString * const kGTLYouTubeContentRating_FmocRating_FmocU     = @"fmocU";
 NSString * const kGTLYouTubeContentRating_FmocRating_FmocUnrated = @"fmocUnrated";
 
 // GTLYouTubeContentRating - FpbRating
+NSString * const kGTLYouTubeContentRating_FpbRating_Fpb10      = @"fpb10";
 NSString * const kGTLYouTubeContentRating_FpbRating_Fpb1012Pg  = @"fpb1012Pg";
 NSString * const kGTLYouTubeContentRating_FpbRating_Fpb13      = @"fpb13";
 NSString * const kGTLYouTubeContentRating_FpbRating_Fpb16      = @"fpb16";
@@ -971,12 +983,6 @@ NSString * const kGTLYouTubeVideoContentDetails_Caption_True  = @"true";
 // GTLYouTubeVideoContentDetails - Definition
 NSString * const kGTLYouTubeVideoContentDetails_Definition_Hd = @"hd";
 NSString * const kGTLYouTubeVideoContentDetails_Definition_Sd = @"sd";
-
-// GTLYouTubeVideoConversionPing - Context
-NSString * const kGTLYouTubeVideoConversionPing_Context_Comment = @"comment";
-NSString * const kGTLYouTubeVideoConversionPing_Context_Dislike = @"dislike";
-NSString * const kGTLYouTubeVideoConversionPing_Context_Like   = @"like";
-NSString * const kGTLYouTubeVideoConversionPing_Context_Share  = @"share";
 
 // GTLYouTubeVideoFileDetails - FileType
 NSString * const kGTLYouTubeVideoFileDetails_FileType_Archive  = @"archive";

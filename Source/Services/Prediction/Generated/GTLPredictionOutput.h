@@ -60,7 +60,7 @@
 @property (nonatomic, retain) NSArray *outputMulti;  // of GTLPredictionOutputOutputMultiItem
 
 // The estimated regression value (Regression models only).
-@property (nonatomic, copy) NSString *outputValue;
+@property (nonatomic, retain) NSNumber *outputValue;  // doubleValue
 
 // A URL to re-request this resource.
 @property (nonatomic, copy) NSString *selfLink;

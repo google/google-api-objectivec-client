@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAdExchangeBuyerMarketplaceOrder.m
+//  GTLAdExchangeBuyerProposal.m
 //
 
 // ----------------------------------------------------------------------------
@@ -28,9 +28,9 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerMarketplaceOrder (0 custom class methods, 21 custom properties)
+//   GTLAdExchangeBuyerProposal (0 custom class methods, 21 custom properties)
 
-#import "GTLAdExchangeBuyerMarketplaceOrder.h"
+#import "GTLAdExchangeBuyerProposal.h"
 
 #import "GTLAdExchangeBuyerBuyer.h"
 #import "GTLAdExchangeBuyerContactInformation.h"
@@ -40,15 +40,15 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAdExchangeBuyerMarketplaceOrder
+//   GTLAdExchangeBuyerProposal
 //
 
-@implementation GTLAdExchangeBuyerMarketplaceOrder
+@implementation GTLAdExchangeBuyerProposal
 @dynamic billedBuyer, buyer, buyerContacts, buyerPrivateData, hasBuyerSignedOff,
          hasSellerSignedOff, inventorySource, isRenegotiating, isSetupComplete,
          kind, labels, lastUpdaterOrCommentorRole, lastUpdaterRole, name,
-         orderId, orderState, originatorRole, revisionNumber, revisionTimeMs,
-         seller, sellerContacts;
+         originatorRole, proposalId, proposalState, revisionNumber,
+         revisionTimeMs, seller, sellerContacts;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{
@@ -60,7 +60,7 @@
 }
 
 + (void)load {
-  [self registerObjectClassForKind:@"adexchangebuyer#marketplaceOrder"];
+  [self registerObjectClassForKind:@"adexchangebuyer#proposal"];
 }
 
 @end

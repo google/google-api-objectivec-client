@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@
 
 #import "GTLAdExchangeBuyerGetOffersResponse.h"
 
-#import "GTLAdExchangeBuyerMarketplaceOffer.h"
+#import "GTLAdExchangeBuyerProduct.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -40,11 +40,11 @@
 //
 
 @implementation GTLAdExchangeBuyerGetOffersResponse
-@dynamic offers;
+@dynamic products;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{
-    @"offers" : [GTLAdExchangeBuyerMarketplaceOffer class]
+    @"products" : [GTLAdExchangeBuyerProduct class]
   };
   return map;
 }

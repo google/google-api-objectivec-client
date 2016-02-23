@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,19 +14,20 @@
  */
 
 //
-//  GTLYouTubeVideoConversionPings.h
+//  GTLServiceRegistryEndpointEndpointVisibility.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   YouTube Data API (youtube/v3)
+//   Google Cloud Service Registry API V1 (serviceregistry/alpha)
 // Description:
-//   Programmatic access to YouTube features.
+//   The Service Registry API allows users to manage service endpoints in
+//   Service Registry and use DNS-based service discovery / name resolution.
 // Documentation:
-//   https://developers.google.com/youtube/v3
+//   https://developers.google.com/cloud-serviceregistry/
 // Classes:
-//   GTLYouTubeVideoConversionPings (0 custom class methods, 1 custom properties)
+//   GTLServiceRegistryEndpointEndpointVisibility (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,18 +35,19 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLYouTubeVideoConversionPing;
-
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoConversionPings
+//   GTLServiceRegistryEndpointEndpointVisibility
 //
 
-@interface GTLYouTubeVideoConversionPings : GTLObject
+@interface GTLServiceRegistryEndpointEndpointVisibility : GTLObject
 
-// Pings that the app shall fire for a video (authenticated by biscotti cookie).
-// Each ping has a context, in which the app must fire the ping, and a url
-// identifying the ping.
-@property (nonatomic, retain) NSArray *pings;  // of GTLYouTubeVideoConversionPing
+// Google Compute Engine networks for which the name of this endpoint should be
+// resolvable through DNS.
+@property (nonatomic, retain) NSArray *networks;  // of NSString
+
+// Google Cloud projects for which the name of this endpoint should be
+// resolvable through DNS.
+@property (nonatomic, retain) NSArray *projects;  // of NSString
 
 @end

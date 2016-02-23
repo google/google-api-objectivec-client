@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,35 +14,36 @@
  */
 
 //
-//  GTLYouTubeVideoConversionPings.m
+//  GTLDeploymentManagerOperationsListResponse.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   YouTube Data API (youtube/v3)
+//   Google Cloud Deployment Manager API (deploymentmanager/v2)
 // Description:
-//   Programmatic access to YouTube features.
+//   The Deployment Manager API allows users to declaratively configure, deploy
+//   and run complex solutions on the Google Cloud Platform.
 // Documentation:
-//   https://developers.google.com/youtube/v3
+//   https://cloud.google.com/deployment-manager/
 // Classes:
-//   GTLYouTubeVideoConversionPings (0 custom class methods, 1 custom properties)
+//   GTLDeploymentManagerOperationsListResponse (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubeVideoConversionPings.h"
+#import "GTLDeploymentManagerOperationsListResponse.h"
 
-#import "GTLYouTubeVideoConversionPing.h"
+#import "GTLDeploymentManagerOperation.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeVideoConversionPings
+//   GTLDeploymentManagerOperationsListResponse
 //
 
-@implementation GTLYouTubeVideoConversionPings
-@dynamic pings;
+@implementation GTLDeploymentManagerOperationsListResponse
+@dynamic nextPageToken, operations;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{
-    @"pings" : [GTLYouTubeVideoConversionPing class]
+    @"operations" : [GTLDeploymentManagerOperation class]
   };
   return map;
 }

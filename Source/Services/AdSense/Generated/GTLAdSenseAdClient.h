@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLAdSenseAdClient (0 custom class methods, 6 custom properties)
+//   GTLAdSenseAdClient (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -44,10 +44,6 @@
 
 // Whether this ad client is opted in to ARC.
 @property (nonatomic, retain) NSNumber *arcOptIn;  // boolValue
-
-// ARC review mode this ad client is in. Empty if the client is not opted in to
-// ARC. Possible values: POST_REVIEW, AUTOMATIC_PRE_REVIEW.
-@property (nonatomic, copy) NSString *arcReviewMode;
 
 // Unique identifier of this ad client.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').

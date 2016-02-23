@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,8 +58,6 @@
 #import "GTLAdExchangeBuyerMarketplaceDealParty.h"
 #import "GTLAdExchangeBuyerMarketplaceLabel.h"
 #import "GTLAdExchangeBuyerMarketplaceNote.h"
-#import "GTLAdExchangeBuyerMarketplaceOffer.h"
-#import "GTLAdExchangeBuyerMarketplaceOrder.h"
 #import "GTLAdExchangeBuyerPerformanceReport.h"
 #import "GTLAdExchangeBuyerPerformanceReportList.h"
 #import "GTLAdExchangeBuyerPretargetingConfig.h"
@@ -67,6 +65,8 @@
 #import "GTLAdExchangeBuyerPrice.h"
 #import "GTLAdExchangeBuyerPricePerBuyer.h"
 #import "GTLAdExchangeBuyerPrivateData.h"
+#import "GTLAdExchangeBuyerProduct.h"
+#import "GTLAdExchangeBuyerProposal.h"
 #import "GTLAdExchangeBuyerSeller.h"
 #import "GTLAdExchangeBuyerSharedTargeting.h"
 #import "GTLAdExchangeBuyerTargetingValue.h"

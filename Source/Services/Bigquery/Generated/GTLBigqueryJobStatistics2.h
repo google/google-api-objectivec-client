@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryJobStatistics2 (0 custom class methods, 5 custom properties)
+//   GTLBigqueryJobStatistics2 (0 custom class methods, 6 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -35,6 +35,7 @@
 #endif
 
 @class GTLBigqueryExplainQueryStage;
+@class GTLBigqueryTableReference;
 
 // ----------------------------------------------------------------------------
 //
@@ -52,6 +53,10 @@
 // [Output-only, Experimental] Describes execution plan for the query as a list
 // of stages.
 @property (nonatomic, retain) NSArray *queryPlan;  // of GTLBigqueryExplainQueryStage
+
+// [Output-only, Experimental] Referenced tables for the job. Queries that
+// reference more than 50 tables will not have a complete list.
+@property (nonatomic, retain) NSArray *referencedTables;  // of GTLBigqueryTableReference
 
 // [Output-only] Total bytes billed for the job.
 @property (nonatomic, retain) NSNumber *totalBytesBilled;  // longLongValue

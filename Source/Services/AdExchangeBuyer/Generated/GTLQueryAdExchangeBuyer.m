@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLQueryAdExchangeBuyer (34 custom class methods, 25 custom properties)
+//   GTLQueryAdExchangeBuyer (34 custom class methods, 26 custom properties)
 
 #import "GTLQueryAdExchangeBuyer.h"
 
@@ -50,19 +50,19 @@
 #import "GTLAdExchangeBuyerGetOrdersResponse.h"
 #import "GTLAdExchangeBuyerMarketplaceDeal.h"
 #import "GTLAdExchangeBuyerMarketplaceNote.h"
-#import "GTLAdExchangeBuyerMarketplaceOffer.h"
-#import "GTLAdExchangeBuyerMarketplaceOrder.h"
 #import "GTLAdExchangeBuyerPerformanceReportList.h"
 #import "GTLAdExchangeBuyerPretargetingConfig.h"
 #import "GTLAdExchangeBuyerPretargetingConfigList.h"
+#import "GTLAdExchangeBuyerProduct.h"
+#import "GTLAdExchangeBuyerProposal.h"
 
 @implementation GTLQueryAdExchangeBuyer
 
 @dynamic accountId, billingId, buyerCreativeId, configId, dealId, dealIds,
          deals, dealsStatusFilter, endDateTime, fields, identifier, maxResults,
-         notes, offerId, openAuctionStatusFilter, order, orderId,
-         orderRevisionNumber, orders, pageToken, pqlQuery, revisionNumber,
-         startDateTime, updateAction, webPropertyCode;
+         notes, openAuctionStatusFilter, order, pageToken, pqlQuery, productId,
+         proposal, proposalId, proposalRevisionNumber, proposals,
+         revisionNumber, startDateTime, updateAction, webPropertyCode;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map = @{
@@ -76,7 +76,7 @@
     @"dealIds" : [NSString class],
     @"deals" : [GTLAdExchangeBuyerMarketplaceDeal class],
     @"notes" : [GTLAdExchangeBuyerMarketplaceNote class],
-    @"orders" : [GTLAdExchangeBuyerMarketplaceOrder class]
+    @"proposals" : [GTLAdExchangeBuyerProposal class]
   };
   return map;
 }
@@ -247,34 +247,34 @@
 #pragma mark - "marketplacedeals" methods
 // These create a GTLQueryAdExchangeBuyer object.
 
-+ (instancetype)queryForMarketplacedealsDeleteWithOrderId:(NSString *)orderId {
++ (instancetype)queryForMarketplacedealsDeleteWithProposalId:(NSString *)proposalId {
   NSString *methodName = @"adexchangebuyer.marketplacedeals.delete";
   GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.orderId = orderId;
+  query.proposalId = proposalId;
   query.expectedObjectClass = [GTLAdExchangeBuyerDeleteOrderDealsResponse class];
   return query;
 }
 
-+ (instancetype)queryForMarketplacedealsInsertWithOrderId:(NSString *)orderId {
++ (instancetype)queryForMarketplacedealsInsertWithProposalId:(NSString *)proposalId {
   NSString *methodName = @"adexchangebuyer.marketplacedeals.insert";
   GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.orderId = orderId;
+  query.proposalId = proposalId;
   query.expectedObjectClass = [GTLAdExchangeBuyerAddOrderDealsResponse class];
   return query;
 }
 
-+ (instancetype)queryForMarketplacedealsListWithOrderId:(NSString *)orderId {
++ (instancetype)queryForMarketplacedealsListWithProposalId:(NSString *)proposalId {
   NSString *methodName = @"adexchangebuyer.marketplacedeals.list";
   GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.orderId = orderId;
+  query.proposalId = proposalId;
   query.expectedObjectClass = [GTLAdExchangeBuyerGetOrderDealsResponse class];
   return query;
 }
 
-+ (instancetype)queryForMarketplacedealsUpdateWithOrderId:(NSString *)orderId {
++ (instancetype)queryForMarketplacedealsUpdateWithProposalId:(NSString *)proposalId {
   NSString *methodName = @"adexchangebuyer.marketplacedeals.update";
   GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.orderId = orderId;
+  query.proposalId = proposalId;
   query.expectedObjectClass = [GTLAdExchangeBuyerEditAllOrderDealsResponse class];
   return query;
 }
@@ -282,86 +282,19 @@
 #pragma mark - "marketplacenotes" methods
 // These create a GTLQueryAdExchangeBuyer object.
 
-+ (instancetype)queryForMarketplacenotesInsertWithOrderId:(NSString *)orderId {
++ (instancetype)queryForMarketplacenotesInsertWithProposalId:(NSString *)proposalId {
   NSString *methodName = @"adexchangebuyer.marketplacenotes.insert";
   GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.orderId = orderId;
+  query.proposalId = proposalId;
   query.expectedObjectClass = [GTLAdExchangeBuyerAddOrderNotesResponse class];
   return query;
 }
 
-+ (instancetype)queryForMarketplacenotesListWithOrderId:(NSString *)orderId {
++ (instancetype)queryForMarketplacenotesListWithProposalId:(NSString *)proposalId {
   NSString *methodName = @"adexchangebuyer.marketplacenotes.list";
   GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.orderId = orderId;
+  query.proposalId = proposalId;
   query.expectedObjectClass = [GTLAdExchangeBuyerGetOrderNotesResponse class];
-  return query;
-}
-
-#pragma mark - "marketplaceoffers" methods
-// These create a GTLQueryAdExchangeBuyer object.
-
-+ (instancetype)queryForMarketplaceoffersGetWithOfferId:(NSString *)offerId {
-  NSString *methodName = @"adexchangebuyer.marketplaceoffers.get";
-  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.offerId = offerId;
-  query.expectedObjectClass = [GTLAdExchangeBuyerMarketplaceOffer class];
-  return query;
-}
-
-+ (instancetype)queryForMarketplaceoffersSearch {
-  NSString *methodName = @"adexchangebuyer.marketplaceoffers.search";
-  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.expectedObjectClass = [GTLAdExchangeBuyerGetOffersResponse class];
-  return query;
-}
-
-#pragma mark - "marketplaceorders" methods
-// These create a GTLQueryAdExchangeBuyer object.
-
-+ (instancetype)queryForMarketplaceordersGetWithOrderId:(NSString *)orderId {
-  NSString *methodName = @"adexchangebuyer.marketplaceorders.get";
-  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.orderId = orderId;
-  query.expectedObjectClass = [GTLAdExchangeBuyerMarketplaceOrder class];
-  return query;
-}
-
-+ (instancetype)queryForMarketplaceordersInsert {
-  NSString *methodName = @"adexchangebuyer.marketplaceorders.insert";
-  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.expectedObjectClass = [GTLAdExchangeBuyerCreateOrdersResponse class];
-  return query;
-}
-
-+ (instancetype)queryForMarketplaceordersPatchWithOrderId:(NSString *)orderId
-                                           revisionNumber:(long long)revisionNumber
-                                             updateAction:(NSString *)updateAction {
-  NSString *methodName = @"adexchangebuyer.marketplaceorders.patch";
-  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.orderId = orderId;
-  query.revisionNumber = revisionNumber;
-  query.updateAction = updateAction;
-  query.expectedObjectClass = [GTLAdExchangeBuyerMarketplaceOrder class];
-  return query;
-}
-
-+ (instancetype)queryForMarketplaceordersSearch {
-  NSString *methodName = @"adexchangebuyer.marketplaceorders.search";
-  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.expectedObjectClass = [GTLAdExchangeBuyerGetOrdersResponse class];
-  return query;
-}
-
-+ (instancetype)queryForMarketplaceordersUpdateWithOrderId:(NSString *)orderId
-                                            revisionNumber:(long long)revisionNumber
-                                              updateAction:(NSString *)updateAction {
-  NSString *methodName = @"adexchangebuyer.marketplaceorders.update";
-  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
-  query.orderId = orderId;
-  query.revisionNumber = revisionNumber;
-  query.updateAction = updateAction;
-  query.expectedObjectClass = [GTLAdExchangeBuyerMarketplaceOrder class];
   return query;
 }
 
@@ -453,6 +386,73 @@
   query.accountId = [NSNumber numberWithLongLong:accountId];
   query.configId = configId;
   query.expectedObjectClass = [GTLAdExchangeBuyerPretargetingConfig class];
+  return query;
+}
+
+#pragma mark - "products" methods
+// These create a GTLQueryAdExchangeBuyer object.
+
++ (instancetype)queryForProductsGetWithProductId:(NSString *)productId {
+  NSString *methodName = @"adexchangebuyer.products.get";
+  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
+  query.productId = productId;
+  query.expectedObjectClass = [GTLAdExchangeBuyerProduct class];
+  return query;
+}
+
++ (instancetype)queryForProductsSearch {
+  NSString *methodName = @"adexchangebuyer.products.search";
+  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLAdExchangeBuyerGetOffersResponse class];
+  return query;
+}
+
+#pragma mark - "proposals" methods
+// These create a GTLQueryAdExchangeBuyer object.
+
++ (instancetype)queryForProposalsGetWithProposalId:(NSString *)proposalId {
+  NSString *methodName = @"adexchangebuyer.proposals.get";
+  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
+  query.proposalId = proposalId;
+  query.expectedObjectClass = [GTLAdExchangeBuyerProposal class];
+  return query;
+}
+
++ (instancetype)queryForProposalsInsert {
+  NSString *methodName = @"adexchangebuyer.proposals.insert";
+  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLAdExchangeBuyerCreateOrdersResponse class];
+  return query;
+}
+
++ (instancetype)queryForProposalsPatchWithProposalId:(NSString *)proposalId
+                                      revisionNumber:(long long)revisionNumber
+                                        updateAction:(NSString *)updateAction {
+  NSString *methodName = @"adexchangebuyer.proposals.patch";
+  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
+  query.proposalId = proposalId;
+  query.revisionNumber = revisionNumber;
+  query.updateAction = updateAction;
+  query.expectedObjectClass = [GTLAdExchangeBuyerProposal class];
+  return query;
+}
+
++ (instancetype)queryForProposalsSearch {
+  NSString *methodName = @"adexchangebuyer.proposals.search";
+  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
+  query.expectedObjectClass = [GTLAdExchangeBuyerGetOrdersResponse class];
+  return query;
+}
+
++ (instancetype)queryForProposalsUpdateWithProposalId:(NSString *)proposalId
+                                       revisionNumber:(long long)revisionNumber
+                                         updateAction:(NSString *)updateAction {
+  NSString *methodName = @"adexchangebuyer.proposals.update";
+  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
+  query.proposalId = proposalId;
+  query.revisionNumber = revisionNumber;
+  query.updateAction = updateAction;
+  query.expectedObjectClass = [GTLAdExchangeBuyerProposal class];
   return query;
 }
 

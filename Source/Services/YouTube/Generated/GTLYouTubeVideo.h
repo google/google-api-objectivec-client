@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideo (0 custom class methods, 19 custom properties)
+//   GTLYouTubeVideo (0 custom class methods, 18 custom properties)
 //   GTLYouTubeVideoLocalizations (0 custom class methods, 0 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -37,7 +37,6 @@
 
 @class GTLYouTubeVideoAgeGating;
 @class GTLYouTubeVideoContentDetails;
-@class GTLYouTubeVideoConversionPings;
 @class GTLYouTubeVideoFileDetails;
 @class GTLYouTubeVideoLiveStreamingDetails;
 @class GTLYouTubeVideoLocalization;
@@ -69,10 +68,6 @@
 // The contentDetails object contains information about the video content,
 // including the length of the video and its aspect ratio.
 @property (nonatomic, retain) GTLYouTubeVideoContentDetails *contentDetails;
-
-// The conversionPings object encapsulates information about url pings that need
-// to be respected by the App in different video contexts.
-@property (nonatomic, retain) GTLYouTubeVideoConversionPings *conversionPings;
 
 // Etag of this resource.
 @property (nonatomic, copy) NSString *ETag;

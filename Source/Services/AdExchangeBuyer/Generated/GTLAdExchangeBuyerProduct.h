@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAdExchangeBuyerMarketplaceOffer.h
+//  GTLAdExchangeBuyerProduct.h
 //
 
 // ----------------------------------------------------------------------------
@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerMarketplaceOffer (0 custom class methods, 18 custom properties)
+//   GTLAdExchangeBuyerProduct (0 custom class methods, 18 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -44,24 +44,25 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAdExchangeBuyerMarketplaceOffer
+//   GTLAdExchangeBuyerProduct
 //
 
-// An offer is segment of inventory that a seller wishes to sell. It is
+// A product is segment of inventory that a seller wishes to sell. It is
 // associated with certain terms and targeting information which helps buyer
-// know more about the inventory. Each field in an order can have one of the
+// know more about the inventory. Each field in a product can have one of the
 // following setting:
 // (readonly) - It is an error to try and set this field. (buyer-readonly) -
 // Only the seller can set this field. (seller-readonly) - Only the buyer can
 // set this field. (updatable) - The field is updatable at all times by either
 // buyer or the seller.
 
-@interface GTLAdExchangeBuyerMarketplaceOffer : GTLObject
+@interface GTLAdExchangeBuyerProduct : GTLObject
 
 // Creation time in ms. since epoch (readonly)
 @property (nonatomic, retain) NSNumber *creationTimeMs;  // longLongValue
 
-// Optional contact information for the creator of this offer. (buyer-readonly)
+// Optional contact information for the creator of this product.
+// (buyer-readonly)
 @property (nonatomic, retain) NSArray *creatorContacts;  // of GTLAdExchangeBuyerContactInformation
 
 // The proposed end time for the deal (ms since epoch) (buyer-readonly)
@@ -71,9 +72,9 @@
 // is generally in the order of seconds. (buyer-readonly)
 @property (nonatomic, retain) NSNumber *flightStartTimeMs;  // longLongValue
 
-// If the creator has already signed off on the offer, then the buyer can
-// finalize the deal by accepting the offer as is. When copying to an order, if
-// any of the terms are changed, then auto_finalize is automatically set to
+// If the creator has already signed off on the product, then the buyer can
+// finalize the deal by accepting the product as is. When copying to a proposal,
+// if any of the terms are changed, then auto_finalize is automatically set to
 // false.
 @property (nonatomic, retain) NSNumber *hasCreatorSignedOff;  // boolValue
 
@@ -81,25 +82,25 @@
 @property (nonatomic, copy) NSString *inventorySource;
 
 // Identifies what kind of resource this is. Value: the fixed string
-// "adexchangebuyer#marketplaceOffer".
+// "adexchangebuyer#product".
 @property (nonatomic, copy) NSString *kind;
 
-// Optional List of labels for the offer (optional, buyer-readonly).
+// Optional List of labels for the product (optional, buyer-readonly).
 @property (nonatomic, retain) NSArray *labels;  // of GTLAdExchangeBuyerMarketplaceLabel
 
 // Time of last update in ms. since epoch (readonly)
 @property (nonatomic, retain) NSNumber *lastUpdateTimeMs;  // longLongValue
 
-// The name for this offer as set by the seller. (buyer-readonly)
+// The name for this product as set by the seller. (buyer-readonly)
 @property (nonatomic, copy) NSString *name;
 
-// The unique id for the offer (readonly)
-@property (nonatomic, copy) NSString *offerId;
+// The unique id for the product (readonly)
+@property (nonatomic, copy) NSString *productId;
 
-// The revision number of the offer. (readonly)
+// The revision number of the product. (readonly)
 @property (nonatomic, retain) NSNumber *revisionNumber;  // longLongValue
 
-// Information about the seller that created this offer (readonly, except on
+// Information about the seller that created this product (readonly, except on
 // create)
 @property (nonatomic, retain) GTLAdExchangeBuyerSeller *seller;
 
@@ -108,7 +109,7 @@
 // value or exclusion values. (buyer-readonly)
 @property (nonatomic, retain) NSArray *sharedTargetings;  // of GTLAdExchangeBuyerSharedTargeting
 
-// The state of the offer. (buyer-readonly)
+// The state of the product. (buyer-readonly)
 @property (nonatomic, copy) NSString *state;
 
 // The syndication product associated with the deal. (readonly, except on

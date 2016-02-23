@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAdExchangeBuyerMarketplaceOrder.h
+//  GTLAdExchangeBuyerProposal.h
 //
 
 // ----------------------------------------------------------------------------
@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerMarketplaceOrder (0 custom class methods, 21 custom properties)
+//   GTLAdExchangeBuyerProposal (0 custom class methods, 21 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -44,23 +44,23 @@
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAdExchangeBuyerMarketplaceOrder
+//   GTLAdExchangeBuyerProposal
 //
 
-// Represents an order in the marketplace. An order is the unit of negotiation
-// between a seller and a buyer and contains deals which are served. Each field
-// in an order can have one of the following setting:
+// Represents a proposal in the marketplace. A proposal is the unit of
+// negotiation between a seller and a buyer and contains deals which are served.
+// Each field in a proposal can have one of the following setting:
 // (readonly) - It is an error to try and set this field. (buyer-readonly) -
 // Only the seller can set this field. (seller-readonly) - Only the buyer can
 // set this field. (updatable) - The field is updatable at all times by either
 // buyer or the seller.
 
-@interface GTLAdExchangeBuyerMarketplaceOrder : GTLObject
+@interface GTLAdExchangeBuyerProposal : GTLObject
 
-// Reference to the buyer that will get billed for this order. (readonly)
+// Reference to the buyer that will get billed for this proposal. (readonly)
 @property (nonatomic, retain) GTLAdExchangeBuyerBuyer *billedBuyer;
 
-// Reference to the buyer on the order. (readonly, except on create)
+// Reference to the buyer on the proposal. (readonly, except on create)
 @property (nonatomic, retain) GTLAdExchangeBuyerBuyer *buyer;
 
 // Optional contact information fort the buyer. (seller-readonly)
@@ -69,57 +69,58 @@
 // Private data for buyer. (hidden from seller).
 @property (nonatomic, retain) GTLAdExchangeBuyerPrivateData *buyerPrivateData;
 
-// When an order is in an accepted state, indicates whether the buyer has signed
-// off Once both sides have signed off on a deal, the order can be finalized by
-// the seller. (seller-readonly)
+// When an proposal is in an accepted state, indicates whether the buyer has
+// signed off Once both sides have signed off on a deal, the proposal can be
+// finalized by the seller. (seller-readonly)
 @property (nonatomic, retain) NSNumber *hasBuyerSignedOff;  // boolValue
 
-// When an order is in an accepted state, indicates whether the buyer has signed
-// off Once both sides have signed off on a deal, the order can be finalized by
-// the seller. (buyer-readonly)
+// When an proposal is in an accepted state, indicates whether the buyer has
+// signed off Once both sides have signed off on a deal, the proposal can be
+// finalized by the seller. (buyer-readonly)
 @property (nonatomic, retain) NSNumber *hasSellerSignedOff;  // boolValue
 
 // What exchange will provide this inventory (readonly, except on create).
 @property (nonatomic, copy) NSString *inventorySource;
 
-// True if the order is being renegotiated (readonly).
+// True if the proposal is being renegotiated (readonly).
 @property (nonatomic, retain) NSNumber *isRenegotiating;  // boolValue
 
-// True, if the buyside inventory setup is complete for this order. (readonly)
+// True, if the buyside inventory setup is complete for this proposal.
+// (readonly)
 @property (nonatomic, retain) NSNumber *isSetupComplete;  // boolValue
 
 // Identifies what kind of resource this is. Value: the fixed string
-// "adexchangebuyer#marketplaceOrder".
+// "adexchangebuyer#proposal".
 @property (nonatomic, copy) NSString *kind;
 
-// List of labels associated with the order. (readonly)
+// List of labels associated with the proposal. (readonly)
 @property (nonatomic, retain) NSArray *labels;  // of GTLAdExchangeBuyerMarketplaceLabel
 
-// The role of the last user that either updated the order or left a comment.
+// The role of the last user that either updated the proposal or left a comment.
 // (readonly)
 @property (nonatomic, copy) NSString *lastUpdaterOrCommentorRole;
 
 @property (nonatomic, copy) NSString *lastUpdaterRole;
 
-// The name for the order (updatable)
+// The name for the proposal (updatable)
 @property (nonatomic, copy) NSString *name;
 
-// The unique id of the order. (readonly).
-@property (nonatomic, copy) NSString *orderId;
-
-// The current state of the order. (readonly)
-@property (nonatomic, copy) NSString *orderState;
-
-// Indicates whether the buyer/seller created the offer.(readonly)
+// Indicates whether the buyer/seller created the proposal.(readonly)
 @property (nonatomic, copy) NSString *originatorRole;
 
-// The revision number for the order (readonly).
+// The unique id of the proposal. (readonly).
+@property (nonatomic, copy) NSString *proposalId;
+
+// The current state of the proposal. (readonly)
+@property (nonatomic, copy) NSString *proposalState;
+
+// The revision number for the proposal (readonly).
 @property (nonatomic, retain) NSNumber *revisionNumber;  // longLongValue
 
-// The time (ms since epoch) when the order was last revised (readonly).
+// The time (ms since epoch) when the proposal was last revised (readonly).
 @property (nonatomic, retain) NSNumber *revisionTimeMs;  // longLongValue
 
-// Reference to the seller on the order. (readonly, except on create)
+// Reference to the seller on the proposal. (readonly, except on create)
 @property (nonatomic, retain) GTLAdExchangeBuyerSeller *seller;
 
 // Optional contact information for the seller (buyer-readonly).

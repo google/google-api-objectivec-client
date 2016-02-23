@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,27 +14,38 @@
  */
 
 //
-//  GTLYouTubeChannelId.m
+//  GTLDeploymentManagerDeploymentsListResponse.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   YouTube Data API (youtube/v3)
+//   Google Cloud Deployment Manager API (deploymentmanager/v2)
 // Description:
-//   Programmatic access to YouTube features.
+//   The Deployment Manager API allows users to declaratively configure, deploy
+//   and run complex solutions on the Google Cloud Platform.
 // Documentation:
-//   https://developers.google.com/youtube/v3
+//   https://cloud.google.com/deployment-manager/
 // Classes:
-//   GTLYouTubeChannelId (0 custom class methods, 1 custom properties)
+//   GTLDeploymentManagerDeploymentsListResponse (0 custom class methods, 2 custom properties)
 
-#import "GTLYouTubeChannelId.h"
+#import "GTLDeploymentManagerDeploymentsListResponse.h"
+
+#import "GTLDeploymentManagerDeployment.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeChannelId
+//   GTLDeploymentManagerDeploymentsListResponse
 //
 
-@implementation GTLYouTubeChannelId
-@dynamic value;
+@implementation GTLDeploymentManagerDeploymentsListResponse
+@dynamic deployments, nextPageToken;
+
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map = @{
+    @"deployments" : [GTLDeploymentManagerDeployment class]
+  };
+  return map;
+}
+
 @end

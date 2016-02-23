@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,31 +14,26 @@
  */
 
 //
-//  GTLYouTubeChannelId.h
+//  GTLServiceRegistry.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   YouTube Data API (youtube/v3)
+//   Google Cloud Service Registry API V1 (serviceregistry/alpha)
 // Description:
-//   Programmatic access to YouTube features.
+//   The Service Registry API allows users to manage service endpoints in
+//   Service Registry and use DNS-based service discovery / name resolution.
 // Documentation:
-//   https://developers.google.com/youtube/v3
-// Classes:
-//   GTLYouTubeChannelId (0 custom class methods, 1 custom properties)
+//   https://developers.google.com/cloud-serviceregistry/
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLServiceRegistryConstants.h"
 
-// ----------------------------------------------------------------------------
-//
-//   GTLYouTubeChannelId
-//
+#import "GTLServiceRegistryEndpoint.h"
+#import "GTLServiceRegistryEndpointEndpointVisibility.h"
+#import "GTLServiceRegistryEndpointsListResponse.h"
+#import "GTLServiceRegistryOperation.h"
+#import "GTLServiceRegistryOperationsListResponse.h"
 
-@interface GTLYouTubeChannelId : GTLObject
-@property (nonatomic, copy) NSString *value;
-@end
+#import "GTLQueryServiceRegistry.h"
+#import "GTLServiceServiceRegistry.h"

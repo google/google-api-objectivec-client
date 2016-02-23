@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@
 // Classes:
 //   GTLDriveFile (0 custom class methods, 43 custom properties)
 //   GTLDriveFileAppProperties (0 custom class methods, 0 custom properties)
-//   GTLDriveFileCapabilities (0 custom class methods, 4 custom properties)
+//   GTLDriveFileCapabilities (0 custom class methods, 5 custom properties)
 //   GTLDriveFileContentHints (0 custom class methods, 2 custom properties)
 //   GTLDriveFileImageMediaMetadata (0 custom class methods, 21 custom properties)
 //   GTLDriveFileProperties (0 custom class methods, 0 custom properties)
@@ -102,7 +102,7 @@
 //
 
 @implementation GTLDriveFileCapabilities
-@dynamic canComment, canCopy, canEdit, canShare;
+@dynamic canComment, canCopy, canEdit, canReadRevisions, canShare;
 @end
 
 

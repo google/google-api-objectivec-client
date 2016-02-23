@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -294,8 +294,8 @@
 //   productCode: Products to associate with the user.
 //      kGTLAdSenseHostProductCodeAfc: AdSense For Content
 //      kGTLAdSenseHostProductCodeAfg: AdSense For Games
-//      kGTLAdSenseHostProductCodeAfmc: AdSense For Mobile Content
-//      kGTLAdSenseHostProductCodeAfs: AdSense For Search
+//      kGTLAdSenseHostProductCodeAfmc: AdSense For Mobile Content - deprecated
+//      kGTLAdSenseHostProductCodeAfs: AdSense For Search - deprecated
 //      kGTLAdSenseHostProductCodeAfv: AdSense For Video
 //   websiteUrl: The URL of the user's hosted website.
 //  Optional:
