@@ -43,7 +43,6 @@ Google APIs with generated interfaces include
 - [Mirror](https://developers.google.com/glass/about/) for Google Glass
 - [Groups Settings](https://developers.google.com/google-apps/groups-settings/)
 - Latitude ([deprecated](https://support.google.com/gmm/answer/3001634?p=maps_android_latitude&rd=1))
-- Orkut ([deprecated](http://en.blog.orkut.com/2014/06/tchau-orkut.html))
 - [Plus](https://developers.google.com/+/api/)
 - [Plus Domains](https://developers.google.com/+/domains/)
 - Shopping ([deprecated](http://googleblog.blogspot.jp/2013/03/a-second-spring-of-cleaning.html))
