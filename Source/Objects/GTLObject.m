@@ -149,7 +149,11 @@ static NSString *const kGTLObjectJSONCoderKey = @"json";
 
 - (NSString *)JSONString {
   NSError *error = nil;
-  NSData *data = [NSJSONSerialization dataWithJSONObject:[self JSON]
+
+  NSDictionary *json = [self JSON];
+  if (!json) return @"";
+
+  NSData *data = [NSJSONSerialization dataWithJSONObject:json
                                                  options:NSJSONWritingPrettyPrinted
                                                    error:&error];
   if (data) {
