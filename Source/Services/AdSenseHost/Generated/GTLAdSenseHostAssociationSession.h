@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,7 +53,8 @@
 // Kind of resource this is, in this case adsensehost#associationSession.
 @property (nonatomic, copy) NSString *kind;
 
-// The products to associate with the user. Options: AFC, AFF, AFS, AFMC
+// The products to associate with the user. Options: AFC, AFG, AFV, AFS
+// (deprecated), AFMC (deprecated)
 @property (nonatomic, retain) NSArray *productCodes;  // of NSString
 
 // Redirect URL of this association session. Used to redirect users into the

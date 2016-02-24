@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,10 +45,10 @@
 
 @interface GTLAdExchangeBuyerDeleteOrderDealsResponse : GTLObject
 
-// List of deals deleted (in the same order as passed in the request)
+// List of deals deleted (in the same proposal as passed in the request)
 @property (nonatomic, retain) NSArray *deals;  // of GTLAdExchangeBuyerMarketplaceDeal
 
-// The updated revision number for the order.
-@property (nonatomic, retain) NSNumber *orderRevisionNumber;  // longLongValue
+// The updated revision number for the proposal.
+@property (nonatomic, retain) NSNumber *proposalRevisionNumber;  // longLongValue
 
 @end

@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -338,7 +338,8 @@
 + (instancetype)queryForFilesEmptyTrash;
 
 // Method: drive.files.export
-// Exports a Google Doc to the requested MIME type.
+// Exports a Google Doc to the requested MIME type and returns the exported
+// content.
 //  Required:
 //   fileId: The ID of the file.
 //   mimeType: The MIME type of the format requested for this export.

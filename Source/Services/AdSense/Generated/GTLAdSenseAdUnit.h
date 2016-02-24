@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,13 +55,14 @@
 // Identity code of this ad unit, not necessarily unique across ad clients.
 @property (nonatomic, copy) NSString *code;
 
-// Settings specific to content ads (AFC) and highend mobile content ads (AFMC).
+// Settings specific to content ads (AFC) and highend mobile content ads (AFMC -
+// deprecated).
 @property (nonatomic, retain) GTLAdSenseAdUnitContentAdsSettings *contentAdsSettings;
 
 // Custom style information specific to this ad unit.
 @property (nonatomic, retain) GTLAdSenseAdStyle *customStyle;
 
-// Settings specific to feed ads (AFF).
+// Settings specific to feed ads (AFF) - deprecated.
 @property (nonatomic, retain) GTLAdSenseAdUnitFeedAdsSettings *feedAdsSettings;
 
 // Unique identifier of this ad unit. This should be considered an opaque
@@ -72,7 +73,7 @@
 // Kind of resource this is, in this case adsense#adUnit.
 @property (nonatomic, copy) NSString *kind;
 
-// Settings specific to WAP mobile content ads (AFMC).
+// Settings specific to WAP mobile content ads (AFMC) - deprecated.
 @property (nonatomic, retain) GTLAdSenseAdUnitMobileContentAdsSettings *mobileContentAdsSettings;
 
 // Name of this ad unit.

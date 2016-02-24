@@ -1427,7 +1427,7 @@
 //     object will contain resource details in the resource's default language.
 //   maxResults: The maxResults parameter specifies the maximum number of
 //     messages that should be returned in the result set. (200..2000, default
-//     200)
+//     500)
 //   pageToken: The pageToken parameter identifies a specific page in the result
 //     set that should be returned. In an API response, the nextPageToken
 //     property identify other pages that could be retrieved.

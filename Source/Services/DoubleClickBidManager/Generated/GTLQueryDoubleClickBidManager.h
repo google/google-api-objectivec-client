@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/bid-manager/
 // Classes:
-//   GTLQueryDoubleClickBidManager (8 custom class methods, 13 custom properties)
+//   GTLQueryDoubleClickBidManager (9 custom class methods, 18 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -34,6 +34,7 @@
   #import "GTLQuery.h"
 #endif
 
+@class GTLDoubleClickBidManagerNote;
 @class GTLDoubleClickBidManagerQuery;
 
 @interface GTLQueryDoubleClickBidManager : GTLQuery
@@ -48,18 +49,24 @@
 //
 // Method-specific parameters; see the comments below for more information.
 //
+@property (nonatomic, copy) NSString *action;
 @property (nonatomic, copy) NSString *dataRange;
 @property (nonatomic, assign) BOOL dryRun;
 @property (nonatomic, copy) NSString *fileSpec;
 @property (nonatomic, retain) NSArray *filterIds;  // of NSNumber (longLongValue)
 @property (nonatomic, copy) NSString *filterType;
 @property (nonatomic, copy) NSString *format;
+@property (nonatomic, copy) NSString *href;
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+@property (nonatomic, assign) long long identifier;
 @property (nonatomic, copy) NSString *lineItems;
+@property (nonatomic, retain) NSArray *notes;  // of GTLDoubleClickBidManagerNote
 @property (nonatomic, retain) GTLDoubleClickBidManagerQuery *query;
 @property (nonatomic, assign) long long queryId;
 @property (nonatomic, assign) long long reportDataEndTimeMs;
 @property (nonatomic, assign) long long reportDataStartTimeMs;
 @property (nonatomic, copy) NSString *timezoneCode;
+@property (nonatomic, copy) NSString *token;
 
 #pragma mark - "lineitems" methods
 // These create a GTLQueryDoubleClickBidManager object.
@@ -165,5 +172,18 @@
 //   queryId: Query ID with which the reports are associated.
 // Fetches a GTLDoubleClickBidManagerListReportsResponse.
 + (instancetype)queryForReportsListreportsWithQueryId:(long long)queryId;
+
+#pragma mark - "rubicon" methods
+// These create a GTLQueryDoubleClickBidManager object.
+
+// Method: doubleclickbidmanager.rubicon.notifyproposalchange
+// Update proposal upon actions of Rubicon publisher.
+//  Optional:
+//   action: Action taken by publisher. One of: Accept, Decline, Append
+//   href: URL to access proposal detail.
+//   identifier: Below are contents of notification from Rubicon. Proposal id.
+//   notes: Notes from publisher
+//   token: Deal token, available when proposal is accepted by publisher.
++ (instancetype)queryForRubiconNotifyproposalchange;
 
 @end

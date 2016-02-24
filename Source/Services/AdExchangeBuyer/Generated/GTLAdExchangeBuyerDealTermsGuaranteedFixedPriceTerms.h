@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,7 +52,7 @@
 // looks that the buyer is guaranteeing to buy.
 @property (nonatomic, retain) NSNumber *guaranteedImpressions;  // longLongValue
 
-// Count of guaranteed looks. Required for deal, optional for offer.
+// Count of guaranteed looks. Required for deal, optional for product.
 @property (nonatomic, retain) NSNumber *guaranteedLooks;  // longLongValue
 
 @end

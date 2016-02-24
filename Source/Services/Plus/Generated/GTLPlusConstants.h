@@ -35,7 +35,7 @@
 #endif
 
 // Authorization scope
-// Know your basic profile info and list of people in your circles.
+// Know the list of people in your circles, your age range, and language
 GTL_EXTERN NSString * const kGTLAuthScopePlusLogin;            // "https://www.googleapis.com/auth/plus.login"
 // Know who you are on Google
 GTL_EXTERN NSString * const kGTLAuthScopePlusMe;               // "https://www.googleapis.com/auth/plus.me"

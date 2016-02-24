@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeContentRating (0 custom class methods, 65 custom properties)
+//   GTLYouTubeContentRating (0 custom class methods, 66 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -40,7 +40,7 @@
 //
 
 // Ratings schemes. The country-specific ratings are mostly for movies and
-// shows. NEXT_ID: 66
+// shows. NEXT_ID: 67
 
 @interface GTLYouTubeContentRating : GTLObject
 
@@ -120,6 +120,10 @@
 
 // Reasons that explain why the video received its DJCQT (Brazil) rating.
 @property (nonatomic, retain) NSArray *djctqRatingReasons;  // of NSString
+
+// Rating system in Turkey - Evaluation and Classification Board of the Ministry
+// of Culture and Tourism
+@property (nonatomic, copy) NSString *ecbmctRating;
 
 // The video's rating in Estonia.
 @property (nonatomic, copy) NSString *eefilmRating;

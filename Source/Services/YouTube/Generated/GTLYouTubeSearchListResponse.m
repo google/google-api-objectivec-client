@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeSearchListResponse (0 custom class methods, 9 custom properties)
+//   GTLYouTubeSearchListResponse (0 custom class methods, 10 custom properties)
 
 #import "GTLYouTubeSearchListResponse.h"
 
@@ -41,7 +41,7 @@
 
 @implementation GTLYouTubeSearchListResponse
 @dynamic ETag, eventId, items, kind, nextPageToken, pageInfo, prevPageToken,
-         tokenPagination, visitorId;
+         regionCode, tokenPagination, visitorId;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{

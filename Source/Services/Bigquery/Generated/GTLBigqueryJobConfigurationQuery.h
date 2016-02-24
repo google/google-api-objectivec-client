@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryJobConfigurationQuery (0 custom class methods, 13 custom properties)
+//   GTLBigqueryJobConfigurationQuery (0 custom class methods, 14 custom properties)
 //   GTLBigqueryJobConfigurationQueryTableDefinitions (0 custom class methods, 0 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -88,11 +88,19 @@
 // [Required] BigQuery SQL query to execute.
 @property (nonatomic, copy) NSString *query;
 
-// [Experimental] If querying an external data source outside of BigQuery,
-// describes the data format, location and other properties of the data source.
-// By defining these properties, the data source can then be queried as if it
-// were a standard BigQuery table.
+// [Optional] If querying an external data source outside of BigQuery, describes
+// the data format, location and other properties of the data source. By
+// defining these properties, the data source can then be queried as if it were
+// a standard BigQuery table.
 @property (nonatomic, retain) GTLBigqueryJobConfigurationQueryTableDefinitions *tableDefinitions;
+
+// [Experimental] Specifies whether to use BigQuery's legacy SQL dialect for
+// this query. The default value is true. If set to false, the query will use
+// BigQuery's updated SQL dialect with improved standards compliance. When using
+// BigQuery's updated SQL, the values of allowLargeResults and flattenResults
+// are ignored. Queries with useLegacySql set to false will be run as if
+// allowLargeResults is true and flattenResults is false.
+@property (nonatomic, retain) NSNumber *useLegacySql;  // boolValue
 
 // [Optional] Whether to look for the result in the query cache. The query cache
 // is a best-effort cache that will be flushed whenever tables in the query are

@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,8 +46,8 @@
 @implementation GTLAdExchangeBuyerMarketplaceDeal
 @dynamic buyerPrivateData, creationTimeMs, creativePreApprovalPolicy, dealId,
          deliveryControl, externalDealId, flightEndTimeMs, flightStartTimeMs,
-         inventoryDescription, kind, lastUpdateTimeMs, name, offerId,
-         offerRevisionNumber, orderId, sellerContacts, sharedTargetings,
+         inventoryDescription, kind, lastUpdateTimeMs, name, productId,
+         productRevisionNumber, proposalId, sellerContacts, sharedTargetings,
          syndicationProduct, terms, webPropertyCode;
 
 + (NSDictionary *)arrayPropertyToClassMap {

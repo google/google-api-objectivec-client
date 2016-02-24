@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,7 +41,7 @@ GTL_EXTERN NSString * const kGTLAuthScopePlusDomainsPlusCirclesRead;  // "https:
 // your circles will be notified. Others may see this information publicly.
 // People you add to circles can use Hangouts with you.
 GTL_EXTERN NSString * const kGTLAuthScopePlusDomainsPlusCirclesWrite;  // "https://www.googleapis.com/auth/plus.circles.write"
-// Know your basic profile info and list of people in your circles.
+// Know the list of people in your circles, your age range, and language
 GTL_EXTERN NSString * const kGTLAuthScopePlusDomainsPlusLogin;  // "https://www.googleapis.com/auth/plus.login"
 // Know who you are on Google
 GTL_EXTERN NSString * const kGTLAuthScopePlusDomainsPlusMe;     // "https://www.googleapis.com/auth/plus.me"

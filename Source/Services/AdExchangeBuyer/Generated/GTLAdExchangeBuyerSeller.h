@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,7 +44,7 @@
 @interface GTLAdExchangeBuyerSeller : GTLObject
 
 // The unique id for the seller. The seller fills in this field. The seller
-// account id is then available to buyer in the offer.
+// account id is then available to buyer in the product.
 @property (nonatomic, copy) NSString *accountId;
 
 // Optional sub-account id for the seller.

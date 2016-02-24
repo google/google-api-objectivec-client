@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,7 +45,7 @@
 
 @interface GTLAdExchangeBuyerEditAllOrderDealsResponse : GTLObject
 
-// List of all deals in the order after edit.
+// List of all deals in the proposal after edit.
 @property (nonatomic, retain) NSArray *deals;  // of GTLAdExchangeBuyerMarketplaceDeal
 
 @end

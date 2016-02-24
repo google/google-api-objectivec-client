@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLQueryBigquery (21 custom class methods, 24 custom properties)
+//   GTLQueryBigquery (21 custom class methods, 25 custom properties)
 //   GTLBigqueryTabledataInsertAllRowsItem (0 custom class methods, 2 custom properties)
 
 #import "GTLQueryBigquery.h"
@@ -52,7 +52,7 @@
          fields, ignoreUnknownValues, jobId, kind, maxResults, pageToken,
          preserveNulls, projectId, projection, query, rows, skipInvalidRows,
          startIndex, stateFilter, tableId, templateSuffix, timeoutMs,
-         useQueryCache;
+         useLegacySql, useQueryCache;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{

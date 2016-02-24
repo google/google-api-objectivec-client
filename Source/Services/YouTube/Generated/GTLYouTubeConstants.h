@@ -453,6 +453,17 @@ GTL_EXTERN NSString * const kGTLYouTubeContentRating_DjctqRatingReasons_DjctqSex
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_DjctqRatingReasons_DjctqSexualContent;  // "djctqSexualContent"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_DjctqRatingReasons_DjctqViolence;  // "djctqViolence"
 
+// GTLYouTubeContentRating - EcbmctRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_EcbmctRating_Ecbmct13a;  // "ecbmct13a"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_EcbmctRating_Ecbmct13plus;  // "ecbmct13plus"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_EcbmctRating_Ecbmct15a;  // "ecbmct15a"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_EcbmctRating_Ecbmct15plus;  // "ecbmct15plus"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_EcbmctRating_Ecbmct18plus;  // "ecbmct18plus"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_EcbmctRating_Ecbmct7a;  // "ecbmct7a"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_EcbmctRating_Ecbmct7plus;  // "ecbmct7plus"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_EcbmctRating_EcbmctG;  // "ecbmctG"
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_EcbmctRating_EcbmctUnrated;  // "ecbmctUnrated"
+
 // GTLYouTubeContentRating - EefilmRating
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_EefilmRating_EefilmK12;  // "eefilmK12"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_EefilmRating_EefilmK14;  // "eefilmK14"
@@ -506,6 +517,7 @@ GTL_EXTERN NSString * const kGTLYouTubeContentRating_FmocRating_FmocU;  // "fmoc
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_FmocRating_FmocUnrated;  // "fmocUnrated"
 
 // GTLYouTubeContentRating - FpbRating
+GTL_EXTERN NSString * const kGTLYouTubeContentRating_FpbRating_Fpb10;  // "fpb10"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_FpbRating_Fpb1012Pg;  // "fpb1012Pg"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_FpbRating_Fpb13;  // "fpb13"
 GTL_EXTERN NSString * const kGTLYouTubeContentRating_FpbRating_Fpb16;  // "fpb16"
@@ -984,12 +996,6 @@ GTL_EXTERN NSString * const kGTLYouTubeVideoContentDetails_Caption_True;  // "tr
 // GTLYouTubeVideoContentDetails - Definition
 GTL_EXTERN NSString * const kGTLYouTubeVideoContentDetails_Definition_Hd;  // "hd"
 GTL_EXTERN NSString * const kGTLYouTubeVideoContentDetails_Definition_Sd;  // "sd"
-
-// GTLYouTubeVideoConversionPing - Context
-GTL_EXTERN NSString * const kGTLYouTubeVideoConversionPing_Context_Comment;  // "comment"
-GTL_EXTERN NSString * const kGTLYouTubeVideoConversionPing_Context_Dislike;  // "dislike"
-GTL_EXTERN NSString * const kGTLYouTubeVideoConversionPing_Context_Like;  // "like"
-GTL_EXTERN NSString * const kGTLYouTubeVideoConversionPing_Context_Share;  // "share"
 
 // GTLYouTubeVideoFileDetails - FileType
 GTL_EXTERN NSString * const kGTLYouTubeVideoFileDetails_FileType_Archive;  // "archive"

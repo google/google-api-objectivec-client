@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLQueryBigquery (21 custom class methods, 24 custom properties)
+//   GTLQueryBigquery (21 custom class methods, 25 custom properties)
 //   GTLBigqueryTabledataInsertAllRowsItem (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
@@ -76,6 +76,7 @@
 @property (nonatomic, copy) NSString *tableId;
 @property (nonatomic, copy) NSString *templateSuffix;
 @property (nonatomic, assign) NSUInteger timeoutMs;
+@property (nonatomic, assign) BOOL useLegacySql;
 @property (nonatomic, assign) BOOL useQueryCache;
 
 #pragma mark - "datasets" methods
@@ -295,6 +296,13 @@
 //     with the 'jobComplete' flag set to false. You can call GetQueryResults()
 //     to wait for the query to complete and read the results. The default value
 //     is 10000 milliseconds (10 seconds).
+//   useLegacySql: [Experimental] Specifies whether to use BigQuery's legacy SQL
+//     dialect for this query. The default value is true. If set to false, the
+//     query will use BigQuery's updated SQL dialect with improved standards
+//     compliance. When using BigQuery's updated SQL, the values of
+//     allowLargeResults and flattenResults are ignored. Queries with
+//     useLegacySql set to false will be run as if allowLargeResults is true and
+//     flattenResults is false.
 //   useQueryCache: [Optional] Whether to look for the result in the query
 //     cache. The query cache is a best-effort cache that will be flushed
 //     whenever tables in the query are modified. The default value is true.
@@ -343,8 +351,8 @@
 //   skipInvalidRows: [Optional] Insert all valid rows of a request, even if
 //     invalid rows exist. The default value is false, which causes the entire
 //     request to fail if any invalid rows exist.
-//   templateSuffix: [Optional] If specified, treats the destination table as a
-//     base template, and inserts the rows into an instance table named
+//   templateSuffix: [Experimental] If specified, treats the destination table
+//     as a base template, and inserts the rows into an instance table named
 //     "{destination}{templateSuffix}". BigQuery will manage creation of the
 //     instance table, using the schema of the base template table. See
 //     https://cloud.google.com/bigquery/streaming-data-into-bigquery#template-tables

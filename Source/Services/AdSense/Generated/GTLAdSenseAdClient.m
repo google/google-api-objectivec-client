@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:
-//   GTLAdSenseAdClient (0 custom class methods, 6 custom properties)
+//   GTLAdSenseAdClient (0 custom class methods, 5 custom properties)
 
 #import "GTLAdSenseAdClient.h"
 
@@ -37,8 +37,7 @@
 //
 
 @implementation GTLAdSenseAdClient
-@dynamic arcOptIn, arcReviewMode, identifier, kind, productCode,
-         supportsReporting;
+@dynamic arcOptIn, identifier, kind, productCode, supportsReporting;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{

@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,7 +41,7 @@
 //   GTLAdExchangeBuyerMarketplaceNote
 //
 
-// An order is associated with a bunch of notes which may optionally be
+// A proposal is associated with a bunch of notes which may optionally be
 // associated with a deal and/or revision number.
 
 @interface GTLAdExchangeBuyerMarketplaceNote : GTLObject
@@ -62,12 +62,12 @@
 // The unique id for the note. (readonly)
 @property (nonatomic, copy) NSString *noteId;
 
-// The order_id that a note is attached to. (readonly)
-@property (nonatomic, copy) NSString *orderId;
+// The proposalId that a note is attached to. (readonly)
+@property (nonatomic, copy) NSString *proposalId;
 
-// If the note is associated with an order revision number, then store that
+// If the note is associated with a proposal revision number, then store that
 // here. (readonly, except on create)
-@property (nonatomic, retain) NSNumber *orderRevisionNumber;  // longLongValue
+@property (nonatomic, retain) NSNumber *proposalRevisionNumber;  // longLongValue
 
 // The timestamp (ms since epoch) that this note was created. (readonly)
 @property (nonatomic, retain) NSNumber *timestampMs;  // longLongValue
