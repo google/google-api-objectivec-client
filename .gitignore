@@ -1,8 +1,24 @@
-Source/GTLCore.xcodeproj/project.xcworkspace/xcuserdata
-Source/GTLCore.xcodeproj/xcuserdata
-Source/Tools/ServiceGenerator/ServiceGenerator.xcodeproj/project.xcworkspace/xcuserdata
-Source/Tools/ServiceGenerator/ServiceGenerator.xcodeproj/xcuserdata
-Source/Tools/ServiceGenerator/build
-
-# Any place they exist.
+# OSX
 .DS_Store
+
+# Xcode
+
+## Build generated
+build/
+DerivedData
+
+## Various settings
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+
+## Other
+*.xccheckout
+*.moved-aside
+*.xcuserstate
