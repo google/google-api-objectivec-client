@@ -20,7 +20,7 @@
 #import "BloggerSampleWindowController.h"
 
 #import "GTL/GTLUtilities.h"
-#import "GTL/GTMHTTPFetcherLogging.h"
+#import "GTL/GTMSessionFetcherLogging.h"
 
 @interface BloggerSampleWindowController ()
 
@@ -213,7 +213,7 @@ NSString *const kKeychainItemName = @"BloggerSample: Google Blogger";
 }
 
 - (IBAction)loggingCheckboxClicked:(id)sender {
-  [GTMHTTPFetcher setLoggingEnabled:[sender state]];
+  [GTMSessionFetcher setLoggingEnabled:[sender state]];
 }
 
 #pragma mark -
