@@ -20,7 +20,7 @@
 #import "TasksSampleWindowController.h"
 
 #import "GTL/GTLUtilities.h"
-#import "GTL/GTMHTTPFetcherLogging.h"
+#import "GTL/GTMSessionFetcherLogging.h"
 
 @interface TasksSampleWindowController ()
 
@@ -268,7 +268,7 @@ NSString *const kKeychainItemName = @"TasksSample: Google Tasks";
 }
 
 - (IBAction)loggingCheckboxClicked:(id)sender {
-  [GTMHTTPFetcher setLoggingEnabled:[sender state]];
+  [GTMSessionFetcher setLoggingEnabled:[sender state]];
 }
 
 #pragma mark -
@@ -947,7 +947,7 @@ static NSString *const kGTLChildTasksProperty = @"childTasks";
     resultStr = [self.taskListsFetchError description];
 
     // Also display any server data present
-    NSData *errData = [[self.taskListsFetchError userInfo] objectForKey:kGTMHTTPFetcherStatusDataKey];
+    NSData *errData = [[self.taskListsFetchError userInfo] objectForKey:kGTMSessionFetcherStatusDataKey];
     if (errData) {
       NSString *dataStr = [[[NSString alloc] initWithData:errData
                                                  encoding:NSUTF8StringEncoding] autorelease];
