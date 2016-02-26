@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryExternalDataConfiguration (0 custom class methods, 7 custom properties)
+//   GTLBigqueryExternalDataConfiguration (0 custom class methods, 8 custom properties)
 
 #import "GTLBigqueryExternalDataConfiguration.h"
 
@@ -39,8 +39,8 @@
 //
 
 @implementation GTLBigqueryExternalDataConfiguration
-@dynamic compression, csvOptions, ignoreUnknownValues, maxBadRecords, schema,
-         sourceFormat, sourceUris;
+@dynamic autodetect, compression, csvOptions, ignoreUnknownValues,
+         maxBadRecords, schema, sourceFormat, sourceUris;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{

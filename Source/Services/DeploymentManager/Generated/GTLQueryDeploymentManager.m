@@ -27,7 +27,7 @@
 // Documentation:
 //   https://cloud.google.com/deployment-manager/
 // Classes:
-//   GTLQueryDeploymentManager (15 custom class methods, 12 custom properties)
+//   GTLQueryDeploymentManager (15 custom class methods, 13 custom properties)
 
 #import "GTLQueryDeploymentManager.h"
 
@@ -44,7 +44,7 @@
 @implementation GTLQueryDeploymentManager
 
 @dynamic createPolicy, deletePolicy, deployment, fields, filter, fingerprint,
-         manifest, maxResults, operation, pageToken, preview, project;
+         manifest, maxResults, operation, pageToken, preview, project, resource;
 
 #pragma mark - "deployments" methods
 // These create a GTLQueryDeploymentManager object.
@@ -192,18 +192,14 @@
 #pragma mark - "resources" methods
 // These create a GTLQueryDeploymentManager object.
 
-+ (instancetype)queryForResourcesGetWithObject:(GTLDeploymentManagerResourcesGetResource *)object
-                                       project:(NSString *)project
-                                    deployment:(NSString *)deployment {
-  if (object == nil) {
-    GTL_DEBUG_ASSERT(object != nil, @"%@ got a nil object", NSStringFromSelector(_cmd));
-    return nil;
-  }
++ (instancetype)queryForResourcesGetWithProject:(NSString *)project
+                                     deployment:(NSString *)deployment
+                                       resource:(NSString *)resource {
   NSString *methodName = @"deploymentmanager.resources.get";
   GTLQueryDeploymentManager *query = [self queryWithMethodName:methodName];
-  query.bodyObject = object;
   query.project = project;
   query.deployment = deployment;
+  query.resource = resource;
   query.expectedObjectClass = [GTLDeploymentManagerResource class];
   return query;
 }

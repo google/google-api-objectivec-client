@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/gmail/api/
 // Classes:
-//   GTLQueryGmail (32 custom class methods, 24 custom properties)
+//   GTLQueryGmail (33 custom class methods, 25 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -56,6 +56,7 @@
 @property (nonatomic, copy) NSString *format;
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (nonatomic, copy) NSString *identifier;
+@property (nonatomic, retain) NSArray *ids;  // of NSString
 @property (nonatomic, assign) BOOL includeSpamTrash;
 @property (nonatomic, copy) NSString *internalDateSource;
 @property (nonatomic, retain) GTLGmailLabel *label;
@@ -129,6 +130,8 @@
 // Method: gmail.users.drafts.list
 // Lists the drafts in the user's mailbox.
 //  Optional:
+//   includeSpamTrash: Include drafts from SPAM and TRASH in the results.
+//     (Default false)
 //   maxResults: Maximum number of drafts to return. (Default 100)
 //   pageToken: Page token to retrieve a specific page of results in the list.
 //   userId: The user's email address. The special value me can be used to
@@ -324,6 +327,17 @@
 
 #pragma mark - "users.messages" methods
 // These create a GTLQueryGmail object.
+
+// Method: gmail.users.messages.batchDelete
+// Deletes many messages by message ID. Provides no guarantees that messages
+// were not already deleted or even existed at all.
+//  Optional:
+//   ids: The IDs of the messages to delete.
+//   userId: The user's email address. The special value me can be used to
+//     indicate the authenticated user. (Default me)
+//  Authorization scope(s):
+//   kGTLAuthScopeGmail
++ (instancetype)queryForUsersMessagesBatchDelete;
 
 // Method: gmail.users.messages.delete
 // Immediately and permanently deletes the specified message. This operation

@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerProposal (0 custom class methods, 21 custom properties)
+//   GTLAdExchangeBuyerProposal (0 custom class methods, 23 custom properties)
 
 #import "GTLAdExchangeBuyerProposal.h"
 
@@ -47,8 +47,8 @@
 @dynamic billedBuyer, buyer, buyerContacts, buyerPrivateData, hasBuyerSignedOff,
          hasSellerSignedOff, inventorySource, isRenegotiating, isSetupComplete,
          kind, labels, lastUpdaterOrCommentorRole, lastUpdaterRole, name,
-         originatorRole, proposalId, proposalState, revisionNumber,
-         revisionTimeMs, seller, sellerContacts;
+         negotiationId, originatorRole, privateAuctionId, proposalId,
+         proposalState, revisionNumber, revisionTimeMs, seller, sellerContacts;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{

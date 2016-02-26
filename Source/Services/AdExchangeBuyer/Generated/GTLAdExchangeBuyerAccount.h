@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
 //   GTLAdExchangeBuyerAccount (0 custom class methods, 8 custom properties)
-//   GTLAdExchangeBuyerAccountBidderLocationItem (0 custom class methods, 3 custom properties)
+//   GTLAdExchangeBuyerAccountBidderLocationItem (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -87,6 +87,16 @@
 //
 
 @interface GTLAdExchangeBuyerAccountBidderLocationItem : GTLObject
+
+// The protocol that the bidder endpoint is using. By default, OpenRTB protocols
+// use JSON, except PROTOCOL_OPENRTB_PROTOBUF. PROTOCOL_OPENRTB_PROTOBUF uses
+// protobuf encoding over the latest OpenRTB protocol version, which is 2.3
+// right now. Allowed values:
+// - PROTOCOL_ADX
+// - PROTOCOL_OPENRTB_2_2
+// - PROTOCOL_OPENRTB_2_3
+// - PROTOCOL_OPENRTB_PROTOBUF
+@property (nonatomic, copy) NSString *bidProtocol;
 
 // The maximum queries per second the Ad Exchange will send.
 @property (nonatomic, retain) NSNumber *maximumQps;  // intValue

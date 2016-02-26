@@ -1045,6 +1045,7 @@ NSString * const kGTLYouTubeVideoStatus_RejectionReason_Claim  = @"claim";
 NSString * const kGTLYouTubeVideoStatus_RejectionReason_Copyright = @"copyright";
 NSString * const kGTLYouTubeVideoStatus_RejectionReason_Duplicate = @"duplicate";
 NSString * const kGTLYouTubeVideoStatus_RejectionReason_Inappropriate = @"inappropriate";
+NSString * const kGTLYouTubeVideoStatus_RejectionReason_Legal  = @"legal";
 NSString * const kGTLYouTubeVideoStatus_RejectionReason_Length = @"length";
 NSString * const kGTLYouTubeVideoStatus_RejectionReason_TermsOfUse = @"termsOfUse";
 NSString * const kGTLYouTubeVideoStatus_RejectionReason_Trademark = @"trademark";

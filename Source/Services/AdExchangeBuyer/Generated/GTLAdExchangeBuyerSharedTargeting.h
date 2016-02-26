@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,10 +45,11 @@
 
 @interface GTLAdExchangeBuyerSharedTargeting : GTLObject
 
-// The list of values to exclude from targeting.
+// The list of values to exclude from targeting. Each value is AND'd together.
 @property (nonatomic, retain) NSArray *exclusions;  // of GTLAdExchangeBuyerTargetingValue
 
-// The list of value to include as part of the targeting.
+// The list of value to include as part of the targeting. Each value is OR'd
+// together.
 @property (nonatomic, retain) NSArray *inclusions;  // of GTLAdExchangeBuyerTargetingValue
 
 // The key representing the shared targeting criterion.

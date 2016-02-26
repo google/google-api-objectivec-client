@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryExternalDataConfiguration (0 custom class methods, 7 custom properties)
+//   GTLBigqueryExternalDataConfiguration (0 custom class methods, 8 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -44,9 +44,13 @@
 
 @interface GTLBigqueryExternalDataConfiguration : GTLObject
 
+// [Experimental] Try to detect schema and format options automatically. Any
+// option specified explicitly will be honored.
+@property (nonatomic, retain) NSNumber *autodetect;  // boolValue
+
 // [Optional] The compression type of the data source. Possible values include
 // GZIP and NONE. The default value is NONE. This setting is ignored for Google
-// Cloud Datastore backups.
+// Cloud Datastore backups and Avro.
 @property (nonatomic, copy) NSString *compression;
 
 // Additional properties to set if sourceFormat is set to CSV.
@@ -59,23 +63,24 @@
 // default value is false. The sourceFormat property determines what BigQuery
 // treats as an extra value: CSV: Trailing columns JSON: Named values that don't
 // match any column names Google Cloud Datastore backups: This setting is
-// ignored.
+// ignored. Avro: This setting is ignored.
 @property (nonatomic, retain) NSNumber *ignoreUnknownValues;  // boolValue
 
 // [Optional] The maximum number of bad records that BigQuery can ignore when
 // reading data. If the number of bad records exceeds this value, an invalid
 // error is returned in the job result. The default value is 0, which requires
 // that all records are valid. This setting is ignored for Google Cloud
-// Datastore backups.
+// Datastore backups and Avro.
 @property (nonatomic, retain) NSNumber *maxBadRecords;  // intValue
 
 // [Optional] The schema for the data. Schema is required for CSV and JSON
-// formats. Schema is disallowed for Google Cloud Datastore backups.
+// formats. Schema is disallowed for Google Cloud Datastore backups and Avro.
 @property (nonatomic, retain) GTLBigqueryTableSchema *schema;
 
 // [Required] The data format. For CSV files, specify "CSV". For
 // newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Google Cloud
-// Datastore backups, specify "DATASTORE_BACKUP".
+// Datastore backups, specify "DATASTORE_BACKUP". For Avro files, specify
+// "AVRO".
 @property (nonatomic, copy) NSString *sourceFormat;
 
 // [Required] The fully-qualified URIs that point to your data in Google Cloud

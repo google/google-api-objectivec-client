@@ -27,7 +27,7 @@
 // Documentation:
 //   https://cloud.google.com/deployment-manager/
 // Classes:
-//   GTLQueryDeploymentManager (15 custom class methods, 12 custom properties)
+//   GTLQueryDeploymentManager (15 custom class methods, 13 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -60,6 +60,7 @@
 @property (nonatomic, copy) NSString *pageToken;
 @property (nonatomic, assign) BOOL preview;
 @property (nonatomic, copy) NSString *project;
+@property (nonatomic, copy) NSString *resource;
 
 #pragma mark - "deployments" methods
 // These create a GTLQueryDeploymentManager object.
@@ -400,15 +401,16 @@
 //  Required:
 //   project: The project ID for this request.
 //   deployment: The name of the deployment for this request.
+//   resource: The name of the resource for this request.
 //  Authorization scope(s):
 //   kGTLAuthScopeDeploymentManagerCloudPlatform
 //   kGTLAuthScopeDeploymentManagerCloudPlatformReadOnly
 //   kGTLAuthScopeDeploymentManagerNdevCloudman
 //   kGTLAuthScopeDeploymentManagerNdevCloudmanReadonly
 // Fetches a GTLDeploymentManagerResource.
-+ (instancetype)queryForResourcesGetWithObject:(GTLDeploymentManagerResourcesGetResource *)object
-                                       project:(NSString *)project
-                                    deployment:(NSString *)deployment;
++ (instancetype)queryForResourcesGetWithProject:(NSString *)project
+                                     deployment:(NSString *)deployment
+                                       resource:(NSString *)resource;
 
 // Method: deploymentmanager.resources.list
 // Lists all resources in a given deployment.

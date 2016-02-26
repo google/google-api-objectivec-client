@@ -108,6 +108,7 @@ typedef enum {
 @property (readonly, getter=hasItemsArrayProperty) BOOL itemsArrayProperty;
 @property (readonly) NSString *kindToRegister;
 @property (readonly) NSString *rangeAndDefaultDescription;
+@property (readonly) BOOL isQueryRequestObject;
 
 - (GTLDiscoveryJsonSchema *)itemsSchemaResolving:(BOOL)resolving
                                            depth:(NSUInteger *)depth;
@@ -2573,7 +2574,7 @@ static NSString *MappedParamName(NSString *name) {
     for (GTLDiscoveryJsonSchema *param in methodParameters) {
       // The ObjC library lists the object that goes with the methods
       // independently, so keep it out of the parameters lists.
-      if ([param.name isEqual:kResourceParameterName]) {
+      if (param.isQueryRequestObject) {
         continue;
       }
 
@@ -3768,6 +3769,24 @@ static NSString *OverrideName(NSString *name, EQueryOrObject queryOrObject,
   return result;
 }
 
+// Helper to see if a param is a request object and gets handled as the
+// object parameter instead.
+- (BOOL)isQueryRequestObject {
+  // Check the name
+  if (![self.name isEqual:kResourceParameterName]) {
+    return NO;
+  }
+
+  GTLDiscoveryJsonSchema *resolved = self.resolvedSchema;
+  if (![resolved.type isEqual:@"object"]) {
+    // The api is using "resource" for something other than an object, that
+    // doesn't really make sense for JSON-RPC, but let it work.
+    return NO;
+  }
+
+  return YES;
+}
+
 // Fetching the item's schema even if it is nested (array inside of array...),
 // resolving controls if it also resolves the schema references along the way.
 - (GTLDiscoveryJsonSchema *)itemsSchemaResolving:(BOOL)resolving
@@ -4123,7 +4142,10 @@ static FHTypeInfo *LookupTypeInfo(NSString *typeString,
   // The request object is the parameter named 'resource'.
   GTLDiscoveryJsonSchema *result =
     [self.parameters.additionalProperties objectForKey:kResourceParameterName];
-  return result;
+  if (result.isQueryRequestObject) {
+    return result;
+  }
+  return nil;
 }
 
 // Sorted by parameterOrder first, and then alphabetical for the rest. This
@@ -4162,7 +4184,9 @@ static FHTypeInfo *LookupTypeInfo(NSString *typeString,
 
     // Calculate the value for sortedParameters and save it.
     NSMutableArray *worker = [NSMutableArray arrayWithArray:allOrderedKeys];
-    [worker removeObject:kResourceParameterName];
+    if (self.request) {
+      [worker removeObject:kResourceParameterName];
+    }
     NSArray *sortedParameters = [paramsDict objectsForKeys:worker
                                             notFoundMarker:[NSNull null]];
     [self setProperty:sortedParameters forKey:kSortedParametersKey];

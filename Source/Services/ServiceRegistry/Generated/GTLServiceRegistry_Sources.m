@@ -23,7 +23,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Cloud Service Registry API V1 (serviceregistry/alpha)
+//   Google Cloud Service Registry API (serviceregistry/alpha)
 // Description:
 //   The Service Registry API allows users to manage service endpoints in
 //   Service Registry and use DNS-based service discovery / name resolution.

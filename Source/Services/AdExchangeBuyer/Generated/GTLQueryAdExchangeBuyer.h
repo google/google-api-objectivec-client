@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLQueryAdExchangeBuyer (34 custom class methods, 26 custom properties)
+//   GTLQueryAdExchangeBuyer (36 custom class methods, 26 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -530,6 +530,14 @@
 // Fetches a GTLAdExchangeBuyerGetOrdersResponse.
 + (instancetype)queryForProposalsSearch;
 
+// Method: adexchangebuyer.proposals.setupcomplete
+// Update the given proposal to indicate that setup has been completed.
+//  Required:
+//   proposalId: The proposal id for which the setup is complete
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
++ (instancetype)queryForProposalsSetupcompleteWithProposalId:(NSString *)proposalId;
+
 // Method: adexchangebuyer.proposals.update
 // Update the given proposal
 //  Required:
@@ -552,5 +560,17 @@
 + (instancetype)queryForProposalsUpdateWithProposalId:(NSString *)proposalId
                                        revisionNumber:(long long)revisionNumber
                                          updateAction:(NSString *)updateAction;
+
+#pragma mark - "pubprofiles" methods
+// These create a GTLQueryAdExchangeBuyer object.
+
+// Method: adexchangebuyer.pubprofiles.list
+// Gets the requested publisher profile(s) by publisher accountId.
+//  Required:
+//   accountId: The accountId of the publisher to get profiles for.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
+// Fetches a GTLAdExchangeBuyerGetPublisherProfilesByAccountIdResponse.
++ (instancetype)queryForPubprofilesListWithAccountId:(NSInteger)accountId;
 
 @end

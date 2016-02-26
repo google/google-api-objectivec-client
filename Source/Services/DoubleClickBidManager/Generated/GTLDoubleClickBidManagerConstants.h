@@ -508,6 +508,7 @@ GTL_EXTERN NSString * const kGTLDoubleClickBidManagerParameters_Type_TypeNielsen
 GTL_EXTERN NSString * const kGTLDoubleClickBidManagerParameters_Type_TypeNielsenDailyReachBuild;  // "TYPE_NIELSEN_DAILY_REACH_BUILD"
 GTL_EXTERN NSString * const kGTLDoubleClickBidManagerParameters_Type_TypeNielsenOnlineGlobalMarket;  // "TYPE_NIELSEN_ONLINE_GLOBAL_MARKET"
 GTL_EXTERN NSString * const kGTLDoubleClickBidManagerParameters_Type_TypeNielsenSite;  // "TYPE_NIELSEN_SITE"
+GTL_EXTERN NSString * const kGTLDoubleClickBidManagerParameters_Type_TypeNotSupported;  // "TYPE_NOT_SUPPORTED"
 GTL_EXTERN NSString * const kGTLDoubleClickBidManagerParameters_Type_TypeOrderId;  // "TYPE_ORDER_ID"
 GTL_EXTERN NSString * const kGTLDoubleClickBidManagerParameters_Type_TypePageCategory;  // "TYPE_PAGE_CATEGORY"
 GTL_EXTERN NSString * const kGTLDoubleClickBidManagerParameters_Type_TypePetraNielsenAudienceProfile;  // "TYPE_PETRA_NIELSEN_AUDIENCE_PROFILE"

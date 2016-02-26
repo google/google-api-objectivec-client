@@ -865,9 +865,9 @@
 // Method: analytics.management.profiles.get
 // Gets a view (profile) to which the user has access.
 //  Required:
-//   accountId: Account ID to retrieve the goal for.
-//   webPropertyId: Web property ID to retrieve the goal for.
-//   profileId: View (Profile) ID to retrieve the goal for.
+//   accountId: Account ID to retrieve the view (profile) for.
+//   webPropertyId: Web property ID to retrieve the view (profile) for.
+//   profileId: View (Profile) ID to retrieve the view (profile) for.
 //  Authorization scope(s):
 //   kGTLAuthScopeAnalyticsEdit
 //   kGTLAuthScopeAnalyticsReadonly
