@@ -1,10 +1,13 @@
 language: objective-c
 osx_image: xcode7.2
 env:
-  - MODE=OSX CFG=Debug
-  - MODE=OSX CFG=Release
-  - MODE=iOS CFG=Debug
-  - MODE=iOS CFG=Release
+  - MODE=OSXCore CFG=Debug
+  - MODE=OSXCore CFG=Release
+  - MODE=iOSCore CFG=Debug
+  - MODE=iOSCore CFG=Release
+  - MODE=Example_BloggerSample CFG=Both
+  - MODE=Example_DriveSample CFG=Both
+  - MODE=Example_TasksSample CFG=Both
 script:
   - ./.travis.sh "${MODE}" "${CFG}"
 before_install:
