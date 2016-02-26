@@ -28,12 +28,13 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerProduct (0 custom class methods, 18 custom properties)
+//   GTLAdExchangeBuyerProduct (0 custom class methods, 21 custom properties)
 
 #import "GTLAdExchangeBuyerProduct.h"
 
 #import "GTLAdExchangeBuyerContactInformation.h"
 #import "GTLAdExchangeBuyerDealTerms.h"
+#import "GTLAdExchangeBuyerDeliveryControl.h"
 #import "GTLAdExchangeBuyerMarketplaceLabel.h"
 #import "GTLAdExchangeBuyerSeller.h"
 #import "GTLAdExchangeBuyerSharedTargeting.h"
@@ -44,10 +45,11 @@
 //
 
 @implementation GTLAdExchangeBuyerProduct
-@dynamic creationTimeMs, creatorContacts, flightEndTimeMs, flightStartTimeMs,
-         hasCreatorSignedOff, inventorySource, kind, labels, lastUpdateTimeMs,
-         name, productId, revisionNumber, seller, sharedTargetings, state,
-         syndicationProduct, terms, webPropertyCode;
+@dynamic creationTimeMs, creatorContacts, deliveryControl, flightEndTimeMs,
+         flightStartTimeMs, hasCreatorSignedOff, inventorySource, kind, labels,
+         lastUpdateTimeMs, legacyOfferId, name, privateAuctionId, productId,
+         revisionNumber, seller, sharedTargetings, state, syndicationProduct,
+         terms, webPropertyCode;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{

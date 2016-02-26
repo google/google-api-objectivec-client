@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerMarketplaceDeal (0 custom class methods, 20 custom properties)
+//   GTLAdExchangeBuyerMarketplaceDeal (0 custom class methods, 23 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -37,6 +37,7 @@
 #endif
 
 @class GTLAdExchangeBuyerContactInformation;
+@class GTLAdExchangeBuyerDealServingMetadata;
 @class GTLAdExchangeBuyerDealTerms;
 @class GTLAdExchangeBuyerDeliveryControl;
 @class GTLAdExchangeBuyerPrivateData;
@@ -61,8 +62,15 @@
 // Specifies the creative pre-approval policy (buyer-readonly)
 @property (nonatomic, copy) NSString *creativePreApprovalPolicy;
 
+// Specifies whether the creative is safeFrame compatible (buyer-readonly)
+@property (nonatomic, copy) NSString *creativeSafeFrameCompatibility;
+
 // A unique deal=id for the deal (readonly).
 @property (nonatomic, copy) NSString *dealId;
+
+// Metadata about the serving status of this deal (readonly, writes via custom
+// actions)
+@property (nonatomic, retain) GTLAdExchangeBuyerDealServingMetadata *dealServingMetadata;
 
 // The set of fields around delivery control that are interesting for a buyer to
 // see but are non-negotiable. These are set by the publisher. This message is
@@ -102,12 +110,18 @@
 // except on create)
 @property (nonatomic, retain) NSNumber *productRevisionNumber;  // longLongValue
 
+// Specifies the creative source for programmatic deals, PUBLISHER means
+// creative is provided by seller and ADVERTISR means creative is provided by
+// buyer. (buyer-readonly)
+@property (nonatomic, copy) NSString *programmaticCreativeSource;
+
 @property (nonatomic, copy) NSString *proposalId;
 
 // Optional Seller contact information for the deal (buyer-readonly)
 @property (nonatomic, retain) NSArray *sellerContacts;  // of GTLAdExchangeBuyerContactInformation
 
-// The shared targeting visible to buyers and sellers. (updatable)
+// The shared targeting visible to buyers and sellers. Each shared targeting
+// entity is AND'd together. (updatable)
 @property (nonatomic, retain) NSArray *sharedTargetings;  // of GTLAdExchangeBuyerSharedTargeting
 
 // The syndication product associated with the deal. (readonly, except on

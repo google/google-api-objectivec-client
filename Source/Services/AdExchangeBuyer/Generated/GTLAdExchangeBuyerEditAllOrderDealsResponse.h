@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerEditAllOrderDealsResponse (0 custom class methods, 1 custom properties)
+//   GTLAdExchangeBuyerEditAllOrderDealsResponse (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -47,5 +47,8 @@
 
 // List of all deals in the proposal after edit.
 @property (nonatomic, retain) NSArray *deals;  // of GTLAdExchangeBuyerMarketplaceDeal
+
+// The latest revision number after the update has been applied.
+@property (nonatomic, retain) NSNumber *orderRevisionNumber;  // longLongValue
 
 @end

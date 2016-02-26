@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAdExchangeBuyerMarketplaceDeal.m
+//  GTLAdExchangeBuyerPublisherProfileApiProto.m
 //
 
 // ----------------------------------------------------------------------------
@@ -28,41 +28,30 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerMarketplaceDeal (0 custom class methods, 23 custom properties)
+//   GTLAdExchangeBuyerPublisherProfileApiProto (0 custom class methods, 13 custom properties)
 
-#import "GTLAdExchangeBuyerMarketplaceDeal.h"
-
-#import "GTLAdExchangeBuyerContactInformation.h"
-#import "GTLAdExchangeBuyerDealServingMetadata.h"
-#import "GTLAdExchangeBuyerDealTerms.h"
-#import "GTLAdExchangeBuyerDeliveryControl.h"
-#import "GTLAdExchangeBuyerPrivateData.h"
-#import "GTLAdExchangeBuyerSharedTargeting.h"
+#import "GTLAdExchangeBuyerPublisherProfileApiProto.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAdExchangeBuyerMarketplaceDeal
+//   GTLAdExchangeBuyerPublisherProfileApiProto
 //
 
-@implementation GTLAdExchangeBuyerMarketplaceDeal
-@dynamic buyerPrivateData, creationTimeMs, creativePreApprovalPolicy,
-         creativeSafeFrameCompatibility, dealId, dealServingMetadata,
-         deliveryControl, externalDealId, flightEndTimeMs, flightStartTimeMs,
-         inventoryDescription, kind, lastUpdateTimeMs, name, productId,
-         productRevisionNumber, programmaticCreativeSource, proposalId,
-         sellerContacts, sharedTargetings, syndicationProduct, terms,
-         webPropertyCode;
+@implementation GTLAdExchangeBuyerPublisherProfileApiProto
+@dynamic buyerPitchStatement, googlePlusLink, isParent, kind, logoUrl,
+         mediaKitLink, name, overview, profileId, publisherDomains,
+         rateCardInfoLink, samplePageLink, topHeadlines;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{
-    @"sellerContacts" : [GTLAdExchangeBuyerContactInformation class],
-    @"sharedTargetings" : [GTLAdExchangeBuyerSharedTargeting class]
+    @"publisherDomains" : [NSString class],
+    @"topHeadlines" : [NSString class]
   };
   return map;
 }
 
 + (void)load {
-  [self registerObjectClassForKind:@"adexchangebuyer#marketplaceDeal"];
+  [self registerObjectClassForKind:@"adexchangebuyer#publisherProfileApiProto"];
 }
 
 @end

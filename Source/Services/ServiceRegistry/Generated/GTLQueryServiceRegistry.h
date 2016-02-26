@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Cloud Service Registry API V1 (serviceregistry/alpha)
+//   Google Cloud Service Registry API (serviceregistry/alpha)
 // Description:
 //   The Service Registry API allows users to manage service endpoints in
 //   Service Registry and use DNS-based service discovery / name resolution.
@@ -110,7 +110,8 @@
 //     boolean). For string fields, the literal value is interpreted as a
 //     regular expression using RE2 syntax. The literal value must match the
 //     entire field.
-//     For example, filter=name ne example-instance.
+//     For example, to filter for instances that do not have a name of
+//     example-instance, you would use filter=name ne example-instance.
 //     Compute Engine Beta API Only: If you use filtering in the Beta API, you
 //     can also filter on nested fields. For example, you could filter on
 //     instances that have set the scheduling.automaticRestart field to true. In
@@ -119,13 +120,12 @@
 //     The Beta API also supports filtering on multiple expressions by providing
 //     each separate expression within parentheses. For example,
 //     (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-//     expressions are treated as AND expressions meaning that resources must
+//     expressions are treated as AND expressions, meaning that resources must
 //     match all expressions to pass the filters.
-//   maxResults: The maximum number of results per page that Compute Engine
-//     should return. If the number of available results is larger than
-//     maxResults, Compute Engine returns a nextPageToken that can be used to
-//     get the next page of results in subsequent list requests. (0..500,
-//     default 500)
+//   maxResults: The maximum number of results per page that should be returned.
+//     If the number of available results is larger than maxResults, Compute
+//     Engine returns a nextPageToken that can be used to get the next page of
+//     results in subsequent list requests. (0..500, default 500)
 //   orderBy: Sorts list results by a certain order. By default, results are
 //     returned in alphanumerical order based on the resource name.
 //     You can also sort results in descending order based on the creation
@@ -201,7 +201,8 @@
 //     boolean). For string fields, the literal value is interpreted as a
 //     regular expression using RE2 syntax. The literal value must match the
 //     entire field.
-//     For example, filter=name ne example-instance.
+//     For example, to filter for instances that do not have a name of
+//     example-instance, you would use filter=name ne example-instance.
 //     Compute Engine Beta API Only: If you use filtering in the Beta API, you
 //     can also filter on nested fields. For example, you could filter on
 //     instances that have set the scheduling.automaticRestart field to true. In
@@ -210,13 +211,12 @@
 //     The Beta API also supports filtering on multiple expressions by providing
 //     each separate expression within parentheses. For example,
 //     (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-//     expressions are treated as AND expressions meaning that resources must
+//     expressions are treated as AND expressions, meaning that resources must
 //     match all expressions to pass the filters.
-//   maxResults: The maximum number of results per page that Compute Engine
-//     should return. If the number of available results is larger than
-//     maxResults, Compute Engine returns a nextPageToken that can be used to
-//     get the next page of results in subsequent list requests. (0..500,
-//     default 500)
+//   maxResults: The maximum number of results per page that should be returned.
+//     If the number of available results is larger than maxResults, Compute
+//     Engine returns a nextPageToken that can be used to get the next page of
+//     results in subsequent list requests. (0..500, default 500)
 //   orderBy: Sorts list results by a certain order. By default, results are
 //     returned in alphanumerical order based on the resource name.
 //     You can also sort results in descending order based on the creation

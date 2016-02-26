@@ -14,39 +14,31 @@
  */
 
 //
-//  GTLYouTubeChannelSnippet.m
+//  GTLAdExchangeBuyerDealServingMetadata.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   YouTube Data API (youtube/v3)
+//   Ad Exchange Buyer API (adexchangebuyer/v1.4)
 // Description:
-//   Programmatic access to YouTube features.
+//   Accesses your bidding-account information, submits creatives for
+//   validation, finds available direct deals, and retrieves performance
+//   reports.
 // Documentation:
-//   https://developers.google.com/youtube/v3
+//   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLYouTubeChannelSnippet (0 custom class methods, 8 custom properties)
+//   GTLAdExchangeBuyerDealServingMetadata (0 custom class methods, 1 custom properties)
 
-#import "GTLYouTubeChannelSnippet.h"
+#import "GTLAdExchangeBuyerDealServingMetadata.h"
 
-#import "GTLYouTubeChannelLocalization.h"
-#import "GTLYouTubeThumbnailDetails.h"
+#import "GTLAdExchangeBuyerDealServingMetadataDealPauseStatus.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeChannelSnippet
+//   GTLAdExchangeBuyerDealServingMetadata
 //
 
-@implementation GTLYouTubeChannelSnippet
-@dynamic country, customUrl, defaultLanguage, descriptionProperty, localized,
-         publishedAt, thumbnails, title;
-
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map = @{
-    @"descriptionProperty" : @"description"
-  };
-  return map;
-}
-
+@implementation GTLAdExchangeBuyerDealServingMetadata
+@dynamic dealPauseStatus;
 @end

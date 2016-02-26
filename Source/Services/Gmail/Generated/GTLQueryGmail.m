@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/gmail/api/
 // Classes:
-//   GTLQueryGmail (32 custom class methods, 24 custom properties)
+//   GTLQueryGmail (33 custom class methods, 25 custom properties)
 
 #import "GTLQueryGmail.h"
 
@@ -45,7 +45,7 @@
 
 @implementation GTLQueryGmail
 
-@dynamic addLabelIds, deleted, draft, fields, format, identifier,
+@dynamic addLabelIds, deleted, draft, fields, format, identifier, ids,
          includeSpamTrash, internalDateSource, label, labelFilterAction,
          labelId, labelIds, maxResults, message, messageId, metadataHeaders,
          neverMarkSpam, pageToken, processForCalendar, q, removeLabelIds,
@@ -61,6 +61,7 @@
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{
     @"addLabelIds" : [NSString class],
+    @"ids" : [NSString class],
     @"labelIds" : [NSString class],
     @"metadataHeaders" : [NSString class],
     @"removeLabelIds" : [NSString class]
@@ -191,6 +192,12 @@
 
 #pragma mark - "users.messages" methods
 // These create a GTLQueryGmail object.
+
++ (instancetype)queryForUsersMessagesBatchDelete {
+  NSString *methodName = @"gmail.users.messages.batchDelete";
+  GTLQueryGmail *query = [self queryWithMethodName:methodName];
+  return query;
+}
 
 + (instancetype)queryForUsersMessagesDelete {
   NSString *methodName = @"gmail.users.messages.delete";

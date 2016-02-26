@@ -1058,6 +1058,7 @@ GTL_EXTERN NSString * const kGTLYouTubeVideoStatus_RejectionReason_Claim;  // "c
 GTL_EXTERN NSString * const kGTLYouTubeVideoStatus_RejectionReason_Copyright;  // "copyright"
 GTL_EXTERN NSString * const kGTLYouTubeVideoStatus_RejectionReason_Duplicate;  // "duplicate"
 GTL_EXTERN NSString * const kGTLYouTubeVideoStatus_RejectionReason_Inappropriate;  // "inappropriate"
+GTL_EXTERN NSString * const kGTLYouTubeVideoStatus_RejectionReason_Legal;  // "legal"
 GTL_EXTERN NSString * const kGTLYouTubeVideoStatus_RejectionReason_Length;  // "length"
 GTL_EXTERN NSString * const kGTLYouTubeVideoStatus_RejectionReason_TermsOfUse;  // "termsOfUse"
 GTL_EXTERN NSString * const kGTLYouTubeVideoStatus_RejectionReason_Trademark;  // "trademark"

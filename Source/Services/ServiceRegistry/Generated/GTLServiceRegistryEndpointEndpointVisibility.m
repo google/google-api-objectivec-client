@@ -20,14 +20,14 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Cloud Service Registry API V1 (serviceregistry/alpha)
+//   Google Cloud Service Registry API (serviceregistry/alpha)
 // Description:
 //   The Service Registry API allows users to manage service endpoints in
 //   Service Registry and use DNS-based service discovery / name resolution.
 // Documentation:
 //   https://developers.google.com/cloud-serviceregistry/
 // Classes:
-//   GTLServiceRegistryEndpointEndpointVisibility (0 custom class methods, 2 custom properties)
+//   GTLServiceRegistryEndpointEndpointVisibility (0 custom class methods, 1 custom properties)
 
 #import "GTLServiceRegistryEndpointEndpointVisibility.h"
 
@@ -37,12 +37,11 @@
 //
 
 @implementation GTLServiceRegistryEndpointEndpointVisibility
-@dynamic networks, projects;
+@dynamic networks;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{
-    @"networks" : [NSString class],
-    @"projects" : [NSString class]
+    @"networks" : [NSString class]
   };
   return map;
 }

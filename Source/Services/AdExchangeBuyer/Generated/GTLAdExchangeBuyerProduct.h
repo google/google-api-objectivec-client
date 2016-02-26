@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerProduct (0 custom class methods, 18 custom properties)
+//   GTLAdExchangeBuyerProduct (0 custom class methods, 21 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -38,6 +38,7 @@
 
 @class GTLAdExchangeBuyerContactInformation;
 @class GTLAdExchangeBuyerDealTerms;
+@class GTLAdExchangeBuyerDeliveryControl;
 @class GTLAdExchangeBuyerMarketplaceLabel;
 @class GTLAdExchangeBuyerSeller;
 @class GTLAdExchangeBuyerSharedTargeting;
@@ -65,6 +66,12 @@
 // (buyer-readonly)
 @property (nonatomic, retain) NSArray *creatorContacts;  // of GTLAdExchangeBuyerContactInformation
 
+// The set of fields around delivery control that are interesting for a buyer to
+// see but are non-negotiable. These are set by the publisher. This message is
+// assigned an id of 100 since some day we would want to model this as a
+// protobuf extension.
+@property (nonatomic, retain) GTLAdExchangeBuyerDeliveryControl *deliveryControl;
+
 // The proposed end time for the deal (ms since epoch) (buyer-readonly)
 @property (nonatomic, retain) NSNumber *flightEndTimeMs;  // longLongValue
 
@@ -91,8 +98,14 @@
 // Time of last update in ms. since epoch (readonly)
 @property (nonatomic, retain) NSNumber *lastUpdateTimeMs;  // longLongValue
 
+// Optional legacy offer id if this offer is a preferred deal offer.
+@property (nonatomic, copy) NSString *legacyOfferId;
+
 // The name for this product as set by the seller. (buyer-readonly)
 @property (nonatomic, copy) NSString *name;
+
+// Optional private auction id if this offer is a private auction offer.
+@property (nonatomic, copy) NSString *privateAuctionId;
 
 // The unique id for the product (readonly)
 @property (nonatomic, copy) NSString *productId;

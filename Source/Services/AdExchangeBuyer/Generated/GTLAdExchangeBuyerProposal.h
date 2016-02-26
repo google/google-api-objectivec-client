@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerProposal (0 custom class methods, 21 custom properties)
+//   GTLAdExchangeBuyerProposal (0 custom class methods, 23 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -86,7 +86,7 @@
 @property (nonatomic, retain) NSNumber *isRenegotiating;  // boolValue
 
 // True, if the buyside inventory setup is complete for this proposal.
-// (readonly)
+// (readonly, except via OrderSetupCompleted action)
 @property (nonatomic, retain) NSNumber *isSetupComplete;  // boolValue
 
 // Identifies what kind of resource this is. Value: the fixed string
@@ -105,8 +105,14 @@
 // The name for the proposal (updatable)
 @property (nonatomic, copy) NSString *name;
 
+// Optional negotiation id if this proposal is a preferred deal proposal.
+@property (nonatomic, copy) NSString *negotiationId;
+
 // Indicates whether the buyer/seller created the proposal.(readonly)
 @property (nonatomic, copy) NSString *originatorRole;
+
+// Optional private auction id if this proposal is a private auction proposal.
+@property (nonatomic, copy) NSString *privateAuctionId;
 
 // The unique id of the proposal. (readonly).
 @property (nonatomic, copy) NSString *proposalId;

@@ -502,6 +502,7 @@ NSString * const kGTLDoubleClickBidManagerParameters_Type_TypeNielsenAudiencePro
 NSString * const kGTLDoubleClickBidManagerParameters_Type_TypeNielsenDailyReachBuild = @"TYPE_NIELSEN_DAILY_REACH_BUILD";
 NSString * const kGTLDoubleClickBidManagerParameters_Type_TypeNielsenOnlineGlobalMarket = @"TYPE_NIELSEN_ONLINE_GLOBAL_MARKET";
 NSString * const kGTLDoubleClickBidManagerParameters_Type_TypeNielsenSite = @"TYPE_NIELSEN_SITE";
+NSString * const kGTLDoubleClickBidManagerParameters_Type_TypeNotSupported = @"TYPE_NOT_SUPPORTED";
 NSString * const kGTLDoubleClickBidManagerParameters_Type_TypeOrderId = @"TYPE_ORDER_ID";
 NSString * const kGTLDoubleClickBidManagerParameters_Type_TypePageCategory = @"TYPE_PAGE_CATEGORY";
 NSString * const kGTLDoubleClickBidManagerParameters_Type_TypePetraNielsenAudienceProfile = @"TYPE_PETRA_NIELSEN_AUDIENCE_PROFILE";

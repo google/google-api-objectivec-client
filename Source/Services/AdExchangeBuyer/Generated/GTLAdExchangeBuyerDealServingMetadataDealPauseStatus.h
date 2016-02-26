@@ -14,20 +14,21 @@
  */
 
 //
-//  GTLServiceRegistryOperationsListResponse.h
+//  GTLAdExchangeBuyerDealServingMetadataDealPauseStatus.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Cloud Service Registry API (serviceregistry/alpha)
+//   Ad Exchange Buyer API (adexchangebuyer/v1.4)
 // Description:
-//   The Service Registry API allows users to manage service endpoints in
-//   Service Registry and use DNS-based service discovery / name resolution.
+//   Accesses your bidding-account information, submits creatives for
+//   validation, finds available direct deals, and retrieves performance
+//   reports.
 // Documentation:
-//   https://developers.google.com/cloud-serviceregistry/
+//   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLServiceRegistryOperationsListResponse (0 custom class methods, 2 custom properties)
+//   GTLAdExchangeBuyerDealServingMetadataDealPauseStatus (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -35,22 +36,15 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLServiceRegistryOperation;
-
 // ----------------------------------------------------------------------------
 //
-//   GTLServiceRegistryOperationsListResponse
+//   GTLAdExchangeBuyerDealServingMetadataDealPauseStatus
 //
 
-// A response containing a partial list of operations and a page token used to
-// build the next request if the request has been truncated.
+// Tracks which parties (if any) have paused a deal. The deal is considered
+// paused if has_buyer_paused || has_seller_paused.
 
-@interface GTLServiceRegistryOperationsListResponse : GTLObject
-
-// [Output Only] A token used to continue a truncated list request.
-@property (nonatomic, copy) NSString *nextPageToken;
-
-// [Output Only] Operations contained in this list response.
-@property (nonatomic, retain) NSArray *operations;  // of GTLServiceRegistryOperation
-
+@interface GTLAdExchangeBuyerDealServingMetadataDealPauseStatus : GTLObject
+@property (nonatomic, retain) NSNumber *hasBuyerPaused;  // boolValue
+@property (nonatomic, retain) NSNumber *hasSellerPaused;  // boolValue
 @end

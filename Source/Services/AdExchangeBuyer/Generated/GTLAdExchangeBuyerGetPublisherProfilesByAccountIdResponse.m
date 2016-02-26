@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAdExchangeBuyerMarketplaceDeal.m
+//  GTLAdExchangeBuyerGetPublisherProfilesByAccountIdResponse.m
 //
 
 // ----------------------------------------------------------------------------
@@ -28,41 +28,25 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerMarketplaceDeal (0 custom class methods, 23 custom properties)
+//   GTLAdExchangeBuyerGetPublisherProfilesByAccountIdResponse (0 custom class methods, 1 custom properties)
 
-#import "GTLAdExchangeBuyerMarketplaceDeal.h"
+#import "GTLAdExchangeBuyerGetPublisherProfilesByAccountIdResponse.h"
 
-#import "GTLAdExchangeBuyerContactInformation.h"
-#import "GTLAdExchangeBuyerDealServingMetadata.h"
-#import "GTLAdExchangeBuyerDealTerms.h"
-#import "GTLAdExchangeBuyerDeliveryControl.h"
-#import "GTLAdExchangeBuyerPrivateData.h"
-#import "GTLAdExchangeBuyerSharedTargeting.h"
+#import "GTLAdExchangeBuyerPublisherProfileApiProto.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLAdExchangeBuyerMarketplaceDeal
+//   GTLAdExchangeBuyerGetPublisherProfilesByAccountIdResponse
 //
 
-@implementation GTLAdExchangeBuyerMarketplaceDeal
-@dynamic buyerPrivateData, creationTimeMs, creativePreApprovalPolicy,
-         creativeSafeFrameCompatibility, dealId, dealServingMetadata,
-         deliveryControl, externalDealId, flightEndTimeMs, flightStartTimeMs,
-         inventoryDescription, kind, lastUpdateTimeMs, name, productId,
-         productRevisionNumber, programmaticCreativeSource, proposalId,
-         sellerContacts, sharedTargetings, syndicationProduct, terms,
-         webPropertyCode;
+@implementation GTLAdExchangeBuyerGetPublisherProfilesByAccountIdResponse
+@dynamic profiles;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{
-    @"sellerContacts" : [GTLAdExchangeBuyerContactInformation class],
-    @"sharedTargetings" : [GTLAdExchangeBuyerSharedTargeting class]
+    @"profiles" : [GTLAdExchangeBuyerPublisherProfileApiProto class]
   };
   return map;
-}
-
-+ (void)load {
-  [self registerObjectClassForKind:@"adexchangebuyer#marketplaceDeal"];
 }
 
 @end

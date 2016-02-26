@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,8 +45,9 @@
 
 @interface GTLAdExchangeBuyerDealTermsNonGuaranteedAuctionTerms : GTLObject
 
-// Id of the corresponding private auction.
-@property (nonatomic, copy) NSString *privateAuctionId;
+// True if open auction buyers are allowed to compete with invited buyers in
+// this private auction (buyer-readonly).
+@property (nonatomic, retain) NSNumber *autoOptimizePrivateAuction;  // boolValue
 
 // Reserve price for the specified buyer.
 @property (nonatomic, retain) NSArray *reservePricePerBuyers;  // of GTLAdExchangeBuyerPricePerBuyer

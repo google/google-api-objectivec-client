@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLQueryAdExchangeBuyer (34 custom class methods, 26 custom properties)
+//   GTLQueryAdExchangeBuyer (36 custom class methods, 26 custom properties)
 
 #import "GTLQueryAdExchangeBuyer.h"
 
@@ -48,6 +48,7 @@
 #import "GTLAdExchangeBuyerGetOrderDealsResponse.h"
 #import "GTLAdExchangeBuyerGetOrderNotesResponse.h"
 #import "GTLAdExchangeBuyerGetOrdersResponse.h"
+#import "GTLAdExchangeBuyerGetPublisherProfilesByAccountIdResponse.h"
 #import "GTLAdExchangeBuyerMarketplaceDeal.h"
 #import "GTLAdExchangeBuyerMarketplaceNote.h"
 #import "GTLAdExchangeBuyerPerformanceReportList.h"
@@ -444,6 +445,13 @@
   return query;
 }
 
++ (instancetype)queryForProposalsSetupcompleteWithProposalId:(NSString *)proposalId {
+  NSString *methodName = @"adexchangebuyer.proposals.setupcomplete";
+  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
+  query.proposalId = proposalId;
+  return query;
+}
+
 + (instancetype)queryForProposalsUpdateWithProposalId:(NSString *)proposalId
                                        revisionNumber:(long long)revisionNumber
                                          updateAction:(NSString *)updateAction {
@@ -453,6 +461,17 @@
   query.revisionNumber = revisionNumber;
   query.updateAction = updateAction;
   query.expectedObjectClass = [GTLAdExchangeBuyerProposal class];
+  return query;
+}
+
+#pragma mark - "pubprofiles" methods
+// These create a GTLQueryAdExchangeBuyer object.
+
++ (instancetype)queryForPubprofilesListWithAccountId:(NSInteger)accountId {
+  NSString *methodName = @"adexchangebuyer.pubprofiles.list";
+  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
+  query.accountId = [NSNumber numberWithInteger:accountId];
+  query.expectedObjectClass = [GTLAdExchangeBuyerGetPublisherProfilesByAccountIdResponse class];
   return query;
 }
 

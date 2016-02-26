@@ -14,39 +14,38 @@
  */
 
 //
-//  GTLYouTubeChannelSnippet.m
+//  GTLAdExchangeBuyerGetPublisherProfilesByAccountIdResponse.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   YouTube Data API (youtube/v3)
+//   Ad Exchange Buyer API (adexchangebuyer/v1.4)
 // Description:
-//   Programmatic access to YouTube features.
+//   Accesses your bidding-account information, submits creatives for
+//   validation, finds available direct deals, and retrieves performance
+//   reports.
 // Documentation:
-//   https://developers.google.com/youtube/v3
+//   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLYouTubeChannelSnippet (0 custom class methods, 8 custom properties)
+//   GTLAdExchangeBuyerGetPublisherProfilesByAccountIdResponse (0 custom class methods, 1 custom properties)
 
-#import "GTLYouTubeChannelSnippet.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
-#import "GTLYouTubeChannelLocalization.h"
-#import "GTLYouTubeThumbnailDetails.h"
+@class GTLAdExchangeBuyerPublisherProfileApiProto;
 
 // ----------------------------------------------------------------------------
 //
-//   GTLYouTubeChannelSnippet
+//   GTLAdExchangeBuyerGetPublisherProfilesByAccountIdResponse
 //
 
-@implementation GTLYouTubeChannelSnippet
-@dynamic country, customUrl, defaultLanguage, descriptionProperty, localized,
-         publishedAt, thumbnails, title;
+@interface GTLAdExchangeBuyerGetPublisherProfilesByAccountIdResponse : GTLObject
 
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map = @{
-    @"descriptionProperty" : @"description"
-  };
-  return map;
-}
+// Profiles for the requested publisher
+@property (nonatomic, retain) NSArray *profiles;  // of GTLAdExchangeBuyerPublisherProfileApiProto
 
 @end

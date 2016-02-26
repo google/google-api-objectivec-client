@@ -20,7 +20,7 @@
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Cloud Service Registry API V1 (serviceregistry/alpha)
+//   Google Cloud Service Registry API (serviceregistry/alpha)
 // Description:
 //   The Service Registry API allows users to manage service endpoints in
 //   Service Registry and use DNS-based service discovery / name resolution.
@@ -44,7 +44,7 @@
 
 // A response containing a partial list of Endpoints and a page token used to
 // build the next request if the request has been truncated. Next available tag:
-// 5
+// 6
 
 @interface GTLServiceRegistryEndpointsListResponse : GTLObject
 

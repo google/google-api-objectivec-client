@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
 //   GTLAdExchangeBuyerAccount (0 custom class methods, 8 custom properties)
-//   GTLAdExchangeBuyerAccountBidderLocationItem (0 custom class methods, 3 custom properties)
+//   GTLAdExchangeBuyerAccountBidderLocationItem (0 custom class methods, 4 custom properties)
 
 #import "GTLAdExchangeBuyerAccount.h"
 
@@ -69,5 +69,5 @@
 //
 
 @implementation GTLAdExchangeBuyerAccountBidderLocationItem
-@dynamic maximumQps, region, url;
+@dynamic bidProtocol, maximumQps, region, url;
 @end
