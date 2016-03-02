@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		4F122F611A4100A200C80B5C /* GTLBooks_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F122F601A4100A200C80B5C /* GTLBooks_Sources.m */; };
 		4F22A2151186315400FFBAB6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F22A2141186315400FFBAB6 /* WebKit.framework */; };
-		4F2445C8121F0D2900FEE1DA /* GTL.framework in Copy GTL Framework */ = {isa = PBXBuildFile; fileRef = 4F2445BE121F0CF600FEE1DA /* GTL.framework */; };
-		4F2445C9121F0D2C00FEE1DA /* GTL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2445BE121F0CF600FEE1DA /* GTL.framework */; };
 		4F82A5140FCDFECC00C477D4 /* BooksSampleAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F82A5100FCDFECC00C477D4 /* BooksSampleAppController.m */; };
 		4F82A5150FCDFECC00C477D4 /* BooksSampleWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F82A5120FCDFECC00C477D4 /* BooksSampleWindowController.m */; };
 		4FA6F3D31034AEC400C5DFA5 /* BooksSampleWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FA6F3CF1034AEC400C5DFA5 /* BooksSampleWindow.xib */; };
@@ -21,40 +19,40 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4F2445BD121F0CF600FEE1DA /* PBXContainerItemProxy */ = {
+		3D7C873C1C8770E000A87F94 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4F2445B6121F0CF600FEE1DA /* GTL.xcodeproj */;
+			containerPortal = 4F2445B6121F0CF600FEE1DA /* GTLCore.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4F38F6A60B66E91D00B24B81;
-			remoteInfo = GTLFramework;
+			remoteInfo = GTLOSXCore;
 		};
-		4F2445BF121F0CF600FEE1DA /* PBXContainerItemProxy */ = {
+		3D7C873E1C8770E000A87F94 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4F2445B6121F0CF600FEE1DA /* GTL.xcodeproj */;
+			containerPortal = 4F2445B6121F0CF600FEE1DA /* GTLCore.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 4F12027C11A4CA2F00BEB470;
-			remoteInfo = GTLTouchStaticLib;
+			remoteGlobalIDString = F4469DB41C40229D00BCFAA1;
+			remoteInfo = GTLiOSCore;
 		};
-		4F2445C1121F0CF600FEE1DA /* PBXContainerItemProxy */ = {
+		3D7C87401C8770E000A87F94 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4F2445B6121F0CF600FEE1DA /* GTL.xcodeproj */;
+			containerPortal = 4F2445B6121F0CF600FEE1DA /* GTLCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F4368F721B8233BF00E17643;
+			remoteInfo = GTLiOSUnitTests;
+		};
+		3D7C87421C8770E000A87F94 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4F2445B6121F0CF600FEE1DA /* GTLCore.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4F12027D11A4CA2F00BEB470;
-			remoteInfo = GTLUnitTests;
+			remoteInfo = GTLOSXUnitTests;
 		};
-		4F2445C3121F0CF600FEE1DA /* PBXContainerItemProxy */ = {
+		3D7C87441C8770E000A87F94 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4F2445B6121F0CF600FEE1DA /* GTL.xcodeproj */;
+			containerPortal = 4F2445B6121F0CF600FEE1DA /* GTLCore.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4F1AD9020B71603F00DC0485;
-			remoteInfo = DevelopmentTestTool;
-		};
-		4F72439E12233FAF001A4AD0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4F2445B6121F0CF600FEE1DA /* GTL.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 4F38F6A50B66E91D00B24B81;
-			remoteInfo = GTLFramework;
+			remoteInfo = OSXDevTool;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -65,7 +63,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4F2445C8121F0D2900FEE1DA /* GTL.framework in Copy GTL Framework */,
 			);
 			name = "Copy GTL Framework";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -80,7 +77,7 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		4F122F601A4100A200C80B5C /* GTLBooks_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLBooks_Sources.m; sourceTree = "<group>"; };
 		4F22A2141186315400FFBAB6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
-		4F2445B6121F0CF600FEE1DA /* GTL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GTL.xcodeproj; path = ../../Source/GTL.xcodeproj; sourceTree = SOURCE_ROOT; };
+		4F2445B6121F0CF600FEE1DA /* GTLCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GTLCore.xcodeproj; path = ../../Source/GTLCore.xcodeproj; sourceTree = SOURCE_ROOT; };
 		4F82A5100FCDFECC00C477D4 /* BooksSampleAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooksSampleAppController.m; sourceTree = "<group>"; };
 		4F82A5110FCDFECC00C477D4 /* BooksSampleAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooksSampleAppController.h; sourceTree = "<group>"; };
 		4F82A5120FCDFECC00C477D4 /* BooksSampleWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooksSampleWindowController.m; sourceTree = "<group>"; };
@@ -98,7 +95,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F2445C9121F0D2C00FEE1DA /* GTL.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				4F22A2151186315400FFBAB6 /* WebKit.framework in Frameworks */,
 			);
@@ -147,7 +143,7 @@
 		29B97314FDCFA39411CA2CEA /* CalendarSample */ = {
 			isa = PBXGroup;
 			children = (
-				4F2445B6121F0CF600FEE1DA /* GTL.xcodeproj */,
+				4F2445B6121F0CF600FEE1DA /* GTLCore.xcodeproj */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				4FB25425138C421100B5C1AE /* API Services */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -187,13 +183,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4F2445B7121F0CF600FEE1DA /* Products */ = {
+		3D7C87081C8770E000A87F94 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4F2445BE121F0CF600FEE1DA /* GTL.framework */,
-				4F2445C0121F0CF600FEE1DA /* libGTLTouchStaticLib.a */,
-				4F2445C2121F0CF600FEE1DA /* GTLUnitTests.xctest */,
-				4F2445C4121F0CF600FEE1DA /* DevelopmentTestTool */,
+				3D7C873D1C8770E000A87F94 /* GTL.framework */,
+				3D7C873F1C8770E000A87F94 /* GTL.framework */,
+				3D7C87411C8770E000A87F94 /* GTLiOSUnitTests.xctest */,
+				3D7C87431C8770E000A87F94 /* GTLUnitTests.xctest */,
+				3D7C87451C8770E000A87F94 /* OSXDevTool */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -248,7 +245,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				4F72439F12233FAF001A4AD0 /* PBXTargetDependency */,
 			);
 			name = BooksSample;
 			productInstallPath = "$(HOME)/Applications";
@@ -277,8 +273,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 4F2445B7121F0CF600FEE1DA /* Products */;
-					ProjectRef = 4F2445B6121F0CF600FEE1DA /* GTL.xcodeproj */;
+					ProductGroup = 3D7C87081C8770E000A87F94 /* Products */;
+					ProjectRef = 4F2445B6121F0CF600FEE1DA /* GTLCore.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -289,32 +285,39 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		4F2445BE121F0CF600FEE1DA /* GTL.framework */ = {
+		3D7C873D1C8770E000A87F94 /* GTL.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = GTL.framework;
-			remoteRef = 4F2445BD121F0CF600FEE1DA /* PBXContainerItemProxy */;
+			remoteRef = 3D7C873C1C8770E000A87F94 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4F2445C0121F0CF600FEE1DA /* libGTLTouchStaticLib.a */ = {
+		3D7C873F1C8770E000A87F94 /* GTL.framework */ = {
 			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libGTLTouchStaticLib.a;
-			remoteRef = 4F2445BF121F0CF600FEE1DA /* PBXContainerItemProxy */;
+			fileType = wrapper.framework;
+			path = GTL.framework;
+			remoteRef = 3D7C873E1C8770E000A87F94 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4F2445C2121F0CF600FEE1DA /* GTLUnitTests.xctest */ = {
+		3D7C87411C8770E000A87F94 /* GTLiOSUnitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GTLiOSUnitTests.xctest;
+			remoteRef = 3D7C87401C8770E000A87F94 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3D7C87431C8770E000A87F94 /* GTLUnitTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = GTLUnitTests.xctest;
-			remoteRef = 4F2445C1121F0CF600FEE1DA /* PBXContainerItemProxy */;
+			remoteRef = 3D7C87421C8770E000A87F94 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4F2445C4121F0CF600FEE1DA /* DevelopmentTestTool */ = {
+		3D7C87451C8770E000A87F94 /* OSXDevTool */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
-			path = DevelopmentTestTool;
-			remoteRef = 4F2445C3121F0CF600FEE1DA /* PBXContainerItemProxy */;
+			path = OSXDevTool;
+			remoteRef = 3D7C87441C8770E000A87F94 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -362,14 +365,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		4F72439F12233FAF001A4AD0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = GTLFramework;
-			targetProxy = 4F72439E12233FAF001A4AD0 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
