@@ -15,8 +15,6 @@
 		4F16FBEA13E0C3A600811114 /* EditACLWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F16FBE913E0C3A600811114 /* EditACLWindowController.m */; };
 		4F16FCCC13E0D0EE00811114 /* EditEventWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F16FCCB13E0D0EE00811114 /* EditEventWindowController.m */; };
 		4F22A2151186315400FFBAB6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F22A2141186315400FFBAB6 /* WebKit.framework */; };
-		4F2445C8121F0D2900FEE1DA /* GTL.framework in Copy GTL Framework */ = {isa = PBXBuildFile; fileRef = 4F2445BE121F0CF600FEE1DA /* GTL.framework */; };
-		4F2445C9121F0D2C00FEE1DA /* GTL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2445BE121F0CF600FEE1DA /* GTL.framework */; };
 		4FA6F3D41034AEC400C5DFA5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FA6F3D11034AEC400C5DFA5 /* MainMenu.xib */; };
 		4FD7A4D418F5C9BA00FA9552 /* GTLCalendar_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD7A4D318F5C9BA00FA9552 /* GTLCalendar_Sources.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -25,40 +23,40 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4F2445BD121F0CF600FEE1DA /* PBXContainerItemProxy */ = {
+		3D7C872D1C8770E000A87F94 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4F2445B6121F0CF600FEE1DA /* GTL.xcodeproj */;
+			containerPortal = 4F2445B6121F0CF600FEE1DA /* GTLCore.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4F38F6A60B66E91D00B24B81;
-			remoteInfo = GTLFramework;
+			remoteInfo = GTLOSXCore;
 		};
-		4F2445BF121F0CF600FEE1DA /* PBXContainerItemProxy */ = {
+		3D7C872F1C8770E000A87F94 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4F2445B6121F0CF600FEE1DA /* GTL.xcodeproj */;
+			containerPortal = 4F2445B6121F0CF600FEE1DA /* GTLCore.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 4F12027C11A4CA2F00BEB470;
-			remoteInfo = GTLTouchStaticLib;
+			remoteGlobalIDString = F4469DB41C40229D00BCFAA1;
+			remoteInfo = GTLiOSCore;
 		};
-		4F2445C1121F0CF600FEE1DA /* PBXContainerItemProxy */ = {
+		3D7C87311C8770E000A87F94 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4F2445B6121F0CF600FEE1DA /* GTL.xcodeproj */;
+			containerPortal = 4F2445B6121F0CF600FEE1DA /* GTLCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F4368F721B8233BF00E17643;
+			remoteInfo = GTLiOSUnitTests;
+		};
+		3D7C87331C8770E000A87F94 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4F2445B6121F0CF600FEE1DA /* GTLCore.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4F12027D11A4CA2F00BEB470;
-			remoteInfo = GTLUnitTests;
+			remoteInfo = GTLOSXUnitTests;
 		};
-		4F2445C3121F0CF600FEE1DA /* PBXContainerItemProxy */ = {
+		3D7C87351C8770E000A87F94 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4F2445B6121F0CF600FEE1DA /* GTL.xcodeproj */;
+			containerPortal = 4F2445B6121F0CF600FEE1DA /* GTLCore.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4F1AD9020B71603F00DC0485;
-			remoteInfo = DevelopmentTestTool;
-		};
-		4F72439E12233FAF001A4AD0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4F2445B6121F0CF600FEE1DA /* GTL.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 4F38F6A50B66E91D00B24B81;
-			remoteInfo = GTLFramework;
+			remoteInfo = OSXDevTool;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -69,7 +67,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4F2445C8121F0D2900FEE1DA /* GTL.framework in Copy GTL Framework */,
 			);
 			name = "Copy GTL Framework";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,7 +91,7 @@
 		4F16FCCA13E0D0EE00811114 /* EditEventWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditEventWindowController.h; sourceTree = "<group>"; };
 		4F16FCCB13E0D0EE00811114 /* EditEventWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditEventWindowController.m; sourceTree = "<group>"; };
 		4F22A2141186315400FFBAB6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
-		4F2445B6121F0CF600FEE1DA /* GTL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GTL.xcodeproj; path = ../../Source/GTL.xcodeproj; sourceTree = SOURCE_ROOT; };
+		4F2445B6121F0CF600FEE1DA /* GTLCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GTLCore.xcodeproj; path = ../../Source/GTLCore.xcodeproj; sourceTree = SOURCE_ROOT; };
 		4F93E96915F73358003E7A63 /* GTLCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLCalendar.h; sourceTree = "<group>"; };
 		4FA6F3D21034AEC400C5DFA5 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		4FD0F1DA0CBC68F300059DC1 /* buildStripHeaders */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.script.sh; path = buildStripHeaders; sourceTree = "<group>"; };
@@ -108,7 +105,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F2445C9121F0D2C00FEE1DA /* GTL.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				4F22A2151186315400FFBAB6 /* WebKit.framework in Frameworks */,
 			);
@@ -161,7 +157,7 @@
 		29B97314FDCFA39411CA2CEA /* CalendarSample */ = {
 			isa = PBXGroup;
 			children = (
-				4F2445B6121F0CF600FEE1DA /* GTL.xcodeproj */,
+				4F2445B6121F0CF600FEE1DA /* GTLCore.xcodeproj */,
 				080E96DDFE201D6D7F000001 /* Sample App Classes */,
 				4FB25385138C3F9E00B5C1AE /* API Services */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -203,13 +199,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4F2445B7121F0CF600FEE1DA /* Products */ = {
+		3D7C87061C8770E000A87F94 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4F2445BE121F0CF600FEE1DA /* GTL.framework */,
-				4F2445C0121F0CF600FEE1DA /* libGTLTouchStaticLib.a */,
-				4F2445C2121F0CF600FEE1DA /* GTLUnitTests.octest */,
-				4F2445C4121F0CF600FEE1DA /* DevelopmentTestTool */,
+				3D7C872E1C8770E000A87F94 /* GTL.framework */,
+				3D7C87301C8770E000A87F94 /* GTL.framework */,
+				3D7C87321C8770E000A87F94 /* GTLiOSUnitTests.xctest */,
+				3D7C87341C8770E000A87F94 /* GTLUnitTests.xctest */,
+				3D7C87361C8770E000A87F94 /* OSXDevTool */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -264,7 +261,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				4F72439F12233FAF001A4AD0 /* PBXTargetDependency */,
 			);
 			name = CalendarSample;
 			productInstallPath = "$(HOME)/Applications";
@@ -294,8 +290,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 4F2445B7121F0CF600FEE1DA /* Products */;
-					ProjectRef = 4F2445B6121F0CF600FEE1DA /* GTL.xcodeproj */;
+					ProductGroup = 3D7C87061C8770E000A87F94 /* Products */;
+					ProjectRef = 4F2445B6121F0CF600FEE1DA /* GTLCore.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -306,32 +302,39 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		4F2445BE121F0CF600FEE1DA /* GTL.framework */ = {
+		3D7C872E1C8770E000A87F94 /* GTL.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = GTL.framework;
-			remoteRef = 4F2445BD121F0CF600FEE1DA /* PBXContainerItemProxy */;
+			remoteRef = 3D7C872D1C8770E000A87F94 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4F2445C0121F0CF600FEE1DA /* libGTLTouchStaticLib.a */ = {
+		3D7C87301C8770E000A87F94 /* GTL.framework */ = {
 			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libGTLTouchStaticLib.a;
-			remoteRef = 4F2445BF121F0CF600FEE1DA /* PBXContainerItemProxy */;
+			fileType = wrapper.framework;
+			path = GTL.framework;
+			remoteRef = 3D7C872F1C8770E000A87F94 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4F2445C2121F0CF600FEE1DA /* GTLUnitTests.octest */ = {
+		3D7C87321C8770E000A87F94 /* GTLiOSUnitTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = GTLUnitTests.octest;
-			remoteRef = 4F2445C1121F0CF600FEE1DA /* PBXContainerItemProxy */;
+			path = GTLiOSUnitTests.xctest;
+			remoteRef = 3D7C87311C8770E000A87F94 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4F2445C4121F0CF600FEE1DA /* DevelopmentTestTool */ = {
+		3D7C87341C8770E000A87F94 /* GTLUnitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GTLUnitTests.xctest;
+			remoteRef = 3D7C87331C8770E000A87F94 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3D7C87361C8770E000A87F94 /* OSXDevTool */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
-			path = DevelopmentTestTool;
-			remoteRef = 4F2445C3121F0CF600FEE1DA /* PBXContainerItemProxy */;
+			path = OSXDevTool;
+			remoteRef = 3D7C87351C8770E000A87F94 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -383,14 +386,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		4F72439F12233FAF001A4AD0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = GTLFramework;
-			targetProxy = 4F72439E12233FAF001A4AD0 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {

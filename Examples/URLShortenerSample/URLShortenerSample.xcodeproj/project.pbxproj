@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4F22A2151186315400FFBAB6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F22A2141186315400FFBAB6 /* WebKit.framework */; };
-		4F244586121F0B8700FEE1DA /* GTL.framework in Copy GTL.framework */ = {isa = PBXBuildFile; fileRef = 4F24457F121F0B8300FEE1DA /* GTL.framework */; };
-		4F244587121F0B8A00FEE1DA /* GTL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F24457F121F0B8300FEE1DA /* GTL.framework */; };
 		4F2E9EC713A811A700E9C96E /* GTLQueryUrlshortener.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E9EB713A811A700E9C96E /* GTLQueryUrlshortener.m */; };
 		4F2E9EC813A811A700E9C96E /* GTLServiceUrlshortener.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E9EB913A811A700E9C96E /* GTLServiceUrlshortener.m */; };
 		4F2E9EC913A811A700E9C96E /* GTLUrlshortenerAnalyticsSnapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E9EBC13A811A700E9C96E /* GTLUrlshortenerAnalyticsSnapshot.m */; };
@@ -28,40 +26,40 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4F24457E121F0B8300FEE1DA /* PBXContainerItemProxy */ = {
+		3D7C870F1C8770E000A87F94 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4F244577121F0B8300FEE1DA /* GTL.xcodeproj */;
+			containerPortal = 4F244577121F0B8300FEE1DA /* GTLCore.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4F38F6A60B66E91D00B24B81;
-			remoteInfo = GTLFramework;
+			remoteInfo = GTLOSXCore;
 		};
-		4F244580121F0B8300FEE1DA /* PBXContainerItemProxy */ = {
+		3D7C87111C8770E000A87F94 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4F244577121F0B8300FEE1DA /* GTL.xcodeproj */;
+			containerPortal = 4F244577121F0B8300FEE1DA /* GTLCore.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 4F12027C11A4CA2F00BEB470;
-			remoteInfo = GTLTouchStaticLib;
+			remoteGlobalIDString = F4469DB41C40229D00BCFAA1;
+			remoteInfo = GTLiOSCore;
 		};
-		4F244582121F0B8300FEE1DA /* PBXContainerItemProxy */ = {
+		3D7C87131C8770E000A87F94 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4F244577121F0B8300FEE1DA /* GTL.xcodeproj */;
+			containerPortal = 4F244577121F0B8300FEE1DA /* GTLCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F4368F721B8233BF00E17643;
+			remoteInfo = GTLiOSUnitTests;
+		};
+		3D7C87151C8770E000A87F94 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4F244577121F0B8300FEE1DA /* GTLCore.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4F12027D11A4CA2F00BEB470;
-			remoteInfo = GTLUnitTests;
+			remoteInfo = GTLOSXUnitTests;
 		};
-		4F244584121F0B8300FEE1DA /* PBXContainerItemProxy */ = {
+		3D7C87171C8770E000A87F94 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4F244577121F0B8300FEE1DA /* GTL.xcodeproj */;
+			containerPortal = 4F244577121F0B8300FEE1DA /* GTLCore.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4F1AD9020B71603F00DC0485;
-			remoteInfo = DevelopmentTestTool;
-		};
-		4F72435E12233E7D001A4AD0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4F244577121F0B8300FEE1DA /* GTL.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 4F38F6A50B66E91D00B24B81;
-			remoteInfo = GTLFramework;
+			remoteInfo = OSXDevTool;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -81,7 +79,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4F244586121F0B8700FEE1DA /* GTL.framework in Copy GTL.framework */,
 			);
 			name = "Copy GTL.framework";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,7 +92,7 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		4F22A2141186315400FFBAB6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
-		4F244577121F0B8300FEE1DA /* GTL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GTL.xcodeproj; path = ../../Source/GTL.xcodeproj; sourceTree = SOURCE_ROOT; };
+		4F244577121F0B8300FEE1DA /* GTLCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GTLCore.xcodeproj; path = ../../Source/GTLCore.xcodeproj; sourceTree = SOURCE_ROOT; };
 		4F2E9EB613A811A700E9C96E /* GTLQueryUrlshortener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLQueryUrlshortener.h; sourceTree = "<group>"; };
 		4F2E9EB713A811A700E9C96E /* GTLQueryUrlshortener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLQueryUrlshortener.m; sourceTree = "<group>"; };
 		4F2E9EB813A811A700E9C96E /* GTLServiceUrlshortener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLServiceUrlshortener.h; sourceTree = "<group>"; };
@@ -130,7 +127,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F244587121F0B8A00FEE1DA /* GTL.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				4F22A2151186315400FFBAB6 /* WebKit.framework in Frameworks */,
 			);
@@ -179,7 +175,7 @@
 		29B97314FDCFA39411CA2CEA /* CalendarSample */ = {
 			isa = PBXGroup;
 			children = (
-				4F244577121F0B8300FEE1DA /* GTL.xcodeproj */,
+				4F244577121F0B8300FEE1DA /* GTLCore.xcodeproj */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				4FB25567138C463800B5C1AE /* API Services */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -219,13 +215,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4F244578121F0B8300FEE1DA /* Products */ = {
+		3D7C87021C8770E000A87F94 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4F24457F121F0B8300FEE1DA /* GTL.framework */,
-				4F244581121F0B8300FEE1DA /* libGTLTouchStaticLib.a */,
-				4F244583121F0B8300FEE1DA /* GTLUnitTests.octest */,
-				4F244585121F0B8300FEE1DA /* DevelopmentTestTool */,
+				3D7C87101C8770E000A87F94 /* GTL.framework */,
+				3D7C87121C8770E000A87F94 /* GTL.framework */,
+				3D7C87141C8770E000A87F94 /* GTLiOSUnitTests.xctest */,
+				3D7C87161C8770E000A87F94 /* GTLUnitTests.xctest */,
+				3D7C87181C8770E000A87F94 /* OSXDevTool */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -297,7 +294,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				4F72435F12233E7D001A4AD0 /* PBXTargetDependency */,
 			);
 			name = URLShortenerSample;
 			productInstallPath = "$(HOME)/Applications";
@@ -310,6 +306,8 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "URLShortenerSample" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -324,8 +322,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 4F244578121F0B8300FEE1DA /* Products */;
-					ProjectRef = 4F244577121F0B8300FEE1DA /* GTL.xcodeproj */;
+					ProductGroup = 3D7C87021C8770E000A87F94 /* Products */;
+					ProjectRef = 4F244577121F0B8300FEE1DA /* GTLCore.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -336,32 +334,39 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		4F24457F121F0B8300FEE1DA /* GTL.framework */ = {
+		3D7C87101C8770E000A87F94 /* GTL.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = GTL.framework;
-			remoteRef = 4F24457E121F0B8300FEE1DA /* PBXContainerItemProxy */;
+			remoteRef = 3D7C870F1C8770E000A87F94 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4F244581121F0B8300FEE1DA /* libGTLTouchStaticLib.a */ = {
+		3D7C87121C8770E000A87F94 /* GTL.framework */ = {
 			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libGTLTouchStaticLib.a;
-			remoteRef = 4F244580121F0B8300FEE1DA /* PBXContainerItemProxy */;
+			fileType = wrapper.framework;
+			path = GTL.framework;
+			remoteRef = 3D7C87111C8770E000A87F94 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4F244583121F0B8300FEE1DA /* GTLUnitTests.octest */ = {
+		3D7C87141C8770E000A87F94 /* GTLiOSUnitTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = GTLUnitTests.octest;
-			remoteRef = 4F244582121F0B8300FEE1DA /* PBXContainerItemProxy */;
+			path = GTLiOSUnitTests.xctest;
+			remoteRef = 3D7C87131C8770E000A87F94 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4F244585121F0B8300FEE1DA /* DevelopmentTestTool */ = {
+		3D7C87161C8770E000A87F94 /* GTLUnitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GTLUnitTests.xctest;
+			remoteRef = 3D7C87151C8770E000A87F94 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3D7C87181C8770E000A87F94 /* OSXDevTool */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
-			path = DevelopmentTestTool;
-			remoteRef = 4F244584121F0B8300FEE1DA /* PBXContainerItemProxy */;
+			path = OSXDevTool;
+			remoteRef = 3D7C87171C8770E000A87F94 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -416,14 +421,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		4F72435F12233E7D001A4AD0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = GTLFramework;
-			targetProxy = 4F72435E12233E7D001A4AD0 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
