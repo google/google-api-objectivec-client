@@ -16,6 +16,9 @@
   #undef GTMSESSION_BUILD_COMBINED_SOURCES
   #define GTMSESSION_BUILD_COMBINED_SOURCES 1
 
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wnullability-completeness"
+
   #import "gtm-session-fetcher/Source/GTMGatherInputStream.m"
   #import "gtm-session-fetcher/Source/GTMMIMEDocument.m"
   #import "gtm-session-fetcher/Source/GTMReadMonitorInputStream.m"
@@ -23,6 +26,8 @@
   #import "gtm-session-fetcher/Source/GTMSessionFetcherLogging.m"
   #import "gtm-session-fetcher/Source/GTMSessionFetcherService.m"
   #import "gtm-session-fetcher/Source/GTMSessionUploadFetcher.m"
+
+  #pragma clang diagnostic pop
 #else
   #error Umbrella networking source file only supports the SessionFetcher
 

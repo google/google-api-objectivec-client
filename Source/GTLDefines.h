@@ -65,36 +65,22 @@
 #endif
 
 //
-// GTL_ASSERT is like NSAssert, but takes a variable number of arguments:
-//
-//     GTL_ASSERT(condition, @"Problem in argument %@", argStr);
-//
+// GTL_ASSERT defaults to bridging to NSAssert. This macro exists just in case
+// it needs to be remapped.
 // GTL_DEBUG_ASSERT is similar, but compiles in only for debug builds
 //
 
 #ifndef GTL_ASSERT
-  // we directly invoke the NSAssert handler so we can pass on the varargs
-  #if !defined(NS_BLOCK_ASSERTIONS)
-#define GTL_ASSERT(condition, ...)                                             \
-  do {                                                                         \
-    if (!(condition)) {                                                        \
-      [[NSAssertionHandler currentHandler]                                     \
-          handleFailureInFunction:                                             \
-              (NSString *)[NSString stringWithUTF8String:__PRETTY_FUNCTION__]  \
-                             file:(NSString *)[NSString                        \
-                                      stringWithUTF8String:__FILE__]           \
-                       lineNumber:__LINE__                                     \
-                      description:__VA_ARGS__];                                \
-    }                                                                          \
-  } while (0)
-  #else
-    #define GTL_ASSERT(condition, ...) do { } while (0)
-  #endif // !defined(NS_BLOCK_ASSERTIONS)
+  // NSCAssert to avoid capturing self if used in a block.
+  #define GTL_ASSERT(condition, ...) NSCAssert(condition, __VA_ARGS__)
 #endif // GTL_ASSERT
 
 #ifndef GTL_DEBUG_ASSERT
-  #if DEBUG
+  #if DEBUG && !defined(NS_BLOCK_ASSERTIONS)
     #define GTL_DEBUG_ASSERT(condition, ...) GTL_ASSERT(condition, __VA_ARGS__)
+  #elif DEBUG
+    // In DEBUG builds with assertions blocked, log to avoid unused variable warnings.
+    #define GTL_DEBUG_ASSERT(condition, ...) if (!(condition)) { NSLog(__VA_ARGS__); }
   #else
     #define GTL_DEBUG_ASSERT(condition, ...) do { } while (0)
   #endif

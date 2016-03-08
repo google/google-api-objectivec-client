@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F0829701C7FF61400E12ADF /* GTLOAuth2_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F08296F1C7FF61400E12ADF /* GTLOAuth2_Sources.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4F22A2151186315400FFBAB6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F22A2141186315400FFBAB6 /* WebKit.framework */; };
 		4F43229517726611002A5E2C /* GTLCommon_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F43229317726611002A5E2C /* GTLCommon_Sources.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4F43229617726611002A5E2C /* GTLNetworking_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F43229417726611002A5E2C /* GTLNetworking_Sources.m */; };
@@ -42,6 +43,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		4F08296F1C7FF61400E12ADF /* GTLOAuth2_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLOAuth2_Sources.m; path = ../../Deps/GTLOAuth2_Sources.m; sourceTree = "<group>"; };
 		4F22A2141186315400FFBAB6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
 		4F43229317726611002A5E2C /* GTLCommon_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLCommon_Sources.m; path = ../../Source/GTLCommon_Sources.m; sourceTree = "<group>"; };
 		4F43229417726611002A5E2C /* GTLNetworking_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLNetworking_Sources.m; path = ../../Deps/GTLNetworking_Sources.m; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			children = (
 				080E96DDFE201D6D7F000001 /* Sample App Classes */,
 				4F43229317726611002A5E2C /* GTLCommon_Sources.m */,
+				4F08296F1C7FF61400E12ADF /* GTLOAuth2_Sources.m */,
 				4F43229417726611002A5E2C /* GTLNetworking_Sources.m */,
 				4FB25385138C3F9E00B5C1AE /* API Services */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -279,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				938EA73E186C2DFE0093CF68 /* GTLStorage_Sources.m in Sources */,
+				4F0829701C7FF61400E12ADF /* GTLOAuth2_Sources.m in Sources */,
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				4F9B545B15816762005E917A /* StorageSampleAppController.m in Sources */,
 				4F9B545C15816762005E917A /* StorageSampleWindowController.m in Sources */,

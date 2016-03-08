@@ -20,7 +20,7 @@
 #import "StorageSampleWindowController.h"
 
 #import "GTLUtilities.h"
-#import "GTMHTTPFetcherLogging.h"
+#import "GTMSessionFetcherLogging.h"
 
 // Segmented control indices.
 enum {
@@ -167,7 +167,7 @@ NSString *const kKeychainItemName = @"StorageSample: Google Cloud Storage";
                     completionHandler:^(NSInteger result) {
     // Callback
     if (result == NSFileHandlingPanelOKButton) {
-      __block NSString *savePath = [[savePanel URL] path];
+      NSURL *destinationURL = [savePanel URL];
       GTLQueryStorage *query = [GTLQueryStorage queryForObjectsGetWithBucket:storageObject.bucket
                                                                       object:storageObject.name];
       [query setUrlQueryParameters: @{ @"alt": @"media" }];
@@ -178,23 +178,25 @@ NSString *const kKeychainItemName = @"StorageSample: Google Cloud Storage";
         NSString *urlString = nil;
 
         // Error should be a redirect. Typically 303, though that may change.
-        GTLErrorObject *errorObject = [[error userInfo] objectForKey:@"GTLStructuredError"];
-        if ([[errorObject code] isEqual:@303]) {
+        GTLErrorObject *errorObject = error.userInfo[@"GTLStructuredError"];
+        if (errorObject.code.intValue == 303) {
           urlString = [errorObject additionalPropertyForName:@"location"];
 
           // Use a GTMHTTPFetcher object to download the file with authorization.
-          GTMHTTPFetcher *fetcher = [self.storageService.fetcherService fetcherWithURLString:urlString];
+          GTMSessionFetcher *fetcher =
+              [self.storageService.fetcherService fetcherWithURLString:urlString];
 
           // The fetcher can save data directly to a file.
-          fetcher.downloadPath = savePath;
+          fetcher.destinationFileURL = destinationURL;
 
           // Fetcher logging can include comments.
-          [fetcher setCommentWithFormat:@"Downloading \"%@/%@\"", storageObject.bucket, storageObject.name];
+          [fetcher setCommentWithFormat:@"Downloading \"%@/%@\"",
+           storageObject.bucket, storageObject.name];
 
-          fetcher.receivedDataBlock = ^(NSData *receivedData) {
-            // The fetcher will call the received data block periodically.
-            // When a download path has been specified, the received data
-            // parameter will be nil.
+          fetcher.downloadProgressBlock = ^(int64_t bytesWritten,
+                                            int64_t totalBytesWritten,
+                                            int64_t totalBytesExpectedToWrite) {
+            // The fetcher will call the download progress block periodically.
           };
 
           [fetcher beginFetchWithCompletionHandler:^(NSData *data, NSError *error) {
@@ -205,7 +207,7 @@ NSString *const kKeychainItemName = @"StorageSample: Google Cloud Storage";
               // Since a downloadPath property was specified, the data argument is
               // nil, and the file data has been written to disk.
               [self displayAlert:@"Downloaded"
-                          format:@"%@", savePath];
+                          format:@"%@", destinationURL.path];
             } else {
               [self displayAlert:@"Error Downloading File"
                           format:@"%@", error];
@@ -303,7 +305,7 @@ NSString *const kKeychainItemName = @"StorageSample: Google Cloud Storage";
 }
 
 - (IBAction)loggingCheckboxClicked:(id)sender {
-  [GTMHTTPFetcher setLoggingEnabled:[sender state]];
+  [GTMSessionFetcher setLoggingEnabled:[sender state]];
 }
 
 // Get a service object with the current username/password
@@ -398,7 +400,7 @@ NSString *const kKeychainItemName = @"StorageSample: Google Cloud Storage";
     return NULL;  // No can do. Presumably this is an invalid project #.
   }
   NSRange projectRange = {0, dotRange.location};
-  
+
   return [[_clientIDField stringValue] substringWithRange:projectRange];
 }
 
@@ -707,7 +709,7 @@ NSString *const kKeychainItemName = @"StorageSample: Google Cloud Storage";
 
     // Also display any server data present
     NSDictionary *errorInfo = [_bucketListFetchError userInfo];
-    NSData *errData = errorInfo[kGTMHTTPFetcherStatusDataKey];
+    NSData *errData = errorInfo[kGTMSessionFetcherStatusDataKey];
     if (errData) {
       NSString *dataStr = [[NSString alloc] initWithData:errData
                                                 encoding:NSUTF8StringEncoding];
