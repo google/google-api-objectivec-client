@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'GoogleAPIClient'
-  s.version      = '1.0.0'
+  s.version      = '1.0.1'
   s.author       = 'Google Inc.'
   s.homepage     = 'https://github.com/google/google-api-objectivec-client'
   s.license      = { :type => 'Apache', :file => 'LICENSE' }
@@ -16,6 +16,9 @@ Pod::Spec.new do |s|
                    DESC
   s.ios.deployment_target = '6.0'
   s.osx.deployment_target = '10.8'
+
+  s.user_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GTL_USE_FRAMEWORK_IMPORTS=1' }
+  s.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GTL_HAS_SESSION_UPLOAD_FETCHER_IMPORT=1' }
   s.requires_arc = false
   s.dependency 'GTMSessionFetcher', '~> 1.1'
 
