@@ -43,19 +43,33 @@
   #define GTL_USE_SESSION_FETCHER GTM_USE_SESSION_FETCHER
 #endif  // GTL_USE_SESSION_FETCHER
 
+#if !defined(GTL_USE_FRAMEWORK_IMPORTS)
+  #define GTL_USE_FRAMEWORK_IMPORTS 0
+#endif
+
 #if GTL_USE_SESSION_FETCHER
   #define GTLUploadFetcherClass GTMSessionUploadFetcher
   #define GTLUploadFetcherClassStr @"GTMSessionUploadFetcher"
 
-  #import "GTMSessionFetcher.h"
-  #import "GTMSessionFetcherService.h"
+  #if GTL_USE_FRAMEWORK_IMPORTS
+    #import <GTMSessionFetcher/GTMSessionFetcher.h>
+    #import <GTMSessionFetcher/GTMSessionFetcherService.h>
+  #else
+    #import "GTMSessionFetcher.h"
+    #import "GTMSessionFetcherService.h"
+  #endif  // GTL_USE_FRAMEWORK_IMPORTS
 #else
   // !GTL_USE_SESSION_FETCHER
   #define GTLUploadFetcherClass GTMHTTPUploadFetcher
   #define GTLUploadFetcherClassStr @"GTMHTTPUploadFetcher"
 
-  #import "GTMHTTPFetcher.h"
-  #import "GTMHTTPFetcherService.h"
+  #if GTL_USE_FRAMEWORK_IMPORTS
+    #import <GTMHTTPFetcher/GTMHTTPFetcher.h>
+    #import <GTMHTTPFetcher/GTMHTTPFetcherService.h>
+  #else
+    #import "GTMHTTPFetcher.h"
+    #import "GTMHTTPFetcherService.h"
+  #endif  // GTL_USE_FRAMEWORK_IMPORTS
 #endif  // GTL_USE_SESSION_FETCHER
 
 #import "GTLBatchQuery.h"

@@ -79,6 +79,17 @@ static NSString *ETagIfPresent(GTLObject *obj) {
 }
 @end
 
+#if !defined(GTL_HAS_SESSION_UPLOAD_FETCHER_IMPORT)
+#define GTL_HAS_SESSION_UPLOAD_FETCHER_IMPORT 0
+#endif
+
+#if GTL_HAS_SESSION_UPLOAD_FETCHER_IMPORT
+#if GTL_USE_FRAMEWORK_IMPORTS
+  #import <GTMSessionFetcher/GTMSessionUploadFetcher.h>
+#else
+  #import "GTMSessionUploadFetcher.h"
+#endif // GTL_USE_FRAMEWORK_IMPORTS
+#else
 // If the upload fetcher class is available, it can be used for chunked uploads
 //
 // We locally declare some methods of the upload fetcher so we
@@ -123,7 +134,7 @@ static NSString *ETagIfPresent(GTLObject *obj) {
 - (void)resumeFetching;
 - (BOOL)isPaused;
 @end
-
+#endif  // GTL_HAS_SESSION_UPLOAD_FETCHER_IMPORT
 
 @interface GTLService ()
 - (void)prepareToParseObjectForFetcher:(GTMBridgeFetcher *)fetcher;
