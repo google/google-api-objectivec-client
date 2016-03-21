@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,11 +22,11 @@
 // Service:
 //   Google Analytics API (analytics/v3)
 // Description:
-//   View and manage your Google Analytics data
+//   Views and manages your Google Analytics data.
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsWebproperty (0 custom class methods, 16 custom properties)
+//   GTLAnalyticsWebproperty (0 custom class methods, 17 custom properties)
 //   GTLAnalyticsWebpropertyChildLink (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsWebpropertyParentLink (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsWebpropertyPermissions (0 custom class methods, 1 custom properties)
@@ -94,6 +94,9 @@
 
 // Link for this web property.
 @property (nonatomic, copy) NSString *selfLink;
+
+// Indicates whether this web property is starred or not.
+@property (nonatomic, retain) NSNumber *starred;  // boolValue
 
 // Time this web property was last modified.
 @property (nonatomic, retain) GTLDateTime *updated;

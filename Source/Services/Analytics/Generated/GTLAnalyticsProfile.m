@@ -22,11 +22,11 @@
 // Service:
 //   Google Analytics API (analytics/v3)
 // Description:
-//   View and manage your Google Analytics data
+//   Views and manages your Google Analytics data.
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsProfile (0 custom class methods, 25 custom properties)
+//   GTLAnalyticsProfile (0 custom class methods, 26 custom properties)
 //   GTLAnalyticsProfileChildLink (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsProfileParentLink (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsProfilePermissions (0 custom class methods, 1 custom properties)
@@ -43,7 +43,7 @@
          defaultPage, eCommerceTracking, enhancedECommerceTracking,
          excludeQueryParameters, identifier, internalWebPropertyId, kind, name,
          parentLink, permissions, selfLink, siteSearchCategoryParameters,
-         siteSearchQueryParameters, stripSiteSearchCategoryParameters,
+         siteSearchQueryParameters, starred, stripSiteSearchCategoryParameters,
          stripSiteSearchQueryParameters, timezone, type, updated, webPropertyId,
          websiteUrl;
 

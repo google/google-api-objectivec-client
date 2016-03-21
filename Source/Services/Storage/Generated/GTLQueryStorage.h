@@ -22,7 +22,7 @@
 // Service:
 //   Cloud Storage JSON API (storage/v1)
 // Description:
-//   Lets you store and retrieve potentially-large, immutable data objects.
+//   Stores and retrieves potentially large, immutable data objects.
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 // Classes:

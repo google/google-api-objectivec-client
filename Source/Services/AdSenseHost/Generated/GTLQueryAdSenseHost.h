@@ -22,8 +22,8 @@
 // Service:
 //   AdSense Host API (adsensehost/v4.1)
 // Description:
-//   Gives AdSense Hosts access to report generation, ad code generation, and
-//   publisher management capabilities.
+//   Generates performance reports, generates ad codes, and provides publisher
+//   management capabilities for AdSense Hosts.
 // Documentation:
 //   https://developers.google.com/adsense/host/
 // Classes:

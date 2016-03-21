@@ -22,8 +22,7 @@
 // Service:
 //   AdSense Management API (adsense/v1.4)
 // Description:
-//   Gives AdSense publishers access to their inventory and the ability to
-//   generate reports
+//   Accesses AdSense publishers' inventory and generates performance reports.
 // Documentation:
 //   https://developers.google.com/adsense/management/
 // Classes:

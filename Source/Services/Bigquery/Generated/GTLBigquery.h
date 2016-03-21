@@ -28,6 +28,9 @@
 
 #import "GTLBigqueryConstants.h"
 
+#import "GTLBigqueryBigtableColumn.h"
+#import "GTLBigqueryBigtableColumnFamily.h"
+#import "GTLBigqueryBigtableOptions.h"
 #import "GTLBigqueryCsvOptions.h"
 #import "GTLBigqueryDataset.h"
 #import "GTLBigqueryDatasetList.h"

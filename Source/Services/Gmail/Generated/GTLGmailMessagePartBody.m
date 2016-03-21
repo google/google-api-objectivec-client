@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@
 // Service:
 //   Gmail API (gmail/v1)
 // Description:
-//   The Gmail REST API.
+//   Access Gmail mailboxes including sending user email.
 // Documentation:
 //   https://developers.google.com/gmail/api/
 // Classes:

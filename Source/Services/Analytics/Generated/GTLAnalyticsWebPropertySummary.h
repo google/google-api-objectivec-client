@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,11 +22,11 @@
 // Service:
 //   Google Analytics API (analytics/v3)
 // Description:
-//   View and manage your Google Analytics data
+//   Views and manages your Google Analytics data.
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsWebPropertySummary (0 custom class methods, 7 custom properties)
+//   GTLAnalyticsWebPropertySummary (0 custom class methods, 8 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -64,6 +64,9 @@
 
 // List of profiles under this web property.
 @property (nonatomic, retain) NSArray *profiles;  // of GTLAnalyticsProfileSummary
+
+// Indicates whether this web property is starred or not.
+@property (nonatomic, retain) NSNumber *starred;  // boolValue
 
 // Website url for this web property.
 @property (nonatomic, copy) NSString *websiteUrl;

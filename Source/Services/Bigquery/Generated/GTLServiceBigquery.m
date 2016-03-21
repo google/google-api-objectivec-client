@@ -38,6 +38,9 @@
 + (NSArray *)checkClasses {
   NSArray *classes = @[
     [GTLQueryBigquery class],
+    [GTLBigqueryBigtableColumn class],
+    [GTLBigqueryBigtableColumnFamily class],
+    [GTLBigqueryBigtableOptions class],
     [GTLBigqueryCsvOptions class],
     [GTLBigqueryDataset class],
     [GTLBigqueryDatasetList class],

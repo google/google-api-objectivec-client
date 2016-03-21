@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,11 +22,11 @@
 // Service:
 //   Google Analytics API (analytics/v3)
 // Description:
-//   View and manage your Google Analytics data
+//   Views and manages your Google Analytics data.
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsWebproperty (0 custom class methods, 16 custom properties)
+//   GTLAnalyticsWebproperty (0 custom class methods, 17 custom properties)
 //   GTLAnalyticsWebpropertyChildLink (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsWebpropertyParentLink (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsWebpropertyPermissions (0 custom class methods, 1 custom properties)
@@ -41,7 +41,7 @@
 @implementation GTLAnalyticsWebproperty
 @dynamic accountId, childLink, created, defaultProfileId, identifier,
          industryVertical, internalWebPropertyId, kind, level, name, parentLink,
-         permissions, profileCount, selfLink, updated, websiteUrl;
+         permissions, profileCount, selfLink, starred, updated, websiteUrl;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{

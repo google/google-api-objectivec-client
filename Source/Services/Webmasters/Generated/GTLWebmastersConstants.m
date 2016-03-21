@@ -34,6 +34,7 @@ NSString * const kGTLAuthScopeWebmastersReadonly = @"https://www.googleapis.com/
 
 // GTLQueryWebmasters - Category
 NSString * const kGTLWebmastersCategoryAuthPermissions   = @"authPermissions";
+NSString * const kGTLWebmastersCategoryFlashContent      = @"flashContent";
 NSString * const kGTLWebmastersCategoryManyToOneRedirect = @"manyToOneRedirect";
 NSString * const kGTLWebmastersCategoryNotFollowed       = @"notFollowed";
 NSString * const kGTLWebmastersCategoryNotFound          = @"notFound";

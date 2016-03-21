@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/webmaster-tools/
 // Classes:
-//   GTLQueryWebmasters (13 custom class methods, 15 custom properties)
+//   GTLQueryWebmasters (13 custom class methods, 16 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -61,6 +61,7 @@
 @property (nonatomic, copy) NSString *sitemapIndex;
 @property (nonatomic, copy) NSString *siteUrl;
 @property (nonatomic, copy) NSString *startDate;
+@property (nonatomic, assign) NSInteger startRow;
 @property (nonatomic, copy) NSString *url;
 
 #pragma mark - "searchanalytics" methods
@@ -107,6 +108,8 @@
 //   startDate: [Required] Start date of the requested date range, in YYYY-MM-DD
 //     format, in PST time (UTC - 8:00). Must be less than or equal to the end
 //     date. This value is included in the range.
+//   startRow: [Optional; Default is 0] Zero-based index of the first row in the
+//     response. Must be a non-negative number.
 //  Authorization scope(s):
 //   kGTLAuthScopeWebmasters
 //   kGTLAuthScopeWebmastersReadonly
@@ -221,6 +224,7 @@
 //   category: The crawl error category. For example: serverError. If not
 //     specified, returns results for all categories.
 //      kGTLWebmastersCategoryAuthPermissions: "authPermissions"
+//      kGTLWebmastersCategoryFlashContent: "flashContent"
 //      kGTLWebmastersCategoryManyToOneRedirect: "manyToOneRedirect"
 //      kGTLWebmastersCategoryNotFollowed: "notFollowed"
 //      kGTLWebmastersCategoryNotFound: "notFound"
@@ -255,6 +259,7 @@
 //     the url value is pagename
 //   category: The crawl error category. For example: authPermissions
 //      kGTLWebmastersCategoryAuthPermissions: "authPermissions"
+//      kGTLWebmastersCategoryFlashContent: "flashContent"
 //      kGTLWebmastersCategoryManyToOneRedirect: "manyToOneRedirect"
 //      kGTLWebmastersCategoryNotFollowed: "notFollowed"
 //      kGTLWebmastersCategoryNotFound: "notFound"
@@ -284,6 +289,7 @@
 //     http://www.example.com/
 //   category: The crawl error category. For example: authPermissions
 //      kGTLWebmastersCategoryAuthPermissions: "authPermissions"
+//      kGTLWebmastersCategoryFlashContent: "flashContent"
 //      kGTLWebmastersCategoryManyToOneRedirect: "manyToOneRedirect"
 //      kGTLWebmastersCategoryNotFollowed: "notFollowed"
 //      kGTLWebmastersCategoryNotFound: "notFound"
@@ -316,6 +322,7 @@
 //     the url value is pagename
 //   category: The crawl error category. For example: authPermissions
 //      kGTLWebmastersCategoryAuthPermissions: "authPermissions"
+//      kGTLWebmastersCategoryFlashContent: "flashContent"
 //      kGTLWebmastersCategoryManyToOneRedirect: "manyToOneRedirect"
 //      kGTLWebmastersCategoryNotFollowed: "notFollowed"
 //      kGTLWebmastersCategoryNotFound: "notFound"
