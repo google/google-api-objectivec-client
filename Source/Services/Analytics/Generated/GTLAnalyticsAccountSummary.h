@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,11 +22,11 @@
 // Service:
 //   Google Analytics API (analytics/v3)
 // Description:
-//   View and manage your Google Analytics data
+//   Views and manages your Google Analytics data.
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsAccountSummary (0 custom class methods, 4 custom properties)
+//   GTLAnalyticsAccountSummary (0 custom class methods, 5 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -55,6 +55,9 @@
 
 // Account name.
 @property (nonatomic, copy) NSString *name;
+
+// Indicates whether this account is starred or not.
+@property (nonatomic, retain) NSNumber *starred;  // boolValue
 
 // List of web properties under this account.
 @property (nonatomic, retain) NSArray *webProperties;  // of GTLAnalyticsWebPropertySummary

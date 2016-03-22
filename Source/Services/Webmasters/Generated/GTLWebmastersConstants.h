@@ -42,6 +42,7 @@ GTL_EXTERN NSString * const kGTLAuthScopeWebmastersReadonly;  // "https://www.go
 
 // GTLQueryWebmasters - Category
 GTL_EXTERN NSString * const kGTLWebmastersCategoryAuthPermissions;  // "authPermissions"
+GTL_EXTERN NSString * const kGTLWebmastersCategoryFlashContent;  // "flashContent"
 GTL_EXTERN NSString * const kGTLWebmastersCategoryManyToOneRedirect;  // "manyToOneRedirect"
 GTL_EXTERN NSString * const kGTLWebmastersCategoryNotFollowed;  // "notFollowed"
 GTL_EXTERN NSString * const kGTLWebmastersCategoryNotFound;     // "notFound"

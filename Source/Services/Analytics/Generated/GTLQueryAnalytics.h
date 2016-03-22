@@ -22,7 +22,7 @@
 // Service:
 //   Google Analytics API (analytics/v3)
 // Description:
-//   View and manage your Google Analytics data
+//   Views and manages your Google Analytics data.
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
@@ -714,7 +714,7 @@
                                                profileId:(NSString *)profileId;
 
 // Method: analytics.management.goals.patch
-// Updates an existing view (profile). This method supports patch semantics.
+// Updates an existing goal. This method supports patch semantics.
 //  Required:
 //   accountId: Account ID to update the goal.
 //   webPropertyId: Web property ID to update the goal.
@@ -730,7 +730,7 @@
                                                 goalId:(NSString *)goalId;
 
 // Method: analytics.management.goals.update
-// Updates an existing view (profile).
+// Updates an existing goal.
 //  Required:
 //   accountId: Account ID to update the goal.
 //   webPropertyId: Web property ID to update the goal.

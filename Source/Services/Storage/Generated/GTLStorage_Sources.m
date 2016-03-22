@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@
 // Service:
 //   Cloud Storage JSON API (storage/v1)
 // Description:
-//   Lets you store and retrieve potentially-large, immutable data objects.
+//   Stores and retrieves potentially large, immutable data objects.
 // Documentation:
 //   https://developers.google.com/storage/docs/json_api/
 

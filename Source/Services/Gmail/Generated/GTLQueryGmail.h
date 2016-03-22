@@ -22,7 +22,7 @@
 // Service:
 //   Gmail API (gmail/v1)
 // Description:
-//   The Gmail REST API.
+//   Access Gmail mailboxes including sending user email.
 // Documentation:
 //   https://developers.google.com/gmail/api/
 // Classes:

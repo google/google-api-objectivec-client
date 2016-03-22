@@ -31,6 +31,9 @@
 
 #import "GTLBigqueryConstants.m"
 
+#import "GTLBigqueryBigtableColumn.m"
+#import "GTLBigqueryBigtableColumnFamily.m"
+#import "GTLBigqueryBigtableOptions.m"
 #import "GTLBigqueryCsvOptions.m"
 #import "GTLBigqueryDataset.m"
 #import "GTLBigqueryDatasetList.m"

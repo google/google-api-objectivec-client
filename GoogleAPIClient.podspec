@@ -29,6 +29,7 @@ Pod::Spec.new do |s|
   end
   s.default_subspec = 'Core'
 
+  # subspecs for all the services.
   s.subspec 'AdExchangeBuyer' do |sp|
     sp.dependency 'GoogleAPIClient/Core'
     sp.source_files = 'Source/Services/AdExchangeBuyer/Generated/*.{h,m}'

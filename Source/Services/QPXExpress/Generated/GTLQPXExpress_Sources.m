@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,8 +25,7 @@
 // Service:
 //   QPX Express API (qpxExpress/v1)
 // Description:
-//   Lets you find the least expensive flights between an origin and a
-//   destination.
+//   Finds the least expensive flights between an origin and a destination.
 // Documentation:
 //   http://developers.google.com/qpx-express
 

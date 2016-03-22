@@ -22,11 +22,11 @@
 // Service:
 //   Google Analytics API (analytics/v3)
 // Description:
-//   View and manage your Google Analytics data
+//   Views and manages your Google Analytics data.
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsProfile (0 custom class methods, 25 custom properties)
+//   GTLAnalyticsProfile (0 custom class methods, 26 custom properties)
 //   GTLAnalyticsProfileChildLink (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsProfileParentLink (0 custom class methods, 2 custom properties)
 //   GTLAnalyticsProfilePermissions (0 custom class methods, 1 custom properties)
@@ -112,6 +112,9 @@
 
 // The site search query parameters for this view (profile).
 @property (nonatomic, copy) NSString *siteSearchQueryParameters;
+
+// Indicates whether this view (profile) is starred or not.
+@property (nonatomic, retain) NSNumber *starred;  // boolValue
 
 // Whether or not Analytics will strip search category parameters from the URLs
 // in your reports.

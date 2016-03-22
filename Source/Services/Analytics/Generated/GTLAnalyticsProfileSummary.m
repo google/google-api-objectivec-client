@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,11 +22,11 @@
 // Service:
 //   Google Analytics API (analytics/v3)
 // Description:
-//   View and manage your Google Analytics data
+//   Views and manages your Google Analytics data.
 // Documentation:
 //   https://developers.google.com/analytics/
 // Classes:
-//   GTLAnalyticsProfileSummary (0 custom class methods, 4 custom properties)
+//   GTLAnalyticsProfileSummary (0 custom class methods, 5 custom properties)
 
 #import "GTLAnalyticsProfileSummary.h"
 
@@ -36,7 +36,7 @@
 //
 
 @implementation GTLAnalyticsProfileSummary
-@dynamic identifier, kind, name, type;
+@dynamic identifier, kind, name, starred, type;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{
