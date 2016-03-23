@@ -12,9 +12,9 @@ Pod::Spec.new do |s|
       framework for accessing JSON APIs.  This is the recommended library for
       accessing JSON-based Google APIs for iOS and Mac OS X applications.
 
-      This version can be used with iOS ≥ 6.0 or OS X ≥ 10.8.
+      This version can be used with iOS ≥ 7.0 or OS X ≥ 10.8.
                    DESC
-  s.ios.deployment_target = '6.0'
+  s.ios.deployment_target = '7.0'
   s.osx.deployment_target = '10.8'
 
   s.user_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GTL_USE_FRAMEWORK_IMPORTS=1' }
