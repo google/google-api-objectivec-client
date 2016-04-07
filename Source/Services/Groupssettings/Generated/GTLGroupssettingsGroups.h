@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/google-apps/groups-settings/get_started
 // Classes:
-//   GTLGroupssettingsGroups (0 custom class methods, 28 custom properties)
+//   GTLGroupssettingsGroups (0 custom class methods, 29 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -112,13 +112,17 @@
 // MODERATE SILENTLY_MODERATE REJECT
 @property (nonatomic, copy) NSString *spamModerationLevel;
 
-// Permission to contact owner of the group via web UI. Possbile values are:
+// Permissions to add members. Possible values are: ALL_MANAGERS_CAN_ADD
+// ALL_MEMBERS_CAN_ADD NONE_CAN_ADD
+@property (nonatomic, copy) NSString *whoCanAdd;
+
+// Permission to contact owner of the group via web UI. Possible values are:
 // ANYONE_CAN_CONTACT ALL_IN_DOMAIN_CAN_CONTACT ALL_MEMBERS_CAN_CONTACT
 // ALL_MANAGERS_CAN_CONTACT
 @property (nonatomic, copy) NSString *whoCanContactOwner;
 
-// Permissions to invite members. Possbile values are: ALL_MEMBERS_CAN_INVITE
-// ALL_MANAGERS_CAN_INVITE
+// Permissions to invite members. Possible values are: ALL_MEMBERS_CAN_INVITE
+// ALL_MANAGERS_CAN_INVITE NONE_CAN_INVITE
 @property (nonatomic, copy) NSString *whoCanInvite;
 
 // Permissions to join the group. Possible values are: ANYONE_CAN_JOIN
@@ -126,7 +130,7 @@
 @property (nonatomic, copy) NSString *whoCanJoin;
 
 // Permission to leave the group. Possible values are: ALL_MANAGERS_CAN_LEAVE
-// ALL_MEMBERS_CAN_LEAVE
+// ALL_MEMBERS_CAN_LEAVE NONE_CAN_LEAVE
 @property (nonatomic, copy) NSString *whoCanLeaveGroup;
 
 // Permissions to post messages to the group. Possible values are: NONE_CAN_POST
@@ -134,11 +138,11 @@
 // ANYONE_CAN_POST
 @property (nonatomic, copy) NSString *whoCanPostMessage;
 
-// Permissions to view group. Possbile values are: ANYONE_CAN_VIEW
+// Permissions to view group. Possible values are: ANYONE_CAN_VIEW
 // ALL_IN_DOMAIN_CAN_VIEW ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW
 @property (nonatomic, copy) NSString *whoCanViewGroup;
 
-// Permissions to view membership. Possbile values are: ALL_IN_DOMAIN_CAN_VIEW
+// Permissions to view membership. Possible values are: ALL_IN_DOMAIN_CAN_VIEW
 // ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW
 @property (nonatomic, copy) NSString *whoCanViewMembership;
 

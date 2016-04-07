@@ -22,8 +22,8 @@
 // Service:
 //   Google Cloud Service Registry API (serviceregistry/alpha)
 // Description:
-//   The Service Registry API allows users to manage service endpoints in
-//   Service Registry and use DNS-based service discovery / name resolution.
+//   Manages service endpoints in Service Registry and provides integration with
+//   DNS for service discovery and name resolution.
 // Documentation:
 //   https://developers.google.com/cloud-serviceregistry/
 // Classes:

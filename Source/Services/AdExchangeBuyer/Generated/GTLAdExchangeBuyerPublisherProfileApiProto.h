@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerPublisherProfileApiProto (0 custom class methods, 13 custom properties)
+//   GTLAdExchangeBuyerPublisherProfileApiProto (0 custom class methods, 14 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -42,6 +42,9 @@
 //
 
 @interface GTLAdExchangeBuyerPublisherProfileApiProto : GTLObject
+
+// The account id of the seller.
+@property (nonatomic, copy) NSString *accountId;
 
 // A pitch statement for the buyer
 @property (nonatomic, copy) NSString *buyerPitchStatement;
@@ -68,7 +71,8 @@
 // Publisher provided overview.
 @property (nonatomic, copy) NSString *overview;
 
-// Unique id for the publisher profile
+// The pair of (seller.account_id, profile_id) uniquely identifies a publisher
+// profile for a given publisher.
 @property (nonatomic, retain) NSNumber *profileId;  // intValue
 
 // The list of domains represented in this publisher profile. Empty if this is a

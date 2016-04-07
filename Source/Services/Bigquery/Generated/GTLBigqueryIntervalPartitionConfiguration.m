@@ -14,51 +14,27 @@
  */
 
 //
-//  GTLCalendarAclRule.m
+//  GTLBigqueryIntervalPartitionConfiguration.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Calendar API (calendar/v3)
+//   BigQuery API (bigquery/v2)
 // Description:
-//   Manipulates events and other calendar data.
+//   A data platform for customers to create, manage, share and query data.
 // Documentation:
-//   https://developers.google.com/google-apps/calendar/firstapp
+//   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLCalendarAclRule (0 custom class methods, 5 custom properties)
-//   GTLCalendarAclRuleScope (0 custom class methods, 2 custom properties)
+//   GTLBigqueryIntervalPartitionConfiguration (0 custom class methods, 2 custom properties)
 
-#import "GTLCalendarAclRule.h"
-
-// ----------------------------------------------------------------------------
-//
-//   GTLCalendarAclRule
-//
-
-@implementation GTLCalendarAclRule
-@dynamic ETag, identifier, kind, role, scope;
-
-+ (NSDictionary *)propertyToJSONKeyMap {
-  NSDictionary *map = @{
-    @"ETag" : @"etag",
-    @"identifier" : @"id"
-  };
-  return map;
-}
-
-+ (void)load {
-  [self registerObjectClassForKind:@"calendar#aclRule"];
-}
-
-@end
-
+#import "GTLBigqueryIntervalPartitionConfiguration.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLCalendarAclRuleScope
+//   GTLBigqueryIntervalPartitionConfiguration
 //
 
-@implementation GTLCalendarAclRuleScope
-@dynamic type, value;
+@implementation GTLBigqueryIntervalPartitionConfiguration
+@dynamic expirationMs, type;
 @end

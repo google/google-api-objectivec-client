@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLQueryAdExchangeBuyer (36 custom class methods, 26 custom properties)
+//   GTLQueryAdExchangeBuyer (37 custom class methods, 29 custom properties)
 
 #import "GTLQueryAdExchangeBuyer.h"
 
@@ -60,10 +60,11 @@
 @implementation GTLQueryAdExchangeBuyer
 
 @dynamic accountId, billingId, buyerCreativeId, configId, dealId, dealIds,
-         deals, dealsStatusFilter, endDateTime, fields, identifier, maxResults,
-         notes, openAuctionStatusFilter, order, pageToken, pqlQuery, productId,
-         proposal, proposalId, proposalRevisionNumber, proposals,
-         revisionNumber, startDateTime, updateAction, webPropertyCode;
+         deals, dealsStatusFilter, endDateTime, externalDealId, fields,
+         identifier, maxResults, note, notes, openAuctionStatusFilter, order,
+         pageToken, pqlQuery, privateAuctionId, productId, proposal, proposalId,
+         proposalRevisionNumber, proposals, revisionNumber, startDateTime,
+         updateAction, webPropertyCode;
 
 + (NSDictionary *)parameterNameMap {
   NSDictionary *map = @{
@@ -296,6 +297,16 @@
   GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
   query.proposalId = proposalId;
   query.expectedObjectClass = [GTLAdExchangeBuyerGetOrderNotesResponse class];
+  return query;
+}
+
+#pragma mark - "marketplaceprivateauction" methods
+// These create a GTLQueryAdExchangeBuyer object.
+
++ (instancetype)queryForMarketplaceprivateauctionUpdateproposalWithPrivateAuctionId:(NSString *)privateAuctionId {
+  NSString *methodName = @"adexchangebuyer.marketplaceprivateauction.updateproposal";
+  GTLQueryAdExchangeBuyer *query = [self queryWithMethodName:methodName];
+  query.privateAuctionId = privateAuctionId;
   return query;
 }
 

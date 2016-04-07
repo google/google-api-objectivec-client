@@ -25,7 +25,7 @@
 // Service:
 //   Search Console API (webmasters/v3)
 // Description:
-//   Lets you view Google Search Console data for your verified sites.
+//   View Google Search Console data for your verified sites.
 // Documentation:
 //   https://developers.google.com/webmaster-tools/
 
