@@ -179,6 +179,10 @@ static NSString *ETagIfPresent(GTLObject *obj) {
 @property (retain) NSNumber *nextStartIndex;
 @end
 
+@interface GTLQuery (StandardProperties)
+@property (retain) NSString *fields;
+@end
+
 @implementation GTLService
 
 @synthesize userAgentAddition = userAgentAddition_,
@@ -1268,14 +1272,23 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
         [fetcher setProperty:parsedObject forKey:kFetcherParsedObjectKey];
       } else if (!isREST) {
         NSMutableDictionary *errorJSON = [jsonWrapper valueForKey:@"error"];
-        GTL_DEBUG_ASSERT(errorJSON != nil, @"no result or error in response:\n%@",
-                         jsonWrapper);
-        GTLErrorObject *errorObject = [GTLErrorObject objectWithJSON:errorJSON];
-        NSError *error = [errorObject foundationError];
+        if (errorJSON) {
+          GTLErrorObject *errorObject = [GTLErrorObject objectWithJSON:errorJSON];
+          NSError *error = [errorObject foundationError];
 
-        // Store the error and let it go to the callback
-        [fetcher setProperty:error
-                      forKey:kFetcherFetchErrorKey];
+          // Store the error and let it go to the callback
+          [fetcher setProperty:error
+                        forKey:kFetcherFetchErrorKey];
+        } else {
+#if DEBUG && !defined(NS_BLOCK_ASSERTIONS)
+          id<GTLQueryProtocol> query = ticket.executingQuery;
+          if ([query respondsToSelector:@selector(fields)]) {
+            id fields = [query performSelector:@selector(fields)];
+            GTL_ASSERT(fields != nil, @"no result or error in response:\n%@",
+                       jsonWrapper);
+          }
+#endif
+        }
       }
     }
 
