@@ -175,6 +175,7 @@ typedef BOOL (^GTLServiceRetryBlock)(GTLServiceTicket *ticket,
   NSDictionary *additionalHTTPHeaders_;
 
 #if GTL_USE_SESSION_FETCHER
+  NSOperationQueue *delegateQueue_;
   NSArray *runLoopModes_;
 #endif
 }

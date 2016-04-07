@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -63,7 +63,7 @@
 // [Required] A reference that identifies the dataset.
 @property (nonatomic, retain) GTLBigqueryDatasetReference *datasetReference;
 
-// [Experimental] The default lifetime of all tables in the dataset, in
+// [Optional] The default lifetime of all tables in the dataset, in
 // milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this
 // property is set, all newly-created tables in the dataset will have an
 // expirationTime property set to the creation time plus the value in this

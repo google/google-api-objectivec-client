@@ -14,19 +14,19 @@
  */
 
 //
-//  GTLWebmastersSearchAnalyticsQueryResponse.h
+//  GTLBigqueryIntervalPartitionConfiguration.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Search Console API (webmasters/v3)
+//   BigQuery API (bigquery/v2)
 // Description:
-//   View Google Search Console data for your verified sites.
+//   A data platform for customers to create, manage, share and query data.
 // Documentation:
-//   https://developers.google.com/webmaster-tools/
+//   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLWebmastersSearchAnalyticsQueryResponse (0 custom class methods, 2 custom properties)
+//   GTLBigqueryIntervalPartitionConfiguration (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,23 +34,12 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLWebmastersApiDataRow;
-
 // ----------------------------------------------------------------------------
 //
-//   GTLWebmastersSearchAnalyticsQueryResponse
+//   GTLBigqueryIntervalPartitionConfiguration
 //
 
-// A list of rows, one per result, grouped by key. Metrics in each row are
-// aggregated for all data grouped by that key either by page or property, as
-// specified by the aggregation type parameter.
-
-@interface GTLWebmastersSearchAnalyticsQueryResponse : GTLObject
-
-// How the results were aggregated.
-@property (nonatomic, copy) NSString *responseAggregationType;
-
-// A list of rows grouped by the key values in the order given in the query.
-@property (nonatomic, retain) NSArray *rows;  // of GTLWebmastersApiDataRow
-
+@interface GTLBigqueryIntervalPartitionConfiguration : GTLObject
+@property (nonatomic, retain) NSNumber *expirationMs;  // longLongValue
+@property (nonatomic, copy) NSString *type;
 @end

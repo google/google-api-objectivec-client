@@ -22,8 +22,8 @@
 // Service:
 //   Google Cloud Service Registry API (serviceregistry/alpha)
 // Description:
-//   The Service Registry API allows users to manage service endpoints in
-//   Service Registry and use DNS-based service discovery / name resolution.
+//   Manages service endpoints in Service Registry and provides integration with
+//   DNS for service discovery and name resolution.
 // Documentation:
 //   https://developers.google.com/cloud-serviceregistry/
 // Classes:
@@ -82,8 +82,8 @@
 // [Output Only] The current state of the endpoint, as determined by the system.
 @property (nonatomic, copy) NSString *state;
 
-// The visibility of this endpoint. This must be a list of fully-qualified URLs
-// to Compute Engine networks.
+// The DNS Integration configuration for this endpoint. This must be a list of
+// fully-qualified URLs to Compute Engine networks.
 @property (nonatomic, retain) GTLServiceRegistryEndpointEndpointVisibility *visibility;
 
 @end

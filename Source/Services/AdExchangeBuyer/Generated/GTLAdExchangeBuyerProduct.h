@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerProduct (0 custom class methods, 21 custom properties)
+//   GTLAdExchangeBuyerProduct (0 custom class methods, 22 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -110,6 +110,12 @@
 // The unique id for the product (readonly)
 @property (nonatomic, copy) NSString *productId;
 
+// Id of the publisher profile for a given seller. A (seller.account_id,
+// publisher_profile_id) pair uniquely identifies a publisher profile. Buyers
+// can call the PublisherProfiles::List endpoint to get a list of publisher
+// profiles for a given seller.
+@property (nonatomic, copy) NSString *publisherProfileId;
+
 // The revision number of the product. (readonly)
 @property (nonatomic, retain) NSNumber *revisionNumber;  // longLongValue
 
@@ -132,5 +138,8 @@
 // The negotiable terms of the deal (buyer-readonly)
 @property (nonatomic, retain) GTLAdExchangeBuyerDealTerms *terms;
 
+// The web property code for the seller. This field is meant to be copied over
+// as is when creating deals.
 @property (nonatomic, copy) NSString *webPropertyCode;
+
 @end

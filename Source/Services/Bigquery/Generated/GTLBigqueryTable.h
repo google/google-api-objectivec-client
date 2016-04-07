@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryTable (0 custom class methods, 18 custom properties)
+//   GTLBigqueryTable (0 custom class methods, 19 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,6 +36,7 @@
 
 @class GTLBigqueryExternalDataConfiguration;
 @class GTLBigqueryStreamingbuffer;
+@class GTLBigqueryTablePartitionConfiguration;
 @class GTLBigqueryTableReference;
 @class GTLBigqueryTableSchema;
 @class GTLBigqueryViewDefinition;
@@ -93,6 +94,11 @@
 // [Output-only] The number of rows of data in this table, excluding any data in
 // the streaming buffer.
 @property (nonatomic, retain) NSNumber *numRows;  // unsignedLongLongValue
+
+// [Experimental] List of partition configurations for this table. Currently
+// only one configuration can be specified and it can only be an interval
+// partition with type daily.
+@property (nonatomic, retain) NSArray *partitionConfigurations;  // of GTLBigqueryTablePartitionConfiguration
 
 // [Optional] Describes the schema of this table.
 @property (nonatomic, retain) GTLBigqueryTableSchema *schema;

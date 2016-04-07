@@ -132,7 +132,8 @@
 
 // [Optional] The format of the data files. For CSV files, specify "CSV". For
 // datastore backups, specify "DATASTORE_BACKUP". For newline-delimited JSON,
-// specify "NEWLINE_DELIMITED_JSON". The default value is CSV.
+// specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". The default value
+// is CSV.
 @property (nonatomic, copy) NSString *sourceFormat;
 
 // [Required] The fully-qualified URIs that point to your data in Google Cloud

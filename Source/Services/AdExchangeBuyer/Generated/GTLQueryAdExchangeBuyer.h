@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLQueryAdExchangeBuyer (36 custom class methods, 26 custom properties)
+//   GTLQueryAdExchangeBuyer (37 custom class methods, 29 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLQuery.h"
@@ -69,14 +69,17 @@
 @property (nonatomic, retain) NSArray *deals;  // of GTLAdExchangeBuyerMarketplaceDeal
 @property (nonatomic, copy) NSString *dealsStatusFilter;
 @property (nonatomic, copy) NSString *endDateTime;
+@property (nonatomic, copy) NSString *externalDealId;
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (nonatomic, assign) NSInteger identifier;
 @property (nonatomic, assign) NSUInteger maxResults;
+@property (nonatomic, retain) GTLAdExchangeBuyerMarketplaceNote *note;
 @property (nonatomic, retain) NSArray *notes;  // of GTLAdExchangeBuyerMarketplaceNote
 @property (nonatomic, copy) NSString *openAuctionStatusFilter;
 @property (nonatomic, retain) GTLAdExchangeBuyerProposal *order;
 @property (nonatomic, copy) NSString *pageToken;
 @property (nonatomic, copy) NSString *pqlQuery;
+@property (nonatomic, copy) NSString *privateAuctionId;
 @property (nonatomic, copy) NSString *productId;
 @property (nonatomic, retain) GTLAdExchangeBuyerProposal *proposal;
 @property (nonatomic, copy) NSString *proposalId;
@@ -362,6 +365,23 @@
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerGetOrderNotesResponse.
 + (instancetype)queryForMarketplacenotesListWithProposalId:(NSString *)proposalId;
+
+#pragma mark - "marketplaceprivateauction" methods
+// These create a GTLQueryAdExchangeBuyer object.
+
+// Method: adexchangebuyer.marketplaceprivateauction.updateproposal
+// Update a given private auction proposal
+//  Required:
+//   privateAuctionId: The private auction id to be updated.
+//  Optional:
+//   externalDealId: The externalDealId of the deal to be updated.
+//   note: Optional note to be added.
+//   proposalRevisionNumber: The current revision number of the proposal to be
+//     updated.
+//   updateAction: The proposed action on the private auction proposal.
+//  Authorization scope(s):
+//   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
++ (instancetype)queryForMarketplaceprivateauctionUpdateproposalWithPrivateAuctionId:(NSString *)privateAuctionId;
 
 #pragma mark - "performanceReport" methods
 // These create a GTLQueryAdExchangeBuyer object.

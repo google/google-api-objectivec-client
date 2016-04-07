@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerPublisherProfileApiProto (0 custom class methods, 13 custom properties)
+//   GTLAdExchangeBuyerPublisherProfileApiProto (0 custom class methods, 14 custom properties)
 
 #import "GTLAdExchangeBuyerPublisherProfileApiProto.h"
 
@@ -38,8 +38,8 @@
 //
 
 @implementation GTLAdExchangeBuyerPublisherProfileApiProto
-@dynamic buyerPitchStatement, googlePlusLink, isParent, kind, logoUrl,
-         mediaKitLink, name, overview, profileId, publisherDomains,
+@dynamic accountId, buyerPitchStatement, googlePlusLink, isParent, kind,
+         logoUrl, mediaKitLink, name, overview, profileId, publisherDomains,
          rateCardInfoLink, samplePageLink, topHeadlines;
 
 + (NSDictionary *)arrayPropertyToClassMap {

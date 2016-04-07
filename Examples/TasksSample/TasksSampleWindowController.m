@@ -97,6 +97,9 @@ NSString *const kKeychainItemName = @"TasksSample: Google Tasks";
   // Load the OAuth token from the keychain, if it was previously saved
   NSString *clientID = [clientIDField_ stringValue];
   NSString *clientSecret = [clientSecretField_ stringValue];
+  if (clientSecret.length == 0) {
+    clientSecret = nil;
+  }
 
   GTMOAuth2Authentication *auth;
   auth = [GTMOAuth2WindowController authForGoogleFromKeychainForName:kKeychainItemName
@@ -881,18 +884,22 @@ static NSString *const kGTLChildTasksProperty = @"childTasks";
 #pragma mark Sign In
 
 - (void)runSigninThenInvokeSelector:(SEL)signInDoneSel {
-  // Applications should have client ID and client secret strings
-  // hardcoded into the source, but the sample application asks the
-  // developer for the strings
+  // Applications should have client ID string hardcoded into the source, but
+  // the sample application asks the developer for the strings.
   NSString *clientID = [clientIDField_ stringValue];
-  NSString *clientSecret = [clientSecretField_ stringValue];
 
-  if ([clientID length] == 0 || [clientSecret length] == 0) {
+  if ([clientID length] == 0) {
     // Remind the developer that client ID and client secret are needed
     [clientIDButton_ performSelector:@selector(performClick:)
                           withObject:self
                           afterDelay:0.5];
     return;
+  }
+
+  // Client secrets are optional for Google services and can be nil.
+  NSString *clientSecret = [clientSecretField_ stringValue];
+  if (clientSecret.length == 0) {
+    clientSecret = nil;
   }
 
   // Show the OAuth 2 sign-in controller
@@ -1028,10 +1035,8 @@ static NSString *const kGTLChildTasksProperty = @"childTasks";
   BOOL isEditingTask = (self.editTaskTicket != nil);
   [tasksCancelButton_ setEnabled:(isFetchingTasks || isEditingTask)];
 
-  // Show or hide the text indicating that the client ID or client secret are
-  // needed
-  BOOL hasClientIDStrings = [[clientIDField_ stringValue] length] > 0
-    && [[clientSecretField_ stringValue] length] > 0;
+  // Show or hide the text indicating that the client ID is needed
+  BOOL hasClientIDStrings = [[clientIDField_ stringValue] length] > 0;
   [clientIDRequiredTextField_ setHidden:hasClientIDStrings];
 }
 

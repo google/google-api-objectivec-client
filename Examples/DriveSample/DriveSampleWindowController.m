@@ -43,20 +43,20 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
   NSError *_fileListFetchError;
   GTLServiceTicket *_editFileListTicket;
   GTLServiceTicket *_uploadFileTicket;
-  
+
   // Details
   GTLDriveRevisionList *_revisionList;
   NSError *_revisionListFetchError;
-  
+
   GTLDrivePermissionList *_permissionList;
   NSError *_permissionListFetchError;
-  
+
   GTLDriveFileList *_childList;
   NSError *_childListFetchError;
-  
+
   NSArray *_parentsList;
   NSError *_parentsListFetchError;
-  
+
   GTLServiceTicket *_detailsTicket;
   NSError *_detailsFetchError;
 }
@@ -77,6 +77,9 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
   // Load the OAuth 2 token from the keychain, if it was previously saved.
   NSString *clientID = [_clientIDField stringValue];
   NSString *clientSecret = [_clientSecretField stringValue];
+  if (clientSecret.length == 0) {
+    clientSecret = nil;
+  }
 
   GTMOAuth2Authentication *auth;
   auth = [GTMOAuth2WindowController authForGoogleFromKeychainForName:kKeychainItemName
@@ -680,18 +683,22 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
 #pragma mark Sign In
 
 - (void)runSigninThenHandler:(void (^)(void))handler {
-  // Applications should have client ID and client secret strings
-  // hardcoded into the source, but the sample application asks the
-  // developer for the strings.
+  // Applications should have client ID string hardcoded into the source, but
+  // the sample application asks the developer for the strings.
   NSString *clientID = [_clientIDField stringValue];
-  NSString *clientSecret = [_clientSecretField stringValue];
 
-  if ([clientID length] == 0 || [clientSecret length] == 0) {
+  if ([clientID length] == 0) {
     // Remind the developer that client ID and client secret are needed
     [_clientIDButton performSelector:@selector(performClick:)
                           withObject:self
                           afterDelay:0.5];
     return;
+  }
+
+  // Client secrets are optional for Google services and can be nil.
+  NSString *clientSecret = [_clientSecretField stringValue];
+  if (clientSecret.length == 0) {
+    clientSecret = nil;
   }
 
   // Show the OAuth 2 sign-in controller
@@ -844,10 +851,8 @@ NSString *const kKeychainItemName = @"DriveSample: Google Drive";
   NSString *pauseTitle = (isUploadPaused ? @"Resume" : @"Pause");
   [_pauseUploadButton setTitle:pauseTitle];
 
-  // Show or hide the text indicating that the client ID or client secret are
-  // needed
-  BOOL hasClientIDStrings = [[_clientIDField stringValue] length] > 0
-    && [[_clientSecretField stringValue] length] > 0;
+  // Show or hide the text indicating that the client ID is needed
+  BOOL hasClientIDStrings = [[_clientIDField stringValue] length] > 0;
   [_clientIDRequiredTextField setHidden:hasClientIDStrings];
 }
 
