@@ -136,6 +136,7 @@ static NSString *ETagIfPresent(GTLObject *obj) {
 @end
 #endif  // GTL_HAS_SESSION_UPLOAD_FETCHER_IMPORT
 
+
 @interface GTLService ()
 - (void)prepareToParseObjectForFetcher:(GTMBridgeFetcher *)fetcher;
 - (void)handleParsedObjectForFetcher:(GTMBridgeFetcher *)fetcher;
@@ -251,6 +252,7 @@ static NSString *ETagIfPresent(GTLObject *obj) {
   [urlQueryParameters_ release];
   [additionalHTTPHeaders_ release];
 #if GTL_USE_SESSION_FETCHER
+  [delegateQueue_ release];
   [runLoopModes_ release];
 #endif
 
@@ -2276,16 +2278,19 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 }
 
 - (void)setDelegateQueue:(NSOperationQueue *)delegateQueue {
-#if !GTL_USE_SESSION_FETCHER
+#if GTL_USE_SESSION_FETCHER
+  [delegateQueue_ autorelease];
+  delegateQueue_ = [delegateQueue retain];
+#else
   self.fetcherService.delegateQueue = delegateQueue;
 #endif
 }
 
 - (NSOperationQueue *)delegateQueue {
-#if !GTL_USE_SESSION_FETCHER
-  return self.fetcherService.delegateQueue;
+#if GTL_USE_SESSION_FETCHER
+  return delegateQueue_;
 #else
-  return nil;
+  return self.fetcherService.delegateQueue;
 #endif
 }
 
