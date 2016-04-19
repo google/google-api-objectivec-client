@@ -107,6 +107,7 @@ typedef enum {
 @property (readonly) GTLDiscoveryJsonSchema *resolvedSchema;
 @property (readonly, getter=hasItemsArrayProperty) BOOL itemsArrayProperty;
 @property (readonly) NSString *kindToRegister;
+@property (readonly) BOOL likelyInvalidUseOfKind;
 @property (readonly) NSString *rangeAndDefaultDescription;
 @property (readonly) BOOL isQueryRequestObject;
 
@@ -2233,21 +2234,31 @@ static NSString *MappedParamName(NSString *name) {
   // Handle the 'kind' attribute for auto creating the right objects when
   // parsing.
   if (mode == kGenerateImplementation) {
-    NSString *kindToRegister = schema.kindToRegister;
-    if (kindToRegister != nil) {
-      // Have we suppressed the registered kind?
-      if ([schema propertyForKey:kSkipRegisteringKindKey] != nil) {
-        NSMutableString *loadMethod = [NSMutableString string];
-        [loadMethod appendFormat:@"// +load method not generated as another class also claims kind '%@'.\n",
-         kindToRegister];
-        [methodParts addObject:loadMethod];
-      } else {
-        NSMutableString *loadMethod = [NSMutableString string];
-        [loadMethod appendString:@"+ (void)load {\n"];
-        [loadMethod appendFormat:@"  [self registerObjectClassForKind:@\"%@\"];\n",
-         kindToRegister];
-        [loadMethod appendString:@"}\n"];
-        [methodParts addObject:loadMethod];
+    if (schema.likelyInvalidUseOfKind) {
+      NSString *blockKindMethod =
+          @"+ (BOOL)isKindValidForClassRegistry {\n"
+          @"  // This class has a \"kind\" property that doesn't appear to be usable to\n"
+          @"  // determine what type of object was encoded in the JSON.\n"
+          @"  return NO;\n"
+          @"}\n";
+      [methodParts addObject:blockKindMethod];
+    } else {
+      NSString *kindToRegister = schema.kindToRegister;
+      if (kindToRegister != nil) {
+        // Have we suppressed the registered kind?
+        if ([schema propertyForKey:kSkipRegisteringKindKey] != nil) {
+          NSMutableString *loadMethod = [NSMutableString string];
+          [loadMethod appendFormat:@"// +load method not generated as another class also claims kind '%@'.\n",
+           kindToRegister];
+          [methodParts addObject:loadMethod];
+        } else {
+          NSMutableString *loadMethod = [NSMutableString string];
+          [loadMethod appendString:@"+ (void)load {\n"];
+          [loadMethod appendFormat:@"  [self registerObjectClassForKind:@\"%@\"];\n",
+           kindToRegister];
+          [loadMethod appendString:@"}\n"];
+          [methodParts addObject:loadMethod];
+        }
       }
     }
   }
@@ -3724,6 +3735,20 @@ static NSString *OverrideName(NSString *name, EQueryOrObject queryOrObject,
       [property.defaultProperty length] > 0) {
     result = property.defaultProperty;
   }
+  return result;
+}
+
+- (BOOL)likelyInvalidUseOfKind {
+  BOOL result = NO;
+
+  GTLDiscoveryJsonSchema *property =
+    [self.properties additionalPropertyForName:@"kind"];
+  if ([property.type isEqual:@"string"] &&
+      property.defaultProperty.length == 0) {
+    // Has a 'kind', but no default, odds are it is misusing the attribute.
+    result = YES;
+  }
+
   return result;
 }
 
