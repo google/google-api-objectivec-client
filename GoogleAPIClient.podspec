@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'GoogleAPIClient'
-  s.version      = '1.0.2'
+  s.version      = '1.0.3'
   s.author       = 'Google Inc.'
   s.homepage     = 'https://github.com/google/google-api-objectivec-client'
   s.license      = { :type => 'Apache', :file => 'LICENSE' }

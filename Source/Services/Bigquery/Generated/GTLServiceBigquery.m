@@ -50,7 +50,6 @@
     [GTLBigqueryExplainQueryStep class],
     [GTLBigqueryExternalDataConfiguration class],
     [GTLBigqueryGetQueryResultsResponse class],
-    [GTLBigqueryIntervalPartitionConfiguration class],
     [GTLBigqueryJob class],
     [GTLBigqueryJobCancelResponse class],
     [GTLBigqueryJobConfiguration class],
@@ -76,10 +75,10 @@
     [GTLBigqueryTableDataList class],
     [GTLBigqueryTableFieldSchema class],
     [GTLBigqueryTableList class],
-    [GTLBigqueryTablePartitionConfiguration class],
     [GTLBigqueryTableReference class],
     [GTLBigqueryTableRow class],
     [GTLBigqueryTableSchema class],
+    [GTLBigqueryTimePartitioning class],
     [GTLBigqueryUserDefinedFunctionResource class],
     [GTLBigqueryViewDefinition class]
   ];

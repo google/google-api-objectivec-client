@@ -25,7 +25,8 @@
 // Service:
 //   YouTube Data API (youtube/v3)
 // Description:
-//   Programmatic access to YouTube features.
+//   Supports core YouTube features, such as uploading videos, creating and
+//   managing playlists, searching for content, and much more.
 // Documentation:
 //   https://developers.google.com/youtube/v3
 
@@ -115,12 +116,15 @@
 #import "GTLYouTubeLiveChatFanFundingEventDetails.m"
 #import "GTLYouTubeLiveChatMessage.m"
 #import "GTLYouTubeLiveChatMessageAuthorDetails.m"
+#import "GTLYouTubeLiveChatMessageDeletedDetails.m"
 #import "GTLYouTubeLiveChatMessageListResponse.m"
+#import "GTLYouTubeLiveChatMessageRetractedDetails.m"
 #import "GTLYouTubeLiveChatMessageSnippet.m"
 #import "GTLYouTubeLiveChatModerator.m"
 #import "GTLYouTubeLiveChatModeratorListResponse.m"
 #import "GTLYouTubeLiveChatModeratorSnippet.m"
 #import "GTLYouTubeLiveChatTextMessageDetails.m"
+#import "GTLYouTubeLiveChatUserBannedMessageDetails.m"
 #import "GTLYouTubeLiveStream.m"
 #import "GTLYouTubeLiveStreamConfigurationIssue.m"
 #import "GTLYouTubeLiveStreamContentDetails.m"

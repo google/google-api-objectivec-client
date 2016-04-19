@@ -26,12 +26,13 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryJobStatistics2 (0 custom class methods, 6 custom properties)
+//   GTLBigqueryJobStatistics2 (0 custom class methods, 7 custom properties)
 
 #import "GTLBigqueryJobStatistics2.h"
 
 #import "GTLBigqueryExplainQueryStage.h"
 #import "GTLBigqueryTableReference.h"
+#import "GTLBigqueryTableSchema.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -39,8 +40,8 @@
 //
 
 @implementation GTLBigqueryJobStatistics2
-@dynamic billingTier, cacheHit, queryPlan, referencedTables, totalBytesBilled,
-         totalBytesProcessed;
+@dynamic billingTier, cacheHit, queryPlan, referencedTables, schema,
+         totalBytesBilled, totalBytesProcessed;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{

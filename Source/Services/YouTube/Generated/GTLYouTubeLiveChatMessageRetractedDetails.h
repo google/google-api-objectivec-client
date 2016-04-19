@@ -14,27 +14,32 @@
  */
 
 //
-//  GTLBigqueryIntervalPartitionConfiguration.m
+//  GTLYouTubeLiveChatMessageRetractedDetails.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   BigQuery API (bigquery/v2)
+//   YouTube Data API (youtube/v3)
 // Description:
-//   A data platform for customers to create, manage, share and query data.
+//   Supports core YouTube features, such as uploading videos, creating and
+//   managing playlists, searching for content, and much more.
 // Documentation:
-//   https://cloud.google.com/bigquery/
+//   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLBigqueryIntervalPartitionConfiguration (0 custom class methods, 2 custom properties)
+//   GTLYouTubeLiveChatMessageRetractedDetails (0 custom class methods, 1 custom properties)
 
-#import "GTLBigqueryIntervalPartitionConfiguration.h"
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBigqueryIntervalPartitionConfiguration
+//   GTLYouTubeLiveChatMessageRetractedDetails
 //
 
-@implementation GTLBigqueryIntervalPartitionConfiguration
-@dynamic expirationMs, type;
+@interface GTLYouTubeLiveChatMessageRetractedDetails : GTLObject
+@property (nonatomic, copy) NSString *retractedMessageId;
 @end

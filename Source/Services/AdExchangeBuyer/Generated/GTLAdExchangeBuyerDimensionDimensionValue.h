@@ -14,19 +14,21 @@
  */
 
 //
-//  GTLBigqueryTablePartitionConfiguration.h
+//  GTLAdExchangeBuyerDimensionDimensionValue.h
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   BigQuery API (bigquery/v2)
+//   Ad Exchange Buyer API (adexchangebuyer/v1.4)
 // Description:
-//   A data platform for customers to create, manage, share and query data.
+//   Accesses your bidding-account information, submits creatives for
+//   validation, finds available direct deals, and retrieves performance
+//   reports.
 // Documentation:
-//   https://cloud.google.com/bigquery/
+//   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLBigqueryTablePartitionConfiguration (0 custom class methods, 1 custom properties)
+//   GTLAdExchangeBuyerDimensionDimensionValue (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -34,19 +36,20 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLBigqueryIntervalPartitionConfiguration;
-
 // ----------------------------------------------------------------------------
 //
-//   GTLBigqueryTablePartitionConfiguration
+//   GTLAdExchangeBuyerDimensionDimensionValue
 //
 
-// [Required] A partition configuration. Only one type of partition should be
-// configured.
+// Value of the dimension.
 
-@interface GTLBigqueryTablePartitionConfiguration : GTLObject
+@interface GTLAdExchangeBuyerDimensionDimensionValue : GTLObject
 
-// [Pick one] Configures an interval partition.
-@property (nonatomic, retain) GTLBigqueryIntervalPartitionConfiguration *interval;
+// Id of the dimension.
+// identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
+@property (nonatomic, retain) NSNumber *identifier;  // intValue
+
+// Name of the dimension mainly for debugging purposes.
+@property (nonatomic, copy) NSString *name;
 
 @end

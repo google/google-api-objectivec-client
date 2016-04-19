@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLBigqueryIntervalPartitionConfiguration.h
+//  GTLBigqueryTimePartitioning.m
 //
 
 // ----------------------------------------------------------------------------
@@ -26,20 +26,15 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryIntervalPartitionConfiguration (0 custom class methods, 2 custom properties)
+//   GTLBigqueryTimePartitioning (0 custom class methods, 2 custom properties)
 
-#if GTL_BUILT_AS_FRAMEWORK
-  #import "GTL/GTLObject.h"
-#else
-  #import "GTLObject.h"
-#endif
+#import "GTLBigqueryTimePartitioning.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBigqueryIntervalPartitionConfiguration
+//   GTLBigqueryTimePartitioning
 //
 
-@interface GTLBigqueryIntervalPartitionConfiguration : GTLObject
-@property (nonatomic, retain) NSNumber *expirationMs;  // longLongValue
-@property (nonatomic, copy) NSString *type;
+@implementation GTLBigqueryTimePartitioning
+@dynamic expirationMs, type;
 @end

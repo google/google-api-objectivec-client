@@ -32,9 +32,9 @@
 
 #import "GTLBigqueryExternalDataConfiguration.h"
 #import "GTLBigqueryStreamingbuffer.h"
-#import "GTLBigqueryTablePartitionConfiguration.h"
 #import "GTLBigqueryTableReference.h"
 #import "GTLBigqueryTableSchema.h"
+#import "GTLBigqueryTimePartitioning.h"
 #import "GTLBigqueryViewDefinition.h"
 
 // ----------------------------------------------------------------------------
@@ -45,21 +45,14 @@
 @implementation GTLBigqueryTable
 @dynamic creationTime, descriptionProperty, ETag, expirationTime,
          externalDataConfiguration, friendlyName, identifier, kind,
-         lastModifiedTime, location, numBytes, numRows, partitionConfigurations,
-         schema, selfLink, streamingBuffer, tableReference, type, view;
+         lastModifiedTime, location, numBytes, numRows, schema, selfLink,
+         streamingBuffer, tableReference, timePartitioning, type, view;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{
     @"descriptionProperty" : @"description",
     @"ETag" : @"etag",
     @"identifier" : @"id"
-  };
-  return map;
-}
-
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map = @{
-    @"partitionConfigurations" : [GTLBigqueryTablePartitionConfiguration class]
   };
   return map;
 }
