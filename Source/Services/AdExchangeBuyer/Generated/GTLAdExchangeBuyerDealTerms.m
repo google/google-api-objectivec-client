@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerDealTerms (0 custom class methods, 7 custom properties)
+//   GTLAdExchangeBuyerDealTerms (0 custom class methods, 8 custom properties)
 
 #import "GTLAdExchangeBuyerDealTerms.h"
 
@@ -45,7 +45,8 @@
 @implementation GTLAdExchangeBuyerDealTerms
 @dynamic brandingType, descriptionProperty, estimatedGrossSpend,
          estimatedImpressionsPerDay, guaranteedFixedPriceTerms,
-         nonGuaranteedAuctionTerms, nonGuaranteedFixedPriceTerms;
+         nonGuaranteedAuctionTerms, nonGuaranteedFixedPriceTerms,
+         sellerTimeZone;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{

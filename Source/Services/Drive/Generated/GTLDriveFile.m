@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 43 custom properties)
+//   GTLDriveFile (0 custom class methods, 44 custom properties)
 //   GTLDriveFileAppProperties (0 custom class methods, 0 custom properties)
 //   GTLDriveFileCapabilities (0 custom class methods, 5 custom properties)
 //   GTLDriveFileContentHints (0 custom class methods, 2 custom properties)
@@ -50,12 +50,13 @@
 @dynamic appProperties, capabilities, contentHints, createdTime,
          descriptionProperty, explicitlyTrashed, fileExtension, folderColorRgb,
          fullFileExtension, headRevisionId, iconLink, identifier,
-         imageMediaMetadata, kind, lastModifyingUser, md5Checksum, mimeType,
-         modifiedByMeTime, modifiedTime, name, originalFilename, ownedByMe,
-         owners, parents, permissions, properties, quotaBytesUsed, shared,
-         sharedWithMeTime, sharingUser, size, spaces, starred, thumbnailLink,
-         trashed, version, videoMediaMetadata, viewedByMe, viewedByMeTime,
-         viewersCanCopyContent, webContentLink, webViewLink, writersCanShare;
+         imageMediaMetadata, isAppAuthorized, kind, lastModifyingUser,
+         md5Checksum, mimeType, modifiedByMeTime, modifiedTime, name,
+         originalFilename, ownedByMe, owners, parents, permissions, properties,
+         quotaBytesUsed, shared, sharedWithMeTime, sharingUser, size, spaces,
+         starred, thumbnailLink, trashed, version, videoMediaMetadata,
+         viewedByMe, viewedByMeTime, viewersCanCopyContent, webContentLink,
+         webViewLink, writersCanShare;
 
 + (NSDictionary *)propertyToJSONKeyMap {
   NSDictionary *map = @{

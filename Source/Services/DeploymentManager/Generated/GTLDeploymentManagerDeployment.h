@@ -22,12 +22,12 @@
 // Service:
 //   Google Cloud Deployment Manager API (deploymentmanager/v2)
 // Description:
-//   The Deployment Manager API allows users to declaratively configure, deploy
-//   and run complex solutions on the Google Cloud Platform.
+//   Declares, configures, and deploys complex solutions on Google Cloud
+//   Platform.
 // Documentation:
 //   https://cloud.google.com/deployment-manager/
 // Classes:
-//   GTLDeploymentManagerDeployment (0 custom class methods, 10 custom properties)
+//   GTLDeploymentManagerDeployment (0 custom class methods, 11 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -91,6 +91,9 @@
 // [Output Only] The Operation that most recently ran, or is currently running,
 // on this deployment.
 @property (nonatomic, retain) GTLDeploymentManagerOperation *operation;
+
+// [Output Only] Self link for the deployment.
+@property (nonatomic, copy) NSString *selfLink;
 
 // [Input Only] The parameters that define your deployment, including the
 // deployment configuration and relevant templates.

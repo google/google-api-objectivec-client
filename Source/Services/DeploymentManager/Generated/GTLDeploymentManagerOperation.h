@@ -22,8 +22,8 @@
 // Service:
 //   Google Cloud Deployment Manager API (deploymentmanager/v2)
 // Description:
-//   The Deployment Manager API allows users to declaratively configure, deploy
-//   and run complex solutions on the Google Cloud Platform.
+//   Declares, configures, and deploys complex solutions on Google Cloud
+//   Platform.
 // Documentation:
 //   https://cloud.google.com/deployment-manager/
 // Classes:
@@ -90,7 +90,7 @@
 // RFC3339 text format.
 @property (nonatomic, copy) NSString *insertTime;
 
-// [Output Only] Type of the resource. Always compute#operation for operation
+// [Output Only] Type of the resource. Always compute#operation for Operation
 // resources.
 @property (nonatomic, copy) NSString *kind;
 

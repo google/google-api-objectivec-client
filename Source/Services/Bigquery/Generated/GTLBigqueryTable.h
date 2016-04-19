@@ -36,9 +36,9 @@
 
 @class GTLBigqueryExternalDataConfiguration;
 @class GTLBigqueryStreamingbuffer;
-@class GTLBigqueryTablePartitionConfiguration;
 @class GTLBigqueryTableReference;
 @class GTLBigqueryTableSchema;
+@class GTLBigqueryTimePartitioning;
 @class GTLBigqueryViewDefinition;
 
 // ----------------------------------------------------------------------------
@@ -95,11 +95,6 @@
 // the streaming buffer.
 @property (nonatomic, retain) NSNumber *numRows;  // unsignedLongLongValue
 
-// [Experimental] List of partition configurations for this table. Currently
-// only one configuration can be specified and it can only be an interval
-// partition with type daily.
-@property (nonatomic, retain) NSArray *partitionConfigurations;  // of GTLBigqueryTablePartitionConfiguration
-
 // [Optional] Describes the schema of this table.
 @property (nonatomic, retain) GTLBigqueryTableSchema *schema;
 
@@ -113,6 +108,10 @@
 
 // [Required] Reference describing the ID of this table.
 @property (nonatomic, retain) GTLBigqueryTableReference *tableReference;
+
+// [Experimental] If specified, configures time-based partitioning for this
+// table.
+@property (nonatomic, retain) GTLBigqueryTimePartitioning *timePartitioning;
 
 // [Output-only] Describes the table type. The following values are supported:
 // TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query.

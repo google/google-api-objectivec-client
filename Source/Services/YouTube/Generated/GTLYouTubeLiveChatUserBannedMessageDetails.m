@@ -14,29 +14,30 @@
  */
 
 //
-//  GTLBigqueryTablePartitionConfiguration.m
+//  GTLYouTubeLiveChatUserBannedMessageDetails.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   BigQuery API (bigquery/v2)
+//   YouTube Data API (youtube/v3)
 // Description:
-//   A data platform for customers to create, manage, share and query data.
+//   Supports core YouTube features, such as uploading videos, creating and
+//   managing playlists, searching for content, and much more.
 // Documentation:
-//   https://cloud.google.com/bigquery/
+//   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLBigqueryTablePartitionConfiguration (0 custom class methods, 1 custom properties)
+//   GTLYouTubeLiveChatUserBannedMessageDetails (0 custom class methods, 3 custom properties)
 
-#import "GTLBigqueryTablePartitionConfiguration.h"
+#import "GTLYouTubeLiveChatUserBannedMessageDetails.h"
 
-#import "GTLBigqueryIntervalPartitionConfiguration.h"
+#import "GTLYouTubeChannelProfileDetails.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLBigqueryTablePartitionConfiguration
+//   GTLYouTubeLiveChatUserBannedMessageDetails
 //
 
-@implementation GTLBigqueryTablePartitionConfiguration
-@dynamic interval;
+@implementation GTLYouTubeLiveChatUserBannedMessageDetails
+@dynamic banDurationSeconds, bannedUserDetails, banType;
 @end

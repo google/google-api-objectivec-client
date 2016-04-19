@@ -26,7 +26,7 @@
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:
-//   GTLDriveFile (0 custom class methods, 43 custom properties)
+//   GTLDriveFile (0 custom class methods, 44 custom properties)
 //   GTLDriveFileAppProperties (0 custom class methods, 0 custom properties)
 //   GTLDriveFileCapabilities (0 custom class methods, 5 custom properties)
 //   GTLDriveFileContentHints (0 custom class methods, 2 custom properties)
@@ -115,6 +115,9 @@
 
 // Additional metadata about image media, if available.
 @property (nonatomic, retain) GTLDriveFileImageMediaMetadata *imageMediaMetadata;
+
+// Whether the file was created or opened by the requesting app.
+@property (nonatomic, retain) NSNumber *isAppAuthorized;  // boolValue
 
 // This is always drive#file.
 @property (nonatomic, copy) NSString *kind;

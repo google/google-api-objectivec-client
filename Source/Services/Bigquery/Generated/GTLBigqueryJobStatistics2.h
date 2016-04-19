@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryJobStatistics2 (0 custom class methods, 6 custom properties)
+//   GTLBigqueryJobStatistics2 (0 custom class methods, 7 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,6 +36,7 @@
 
 @class GTLBigqueryExplainQueryStage;
 @class GTLBigqueryTableReference;
+@class GTLBigqueryTableSchema;
 
 // ----------------------------------------------------------------------------
 //
@@ -57,6 +58,10 @@
 // [Output-only, Experimental] Referenced tables for the job. Queries that
 // reference more than 50 tables will not have a complete list.
 @property (nonatomic, retain) NSArray *referencedTables;  // of GTLBigqueryTableReference
+
+// [Output-only, Experimental] The schema of the results. Present only for
+// successful dry run of non-legacy SQL queries.
+@property (nonatomic, retain) GTLBigqueryTableSchema *schema;
 
 // [Output-only] Total bytes billed for the job.
 @property (nonatomic, retain) NSNumber *totalBytesBilled;  // longLongValue

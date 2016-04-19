@@ -28,13 +28,17 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerPublisherProfileApiProto (0 custom class methods, 14 custom properties)
+//   GTLAdExchangeBuyerPublisherProfileApiProto (0 custom class methods, 23 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
 #else
   #import "GTLObject.h"
 #endif
+
+@class GTLAdExchangeBuyerContactInformation;
+@class GTLAdExchangeBuyerPublisherProvidedForecast;
+@class GTLAdExchangeBuyerSeller;
 
 // ----------------------------------------------------------------------------
 //
@@ -46,8 +50,17 @@
 // The account id of the seller.
 @property (nonatomic, copy) NSString *accountId;
 
+// Publisher provided info on its audience.
+@property (nonatomic, copy) NSString *audience;
+
 // A pitch statement for the buyer
 @property (nonatomic, copy) NSString *buyerPitchStatement;
+
+// Direct contact for the publisher profile.
+@property (nonatomic, retain) GTLAdExchangeBuyerContactInformation *directContact;
+
+// Exchange where this publisher profile is from. E.g. AdX, Rubicon etc...
+@property (nonatomic, copy) NSString *exchange;
 
 // Link to publisher's Google+ page.
 @property (nonatomic, copy) NSString *googlePlusLink;
@@ -55,6 +68,9 @@
 // True, if this is the parent profile, which represents all domains owned by
 // the publisher.
 @property (nonatomic, retain) NSNumber *isParent;  // boolValue
+
+// True, if this profile is published. Deprecated for state.
+@property (nonatomic, retain) NSNumber *isPublished;  // boolValue
 
 // Identifies what kind of resource this is. Value: the fixed string
 // "adexchangebuyer#publisherProfileApiProto".
@@ -75,15 +91,30 @@
 // profile for a given publisher.
 @property (nonatomic, retain) NSNumber *profileId;  // intValue
 
+// Programmatic contact for the publisher profile.
+@property (nonatomic, retain) GTLAdExchangeBuyerContactInformation *programmaticContact;
+
 // The list of domains represented in this publisher profile. Empty if this is a
 // parent profile.
 @property (nonatomic, retain) NSArray *publisherDomains;  // of NSString
+
+// Unique Id for publisher profile.
+@property (nonatomic, copy) NSString *publisherProfileId;
+
+// Publisher provided forecasting information.
+@property (nonatomic, retain) GTLAdExchangeBuyerPublisherProvidedForecast *publisherProvidedForecast;
 
 // Link to publisher rate card
 @property (nonatomic, copy) NSString *rateCardInfoLink;
 
 // Link for a sample content page.
 @property (nonatomic, copy) NSString *samplePageLink;
+
+// Seller of the publisher profile.
+@property (nonatomic, retain) GTLAdExchangeBuyerSeller *seller;
+
+// State of the publisher profile.
+@property (nonatomic, copy) NSString *state;
 
 // Publisher provided key metrics and rankings.
 @property (nonatomic, retain) NSArray *topHeadlines;  // of NSString
