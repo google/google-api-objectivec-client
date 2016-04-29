@@ -66,9 +66,8 @@ for requests and responses when posting questions. Bugs may also be submitted
 on the [issues list](https://github.com/google/google-api-objectivec-client/issues).
 
 **Externally-included projects**: The library includes code from the separate
-projects [GTM HTTP Fetcher](https://github.com/google/gtm-http-fetcher),
-[GTM OAuth 2](https://github.com/google/gtm-oauth2), and
-[json-framework](http://code.google.com/p/json-framework/).
+projects [GTM Session Fetcher](https://github.com/google/gtm-session-fetcher),
+[GTM OAuth 2](https://github.com/google/gtm-oauth2).
 
 **Google Data APIs**: The library for older, XML-based APIs is
 [still available](https://github.com/google/gdata-objectivec-client).
