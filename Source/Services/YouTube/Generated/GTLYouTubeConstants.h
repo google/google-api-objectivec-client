@@ -1024,6 +1024,10 @@ GTL_EXTERN NSString * const kGTLYouTubeVideoContentDetails_Caption_True;  // "tr
 GTL_EXTERN NSString * const kGTLYouTubeVideoContentDetails_Definition_Hd;  // "hd"
 GTL_EXTERN NSString * const kGTLYouTubeVideoContentDetails_Definition_Sd;  // "sd"
 
+// GTLYouTubeVideoContentDetails - Projection
+GTL_EXTERN NSString * const kGTLYouTubeVideoContentDetails_Projection_Rectangular;  // "rectangular"
+GTL_EXTERN NSString * const kGTLYouTubeVideoContentDetails_Projection_X360;  // "360"
+
 // GTLYouTubeVideoFileDetails - FileType
 GTL_EXTERN NSString * const kGTLYouTubeVideoFileDetails_FileType_Archive;  // "archive"
 GTL_EXTERN NSString * const kGTLYouTubeVideoFileDetails_FileType_Audio;  // "audio"

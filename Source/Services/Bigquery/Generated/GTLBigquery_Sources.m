@@ -43,6 +43,7 @@
 #import "GTLBigqueryExplainQueryStep.m"
 #import "GTLBigqueryExternalDataConfiguration.m"
 #import "GTLBigqueryGetQueryResultsResponse.m"
+#import "GTLBigqueryGoogleSheetsOptions.m"
 #import "GTLBigqueryJob.m"
 #import "GTLBigqueryJobCancelResponse.m"
 #import "GTLBigqueryJobConfiguration.m"

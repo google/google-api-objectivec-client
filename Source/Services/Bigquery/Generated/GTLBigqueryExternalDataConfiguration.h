@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryExternalDataConfiguration (0 custom class methods, 9 custom properties)
+//   GTLBigqueryExternalDataConfiguration (0 custom class methods, 10 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,6 +36,7 @@
 
 @class GTLBigqueryBigtableOptions;
 @class GTLBigqueryCsvOptions;
+@class GTLBigqueryGoogleSheetsOptions;
 @class GTLBigqueryTableSchema;
 
 // ----------------------------------------------------------------------------
@@ -60,6 +61,9 @@
 // Additional properties to set if sourceFormat is set to CSV.
 @property (nonatomic, retain) GTLBigqueryCsvOptions *csvOptions;
 
+// [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
+@property (nonatomic, retain) GTLBigqueryGoogleSheetsOptions *googleSheetsOptions;
+
 // [Optional] Indicates if BigQuery should allow extra values that are not
 // represented in the table schema. If true, the extra values are ignored. If
 // false, records with extra columns are treated as bad records, and if there
@@ -83,24 +87,23 @@
 // backups, and Avro formats.
 @property (nonatomic, retain) GTLBigqueryTableSchema *schema;
 
-// [Required] The data format. For CSV files, specify "CSV". For
-// newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro files,
-// specify "AVRO". For Google Cloud Datastore backups, specify
-// "DATASTORE_BACKUP". [Experimental] For Google Cloud Bigtable, specify
-// "BIGTABLE". Please note that reading from Google Cloud Bigtable is
-// experimental and has to be enabled for your project. Please contact Google
-// Cloud Support to enable this for your project.
+// [Required] The data format. For CSV files, specify "CSV". For Google sheets,
+// specify "GOOGLE_SHEETS". For newline-delimited JSON, specify
+// "NEWLINE_DELIMITED_JSON". For Avro files, specify "AVRO". For Google Cloud
+// Datastore backups, specify "DATASTORE_BACKUP". [Experimental] For Google
+// Cloud Bigtable, specify "BIGTABLE". Please note that reading from Google
+// Cloud Bigtable is experimental and has to be enabled for your project. Please
+// contact Google Cloud Support to enable this for your project.
 @property (nonatomic, copy) NSString *sourceFormat;
 
 // [Required] The fully-qualified URIs that point to your data in Google Cloud.
 // For Google Cloud Storage URIs: Each URI can contain one '*' wildcard
 // character and it must come after the 'bucket' name. Size limits related to
-// load jobs apply to external data sources, plus an additional limit of 10 GB
-// maximum size across all URIs. For Google Cloud Bigtable URIs: Exactly one URI
-// can be specified and it has be a fully specified and valid HTTPS URL for a
-// Google Cloud Bigtable table. For Google Cloud Datastore backups, exactly one
-// URI can be specified, and it must end with '.backup_info'. Also, the '*'
-// wildcard character is not allowed.
+// load jobs apply to external data sources. For Google Cloud Bigtable URIs:
+// Exactly one URI can be specified and it has be a fully specified and valid
+// HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore
+// backups, exactly one URI can be specified, and it must end with
+// '.backup_info'. Also, the '*' wildcard character is not allowed.
 @property (nonatomic, retain) NSArray *sourceUris;  // of NSString
 
 @end

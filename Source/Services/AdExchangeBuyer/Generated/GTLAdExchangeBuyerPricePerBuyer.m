@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerPricePerBuyer (0 custom class methods, 2 custom properties)
+//   GTLAdExchangeBuyerPricePerBuyer (0 custom class methods, 3 custom properties)
 
 #import "GTLAdExchangeBuyerPricePerBuyer.h"
 
@@ -41,5 +41,5 @@
 //
 
 @implementation GTLAdExchangeBuyerPricePerBuyer
-@dynamic buyer, price;
+@dynamic auctionTier, buyer, price;
 @end

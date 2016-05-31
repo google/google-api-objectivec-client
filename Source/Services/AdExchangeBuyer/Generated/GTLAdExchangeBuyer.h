@@ -46,6 +46,7 @@
 #import "GTLAdExchangeBuyerDealServingMetadataDealPauseStatus.h"
 #import "GTLAdExchangeBuyerDealTerms.h"
 #import "GTLAdExchangeBuyerDealTermsGuaranteedFixedPriceTerms.h"
+#import "GTLAdExchangeBuyerDealTermsGuaranteedFixedPriceTermsBillingInfo.h"
 #import "GTLAdExchangeBuyerDealTermsNonGuaranteedAuctionTerms.h"
 #import "GTLAdExchangeBuyerDealTermsNonGuaranteedFixedPriceTerms.h"
 #import "GTLAdExchangeBuyerDeleteOrderDealsResponse.h"

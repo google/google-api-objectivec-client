@@ -28,7 +28,7 @@
 //   Manages service endpoints in Service Registry and provides integration with
 //   DNS for service discovery and name resolution.
 // Documentation:
-//   https://developers.google.com/cloud-serviceregistry/
+//   https://cloud.google.com/service-registry/
 
 #import "GTLServiceRegistryConstants.m"
 

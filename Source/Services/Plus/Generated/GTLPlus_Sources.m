@@ -25,7 +25,7 @@
 // Service:
 //   Google+ API (plus/v1)
 // Description:
-//   The Google+ API enables developers to build on top of the Google+ platform.
+//   Builds on top of the Google+ platform.
 // Documentation:
 //   https://developers.google.com/+/api/
 

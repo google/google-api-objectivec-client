@@ -26,12 +26,13 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryExternalDataConfiguration (0 custom class methods, 9 custom properties)
+//   GTLBigqueryExternalDataConfiguration (0 custom class methods, 10 custom properties)
 
 #import "GTLBigqueryExternalDataConfiguration.h"
 
 #import "GTLBigqueryBigtableOptions.h"
 #import "GTLBigqueryCsvOptions.h"
+#import "GTLBigqueryGoogleSheetsOptions.h"
 #import "GTLBigqueryTableSchema.h"
 
 // ----------------------------------------------------------------------------
@@ -41,7 +42,8 @@
 
 @implementation GTLBigqueryExternalDataConfiguration
 @dynamic autodetect, bigtableOptions, compression, csvOptions,
-         ignoreUnknownValues, maxBadRecords, schema, sourceFormat, sourceUris;
+         googleSheetsOptions, ignoreUnknownValues, maxBadRecords, schema,
+         sourceFormat, sourceUris;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{

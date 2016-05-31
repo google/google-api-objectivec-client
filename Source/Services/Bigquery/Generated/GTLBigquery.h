@@ -40,6 +40,7 @@
 #import "GTLBigqueryExplainQueryStep.h"
 #import "GTLBigqueryExternalDataConfiguration.h"
 #import "GTLBigqueryGetQueryResultsResponse.h"
+#import "GTLBigqueryGoogleSheetsOptions.h"
 #import "GTLBigqueryJob.h"
 #import "GTLBigqueryJobCancelResponse.h"
 #import "GTLBigqueryJobConfiguration.h"

@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,8 @@
 // Service:
 //   Drive API (drive/v3)
 // Description:
-//   The API to interact with Drive.
+//   Manages files in Drive including uploading, downloading, searching,
+//   detecting changes, and updating sharing permissions.
 // Documentation:
 //   https://developers.google.com/drive/
 

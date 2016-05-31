@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryTable (0 custom class methods, 19 custom properties)
+//   GTLBigqueryTable (0 custom class methods, 20 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -90,6 +90,10 @@
 // [Output-only] The size of this table in bytes, excluding any data in the
 // streaming buffer.
 @property (nonatomic, retain) NSNumber *numBytes;  // longLongValue
+
+// [Output-only] The number of bytes in the table that are considered "long-term
+// storage".
+@property (nonatomic, retain) NSNumber *numLongTermBytes;  // longLongValue
 
 // [Output-only] The number of rows of data in this table, excluding any data in
 // the streaming buffer.

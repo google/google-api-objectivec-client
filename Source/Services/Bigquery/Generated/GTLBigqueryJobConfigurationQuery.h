@@ -96,11 +96,10 @@
 
 // [Experimental] Specifies whether to use BigQuery's legacy SQL dialect for
 // this query. The default value is true. If set to false, the query will use
-// BigQuery's updated SQL dialect with improved standards compliance:
-// https://cloud.google.com/bigquery/sql-reference/ When using BigQuery's
-// updated SQL, the values of allowLargeResults and flattenResults are ignored.
-// Queries with useLegacySql set to false will be run as if allowLargeResults is
-// true and flattenResults is false.
+// BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
+// When useLegacySql is set to false, the values of allowLargeResults and
+// flattenResults are ignored; query will be run as if allowLargeResults is true
+// and flattenResults is false.
 @property (nonatomic, retain) NSNumber *useLegacySql;  // boolValue
 
 // [Optional] Whether to look for the result in the query cache. The query cache

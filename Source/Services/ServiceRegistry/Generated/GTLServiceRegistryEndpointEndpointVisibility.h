@@ -25,9 +25,9 @@
 //   Manages service endpoints in Service Registry and provides integration with
 //   DNS for service discovery and name resolution.
 // Documentation:
-//   https://developers.google.com/cloud-serviceregistry/
+//   https://cloud.google.com/service-registry/
 // Classes:
-//   GTLServiceRegistryEndpointEndpointVisibility (0 custom class methods, 1 custom properties)
+//   GTLServiceRegistryEndpointEndpointVisibility (0 custom class methods, 2 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -41,6 +41,11 @@
 //
 
 @interface GTLServiceRegistryEndpointEndpointVisibility : GTLObject
+
+// [Output Only] Fully qualified domain name for the endpoint; used when
+// addressing the endpoint from within Compute Networks specified in the
+// networks field.
+@property (nonatomic, copy) NSString *internalDnsName;
 
 // Google Compute Engine networks for which the name of this endpoint should be
 // resolvable through DNS.

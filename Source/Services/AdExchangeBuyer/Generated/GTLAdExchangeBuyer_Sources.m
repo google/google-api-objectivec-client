@@ -49,6 +49,7 @@
 #import "GTLAdExchangeBuyerDealServingMetadataDealPauseStatus.m"
 #import "GTLAdExchangeBuyerDealTerms.m"
 #import "GTLAdExchangeBuyerDealTermsGuaranteedFixedPriceTerms.m"
+#import "GTLAdExchangeBuyerDealTermsGuaranteedFixedPriceTermsBillingInfo.m"
 #import "GTLAdExchangeBuyerDealTermsNonGuaranteedAuctionTerms.m"
 #import "GTLAdExchangeBuyerDealTermsNonGuaranteedFixedPriceTerms.m"
 #import "GTLAdExchangeBuyerDeleteOrderDealsResponse.m"

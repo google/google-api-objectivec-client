@@ -50,6 +50,7 @@
     [GTLBigqueryExplainQueryStep class],
     [GTLBigqueryExternalDataConfiguration class],
     [GTLBigqueryGetQueryResultsResponse class],
+    [GTLBigqueryGoogleSheetsOptions class],
     [GTLBigqueryJob class],
     [GTLBigqueryJobCancelResponse class],
     [GTLBigqueryJobConfiguration class],

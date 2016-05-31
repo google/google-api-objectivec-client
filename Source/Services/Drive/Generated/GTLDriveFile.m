@@ -22,7 +22,8 @@
 // Service:
 //   Drive API (drive/v3)
 // Description:
-//   The API to interact with Drive.
+//   Manages files in Drive including uploading, downloading, searching,
+//   detecting changes, and updating sharing permissions.
 // Documentation:
 //   https://developers.google.com/drive/
 // Classes:

@@ -289,7 +289,7 @@
 //  Optional:
 //   dealIds: List of deals to delete for a given proposal
 //   proposalRevisionNumber: The last known proposal revision number.
-//   updateAction: NSString
+//   updateAction: Indicates an optional action to take on the proposal
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerDeleteOrderDealsResponse.
@@ -311,7 +311,10 @@
 // Method: adexchangebuyer.marketplacedeals.list
 // List all the deals for a given proposal
 //  Required:
-//   proposalId: The proposalId to get deals for.
+//   proposalId: The proposalId to get deals for. To search across proposals
+//     specify order_id = '-' as part of the URL.
+//  Optional:
+//   pqlQuery: Query string to retrieve specific deals.
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerGetOrderDealsResponse.
@@ -512,7 +515,7 @@
 // Create the given list of proposals
 //  Optional:
 //   proposals: The list of proposals to create.
-//   webPropertyCode: NSString
+//   webPropertyCode: Web property id of the seller creating these orders
 //  Authorization scope(s):
 //   kGTLAuthScopeAdExchangeBuyerAdexchangeBuyer
 // Fetches a GTLAdExchangeBuyerCreateOrdersResponse.

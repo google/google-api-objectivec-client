@@ -56,6 +56,7 @@
     [GTLAdExchangeBuyerDealServingMetadataDealPauseStatus class],
     [GTLAdExchangeBuyerDealTerms class],
     [GTLAdExchangeBuyerDealTermsGuaranteedFixedPriceTerms class],
+    [GTLAdExchangeBuyerDealTermsGuaranteedFixedPriceTermsBillingInfo class],
     [GTLAdExchangeBuyerDealTermsNonGuaranteedAuctionTerms class],
     [GTLAdExchangeBuyerDealTermsNonGuaranteedFixedPriceTerms class],
     [GTLAdExchangeBuyerDeleteOrderDealsResponse class],

@@ -366,7 +366,7 @@ static NSString *const kBatchRPCPageBName = @"TaskBatchPage1b.rpc";
     maxUploadProgress = numberOfBytesRead;
   };
 
-  NSString *headerValue = [queryTicket.objectFetcher.mutableRequest valueForHTTPHeaderField:@"X-Feline"];
+  NSString *headerValue = [queryTicket.objectFetcher.request valueForHTTPHeaderField:@"X-Feline"];
   XCTAssertEqualObjects(headerValue, @"Fluffy");
 
   [self service:service waitForTicket:queryTicket];
