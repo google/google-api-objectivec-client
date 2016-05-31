@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerDealTermsGuaranteedFixedPriceTerms (0 custom class methods, 3 custom properties)
+//   GTLAdExchangeBuyerDealTermsGuaranteedFixedPriceTerms (0 custom class methods, 4 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,6 +36,7 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLAdExchangeBuyerDealTermsGuaranteedFixedPriceTermsBillingInfo;
 @class GTLAdExchangeBuyerPricePerBuyer;
 
 // ----------------------------------------------------------------------------
@@ -44,6 +45,10 @@
 //
 
 @interface GTLAdExchangeBuyerDealTermsGuaranteedFixedPriceTerms : GTLObject
+
+// External billing info for this Deal. This field is relevant when external
+// billing info such as price has a different currency code than DFP/AdX.
+@property (nonatomic, retain) GTLAdExchangeBuyerDealTermsGuaranteedFixedPriceTermsBillingInfo *billingInfo;
 
 // Fixed price for the specified buyer.
 @property (nonatomic, retain) NSArray *fixedPrices;  // of GTLAdExchangeBuyerPricePerBuyer

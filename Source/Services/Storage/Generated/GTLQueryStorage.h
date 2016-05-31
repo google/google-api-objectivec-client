@@ -204,7 +204,8 @@
 //     the given value.
 //   projection: Set of properties to return. Defaults to noAcl.
 //      kGTLStorageProjectionFull: Include all properties.
-//      kGTLStorageProjectionNoAcl: Omit acl and defaultObjectAcl properties.
+//      kGTLStorageProjectionNoAcl: Omit owner, acl and defaultObjectAcl
+//        properties.
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageCloudPlatformReadOnly
@@ -248,7 +249,8 @@
 //     bucket resource specifies acl or defaultObjectAcl properties, when it
 //     defaults to full.
 //      kGTLStorageProjectionFull: Include all properties.
-//      kGTLStorageProjectionNoAcl: Omit acl and defaultObjectAcl properties.
+//      kGTLStorageProjectionNoAcl: Omit owner, acl and defaultObjectAcl
+//        properties.
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
@@ -268,7 +270,8 @@
 //   prefix: Filter results to buckets whose names begin with this prefix.
 //   projection: Set of properties to return. Defaults to noAcl.
 //      kGTLStorageProjectionFull: Include all properties.
-//      kGTLStorageProjectionNoAcl: Omit acl and defaultObjectAcl properties.
+//      kGTLStorageProjectionNoAcl: Omit owner, acl and defaultObjectAcl
+//        properties.
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageCloudPlatformReadOnly
@@ -315,11 +318,11 @@
 //        access, and allUsers get READER access.
 //   projection: Set of properties to return. Defaults to full.
 //      kGTLStorageProjectionFull: Include all properties.
-//      kGTLStorageProjectionNoAcl: Omit acl and defaultObjectAcl properties.
+//      kGTLStorageProjectionNoAcl: Omit owner, acl and defaultObjectAcl
+//        properties.
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
-//   kGTLAuthScopeStorageDevstorageReadWrite
 // Fetches a GTLStorageBucket.
 + (instancetype)queryForBucketsPatchWithObject:(GTLStorageBucket *)object
                                         bucket:(NSString *)bucket;
@@ -361,11 +364,11 @@
 //        access, and allUsers get READER access.
 //   projection: Set of properties to return. Defaults to full.
 //      kGTLStorageProjectionFull: Include all properties.
-//      kGTLStorageProjectionNoAcl: Omit acl and defaultObjectAcl properties.
+//      kGTLStorageProjectionNoAcl: Omit owner, acl and defaultObjectAcl
+//        properties.
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
-//   kGTLAuthScopeStorageDevstorageReadWrite
 // Fetches a GTLStorageBucket.
 + (instancetype)queryForBucketsUpdateWithObject:(GTLStorageBucket *)object
                                          bucket:(NSString *)bucket;
@@ -684,7 +687,7 @@
 //   projection: Set of properties to return. Defaults to noAcl, unless the
 //     object resource specifies the acl property, when it defaults to full.
 //      kGTLStorageProjectionFull: Include all properties.
-//      kGTLStorageProjectionNoAcl: Omit the acl property.
+//      kGTLStorageProjectionNoAcl: Omit the owner, acl property.
 //   sourceGeneration: If present, selects a specific revision of the source
 //     object (as opposed to the latest version, the default).
 //  Authorization scope(s):
@@ -741,7 +744,7 @@
 //     object's current metageneration does not match the given value.
 //   projection: Set of properties to return. Defaults to noAcl.
 //      kGTLStorageProjectionFull: Include all properties.
-//      kGTLStorageProjectionNoAcl: Omit the acl property.
+//      kGTLStorageProjectionNoAcl: Omit the owner, acl property.
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageCloudPlatformReadOnly
@@ -790,7 +793,7 @@
 //   projection: Set of properties to return. Defaults to noAcl, unless the
 //     object resource specifies the acl property, when it defaults to full.
 //      kGTLStorageProjectionFull: Include all properties.
-//      kGTLStorageProjectionNoAcl: Omit the acl property.
+//      kGTLStorageProjectionNoAcl: Omit the owner, acl property.
 //  Upload Parameters:
 //   Accepted MIME type(s): */*
 //  Authorization scope(s):
@@ -820,7 +823,7 @@
 //   prefix: Filter results to objects whose names begin with this prefix.
 //   projection: Set of properties to return. Defaults to noAcl.
 //      kGTLStorageProjectionFull: Include all properties.
-//      kGTLStorageProjectionNoAcl: Omit the acl property.
+//      kGTLStorageProjectionNoAcl: Omit the owner, acl property.
 //   versions: If true, lists all versions of an object as distinct results. The
 //     default is false. For more information, see Object Versioning.
 //  Authorization scope(s):
@@ -863,11 +866,10 @@
 //        allUsers get READER access.
 //   projection: Set of properties to return. Defaults to full.
 //      kGTLStorageProjectionFull: Include all properties.
-//      kGTLStorageProjectionNoAcl: Omit the acl property.
+//      kGTLStorageProjectionNoAcl: Omit the owner, acl property.
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
-//   kGTLAuthScopeStorageDevstorageReadWrite
 // Fetches a GTLStorageObject.
 + (instancetype)queryForObjectsPatchWithObject:(GTLStorageObject *)object
                                         bucket:(NSString *)bucket
@@ -932,7 +934,7 @@
 //   projection: Set of properties to return. Defaults to noAcl, unless the
 //     object resource specifies the acl property, when it defaults to full.
 //      kGTLStorageProjectionFull: Include all properties.
-//      kGTLStorageProjectionNoAcl: Omit the acl property.
+//      kGTLStorageProjectionNoAcl: Omit the owner, acl property.
 //   rewriteToken: Include this field (from the previous rewrite response) on
 //     each rewrite request after the first one, until the rewrite response
 //     'done' flag is true. Calls that provide a rewriteToken can omit all other
@@ -981,11 +983,10 @@
 //        allUsers get READER access.
 //   projection: Set of properties to return. Defaults to full.
 //      kGTLStorageProjectionFull: Include all properties.
-//      kGTLStorageProjectionNoAcl: Omit the acl property.
+//      kGTLStorageProjectionNoAcl: Omit the owner, acl property.
 //  Authorization scope(s):
 //   kGTLAuthScopeStorageCloudPlatform
 //   kGTLAuthScopeStorageDevstorageFullControl
-//   kGTLAuthScopeStorageDevstorageReadWrite
 // Fetches a GTLStorageObject.
 + (instancetype)queryForObjectsUpdateWithObject:(GTLStorageObject *)object
                                          bucket:(NSString *)bucket
@@ -1009,7 +1010,7 @@
 //   prefix: Filter results to objects whose names begin with this prefix.
 //   projection: Set of properties to return. Defaults to noAcl.
 //      kGTLStorageProjectionFull: Include all properties.
-//      kGTLStorageProjectionNoAcl: Omit the acl property.
+//      kGTLStorageProjectionNoAcl: Omit the owner, acl property.
 //   versions: If true, lists all versions of an object as distinct results. The
 //     default is false. For more information, see Object Versioning.
 //  Authorization scope(s):

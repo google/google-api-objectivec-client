@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -89,6 +89,7 @@
 //     GTLPredictionHostedmodelsPredictInput.
 //  Authorization scope(s):
 //   kGTLAuthScopePrediction
+//   kGTLAuthScopePredictionCloudPlatform
 // Fetches a GTLPredictionOutput.
 + (instancetype)queryForHostedmodelsPredictWithProject:(NSString *)project
                                        hostedModelName:(NSString *)hostedModelName;
@@ -103,6 +104,7 @@
 //   identifier: The unique name for the predictive model.
 //  Authorization scope(s):
 //   kGTLAuthScopePrediction
+//   kGTLAuthScopePredictionCloudPlatform
 // Fetches a GTLPredictionAnalyze.
 + (instancetype)queryForTrainedmodelsAnalyzeWithProject:(NSString *)project
                                              identifier:(NSString *)identifier;
@@ -114,6 +116,7 @@
 //   identifier: The unique name for the predictive model.
 //  Authorization scope(s):
 //   kGTLAuthScopePrediction
+//   kGTLAuthScopePredictionCloudPlatform
 + (instancetype)queryForTrainedmodelsDeleteWithProject:(NSString *)project
                                             identifier:(NSString *)identifier;
 
@@ -124,6 +127,7 @@
 //   identifier: The unique name for the predictive model.
 //  Authorization scope(s):
 //   kGTLAuthScopePrediction
+//   kGTLAuthScopePredictionCloudPlatform
 // Fetches a GTLPredictionInsert2.
 + (instancetype)queryForTrainedmodelsGetWithProject:(NSString *)project
                                          identifier:(NSString *)identifier;
@@ -145,6 +149,7 @@
 //     for class labels to be specified (Categorical models only).
 //  Authorization scope(s):
 //   kGTLAuthScopePrediction
+//   kGTLAuthScopePredictionCloudPlatform
 //   kGTLAuthScopePredictionDevstorageFullControl
 //   kGTLAuthScopePredictionDevstorageReadOnly
 //   kGTLAuthScopePredictionDevstorageReadWrite
@@ -160,6 +165,7 @@
 //   pageToken: Pagination token.
 //  Authorization scope(s):
 //   kGTLAuthScopePrediction
+//   kGTLAuthScopePredictionCloudPlatform
 // Fetches a GTLPredictionList.
 + (instancetype)queryForTrainedmodelsListWithProject:(NSString *)project;
 
@@ -174,6 +180,7 @@
 //     GTLPredictionTrainedmodelsPredictInput.
 //  Authorization scope(s):
 //   kGTLAuthScopePrediction
+//   kGTLAuthScopePredictionCloudPlatform
 // Fetches a GTLPredictionOutput.
 + (instancetype)queryForTrainedmodelsPredictWithProject:(NSString *)project
                                              identifier:(NSString *)identifier;
@@ -188,6 +195,7 @@
 //   output: The generic output value - could be regression or class label.
 //  Authorization scope(s):
 //   kGTLAuthScopePrediction
+//   kGTLAuthScopePredictionCloudPlatform
 // Fetches a GTLPredictionInsert2.
 + (instancetype)queryForTrainedmodelsUpdateWithProject:(NSString *)project
                                             identifier:(NSString *)identifier;

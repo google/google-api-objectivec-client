@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryJobConfigurationLoad (0 custom class methods, 17 custom properties)
+//   GTLBigqueryJobConfigurationLoad (0 custom class methods, 18 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -54,6 +54,10 @@
 // Indicates if BigQuery should allow quoted data sections that contain newline
 // characters in a CSV file. The default value is false.
 @property (nonatomic, retain) NSNumber *allowQuotedNewlines;  // boolValue
+
+// [Experimental] Indicates if we should automatically infer the options and
+// schema for CSV and JSON sources.
+@property (nonatomic, retain) NSNumber *autodetect;  // boolValue
 
 // [Optional] Specifies whether the job is allowed to create new tables. The
 // following values are supported: CREATE_IF_NEEDED: If the table does not

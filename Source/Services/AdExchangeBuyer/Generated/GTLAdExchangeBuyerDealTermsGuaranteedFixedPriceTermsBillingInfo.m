@@ -14,38 +14,31 @@
  */
 
 //
-//  GTLServiceRegistryEndpointsListResponse.m
+//  GTLAdExchangeBuyerDealTermsGuaranteedFixedPriceTermsBillingInfo.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Cloud Service Registry API (serviceregistry/alpha)
+//   Ad Exchange Buyer API (adexchangebuyer/v1.4)
 // Description:
-//   Manages service endpoints in Service Registry and provides integration with
-//   DNS for service discovery and name resolution.
+//   Accesses your bidding-account information, submits creatives for
+//   validation, finds available direct deals, and retrieves performance
+//   reports.
 // Documentation:
-//   https://cloud.google.com/service-registry/
+//   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLServiceRegistryEndpointsListResponse (0 custom class methods, 2 custom properties)
+//   GTLAdExchangeBuyerDealTermsGuaranteedFixedPriceTermsBillingInfo (0 custom class methods, 3 custom properties)
 
-#import "GTLServiceRegistryEndpointsListResponse.h"
+#import "GTLAdExchangeBuyerDealTermsGuaranteedFixedPriceTermsBillingInfo.h"
 
-#import "GTLServiceRegistryEndpoint.h"
+#import "GTLAdExchangeBuyerPrice.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLServiceRegistryEndpointsListResponse
+//   GTLAdExchangeBuyerDealTermsGuaranteedFixedPriceTermsBillingInfo
 //
 
-@implementation GTLServiceRegistryEndpointsListResponse
-@dynamic endpoints, nextPageToken;
-
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map = @{
-    @"endpoints" : [GTLServiceRegistryEndpoint class]
-  };
-  return map;
-}
-
+@implementation GTLAdExchangeBuyerDealTermsGuaranteedFixedPriceTermsBillingInfo
+@dynamic currencyConversionTimeMs, originalContractedQuantity, price;
 @end

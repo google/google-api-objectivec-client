@@ -32,7 +32,6 @@
 
 #import "GTLAdExchangeBuyerPublisherProfileApiProto.h"
 
-#import "GTLAdExchangeBuyerContactInformation.h"
 #import "GTLAdExchangeBuyerPublisherProvidedForecast.h"
 #import "GTLAdExchangeBuyerSeller.h"
 

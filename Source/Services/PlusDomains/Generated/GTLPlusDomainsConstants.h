@@ -22,7 +22,7 @@
 // Service:
 //   Google+ Domains API (plusDomains/v1)
 // Description:
-//   The Google+ API enables developers to build on top of the Google+ platform.
+//   Builds on top of the Google+ platform for Google Apps Domains.
 // Documentation:
 //   https://developers.google.com/+/domains/
 

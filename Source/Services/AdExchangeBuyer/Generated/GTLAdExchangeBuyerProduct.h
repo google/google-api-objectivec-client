@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerProduct (0 custom class methods, 22 custom properties)
+//   GTLAdExchangeBuyerProduct (0 custom class methods, 23 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -40,6 +40,7 @@
 @class GTLAdExchangeBuyerDealTerms;
 @class GTLAdExchangeBuyerDeliveryControl;
 @class GTLAdExchangeBuyerMarketplaceLabel;
+@class GTLAdExchangeBuyerPublisherProvidedForecast;
 @class GTLAdExchangeBuyerSeller;
 @class GTLAdExchangeBuyerSharedTargeting;
 
@@ -115,6 +116,9 @@
 // can call the PublisherProfiles::List endpoint to get a list of publisher
 // profiles for a given seller.
 @property (nonatomic, copy) NSString *publisherProfileId;
+
+// Publisher self-provided forecast information.
+@property (nonatomic, retain) GTLAdExchangeBuyerPublisherProvidedForecast *publisherProvidedForecast;
 
 // The revision number of the product. (readonly)
 @property (nonatomic, retain) NSNumber *revisionNumber;  // longLongValue

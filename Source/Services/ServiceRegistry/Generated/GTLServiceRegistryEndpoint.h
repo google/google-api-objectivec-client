@@ -25,7 +25,7 @@
 //   Manages service endpoints in Service Registry and provides integration with
 //   DNS for service discovery and name resolution.
 // Documentation:
-//   https://developers.google.com/cloud-serviceregistry/
+//   https://cloud.google.com/service-registry/
 // Classes:
 //   GTLServiceRegistryEndpoint (0 custom class methods, 10 custom properties)
 
@@ -41,6 +41,8 @@
 //
 //   GTLServiceRegistryEndpoint
 //
+
+// Next available tag: 13
 
 @interface GTLServiceRegistryEndpoint : GTLObject
 

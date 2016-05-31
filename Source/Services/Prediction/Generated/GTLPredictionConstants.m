@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,6 +31,7 @@
 
 // Authorization scope
 NSString * const kGTLAuthScopePrediction                      = @"https://www.googleapis.com/auth/prediction";
+NSString * const kGTLAuthScopePredictionCloudPlatform         = @"https://www.googleapis.com/auth/cloud-platform";
 NSString * const kGTLAuthScopePredictionDevstorageFullControl = @"https://www.googleapis.com/auth/devstorage.full_control";
 NSString * const kGTLAuthScopePredictionDevstorageReadOnly    = @"https://www.googleapis.com/auth/devstorage.read_only";
 NSString * const kGTLAuthScopePredictionDevstorageReadWrite   = @"https://www.googleapis.com/auth/devstorage.read_write";

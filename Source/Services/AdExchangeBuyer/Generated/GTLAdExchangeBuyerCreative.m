@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerCreative (0 custom class methods, 25 custom properties)
+//   GTLAdExchangeBuyerCreative (0 custom class methods, 26 custom properties)
 //   GTLAdExchangeBuyerCreativeCorrectionsItem (0 custom class methods, 2 custom properties)
 //   GTLAdExchangeBuyerCreativeFilteringReasons (0 custom class methods, 2 custom properties)
 //   GTLAdExchangeBuyerCreativeNativeAd (0 custom class methods, 12 custom properties)
@@ -48,12 +48,12 @@
 //
 
 @implementation GTLAdExchangeBuyerCreative
-@dynamic accountId, advertiserId, advertiserName, agencyId, apiUploadTimestamp,
-         attribute, buyerCreativeId, clickThroughUrl, corrections, dealsStatus,
-         filteringReasons, height, HTMLSnippet, impressionTrackingUrl, kind,
-         nativeAd, openAuctionStatus, productCategories, restrictedCategories,
-         sensitiveCategories, servingRestrictions, vendorType, version,
-         videoURL, width;
+@dynamic accountId, adChoicesDestinationUrl, advertiserId, advertiserName,
+         agencyId, apiUploadTimestamp, attribute, buyerCreativeId,
+         clickThroughUrl, corrections, dealsStatus, filteringReasons, height,
+         HTMLSnippet, impressionTrackingUrl, kind, nativeAd, openAuctionStatus,
+         productCategories, restrictedCategories, sensitiveCategories,
+         servingRestrictions, vendorType, version, videoURL, width;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{

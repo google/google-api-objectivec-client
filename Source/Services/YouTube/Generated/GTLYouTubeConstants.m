@@ -1011,6 +1011,10 @@ NSString * const kGTLYouTubeVideoContentDetails_Caption_True  = @"true";
 NSString * const kGTLYouTubeVideoContentDetails_Definition_Hd = @"hd";
 NSString * const kGTLYouTubeVideoContentDetails_Definition_Sd = @"sd";
 
+// GTLYouTubeVideoContentDetails - Projection
+NSString * const kGTLYouTubeVideoContentDetails_Projection_Rectangular = @"rectangular";
+NSString * const kGTLYouTubeVideoContentDetails_Projection_X360 = @"360";
+
 // GTLYouTubeVideoFileDetails - FileType
 NSString * const kGTLYouTubeVideoFileDetails_FileType_Archive  = @"archive";
 NSString * const kGTLYouTubeVideoFileDetails_FileType_Audio    = @"audio";

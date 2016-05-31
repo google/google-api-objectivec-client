@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,10 +28,11 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerDealTermsGuaranteedFixedPriceTerms (0 custom class methods, 3 custom properties)
+//   GTLAdExchangeBuyerDealTermsGuaranteedFixedPriceTerms (0 custom class methods, 4 custom properties)
 
 #import "GTLAdExchangeBuyerDealTermsGuaranteedFixedPriceTerms.h"
 
+#import "GTLAdExchangeBuyerDealTermsGuaranteedFixedPriceTermsBillingInfo.h"
 #import "GTLAdExchangeBuyerPricePerBuyer.h"
 
 // ----------------------------------------------------------------------------
@@ -40,7 +41,7 @@
 //
 
 @implementation GTLAdExchangeBuyerDealTermsGuaranteedFixedPriceTerms
-@dynamic fixedPrices, guaranteedImpressions, guaranteedLooks;
+@dynamic billingInfo, fixedPrices, guaranteedImpressions, guaranteedLooks;
 
 + (NSDictionary *)arrayPropertyToClassMap {
   NSDictionary *map = @{

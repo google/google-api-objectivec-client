@@ -14,38 +14,27 @@
  */
 
 //
-//  GTLServiceRegistryEndpointsListResponse.m
+//  GTLBigqueryGoogleSheetsOptions.m
 //
 
 // ----------------------------------------------------------------------------
 // NOTE: This file is generated from Google APIs Discovery Service.
 // Service:
-//   Google Cloud Service Registry API (serviceregistry/alpha)
+//   BigQuery API (bigquery/v2)
 // Description:
-//   Manages service endpoints in Service Registry and provides integration with
-//   DNS for service discovery and name resolution.
+//   A data platform for customers to create, manage, share and query data.
 // Documentation:
-//   https://cloud.google.com/service-registry/
+//   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLServiceRegistryEndpointsListResponse (0 custom class methods, 2 custom properties)
+//   GTLBigqueryGoogleSheetsOptions (0 custom class methods, 1 custom properties)
 
-#import "GTLServiceRegistryEndpointsListResponse.h"
-
-#import "GTLServiceRegistryEndpoint.h"
+#import "GTLBigqueryGoogleSheetsOptions.h"
 
 // ----------------------------------------------------------------------------
 //
-//   GTLServiceRegistryEndpointsListResponse
+//   GTLBigqueryGoogleSheetsOptions
 //
 
-@implementation GTLServiceRegistryEndpointsListResponse
-@dynamic endpoints, nextPageToken;
-
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map = @{
-    @"endpoints" : [GTLServiceRegistryEndpoint class]
-  };
-  return map;
-}
-
+@implementation GTLBigqueryGoogleSheetsOptions
+@dynamic skipLeadingRows;
 @end

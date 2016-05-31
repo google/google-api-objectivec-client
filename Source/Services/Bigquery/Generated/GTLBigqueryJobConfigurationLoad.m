@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 // Documentation:
 //   https://cloud.google.com/bigquery/
 // Classes:
-//   GTLBigqueryJobConfigurationLoad (0 custom class methods, 17 custom properties)
+//   GTLBigqueryJobConfigurationLoad (0 custom class methods, 18 custom properties)
 
 #import "GTLBigqueryJobConfigurationLoad.h"
 
@@ -39,7 +39,7 @@
 //
 
 @implementation GTLBigqueryJobConfigurationLoad
-@dynamic allowJaggedRows, allowQuotedNewlines, createDisposition,
+@dynamic allowJaggedRows, allowQuotedNewlines, autodetect, createDisposition,
          destinationTable, encoding, fieldDelimiter, ignoreUnknownValues,
          maxBadRecords, projectionFields, quote, schema, schemaInline,
          schemaInlineFormat, skipLeadingRows, sourceFormat, sourceUris,

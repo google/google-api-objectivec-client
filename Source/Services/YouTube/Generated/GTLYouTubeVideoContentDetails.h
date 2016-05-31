@@ -27,7 +27,7 @@
 // Documentation:
 //   https://developers.google.com/youtube/v3
 // Classes:
-//   GTLYouTubeVideoContentDetails (0 custom class methods, 8 custom properties)
+//   GTLYouTubeVideoContentDetails (0 custom class methods, 9 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -78,6 +78,9 @@
 // The value of is_license_content indicates whether the video is licensed
 // content.
 @property (nonatomic, retain) NSNumber *licensedContent;  // boolValue
+
+// Specifies the projection format of the video.
+@property (nonatomic, copy) NSString *projection;
 
 // The regionRestriction object contains information about the countries where a
 // video is (or is not) viewable. The object will contain either the

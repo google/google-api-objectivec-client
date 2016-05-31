@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerProposal (0 custom class methods, 23 custom properties)
+//   GTLAdExchangeBuyerProposal (0 custom class methods, 22 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -99,8 +99,6 @@
 // The role of the last user that either updated the proposal or left a comment.
 // (readonly)
 @property (nonatomic, copy) NSString *lastUpdaterOrCommentorRole;
-
-@property (nonatomic, copy) NSString *lastUpdaterRole;
 
 // The name for the proposal (updatable)
 @property (nonatomic, copy) NSString *name;

@@ -36,7 +36,6 @@
   #import "GTLObject.h"
 #endif
 
-@class GTLAdExchangeBuyerContactInformation;
 @class GTLAdExchangeBuyerPublisherProvidedForecast;
 @class GTLAdExchangeBuyerSeller;
 
@@ -57,7 +56,7 @@
 @property (nonatomic, copy) NSString *buyerPitchStatement;
 
 // Direct contact for the publisher profile.
-@property (nonatomic, retain) GTLAdExchangeBuyerContactInformation *directContact;
+@property (nonatomic, copy) NSString *directContact;
 
 // Exchange where this publisher profile is from. E.g. AdX, Rubicon etc...
 @property (nonatomic, copy) NSString *exchange;
@@ -92,7 +91,7 @@
 @property (nonatomic, retain) NSNumber *profileId;  // intValue
 
 // Programmatic contact for the publisher profile.
-@property (nonatomic, retain) GTLAdExchangeBuyerContactInformation *programmaticContact;
+@property (nonatomic, copy) NSString *programmaticContact;
 
 // The list of domains represented in this publisher profile. Empty if this is a
 // parent profile.

@@ -14,7 +14,7 @@
  */
 
 //
-//  GTLAdExchangeBuyerDealServingMetadataDealPauseStatus.h
+//  GTLAdExchangeBuyerDealTermsGuaranteedFixedPriceTermsBillingInfo.h
 //
 
 // ----------------------------------------------------------------------------
@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerDealServingMetadataDealPauseStatus (0 custom class methods, 3 custom properties)
+//   GTLAdExchangeBuyerDealTermsGuaranteedFixedPriceTermsBillingInfo (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -36,20 +36,27 @@
   #import "GTLObject.h"
 #endif
 
+@class GTLAdExchangeBuyerPrice;
+
 // ----------------------------------------------------------------------------
 //
-//   GTLAdExchangeBuyerDealServingMetadataDealPauseStatus
+//   GTLAdExchangeBuyerDealTermsGuaranteedFixedPriceTermsBillingInfo
 //
 
-// Tracks which parties (if any) have paused a deal. The deal is considered
-// paused if has_buyer_paused || has_seller_paused. Each of the has_buyer_paused
-// or the has_seller_paused bits can be set independently.
+@interface GTLAdExchangeBuyerDealTermsGuaranteedFixedPriceTermsBillingInfo : GTLObject
 
-@interface GTLAdExchangeBuyerDealServingMetadataDealPauseStatus : GTLObject
+// The timestamp (in ms since epoch) when the original reservation price for the
+// deal was first converted to DFP currency. This is used to convert the
+// contracted price into advertiser's currency without discrepancy.
+@property (nonatomic, retain) NSNumber *currencyConversionTimeMs;  // longLongValue
 
-// If the deal is paused, records which party paused the deal first.
-@property (nonatomic, copy) NSString *firstPausedBy;
+// The original contracted quantity (# impressions) for this deal. To ensure
+// delivery, sometimes publisher will book the deal with a impression buffer,
+// however clients are billed using the original contracted quantity.
+@property (nonatomic, retain) NSNumber *originalContractedQuantity;  // longLongValue
 
-@property (nonatomic, retain) NSNumber *hasBuyerPaused;  // boolValue
-@property (nonatomic, retain) NSNumber *hasSellerPaused;  // boolValue
+// The original reservation price for the deal, if the currency code is
+// different from the one used in negotiation.
+@property (nonatomic, retain) GTLAdExchangeBuyerPrice *price;
+
 @end

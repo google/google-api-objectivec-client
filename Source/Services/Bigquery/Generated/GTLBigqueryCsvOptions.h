@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Google Inc.
+/* Copyright (c) 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -77,6 +77,6 @@
 // [Optional] The number of rows at the top of a CSV file that BigQuery will
 // skip when reading the data. The default value is 0. This property is useful
 // if you have header rows in the file that should be skipped.
-@property (nonatomic, retain) NSNumber *skipLeadingRows;  // intValue
+@property (nonatomic, retain) NSNumber *skipLeadingRows;  // longLongValue
 
 @end

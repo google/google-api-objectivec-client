@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerDealServingMetadataDealPauseStatus (0 custom class methods, 2 custom properties)
+//   GTLAdExchangeBuyerDealServingMetadataDealPauseStatus (0 custom class methods, 3 custom properties)
 
 #import "GTLAdExchangeBuyerDealServingMetadataDealPauseStatus.h"
 
@@ -38,5 +38,5 @@
 //
 
 @implementation GTLAdExchangeBuyerDealServingMetadataDealPauseStatus
-@dynamic hasBuyerPaused, hasSellerPaused;
+@dynamic firstPausedBy, hasBuyerPaused, hasSellerPaused;
 @end

@@ -28,7 +28,7 @@
 // Documentation:
 //   https://developers.google.com/ad-exchange/buyer-rest
 // Classes:
-//   GTLAdExchangeBuyerPricePerBuyer (0 custom class methods, 2 custom properties)
+//   GTLAdExchangeBuyerPricePerBuyer (0 custom class methods, 3 custom properties)
 
 #if GTL_BUILT_AS_FRAMEWORK
   #import "GTL/GTLObject.h"
@@ -52,6 +52,9 @@
 // for a matching rule where no buyer is set.
 
 @interface GTLAdExchangeBuyerPricePerBuyer : GTLObject
+
+// Optional access type for this buyer.
+@property (nonatomic, copy) NSString *auctionTier;
 
 // The buyer who will pay this price. If unset, all buyers can pay this price
 // (if the advertisers match, and there's no more specific rule matching the

@@ -151,6 +151,7 @@
 //      kGTLDoubleClickBidManagerDataRangePreviousWeek: "PREVIOUS_WEEK"
 //      kGTLDoubleClickBidManagerDataRangePreviousYear: "PREVIOUS_YEAR"
 //      kGTLDoubleClickBidManagerDataRangeQuarterToDate: "QUARTER_TO_DATE"
+//      kGTLDoubleClickBidManagerDataRangeTypeNotSupported: "TYPE_NOT_SUPPORTED"
 //      kGTLDoubleClickBidManagerDataRangeWeekToDate: "WEEK_TO_DATE"
 //      kGTLDoubleClickBidManagerDataRangeYearToDate: "YEAR_TO_DATE"
 //   reportDataEndTimeMs: The ending time for the data that is shown in the
