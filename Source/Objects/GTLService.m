@@ -711,7 +711,11 @@ static NSString *ETagIfPresent(GTLObject *obj) {
 
   NSString *slug = [uploadParams slug];
   if ([slug length] > 0) {
+#if GTL_USE_SESSION_FETCHER
+    [fetcher setRequestValue:slug forHTTPHeaderField:@"Slug"];
+#else
     [[fetcher mutableRequest] setValue:slug forHTTPHeaderField:@"Slug"];
+#endif
   }
   return fetcher;
 }
