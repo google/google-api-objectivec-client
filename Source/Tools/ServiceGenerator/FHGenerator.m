@@ -177,7 +177,8 @@ typedef enum {
                verboseLevel:(NSUInteger)verboseLevel
       allowRootURLOverrides:(BOOL)allowRootURLOverrides
       formattedNameOverride:(NSString *)formattedNameOverride
-           skipIfLikelyREST:(BOOL)skipIfLikelyREST;
+           skipIfLikelyREST:(BOOL)skipIfLikelyREST
+           useFrameworkName:(NSString *)frameworkName;
 
 - (void)adornMethods:(GTLDiscoveryRpcDescriptionMethods *)methods;
 - (void)adornSchema:(GTLDiscoveryJsonSchema *)schema
@@ -242,7 +243,8 @@ static NSString *ConstantName(NSString *grouping, NSString *name) {
 
 @synthesize api = api_,
             verboseLevel = verboseLevel_,
-            allowRootURLOverrides = allowRootURLOverrides_;
+            allowRootURLOverrides = allowRootURLOverrides_,
+            frameworkName = frameworkName_;
 
 @synthesize warnings = warnings_,
             infos = infos_;
@@ -251,25 +253,29 @@ static NSString *ConstantName(NSString *grouping, NSString *name) {
                    verboseLevel:(NSUInteger)verboseLevel
           allowRootURLOverrides:(BOOL)allowRootURLOverrides
           formattedNameOverride:(NSString *)formattedNameOverride
-               skipIfLikelyREST:(BOOL)skipIfLikelyREST {
+               skipIfLikelyREST:(BOOL)skipIfLikelyREST
+               useFrameworkName:(NSString *)frameworkName {
   return [[[self alloc] initWithApi:api
                        verboseLevel:verboseLevel
               allowRootURLOverrides:allowRootURLOverrides
               formattedNameOverride:formattedNameOverride
-                   skipIfLikelyREST:skipIfLikelyREST] autorelease];
+                   skipIfLikelyREST:skipIfLikelyREST
+                   useFrameworkName:frameworkName] autorelease];
 }
 
 - (instancetype)initWithApi:(GTLDiscoveryRpcDescription *)api
                verboseLevel:(NSUInteger)verboseLevel
       allowRootURLOverrides:(BOOL)allowRootURLOverrides
       formattedNameOverride:(NSString *)formattedNameOverride
-           skipIfLikelyREST:(BOOL)skipIfLikelyREST {
+           skipIfLikelyREST:(BOOL)skipIfLikelyREST
+           useFrameworkName:(NSString *)frameworkName {
   self = [super init];
   if (self != nil) {
     api_ = [api retain];
     verboseLevel_ = verboseLevel;
     allowRootURLOverrides_ = allowRootURLOverrides;
     formattedName_ = [formattedNameOverride copy];
+    frameworkName_ = [frameworkName copy];
     if (!api) {
       [self release];
       self = nil;
@@ -2473,11 +2479,15 @@ static NSString *MappedParamName(NSString *name) {
 
 - (NSString *)frameworkedImport:(NSString *)headerName {
   NSMutableString *result = [NSMutableString string];
-  [result appendFormat:@"#if %@\n", kFrameworkIncludeGate];
-  [result appendFormat:@"  #import \"%@/%@.h\"\n", kProjectPrefix, headerName];
-  [result appendString:@"#else\n"];
-  [result appendFormat:@"  #import \"%@.h\"\n", headerName];
-  [result appendString:@"#endif\n"];
+  if (self.frameworkName) {
+    [result appendFormat:@"#import <%@/%@.h>\n", self.frameworkName, headerName];
+  } else {
+    [result appendFormat:@"#if %@\n", kFrameworkIncludeGate];
+    [result appendFormat:@"  #import \"%@/%@.h\"\n", kProjectPrefix, headerName];
+    [result appendString:@"#else\n"];
+    [result appendFormat:@"  #import \"%@.h\"\n", headerName];
+    [result appendString:@"#endif\n"];
+  }
   return result;
 }
 

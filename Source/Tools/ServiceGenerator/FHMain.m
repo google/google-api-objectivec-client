@@ -47,6 +47,11 @@ static ArgInfo optionalFlags[] = {
     " to send the JSON-RPC requests.  This is useful for running against a"
     " custom or prerelease server."
   },
+  { "--gtlFrameworkName NAME",
+    "Will generate sources that include GTL's headers as if they are in a"
+    " framework with the given name.  If you are using GTL via CocoaPods,"
+    " you'll likely want to pass \"GoogleAPIClient\" as the value for this."
+  },
   { "--apiLogDir DIR",
     "Write out a file into DIR for each JSON API description processed.  These"
     " can be useful for reporting bugs if generation fails with an error."
@@ -103,7 +108,7 @@ static ArgInfo optionalArgs[] = {
       " the files for it are generated.  When using --generatePreferred"
       " version can be '-' to skip generating the name service." },
   { "http[s]://url/to/rpc_description_json",
-      "A URL to download containing the descripiton of a service to"
+      "A URL to download containing the description of a service to"
       " generate." },
   { "path/to/rpc_description.json",
       "The path to a text file containing the description of a service to"
@@ -159,6 +164,7 @@ typedef enum {
 @property (copy) NSString *appName;
 @property (copy) NSString *outputDir;
 @property (copy) NSString *discoveryServiceURLString;
+@property(copy) NSString *gtlFrameworkName;
 @property (copy) NSString *apiLogDir;
 @property (copy) NSString *httpLogDir;
 @property (assign) BOOL generatePreferred;
@@ -446,6 +452,7 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
   struct option longopts[] = {
     { "outputDir",          required_argument,  NULL,               'o' },
     { "discoveryService",   required_argument,  NULL,               'd' },
+    { "gtlFrameworkName",   required_argument,  NULL,               'n' },
     { "apiLogDir",          required_argument,  NULL,               'a' },
     { "httpLogDir",         required_argument,  NULL,               'h' },
     { "generatePreferred",  no_argument,        &generatePreferred, 1 },
@@ -468,6 +475,9 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
         break;
       case 'd':
         self.discoveryServiceURLString = [NSString stringWithUTF8String:optarg];
+        break;
+      case 'n':
+        self.gtlFrameworkName = @(optarg);
         break;
       case 'a':
         self.apiLogDir = [NSString stringWithUTF8String:optarg];
@@ -561,6 +571,9 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
   // If we got empty, flip it to no value.
   if ([self.discoveryServiceURLString length] == 0) {
     self.discoveryServiceURLString = nil;
+  }
+  if (self.gtlFrameworkName.length == 0) {
+    self.gtlFrameworkName = nil;
   }
 
   // Make sure output dir exists.
@@ -958,7 +971,8 @@ static BOOL HaveFileStringsChanged(NSString *oldFile, NSString *newFile) {
                                                 verboseLevel:self.verboseLevel
                                        allowRootURLOverrides:self.rootURLOverrides
                                        formattedNameOverride:formattedNameOverride
-                                            skipIfLikelyREST:fromDiscovery];
+                                            skipIfLikelyREST:fromDiscovery
+                                            useFrameworkName:self.gtlFrameworkName];
       if (fromDiscovery && [aGenerator likelyRESTOnlyAPI]) {
         fprintf(stderr,
                 "    %s Skipping this api. It appears to be a REST only and can't be supported via JSON-RPC\n", kWARNING);

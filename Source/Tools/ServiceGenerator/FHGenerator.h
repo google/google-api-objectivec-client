@@ -29,12 +29,14 @@ typedef enum {
 @property (readonly, retain) GTLDiscoveryRpcDescription* api;
 @property (readonly, assign) NSUInteger verboseLevel;
 @property (readonly, assign) BOOL allowRootURLOverrides;
+@property (readonly, copy) NSString *frameworkName;
 
 + (instancetype)generatorForApi:(GTLDiscoveryRpcDescription *)api
                    verboseLevel:(NSUInteger)verboseLevel
           allowRootURLOverrides:(BOOL)allowRootURLOverrides
           formattedNameOverride:(NSString *)formattedNameOverride
-               skipIfLikelyREST:(BOOL)skipIfLikelyREST;
+               skipIfLikelyREST:(BOOL)skipIfLikelyREST
+               useFrameworkName:(NSString *)frameworkName;
 
 // Keys are the file names; values are the contents of the files.
 - (NSDictionary *)generateFilesWithHandler:(void (^)(FHGeneratorHandlerMessageType msgType,
