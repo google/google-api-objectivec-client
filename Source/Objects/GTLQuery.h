@@ -152,6 +152,6 @@ typedef void (^GTLQueryTestBlock)(GTLServiceTicket *testTicket, GTLQueryTestResp
 @end
 
 // The library doesn't use GTLQueryCollectionImpl, but it provides a concrete implementation
-// of the protocol so the methods do not cause a private method error in Xcode.
+// the protocol so the methods do not cause private method errors in Xcode/AppStore review.
 @interface GTLQueryCollectionImpl : GTLQuery <GTLQueryCollectionProtocol>
 @end

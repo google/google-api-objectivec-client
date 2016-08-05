@@ -2734,3 +2734,7 @@ totalBytesExpectedToSend:(NSInteger)totalBytesExpected {
 }
 
 @end
+
+@implementation GTLObjectCollectionImpl
+@dynamic nextPageToken, nextStartIndex;
+@end

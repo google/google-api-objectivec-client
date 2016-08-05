@@ -660,3 +660,10 @@ typedef BOOL (^GTLServiceRetryBlock)(GTLServiceTicket *ticket,
 - (id)ticket;
 @end
 
+// The library doesn't use GTLObjectCollectionImpl, but it provides a concrete
+// implementation of so the methods do not cause private method errors in
+// Xcode/AppStore review.
+@interface GTLObjectCollectionImpl : GTLObject
+@property (nonatomic, retain) NSString *nextPageToken;
+@property (nonatomic, retain) NSNumber *nextStartIndex;
+@end
