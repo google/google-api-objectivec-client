@@ -47,6 +47,7 @@ Google APIs with generated interfaces include
 - [Compute Engine](https://developers.google.com/compute/)
 - [DoubleClick Bid Manager](https://developers.google.com/bid-manager/)
 - [Drive](https://developers.google.com/drive/)
+- [Firebase](https://firebase.google.com/)
 - [Fitness](https://developers.google.com/fit/)
 - [Gmail](https://developers.google.com/gmail/)
 - [Maps Engine](https://developers.google.com/maps-engine/)
