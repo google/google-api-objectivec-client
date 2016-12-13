@@ -5,22 +5,24 @@
 
 [![Build Status](https://travis-ci.org/google/google-api-objectivec-client.svg?branch=master)](https://travis-ci.org/google/google-api-objectivec-client)
 
+---
+
+> ## :warning: Deprecation Notice
+> This library has been replaced by
+> [Google APIs Client Library for Objective-C For REST](https://github.com/google/google-api-objectivec-client-for-rest).
+> New applications should use that instead; existing application should be
+> [updated](https://github.com/google/google-api-objectivec-client-for-rest/wiki/Migrating-From-GTL-to-GTLR)
+> as soon as possible as the Google servers will eventually stop
+> accepting JSON-RPC requests.
+
+---
+
 Written by Google, this library is a flexible and efficient Objective-C
 framework for accessing JSON APIs.
 
 This is the recommended library for accessing JSON-based Google APIs for iOS and
 Mac OS X applications.  The library is compatible with applications built for
 iOS 3 and later, and Mac OS X 10.5 and later.
-
----
-
-> **NOTE:** This library has been replaced by
-> [Google APIs Client Library for Objective-C For REST](https://github.com/google/google-api-objectivec-client-for-rest).
-> New applications should use that instead; existing application should be
-> updated as soon as possible as the Google servers will eventually stop
-> accepting JSON-RPC requests.
-
----
 
 **To get started** with Google APIs and the Objective-C client library, read
 the [wiki](https://github.com/google/google-api-objectivec-client/wiki)
@@ -31,38 +33,6 @@ Generated interfaces for Google APIs are in the
 [services folder](https://github.com/google/google-api-objectivec-client/tree/master/Source/Services).
 Library changes are documented in the
 [release notes](https://github.com/google/google-api-objectivec-client/blob/master/ReleaseNotes.md).
-
-Google APIs with generated interfaces include
-- [AdExchange Buyer](https://developers.google.com/ad-exchange/buyer-rest/)
-- [AdExchange Seller](https://developers.google.com/ad-exchange/seller-rest/)
-- [AdSense](https://developers.google.com/adsense/)
-- [AdSense Host](https://developers.google.com/adsense/host/)
-- [Analytics](https://developers.google.com/analytics/)
-- [Blogger](https://developers.google.com/blogger/)
-- [Books](https://developers.google.com/books/)
-- [Calendar](https://developers.google.com/google-apps/calendar/)
-- [Civic Info](https://developers.google.com/civic-information/)
-- [Cloud Save (AppState)](https://developers.google.com/games/services/common/concepts/cloudsave)
-- [Cloud Storage](https://developers.google.com/storage/)
-- [Compute Engine](https://developers.google.com/compute/)
-- [DoubleClick Bid Manager](https://developers.google.com/bid-manager/)
-- [Drive](https://developers.google.com/drive/)
-- [Firebase](https://firebase.google.com/)
-- [Fitness](https://developers.google.com/fit/)
-- [Gmail](https://developers.google.com/gmail/)
-- [Maps Engine](https://developers.google.com/maps-engine/)
-- [Mirror](https://developers.google.com/glass/about/) for Google Glass
-- [Groups Settings](https://developers.google.com/google-apps/groups-settings/)
-- Latitude ([deprecated](https://support.google.com/gmm/answer/3001634?p=maps_android_latitude&rd=1))
-- [Plus](https://developers.google.com/+/api/)
-- [Plus Domains](https://developers.google.com/+/domains/)
-- Shopping ([deprecated](http://googleblog.blogspot.jp/2013/03/a-second-spring-of-cleaning.html))
-- [Spectrum Database](https://developers.google.com/spectrum/)
-- [QPX Express](https://developers.google.com/qpx-express/)
-- [Tasks](https://developers.google.com/google-apps/tasks/)
-- [URL Shortener](https://developers.google.com/url-shortener/)
-- [Webmaster Tools](https://developers.google.com/webmaster-tools/)
-- [YouTube](https://developers.google.com/youtube/v3/)
 
 The library may also be used
 [without generated interfaces](https://github.com/google/google-api-objectivec-client/wiki#using-apis-without-generated-classes)
