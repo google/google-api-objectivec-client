@@ -30,6 +30,12 @@ Pod::Spec.new do |s|
   end
   s.default_subspec = 'Core'
 
+   # subspec for the service generator.
+   s.subspec 'ServiceGenerator' do |sp|
+     sp.dependency 'GoogleAPIClient/Core'
+     sp.source_files = 'Source/Tools/ServiceGenerator/*.{h,m,xcodeproj}'
+   end
+
   # subspecs for all the services.
   s.subspec 'AdExchangeBuyer' do |sp|
     sp.dependency 'GoogleAPIClient/Core'
