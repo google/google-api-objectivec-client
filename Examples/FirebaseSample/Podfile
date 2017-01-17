@@ -1,0 +1,32 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'Firebase' do
+  # Authorization
+  pod 'GoogleSignIn'
+  pod 'Firebase/Auth'
+  
+  # Database
+  pod 'Firebase/Database'
+  pod 'Firebase/RemoteConfig'
+  
+  # Storage
+  pod 'Firebase/Storage'
+  
+  # Crash Reports
+  pod 'Firebase/Crash'
+  
+  # User Interface
+  pod 'Firebase/Messaging'
+
+  target 'FirebaseTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'FirebaseUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
