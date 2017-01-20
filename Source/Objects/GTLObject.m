@@ -534,6 +534,22 @@ static NSMutableDictionary *gKindMap = nil;
   }
 }
 
++ (BOOL)useDynamicMappingForClass:(Class)class
+{
+  static NSMutableSet *excludedClasses;
+  static dispatch_once_t once;
+  dispatch_once(&once, ^{
+    excludedClasses = [[NSMutableSet alloc] init];
+    for (NSString *excludedClassName in @[ @"GTLYouTubeResourceId" ]) {
+      Class excludedClass = NSClassFromString(excludedClassName);
+      if (excludedClass) {
+        [excludedClasses addObject:excludedClass];
+      }
+    }
+  });
+  return ![excludedClasses containsObject:class];
+}
+
 #pragma mark Object Instantiation
 
 + (GTLObject *)objectForJSON:(NSMutableDictionary *)json
@@ -563,7 +579,7 @@ static NSMutableDictionary *gKindMap = nil;
   NSString *kind = nil;
   if (shouldUseKind && [json isKindOfClass:[NSDictionary class]]) {
     kind = [json valueForKey:@"kind"];
-    if ([kind isKindOfClass:[NSString class]] && [kind length] > 0) {
+    if ([kind isKindOfClass:[NSString class]] && [kind length] > 0 && [self useDynamicMappingForClass:defaultClass]) {
       Class dynamicClass = [GTLObject registeredObjectClassForKind:kind];
       if (dynamicClass) {
         classToCreate = dynamicClass;
